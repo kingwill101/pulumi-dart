@@ -38,18 +38,17 @@ abstract class InputArgs {
   Future<Input<String>?> convertToJson(String context, dynamic input) async {
     if (input == null) return null;
 
-    Future<String> serialize(dynamic value) async {
+    Future<dynamic> serialize(dynamic value) async {
       if (value is List) {
-        var serializedList = await Future.wait(value.map((item) => serialize(item)));
-        return jsonEncode(serializedList);
+        return Future.wait(value.map((item) => serialize(item)));
       } else if (value is Map) {
         var serializedMap = {};
         for (var entry in value.entries) {
           serializedMap[entry.key] = await serialize(entry.value);
         }
-        return jsonEncode(serializedMap);
+        return serializedMap;
       } else if (value is bool || value is num || value is String) {
-        return jsonEncode(value);
+        return value;
       } else if (value is Output) {
         var data = await value.getData();
         return serialize(data.value);
@@ -62,11 +61,11 @@ abstract class InputArgs {
       var output = input.toOutput();
       return Input.fromOutput(output.apply((value) async {
         var serialized = await serialize(value);
-        return serialized;
+        return jsonEncode(serialized);
       }));
     } else {
       var serialized = await serialize(input);
-      return Input.fromValue(serialized);
+      return Input.fromValue(jsonEncode(serialized));
     }
   }
 }
