@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:pulumi_dart/src/output.dart';
 
@@ -24,11 +25,12 @@ abstract class InputArgs {
         throw ArgumentError('$fullName is required but was not given a value');
       }
 
-      if (info.attribute.json) {
-        value = await convertToJson(fullName, value);
+      if (value != null) {
+        if (info.attribute.json) {
+          value = await convertToJson(fullName, value);
+        }
+        result[info.attribute.name] = value;
       }
-
-      result[info.attribute.name] = value;
     }
     return result;
   }
@@ -36,30 +38,44 @@ abstract class InputArgs {
   Future<Input<String>?> convertToJson(String context, dynamic input) async {
     if (input == null) return null;
 
-    Future<String> serialize(dynamic input) async {
-      // Implement serialization logic here
-      return input.toString(); // Placeholder implementation
+    Future<String> serialize(dynamic value) async {
+      if (value is List) {
+        var serializedList = await Future.wait(value.map((item) => serialize(item)));
+        return jsonEncode(serializedList);
+      } else if (value is Map) {
+        var serializedMap = {};
+        for (var entry in value.entries) {
+          serializedMap[entry.key] = await serialize(entry.value);
+        }
+        return jsonEncode(serializedMap);
+      } else if (value is bool || value is num || value is String) {
+        return jsonEncode(value);
+      } else if (value is Output) {
+        var data = await value.getData();
+        return serialize(data.value);
+      } else {
+        throw ArgumentError('Unsupported type for JSON serialization: ${value.runtimeType}');
+      }
     }
 
     if (input is Input) {
-      var output = (input).toOutput();
+      var output = input.toOutput();
       return Input.fromOutput(output.apply((value) async {
         var serialized = await serialize(value);
-        return Future.value(serialized); // Ensure future of serialized Output
+        return serialized;
       }));
     } else {
       var serialized = await serialize(input);
       return Input.fromValue(serialized);
     }
   }
-
 }
 
 class InputInfo {
   final InputInfoArg attribute;
   final String memberName;
   final Type memberType;
-  final Function(dynamic) getValue;
+  final dynamic Function(dynamic) getValue;
 
   InputInfo(this.attribute, this.memberName, this.memberType, this.getValue);
 }

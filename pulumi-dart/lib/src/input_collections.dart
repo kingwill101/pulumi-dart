@@ -12,6 +12,9 @@ class InputList<T> extends ListBase<Input<T>> implements Input<List<T>> {
 
   @override
   Output<List<T>> toOutput() {
+    if (_list.isEmpty) {
+      return Output.createUnknown<List<T>>();
+    }
     return Output.all(_list.map((input) => input.toOutput()));
   }
 
@@ -48,6 +51,12 @@ class InputList<T> extends ListBase<Input<T>> implements Input<List<T>> {
   void operator []=(int index, Input<T> value) {
     _list[index] = value;
   }
+
+  @override
+  bool get isEmpty => _list.isEmpty;
+
+  @override
+  bool get isNotEmpty => _list.isNotEmpty;
 }
 
 class InputMap<V> extends MapBase<String, Input<V>>
@@ -60,13 +69,11 @@ class InputMap<V> extends MapBase<String, Input<V>>
 
   @override
   Output<Map<String, V>> toOutput() {
-    return Output.all(_map.entries.map((entry) =>
-      entry.value.toOutput().apply(
-        (value) => Output.create(MapEntry(entry.key, value))
-      )
-    )).apply((entries) =>
-      Map<String, V>.fromEntries(entries.cast<MapEntry<String, V>>())
-    );
+    return Output.all(_map.entries.map((entry) => entry.value
+            .toOutput()
+            .apply((value) => Output.create(MapEntry(entry.key, value)))))
+        .apply((entries) =>
+            Map<String, V>.fromEntries(entries.cast<MapEntry<String, V>>()));
   }
 
   @override
