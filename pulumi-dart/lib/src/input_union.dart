@@ -1,4 +1,4 @@
-import 'package:pulumi_dart/src/input.dart';
+import 'package:pulumi/src/input.dart';
 
 import 'output.dart';
 import 'union.dart';

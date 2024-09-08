@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
-import 'package:pulumi_dart/src/output.dart';
-import 'package:pulumi_dart/src/input.dart';
-import 'package:pulumi_dart/src/resource/resource.dart';
+import 'package:pulumi/src/output.dart';
+import 'package:pulumi/src/input.dart';
+import 'package:pulumi/src/resource/resource.dart';
 
 Output<T> createOutput<T>(T value, bool isKnown, [bool isSecret = false]) {
   return Output<T>(Future.value(OutputData<T>(

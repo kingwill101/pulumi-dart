@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:pulumi_dart/src/output.dart';
+import 'package:pulumi/src/output.dart';
 
 import 'input.dart';
 

@@ -1,9 +1,9 @@
-import 'package:pulumi_dart/src/input_args.dart';
-import 'package:pulumi_dart/src/input_collections.dart';
+import 'package:pulumi/src/input_args.dart';
+import 'package:pulumi/src/input_collections.dart';
 import 'package:test/test.dart';
-import 'package:pulumi_dart/src/resource/resource_args.dart';
-import 'package:pulumi_dart/src/input.dart';
-import 'package:pulumi_dart/src/output.dart';
+import 'package:pulumi/src/resource/resource_args.dart';
+import 'package:pulumi/src/input.dart';
+import 'package:pulumi/src/output.dart';
 
 class ComplexResourceArgs1 extends ResourceArgs {
   Input<String>? s;

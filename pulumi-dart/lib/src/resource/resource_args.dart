@@ -1,4 +1,4 @@
-import 'package:pulumi_dart/src/input_args.dart';
+import 'package:pulumi/src/input_args.dart';
 
 abstract class ResourceArgs extends InputArgs {
   static final ResourceArgs empty = EmptyResourceArgs();
