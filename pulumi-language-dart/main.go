@@ -20,7 +20,6 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"os/signal"
@@ -32,9 +31,7 @@ import (
 	pbempty "github.com/golang/protobuf/ptypes/empty"
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/version"
 
-	"github.com/blang/semver"
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource/plugin"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/cmdutil"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/rpcutil"
@@ -162,43 +159,7 @@ func (host *dartLanguageHost) GetRequiredPlugins(
 		return nil, err
 	}
 
-	// Now, introspect the user project to see which Pulumi resource packages it references.
-	possiblePulumiPackages, err := host.DeterminePossiblePulumiPackages(ctx, engineClient)
-	if err != nil {
-		return nil, err
-	}
-
-	// Ensure we know where the local pub package cache directory is.
-	packageDir, err := host.DetermineDartPackageDirectory(ctx, engineClient)
-	if err != nil {
-		return nil, err
-	}
-
-	// Now that we know the set of Pulumi packages referenced and we know where packages have been restored to,
-	// we can examine each package to determine the corresponding resource-plugin for it.
-
 	plugins := []*pulumirpc.PluginDependency{}
-	packageToVersion := make(map[string]string)
-	for _, parts := range possiblePulumiPackages {
-		packageName := parts[0]
-		packageVersion := parts[1]
-
-		if existingVersion := packageToVersion[packageName]; existingVersion == packageVersion {
-			// Only include distinct dependencies.
-			continue
-		}
-
-		packageToVersion[packageName] = packageVersion
-
-		plugin, err := DeterminePluginDependency(packageDir, packageName, packageVersion)
-		if err != nil {
-			return nil, err
-		}
-
-		if plugin != nil {
-			plugins = append(plugins, plugin)
-		}
-	}
 
 	return &pulumirpc.GetRequiredPluginsResponse{Plugins: plugins}, nil
 }
@@ -209,9 +170,7 @@ func (host *dartLanguageHost) DartPubGet(
 ) error {
 	args := []string{"pub", "get"}
 
-	if req.GetProgram() != "" {
-		args = append(args, "-C", req.GetProgram())
-	}
+	args = append(args, "-C", req.GetPwd())
 
 	// Run the `dart pub get` command. Report the output to the user as it's happening.
 	_, err := host.RunDartCommand(ctx, engineClient, args, true /*logToUser*/)
@@ -223,43 +182,46 @@ func (host *dartLanguageHost) DartPubGet(
 	return nil
 }
 
-// DeterminePossiblePulumiPackages analyzes the Dart project to find Pulumi-related packages.
 func (host *dartLanguageHost) DeterminePossiblePulumiPackages(
-	ctx context.Context, engineClient pulumirpc.EngineClient,
+	ctx context.Context,
+	req *pulumirpc.GetRequiredPluginsRequest,
+	engineClient pulumirpc.EngineClient,
 ) ([][]string, error) {
 	logging.V(5).Infof("GetRequiredPlugins: Determining Pulumi packages")
 
-	args := []string{"pub", "deps", "--style=list"}
-	commandOutput, err := host.RunDartCommand(ctx, engineClient, args, false /*logToUser*/)
+	//TODO probably a convenient(accurate) way to determine the correct packages
+	//args := []string{"pub", "deps", "--style=list"}
+	//commandOutput, err := host.RunDartCommand(ctx, engineClient, args, false /*logToUser*/)
+	//if err != nil {
+	//	return nil, err
+	//}
+
+	// Find pubspec.yaml in the current directory or parent directories
+	pubspecPath, err := findPubspecYaml(".")
 	if err != nil {
+		return nil, fmt.Errorf("failed to find pubspec.yaml: %v", err)
+	}
+
+	logging.V(5).Infof("Found pubspec.yaml at: %s", pubspecPath)
+
+	// Read and parse the pubspec.yaml file
+	pubspec, err := ReadAndParsePubspec(pubspecPath)
+	if err != nil {
+		logging.V(7).Infof("failed to find pubspec.yaml: %v", err)
 		return nil, err
 	}
 
-	outputLines := strings.Split(strings.Replace(commandOutput, "\r\n", "\n", -1), "\n")
+	logging.V(7).Infof("Parsed pubspec: %+v", pubspec)
 
-	sawPulumi := false
-	packages := [][]string{}
-	for _, line := range outputLines {
-		fields := strings.Fields(line)
-		if len(fields) < 2 {
-			continue
-		}
-
-		packageName := fields[0]
-		if packageName == "pulumi" {
-			sawPulumi = true
-			continue
-		}
-
-		if strings.HasPrefix(packageName, "pulumi_") {
-			version := fields[1]
-			packages = append(packages, []string{packageName, version})
-		}
+	if len(pubspec.Dependencies) == 0 {
+		return nil, fmt.Errorf("no dependencies found in pubspec.yaml at %s", pubspecPath)
 	}
 
-	if !sawPulumi && len(packages) == 0 {
-		return nil, errors.Errorf(
-			"unexpected output from 'dart pub deps'. Program does not appear to reference any 'pulumi_*' packages")
+	// Determine Pulumi packages
+	packages := DeterminePulumiPackages(pubspec.Dependencies)
+
+	if len(packages) == 0 {
+		return nil, fmt.Errorf("pubspec.yaml at %s does not reference any 'pulumi*' packages. Dependencies: %v", pubspecPath, pubspec.Dependencies)
 	}
 
 	logging.V(5).Infof("GetRequiredPlugins: Pulumi packages: %#v", packages)
@@ -267,37 +229,12 @@ func (host *dartLanguageHost) DeterminePossiblePulumiPackages(
 	return packages, nil
 }
 
-// DetermineDartPackageDirectory finds the directory where Dart packages are stored.
-func (host *dartLanguageHost) DetermineDartPackageDirectory(
-	ctx context.Context, engineClient pulumirpc.EngineClient,
-) (string, error) {
-	logging.V(5).Infof("GetRequiredPlugins: Determining package directory")
-
-	args := []string{"pub", "global", "list"}
-	commandOutput, err := host.RunDartCommand(ctx, engineClient, args, false /*logToUser*/)
-	if err != nil {
-		return "", err
-	}
-
-	lines := strings.Split(commandOutput, "\n")
-	for _, line := range lines {
-		if strings.HasPrefix(line, "package:") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				return strings.TrimSpace(parts[1]), nil
-			}
-		}
-	}
-
-	return "", errors.New("unable to determine Dart package directory")
-}
-
 type versionFile struct {
 	name    string
 	version string
 }
 
-func newVersionFile(b []byte, packageName string) *versionFile {
+func newVersionFile(b []byte, _ string) *versionFile {
 	var name string
 	version := strings.TrimSpace(string(b))
 	parts := strings.SplitN(version, "\n", 2)
@@ -316,82 +253,6 @@ func newVersionFile(b []byte, packageName string) *versionFile {
 		name:    name,
 		version: version,
 	}
-}
-
-// DeterminePluginDependency analyzes a Dart package to determine if it's a Pulumi plugin.
-func DeterminePluginDependency(packageDir, packageName, packageVersion string) (*pulumirpc.PluginDependency, error) {
-	logging.V(5).Infof("GetRequiredPlugins: Determining plugin dependency: %v, %v, %v",
-		packageDir, packageName, packageVersion)
-
-	// Check for a `~/.nuget/packages/package_name/package_version/content/{pulumi-plugin.json,version.txt}` file.
-
-	artifactPath := filepath.Join(packageDir, strings.ToLower(packageName), packageVersion, "content")
-	pulumiPluginFilePath := filepath.Join(artifactPath, "pulumi-plugin.json")
-	versionFilePath := filepath.Join(artifactPath, "version.txt")
-	logging.V(5).Infof("GetRequiredPlugins: plugin file path: %v", versionFilePath)
-	logging.V(5).Infof("GetRequiredPlugins: version file path: %v", versionFilePath)
-
-	pulumiPlugin, err := plugin.LoadPulumiPluginJSON(pulumiPluginFilePath)
-	if err != nil && !os.IsNotExist(err) {
-		return nil, err
-	}
-	// Explicitly not a resource
-	if pulumiPlugin != nil && !pulumiPlugin.Resource {
-		return nil, nil
-	}
-
-	var vf *versionFile
-	b, err := ioutil.ReadFile(versionFilePath)
-
-	switch {
-	case err == nil:
-		vf = newVersionFile(b, packageName)
-	case os.IsNotExist(err):
-		break
-	case err != nil:
-		return nil, fmt.Errorf("failed to read version file: %w", err)
-	}
-
-	defaultName := strings.ToLower(strings.TrimPrefix(packageName, "Pulumi."))
-
-	// No pulumi-plugin.json or version.txt
-	// That means this is not a resource.
-	if pulumiPlugin == nil && vf == nil {
-		return nil, nil
-	}
-	// Create stubs to avoid dereferencing a null
-	if pulumiPlugin == nil {
-		pulumiPlugin = &plugin.PulumiPluginJSON{}
-	} else if vf == nil {
-		vf = &versionFile{}
-	}
-
-	or := func(o ...string) string {
-		for _, s := range o {
-			if s != "" {
-				return s
-			}
-		}
-		return ""
-	}
-
-	name := or(pulumiPlugin.Name, vf.name, defaultName)
-	version := or(pulumiPlugin.Version, vf.version, packageVersion)
-
-	_, err = semver.ParseTolerant(version)
-	if err != nil {
-		return nil, fmt.Errorf("invalid package version: %w", err)
-	}
-
-	result := &pulumirpc.PluginDependency{
-		Name:    name,
-		Version: version,
-		Server:  pulumiPlugin.Server,
-		Kind:    "resource",
-	}
-
-	logging.V(5).Infof("GetRequiredPlugins: Determining plugin dependency: %#v", result)
-	return result, nil
 }
 
 // RunDartCommand executes a Dart command and optionally logs the output to the user.
@@ -461,15 +322,8 @@ func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest
 		// Run from source
 		args = append(args, "run")
 
-		if host.dartBuildSucceeded {
-			// If we are certain the project has been built,
-			// we can skip the implicit pub get
-			args = append(args, "--no-pub")
-		}
-
-		if req.GetProgram() != "" {
-			args = append(args, req.GetProgram())
-		}
+		//TODO decide on the appropriate entrypoint for dart apps
+		//currently requires the entrypoint being in a file located at "bin/{package name}.dart"
 	}
 
 	if logging.V(5) {
@@ -490,12 +344,14 @@ func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest
 				// Check if we got special exit code that means "we already gave the user an
 				// actionable message". In that case, we can simply bail out and terminate `pulumi`
 				// without showing any more messages.
+
+				//TODO decide on a exit code in dart
 				if status.ExitStatus() == dartProcessExitedAfterShowingUserActionableMessage {
 					return &pulumirpc.RunResponse{Error: "", Bail: true}, nil
 				}
 
 				return &pulumirpc.RunResponse{
-					Error: fmt.Sprintf("Program exited with non-zero exit code: %d", status.ExitStatus()),
+					Error: fmt.Sprintf("Program exited with non-zero exit code: %d\n %v", status.ExitStatus(), err),
 				}, nil
 			}
 			return &pulumirpc.RunResponse{
