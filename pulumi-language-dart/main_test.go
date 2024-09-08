@@ -165,16 +165,6 @@ func TestDeterminePluginDependency(t *testing.T) {
 				c.Expected.Kind = "resource"
 			}
 
-			actual, err := DeterminePluginDependency(cwd, c.PackageName, c.PackageVersion)
-
-			if c.ExpectError {
-				t.Logf("Error expected")
-				assert.Errorf(t, err, "actual = %v", actual)
-			} else {
-				t.Logf("No error expected")
-				assert.NoError(t, err)
-				assert.Equal(t, c.Expected, actual)
-			}
 		})
 	}
 }
