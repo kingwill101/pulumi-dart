@@ -1,0 +1,3 @@
+name: emptydart
+description: An empty dart Pulumi program.
+runtime: dart

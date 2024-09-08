@@ -28,8 +28,8 @@ import (
 	"syscall"
 	"time"
 
-	pbempty "github.com/golang/protobuf/ptypes/empty"
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/version"
+	pbempty "google.golang.org/protobuf/types/known/emptypb"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/cmdutil"
