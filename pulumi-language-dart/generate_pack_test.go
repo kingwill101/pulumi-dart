@@ -104,3 +104,38 @@ func TestPackProducesArchive(t *testing.T) {
 	assert.True(t, entries["pubspec.yaml"])
 	assert.True(t, entries["lib/my_pkg.dart"])
 }
+
+func TestGeneratePackageEmitsResourceClasses(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"resources": {
+			"sample:index:Widget": {
+				"isComponent": false
+			},
+			"sample:index:WidgetComponent": {
+				"isComponent": true
+			}
+		}
+	}`
+
+	resp, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+
+	libData, err := os.ReadFile(filepath.Join(targetDir, "lib", "sample.dart"))
+	require.NoError(t, err)
+	content := string(libData)
+	assert.Contains(t, content, "class Widget extends CustomResource")
+	assert.Contains(t, content, "class WidgetComponent extends ComponentResource")
+	assert.Contains(t, content, "_mapToInputs")
+	assert.Contains(t, content, "sample:index:Widget")
+	assert.Contains(t, content, "sample:index:WidgetComponent")
+}

@@ -1163,9 +1163,14 @@ func appendPolicyPackConfigEnv(
 }
 
 type packageSchema struct {
-	Name      string `json:"name"`
-	Namespace string `json:"namespace"`
-	Version   string `json:"version"`
+	Name      string                         `json:"name"`
+	Namespace string                         `json:"namespace"`
+	Version   string                         `json:"version"`
+	Resources map[string]packageResourceSpec `json:"resources"`
+}
+
+type packageResourceSpec struct {
+	IsComponent bool `json:"isComponent"`
 }
 
 func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
@@ -1216,6 +1221,120 @@ func toDartPackageName(namespace, name string) string {
 		return sanitizeDartIdentifier(name)
 	}
 	return sanitizeDartIdentifier(namespace + "_" + name)
+}
+
+func toDartClassName(name string) string {
+	parts := strings.FieldsFunc(name, func(r rune) bool {
+		return !((r >= 'a' && r <= 'z') || (r >= 'A' && r <= 'Z') || (r >= '0' && r <= '9'))
+	})
+	if len(parts) == 0 {
+		return "Resource"
+	}
+
+	var b strings.Builder
+	for _, part := range parts {
+		if part == "" {
+			continue
+		}
+		head := part[0]
+		if head >= 'a' && head <= 'z' {
+			part = string(head-'a'+'A') + part[1:]
+		}
+		b.WriteString(part)
+	}
+
+	result := b.String()
+	if result == "" {
+		return "Resource"
+	}
+	if result[0] >= '0' && result[0] <= '9' {
+		return "Resource" + result
+	}
+	return result
+}
+
+func resourceClassNameFromToken(token string, used map[string]int) string {
+	name := token
+	if idx := strings.LastIndex(token, ":"); idx >= 0 && idx+1 < len(token) {
+		name = token[idx+1:]
+	}
+
+	base := toDartClassName(name)
+	count := used[base]
+	used[base] = count + 1
+	if count == 0 {
+		return base
+	}
+	return fmt.Sprintf("%s%d", base, count+1)
+}
+
+func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
+	var b strings.Builder
+	fmt.Fprintf(&b, "library %s;\n\n", packageName)
+	b.WriteString("import 'package:pulumi/pulumi.dart';\n\n")
+
+	resourceTokens := make([]string, 0, len(spec.Resources))
+	for token := range spec.Resources {
+		resourceTokens = append(resourceTokens, token)
+	}
+	sort.Strings(resourceTokens)
+
+	hasCustomResource := false
+	for _, token := range resourceTokens {
+		if !spec.Resources[token].IsComponent {
+			hasCustomResource = true
+			break
+		}
+	}
+
+	if hasCustomResource {
+		b.WriteString(`Inputs _mapToInputs(Map<String, dynamic> args) {
+  final mapped = <String, Input<dynamic>>{};
+  for (final entry in args.entries) {
+    final value = entry.value;
+    if (value is Input<dynamic>) {
+      mapped[entry.key] = value;
+    } else {
+      mapped[entry.key] = Input.fromValue(value);
+    }
+  }
+  return mapped;
+}
+
+`)
+	}
+
+	if len(resourceTokens) == 0 {
+		b.WriteString("// This package schema did not define resources.\n")
+		return []byte(b.String())
+	}
+
+	usedClassNames := map[string]int{}
+	for _, token := range resourceTokens {
+		resource := spec.Resources[token]
+		className := resourceClassNameFromToken(token, usedClassNames)
+
+		if resource.IsComponent {
+			fmt.Fprintf(&b, "class %s extends ComponentResource {\n", className)
+			fmt.Fprintf(
+				&b,
+				"  %s(\n    String name, {\n    ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          null,\n          options ?? ComponentResourceOptions(),\n        );\n}\n\n",
+				className,
+				token,
+			)
+			continue
+		}
+
+		fmt.Fprintf(&b, "class %s extends CustomResource {\n", className)
+		fmt.Fprintf(
+			&b,
+			"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args ?? const {}),\n          options ?? CustomResourceOptions(),\n        );\n}\n\n",
+			className,
+			token,
+		)
+	}
+
+	return []byte(b.String())
 }
 
 func normalizeVersion(version string) string {
@@ -1387,8 +1506,8 @@ func (host *dartLanguageHost) GeneratePackage(
 	}
 
 	libraryFile := filepath.Join(libDir, packageName+".dart")
-	libraryContent := fmt.Sprintf("library %s;\n", packageName)
-	if err := os.WriteFile(libraryFile, []byte(libraryContent), 0o600); err != nil {
+	libraryContent := generatedPackageLibrary(spec, packageName)
+	if err := os.WriteFile(libraryFile, libraryContent, 0o600); err != nil {
 		return nil, fmt.Errorf("failed to write generated library file: %w", err)
 	}
 
