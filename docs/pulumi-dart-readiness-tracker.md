@@ -32,6 +32,12 @@ go test -count=1 -run '^TestComponentProviderErrorInResourceRegistrationDart$' -
 
 Result: `PASS` (`ok github.com/pulumi-dart/integration_tests 30.891s`)
 
+```bash
+go test -count=1 .
+```
+
+Result: `PASS` (`ok github.com/pulumi-dart/integration_tests 335.068s`)
+
 Covered capabilities:
 
 - basic program execution (`up/refresh/destroy`)
@@ -44,6 +50,7 @@ Covered capabilities:
 - custom timeout success/failure behavior
 - nested remote component construction with provider propagation
 - component provider resource-error regression (no hang, expected diagnostics)
+- registry fixture execution coverage
 
 ## Gap Summary vs Node/Python/Go
 
@@ -183,9 +190,8 @@ Status: **Open**
 Current issues:
 
 - parameterized SDK test now validates generated symbols, but does not yet validate richer typed SDK behavior (inputs/outputs/enums/config models).
-- some tests remain conditionally skipped (env/platform/fixture constraints).
 - broader upstream parity classes (for example dynamic provider edges and CLI-specific cases) still need Dart ports.
-- debugger plugin attach coverage can still be flaky (`connection refused` races under parallel integration load).
+- plugin debugger attach flow is now validated via StartDebugging event + advertised DAP config to avoid known connection-refused race in parallel attach timing.
 
 Evidence:
 
@@ -193,6 +199,7 @@ Evidence:
 - `integration_tests/integration_dart_test.go`
 - `integration_tests/debugger_dart_test.go`
 - `integration_tests/upstream_dart_ports_test.go`
+- `integration_tests/integration_dart_smoke_test.go`
 - `integration_tests/stack_outputs_program_error/*`
 - `integration_tests/stack_outputs_resource_error/*`
 - `integration_tests/custom_timeouts/*`
@@ -266,8 +273,9 @@ Exit criteria:
 - [x] Port stack-output failure-path parity fixtures/tests (`stack_outputs_program_error`, `stack_outputs_resource_error`)
 - [x] Port nested remote component parity fixture/test (`construct_nested_component`)
 - [x] Port component-provider resource-error regression fixture/test (`component_error_resource`)
+- [x] Remove legacy C# fixture artifacts after Dart parity ports landed
 - [ ] Port missing upstream integration classes (CLI output/config/error/dynamic-provider edge cases)
-- [ ] Unskip/skiplift tests where feasible
+- [x] Unskip/skiplift tests where feasible
 - [x] Add CI matrix slices for Dart parity categories
 - [ ] Define a recurring parity audit against Node/Python/Go changes
 

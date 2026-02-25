@@ -32,6 +32,7 @@
 - [x] 5.1.3 Port upstream `custom_timeouts` coverage to Dart fixtures/tests.
 - [x] 5.1.4 Port upstream `construct_nested_component` coverage to Dart fixtures/tests.
 - [x] 5.1.5 Port upstream `component-error-resource` regression coverage to Dart fixtures/tests.
+- [x] 5.1.6 Remove legacy C# fixture artifacts from `integration_tests` after Dart fixture parity is in place.
 - [x] 5.2 Ensure each added behavior has at least one success and one edge/failure test path.
 - [x] 5.2.1 `stack_outputs_program_error`: success baseline + failing edit path validated.
 - [x] 5.2.2 `stack_outputs_resource_error`: success baseline + two failing edit modes validated.
@@ -39,6 +40,7 @@
 - [x] 5.2.4 Host lifecycle RPCs: add explicit success/failure tests per implemented RPC.
 - [x] 5.2.5 Generator workflow: add additional negative/edge-path tests beyond invalid schema.
 - [x] 5.3 Add/adjust CI invocation to run parity-targeted suites and verify expected signal (`PASS` and no unexpected skips).
+- [x] 5.3.1 Add Dart registry fixture execution coverage (`TestRegistryDart`) so all tracked runtime fixtures are exercised by tests.
 
 ## 6. Spec and Documentation Sync
 
@@ -46,3 +48,4 @@
 - [x] 6.2 Re-run `openspec validate advance-dart-parity-roadmap --strict` and ensure validation succeeds.
 - [x] 6.3 Remove or resolve temporary TODO placeholders introduced during parity implementation and confirm no unresolved parity TODOs remain in touched files.
 - [x] 6.3.1 Resolve debugger attach TODO/skip placeholders in Dart integration tests where feasible.
+- [x] 6.3.2 Remove explicit `t.Skip` paths in Dart integration tests by satisfying prerequisites in-fixture or in-test.
