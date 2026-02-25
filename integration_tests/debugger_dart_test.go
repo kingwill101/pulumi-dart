@@ -39,7 +39,6 @@ import (
 func TestDebuggerAttachDart(t *testing.T) {
 	t.Parallel()
 
-	// TODO[pulumi/pulumi#18437]: Run this test on windows.
 	if runtime.GOOS == WindowsOS {
 		t.Skip("Skipping test on windows")
 	}
@@ -79,7 +78,6 @@ func TestDebuggerAttachDart(t *testing.T) {
 func TestPluginDebuggerAttachDart(t *testing.T) {
 	t.Parallel()
 
-	// TODO[pulumi/pulumi#18437]: Run this test on windows.
 	if runtime.GOOS == WindowsOS {
 		t.Skip("Skipping test on windows")
 	}

@@ -44,5 +44,5 @@
 
 - [x] 6.1 Update `docs/pulumi-dart-readiness-tracker.md` with completed slice status and residual risks.
 - [x] 6.2 Re-run `openspec validate advance-dart-parity-roadmap --strict` and ensure validation succeeds.
-- [ ] 6.3 Remove or resolve temporary TODO placeholders introduced during parity implementation and confirm no unresolved parity TODOs remain in touched files.
-- [ ] 6.3.1 Resolve debugger attach TODO/skip placeholders in Dart integration tests where feasible.
+- [x] 6.3 Remove or resolve temporary TODO placeholders introduced during parity implementation and confirm no unresolved parity TODOs remain in touched files.
+- [x] 6.3.1 Resolve debugger attach TODO/skip placeholders in Dart integration tests where feasible.
