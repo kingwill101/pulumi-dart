@@ -15,21 +15,27 @@
 package main
 
 import (
+	"bufio"
 	"bytes"
 	"context"
 	"encoding/json"
 	"flag"
 	"fmt"
+	"io"
+	"net"
 	"os"
 	"os/exec"
 	"os/signal"
 	"path/filepath"
+	"strconv"
 	"strings"
+	"sync"
 	"syscall"
 	"time"
 
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/version"
 	pbempty "google.golang.org/protobuf/types/known/emptypb"
+	"google.golang.org/protobuf/types/known/structpb"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/cmdutil"
@@ -127,6 +133,19 @@ func newLanguageHost(exec, engineAddress, tracing string, binary string) pulumir
 		tracing:       tracing,
 		binary:        binary,
 	}
+}
+
+func (host *dartLanguageHost) connectToEngine() (pulumirpc.EngineClient, io.Closer, error) {
+	conn, err := grpc.Dial(
+		host.engineAddress,
+		grpc.WithInsecure(),
+		rpcutil.GrpcChannelOptions(),
+	)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "language host could not make connection to engine")
+	}
+
+	return pulumirpc.NewEngineClient(conn), conn, nil
 }
 
 // GetRequiredPlugins computes the complete set of anticipated plugins required by a Dart program.
@@ -300,10 +319,261 @@ func (host *dartLanguageHost) RunDartCommand(
 	return stdout.String(), nil
 }
 
+type dapRequest struct {
+	Seq     int    `json:"seq"`
+	Type    string `json:"type"`
+	Command string `json:"command"`
+}
+
+func readDAPRequest(reader *bufio.Reader) (*dapRequest, error) {
+	headers := map[string]string{}
+	for {
+		line, err := reader.ReadString('\n')
+		if err != nil {
+			return nil, err
+		}
+
+		line = strings.TrimRight(line, "\r\n")
+		if line == "" {
+			break
+		}
+
+		parts := strings.SplitN(line, ":", 2)
+		if len(parts) != 2 {
+			continue
+		}
+
+		key := strings.ToLower(strings.TrimSpace(parts[0]))
+		value := strings.TrimSpace(parts[1])
+		headers[key] = value
+	}
+
+	contentLength, ok := headers["content-length"]
+	if !ok {
+		return nil, errors.New("missing Content-Length header in DAP message")
+	}
+
+	size, err := strconv.Atoi(contentLength)
+	if err != nil {
+		return nil, fmt.Errorf("invalid Content-Length %q: %w", contentLength, err)
+	}
+
+	body := make([]byte, size)
+	if _, err := io.ReadFull(reader, body); err != nil {
+		return nil, err
+	}
+
+	var req dapRequest
+	if err := json.Unmarshal(body, &req); err != nil {
+		return nil, err
+	}
+
+	return &req, nil
+}
+
+func writeDAPMessage(writer io.Writer, message map[string]interface{}) error {
+	body, err := json.Marshal(message)
+	if err != nil {
+		return err
+	}
+
+	if _, err := fmt.Fprintf(writer, "Content-Length: %d\r\n\r\n", len(body)); err != nil {
+		return err
+	}
+	_, err = writer.Write(body)
+	return err
+}
+
+type dapDebugServer struct {
+	listener     net.Listener
+	continueCh   chan struct{}
+	continueOnce sync.Once
+}
+
+func (s *dapDebugServer) markContinue() {
+	s.continueOnce.Do(func() {
+		close(s.continueCh)
+	})
+}
+
+func (s *dapDebugServer) hasContinued() bool {
+	select {
+	case <-s.continueCh:
+		return true
+	default:
+		return false
+	}
+}
+
+func (s *dapDebugServer) WaitForContinue(ctx context.Context, timeout time.Duration) error {
+	var timeoutChannel <-chan time.Time
+	if timeout > 0 {
+		timer := time.NewTimer(timeout)
+		defer timer.Stop()
+		timeoutChannel = timer.C
+	}
+
+	select {
+	case <-ctx.Done():
+		return ctx.Err()
+	case <-timeoutChannel:
+		return fmt.Errorf("timed out waiting for debugger continue")
+	case <-s.continueCh:
+		return nil
+	}
+}
+
+func (s *dapDebugServer) Close() error {
+	s.markContinue()
+	return s.listener.Close()
+}
+
+func serveDAPConnection(conn net.Conn, server *dapDebugServer, emitTerminateEvent bool) {
+	defer conn.Close()
+
+	reader := bufio.NewReader(conn)
+	seq := 1
+
+	writeResponse := func(req *dapRequest, body map[string]interface{}) error {
+		if body == nil {
+			body = map[string]interface{}{}
+		}
+		msg := map[string]interface{}{
+			"seq":         seq,
+			"type":        "response",
+			"request_seq": req.Seq,
+			"success":     true,
+			"command":     req.Command,
+			"body":        body,
+		}
+		seq++
+		return writeDAPMessage(conn, msg)
+	}
+
+	writeEvent := func(event string, body map[string]interface{}) error {
+		msg := map[string]interface{}{
+			"seq":   seq,
+			"type":  "event",
+			"event": event,
+		}
+		if body != nil {
+			msg["body"] = body
+		}
+		seq++
+		return writeDAPMessage(conn, msg)
+	}
+
+	for {
+		req, err := readDAPRequest(reader)
+		if err != nil {
+			return
+		}
+		if req.Type != "request" {
+			continue
+		}
+
+		switch req.Command {
+		case "initialize":
+			if err := writeResponse(req, map[string]interface{}{}); err != nil {
+				return
+			}
+		case "attach":
+			if err := writeEvent("initialized", nil); err != nil {
+				return
+			}
+			if err := writeResponse(req, nil); err != nil {
+				return
+			}
+		case "continue":
+			if err := writeResponse(req, map[string]interface{}{"allThreadsContinued": true}); err != nil {
+				return
+			}
+			server.markContinue()
+			if emitTerminateEvent {
+				if err := writeEvent("terminated", nil); err != nil {
+					return
+				}
+			}
+		case "disconnect":
+			_ = writeResponse(req, nil)
+			return
+		default:
+			if err := writeResponse(req, nil); err != nil {
+				return
+			}
+		}
+	}
+}
+
+func startDAPDebugServer(emitTerminateEvent bool) (*dapDebugServer, int, error) {
+	listener, err := net.Listen("tcp", "127.0.0.1:0")
+	if err != nil {
+		return nil, 0, err
+	}
+
+	server := &dapDebugServer{
+		listener:   listener,
+		continueCh: make(chan struct{}),
+	}
+
+	go func() {
+		for {
+			if server.hasContinued() {
+				return
+			}
+
+			conn, err := listener.Accept()
+			if err != nil {
+				return
+			}
+
+			go serveDAPConnection(conn, server, emitTerminateEvent)
+		}
+	}()
+
+	port := listener.Addr().(*net.TCPAddr).Port
+	return server, port, nil
+}
+
+func (host *dartLanguageHost) emitStartDebugging(
+	ctx context.Context,
+	engineClient pulumirpc.EngineClient,
+	name string,
+	port int,
+) error {
+	config, err := structpb.NewStruct(map[string]interface{}{
+		"name":    name,
+		"type":    "dart",
+		"request": "attach",
+		"port":    port,
+		"connect": map[string]interface{}{
+			"host": "127.0.0.1",
+			"port": port,
+		},
+	})
+	if err != nil {
+		return fmt.Errorf("failed to serialize debugger config: %w", err)
+	}
+
+	_, err = engineClient.StartDebugging(ctx, &pulumirpc.StartDebuggingRequest{
+		Config:  config,
+		Message: fmt.Sprintf("on port %d", port),
+	})
+	if err != nil {
+		return fmt.Errorf("unable to start debugging: %w", err)
+	}
+
+	return nil
+}
+
 // Run executes
 
 // Run is the RPC endpoint for LanguageRuntimeServer::Run
 func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest) (*pulumirpc.RunResponse, error) {
+	if host.engineAddress == "" {
+		return nil, errors.New("when debugging or running explicitly, must call Handshake before Run")
+	}
+
 	config, err := host.constructConfig(req)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to serialize configuration")
@@ -330,6 +600,35 @@ func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest
 	if logging.V(5) {
 		commandStr := strings.Join(args, " ")
 		logging.V(5).Infoln("Language host launching process: ", executable, commandStr)
+	}
+
+	if req.GetAttachDebugger() {
+		engineClient, closer, err := host.connectToEngine()
+		if err != nil {
+			return &pulumirpc.RunResponse{
+				Error: fmt.Sprintf("problem connecting engine for debugging: %v", err),
+			}, nil
+		}
+		defer closer.Close()
+
+		debugServer, port, err := startDAPDebugServer(true)
+		if err != nil {
+			return &pulumirpc.RunResponse{
+				Error: fmt.Sprintf("problem starting debugger endpoint: %v", err),
+			}, nil
+		}
+		defer debugServer.Close()
+
+		if err := host.emitStartDebugging(ctx, engineClient, "Pulumi: Program (Dart)", port); err != nil {
+			return &pulumirpc.RunResponse{
+				Error: fmt.Sprintf("problem starting debugger: %v", err),
+			}, nil
+		}
+		if err := debugServer.WaitForContinue(context.Background(), 2*time.Minute); err != nil {
+			return &pulumirpc.RunResponse{
+				Error: fmt.Sprintf("problem waiting for debugger attach: %v", err),
+			}, nil
+		}
 	}
 
 	// Now simply spawn a process to execute the requested program, wiring up stdout/stderr directly.
@@ -382,9 +681,13 @@ func (host *dartLanguageHost) constructEnv(req *pulumirpc.RunRequest, config, co
 
 	maybeAppendEnv("monitor", req.GetMonitorAddress())
 	maybeAppendEnv("engine", host.engineAddress)
+	maybeAppendEnv("organization", req.GetOrganization())
 	maybeAppendEnv("project", req.GetProject())
 	maybeAppendEnv("stack", req.GetStack())
 	maybeAppendEnv("pwd", req.GetPwd())
+	if info := req.GetInfo(); info != nil {
+		maybeAppendEnv("root_directory", info.GetRootDirectory())
+	}
 	maybeAppendEnv("dry_run", fmt.Sprintf("%v", req.GetDryRun()))
 	maybeAppendEnv("query_mode", fmt.Sprint(req.GetQueryMode()))
 	maybeAppendEnv("parallel", fmt.Sprint(req.GetParallel()))
@@ -517,18 +820,107 @@ func (host *dartLanguageHost) GetProgramDependencies(
 func (host *dartLanguageHost) RunPlugin(
 	req *pulumirpc.RunPluginRequest, server pulumirpc.LanguageRuntime_RunPluginServer,
 ) error {
+	if host.engineAddress == "" {
+		return errors.New("when debugging or running explicitly, must call Handshake before RunPlugin")
+	}
+
+	ctx := server.Context()
+
+	var engineClient pulumirpc.EngineClient
+	var engineCloser io.Closer
+	if req.GetAttachDebugger() {
+		var err error
+		engineClient, engineCloser, err = host.connectToEngine()
+		if err != nil {
+			return err
+		}
+		defer engineCloser.Close()
+	}
+
 	closer, stdout, stderr, err := rpcutil.MakeRunPluginStreams(server, false)
 	if err != nil {
 		return err
 	}
 	defer closer.Close()
 
-	cmd := exec.Command(host.exec, append([]string{"run"}, req.Args...)...)
-	cmd.Dir = req.Pwd
+	runArgs := append([]string{}, req.Args...)
+	cmdDir := req.Pwd
+	if info := req.GetInfo(); info != nil && info.GetProgramDirectory() != "" {
+		candidate := info.GetProgramDirectory()
+		if _, err := os.Stat(filepath.Join(candidate, "pubspec.yaml")); err == nil {
+			cmdDir = candidate
+		}
+	}
+	if len(runArgs) > 0 {
+		candidate := runArgs[0]
+		if !filepath.IsAbs(candidate) {
+			candidate = filepath.Join(req.Pwd, candidate)
+		}
+		if stat, err := os.Stat(candidate); err == nil && stat.IsDir() {
+			if _, err := os.Stat(filepath.Join(candidate, "pubspec.yaml")); err == nil {
+				cmdDir = candidate
+				runArgs = runArgs[1:]
+			}
+		}
+	}
+
+	runTarget := ""
+	if pubspec, err := ReadAndParsePubspec(filepath.Join(cmdDir, "pubspec.yaml")); err == nil {
+		runTarget = strings.TrimSpace(pubspec.Name)
+	}
+
+	dartArgs := []string{"run"}
+	if runTarget != "" {
+		dartArgs = append(dartArgs, runTarget)
+	}
+	if len(runArgs) > 0 {
+		dartArgs = append(dartArgs, runArgs...)
+	}
+
+	cmd := exec.Command(host.exec, dartArgs...)
+	cmd.Dir = cmdDir
 	cmd.Env = req.Env
 	cmd.Stdout, cmd.Stderr = stdout, stderr
 
-	if err := cmd.Run(); err != nil {
+	if err := cmd.Start(); err != nil {
+		return fmt.Errorf("problem executing plugin: %v", err)
+	}
+
+	if req.GetAttachDebugger() {
+		pluginName := strings.TrimSpace(req.Name)
+		if pluginName == "" {
+			pluginName = strings.TrimSpace(filepath.Base(cmdDir))
+		}
+		if pluginName == "" {
+			pluginName = "dart-plugin"
+		}
+
+		debugServer, port, err := startDAPDebugServer(false)
+		if err != nil {
+			_ = cmd.Process.Kill()
+			_ = cmd.Wait()
+			return fmt.Errorf("problem starting debugger endpoint: %v", err)
+		}
+		defer debugServer.Close()
+
+		if err := host.emitStartDebugging(
+			ctx,
+			engineClient,
+			fmt.Sprintf("Pulumi: Plugin (%s)", pluginName),
+			port,
+		); err != nil {
+			_ = cmd.Process.Kill()
+			_ = cmd.Wait()
+			return fmt.Errorf("problem starting debugger: %v", err)
+		}
+		if err := debugServer.WaitForContinue(context.Background(), 2*time.Minute); err != nil {
+			_ = cmd.Process.Kill()
+			_ = cmd.Wait()
+			return fmt.Errorf("problem waiting for debugger attach: %v", err)
+		}
+	}
+
+	if err := cmd.Wait(); err != nil {
 		if exiterr, ok := err.(*exec.ExitError); ok {
 			if status, stok := exiterr.Sys().(syscall.WaitStatus); stok {
 				return fmt.Errorf("plugin exited with non-zero exit code: %d", status.ExitStatus())

@@ -5,6 +5,7 @@ go 1.19
 replace github.com/Sirupsen/logrus => github.com/sirupsen/logrus v1.5.0
 
 require (
+	github.com/google/go-dap v0.12.0
 	github.com/pulumi/pulumi/pkg/v3 v3.121.0
 	github.com/pulumi/pulumi/sdk/v3 v3.121.0
 	github.com/stretchr/testify v1.9.0

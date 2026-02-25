@@ -11,16 +11,16 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestDotNetTransformations(t *testing.T) {
+func TestDartTransformations(t *testing.T) {
 	testDartProgram(t, &integration.ProgramTestOptions{
 		Dir:                    "transformations_simple",
 		Quick:                  true,
-		ExtraRuntimeValidation: dotNetValidator(),
+		ExtraRuntimeValidation: transformationsSimpleValidator(),
 	})
 }
 
-// .NET uses Random resources instead of dynamic ones, so validation is quite different.
-func dotNetValidator() func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+// Dart uses Random resources instead of dynamic ones, so validation is quite different.
+func transformationsSimpleValidator() func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
 	resName := "random:index/randomString:RandomString"
 	return func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
 		foundRes1 := false
@@ -86,11 +86,11 @@ func dotNetValidator() func(t *testing.T, stack integration.RuntimeValidationSta
 	}
 }
 
-func TestDotNetTransforms(t *testing.T) {
+func TestDartTransforms(t *testing.T) {
 	testDartProgram(t, &integration.ProgramTestOptions{
 		Dir:                    "transformations_remote",
 		Quick:                  true,
-		ExtraRuntimeValidation: Validator,
+		ExtraRuntimeValidation: transformationsRemoteValidator,
 		LocalProviders: []integration.LocalDependency{
 			{
 				Package: "testprovider",
@@ -100,7 +100,10 @@ func TestDotNetTransforms(t *testing.T) {
 	})
 }
 
-func Validator(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+func transformationsRemoteValidator(
+	t *testing.T,
+	stack integration.RuntimeValidationStackInfo,
+) {
 	randomResName := "testprovider:index:Random"
 	foundRes1 := false
 	foundRes2Child := false

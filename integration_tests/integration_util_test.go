@@ -47,18 +47,30 @@ import (
 const WindowsOS = "windows"
 
 func pulumiSubmoduleRoot() (string, error) {
-	root, err := filepath.Abs("../pulumi")
-	if err != nil {
-		return "", err
+	candidates := make([]string, 0, 2)
+
+	if out, err := exec.Command("git", "rev-parse", "--show-toplevel").Output(); err == nil {
+		repoRoot := strings.TrimSpace(string(out))
+		if repoRoot != "" {
+			candidates = append(candidates, filepath.Join(repoRoot, "pulumi"))
+		}
 	}
-	info, err := os.Stat(root)
-	if err != nil {
-		return "", fmt.Errorf("pulumi submodule is not available at %s: %w", root, err)
+
+	if root, err := filepath.Abs("../pulumi"); err == nil {
+		candidates = append(candidates, root)
 	}
-	if !info.IsDir() {
-		return "", fmt.Errorf("pulumi submodule path is not a directory: %s", root)
+
+	for _, root := range candidates {
+		info, err := os.Stat(root)
+		if err == nil && info.IsDir() {
+			return root, nil
+		}
 	}
-	return root, nil
+
+	if len(candidates) > 0 {
+		return "", fmt.Errorf("pulumi submodule is not available at %s", candidates[0])
+	}
+	return "", fmt.Errorf("unable to resolve pulumi submodule path")
 }
 
 func pulumiSubmodulePath(parts ...string) (string, error) {
