@@ -1,0 +1,3 @@
+name: construct-component-provider-propagation-dart
+runtime: dart
+description: Dart fixture for provider propagation through remote components.

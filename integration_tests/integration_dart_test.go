@@ -601,6 +601,52 @@ func TestProviderDownloadURLDart(t *testing.T) {
 	})
 }
 
+func TestConstructProviderPropagationDart(t *testing.T) {
+	const (
+		testDir      = "construct_component_provider_propagation"
+		componentDir = "testcomponent-go"
+	)
+
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir: filepath.Join(testDir, "dart"),
+		LocalProviders: []integration.LocalDependency{
+			{
+				Package: "testcomponent",
+				Path:    filepath.Join(testDir, componentDir),
+			},
+			{
+				Package: "testprovider",
+				Path:    testProviderPath(),
+			},
+		},
+		Quick:      true,
+		NoParallel: true,
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			gotProviders := make(map[string]string)
+
+			for _, res := range stackInfo.Deployment.Resources {
+				if res.URN.Type() != "testprovider:index:Random" {
+					continue
+				}
+
+				providerURN := res.Provider
+				lastSeparator := strings.LastIndex(providerURN, "::")
+				if lastSeparator != -1 {
+					providerURN = providerURN[:lastSeparator]
+				}
+				gotProviders[string(res.URN.Name())] = string(resource.URN(providerURN).Name())
+			}
+
+			assert.Equal(t, map[string]string{
+				"uses_default":       "default",
+				"uses_provider":      "explicit",
+				"uses_providers":     "explicit",
+				"uses_providers_map": "explicit",
+			}, gotProviders)
+		},
+	})
+}
+
 func pluginDownloadURLFromInputs(inputs map[string]interface{}) (string, bool) {
 	rawInternal, ok := inputs["__internal"]
 	if !ok {
