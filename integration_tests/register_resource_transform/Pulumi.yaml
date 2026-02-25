@@ -1,0 +1,3 @@
+name: register_resource_transform_dart
+description: A Dart program that exercises stack-level registerResourceTransform API.
+runtime: dart

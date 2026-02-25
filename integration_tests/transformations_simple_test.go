@@ -253,3 +253,36 @@ func TestDartInvokeTransforms(t *testing.T) {
 		},
 	})
 }
+
+func TestDartRegisterResourceTransform(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:   "register_resource_transform",
+		Quick: true,
+		LocalProviders: []integration.LocalDependency{
+			{
+				Package: "testprovider",
+				Path:    testProviderPath(),
+			},
+		},
+		ExtraRuntimeValidation: func(
+			t *testing.T,
+			stack integration.RuntimeValidationStackInfo,
+		) {
+			randomResName := "testprovider:index:Random"
+			found := false
+			for _, res := range stack.Deployment.Resources {
+				if res.URN.Name() != "res1" {
+					continue
+				}
+
+				found = true
+				assert.Equal(t, res.Type, tokens.Type(randomResName))
+				assert.Contains(t, res.AdditionalSecretOutputs, resource.PropertyKey("result"))
+				prefix := res.Inputs["prefix"]
+				assert.NotNil(t, prefix)
+				assert.Equal(t, "stack-registered", prefix.(string))
+			}
+			assert.True(t, found)
+		},
+	})
+}
