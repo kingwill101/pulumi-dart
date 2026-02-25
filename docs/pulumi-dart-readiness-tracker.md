@@ -16,7 +16,7 @@ Validated on this checkout with:
 go test -count=1 -run 'Test(EmptyDart|ConfigBasicDart|DebuggerAttachDart|PluginDebuggerAttachDart|DartTransformations|DartResourceTransformsV2|DartInvokeTransforms|ParameterizedDart)$' -v .
 ```
 
-Result: `PASS` (`ok github.com/pulumi-dart/integration_tests 44.971s`)
+Result: `PASS` (`ok github.com/pulumi-dart/integration_tests 51.380s`)
 
 Covered capabilities:
 
@@ -35,15 +35,17 @@ Status: **Open**
 
 Current behavior in Dart language host:
 
-- `GeneratePackage` now emits schema-driven resource class stubs in `lib/<pkg>.dart`.
-- schema parsing now reads `resources` (including `isComponent`) in addition to `name`, `namespace`, and `version`.
+- `GeneratePackage` now emits schema-driven resource and function invoke stubs in `lib/<pkg>.dart`.
+- schema parsing now reads `resources` and `functions`.
+- when `loader_target` is provided, schema binding now uses Pulumi `schema.BindSpec` before generation.
 - no full typed resource/function/input/output/enums/config SDK generation pipeline yet.
 
 Evidence:
 
 - `pulumi-language-dart/main.go`:
-  - `packageSchema` now includes `resources`
-  - `GeneratePackage` now emits `CustomResource` / `ComponentResource` stubs from schema tokens
+  - `packageSchema` now includes `resources` and `functions`
+  - `GeneratePackage` supports both direct schema parsing and loader-backed `schema.BindSpec`
+  - `GeneratePackage` emits `CustomResource` / `ComponentResource` stubs and function invoke stubs from schema tokens
 - `pulumi_generator` still scaffold-level:
   - `pulumi_generator/README.md` has TODO template content
   - `pulumi_generator/test/pulumi_generator_test.dart` has commented-out sample test
@@ -162,7 +164,7 @@ Status: **Open**
 
 Current issues:
 
-- parameterized SDK test validates importability, not rich generated API behavior.
+- parameterized SDK test now validates generated symbols, but does not yet validate richer typed SDK behavior (inputs/outputs/enums/config models).
 - some tests remain conditionally skipped (env/platform/fixture constraints).
 
 Evidence:
@@ -207,12 +209,13 @@ Exit criteria:
 
 ## Milestone B: Generator MVP to Real SDK
 
-- [x] Emit schema-driven resource class stubs in generated package output.
-- [ ] Replace minimal `GeneratePackage` scaffold with schema-driven generation
-- [ ] Generate resources, functions, input/output types, enums, config types
+- [x] Emit schema-driven resource and function stubs in generated package output.
+- [x] Replace minimal `GeneratePackage` scaffold with schema-driven generation (MVP stub level)
+- [ ] Generate full typed resources, input/output types, enums, config types
 - [ ] Produce usable top-level exports and package structure
+- [x] Add generation workflow tests that validate generated symbol usage (not import-only)
 - [ ] Add golden/codegen tests against representative schemas
-- [ ] Validate with a real provider SDK (not just importability smoke)
+- [ ] Validate with a real provider SDK beyond testprovider fixtures
 
 Exit criteria:
 
