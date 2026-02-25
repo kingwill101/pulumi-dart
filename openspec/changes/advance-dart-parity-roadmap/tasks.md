@@ -36,7 +36,7 @@
 - [x] 5.2.1 `stack_outputs_program_error`: success baseline + failing edit path validated.
 - [x] 5.2.2 `stack_outputs_resource_error`: success baseline + two failing edit modes validated.
 - [x] 5.2.3 `custom_timeouts`: success + invalid-timeout failure paths validated.
-- [ ] 5.2.4 Host lifecycle RPCs: add explicit success/failure tests per implemented RPC.
+- [x] 5.2.4 Host lifecycle RPCs: add explicit success/failure tests per implemented RPC.
 - [ ] 5.2.5 Generator workflow: add additional negative/edge-path tests beyond invalid schema.
 - [x] 5.3 Add/adjust CI invocation to run parity-targeted suites and verify expected signal (`PASS` and no unexpected skips).
 

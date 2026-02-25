@@ -144,3 +144,22 @@ func TestCancelCancelsActiveOperation(t *testing.T) {
 		t.Fatal("expected active operation context to be canceled")
 	}
 }
+
+func TestRunRequiresHandshake(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	_, err := host.Run(context.Background(), &pulumirpc.RunRequest{})
+	require.Error(t, err)
+	assert.Contains(t, err.Error(), "must call Handshake before Run")
+}
+
+func TestRunPluginRequiresHandshake(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	server := newCaptureRunPluginServer(context.Background())
+	err := host.RunPlugin(&pulumirpc.RunPluginRequest{}, server)
+	require.Error(t, err)
+	assert.Contains(t, err.Error(), "must call Handshake before RunPlugin")
+}
