@@ -15,7 +15,6 @@
 package integration_tests
 
 import (
-	"os"
 	"path/filepath"
 	"testing"
 
@@ -62,9 +61,6 @@ func TestProviderCallInvalidArgumentDart(t *testing.T) {
 
 func TestProviderComponentHostDart(t *testing.T) {
 	const testDir = "provider_component_host"
-	if _, err := os.Stat(filepath.Join(testProviderPath(), "pulumi-resource-testprovider")); err != nil {
-		t.Skipf("skipping component-host YAML test until testprovider binary is prebuilt: %v", err)
-	}
 	testDartProgram(t, &integration.ProgramTestOptions{
 		LocalProviders: []integration.LocalDependency{
 			{

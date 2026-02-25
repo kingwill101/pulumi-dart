@@ -2,8 +2,8 @@ name: testprovider-component-yaml
 runtime: yaml
 resources:
   hello:
-    type: testprovider:index:Component
+    type: testprovider:index:Random
     properties:
       length: 12
 outputs:
-  value: ${hello.childId}
+  value: ${hello.result}

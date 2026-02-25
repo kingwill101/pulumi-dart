@@ -31,6 +31,14 @@ func TestEmptyDart(t *testing.T) {
 	})
 }
 
+// TestRegistryDart ensures the registry fixture remains runnable.
+func TestRegistryDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:   "registry",
+		Quick: true,
+	})
+}
+
 // Test remote component construction in Dart.
 func TestConstructDart(t *testing.T) {
 	testDir := "construct_component"

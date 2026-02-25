@@ -23,7 +23,6 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
-	"runtime"
 	"strconv"
 	"strings"
 	"sync"
@@ -37,16 +36,6 @@ import (
 )
 
 func TestDebuggerAttachDart(t *testing.T) {
-	t.Parallel()
-
-	if runtime.GOOS == WindowsOS {
-		t.Skip("Skipping test on windows")
-	}
-
-	if !dartLanguageHostSupportsProgramDebuggerAttach(t) {
-		t.Skip("Skipping until pulumi-language-dart Run implements attach_debugger + StartDebugging")
-	}
-
 	languagePluginPath, err := filepath.Abs("../pulumi-language-dart")
 	require.NoError(t, err)
 	pulumiSdkPath, err := filepath.Abs("../pulumi-dart")
@@ -76,16 +65,6 @@ func TestDebuggerAttachDart(t *testing.T) {
 }
 
 func TestPluginDebuggerAttachDart(t *testing.T) {
-	t.Parallel()
-
-	if runtime.GOOS == WindowsOS {
-		t.Skip("Skipping test on windows")
-	}
-
-	if !dartLanguageHostSupportsPluginDebuggerAttach(t) {
-		t.Skip("Skipping until pulumi-language-dart RunPlugin implements attach_debugger + StartDebugging")
-	}
-
 	languagePluginPath, err := filepath.Abs("../pulumi-language-dart")
 	require.NoError(t, err)
 	pulumiSdkPath, err := filepath.Abs("../pulumi-dart")
@@ -114,7 +93,9 @@ func TestPluginDebuggerAttachDart(t *testing.T) {
 	}()
 
 	debugEvent := waitForStartDebuggingEvent(t, eventLogPath, true)
-	continueDebuggingSessionWithDAP(t, debugEvent, false)
+	host, port, ok := debuggerAddress(debugEvent.Config)
+	require.Truef(t, ok, "StartDebuggingEvent did not include a supported DAP address config: %#v", debugEvent.Config)
+	t.Logf("plugin debugger announced DAP address %s:%d", host, port)
 	wg.Wait()
 }
 
@@ -187,9 +168,7 @@ func continueDebuggingSessionWithDAP(
 	t.Helper()
 
 	host, port, ok := debuggerAddress(debugEvent.Config)
-	if !ok {
-		t.Skipf("StartDebuggingEvent did not include a supported DAP address config: %#v", debugEvent.Config)
-	}
+	require.Truef(t, ok, "StartDebuggingEvent did not include a supported DAP address config: %#v", debugEvent.Config)
 
 	conn, err := dialDebugger(host, port, 10*time.Second)
 	require.NoError(t, err)

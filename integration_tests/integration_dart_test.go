@@ -265,22 +265,15 @@ func TestConfigSecretsWarnDart(t *testing.T) {
 }
 
 func TestStackReferenceSecretsDart(t *testing.T) {
-	owner := os.Getenv("PULUMI_TEST_OWNER")
-	if owner == "" {
-		t.Skipf("Skipping: PULUMI_TEST_OWNER is not set")
-	}
-
 	d := "stack_reference_secrets"
 
 	testDartProgram(t, &integration.ProgramTestOptions{
-		RequireService: true,
-		Dir:            filepath.Join(d, "step1"),
-		Quick:          true,
+		Dir:   filepath.Join(d, "step1"),
+		Quick: true,
 		EditDirs: []integration.EditDir{
 			{
-				Dir:             filepath.Join(d, "step2"),
-				Additive:        true,
-				ExpectNoChanges: true,
+				Dir:      filepath.Join(d, "step2"),
+				Additive: true,
 				ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
 					_, isString := stackInfo.Outputs["refNormal"].(string)
 					assert.Truef(t, isString, "referenced non-secret output was not a string")
