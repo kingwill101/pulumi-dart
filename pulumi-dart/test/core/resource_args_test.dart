@@ -1,42 +1,58 @@
 import 'package:pulumi/src/input_args.dart';
 import 'package:pulumi/src/input_collections.dart';
 import 'package:test/test.dart';
-import 'package:pulumi/src/resource/resource_args.dart';
 import 'package:pulumi/src/input.dart';
 import 'package:pulumi/src/output.dart';
 
-class ComplexResourceArgs1 extends ResourceArgs {
+class ComplexResourceArgs1 extends InputArgs {
   Input<String>? s;
   InputList<bool> array = InputList<bool>();
 
   @override
   Map<String, InputInfo> get inputInfos => {
-    's': InputInfo(InputInfoArg(name: 's'), 's', String, (dynamic obj) => (obj as ComplexResourceArgs1).s),
-    'array': InputInfo(InputInfoArg(name: 'array'), 'array', List<bool>, (dynamic obj) {
+    's': InputInfo(
+      InputInfoArg(name: 's'),
+      's',
+      String,
+      (dynamic obj) => (obj as ComplexResourceArgs1).s,
+    ),
+    'array': InputInfo(InputInfoArg(name: 'array'), 'array', List<bool>, (
+      dynamic obj,
+    ) {
       var list = (obj as ComplexResourceArgs1).array;
       return list.isEmpty ? null : list;
     }),
   };
 }
 
-class JsonResourceArgs1 extends ResourceArgs {
+class JsonResourceArgs1 extends InputArgs {
   InputList<bool> array = InputList<bool>();
   InputMap<int> map = InputMap<int>();
 
   @override
   Map<String, InputInfo> get inputInfos => {
-    'array': InputInfo(InputInfoArg(name: 'array', json: true), 'array', List<bool>, (dynamic obj) {
-      var list = (obj as JsonResourceArgs1).array;
-      return list.isEmpty ? null : list;
-    }),
-    'map': InputInfo(InputInfoArg(name: 'map', json: true), 'map', Map<String, int>, (dynamic obj) {
-      var map = (obj as JsonResourceArgs1).map;
-      return map.isEmpty ? null : map;
-    }),
+    'array': InputInfo(
+      InputInfoArg(name: 'array', json: true),
+      'array',
+      List<bool>,
+      (dynamic obj) {
+        var list = (obj as JsonResourceArgs1).array;
+        return list.isEmpty ? null : list;
+      },
+    ),
+    'map': InputInfo(
+      InputInfoArg(name: 'map', json: true),
+      'map',
+      Map<String, int>,
+      (dynamic obj) {
+        var map = (obj as JsonResourceArgs1).map;
+        return map.isEmpty ? null : map;
+      },
+    ),
   };
 }
 
-class DynamicResourceArgs extends ResourceArgs {
+class DynamicResourceArgs extends InputArgs {
   final Map<String, dynamic> _args = {};
 
   void operator []=(String key, dynamic value) {
@@ -46,8 +62,16 @@ class DynamicResourceArgs extends ResourceArgs {
   dynamic operator [](String key) => _args[key];
 
   @override
-  Map<String, InputInfo> get inputInfos => _args.map((key, value) =>
-      MapEntry(key, InputInfo(InputInfoArg(name: key, json: true), key, dynamic, (dynamic obj) => (obj as DynamicResourceArgs)[key]))
+  Map<String, InputInfo> get inputInfos => _args.map(
+    (key, value) => MapEntry(
+      key,
+      InputInfo(
+        InputInfoArg(name: key, json: true),
+        key,
+        dynamic,
+        (dynamic obj) => (obj as DynamicResourceArgs)[key],
+      ),
+    ),
   );
 }
 

@@ -4,23 +4,34 @@ import 'package:pulumi/src/input.dart';
 import 'package:pulumi/src/resource/resource.dart';
 
 Output<T> createOutput<T>(T value, bool isKnown, [bool isSecret = false]) {
-  return Output<T>(Future.value(OutputData<T>(
-    value: value,
-    isKnown: isKnown,
-    isSecret: isSecret,
-    resources: {},
-  )));
+  return Output<T>(
+    Future.value(
+      OutputData<T>(
+        value: isKnown ? value : null,
+        isKnown: isKnown,
+        isSecret: isSecret,
+        resources: {},
+      ),
+    ),
+  );
 }
 
 Output<T> createOutputWithResources<T>(
-    Iterable<Resource> resources, T value, bool isKnown,
-    [bool isSecret = false]) {
-  return Output<T>(Future.value(OutputData<T>(
-    value: value,
-    isKnown: isKnown,
-    isSecret: isSecret,
-    resources: resources.toSet(),
-  )));
+  Iterable<Resource> resources,
+  T value,
+  bool isKnown, [
+  bool isSecret = false,
+]) {
+  return Output<T>(
+    Future.value(
+      OutputData<T>(
+        value: isKnown ? value : null,
+        isKnown: isKnown,
+        isSecret: isSecret,
+        resources: resources.toSet(),
+      ),
+    ),
+  );
 }
 
 void main() {
@@ -62,7 +73,7 @@ void main() {
       var o2 = o1.apply((a) async => a + 1);
       var data = await o2.getData();
       expect(data.isKnown, isFalse);
-      expect(data.value, equals(0));
+      expect(data.value, isNull);
     });
 
     test('apply produces unknown default on unknown awaitable', () async {
