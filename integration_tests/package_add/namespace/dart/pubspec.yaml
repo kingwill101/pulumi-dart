@@ -3,3 +3,9 @@ description: A minimal Dart Pulumi project for package-add namespace testing
 version: 0.0.1
 environment:
   sdk: ^3.10.0
+
+dependencies:
+  pulumi: any
+
+dev_dependencies:
+  test: ^1.29.0

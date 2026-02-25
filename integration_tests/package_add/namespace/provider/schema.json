@@ -2,13 +2,108 @@
   "name": "mypkg",
   "version": "0.1.0",
   "namespace": "my-namespace",
-  "resources": {
-    "mypkg::Resource": {
+  "types": {
+    "mypkg::ResourceMode": {
+      "type": "string",
+      "enum": [
+        {
+          "name": "Enabled",
+          "value": "enabled"
+        },
+        {
+          "name": "Disabled",
+          "value": "disabled"
+        }
+      ]
+    },
+    "mypkg::ResourceMetadata": {
       "type": "object",
       "properties": {
+        "owner": {
+          "type": "string"
+        },
+        "mode": {
+          "$ref": "#/types/mypkg::ResourceMode"
+        }
+      },
+      "required": [
+        "owner",
+        "mode"
+      ]
+    }
+  },
+  "config": {
+    "variables": {
+      "defaultMode": {
+        "$ref": "#/types/mypkg::ResourceMode"
+      },
+      "metadata": {
+        "$ref": "#/types/mypkg::ResourceMetadata"
+      }
+    },
+    "required": [
+      "defaultMode"
+    ]
+  },
+  "resources": {
+    "mypkg::Resource": {
+      "inputProperties": {
+        "mode": {
+          "$ref": "#/types/mypkg::ResourceMode"
+        },
+        "metadata": {
+          "$ref": "#/types/mypkg::ResourceMetadata"
+        }
+      },
+      "requiredInputs": [
+        "mode"
+      ],
+      "properties": {
+        "mode": {
+          "$ref": "#/types/mypkg::ResourceMode"
+        },
+        "metadata": {
+          "$ref": "#/types/mypkg::ResourceMetadata"
+        },
         "name": {
           "type": "string"
         }
+      },
+      "required": [
+        "name",
+        "mode"
+      ]
+    }
+  },
+  "functions": {
+    "mypkg::getResource": {
+      "inputs": {
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "mode": {
+            "$ref": "#/types/mypkg::ResourceMode"
+          },
+          "metadata": {
+            "$ref": "#/types/mypkg::ResourceMetadata"
+          }
+        },
+        "required": [
+          "name",
+          "mode",
+          "metadata"
+        ]
       }
     }
   }

@@ -17,7 +17,9 @@ package integration_tests
 import (
 	"fmt"
 	"os"
+	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 
@@ -546,12 +548,45 @@ func TestPackageAddNamespaceDart(t *testing.T) {
 
 	languagePluginPath, err := filepath.Abs("../pulumi-language-dart")
 	require.NoError(t, err)
+	pulumiSDKPath, err := filepath.Abs("../pulumi-dart")
+	require.NoError(t, err)
+
+	languagePluginBinary := filepath.Join(e.RootPath, "pulumi-language-dart")
+	if runtime.GOOS == WindowsOS {
+		languagePluginBinary += ".exe"
+	}
+	buildLanguagePlugin := exec.Command("go", "build", "-o", languagePluginBinary, ".")
+	buildLanguagePlugin.Dir = languagePluginPath
+	if out, err := buildLanguagePlugin.CombinedOutput(); err != nil {
+		require.FailNowf(t, "build language plugin", "failed to build pulumi-language-dart: %v\n%s", err, string(out))
+	}
 
 	originalPath := os.Getenv("PATH")
-	require.NoError(t, os.Setenv("PATH", languagePluginPath+string(os.PathListSeparator)+originalPath))
+	require.NoError(
+		t,
+		os.Setenv("PATH", filepath.Dir(languagePluginBinary)+string(os.PathListSeparator)+originalPath),
+	)
 	defer func() {
 		_ = os.Setenv("PATH", originalPath)
 	}()
+
+	projectPubspecPath := filepath.Join(e.CWD, "pubspec.yaml")
+	projectPubspec, err := os.ReadFile(projectPubspecPath)
+	require.NoError(t, err)
+	projectPubspecText := string(projectPubspec)
+	if !strings.Contains(projectPubspecText, "dependency_overrides:") {
+		projectPubspecText += "\n"
+		projectPubspecText += fmt.Sprintf(
+			"dependency_overrides:\n  pulumi:\n    path: %s\n",
+			filepath.ToSlash(pulumiSDKPath),
+		)
+	} else if !strings.Contains(projectPubspecText, "pulumi:") {
+		projectPubspecText += fmt.Sprintf(
+			"  pulumi:\n    path: %s\n",
+			filepath.ToSlash(pulumiSDKPath),
+		)
+	}
+	require.NoError(t, os.WriteFile(projectPubspecPath, []byte(projectPubspecText), 0o600))
 
 	stdout, _ := e.RunCommand("pulumi", "package", "add", "../provider/schema.json")
 	require.Contains(
@@ -562,6 +597,30 @@ func TestPackageAddNamespaceDart(t *testing.T) {
 
 	_, err = os.Stat(filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "pubspec.yaml"))
 	require.NoError(t, err)
+
+	rootSDKPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "my_namespace_mypkg.dart")
+	rootSDK, err := os.ReadFile(rootSDKPath)
+	require.NoError(t, err)
+	assert.Contains(t, string(rootSDK), "export 'src/my_namespace_mypkg/sdk.dart';")
+
+	implSDKPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "my_namespace_mypkg", "sdk.dart")
+	implSDK, err := os.ReadFile(implSDKPath)
+	require.NoError(t, err)
+	for _, expected := range []string{
+		"library my_namespace_mypkg_sdk;",
+		"class Resource extends CustomResource",
+		"enum ResourceMode",
+		"class ResourceMetadata",
+		"class ResourceArgs",
+		"class GetResourceResult",
+		"Future<GetResourceResult> getResource",
+		"final config = ",
+		"_mapToInputs",
+	} {
+		assert.Contains(t, string(implSDK), expected)
+	}
+
+	e.RunCommand("dart", "test")
 }
 
 // TestResourceRefsGetResourceDart tests that invoking the built-in 'pulumi:pulumi:getResource' function
