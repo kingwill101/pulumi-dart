@@ -200,7 +200,16 @@ func getProviderPath(providerDir string) string {
 func testDartProgram(t *testing.T, options *integration.ProgramTestOptions) {
 	languagePluginPath, err := filepath.Abs("../pulumi-language-dart")
 	assert.NoError(t, err)
-	options.PrepareProject = prepareDartProject
+	existingPrepare := options.PrepareProject
+	options.PrepareProject = func(projInfo *engine.Projinfo) error {
+		if err := prepareDartProject(projInfo); err != nil {
+			return err
+		}
+		if existingPrepare != nil {
+			return existingPrepare(projInfo)
+		}
+		return nil
+	}
 	options.Env = append(options.Env, getProviderPath(languagePluginPath))
 	integration.ProgramTest(t, options)
 }
