@@ -1,5 +1,5 @@
 name: pulumi_generator
-description: A starting point for Dart libraries or applications.
+description: Source generator for Pulumi Dart resource registration extensions.
 version: 1.0.0
 # repository: https://github.com/my_org/my_repo
 

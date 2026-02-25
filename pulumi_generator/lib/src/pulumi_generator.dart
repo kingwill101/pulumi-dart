@@ -9,8 +9,9 @@ class PulumiResourceGenerator extends Generator {
 
     for (var element in library.allElements) {
       if (element is ClassElement &&
-          element.allSupertypes.any((type) =>
-              type.getDisplayString(withNullability: false) == 'Resource')) {
+          element.allSupertypes.any(
+            (type) => type.getDisplayString() == 'Resource',
+          )) {
         final resourceType = element
             .getField('_resourceType')
             ?.computeConstantValue()
@@ -39,7 +40,3 @@ class PulumiResourceGenerator extends Generator {
     ''';
   }
 }
-
-Builder pulumiResourceGenerator(BuilderOptions options) =>
-    LibraryBuilder(PulumiResourceGenerator(),
-        generatedExtension: '.pulumi.dart');
