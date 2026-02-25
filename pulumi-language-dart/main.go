@@ -964,7 +964,8 @@ func (host *dartLanguageHost) RunPlugin(
 	}
 
 	if err := run(); err != nil {
-		if exiterr, ok := err.(*exec.ExitError); ok {
+		var exiterr *exec.ExitError
+		if errors.As(err, &exiterr) {
 			if status, stok := exiterr.Sys().(syscall.WaitStatus); stok {
 				return server.Send(&pulumirpc.RunPluginResponse{
 					//nolint:gosec // WaitStatus always uses the lower 8 bits for the exit code.
