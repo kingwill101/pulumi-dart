@@ -1,0 +1,14 @@
+name: construct_component_id_output_dart
+description: Dart fixture for integration tests.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  pulumi:
+    path: ../../../pulumi-dart
+
+dev_dependencies:
+  lints: ^6.1.0

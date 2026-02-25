@@ -387,6 +387,31 @@ func testConstructMethodsErrors(t *testing.T, lang string) {
 	})
 }
 
+// Test failures returned from construct.
+func testConstructFailures(t *testing.T, lang string) {
+	const testDir = "construct_component_failures"
+
+	stderr := &bytes.Buffer{}
+
+	localProvider := integration.LocalDependency{
+		Package: "testcomponent",
+		Path:    filepath.Join(testDir, "testcomponent-go"),
+	}
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:            filepath.Join(testDir, lang),
+		LocalProviders: []integration.LocalDependency{localProvider},
+		Quick:          true,
+		Stderr:         stderr,
+		ExpectFailure:  true,
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			output := stderr.String()
+			assert.Contains(t, output, "failing for a reason")
+			assert.Contains(t, output, "property foo")
+			assert.Contains(t, output, "the failure reason")
+		},
+	})
+}
+
 // Tests methods work when there is an explicit provider for another provider set on the component.
 func testConstructMethodsProvider(t *testing.T, lang string) {
 	const testDir = "construct_component_methods_provider"

@@ -446,6 +446,49 @@ func TestConstructResourceOptionsDart(t *testing.T) {
 	testConstructResourceOptions(t, "dart")
 }
 
+func findResource(token string, resources []apitype.ResourceV3) *apitype.ResourceV3 {
+	for _, r := range resources {
+		if string(r.URN.Type()) == token {
+			return &r
+		}
+	}
+	return nil
+}
+
+func TestConstructComponentWithIdOutputDart(t *testing.T) {
+	const testDir = "construct_component_id_output"
+
+	localProvider := integration.LocalDependency{
+		Package: "testcomponent",
+		Path:    filepath.Join(testDir, "testcomponent-go"),
+	}
+
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:            filepath.Join(testDir, "dart"),
+		LocalProviders: []integration.LocalDependency{localProvider},
+		Quick:          true,
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			component := findResource("testcomponent:index:Component", stackInfo.Deployment.Resources)
+			require.NotNil(t, component, "component should be present in the deployment")
+			require.NotNil(t, component.Outputs, "component should have outputs")
+			componentID, ok := component.Outputs["id"].(string)
+			require.True(t, ok, "component should have an output called id")
+			require.Equal(t, "42-hello", componentID, "component id output should be '42-hello'")
+
+			stack := findResource("pulumi:pulumi:Stack", stackInfo.Deployment.Resources)
+			require.NotNil(t, stack, "stack should be present in the deployment")
+			require.NotNil(t, stack.Outputs, "stack should have outputs")
+			stackID, ok := stack.Outputs["id"].(string)
+			require.True(t, ok, "stack should have an output named id")
+			require.Equal(t, "42-hello", stackID, "stack id output should be '42-hello'")
+		},
+	})
+}
+
+func TestConstructFailuresDart(t *testing.T) {
+	testConstructFailures(t, "dart")
+}
+
 func TestGetResourceDart(t *testing.T) {
 	testDartProgram(t, &integration.ProgramTestOptions{
 		Dir:                      "get_resource",
