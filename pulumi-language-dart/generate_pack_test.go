@@ -233,3 +233,17 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 	assert.Contains(t, content, "Future<GetWidgetResult> getWidget")
 	assert.Contains(t, content, "GetWidgetResult.fromMap(result)")
 }
+
+func TestGeneratePackageInvalidSchemaReturnsError(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    "{",
+	})
+	require.Error(t, err)
+	assert.Contains(t, err.Error(), "failed to parse package schema")
+}
