@@ -239,7 +239,7 @@ Exit criteria:
 
 - [ ] Port missing upstream integration classes (CLI output/config/error/dynamic-provider edge cases)
 - [ ] Unskip/skiplift tests where feasible
-- [ ] Add CI matrix slices for Dart parity categories
+- [x] Add CI matrix slices for Dart parity categories
 - [ ] Define a recurring parity audit against Node/Python/Go changes
 
 Exit criteria:

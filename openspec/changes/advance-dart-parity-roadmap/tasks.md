@@ -28,7 +28,7 @@
 
 - [ ] 5.1 Port missing high-value upstream parity tests into Dart integration suites for host lifecycle, generator behavior, runtime options, and failure diagnostics.
 - [ ] 5.2 Ensure each added behavior has at least one success and one edge/failure test path.
-- [ ] 5.3 Add/adjust CI invocation to run parity-targeted suites and verify expected signal (`PASS` and no unexpected skips).
+- [x] 5.3 Add/adjust CI invocation to run parity-targeted suites and verify expected signal (`PASS` and no unexpected skips).
 
 ## 6. Spec and Documentation Sync
 
