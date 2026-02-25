@@ -22,6 +22,7 @@ import (
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/apitype"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	ptesting "github.com/pulumi/pulumi/sdk/v3/go/common/testing"
 	"github.com/stretchr/testify/assert"
@@ -521,6 +522,95 @@ func TestProvider(t *testing.T) {
 			assert.Equal(t, []interface{}{float64(1), "goodbye", true}, stack.Outputs["echoC"])
 		},
 	})
+}
+
+func TestProviderDownloadURLDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:            "gather_plugin",
+		Quick:          true,
+		LocalProviders: []integration.LocalDependency{{Package: "testprovider", Path: testProviderPath()}},
+		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+			assert.NotNil(t, stack.Deployment)
+			if !assert.Greater(t, len(stack.Deployment.Resources), 1) {
+				return
+			}
+
+			var sawDefaultProviderURL bool
+			var sawExplicitProviderURL bool
+
+			for _, res := range stack.Deployment.Resources {
+				if res.Type == resource.RootStackType {
+					continue
+				}
+
+				_, hasTopLevelInput := res.Inputs["pluginDownloadURL"]
+				_, hasTopLevelOutput := res.Outputs["pluginDownloadURL"]
+				assert.False(t, hasTopLevelInput, "resource %s had top-level input pluginDownloadURL", res.URN)
+				assert.False(t, hasTopLevelOutput, "resource %s had top-level output pluginDownloadURL", res.URN)
+
+				pluginURL, hasInternalPluginURL := pluginDownloadURLFromInputs(res.Inputs)
+				switch {
+				case isDefaultProviderResource(res):
+					assert.True(t, hasInternalPluginURL, "default provider %s missing __internal.pluginDownloadURL", res.URN)
+					assert.Equal(t, "get.example.test", pluginURL)
+					sawDefaultProviderURL = true
+				case isProviderResource(res):
+					assert.True(t, hasInternalPluginURL, "explicit provider %s missing __internal.pluginDownloadURL", res.URN)
+					assert.Equal(t, "get.pulumi.test/providers", pluginURL)
+					sawExplicitProviderURL = true
+				default:
+					assert.False(t, hasInternalPluginURL, "non-provider resource %s unexpectedly had __internal.pluginDownloadURL", res.URN)
+				}
+			}
+
+			assert.True(t, sawDefaultProviderURL, "did not observe plugin URL on default provider")
+			assert.True(t, sawExplicitProviderURL, "did not observe plugin URL on explicit provider")
+		},
+	})
+}
+
+func pluginDownloadURLFromInputs(inputs map[string]interface{}) (string, bool) {
+	rawInternal, ok := inputs["__internal"]
+	if !ok {
+		return "", false
+	}
+
+	var internal map[string]interface{}
+	switch v := rawInternal.(type) {
+	case map[string]interface{}:
+		internal = v
+	case map[interface{}]interface{}:
+		internal = make(map[string]interface{}, len(v))
+		for key, value := range v {
+			s, ok := key.(string)
+			if !ok {
+				continue
+			}
+			internal[s] = value
+		}
+	default:
+		return "", false
+	}
+
+	rawURL, ok := internal["pluginDownloadURL"]
+	if !ok {
+		return "", false
+	}
+
+	url, ok := rawURL.(string)
+	if !ok {
+		return "", false
+	}
+
+	return url, true
+}
+
+func isProviderResource(res apitype.ResourceV3) bool {
+	return strings.HasPrefix(string(res.Type), "pulumi:providers:")
+}
+
+func isDefaultProviderResource(res apitype.ResourceV3) bool {
+	return isProviderResource(res) && strings.HasPrefix(string(res.URN.Name()), "default")
 }
 
 // TestDeletedWith tests the DeletedWith resource option.
