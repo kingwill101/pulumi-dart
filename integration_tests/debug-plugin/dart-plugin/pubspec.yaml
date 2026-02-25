@@ -1,0 +1,12 @@
+name: debug_plugin
+description: A minimal Pulumi source plugin for debugger attach integration tests.
+version: 0.0.1
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  grpc: ^5.1.0
+  protobuf: ^6.0.0
+  pulumi:
+    path: ../../../pulumi-dart

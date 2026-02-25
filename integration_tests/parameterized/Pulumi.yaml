@@ -1,0 +1,3 @@
+name: parameterized_dart
+runtime: dart
+description: A program that uses a parameterized provider.

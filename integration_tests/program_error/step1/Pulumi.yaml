@@ -1,0 +1,3 @@
+name: program_error_dart
+description: A Dart program that throws an error.
+runtime: dart
