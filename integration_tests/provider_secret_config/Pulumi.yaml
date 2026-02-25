@@ -1,0 +1,3 @@
+name: provider_secret_config_dart
+description: Provider secret config parity fixture for Dart.
+runtime: dart

@@ -1,0 +1,4 @@
+name: project_main_dart
+runtime: dart
+description: A Dart program with a nested main entrypoint.
+main: a/path/to/main/

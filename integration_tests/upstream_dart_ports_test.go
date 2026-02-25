@@ -270,6 +270,100 @@ func TestCustomTimeoutsFailureDart(t *testing.T) {
 	})
 }
 
+// TestProjectMainDart validates Pulumi.yaml `main` resolution for Dart projects.
+func TestProjectMainDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:   filepath.Join("project_main", "dart"),
+		Quick: true,
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			require.NotNil(t, stackInfo.Deployment)
+		},
+	})
+}
+
+// TestStackParentingDart validates parent-child relationships across stack resources.
+func TestStackParentingDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:            "stack_parenting",
+		Quick:          true,
+		LocalProviders: []integration.LocalDependency{{Package: "testprovider", Path: testProviderPath()}},
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			require.NotNil(t, stackInfo.Deployment)
+			require.Len(t, stackInfo.Deployment.Resources, 9)
+
+			stackRes := stackInfo.Deployment.Resources[0]
+			require.NotNil(t, stackRes)
+			assert.Equal(t, resource.RootStackType, stackRes.Type)
+			assert.Equal(t, resource.URN(""), stackRes.Parent)
+
+			urns := map[string]resource.URN{}
+			for _, res := range stackInfo.Deployment.Resources[1:] {
+				urns[string(res.URN.Name())] = res.URN
+			}
+
+			var providerCount int
+			for _, res := range stackInfo.Deployment.Resources[1:] {
+				name := string(res.URN.Name())
+				if res.Type == tokens.Type("pulumi:providers:testprovider") {
+					providerCount++
+					continue
+				}
+
+				switch name {
+				case "a", "f":
+					assert.Equal(t, stackRes.URN, res.Parent)
+				case "b", "c":
+					assert.Equal(t, urns["a"], res.Parent)
+				case "d", "e":
+					assert.Equal(t, urns["c"], res.Parent)
+				case "g":
+					assert.Equal(t, urns["f"], res.Parent)
+				default:
+					t.Fatalf("unexpected resource name in stack_parenting fixture: %s", name)
+				}
+			}
+
+			assert.Equal(t, 1, providerCount, "expected exactly one default testprovider resource")
+		},
+	})
+}
+
+// TestProviderSecretConfigDart validates that providers can accept secret config values.
+func TestProviderSecretConfigDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:            "provider_secret_config",
+		Quick:          true,
+		LocalProviders: []integration.LocalDependency{{Package: "testprovider", Path: testProviderPath()}},
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			require.NotNil(t, stackInfo.Deployment)
+
+			var foundProvider bool
+			var foundSecretConfig bool
+			for _, res := range stackInfo.Deployment.Resources {
+				if res.Type != tokens.Type("pulumi:providers:testprovider") {
+					continue
+				}
+
+				foundProvider = true
+				for key, inputValue := range res.Inputs {
+					if !strings.Contains(string(key), "secretProperty") {
+						continue
+					}
+					secret, ok := inputValue.(map[string]interface{})
+					assert.True(t, ok, "provider secret config should be serialized as a secret")
+					if ok {
+						assert.Equal(t, resource.SecretSig, secret[resource.SigKey])
+						foundSecretConfig = true
+					}
+				}
+			}
+
+			assert.True(t, foundProvider, "expected a first-class testprovider provider resource")
+			assert.True(t, foundSecretConfig, "expected secret provider config to be present in provider inputs")
+		},
+	})
+}
+
 func TestComponentProviderErrorInResourceRegistrationDart(t *testing.T) {
 	t.Setenv("PULUMI_DISABLE_AUTOMATIC_PLUGIN_ACQUISITION", "false")
 
