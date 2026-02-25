@@ -1,0 +1,7 @@
+name: test_package
+environment:
+  sdk: ^3.10.0
+dependencies:
+  pulumi:
+    path: /path/to/pulumi
+  pulumi_aws: ^1.0.0
