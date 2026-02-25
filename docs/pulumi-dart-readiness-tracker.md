@@ -13,10 +13,10 @@ Last updated: 2026-02-25
 Validated on this checkout with:
 
 ```bash
-go test -count=1 -run 'Test(EmptyDart|ConfigBasicDart|DebuggerAttachDart|PluginDebuggerAttachDart|DartTransformations|DartResourceTransformsV2|DartInvokeTransforms|ParameterizedDart)$' -v .
+go test -count=1 -run 'Test(StackOutputsDart|ConfigSecretsWarnDart|StackOutputsProgramErrorDart|StackOutputsResourceErrorDart)$' -v .
 ```
 
-Result: `PASS` (`ok github.com/pulumi-dart/integration_tests 51.380s`)
+Result: `PASS` (`ok github.com/pulumi-dart/integration_tests 17.818s` for the stack-output/config subset)
 
 Covered capabilities:
 
@@ -26,6 +26,7 @@ Covered capabilities:
 - stack references
 - provider call flow
 - construct/component flows
+- stack output persistence on program/resource failure paths
 
 ## Gap Summary vs Node/Python/Go
 
@@ -166,12 +167,17 @@ Current issues:
 
 - parameterized SDK test now validates generated symbols, but does not yet validate richer typed SDK behavior (inputs/outputs/enums/config models).
 - some tests remain conditionally skipped (env/platform/fixture constraints).
+- broader upstream parity classes (for example dynamic provider edges and CLI-specific cases) still need Dart ports.
+- debugger plugin attach coverage can still be flaky (`connection refused` races under parallel integration load).
 
 Evidence:
 
 - `integration_tests/parameterized/test/parameterized_test.dart`
 - `integration_tests/integration_dart_test.go`
 - `integration_tests/debugger_dart_test.go`
+- `integration_tests/upstream_dart_ports_test.go`
+- `integration_tests/stack_outputs_program_error/*`
+- `integration_tests/stack_outputs_resource_error/*`
 
 Impact:
 
@@ -237,6 +243,7 @@ Exit criteria:
 
 ## Milestone D: Coverage and Drift Control
 
+- [x] Port stack-output failure-path parity fixtures/tests (`stack_outputs_program_error`, `stack_outputs_resource_error`)
 - [ ] Port missing upstream integration classes (CLI output/config/error/dynamic-provider edge cases)
 - [ ] Unskip/skiplift tests where feasible
 - [x] Add CI matrix slices for Dart parity categories
