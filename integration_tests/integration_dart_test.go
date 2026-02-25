@@ -524,11 +524,7 @@ func TestAboutDart(t *testing.T) {
 	t.Parallel()
 
 	e := ptesting.NewEnvironment(t)
-	defer func() {
-		if !t.Failed() {
-			e.DeleteEnvironmentFallible()
-		}
-	}()
+	defer e.DeleteIfNotFailed()
 	e.ImportDirectory("about")
 
 	e.RunCommand("pulumi", "login", "--cloud-url", e.LocalURL())
@@ -539,11 +535,7 @@ func TestAboutDart(t *testing.T) {
 
 func TestPackageAddNamespaceDart(t *testing.T) {
 	e := ptesting.NewEnvironment(t)
-	defer func() {
-		if !t.Failed() {
-			e.DeleteEnvironmentFallible()
-		}
-	}()
+	defer e.DeleteIfNotFailed()
 
 	e.ImportDirectory(filepath.Join("package_add", "namespace"))
 	e.CWD = filepath.Join(e.RootPath, "dart")
