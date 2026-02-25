@@ -15,8 +15,10 @@
 package main
 
 import (
+	"archive/tar"
 	"bufio"
 	"bytes"
+	"compress/gzip"
 	"context"
 	"encoding/json"
 	"flag"
@@ -27,6 +29,7 @@ import (
 	"os/exec"
 	"os/signal"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 	"sync"
@@ -125,6 +128,12 @@ type dartLanguageHost struct {
 	tracing            string
 	binary             string
 	dartBuildSucceeded bool
+	operationMu        sync.Mutex
+	operation          *activeOperation
+}
+
+type activeOperation struct {
+	cancel context.CancelFunc
 }
 
 // newLanguageHost creates a new instance of dartLanguageHost.
@@ -148,6 +157,144 @@ func (host *dartLanguageHost) connectToEngine() (pulumirpc.EngineClient, io.Clos
 	}
 
 	return pulumirpc.NewEngineClient(conn), conn, nil
+}
+
+func (host *dartLanguageHost) beginOperation(ctx context.Context) (context.Context, func()) {
+	opCtx, cancel := context.WithCancel(ctx)
+	op := &activeOperation{cancel: cancel}
+
+	host.operationMu.Lock()
+	host.operation = op
+	host.operationMu.Unlock()
+
+	return opCtx, func() {
+		host.operationMu.Lock()
+		if host.operation == op {
+			host.operation = nil
+		}
+		host.operationMu.Unlock()
+		cancel()
+	}
+}
+
+func (host *dartLanguageHost) cancelOperation() {
+	host.operationMu.Lock()
+	op := host.operation
+	host.operationMu.Unlock()
+	if op != nil {
+		op.cancel()
+	}
+}
+
+func (host *dartLanguageHost) Handshake(
+	ctx context.Context,
+	req *pulumirpc.LanguageHandshakeRequest,
+) (*pulumirpc.LanguageHandshakeResponse, error) {
+	if req == nil || req.GetEngineAddress() == "" {
+		return nil, errors.New("must contain engine address in request")
+	}
+	host.engineAddress = req.GetEngineAddress()
+
+	ctx, cancel := context.WithCancel(ctx)
+	cancelChannel := make(chan bool)
+	go func() {
+		<-ctx.Done()
+		cancel()
+		close(cancelChannel)
+	}()
+
+	if err := rpcutil.Healthcheck(ctx, host.engineAddress, 5*time.Minute, cancel); err != nil {
+		return nil, fmt.Errorf("could not start health check host RPC server: %w", err)
+	}
+
+	return &pulumirpc.LanguageHandshakeResponse{}, nil
+}
+
+func normalizePackageDependencyVersion(version string) string {
+	version = strings.TrimSpace(version)
+	if version == "" {
+		return ""
+	}
+	if strings.HasPrefix(version, "path:") ||
+		strings.HasPrefix(version, "git:") ||
+		strings.HasPrefix(version, "sdk:") {
+		return ""
+	}
+
+	version = strings.TrimLeft(version, "^~=")
+	if version == "" || strings.ContainsAny(version, " <>|*") {
+		return ""
+	}
+	if strings.HasPrefix(version, "v") {
+		return version
+	}
+	return "v" + version
+}
+
+func dependencyToPackageName(name string) string {
+	name = strings.TrimSpace(name)
+	if name == "" || name == "pulumi" {
+		return ""
+	}
+	if strings.HasPrefix(name, "pulumi_") {
+		name = strings.TrimPrefix(name, "pulumi_")
+	}
+	name = strings.ReplaceAll(name, "_", "-")
+	return strings.TrimSpace(name)
+}
+
+func (host *dartLanguageHost) GetRequiredPackages(
+	ctx context.Context,
+	req *pulumirpc.GetRequiredPackagesRequest,
+) (*pulumirpc.GetRequiredPackagesResponse, error) {
+	if req == nil || req.GetInfo() == nil {
+		return nil, errors.New("missing program info in GetRequiredPackages request")
+	}
+
+	searchDir := req.GetInfo().GetProgramDirectory()
+	if searchDir == "" {
+		searchDir = req.GetInfo().GetRootDirectory()
+	}
+	if searchDir == "" {
+		return nil, errors.New("program directory or root directory must be set in program info")
+	}
+
+	pubspecPath, err := findPubspecYaml(searchDir)
+	if err != nil {
+		logging.V(5).Infof("GetRequiredPackages: no pubspec found from %s: %v", searchDir, err)
+		return &pulumirpc.GetRequiredPackagesResponse{}, nil
+	}
+
+	pubspec, err := ReadAndParsePubspec(pubspecPath)
+	if err != nil {
+		return nil, err
+	}
+
+	pulumiPackages := DeterminePulumiPackages(pubspec.Dependencies)
+	packages := make([]*pulumirpc.PackageDependency, 0, len(pulumiPackages))
+	for _, pkg := range pulumiPackages {
+		if len(pkg) == 0 {
+			continue
+		}
+
+		packageName := dependencyToPackageName(pkg[0])
+		if packageName == "" {
+			continue
+		}
+
+		version := ""
+		if len(pkg) > 1 {
+			version = normalizePackageDependencyVersion(pkg[1])
+		}
+
+		packages = append(packages, &pulumirpc.PackageDependency{
+			Name:    packageName,
+			Kind:    "resource",
+			Version: version,
+		})
+	}
+
+	return &pulumirpc.GetRequiredPackagesResponse{Packages: packages}, nil
 }
 
 // GetRequiredPlugins computes the complete set of anticipated plugins required by a Dart program.
@@ -575,6 +722,8 @@ func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest
 	if host.engineAddress == "" {
 		return nil, errors.New("when debugging or running explicitly, must call Handshake before Run")
 	}
+	runCtx, endOperation := host.beginOperation(ctx)
+	defer endOperation()
 
 	config, err := host.constructConfig(req)
 	if err != nil {
@@ -626,7 +775,7 @@ func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest
 				Error: fmt.Sprintf("problem starting debugger: %v", err),
 			}, nil
 		}
-		if err := debugServer.WaitForContinue(context.Background(), 2*time.Minute); err != nil {
+		if err := debugServer.WaitForContinue(runCtx, 2*time.Minute); err != nil {
 			return &pulumirpc.RunResponse{
 				Error: fmt.Sprintf("problem waiting for debugger attach: %v", err),
 			}, nil
@@ -634,7 +783,7 @@ func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest
 	}
 
 	// Now simply spawn a process to execute the requested program, wiring up stdout/stderr directly.
-	cmd := exec.Command(executable, args...)
+	cmd := exec.CommandContext(runCtx, executable, args...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	cmd.Env = host.constructEnv(req, config, configSecretKeys)
@@ -826,7 +975,8 @@ func (host *dartLanguageHost) RunPlugin(
 		return errors.New("when debugging or running explicitly, must call Handshake before RunPlugin")
 	}
 
-	ctx := server.Context()
+	ctx, endOperation := host.beginOperation(server.Context())
+	defer endOperation()
 	isAnalyzer := req.Kind == string(apitype.AnalyzerPlugin)
 
 	var engineClient pulumirpc.EngineClient
@@ -946,7 +1096,7 @@ func (host *dartLanguageHost) RunPlugin(
 				_ = cmd.Wait()
 				return fmt.Errorf("problem starting debugger: %v", err)
 			}
-			if err := debugServer.WaitForContinue(context.Background(), 2*time.Minute); err != nil {
+			if err := debugServer.WaitForContinue(ctx, 2*time.Minute); err != nil {
 				_ = cmd.Process.Kill()
 				_ = cmd.Wait()
 				return fmt.Errorf("problem waiting for debugger attach: %v", err)
@@ -1084,6 +1234,123 @@ func dependencyPackageName(rootDirectory, dependencyPath, fallbackName string) s
 	return sanitizeDartIdentifier(pubspec.Name)
 }
 
+func generatedProgramStub(pclSource map[string]string) []byte {
+	var sourceFiles []string
+	for filename := range pclSource {
+		sourceFiles = append(sourceFiles, filename)
+	}
+	sort.Strings(sourceFiles)
+
+	var sourceList string
+	if len(sourceFiles) > 0 {
+		sourceList = strings.Join(sourceFiles, ", ")
+	} else {
+		sourceList = "(no source files provided)"
+	}
+
+	return []byte(fmt.Sprintf(`import 'package:pulumi/pulumi.dart';
+
+class GeneratedStack extends Stack {
+  GeneratedStack() {
+    // Generated by pulumi-language-dart from PCL sources: %s
+    // TODO: replace this scaffold with generated resource definitions.
+  }
+}
+
+Future<void> main() async {
+  await DeploymentImpl.run(() => GeneratedStack());
+}
+`, sourceList))
+}
+
+func buildGeneratedPubspec(packageName string, localDependencies map[string]string) PubSpec {
+	pubspec := PubSpec{
+		Name:        packageName,
+		Description: "Generated Pulumi Dart project.",
+		Version:     "0.0.1",
+		Environment: map[string]string{
+			"sdk": "^3.10.0",
+		},
+		Dependencies: map[string]interface{}{},
+	}
+
+	if pulumiPath, ok := localDependencies["pulumi"]; ok && strings.TrimSpace(pulumiPath) != "" {
+		pubspec.Dependencies["pulumi"] = map[string]string{
+			"path": filepath.ToSlash(pulumiPath),
+		}
+	} else {
+		// Prefer a permissive constraint so generated projects can resolve dependencies where available.
+		pubspec.Dependencies["pulumi"] = "^1.0.0"
+	}
+
+	return pubspec
+}
+
+func (host *dartLanguageHost) GenerateProgram(
+	ctx context.Context, req *pulumirpc.GenerateProgramRequest,
+) (*pulumirpc.GenerateProgramResponse, error) {
+	source := map[string][]byte{
+		"main.dart": generatedProgramStub(req.GetSource()),
+	}
+
+	return &pulumirpc.GenerateProgramResponse{
+		Source: source,
+	}, nil
+}
+
+func (host *dartLanguageHost) GenerateProject(
+	ctx context.Context, req *pulumirpc.GenerateProjectRequest,
+) (*pulumirpc.GenerateProjectResponse, error) {
+	if strings.TrimSpace(req.GetTargetDirectory()) == "" {
+		return nil, errors.New("target directory is required")
+	}
+	if err := os.MkdirAll(req.GetTargetDirectory(), 0o700); err != nil {
+		return nil, fmt.Errorf("failed to create target directory: %w", err)
+	}
+
+	projectName := sanitizeDartIdentifier(filepath.Base(req.GetTargetDirectory()))
+	if rawProject := strings.TrimSpace(req.GetProject()); rawProject != "" {
+		var projectSpec map[string]interface{}
+		if err := json.Unmarshal([]byte(rawProject), &projectSpec); err == nil {
+			if name, ok := projectSpec["name"].(string); ok && strings.TrimSpace(name) != "" {
+				projectName = sanitizeDartIdentifier(name)
+			}
+			projectYAML, err := yaml.Marshal(projectSpec)
+			if err != nil {
+				return nil, fmt.Errorf("failed to marshal Pulumi project YAML: %w", err)
+			}
+			if err := os.WriteFile(filepath.Join(req.GetTargetDirectory(), "Pulumi.yaml"), projectYAML, 0o600); err != nil {
+				return nil, fmt.Errorf("failed to write Pulumi.yaml: %w", err)
+			}
+		} else {
+			// Fallback to raw content if it is already YAML-like.
+			if err := os.WriteFile(filepath.Join(req.GetTargetDirectory(), "Pulumi.yaml"), []byte(rawProject), 0o600); err != nil {
+				return nil, fmt.Errorf("failed to write Pulumi.yaml: %w", err)
+			}
+		}
+	}
+
+	pubspec := buildGeneratedPubspec(projectName, req.GetLocalDependencies())
+	pubspecBytes, err := yaml.Marshal(pubspec)
+	if err != nil {
+		return nil, fmt.Errorf("failed to marshal generated pubspec.yaml: %w", err)
+	}
+	if err := os.WriteFile(filepath.Join(req.GetTargetDirectory(), "pubspec.yaml"), pubspecBytes, 0o600); err != nil {
+		return nil, fmt.Errorf("failed to write generated pubspec.yaml: %w", err)
+	}
+
+	binDir := filepath.Join(req.GetTargetDirectory(), "bin")
+	if err := os.MkdirAll(binDir, 0o700); err != nil {
+		return nil, fmt.Errorf("failed to create generated bin directory: %w", err)
+	}
+	programFile := filepath.Join(binDir, projectName+".dart")
+	if err := os.WriteFile(programFile, generatedProgramStub(nil), 0o600); err != nil {
+		return nil, fmt.Errorf("failed to write generated program file: %w", err)
+	}
+
+	return &pulumirpc.GenerateProjectResponse{}, nil
+}
+
 func (host *dartLanguageHost) GeneratePackage(
 	ctx context.Context, req *pulumirpc.GeneratePackageRequest,
 ) (*pulumirpc.GeneratePackageResponse, error) {
@@ -1138,6 +1405,88 @@ func (host *dartLanguageHost) GeneratePackage(
 	return &pulumirpc.GeneratePackageResponse{}, nil
 }
 
+func (host *dartLanguageHost) Pack(ctx context.Context, req *pulumirpc.PackRequest) (*pulumirpc.PackResponse, error) {
+	packageDir := strings.TrimSpace(req.GetPackageDirectory())
+	if packageDir == "" {
+		return nil, errors.New("package directory is required")
+	}
+	destinationDir := strings.TrimSpace(req.GetDestinationDirectory())
+	if destinationDir == "" {
+		return nil, errors.New("destination directory is required")
+	}
+
+	if err := os.MkdirAll(destinationDir, 0o700); err != nil {
+		return nil, fmt.Errorf("failed to create destination directory: %w", err)
+	}
+
+	packageName := sanitizeDartIdentifier(filepath.Base(packageDir))
+	if pubspec, err := ReadAndParsePubspec(filepath.Join(packageDir, "pubspec.yaml")); err == nil && pubspec != nil && pubspec.Name != "" {
+		packageName = sanitizeDartIdentifier(pubspec.Name)
+	}
+
+	artifactPath := filepath.Join(destinationDir, packageName+".tar.gz")
+	artifactFile, err := os.Create(artifactPath)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create archive: %w", err)
+	}
+	defer artifactFile.Close()
+
+	gzipWriter := gzip.NewWriter(artifactFile)
+	defer gzipWriter.Close()
+	tarWriter := tar.NewWriter(gzipWriter)
+	defer tarWriter.Close()
+
+	var filePaths []string
+	if err := filepath.Walk(packageDir, func(path string, info os.FileInfo, walkErr error) error {
+		if walkErr != nil {
+			return walkErr
+		}
+		if info.IsDir() {
+			return nil
+		}
+		filePaths = append(filePaths, path)
+		return nil
+	}); err != nil {
+		return nil, fmt.Errorf("failed to enumerate package files: %w", err)
+	}
+	sort.Strings(filePaths)
+
+	for _, path := range filePaths {
+		info, err := os.Lstat(path)
+		if err != nil {
+			return nil, fmt.Errorf("failed to stat %s: %w", path, err)
+		}
+		relPath, err := filepath.Rel(packageDir, path)
+		if err != nil {
+			return nil, fmt.Errorf("failed to compute relative path for %s: %w", path, err)
+		}
+
+		header, err := tar.FileInfoHeader(info, "")
+		if err != nil {
+			return nil, fmt.Errorf("failed to create tar header for %s: %w", path, err)
+		}
+		header.Name = filepath.ToSlash(relPath)
+
+		if err := tarWriter.WriteHeader(header); err != nil {
+			return nil, fmt.Errorf("failed to write tar header for %s: %w", path, err)
+		}
+
+		file, err := os.Open(path)
+		if err != nil {
+			return nil, fmt.Errorf("failed to open %s: %w", path, err)
+		}
+		if _, err := io.Copy(tarWriter, file); err != nil {
+			file.Close()
+			return nil, fmt.Errorf("failed to write %s to archive: %w", path, err)
+		}
+		file.Close()
+	}
+
+	return &pulumirpc.PackResponse{
+		ArtifactPath: artifactPath,
+	}, nil
+}
+
 func (host *dartLanguageHost) Link(
 	ctx context.Context, req *pulumirpc.LinkRequest,
 ) (*pulumirpc.LinkResponse, error) {
@@ -1187,4 +1536,9 @@ func (host *dartLanguageHost) Link(
 	return &pulumirpc.LinkResponse{
 		ImportInstructions: header + strings.Join(importLines, "\n"),
 	}, nil
+}
+
+func (host *dartLanguageHost) Cancel(ctx context.Context, req *pbempty.Empty) (*pbempty.Empty, error) {
+	host.cancelOperation()
+	return &pbempty.Empty{}, nil
 }

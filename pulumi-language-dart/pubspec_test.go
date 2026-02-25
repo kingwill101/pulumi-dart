@@ -2,6 +2,8 @@ package main
 
 import (
 	"reflect"
+	"slices"
+	"strings"
 	"testing"
 )
 
@@ -45,6 +47,12 @@ func TestDeterminePulumiPackages(t *testing.T) {
 	}
 
 	result := DeterminePulumiPackages(input)
+	slices.SortFunc(result, func(a, b []string) int {
+		return strings.Compare(a[0], b[0])
+	})
+	slices.SortFunc(expected, func(a, b []string) int {
+		return strings.Compare(a[0], b[0])
+	})
 
 	if !reflect.DeepEqual(result, expected) {
 		t.Errorf("Expected %v, got %v", expected, result)

@@ -60,7 +60,6 @@ func DeterminePulumiPackages(deps map[string]interface{}) [][]string {
 	var packages [][]string
 
 	for name, spec := range deps {
-		fmt.Printf("Package [[[[ %s  %+v ]]]]\n", name, spec)
 		if name == "pulumi" || strings.HasPrefix(name, "pulumi_") {
 			version := getDependencyVersion(spec)
 			packages = append(packages, []string{name, version})
