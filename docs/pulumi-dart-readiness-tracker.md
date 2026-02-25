@@ -26,6 +26,12 @@ go test -count=1 -run '^TestConstructNestedDart$' -v .
 
 Result: `PASS` (`ok github.com/pulumi-dart/integration_tests 20.610s`)
 
+```bash
+go test -count=1 -run '^TestComponentProviderErrorInResourceRegistrationDart$' -v .
+```
+
+Result: `PASS` (`ok github.com/pulumi-dart/integration_tests 30.891s`)
+
 Covered capabilities:
 
 - basic program execution (`up/refresh/destroy`)
@@ -37,6 +43,7 @@ Covered capabilities:
 - stack output persistence on program/resource failure paths
 - custom timeout success/failure behavior
 - nested remote component construction with provider propagation
+- component provider resource-error regression (no hang, expected diagnostics)
 
 ## Gap Summary vs Node/Python/Go
 
@@ -190,6 +197,7 @@ Evidence:
 - `integration_tests/stack_outputs_resource_error/*`
 - `integration_tests/custom_timeouts/*`
 - `integration_tests/construct_nested_component/*`
+- `integration_tests/component_error_resource/*`
 
 Impact:
 
@@ -257,6 +265,7 @@ Exit criteria:
 
 - [x] Port stack-output failure-path parity fixtures/tests (`stack_outputs_program_error`, `stack_outputs_resource_error`)
 - [x] Port nested remote component parity fixture/test (`construct_nested_component`)
+- [x] Port component-provider resource-error regression fixture/test (`component_error_resource`)
 - [ ] Port missing upstream integration classes (CLI output/config/error/dynamic-provider edge cases)
 - [ ] Unskip/skiplift tests where feasible
 - [x] Add CI matrix slices for Dart parity categories

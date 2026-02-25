@@ -26,12 +26,12 @@
 
 ## 5. Integration Parity Coverage Expansion
 
-- [ ] 5.1 Port missing high-value upstream parity tests into Dart integration suites for host lifecycle, generator behavior, runtime options, and failure diagnostics.
+- [x] 5.1 Port missing high-value upstream parity tests into Dart integration suites for host lifecycle, generator behavior, runtime options, and failure diagnostics.
 - [x] 5.1.1 Port upstream `stack_outputs_program_error` coverage to Dart fixtures/tests.
 - [x] 5.1.2 Port upstream `stack_outputs_resource_error` coverage to Dart fixtures/tests.
 - [x] 5.1.3 Port upstream `custom_timeouts` coverage to Dart fixtures/tests.
 - [x] 5.1.4 Port upstream `construct_nested_component` coverage to Dart fixtures/tests.
-- [ ] 5.1.5 Port upstream `component-error-resource` regression coverage to Dart fixtures/tests.
+- [x] 5.1.5 Port upstream `component-error-resource` regression coverage to Dart fixtures/tests.
 - [ ] 5.2 Ensure each added behavior has at least one success and one edge/failure test path.
 - [x] 5.2.1 `stack_outputs_program_error`: success baseline + failing edit path validated.
 - [x] 5.2.2 `stack_outputs_resource_error`: success baseline + two failing edit modes validated.
