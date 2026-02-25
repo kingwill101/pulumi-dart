@@ -5,7 +5,7 @@ on:
   pull_request:
   push:
     branches:
-      - main
+      - master
 
 env:
   PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN_PRODUCTION }}
@@ -76,6 +76,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - name: Setup dotnet SDK v6.0
         uses: actions/setup-dotnet@v4
         with:
@@ -149,27 +151,114 @@ jobs:
       - name: TestFailingTransfomationExitsProgram
         run: dotnet run integration test TestFailingTransfomationExitsProgram
 
-  dart-parity:
+  dart-unit-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - name: Set up Go 1.25.x
         uses: actions/setup-go@v5
         with:
           go-version: 1.25.x
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
-      - name: Install Pulumi CLI
-        uses: pulumi/actions@v5
+      - name: Check toolchain versions
+        run: |
+          go version
+          dart --version
       - name: Build Dart language host
         run: |
           cd pulumi-language-dart
           go build -o pulumi-language-dart .
-      - name: Run Dart parity integration slice
+      - name: Test Dart language host
+        run: |
+          cd pulumi-language-dart
+          go test -count=1 ./...
+      - name: Test Dart SDK package
+        run: |
+          cd pulumi-dart
+          dart pub get
+          dart test
+      - name: Test Dart generator package
+        run: |
+          cd pulumi_generator
+          dart pub get
+          dart test
+
+  dart-integration-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard-index: [0, 1, 2, 3]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Set up Go 1.25.x
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.25.x
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: Install Pulumi CLI
+        uses: pulumi/actions@v5
+      - name: Check toolchain versions
+        run: |
+          go version
+          dart --version
+          node --version
+          npm --version
+          python --version
+          uv --version
+      - name: Build Dart language host
+        run: |
+          cd pulumi-language-dart
+          go build -o pulumi-language-dart .
+      - name: Resolve shard test regex
+        id: shard
+        shell: bash
         run: |
           cd integration_tests
-          go test -count=1 -run 'Test(EmptyDart|ConfigBasicDart|ParameterizedDart|DartTransformations|DartResourceTransformsV2|DartInvokeTransforms)$' -v .
+          mapfile -t tests < <(go test -list . . | grep '^Test' | sort)
+          total="${#tests[@]}"
+          echo "Found ${total} Dart integration tests"
+
+          selected=()
+          for i in "${!tests[@]}"; do
+            if (( i % 4 == ${{ matrix.shard-index }} )); then
+              selected+=("${tests[$i]}")
+            fi
+          done
+
+          if [ "${#selected[@]}" -eq 0 ]; then
+            echo "regex=^$" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          regex="^($(IFS='|'; echo "${selected[*]}"))$"
+          echo "regex=${regex}" >> "$GITHUB_OUTPUT"
+          printf 'Shard %s tests:\n' "${{ matrix.shard-index }}"
+          printf '%s\n' "${selected[@]}"
+      - name: Run Dart integration shard
+        run: |
+          cd integration_tests
+          go test -count=1 -run "${{ steps.shard.outputs.regex }}" -v .
 
   info:
     name: gather
@@ -201,7 +290,7 @@ jobs:
 
   release-dev-sdk:
     name: release-dev-sdk
-    needs: [build, integration-tests, info]
+    needs: [build, integration-tests, dart-unit-tests, dart-integration-tests, info]
     uses: ./.github/workflows/release-sdk.yml
     if: ${{ github.event_name == 'merge_group' }}
     with:
@@ -211,7 +300,7 @@ jobs:
     secrets: inherit
 
   check-pr:
-    needs: ["build", "integration-tests", "dart-parity", "format"]
+    needs: ["build", "integration-tests", "dart-unit-tests", "dart-integration-tests", "format"]
     runs-on: ubuntu-latest
     if: always() # always report a status
     steps:
@@ -221,8 +310,11 @@ jobs:
       - name: Integration tests failed
         if: ${{ needs.integration-tests.result != 'success' }}
         run: exit 1
-      - name: Dart parity tests failed
-        if: ${{ needs.dart-parity.result != 'success' }}
+      - name: Dart unit tests failed
+        if: ${{ needs.dart-unit-tests.result != 'success' }}
+        run: exit 1
+      - name: Dart integration tests failed
+        if: ${{ needs.dart-integration-tests.result != 'success' }}
         run: exit 1
       - name: Format failed
         if: ${{ needs.format.result != 'success' }}
