@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 
 import '../constants.dart';
+import '../invoke.dart';
 import '../output.dart';
 import '../resource/component_resource.dart';
 import '../resource/resource.dart';
@@ -112,4 +113,19 @@ class StackException implements Exception {
 
   @override
   String toString() => 'StackException: $message';
+}
+
+Future<void> registerResourceTransform(ResourceTransform transform) async {
+  final deployment = DeploymentImpl.instance;
+  await deployment.registerResourceTransform(transform);
+}
+
+@Deprecated('Use registerResourceTransform instead.')
+Future<void> registerStackTransform(ResourceTransform transform) async {
+  await registerResourceTransform(transform);
+}
+
+Future<void> registerInvokeTransform(InvokeTransform transform) async {
+  final deployment = DeploymentImpl.instance;
+  await deployment.registerInvokeTransform(transform);
 }

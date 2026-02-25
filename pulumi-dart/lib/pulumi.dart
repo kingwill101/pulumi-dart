@@ -8,6 +8,7 @@ export 'src/input.dart';
 export 'src/input_collections.dart';
 export 'src/input_union.dart';
 export 'src/input_args.dart';
+export 'src/invoke.dart';
 
 export 'src/alias.dart';
 export 'src/asset_archive.dart';

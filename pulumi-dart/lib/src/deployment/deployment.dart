@@ -10,9 +10,11 @@ import 'package:pulumi/src/deployment/call.dart';
 import 'package:pulumi/src/deployment/invoke.dart';
 import 'package:pulumi/src/deployment/models.dart' as models;
 import 'package:pulumi/src/input.dart';
+import 'package:pulumi/src/invoke.dart' as pulumi_invoke;
 import 'package:pulumi/src/monitor.dart' as monitorpkg;
 import 'package:pulumi/src/resource/provider_resource.dart';
 import 'package:pulumi/src/resource/resource_hooks.dart';
+import 'package:pulumi/src/resource/resource_transformation.dart';
 import 'package:pulumi/src/serializer.dart';
 import 'package:pulumi/src/struct_converter.dart';
 
@@ -68,6 +70,10 @@ abstract class Deployment {
     String type,
     Resource? parent,
   );
+
+  Future<void> registerResourceTransform(ResourceTransform transform);
+
+  Future<void> registerInvokeTransform(pulumi_invoke.InvokeTransform transform);
 }
 
 class DeploymentImpl extends Deployment
@@ -83,6 +89,7 @@ class DeploymentImpl extends Deployment
   final List<Future<void>> _resourceOperations = [];
   ICallbackServer? _callbacks;
   bool? _supportsTransforms;
+  bool? _supportsInvokeTransforms;
   final String _stackName;
 
   Stack? _stack;
@@ -432,6 +439,55 @@ class DeploymentImpl extends Deployment
       }
       rethrow;
     }
+  }
+
+  Future<bool> _monitorSupportsInvokeTransforms() async {
+    if (_supportsInvokeTransforms != null) {
+      return _supportsInvokeTransforms!;
+    }
+    try {
+      final response = await monitor.supportsFeature(
+        monitorpkg.SupportsFeatureRequest('invokeTransforms'),
+      );
+      _supportsInvokeTransforms = response.hasSupport;
+      return response.hasSupport;
+    } catch (e) {
+      if (e is GrpcError && e.code == StatusCode.unimplemented) {
+        _supportsInvokeTransforms = false;
+        return false;
+      }
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> registerResourceTransform(ResourceTransform transform) async {
+    if (!await _monitorSupportsTransforms()) {
+      throw Exception(
+        'The Pulumi CLI does not support transforms. Please update the Pulumi CLI.',
+      );
+    }
+
+    _callbacks ??= CallbackServer(monitor.client);
+    final callback = await _callbacks!.registerTransform(transform);
+    await monitor.client.registerStackTransform(callback);
+  }
+
+  @override
+  Future<void> registerInvokeTransform(
+    pulumi_invoke.InvokeTransform transform,
+  ) async {
+    if (!await _monitorSupportsInvokeTransforms()) {
+      throw Exception(
+        'The Pulumi CLI does not support invoke transforms. Please update the Pulumi CLI.',
+      );
+    }
+
+    _callbacks ??= CallbackServer(monitor.client);
+    final callback = await _callbacks!.registerStackInvokeTransformAsync(
+      transform,
+    );
+    await monitor.client.registerStackInvokeTransform(callback);
   }
 
   Future<RegisterResourceRequest_ResourceHooksBinding?> _prepareHooks(

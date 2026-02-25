@@ -224,3 +224,32 @@ func TestDartResourceTransformsV2(t *testing.T) {
 		},
 	})
 }
+
+func TestDartInvokeTransforms(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:   "invoke_transforms",
+		Quick: true,
+		LocalProviders: []integration.LocalDependency{
+			{
+				Package: "testprovider",
+				Path:    testProviderPath(),
+			},
+		},
+		ExtraRuntimeValidation: func(
+			t *testing.T,
+			stack integration.RuntimeValidationStackInfo,
+		) {
+			randomResName := "testprovider:index:Random"
+			found := false
+			for _, res := range stack.Deployment.Resources {
+				if res.URN.Name() != "res1" {
+					continue
+				}
+
+				found = true
+				assert.Equal(t, res.Type, tokens.Type(randomResName))
+			}
+			assert.True(t, found)
+		},
+	})
+}
