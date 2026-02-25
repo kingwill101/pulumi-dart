@@ -15,6 +15,29 @@ import (
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 )
 
+func readGeneratedPackageLibraries(t *testing.T, targetDir, packageName string) (root string, sdk string) {
+	t.Helper()
+
+	rootData, err := os.ReadFile(filepath.Join(targetDir, "lib", packageName+".dart"))
+	require.NoError(t, err)
+	sdkData, err := os.ReadFile(filepath.Join(targetDir, "lib", "src", packageName, "sdk.dart"))
+	require.NoError(t, err)
+	return string(rootData), string(sdkData)
+}
+
+func assertGoldenFile(t *testing.T, goldenPath string, actual string) {
+	t.Helper()
+
+	if os.Getenv("UPDATE_GOLDENS") == "1" {
+		require.NoError(t, os.MkdirAll(filepath.Dir(goldenPath), 0o700))
+		require.NoError(t, os.WriteFile(goldenPath, []byte(actual), 0o600))
+	}
+
+	expected, err := os.ReadFile(goldenPath)
+	require.NoError(t, err)
+	assert.Equal(t, string(expected), actual)
+}
+
 func TestGenerateProgramProducesMainDart(t *testing.T) {
 	t.Parallel()
 
@@ -168,9 +191,9 @@ func TestGeneratePackageEmitsResourceClasses(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, resp)
 
-	libData, err := os.ReadFile(filepath.Join(targetDir, "lib", "sample.dart"))
-	require.NoError(t, err)
-	content := string(libData)
+	rootContent, content := readGeneratedPackageLibraries(t, targetDir, "sample")
+	assert.Contains(t, rootContent, "library sample;")
+	assert.Contains(t, rootContent, "export 'src/sample/sdk.dart';")
 	assert.Contains(t, content, "class Widget extends CustomResource")
 	assert.Contains(t, content, "class WidgetComponent extends ComponentResource")
 	assert.Contains(t, content, "_mapToInputs")
@@ -201,9 +224,8 @@ func TestGeneratePackageHandlesFunctionTokenSuffix(t *testing.T) {
 	})
 	require.NoError(t, err)
 
-	libData, err := os.ReadFile(filepath.Join(targetDir, "lib", "sample.dart"))
-	require.NoError(t, err)
-	content := string(libData)
+	rootContent, content := readGeneratedPackageLibraries(t, targetDir, "sample")
+	assert.Contains(t, rootContent, "export 'src/sample/sdk.dart';")
 	assert.Contains(t, content, "Future<Map<String, dynamic>> doEchoMethod")
 	assert.Contains(t, content, "sample:index:Echo/doEchoMethod")
 }
@@ -222,7 +244,13 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 					"size": { "type": "integer" },
 					"label": { "type": "string" }
 				},
-				"requiredInputs": ["size"]
+				"requiredInputs": ["size"],
+				"properties": {
+					"size": { "type": "integer" },
+					"label": { "type": "string" },
+					"arn": { "type": "string" }
+				},
+				"required": ["arn"]
 			}
 		},
 		"functions": {
@@ -253,20 +281,35 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 	})
 	require.NoError(t, err)
 
-	libData, err := os.ReadFile(filepath.Join(targetDir, "lib", "sample.dart"))
-	require.NoError(t, err)
-	content := string(libData)
+	rootContent, content := readGeneratedPackageLibraries(t, targetDir, "sample")
+	assert.Contains(t, rootContent, "export 'src/sample/sdk.dart';")
 
 	assert.Contains(t, content, "class WidgetArgs")
+	assert.Contains(t, content, "final Input<int> size;")
+	assert.Contains(t, content, "final Input<String>? label;")
 	assert.Contains(t, content, "required this.size")
 	assert.Contains(t, content, "WidgetArgs? args")
 	assert.Contains(t, content, "args?.toMap()")
+	assert.Contains(t, content, "size: _asInput<int>(map['size'])")
+	assert.Contains(t, content, "label: _asOptionalInput<String>(map['label'])")
+
+	assert.Contains(t, content, "late final Output<String> arn;")
+	assert.Contains(t, content, "late final Output<int?> size;")
+	assert.Contains(t, content, "late final Output<String?> label;")
+	assert.Contains(t, content, "arn = _unknownOutput<String>();")
+	assert.Contains(t, content, "size = _unknownOutput<int?>();")
+	assert.Contains(t, content, "label = _unknownOutput<String?>();")
 
 	assert.Contains(t, content, "class GetWidgetArgs")
+	assert.Contains(t, content, "final Input<String> id;")
 	assert.Contains(t, content, "required this.id")
 	assert.Contains(t, content, "class GetWidgetResult")
+	assert.Contains(t, content, "final String name;")
+	assert.Contains(t, content, "final List<String>? tags;")
 	assert.Contains(t, content, "Future<GetWidgetResult> getWidget")
 	assert.Contains(t, content, "GetWidgetResult.fromMap(result)")
+	assert.Contains(t, content, "name: map['name'] as String")
+	assert.Contains(t, content, "tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>()")
 }
 
 func TestGeneratePackageInvalidSchemaReturnsError(t *testing.T) {
@@ -281,4 +324,435 @@ func TestGeneratePackageInvalidSchemaReturnsError(t *testing.T) {
 	})
 	require.Error(t, err)
 	assert.Contains(t, err.Error(), "failed to parse package schema")
+}
+
+func TestGeneratePackageWritesPulumiDependency(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "dependencies:")
+	assert.Contains(t, pubspec, "pulumi: ^1.0.0")
+}
+
+func TestGeneratePackageWritesLocalPulumiDependency(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	localPulumi := filepath.Join(targetDir, "local-pulumi")
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+		LocalDependencies: map[string]string{
+			"pulumi": localPulumi,
+		},
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "dependencies:")
+	assert.Contains(t, pubspec, "pulumi:")
+	assert.Contains(t, pubspec, "path: "+filepath.ToSlash(localPulumi))
+}
+
+func TestGeneratePackageEmitsNamedTypesAndRefs(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"types": {
+			"sample:index:WidgetMode": {
+				"type": "string",
+				"enum": [
+					{ "name": "ReadOnly", "value": "read-only" },
+					{ "name": "ReadWrite", "value": "read-write" }
+				]
+			},
+			"sample:index:WidgetMetadata": {
+				"type": "object",
+				"properties": {
+					"owner": { "type": "string" },
+					"mode": { "$ref": "#/types/sample:index:WidgetMode" }
+				},
+				"required": ["owner", "mode"]
+			}
+		},
+		"resources": {
+			"sample:index:Widget": {
+				"inputProperties": {
+					"mode": { "$ref": "#/types/sample:index:WidgetMode" },
+					"metadata": { "$ref": "#/types/sample:index:WidgetMetadata" }
+				},
+				"requiredInputs": ["mode"]
+			}
+		},
+		"functions": {
+			"sample:index:getWidgetDetails": {
+				"outputs": {
+					"properties": {
+						"metadata": { "$ref": "#/types/sample:index:WidgetMetadata" },
+						"mode": { "$ref": "#/types/sample:index:WidgetMode" }
+					},
+					"required": ["metadata", "mode"]
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	rootContent, content := readGeneratedPackageLibraries(t, targetDir, "sample")
+	assert.Contains(t, rootContent, "export 'src/sample/sdk.dart';")
+
+	assert.Contains(t, content, "enum WidgetMode")
+	assert.Contains(t, content, `readOnly("read-only"),`)
+	assert.Contains(t, content, `readWrite("read-write");`)
+	assert.Contains(t, content, "const WidgetMode(this.value);")
+	assert.Contains(t, content, "final String value;")
+	assert.Contains(t, content, "static WidgetMode fromValue(String value)")
+
+	assert.Contains(t, content, "class WidgetMetadata")
+	assert.Contains(t, content, "final String owner;")
+	assert.Contains(t, content, "final WidgetMode mode;")
+	assert.Contains(t, content, "map['mode'] = mode.value;")
+	assert.Contains(t, content, "mode: WidgetMode.fromValue(map['mode'] as String)")
+
+	assert.Contains(t, content, "class WidgetArgs")
+	assert.Contains(t, content, "final Input<WidgetMode> mode;")
+	assert.Contains(t, content, "final Input<WidgetMetadata>? metadata;")
+	assert.Contains(t, content, "_mapInputValue<WidgetMode, String>(mode, (value) => value.value)")
+	assert.Contains(
+		t,
+		content,
+		"_mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap())",
+	)
+
+	assert.Contains(t, content, "class GetWidgetDetailsResult")
+	assert.Contains(t, content, "final WidgetMetadata metadata;")
+	assert.Contains(t, content, "metadata: WidgetMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())")
+	assert.Contains(t, content, "final WidgetMode mode;")
+	assert.Contains(t, content, "mode: WidgetMode.fromValue(map['mode'] as String)")
+}
+
+func TestGeneratePackageEmitsConfigClass(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"types": {
+			"sample:index:WidgetMode": {
+				"type": "string",
+				"enum": [
+					{ "name": "ReadOnly", "value": "read-only" },
+					{ "name": "ReadWrite", "value": "read-write" }
+				]
+			},
+			"sample:index:WidgetMetadata": {
+				"type": "object",
+				"properties": {
+					"owner": { "type": "string" }
+				},
+				"required": ["owner"]
+			}
+		},
+		"config": {
+			"variables": {
+				"region": { "type": "string" },
+				"replicas": { "type": "integer" },
+				"enabled": { "type": "boolean" },
+				"mode": { "$ref": "#/types/sample:index:WidgetMode" },
+				"metadata": { "$ref": "#/types/sample:index:WidgetMetadata" }
+			},
+			"required": ["region", "mode"]
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	rootContent, content := readGeneratedPackageLibraries(t, targetDir, "sample")
+	assert.Contains(t, rootContent, "export 'src/sample/sdk.dart';")
+
+	assert.Contains(t, content, "class SampleConfig")
+	assert.Contains(t, content, "final config = SampleConfig();")
+	assert.Contains(t, content, "String? get region")
+	assert.Contains(t, content, "String requireRegion()")
+	assert.Contains(t, content, "int? get replicas")
+	assert.Contains(t, content, "return _parseIntConfig(raw);")
+	assert.Contains(t, content, "bool? get enabled")
+	assert.Contains(t, content, "return _parseBoolConfig(raw);")
+	assert.Contains(t, content, "WidgetMode? get mode")
+	assert.Contains(t, content, "return raw == null ? null : WidgetMode.fromValue(raw as String);")
+	assert.Contains(t, content, "WidgetMetadata? get metadata")
+	assert.Contains(
+		t,
+		content,
+		"return raw == null ? null : WidgetMetadata.fromMap((jsonDecode(raw) as Map).cast<String, dynamic>());",
+	)
+	assert.Contains(t, content, "bool get regionIsSecret => _isSecret('region');")
+	assert.Contains(t, content, "int? _parseIntConfig(String? value)")
+	assert.Contains(t, content, "bool? _parseBoolConfig(String? value)")
+}
+
+func TestGeneratePackageEmitsCollectionRefMappings(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"types": {
+			"sample:index:WidgetMode": {
+				"type": "string",
+				"enum": [
+					{ "name": "ReadOnly", "value": "read-only" },
+					{ "name": "ReadWrite", "value": "read-write" }
+				]
+			},
+			"sample:index:WidgetMetadata": {
+				"type": "object",
+				"properties": {
+					"owner": { "type": "string" }
+				},
+				"required": ["owner"]
+			}
+		},
+		"config": {
+			"variables": {
+				"modeHistory": {
+					"type": "array",
+					"items": { "$ref": "#/types/sample:index:WidgetMode" }
+				},
+				"metadataById": {
+					"type": "object",
+					"additionalProperties": { "$ref": "#/types/sample:index:WidgetMetadata" }
+				}
+			}
+		},
+		"resources": {
+			"sample:index:Widget": {
+				"inputProperties": {
+					"modes": {
+						"type": "array",
+						"items": { "$ref": "#/types/sample:index:WidgetMode" }
+					},
+					"metadataById": {
+						"type": "object",
+						"additionalProperties": { "$ref": "#/types/sample:index:WidgetMetadata" }
+					}
+				},
+				"requiredInputs": ["modes"]
+			}
+		},
+		"functions": {
+			"sample:index:getWidgetDetails": {
+				"outputs": {
+					"properties": {
+						"modes": {
+							"type": "array",
+							"items": { "$ref": "#/types/sample:index:WidgetMode" }
+						},
+						"metadataById": {
+							"type": "object",
+							"additionalProperties": { "$ref": "#/types/sample:index:WidgetMetadata" }
+						}
+					},
+					"required": ["modes", "metadataById"]
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, content := readGeneratedPackageLibraries(t, targetDir, "sample")
+	assert.Contains(t, content, "final Input<List<WidgetMode>> modes;")
+	assert.Contains(t, content, "final Input<Map<String, WidgetMetadata>>? metadataById;")
+	assert.Contains(
+		t,
+		content,
+		"_mapInputValue<List<WidgetMode>, List<String>>(modes, (value) => _encodeList<WidgetMode, String>(value, (value) => value.value))",
+	)
+	assert.Contains(
+		t,
+		content,
+		"_mapOptionalInputValue<Map<String, WidgetMetadata>, Map<String, Map<String, dynamic>>>(metadataById, (value) => _encodeMapValues<WidgetMetadata, Map<String, dynamic>>(value, (value) => value.toMap()))",
+	)
+
+	assert.Contains(t, content, "final List<WidgetMode> modes;")
+	assert.Contains(t, content, "final Map<String, WidgetMetadata> metadataById;")
+	assert.Contains(
+		t,
+		content,
+		"modes: _decodeList<WidgetMode>(map['modes'], (value) => WidgetMode.fromValue(value as String))",
+	)
+	assert.Contains(
+		t,
+		content,
+		"metadataById: _decodeMapValues<WidgetMetadata>(map['metadataById'], (value) => WidgetMetadata.fromMap((value as Map).cast<String, dynamic>()))",
+	)
+
+	assert.Contains(t, content, "List<WidgetMode>? get modeHistory")
+	assert.Contains(
+		t,
+		content,
+		"return raw == null ? null : _decodeList<WidgetMode>(jsonDecode(raw), (value) => WidgetMode.fromValue(value as String));",
+	)
+	assert.Contains(t, content, "Map<String, WidgetMetadata>? get metadataById")
+	assert.Contains(
+		t,
+		content,
+		"return raw == null ? null : _decodeMapValues<WidgetMetadata>(jsonDecode(raw), (value) => WidgetMetadata.fromMap((value as Map).cast<String, dynamic>()));",
+	)
+	assert.Contains(t, content, "List<T> _decodeList<T>(dynamic value, T Function(dynamic value) decoder)")
+	assert.Contains(t, content, "Map<String, T> _decodeMapValues<T>(dynamic value, T Function(dynamic value) decoder)")
+	assert.Contains(t, content, "List<U> _encodeList<T, U>(List<T> value, U Function(T value) encoder)")
+	assert.Contains(t, content, "Map<String, U> _encodeMapValues<T, U>(Map<String, T> value, U Function(T value) encoder)")
+}
+
+func TestGeneratePackageHandlesResourceOutputNameCollision(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"resources": {
+			"sample:index:Widget": {
+				"properties": {
+					"name": { "type": "string" }
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, content := readGeneratedPackageLibraries(t, targetDir, "sample")
+	assert.Contains(t, content, "late final Output<String?> name;")
+	assert.Contains(t, content, "this.name = _unknownOutput<String?>();")
+}
+
+func TestGeneratePackageGoldenSnapshot(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"types": {
+			"sample:index:WidgetMode": {
+				"type": "string",
+				"enum": [
+					{ "name": "ReadOnly", "value": "read-only" },
+					{ "name": "ReadWrite", "value": "read-write" }
+				]
+			},
+			"sample:index:WidgetMetadata": {
+				"type": "object",
+				"properties": {
+					"owner": { "type": "string" },
+					"mode": { "$ref": "#/types/sample:index:WidgetMode" }
+				},
+				"required": ["owner", "mode"]
+			}
+		},
+		"config": {
+			"variables": {
+				"region": { "type": "string" },
+				"replicas": { "type": "integer" },
+				"enabled": { "type": "boolean" },
+				"mode": { "$ref": "#/types/sample:index:WidgetMode" },
+				"metadata": { "$ref": "#/types/sample:index:WidgetMetadata" }
+			},
+			"required": ["region", "mode"]
+		},
+		"resources": {
+			"sample:index:Widget": {
+				"inputProperties": {
+					"mode": { "$ref": "#/types/sample:index:WidgetMode" },
+					"metadata": { "$ref": "#/types/sample:index:WidgetMetadata" }
+				},
+				"requiredInputs": ["mode"],
+				"properties": {
+					"arn": { "type": "string" },
+					"mode": { "$ref": "#/types/sample:index:WidgetMode" }
+				},
+				"required": ["arn", "mode"]
+			}
+		},
+		"functions": {
+			"sample:index:getWidgetDetails": {
+				"inputs": {
+					"properties": {
+						"id": { "type": "string" }
+					},
+					"required": ["id"]
+				},
+				"outputs": {
+					"properties": {
+						"metadata": { "$ref": "#/types/sample:index:WidgetMetadata" },
+						"mode": { "$ref": "#/types/sample:index:WidgetMode" }
+					},
+					"required": ["metadata", "mode"]
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	rootContent, sdkContent := readGeneratedPackageLibraries(t, targetDir, "sample")
+	assertGoldenFile(t, filepath.Join("testdata", "generate_package", "sample_public.golden.dart"), rootContent)
+	assertGoldenFile(t, filepath.Join("testdata", "generate_package", "sample_sdk.golden.dart"), sdkContent)
 }

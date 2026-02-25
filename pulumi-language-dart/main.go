@@ -1171,12 +1171,15 @@ type packageSchema struct {
 	Version       string                         `json:"version"`
 	Resources     map[string]packageResourceSpec `json:"resources"`
 	Functions     map[string]packageFunctionSpec `json:"functions"`
+	Config        *packageConfigSpec             `json:"-"`
+	Enums         []packageEnumSpec              `json:"-"`
 	ObjectClasses []packageObjectClassSpec       `json:"-"`
 }
 
 type packageResourceSpec struct {
-	IsComponent bool   `json:"isComponent"`
-	ArgsClass   string `json:"-"`
+	IsComponent      bool                  `json:"isComponent"`
+	ArgsClass        string                `json:"-"`
+	OutputProperties []packagePropertySpec `json:"-"`
 }
 
 type packageFunctionSpec struct {
@@ -1186,37 +1189,627 @@ type packageFunctionSpec struct {
 }
 
 type packageObjectClassSpec struct {
+	ClassName      string
+	UsesInputTypes bool
+	Properties     []packagePropertySpec
+}
+
+type packagePropertySpec struct {
+	Name              string
+	FieldName         string
+	Required          bool
+	TypeSpec          packageTypeSpec
+	DartType          string
+	ReferenceKind     string
+	ReferenceType     string
+	ReferenceWireType string
+}
+
+type packageTypeSpec struct {
+	Kind              string
+	DartType          string
+	ReferenceType     string
+	ReferenceWireType string
+	ElementType       *packageTypeSpec
+}
+
+type packageEnumSpec struct {
+	EnumName       string
+	UnderlyingType string
+	Values         []packageEnumValueSpec
+}
+
+type packageEnumValueSpec struct {
+	Name    string
+	Literal string
+}
+
+type packageConfigSpec struct {
 	ClassName  string
 	Properties []packagePropertySpec
 }
 
-type packagePropertySpec struct {
-	Name      string
-	FieldName string
-	Required  bool
+type packageNamedTypeRef struct {
+	Kind           string
+	Name           string
+	UnderlyingType string
+}
+
+type rawPackageSchema struct {
+	Name      string                     `json:"name"`
+	Namespace string                     `json:"namespace"`
+	Version   string                     `json:"version"`
+	Types     map[string]rawTypeSpec     `json:"types"`
+	Config    rawConfigSpec              `json:"config"`
+	Resources map[string]rawResourceSpec `json:"resources"`
+	Functions map[string]rawFunctionSpec `json:"functions"`
+}
+
+type rawConfigSpec struct {
+	Variables map[string]rawPropertyTypeSpec `json:"variables"`
+	Required  []string                       `json:"required"`
+}
+
+type rawResourceSpec struct {
+	IsComponent     bool                           `json:"isComponent"`
+	InputProperties map[string]rawPropertyTypeSpec `json:"inputProperties"`
+	RequiredInputs  []string                       `json:"requiredInputs"`
+	Properties      map[string]rawPropertyTypeSpec `json:"properties"`
+	Required        []string                       `json:"required"`
+}
+
+type rawFunctionSpec struct {
+	Inputs  *rawObjectSpec `json:"inputs"`
+	Outputs *rawObjectSpec `json:"outputs"`
+}
+
+type rawObjectSpec struct {
+	Properties map[string]rawPropertyTypeSpec `json:"properties"`
+	Required   []string                       `json:"required"`
+}
+
+type rawTypeSpec struct {
+	Type                 string                         `json:"type"`
+	Enum                 []rawEnumValueSpec             `json:"enum"`
+	Properties           map[string]rawPropertyTypeSpec `json:"properties"`
+	Required             []string                       `json:"required"`
+	Items                *rawPropertyTypeSpec           `json:"items"`
+	AdditionalProperties *rawPropertyTypeSpec           `json:"additionalProperties"`
+}
+
+type rawEnumValueSpec struct {
+	Name  string `json:"name"`
+	Value any    `json:"value"`
+}
+
+type rawPropertyTypeSpec struct {
+	Type                 string                `json:"type"`
+	Ref                  string                `json:"$ref"`
+	Items                *rawPropertyTypeSpec  `json:"items"`
+	AdditionalProperties *rawPropertyTypeSpec  `json:"additionalProperties"`
+	OneOf                []rawPropertyTypeSpec `json:"oneOf"`
+	AnyOf                []rawPropertyTypeSpec `json:"anyOf"`
+}
+
+func rawRequiredSet(required []string) map[string]struct{} {
+	requiredSet := make(map[string]struct{}, len(required))
+	for _, property := range required {
+		requiredSet[property] = struct{}{}
+	}
+	return requiredSet
+}
+
+func enumValueName(preferred string, value any, used map[string]int) string {
+	candidate := preferred
+	if strings.TrimSpace(candidate) == "" {
+		candidate = fmt.Sprintf("value_%v", value)
+	}
+	return propertyFieldName(candidate, used)
+}
+
+func dartEnumLiteral(value any, typeName string) (string, bool) {
+	switch typeName {
+	case "String":
+		v, ok := value.(string)
+		if !ok {
+			return "", false
+		}
+		return strconv.Quote(v), true
+	case "bool":
+		v, ok := value.(bool)
+		if !ok {
+			return "", false
+		}
+		if v {
+			return "true", true
+		}
+		return "false", true
+	case "int":
+		switch v := value.(type) {
+		case int:
+			return strconv.Itoa(v), true
+		case int64:
+			return strconv.FormatInt(v, 10), true
+		case float64:
+			if v == float64(int64(v)) {
+				return strconv.FormatInt(int64(v), 10), true
+			}
+		}
+		return "", false
+	case "double":
+		switch v := value.(type) {
+		case float64:
+			return strconv.FormatFloat(v, 'f', -1, 64), true
+		case int:
+			return strconv.FormatFloat(float64(v), 'f', -1, 64), true
+		case int64:
+			return strconv.FormatFloat(float64(v), 'f', -1, 64), true
+		}
+		return "", false
+	default:
+		return "", false
+	}
+}
+
+func rawRefToken(ref string) string {
+	if ref == "" {
+		return ""
+	}
+	const typesPrefix = "#/types/"
+	if strings.HasPrefix(ref, typesPrefix) {
+		return strings.TrimPrefix(ref, typesPrefix)
+	}
+	return ref
+}
+
+func directReferenceInfo(typeSpec packageTypeSpec) (referenceKind string, referenceType string, referenceWireType string) {
+	switch typeSpec.Kind {
+	case "enum":
+		return "enum", typeSpec.ReferenceType, typeSpec.ReferenceWireType
+	case "object":
+		return "object", typeSpec.ReferenceType, "Map<String, dynamic>"
+	default:
+		return "", "", ""
+	}
+}
+
+func makePackageTypeSpec(kind, dartType string) packageTypeSpec {
+	return packageTypeSpec{
+		Kind:     kind,
+		DartType: dartType,
+	}
+}
+
+func dartTypeSpecFromRawPropertyType(
+	typ rawPropertyTypeSpec,
+	namedTypeRefs map[string]packageNamedTypeRef,
+	useReferenceTypes bool,
+) packageTypeSpec {
+	if token := rawRefToken(typ.Ref); token != "" {
+		if namedType, ok := namedTypeRefs[token]; ok {
+			if useReferenceTypes {
+				return packageTypeSpec{
+					Kind:              namedType.Kind,
+					DartType:          namedType.Name,
+					ReferenceType:     namedType.Name,
+					ReferenceWireType: namedType.UnderlyingType,
+				}
+			}
+			if namedType.Kind == "enum" {
+				return makePackageTypeSpec("scalar", namedType.UnderlyingType)
+			}
+			return makePackageTypeSpec("object", "Map<String, dynamic>")
+		}
+		return makePackageTypeSpec("dynamic", "dynamic")
+	}
+
+	switch typ.Type {
+	case "boolean":
+		return makePackageTypeSpec("scalar", "bool")
+	case "integer":
+		return makePackageTypeSpec("scalar", "int")
+	case "number":
+		return makePackageTypeSpec("scalar", "double")
+	case "string":
+		return makePackageTypeSpec("scalar", "String")
+	case "array":
+		elementSpec := makePackageTypeSpec("dynamic", "dynamic")
+		if typ.Items != nil {
+			elementSpec = dartTypeSpecFromRawPropertyType(*typ.Items, namedTypeRefs, useReferenceTypes)
+		}
+		return packageTypeSpec{
+			Kind:        "array",
+			DartType:    fmt.Sprintf("List<%s>", elementSpec.DartType),
+			ElementType: &elementSpec,
+		}
+	case "object":
+		if typ.AdditionalProperties != nil {
+			valueSpec := dartTypeSpecFromRawPropertyType(*typ.AdditionalProperties, namedTypeRefs, useReferenceTypes)
+			return packageTypeSpec{
+				Kind:        "map",
+				DartType:    fmt.Sprintf("Map<String, %s>", valueSpec.DartType),
+				ElementType: &valueSpec,
+			}
+		}
+		return makePackageTypeSpec("object", "Map<String, dynamic>")
+	}
+
+	if len(typ.OneOf) > 0 {
+		for _, candidate := range typ.OneOf {
+			typeSpec := dartTypeSpecFromRawPropertyType(candidate, namedTypeRefs, useReferenceTypes)
+			if typeSpec.DartType != "dynamic" {
+				return typeSpec
+			}
+		}
+	}
+
+	if len(typ.AnyOf) > 0 {
+		for _, candidate := range typ.AnyOf {
+			typeSpec := dartTypeSpecFromRawPropertyType(candidate, namedTypeRefs, useReferenceTypes)
+			if typeSpec.DartType != "dynamic" {
+				return typeSpec
+			}
+		}
+	}
+	return makePackageTypeSpec("dynamic", "dynamic")
+}
+
+func makeRawObjectClassSpec(
+	baseName string,
+	properties map[string]rawPropertyTypeSpec,
+	required []string,
+	usedClassNames map[string]int,
+	namedTypeRefs map[string]packageNamedTypeRef,
+	useReferenceTypes bool,
+	usesInputTypes bool,
+) *packageObjectClassSpec {
+	if len(properties) == 0 {
+		return nil
+	}
+
+	className := uniqueClassName(toDartClassName(baseName), usedClassNames)
+	return buildRawObjectClassSpec(
+		className,
+		properties,
+		required,
+		namedTypeRefs,
+		useReferenceTypes,
+		usesInputTypes,
+	)
+}
+
+func buildRawObjectClassSpec(
+	className string,
+	properties map[string]rawPropertyTypeSpec,
+	required []string,
+	namedTypeRefs map[string]packageNamedTypeRef,
+	useReferenceTypes bool,
+	usesInputTypes bool,
+) *packageObjectClassSpec {
+	if len(properties) == 0 {
+		return nil
+	}
+
+	propertyNames := make([]string, 0, len(properties))
+	for name := range properties {
+		propertyNames = append(propertyNames, name)
+	}
+	sort.Strings(propertyNames)
+
+	requiredSet := rawRequiredSet(required)
+	usedFieldNames := map[string]int{}
+	fields := make([]packagePropertySpec, 0, len(propertyNames))
+	for _, propertyName := range propertyNames {
+		property := properties[propertyName]
+		_, isRequired := requiredSet[propertyName]
+		typeSpec := dartTypeSpecFromRawPropertyType(
+			property,
+			namedTypeRefs,
+			useReferenceTypes,
+		)
+		referenceKind, referenceType, referenceWireType := directReferenceInfo(typeSpec)
+		fields = append(fields, packagePropertySpec{
+			Name:              propertyName,
+			FieldName:         propertyFieldName(propertyName, usedFieldNames),
+			Required:          isRequired,
+			TypeSpec:          typeSpec,
+			DartType:          typeSpec.DartType,
+			ReferenceKind:     referenceKind,
+			ReferenceType:     referenceType,
+			ReferenceWireType: referenceWireType,
+		})
+	}
+
+	return &packageObjectClassSpec{
+		ClassName:      className,
+		UsesInputTypes: usesInputTypes,
+		Properties:     fields,
+	}
+}
+
+func makeRawEnumSpec(
+	typeName string,
+	rawType rawTypeSpec,
+) *packageEnumSpec {
+	if len(rawType.Enum) == 0 {
+		return nil
+	}
+
+	underlyingType := dartTypeFromRawTypeName(rawType.Type)
+	values := make([]packageEnumValueSpec, 0, len(rawType.Enum))
+	usedValueNames := map[string]int{}
+	for _, enumValue := range rawType.Enum {
+		literal, ok := dartEnumLiteral(enumValue.Value, underlyingType)
+		if !ok {
+			return nil
+		}
+		values = append(values, packageEnumValueSpec{
+			Name:    enumValueName(enumValue.Name, enumValue.Value, usedValueNames),
+			Literal: literal,
+		})
+	}
+	if len(values) == 0 {
+		return nil
+	}
+
+	return &packageEnumSpec{
+		EnumName:       typeName,
+		UnderlyingType: underlyingType,
+		Values:         values,
+	}
+}
+
+func dartTypeFromRawTypeName(typeName string) string {
+	switch typeName {
+	case "boolean":
+		return "bool"
+	case "integer":
+		return "int"
+	case "number":
+		return "double"
+	case "string":
+		return "String"
+	default:
+		return "String"
+	}
+}
+
+func makeRawResourceOutputPropertySpecs(
+	resource rawResourceSpec,
+	namedTypeRefs map[string]packageNamedTypeRef,
+) []packagePropertySpec {
+	if len(resource.Properties) == 0 {
+		return nil
+	}
+
+	propertyNames := make([]string, 0, len(resource.Properties))
+	for name := range resource.Properties {
+		propertyNames = append(propertyNames, name)
+	}
+	sort.Strings(propertyNames)
+
+	requiredSet := rawRequiredSet(resource.Required)
+	usedFieldNames := map[string]int{
+		"urn": 1,
+	}
+	if !resource.IsComponent {
+		usedFieldNames["id"] = 1
+	}
+
+	fields := make([]packagePropertySpec, 0, len(propertyNames))
+	for _, propertyName := range propertyNames {
+		if propertyName == "urn" {
+			continue
+		}
+		if !resource.IsComponent && propertyName == "id" {
+			continue
+		}
+
+		property := resource.Properties[propertyName]
+		_, isRequired := requiredSet[propertyName]
+		typeSpec := dartTypeSpecFromRawPropertyType(
+			property,
+			namedTypeRefs,
+			true,
+		)
+		referenceKind, referenceType, referenceWireType := directReferenceInfo(typeSpec)
+		fields = append(fields, packagePropertySpec{
+			Name:              propertyName,
+			FieldName:         propertyFieldName(propertyName, usedFieldNames),
+			Required:          isRequired,
+			TypeSpec:          typeSpec,
+			DartType:          typeSpec.DartType,
+			ReferenceKind:     referenceKind,
+			ReferenceType:     referenceType,
+			ReferenceWireType: referenceWireType,
+		})
+	}
+
+	if len(fields) == 0 {
+		return nil
+	}
+	return fields
 }
 
 func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
-	var spec packageSchema
-	if err := json.Unmarshal([]byte(schemaJSON), &spec); err != nil {
+	var rawSpec rawPackageSchema
+	if err := json.Unmarshal([]byte(schemaJSON), &rawSpec); err != nil {
 		return nil, fmt.Errorf("failed to parse package schema: %w", err)
 	}
-	if spec.Name == "" {
+	if rawSpec.Name == "" {
 		return nil, errors.New("package schema is missing name")
 	}
-	if spec.Resources == nil {
-		spec.Resources = map[string]packageResourceSpec{}
+
+	spec := &packageSchema{
+		Name:          rawSpec.Name,
+		Namespace:     rawSpec.Namespace,
+		Version:       rawSpec.Version,
+		Resources:     map[string]packageResourceSpec{},
+		Functions:     map[string]packageFunctionSpec{},
+		Config:        nil,
+		Enums:         []packageEnumSpec{},
+		ObjectClasses: []packageObjectClassSpec{},
 	}
-	if spec.Functions == nil {
-		spec.Functions = map[string]packageFunctionSpec{}
+
+	usedClassNames := map[string]int{}
+	namedTypeRefs := map[string]packageNamedTypeRef{}
+
+	typeTokens := make([]string, 0, len(rawSpec.Types))
+	for token := range rawSpec.Types {
+		typeTokens = append(typeTokens, token)
 	}
-	for token, fn := range spec.Functions {
-		// In parse-only fallback mode we do not know function signatures. Keep
-		// legacy behavior by requiring an argument map.
-		fn.HasArgs = true
-		spec.Functions[token] = fn
+	sort.Strings(typeTokens)
+
+	for _, token := range typeTokens {
+		typeSpec := rawSpec.Types[token]
+		typeName := uniqueClassName(toDartClassName(tokenElementName(token)), usedClassNames)
+		if len(typeSpec.Enum) > 0 {
+			namedTypeRefs[token] = packageNamedTypeRef{
+				Kind:           "enum",
+				Name:           typeName,
+				UnderlyingType: dartTypeFromRawTypeName(typeSpec.Type),
+			}
+			continue
+		}
+		if typeSpec.Type == "object" || len(typeSpec.Properties) > 0 {
+			namedTypeRefs[token] = packageNamedTypeRef{
+				Kind:           "object",
+				Name:           typeName,
+				UnderlyingType: "Map<String, dynamic>",
+			}
+		}
 	}
-	return &spec, nil
+
+	for _, token := range typeTokens {
+		typeSpec := rawSpec.Types[token]
+		namedType, ok := namedTypeRefs[token]
+		if !ok {
+			continue
+		}
+
+		switch namedType.Kind {
+		case "enum":
+			if enumSpec := makeRawEnumSpec(namedType.Name, typeSpec); enumSpec != nil {
+				spec.Enums = append(spec.Enums, *enumSpec)
+			}
+		case "object":
+			if classSpec := buildRawObjectClassSpec(
+				namedType.Name,
+				typeSpec.Properties,
+				typeSpec.Required,
+				namedTypeRefs,
+				true,
+				false,
+			); classSpec != nil {
+				spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
+			}
+		}
+	}
+
+	if len(rawSpec.Config.Variables) > 0 {
+		configClassName := uniqueClassName(toDartClassName(rawSpec.Name)+"Config", usedClassNames)
+		if configClass := buildRawObjectClassSpec(
+			configClassName,
+			rawSpec.Config.Variables,
+			rawSpec.Config.Required,
+			namedTypeRefs,
+			true,
+			false,
+		); configClass != nil {
+			spec.Config = &packageConfigSpec{
+				ClassName:  configClass.ClassName,
+				Properties: configClass.Properties,
+			}
+		}
+	}
+
+	resourceTokens := make([]string, 0, len(rawSpec.Resources))
+	for token := range rawSpec.Resources {
+		resourceTokens = append(resourceTokens, token)
+	}
+	sort.Strings(resourceTokens)
+
+	for _, token := range resourceTokens {
+		resource := rawSpec.Resources[token]
+		resourceSpec := packageResourceSpec{
+			IsComponent: resource.IsComponent,
+		}
+		if classSpec := makeRawObjectClassSpec(
+			toDartClassName(tokenElementName(token))+"Args",
+			resource.InputProperties,
+			resource.RequiredInputs,
+			usedClassNames,
+			namedTypeRefs,
+			true,
+			true,
+		); classSpec != nil {
+			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
+			resourceSpec.ArgsClass = classSpec.ClassName
+		}
+		resourceSpec.OutputProperties = makeRawResourceOutputPropertySpecs(resource, namedTypeRefs)
+		spec.Resources[token] = resourceSpec
+	}
+
+	functionTokens := make([]string, 0, len(rawSpec.Functions))
+	for token := range rawSpec.Functions {
+		functionTokens = append(functionTokens, token)
+	}
+	sort.Strings(functionTokens)
+
+	for _, token := range functionTokens {
+		function := rawSpec.Functions[token]
+		var inputProperties map[string]rawPropertyTypeSpec
+		var inputRequired []string
+		if function.Inputs != nil {
+			inputProperties = function.Inputs.Properties
+			inputRequired = function.Inputs.Required
+		}
+		var outputProperties map[string]rawPropertyTypeSpec
+		var outputRequired []string
+		if function.Outputs != nil {
+			outputProperties = function.Outputs.Properties
+			outputRequired = function.Outputs.Required
+		}
+
+		functionSpec := packageFunctionSpec{
+			HasArgs: len(inputProperties) > 0,
+		}
+		base := toDartClassName(tokenElementName(token))
+		if classSpec := makeRawObjectClassSpec(
+			base+"Args",
+			inputProperties,
+			inputRequired,
+			usedClassNames,
+			namedTypeRefs,
+			true,
+			true,
+		); classSpec != nil {
+			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
+			functionSpec.ArgsClass = classSpec.ClassName
+		}
+		if classSpec := makeRawObjectClassSpec(
+			base+"Result",
+			outputProperties,
+			outputRequired,
+			usedClassNames,
+			namedTypeRefs,
+			true,
+			false,
+		); classSpec != nil {
+			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
+			functionSpec.ResultClass = classSpec.ClassName
+		}
+		spec.Functions[token] = functionSpec
+	}
+
+	sort.Slice(spec.Enums, func(i, j int) bool {
+		return spec.Enums[i].EnumName < spec.Enums[j].EnumName
+	})
+	sort.Slice(spec.ObjectClasses, func(i, j int) bool {
+		return spec.ObjectClasses[i].ClassName < spec.ObjectClasses[j].ClassName
+	})
+
+	return spec, nil
 }
 
 func uniqueClassName(base string, used map[string]int) string {
@@ -1261,16 +1854,155 @@ func propertyFieldName(name string, used map[string]int) string {
 	return fmt.Sprintf("%s%d", candidate, count+1)
 }
 
+func dartTypeSpecFromSchemaType(
+	typ schema.Type,
+	namedTypeRefs map[string]packageNamedTypeRef,
+	useReferenceTypes bool,
+) packageTypeSpec {
+	for {
+		switch t := typ.(type) {
+		case *schema.OptionalType:
+			typ = t.ElementType
+		case *schema.InputType:
+			typ = t.ElementType
+		default:
+			goto resolved
+		}
+	}
+
+resolved:
+	switch t := typ.(type) {
+	case nil:
+		return makePackageTypeSpec("dynamic", "dynamic")
+	case *schema.ArrayType:
+		elementType := dartTypeSpecFromSchemaType(t.ElementType, namedTypeRefs, useReferenceTypes)
+		return packageTypeSpec{
+			Kind:        "array",
+			DartType:    fmt.Sprintf("List<%s>", elementType.DartType),
+			ElementType: &elementType,
+		}
+	case *schema.MapType:
+		valueType := dartTypeSpecFromSchemaType(t.ElementType, namedTypeRefs, useReferenceTypes)
+		return packageTypeSpec{
+			Kind:        "map",
+			DartType:    fmt.Sprintf("Map<String, %s>", valueType.DartType),
+			ElementType: &valueType,
+		}
+	case *schema.UnionType:
+		if t.DefaultType != nil {
+			return dartTypeSpecFromSchemaType(t.DefaultType, namedTypeRefs, useReferenceTypes)
+		}
+		for _, elementType := range t.ElementTypes {
+			candidate := dartTypeSpecFromSchemaType(elementType, namedTypeRefs, useReferenceTypes)
+			if candidate.DartType != "dynamic" {
+				return candidate
+			}
+		}
+		return makePackageTypeSpec("dynamic", "dynamic")
+	case *schema.EnumType:
+		if namedTypeRefs != nil {
+			if namedType, ok := namedTypeRefs[t.Token]; ok {
+				if useReferenceTypes {
+					return packageTypeSpec{
+						Kind:              namedType.Kind,
+						DartType:          namedType.Name,
+						ReferenceType:     namedType.Name,
+						ReferenceWireType: namedType.UnderlyingType,
+					}
+				}
+				return makePackageTypeSpec("scalar", namedType.UnderlyingType)
+			}
+		}
+		return dartTypeSpecFromSchemaType(t.ElementType, namedTypeRefs, useReferenceTypes)
+	case *schema.TokenType:
+		if namedTypeRefs != nil {
+			if namedType, ok := namedTypeRefs[t.Token]; ok {
+				if useReferenceTypes {
+					return packageTypeSpec{
+						Kind:              namedType.Kind,
+						DartType:          namedType.Name,
+						ReferenceType:     namedType.Name,
+						ReferenceWireType: namedType.UnderlyingType,
+					}
+				}
+				if namedType.Kind == "enum" {
+					return makePackageTypeSpec("scalar", namedType.UnderlyingType)
+				}
+				return makePackageTypeSpec("object", "Map<String, dynamic>")
+			}
+		}
+		if t.UnderlyingType != nil {
+			return dartTypeSpecFromSchemaType(t.UnderlyingType, namedTypeRefs, useReferenceTypes)
+		}
+		return makePackageTypeSpec("dynamic", "dynamic")
+	case *schema.ObjectType:
+		if namedTypeRefs != nil && t.Token != "" {
+			if namedType, ok := namedTypeRefs[t.Token]; ok {
+				if useReferenceTypes {
+					return packageTypeSpec{
+						Kind:              namedType.Kind,
+						DartType:          namedType.Name,
+						ReferenceType:     namedType.Name,
+						ReferenceWireType: namedType.UnderlyingType,
+					}
+				}
+				return makePackageTypeSpec("object", "Map<String, dynamic>")
+			}
+		}
+		return makePackageTypeSpec("object", "Map<String, dynamic>")
+	case *schema.ResourceType:
+		return makePackageTypeSpec("dynamic", "dynamic")
+	}
+
+	switch typ {
+	case schema.BoolType:
+		return makePackageTypeSpec("scalar", "bool")
+	case schema.IntType:
+		return makePackageTypeSpec("scalar", "int")
+	case schema.NumberType:
+		return makePackageTypeSpec("scalar", "double")
+	case schema.StringType:
+		return makePackageTypeSpec("scalar", "String")
+	case schema.AssetType, schema.ArchiveType, schema.AnyResourceType, schema.JSONType, schema.AnyType:
+		return makePackageTypeSpec("dynamic", "dynamic")
+	default:
+		return makePackageTypeSpec("dynamic", "dynamic")
+	}
+}
+
 func makeObjectClassSpec(
 	baseName string,
 	properties []*schema.Property,
 	usedClassNames map[string]int,
+	namedTypeRefs map[string]packageNamedTypeRef,
+	useReferenceTypes bool,
+	usesInputTypes bool,
 ) *packageObjectClassSpec {
 	if len(properties) == 0 {
 		return nil
 	}
 
 	className := uniqueClassName(toDartClassName(baseName), usedClassNames)
+	return buildObjectClassSpec(
+		className,
+		properties,
+		namedTypeRefs,
+		useReferenceTypes,
+		usesInputTypes,
+	)
+}
+
+func buildObjectClassSpec(
+	className string,
+	properties []*schema.Property,
+	namedTypeRefs map[string]packageNamedTypeRef,
+	useReferenceTypes bool,
+	usesInputTypes bool,
+) *packageObjectClassSpec {
+	if len(properties) == 0 {
+		return nil
+	}
+
 	props := make([]*schema.Property, len(properties))
 	copy(props, properties)
 	sort.Slice(props, func(i, j int) bool {
@@ -1280,16 +2012,111 @@ func makeObjectClassSpec(
 	usedFieldNames := map[string]int{}
 	fields := make([]packagePropertySpec, 0, len(props))
 	for _, property := range props {
+		typeSpec := dartTypeSpecFromSchemaType(
+			property.Type,
+			namedTypeRefs,
+			useReferenceTypes,
+		)
+		referenceKind, referenceType, referenceWireType := directReferenceInfo(typeSpec)
 		fields = append(fields, packagePropertySpec{
-			Name:      property.Name,
-			FieldName: propertyFieldName(property.Name, usedFieldNames),
-			Required:  property.IsRequired(),
+			Name:              property.Name,
+			FieldName:         propertyFieldName(property.Name, usedFieldNames),
+			Required:          property.IsRequired(),
+			TypeSpec:          typeSpec,
+			DartType:          typeSpec.DartType,
+			ReferenceKind:     referenceKind,
+			ReferenceType:     referenceType,
+			ReferenceWireType: referenceWireType,
 		})
 	}
 
 	return &packageObjectClassSpec{
-		ClassName:  className,
-		Properties: fields,
+		ClassName:      className,
+		UsesInputTypes: usesInputTypes,
+		Properties:     fields,
+	}
+}
+
+func makeResourceOutputPropertySpecs(
+	resource *schema.Resource,
+	namedTypeRefs map[string]packageNamedTypeRef,
+) []packagePropertySpec {
+	if len(resource.Properties) == 0 {
+		return nil
+	}
+
+	props := make([]*schema.Property, len(resource.Properties))
+	copy(props, resource.Properties)
+	sort.Slice(props, func(i, j int) bool {
+		return props[i].Name < props[j].Name
+	})
+
+	usedFieldNames := map[string]int{
+		"urn": 1,
+	}
+	if !resource.IsComponent {
+		usedFieldNames["id"] = 1
+	}
+
+	fields := make([]packagePropertySpec, 0, len(props))
+	for _, property := range props {
+		if property.Name == "urn" {
+			continue
+		}
+		if !resource.IsComponent && property.Name == "id" {
+			continue
+		}
+
+		typeSpec := dartTypeSpecFromSchemaType(
+			property.Type,
+			namedTypeRefs,
+			true,
+		)
+		referenceKind, referenceType, referenceWireType := directReferenceInfo(typeSpec)
+		fields = append(fields, packagePropertySpec{
+			Name:              property.Name,
+			FieldName:         propertyFieldName(property.Name, usedFieldNames),
+			Required:          property.IsRequired(),
+			TypeSpec:          typeSpec,
+			DartType:          typeSpec.DartType,
+			ReferenceKind:     referenceKind,
+			ReferenceType:     referenceType,
+			ReferenceWireType: referenceWireType,
+		})
+	}
+
+	if len(fields) == 0 {
+		return nil
+	}
+	return fields
+}
+
+func makeSchemaEnumSpec(typeName string, enumType *schema.EnumType) *packageEnumSpec {
+	if enumType == nil || len(enumType.Elements) == 0 {
+		return nil
+	}
+
+	underlyingType := dartTypeSpecFromSchemaType(enumType.ElementType, nil, false).DartType
+	values := make([]packageEnumValueSpec, 0, len(enumType.Elements))
+	usedValueNames := map[string]int{}
+	for _, enumValue := range enumType.Elements {
+		literal, ok := dartEnumLiteral(enumValue.Value, underlyingType)
+		if !ok {
+			return nil
+		}
+		values = append(values, packageEnumValueSpec{
+			Name:    enumValueName(enumValue.Name, enumValue.Value, usedValueNames),
+			Literal: literal,
+		})
+	}
+	if len(values) == 0 {
+		return nil
+	}
+
+	return &packageEnumSpec{
+		EnumName:       typeName,
+		UnderlyingType: underlyingType,
+		Values:         values,
 	}
 }
 
@@ -1305,10 +2132,98 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 		Version:       version,
 		Resources:     map[string]packageResourceSpec{},
 		Functions:     map[string]packageFunctionSpec{},
+		Config:        nil,
+		Enums:         []packageEnumSpec{},
 		ObjectClasses: []packageObjectClassSpec{},
 	}
 
 	usedClassNames := map[string]int{}
+	namedTypeRefs := map[string]packageNamedTypeRef{}
+
+	typeTokens := make([]string, 0, len(pkg.Types))
+	typesByToken := map[string]schema.Type{}
+	for _, typ := range pkg.Types {
+		switch t := typ.(type) {
+		case *schema.EnumType:
+			if t.Token == "" {
+				continue
+			}
+			if _, exists := typesByToken[t.Token]; !exists {
+				typeTokens = append(typeTokens, t.Token)
+			}
+			typesByToken[t.Token] = typ
+		case *schema.ObjectType:
+			if t.Token == "" || t.IsInputShape() {
+				continue
+			}
+			if _, exists := typesByToken[t.Token]; !exists {
+				typeTokens = append(typeTokens, t.Token)
+			}
+			typesByToken[t.Token] = typ
+		}
+	}
+	sort.Strings(typeTokens)
+
+	for _, token := range typeTokens {
+		typ := typesByToken[token]
+		typeName := uniqueClassName(toDartClassName(tokenElementName(token)), usedClassNames)
+		switch t := typ.(type) {
+		case *schema.EnumType:
+			underlyingType := dartTypeSpecFromSchemaType(t.ElementType, nil, false).DartType
+			namedTypeRefs[token] = packageNamedTypeRef{
+				Kind:           "enum",
+				Name:           typeName,
+				UnderlyingType: underlyingType,
+			}
+		case *schema.ObjectType:
+			namedTypeRefs[token] = packageNamedTypeRef{
+				Kind:           "object",
+				Name:           typeName,
+				UnderlyingType: "Map<String, dynamic>",
+			}
+		}
+	}
+
+	for _, token := range typeTokens {
+		typ := typesByToken[token]
+		namedType, ok := namedTypeRefs[token]
+		if !ok {
+			continue
+		}
+
+		switch t := typ.(type) {
+		case *schema.EnumType:
+			if enumSpec := makeSchemaEnumSpec(namedType.Name, t); enumSpec != nil {
+				spec.Enums = append(spec.Enums, *enumSpec)
+			}
+		case *schema.ObjectType:
+			if classSpec := buildObjectClassSpec(
+				namedType.Name,
+				t.Properties,
+				namedTypeRefs,
+				true,
+				false,
+			); classSpec != nil {
+				spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
+			}
+		}
+	}
+
+	if len(pkg.Config) > 0 {
+		configClassName := uniqueClassName(toDartClassName(pkg.Name)+"Config", usedClassNames)
+		if configClass := buildObjectClassSpec(
+			configClassName,
+			pkg.Config,
+			namedTypeRefs,
+			true,
+			false,
+		); configClass != nil {
+			spec.Config = &packageConfigSpec{
+				ClassName:  configClass.ClassName,
+				Properties: configClass.Properties,
+			}
+		}
+	}
 
 	resourceByToken := map[string]*schema.Resource{}
 	resourceTokens := make([]string, 0, len(pkg.Resources))
@@ -1327,10 +2242,14 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 			toDartClassName(tokenElementName(resource.Token))+"Args",
 			resource.InputProperties,
 			usedClassNames,
+			namedTypeRefs,
+			true,
+			true,
 		); classSpec != nil {
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			resourceSpec.ArgsClass = classSpec.ClassName
 		}
+		resourceSpec.OutputProperties = makeResourceOutputPropertySpecs(resource, namedTypeRefs)
 		spec.Resources[resource.Token] = resourceSpec
 	}
 
@@ -1357,17 +2276,20 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 			HasArgs: len(inputProperties) > 0,
 		}
 		base := toDartClassName(tokenElementName(function.Token))
-		if classSpec := makeObjectClassSpec(base+"Args", inputProperties, usedClassNames); classSpec != nil {
+		if classSpec := makeObjectClassSpec(base+"Args", inputProperties, usedClassNames, namedTypeRefs, true, true); classSpec != nil {
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			functionSpec.ArgsClass = classSpec.ClassName
 		}
-		if classSpec := makeObjectClassSpec(base+"Result", outputProperties, usedClassNames); classSpec != nil {
+		if classSpec := makeObjectClassSpec(base+"Result", outputProperties, usedClassNames, namedTypeRefs, true, false); classSpec != nil {
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			functionSpec.ResultClass = classSpec.ClassName
 		}
 		spec.Functions[function.Token] = functionSpec
 	}
 
+	sort.Slice(spec.Enums, func(i, j int) bool {
+		return spec.Enums[i].EnumName < spec.Enums[j].EnumName
+	})
 	sort.Slice(spec.ObjectClasses, func(i, j int) bool {
 		return spec.ObjectClasses[i].ClassName < spec.ObjectClasses[j].ClassName
 	})
@@ -1493,10 +2415,463 @@ func functionNameFromToken(token string, used map[string]int) string {
 	return fmt.Sprintf("%s%d", candidate, count+1)
 }
 
+func propertyTypeSpec(property packagePropertySpec) packageTypeSpec {
+	if property.TypeSpec.DartType != "" {
+		return property.TypeSpec
+	}
+	if property.DartType != "" {
+		kind := "scalar"
+		if property.DartType == "dynamic" {
+			kind = "dynamic"
+		}
+		return makePackageTypeSpec(kind, property.DartType)
+	}
+	return makePackageTypeSpec("dynamic", "dynamic")
+}
+
+func propertyBaseDartType(property packagePropertySpec) string {
+	return propertyTypeSpec(property).DartType
+}
+
+func nullableDartType(base string, required bool) string {
+	if required || base == "dynamic" {
+		return base
+	}
+	return base + "?"
+}
+
+func objectClassPropertyDartType(objectClass packageObjectClassSpec, property packagePropertySpec) string {
+	base := propertyBaseDartType(property)
+	if objectClass.UsesInputTypes {
+		typed := fmt.Sprintf("Input<%s>", base)
+		if property.Required {
+			return typed
+		}
+		return typed + "?"
+	}
+	return nullableDartType(base, property.Required)
+}
+
+func typeSpecElement(typeSpec packageTypeSpec) packageTypeSpec {
+	if typeSpec.ElementType != nil {
+		return *typeSpec.ElementType
+	}
+	return makePackageTypeSpec("dynamic", "dynamic")
+}
+
+func typeSpecNeedsDecodeConversion(typeSpec packageTypeSpec) bool {
+	switch typeSpec.Kind {
+	case "enum":
+		return typeSpec.ReferenceType != ""
+	case "object":
+		return typeSpec.ReferenceType != ""
+	case "array", "map":
+		return typeSpecNeedsDecodeConversion(typeSpecElement(typeSpec))
+	default:
+		return false
+	}
+}
+
+func typeSpecNeedsEncodeConversion(typeSpec packageTypeSpec) bool {
+	switch typeSpec.Kind {
+	case "enum":
+		return typeSpec.ReferenceType != ""
+	case "object":
+		return typeSpec.ReferenceType != ""
+	case "array", "map":
+		return typeSpecNeedsEncodeConversion(typeSpecElement(typeSpec))
+	default:
+		return false
+	}
+}
+
+func typeSpecWireDartType(typeSpec packageTypeSpec) string {
+	switch typeSpec.Kind {
+	case "enum":
+		if typeSpec.ReferenceWireType != "" {
+			return typeSpec.ReferenceWireType
+		}
+	case "object":
+		if typeSpec.ReferenceType != "" {
+			return "Map<String, dynamic>"
+		}
+		return "Map<String, dynamic>"
+	case "array":
+		element := typeSpecElement(typeSpec)
+		return fmt.Sprintf("List<%s>", typeSpecWireDartType(element))
+	case "map":
+		element := typeSpecElement(typeSpec)
+		return fmt.Sprintf("Map<String, %s>", typeSpecWireDartType(element))
+	}
+	if typeSpec.DartType != "" {
+		return typeSpec.DartType
+	}
+	return "dynamic"
+}
+
+func typeSpecDecodeExpression(typeSpec packageTypeSpec, sourceExpr string) string {
+	switch typeSpec.Kind {
+	case "enum":
+		wireType := typeSpec.ReferenceWireType
+		if wireType == "" {
+			wireType = "String"
+		}
+		return fmt.Sprintf("%s.fromValue(%s as %s)", typeSpec.ReferenceType, sourceExpr, wireType)
+	case "object":
+		if typeSpec.ReferenceType == "" {
+			return fmt.Sprintf("(%s as Map).cast<String, dynamic>()", sourceExpr)
+		}
+		return fmt.Sprintf("%s.fromMap((%s as Map).cast<String, dynamic>())", typeSpec.ReferenceType, sourceExpr)
+	case "array":
+		element := typeSpecElement(typeSpec)
+		if typeSpecNeedsDecodeConversion(element) {
+			return fmt.Sprintf(
+				"_decodeList<%s>(%s, (value) => %s)",
+				element.DartType,
+				sourceExpr,
+				typeSpecDecodeExpression(element, "value"),
+			)
+		}
+		return fmt.Sprintf("(%s as List).cast<%s>()", sourceExpr, element.DartType)
+	case "map":
+		element := typeSpecElement(typeSpec)
+		if typeSpecNeedsDecodeConversion(element) {
+			return fmt.Sprintf(
+				"_decodeMapValues<%s>(%s, (value) => %s)",
+				element.DartType,
+				sourceExpr,
+				typeSpecDecodeExpression(element, "value"),
+			)
+		}
+		return fmt.Sprintf("(%s as Map).cast<String, %s>()", sourceExpr, element.DartType)
+	case "dynamic":
+		return sourceExpr
+	default:
+		target := typeSpec.DartType
+		if target == "" || target == "dynamic" {
+			return sourceExpr
+		}
+		return fmt.Sprintf("%s as %s", sourceExpr, target)
+	}
+}
+
+func typeSpecEncodeExpression(typeSpec packageTypeSpec, sourceExpr string) string {
+	switch typeSpec.Kind {
+	case "enum":
+		return fmt.Sprintf("%s.value", sourceExpr)
+	case "object":
+		if typeSpec.ReferenceType == "" {
+			return sourceExpr
+		}
+		return fmt.Sprintf("%s.toMap()", sourceExpr)
+	case "array":
+		element := typeSpecElement(typeSpec)
+		if typeSpecNeedsEncodeConversion(element) {
+			return fmt.Sprintf(
+				"_encodeList<%s, %s>(%s, (value) => %s)",
+				element.DartType,
+				typeSpecWireDartType(element),
+				sourceExpr,
+				typeSpecEncodeExpression(element, "value"),
+			)
+		}
+		return sourceExpr
+	case "map":
+		element := typeSpecElement(typeSpec)
+		if typeSpecNeedsEncodeConversion(element) {
+			return fmt.Sprintf(
+				"_encodeMapValues<%s, %s>(%s, (value) => %s)",
+				element.DartType,
+				typeSpecWireDartType(element),
+				sourceExpr,
+				typeSpecEncodeExpression(element, "value"),
+			)
+		}
+		return sourceExpr
+	default:
+		return sourceExpr
+	}
+}
+
+func typeSpecNeedsDecodeListHelper(typeSpec packageTypeSpec) bool {
+	switch typeSpec.Kind {
+	case "array":
+		element := typeSpecElement(typeSpec)
+		return typeSpecNeedsDecodeConversion(element) || typeSpecNeedsDecodeListHelper(element) || typeSpecNeedsDecodeMapHelper(element)
+	case "map":
+		element := typeSpecElement(typeSpec)
+		return typeSpecNeedsDecodeListHelper(element) || typeSpecNeedsDecodeMapHelper(element)
+	default:
+		return false
+	}
+}
+
+func typeSpecNeedsDecodeMapHelper(typeSpec packageTypeSpec) bool {
+	switch typeSpec.Kind {
+	case "map":
+		element := typeSpecElement(typeSpec)
+		return typeSpecNeedsDecodeConversion(element) || typeSpecNeedsDecodeListHelper(element) || typeSpecNeedsDecodeMapHelper(element)
+	case "array":
+		element := typeSpecElement(typeSpec)
+		return typeSpecNeedsDecodeListHelper(element) || typeSpecNeedsDecodeMapHelper(element)
+	default:
+		return false
+	}
+}
+
+func typeSpecNeedsEncodeListHelper(typeSpec packageTypeSpec) bool {
+	switch typeSpec.Kind {
+	case "array":
+		element := typeSpecElement(typeSpec)
+		return typeSpecNeedsEncodeConversion(element) || typeSpecNeedsEncodeListHelper(element) || typeSpecNeedsEncodeMapHelper(element)
+	case "map":
+		element := typeSpecElement(typeSpec)
+		return typeSpecNeedsEncodeListHelper(element) || typeSpecNeedsEncodeMapHelper(element)
+	default:
+		return false
+	}
+}
+
+func typeSpecNeedsEncodeMapHelper(typeSpec packageTypeSpec) bool {
+	switch typeSpec.Kind {
+	case "map":
+		element := typeSpecElement(typeSpec)
+		return typeSpecNeedsEncodeConversion(element) || typeSpecNeedsEncodeListHelper(element) || typeSpecNeedsEncodeMapHelper(element)
+	case "array":
+		element := typeSpecElement(typeSpec)
+		return typeSpecNeedsEncodeListHelper(element) || typeSpecNeedsEncodeMapHelper(element)
+	default:
+		return false
+	}
+}
+
+func objectClassFromMapExpression(objectClass packageObjectClassSpec, property packagePropertySpec) string {
+	base := propertyBaseDartType(property)
+	if objectClass.UsesInputTypes {
+		if property.Required {
+			return fmt.Sprintf("_asInput<%s>(map['%s'])", base, property.Name)
+		}
+		return fmt.Sprintf("_asOptionalInput<%s>(map['%s'])", base, property.Name)
+	}
+
+	sourceExpr := fmt.Sprintf("map['%s']", property.Name)
+	typeSpec := propertyTypeSpec(property)
+	decodedExpr := typeSpecDecodeExpression(typeSpec, sourceExpr)
+	if property.Required {
+		return decodedExpr
+	}
+	return fmt.Sprintf("%s == null ? null : %s", sourceExpr, decodedExpr)
+}
+
+func objectClassToMapExpression(objectClass packageObjectClassSpec, property packagePropertySpec) string {
+	typeSpec := propertyTypeSpec(property)
+	if objectClass.UsesInputTypes {
+		if typeSpecNeedsEncodeConversion(typeSpec) {
+			if property.Required {
+				return fmt.Sprintf(
+					"_mapInputValue<%s, %s>(%s, (value) => %s)",
+					typeSpec.DartType,
+					typeSpecWireDartType(typeSpec),
+					property.FieldName,
+					typeSpecEncodeExpression(typeSpec, "value"),
+				)
+			}
+			return fmt.Sprintf(
+				"_mapOptionalInputValue<%s, %s>(%s, (value) => %s)",
+				typeSpec.DartType,
+				typeSpecWireDartType(typeSpec),
+				property.FieldName,
+				typeSpecEncodeExpression(typeSpec, "value"),
+			)
+		}
+		return property.FieldName
+	}
+
+	if typeSpecNeedsEncodeConversion(typeSpec) {
+		return typeSpecEncodeExpression(typeSpec, property.FieldName)
+	}
+	return property.FieldName
+}
+
+func resourceOutputValueType(property packagePropertySpec) string {
+	return nullableDartType(propertyBaseDartType(property), property.Required)
+}
+
+func configPropertyGetterType(property packagePropertySpec) string {
+	base := propertyBaseDartType(property)
+	if base == "dynamic" {
+		return "dynamic"
+	}
+	return base + "?"
+}
+
+func configTypeRequiresJSONDecode(typeSpec packageTypeSpec) bool {
+	switch typeSpec.Kind {
+	case "array", "map":
+		return true
+	case "object":
+		return true
+	default:
+		return false
+	}
+}
+
+func configTypeNeedsIntParser(typeSpec packageTypeSpec) bool {
+	switch typeSpec.Kind {
+	case "scalar":
+		return typeSpec.DartType == "int"
+	case "enum":
+		return typeSpec.ReferenceWireType == "int"
+	default:
+		return false
+	}
+}
+
+func configTypeNeedsDoubleParser(typeSpec packageTypeSpec) bool {
+	switch typeSpec.Kind {
+	case "scalar":
+		return typeSpec.DartType == "double"
+	case "enum":
+		return typeSpec.ReferenceWireType == "double"
+	default:
+		return false
+	}
+}
+
+func configTypeNeedsBoolParser(typeSpec packageTypeSpec) bool {
+	switch typeSpec.Kind {
+	case "scalar":
+		return typeSpec.DartType == "bool"
+	case "enum":
+		return typeSpec.ReferenceWireType == "bool"
+	default:
+		return false
+	}
+}
+
+func configPropertyParseExpression(property packagePropertySpec, rawExpr string) string {
+	typeSpec := propertyTypeSpec(property)
+	if configTypeRequiresJSONDecode(typeSpec) {
+		return fmt.Sprintf(
+			"%s == null ? null : %s",
+			rawExpr,
+			typeSpecDecodeExpression(typeSpec, fmt.Sprintf("jsonDecode(%s)", rawExpr)),
+		)
+	}
+
+	if typeSpec.Kind == "enum" {
+		wireType := typeSpec.ReferenceWireType
+		if wireType == "" {
+			wireType = "String"
+		}
+		parseWire := rawExpr
+		switch wireType {
+		case "int":
+			parseWire = fmt.Sprintf("_parseIntConfig(%s)", rawExpr)
+		case "double":
+			parseWire = fmt.Sprintf("_parseDoubleConfig(%s)", rawExpr)
+		case "bool":
+			parseWire = fmt.Sprintf("_parseBoolConfig(%s)", rawExpr)
+		}
+		return fmt.Sprintf(
+			"%s == null ? null : %s.fromValue(%s as %s)",
+			parseWire,
+			typeSpec.ReferenceType,
+			parseWire,
+			wireType,
+		)
+	}
+
+	switch typeSpec.DartType {
+	case "String":
+		return rawExpr
+	case "int":
+		return fmt.Sprintf("_parseIntConfig(%s)", rawExpr)
+	case "double":
+		return fmt.Sprintf("_parseDoubleConfig(%s)", rawExpr)
+	case "bool":
+		return fmt.Sprintf("_parseBoolConfig(%s)", rawExpr)
+	default:
+		return rawExpr
+	}
+}
+
+func writeGeneratedConfigClass(b *strings.Builder, configSpec packageConfigSpec) {
+	fmt.Fprintf(b, "class %s {\n", configSpec.ClassName)
+	fmt.Fprintf(b, "  const %s();\n\n", configSpec.ClassName)
+	b.WriteString(
+		"  String? _raw(String key) {\n" +
+			"    final deployment = DeploymentImpl.instance as DeploymentImpl;\n" +
+			"    return deployment.getConfig(key);\n" +
+			"  }\n\n",
+	)
+	b.WriteString(
+		"  bool _isSecret(String key) {\n" +
+			"    final deployment = DeploymentImpl.instance as DeploymentImpl;\n" +
+			"    return deployment.isConfigSecret(key);\n" +
+			"  }\n\n",
+	)
+
+	for _, property := range configSpec.Properties {
+		getterType := configPropertyGetterType(property)
+		fmt.Fprintf(b, "  %s get %s {\n", getterType, property.FieldName)
+		fmt.Fprintf(b, "    final raw = _raw('%s');\n", property.Name)
+		fmt.Fprintf(b, "    return %s;\n", configPropertyParseExpression(property, "raw"))
+		b.WriteString("  }\n\n")
+
+		if property.Required {
+			methodName := "require" + toDartClassName(property.FieldName)
+			returnType := propertyBaseDartType(property)
+			fmt.Fprintf(b, "  %s %s() {\n", returnType, methodName)
+			fmt.Fprintf(b, "    final value = %s;\n", property.FieldName)
+			fmt.Fprintf(
+				b,
+				"    if (value == null) {\n      throw ArgumentError(\"Missing required config value '%s'.\");\n    }\n",
+				property.Name,
+			)
+			b.WriteString("    return value;\n")
+			b.WriteString("  }\n\n")
+		}
+
+		fmt.Fprintf(b, "  bool get %sIsSecret => _isSecret('%s');\n\n", property.FieldName, property.Name)
+	}
+
+	b.WriteString("}\n\n")
+	b.WriteString(fmt.Sprintf("final config = %s();\n\n", configSpec.ClassName))
+}
+
+func writeGeneratedEnumClass(b *strings.Builder, enumSpec packageEnumSpec) {
+	fmt.Fprintf(b, "enum %s {\n", enumSpec.EnumName)
+	for i, enumValue := range enumSpec.Values {
+		suffix := ","
+		if i == len(enumSpec.Values)-1 {
+			suffix = ";"
+		}
+		fmt.Fprintf(b, "  %s(%s)%s\n", enumValue.Name, enumValue.Literal, suffix)
+	}
+	b.WriteString("\n")
+	fmt.Fprintf(b, "  const %s(this.value);\n", enumSpec.EnumName)
+	fmt.Fprintf(b, "  final %s value;\n\n", enumSpec.UnderlyingType)
+	fmt.Fprintf(
+		b,
+		"  static %s fromValue(%s value) {\n    for (final item in %s.values) {\n      if (item.value == value) {\n        return item;\n      }\n    }\n    throw ArgumentError('Unknown %s value: $value');\n  }\n",
+		enumSpec.EnumName,
+		enumSpec.UnderlyingType,
+		enumSpec.EnumName,
+		enumSpec.EnumName,
+	)
+	b.WriteString("}\n\n")
+}
+
 func writeGeneratedObjectClass(b *strings.Builder, objectClass packageObjectClassSpec) {
 	fmt.Fprintf(b, "class %s {\n", objectClass.ClassName)
 	for _, property := range objectClass.Properties {
-		fmt.Fprintf(b, "  final dynamic %s;\n", property.FieldName)
+		fmt.Fprintf(
+			b,
+			"  final %s %s;\n",
+			objectClassPropertyDartType(objectClass, property),
+			property.FieldName,
+		)
 	}
 
 	if len(objectClass.Properties) == 0 {
@@ -1517,9 +2892,20 @@ func writeGeneratedObjectClass(b *strings.Builder, objectClass packageObjectClas
 	b.WriteString("    final map = <String, dynamic>{};\n")
 	for _, property := range objectClass.Properties {
 		if property.Required {
-			fmt.Fprintf(b, "    map['%s'] = %s;\n", property.Name, property.FieldName)
+			fmt.Fprintf(
+				b,
+				"    map['%s'] = %s;\n",
+				property.Name,
+				objectClassToMapExpression(objectClass, property),
+			)
 		} else {
-			fmt.Fprintf(b, "    if (%s != null) {\n      map['%s'] = %s;\n    }\n", property.FieldName, property.Name, property.FieldName)
+			fmt.Fprintf(
+				b,
+				"    if (%s != null) {\n      map['%s'] = %s;\n    }\n",
+				property.FieldName,
+				property.Name,
+				objectClassToMapExpression(objectClass, property),
+			)
 		}
 	}
 	b.WriteString("    return map;\n")
@@ -1528,7 +2914,12 @@ func writeGeneratedObjectClass(b *strings.Builder, objectClass packageObjectClas
 	fmt.Fprintf(b, "  factory %s.fromMap(Map<String, dynamic> map) {\n", objectClass.ClassName)
 	fmt.Fprintf(b, "    return %s(\n", objectClass.ClassName)
 	for _, property := range objectClass.Properties {
-		fmt.Fprintf(b, "      %s: map['%s'],\n", property.FieldName, property.Name)
+		fmt.Fprintf(
+			b,
+			"      %s: %s,\n",
+			property.FieldName,
+			objectClassFromMapExpression(objectClass, property),
+		)
 	}
 	b.WriteString("    );\n")
 	b.WriteString("  }\n")
@@ -1550,6 +2941,75 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 		functionTokens = append(functionTokens, token)
 	}
 	sort.Strings(functionTokens)
+	hasConfig := spec.Config != nil
+	configNeedsJSONDecode := false
+	configNeedsIntParser := false
+	configNeedsDoubleParser := false
+	configNeedsBoolParser := false
+	hasTypedInputObjects := false
+	hasInputReferenceMappings := false
+	needsDecodeListHelper := false
+	needsDecodeMapHelper := false
+	needsEncodeListHelper := false
+	needsEncodeMapHelper := false
+	for _, objectClass := range spec.ObjectClasses {
+		if objectClass.UsesInputTypes {
+			hasTypedInputObjects = true
+		}
+		for _, property := range objectClass.Properties {
+			typeSpec := propertyTypeSpec(property)
+			if objectClass.UsesInputTypes && typeSpecNeedsEncodeConversion(typeSpec) {
+				hasInputReferenceMappings = true
+			}
+			if typeSpecNeedsDecodeListHelper(typeSpec) {
+				needsDecodeListHelper = true
+			}
+			if typeSpecNeedsDecodeMapHelper(typeSpec) {
+				needsDecodeMapHelper = true
+			}
+			if typeSpecNeedsEncodeListHelper(typeSpec) {
+				needsEncodeListHelper = true
+			}
+			if typeSpecNeedsEncodeMapHelper(typeSpec) {
+				needsEncodeMapHelper = true
+			}
+		}
+	}
+	if hasConfig {
+		for _, property := range spec.Config.Properties {
+			typeSpec := propertyTypeSpec(property)
+			if configTypeRequiresJSONDecode(typeSpec) {
+				configNeedsJSONDecode = true
+			}
+			if configTypeNeedsIntParser(typeSpec) {
+				configNeedsIntParser = true
+			}
+			if configTypeNeedsDoubleParser(typeSpec) {
+				configNeedsDoubleParser = true
+			}
+			if configTypeNeedsBoolParser(typeSpec) {
+				configNeedsBoolParser = true
+			}
+			if typeSpecNeedsDecodeListHelper(typeSpec) {
+				needsDecodeListHelper = true
+			}
+			if typeSpecNeedsDecodeMapHelper(typeSpec) {
+				needsDecodeMapHelper = true
+			}
+		}
+	}
+	if configNeedsJSONDecode {
+		b.WriteString("import 'dart:convert';\n\n")
+	}
+
+	hasResourceOutputs := false
+	for _, token := range resourceTokens {
+		if len(spec.Resources[token].OutputProperties) > 0 {
+			hasResourceOutputs = true
+			break
+		}
+	}
+
 	if len(functionTokens) > 0 {
 		b.WriteString("import 'package:pulumi/src/deployment/models.dart' as deployment_models;\n\n")
 	}
@@ -1566,6 +3026,83 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
     }
   }
   return mapped;
+}
+
+`)
+	}
+
+	if hasTypedInputObjects {
+		b.WriteString(`Input<T> _asInput<T>(dynamic value) {
+  if (value is Input<T>) {
+    return value;
+  }
+  return Input.fromValue(value as T);
+}
+
+Input<T>? _asOptionalInput<T>(dynamic value) {
+  if (value == null) {
+    return null;
+  }
+  if (value is Input<T>) {
+    return value;
+  }
+  return Input.fromValue(value as T);
+}
+
+`)
+	}
+
+	if hasInputReferenceMappings {
+		b.WriteString(`Input<U> _mapInputValue<T, U>(Input<T> input, U Function(T value) mapper) {
+  return Input.fromOutput(input.toOutput().apply((value) => mapper(value as T)));
+}
+
+Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapper) {
+  if (input == null) {
+    return null;
+  }
+  return _mapInputValue<T, U>(input, mapper);
+}
+
+`)
+	}
+
+	if needsDecodeListHelper {
+		b.WriteString(`List<T> _decodeList<T>(dynamic value, T Function(dynamic value) decoder) {
+  return (value as List).map((item) => decoder(item)).toList(growable: false);
+}
+
+`)
+	}
+
+	if needsDecodeMapHelper {
+		b.WriteString(`Map<String, T> _decodeMapValues<T>(dynamic value, T Function(dynamic value) decoder) {
+  final map = (value as Map).cast<String, dynamic>();
+  return map.map((key, item) => MapEntry(key, decoder(item)));
+}
+
+`)
+	}
+
+	if needsEncodeListHelper {
+		b.WriteString(`List<U> _encodeList<T, U>(List<T> value, U Function(T value) encoder) {
+  return value.map((item) => encoder(item)).toList(growable: false);
+}
+
+`)
+	}
+
+	if needsEncodeMapHelper {
+		b.WriteString(`Map<String, U> _encodeMapValues<T, U>(Map<String, T> value, U Function(T value) encoder) {
+  return value.map((key, item) => MapEntry(key, encoder(item)));
+}
+
+`)
+	}
+
+	if hasResourceOutputs {
+		b.WriteString(`Output<T> _unknownOutput<T>() {
+  return Output.createUnknown<T>();
 }
 
 `)
@@ -1588,15 +3125,72 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 `)
 	}
 
-	if len(resourceTokens) == 0 && len(functionTokens) == 0 {
+	if len(resourceTokens) == 0 &&
+		len(functionTokens) == 0 &&
+		!hasConfig &&
+		len(spec.Enums) == 0 &&
+		len(spec.ObjectClasses) == 0 {
 		b.WriteString("// This package schema did not define resources or functions.\n")
 		return []byte(b.String())
+	}
+
+	if len(spec.Enums) > 0 {
+		for _, enumSpec := range spec.Enums {
+			writeGeneratedEnumClass(&b, enumSpec)
+		}
 	}
 
 	if len(spec.ObjectClasses) > 0 {
 		for _, objectClass := range spec.ObjectClasses {
 			writeGeneratedObjectClass(&b, objectClass)
 		}
+	}
+
+	if hasConfig && configNeedsIntParser {
+		b.WriteString(`int? _parseIntConfig(String? value) {
+  if (value == null) {
+    return null;
+  }
+  return int.tryParse(value);
+}
+
+`)
+	}
+
+	if hasConfig && configNeedsDoubleParser {
+		b.WriteString(`double? _parseDoubleConfig(String? value) {
+  if (value == null) {
+    return null;
+  }
+  return double.tryParse(value);
+}
+
+`)
+	}
+
+	if hasConfig && configNeedsBoolParser {
+		b.WriteString(`bool? _parseBoolConfig(String? value) {
+  if (value == null) {
+    return null;
+  }
+
+  switch (value.toLowerCase()) {
+    case 'true':
+    case '1':
+      return true;
+    case 'false':
+    case '0':
+      return false;
+    default:
+      return null;
+  }
+}
+
+`)
+	}
+
+	if hasConfig {
+		writeGeneratedConfigClass(&b, *spec.Config)
 	}
 
 	usedClassNames := map[string]int{}
@@ -1606,30 +3200,59 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 
 		if resource.IsComponent {
 			fmt.Fprintf(&b, "class %s extends ComponentResource {\n", className)
+			for _, property := range resource.OutputProperties {
+				fmt.Fprintf(
+					&b,
+					"  late final Output<%s> %s;\n",
+					resourceOutputValueType(property),
+					property.FieldName,
+				)
+			}
+			if len(resource.OutputProperties) > 0 {
+				b.WriteString("\n")
+			}
+
+			signature := "  %s(\n    String name, {\n    ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          null,\n          options ?? ComponentResourceOptions(),\n        )"
 			if resource.ArgsClass != "" {
-				fmt.Fprintf(
-					&b,
-					"  %s(\n    String name, {\n    %s? args,\n    ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? ComponentResourceOptions(),\n        );\n}\n\n",
-					className,
-					resource.ArgsClass,
-					token,
-				)
+				signature = "  %s(\n    String name, {\n    %s? args,\n    ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? ComponentResourceOptions(),\n        )"
+				fmt.Fprintf(&b, signature, className, resource.ArgsClass, token)
 			} else {
-				fmt.Fprintf(
-					&b,
-					"  %s(\n    String name, {\n    ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          null,\n          options ?? ComponentResourceOptions(),\n        );\n}\n\n",
-					className,
-					token,
-				)
+				fmt.Fprintf(&b, signature, className, token)
+			}
+
+			if len(resource.OutputProperties) == 0 {
+				b.WriteString(";\n}\n\n")
+			} else {
+				b.WriteString(" {\n")
+				for _, property := range resource.OutputProperties {
+					fmt.Fprintf(
+						&b,
+						"    this.%s = _unknownOutput<%s>();\n",
+						property.FieldName,
+						resourceOutputValueType(property),
+					)
+				}
+				b.WriteString("  }\n}\n\n")
 			}
 			continue
 		}
 
 		fmt.Fprintf(&b, "class %s extends CustomResource {\n", className)
+		for _, property := range resource.OutputProperties {
+			fmt.Fprintf(
+				&b,
+				"  late final Output<%s> %s;\n",
+				resourceOutputValueType(property),
+				property.FieldName,
+			)
+		}
+		if len(resource.OutputProperties) > 0 {
+			b.WriteString("\n")
+		}
 		if resource.ArgsClass != "" {
 			fmt.Fprintf(
 				&b,
-				"  %s(\n    String name, {\n    %s? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? CustomResourceOptions(),\n        );\n}\n\n",
+				"  %s(\n    String name, {\n    %s? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? CustomResourceOptions(),\n        )",
 				className,
 				resource.ArgsClass,
 				token,
@@ -1637,11 +3260,25 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 		} else {
 			fmt.Fprintf(
 				&b,
-				"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args ?? const {}),\n          options ?? CustomResourceOptions(),\n        );\n}\n\n",
+				"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args ?? const {}),\n          options ?? CustomResourceOptions(),\n        )",
 				className,
 				token,
 			)
 		}
+		if len(resource.OutputProperties) == 0 {
+			b.WriteString(";\n}\n\n")
+			continue
+		}
+		b.WriteString(" {\n")
+		for _, property := range resource.OutputProperties {
+			fmt.Fprintf(
+				&b,
+				"    this.%s = _unknownOutput<%s>();\n",
+				property.FieldName,
+				resourceOutputValueType(property),
+			)
+		}
+		b.WriteString("  }\n}\n\n")
 	}
 
 	usedFunctionNames := map[string]int{}
@@ -1684,6 +3321,14 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 	}
 
 	return []byte(b.String())
+}
+
+func generatedPackageRootLibrary(packageName string) []byte {
+	return []byte(fmt.Sprintf(
+		"library %s;\n\nexport 'src/%s/sdk.dart';\n",
+		packageName,
+		packageName,
+	))
 }
 
 func normalizeVersion(version string) string {
@@ -1886,15 +3531,22 @@ func (host *dartLanguageHost) GeneratePackage(
 		}
 	}
 
-	packageName := toDartPackageName(spec.Namespace, spec.Name)
-	pubspec := PubSpec{
-		Name:        packageName,
-		Description: fmt.Sprintf("A Pulumi SDK package for %s.", spec.Name),
-		Version:     normalizeVersion(spec.Version),
-		Environment: map[string]string{
-			"sdk": "^3.10.0",
-		},
+	if spec.Config != nil {
+		var rawSpec rawPackageSchema
+		if err := json.Unmarshal([]byte(req.GetSchema()), &rawSpec); err == nil {
+			requiredSet := rawRequiredSet(rawSpec.Config.Required)
+			for i := range spec.Config.Properties {
+				if _, ok := requiredSet[spec.Config.Properties[i].Name]; ok {
+					spec.Config.Properties[i].Required = true
+				}
+			}
+		}
 	}
+
+	packageName := toDartPackageName(spec.Namespace, spec.Name)
+	pubspec := buildGeneratedPubspec(packageName, req.GetLocalDependencies())
+	pubspec.Description = fmt.Sprintf("A Pulumi SDK package for %s.", spec.Name)
+	pubspec.Version = normalizeVersion(spec.Version)
 
 	pubspecBytes, err := yaml.Marshal(pubspec)
 	if err != nil {
@@ -1913,10 +3565,21 @@ func (host *dartLanguageHost) GeneratePackage(
 		return nil, fmt.Errorf("failed to create generated lib directory: %w", err)
 	}
 
-	libraryFile := filepath.Join(libDir, packageName+".dart")
-	libraryContent := generatedPackageLibrary(spec, packageName)
-	if err := os.WriteFile(libraryFile, libraryContent, 0o600); err != nil {
-		return nil, fmt.Errorf("failed to write generated library file: %w", err)
+	publicLibraryFile := filepath.Join(libDir, packageName+".dart")
+	publicLibraryContent := generatedPackageRootLibrary(packageName)
+	if err := os.WriteFile(publicLibraryFile, publicLibraryContent, 0o600); err != nil {
+		return nil, fmt.Errorf("failed to write generated public library file: %w", err)
+	}
+
+	sdkDir := filepath.Join(libDir, "src", packageName)
+	if err := os.MkdirAll(sdkDir, 0o700); err != nil {
+		return nil, fmt.Errorf("failed to create generated SDK source directory: %w", err)
+	}
+	sdkLibraryFile := filepath.Join(sdkDir, "sdk.dart")
+	sdkLibraryName := packageName + "_sdk"
+	sdkLibraryContent := generatedPackageLibrary(spec, sdkLibraryName)
+	if err := os.WriteFile(sdkLibraryFile, sdkLibraryContent, 0o600); err != nil {
+		return nil, fmt.Errorf("failed to write generated SDK library file: %w", err)
 	}
 
 	for filename, contents := range req.GetExtraFiles() {
