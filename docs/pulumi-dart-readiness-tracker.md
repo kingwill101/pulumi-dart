@@ -18,6 +18,14 @@ go test -count=1 -run 'Test(StackOutputsDart|ConfigSecretsWarnDart|StackOutputsP
 
 Result: `PASS` (`ok github.com/pulumi-dart/integration_tests 6.692s` for the custom-timeout slice; stack-output/config subset also passing)
 
+Additional validation:
+
+```bash
+go test -count=1 -run '^TestConstructNestedDart$' -v .
+```
+
+Result: `PASS` (`ok github.com/pulumi-dart/integration_tests 20.610s`)
+
 Covered capabilities:
 
 - basic program execution (`up/refresh/destroy`)
@@ -28,6 +36,7 @@ Covered capabilities:
 - construct/component flows
 - stack output persistence on program/resource failure paths
 - custom timeout success/failure behavior
+- nested remote component construction with provider propagation
 
 ## Gap Summary vs Node/Python/Go
 
@@ -180,6 +189,7 @@ Evidence:
 - `integration_tests/stack_outputs_program_error/*`
 - `integration_tests/stack_outputs_resource_error/*`
 - `integration_tests/custom_timeouts/*`
+- `integration_tests/construct_nested_component/*`
 
 Impact:
 
@@ -246,6 +256,7 @@ Exit criteria:
 ## Milestone D: Coverage and Drift Control
 
 - [x] Port stack-output failure-path parity fixtures/tests (`stack_outputs_program_error`, `stack_outputs_resource_error`)
+- [x] Port nested remote component parity fixture/test (`construct_nested_component`)
 - [ ] Port missing upstream integration classes (CLI output/config/error/dynamic-provider edge cases)
 - [ ] Unskip/skiplift tests where feasible
 - [x] Add CI matrix slices for Dart parity categories
