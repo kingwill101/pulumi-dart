@@ -51,33 +51,46 @@ Covered capabilities:
 - nested remote component construction with provider propagation
 - component provider resource-error regression (no hang, expected diagnostics)
 - registry fixture execution coverage
+- policy-pack enforcement flows against Dart programs (advisory, mandatory, multi-pack)
+- plugin installation/runtime option coverage (`python-uv`, `nodejs-pnpm`)
+- automation API error-path fixture execution (upstream parity example)
 
 ## Gap Summary vs Node/Python/Go
 
 ## 1) Generator Flow (Critical)
 
-Status: **Open**
+Status: **In Progress**
 
 Current behavior in Dart language host:
 
-- `GeneratePackage` now emits schema-driven resource and function invoke stubs in `lib/<pkg>.dart`.
-- schema parsing now reads `resources` and `functions`.
-- when `loader_target` is provided, schema binding now uses Pulumi `schema.BindSpec` before generation.
-- no full typed resource/function/input/output/enums/config SDK generation pipeline yet.
+- `GeneratePackage` emits a public root library (`lib/<pkg>.dart`) and an implementation SDK (`lib/src/<pkg>/sdk.dart`).
+- typed generation now covers resources/functions, named object/enum types, config getters, and typed args/results.
+- nested collection mappings for named refs are generated for `List<T>` / `Map<String, T>` in args/results/config.
+- schema binding path uses Pulumi `schema.BindSpec` when `loader_target` is provided, with permissive raw-schema fallback when loader resolution is unavailable.
 
 Evidence:
 
 - `pulumi-language-dart/main.go`:
-  - `packageSchema` now includes `resources` and `functions`
-  - `GeneratePackage` supports both direct schema parsing and loader-backed `schema.BindSpec`
-  - `GeneratePackage` emits `CustomResource` / `ComponentResource` stubs and function invoke stubs from schema tokens
-- `pulumi_generator` still scaffold-level:
-  - `pulumi_generator/README.md` has TODO template content
-  - `pulumi_generator/test/pulumi_generator_test.dart` has commented-out sample test
+  - `packageSchema` includes resources/functions/config/enums/object classes and typed property metadata
+  - `GeneratePackage` writes root export + SDK implementation layout
+  - generation emits typed `CustomResource` / `ComponentResource`, invoke wrappers, enums/object classes/config class, and collection encode/decode helpers
+- `pulumi-language-dart/generate_pack_test.go`:
+  - golden snapshot tests for generated public + SDK files
+  - collection ref mapping coverage (`List`/`Map` of enum/object refs)
+  - regression coverage for resource output-property name collisions with constructor parameters
+- integration consumers now assert the root-export + `lib/src/<pkg>/sdk.dart` layout:
+  - `integration_tests/parameterized_dart_test.go`
+  - `integration_tests/integration_dart_test.go` (`TestPackageAddNamespaceDart`)
+- `pulumi_generator` now has concrete docs/examples/tests for its builder:
+  - `pulumi_generator/README.md` documents builder purpose and usage
+  - `pulumi_generator/test/pulumi_generator_test.dart` validates generated extension output and no-op cases
+  - `pulumi_generator/example/pulumi_generator_example.dart` replaced template scaffold content
+- `integration_tests/integration_dart_test.go`:
+  - `TestPackageAddNamespaceDart` now validates generated namespace SDK structure/content and compiles it via `dart test`
 
 Impact:
 
-- generated SDKs are more usable than scaffold-only output, but still far from parity with other Pulumi languages
+- generated SDKs are now materially usable for typed SDK authoring flows, but still not full parity with mature Pulumi language generators
 - provider developer and consumer ergonomics are incomplete
 
 ## 2) Language Host RPC Parity (High)
@@ -189,16 +202,23 @@ Status: **Open**
 
 Current issues:
 
-- parameterized SDK test now validates generated symbols, but does not yet validate richer typed SDK behavior (inputs/outputs/enums/config models).
-- broader upstream parity classes (for example dynamic provider edges and CLI-specific cases) still need Dart ports.
+- parameterized SDK coverage now validates generated package structure and expected resource-class emissions (`lib/pkg.dart` export + `lib/src/pkg/sdk.dart` content), but still does not fully validate richer typed SDK behavior (inputs/outputs/enums/config models).
+- namespace package-add flow now validates generated SDK structure and typed behavior for enum/object/config/args/result symbols in a non-testprovider schema, but does not yet validate live invoke/runtime semantics for generated functions.
+- broader upstream parity classes (for example policy pack publish/lifecycle cloud flows and additional automation API variants) still need Dart ports.
 - plugin debugger attach flow is now validated via StartDebugging event + advertised DAP config to avoid known connection-refused race in parallel attach timing.
 
 Evidence:
 
 - `integration_tests/parameterized/test/parameterized_test.dart`
+- `integration_tests/parameterized_dart_test.go`
 - `integration_tests/integration_dart_test.go`
+- `integration_tests/package_add/namespace/*`
 - `integration_tests/debugger_dart_test.go`
 - `integration_tests/upstream_dart_ports_test.go`
+- `integration_tests/upstream_policy_plugin_automation_dart_test.go`
+- `integration_tests/policy_dart/*`
+- `integration_tests/plugin_install/*`
+- `integration_tests/automation/error/*`
 - `integration_tests/integration_dart_smoke_test.go`
 - `integration_tests/stack_outputs_program_error/*`
 - `integration_tests/stack_outputs_resource_error/*`
@@ -244,11 +264,12 @@ Exit criteria:
 
 - [x] Emit schema-driven resource and function stubs in generated package output.
 - [x] Replace minimal `GeneratePackage` scaffold with schema-driven generation (MVP stub level)
-- [ ] Generate full typed resources, input/output types, enums, config types
-- [ ] Produce usable top-level exports and package structure
+- [x] Generate typed resources, input/output types, enums, config types (including collection ref mappings)
+- [x] Produce usable top-level exports and package structure
 - [x] Add generation workflow tests that validate generated symbol usage (not import-only)
-- [ ] Add golden/codegen tests against representative schemas
-- [ ] Validate with a real provider SDK beyond testprovider fixtures
+- [x] Add golden/codegen tests against representative schemas
+- [x] Replace `pulumi_generator` template scaffolding with concrete builder docs/example/tests
+- [x] Validate with a real provider SDK beyond testprovider fixtures (`package_add/namespace` schema flow)
 
 Exit criteria:
 
