@@ -230,6 +230,48 @@ func TestGeneratePackageHandlesFunctionTokenSuffix(t *testing.T) {
 	assert.Contains(t, content, "sample:index:Echo/doEchoMethod")
 }
 
+func TestGeneratePackageEmitsParameterizedPackageRegistration(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "pkg",
+		"version": "0.0.1",
+		"parameterization": {
+			"baseProvider": {
+				"name": "testprovider",
+				"version": "0.0.1"
+			},
+			"parameter": "cGtn"
+		},
+		"resources": {
+			"pkg:index:Echo": {
+				"isComponent": false
+			}
+		},
+		"functions": {
+			"pkg:index:doEcho": {}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, content := readGeneratedPackageLibraries(t, targetDir, "pkg")
+	assert.Contains(t, content, "import 'package:pulumi/src/deployment/models.dart' as deployment_models;")
+	assert.Contains(t, content, "final deployment_models.RegisterPackageRequest _registerPackageRequest = deployment_models.RegisterPackageRequest(")
+	assert.Contains(t, content, `name: "testprovider",`)
+	assert.Contains(t, content, `version: "0.0.1",`)
+	assert.Contains(t, content, "parameterization: deployment_models.Parameterization(")
+	assert.Contains(t, content, `name: "pkg",`)
+	assert.Contains(t, content, `value: <int>[112, 107, 103],`)
+	assert.Contains(t, content, "registerPackageRequest: _registerPackageRequest")
+}
+
 func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 	t.Parallel()
 

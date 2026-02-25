@@ -1319,14 +1319,24 @@ func appendPolicyPackConfigEnv(
 }
 
 type packageSchema struct {
-	Name          string                         `json:"name"`
-	Namespace     string                         `json:"namespace"`
-	Version       string                         `json:"version"`
-	Resources     map[string]packageResourceSpec `json:"resources"`
-	Functions     map[string]packageFunctionSpec `json:"functions"`
-	Config        *packageConfigSpec             `json:"-"`
-	Enums         []packageEnumSpec              `json:"-"`
-	ObjectClasses []packageObjectClassSpec       `json:"-"`
+	Name             string                         `json:"name"`
+	Namespace        string                         `json:"namespace"`
+	Version          string                         `json:"version"`
+	Parameterization *packageParameterizationSpec   `json:"-"`
+	Resources        map[string]packageResourceSpec `json:"resources"`
+	Functions        map[string]packageFunctionSpec `json:"functions"`
+	Config           *packageConfigSpec             `json:"-"`
+	Enums            []packageEnumSpec              `json:"-"`
+	ObjectClasses    []packageObjectClassSpec       `json:"-"`
+}
+
+type packageParameterizationSpec struct {
+	PluginName     string
+	PluginVersion  string
+	PackageName    string
+	PackageVersion string
+	DownloadURL    string
+	Value          []byte
 }
 
 type packageResourceSpec struct {
@@ -2280,14 +2290,41 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 	}
 
 	spec := &packageSchema{
-		Name:          pkg.Name,
-		Namespace:     pkg.Namespace,
-		Version:       version,
-		Resources:     map[string]packageResourceSpec{},
-		Functions:     map[string]packageFunctionSpec{},
-		Config:        nil,
-		Enums:         []packageEnumSpec{},
-		ObjectClasses: []packageObjectClassSpec{},
+		Name:             pkg.Name,
+		Namespace:        pkg.Namespace,
+		Version:          version,
+		Parameterization: nil,
+		Resources:        map[string]packageResourceSpec{},
+		Functions:        map[string]packageFunctionSpec{},
+		Config:           nil,
+		Enums:            []packageEnumSpec{},
+		ObjectClasses:    []packageObjectClassSpec{},
+	}
+
+	if pkg.Parameterization != nil {
+		pluginVersion := pkg.Parameterization.BaseProvider.Version.String()
+		packageVersion := version
+		if packageVersion == "" {
+			packageVersion = pluginVersion
+		}
+		if pluginVersion == "" {
+			pluginVersion = packageVersion
+		}
+		if pluginVersion == "" {
+			pluginVersion = "0.0.1"
+		}
+		if packageVersion == "" {
+			packageVersion = pluginVersion
+		}
+
+		spec.Parameterization = &packageParameterizationSpec{
+			PluginName:     pkg.Parameterization.BaseProvider.Name,
+			PluginVersion:  pluginVersion,
+			PackageName:    pkg.Name,
+			PackageVersion: packageVersion,
+			DownloadURL:    pkg.PluginDownloadURL,
+			Value:          append([]byte(nil), pkg.Parameterization.Parameter...),
+		}
 	}
 
 	usedClassNames := map[string]int{}
@@ -3094,6 +3131,11 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 		functionTokens = append(functionTokens, token)
 	}
 	sort.Strings(functionTokens)
+	hasPackageRegistration := spec.Parameterization != nil &&
+		spec.Parameterization.PluginName != "" &&
+		spec.Parameterization.PluginVersion != "" &&
+		spec.Parameterization.PackageVersion != ""
+	usesDeploymentModels := len(functionTokens) > 0 || hasPackageRegistration
 	hasConfig := spec.Config != nil
 	configNeedsJSONDecode := false
 	configNeedsIntParser := false
@@ -3163,7 +3205,7 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 		}
 	}
 
-	if len(functionTokens) > 0 {
+	if usesDeploymentModels {
 		b.WriteString("import 'package:pulumi/src/deployment/models.dart' as deployment_models;\n\n")
 	}
 
@@ -3278,6 +3320,33 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 `)
 	}
 
+	if hasPackageRegistration {
+		downloadURLLine := ""
+		if spec.Parameterization.DownloadURL != "" {
+			downloadURLLine = fmt.Sprintf("\n  downloadUrl: %q,", spec.Parameterization.DownloadURL)
+		}
+		fmt.Fprintf(
+			&b,
+			`final deployment_models.RegisterPackageRequest _registerPackageRequest = deployment_models.RegisterPackageRequest(
+  name: %q,
+  version: %q,%s
+  parameterization: deployment_models.Parameterization(
+    name: %q,
+    version: %q,
+    value: %s,
+  ),
+);
+
+`,
+			spec.Parameterization.PluginName,
+			spec.Parameterization.PluginVersion,
+			downloadURLLine,
+			spec.Parameterization.PackageName,
+			spec.Parameterization.PackageVersion,
+			dartByteListLiteral(spec.Parameterization.Value),
+		)
+	}
+
 	if len(resourceTokens) == 0 &&
 		len(functionTokens) == 0 &&
 		!hasConfig &&
@@ -3347,6 +3416,10 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 	}
 
 	usedClassNames := map[string]int{}
+	resourceRegisterPackageArg := ""
+	if hasPackageRegistration {
+		resourceRegisterPackageArg = ",\n          registerPackageRequest: _registerPackageRequest"
+	}
 	for _, token := range resourceTokens {
 		resource := spec.Resources[token]
 		className := resourceClassNameFromToken(token, usedClassNames)
@@ -3405,17 +3478,19 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 		if resource.ArgsClass != "" {
 			fmt.Fprintf(
 				&b,
-				"  %s(\n    String name, {\n    %s? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? CustomResourceOptions(),\n        )",
+				"  %s(\n    String name, {\n    %s? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? CustomResourceOptions()%s,\n        )",
 				className,
 				resource.ArgsClass,
 				token,
+				resourceRegisterPackageArg,
 			)
 		} else {
 			fmt.Fprintf(
 				&b,
-				"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args ?? const {}),\n          options ?? CustomResourceOptions(),\n        )",
+				"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args ?? const {}),\n          options ?? CustomResourceOptions()%s,\n        )",
 				className,
 				token,
+				resourceRegisterPackageArg,
 			)
 		}
 		if len(resource.OutputProperties) == 0 {
@@ -3435,6 +3510,10 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 	}
 
 	usedFunctionNames := map[string]int{}
+	invokeRegisterPackageArg := ""
+	if hasPackageRegistration {
+		invokeRegisterPackageArg = ",\n    registerPackageRequest: _registerPackageRequest"
+	}
 	for _, token := range functionTokens {
 		funcName := functionNameFromToken(token, usedFunctionNames)
 		function := spec.Functions[token]
@@ -3452,12 +3531,13 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 		if function.ResultClass != "" {
 			fmt.Fprintf(
 				&b,
-				"Future<%s> %s(\n  %s}) async {\n  final deployment = DeploymentImpl.instance as DeploymentImpl;\n  final result = await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: _toDeploymentInvokeOptions(options),\n  );\n  return %s.fromMap(result);\n}\n\n",
+				"Future<%s> %s(\n  %s}) async {\n  final deployment = DeploymentImpl.instance as DeploymentImpl;\n  final result = await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: _toDeploymentInvokeOptions(options)%s,\n  );\n  return %s.fromMap(result);\n}\n\n",
 				function.ResultClass,
 				funcName,
 				signatureArgs,
 				token,
 				invokeArgs,
+				invokeRegisterPackageArg,
 				function.ResultClass,
 			)
 			continue
@@ -3465,11 +3545,12 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 
 		fmt.Fprintf(
 			&b,
-			"Future<Map<String, dynamic>> %s(\n  %s}) async {\n  final deployment = DeploymentImpl.instance as DeploymentImpl;\n  return await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: _toDeploymentInvokeOptions(options),\n  );\n}\n\n",
+			"Future<Map<String, dynamic>> %s(\n  %s}) async {\n  final deployment = DeploymentImpl.instance as DeploymentImpl;\n  return await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: _toDeploymentInvokeOptions(options)%s,\n  );\n}\n\n",
 			funcName,
 			signatureArgs,
 			token,
 			invokeArgs,
+			invokeRegisterPackageArg,
 		)
 	}
 
@@ -3482,6 +3563,23 @@ func generatedPackageRootLibrary(packageName string) []byte {
 		packageName,
 		packageName,
 	))
+}
+
+func dartByteListLiteral(value []byte) string {
+	if len(value) == 0 {
+		return "const <int>[]"
+	}
+
+	var b strings.Builder
+	b.WriteString("<int>[")
+	for i, v := range value {
+		if i > 0 {
+			b.WriteString(", ")
+		}
+		b.WriteString(strconv.Itoa(int(v)))
+	}
+	b.WriteString("]")
+	return b.String()
 }
 
 func normalizeVersion(version string) string {
