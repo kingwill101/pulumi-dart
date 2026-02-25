@@ -1166,18 +1166,35 @@ func appendPolicyPackConfigEnv(
 }
 
 type packageSchema struct {
-	Name      string                         `json:"name"`
-	Namespace string                         `json:"namespace"`
-	Version   string                         `json:"version"`
-	Resources map[string]packageResourceSpec `json:"resources"`
-	Functions map[string]packageFunctionSpec `json:"functions"`
+	Name          string                         `json:"name"`
+	Namespace     string                         `json:"namespace"`
+	Version       string                         `json:"version"`
+	Resources     map[string]packageResourceSpec `json:"resources"`
+	Functions     map[string]packageFunctionSpec `json:"functions"`
+	ObjectClasses []packageObjectClassSpec       `json:"-"`
 }
 
 type packageResourceSpec struct {
-	IsComponent bool `json:"isComponent"`
+	IsComponent bool   `json:"isComponent"`
+	ArgsClass   string `json:"-"`
 }
 
-type packageFunctionSpec struct{}
+type packageFunctionSpec struct {
+	HasArgs     bool   `json:"-"`
+	ArgsClass   string `json:"-"`
+	ResultClass string `json:"-"`
+}
+
+type packageObjectClassSpec struct {
+	ClassName  string
+	Properties []packagePropertySpec
+}
+
+type packagePropertySpec struct {
+	Name      string
+	FieldName string
+	Required  bool
+}
 
 func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 	var spec packageSchema
@@ -1187,7 +1204,93 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 	if spec.Name == "" {
 		return nil, errors.New("package schema is missing name")
 	}
+	if spec.Resources == nil {
+		spec.Resources = map[string]packageResourceSpec{}
+	}
+	if spec.Functions == nil {
+		spec.Functions = map[string]packageFunctionSpec{}
+	}
+	for token, fn := range spec.Functions {
+		// In parse-only fallback mode we do not know function signatures. Keep
+		// legacy behavior by requiring an argument map.
+		fn.HasArgs = true
+		spec.Functions[token] = fn
+	}
 	return &spec, nil
+}
+
+func uniqueClassName(base string, used map[string]int) string {
+	if base == "" {
+		base = "GeneratedType"
+	}
+
+	count := used[base]
+	used[base] = count + 1
+	if count == 0 {
+		return base
+	}
+	return fmt.Sprintf("%s%d", base, count+1)
+}
+
+var dartReservedIdentifiers = map[string]struct{}{
+	"assert": {}, "break": {}, "case": {}, "catch": {}, "class": {}, "const": {}, "continue": {},
+	"default": {}, "do": {}, "else": {}, "enum": {}, "extends": {}, "false": {}, "final": {},
+	"finally": {}, "for": {}, "if": {}, "in": {}, "is": {}, "new": {}, "null": {}, "rethrow": {},
+	"return": {}, "super": {}, "switch": {}, "this": {}, "throw": {}, "true": {}, "try": {},
+	"var": {}, "void": {}, "while": {}, "with": {},
+}
+
+func propertyFieldName(name string, used map[string]int) string {
+	candidate := toDartClassName(name)
+	if candidate == "" {
+		candidate = "value"
+	}
+	runes := []rune(candidate)
+	if len(runes) > 0 && runes[0] >= 'A' && runes[0] <= 'Z' {
+		runes[0] = runes[0] - 'A' + 'a'
+	}
+	candidate = string(runes)
+	if _, reserved := dartReservedIdentifiers[candidate]; reserved {
+		candidate += "_"
+	}
+	count := used[candidate]
+	used[candidate] = count + 1
+	if count == 0 {
+		return candidate
+	}
+	return fmt.Sprintf("%s%d", candidate, count+1)
+}
+
+func makeObjectClassSpec(
+	baseName string,
+	properties []*schema.Property,
+	usedClassNames map[string]int,
+) *packageObjectClassSpec {
+	if len(properties) == 0 {
+		return nil
+	}
+
+	className := uniqueClassName(toDartClassName(baseName), usedClassNames)
+	props := make([]*schema.Property, len(properties))
+	copy(props, properties)
+	sort.Slice(props, func(i, j int) bool {
+		return props[i].Name < props[j].Name
+	})
+
+	usedFieldNames := map[string]int{}
+	fields := make([]packagePropertySpec, 0, len(props))
+	for _, property := range props {
+		fields = append(fields, packagePropertySpec{
+			Name:      property.Name,
+			FieldName: propertyFieldName(property.Name, usedFieldNames),
+			Required:  property.IsRequired(),
+		})
+	}
+
+	return &packageObjectClassSpec{
+		ClassName:  className,
+		Properties: fields,
+	}
 }
 
 func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
@@ -1197,21 +1300,77 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 	}
 
 	spec := &packageSchema{
-		Name:      pkg.Name,
-		Namespace: pkg.Namespace,
-		Version:   version,
-		Resources: map[string]packageResourceSpec{},
-		Functions: map[string]packageFunctionSpec{},
+		Name:          pkg.Name,
+		Namespace:     pkg.Namespace,
+		Version:       version,
+		Resources:     map[string]packageResourceSpec{},
+		Functions:     map[string]packageFunctionSpec{},
+		ObjectClasses: []packageObjectClassSpec{},
 	}
 
+	usedClassNames := map[string]int{}
+
+	resourceByToken := map[string]*schema.Resource{}
+	resourceTokens := make([]string, 0, len(pkg.Resources))
 	for _, resource := range pkg.Resources {
-		spec.Resources[resource.Token] = packageResourceSpec{
+		resourceByToken[resource.Token] = resource
+		resourceTokens = append(resourceTokens, resource.Token)
+	}
+	sort.Strings(resourceTokens)
+
+	for _, token := range resourceTokens {
+		resource := resourceByToken[token]
+		resourceSpec := packageResourceSpec{
 			IsComponent: resource.IsComponent,
 		}
+		if classSpec := makeObjectClassSpec(
+			toDartClassName(tokenElementName(resource.Token))+"Args",
+			resource.InputProperties,
+			usedClassNames,
+		); classSpec != nil {
+			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
+			resourceSpec.ArgsClass = classSpec.ClassName
+		}
+		spec.Resources[resource.Token] = resourceSpec
 	}
+
+	functionByToken := map[string]*schema.Function{}
+	functionTokens := make([]string, 0, len(pkg.Functions))
 	for _, function := range pkg.Functions {
-		spec.Functions[function.Token] = packageFunctionSpec{}
+		functionByToken[function.Token] = function
+		functionTokens = append(functionTokens, function.Token)
 	}
+	sort.Strings(functionTokens)
+
+	for _, token := range functionTokens {
+		function := functionByToken[token]
+		inputProperties := []*schema.Property{}
+		if function.Inputs != nil {
+			inputProperties = function.Inputs.Properties
+		}
+		outputProperties := []*schema.Property{}
+		if function.Outputs != nil {
+			outputProperties = function.Outputs.Properties
+		}
+
+		functionSpec := packageFunctionSpec{
+			HasArgs: len(inputProperties) > 0,
+		}
+		base := toDartClassName(tokenElementName(function.Token))
+		if classSpec := makeObjectClassSpec(base+"Args", inputProperties, usedClassNames); classSpec != nil {
+			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
+			functionSpec.ArgsClass = classSpec.ClassName
+		}
+		if classSpec := makeObjectClassSpec(base+"Result", outputProperties, usedClassNames); classSpec != nil {
+			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
+			functionSpec.ResultClass = classSpec.ClassName
+		}
+		spec.Functions[function.Token] = functionSpec
+	}
+
+	sort.Slice(spec.ObjectClasses, func(i, j int) bool {
+		return spec.ObjectClasses[i].ClassName < spec.ObjectClasses[j].ClassName
+	})
 
 	return spec
 }
@@ -1334,6 +1493,48 @@ func functionNameFromToken(token string, used map[string]int) string {
 	return fmt.Sprintf("%s%d", candidate, count+1)
 }
 
+func writeGeneratedObjectClass(b *strings.Builder, objectClass packageObjectClassSpec) {
+	fmt.Fprintf(b, "class %s {\n", objectClass.ClassName)
+	for _, property := range objectClass.Properties {
+		fmt.Fprintf(b, "  final dynamic %s;\n", property.FieldName)
+	}
+
+	if len(objectClass.Properties) == 0 {
+		fmt.Fprintf(b, "\n  %s();\n\n", objectClass.ClassName)
+	} else {
+		fmt.Fprintf(b, "\n  %s({\n", objectClass.ClassName)
+		for _, property := range objectClass.Properties {
+			if property.Required {
+				fmt.Fprintf(b, "    required this.%s,\n", property.FieldName)
+			} else {
+				fmt.Fprintf(b, "    this.%s,\n", property.FieldName)
+			}
+		}
+		b.WriteString("  });\n\n")
+	}
+
+	b.WriteString("  Map<String, dynamic> toMap() {\n")
+	b.WriteString("    final map = <String, dynamic>{};\n")
+	for _, property := range objectClass.Properties {
+		if property.Required {
+			fmt.Fprintf(b, "    map['%s'] = %s;\n", property.Name, property.FieldName)
+		} else {
+			fmt.Fprintf(b, "    if (%s != null) {\n      map['%s'] = %s;\n    }\n", property.FieldName, property.Name, property.FieldName)
+		}
+	}
+	b.WriteString("    return map;\n")
+	b.WriteString("  }\n\n")
+
+	fmt.Fprintf(b, "  factory %s.fromMap(Map<String, dynamic> map) {\n", objectClass.ClassName)
+	fmt.Fprintf(b, "    return %s(\n", objectClass.ClassName)
+	for _, property := range objectClass.Properties {
+		fmt.Fprintf(b, "      %s: map['%s'],\n", property.FieldName, property.Name)
+	}
+	b.WriteString("    );\n")
+	b.WriteString("  }\n")
+	b.WriteString("}\n\n")
+}
+
 func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 	var b strings.Builder
 	fmt.Fprintf(&b, "library %s;\n\n", packageName)
@@ -1353,15 +1554,7 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 		b.WriteString("import 'package:pulumi/src/deployment/models.dart' as deployment_models;\n\n")
 	}
 
-	hasCustomResource := false
-	for _, token := range resourceTokens {
-		if !spec.Resources[token].IsComponent {
-			hasCustomResource = true
-			break
-		}
-	}
-
-	if hasCustomResource {
+	if len(resourceTokens) > 0 {
 		b.WriteString(`Inputs _mapToInputs(Map<String, dynamic> args) {
   final mapped = <String, Input<dynamic>>{};
   for (final entry in args.entries) {
@@ -1400,6 +1593,12 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 		return []byte(b.String())
 	}
 
+	if len(spec.ObjectClasses) > 0 {
+		for _, objectClass := range spec.ObjectClasses {
+			writeGeneratedObjectClass(&b, objectClass)
+		}
+	}
+
 	usedClassNames := map[string]int{}
 	for _, token := range resourceTokens {
 		resource := spec.Resources[token]
@@ -1407,32 +1606,80 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 
 		if resource.IsComponent {
 			fmt.Fprintf(&b, "class %s extends ComponentResource {\n", className)
-			fmt.Fprintf(
-				&b,
-				"  %s(\n    String name, {\n    ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          null,\n          options ?? ComponentResourceOptions(),\n        );\n}\n\n",
-				className,
-				token,
-			)
+			if resource.ArgsClass != "" {
+				fmt.Fprintf(
+					&b,
+					"  %s(\n    String name, {\n    %s? args,\n    ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? ComponentResourceOptions(),\n        );\n}\n\n",
+					className,
+					resource.ArgsClass,
+					token,
+				)
+			} else {
+				fmt.Fprintf(
+					&b,
+					"  %s(\n    String name, {\n    ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          null,\n          options ?? ComponentResourceOptions(),\n        );\n}\n\n",
+					className,
+					token,
+				)
+			}
 			continue
 		}
 
 		fmt.Fprintf(&b, "class %s extends CustomResource {\n", className)
-		fmt.Fprintf(
-			&b,
-			"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args ?? const {}),\n          options ?? CustomResourceOptions(),\n        );\n}\n\n",
-			className,
-			token,
-		)
+		if resource.ArgsClass != "" {
+			fmt.Fprintf(
+				&b,
+				"  %s(\n    String name, {\n    %s? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? CustomResourceOptions(),\n        );\n}\n\n",
+				className,
+				resource.ArgsClass,
+				token,
+			)
+		} else {
+			fmt.Fprintf(
+				&b,
+				"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args ?? const {}),\n          options ?? CustomResourceOptions(),\n        );\n}\n\n",
+				className,
+				token,
+			)
+		}
 	}
 
 	usedFunctionNames := map[string]int{}
 	for _, token := range functionTokens {
 		funcName := functionNameFromToken(token, usedFunctionNames)
+		function := spec.Functions[token]
+
+		signatureArgs := "Map<String, dynamic> args, {\n  InvokeOptions? options,\n"
+		invokeArgs := "args"
+		if function.ArgsClass != "" {
+			signatureArgs = fmt.Sprintf("%s args, {\n  InvokeOptions? options,\n", function.ArgsClass)
+			invokeArgs = "args.toMap()"
+		} else if !function.HasArgs {
+			signatureArgs = "{\n  InvokeOptions? options,\n"
+			invokeArgs = "const <String, dynamic>{}"
+		}
+
+		if function.ResultClass != "" {
+			fmt.Fprintf(
+				&b,
+				"Future<%s> %s(\n  %s}) async {\n  final deployment = DeploymentImpl.instance as DeploymentImpl;\n  final result = await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: _toDeploymentInvokeOptions(options),\n  );\n  return %s.fromMap(result);\n}\n\n",
+				function.ResultClass,
+				funcName,
+				signatureArgs,
+				token,
+				invokeArgs,
+				function.ResultClass,
+			)
+			continue
+		}
+
 		fmt.Fprintf(
 			&b,
-			"Future<Map<String, dynamic>> %s(\n  Map<String, dynamic> args, {\n  InvokeOptions? options,\n}) async {\n  final deployment = DeploymentImpl.instance as DeploymentImpl;\n  return await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    args,\n    options: _toDeploymentInvokeOptions(options),\n  );\n}\n\n",
+			"Future<Map<String, dynamic>> %s(\n  %s}) async {\n  final deployment = DeploymentImpl.instance as DeploymentImpl;\n  return await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: _toDeploymentInvokeOptions(options),\n  );\n}\n\n",
 			funcName,
+			signatureArgs,
 			token,
+			invokeArgs,
 		)
 	}
 
@@ -1580,32 +1827,58 @@ func (host *dartLanguageHost) GeneratePackage(
 		rpcDiagnostics []*codegenrpc.Diagnostic
 	)
 
-	if strings.TrimSpace(req.GetLoaderTarget()) != "" {
-		loader, err := schema.NewLoaderClient(req.GetLoaderTarget())
-		if err != nil {
-			return nil, err
+	var packageSpec schema.PackageSpec
+	if err := json.Unmarshal([]byte(req.GetSchema()), &packageSpec); err == nil {
+		var (
+			loader       schema.Loader
+			loaderCloser io.Closer
+		)
+		loaderTarget := strings.TrimSpace(req.GetLoaderTarget())
+		if loaderTarget != "" {
+			loaderClient, err := schema.NewLoaderClient(loaderTarget)
+			if err != nil {
+				return nil, err
+			}
+			loader = loaderClient
+			loaderCloser = loaderClient
 		}
-		defer loader.Close()
-
-		var packageSpec schema.PackageSpec
-		if err := json.Unmarshal([]byte(req.GetSchema()), &packageSpec); err != nil {
-			return nil, fmt.Errorf("failed to parse package schema: %w", err)
+		if loaderCloser != nil {
+			defer loaderCloser.Close()
 		}
 
 		pkg, diags, err := schema.BindSpec(packageSpec, loader, schema.ValidationOptions{
 			AllowDanglingReferences: true,
 		})
-		if err != nil {
+		if err == nil {
+			rpcDiagnostics = plugin.HclDiagnosticsToRPCDiagnostics(diags)
+			if diags.HasErrors() {
+				// Preserve previous parse-only behavior when no loader target is provided.
+				if loader == nil {
+					spec, err = parsePackageSchema(req.GetSchema())
+					if err != nil {
+						return nil, err
+					}
+					rpcDiagnostics = nil
+				} else {
+					return &pulumirpc.GeneratePackageResponse{
+						Diagnostics: rpcDiagnostics,
+					}, nil
+				}
+			} else {
+				spec = packageSchemaFromPackage(pkg)
+			}
+		} else if loader == nil {
+			// Parse-only fallback is intentionally permissive when we do not have
+			// a schema loader and cannot resolve external references.
+			spec, err = parsePackageSchema(req.GetSchema())
+			if err != nil {
+				return nil, err
+			}
+		} else {
 			return nil, err
 		}
-		rpcDiagnostics = plugin.HclDiagnosticsToRPCDiagnostics(diags)
-		if diags.HasErrors() {
-			return &pulumirpc.GeneratePackageResponse{
-				Diagnostics: rpcDiagnostics,
-			}, nil
-		}
-		spec = packageSchemaFromPackage(pkg)
-	} else {
+	}
+	if spec == nil {
 		var err error
 		spec, err = parsePackageSchema(req.GetSchema())
 		if err != nil {

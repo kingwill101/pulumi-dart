@@ -172,3 +172,64 @@ func TestGeneratePackageHandlesFunctionTokenSuffix(t *testing.T) {
 	assert.Contains(t, content, "Future<Map<String, dynamic>> doEchoMethod")
 	assert.Contains(t, content, "sample:index:Echo/doEchoMethod")
 }
+
+func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"resources": {
+			"sample:index:Widget": {
+				"inputProperties": {
+					"size": { "type": "integer" },
+					"label": { "type": "string" }
+				},
+				"requiredInputs": ["size"]
+			}
+		},
+		"functions": {
+			"sample:index:getWidget": {
+				"inputs": {
+					"properties": {
+						"id": { "type": "string" }
+					},
+					"required": ["id"]
+				},
+				"outputs": {
+					"properties": {
+						"name": { "type": "string" },
+						"tags": {
+							"type": "array",
+							"items": { "type": "string" }
+						}
+					},
+					"required": ["name"]
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	libData, err := os.ReadFile(filepath.Join(targetDir, "lib", "sample.dart"))
+	require.NoError(t, err)
+	content := string(libData)
+
+	assert.Contains(t, content, "class WidgetArgs")
+	assert.Contains(t, content, "required this.size")
+	assert.Contains(t, content, "WidgetArgs? args")
+	assert.Contains(t, content, "args?.toMap()")
+
+	assert.Contains(t, content, "class GetWidgetArgs")
+	assert.Contains(t, content, "required this.id")
+	assert.Contains(t, content, "class GetWidgetResult")
+	assert.Contains(t, content, "Future<GetWidgetResult> getWidget")
+	assert.Contains(t, content, "GetWidgetResult.fromMap(result)")
+}
