@@ -1,0 +1,14 @@
+name: component_error_resource_dart
+description: Regression fixture for component provider resource error handling.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  pulumi:
+    path: ../../../pulumi-dart
+
+dev_dependencies:
+  lints: ^6.1.0

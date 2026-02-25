@@ -15,7 +15,9 @@
 package integration_tests
 
 import (
+	"os/exec"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
@@ -265,5 +267,35 @@ func TestCustomTimeoutsFailureDart(t *testing.T) {
 		Dir:           filepath.Join("custom_timeouts", "failure"),
 		Quick:         true,
 		ExpectFailure: true,
+	})
+}
+
+func TestComponentProviderErrorInResourceRegistrationDart(t *testing.T) {
+	t.Setenv("PULUMI_DISABLE_AUTOMATIC_PLUGIN_ACQUISITION", "false")
+
+	providerPath := filepath.Join("component_error_resource", "provider")
+	npmInstall := exec.Command("npm", "install")
+	npmInstall.Dir = providerPath
+	out, err := npmInstall.CombinedOutput()
+	require.NoErrorf(t, err, "npm install failed: %s", string(out))
+
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:            filepath.Join("component_error_resource", "dart"),
+		LocalProviders: []integration.LocalDependency{{Package: "nodejs-component-provider", Path: providerPath}},
+		Quick:          true,
+		NoParallel:     true,
+		ExpectFailure:  true,
+		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+			var foundError bool
+			for _, event := range stack.Events {
+				if event.DiagnosticEvent != nil &&
+					event.DiagnosticEvent.Severity == "error" &&
+					strings.Contains(event.DiagnosticEvent.Message, "exiting with error") {
+					foundError = true
+					break
+				}
+			}
+			assert.True(t, foundError, "expected to find component provider error diagnostic")
+		},
 	})
 }
