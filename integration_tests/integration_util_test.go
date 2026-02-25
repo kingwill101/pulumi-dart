@@ -35,6 +35,7 @@ import (
 
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/apitype"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/rpcutil"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
@@ -424,6 +425,69 @@ func testConstructProviderExplicit(t *testing.T, lang string) {
 		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
 			assert.Equal(t, "hello world", stackInfo.Outputs["message"])
 			assert.Equal(t, "hello world", stackInfo.Outputs["nestedMessage"])
+		},
+	})
+}
+
+// Test to validate that various resource options are propagated for MLCs.
+func testConstructResourceOptions(t *testing.T, lang string) {
+	const testDir = "construct_component_resource_options"
+
+	validate := func(t *testing.T, resources []apitype.ResourceV3) {
+		urns := make(map[string]resource.URN)
+		for _, res := range resources {
+			urns[res.URN.Name()] = res.URN
+		}
+
+		for _, res := range resources {
+			switch name := res.URN.Name(); name {
+			case "Protect":
+				assert.True(t, res.Protect, "Protect(%s)", name)
+
+			case "DependsOn":
+				wantDeps := []resource.URN{urns["Dep1"], urns["Dep2"]}
+				assert.ElementsMatch(t, wantDeps, res.Dependencies, "DependsOn(%s)", name)
+
+			case "AdditionalSecretOutputs":
+				assert.Equal(
+					t,
+					[]resource.PropertyKey{"foo"},
+					res.AdditionalSecretOutputs,
+					"AdditionalSecretOutputs(%s)",
+					name,
+				)
+
+			case "CustomTimeouts":
+				ct := res.CustomTimeouts
+				if assert.NotNil(t, ct, "CustomTimeouts(%s)", name) {
+					assert.Equal(t, float64(60), ct.Create, "CustomTimeouts.Create(%s)", name)
+					assert.Equal(t, float64(120), ct.Update, "CustomTimeouts.Update(%s)", name)
+					assert.Equal(t, float64(180), ct.Delete, "CustomTimeouts.Delete(%s)", name)
+				}
+
+			case "DeletedWith":
+				assert.Equal(t, urns["getDeletedWithMe"], res.DeletedWith, "DeletedWith(%s)", name)
+
+			case "RetainOnDelete":
+				assert.True(t, res.RetainOnDelete, "RetainOnDelete(%s)", name)
+			}
+		}
+	}
+
+	localProvider := integration.LocalDependency{
+		Package: "testcomponent",
+		Path:    filepath.Join(testDir, "testcomponent-go"),
+	}
+
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:                     filepath.Join(testDir, lang),
+		LocalProviders:          []integration.LocalDependency{localProvider},
+		Quick:                   true,
+		NoParallel:              true,
+		DestroyExcludeProtected: true,
+		SkipStackRemoval:        true,
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			validate(t, stackInfo.Deployment.Resources)
 		},
 	})
 }

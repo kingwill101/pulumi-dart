@@ -5,6 +5,14 @@ import 'resource.dart';
 import 'resource_hooks.dart';
 import 'resource_transformation.dart';
 
+class CustomTimeouts {
+  final String? create;
+  final String? update;
+  final String? delete;
+
+  const CustomTimeouts({this.create, this.update, this.delete});
+}
+
 class ResourceOptions {
   final Resource? parent;
   final List<Resource>? dependsOn;
@@ -12,8 +20,9 @@ class ResourceOptions {
   final ProviderResource? provider;
   final List<ProviderResource> providers;
   final List<Alias>? aliases;
-  final String? customTimeouts;
+  final CustomTimeouts? customTimeouts;
   final bool? deleteBeforeReplace;
+  final bool? retainOnDelete;
   final Resource? deletedWith;
   final List<String>? additionalSecretOutputs;
   final bool? ignoreChanges;
@@ -33,6 +42,7 @@ class ResourceOptions {
     this.aliases,
     this.customTimeouts,
     this.deleteBeforeReplace,
+    this.retainOnDelete,
     this.deletedWith,
     this.additionalSecretOutputs,
     this.ignoreChanges,
@@ -67,6 +77,7 @@ class ResourceOptions {
       aliases: [...?aliases, ...?options.aliases],
       customTimeouts: options.customTimeouts ?? customTimeouts,
       deleteBeforeReplace: options.deleteBeforeReplace ?? deleteBeforeReplace,
+      retainOnDelete: options.retainOnDelete ?? retainOnDelete,
       deletedWith: options.deletedWith ?? deletedWith,
       additionalSecretOutputs: [
         ...?additionalSecretOutputs,
@@ -121,6 +132,7 @@ ResourceOptions createComponentResourceOptionsCopy(ResourceOptions options) {
     pluginDownloadURL: options.pluginDownloadURL,
     customTimeouts: options.customTimeouts,
     deleteBeforeReplace: options.deleteBeforeReplace,
+    retainOnDelete: options.retainOnDelete,
     deletedWith: options.deletedWith,
     additionalSecretOutputs: options.additionalSecretOutputs != null
         ? List.from(options.additionalSecretOutputs!)

@@ -335,6 +335,22 @@ class DeploymentImpl extends Deployment
       request.deleteBeforeReplace = opts.deleteBeforeReplace!;
       request.deleteBeforeReplaceDefined = true;
     }
+    if (opts.customTimeouts != null) {
+      final customTimeouts = RegisterResourceRequest_CustomTimeouts();
+      if (opts.customTimeouts!.create != null) {
+        customTimeouts.create_1 = opts.customTimeouts!.create!;
+      }
+      if (opts.customTimeouts!.update != null) {
+        customTimeouts.update = opts.customTimeouts!.update!;
+      }
+      if (opts.customTimeouts!.delete != null) {
+        customTimeouts.delete = opts.customTimeouts!.delete!;
+      }
+      request.customTimeouts = customTimeouts;
+    }
+    if (opts.retainOnDelete != null) {
+      request.retainOnDelete = opts.retainOnDelete!;
+    }
     if (opts.deletedWith != null) {
       request.deletedWith = await opts.deletedWith!.urn.getValue();
     }

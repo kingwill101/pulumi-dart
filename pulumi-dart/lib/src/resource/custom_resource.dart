@@ -23,6 +23,9 @@ class CustomResourceOptions extends ResourceOptions {
     super.aliases,
     super.version,
     super.pluginDownloadURL,
+    super.customTimeouts,
+    super.deleteBeforeReplace,
+    super.retainOnDelete,
     super.deletedWith,
     super.additionalSecretOutputs,
   }) : super(
