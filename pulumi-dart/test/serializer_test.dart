@@ -107,6 +107,34 @@ void main() {
         }),
       );
     });
+
+    test('Serialize transitive dependency URNs', () async {
+      final parent = DependencyResource(
+        'urn:pulumi:stack::project::test:index:Parent::parent',
+      );
+      final child = DependencyResource(
+        'urn:pulumi:stack::project::test:index:Child::child',
+      );
+      final grandchild = DependencyResource(
+        'urn:pulumi:stack::project::test:index:GrandChild::grandchild',
+      );
+
+      parent.childResources.add(child);
+      child.childResources.add(grandchild);
+
+      final urns = await Serializer.getAllTransitivelyReferencedResourceUrns({
+        parent,
+      });
+
+      expect(
+        urns,
+        containsAll(<String>{
+          'urn:pulumi:stack::project::test:index:Parent::parent',
+          'urn:pulumi:stack::project::test:index:Child::child',
+          'urn:pulumi:stack::project::test:index:GrandChild::grandchild',
+        }),
+      );
+    });
   });
 
   group('Deserializer Tests', () {

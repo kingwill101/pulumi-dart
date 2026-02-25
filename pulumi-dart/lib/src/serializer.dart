@@ -12,10 +12,14 @@ class Serializer {
   final bool _excessiveDebugOutput;
 
   Serializer({bool excessiveDebugOutput = false})
-      : _excessiveDebugOutput = excessiveDebugOutput;
+    : _excessiveDebugOutput = excessiveDebugOutput;
 
-  Future<dynamic> serializeAsync(String ctx, dynamic prop, bool keepResources,
-      {bool keepOutputValues = false}) async {
+  Future<dynamic> serializeAsync(
+    String ctx,
+    dynamic prop,
+    bool keepResources, {
+    bool keepOutputValues = false,
+  }) async {
     if (prop == null ||
         prop is bool ||
         prop is int ||
@@ -37,15 +41,20 @@ class Serializer {
 
     if (prop is Future) {
       throw Exception(
-          'Futures are not allowed inside ResourceArgs. Please wrap your Future in an Output:\n\t$ctx');
+        'Futures are not allowed inside ResourceArgs. Please wrap your Future in an Output:\n\t$ctx',
+      );
     }
 
     if (prop is Input) {
       if (_excessiveDebugOutput) {
         print('Serialize property[$ctx]: Recursing into Input');
       }
-      return serializeAsync(ctx, prop.toOutput(), keepResources,
-          keepOutputValues: keepOutputValues);
+      return serializeAsync(
+        ctx,
+        prop.toOutput(),
+        keepResources,
+        keepOutputValues: keepOutputValues,
+      );
     }
 
     if (prop is Output) {
@@ -59,12 +68,16 @@ class Serializer {
       var isKnown = data.isKnown;
       var isSecret = data.isSecret;
 
-      var valueSerializer =
-          Serializer(excessiveDebugOutput: _excessiveDebugOutput);
+      var valueSerializer = Serializer(
+        excessiveDebugOutput: _excessiveDebugOutput,
+      );
       dynamic value = isKnown
           ? await valueSerializer.serializeAsync(
-              '$ctx.value', data.value, keepResources,
-              keepOutputValues: false)
+              '$ctx.value',
+              data.value,
+              keepResources,
+              keepOutputValues: false,
+            )
           : null;
 
       var promiseDeps = valueSerializer.dependentResources;
@@ -78,18 +91,23 @@ class Serializer {
 
         var urnDeps = <Resource>{};
         for (var resource in propResources) {
-          var urnSerializer =
-              Serializer(excessiveDebugOutput: _excessiveDebugOutput);
+          var urnSerializer = Serializer(
+            excessiveDebugOutput: _excessiveDebugOutput,
+          );
           await urnSerializer.serializeAsync(
-              '$ctx dependency', resource.urn, keepResources,
-              keepOutputValues: false);
+            '$ctx dependency',
+            resource.urn,
+            keepResources,
+            keepOutputValues: false,
+          );
           urnDeps.addAll(urnSerializer.dependentResources);
         }
         dependentResources.addAll(urnDeps);
         propResources.addAll(urnDeps);
 
-        var dependencies =
-            await getAllTransitivelyReferencedResourceUrns(propResources);
+        var dependencies = await getAllTransitivelyReferencedResourceUrns(
+          propResources,
+        );
         var result = {
           Constants.specialSigKey: Constants.specialOutputValueSig,
           if (isKnown) Constants.valueName: value,
@@ -119,11 +137,19 @@ class Serializer {
 
       dependentResources.add(prop);
 
-      var id = await serializeAsync('$ctx.id', prop.id, keepResources,
-          keepOutputValues: false);
+      var id = await serializeAsync(
+        '$ctx.id',
+        prop.id,
+        keepResources,
+        keepOutputValues: false,
+      );
       if (keepResources) {
-        var urn = await serializeAsync('$ctx.urn', prop.urn, keepResources,
-            keepOutputValues: false);
+        var urn = await serializeAsync(
+          '$ctx.urn',
+          prop.urn,
+          keepResources,
+          keepOutputValues: false,
+        );
         return {
           Constants.specialSigKey: Constants.specialResourceSig,
           Constants.resourceUrnName: urn,
@@ -141,8 +167,12 @@ class Serializer {
 
       dependentResources.add(prop);
 
-      var urn = await serializeAsync('$ctx.urn', prop.urn, keepResources,
-          keepOutputValues: false);
+      var urn = await serializeAsync(
+        '$ctx.urn',
+        prop.urn,
+        keepResources,
+        keepOutputValues: false,
+      );
       if (keepResources) {
         return {
           Constants.specialSigKey: Constants.specialResourceSig,
@@ -153,8 +183,12 @@ class Serializer {
     }
 
     if (prop is Map) {
-      final serialized =
-          await serializeMap(ctx, prop.cast(), keepResources, keepOutputValues);
+      final serialized = await serializeMap(
+        ctx,
+        prop.cast(),
+        keepResources,
+        keepOutputValues,
+      );
       if (!keepOutputValues && _containsUnknowns(serialized)) {
         return Constants.unknownObjectValue;
       }
@@ -162,8 +196,12 @@ class Serializer {
     }
 
     if (prop is Iterable) {
-      final serialized =
-          await serializeList(ctx, prop, keepResources, keepOutputValues);
+      final serialized = await serializeList(
+        ctx,
+        prop,
+        keepResources,
+        keepOutputValues,
+      );
       if (!keepOutputValues && _containsUnknowns(serialized)) {
         return Constants.unknownArrayValue;
       }
@@ -171,11 +209,16 @@ class Serializer {
     }
 
     throw Exception(
-        '${prop.runtimeType} is not a supported argument type.\n\t$ctx');
+      '${prop.runtimeType} is not a supported argument type.\n\t$ctx',
+    );
   }
 
-  Future<Map<String, dynamic>> serializeResourceArgs(String ctx, Inputs args,
-      bool keepResources, bool keepOutputValues) async {
+  Future<Map<String, dynamic>> serializeResourceArgs(
+    String ctx,
+    Inputs args,
+    bool keepResources,
+    bool keepOutputValues,
+  ) async {
     if (_excessiveDebugOutput) {
       print('Serialize property[$ctx]: Recursing into ResourceArgs');
     }
@@ -184,10 +227,14 @@ class Serializer {
   }
 
   Future<Map<String, dynamic>> serializeAssetOrArchive(
-      String ctx, AssetOrArchive assetOrArchive, bool keepResources) async {
+    String ctx,
+    AssetOrArchive assetOrArchive,
+    bool keepResources,
+  ) async {
     if (_excessiveDebugOutput) {
       print(
-          'Serialize property[$ctx]: asset/archive=${assetOrArchive.runtimeType}');
+        'Serialize property[$ctx]: asset/archive=${assetOrArchive.runtimeType}',
+      );
     }
 
     String propName;
@@ -213,32 +260,38 @@ class Serializer {
     } else if (assetOrArchive is AssetArchive) {
       propName = Constants.archiveAssetsName;
       sigKey = Constants.specialArchiveSig;
-      value =
-          await serializeMap(ctx, assetOrArchive.assets, keepResources, false);
+      value = await serializeMap(
+        ctx,
+        assetOrArchive.assets,
+        keepResources,
+        false,
+      );
     } else if (assetOrArchive is RemoteArchive) {
       propName = Constants.assetOrArchiveUriName;
       sigKey = Constants.specialArchiveSig;
       value = assetOrArchive.url;
     } else {
       throw Exception(
-          'Unknown asset or archive type: ${assetOrArchive.runtimeType}');
+        'Unknown asset or archive type: ${assetOrArchive.runtimeType}',
+      );
     }
 
     var serializedValue = await serializeAsync(
-        ctx + "." + propName, value, keepResources,
-        keepOutputValues: false);
+      ctx + "." + propName,
+      value,
+      keepResources,
+      keepOutputValues: false,
+    );
 
-    return {
-      Constants.specialSigKey: sigKey,
-      propName: serializedValue,
-    };
+    return {Constants.specialSigKey: sigKey, propName: serializedValue};
   }
 
   Future<Map<String, dynamic>> serializeMap(
-      String ctx,
-      Map<String, dynamic> map,
-      bool keepResources,
-      bool keepOutputValues) async {
+    String ctx,
+    Map<String, dynamic> map,
+    bool keepResources,
+    bool keepOutputValues,
+  ) async {
     if (_excessiveDebugOutput) {
       print('Serialize property[$ctx]: Hit map');
     }
@@ -250,8 +303,11 @@ class Serializer {
       }
 
       var v = await serializeAsync(
-          '$ctx.${entry.key}', entry.value, keepResources,
-          keepOutputValues: keepOutputValues);
+        '$ctx.${entry.key}',
+        entry.value,
+        keepResources,
+        keepOutputValues: keepOutputValues,
+      );
       if (v != null) {
         result[entry.key] = v;
       }
@@ -260,8 +316,12 @@ class Serializer {
     return result;
   }
 
-  Future<List<dynamic>> serializeList(String ctx, Iterable iterable,
-      bool keepResources, bool keepOutputValues) async {
+  Future<List<dynamic>> serializeList(
+    String ctx,
+    Iterable iterable,
+    bool keepResources,
+    bool keepOutputValues,
+  ) async {
     if (_excessiveDebugOutput) {
       print('Serialize property[$ctx]: Hit list');
     }
@@ -273,8 +333,14 @@ class Serializer {
         print('Serialize property[$ctx]: array[$index] element');
       }
 
-      result.add(await serializeAsync('$ctx[$index]', item, keepResources,
-          keepOutputValues: keepOutputValues));
+      result.add(
+        await serializeAsync(
+          '$ctx[$index]',
+          item,
+          keepResources,
+          keepOutputValues: keepOutputValues,
+        ),
+      );
       index++;
     }
 
@@ -282,14 +348,34 @@ class Serializer {
   }
 
   static Future<Set<String>> getAllTransitivelyReferencedResourceUrns(
-      Set<Resource> resources) async {
-    // Implementation depends on your Resource class structure
-    // This is a placeholder implementation
-    Set<String> urns = {};
-    for (var r in resources) {
-      final urn = await r.urn.getValue();
-      urns.add(urn);
+    Set<Resource> resources,
+  ) async {
+    final urns = <String>{};
+    final visited = <Resource>{};
+
+    Future<void> collect(Resource resource) async {
+      if (!visited.add(resource)) {
+        return;
+      }
+
+      // Component resources may represent a graph of child resources.
+      // Their transitive children are valid dependency targets and should
+      // be included as individual URN dependencies.
+      for (final child in resource.childResources) {
+        await collect(child);
+      }
+
+      final urnData = await resource.urn.getData();
+      final urn = urnData.value;
+      if (urnData.isKnown && urn is String && urn.isNotEmpty) {
+        urns.add(urn);
+      }
     }
+
+    for (final resource in resources) {
+      await collect(resource);
+    }
+
     return urns;
   }
 
