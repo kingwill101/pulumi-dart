@@ -202,7 +202,7 @@ Status: **Open**
 
 Current issues:
 
-- parameterized SDK coverage now validates generated package structure, expected resource-class emissions, and generated invoke symbol export (`doEcho`, `DoEchoArgs`) (`lib/pkg.dart` export + `lib/src/pkg/sdk.dart` content + fixture compile checks), but still does not fully validate richer typed SDK behavior (inputs/outputs/enums/config models) or live runtime semantics for parameterized generated tokens (`pkg:index:*`).
+- parameterized SDK coverage now validates generated package structure, expected resource-class emissions, generated invoke symbol export, and live runtime semantics for generated resource/invoke wrappers (`pkg.Echo`, `pkg.doEcho`) in the parameterized fixture using pure parameterized plugin resolution (without local `pkg` provider mapping).
 - namespace package-add flow now validates generated SDK structure and typed behavior for enum/object/config/args/result symbols in a non-testprovider schema, but does not yet validate live invoke/runtime semantics for generated functions.
 - broader upstream parity classes (for example policy pack publish/lifecycle cloud flows and additional automation API variants) still need Dart ports.
 - plugin debugger attach flow is now validated via StartDebugging event + advertised DAP config to avoid known connection-refused race in parallel attach timing.
