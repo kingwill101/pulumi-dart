@@ -105,6 +105,41 @@ func TestPackProducesArchive(t *testing.T) {
 	assert.True(t, entries["lib/my_pkg.dart"])
 }
 
+func TestPackRequiresPackageDirectory(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	_, err := host.Pack(context.Background(), &pulumirpc.PackRequest{
+		DestinationDirectory: t.TempDir(),
+	})
+	require.Error(t, err)
+	assert.Contains(t, err.Error(), "package directory is required")
+}
+
+func TestPackRequiresDestinationDirectory(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	_, err := host.Pack(context.Background(), &pulumirpc.PackRequest{
+		PackageDirectory: t.TempDir(),
+	})
+	require.Error(t, err)
+	assert.Contains(t, err.Error(), "destination directory is required")
+}
+
+func TestPackMissingPackageDirectoryReturnsError(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	missingDir := filepath.Join(t.TempDir(), "missing-package-dir")
+	_, err := host.Pack(context.Background(), &pulumirpc.PackRequest{
+		PackageDirectory:     missingDir,
+		DestinationDirectory: t.TempDir(),
+	})
+	require.Error(t, err)
+	assert.Contains(t, err.Error(), "failed to enumerate package files")
+}
+
 func TestGeneratePackageEmitsResourceClasses(t *testing.T) {
 	t.Parallel()
 
