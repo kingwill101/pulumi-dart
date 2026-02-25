@@ -30,7 +30,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup dotnet SDK v6.0
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
       - name: Format Pulumi SDK
         run: dotnet run format-sdk verify
 
@@ -46,7 +46,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup dotnet SDK v6.0
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install Pulumi CLI
@@ -77,7 +77,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup dotnet SDK v6.0
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Set up Go 1.22.x
