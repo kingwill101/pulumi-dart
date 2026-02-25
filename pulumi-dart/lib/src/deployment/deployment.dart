@@ -302,7 +302,12 @@ class DeploymentImpl extends Deployment
     }
 
     if (opts.provider != null) {
-      request.provider = await ProviderResource.register(opts.provider) ?? '';
+      final providerRef = await ProviderResource.register(opts.provider) ?? '';
+      if (resource.isCustom) {
+        request.provider = providerRef;
+      } else {
+        request.providers[opts.provider!.package] = providerRef;
+      }
     }
 
     if (opts.providers.isNotEmpty) {

@@ -386,6 +386,29 @@ func testConstructMethodsErrors(t *testing.T, lang string) {
 	})
 }
 
+// Tests methods work when there is an explicit provider for another provider set on the component.
+func testConstructMethodsProvider(t *testing.T, lang string) {
+	const testDir = "construct_component_methods_provider"
+	componentDir := "testcomponent-go"
+
+	localProvider := integration.LocalDependency{
+		Package: "testcomponent", Path: filepath.Join(testDir, componentDir),
+	}
+	testProvider := integration.LocalDependency{
+		Package: "testprovider", Path: testProviderPath(),
+	}
+
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:            filepath.Join(testDir, lang),
+		LocalProviders: []integration.LocalDependency{localProvider, testProvider},
+		Quick:          true,
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			assert.Equal(t, "Hello World, Alice!", stackInfo.Outputs["message1"])
+			assert.Equal(t, "Hi There, Bob!", stackInfo.Outputs["message2"])
+		},
+	})
+}
+
 func testConstructOutputValues(t *testing.T, lang string, dependencies ...string) {
 	const testDir = "construct_component_output_values"
 	componentDir := "testcomponent-go"

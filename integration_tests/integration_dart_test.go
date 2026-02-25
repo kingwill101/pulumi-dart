@@ -414,6 +414,10 @@ func TestConstructMethodsErrorsDart(t *testing.T) {
 	testConstructMethodsErrors(t, "dotnet")
 }
 
+func TestConstructMethodsProviderDart(t *testing.T) {
+	testConstructMethodsProvider(t, "dart")
+}
+
 func TestConstructOutputValuesDart(t *testing.T) {
 	testConstructOutputValues(t, "dart")
 }
