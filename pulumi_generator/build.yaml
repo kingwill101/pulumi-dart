@@ -1,0 +1,7 @@
+builders:
+  pulumi_resource:
+    import: "package:pulumi_generator/builder.dart"
+    builder_factories: ["pulumiResourceGenerator"]
+    build_extensions: { ".dart": [".pulumi.dart"] }
+    auto_apply: true
+    build_to: source
