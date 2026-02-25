@@ -358,6 +358,19 @@ class DeploymentImpl extends Deployment
         opts.additionalSecretOutputs!.isNotEmpty) {
       request.additionalSecretOutputs.addAll(opts.additionalSecretOutputs!);
     }
+    final replacementTrigger =
+        opts.replacementTrigger ?? opts.replacementOptions;
+    if (replacementTrigger != null) {
+      final serializer = Serializer();
+      final serialized = await serializer.serializeAsync(
+        'resource:${resource.getResourceName()}.replacementTrigger',
+        replacementTrigger,
+        true,
+      );
+      if (serialized != null) {
+        request.replacementTrigger = await StructConverter.toValue(serialized);
+      }
+    }
 
     final response = await monitor.registerResource(resource, request);
     resource.resolveUrn(response.urn);
@@ -395,6 +408,7 @@ class DeploymentImpl extends Deployment
     binding.afterDelete.addAll(
       await _registerHooks(callbacks, hooks.afterDelete),
     );
+    binding.onError.addAll(await _registerErrorHooks(callbacks, hooks.onError));
     return binding;
   }
 
@@ -406,6 +420,16 @@ class DeploymentImpl extends Deployment
       return const [];
     }
     return Future.wait(hooks.map(callbacks.registerResourceHook));
+  }
+
+  Future<List<String>> _registerErrorHooks(
+    ICallbackServer callbacks,
+    List<ErrorHook> hooks,
+  ) async {
+    if (hooks.isEmpty) {
+      return const [];
+    }
+    return Future.wait(hooks.map(callbacks.registerErrorHook));
   }
 
   @override

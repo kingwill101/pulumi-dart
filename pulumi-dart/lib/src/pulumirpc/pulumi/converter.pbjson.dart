@@ -1,13 +1,15 @@
+// This is a generated file - do not edit.
 //
-//  Generated code. Do not modify.
-//  source: pulumi/converter.proto
-//
-// @dart = 2.12
+// Generated from pulumi/converter.proto.
+
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: curly_braces_in_flow_control_structures
+// ignore_for_file: deprecated_member_use_from_same_package, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_relative_imports
+// ignore_for_file: unused_import
 
 import 'dart:convert' as $convert;
 import 'dart:core' as $core;
@@ -94,6 +96,13 @@ const ConvertProgramRequest$json = {
     {'1': 'mapper_target', '3': 3, '4': 1, '5': 9, '10': 'mapperTarget'},
     {'1': 'loader_target', '3': 4, '4': 1, '5': 9, '10': 'loaderTarget'},
     {'1': 'args', '3': 5, '4': 3, '5': 9, '10': 'args'},
+    {
+      '1': 'generated_project_directory',
+      '3': 6,
+      '4': 1,
+      '5': 9,
+      '10': 'generatedProjectDirectory'
+    },
   ],
 };
 
@@ -102,7 +111,8 @@ final $typed_data.Uint8List convertProgramRequestDescriptor = $convert.base64Dec
     'ChVDb252ZXJ0UHJvZ3JhbVJlcXVlc3QSKQoQc291cmNlX2RpcmVjdG9yeRgBIAEoCVIPc291cm'
     'NlRGlyZWN0b3J5EikKEHRhcmdldF9kaXJlY3RvcnkYAiABKAlSD3RhcmdldERpcmVjdG9yeRIj'
     'Cg1tYXBwZXJfdGFyZ2V0GAMgASgJUgxtYXBwZXJUYXJnZXQSIwoNbG9hZGVyX3RhcmdldBgEIA'
-    'EoCVIMbG9hZGVyVGFyZ2V0EhIKBGFyZ3MYBSADKAlSBGFyZ3M=');
+    'EoCVIMbG9hZGVyVGFyZ2V0EhIKBGFyZ3MYBSADKAlSBGFyZ3MSPgobZ2VuZXJhdGVkX3Byb2pl'
+    'Y3RfZGlyZWN0b3J5GAYgASgJUhlnZW5lcmF0ZWRQcm9qZWN0RGlyZWN0b3J5');
 
 @$core.Deprecated('Use convertProgramResponseDescriptor instead')
 const ConvertProgramResponse$json = {

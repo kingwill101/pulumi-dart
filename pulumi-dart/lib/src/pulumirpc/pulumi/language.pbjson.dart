@@ -1,13 +1,15 @@
+// This is a generated file - do not edit.
 //
-//  Generated code. Do not modify.
-//  source: pulumi/language.proto
-//
-// @dart = 2.12
+// Generated from pulumi/language.proto.
+
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: curly_braces_in_flow_control_structures
+// ignore_for_file: deprecated_member_use_from_same_package, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_relative_imports
+// ignore_for_file: unused_import
 
 import 'dart:convert' as $convert;
 import 'dart:core' as $core;
@@ -253,6 +255,48 @@ final $typed_data.Uint8List getRequiredPluginsResponseDescriptor =
         'ChpHZXRSZXF1aXJlZFBsdWdpbnNSZXNwb25zZRI1CgdwbHVnaW5zGAEgAygLMhsucHVsdW1pcn'
         'BjLlBsdWdpbkRlcGVuZGVuY3lSB3BsdWdpbnM=');
 
+@$core.Deprecated('Use getRequiredPackagesRequestDescriptor instead')
+const GetRequiredPackagesRequest$json = {
+  '1': 'GetRequiredPackagesRequest',
+  '2': [
+    {
+      '1': 'info',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.pulumirpc.ProgramInfo',
+      '10': 'info'
+    },
+  ],
+};
+
+/// Descriptor for `GetRequiredPackagesRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getRequiredPackagesRequestDescriptor =
+    $convert.base64Decode(
+        'ChpHZXRSZXF1aXJlZFBhY2thZ2VzUmVxdWVzdBIqCgRpbmZvGAEgASgLMhYucHVsdW1pcnBjLl'
+        'Byb2dyYW1JbmZvUgRpbmZv');
+
+@$core.Deprecated('Use getRequiredPackagesResponseDescriptor instead')
+const GetRequiredPackagesResponse$json = {
+  '1': 'GetRequiredPackagesResponse',
+  '2': [
+    {
+      '1': 'packages',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.pulumirpc.PackageDependency',
+      '10': 'packages'
+    },
+  ],
+};
+
+/// Descriptor for `GetRequiredPackagesResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getRequiredPackagesResponseDescriptor =
+    $convert.base64Decode(
+        'ChtHZXRSZXF1aXJlZFBhY2thZ2VzUmVzcG9uc2USOAoIcGFja2FnZXMYASADKAsyHC5wdWx1bW'
+        'lycGMuUGFja2FnZURlcGVuZGVuY3lSCHBhY2thZ2Vz');
+
 @$core.Deprecated('Use runRequestDescriptor instead')
 const RunRequest$json = {
   '1': 'RunRequest',
@@ -280,7 +324,14 @@ const RunRequest$json = {
     {'1': 'dryRun', '3': 7, '4': 1, '5': 8, '10': 'dryRun'},
     {'1': 'parallel', '3': 8, '4': 1, '5': 5, '10': 'parallel'},
     {'1': 'monitor_address', '3': 9, '4': 1, '5': 9, '10': 'monitorAddress'},
-    {'1': 'queryMode', '3': 10, '4': 1, '5': 8, '10': 'queryMode'},
+    {
+      '1': 'queryMode',
+      '3': 10,
+      '4': 1,
+      '5': 8,
+      '8': {'3': true},
+      '10': 'queryMode',
+    },
     {
       '1': 'configSecretKeys',
       '3': 11,
@@ -295,7 +346,8 @@ const RunRequest$json = {
       '4': 1,
       '5': 11,
       '6': '.google.protobuf.Struct',
-      '10': 'configPropertyMap'
+      '8': {'3': true},
+      '10': 'configPropertyMap',
     },
     {
       '1': 'info',
@@ -305,6 +357,8 @@ const RunRequest$json = {
       '6': '.pulumirpc.ProgramInfo',
       '10': 'info'
     },
+    {'1': 'loader_target', '3': 15, '4': 1, '5': 9, '10': 'loaderTarget'},
+    {'1': 'attach_debugger', '3': 16, '4': 1, '5': 8, '10': 'attachDebugger'},
   ],
   '3': [RunRequest_ConfigEntry$json],
 };
@@ -326,12 +380,13 @@ final $typed_data.Uint8List runRequestDescriptor = $convert.base64Decode(
     'BGFyZ3MYBSADKAlSBGFyZ3MSOQoGY29uZmlnGAYgAygLMiEucHVsdW1pcnBjLlJ1blJlcXVlc3'
     'QuQ29uZmlnRW50cnlSBmNvbmZpZxIWCgZkcnlSdW4YByABKAhSBmRyeVJ1bhIaCghwYXJhbGxl'
     'bBgIIAEoBVIIcGFyYWxsZWwSJwoPbW9uaXRvcl9hZGRyZXNzGAkgASgJUg5tb25pdG9yQWRkcm'
-    'VzcxIcCglxdWVyeU1vZGUYCiABKAhSCXF1ZXJ5TW9kZRIqChBjb25maWdTZWNyZXRLZXlzGAsg'
-    'AygJUhBjb25maWdTZWNyZXRLZXlzEiIKDG9yZ2FuaXphdGlvbhgMIAEoCVIMb3JnYW5pemF0aW'
-    '9uEkUKEWNvbmZpZ1Byb3BlcnR5TWFwGA0gASgLMhcuZ29vZ2xlLnByb3RvYnVmLlN0cnVjdFIR'
-    'Y29uZmlnUHJvcGVydHlNYXASKgoEaW5mbxgOIAEoCzIWLnB1bHVtaXJwYy5Qcm9ncmFtSW5mb1'
-    'IEaW5mbxo5CgtDb25maWdFbnRyeRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIF'
-    'dmFsdWU6AjgB');
+    'VzcxIgCglxdWVyeU1vZGUYCiABKAhCAhgBUglxdWVyeU1vZGUSKgoQY29uZmlnU2VjcmV0S2V5'
+    'cxgLIAMoCVIQY29uZmlnU2VjcmV0S2V5cxIiCgxvcmdhbml6YXRpb24YDCABKAlSDG9yZ2FuaX'
+    'phdGlvbhJJChFjb25maWdQcm9wZXJ0eU1hcBgNIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1'
+    'Y3RCAhgBUhFjb25maWdQcm9wZXJ0eU1hcBIqCgRpbmZvGA4gASgLMhYucHVsdW1pcnBjLlByb2'
+    'dyYW1JbmZvUgRpbmZvEiMKDWxvYWRlcl90YXJnZXQYDyABKAlSDGxvYWRlclRhcmdldBInCg9h'
+    'dHRhY2hfZGVidWdnZXIYECABKAhSDmF0dGFjaERlYnVnZ2VyGjkKC0NvbmZpZ0VudHJ5EhAKA2'
+    'tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIgASgJUgV2YWx1ZToCOAE=');
 
 @$core.Deprecated('Use runResponseDescriptor instead')
 const RunResponse$json = {
@@ -368,15 +423,24 @@ const InstallDependenciesRequest$json = {
       '6': '.pulumirpc.ProgramInfo',
       '10': 'info'
     },
+    {
+      '1': 'use_language_version_tools',
+      '3': 4,
+      '4': 1,
+      '5': 8,
+      '10': 'useLanguageVersionTools'
+    },
+    {'1': 'is_plugin', '3': 5, '4': 1, '5': 8, '10': 'isPlugin'},
   ],
 };
 
 /// Descriptor for `InstallDependenciesRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List installDependenciesRequestDescriptor =
-    $convert.base64Decode(
-        'ChpJbnN0YWxsRGVwZW5kZW5jaWVzUmVxdWVzdBIgCglkaXJlY3RvcnkYASABKAlCAhgBUglkaX'
-        'JlY3RvcnkSHwoLaXNfdGVybWluYWwYAiABKAhSCmlzVGVybWluYWwSKgoEaW5mbxgDIAEoCzIW'
-        'LnB1bHVtaXJwYy5Qcm9ncmFtSW5mb1IEaW5mbw==');
+final $typed_data.Uint8List installDependenciesRequestDescriptor = $convert.base64Decode(
+    'ChpJbnN0YWxsRGVwZW5kZW5jaWVzUmVxdWVzdBIgCglkaXJlY3RvcnkYASABKAlCAhgBUglkaX'
+    'JlY3RvcnkSHwoLaXNfdGVybWluYWwYAiABKAhSCmlzVGVybWluYWwSKgoEaW5mbxgDIAEoCzIW'
+    'LnB1bHVtaXJwYy5Qcm9ncmFtSW5mb1IEaW5mbxI7Chp1c2VfbGFuZ3VhZ2VfdmVyc2lvbl90b2'
+    '9scxgEIAEoCFIXdXNlTGFuZ3VhZ2VWZXJzaW9uVG9vbHMSGwoJaXNfcGx1Z2luGAUgASgIUghp'
+    'c1BsdWdpbg==');
 
 @$core.Deprecated('Use installDependenciesResponseDescriptor instead')
 const InstallDependenciesResponse$json = {
@@ -510,6 +574,36 @@ final $typed_data.Uint8List runtimeOptionsResponseDescriptor =
         'ChZSdW50aW1lT3B0aW9uc1Jlc3BvbnNlEjgKB3Byb21wdHMYASADKAsyHi5wdWx1bWlycGMuUn'
         'VudGltZU9wdGlvblByb21wdFIHcHJvbXB0cw==');
 
+@$core.Deprecated('Use templateRequestDescriptor instead')
+const TemplateRequest$json = {
+  '1': 'TemplateRequest',
+  '2': [
+    {
+      '1': 'info',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.pulumirpc.ProgramInfo',
+      '10': 'info'
+    },
+    {'1': 'project_name', '3': 2, '4': 1, '5': 9, '10': 'projectName'},
+  ],
+};
+
+/// Descriptor for `TemplateRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List templateRequestDescriptor = $convert.base64Decode(
+    'Cg9UZW1wbGF0ZVJlcXVlc3QSKgoEaW5mbxgBIAEoCzIWLnB1bHVtaXJwYy5Qcm9ncmFtSW5mb1'
+    'IEaW5mbxIhCgxwcm9qZWN0X25hbWUYAiABKAlSC3Byb2plY3ROYW1l');
+
+@$core.Deprecated('Use templateResponseDescriptor instead')
+const TemplateResponse$json = {
+  '1': 'TemplateResponse',
+};
+
+/// Descriptor for `TemplateResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List templateResponseDescriptor =
+    $convert.base64Decode('ChBUZW1wbGF0ZVJlc3BvbnNl');
+
 @$core.Deprecated('Use runPluginRequestDescriptor instead')
 const RunPluginRequest$json = {
   '1': 'RunPluginRequest',
@@ -533,6 +627,10 @@ const RunPluginRequest$json = {
       '6': '.pulumirpc.ProgramInfo',
       '10': 'info'
     },
+    {'1': 'kind', '3': 6, '4': 1, '5': 9, '10': 'kind'},
+    {'1': 'name', '3': 7, '4': 1, '5': 9, '10': 'name'},
+    {'1': 'attach_debugger', '3': 8, '4': 1, '5': 8, '10': 'attachDebugger'},
+    {'1': 'loader_target', '3': 9, '4': 1, '5': 9, '10': 'loaderTarget'},
   ],
 };
 
@@ -540,7 +638,9 @@ const RunPluginRequest$json = {
 final $typed_data.Uint8List runPluginRequestDescriptor = $convert.base64Decode(
     'ChBSdW5QbHVnaW5SZXF1ZXN0EhAKA3B3ZBgBIAEoCVIDcHdkEhwKB3Byb2dyYW0YAiABKAlCAh'
     'gBUgdwcm9ncmFtEhIKBGFyZ3MYAyADKAlSBGFyZ3MSEAoDZW52GAQgAygJUgNlbnYSKgoEaW5m'
-    'bxgFIAEoCzIWLnB1bHVtaXJwYy5Qcm9ncmFtSW5mb1IEaW5mbw==');
+    'bxgFIAEoCzIWLnB1bHVtaXJwYy5Qcm9ncmFtSW5mb1IEaW5mbxISCgRraW5kGAYgASgJUgRraW'
+    '5kEhIKBG5hbWUYByABKAlSBG5hbWUSJwoPYXR0YWNoX2RlYnVnZ2VyGAggASgIUg5hdHRhY2hE'
+    'ZWJ1Z2dlchIjCg1sb2FkZXJfdGFyZ2V0GAkgASgJUgxsb2FkZXJUYXJnZXQ=');
 
 @$core.Deprecated('Use runPluginResponseDescriptor instead')
 const RunPluginResponse$json = {
@@ -721,6 +821,7 @@ const GeneratePackageRequest$json = {
       '6': '.pulumirpc.GeneratePackageRequest.LocalDependenciesEntry',
       '10': 'localDependencies'
     },
+    {'1': 'local', '3': 6, '4': 1, '5': 8, '10': 'local'},
   ],
   '3': [
     GeneratePackageRequest_ExtraFilesEntry$json,
@@ -755,9 +856,10 @@ final $typed_data.Uint8List generatePackageRequestDescriptor = $convert.base64De
     'LkdlbmVyYXRlUGFja2FnZVJlcXVlc3QuRXh0cmFGaWxlc0VudHJ5UgpleHRyYUZpbGVzEiMKDW'
     'xvYWRlcl90YXJnZXQYBCABKAlSDGxvYWRlclRhcmdldBJnChJsb2NhbF9kZXBlbmRlbmNpZXMY'
     'BSADKAsyOC5wdWx1bWlycGMuR2VuZXJhdGVQYWNrYWdlUmVxdWVzdC5Mb2NhbERlcGVuZGVuY2'
-    'llc0VudHJ5UhFsb2NhbERlcGVuZGVuY2llcxo9Cg9FeHRyYUZpbGVzRW50cnkSEAoDa2V5GAEg'
-    'ASgJUgNrZXkSFAoFdmFsdWUYAiABKAxSBXZhbHVlOgI4ARpEChZMb2NhbERlcGVuZGVuY2llc0'
-    'VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIgASgJUgV2YWx1ZToCOAE=');
+    'llc0VudHJ5UhFsb2NhbERlcGVuZGVuY2llcxIUCgVsb2NhbBgGIAEoCFIFbG9jYWwaPQoPRXh0'
+    'cmFGaWxlc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIgASgMUgV2YWx1ZToCOA'
+    'EaRAoWTG9jYWxEZXBlbmRlbmNpZXNFbnRyeRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgC'
+    'IAEoCVIFdmFsdWU6AjgB');
 
 @$core.Deprecated('Use generatePackageResponseDescriptor instead')
 const GeneratePackageResponse$json = {
@@ -817,3 +919,117 @@ const PackResponse$json = {
 /// Descriptor for `PackResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List packResponseDescriptor = $convert.base64Decode(
     'CgxQYWNrUmVzcG9uc2USIwoNYXJ0aWZhY3RfcGF0aBgBIAEoCVIMYXJ0aWZhY3RQYXRo');
+
+@$core.Deprecated('Use languageHandshakeRequestDescriptor instead')
+const LanguageHandshakeRequest$json = {
+  '1': 'LanguageHandshakeRequest',
+  '2': [
+    {'1': 'engine_address', '3': 1, '4': 1, '5': 9, '10': 'engineAddress'},
+    {
+      '1': 'root_directory',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '9': 0,
+      '10': 'rootDirectory',
+      '17': true
+    },
+    {
+      '1': 'program_directory',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '9': 1,
+      '10': 'programDirectory',
+      '17': true
+    },
+  ],
+  '8': [
+    {'1': '_root_directory'},
+    {'1': '_program_directory'},
+  ],
+};
+
+/// Descriptor for `LanguageHandshakeRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List languageHandshakeRequestDescriptor = $convert.base64Decode(
+    'ChhMYW5ndWFnZUhhbmRzaGFrZVJlcXVlc3QSJQoOZW5naW5lX2FkZHJlc3MYASABKAlSDWVuZ2'
+    'luZUFkZHJlc3MSKgoOcm9vdF9kaXJlY3RvcnkYAiABKAlIAFINcm9vdERpcmVjdG9yeYgBARIw'
+    'ChFwcm9ncmFtX2RpcmVjdG9yeRgDIAEoCUgBUhBwcm9ncmFtRGlyZWN0b3J5iAEBQhEKD19yb2'
+    '90X2RpcmVjdG9yeUIUChJfcHJvZ3JhbV9kaXJlY3Rvcnk=');
+
+@$core.Deprecated('Use languageHandshakeResponseDescriptor instead')
+const LanguageHandshakeResponse$json = {
+  '1': 'LanguageHandshakeResponse',
+};
+
+/// Descriptor for `LanguageHandshakeResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List languageHandshakeResponseDescriptor =
+    $convert.base64Decode('ChlMYW5ndWFnZUhhbmRzaGFrZVJlc3BvbnNl');
+
+@$core.Deprecated('Use linkRequestDescriptor instead')
+const LinkRequest$json = {
+  '1': 'LinkRequest',
+  '2': [
+    {
+      '1': 'info',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.pulumirpc.ProgramInfo',
+      '10': 'info'
+    },
+    {'1': 'loader_target', '3': 2, '4': 1, '5': 9, '10': 'loaderTarget'},
+    {
+      '1': 'packages',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.pulumirpc.LinkRequest.LinkDependency',
+      '10': 'packages'
+    },
+  ],
+  '3': [LinkRequest_LinkDependency$json],
+};
+
+@$core.Deprecated('Use linkRequestDescriptor instead')
+const LinkRequest_LinkDependency$json = {
+  '1': 'LinkDependency',
+  '2': [
+    {
+      '1': 'package',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.pulumirpc.PackageDependency',
+      '10': 'package'
+    },
+    {'1': 'path', '3': 2, '4': 1, '5': 9, '10': 'path'},
+  ],
+};
+
+/// Descriptor for `LinkRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List linkRequestDescriptor = $convert.base64Decode(
+    'CgtMaW5rUmVxdWVzdBIqCgRpbmZvGAEgASgLMhYucHVsdW1pcnBjLlByb2dyYW1JbmZvUgRpbm'
+    'ZvEiMKDWxvYWRlcl90YXJnZXQYAiABKAlSDGxvYWRlclRhcmdldBJBCghwYWNrYWdlcxgDIAMo'
+    'CzIlLnB1bHVtaXJwYy5MaW5rUmVxdWVzdC5MaW5rRGVwZW5kZW5jeVIIcGFja2FnZXMaXAoOTG'
+    'lua0RlcGVuZGVuY3kSNgoHcGFja2FnZRgBIAEoCzIcLnB1bHVtaXJwYy5QYWNrYWdlRGVwZW5k'
+    'ZW5jeVIHcGFja2FnZRISCgRwYXRoGAIgASgJUgRwYXRo');
+
+@$core.Deprecated('Use linkResponseDescriptor instead')
+const LinkResponse$json = {
+  '1': 'LinkResponse',
+  '2': [
+    {
+      '1': 'import_instructions',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'importInstructions'
+    },
+  ],
+};
+
+/// Descriptor for `LinkResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List linkResponseDescriptor = $convert.base64Decode(
+    'CgxMaW5rUmVzcG9uc2USLwoTaW1wb3J0X2luc3RydWN0aW9ucxgBIAEoCVISaW1wb3J0SW5zdH'
+    'J1Y3Rpb25z');

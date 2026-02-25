@@ -28,7 +28,9 @@ class ResourceOptions {
   final bool? ignoreChanges;
   final String? version;
   final String? pluginDownloadURL;
-  final String? replacementOptions;
+  final dynamic replacementTrigger;
+  @Deprecated('Use replacementTrigger instead.')
+  final dynamic replacementOptions;
   final List<ResourceTransformation> resourceTransformations;
   final List<ResourceTransform> resourceTransforms;
   final ResourceHookBinding? hooks;
@@ -48,6 +50,7 @@ class ResourceOptions {
     this.ignoreChanges,
     this.version,
     this.pluginDownloadURL,
+    this.replacementTrigger,
     this.replacementOptions,
     this.resourceTransformations = const [],
     this.resourceTransforms = const [],
@@ -86,6 +89,11 @@ class ResourceOptions {
       ignoreChanges: options.ignoreChanges ?? ignoreChanges,
       version: options.version ?? version,
       pluginDownloadURL: options.pluginDownloadURL ?? pluginDownloadURL,
+      replacementTrigger:
+          options.replacementTrigger ??
+          options.replacementOptions ??
+          replacementTrigger ??
+          replacementOptions,
       replacementOptions: options.replacementOptions ?? replacementOptions,
       hooks: options.hooks ?? hooks,
     );
@@ -138,6 +146,7 @@ ResourceOptions createComponentResourceOptionsCopy(ResourceOptions options) {
         ? List.from(options.additionalSecretOutputs!)
         : null,
     ignoreChanges: options.ignoreChanges,
+    replacementTrigger: options.replacementTrigger,
     replacementOptions: options.replacementOptions,
     hooks: options.hooks == null
         ? null
@@ -148,6 +157,7 @@ ResourceOptions createComponentResourceOptionsCopy(ResourceOptions options) {
             afterUpdate: List.from(options.hooks!.afterUpdate),
             beforeDelete: List.from(options.hooks!.beforeDelete),
             afterDelete: List.from(options.hooks!.afterDelete),
+            onError: List.from(options.hooks!.onError),
           ),
   );
 }

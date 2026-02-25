@@ -15,9 +15,11 @@ class Output<T> {
     )));
   }
 
-  Future<T> getValue([T? whenUnknown]) async {
+  Future<T> getValue({T? whenUnknown}) async {
     final data = await _dataFuture;
-    return data.isKnown ? (data.value as T) : (whenUnknown ?? (throw StateError('Value is unknown')));
+    return data.isKnown
+        ? (data.value as T)
+        : (whenUnknown ?? (throw StateError('Value is unknown')));
   }
 
   Future<OutputData<T>> getData() => _dataFuture;
@@ -26,7 +28,8 @@ class Output<T> {
     return Output<U>(_applyHelper(func));
   }
 
-  Future<OutputData<U>> _applyHelper<U>(FutureOr<dynamic> Function(T) func) async {
+  Future<OutputData<U>> _applyHelper<U>(
+      FutureOr<dynamic> Function(T) func) async {
     final data = await _dataFuture;
     if (!data.isKnown) {
       return OutputData<U>(
@@ -41,10 +44,12 @@ class Output<T> {
     return _resolveOutput<U>(result, data.isSecret, data.resources);
   }
 
-  static Future<OutputData<U>> _resolveOutput<U>(dynamic value, bool isSecret, Set<Resource> resources) async {
+  static Future<OutputData<U>> _resolveOutput<U>(
+      dynamic value, bool isSecret, Set<Resource> resources) async {
     if (value is Output) {
       final innerData = await value.getData();
-      final resolvedValue = await _resolveOutput(innerData.value, innerData.isSecret || isSecret, resources.union(innerData.resources));
+      final resolvedValue = await _resolveOutput(innerData.value,
+          innerData.isSecret || isSecret, resources.union(innerData.resources));
       return OutputData<U>(
         value: resolvedValue.value as U,
         isKnown: resolvedValue.isKnown && innerData.isKnown,
@@ -63,11 +68,13 @@ class Output<T> {
       );
     }
   }
+
   static Output<List<T>> all<T>(Iterable<Output<T>> outputs) {
     return Output<List<T>>(_allHelper(outputs));
   }
 
-  static Future<OutputData<List<T>>> _allHelper<T>(Iterable<Output<T>> outputs) async {
+  static Future<OutputData<List<T>>> _allHelper<T>(
+      Iterable<Output<T>> outputs) async {
     final results = await Future.wait(outputs.map((o) => o._dataFuture));
     final isKnown = results.every((r) => r.isKnown);
     final isSecret = results.any((r) => r.isSecret);
@@ -126,7 +133,41 @@ class Output<T> {
     final data = await output.getData();
     return data.isSecret;
   }
+
+  static Output<(T1, T2)> tuple<T1, T2>(Output<T1> item1, Output<T2> item2) {
+    return Output(_combineOutputs([item1, item2]))
+        .apply((v) => (v[0] as T1, v[1] as T2));
+  }
+
+  static Output<(T1, T2, T3)> tuple3<T1, T2, T3>(
+      Output<T1> item1, Output<T2> item2, Output<T3> item3) {
+    return Output(_combineOutputs([item1, item2, item3]))
+        .apply((v) => (v[0] as T1, v[1] as T2, v[2] as T3));
+  }
+
+  static Output<(T1, T2, T3, T4)> tuple4<T1, T2, T3, T4>(
+      Output<T1> item1, Output<T2> item2, Output<T3> item3, Output<T4> item4) {
+    return Output(_combineOutputs([item1, item2, item3, item4]))
+        .apply((v) => (v[0] as T1, v[1] as T2, v[2] as T3, v[3] as T4));
+  }
+
+  static Future<OutputData<List<dynamic>>> _combineOutputs(
+      List<Output> outputs) async {
+    final results = await Future.wait(outputs.map((o) => o.getData()));
+    final isKnown = results.every((r) => r.isKnown);
+    final isSecret = results.any((r) => r.isSecret);
+    final resources = results.expand((r) => r.resources).toSet();
+    final values = results.map((r) => r.value).toList();
+
+    return OutputData<List<dynamic>>(
+      value: values,
+      isKnown: isKnown,
+      isSecret: isSecret,
+      resources: resources,
+    );
+  }
 }
+
 class OutputData<T> {
   final T? value;
   final bool isKnown;
@@ -139,4 +180,19 @@ class OutputData<T> {
     required this.isSecret,
     required this.resources,
   });
+
+  static OutputData<X> create<X>(
+      Set<Resource> resources, X value, bool isKnown, bool isSecret) {
+    return OutputData<X>(
+      resources: resources,
+      value: value,
+      isKnown: isKnown,
+      isSecret: isSecret,
+    );
+  }
+
+  static (bool, bool) combine<X>(
+      OutputData<X> data, bool isKnown, bool isSecret) {
+    return (isKnown && data.isKnown, isSecret || data.isSecret);
+  }
 }

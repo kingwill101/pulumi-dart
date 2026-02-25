@@ -1,5 +1,7 @@
 import 'output.dart';
 
+typedef Inputs = Map<String, Input<dynamic>>;
+
 abstract class Input<T> {
   Output<T> toOutput();
 

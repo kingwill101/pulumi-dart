@@ -1,13 +1,15 @@
+// This is a generated file - do not edit.
 //
-//  Generated code. Do not modify.
-//  source: pulumi/testing/language.proto
-//
-// @dart = 2.12
+// Generated from pulumi/testing/language.proto.
+
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: curly_braces_in_flow_control_structures
+// ignore_for_file: deprecated_member_use_from_same_package, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_relative_imports
+// ignore_for_file: unused_import
 
 import 'dart:convert' as $convert;
 import 'dart:core' as $core;
@@ -83,8 +85,37 @@ const PrepareLanguageTestsRequest$json = {
       '6': '.pulumirpc.testing.PrepareLanguageTestsRequest.Replacement',
       '10': 'snapshotEdits'
     },
+    {'1': 'language_info', '3': 8, '4': 1, '5': 9, '10': 'languageInfo'},
+    {
+      '1': 'program_overrides',
+      '3': 9,
+      '4': 3,
+      '5': 11,
+      '6':
+          '.pulumirpc.testing.PrepareLanguageTestsRequest.ProgramOverridesEntry',
+      '10': 'programOverrides'
+    },
+    {
+      '1': 'policy_pack_directory',
+      '3': 10,
+      '4': 1,
+      '5': 9,
+      '10': 'policyPackDirectory'
+    },
+    {'1': 'local', '3': 11, '4': 1, '5': 8, '10': 'local'},
+    {
+      '1': 'providers_directory',
+      '3': 12,
+      '4': 1,
+      '5': 9,
+      '10': 'providersDirectory'
+    },
   ],
-  '3': [PrepareLanguageTestsRequest_Replacement$json],
+  '3': [
+    PrepareLanguageTestsRequest_Replacement$json,
+    PrepareLanguageTestsRequest_ProgramOverride$json,
+    PrepareLanguageTestsRequest_ProgramOverridesEntry$json
+  ],
 };
 
 @$core.Deprecated('Use prepareLanguageTestsRequestDescriptor instead')
@@ -97,6 +128,31 @@ const PrepareLanguageTestsRequest_Replacement$json = {
   ],
 };
 
+@$core.Deprecated('Use prepareLanguageTestsRequestDescriptor instead')
+const PrepareLanguageTestsRequest_ProgramOverride$json = {
+  '1': 'ProgramOverride',
+  '2': [
+    {'1': 'paths', '3': 1, '4': 3, '5': 9, '10': 'paths'},
+  ],
+};
+
+@$core.Deprecated('Use prepareLanguageTestsRequestDescriptor instead')
+const PrepareLanguageTestsRequest_ProgramOverridesEntry$json = {
+  '1': 'ProgramOverridesEntry',
+  '2': [
+    {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    {
+      '1': 'value',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.pulumirpc.testing.PrepareLanguageTestsRequest.ProgramOverride',
+      '10': 'value'
+    },
+  ],
+  '7': {'7': true},
+};
+
 /// Descriptor for `PrepareLanguageTestsRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List prepareLanguageTestsRequestDescriptor = $convert.base64Decode(
     'ChtQcmVwYXJlTGFuZ3VhZ2VUZXN0c1JlcXVlc3QSMAoUbGFuZ3VhZ2VfcGx1Z2luX25hbWUYAS'
@@ -106,9 +162,17 @@ final $typed_data.Uint8List prepareLanguageTestsRequestDescriptor = $convert.bas
     'cmVjdG9yeRIsChJjb3JlX3Nka19kaXJlY3RvcnkYBSABKAlSEGNvcmVTZGtEaXJlY3RvcnkSKA'
     'oQY29yZV9zZGtfdmVyc2lvbhgGIAEoCVIOY29yZVNka1ZlcnNpb24SYQoOc25hcHNob3RfZWRp'
     'dHMYByADKAsyOi5wdWx1bWlycGMudGVzdGluZy5QcmVwYXJlTGFuZ3VhZ2VUZXN0c1JlcXVlc3'
-    'QuUmVwbGFjZW1lbnRSDXNuYXBzaG90RWRpdHMaXQoLUmVwbGFjZW1lbnQSEgoEcGF0aBgBIAEo'
-    'CVIEcGF0aBIYCgdwYXR0ZXJuGAIgASgJUgdwYXR0ZXJuEiAKC3JlcGxhY2VtZW50GAMgASgJUg'
-    'tyZXBsYWNlbWVudA==');
+    'QuUmVwbGFjZW1lbnRSDXNuYXBzaG90RWRpdHMSIwoNbGFuZ3VhZ2VfaW5mbxgIIAEoCVIMbGFu'
+    'Z3VhZ2VJbmZvEnEKEXByb2dyYW1fb3ZlcnJpZGVzGAkgAygLMkQucHVsdW1pcnBjLnRlc3Rpbm'
+    'cuUHJlcGFyZUxhbmd1YWdlVGVzdHNSZXF1ZXN0LlByb2dyYW1PdmVycmlkZXNFbnRyeVIQcHJv'
+    'Z3JhbU92ZXJyaWRlcxIyChVwb2xpY3lfcGFja19kaXJlY3RvcnkYCiABKAlSE3BvbGljeVBhY2'
+    'tEaXJlY3RvcnkSFAoFbG9jYWwYCyABKAhSBWxvY2FsEi8KE3Byb3ZpZGVyc19kaXJlY3RvcnkY'
+    'DCABKAlSEnByb3ZpZGVyc0RpcmVjdG9yeRpdCgtSZXBsYWNlbWVudBISCgRwYXRoGAEgASgJUg'
+    'RwYXRoEhgKB3BhdHRlcm4YAiABKAlSB3BhdHRlcm4SIAoLcmVwbGFjZW1lbnQYAyABKAlSC3Jl'
+    'cGxhY2VtZW50GicKD1Byb2dyYW1PdmVycmlkZRIUCgVwYXRocxgBIAMoCVIFcGF0aHMagwEKFV'
+    'Byb2dyYW1PdmVycmlkZXNFbnRyeRIQCgNrZXkYASABKAlSA2tleRJUCgV2YWx1ZRgCIAEoCzI+'
+    'LnB1bHVtaXJwYy50ZXN0aW5nLlByZXBhcmVMYW5ndWFnZVRlc3RzUmVxdWVzdC5Qcm9ncmFtT3'
+    'ZlcnJpZGVSBXZhbHVlOgI4AQ==');
 
 @$core.Deprecated('Use prepareLanguageTestsResponseDescriptor instead')
 const PrepareLanguageTestsResponse$json = {

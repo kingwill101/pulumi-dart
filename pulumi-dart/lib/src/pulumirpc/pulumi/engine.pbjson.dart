@@ -1,13 +1,15 @@
+// This is a generated file - do not edit.
 //
-//  Generated code. Do not modify.
-//  source: pulumi/engine.proto
-//
-// @dart = 2.12
+// Generated from pulumi/engine.proto.
+
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: curly_braces_in_flow_control_structures
+// ignore_for_file: deprecated_member_use_from_same_package, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_relative_imports
+// ignore_for_file: unused_import
 
 import 'dart:convert' as $convert;
 import 'dart:core' as $core;
@@ -97,3 +99,53 @@ const SetRootResourceResponse$json = {
 /// Descriptor for `SetRootResourceResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List setRootResourceResponseDescriptor =
     $convert.base64Decode('ChdTZXRSb290UmVzb3VyY2VSZXNwb25zZQ==');
+
+@$core.Deprecated('Use startDebuggingRequestDescriptor instead')
+const StartDebuggingRequest$json = {
+  '1': 'StartDebuggingRequest',
+  '2': [
+    {
+      '1': 'config',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Struct',
+      '10': 'config'
+    },
+    {'1': 'message', '3': 2, '4': 1, '5': 9, '10': 'message'},
+  ],
+};
+
+/// Descriptor for `StartDebuggingRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List startDebuggingRequestDescriptor = $convert.base64Decode(
+    'ChVTdGFydERlYnVnZ2luZ1JlcXVlc3QSLwoGY29uZmlnGAEgASgLMhcuZ29vZ2xlLnByb3RvYn'
+    'VmLlN0cnVjdFIGY29uZmlnEhgKB21lc3NhZ2UYAiABKAlSB21lc3NhZ2U=');
+
+@$core.Deprecated('Use requirePulumiVersionRequestDescriptor instead')
+const RequirePulumiVersionRequest$json = {
+  '1': 'RequirePulumiVersionRequest',
+  '2': [
+    {
+      '1': 'pulumi_version_range',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'pulumiVersionRange'
+    },
+  ],
+};
+
+/// Descriptor for `RequirePulumiVersionRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List requirePulumiVersionRequestDescriptor =
+    $convert.base64Decode(
+        'ChtSZXF1aXJlUHVsdW1pVmVyc2lvblJlcXVlc3QSMAoUcHVsdW1pX3ZlcnNpb25fcmFuZ2UYAS'
+        'ABKAlSEnB1bHVtaVZlcnNpb25SYW5nZQ==');
+
+@$core.Deprecated('Use requirePulumiVersionResponseDescriptor instead')
+const RequirePulumiVersionResponse$json = {
+  '1': 'RequirePulumiVersionResponse',
+};
+
+/// Descriptor for `RequirePulumiVersionResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List requirePulumiVersionResponseDescriptor =
+    $convert.base64Decode('ChxSZXF1aXJlUHVsdW1pVmVyc2lvblJlc3BvbnNl');
