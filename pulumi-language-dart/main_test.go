@@ -15,6 +15,7 @@
 package main
 
 import (
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"strings"
@@ -167,4 +168,48 @@ func TestDeterminePluginDependency(t *testing.T) {
 
 		})
 	}
+}
+
+func TestAppendPolicyPackConfigEnv(t *testing.T) {
+	t.Parallel()
+
+	base := []string{"PATH=/tmp/bin"}
+	env, err := appendPolicyPackConfigEnv(base, &pulumirpc.AnalyzerStackConfigureRequest{
+		Organization: "acme",
+		Project:      "proj",
+		Stack:        "dev",
+		DryRun:       true,
+		Config: map[string]string{
+			"proj:key": "value",
+		},
+	})
+	assert.NoError(t, err)
+
+	envMap := map[string]string{}
+	for _, entry := range env {
+		parts := strings.SplitN(entry, "=", 2)
+		if len(parts) == 2 {
+			envMap[parts[0]] = parts[1]
+		}
+	}
+
+	assert.Equal(t, "acme", envMap["PULUMI_ORGANIZATION"])
+	assert.Equal(t, "proj", envMap["PULUMI_PROJECT"])
+	assert.Equal(t, "dev", envMap["PULUMI_STACK"])
+	assert.Equal(t, "true", envMap["PULUMI_DRY_RUN"])
+	assert.Equal(t, "/tmp/bin", envMap["PATH"])
+
+	var cfg map[string]string
+	err = json.Unmarshal([]byte(envMap["PULUMI_CONFIG"]), &cfg)
+	assert.NoError(t, err)
+	assert.Equal(t, "value", cfg["proj:key"])
+}
+
+func TestAppendPolicyPackConfigEnvNilConfig(t *testing.T) {
+	t.Parallel()
+
+	base := []string{"FOO=bar"}
+	env, err := appendPolicyPackConfigEnv(base, nil)
+	assert.NoError(t, err)
+	assert.Equal(t, base, env)
 }

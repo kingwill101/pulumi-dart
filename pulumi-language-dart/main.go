@@ -38,6 +38,8 @@ import (
 	"google.golang.org/protobuf/types/known/structpb"
 
 	"github.com/pkg/errors"
+	sdk "github.com/pulumi/pulumi/sdk/v3"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/apitype"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/cmdutil"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/rpcutil"
@@ -825,6 +827,7 @@ func (host *dartLanguageHost) RunPlugin(
 	}
 
 	ctx := server.Context()
+	isAnalyzer := req.Kind == string(apitype.AnalyzerPlugin)
 
 	var engineClient pulumirpc.EngineClient
 	var engineCloser io.Closer
@@ -841,17 +844,22 @@ func (host *dartLanguageHost) RunPlugin(
 	if err != nil {
 		return err
 	}
+	// best effort close, but we try an explicit close and error check at the end as well
 	defer closer.Close()
 
 	runArgs := append([]string{}, req.Args...)
 	cmdDir := req.Pwd
 	if info := req.GetInfo(); info != nil && info.GetProgramDirectory() != "" {
-		candidate := info.GetProgramDirectory()
-		if _, err := os.Stat(filepath.Join(candidate, "pubspec.yaml")); err == nil {
-			cmdDir = candidate
+		if isAnalyzer {
+			cmdDir = info.GetProgramDirectory()
+		} else {
+			candidate := info.GetProgramDirectory()
+			if _, err := os.Stat(filepath.Join(candidate, "pubspec.yaml")); err == nil {
+				cmdDir = candidate
+			}
 		}
 	}
-	if len(runArgs) > 0 {
+	if !isAnalyzer && len(runArgs) > 0 {
 		candidate := runArgs[0]
 		if !filepath.IsAbs(candidate) {
 			candidate = filepath.Join(req.Pwd, candidate)
@@ -873,64 +881,134 @@ func (host *dartLanguageHost) RunPlugin(
 	if runTarget != "" {
 		dartArgs = append(dartArgs, runTarget)
 	}
-	if len(runArgs) > 0 {
+	if isAnalyzer {
+		dartArgs = append(dartArgs, runArgs...)
+		if info := req.GetInfo(); info != nil && info.GetProgramDirectory() != "" {
+			dartArgs = append(dartArgs, info.GetProgramDirectory())
+		}
+	} else if len(runArgs) > 0 {
 		dartArgs = append(dartArgs, runArgs...)
 	}
 
-	cmd := exec.Command(host.exec, dartArgs...)
+	env := append([]string{}, req.Env...)
+	var policyPackServer *sdk.PolicyProxy
+	if isAnalyzer {
+		policyPackServer, stdout, err = sdk.NewPolicyProxy(ctx, stdout)
+		if err != nil {
+			return fmt.Errorf("could not start policy pack proxy: %w", err)
+		}
+
+		config, err := policyPackServer.AwaitConfiguration(ctx)
+		if err != nil {
+			return fmt.Errorf("could not get stack configuration: %w", err)
+		}
+
+		env, err = appendPolicyPackConfigEnv(env, config)
+		if err != nil {
+			return err
+		}
+	}
+
+	cmd := exec.CommandContext(ctx, host.exec, dartArgs...)
 	cmd.Dir = cmdDir
-	cmd.Env = req.Env
+	cmd.Env = env
 	cmd.Stdout, cmd.Stderr = stdout, stderr
 
-	if err := cmd.Start(); err != nil {
-		return fmt.Errorf("problem executing plugin: %v", err)
+	run := func() error {
+		if err := cmd.Start(); err != nil {
+			return err
+		}
+
+		if req.GetAttachDebugger() {
+			pluginName := strings.TrimSpace(req.Name)
+			if pluginName == "" {
+				pluginName = strings.TrimSpace(filepath.Base(cmdDir))
+			}
+			if pluginName == "" {
+				pluginName = "dart-plugin"
+			}
+
+			debugServer, port, err := startDAPDebugServer(false)
+			if err != nil {
+				_ = cmd.Process.Kill()
+				_ = cmd.Wait()
+				return fmt.Errorf("problem starting debugger endpoint: %v", err)
+			}
+			defer debugServer.Close()
+
+			if err := host.emitStartDebugging(
+				ctx,
+				engineClient,
+				fmt.Sprintf("Pulumi: Plugin (%s)", pluginName),
+				port,
+			); err != nil {
+				_ = cmd.Process.Kill()
+				_ = cmd.Wait()
+				return fmt.Errorf("problem starting debugger: %v", err)
+			}
+			if err := debugServer.WaitForContinue(context.Background(), 2*time.Minute); err != nil {
+				_ = cmd.Process.Kill()
+				_ = cmd.Wait()
+				return fmt.Errorf("problem waiting for debugger attach: %v", err)
+			}
+		}
+
+		if policyPackServer != nil {
+			if err := policyPackServer.Attach(ctx, cmd); err != nil {
+				return fmt.Errorf("could not attach policy pack proxy: %w", err)
+			}
+			return nil
+		}
+
+		return cmd.Wait()
 	}
 
-	if req.GetAttachDebugger() {
-		pluginName := strings.TrimSpace(req.Name)
-		if pluginName == "" {
-			pluginName = strings.TrimSpace(filepath.Base(cmdDir))
-		}
-		if pluginName == "" {
-			pluginName = "dart-plugin"
-		}
-
-		debugServer, port, err := startDAPDebugServer(false)
-		if err != nil {
-			_ = cmd.Process.Kill()
-			_ = cmd.Wait()
-			return fmt.Errorf("problem starting debugger endpoint: %v", err)
-		}
-		defer debugServer.Close()
-
-		if err := host.emitStartDebugging(
-			ctx,
-			engineClient,
-			fmt.Sprintf("Pulumi: Plugin (%s)", pluginName),
-			port,
-		); err != nil {
-			_ = cmd.Process.Kill()
-			_ = cmd.Wait()
-			return fmt.Errorf("problem starting debugger: %v", err)
-		}
-		if err := debugServer.WaitForContinue(context.Background(), 2*time.Minute); err != nil {
-			_ = cmd.Process.Kill()
-			_ = cmd.Wait()
-			return fmt.Errorf("problem waiting for debugger attach: %v", err)
-		}
-	}
-
-	if err := cmd.Wait(); err != nil {
+	if err := run(); err != nil {
 		if exiterr, ok := err.(*exec.ExitError); ok {
 			if status, stok := exiterr.Sys().(syscall.WaitStatus); stok {
-				return fmt.Errorf("plugin exited with non-zero exit code: %d", status.ExitStatus())
+				return server.Send(&pulumirpc.RunPluginResponse{
+					//nolint:gosec // WaitStatus always uses the lower 8 bits for the exit code.
+					Output: &pulumirpc.RunPluginResponse_Exitcode{Exitcode: int32(status.ExitStatus())},
+				})
 			}
 			return fmt.Errorf("plugin exited unexpectedly: %v", exiterr)
 		}
 		return fmt.Errorf("problem executing plugin: %v", err)
 	}
 
+	if err := closer.Close(); err != nil {
+		return err
+	}
 	return nil
+}
+
+func appendPolicyPackConfigEnv(
+	env []string,
+	config *pulumirpc.AnalyzerStackConfigureRequest,
+) ([]string, error) {
+	if config == nil {
+		return env, nil
+	}
+
+	maybeAppendEnv := func(k, v string) {
+		if v != "" {
+			env = append(env, k+"="+v)
+		}
+	}
+
+	maybeAppendEnv("PULUMI_ORGANIZATION", config.Organization)
+	maybeAppendEnv("PULUMI_PROJECT", config.Project)
+	maybeAppendEnv("PULUMI_STACK", config.Stack)
+	maybeAppendEnv("PULUMI_DRY_RUN", strconv.FormatBool(config.DryRun))
+	if config.Config != nil {
+		configJSON, err := json.Marshal(config.Config)
+		if err != nil {
+			return nil, fmt.Errorf("could not marshal stack configuration: %w", err)
+		}
+		maybeAppendEnv("PULUMI_CONFIG", string(configJSON))
+	}
+
+	return env, nil
 }
 
 type packageSchema struct {
