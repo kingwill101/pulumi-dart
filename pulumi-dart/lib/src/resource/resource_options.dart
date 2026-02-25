@@ -25,7 +25,7 @@ class ResourceOptions {
   final bool? retainOnDelete;
   final Resource? deletedWith;
   final List<String>? additionalSecretOutputs;
-  final bool? ignoreChanges;
+  final List<String>? ignoreChanges;
   final String? version;
   final String? pluginDownloadURL;
   final dynamic replacementTrigger;

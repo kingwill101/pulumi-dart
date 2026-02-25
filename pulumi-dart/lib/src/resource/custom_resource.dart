@@ -1,7 +1,7 @@
 import 'dart:async';
 
+import 'package:pulumi/src/deployment/models.dart' as models;
 import 'package:pulumi/src/output.dart';
-import 'package:pulumi/src/pulumirpc/pulumi/resource.pb.dart';
 
 import '../input.dart';
 import 'provider_resource.dart';
@@ -49,7 +49,7 @@ class CustomResource extends Resource {
     CustomResourceOptions options, {
     bool remote = false,
     bool dependency = false,
-    RegisterResourceRequest? registerPackageRequest,
+    models.RegisterPackageRequest? registerPackageRequest,
   }) : super(
          type,
          name,

@@ -8,6 +8,7 @@ import 'package:pulumi/src/callback_server.dart';
 import 'package:pulumi/src/config.dart';
 import 'package:pulumi/src/deployment/call.dart';
 import 'package:pulumi/src/deployment/invoke.dart';
+import 'package:pulumi/src/deployment/models.dart' as models;
 import 'package:pulumi/src/input.dart';
 import 'package:pulumi/src/monitor.dart';
 import 'package:pulumi/src/resource/provider_resource.dart';
@@ -49,7 +50,7 @@ abstract class Deployment {
     required Resource Function(String) newDependency,
     required Inputs args,
     required ResourceOptions opts,
-    RegisterResourceRequest? registerPackageRequest,
+    models.RegisterPackageRequest? registerPackageRequest,
   });
 
   void registerResourceOperation(Future<void> operation);
@@ -240,7 +241,7 @@ class DeploymentImpl extends Deployment
     required Resource Function(String) newDependency,
     required Inputs args,
     required ResourceOptions opts,
-    RegisterResourceRequest? registerPackageRequest,
+    models.RegisterPackageRequest? registerPackageRequest,
   }) async {
     final serializedProps = <String, dynamic>{};
     final propertyDependencies =
@@ -328,6 +329,9 @@ class DeploymentImpl extends Deployment
     if (opts.version != null) {
       request.version = opts.version!;
     }
+    if (opts.ignoreChanges != null && opts.ignoreChanges!.isNotEmpty) {
+      request.ignoreChanges.addAll(opts.ignoreChanges!);
+    }
     if (opts.pluginDownloadURL != null) {
       request.pluginDownloadURL = opts.pluginDownloadURL!;
     }
@@ -371,11 +375,31 @@ class DeploymentImpl extends Deployment
         request.replacementTrigger = await StructConverter.toValue(serialized);
       }
     }
+    if (registerPackageRequest != null) {
+      final packageRef = await _resolvePackageRef(registerPackageRequest);
+      if (packageRef != null) {
+        request.packageRef = packageRef;
+      }
+    }
 
     final response = await monitor.registerResource(resource, request);
     resource.resolveUrn(response.urn);
     if (resource.isCustom) {
       (resource as CustomResource).resolveId(response.id, isKnown: !isDryRun);
+    }
+  }
+
+  Future<String?> _resolvePackageRef(
+    models.RegisterPackageRequest request,
+  ) async {
+    try {
+      final response = await monitor.registerPackage(request.toProto());
+      return response.ref;
+    } catch (_) {
+      if (request.parameterization != null) {
+        rethrow;
+      }
+      return null;
     }
   }
 

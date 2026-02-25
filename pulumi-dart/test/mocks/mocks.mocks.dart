@@ -10,21 +10,20 @@ import 'package:mockito/src/dummies.dart' as _i11;
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart'
     as _i9;
 import 'package:pulumi/src/deployment/deployment.dart' as _i10;
-import 'package:pulumi/src/deployment/models.dart' as _i15;
+import 'package:pulumi/src/deployment/models.dart' as _i14;
 import 'package:pulumi/src/deployment/stack.dart' as _i3;
 import 'package:pulumi/src/engine.dart' as _i6;
 import 'package:pulumi/src/engine_logger.dart' as _i2;
 import 'package:pulumi/src/input.dart' as _i4;
 import 'package:pulumi/src/monitor.dart' as _i5;
 import 'package:pulumi/src/output.dart' as _i8;
-import 'package:pulumi/src/output_completion_source.dart' as _i17;
-import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart' as _i14;
-import 'package:pulumi/src/resource/component_resource.dart' as _i20;
-import 'package:pulumi/src/resource/custom_resource.dart' as _i19;
-import 'package:pulumi/src/resource/provider_resource.dart' as _i18;
+import 'package:pulumi/src/output_completion_source.dart' as _i16;
+import 'package:pulumi/src/resource/component_resource.dart' as _i19;
+import 'package:pulumi/src/resource/custom_resource.dart' as _i18;
+import 'package:pulumi/src/resource/provider_resource.dart' as _i17;
 import 'package:pulumi/src/resource/resource.dart' as _i12;
 import 'package:pulumi/src/resource/resource_options.dart' as _i13;
-import 'package:pulumi/src/resource/resource_transformation.dart' as _i16;
+import 'package:pulumi/src/resource/resource_transformation.dart' as _i15;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -198,7 +197,7 @@ class MockDeployment extends _i1.Mock implements _i10.Deployment {
     required _i12.Resource Function(String)? newDependency,
     required Map<String, _i4.Input<dynamic>>? args,
     required _i13.ResourceOptions? opts,
-    _i14.RegisterResourceRequest? registerPackageRequest,
+    _i14.RegisterPackageRequest? registerPackageRequest,
   }) =>
       (super.noSuchMethod(
             Invocation.method(#readOrRegisterResource, [], {
@@ -401,7 +400,7 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
     required _i12.Resource Function(String)? newDependency,
     required Map<String, _i4.Input<dynamic>>? args,
     required _i13.ResourceOptions? opts,
-    _i14.RegisterResourceRequest? registerPackageRequest,
+    _i14.RegisterPackageRequest? registerPackageRequest,
   }) =>
       (super.noSuchMethod(
             Invocation.method(#readOrRegisterResource, [], {
@@ -502,8 +501,8 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
   _i7.Future<T> invoke<T>(
     String? token,
     Map<String, dynamic>? args, {
-    _i15.InvokeOptions? options,
-    _i15.RegisterPackageRequest? registerPackageRequest,
+    _i14.InvokeOptions? options,
+    _i14.RegisterPackageRequest? registerPackageRequest,
   }) =>
       (super.noSuchMethod(
             Invocation.method(
@@ -573,8 +572,8 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
   _i7.Future<T> invokeSingle<T>(
     String? token,
     Map<String, dynamic>? args, {
-    _i15.InvokeOptions? options,
-    _i15.RegisterPackageRequest? registerPackageRequest,
+    _i14.InvokeOptions? options,
+    _i14.RegisterPackageRequest? registerPackageRequest,
   }) =>
       (super.noSuchMethod(
             Invocation.method(
@@ -645,8 +644,8 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
     String? token,
     Map<String, dynamic>? args, {
     _i12.Resource? self,
-    _i15.CallOptions? options,
-    _i15.RegisterPackageRequest? registerPackageRequest,
+    _i14.CallOptions? options,
+    _i14.RegisterPackageRequest? registerPackageRequest,
   }) =>
       (super.noSuchMethod(
             Invocation.method(
@@ -668,8 +667,8 @@ class MockDeploymentImpl extends _i1.Mock implements _i10.DeploymentImpl {
     String? token,
     Map<String, dynamic>? args, {
     _i12.Resource? self,
-    _i15.CallOptions? options,
-    _i15.RegisterPackageRequest? registerPackageRequest,
+    _i14.CallOptions? options,
+    _i14.RegisterPackageRequest? registerPackageRequest,
   }) =>
       (super.noSuchMethod(
             Invocation.method(
@@ -767,22 +766,22 @@ class MockResource extends _i1.Mock implements _i12.Resource {
           as _i8.Output<String>);
 
   @override
-  List<_i16.ResourceTransformation> get transformations =>
+  List<_i15.ResourceTransformation> get transformations =>
       (super.noSuchMethod(
             Invocation.getter(#transformations),
-            returnValue: <_i16.ResourceTransformation>[],
-            returnValueForMissingStub: <_i16.ResourceTransformation>[],
+            returnValue: <_i15.ResourceTransformation>[],
+            returnValueForMissingStub: <_i15.ResourceTransformation>[],
           )
-          as List<_i16.ResourceTransformation>);
+          as List<_i15.ResourceTransformation>);
 
   @override
-  Map<String, _i17.IOutputCompletionSource> get completionSources =>
+  Map<String, _i16.IOutputCompletionSource> get completionSources =>
       (super.noSuchMethod(
             Invocation.getter(#completionSources),
-            returnValue: <String, _i17.IOutputCompletionSource>{},
-            returnValueForMissingStub: <String, _i17.IOutputCompletionSource>{},
+            returnValue: <String, _i16.IOutputCompletionSource>{},
+            returnValueForMissingStub: <String, _i16.IOutputCompletionSource>{},
           )
-          as Map<String, _i17.IOutputCompletionSource>);
+          as Map<String, _i16.IOutputCompletionSource>);
 
   @override
   bool get isCustom =>
@@ -800,7 +799,7 @@ class MockResource extends _i1.Mock implements _i12.Resource {
   );
 
   @override
-  set completionSources(Map<String, _i17.IOutputCompletionSource>? value) =>
+  set completionSources(Map<String, _i16.IOutputCompletionSource>? value) =>
       super.noSuchMethod(
         Invocation.setter(#completionSources, value),
         returnValueForMissingStub: null,
@@ -864,12 +863,12 @@ class MockResource extends _i1.Mock implements _i12.Resource {
           as String);
 
   @override
-  _i18.ProviderResource? getProvider(String? moduleMember) =>
+  _i17.ProviderResource? getProvider(String? moduleMember) =>
       (super.noSuchMethod(
             Invocation.method(#getProvider, [moduleMember]),
             returnValueForMissingStub: null,
           )
-          as _i18.ProviderResource?);
+          as _i17.ProviderResource?);
 }
 
 /// A class which mocks [Stack].
@@ -913,22 +912,22 @@ class MockStack extends _i1.Mock implements _i3.Stack {
           as _i8.Output<String>);
 
   @override
-  List<_i16.ResourceTransformation> get transformations =>
+  List<_i15.ResourceTransformation> get transformations =>
       (super.noSuchMethod(
             Invocation.getter(#transformations),
-            returnValue: <_i16.ResourceTransformation>[],
-            returnValueForMissingStub: <_i16.ResourceTransformation>[],
+            returnValue: <_i15.ResourceTransformation>[],
+            returnValueForMissingStub: <_i15.ResourceTransformation>[],
           )
-          as List<_i16.ResourceTransformation>);
+          as List<_i15.ResourceTransformation>);
 
   @override
-  Map<String, _i17.IOutputCompletionSource> get completionSources =>
+  Map<String, _i16.IOutputCompletionSource> get completionSources =>
       (super.noSuchMethod(
             Invocation.getter(#completionSources),
-            returnValue: <String, _i17.IOutputCompletionSource>{},
-            returnValueForMissingStub: <String, _i17.IOutputCompletionSource>{},
+            returnValue: <String, _i16.IOutputCompletionSource>{},
+            returnValueForMissingStub: <String, _i16.IOutputCompletionSource>{},
           )
-          as Map<String, _i17.IOutputCompletionSource>);
+          as Map<String, _i16.IOutputCompletionSource>);
 
   @override
   bool get isCustom =>
@@ -946,7 +945,7 @@ class MockStack extends _i1.Mock implements _i3.Stack {
   );
 
   @override
-  set completionSources(Map<String, _i17.IOutputCompletionSource>? value) =>
+  set completionSources(Map<String, _i16.IOutputCompletionSource>? value) =>
       super.noSuchMethod(
         Invocation.setter(#completionSources, value),
         returnValueForMissingStub: null,
@@ -1070,18 +1069,18 @@ class MockStack extends _i1.Mock implements _i3.Stack {
           as String);
 
   @override
-  _i18.ProviderResource? getProvider(String? moduleMember) =>
+  _i17.ProviderResource? getProvider(String? moduleMember) =>
       (super.noSuchMethod(
             Invocation.method(#getProvider, [moduleMember]),
             returnValueForMissingStub: null,
           )
-          as _i18.ProviderResource?);
+          as _i17.ProviderResource?);
 }
 
 /// A class which mocks [CustomResource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockCustomResource extends _i1.Mock implements _i19.CustomResource {
+class MockCustomResource extends _i1.Mock implements _i18.CustomResource {
   @override
   _i8.Output<String?> get id =>
       (super.noSuchMethod(
@@ -1122,22 +1121,22 @@ class MockCustomResource extends _i1.Mock implements _i19.CustomResource {
           as _i8.Output<String>);
 
   @override
-  List<_i16.ResourceTransformation> get transformations =>
+  List<_i15.ResourceTransformation> get transformations =>
       (super.noSuchMethod(
             Invocation.getter(#transformations),
-            returnValue: <_i16.ResourceTransformation>[],
-            returnValueForMissingStub: <_i16.ResourceTransformation>[],
+            returnValue: <_i15.ResourceTransformation>[],
+            returnValueForMissingStub: <_i15.ResourceTransformation>[],
           )
-          as List<_i16.ResourceTransformation>);
+          as List<_i15.ResourceTransformation>);
 
   @override
-  Map<String, _i17.IOutputCompletionSource> get completionSources =>
+  Map<String, _i16.IOutputCompletionSource> get completionSources =>
       (super.noSuchMethod(
             Invocation.getter(#completionSources),
-            returnValue: <String, _i17.IOutputCompletionSource>{},
-            returnValueForMissingStub: <String, _i17.IOutputCompletionSource>{},
+            returnValue: <String, _i16.IOutputCompletionSource>{},
+            returnValueForMissingStub: <String, _i16.IOutputCompletionSource>{},
           )
-          as Map<String, _i17.IOutputCompletionSource>);
+          as Map<String, _i16.IOutputCompletionSource>);
 
   @override
   bool get isCustom =>
@@ -1155,7 +1154,7 @@ class MockCustomResource extends _i1.Mock implements _i19.CustomResource {
   );
 
   @override
-  set completionSources(Map<String, _i17.IOutputCompletionSource>? value) =>
+  set completionSources(Map<String, _i16.IOutputCompletionSource>? value) =>
       super.noSuchMethod(
         Invocation.setter(#completionSources, value),
         returnValueForMissingStub: null,
@@ -1225,18 +1224,18 @@ class MockCustomResource extends _i1.Mock implements _i19.CustomResource {
           as String);
 
   @override
-  _i18.ProviderResource? getProvider(String? moduleMember) =>
+  _i17.ProviderResource? getProvider(String? moduleMember) =>
       (super.noSuchMethod(
             Invocation.method(#getProvider, [moduleMember]),
             returnValueForMissingStub: null,
           )
-          as _i18.ProviderResource?);
+          as _i17.ProviderResource?);
 }
 
 /// A class which mocks [ComponentResource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockComponentResource extends _i1.Mock implements _i20.ComponentResource {
+class MockComponentResource extends _i1.Mock implements _i19.ComponentResource {
   @override
   Set<_i12.Resource> get childResources =>
       (super.noSuchMethod(
@@ -1259,22 +1258,22 @@ class MockComponentResource extends _i1.Mock implements _i20.ComponentResource {
           as _i8.Output<String>);
 
   @override
-  List<_i16.ResourceTransformation> get transformations =>
+  List<_i15.ResourceTransformation> get transformations =>
       (super.noSuchMethod(
             Invocation.getter(#transformations),
-            returnValue: <_i16.ResourceTransformation>[],
-            returnValueForMissingStub: <_i16.ResourceTransformation>[],
+            returnValue: <_i15.ResourceTransformation>[],
+            returnValueForMissingStub: <_i15.ResourceTransformation>[],
           )
-          as List<_i16.ResourceTransformation>);
+          as List<_i15.ResourceTransformation>);
 
   @override
-  Map<String, _i17.IOutputCompletionSource> get completionSources =>
+  Map<String, _i16.IOutputCompletionSource> get completionSources =>
       (super.noSuchMethod(
             Invocation.getter(#completionSources),
-            returnValue: <String, _i17.IOutputCompletionSource>{},
-            returnValueForMissingStub: <String, _i17.IOutputCompletionSource>{},
+            returnValue: <String, _i16.IOutputCompletionSource>{},
+            returnValueForMissingStub: <String, _i16.IOutputCompletionSource>{},
           )
-          as Map<String, _i17.IOutputCompletionSource>);
+          as Map<String, _i16.IOutputCompletionSource>);
 
   @override
   bool get isCustom =>
@@ -1292,7 +1291,7 @@ class MockComponentResource extends _i1.Mock implements _i20.ComponentResource {
   );
 
   @override
-  set completionSources(Map<String, _i17.IOutputCompletionSource>? value) =>
+  set completionSources(Map<String, _i16.IOutputCompletionSource>? value) =>
       super.noSuchMethod(
         Invocation.setter(#completionSources, value),
         returnValueForMissingStub: null,
@@ -1380,10 +1379,10 @@ class MockComponentResource extends _i1.Mock implements _i20.ComponentResource {
           as String);
 
   @override
-  _i18.ProviderResource? getProvider(String? moduleMember) =>
+  _i17.ProviderResource? getProvider(String? moduleMember) =>
       (super.noSuchMethod(
             Invocation.method(#getProvider, [moduleMember]),
             returnValueForMissingStub: null,
           )
-          as _i18.ProviderResource?);
+          as _i17.ProviderResource?);
 }

@@ -21,10 +21,15 @@ mixin InvokeMixin {
       ..tok = token
       ..args = serializedArgs
       ..provider = urn
-      ..version = options?.version ?? '';
+      ..version = options?.version ?? ''
+      ..pluginDownloadURL = options?.pluginDownloadURL ?? ''
+      ..acceptResources = true;
 
     if (registerPackageRequest != null) {
-      request.packageRef = await _resolvePackageRef(registerPackageRequest);
+      final packageRef = await _resolvePackageRef(registerPackageRequest);
+      if (packageRef != null) {
+        request.packageRef = packageRef;
+      }
     }
 
     final response = await monitor.invoke(request);
@@ -53,11 +58,18 @@ mixin InvokeMixin {
     return result.values.first;
   }
 
-  Future<String> _resolvePackageRef(
+  Future<String?> _resolvePackageRef(
     models.RegisterPackageRequest request,
   ) async {
-    // Package references are not yet modeled in the Dart SDK.
-    return '';
+    try {
+      final response = await monitor.registerPackage(request.toProto());
+      return response.ref;
+    } catch (_) {
+      if (request.parameterization != null) {
+        rethrow;
+      }
+      return null;
+    }
   }
 
   T _deserializeInvokeResponse<T>(Struct response) {

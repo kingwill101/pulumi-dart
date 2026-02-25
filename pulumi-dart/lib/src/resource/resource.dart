@@ -3,11 +3,10 @@ import 'dart:async';
 
 import 'package:pulumi/src/constants.dart';
 import 'package:pulumi/src/deployment/deployment.dart';
+import 'package:pulumi/src/deployment/models.dart' as models;
 import 'package:pulumi/src/input.dart';
 import 'package:pulumi/src/output.dart';
 import 'package:pulumi/src/output_completion_source.dart';
-import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart'
-    show RegisterResourceRequest;
 import 'package:pulumi/src/resource/dependency_resource.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 
@@ -44,7 +43,7 @@ abstract class Resource {
     ResourceOptions options, {
     bool remote = false,
     bool dependency = false,
-    RegisterResourceRequest? registerPackageRequest,
+    models.RegisterPackageRequest? registerPackageRequest,
     bool ignoreDeployment = false,
   }) : _custom = custom,
        _protect = false,

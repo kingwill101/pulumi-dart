@@ -27,6 +27,12 @@ class Monitor {
     return await _client.call(request);
   }
 
+  Future<RegisterPackageResponse> registerPackage(
+    RegisterPackageRequest request,
+  ) async {
+    return await _client.registerPackage(request);
+  }
+
   Future<ReadResourceResponse> readResource(
     Resource resource,
     ReadResourceRequest request,
