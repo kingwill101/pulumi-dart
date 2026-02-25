@@ -37,6 +37,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/rpcutil"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 	"google.golang.org/grpc"
+	"gopkg.in/yaml.v3"
 )
 
 // dartProcessExitedAfterShowingUserActionableMessage is an exit code we recognize when the Dart process exits.
@@ -538,4 +539,181 @@ func (host *dartLanguageHost) RunPlugin(
 	}
 
 	return nil
+}
+
+type packageSchema struct {
+	Name      string `json:"name"`
+	Namespace string `json:"namespace"`
+	Version   string `json:"version"`
+}
+
+func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
+	var spec packageSchema
+	if err := json.Unmarshal([]byte(schemaJSON), &spec); err != nil {
+		return nil, fmt.Errorf("failed to parse package schema: %w", err)
+	}
+	if spec.Name == "" {
+		return nil, errors.New("package schema is missing name")
+	}
+	return &spec, nil
+}
+
+func sanitizeDartIdentifier(value string) string {
+	value = strings.ToLower(value)
+
+	var b strings.Builder
+	lastWasUnderscore := false
+	for _, r := range value {
+		isAlpha := r >= 'a' && r <= 'z'
+		isDigit := r >= '0' && r <= '9'
+		if isAlpha || isDigit {
+			if b.Len() == 0 && isDigit {
+				b.WriteString("pkg_")
+			}
+			b.WriteRune(r)
+			lastWasUnderscore = false
+			continue
+		}
+		if b.Len() > 0 && !lastWasUnderscore {
+			b.WriteRune('_')
+			lastWasUnderscore = true
+		}
+	}
+
+	out := strings.Trim(b.String(), "_")
+	if out == "" {
+		return "pulumi_package"
+	}
+	if out[0] >= '0' && out[0] <= '9' {
+		return "pkg_" + out
+	}
+	return out
+}
+
+func toDartPackageName(namespace, name string) string {
+	if namespace == "" {
+		return sanitizeDartIdentifier(name)
+	}
+	return sanitizeDartIdentifier(namespace + "_" + name)
+}
+
+func normalizeVersion(version string) string {
+	if version == "" {
+		return "0.0.1"
+	}
+	return strings.TrimPrefix(version, "v")
+}
+
+func dependencyPackageName(rootDirectory, dependencyPath, fallbackName string) string {
+	pubspecPath := filepath.Join(rootDirectory, dependencyPath, "pubspec.yaml")
+	pubspec, err := ReadAndParsePubspec(pubspecPath)
+	if err != nil || pubspec == nil || pubspec.Name == "" {
+		return sanitizeDartIdentifier(fallbackName)
+	}
+	return sanitizeDartIdentifier(pubspec.Name)
+}
+
+func (host *dartLanguageHost) GeneratePackage(
+	ctx context.Context, req *pulumirpc.GeneratePackageRequest,
+) (*pulumirpc.GeneratePackageResponse, error) {
+	spec, err := parsePackageSchema(req.GetSchema())
+	if err != nil {
+		return nil, err
+	}
+
+	packageName := toDartPackageName(spec.Namespace, spec.Name)
+	pubspec := PubSpec{
+		Name:        packageName,
+		Description: fmt.Sprintf("A Pulumi SDK package for %s.", spec.Name),
+		Version:     normalizeVersion(spec.Version),
+		Environment: map[string]string{
+			"sdk": "^3.10.0",
+		},
+	}
+
+	pubspecBytes, err := yaml.Marshal(pubspec)
+	if err != nil {
+		return nil, fmt.Errorf("failed to marshal generated pubspec.yaml: %w", err)
+	}
+
+	if err := os.MkdirAll(req.GetDirectory(), 0o700); err != nil {
+		return nil, fmt.Errorf("failed to create SDK directory: %w", err)
+	}
+	if err := os.WriteFile(filepath.Join(req.GetDirectory(), "pubspec.yaml"), pubspecBytes, 0o600); err != nil {
+		return nil, fmt.Errorf("failed to write generated pubspec.yaml: %w", err)
+	}
+
+	libDir := filepath.Join(req.GetDirectory(), "lib")
+	if err := os.MkdirAll(libDir, 0o700); err != nil {
+		return nil, fmt.Errorf("failed to create generated lib directory: %w", err)
+	}
+
+	libraryFile := filepath.Join(libDir, packageName+".dart")
+	libraryContent := fmt.Sprintf("library %s;\n", packageName)
+	if err := os.WriteFile(libraryFile, []byte(libraryContent), 0o600); err != nil {
+		return nil, fmt.Errorf("failed to write generated library file: %w", err)
+	}
+
+	for filename, contents := range req.GetExtraFiles() {
+		outputPath := filepath.Join(req.GetDirectory(), filename)
+		if err := os.MkdirAll(filepath.Dir(outputPath), 0o700); err != nil {
+			return nil, fmt.Errorf("failed to create output directory for extra file %s: %w", filename, err)
+		}
+		if err := os.WriteFile(outputPath, contents, 0o600); err != nil {
+			return nil, fmt.Errorf("failed to write extra file %s: %w", filename, err)
+		}
+	}
+
+	return &pulumirpc.GeneratePackageResponse{}, nil
+}
+
+func (host *dartLanguageHost) Link(
+	ctx context.Context, req *pulumirpc.LinkRequest,
+) (*pulumirpc.LinkResponse, error) {
+	info := req.GetInfo()
+	if info == nil {
+		return nil, errors.New("missing program info in Link request")
+	}
+
+	pubspecPath := filepath.Join(info.GetProgramDirectory(), "pubspec.yaml")
+	pubspec, err := ReadAndParsePubspec(pubspecPath)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read project pubspec.yaml: %w", err)
+	}
+	if pubspec.Dependencies == nil {
+		pubspec.Dependencies = map[string]interface{}{}
+	}
+
+	var importLines []string
+	for _, dep := range req.GetPackages() {
+		dependencyName := dependencyPackageName(info.GetRootDirectory(), dep.GetPath(), dep.GetPackage().GetName())
+		pubspec.Dependencies[dependencyName] = map[string]string{
+			"path": filepath.ToSlash(dep.GetPath()),
+		}
+
+		alias := sanitizeDartIdentifier(dep.GetPackage().GetName())
+		importLines = append(importLines, fmt.Sprintf(
+			"  import 'package:%s/%s.dart' as %s;",
+			dependencyName,
+			dependencyName,
+			alias,
+		))
+	}
+
+	updatedPubspecBytes, err := yaml.Marshal(pubspec)
+	if err != nil {
+		return nil, fmt.Errorf("failed to marshal updated project pubspec.yaml: %w", err)
+	}
+	if err := os.WriteFile(pubspecPath, updatedPubspecBytes, 0o600); err != nil {
+		return nil, fmt.Errorf("failed to update project pubspec.yaml: %w", err)
+	}
+
+	header := "You can import the SDK in your Dart code with:\n\n"
+	if len(importLines) > 1 {
+		header = "You can import the SDKs in your Dart code with:\n\n"
+	}
+
+	return &pulumirpc.LinkResponse{
+		ImportInstructions: header + strings.Join(importLines, "\n"),
+	}, nil
 }

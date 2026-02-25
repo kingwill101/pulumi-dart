@@ -26,6 +26,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	ptesting "github.com/pulumi/pulumi/sdk/v3/go/common/testing"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 // TestPrintfDart tests that we capture stdout and stderr streams properly, even when the last line lacks an \n.
@@ -460,6 +461,37 @@ func TestAboutDart(t *testing.T) {
 	_, stderr := e.RunCommand("pulumi", "about")
 	// This one doesn't have a current stack. Assert that we caught it.
 	assert.Contains(t, stderr, "No current stack")
+}
+
+func TestPackageAddNamespaceDart(t *testing.T) {
+	e := ptesting.NewEnvironment(t)
+	defer func() {
+		if !t.Failed() {
+			e.DeleteEnvironmentFallible()
+		}
+	}()
+
+	e.ImportDirectory(filepath.Join("package_add", "namespace"))
+	e.CWD = filepath.Join(e.RootPath, "dart")
+
+	languagePluginPath, err := filepath.Abs("../pulumi-language-dart")
+	require.NoError(t, err)
+
+	originalPath := os.Getenv("PATH")
+	require.NoError(t, os.Setenv("PATH", languagePluginPath+string(os.PathListSeparator)+originalPath))
+	defer func() {
+		_ = os.Setenv("PATH", originalPath)
+	}()
+
+	stdout, _ := e.RunCommand("pulumi", "package", "add", "../provider/schema.json")
+	require.Contains(
+		t,
+		stdout,
+		"You can import the SDK in your Dart code with:\n\n  import 'package:my_namespace_mypkg/my_namespace_mypkg.dart' as mypkg;",
+	)
+
+	_, err = os.Stat(filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "pubspec.yaml"))
+	require.NoError(t, err)
 }
 
 // TestResourceRefsGetResourceDart tests that invoking the built-in 'pulumi:pulumi:getResource' function
