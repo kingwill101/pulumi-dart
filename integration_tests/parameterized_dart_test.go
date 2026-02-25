@@ -138,6 +138,7 @@ func TestParameterizedDart(t *testing.T) {
 		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
 			assert.NotNil(t, stack.Outputs)
 			assert.Equal(t, float64(42), stack.Outputs["echoA"])
+			assert.Equal(t, "hello", stack.Outputs["echoInvoke"])
 		},
 	})
 }

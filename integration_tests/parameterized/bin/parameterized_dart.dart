@@ -1,18 +1,12 @@
+import 'package:pkg/pkg.dart' as pkg;
 import 'package:pulumi/pulumi.dart';
-
-class EchoResource extends CustomResource {
-  EchoResource(String name, Input<dynamic> echo, [CustomResourceOptions? options])
-      : super(
-          'testprovider:index:Echo',
-          name,
-          {'echo': echo},
-          options ?? CustomResourceOptions(),
-        );
-}
 
 class MyStack extends Stack {
   MyStack() {
-    final customA = EchoResource('a', Input.fromValue(42));
+    final customA = pkg.Echo(
+      'a',
+      args: pkg.EchoArgs(echo: Input.fromValue(42)),
+    );
     final deployment = DeploymentImpl.instance as DeploymentImpl;
 
     final echoA = customA.urn.apply((urn) async {
@@ -24,7 +18,17 @@ class MyStack extends Stack {
       return state['echo'];
     });
 
-    registerOutputs({'echoA': echoA});
+    final echoInvoke = customA.urn.apply((_) async {
+      final result = await pkg.doEcho(
+        pkg.DoEchoArgs(echo: Input.fromValue('hello')),
+      );
+      return result.echo;
+    });
+
+    registerOutputs({
+      'echoA': echoA,
+      'echoInvoke': echoInvoke,
+    });
   }
 }
 
