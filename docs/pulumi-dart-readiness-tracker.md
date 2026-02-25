@@ -13,7 +13,7 @@ Last updated: 2026-02-25
 Validated on this checkout with:
 
 ```bash
-go test -count=1 -run 'Test(EmptyDart|ConfigBasicDart|DebuggerAttachDart|PluginDebuggerAttachDart|DartTransformations|DartResourceTransformsV2|ParameterizedDart)$' -v .
+go test -count=1 -run 'Test(EmptyDart|ConfigBasicDart|DebuggerAttachDart|PluginDebuggerAttachDart|DartTransformations|DartResourceTransformsV2|DartInvokeTransforms|ParameterizedDart)$' -v .
 ```
 
 Result: `PASS` (`ok github.com/pulumi-dart/integration_tests 44.971s`)
@@ -94,10 +94,14 @@ Completed in current port slice:
 - Added integration fixture + test coverage for v2 resource transform behavior:
   - `integration_tests/resource_transforms_v2/*`
   - `TestDartResourceTransformsV2`
+- Added stack invoke transform registration API + integration fixture coverage:
+  - `registerInvokeTransform` in `pulumi-dart/lib/src/deployment/stack.dart`
+  - `integration_tests/invoke_transforms/*`
+  - `TestDartInvokeTransforms`
 
 Remaining gaps:
 
-- Add dedicated invoke-transform integration tests and feature-negotiation edge-path tests.
+- Add negative feature-negotiation edge-path tests for invoke-transform support checks.
 - Expand parity coverage against upstream transform failure/diagnostic cases.
 
 Evidence:
@@ -107,6 +111,7 @@ Evidence:
 - `pulumi-dart/lib/src/resource/resource.dart`
 - `integration_tests/transformations_simple_test.go`
 - `integration_tests/resource_transforms_v2/bin/resource_transforms_v2_dart.dart`
+- `integration_tests/invoke_transforms/bin/invoke_transforms_dart.dart`
 
 Impact:
 
@@ -219,7 +224,8 @@ Exit criteria:
 - [x] Wire `resourceTransforms` and validate behavior parity with existing transformations
 - [x] Implement package ref resolution and registration wiring end-to-end
 - [x] Forward `ignoreChanges` and other missing lifecycle fields
-- [ ] Add dedicated invoke-transform integration coverage and negative feature-support tests
+- [x] Add dedicated invoke-transform integration coverage
+- [ ] Add negative feature-support tests for invoke transforms
 
 Exit criteria:
 
