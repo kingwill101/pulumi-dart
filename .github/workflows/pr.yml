@@ -1,0 +1,206 @@
+name: Build and test
+
+on:
+  merge_group:
+  pull_request:
+  push:
+    branches:
+      - main
+
+env:
+  PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN_PRODUCTION }}
+  AWS_REGION: us-west-2
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  PULUMI_TEST_OWNER: "moolumi"
+
+jobs:
+  setup_matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - id: set-matrix
+        run: |
+          os="${{ contains(github.event.pull_request.labels.*.name, 'ci/test') && 'ubuntu-latest macos-latest windows-latest' || 'ubuntu-latest' }}"
+          echo "matrix={\"os\": $(echo $os | jq -cR 'split(" ")')}" >> $GITHUB_OUTPUT
+
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup dotnet SDK v6.0
+        uses: actions/setup-dotnet@v4
+      - name: Format Pulumi SDK
+        run: dotnet run format-sdk verify
+
+  build:
+    needs: setup_matrix
+    strategy:
+      matrix:
+        os: ${{ fromJson(needs.setup_matrix.outputs.matrix).os }}
+        dotnet-version: [6.0.x, 8.0.x]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup dotnet SDK v6.0
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Install Pulumi CLI
+        uses: pulumi/actions@v5
+      - name: Build Pulumi SDK
+        run: dotnet run build-sdk
+      - name: Workspace clean (are xml doc file updates committed?)
+        uses: pulumi/git-status-check-action@v1
+      - name: Test Pulumi SDK
+        run: dotnet run test-sdk coverage
+      - name: Test Pulumi Automation SDK
+        run: dotnet run test-automation-sdk coverage
+      - name: Upload coverage data
+        uses: codecov/codecov-action@v4
+        with:
+          directory: coverage
+          files: "*"
+          fail_ci_if_error: false
+          verbose: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+  integration-tests:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-12]
+        dotnet-version: [6.0.x, 8.0.x]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup dotnet SDK v6.0
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Set up Go 1.22.x
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.22.x
+      - name: Install Pulumi CLI
+        uses: pulumi/actions@v5
+      - name: TestEmptyDotNet
+        run: dotnet run integration test TestEmptyDotNet
+      - name: TestStackReferenceDotnet
+        run: dotnet run integration test TestStackReferenceDotnet
+      - name: TestConstructDotnet
+        run: dotnet run integration test TestConstructDotnet
+      - name: TestPrintfDotNet
+        run: dotnet run integration test TestPrintfDotNet
+      - name: TestStackOutputsDotNet
+        run: dotnet run integration test TestStackOutputsDotNet
+      - name: TestStackComponentDotNet
+        run: dotnet run integration test TestStackComponentDotNet
+      - name: TestStackComponentServiceProviderDotNet
+        run: dotnet run integration test TestStackComponentServiceProviderDotNet
+      - name: TestConfigBasicDotNet
+        run: dotnet run integration test TestConfigBasicDotNet
+      - name: TestConfigSecretsWarnDotNet
+        run: dotnet run integration test TestConfigSecretsWarnDotNet
+      - name: TestStackReferenceSecretsDotnet
+        run: dotnet run integration test TestStackReferenceSecretsDotnet
+      - name: TestLargeResourceDotNet
+        run: dotnet run integration test TestLargeResourceDotNet
+      - name: TestConstructPlainDotnet
+        run: dotnet run integration test TestConstructPlainDotnet
+      - name: TestConstructUnknownDotnet
+        run: dotnet run integration test TestConstructUnknownDotnet
+      - name: TestConstructMethodsDotnet
+        run: dotnet run integration test TestConstructMethodsDotnet
+      - name: TestConstructMethodsUnknownDotnet
+        run: dotnet run integration test TestConstructMethodsUnknownDotnet
+      - name: TestConstructMethodsErrorsDotnet
+        run: dotnet run integration test TestConstructMethodsErrorsDotnet
+      - name: TestConstructProviderDotnet
+        run: dotnet run integration test TestConstructProviderDotnet
+      - name: TestGetResourceDotnet
+        run: dotnet run integration test TestGetResourceDotnet
+      - name: TestAboutDotnet
+        run: dotnet run integration test TestAboutDotnet
+      - name: TestDotNetTransformations
+        run: dotnet run integration test TestDotNetTransformations
+      - name: TestResourceRefsGetResourceDotnet
+        run: dotnet run integration test TestResourceRefsGetResourceDotnet
+      - name: TestDotNetAliasesRemame
+        run: dotnet run integration test TestDotNetAliasesRemame
+      - name: TestDotNetAliasesAdoptIntoComponent
+        run: dotnet run integration test TestDotNetAliasesAdoptIntoComponent
+      - name: TestDotNetAliasesRenameComponentAndChild
+        run: dotnet run integration test TestDotNetAliasesRenameComponentAndChild
+      - name: TestDotNetAliasesRetypeComponent
+        run: dotnet run integration test TestDotNetAliasesRetypeComponent
+      - name: TestDotNetAliasesRenameComponent
+        run: dotnet run integration test TestDotNetAliasesRenameComponent
+      - name: TestDotNetAliasesRetypeParents
+        run: dotnet run integration test TestDotNetAliasesRetypeParents
+      - name: TestProvider
+        run: dotnet run integration test TestProvider
+      - name: TestDeletedWith
+        run: dotnet run integration test TestDeletedWith
+      - name: TestDotNetTransforms
+        run: dotnet run integration test TestDotNetTransforms
+      - name: TestFailingTransfomationExitsProgram
+        run: dotnet run integration test TestFailingTransfomationExitsProgram
+
+  info:
+    name: gather
+    runs-on: ubuntu-latest
+    outputs:
+      version: "${{ steps.version.outputs.version }}"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Get the latest version
+        id: latest
+        uses: miniscruff/changie-action@v2
+        with:
+          args: next auto
+        continue-on-error: true
+      - name: Get the next patch version
+        id: patch
+        uses: miniscruff/changie-action@v2
+        with:
+          args: next patch
+      - name: Stitch version together
+        id: version
+        run: |
+          TAG="${{ steps.latest.outputs.output || steps.patch.outputs.output }}"
+          TAG="${TAG#v}" # remove prefix
+          OID="$(git rev-parse --short HEAD)"
+          PULUMI_VERSION="$TAG-alpha.$OID"
+          echo "version=${PULUMI_VERSION}" >> $GITHUB_OUTPUT
+
+  release-dev-sdk:
+    name: release-dev-sdk
+    needs: [build, integration-tests, info]
+    uses: ./.github/workflows/release-sdk.yml
+    if: ${{ github.event_name == 'merge_group' }}
+    with:
+      ref: ${{ github.event.release.tag_name }}
+      version: ${{ needs.info.outputs.version }}
+      release-notes: ${{ github.event.release.body }}
+    secrets: inherit
+
+  check-pr:
+    needs: ["build", "integration-tests", "format"]
+    runs-on: ubuntu-latest
+    if: always() # always report a status
+    steps:
+      - name: Build failed
+        if: ${{ needs.build.result != 'success' }}
+        run: exit 1
+      - name: Integration tests failed
+        if: ${{ needs.integration-tests.result != 'success' }}
+        run: exit 1
+      - name: Format failed
+        if: ${{ needs.format.result != 'success' }}
+        run: exit 1
+      - name: CI succeeded
+        run: exit 0
