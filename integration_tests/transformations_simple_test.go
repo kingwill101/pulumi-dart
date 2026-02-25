@@ -192,3 +192,35 @@ func transformationsRemoteValidator(
 	assert.True(t, foundRes6)
 	assert.True(t, foundRes7)
 }
+
+func TestDartResourceTransformsV2(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:   "resource_transforms_v2",
+		Quick: true,
+		LocalProviders: []integration.LocalDependency{
+			{
+				Package: "testprovider",
+				Path:    testProviderPath(),
+			},
+		},
+		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+			randomResName := "testprovider:index:Random"
+			found := false
+			for _, res := range stack.Deployment.Resources {
+				if res.URN.Name() != "res1" {
+					continue
+				}
+				found = true
+				assert.Equal(t, res.Type, tokens.Type(randomResName))
+				assert.Contains(t, res.AdditionalSecretOutputs, resource.PropertyKey("result"))
+				prefix := res.Inputs["prefix"]
+				assert.NotNil(t, prefix)
+				assert.Equal(t, "stack-v2", prefix.(string))
+				length := res.Inputs["length"]
+				assert.NotNil(t, length)
+				assert.Equal(t, 20.0, length.(float64))
+			}
+			assert.True(t, found)
+		},
+	})
+}

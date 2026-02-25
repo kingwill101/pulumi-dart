@@ -30,6 +30,7 @@ class CustomResourceOptions extends ResourceOptions {
     super.retainOnDelete,
     super.deletedWith,
     super.additionalSecretOutputs,
+    super.ignoreChanges,
   }) : super(
          resourceTransformations: transformations ?? [],
          resourceTransforms: resourceTransforms ?? [],

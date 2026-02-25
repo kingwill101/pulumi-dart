@@ -10,7 +10,7 @@ import 'package:pulumi/src/deployment/call.dart';
 import 'package:pulumi/src/deployment/invoke.dart';
 import 'package:pulumi/src/deployment/models.dart' as models;
 import 'package:pulumi/src/input.dart';
-import 'package:pulumi/src/monitor.dart';
+import 'package:pulumi/src/monitor.dart' as monitorpkg;
 import 'package:pulumi/src/resource/provider_resource.dart';
 import 'package:pulumi/src/resource/resource_hooks.dart';
 import 'package:pulumi/src/serializer.dart';
@@ -82,13 +82,14 @@ class DeploymentImpl extends Deployment
   final List<Exception> _swallowedExceptions = [];
   final List<Future<void>> _resourceOperations = [];
   ICallbackServer? _callbacks;
+  bool? _supportsTransforms;
   final String _stackName;
 
   Stack? _stack;
   late final Output<String> _stackUrn;
 
   @override
-  final Monitor monitor;
+  final monitorpkg.Monitor monitor;
   final Engine engine;
   static const String rootPulumiStackTypeName = 'pulumi:pulumi:Stack';
 
@@ -168,7 +169,7 @@ class DeploymentImpl extends Deployment
     String? projectName,
     String? stackName,
     bool? isDryRun,
-    Monitor? monitor,
+    monitorpkg.Monitor? monitor,
     Engine? engine,
   }) async {
     final monitorAddr = Platform.environment['PULUMI_MONITOR'];
@@ -202,7 +203,7 @@ class DeploymentImpl extends Deployment
       options: ChannelOptions(credentials: ChannelCredentials.insecure()),
     );
 
-    monitor ??= Monitor(monitorChannel);
+    monitor ??= monitorpkg.Monitor(monitorChannel);
     engine ??= Engine(engineChannel);
 
     _instance = DeploymentImpl._(
@@ -381,6 +382,17 @@ class DeploymentImpl extends Deployment
         request.packageRef = packageRef;
       }
     }
+    if (resource.resourceTransforms.isNotEmpty) {
+      if (!await _monitorSupportsTransforms()) {
+        throw Exception(
+          'The Pulumi CLI does not support transforms. Please update the Pulumi CLI.',
+        );
+      }
+      _callbacks ??= CallbackServer(monitor.client);
+      for (final transform in resource.resourceTransforms) {
+        request.transforms.add(await _callbacks!.registerTransform(transform));
+      }
+    }
 
     final response = await monitor.registerResource(resource, request);
     resource.resolveUrn(response.urn);
@@ -400,6 +412,25 @@ class DeploymentImpl extends Deployment
         rethrow;
       }
       return null;
+    }
+  }
+
+  Future<bool> _monitorSupportsTransforms() async {
+    if (_supportsTransforms != null) {
+      return _supportsTransforms!;
+    }
+    try {
+      final response = await monitor.supportsFeature(
+        monitorpkg.SupportsFeatureRequest('transforms'),
+      );
+      _supportsTransforms = response.hasSupport;
+      return response.hasSupport;
+    } catch (e) {
+      if (e is GrpcError && e.code == StatusCode.unimplemented) {
+        _supportsTransforms = false;
+        return false;
+      }
+      rethrow;
     }
   }
 

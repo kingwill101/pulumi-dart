@@ -1,15 +1,25 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
+
 import 'log.dart' as log;
 import 'package:grpc/grpc.dart';
 import 'package:protobuf/protobuf.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/callback.pbgrpc.dart';
 import 'package:uuid/uuid.dart';
 
+import 'alias.dart';
+import 'constants.dart';
+import 'input.dart';
 import 'invoke.dart';
+import 'pulumirpc/pulumi/alias.pb.dart' as aliaspb;
 import 'pulumirpc/pulumi/resource.pbgrpc.dart';
 import 'pulumirpc/pulumi/resource.pb.dart' as pulumirpc;
+import 'resource/component_resource.dart';
+import 'resource/custom_resource.dart';
+import 'resource/dependency_resource.dart';
+import 'resource/provider_resource.dart';
+import 'resource/resource_options.dart';
 import 'resource/resource_transformation.dart';
 import 'resource/resource_hooks.dart';
 import 'struct_converter.dart';
@@ -118,13 +128,47 @@ class CallbackServer implements ICallbackServer {
   Future<Callback> registerTransform(ResourceTransform transform) async {
     final cb = (Uint8List bytes) async {
       final request = TransformRequest.fromBuffer(bytes);
-      // TODO: Implement the rest of the transform logic
-      // This involves translating a significant amount of business logic
-      throw UnimplementedError('Transform logic not yet implemented');
+      final options = _resourceOptionsFromTransformRequest(request);
+      final args = ResourceTransformArgs(
+        request.name,
+        request.type,
+        request.custom,
+        request.hasProperties()
+            ? Map<String, Object?>.from(
+                StructConverter.fromStruct(request.properties),
+              )
+            : <String, Object?>{},
+        options,
+      );
+
+      final result = await transform(args, CancellationToken());
+      final response = TransformResponse();
+      if (result == null) {
+        if (request.hasProperties()) {
+          response.properties = request.properties;
+        }
+        if (request.hasOptions()) {
+          response.options = request.options;
+        }
+        return response;
+      }
+
+      response.properties = await StructConverter.toStruct(
+        result.args.map((key, value) => MapEntry(key, value)),
+      );
+      response.options = await _transformResourceOptionsToProto(result.options);
+      return response;
+    };
+    final tryCb = (Uint8List bytes) async {
+      try {
+        return await cb(bytes);
+      } catch (e) {
+        throw Exception('transform failed: $e');
+      }
     };
 
     final uuid = const Uuid().v4();
-    _callbacks[uuid] = cb;
+    _callbacks[uuid] = tryCb;
 
     return Callback()
       ..token = uuid
@@ -270,12 +314,44 @@ class CallbackServer implements ICallbackServer {
   ) async {
     final cb = (Uint8List bytes) async {
       final request = TransformInvokeRequest.fromBuffer(bytes);
-      // TODO: Implement the rest of the invoke transform logic
-      throw UnimplementedError('Invoke transform logic not yet implemented');
+      final invokeOptions = _invokeOptionsFromTransformRequest(request);
+      final invokeArgs = request.hasArgs()
+          ? Map<String, dynamic>.from(StructConverter.fromStruct(request.args))
+          : <String, dynamic>{};
+      final args = InvokeTransformArgs(
+        token: request.token,
+        args: _toInputs(invokeArgs),
+        opts: invokeOptions,
+      );
+
+      final result = await transform(args);
+      final response = TransformInvokeResponse();
+      if (result == null) {
+        if (request.hasArgs()) {
+          response.args = request.args;
+        }
+        if (request.hasOptions()) {
+          response.options = request.options;
+        }
+        return response;
+      }
+
+      response.args = await StructConverter.toStruct(
+        result.args.map((key, value) => MapEntry(key, value)),
+      );
+      response.options = await _transformInvokeOptionsToProto(result.opts);
+      return response;
+    };
+    final tryCb = (Uint8List bytes) async {
+      try {
+        return await cb(bytes);
+      } catch (e) {
+        throw Exception('transform failed: $e');
+      }
     };
 
     final uuid = const Uuid().v4();
-    _callbacks[uuid] = cb;
+    _callbacks[uuid] = tryCb;
 
     return Callback()
       ..token = uuid
@@ -303,6 +379,267 @@ class CallbackServer implements ICallbackServer {
             }
           }
         });
+  }
+
+  ResourceOptions _resourceOptionsFromTransformRequest(
+    TransformRequest request,
+  ) {
+    final protoOpts = request.hasOptions()
+        ? request.options
+        : TransformResourceOptions();
+    final aliases = _aliasesFromProto(protoOpts.aliases);
+    final dependsOn = protoOpts.dependsOn
+        .map((dep) => DependencyResource(dep))
+        .toList();
+    final provider = _providerFromReference(protoOpts.provider);
+    final providers = protoOpts.providers.values
+        .map(_providerFromReference)
+        .whereType<ProviderResource>()
+        .toList();
+    final customTimeouts = protoOpts.hasCustomTimeouts()
+        ? CustomTimeouts(
+            create: protoOpts.customTimeouts.hasCreate_1()
+                ? protoOpts.customTimeouts.create_1
+                : null,
+            update: protoOpts.customTimeouts.hasUpdate()
+                ? protoOpts.customTimeouts.update
+                : null,
+            delete: protoOpts.customTimeouts.hasDelete()
+                ? protoOpts.customTimeouts.delete
+                : null,
+          )
+        : null;
+    final deletedWith =
+        protoOpts.hasDeletedWith() && protoOpts.deletedWith != ''
+        ? DependencyResource(protoOpts.deletedWith)
+        : null;
+    final replacementTrigger = protoOpts.hasReplacementTrigger()
+        ? StructConverter.fromValue(protoOpts.replacementTrigger)
+        : null;
+
+    if (request.custom) {
+      return CustomResourceOptions(
+        parent: request.hasParent() && request.parent != ''
+            ? DependencyResource(request.parent)
+            : null,
+        dependsOn: dependsOn.isEmpty ? null : dependsOn,
+        protect: protoOpts.hasProtect() ? protoOpts.protect : null,
+        provider: provider,
+        providers: providers,
+        aliases: aliases.isEmpty ? null : aliases,
+        version: protoOpts.hasVersion() ? protoOpts.version : null,
+        pluginDownloadURL: protoOpts.hasPluginDownloadUrl()
+            ? protoOpts.pluginDownloadUrl
+            : null,
+        customTimeouts: customTimeouts,
+        deleteBeforeReplace: protoOpts.hasDeleteBeforeReplace()
+            ? protoOpts.deleteBeforeReplace
+            : null,
+        retainOnDelete: protoOpts.hasRetainOnDelete()
+            ? protoOpts.retainOnDelete
+            : null,
+        deletedWith: deletedWith,
+        additionalSecretOutputs: protoOpts.additionalSecretOutputs.isEmpty
+            ? null
+            : List<String>.from(protoOpts.additionalSecretOutputs),
+        ignoreChanges: protoOpts.ignoreChanges.isEmpty
+            ? null
+            : List<String>.from(protoOpts.ignoreChanges),
+        replacementTrigger: replacementTrigger,
+      );
+    }
+
+    return ComponentResourceOptions(
+      parent: request.hasParent() && request.parent != ''
+          ? DependencyResource(request.parent)
+          : null,
+      dependsOn: dependsOn.isEmpty ? null : dependsOn,
+      protect: protoOpts.hasProtect() ? protoOpts.protect : null,
+      provider: provider,
+      providers: providers,
+      aliases: aliases.isEmpty ? null : aliases,
+      version: protoOpts.hasVersion() ? protoOpts.version : null,
+      pluginDownloadURL: protoOpts.hasPluginDownloadUrl()
+          ? protoOpts.pluginDownloadUrl
+          : null,
+      customTimeouts: customTimeouts,
+      deleteBeforeReplace: protoOpts.hasDeleteBeforeReplace()
+          ? protoOpts.deleteBeforeReplace
+          : null,
+      retainOnDelete: protoOpts.hasRetainOnDelete()
+          ? protoOpts.retainOnDelete
+          : null,
+      deletedWith: deletedWith,
+      additionalSecretOutputs: protoOpts.additionalSecretOutputs.isEmpty
+          ? null
+          : List<String>.from(protoOpts.additionalSecretOutputs),
+      ignoreChanges: protoOpts.ignoreChanges.isEmpty
+          ? null
+          : List<String>.from(protoOpts.ignoreChanges),
+      replacementTrigger: replacementTrigger,
+    );
+  }
+
+  InvokeOptions _invokeOptionsFromTransformRequest(
+    TransformInvokeRequest request,
+  ) {
+    final options = request.hasOptions()
+        ? request.options
+        : TransformInvokeOptions();
+    return InvokeOptions(
+      provider: _providerFromReference(options.provider),
+      version: options.hasVersion() ? options.version : null,
+      pluginDownloadURL: options.hasPluginDownloadUrl()
+          ? options.pluginDownloadUrl
+          : null,
+    );
+  }
+
+  Future<TransformResourceOptions> _transformResourceOptionsToProto(
+    ResourceOptions options,
+  ) async {
+    final proto = TransformResourceOptions();
+    if (options.aliases != null) {
+      for (final alias in options.aliases!) {
+        proto.aliases.add(await alias.serializeAsync());
+      }
+    }
+    if (options.customTimeouts != null) {
+      proto.customTimeouts = RegisterResourceRequest_CustomTimeouts(
+        create_1: options.customTimeouts!.create,
+        update: options.customTimeouts!.update,
+        delete: options.customTimeouts!.delete,
+      );
+    }
+    if (options.deletedWith != null) {
+      proto.deletedWith = await options.deletedWith!.urn.getValue();
+    }
+    if (options.dependsOn != null && options.dependsOn!.isNotEmpty) {
+      for (final dep in options.dependsOn!) {
+        proto.dependsOn.add(await dep.urn.getValue());
+      }
+    }
+    if (options.ignoreChanges != null) {
+      proto.ignoreChanges.addAll(options.ignoreChanges!);
+    }
+    if (options.pluginDownloadURL != null) {
+      proto.pluginDownloadUrl = options.pluginDownloadURL!;
+    }
+    if (options.protect != null) {
+      proto.protect = options.protect!;
+    }
+    if (options.provider != null) {
+      final providerRef = await ProviderResource.register(options.provider);
+      if (providerRef != null) {
+        proto.provider = providerRef;
+      }
+    }
+    if (options.replacementTrigger != null) {
+      proto.replacementTrigger = await StructConverter.toValue(
+        options.replacementTrigger,
+      );
+    }
+    if (options.retainOnDelete != null) {
+      proto.retainOnDelete = options.retainOnDelete!;
+    }
+    if (options.version != null) {
+      proto.version = options.version!;
+    }
+    if (options.deleteBeforeReplace != null) {
+      proto.deleteBeforeReplace = options.deleteBeforeReplace!;
+    }
+    if (options.additionalSecretOutputs != null) {
+      proto.additionalSecretOutputs.addAll(options.additionalSecretOutputs!);
+    }
+    for (final provider in options.providers) {
+      final providerRef = await ProviderResource.register(provider);
+      if (providerRef != null) {
+        proto.providers[provider.package] = providerRef;
+      }
+    }
+
+    return proto;
+  }
+
+  Future<TransformInvokeOptions> _transformInvokeOptionsToProto(
+    InvokeOptions options,
+  ) async {
+    final proto = TransformInvokeOptions();
+    if (options.pluginDownloadURL != null) {
+      proto.pluginDownloadUrl = options.pluginDownloadURL!;
+    }
+    if (options.provider != null) {
+      final providerRef = await ProviderResource.register(options.provider);
+      if (providerRef != null) {
+        proto.provider = providerRef;
+      }
+    }
+    if (options.version != null) {
+      proto.version = options.version!;
+    }
+    return proto;
+  }
+
+  List<Alias> _aliasesFromProto(List<aliaspb.Alias> aliases) {
+    final result = <Alias>[];
+    for (final alias in aliases) {
+      if (alias.hasUrn()) {
+        result.add(Alias(urn: alias.urn));
+        continue;
+      }
+      if (alias.hasSpec()) {
+        final spec = alias.spec;
+        result.add(
+          Alias(
+            name: spec.hasName() && spec.name != ''
+                ? Input.fromValue(spec.name)
+                : null,
+            type: spec.hasType() && spec.type != ''
+                ? Input.fromValue(spec.type)
+                : null,
+            stack: spec.hasStack() && spec.stack != ''
+                ? Input.fromValue(spec.stack)
+                : null,
+            project: spec.hasProject() && spec.project != ''
+                ? Input.fromValue(spec.project)
+                : null,
+            parentUrn: spec.hasParentUrn() && spec.parentUrn != ''
+                ? Input.fromValue(spec.parentUrn)
+                : null,
+            noParent: spec.hasNoParent() && spec.noParent,
+          ),
+        );
+      }
+    }
+    return result;
+  }
+
+  ProviderResource? _providerFromReference(String reference) {
+    if (reference.isEmpty) {
+      return null;
+    }
+    final separator = reference.lastIndexOf('::');
+    final urn = separator == -1 ? reference : reference.substring(0, separator);
+    final id = separator == -1 ? null : reference.substring(separator + 2);
+    final urnParts = urn.split('::');
+    if (urnParts.length < 3 || !urnParts[2].startsWith('pulumi:providers:')) {
+      return null;
+    }
+    final package = urnParts[2].substring('pulumi:providers:'.length);
+    return ProviderResource.reference(package, urn, id: id);
+  }
+
+  Inputs _toInputs(Map<String, dynamic> args) {
+    final result = <String, Input<dynamic>>{};
+    for (final entry in args.entries) {
+      final value = entry.value;
+      if (value is Input<dynamic>) {
+        result[entry.key] = value;
+      } else {
+        result[entry.key] = Input.fromValue(value);
+      }
+    }
+    return result;
   }
 }
 

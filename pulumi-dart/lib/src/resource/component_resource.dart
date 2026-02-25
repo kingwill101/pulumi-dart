@@ -66,6 +66,7 @@ class ComponentResourceOptions extends ResourceOptions {
     super.retainOnDelete,
     super.deletedWith,
     super.additionalSecretOutputs,
+    super.ignoreChanges,
     List<ResourceTransform>? resourceTransforms,
     ResourceHookBinding? hooks,
   }) : super(

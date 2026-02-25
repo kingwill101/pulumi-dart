@@ -25,6 +25,7 @@ abstract class Resource {
 
   bool _protect;
   List<ResourceTransformation> _transformations;
+  List<ResourceTransform> _resourceTransforms;
   List<Input<String>> _aliases;
   Map<String, ProviderResource> _providers;
   ProviderResource? _provider;
@@ -32,6 +33,7 @@ abstract class Resource {
   String? _pluginDownloadURL;
 
   List<ResourceTransformation> get transformations => _transformations;
+  List<ResourceTransform> get resourceTransforms => _resourceTransforms;
 
   late final Map<String, IOutputCompletionSource> completionSources;
 
@@ -48,6 +50,7 @@ abstract class Resource {
   }) : _custom = custom,
        _protect = false,
        _transformations = [],
+       _resourceTransforms = [],
        _aliases = [],
        _providers = {},
        _provider = null,
@@ -93,10 +96,13 @@ abstract class Resource {
     }
 
     var transformations = [...options.resourceTransformations];
+    var resourceTransforms = [...options.resourceTransforms];
     if (parent != null) {
       transformations.addAll(parent.transformations);
+      resourceTransforms.addAll(parent.resourceTransforms);
     }
     _transformations = transformations;
+    _resourceTransforms = resourceTransforms;
 
     for (var transformation in transformations) {
       var tres = transformation(
