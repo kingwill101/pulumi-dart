@@ -409,6 +409,25 @@ func testConstructMethodsProvider(t *testing.T, lang string) {
 	})
 }
 
+func testConstructProviderExplicit(t *testing.T, lang string) {
+	const testDir = "construct_component_provider_explicit"
+
+	localProvider := integration.LocalDependency{
+		Package: "testcomponent", Path: filepath.Join(testDir, "testcomponent-go"),
+	}
+
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:            filepath.Join(testDir, lang),
+		LocalProviders: []integration.LocalDependency{localProvider},
+		Quick:          true,
+		NoParallel:     true,
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			assert.Equal(t, "hello world", stackInfo.Outputs["message"])
+			assert.Equal(t, "hello world", stackInfo.Outputs["nestedMessage"])
+		},
+	})
+}
+
 func testConstructOutputValues(t *testing.T, lang string, dependencies ...string) {
 	const testDir = "construct_component_output_values"
 	componentDir := "testcomponent-go"

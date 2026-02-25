@@ -438,6 +438,10 @@ func TestConstructProviderDart(t *testing.T) {
 	})
 }
 
+func TestConstructProviderExplicitDart(t *testing.T) {
+	testConstructProviderExplicit(t, "dart")
+}
+
 func TestGetResourceDart(t *testing.T) {
 	testDartProgram(t, &integration.ProgramTestOptions{
 		Dir:                      "get_resource",
