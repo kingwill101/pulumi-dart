@@ -120,6 +120,9 @@ func TestGeneratePackageEmitsResourceClasses(t *testing.T) {
 			"sample:index:WidgetComponent": {
 				"isComponent": true
 			}
+		},
+		"functions": {
+			"sample:index:doThing": {}
 		}
 	}`
 
@@ -138,4 +141,34 @@ func TestGeneratePackageEmitsResourceClasses(t *testing.T) {
 	assert.Contains(t, content, "_mapToInputs")
 	assert.Contains(t, content, "sample:index:Widget")
 	assert.Contains(t, content, "sample:index:WidgetComponent")
+	assert.Contains(t, content, "Future<Map<String, dynamic>> doThing")
+	assert.Contains(t, content, "sample:index:doThing")
+	assert.Contains(t, content, "import 'package:pulumi/src/deployment/models.dart' as deployment_models;")
+	assert.Contains(t, content, "_toDeploymentInvokeOptions(options)")
+}
+
+func TestGeneratePackageHandlesFunctionTokenSuffix(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"functions": {
+			"sample:index:Echo/doEchoMethod": {}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	libData, err := os.ReadFile(filepath.Join(targetDir, "lib", "sample.dart"))
+	require.NoError(t, err)
+	content := string(libData)
+	assert.Contains(t, content, "Future<Map<String, dynamic>> doEchoMethod")
+	assert.Contains(t, content, "sample:index:Echo/doEchoMethod")
 }

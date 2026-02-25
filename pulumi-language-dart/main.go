@@ -41,12 +41,15 @@ import (
 	"google.golang.org/protobuf/types/known/structpb"
 
 	"github.com/pkg/errors"
+	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	sdk "github.com/pulumi/pulumi/sdk/v3"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/apitype"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/resource/plugin"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/cmdutil"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/rpcutil"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
+	codegenrpc "github.com/pulumi/pulumi/sdk/v3/proto/go/codegen"
 	"google.golang.org/grpc"
 	"gopkg.in/yaml.v3"
 )
@@ -1167,11 +1170,14 @@ type packageSchema struct {
 	Namespace string                         `json:"namespace"`
 	Version   string                         `json:"version"`
 	Resources map[string]packageResourceSpec `json:"resources"`
+	Functions map[string]packageFunctionSpec `json:"functions"`
 }
 
 type packageResourceSpec struct {
 	IsComponent bool `json:"isComponent"`
 }
+
+type packageFunctionSpec struct{}
 
 func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 	var spec packageSchema
@@ -1182,6 +1188,32 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 		return nil, errors.New("package schema is missing name")
 	}
 	return &spec, nil
+}
+
+func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
+	version := ""
+	if pkg.Version != nil {
+		version = pkg.Version.String()
+	}
+
+	spec := &packageSchema{
+		Name:      pkg.Name,
+		Namespace: pkg.Namespace,
+		Version:   version,
+		Resources: map[string]packageResourceSpec{},
+		Functions: map[string]packageFunctionSpec{},
+	}
+
+	for _, resource := range pkg.Resources {
+		spec.Resources[resource.Token] = packageResourceSpec{
+			IsComponent: resource.IsComponent,
+		}
+	}
+	for _, function := range pkg.Functions {
+		spec.Functions[function.Token] = packageFunctionSpec{}
+	}
+
+	return spec
 }
 
 func sanitizeDartIdentifier(value string) string {
@@ -1253,19 +1285,53 @@ func toDartClassName(name string) string {
 	return result
 }
 
-func resourceClassNameFromToken(token string, used map[string]int) string {
+func tokenElementName(token string) string {
 	name := token
 	if idx := strings.LastIndex(token, ":"); idx >= 0 && idx+1 < len(token) {
 		name = token[idx+1:]
 	}
+	if idx := strings.LastIndex(name, "/"); idx >= 0 && idx+1 < len(name) {
+		name = name[idx+1:]
+	}
+	return name
+}
 
-	base := toDartClassName(name)
+func resourceClassNameFromToken(token string, used map[string]int) string {
+	base := toDartClassName(tokenElementName(token))
 	count := used[base]
 	used[base] = count + 1
 	if count == 0 {
 		return base
 	}
 	return fmt.Sprintf("%s%d", base, count+1)
+}
+
+func functionNameFromToken(token string, used map[string]int) string {
+	base := tokenElementName(token)
+	if base == "" {
+		base = "invoke"
+	}
+
+	classLike := toDartClassName(base)
+	if classLike == "" {
+		classLike = "Invoke"
+	}
+
+	runes := []rune(classLike)
+	if len(runes) > 0 && runes[0] >= 'A' && runes[0] <= 'Z' {
+		runes[0] = runes[0] - 'A' + 'a'
+	}
+	candidate := string(runes)
+	if candidate == "" {
+		candidate = "invoke"
+	}
+
+	count := used[candidate]
+	used[candidate] = count + 1
+	if count == 0 {
+		return candidate
+	}
+	return fmt.Sprintf("%s%d", candidate, count+1)
 }
 
 func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
@@ -1278,6 +1344,14 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 		resourceTokens = append(resourceTokens, token)
 	}
 	sort.Strings(resourceTokens)
+	functionTokens := make([]string, 0, len(spec.Functions))
+	for token := range spec.Functions {
+		functionTokens = append(functionTokens, token)
+	}
+	sort.Strings(functionTokens)
+	if len(functionTokens) > 0 {
+		b.WriteString("import 'package:pulumi/src/deployment/models.dart' as deployment_models;\n\n")
+	}
 
 	hasCustomResource := false
 	for _, token := range resourceTokens {
@@ -1304,8 +1378,25 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 `)
 	}
 
-	if len(resourceTokens) == 0 {
-		b.WriteString("// This package schema did not define resources.\n")
+	if len(functionTokens) > 0 {
+		b.WriteString(`deployment_models.InvokeOptions? _toDeploymentInvokeOptions(InvokeOptions? options) {
+  if (options == null) {
+    return null;
+  }
+
+  return deployment_models.InvokeOptions(
+    parent: options.parent,
+    provider: options.provider,
+    version: options.version,
+    pluginDownloadURL: options.pluginDownloadURL,
+  );
+}
+
+`)
+	}
+
+	if len(resourceTokens) == 0 && len(functionTokens) == 0 {
+		b.WriteString("// This package schema did not define resources or functions.\n")
 		return []byte(b.String())
 	}
 
@@ -1330,6 +1421,17 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 			&b,
 			"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args ?? const {}),\n          options ?? CustomResourceOptions(),\n        );\n}\n\n",
 			className,
+			token,
+		)
+	}
+
+	usedFunctionNames := map[string]int{}
+	for _, token := range functionTokens {
+		funcName := functionNameFromToken(token, usedFunctionNames)
+		fmt.Fprintf(
+			&b,
+			"Future<Map<String, dynamic>> %s(\n  Map<String, dynamic> args, {\n  InvokeOptions? options,\n}) async {\n  final deployment = DeploymentImpl.instance as DeploymentImpl;\n  return await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    args,\n    options: _toDeploymentInvokeOptions(options),\n  );\n}\n\n",
+			funcName,
 			token,
 		)
 	}
@@ -1473,9 +1575,42 @@ func (host *dartLanguageHost) GenerateProject(
 func (host *dartLanguageHost) GeneratePackage(
 	ctx context.Context, req *pulumirpc.GeneratePackageRequest,
 ) (*pulumirpc.GeneratePackageResponse, error) {
-	spec, err := parsePackageSchema(req.GetSchema())
-	if err != nil {
-		return nil, err
+	var (
+		spec           *packageSchema
+		rpcDiagnostics []*codegenrpc.Diagnostic
+	)
+
+	if strings.TrimSpace(req.GetLoaderTarget()) != "" {
+		loader, err := schema.NewLoaderClient(req.GetLoaderTarget())
+		if err != nil {
+			return nil, err
+		}
+		defer loader.Close()
+
+		var packageSpec schema.PackageSpec
+		if err := json.Unmarshal([]byte(req.GetSchema()), &packageSpec); err != nil {
+			return nil, fmt.Errorf("failed to parse package schema: %w", err)
+		}
+
+		pkg, diags, err := schema.BindSpec(packageSpec, loader, schema.ValidationOptions{
+			AllowDanglingReferences: true,
+		})
+		if err != nil {
+			return nil, err
+		}
+		rpcDiagnostics = plugin.HclDiagnosticsToRPCDiagnostics(diags)
+		if diags.HasErrors() {
+			return &pulumirpc.GeneratePackageResponse{
+				Diagnostics: rpcDiagnostics,
+			}, nil
+		}
+		spec = packageSchemaFromPackage(pkg)
+	} else {
+		var err error
+		spec, err = parsePackageSchema(req.GetSchema())
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	packageName := toDartPackageName(spec.Namespace, spec.Name)
@@ -1521,7 +1656,9 @@ func (host *dartLanguageHost) GeneratePackage(
 		}
 	}
 
-	return &pulumirpc.GeneratePackageResponse{}, nil
+	return &pulumirpc.GeneratePackageResponse{
+		Diagnostics: rpcDiagnostics,
+	}, nil
 }
 
 func (host *dartLanguageHost) Pack(ctx context.Context, req *pulumirpc.PackRequest) (*pulumirpc.PackResponse, error) {
