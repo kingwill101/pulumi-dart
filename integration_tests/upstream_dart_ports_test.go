@@ -22,6 +22,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/apitype"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
@@ -169,6 +170,84 @@ func TestReplacementTriggerDart(t *testing.T) {
 						operations,
 					)
 				},
+			},
+		},
+	})
+}
+
+// TestStackOutputsProgramErrorDart tests that when a program error occurs, updated stack outputs
+// are persisted while untouched outputs remain unchanged.
+func TestStackOutputsProgramErrorDart(t *testing.T) {
+	d := "stack_outputs_program_error"
+
+	validateOutputs := func(
+		expected map[string]any,
+	) func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+		return func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			assert.Equal(t, expected, stackInfo.RootResource.Outputs)
+		}
+	}
+
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:   filepath.Join(d, "step1"),
+		Quick: true,
+		ExtraRuntimeValidation: validateOutputs(map[string]any{
+			"xyz": "ABC",
+			"foo": float64(42),
+		}),
+		EditDirs: []integration.EditDir{
+			{
+				Dir:           filepath.Join(d, "step2"),
+				Additive:      true,
+				ExpectFailure: true,
+				ExtraRuntimeValidation: validateOutputs(map[string]any{
+					"xyz": "DEF",
+					"foo": float64(42),
+				}),
+			},
+		},
+	})
+}
+
+// TestStackOutputsResourceErrorDart tests that stack outputs are only updated when registration
+// can complete in the presence of resource errors.
+func TestStackOutputsResourceErrorDart(t *testing.T) {
+	d := "stack_outputs_resource_error"
+
+	validateOutputs := func(
+		expected map[string]any,
+	) func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+		return func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			assert.Equal(t, expected, stackInfo.RootResource.Outputs)
+		}
+	}
+
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:            filepath.Join(d, "step1"),
+		LocalProviders: []integration.LocalDependency{{Package: "testprovider", Path: testProviderPath()}},
+		Quick:          true,
+		ExtraRuntimeValidation: validateOutputs(map[string]any{
+			"xyz": "ABC",
+			"foo": float64(42),
+		}),
+		EditDirs: []integration.EditDir{
+			{
+				Dir:           filepath.Join(d, "step2"),
+				Additive:      true,
+				ExpectFailure: true,
+				ExtraRuntimeValidation: validateOutputs(map[string]any{
+					"xyz": "ABC",
+					"foo": float64(42),
+				}),
+			},
+			{
+				Dir:           filepath.Join(d, "step3"),
+				Additive:      true,
+				ExpectFailure: true,
+				ExtraRuntimeValidation: validateOutputs(map[string]any{
+					"xyz": "DEF",
+					"foo": float64(1),
+				}),
 			},
 		},
 	})

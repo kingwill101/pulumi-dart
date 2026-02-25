@@ -228,9 +228,16 @@ class DeploymentImpl extends Deployment
       await _instance!.logger.waitForPendingLogs();
       return _instance!.logger.loggedErrors ? 1 : 0;
     } catch (e, stackTrace) {
+      try {
+        await _instance!.registerOutputs();
+      } catch (_) {
+        // Best effort: registration may fail if a resource operation fails.
+      }
+
       await _instance!.logger.error(
         'An error occurred during deployment: $e\n$stackTrace',
       );
+      await _instance!.logger.waitForPendingLogs();
       return 1;
     } finally {
       if (_instance is DeploymentImpl) {

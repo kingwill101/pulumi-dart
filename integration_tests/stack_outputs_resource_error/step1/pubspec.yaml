@@ -1,0 +1,14 @@
+name: stack_outputs_resource_error_dart
+description: A Dart fixture for stack output persistence on resource errors.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  pulumi:
+    path: ../../../pulumi-dart
+
+dev_dependencies:
+  lints: ^6.1.0

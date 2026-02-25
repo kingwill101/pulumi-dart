@@ -1,0 +1,3 @@
+name: stack_outputs_program_error_dart
+description: Stack output persistence when a program error occurs.
+runtime: dart
