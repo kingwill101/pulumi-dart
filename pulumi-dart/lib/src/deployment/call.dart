@@ -1,3 +1,5 @@
+import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
+import 'package:pulumi/src/deserializer.dart';
 import 'package:pulumi/src/monitor.dart';
 import 'package:pulumi/src/resource/resource.dart';
 import 'package:pulumi/src/struct_converter.dart';
@@ -58,9 +60,7 @@ mixin CallMixin {
       );
     }
 
-    return _deserializeCallResponse<T>(
-      StructConverter.fromStruct(response.return_1),
-    );
+    return _deserializeCallResponse<T>(response.return_1);
   }
 
   Future<String> _resolvePackageRef(
@@ -70,10 +70,13 @@ mixin CallMixin {
     return '';
   }
 
-  T _deserializeCallResponse<T>(Map<String, dynamic> response) {
+  T _deserializeCallResponse<T>(Struct response) {
     if (T == Null) {
       return null as T;
     }
-    return response as T;
+    final decoded = Deserializer.deserialize<dynamic>(
+      Value()..structValue = response,
+    );
+    return decoded.value as T;
   }
 }

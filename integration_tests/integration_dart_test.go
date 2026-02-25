@@ -442,6 +442,10 @@ func TestConstructProviderExplicitDart(t *testing.T) {
 	testConstructProviderExplicit(t, "dart")
 }
 
+func TestConstructConfigureProviderDart(t *testing.T) {
+	testConstructConfigureProvider(t, "dart")
+}
+
 func TestConstructResourceOptionsDart(t *testing.T) {
 	testConstructResourceOptions(t, "dart")
 }

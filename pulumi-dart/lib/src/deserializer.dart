@@ -4,6 +4,7 @@ import 'package:pulumi/src/resource/component_resource.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 
 import 'resource/dependency_resource.dart';
+import 'resource/provider_resource.dart';
 
 class Deserializer {
   static OutputData<T> deserialize<T>(Value value) {
@@ -169,22 +170,16 @@ class Deserializer {
       );
     }
 
-    final (hasVersion, version) = _tryGetStringValue(
-      fields,
-      Constants.resourceVersionName,
-    );
-    final versionStr = hasVersion ? version! : "";
+    final (_, id) = _tryGetStringValue(fields, Constants.resourceIdName);
 
     final urnParts = urn!.split("::");
-    final qualifiedType = urnParts[2];
-    final qualifiedTypeParts = qualifiedType.split('\$');
-    final type = qualifiedTypeParts.last;
+    if (urnParts.length > 2 && urnParts[2].startsWith("pulumi:providers:")) {
+      final package = urnParts[2].substring("pulumi:providers:".length);
+      final provider = ProviderResource.reference(package, urn, id: id);
+      return (true, provider);
+    }
 
-    // Note: We don't have a direct equivalent to TryConstruct in Dart,
-    // so we'll need to implement a different approach here.
-    // For now, we'll create a DependencyResource.
-    final resource = DependencyResource(urn);
-    return (true, resource);
+    return (true, DependencyResource(urn));
   }
 
   static (bool, dynamic) _tryDeserializeOutputValue(Value value) {

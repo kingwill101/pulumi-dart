@@ -517,6 +517,81 @@ func testConstructResourceOptions(t *testing.T, lang string) {
 	})
 }
 
+func testConstructConfigureProvider(t *testing.T, lang string) {
+	const testDir = "construct_component_configure_provider"
+
+	localProvider := integration.LocalDependency{
+		Package: "metaprovider",
+		Path:    filepath.Join(testDir, "testcomponent-go"),
+	}
+
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir: filepath.Join(testDir, lang),
+		Config: map[string]string{
+			"proxy": "FromEnv",
+		},
+		LocalProviders:           []integration.LocalDependency{localProvider},
+		Quick:                    false,
+		NoParallel:               true,
+		AllowEmptyPreviewChanges: true,
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			assert.Contains(t, stackInfo.Outputs, "keyAlgo")
+			assert.Equal(t, "ECDSA", stackInfo.Outputs["keyAlgo"])
+			assert.Contains(t, stackInfo.Outputs, "keyAlgo2")
+			assert.Equal(t, "ECDSA", stackInfo.Outputs["keyAlgo2"])
+			assert.Equal(t, float64(42), stackInfo.Outputs["meaningOfLife"])
+			assert.Equal(t, float64(42), stackInfo.Outputs["meaningOfLife2"])
+
+			var privateKeyProviderRef string
+			for _, res := range stackInfo.Deployment.Resources {
+				if strings.Contains(string(res.URN), "PrivateKey") {
+					privateKeyProviderRef = res.Provider
+					break
+				}
+			}
+			assert.NotEmpty(t, privateKeyProviderRef, "expected PrivateKey provider reference to be set")
+
+			var providerFromEnv *bool
+			for _, res := range stackInfo.Deployment.Resources {
+				if fmt.Sprintf("%s::%s", res.URN, res.ID) != privateKeyProviderRef {
+					continue
+				}
+
+				rawProxy, ok := res.Inputs["proxy"]
+				assert.True(t, ok, "expected provider input to contain proxy")
+				if !ok {
+					break
+				}
+
+				proxy, ok := rawProxy.(map[string]interface{})
+				assert.True(t, ok, "expected provider input proxy to be object")
+				if !ok {
+					break
+				}
+
+				rawFromEnv, ok := proxy["fromEnv"]
+				assert.True(t, ok, "expected provider input proxy.fromEnv to be present")
+				if !ok {
+					break
+				}
+
+				fromEnv, ok := rawFromEnv.(bool)
+				assert.True(t, ok, "expected provider input proxy.fromEnv to be bool")
+				if !ok {
+					break
+				}
+
+				providerFromEnv = &fromEnv
+				break
+			}
+
+			if assert.NotNil(t, providerFromEnv, "expected to find provider inputs used by PrivateKey") {
+				assert.True(t, *providerFromEnv, "expected provider to be configured with proxy.fromEnv=true")
+			}
+		},
+	})
+}
+
 func testConstructOutputValues(t *testing.T, lang string, dependencies ...string) {
 	const testDir = "construct_component_output_values"
 	componentDir := "testcomponent-go"

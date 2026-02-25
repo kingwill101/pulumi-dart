@@ -46,6 +46,7 @@ class CustomResource extends Resource {
     Inputs props,
     CustomResourceOptions options, {
     bool remote = false,
+    bool dependency = false,
     RegisterResourceRequest? registerPackageRequest,
   }) : super(
          type,
@@ -54,6 +55,7 @@ class CustomResource extends Resource {
          props,
          options,
          remote: remote,
+         dependency: dependency,
          registerPackageRequest: registerPackageRequest,
        ) {
     id = Output<String?>(_idCompleter.future);

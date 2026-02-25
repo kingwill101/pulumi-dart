@@ -1,5 +1,6 @@
 import 'package:pulumi/src/resource/custom_resource.dart';
 
+import '../constants.dart';
 import '../input.dart';
 
 class ProviderResource extends CustomResource {
@@ -18,16 +19,44 @@ class ProviderResource extends CustomResource {
         options ?? CustomResourceOptions(),
       );
 
+  ProviderResource.reference(this.package, String urn, {String? id})
+    : super(
+        'pulumi:providers:$package',
+        _nameFromUrn(urn),
+        {},
+        CustomResourceOptions(),
+        dependency: true,
+      ) {
+    resolveUrn(urn);
+
+    final hasKnownID =
+        id != null && id.isNotEmpty && !Constants.isUnknownSentinel(id);
+    resolveId(hasKnownID ? id : null, isKnown: hasKnownID);
+    registrationId = "$urn::${hasKnownID ? id : Constants.unknownValue}";
+  }
+
   static Future<String?> register(ProviderResource? providerResource) async {
     if (providerResource == null) return null;
 
     if (providerResource.registrationId == null) {
       final urn = await providerResource.urn.getValue();
       final idData = await providerResource.id.getData();
-      final id = idData.isKnown ? (idData.value ?? '') : '';
+      final id = idData.isKnown
+          ? ((idData.value != null && idData.value!.isNotEmpty)
+                ? idData.value!
+                : Constants.unknownValue)
+          : Constants.unknownValue;
       providerResource.registrationId = "$urn::$id";
     }
 
     return providerResource.registrationId;
+  }
+
+  static String _nameFromUrn(String urn) {
+    final parts = urn.split("::");
+    if (parts.length > 4) {
+      return parts[4];
+    }
+    return "provider";
   }
 }
