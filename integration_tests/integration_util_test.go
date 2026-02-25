@@ -218,8 +218,32 @@ func (t assertPerfBenchmark) ReportCommand(stats integration.TestCommandStats) {
 func testComponentSlowLocalProvider(t *testing.T) integration.LocalDependency {
 	return integration.LocalDependency{
 		Package: "testcomponent",
-		Path:    filepath.Join("construct_component_slow", "testcomponent"),
+		Path:    filepath.Join("construct_component_slow", "testcomponent-go"),
 	}
+}
+
+// Test throwing an error within an apply in a remote component provider.
+func testConstructErrorApply(t *testing.T, lang string) {
+	const testDir = "construct_component_error_apply"
+
+	stderr := &bytes.Buffer{}
+	expectedError := "intentional error from within an apply"
+
+	localProvider := integration.LocalDependency{
+		Package: "testcomponent",
+		Path:    filepath.Join(testDir, "testcomponent-go"),
+	}
+
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:            filepath.Join(testDir, lang),
+		LocalProviders: []integration.LocalDependency{localProvider},
+		Quick:          true,
+		Stderr:         stderr,
+		ExpectFailure:  true,
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			assert.Contains(t, stderr.String(), expectedError)
+		},
+	})
 }
 
 func testComponentProviderSchema(t *testing.T, path string) {

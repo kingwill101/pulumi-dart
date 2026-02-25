@@ -316,39 +316,46 @@ func TestFailingTransfomationExitsProgram(t *testing.T) {
 	assert.Contains(t, stderr.String(), "Boom!")
 }
 
-// Test remote component construction with a child resource that takes a long time to be created, ensuring it's created.
-//func TestConstructSlowDart(t *testing.T) {
-//	localProvider := testComponentSlowLocalProvider(t)
-//
-//	// TODO[pulumi/pulumi#5455]: Dynamic providers fail to load when used from multi-lang components.
-//	// Until we've addressed this, set PULUMI_TEST_YARN_LINK_PULUMI, which tells the integration test
-//	// module to run `yarn install && yarn link @pulumi/pulumi` in the .NET program's directory, allowing
-//	// the Node.js dynamic provider plugin to load.
-//	// When the underlying issue has been fixed, the use of this environment variable inside the integration
-//	// test module should be removed.
-//	const testYarnLinkPulumiEnv = "PULUMI_TEST_YARN_LINK_PULUMI=true"
-//
-//	testDir := "construct_component_slow"
-//	runComponentSetup(t, testDir)
-//
-//	opts := &integration.ProgramTestOptions{
-//		Env:            []string{testYarnLinkPulumiEnv},
-//		Dir:            filepath.Join(testDir, "dotnet"),
-//		Dependencies:   []string{"Pulumi"},
-//		LocalProviders: []integration.LocalDependency{localProvider},
-//		Quick:          true,
-//		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
-//			assert.NotNil(t, stackInfo.Deployment)
-//			if assert.Equal(t, 5, len(stackInfo.Deployment.Resources)) {
-//				stackRes := stackInfo.Deployment.Resources[0]
-//				assert.NotNil(t, stackRes)
-//				assert.Equal(t, resource.RootStackType, stackRes.Type)
-//				assert.Equal(t, "", string(stackRes.Parent))
-//			}
-//		},
-//	}
-//	integration.ProgramTest(t, opts)
-//}
+// Test remote component construction with a child resource that takes a long time to be created.
+func TestConstructSlowDart(t *testing.T) {
+	localProvider := testComponentSlowLocalProvider(t)
+	testDir := "construct_component_slow"
+
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:            filepath.Join(testDir, "dart"),
+		LocalProviders: []integration.LocalDependency{localProvider},
+		Quick:          true,
+		NoParallel:     true,
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			require.NotNil(t, stackInfo.Deployment)
+
+			var stackRes *apitype.ResourceV3
+			var componentRes *apitype.ResourceV3
+			var slowChildRes *apitype.ResourceV3
+			for i := range stackInfo.Deployment.Resources {
+				res := &stackInfo.Deployment.Resources[i]
+				switch res.URN.Type() {
+				case resource.RootStackType:
+					stackRes = res
+				case "testcomponent:index:Component":
+					componentRes = res
+				case "testcomponent:index:SlowChild":
+					slowChildRes = res
+				}
+			}
+
+			require.NotNil(t, stackRes)
+			assert.Equal(t, "", string(stackRes.Parent))
+			require.NotNil(t, componentRes)
+			require.NotNil(t, slowChildRes)
+			assert.Equal(t, componentRes.URN, slowChildRes.Parent)
+		},
+	})
+}
+
+func TestConstructErrorApplyDart(t *testing.T) {
+	testConstructErrorApply(t, "dart")
+}
 
 // Test remote component construction with prompt inputs.
 func TestConstructPlainDart(t *testing.T) {
