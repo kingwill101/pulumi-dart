@@ -13,10 +13,10 @@ Last updated: 2026-02-25
 Validated on this checkout with:
 
 ```bash
-go test -count=1 -run 'Test(StackOutputsDart|ConfigSecretsWarnDart|StackOutputsProgramErrorDart|StackOutputsResourceErrorDart)$' -v .
+go test -count=1 -run 'Test(StackOutputsDart|ConfigSecretsWarnDart|StackOutputsProgramErrorDart|StackOutputsResourceErrorDart|CustomTimeouts(Success|Failure)Dart)$' -v .
 ```
 
-Result: `PASS` (`ok github.com/pulumi-dart/integration_tests 17.818s` for the stack-output/config subset)
+Result: `PASS` (`ok github.com/pulumi-dart/integration_tests 6.692s` for the custom-timeout slice; stack-output/config subset also passing)
 
 Covered capabilities:
 
@@ -27,6 +27,7 @@ Covered capabilities:
 - provider call flow
 - construct/component flows
 - stack output persistence on program/resource failure paths
+- custom timeout success/failure behavior
 
 ## Gap Summary vs Node/Python/Go
 
@@ -178,6 +179,7 @@ Evidence:
 - `integration_tests/upstream_dart_ports_test.go`
 - `integration_tests/stack_outputs_program_error/*`
 - `integration_tests/stack_outputs_resource_error/*`
+- `integration_tests/custom_timeouts/*`
 
 Impact:
 
