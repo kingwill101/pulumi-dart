@@ -119,6 +119,7 @@ func TestParameterizedDart(t *testing.T) {
 				"library pkg_sdk;",
 				"class Echo extends CustomResource",
 				"class Random extends CustomResource",
+				"Future<DoEchoResult> doEcho(",
 				"_mapToInputs",
 			} {
 				if !strings.Contains(string(implSDK), expected) {
