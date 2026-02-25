@@ -29,3 +29,19 @@ The Dart runtime MUST implement resource and stack invoke transform callback flo
 #### Scenario: Stack invoke transform callback executes
 - **WHEN** a stack invoke transform callback is registered
 - **THEN** callback invocation returns transformed invoke arguments/options without throwing `UnimplementedError`
+
+### Requirement: Stack Output Persistence on Failure Paths
+The Dart runtime MUST preserve and register stack outputs according to Pulumi engine semantics when updates fail.
+
+#### Scenario: Program error after partial output updates
+- **GIVEN** a successful baseline deployment with stack outputs
+- **WHEN** a subsequent update changes one stack output and the program then fails
+- **THEN** the changed output is persisted
+- **AND** unchanged outputs retain prior values
+
+#### Scenario: Resource failure before and after stack output readiness
+- **GIVEN** a successful baseline deployment with stack outputs
+- **WHEN** a subsequent update fails before stack outputs can be fully resolved
+- **THEN** prior stack output values remain unchanged
+- **WHEN** a later failing update sets concrete stack outputs before resource failure
+- **THEN** those updated stack outputs are persisted
