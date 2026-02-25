@@ -19,7 +19,6 @@ func TestParameterizedDart(t *testing.T) {
 		Dir: filepath.Join("parameterized"),
 		LocalProviders: []integration.LocalDependency{
 			{Package: "testprovider", Path: testProviderPath()},
-			{Package: "pkg", Path: testProviderPath()},
 		},
 		PostPrepareProject: func(info *engine.Projinfo) error {
 			if len(info.Proj.Plugins.Providers) == 0 {
