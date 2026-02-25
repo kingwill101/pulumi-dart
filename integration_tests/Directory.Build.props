@@ -1,5 +1,0 @@
-<Project>
-    <ItemGroup>
-        <ProjectReference Condition="'$(ProjectName)' != 'Pulumi.IntegrationTests.Utils'" Include="$(MSBuildThisFileDirectory)\utils\Pulumi.IntegrationTests.Utils.csproj"/>
-    </ItemGroup>
-</Project>
