@@ -252,3 +252,18 @@ func TestStackOutputsResourceErrorDart(t *testing.T) {
 		},
 	})
 }
+
+func TestCustomTimeoutsSuccessDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:   filepath.Join("custom_timeouts", "success"),
+		Quick: true,
+	})
+}
+
+func TestCustomTimeoutsFailureDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:           filepath.Join("custom_timeouts", "failure"),
+		Quick:         true,
+		ExpectFailure: true,
+	})
+}
