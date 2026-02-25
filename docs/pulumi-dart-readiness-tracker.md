@@ -13,7 +13,7 @@ Last updated: 2026-02-25
 Validated on this checkout with:
 
 ```bash
-go test -count=1 -run 'Test(EmptyDart|ConfigBasicDart|DebuggerAttachDart|PluginDebuggerAttachDart|DartTransformations|ParameterizedDart)$' -v .
+go test -count=1 -run 'Test(EmptyDart|ConfigBasicDart|DebuggerAttachDart|PluginDebuggerAttachDart|DartTransformations|DartResourceTransformsV2|ParameterizedDart)$' -v .
 ```
 
 Result: `PASS` (`ok github.com/pulumi-dart/integration_tests 44.971s`)
@@ -82,24 +82,35 @@ Impact:
 
 ## 3) Runtime Transform Pipeline (High)
 
-Status: **Open**
+Status: **In Progress**
 
-Current gaps:
+Completed in current port slice:
 
-- async transform callbacks throw `UnimplementedError`:
+- Implemented transform callback behavior for:
   - `registerTransform`
   - `registerStackInvokeTransformAsync`
-- `ResourceOptions.resourceTransforms` exists, but active resource path applies `resourceTransformations`.
+- Wired `resourceTransforms` into resource registration request callbacks (guarded by monitor `supportsFeature("transforms")`).
+- Added inheritance/propagation for `resourceTransforms` from parent resources.
+- Added integration fixture + test coverage for v2 resource transform behavior:
+  - `integration_tests/resource_transforms_v2/*`
+  - `TestDartResourceTransformsV2`
+
+Remaining gaps:
+
+- Add dedicated invoke-transform integration tests and feature-negotiation edge-path tests.
+- Expand parity coverage against upstream transform failure/diagnostic cases.
 
 Evidence:
 
 - `pulumi-dart/lib/src/callback_server.dart`
-- `pulumi-dart/lib/src/resource/resource_options.dart`
+- `pulumi-dart/lib/src/deployment/deployment.dart`
 - `pulumi-dart/lib/src/resource/resource.dart`
+- `integration_tests/transformations_simple_test.go`
+- `integration_tests/resource_transforms_v2/bin/resource_transforms_v2_dart.dart`
 
 Impact:
 
-- modern transform pathways are not fully functional
+- modern resource transform pathways are now active; remaining risk is primarily coverage depth
 
 ## 4) Package Reference Plumbing (High)
 
@@ -203,11 +214,12 @@ Exit criteria:
 
 ## Milestone C: Runtime Completeness
 
-- [ ] Implement callback server transform logic (`registerTransform`)
-- [ ] Implement stack invoke transform async path (`registerStackInvokeTransformAsync`)
-- [ ] Wire `resourceTransforms` and validate behavior parity with existing transformations
+- [x] Implement callback server transform logic (`registerTransform`)
+- [x] Implement stack invoke transform async path (`registerStackInvokeTransformAsync`)
+- [x] Wire `resourceTransforms` and validate behavior parity with existing transformations
 - [x] Implement package ref resolution and registration wiring end-to-end
 - [x] Forward `ignoreChanges` and other missing lifecycle fields
+- [ ] Add dedicated invoke-transform integration coverage and negative feature-support tests
 
 Exit criteria:
 

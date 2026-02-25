@@ -19,7 +19,7 @@
 
 ## 4. Runtime Resource Behavior Parity
 
-- [ ] 4.1 Implement transform callback logic in `pulumi-dart/lib/src/callback_server.dart` for resource and invoke transforms.
+- [x] 4.1 Implement transform callback logic in `pulumi-dart/lib/src/callback_server.dart` for resource and invoke transforms.
 - [x] 4.2 Implement package reference resolution/plumbing in runtime call/invoke/register paths (`deployment/call.dart`, `deployment/invoke.dart`, `deployment/deployment.dart`).
 - [x] 4.3 Forward lifecycle fields including `ignoreChanges` in register requests and add regression tests for option propagation.
 - [x] 4.4 Validate runtime slice with targeted integration tests (for example `cd integration_tests && go test -count=1 -run 'Test(DartTransformations|ConstructErrorApplyDart|ProviderCallDart)$' -v .`) and expect `PASS`.
