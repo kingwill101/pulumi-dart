@@ -387,8 +387,6 @@ func testConstructMethodsErrors(t *testing.T, lang string) {
 }
 
 func testConstructOutputValues(t *testing.T, lang string, dependencies ...string) {
-	t.Parallel()
-
 	const testDir = "construct_component_output_values"
 	componentDir := "testcomponent-go"
 
@@ -397,7 +395,7 @@ func testConstructOutputValues(t *testing.T, lang string, dependencies ...string
 		{Package: "testcomponent", Path: filepath.Join(testDir, componentDir)},
 	}
 
-	integration.ProgramTest(t, &integration.ProgramTestOptions{
+	testDartProgram(t, &integration.ProgramTestOptions{
 		Dir:            filepath.Join(testDir, lang),
 		Dependencies:   dependencies,
 		LocalProviders: localProviders,

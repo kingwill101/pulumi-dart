@@ -406,8 +406,16 @@ func TestConstructMethodsUnknownDart(t *testing.T) {
 	testConstructMethodsUnknown(t, "dotnet")
 }
 
+func TestConstructMethodsResourcesDart(t *testing.T) {
+	testConstructMethodsResources(t, "dart")
+}
+
 func TestConstructMethodsErrorsDart(t *testing.T) {
 	testConstructMethodsErrors(t, "dotnet")
+}
+
+func TestConstructOutputValuesDart(t *testing.T) {
+	testConstructOutputValues(t, "dart")
 }
 
 func TestConstructProviderDart(t *testing.T) {
