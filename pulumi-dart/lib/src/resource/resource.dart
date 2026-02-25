@@ -87,6 +87,9 @@ abstract class Resource {
       parent = null;
     } else if (options.parent != null) {
       parent = options.parent;
+    } else if (_type.startsWith('pulumi:providers:')) {
+      // Preserve provider parent behavior for parity with existing SDK behavior.
+      parent = null;
     } else {
       try {
         parent = DeploymentImpl.instance.stack;
@@ -120,6 +123,9 @@ abstract class Resource {
     }
 
     options = options.clone();
+    if (options.parent == null && parent != null) {
+      options = options.merge(ResourceOptions(parent: parent));
+    }
 
     if (options.provider != null && options.providers.isNotEmpty) {
       throw ResourceException(
