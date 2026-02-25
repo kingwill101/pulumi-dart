@@ -33,6 +33,9 @@
 - [x] 5.1.4 Port upstream `construct_nested_component` coverage to Dart fixtures/tests.
 - [x] 5.1.5 Port upstream `component-error-resource` regression coverage to Dart fixtures/tests.
 - [x] 5.1.6 Remove legacy C# fixture artifacts from `integration_tests` after Dart fixture parity is in place.
+- [x] 5.1.7 Port upstream policy-pack parity coverage for Dart stacks (advisory/mandatory/multiple packs).
+- [x] 5.1.8 Port upstream plugin-install parity coverage (`python-uv`, `nodejs-pnpm`) including runtime option handling.
+- [x] 5.1.9 Port upstream automation API error-in-resource regression fixture coverage.
 - [x] 5.2 Ensure each added behavior has at least one success and one edge/failure test path.
 - [x] 5.2.1 `stack_outputs_program_error`: success baseline + failing edit path validated.
 - [x] 5.2.2 `stack_outputs_resource_error`: success baseline + two failing edit modes validated.
