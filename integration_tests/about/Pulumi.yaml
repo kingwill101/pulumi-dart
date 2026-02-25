@@ -1,0 +1,3 @@
+name: about_dart
+description: An integration test for the pulumi about command.
+runtime: dart

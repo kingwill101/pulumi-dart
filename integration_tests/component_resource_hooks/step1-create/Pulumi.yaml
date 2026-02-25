@@ -1,0 +1,3 @@
+name: component_resource_hooks_dart
+description: A simple Dart program that uses component resource hooks.
+runtime: dart

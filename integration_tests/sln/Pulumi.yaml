@@ -1,0 +1,3 @@
+name: sln_dart
+description: A Pulumi program with an .sln file.
+runtime: dart

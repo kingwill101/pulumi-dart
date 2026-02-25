@@ -1,0 +1,3 @@
+name: provider_construct_dart
+description: Dart fixture for remote component construct.
+runtime: dart

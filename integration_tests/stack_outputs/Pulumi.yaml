@@ -1,0 +1,3 @@
+name: stack_outputs_dart
+description: Stack output integration fixture.
+runtime: dart

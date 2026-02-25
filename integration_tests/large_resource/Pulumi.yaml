@@ -1,0 +1,3 @@
+name: large_resource_dart
+description: Large resource payload fixture.
+runtime: dart

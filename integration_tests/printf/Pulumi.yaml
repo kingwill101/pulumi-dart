@@ -1,0 +1,3 @@
+name: printf_dart
+description: A Pulumi program that prints to stdout and stderr.
+runtime: dart

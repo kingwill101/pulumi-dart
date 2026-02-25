@@ -1,0 +1,14 @@
+name: aliases_rename_component_and_child
+description: A Dart integration test fixture for component and child rename aliases.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  pulumi:
+    path: ../../../../pulumi-dart
+
+dev_dependencies:
+  lints: ^6.1.0

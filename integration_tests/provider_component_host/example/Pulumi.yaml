@@ -1,0 +1,9 @@
+name: testprovider-component-yaml
+runtime: yaml
+resources:
+  hello:
+    type: testprovider:index:Component
+    properties:
+      length: 12
+outputs:
+  value: ${hello.childId}

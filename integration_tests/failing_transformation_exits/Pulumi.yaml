@@ -1,0 +1,3 @@
+name: failing_transformation_exits_dart
+description: Failing transformation integration fixture.
+runtime: dart

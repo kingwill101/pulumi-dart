@@ -15,13 +15,9 @@
 package integration_tests
 
 import (
-	"os"
-	"path/filepath"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	"github.com/stretchr/testify/assert"
 )
 
 // TestEmptyDart simply tests that we can run an empty dart project.

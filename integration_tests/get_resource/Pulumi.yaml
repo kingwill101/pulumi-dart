@@ -1,0 +1,3 @@
+name: get_resource_dart
+description: A simple Dart program that emits outputs for get resource behavior tests.
+runtime: dart

@@ -1,0 +1,3 @@
+name: registry
+description: An empty dart Pulumi program.
+runtime: dart

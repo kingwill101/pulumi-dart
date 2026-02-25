@@ -1,0 +1,3 @@
+name: aliases_retype_parents
+description: A program that retypes nested parent components with aliases.
+runtime: dart

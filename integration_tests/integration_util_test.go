@@ -45,6 +45,41 @@ import (
 
 const WindowsOS = "windows"
 
+func pulumiSubmoduleRoot() (string, error) {
+	root, err := filepath.Abs("../pulumi")
+	if err != nil {
+		return "", err
+	}
+	info, err := os.Stat(root)
+	if err != nil {
+		return "", fmt.Errorf("pulumi submodule is not available at %s: %w", root, err)
+	}
+	if !info.IsDir() {
+		return "", fmt.Errorf("pulumi submodule path is not a directory: %s", root)
+	}
+	return root, nil
+}
+
+func pulumiSubmodulePath(parts ...string) (string, error) {
+	root, err := pulumiSubmoduleRoot()
+	if err != nil {
+		return "", err
+	}
+	path := filepath.Join(append([]string{root}, parts...)...)
+	if _, err := os.Stat(path); err != nil {
+		return "", fmt.Errorf("pulumi submodule path is not available: %s (%w)", path, err)
+	}
+	return path, nil
+}
+
+func testProviderPath() string {
+	path, err := pulumiSubmodulePath("tests", "testprovider")
+	if err != nil {
+		return "testprovider"
+	}
+	return path
+}
+
 // assertPerfBenchmark implements the integration.TestStatsReporter interface, and reports test
 // failures when a scenario exceeds the provided threshold.
 type assertPerfBenchmark struct {
@@ -256,7 +291,7 @@ func testConstructUnknown(t *testing.T, lang string) {
 	componentDir := "testcomponent-go"
 
 	localProviders := []integration.LocalDependency{
-		{Package: "testprovider", Path: "testprovider"},
+		{Package: "testprovider", Path: testProviderPath()},
 		{Package: "testcomponent", Path: filepath.Join(testDir, componentDir)},
 	}
 
@@ -278,7 +313,7 @@ func testConstructMethodsUnknown(t *testing.T, lang string) {
 	componentDir := "testcomponent-go"
 
 	localProviders := []integration.LocalDependency{
-		{Package: "testprovider", Path: "testprovider"},
+		{Package: "testprovider", Path: testProviderPath()},
 		{Package: "testcomponent", Path: filepath.Join(testDir, componentDir)},
 	}
 
@@ -300,7 +335,7 @@ func testConstructMethodsResources(t *testing.T, lang string) {
 	componentDir := "testcomponent-go"
 
 	localProviders := []integration.LocalDependency{
-		{Package: "testprovider", Path: "testprovider"},
+		{Package: "testprovider", Path: testProviderPath()},
 		{Package: "testcomponent", Path: filepath.Join(testDir, componentDir)},
 	}
 
@@ -358,7 +393,7 @@ func testConstructOutputValues(t *testing.T, lang string, dependencies ...string
 	componentDir := "testcomponent-go"
 
 	localProviders := []integration.LocalDependency{
-		{Package: "testprovider", Path: "testprovider"},
+		{Package: "testprovider", Path: testProviderPath()},
 		{Package: "testcomponent", Path: filepath.Join(testDir, componentDir)},
 	}
 

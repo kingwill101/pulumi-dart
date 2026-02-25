@@ -94,7 +94,7 @@ func TestDotNetTransforms(t *testing.T) {
 		LocalProviders: []integration.LocalDependency{
 			{
 				Package: "testprovider",
-				Path:    "testprovider",
+				Path:    testProviderPath(),
 			},
 		},
 	})

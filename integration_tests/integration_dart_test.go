@@ -513,7 +513,7 @@ func TestSlnMultipleNested(t *testing.T) {
 func TestProvider(t *testing.T) {
 	testDartProgram(t, &integration.ProgramTestOptions{
 		Dir:            filepath.Join("provider"),
-		LocalProviders: []integration.LocalDependency{{Package: "testprovider", Path: "testprovider"}},
+		LocalProviders: []integration.LocalDependency{{Package: "testprovider", Path: testProviderPath()}},
 		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
 			assert.NotNil(t, stack.Outputs)
 			assert.Equal(t, float64(42), stack.Outputs["echoA"])
@@ -527,7 +527,7 @@ func TestProvider(t *testing.T) {
 func TestDeletedWith(t *testing.T) {
 	testDartProgram(t, &integration.ProgramTestOptions{
 		Dir:            "deleted_with",
-		LocalProviders: []integration.LocalDependency{{Package: "testprovider", Path: "testprovider"}},
+		LocalProviders: []integration.LocalDependency{{Package: "testprovider", Path: testProviderPath()}},
 		Quick:          true,
 	})
 }
