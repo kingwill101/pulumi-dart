@@ -35,22 +35,22 @@ Status: **Open**
 
 Current behavior in Dart language host:
 
-- `GeneratePackage` only emits a minimal package scaffold (`pubspec.yaml` + `lib/<pkg>.dart`).
-- schema parsing only reads `name`, `namespace`, `version`.
-- no full resource/type/function SDK generation pipeline.
+- `GeneratePackage` now emits schema-driven resource class stubs in `lib/<pkg>.dart`.
+- schema parsing now reads `resources` (including `isComponent`) in addition to `name`, `namespace`, and `version`.
+- no full typed resource/function/input/output/enums/config SDK generation pipeline yet.
 
 Evidence:
 
 - `pulumi-language-dart/main.go`:
-  - `packageSchema` at line ~1015
-  - `GeneratePackage` at line ~1087
+  - `packageSchema` now includes `resources`
+  - `GeneratePackage` now emits `CustomResource` / `ComponentResource` stubs from schema tokens
 - `pulumi_generator` still scaffold-level:
   - `pulumi_generator/README.md` has TODO template content
   - `pulumi_generator/test/pulumi_generator_test.dart` has commented-out sample test
 
 Impact:
 
-- generated SDKs are not first-class like other Pulumi languages
+- generated SDKs are more usable than scaffold-only output, but still far from parity with other Pulumi languages
 - provider developer and consumer ergonomics are incomplete
 
 ## 2) Language Host RPC Parity (High)
@@ -207,6 +207,7 @@ Exit criteria:
 
 ## Milestone B: Generator MVP to Real SDK
 
+- [x] Emit schema-driven resource class stubs in generated package output.
 - [ ] Replace minimal `GeneratePackage` scaffold with schema-driven generation
 - [ ] Generate resources, functions, input/output types, enums, config types
 - [ ] Produce usable top-level exports and package structure
