@@ -3399,6 +3399,30 @@ func buildGeneratedPubspec(packageName string, localDependencies map[string]stri
 	return pubspec
 }
 
+func safeOutputPath(rootDir, relativePath string) (string, error) {
+	cleanRelativePath := filepath.Clean(relativePath)
+	if cleanRelativePath == "." || cleanRelativePath == "" {
+		return "", fmt.Errorf("path must not be empty: %q", relativePath)
+	}
+	if filepath.IsAbs(cleanRelativePath) {
+		return "", fmt.Errorf("absolute paths are not allowed: %q", relativePath)
+	}
+	if cleanRelativePath == ".." || strings.HasPrefix(cleanRelativePath, ".."+string(filepath.Separator)) {
+		return "", fmt.Errorf("path escapes package directory: %q", relativePath)
+	}
+
+	outputPath := filepath.Join(rootDir, cleanRelativePath)
+	relativeToRoot, err := filepath.Rel(rootDir, outputPath)
+	if err != nil {
+		return "", fmt.Errorf("failed to resolve output path for %q: %w", relativePath, err)
+	}
+	if relativeToRoot == ".." || strings.HasPrefix(relativeToRoot, ".."+string(filepath.Separator)) {
+		return "", fmt.Errorf("path escapes package directory: %q", relativePath)
+	}
+
+	return outputPath, nil
+}
+
 func (host *dartLanguageHost) GenerateProgram(
 	ctx context.Context, req *pulumirpc.GenerateProgramRequest,
 ) (*pulumirpc.GenerateProgramResponse, error) {
@@ -3583,7 +3607,10 @@ func (host *dartLanguageHost) GeneratePackage(
 	}
 
 	for filename, contents := range req.GetExtraFiles() {
-		outputPath := filepath.Join(req.GetDirectory(), filename)
+		outputPath, err := safeOutputPath(req.GetDirectory(), filename)
+		if err != nil {
+			return nil, fmt.Errorf("invalid extra file path %q: %w", filename, err)
+		}
 		if err := os.MkdirAll(filepath.Dir(outputPath), 0o700); err != nil {
 			return nil, fmt.Errorf("failed to create output directory for extra file %s: %w", filename, err)
 		}

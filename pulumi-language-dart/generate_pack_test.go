@@ -377,6 +377,58 @@ func TestGeneratePackageWritesLocalPulumiDependency(t *testing.T) {
 	assert.Contains(t, pubspec, "path: "+filepath.ToSlash(localPulumi))
 }
 
+func TestGeneratePackageWritesExtraFiles(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+		ExtraFiles: map[string][]byte{
+			"README.md":                 []byte("# sample\n"),
+			"lib/src/sample/extra.dart": []byte("const marker = 'ok';\n"),
+		},
+	})
+	require.NoError(t, err)
+
+	readme, err := os.ReadFile(filepath.Join(targetDir, "README.md"))
+	require.NoError(t, err)
+	assert.Equal(t, "# sample\n", string(readme))
+
+	extra, err := os.ReadFile(filepath.Join(targetDir, "lib", "src", "sample", "extra.dart"))
+	require.NoError(t, err)
+	assert.Equal(t, "const marker = 'ok';\n", string(extra))
+}
+
+func TestGeneratePackageRejectsUnsafeExtraFilePaths(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	parentMarker := filepath.Join(filepath.Dir(targetDir), "escaped.txt")
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+		ExtraFiles: map[string][]byte{
+			"../escaped.txt": []byte("nope"),
+		},
+	})
+	require.Error(t, err)
+	assert.Contains(t, err.Error(), "invalid extra file path")
+	assert.NoFileExists(t, parentMarker)
+}
+
 func TestGeneratePackageEmitsNamedTypesAndRefs(t *testing.T) {
 	t.Parallel()
 
