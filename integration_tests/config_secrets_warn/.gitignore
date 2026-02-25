@@ -1,0 +1,5 @@
+/.pulumi/
+[Bb]in/
+!bin/
+!bin/config_secrets_dotnet.dart
+[Oo]bj/

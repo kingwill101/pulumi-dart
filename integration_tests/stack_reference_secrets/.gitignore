@@ -1,0 +1,8 @@
+/.pulumi/
+[Bb]in/
+!step1/bin/
+!step1/bin/stack_reference_secrets_dart.dart
+!step2/bin/
+!step2/bin/stack_reference_secrets_dart.dart
+[Oo]bj/
+

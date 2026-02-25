@@ -1,0 +1,3 @@
+name: stack_reference_secrets_dart
+description: A Dart integration test fixture for stack reference secrets behavior.
+runtime: dart
