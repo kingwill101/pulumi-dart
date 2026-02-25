@@ -351,6 +351,19 @@ func TestConstructSlowDart(t *testing.T) {
 	})
 }
 
+func TestConstructNestedDart(t *testing.T) {
+	const testDir = "construct_nested_component"
+
+	localProviders := []integration.LocalDependency{
+		{Package: "testcomponent", Path: filepath.Join("construct_component", "testcomponent-go")},
+		{Package: "secondtestcomponent", Path: filepath.Join(testDir, "testcomponent2-go")},
+	}
+
+	opts := optsForConstructDart(18, localProviders)
+	opts.Dir = filepath.Join(testDir, "dart")
+	testDartProgram(t, opts)
+}
+
 func TestConstructErrorApplyDart(t *testing.T) {
 	testConstructErrorApply(t, "dart")
 }
