@@ -128,6 +128,107 @@ dependencies:
 	assert.Equal(t, "v2.41.0", packagesByName["azure-native"].Version)
 }
 
+func TestGetRequiredPackagesIncludesParameterizedProjectPackages(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	tmp := t.TempDir()
+	pubspec := `
+name: test_project
+dependencies:
+  pulumi:
+    path: ../pulumi-dart
+  pkg:
+    path: sdks/pkg
+`
+	err := os.WriteFile(filepath.Join(tmp, "pubspec.yaml"), []byte(pubspec), 0o600)
+	require.NoError(t, err)
+
+	project := `
+name: test_project
+runtime: dart
+packages:
+  pkg:
+    source: testprovider
+    version: 0.0.1
+    parameters:
+      - pkg
+`
+	err = os.WriteFile(filepath.Join(tmp, "Pulumi.yaml"), []byte(project), 0o600)
+	require.NoError(t, err)
+
+	resp, err := host.GetRequiredPackages(context.Background(), &pulumirpc.GetRequiredPackagesRequest{
+		Info: &pulumirpc.ProgramInfo{
+			ProgramDirectory: tmp,
+		},
+	})
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+
+	var pkgDep *pulumirpc.PackageDependency
+	for _, p := range resp.Packages {
+		if p.Name == "testprovider" {
+			pkgDep = p
+			break
+		}
+	}
+	require.NotNil(t, pkgDep, "expected parameterized package provider dependency")
+	assert.Equal(t, "resource", pkgDep.Kind)
+	assert.Equal(t, "v0.0.1", pkgDep.Version)
+	require.NotNil(t, pkgDep.Parameterization)
+	assert.Equal(t, "pkg", pkgDep.Parameterization.Name)
+	assert.Equal(t, "0.0.1", pkgDep.Parameterization.Version)
+	assert.Equal(t, []byte("pkg"), pkgDep.Parameterization.Value)
+}
+
+func TestGetRequiredPackagesEncodesMultiParameterValues(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	tmp := t.TempDir()
+	pubspec := `
+name: test_project
+dependencies:
+  pulumi:
+    path: ../pulumi-dart
+`
+	err := os.WriteFile(filepath.Join(tmp, "pubspec.yaml"), []byte(pubspec), 0o600)
+	require.NoError(t, err)
+
+	project := `
+name: test_project
+runtime: dart
+packages:
+  pkg:
+    source: testprovider
+    version: 0.0.1
+    parameters:
+      - one
+      - two
+`
+	err = os.WriteFile(filepath.Join(tmp, "Pulumi.yaml"), []byte(project), 0o600)
+	require.NoError(t, err)
+
+	resp, err := host.GetRequiredPackages(context.Background(), &pulumirpc.GetRequiredPackagesRequest{
+		Info: &pulumirpc.ProgramInfo{
+			ProgramDirectory: tmp,
+		},
+	})
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+
+	var pkgDep *pulumirpc.PackageDependency
+	for _, p := range resp.Packages {
+		if p.Name == "testprovider" {
+			pkgDep = p
+			break
+		}
+	}
+	require.NotNil(t, pkgDep, "expected parameterized package provider dependency")
+	require.NotNil(t, pkgDep.Parameterization)
+	assert.Equal(t, []byte(`["one","two"]`), pkgDep.Parameterization.Value)
+}
+
 func TestCancelCancelsActiveOperation(t *testing.T) {
 	t.Parallel()
 

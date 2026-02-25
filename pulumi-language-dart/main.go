@@ -246,6 +246,75 @@ func dependencyToPackageName(name string) string {
 	return strings.TrimSpace(name)
 }
 
+type projectPackageSpec struct {
+	Source     string   `yaml:"source"`
+	Version    string   `yaml:"version"`
+	Server     string   `yaml:"server"`
+	Parameters []string `yaml:"parameters"`
+}
+
+type pulumiProjectSpec struct {
+	Packages map[string]projectPackageSpec `yaml:"packages"`
+}
+
+func findPulumiProjectFile(startDir string) (string, error) {
+	dir, err := filepath.Abs(startDir)
+	if err != nil {
+		return "", err
+	}
+
+	candidates := []string{"Pulumi.yaml", "Pulumi.yml"}
+	for {
+		for _, filename := range candidates {
+			path := filepath.Join(dir, filename)
+			if _, err := os.Stat(path); err == nil {
+				return path, nil
+			}
+		}
+
+		parentDir := filepath.Dir(dir)
+		if parentDir == dir {
+			break
+		}
+		dir = parentDir
+	}
+
+	return "", fmt.Errorf("Pulumi project file not found in %s or any parent directory", startDir)
+}
+
+func readProjectPackages(startDir string) (map[string]projectPackageSpec, error) {
+	projectPath, err := findPulumiProjectFile(startDir)
+	if err != nil {
+		return nil, err
+	}
+
+	data, err := os.ReadFile(projectPath)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read Pulumi project file at %s: %w", projectPath, err)
+	}
+
+	var project pulumiProjectSpec
+	if err := yaml.Unmarshal(data, &project); err != nil {
+		return nil, fmt.Errorf("failed to parse Pulumi project file at %s: %w", projectPath, err)
+	}
+
+	return project.Packages, nil
+}
+
+func encodePackageParameters(parameters []string) []byte {
+	if len(parameters) == 0 {
+		return nil
+	}
+	if len(parameters) == 1 {
+		return []byte(parameters[0])
+	}
+	encoded, err := json.Marshal(parameters)
+	if err != nil {
+		return []byte(strings.Join(parameters, ","))
+	}
+	return encoded
+}
+
 func (host *dartLanguageHost) GetRequiredPackages(
 	ctx context.Context,
 	req *pulumirpc.GetRequiredPackagesRequest,
@@ -273,15 +342,22 @@ func (host *dartLanguageHost) GetRequiredPackages(
 		return nil, err
 	}
 
+	projectPackages, err := readProjectPackages(searchDir)
+	if err != nil {
+		logging.V(5).Infof("GetRequiredPackages: no Pulumi project packages found from %s: %v", searchDir, err)
+		projectPackages = nil
+	}
+
 	pulumiPackages := DeterminePulumiPackages(pubspec.Dependencies)
-	packages := make([]*pulumirpc.PackageDependency, 0, len(pulumiPackages))
+	packages := make([]*pulumirpc.PackageDependency, 0, len(pulumiPackages)+len(projectPackages))
+	seen := map[string]struct{}{}
 	for _, pkg := range pulumiPackages {
 		if len(pkg) == 0 {
 			continue
 		}
 
-		packageName := dependencyToPackageName(pkg[0])
-		if packageName == "" {
+		aliasName := dependencyToPackageName(pkg[0])
+		if aliasName == "" {
 			continue
 		}
 
@@ -290,10 +366,87 @@ func (host *dartLanguageHost) GetRequiredPackages(
 			version = normalizePackageDependencyVersion(pkg[1])
 		}
 
+		providerName := aliasName
+		server := ""
+		var parameterization *pulumirpc.PackageParameterization
+		if spec, ok := projectPackages[aliasName]; ok {
+			if sourceName := dependencyToPackageName(spec.Source); sourceName != "" {
+				providerName = sourceName
+			}
+			if configuredVersion := normalizePackageDependencyVersion(spec.Version); configuredVersion != "" {
+				version = configuredVersion
+			}
+			server = strings.TrimSpace(spec.Server)
+			if len(spec.Parameters) > 0 {
+				parameterVersion := strings.TrimSpace(spec.Version)
+				if parameterVersion == "" {
+					parameterVersion = strings.TrimPrefix(version, "v")
+				}
+				if parameterVersion != "" {
+					parameterization = &pulumirpc.PackageParameterization{
+						Name:    aliasName,
+						Version: parameterVersion,
+						Value:   encodePackageParameters(spec.Parameters),
+					}
+				}
+			}
+		}
+
+		key := providerName + "|" + version
+		if parameterization != nil {
+			key += "|" + parameterization.Name + "|" + parameterization.Version
+		}
+		if _, ok := seen[key]; ok {
+			continue
+		}
+		seen[key] = struct{}{}
+
 		packages = append(packages, &pulumirpc.PackageDependency{
-			Name:    packageName,
-			Kind:    "resource",
-			Version: version,
+			Name:             providerName,
+			Kind:             "resource",
+			Version:          version,
+			Server:           server,
+			Parameterization: parameterization,
+		})
+	}
+
+	for aliasName, spec := range projectPackages {
+		aliasName = dependencyToPackageName(aliasName)
+		if aliasName == "" {
+			continue
+		}
+
+		sourceName := dependencyToPackageName(spec.Source)
+		if sourceName == "" {
+			continue
+		}
+
+		version := normalizePackageDependencyVersion(spec.Version)
+		server := strings.TrimSpace(spec.Server)
+		var parameterization *pulumirpc.PackageParameterization
+		if len(spec.Parameters) > 0 && strings.TrimSpace(spec.Version) != "" {
+			parameterization = &pulumirpc.PackageParameterization{
+				Name:    aliasName,
+				Version: strings.TrimSpace(spec.Version),
+				Value:   encodePackageParameters(spec.Parameters),
+			}
+		}
+
+		key := sourceName + "|" + version
+		if parameterization != nil {
+			key += "|" + parameterization.Name + "|" + parameterization.Version
+		}
+		if _, ok := seen[key]; ok {
+			continue
+		}
+		seen[key] = struct{}{}
+
+		packages = append(packages, &pulumirpc.PackageDependency{
+			Name:             sourceName,
+			Kind:             "resource",
+			Version:          version,
+			Server:           server,
+			Parameterization: parameterization,
 		})
 	}
 
