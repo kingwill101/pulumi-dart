@@ -5,11 +5,11 @@ import 'dart:typed_data';
 import 'log.dart' as log;
 import 'package:grpc/grpc.dart';
 import 'package:protobuf/protobuf.dart';
+import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/callback.pbgrpc.dart';
 import 'package:uuid/uuid.dart';
 
 import 'alias.dart';
-import 'constants.dart';
 import 'input.dart';
 import 'invoke.dart';
 import 'pulumirpc/pulumi/alias.pb.dart' as aliaspb;
@@ -119,14 +119,14 @@ class CallbackServer implements ICallbackServer {
     try {
       final response = await cb(Uint8List.fromList(request.request));
       return CallbackInvokeResponse()..response = response.writeToBuffer();
-    } catch (e) {
-      throw GrpcError.unknown(e.toString());
+    } catch (e, stackTrace) {
+      throw GrpcError.unknown(_formatExceptionWithStackTrace(e, stackTrace));
     }
   }
 
   @override
   Future<Callback> registerTransform(ResourceTransform transform) async {
-    final cb = (Uint8List bytes) async {
+    Future<TransformResponse> cb(Uint8List bytes) async {
       final request = TransformRequest.fromBuffer(bytes);
       final options = _resourceOptionsFromTransformRequest(request);
       final args = ResourceTransformArgs(
@@ -158,14 +158,17 @@ class CallbackServer implements ICallbackServer {
       );
       response.options = await _transformResourceOptionsToProto(result.options);
       return response;
-    };
-    final tryCb = (Uint8List bytes) async {
+    }
+
+    Future<TransformResponse> tryCb(Uint8List bytes) async {
       try {
         return await cb(bytes);
-      } catch (e) {
-        throw Exception('transform failed: $e');
+      } catch (e, stackTrace) {
+        throw Exception(
+          'transform failed: ${_formatExceptionWithStackTrace(e, stackTrace)}',
+        );
       }
-    };
+    }
 
     final uuid = const Uuid().v4();
     _callbacks[uuid] = tryCb;
@@ -211,7 +214,7 @@ class CallbackServer implements ICallbackServer {
   }
 
   Future<Callback> _registerResourceHookCallback(ResourceHook hook) async {
-    final cb = (Uint8List bytes) async {
+    Future<ResourceHookResponse> cb(Uint8List bytes) async {
       final request = pulumirpc.ResourceHookRequest.fromBuffer(bytes);
       final args = ResourceHookArgs(
         urn: request.urn,
@@ -235,10 +238,11 @@ class CallbackServer implements ICallbackServer {
       try {
         await Future.sync(() => hook.handler(args));
         return pulumirpc.ResourceHookResponse();
-      } catch (e) {
-        return pulumirpc.ResourceHookResponse()..error = e.toString();
+      } catch (e, stackTrace) {
+        return pulumirpc.ResourceHookResponse()
+          ..error = _formatExceptionWithStackTrace(e, stackTrace);
       }
-    };
+    }
 
     final uuid = const Uuid().v4();
     _callbacks[uuid] = cb;
@@ -249,7 +253,7 @@ class CallbackServer implements ICallbackServer {
   }
 
   Future<Callback> _registerErrorHookCallback(ErrorHook hook) async {
-    final cb = (Uint8List bytes) async {
+    Future<ErrorHookResponse> cb(Uint8List bytes) async {
       final request = pulumirpc.ErrorHookRequest.fromBuffer(bytes);
       final args = ErrorHookArgs(
         urn: request.urn,
@@ -272,10 +276,11 @@ class CallbackServer implements ICallbackServer {
       try {
         final retry = await Future.sync(() => hook.handler(args));
         return pulumirpc.ErrorHookResponse()..retry = retry;
-      } catch (e) {
-        return pulumirpc.ErrorHookResponse()..error = e.toString();
+      } catch (e, stackTrace) {
+        return pulumirpc.ErrorHookResponse()
+          ..error = _formatExceptionWithStackTrace(e, stackTrace);
       }
-    };
+    }
 
     final uuid = const Uuid().v4();
     _callbacks[uuid] = cb;
@@ -295,6 +300,7 @@ class CallbackServer implements ICallbackServer {
         })
         .catchError((error) {
           log.error('failed to register stack transform: $error');
+          return Empty();
         })
         .whenComplete(() {
           _pendingRegistrations--;
@@ -312,7 +318,7 @@ class CallbackServer implements ICallbackServer {
   Future<Callback> registerStackInvokeTransformAsync(
     InvokeTransform transform,
   ) async {
-    final cb = (Uint8List bytes) async {
+    Future<TransformInvokeResponse> cb(Uint8List bytes) async {
       final request = TransformInvokeRequest.fromBuffer(bytes);
       final invokeOptions = _invokeOptionsFromTransformRequest(request);
       final invokeArgs = request.hasArgs()
@@ -341,14 +347,17 @@ class CallbackServer implements ICallbackServer {
       );
       response.options = await _transformInvokeOptionsToProto(result.opts);
       return response;
-    };
-    final tryCb = (Uint8List bytes) async {
+    }
+
+    Future<TransformInvokeResponse> tryCb(Uint8List bytes) async {
       try {
         return await cb(bytes);
-      } catch (e) {
-        throw Exception('transform failed: $e');
+      } catch (e, stackTrace) {
+        throw Exception(
+          'transform failed: ${_formatExceptionWithStackTrace(e, stackTrace)}',
+        );
       }
-    };
+    }
 
     final uuid = const Uuid().v4();
     _callbacks[uuid] = tryCb;
@@ -368,6 +377,7 @@ class CallbackServer implements ICallbackServer {
         })
         .catchError((error) {
           log.error('failed to register stack invoke transform: $error');
+          return Empty();
         })
         .whenComplete(() {
           _pendingRegistrations--;
@@ -641,6 +651,14 @@ class CallbackServer implements ICallbackServer {
     }
     return result;
   }
+}
+
+String _formatExceptionWithStackTrace(Object error, StackTrace stackTrace) {
+  final trace = stackTrace.toString().trimRight();
+  if (trace.isEmpty) {
+    return error.toString();
+  }
+  return '${error.toString()}\n$trace';
 }
 
 class _CallbackService extends CallbacksServiceBase {
