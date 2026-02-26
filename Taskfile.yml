@@ -255,6 +255,8 @@ tasks:
         PACKAGE="{{.PACKAGE}}"
         SDK_DIR="{{.PACKAGES_DIR}}/${PACKAGE}"
         REPORT_PATH="{{.ANALYSIS_DIR}}/${PACKAGE}.analyze.machine.txt"
+        OVERRIDES_PATH="${SDK_DIR}/pubspec_overrides.yaml"
+        ORIGINAL_OVERRIDES=""
 
         if [ ! -f "${SDK_DIR}/pubspec.yaml" ]; then
           echo "SDK not found at ${SDK_DIR}" >&2
@@ -262,8 +264,33 @@ tasks:
           exit 1
         fi
 
+        if [ -f "${OVERRIDES_PATH}" ]; then
+          ORIGINAL_OVERRIDES="$(mktemp)"
+          cp "${OVERRIDES_PATH}" "${ORIGINAL_OVERRIDES}"
+        fi
+
+        cleanup() {
+          if [ -n "${ORIGINAL_OVERRIDES}" ]; then
+            cp "${ORIGINAL_OVERRIDES}" "${OVERRIDES_PATH}"
+            rm -f "${ORIGINAL_OVERRIDES}"
+          else
+            rm -f "${OVERRIDES_PATH}"
+          fi
+        }
+        trap cleanup EXIT
+
+        cat > "${OVERRIDES_PATH}" <<EOF
+        dependency_overrides:
+          pulumi:
+            path: {{.PULUMI_DART_PATH}}
+        EOF
+
         mkdir -p "{{.ANALYSIS_DIR}}"
-        (cd "${SDK_DIR}" && dart analyze --format machine . > "${REPORT_PATH}" || true)
+        (
+          cd "${SDK_DIR}" && \
+          dart pub get && \
+          dart analyze --format machine . > "${REPORT_PATH}" || true
+        )
 
         TOTAL="$(grep -cE '^(ERROR|WARNING|INFO)\\|' "${REPORT_PATH}" || true)"
         echo "Analysis report: ${REPORT_PATH}"
@@ -308,6 +335,13 @@ tasks:
       - task: analyze-package
         vars:
           PACKAGE: awsx
+
+  analyze:random:
+    desc: Analyze generated Dart SDK for Pulumi Random
+    cmds:
+      - task: analyze-package
+        vars:
+          PACKAGE: random
 
   verify:gcp:
     desc: Generate and analyze Pulumi GCP Dart SDK
