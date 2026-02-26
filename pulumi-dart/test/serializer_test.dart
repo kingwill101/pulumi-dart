@@ -807,6 +807,199 @@ void main() {
     );
 
     test(
+      'Deserialize nested OutputValue wrappers with ProviderResource merges dependencies',
+      () async {
+        const providerUrn =
+            'urn:pulumi:stack::project::pulumi:providers:aws::default';
+        const outerDepUrn =
+            'urn:pulumi:stack::project::test:index:Resource::outer-provider-dep';
+        const innerDepUrn =
+            'urn:pulumi:stack::project::test:index:Resource::inner-provider-dep';
+
+        final providerRef = Value()
+          ..structValue = (Struct()
+            ..fields[Constants.specialSigKey] = (Value()
+              ..stringValue = Constants.specialResourceSig)
+            ..fields[Constants.resourceUrnName] = (Value()
+              ..stringValue = providerUrn)
+            ..fields[Constants.resourceIdName] = (Value()
+              ..stringValue = 'provider-id'));
+
+        final innerOutput = Value()
+          ..structValue = (Struct()
+            ..fields[Constants.specialSigKey] = (Value()
+              ..stringValue = Constants.specialOutputValueSig)
+            ..fields[Constants.valueName] = (Value()
+              ..structValue = (Struct()
+                ..fields['provider'] = providerRef
+                ..fields['name'] = (Value()..stringValue = 'nested')))
+            ..fields[Constants.dependenciesName] = (Value()
+              ..listValue = (ListValue()
+                ..values.add(Value()..stringValue = innerDepUrn))));
+
+        final outerOutput = Value()
+          ..structValue = (Struct()
+            ..fields[Constants.specialSigKey] = (Value()
+              ..stringValue = Constants.specialOutputValueSig)
+            ..fields[Constants.valueName] = innerOutput
+            ..fields[Constants.dependenciesName] = (Value()
+              ..listValue = (ListValue()
+                ..values.add(Value()..stringValue = outerDepUrn))));
+
+        final result = Deserializer.deserialize(outerOutput);
+        expect(result.value, isA<Output>());
+        final output = result.value as Output<dynamic>;
+        final data = await output.getData();
+
+        expect(data.isKnown, isTrue);
+        expect(data.isSecret, isFalse);
+        final value = data.value as Map<String, dynamic>;
+        expect(value['name'], equals('nested'));
+        expect(value['provider'], isA<ProviderResource>());
+
+        final provider = value['provider'] as ProviderResource;
+        expect(provider.package, equals('aws'));
+        expect(await provider.id.getValue(), equals('provider-id'));
+
+        final depUrns = <String>{};
+        for (final resource in data.resources) {
+          if (resource is DependencyResource) {
+            depUrns.add(await resource.urn.getValue());
+          }
+        }
+        expect(depUrns, equals(<String>{outerDepUrn, innerDepUrn}));
+      },
+    );
+
+    test(
+      'Deserialize mixed provider references in list treats missing and unknown IDs as unknown',
+      () async {
+        const providerUrn =
+            'urn:pulumi:stack::project::pulumi:providers:aws::default';
+
+        final providerMissingId = Value()
+          ..structValue = (Struct()
+            ..fields[Constants.specialSigKey] = (Value()
+              ..stringValue = Constants.specialResourceSig)
+            ..fields[Constants.resourceUrnName] = (Value()
+              ..stringValue = providerUrn));
+
+        final providerUnknownId = Value()
+          ..structValue = (Struct()
+            ..fields[Constants.specialSigKey] = (Value()
+              ..stringValue = Constants.specialResourceSig)
+            ..fields[Constants.resourceUrnName] = (Value()
+              ..stringValue = providerUrn)
+            ..fields[Constants.resourceIdName] = (Value()
+              ..stringValue = Constants.unknownValue));
+
+        final providerKnownId = Value()
+          ..structValue = (Struct()
+            ..fields[Constants.specialSigKey] = (Value()
+              ..stringValue = Constants.specialResourceSig)
+            ..fields[Constants.resourceUrnName] = (Value()
+              ..stringValue = providerUrn)
+            ..fields[Constants.resourceIdName] = (Value()
+              ..stringValue = 'provider-id'));
+
+        final input = Value()
+          ..structValue = (Struct()
+            ..fields['providers'] = (Value()
+              ..listValue = (ListValue()
+                ..values.add(providerMissingId)
+                ..values.add(providerUnknownId)
+                ..values.add(providerKnownId))));
+
+        final result = Deserializer.deserialize<Map<String, dynamic>>(input);
+        final providers = result.value!['providers'] as List<dynamic>;
+        expect(providers, hasLength(3));
+
+        for (final providerValue in providers) {
+          expect(providerValue, isA<ProviderResource>());
+        }
+
+        final missing = providers[0] as ProviderResource;
+        final unknown = providers[1] as ProviderResource;
+        final known = providers[2] as ProviderResource;
+
+        final missingIdData = await missing.id.getData();
+        expect(missingIdData.isKnown, isFalse);
+        expect(missingIdData.value, isNull);
+
+        final unknownIdData = await unknown.id.getData();
+        expect(unknownIdData.isKnown, isFalse);
+        expect(unknownIdData.value, isNull);
+
+        final knownIdData = await known.id.getData();
+        expect(knownIdData.isKnown, isTrue);
+        expect(knownIdData.value, equals('provider-id'));
+      },
+    );
+
+    test(
+      'Deserialize OutputValue map with provider references keeps missing and unknown IDs unknown',
+      () async {
+        const providerUrn =
+            'urn:pulumi:stack::project::pulumi:providers:aws::default';
+        const depUrn =
+            'urn:pulumi:stack::project::test:index:Resource::provider-map-dep';
+
+        final providerMissingId = Value()
+          ..structValue = (Struct()
+            ..fields[Constants.specialSigKey] = (Value()
+              ..stringValue = Constants.specialResourceSig)
+            ..fields[Constants.resourceUrnName] = (Value()
+              ..stringValue = providerUrn));
+
+        final providerUnknownId = Value()
+          ..structValue = (Struct()
+            ..fields[Constants.specialSigKey] = (Value()
+              ..stringValue = Constants.specialResourceSig)
+            ..fields[Constants.resourceUrnName] = (Value()
+              ..stringValue = providerUrn)
+            ..fields[Constants.resourceIdName] = (Value()
+              ..stringValue = Constants.unknownValue));
+
+        final outputEnvelope = Value()
+          ..structValue = (Struct()
+            ..fields[Constants.specialSigKey] = (Value()
+              ..stringValue = Constants.specialOutputValueSig)
+            ..fields[Constants.valueName] = (Value()
+              ..structValue = (Struct()
+                ..fields['missing'] = providerMissingId
+                ..fields['unknown'] = providerUnknownId))
+            ..fields[Constants.dependenciesName] = (Value()
+              ..listValue = (ListValue()
+                ..values.add(Value()..stringValue = depUrn))));
+
+        final result = Deserializer.deserialize(outputEnvelope);
+        expect(result.value, isA<Output>());
+        final output = result.value as Output<dynamic>;
+        final data = await output.getData();
+
+        final value = data.value as Map<String, dynamic>;
+        final missing = value['missing'] as ProviderResource;
+        final unknown = value['unknown'] as ProviderResource;
+
+        final missingIdData = await missing.id.getData();
+        expect(missingIdData.isKnown, isFalse);
+        expect(missingIdData.value, isNull);
+
+        final unknownIdData = await unknown.id.getData();
+        expect(unknownIdData.isKnown, isFalse);
+        expect(unknownIdData.value, isNull);
+
+        final depUrns = <String>{};
+        for (final resource in data.resources) {
+          if (resource is DependencyResource) {
+            depUrns.add(await resource.urn.getValue());
+          }
+        }
+        expect(depUrns, equals(<String>{depUrn}));
+      },
+    );
+
+    test(
       'Deserialize map mixing ProviderResource and unknown OutputValue dependencies',
       () async {
         const providerUrn =
@@ -996,6 +1189,96 @@ void main() {
       expect(nestedData.isSecret, isFalse);
       expect(nestedData.value, isNull);
     });
+
+    test(
+      'Deserialize list with nested unknown secret OutputValue keeps metadata',
+      () async {
+        const depUrn =
+            'urn:pulumi:stack::project::test:index:Resource::list-secret-dep';
+
+        final nestedUnknownSecret = Value()
+          ..structValue = (Struct()
+            ..fields[Constants.specialSigKey] = (Value()
+              ..stringValue = Constants.specialOutputValueSig)
+            ..fields[Constants.secretName] = (Value()..boolValue = true)
+            ..fields[Constants.dependenciesName] = (Value()
+              ..listValue = (ListValue()
+                ..values.add(Value()..stringValue = depUrn))));
+
+        final input = Value()
+          ..listValue = (ListValue()
+            ..values.add(Value()..stringValue = 'hello')
+            ..values.add(
+              Value()
+                ..structValue = (Struct()
+                  ..fields['nested'] = nestedUnknownSecret),
+            ));
+
+        final result = Deserializer.deserialize<List<dynamic>>(input);
+        expect(result.isKnown, isTrue);
+        expect(result.isSecret, isFalse);
+
+        final list = result.value!;
+        final nestedMap = list[1] as Map<String, dynamic>;
+        final nested = nestedMap['nested'] as Output<dynamic>;
+        final nestedData = await nested.getData();
+
+        expect(nestedData.isKnown, isFalse);
+        expect(nestedData.isSecret, isTrue);
+        expect(nestedData.value, isNull);
+
+        final nestedDepUrns = <String>{};
+        for (final resource in nestedData.resources) {
+          if (resource is DependencyResource) {
+            nestedDepUrns.add(await resource.urn.getValue());
+          }
+        }
+        expect(nestedDepUrns, equals(<String>{depUrn}));
+      },
+    );
+
+    test(
+      'Deserialize map with list containing unknown secret OutputValue keeps metadata',
+      () async {
+        const depUrn =
+            'urn:pulumi:stack::project::test:index:Resource::map-secret-dep';
+
+        final nestedUnknownSecret = Value()
+          ..structValue = (Struct()
+            ..fields[Constants.specialSigKey] = (Value()
+              ..stringValue = Constants.specialOutputValueSig)
+            ..fields[Constants.secretName] = (Value()..boolValue = true)
+            ..fields[Constants.dependenciesName] = (Value()
+              ..listValue = (ListValue()
+                ..values.add(Value()..stringValue = depUrn))));
+
+        final input = Value()
+          ..structValue = (Struct()
+            ..fields['items'] = (Value()
+              ..listValue = (ListValue()
+                ..values.add(nestedUnknownSecret)
+                ..values.add(Value()..stringValue = 'tail'))));
+
+        final result = Deserializer.deserialize<Map<String, dynamic>>(input);
+        expect(result.isKnown, isTrue);
+        expect(result.isSecret, isFalse);
+
+        final items = result.value!['items'] as List<dynamic>;
+        final nested = items.first as Output<dynamic>;
+        final nestedData = await nested.getData();
+        expect(nestedData.isKnown, isFalse);
+        expect(nestedData.isSecret, isTrue);
+        expect(nestedData.value, isNull);
+
+        final nestedDepUrns = <String>{};
+        for (final resource in nestedData.resources) {
+          if (resource is DependencyResource) {
+            nestedDepUrns.add(await resource.urn.getValue());
+          }
+        }
+        expect(nestedDepUrns, equals(<String>{depUrn}));
+      },
+    );
 
     test(
       'Deserialize list with unknown nested OutputValue keeps nested dependencies',
