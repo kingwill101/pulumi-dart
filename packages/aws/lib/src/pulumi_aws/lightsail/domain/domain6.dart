@@ -1,0 +1,122 @@
+import 'package:pulumi/pulumi.dart';
+import 'domain_args6.dart';
+
+/// Manages a Lightsail domain for DNS management. Use this resource to manage DNS records for a domain that you have already registered with a domain registrar.
+///
+/// > **Note:** You cannot register a new domain name using Lightsail. Register your domain using Amazon Route 53 or another domain name registrar before using this resource.
+///
+/// > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details.
+///
+/// ## Example Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.lightsail.Domain("example", {domainName: "example.com"});
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.lightsail.Domain("example", domain_name="example.com")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.LightSail.Domain("example", new()
+/// {
+/// DomainName = "example.com",
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lightsail"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := lightsail.NewDomain(ctx, "example", &lightsail.DomainArgs{
+/// DomainName: pulumi.String("example.com"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.lightsail.Domain;
+/// import com.pulumi.aws.lightsail.DomainArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new Domain("example", DomainArgs.builder()
+/// .domainName("example.com")
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:lightsail:Domain
+/// properties:
+/// domainName: example.com
+/// ```
+/// <!--End PulumiCodeChooser -->
+class Domain6 extends CustomResource {
+  /// ARN of the Lightsail domain.
+  late final Output<String> arn;
+
+  /// Name of the Lightsail domain to manage.
+  ///
+  /// The following arguments are optional:
+  late final Output<String> domainName;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  Domain6(
+    String name, {
+    DomainArgs6? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:lightsail/domain:Domain',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.arn = Output.createUnknown<String>();
+    this.domainName = Output.createUnknown<String>();
+    this.region = Output.createUnknown<String>();
+  }
+}

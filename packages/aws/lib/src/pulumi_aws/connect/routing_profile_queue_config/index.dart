@@ -1,0 +1,3 @@
+library module_connect_routing_profile_queue_config;
+
+export 'routing_profile_queue_config.dart';

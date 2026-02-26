@@ -1,0 +1,4 @@
+library module_pinpoint_apns_voip_sandbox_channel;
+
+export 'apns_voip_sandbox_channel.dart';
+export 'apns_voip_sandbox_channel_args.dart';

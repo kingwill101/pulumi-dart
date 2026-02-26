@@ -1,0 +1,3 @@
+library module_athena_workgroup_configuration_identity_center_configuration;
+
+export 'workgroup_configuration_identity_center_configuration.dart';

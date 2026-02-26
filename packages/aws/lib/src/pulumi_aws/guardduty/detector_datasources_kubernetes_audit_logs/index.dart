@@ -1,0 +1,3 @@
+library module_guardduty_detector_datasources_kubernetes_audit_logs;
+
+export 'detector_datasources_kubernetes_audit_logs.dart';

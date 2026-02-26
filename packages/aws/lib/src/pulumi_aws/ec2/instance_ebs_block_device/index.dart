@@ -1,0 +1,3 @@
+library module_ec2_instance_ebs_block_device;
+
+export 'instance_ebs_block_device.dart';

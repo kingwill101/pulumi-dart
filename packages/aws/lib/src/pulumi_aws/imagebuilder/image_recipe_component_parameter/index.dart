@@ -1,0 +1,3 @@
+library module_imagebuilder_image_recipe_component_parameter;
+
+export 'image_recipe_component_parameter.dart';

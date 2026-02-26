@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class LaunchTemplateMaintenanceOptions {
+  /// Disables the automatic recovery behavior of your instance or sets it to default. Can be `"default"` or `"disabled"`. See [Recover your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html) for more details.
+  final String? autoRecovery;
+
+  LaunchTemplateMaintenanceOptions({
+    this.autoRecovery,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final autoRecoveryValue = autoRecovery;
+    if (autoRecoveryValue != null) {
+      map['autoRecovery'] = autoRecoveryValue;
+    }
+    return map;
+  }
+
+  factory LaunchTemplateMaintenanceOptions.fromMap(Map<String, dynamic> map) {
+    return LaunchTemplateMaintenanceOptions(
+      autoRecovery:
+          map['autoRecovery'] == null ? null : map['autoRecovery'] as String,
+    );
+  }
+}

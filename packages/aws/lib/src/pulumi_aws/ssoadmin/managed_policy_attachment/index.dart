@@ -1,0 +1,4 @@
+library module_ssoadmin_managed_policy_attachment;
+
+export 'managed_policy_attachment.dart';
+export 'managed_policy_attachment_args.dart';

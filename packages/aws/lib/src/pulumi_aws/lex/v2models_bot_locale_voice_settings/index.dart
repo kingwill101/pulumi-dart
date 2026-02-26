@@ -1,0 +1,3 @@
+library module_lex_v2models_bot_locale_voice_settings;
+
+export 'v2models_bot_locale_voice_settings.dart';

@@ -1,0 +1,3 @@
+library module_appsync_channel_namespace_publish_auth_mode;
+
+export 'channel_namespace_publish_auth_mode.dart';

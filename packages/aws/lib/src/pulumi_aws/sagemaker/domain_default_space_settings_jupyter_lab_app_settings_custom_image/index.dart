@@ -1,0 +1,3 @@
+library module_sagemaker_domain_default_space_settings_jupyter_lab_app_settings_custom_image;
+
+export 'domain_default_space_settings_jupyter_lab_app_settings_custom_image.dart';

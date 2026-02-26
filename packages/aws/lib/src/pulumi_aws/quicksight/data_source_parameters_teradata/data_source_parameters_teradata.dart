@@ -1,0 +1,34 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class DataSourceParametersTeradata {
+  /// The database to which to connect.
+  final String database;
+
+  /// The host to which to connect.
+  final String host;
+
+  /// The warehouse to which to connect.
+  final int port;
+
+  DataSourceParametersTeradata({
+    required this.database,
+    required this.host,
+    required this.port,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['database'] = database;
+    map['host'] = host;
+    map['port'] = port;
+    return map;
+  }
+
+  factory DataSourceParametersTeradata.fromMap(Map<String, dynamic> map) {
+    return DataSourceParametersTeradata(
+      database: map['database'] as String,
+      host: map['host'] as String,
+      port: map['port'] as int,
+    );
+  }
+}

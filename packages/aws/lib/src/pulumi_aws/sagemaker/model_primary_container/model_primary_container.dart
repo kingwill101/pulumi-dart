@@ -1,0 +1,147 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../model_primary_container_additional_model_data_source/model_primary_container_additional_model_data_source.dart';
+import '../model_primary_container_image_config/model_primary_container_image_config.dart';
+import '../model_primary_container_model_data_source/model_primary_container_model_data_source.dart';
+import '../model_primary_container_multi_model_config/model_primary_container_multi_model_config.dart';
+
+class ModelPrimaryContainer {
+  /// Additional data sources that are available to the model in addition to those specified in <span pulumi-lang-nodejs="`modelDataSource`" pulumi-lang-dotnet="`ModelDataSource`" pulumi-lang-go="`modelDataSource`" pulumi-lang-python="`model_data_source`" pulumi-lang-yaml="`modelDataSource`" pulumi-lang-java="`modelDataSource`">`model_data_source`</span>. See Additional Model Data Source.
+  final List<ModelPrimaryContainerAdditionalModelDataSource>?
+      additionalModelDataSources;
+
+  /// DNS host name for the container.
+  final String? containerHostname;
+
+  /// Environment variables for the Docker container.
+  final Map<String, String>? environment;
+
+  /// Registry path where the inference code image is stored in Amazon ECR.
+  final String? image;
+
+  /// Specifies whether the model container is in Amazon ECR or a private Docker registry accessible from your Amazon Virtual Private Cloud (VPC). For more information see [Using a Private Docker Registry for Real-Time Inference Containers](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-containers-inference-private.html). see Image Config.
+  final ModelPrimaryContainerImageConfig? imageConfig;
+
+  /// Inference specification name in the model package version.
+  final String? inferenceSpecificationName;
+  final String? mode;
+
+  /// Location of model data to deploy. Use this for uncompressed model deployment. For information about how to deploy an uncompressed model, see [Deploying uncompressed models](https://docs.aws.amazon.com/sagemaker/latest/dg/large-model-inference-uncompressed.html) in the _AWS SageMaker AI Developer Guide_.
+  final ModelPrimaryContainerModelDataSource? modelDataSource;
+
+  /// URL for the S3 location where model artifacts are stored.
+  final String? modelDataUrl;
+
+  /// Amazon Resource Name (ARN) of the model package to use to create the model.
+  /// A list of key value pairs.
+  final String? modelPackageName;
+
+  /// Specifies additional configuration for multi-model endpoints. see Multi Model Config.
+  final ModelPrimaryContainerMultiModelConfig? multiModelConfig;
+
+  ModelPrimaryContainer({
+    this.additionalModelDataSources,
+    this.containerHostname,
+    this.environment,
+    this.image,
+    this.imageConfig,
+    this.inferenceSpecificationName,
+    this.mode,
+    this.modelDataSource,
+    this.modelDataUrl,
+    this.modelPackageName,
+    this.multiModelConfig,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final additionalModelDataSourcesValue = additionalModelDataSources;
+    if (additionalModelDataSourcesValue != null) {
+      map['additionalModelDataSources'] = Input.encodeList<
+              ModelPrimaryContainerAdditionalModelDataSource,
+              Map<String, dynamic>>(
+          additionalModelDataSourcesValue, (value) => value.toMap());
+    }
+    final containerHostnameValue = containerHostname;
+    if (containerHostnameValue != null) {
+      map['containerHostname'] = containerHostnameValue;
+    }
+    final environmentValue = environment;
+    if (environmentValue != null) {
+      map['environment'] = environmentValue;
+    }
+    final imageValue = image;
+    if (imageValue != null) {
+      map['image'] = imageValue;
+    }
+    final imageConfigValue = imageConfig;
+    if (imageConfigValue != null) {
+      map['imageConfig'] = imageConfigValue.toMap();
+    }
+    final inferenceSpecificationNameValue = inferenceSpecificationName;
+    if (inferenceSpecificationNameValue != null) {
+      map['inferenceSpecificationName'] = inferenceSpecificationNameValue;
+    }
+    final modeValue = mode;
+    if (modeValue != null) {
+      map['mode'] = modeValue;
+    }
+    final modelDataSourceValue = modelDataSource;
+    if (modelDataSourceValue != null) {
+      map['modelDataSource'] = modelDataSourceValue.toMap();
+    }
+    final modelDataUrlValue = modelDataUrl;
+    if (modelDataUrlValue != null) {
+      map['modelDataUrl'] = modelDataUrlValue;
+    }
+    final modelPackageNameValue = modelPackageName;
+    if (modelPackageNameValue != null) {
+      map['modelPackageName'] = modelPackageNameValue;
+    }
+    final multiModelConfigValue = multiModelConfig;
+    if (multiModelConfigValue != null) {
+      map['multiModelConfig'] = multiModelConfigValue.toMap();
+    }
+    return map;
+  }
+
+  factory ModelPrimaryContainer.fromMap(Map<String, dynamic> map) {
+    return ModelPrimaryContainer(
+      additionalModelDataSources: map['additionalModelDataSources'] == null
+          ? null
+          : Input.decodeList<ModelPrimaryContainerAdditionalModelDataSource>(
+              map['additionalModelDataSources'],
+              (value) => ModelPrimaryContainerAdditionalModelDataSource.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      containerHostname: map['containerHostname'] == null
+          ? null
+          : map['containerHostname'] as String,
+      environment: map['environment'] == null
+          ? null
+          : (map['environment'] as Map).cast<String, String>(),
+      image: map['image'] == null ? null : map['image'] as String,
+      imageConfig: map['imageConfig'] == null
+          ? null
+          : ModelPrimaryContainerImageConfig.fromMap(
+              (map['imageConfig'] as Map).cast<String, dynamic>()),
+      inferenceSpecificationName: map['inferenceSpecificationName'] == null
+          ? null
+          : map['inferenceSpecificationName'] as String,
+      mode: map['mode'] == null ? null : map['mode'] as String,
+      modelDataSource: map['modelDataSource'] == null
+          ? null
+          : ModelPrimaryContainerModelDataSource.fromMap(
+              (map['modelDataSource'] as Map).cast<String, dynamic>()),
+      modelDataUrl:
+          map['modelDataUrl'] == null ? null : map['modelDataUrl'] as String,
+      modelPackageName: map['modelPackageName'] == null
+          ? null
+          : map['modelPackageName'] as String,
+      multiModelConfig: map['multiModelConfig'] == null
+          ? null
+          : ModelPrimaryContainerMultiModelConfig.fromMap(
+              (map['multiModelConfig'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

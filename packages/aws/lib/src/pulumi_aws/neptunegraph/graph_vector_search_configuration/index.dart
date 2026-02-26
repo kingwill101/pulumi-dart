@@ -1,0 +1,3 @@
+library module_neptunegraph_graph_vector_search_configuration;
+
+export 'graph_vector_search_configuration.dart';

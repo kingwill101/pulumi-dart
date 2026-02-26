@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class VirtualServiceSpecProviderVirtualRouter {
+  /// Name of the virtual router that is acting as a service provider. Must be between 1 and 255 characters in length.
+  final String virtualRouterName;
+
+  VirtualServiceSpecProviderVirtualRouter({
+    required this.virtualRouterName,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['virtualRouterName'] = virtualRouterName;
+    return map;
+  }
+
+  factory VirtualServiceSpecProviderVirtualRouter.fromMap(
+      Map<String, dynamic> map) {
+    return VirtualServiceSpecProviderVirtualRouter(
+      virtualRouterName: map['virtualRouterName'] as String,
+    );
+  }
+}

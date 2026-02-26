@@ -1,0 +1,4 @@
+library module_cfg_organization_conformance_pack;
+
+export 'organization_conformance_pack.dart';
+export 'organization_conformance_pack_args.dart';

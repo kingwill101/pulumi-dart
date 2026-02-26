@@ -1,0 +1,3 @@
+library module_quicksight_dashboard_dashboard_publish_options_visual_axis_sort_option;
+
+export 'dashboard_dashboard_publish_options_visual_axis_sort_option.dart';

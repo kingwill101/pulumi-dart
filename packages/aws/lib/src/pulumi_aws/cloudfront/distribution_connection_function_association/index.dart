@@ -1,0 +1,3 @@
+library module_cloudfront_distribution_connection_function_association;
+
+export 'distribution_connection_function_association.dart';

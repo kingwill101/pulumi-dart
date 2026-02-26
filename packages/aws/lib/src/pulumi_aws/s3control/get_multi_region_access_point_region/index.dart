@@ -1,0 +1,3 @@
+library module_s3control_get_multi_region_access_point_region;
+
+export 'get_multi_region_access_point_region.dart';

@@ -1,0 +1,46 @@
+import 'package:pulumi/pulumi.dart';
+import 'role_association_args2.dart';
+
+/// Manages an RDS DB Instance association with an IAM Role. Example use cases:
+///
+/// * [Amazon RDS Oracle integration with Amazon S3](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-s3-integration.html)
+/// * [Importing Amazon S3 Data into an RDS PostgreSQL DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PostgreSQL.S3Import.html)
+///
+/// > To manage the RDS DB Instance IAM Role for [Enhanced Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html), see the <span pulumi-lang-nodejs="`aws.rds.Instance`" pulumi-lang-dotnet="`aws.rds.Instance`" pulumi-lang-go="`rds.Instance`" pulumi-lang-python="`rds.Instance`" pulumi-lang-yaml="`aws.rds.Instance`" pulumi-lang-java="`aws.rds.Instance`">`aws.rds.Instance`</span> resource <span pulumi-lang-nodejs="`monitoringRoleArn`" pulumi-lang-dotnet="`MonitoringRoleArn`" pulumi-lang-go="`monitoringRoleArn`" pulumi-lang-python="`monitoring_role_arn`" pulumi-lang-yaml="`monitoringRoleArn`" pulumi-lang-java="`monitoringRoleArn`">`monitoring_role_arn`</span> argument instead.
+///
+/// ## Import
+///
+/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.rds.RoleAssociation`" pulumi-lang-dotnet="`aws.rds.RoleAssociation`" pulumi-lang-go="`rds.RoleAssociation`" pulumi-lang-python="`rds.RoleAssociation`" pulumi-lang-yaml="`aws.rds.RoleAssociation`" pulumi-lang-java="`aws.rds.RoleAssociation`">`aws.rds.RoleAssociation`</span> using the DB Instance Identifier and IAM Role ARN separated by a comma (`,`). For example:
+///
+/// ```sh
+/// $ pulumi import aws:rds/roleAssociation:RoleAssociation example my-db-instance,arn:aws:iam::123456789012:role/my-role
+/// ```
+class RoleAssociation2 extends CustomResource {
+  /// DB Instance Identifier to associate with the IAM Role.
+  late final Output<String> dbInstanceIdentifier;
+
+  /// Name of the feature for association. This can be found in the AWS documentation relevant to the integration or a full list is available in the `SupportedFeatureNames` list returned by [AWS CLI rds describe-db-engine-versions](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-engine-versions.html).
+  late final Output<String> featureName;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  /// Amazon Resource Name (ARN) of the IAM Role to associate with the DB Instance.
+  late final Output<String> roleArn;
+
+  RoleAssociation2(
+    String name, {
+    RoleAssociationArgs2? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:rds/roleAssociation:RoleAssociation',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.dbInstanceIdentifier = Output.createUnknown<String>();
+    this.featureName = Output.createUnknown<String>();
+    this.region = Output.createUnknown<String>();
+    this.roleArn = Output.createUnknown<String>();
+  }
+}

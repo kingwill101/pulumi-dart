@@ -1,0 +1,3 @@
+library module_cloudfront_distribution_origin_s3_origin_config;
+
+export 'distribution_origin_s3_origin_config.dart';

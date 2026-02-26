@@ -1,0 +1,3 @@
+library module_cloudfront_distribution_trusted_key_group;
+
+export 'distribution_trusted_key_group.dart';

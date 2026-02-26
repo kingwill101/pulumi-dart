@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings {
+  /// The default size of the EBS storage volume for a private space.
+  final int defaultEbsVolumeSizeInGb;
+
+  /// The maximum size of the EBS storage volume for a private space.
+  final int maximumEbsVolumeSizeInGb;
+
+  DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings({
+    required this.defaultEbsVolumeSizeInGb,
+    required this.maximumEbsVolumeSizeInGb,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['defaultEbsVolumeSizeInGb'] = defaultEbsVolumeSizeInGb;
+    map['maximumEbsVolumeSizeInGb'] = maximumEbsVolumeSizeInGb;
+    return map;
+  }
+
+  factory DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings.fromMap(
+      Map<String, dynamic> map) {
+    return DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings(
+      defaultEbsVolumeSizeInGb: map['defaultEbsVolumeSizeInGb'] as int,
+      maximumEbsVolumeSizeInGb: map['maximumEbsVolumeSizeInGb'] as int,
+    );
+  }
+}

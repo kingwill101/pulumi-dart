@@ -1,0 +1,3 @@
+library module_sagemaker_domain_default_space_settings_jupyter_lab_app_settings_app_lifecycle_management;
+
+export 'domain_default_space_settings_jupyter_lab_app_settings_app_lifecycle_management.dart';

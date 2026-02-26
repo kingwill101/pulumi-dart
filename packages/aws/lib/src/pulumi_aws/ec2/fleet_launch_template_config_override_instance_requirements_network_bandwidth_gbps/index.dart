@@ -1,0 +1,3 @@
+library module_ec2_fleet_launch_template_config_override_instance_requirements_network_bandwidth_gbps;
+
+export 'fleet_launch_template_config_override_instance_requirements_network_bandwidth_gbps.dart';

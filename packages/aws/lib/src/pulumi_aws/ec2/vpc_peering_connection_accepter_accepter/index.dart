@@ -1,0 +1,3 @@
+library module_ec2_vpc_peering_connection_accepter_accepter;
+
+export 'vpc_peering_connection_accepter_accepter.dart';

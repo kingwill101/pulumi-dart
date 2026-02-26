@@ -1,0 +1,3 @@
+library module_resourcegroupstaggingapi_get_required_tags_required_tag;
+
+export 'get_required_tags_required_tag.dart';

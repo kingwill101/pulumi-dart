@@ -1,0 +1,3 @@
+library module_lex_v2models_intent_confirmation_setting_prompt_specification_message_group;
+
+export 'v2models_intent_confirmation_setting_prompt_specification_message_group.dart';

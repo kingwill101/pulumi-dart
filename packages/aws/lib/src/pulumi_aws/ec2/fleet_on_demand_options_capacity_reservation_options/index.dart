@@ -1,0 +1,3 @@
+library module_ec2_fleet_on_demand_options_capacity_reservation_options;
+
+export 'fleet_on_demand_options_capacity_reservation_options.dart';

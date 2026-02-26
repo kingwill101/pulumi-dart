@@ -1,0 +1,3 @@
+library module_sagemaker_domain_default_user_settings_sharing_settings;
+
+export 'domain_default_user_settings_sharing_settings.dart';

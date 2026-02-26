@@ -1,0 +1,4 @@
+library module_route53_resolver_dns_sec_config;
+
+export 'resolver_dns_sec_config.dart';
+export 'resolver_dns_sec_config_args.dart';

@@ -1,0 +1,3 @@
+library module_m2_environment_storage_configuration;
+
+export 'environment_storage_configuration.dart';

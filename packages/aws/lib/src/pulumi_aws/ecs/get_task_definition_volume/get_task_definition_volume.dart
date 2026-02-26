@@ -1,0 +1,84 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_task_definition_volume_docker_volume_configuration/get_task_definition_volume_docker_volume_configuration.dart';
+import '../get_task_definition_volume_efs_volume_configuration/get_task_definition_volume_efs_volume_configuration.dart';
+import '../get_task_definition_volume_fsx_windows_file_server_volume_configuration/get_task_definition_volume_fsx_windows_file_server_volume_configuration.dart';
+
+class GetTaskDefinitionVolume {
+  /// Whether the volume should be configured at launch time. This is used to create Amazon EBS volumes for standalone tasks or tasks created as part of a service. Each task definition revision may only have one volume configured at launch in the volume configuration.
+  final bool configureAtLaunch;
+
+  /// Configuration block to configure a docker volume. Detailed below.
+  final List<GetTaskDefinitionVolumeDockerVolumeConfiguration>
+      dockerVolumeConfigurations;
+
+  /// Configuration block for an EFS volume. Detailed below.
+  final List<GetTaskDefinitionVolumeEfsVolumeConfiguration>
+      efsVolumeConfigurations;
+
+  /// Configuration block for an FSX Windows File Server volume. Detailed below.
+  final List<GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration>
+      fsxWindowsFileServerVolumeConfigurations;
+
+  /// Path on the host container instance that is presented to the container. If not set, ECS will create a nonpersistent data volume that starts empty and is deleted after the task has finished.
+  final String hostPath;
+
+  /// Name of the volume. This name is referenced in the `sourceVolume`
+  /// parameter of container definition in the `mountPoints` section.
+  final String name;
+
+  GetTaskDefinitionVolume({
+    required this.configureAtLaunch,
+    required this.dockerVolumeConfigurations,
+    required this.efsVolumeConfigurations,
+    required this.fsxWindowsFileServerVolumeConfigurations,
+    required this.hostPath,
+    required this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['configureAtLaunch'] = configureAtLaunch;
+    map['dockerVolumeConfigurations'] = Input.encodeList<
+            GetTaskDefinitionVolumeDockerVolumeConfiguration,
+            Map<String, dynamic>>(
+        dockerVolumeConfigurations, (value) => value.toMap());
+    map['efsVolumeConfigurations'] = Input.encodeList<
+            GetTaskDefinitionVolumeEfsVolumeConfiguration,
+            Map<String, dynamic>>(
+        efsVolumeConfigurations, (value) => value.toMap());
+    map['fsxWindowsFileServerVolumeConfigurations'] = Input.encodeList<
+            GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration,
+            Map<String, dynamic>>(
+        fsxWindowsFileServerVolumeConfigurations, (value) => value.toMap());
+    map['hostPath'] = hostPath;
+    map['name'] = name;
+    return map;
+  }
+
+  factory GetTaskDefinitionVolume.fromMap(Map<String, dynamic> map) {
+    return GetTaskDefinitionVolume(
+      configureAtLaunch: map['configureAtLaunch'] as bool,
+      dockerVolumeConfigurations:
+          Input.decodeList<GetTaskDefinitionVolumeDockerVolumeConfiguration>(
+              map['dockerVolumeConfigurations'],
+              (value) =>
+                  GetTaskDefinitionVolumeDockerVolumeConfiguration.fromMap(
+                      (value as Map).cast<String, dynamic>())),
+      efsVolumeConfigurations:
+          Input.decodeList<GetTaskDefinitionVolumeEfsVolumeConfiguration>(
+              map['efsVolumeConfigurations'],
+              (value) => GetTaskDefinitionVolumeEfsVolumeConfiguration.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      fsxWindowsFileServerVolumeConfigurations: Input.decodeList<
+              GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration>(
+          map['fsxWindowsFileServerVolumeConfigurations'],
+          (value) =>
+              GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration
+                  .fromMap((value as Map).cast<String, dynamic>())),
+      hostPath: map['hostPath'] as String,
+      name: map['name'] as String,
+    );
+  }
+}

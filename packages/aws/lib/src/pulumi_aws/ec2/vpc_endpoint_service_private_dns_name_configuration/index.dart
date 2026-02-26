@@ -1,0 +1,3 @@
+library module_ec2_vpc_endpoint_service_private_dns_name_configuration;
+
+export 'vpc_endpoint_service_private_dns_name_configuration.dart';

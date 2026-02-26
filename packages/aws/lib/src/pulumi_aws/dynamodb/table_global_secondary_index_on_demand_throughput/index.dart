@@ -1,0 +1,3 @@
+library module_dynamodb_table_global_secondary_index_on_demand_throughput;
+
+export 'table_global_secondary_index_on_demand_throughput.dart';

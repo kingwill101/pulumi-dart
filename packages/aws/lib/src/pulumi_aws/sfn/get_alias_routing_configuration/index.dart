@@ -1,0 +1,3 @@
+library module_sfn_get_alias_routing_configuration;
+
+export 'get_alias_routing_configuration.dart';

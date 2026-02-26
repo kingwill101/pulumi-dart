@@ -1,0 +1,3 @@
+library module_mskconnect_custom_plugin_location;
+
+export 'custom_plugin_location.dart';

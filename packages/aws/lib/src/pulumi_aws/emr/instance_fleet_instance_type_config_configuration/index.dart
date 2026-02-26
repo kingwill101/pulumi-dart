@@ -1,0 +1,3 @@
+library module_emr_instance_fleet_instance_type_config_configuration;
+
+export 'instance_fleet_instance_type_config_configuration.dart';

@@ -1,0 +1,3 @@
+library module_comprehend_entity_recognizer_input_data_config_annotations;
+
+export 'entity_recognizer_input_data_config_annotations.dart';

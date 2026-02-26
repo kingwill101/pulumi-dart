@@ -1,0 +1,3 @@
+library module_ec2_get_network_insights_analysis_return_path_component_subnet;
+
+export 'get_network_insights_analysis_return_path_component_subnet.dart';

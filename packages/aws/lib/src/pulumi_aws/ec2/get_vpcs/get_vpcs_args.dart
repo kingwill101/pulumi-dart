@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_vpcs_filter/get_vpcs_filter.dart';
+
+/// Arguments for getVpcs.
+class GetVpcsArgs {
+  /// Custom filter block as described below.
+  final Input<List<GetVpcsFilter>>? filters;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final Input<String>? region;
+
+  /// Map of tags, each pair of which must exactly match
+  /// a pair on the desired vpcs.
+  final Input<Map<String, String>>? tags;
+
+  GetVpcsArgs({
+    this.filters,
+    this.region,
+    this.tags,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final filtersValue = filters;
+    if (filtersValue != null) {
+      map['filters'] = Input.mapOptionalInputValue<List<GetVpcsFilter>,
+              List<Map<String, dynamic>>>(
+          filtersValue,
+          (value) => Input.encodeList<GetVpcsFilter, Map<String, dynamic>>(
+              value, (value) => value.toMap()));
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    return map;
+  }
+
+  factory GetVpcsArgs.fromMap(Map<String, dynamic> map) {
+    return GetVpcsArgs(
+      filters: Input.asOptionalInput<List<GetVpcsFilter>>(map['filters']),
+      region: Input.asOptionalInput<String>(map['region']),
+      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+    );
+  }
+}

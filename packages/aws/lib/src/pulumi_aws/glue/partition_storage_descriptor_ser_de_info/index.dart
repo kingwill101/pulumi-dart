@@ -1,0 +1,3 @@
+library module_glue_partition_storage_descriptor_ser_de_info;
+
+export 'partition_storage_descriptor_ser_de_info.dart';

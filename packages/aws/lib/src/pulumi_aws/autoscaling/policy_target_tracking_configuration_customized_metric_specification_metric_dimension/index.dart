@@ -1,0 +1,3 @@
+library module_autoscaling_policy_target_tracking_configuration_customized_metric_specification_metric_dimension;
+
+export 'policy_target_tracking_configuration_customized_metric_specification_metric_dimension.dart';

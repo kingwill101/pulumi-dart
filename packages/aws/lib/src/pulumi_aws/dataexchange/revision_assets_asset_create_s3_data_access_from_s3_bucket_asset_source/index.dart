@@ -1,0 +1,3 @@
+library module_dataexchange_revision_assets_asset_create_s3_data_access_from_s3_bucket_asset_source;
+
+export 'revision_assets_asset_create_s3_data_access_from_s3_bucket_asset_source.dart';

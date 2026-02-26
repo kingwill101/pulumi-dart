@@ -1,0 +1,37 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_default_value_specification_default_value_list/v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_default_value_specification_default_value_list.dart';
+
+class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecification {
+  /// List of default values.
+  /// Amazon Lex chooses the default value to use in the order that they are presented in the list.
+  /// See the <span pulumi-lang-nodejs="`defaultValueList`" pulumi-lang-dotnet="`DefaultValueList`" pulumi-lang-go="`defaultValueList`" pulumi-lang-python="`default_value_list`" pulumi-lang-yaml="`defaultValueList`" pulumi-lang-java="`defaultValueList`">`default_value_list`</span> argument reference below.
+  final List<
+          V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecificationDefaultValueList>
+      defaultValueLists;
+
+  V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecification({
+    required this.defaultValueLists,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['defaultValueLists'] = Input.encodeList<
+        V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecificationDefaultValueList,
+        Map<String, dynamic>>(defaultValueLists, (value) => value.toMap());
+    return map;
+  }
+
+  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecification.fromMap(
+      Map<String, dynamic> map) {
+    return V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecification(
+      defaultValueLists: Input.decodeList<
+              V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecificationDefaultValueList>(
+          map['defaultValueLists'],
+          (value) =>
+              V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecificationDefaultValueList
+                  .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

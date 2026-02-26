@@ -1,0 +1,23 @@
+library module_pinpoint;
+
+export 'adm_channel/index.dart';
+export 'apns_channel/index.dart';
+export 'apns_sandbox_channel/index.dart';
+export 'apns_voip_channel/index.dart';
+export 'apns_voip_sandbox_channel/index.dart';
+export 'app/index.dart';
+export 'app_campaign_hook/index.dart';
+export 'app_limits/index.dart';
+export 'app_quiet_time/index.dart';
+export 'baidu_channel/index.dart';
+export 'email_channel/index.dart';
+export 'email_template/index.dart';
+export 'email_template_email_template/index.dart';
+export 'email_template_email_template_header/index.dart';
+export 'event_stream/index.dart';
+export 'gcm_channel/index.dart';
+export 'sms_channel/index.dart';
+export 'smsvoicev2_configuration_set/index.dart';
+export 'smsvoicev2_opt_out_list/index.dart';
+export 'smsvoicev2_phone_number/index.dart';
+export 'smsvoicev2_phone_number_timeouts/index.dart';

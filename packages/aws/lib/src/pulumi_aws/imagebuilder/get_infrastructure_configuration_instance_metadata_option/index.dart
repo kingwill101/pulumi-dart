@@ -1,0 +1,3 @@
+library module_imagebuilder_get_infrastructure_configuration_instance_metadata_option;
+
+export 'get_infrastructure_configuration_instance_metadata_option.dart';

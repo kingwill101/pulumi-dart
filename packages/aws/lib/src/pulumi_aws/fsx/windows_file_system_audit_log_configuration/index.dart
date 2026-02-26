@@ -1,0 +1,3 @@
+library module_fsx_windows_file_system_audit_log_configuration;
+
+export 'windows_file_system_audit_log_configuration.dart';

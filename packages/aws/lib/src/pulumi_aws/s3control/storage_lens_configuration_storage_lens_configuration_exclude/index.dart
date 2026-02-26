@@ -1,0 +1,3 @@
+library module_s3control_storage_lens_configuration_storage_lens_configuration_exclude;
+
+export 'storage_lens_configuration_storage_lens_configuration_exclude.dart';

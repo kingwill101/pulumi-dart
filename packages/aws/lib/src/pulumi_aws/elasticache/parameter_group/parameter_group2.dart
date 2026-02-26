@@ -1,0 +1,214 @@
+import 'package:pulumi/pulumi.dart';
+import '../parameter_group_parameter/parameter_group_parameter2.dart';
+import 'parameter_group_args2.dart';
+
+/// Provides an ElastiCache parameter group resource.
+///
+/// > **NOTE:** Attempting to remove the `reserved-memory` parameter when <span pulumi-lang-nodejs="`family`" pulumi-lang-dotnet="`Family`" pulumi-lang-go="`family`" pulumi-lang-python="`family`" pulumi-lang-yaml="`family`" pulumi-lang-java="`family`">`family`</span> is set to `redis2.6` or `redis2.8` may show a perpetual difference in this provider due to an ElastiCache API limitation. Leave that parameter configured with any value to workaround the issue.
+///
+/// ## Example Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const _default = new aws.elasticache.ParameterGroup("default", {
+/// name: "cache-params",
+/// family: "redis2.8",
+/// parameters: [
+/// {
+/// name: "activerehashing",
+/// value: "yes",
+/// },
+/// {
+/// name: "min-slaves-to-write",
+/// value: "2",
+/// },
+/// ],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// default = aws.elasticache.ParameterGroup("default",
+/// name="cache-params",
+/// family="redis2.8",
+/// parameters=[
+/// {
+/// "name": "activerehashing",
+/// "value": "yes",
+/// },
+/// {
+/// "name": "min-slaves-to-write",
+/// "value": "2",
+/// },
+/// ])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var @default = new Aws.ElastiCache.ParameterGroup("default", new()
+/// {
+/// Name = "cache-params",
+/// Family = "redis2.8",
+/// Parameters = new[]
+/// {
+/// new Aws.ElastiCache.Inputs.ParameterGroupParameterArgs
+/// {
+/// Name = "activerehashing",
+/// Value = "yes",
+/// },
+/// new Aws.ElastiCache.Inputs.ParameterGroupParameterArgs
+/// {
+/// Name = "min-slaves-to-write",
+/// Value = "2",
+/// },
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/elasticache"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := elasticache.NewParameterGroup(ctx, "default", &elasticache.ParameterGroupArgs{
+/// Name:   pulumi.String("cache-params"),
+/// Family: pulumi.String("redis2.8"),
+/// Parameters: elasticache.ParameterGroupParameterArray{
+/// &elasticache.ParameterGroupParameterArgs{
+/// Name:  pulumi.String("activerehashing"),
+/// Value: pulumi.String("yes"),
+/// },
+/// &elasticache.ParameterGroupParameterArgs{
+/// Name:  pulumi.String("min-slaves-to-write"),
+/// Value: pulumi.String("2"),
+/// },
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.elasticache.ParameterGroup;
+/// import com.pulumi.aws.elasticache.ParameterGroupArgs;
+/// import com.pulumi.aws.elasticache.inputs.ParameterGroupParameterArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var default_ = new ParameterGroup("default", ParameterGroupArgs.builder()
+/// .name("cache-params")
+/// .family("redis2.8")
+/// .parameters(
+/// ParameterGroupParameterArgs.builder()
+/// .name("activerehashing")
+/// .value("yes")
+/// .build(),
+/// ParameterGroupParameterArgs.builder()
+/// .name("min-slaves-to-write")
+/// .value("2")
+/// .build())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// default:
+/// type: aws:elasticache:ParameterGroup
+/// properties:
+/// name: cache-params
+/// family: redis2.8
+/// parameters:
+/// - name: activerehashing
+/// value: yes
+/// - name: min-slaves-to-write
+/// value: '2'
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Using `pulumi import`, import ElastiCache Parameter Groups using the <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. For example:
+///
+/// ```sh
+/// $ pulumi import aws:elasticache/parameterGroup:ParameterGroup default redis-params
+/// ```
+class ParameterGroup2 extends CustomResource {
+  /// The AWS ARN associated with the parameter group.
+  late final Output<String> arn;
+
+  /// The description of the ElastiCache parameter group. Defaults to "Managed by Pulumi".
+  late final Output<String> description;
+
+  /// The family of the ElastiCache parameter group.
+  late final Output<String> family;
+
+  /// The name of the ElastiCache parameter.
+  late final Output<String> name;
+
+  /// A list of ElastiCache parameters to apply.
+  late final Output<List<ParameterGroupParameter2>?> parameters;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  late final Output<Map<String, String>?> tags;
+
+  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  late final Output<Map<String, String>> tagsAll;
+
+  ParameterGroup2(
+    String name, {
+    ParameterGroupArgs2? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:elasticache/parameterGroup:ParameterGroup',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.arn = Output.createUnknown<String>();
+    this.description = Output.createUnknown<String>();
+    this.family = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.parameters = Output.createUnknown<List<ParameterGroupParameter2>?>();
+    this.region = Output.createUnknown<String>();
+    this.tags = Output.createUnknown<Map<String, String>?>();
+    this.tagsAll = Output.createUnknown<Map<String, String>>();
+  }
+}

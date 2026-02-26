@@ -1,0 +1,3 @@
+library module_pipes_pipe_source_parameters_self_managed_kafka_parameters_credentials;
+
+export 'pipe_source_parameters_self_managed_kafka_parameters_credentials.dart';

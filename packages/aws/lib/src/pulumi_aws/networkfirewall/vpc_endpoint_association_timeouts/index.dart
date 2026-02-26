@@ -1,0 +1,3 @@
+library module_networkfirewall_vpc_endpoint_association_timeouts;
+
+export 'vpc_endpoint_association_timeouts.dart';

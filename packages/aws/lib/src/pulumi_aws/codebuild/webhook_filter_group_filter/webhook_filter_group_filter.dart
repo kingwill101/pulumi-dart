@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class WebhookFilterGroupFilter {
+  /// If set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the specified filter does *not* trigger a build. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  final bool? excludeMatchedPattern;
+
+  /// For a filter that uses `EVENT` type, a comma-separated string that specifies one event: `PUSH`, `PULL_REQUEST_CREATED`, `PULL_REQUEST_UPDATED`, `PULL_REQUEST_REOPENED`. `PULL_REQUEST_MERGED`, `WORKFLOW_JOB_QUEUED` works with GitHub & GitHub Enterprise only. For a filter that uses any of the other filter types, a regular expression.
+  final String pattern;
+
+  /// The webhook filter group's type. Valid values for this parameter are: `EVENT`, `BASE_REF`, `HEAD_REF`, `ACTOR_ACCOUNT_ID`, `FILE_PATH`, `COMMIT_MESSAGE`, `WORKFLOW_NAME`, `TAG_NAME`, `RELEASE_NAME`, `REPOSITORY_NAME`. At least one filter group must specify `EVENT` as its type.
+  final String type;
+
+  WebhookFilterGroupFilter({
+    this.excludeMatchedPattern,
+    required this.pattern,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final excludeMatchedPatternValue = excludeMatchedPattern;
+    if (excludeMatchedPatternValue != null) {
+      map['excludeMatchedPattern'] = excludeMatchedPatternValue;
+    }
+    map['pattern'] = pattern;
+    map['type'] = type;
+    return map;
+  }
+
+  factory WebhookFilterGroupFilter.fromMap(Map<String, dynamic> map) {
+    return WebhookFilterGroupFilter(
+      excludeMatchedPattern: map['excludeMatchedPattern'] == null
+          ? null
+          : map['excludeMatchedPattern'] as bool,
+      pattern: map['pattern'] as String,
+      type: map['type'] as String,
+    );
+  }
+}

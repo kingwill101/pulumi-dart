@@ -1,0 +1,5 @@
+library module_appconfig_get_configuration_profile;
+
+export 'get_configuration_profile.dart';
+export 'get_configuration_profile_args.dart';
+export 'get_configuration_profile_result.dart';

@@ -1,0 +1,3 @@
+library module_ses_event_destination_cloudwatch_destination;
+
+export 'event_destination_cloudwatch_destination.dart';

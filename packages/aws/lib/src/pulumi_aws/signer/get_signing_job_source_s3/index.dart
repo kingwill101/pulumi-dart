@@ -1,0 +1,3 @@
+library module_signer_get_signing_job_source_s3;
+
+export 'get_signing_job_source_s3.dart';

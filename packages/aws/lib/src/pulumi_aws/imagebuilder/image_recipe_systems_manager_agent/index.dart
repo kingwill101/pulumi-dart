@@ -1,0 +1,3 @@
+library module_imagebuilder_image_recipe_systems_manager_agent;
+
+export 'image_recipe_systems_manager_agent.dart';

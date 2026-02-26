@@ -1,0 +1,3 @@
+library module_apigateway_domain_name_endpoint_configuration;
+
+export 'domain_name_endpoint_configuration.dart';

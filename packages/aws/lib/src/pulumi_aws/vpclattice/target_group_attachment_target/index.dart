@@ -1,0 +1,3 @@
+library module_vpclattice_target_group_attachment_target;
+
+export 'target_group_attachment_target.dart';

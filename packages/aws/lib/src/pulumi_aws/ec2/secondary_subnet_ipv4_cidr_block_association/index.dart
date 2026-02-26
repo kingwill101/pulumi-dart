@@ -1,0 +1,3 @@
+library module_ec2_secondary_subnet_ipv4_cidr_block_association;
+
+export 'secondary_subnet_ipv4_cidr_block_association.dart';

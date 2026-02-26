@@ -1,0 +1,3 @@
+library module_pipes_pipe_log_configuration_firehose_log_destination;
+
+export 'pipe_log_configuration_firehose_log_destination.dart';

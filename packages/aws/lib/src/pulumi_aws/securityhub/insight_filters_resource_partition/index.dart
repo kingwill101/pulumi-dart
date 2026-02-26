@@ -1,0 +1,3 @@
+library module_securityhub_insight_filters_resource_partition;
+
+export 'insight_filters_resource_partition.dart';

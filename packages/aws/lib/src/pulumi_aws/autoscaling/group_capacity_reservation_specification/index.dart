@@ -1,0 +1,3 @@
+library module_autoscaling_group_capacity_reservation_specification;
+
+export 'group_capacity_reservation_specification.dart';

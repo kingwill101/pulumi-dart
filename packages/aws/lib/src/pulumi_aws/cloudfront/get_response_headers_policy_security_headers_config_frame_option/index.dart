@@ -1,0 +1,3 @@
+library module_cloudfront_get_response_headers_policy_security_headers_config_frame_option;
+
+export 'get_response_headers_policy_security_headers_config_frame_option.dart';

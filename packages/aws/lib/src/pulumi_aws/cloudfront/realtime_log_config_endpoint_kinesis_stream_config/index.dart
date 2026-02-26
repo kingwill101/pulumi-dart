@@ -1,0 +1,3 @@
+library module_cloudfront_realtime_log_config_endpoint_kinesis_stream_config;
+
+export 'realtime_log_config_endpoint_kinesis_stream_config.dart';

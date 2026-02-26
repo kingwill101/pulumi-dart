@@ -1,0 +1,3 @@
+library module_cognito_user_pool_web_authn_configuration;
+
+export 'user_pool_web_authn_configuration.dart';

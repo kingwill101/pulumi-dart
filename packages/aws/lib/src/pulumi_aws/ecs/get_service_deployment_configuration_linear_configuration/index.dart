@@ -1,0 +1,3 @@
+library module_ecs_get_service_deployment_configuration_linear_configuration;
+
+export 'get_service_deployment_configuration_linear_configuration.dart';

@@ -1,0 +1,3 @@
+library module_appflow_flow_source_flow_config_source_connector_properties_s3_s3_input_format_config;
+
+export 'flow_source_flow_config_source_connector_properties_s3_s3_input_format_config.dart';

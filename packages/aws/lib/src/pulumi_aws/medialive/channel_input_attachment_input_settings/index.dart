@@ -1,0 +1,3 @@
+library module_medialive_channel_input_attachment_input_settings;
+
+export 'channel_input_attachment_input_settings.dart';

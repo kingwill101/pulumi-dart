@@ -1,0 +1,3 @@
+library module_dlm_lifecycle_policy_policy_details_event_source;
+
+export 'lifecycle_policy_policy_details_event_source.dart';

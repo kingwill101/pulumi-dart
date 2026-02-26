@@ -1,0 +1,3 @@
+library module_ecs_service_volume_configuration_managed_ebs_volume_tag_specification;
+
+export 'service_volume_configuration_managed_ebs_volume_tag_specification.dart';

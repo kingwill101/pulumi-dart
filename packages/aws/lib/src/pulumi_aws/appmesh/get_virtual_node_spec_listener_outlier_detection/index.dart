@@ -1,0 +1,3 @@
+library module_appmesh_get_virtual_node_spec_listener_outlier_detection;
+
+export 'get_virtual_node_spec_listener_outlier_detection.dart';

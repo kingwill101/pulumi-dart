@@ -1,0 +1,64 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetServiceDeployment {
+  /// Time when task set was created (RFC3339 format)
+  final String createdAt;
+
+  /// Desired number of tasks
+  final int desiredCount;
+
+  /// Task set ID
+  final String id;
+
+  /// Number of pending tasks
+  final int pendingCount;
+
+  /// Number of running tasks
+  final int runningCount;
+
+  /// Task set status
+  final String status;
+
+  /// Task definition ARN
+  final String taskDefinition;
+
+  /// Time when task set was last updated (RFC3339 format)
+  final String updatedAt;
+
+  GetServiceDeployment({
+    required this.createdAt,
+    required this.desiredCount,
+    required this.id,
+    required this.pendingCount,
+    required this.runningCount,
+    required this.status,
+    required this.taskDefinition,
+    required this.updatedAt,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['createdAt'] = createdAt;
+    map['desiredCount'] = desiredCount;
+    map['id'] = id;
+    map['pendingCount'] = pendingCount;
+    map['runningCount'] = runningCount;
+    map['status'] = status;
+    map['taskDefinition'] = taskDefinition;
+    map['updatedAt'] = updatedAt;
+    return map;
+  }
+
+  factory GetServiceDeployment.fromMap(Map<String, dynamic> map) {
+    return GetServiceDeployment(
+      createdAt: map['createdAt'] as String,
+      desiredCount: map['desiredCount'] as int,
+      id: map['id'] as String,
+      pendingCount: map['pendingCount'] as int,
+      runningCount: map['runningCount'] as int,
+      status: map['status'] as String,
+      taskDefinition: map['taskDefinition'] as String,
+      updatedAt: map['updatedAt'] as String,
+    );
+  }
+}

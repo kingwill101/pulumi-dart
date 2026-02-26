@@ -1,0 +1,3 @@
+library module_sagemaker_notebook_instance_instance_metadata_service_configuration;
+
+export 'notebook_instance_instance_metadata_service_configuration.dart';

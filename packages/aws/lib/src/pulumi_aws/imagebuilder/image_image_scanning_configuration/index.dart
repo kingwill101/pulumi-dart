@@ -1,0 +1,3 @@
+library module_imagebuilder_image_image_scanning_configuration;
+
+export 'image_image_scanning_configuration.dart';

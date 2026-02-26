@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetJobDefinitionEksPropertyPodPropertyVolumeSecret {
+  /// Specifies whether the secret or the secret's keys must be defined.
+  final bool optional;
+
+  /// The name of the secret. The name must be allowed as a DNS subdomain name
+  final String secretName;
+
+  GetJobDefinitionEksPropertyPodPropertyVolumeSecret({
+    required this.optional,
+    required this.secretName,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['optional'] = optional;
+    map['secretName'] = secretName;
+    return map;
+  }
+
+  factory GetJobDefinitionEksPropertyPodPropertyVolumeSecret.fromMap(
+      Map<String, dynamic> map) {
+    return GetJobDefinitionEksPropertyPodPropertyVolumeSecret(
+      optional: map['optional'] as bool,
+      secretName: map['secretName'] as String,
+    );
+  }
+}

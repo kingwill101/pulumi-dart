@@ -1,0 +1,3 @@
+library module_cloudfront_multitenant_distribution_origin_group_failover_criteria;
+
+export 'multitenant_distribution_origin_group_failover_criteria.dart';

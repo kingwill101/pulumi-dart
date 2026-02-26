@@ -1,0 +1,3 @@
+library module_dynamodb_table_import_table_s3_bucket_source;
+
+export 'table_import_table_s3_bucket_source.dart';

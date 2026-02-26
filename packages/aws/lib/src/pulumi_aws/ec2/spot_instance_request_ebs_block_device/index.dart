@@ -1,0 +1,3 @@
+library module_ec2_spot_instance_request_ebs_block_device;
+
+export 'spot_instance_request_ebs_block_device.dart';

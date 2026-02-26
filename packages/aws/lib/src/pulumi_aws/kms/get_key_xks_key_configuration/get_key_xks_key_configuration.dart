@@ -1,0 +1,22 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetKeyXksKeyConfiguration {
+  /// The globally unique identifier for the key
+  final String id;
+
+  GetKeyXksKeyConfiguration({
+    required this.id,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['id'] = id;
+    return map;
+  }
+
+  factory GetKeyXksKeyConfiguration.fromMap(Map<String, dynamic> map) {
+    return GetKeyXksKeyConfiguration(
+      id: map['id'] as String,
+    );
+  }
+}

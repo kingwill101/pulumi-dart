@@ -1,0 +1,3 @@
+library module_fis_experiment_template_experiment_report_configuration_outputs;
+
+export 'experiment_template_experiment_report_configuration_outputs.dart';

@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetUsersUserName {
+  /// Family name of the user.
+  final String familyName;
+
+  /// Name that is typically displayed when the name is shown for display.
+  final String formatted;
+
+  /// Given name of the user.
+  final String givenName;
+
+  /// Honorific prefix of the user.
+  final String honorificPrefix;
+
+  /// Honorific suffix of the user.
+  final String honorificSuffix;
+
+  /// Middle name of the user.
+  final String middleName;
+
+  GetUsersUserName({
+    required this.familyName,
+    required this.formatted,
+    required this.givenName,
+    required this.honorificPrefix,
+    required this.honorificSuffix,
+    required this.middleName,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['familyName'] = familyName;
+    map['formatted'] = formatted;
+    map['givenName'] = givenName;
+    map['honorificPrefix'] = honorificPrefix;
+    map['honorificSuffix'] = honorificSuffix;
+    map['middleName'] = middleName;
+    return map;
+  }
+
+  factory GetUsersUserName.fromMap(Map<String, dynamic> map) {
+    return GetUsersUserName(
+      familyName: map['familyName'] as String,
+      formatted: map['formatted'] as String,
+      givenName: map['givenName'] as String,
+      honorificPrefix: map['honorificPrefix'] as String,
+      honorificSuffix: map['honorificSuffix'] as String,
+      middleName: map['middleName'] as String,
+    );
+  }
+}

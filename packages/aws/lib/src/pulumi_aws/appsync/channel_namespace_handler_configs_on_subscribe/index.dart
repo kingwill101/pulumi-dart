@@ -1,0 +1,3 @@
+library module_appsync_channel_namespace_handler_configs_on_subscribe;
+
+export 'channel_namespace_handler_configs_on_subscribe.dart';

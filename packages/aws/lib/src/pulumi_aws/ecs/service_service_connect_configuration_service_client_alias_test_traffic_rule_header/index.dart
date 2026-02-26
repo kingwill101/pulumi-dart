@@ -1,0 +1,3 @@
+library module_ecs_service_service_connect_configuration_service_client_alias_test_traffic_rule_header;
+
+export 'service_service_connect_configuration_service_client_alias_test_traffic_rule_header.dart';

@@ -1,0 +1,21 @@
+library module_customerprofiles;
+
+export 'domain/index.dart';
+export 'domain_matching/index.dart';
+export 'domain_matching_auto_merging/index.dart';
+export 'domain_matching_auto_merging_conflict_resolution/index.dart';
+export 'domain_matching_auto_merging_consolidation/index.dart';
+export 'domain_matching_exporting_config/index.dart';
+export 'domain_matching_exporting_config_s3_exporting/index.dart';
+export 'domain_matching_job_schedule/index.dart';
+export 'domain_rule_based_matching/index.dart';
+export 'domain_rule_based_matching_attribute_types_selector/index.dart';
+export 'domain_rule_based_matching_conflict_resolution/index.dart';
+export 'domain_rule_based_matching_exporting_config/index.dart';
+export 'domain_rule_based_matching_exporting_config_s3_exporting/index.dart';
+export 'domain_rule_based_matching_matching_rule/index.dart';
+export 'profile/index.dart';
+export 'profile_address/index.dart';
+export 'profile_billing_address/index.dart';
+export 'profile_mailing_address/index.dart';
+export 'profile_shipping_address/index.dart';

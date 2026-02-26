@@ -1,0 +1,3 @@
+library module_ec2_vpc_ipam_resource_discovery_organizational_unit_exclusion;
+
+export 'vpc_ipam_resource_discovery_organizational_unit_exclusion.dart';

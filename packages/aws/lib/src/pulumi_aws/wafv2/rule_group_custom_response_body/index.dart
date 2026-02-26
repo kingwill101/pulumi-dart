@@ -1,0 +1,3 @@
+library module_wafv2_rule_group_custom_response_body;
+
+export 'rule_group_custom_response_body.dart';

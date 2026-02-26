@@ -1,0 +1,4 @@
+library module_networkmanager_transit_gateway_registration;
+
+export 'transit_gateway_registration.dart';
+export 'transit_gateway_registration_args.dart';

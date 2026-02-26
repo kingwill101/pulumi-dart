@@ -1,0 +1,3 @@
+library module_guardduty_get_detector_feature_additional_configuration;
+
+export 'get_detector_feature_additional_configuration.dart';

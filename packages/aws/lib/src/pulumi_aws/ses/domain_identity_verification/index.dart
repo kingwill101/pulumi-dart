@@ -1,0 +1,4 @@
+library module_ses_domain_identity_verification;
+
+export 'domain_identity_verification.dart';
+export 'domain_identity_verification_args.dart';

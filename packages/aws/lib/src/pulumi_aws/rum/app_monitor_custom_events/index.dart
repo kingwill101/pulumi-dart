@@ -1,0 +1,3 @@
+library module_rum_app_monitor_custom_events;
+
+export 'app_monitor_custom_events.dart';

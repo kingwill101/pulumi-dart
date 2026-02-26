@@ -1,0 +1,3 @@
+library module_sagemaker_endpoint_deployment_config_rolling_update_policy;
+
+export 'endpoint_deployment_config_rolling_update_policy.dart';

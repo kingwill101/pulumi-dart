@@ -1,0 +1,3 @@
+library module_bedrock_agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_inline_payload;
+
+export 'agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_inline_payload.dart';

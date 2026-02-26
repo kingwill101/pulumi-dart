@@ -1,0 +1,83 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// The set of arguments for Channel.
+class ChannelArgs {
+  /// If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, channel is private (enabled for playback authorization).
+  final Input<bool>? authorized;
+
+  /// Channel latency mode. Valid values: `NORMAL`, `LOW`.
+  final Input<String>? latencyMode;
+
+  /// Channel name.
+  final Input<String>? name;
+
+  /// Recording configuration ARN.
+  final Input<String>? recordingConfigurationArn;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final Input<String>? region;
+
+  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final Input<Map<String, String>>? tags;
+
+  /// Channel type, which determines the allowable resolution and bitrate. Valid values: `STANDARD`, `BASIC`.
+  final Input<String>? type;
+
+  ChannelArgs({
+    this.authorized,
+    this.latencyMode,
+    this.name,
+    this.recordingConfigurationArn,
+    this.region,
+    this.tags,
+    this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final authorizedValue = authorized;
+    if (authorizedValue != null) {
+      map['authorized'] = authorizedValue;
+    }
+    final latencyModeValue = latencyMode;
+    if (latencyModeValue != null) {
+      map['latencyMode'] = latencyModeValue;
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final recordingConfigurationArnValue = recordingConfigurationArn;
+    if (recordingConfigurationArnValue != null) {
+      map['recordingConfigurationArn'] = recordingConfigurationArnValue;
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    final typeValue = type;
+    if (typeValue != null) {
+      map['type'] = typeValue;
+    }
+    return map;
+  }
+
+  factory ChannelArgs.fromMap(Map<String, dynamic> map) {
+    return ChannelArgs(
+      authorized: Input.asOptionalInput<bool>(map['authorized']),
+      latencyMode: Input.asOptionalInput<String>(map['latencyMode']),
+      name: Input.asOptionalInput<String>(map['name']),
+      recordingConfigurationArn:
+          Input.asOptionalInput<String>(map['recordingConfigurationArn']),
+      region: Input.asOptionalInput<String>(map['region']),
+      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      type: Input.asOptionalInput<String>(map['type']),
+    );
+  }
+}

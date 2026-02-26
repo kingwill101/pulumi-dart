@@ -1,0 +1,3 @@
+library module_appsync_channel_namespace_handler_configs;
+
+export 'channel_namespace_handler_configs.dart';

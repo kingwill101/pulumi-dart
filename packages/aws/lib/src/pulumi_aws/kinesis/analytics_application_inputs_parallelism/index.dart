@@ -1,0 +1,3 @@
+library module_kinesis_analytics_application_inputs_parallelism;
+
+export 'analytics_application_inputs_parallelism.dart';

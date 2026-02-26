@@ -1,0 +1,3 @@
+library module_appmesh_virtual_gateway_spec_backend_defaults_client_policy;
+
+export 'virtual_gateway_spec_backend_defaults_client_policy.dart';

@@ -1,0 +1,3 @@
+library module_quicksight_get_data_set_physical_table_map_relational_table_input_column;
+
+export 'get_data_set_physical_table_map_relational_table_input_column.dart';

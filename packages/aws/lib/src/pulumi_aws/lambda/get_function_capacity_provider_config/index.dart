@@ -1,0 +1,3 @@
+library module_lambda_get_function_capacity_provider_config;
+
+export 'get_function_capacity_provider_config.dart';

@@ -1,0 +1,5 @@
+library module_quicksight_get_quicksight_analysis;
+
+export 'get_quicksight_analysis.dart';
+export 'get_quicksight_analysis_args.dart';
+export 'get_quicksight_analysis_result.dart';

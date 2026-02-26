@@ -1,0 +1,3 @@
+library module_vpclattice_service_network_service_association_dns_entry;
+
+export 'service_network_service_association_dns_entry.dart';

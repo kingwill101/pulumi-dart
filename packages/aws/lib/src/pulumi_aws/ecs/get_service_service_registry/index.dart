@@ -1,0 +1,3 @@
+library module_ecs_get_service_service_registry;
+
+export 'get_service_service_registry.dart';

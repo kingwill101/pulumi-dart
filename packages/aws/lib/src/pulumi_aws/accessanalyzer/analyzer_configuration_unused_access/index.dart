@@ -1,0 +1,3 @@
+library module_accessanalyzer_analyzer_configuration_unused_access;
+
+export 'analyzer_configuration_unused_access.dart';

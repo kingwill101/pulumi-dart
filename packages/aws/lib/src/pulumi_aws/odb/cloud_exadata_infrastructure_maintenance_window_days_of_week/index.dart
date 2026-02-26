@@ -1,0 +1,3 @@
+library module_odb_cloud_exadata_infrastructure_maintenance_window_days_of_week;
+
+export 'cloud_exadata_infrastructure_maintenance_window_days_of_week.dart';

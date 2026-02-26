@@ -1,0 +1,143 @@
+import 'package:pulumi/pulumi.dart';
+import 'local_gateway_route_args.dart';
+
+/// Manages an EC2 Local Gateway Route. More information can be found in the [Outposts User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#routing).
+///
+/// ## Example Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.ec2.LocalGatewayRoute("example", {
+/// destinationCidrBlock: "172.16.0.0/16",
+/// localGatewayRouteTableId: exampleAwsEc2LocalGatewayRouteTable.id,
+/// localGatewayVirtualInterfaceGroupId: exampleAwsEc2LocalGatewayVirtualInterfaceGroup.id,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.ec2.LocalGatewayRoute("example",
+/// destination_cidr_block="172.16.0.0/16",
+/// local_gateway_route_table_id=example_aws_ec2_local_gateway_route_table["id"],
+/// local_gateway_virtual_interface_group_id=example_aws_ec2_local_gateway_virtual_interface_group["id"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.Ec2.LocalGatewayRoute("example", new()
+/// {
+/// DestinationCidrBlock = "172.16.0.0/16",
+/// LocalGatewayRouteTableId = exampleAwsEc2LocalGatewayRouteTable.Id,
+/// LocalGatewayVirtualInterfaceGroupId = exampleAwsEc2LocalGatewayVirtualInterfaceGroup.Id,
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := ec2.NewLocalGatewayRoute(ctx, "example", &ec2.LocalGatewayRouteArgs{
+/// DestinationCidrBlock:                pulumi.String("172.16.0.0/16"),
+/// LocalGatewayRouteTableId:            pulumi.Any(exampleAwsEc2LocalGatewayRouteTable.Id),
+/// LocalGatewayVirtualInterfaceGroupId: pulumi.Any(exampleAwsEc2LocalGatewayVirtualInterfaceGroup.Id),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.ec2.LocalGatewayRoute;
+/// import com.pulumi.aws.ec2.LocalGatewayRouteArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new LocalGatewayRoute("example", LocalGatewayRouteArgs.builder()
+/// .destinationCidrBlock("172.16.0.0/16")
+/// .localGatewayRouteTableId(exampleAwsEc2LocalGatewayRouteTable.id())
+/// .localGatewayVirtualInterfaceGroupId(exampleAwsEc2LocalGatewayVirtualInterfaceGroup.id())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:ec2:LocalGatewayRoute
+/// properties:
+/// destinationCidrBlock: 172.16.0.0/16
+/// localGatewayRouteTableId: ${exampleAwsEc2LocalGatewayRouteTable.id}
+/// localGatewayVirtualInterfaceGroupId: ${exampleAwsEc2LocalGatewayVirtualInterfaceGroup.id}
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.ec2.LocalGatewayRoute`" pulumi-lang-dotnet="`aws.ec2.LocalGatewayRoute`" pulumi-lang-go="`ec2.LocalGatewayRoute`" pulumi-lang-python="`ec2.LocalGatewayRoute`" pulumi-lang-yaml="`aws.ec2.LocalGatewayRoute`" pulumi-lang-java="`aws.ec2.LocalGatewayRoute`">`aws.ec2.LocalGatewayRoute`</span> using the EC2 Local Gateway Route Table identifier and destination CIDR block separated by underscores (`_`). For example:
+///
+/// ```sh
+/// $ pulumi import aws:ec2/localGatewayRoute:LocalGatewayRoute example lgw-rtb-12345678_172.16.0.0/16
+/// ```
+class LocalGatewayRoute extends CustomResource {
+  /// IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
+  late final Output<String> destinationCidrBlock;
+
+  /// Identifier of EC2 Local Gateway Route Table.
+  late final Output<String> localGatewayRouteTableId;
+
+  /// Identifier of EC2 Local Gateway Virtual Interface Group.
+  late final Output<String> localGatewayVirtualInterfaceGroupId;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  LocalGatewayRoute(
+    String name, {
+    LocalGatewayRouteArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:ec2/localGatewayRoute:LocalGatewayRoute',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.destinationCidrBlock = Output.createUnknown<String>();
+    this.localGatewayRouteTableId = Output.createUnknown<String>();
+    this.localGatewayVirtualInterfaceGroupId = Output.createUnknown<String>();
+    this.region = Output.createUnknown<String>();
+  }
+}

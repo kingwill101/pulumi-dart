@@ -1,0 +1,3 @@
+library module_pipes_pipe_source_parameters_dynamodb_stream_parameters_dead_letter_config;
+
+export 'pipe_source_parameters_dynamodb_stream_parameters_dead_letter_config.dart';

@@ -1,0 +1,3 @@
+library module_networkmanager_get_core_network_policy_document_network_function_group;
+
+export 'get_core_network_policy_document_network_function_group.dart';

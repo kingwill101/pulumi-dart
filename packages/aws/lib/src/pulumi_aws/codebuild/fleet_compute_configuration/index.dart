@@ -1,0 +1,3 @@
+library module_codebuild_fleet_compute_configuration;
+
+export 'fleet_compute_configuration.dart';

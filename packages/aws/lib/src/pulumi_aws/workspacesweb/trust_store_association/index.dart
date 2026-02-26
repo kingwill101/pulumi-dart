@@ -1,0 +1,4 @@
+library module_workspacesweb_trust_store_association;
+
+export 'trust_store_association.dart';
+export 'trust_store_association_args.dart';

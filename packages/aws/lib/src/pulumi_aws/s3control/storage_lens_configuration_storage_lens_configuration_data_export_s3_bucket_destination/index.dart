@@ -1,0 +1,3 @@
+library module_s3control_storage_lens_configuration_storage_lens_configuration_data_export_s3_bucket_destination;
+
+export 'storage_lens_configuration_storage_lens_configuration_data_export_s3_bucket_destination.dart';

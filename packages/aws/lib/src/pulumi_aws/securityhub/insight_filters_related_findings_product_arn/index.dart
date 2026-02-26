@@ -1,0 +1,3 @@
+library module_securityhub_insight_filters_related_findings_product_arn;
+
+export 'insight_filters_related_findings_product_arn.dart';

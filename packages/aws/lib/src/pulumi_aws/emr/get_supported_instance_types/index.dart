@@ -1,0 +1,5 @@
+library module_emr_get_supported_instance_types;
+
+export 'get_supported_instance_types.dart';
+export 'get_supported_instance_types_args.dart';
+export 'get_supported_instance_types_result.dart';

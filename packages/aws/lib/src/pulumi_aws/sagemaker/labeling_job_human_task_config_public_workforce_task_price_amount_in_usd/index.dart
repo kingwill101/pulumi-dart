@@ -1,0 +1,3 @@
+library module_sagemaker_labeling_job_human_task_config_public_workforce_task_price_amount_in_usd;
+
+export 'labeling_job_human_task_config_public_workforce_task_price_amount_in_usd.dart';

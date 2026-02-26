@@ -1,0 +1,3 @@
+library module_ec2_get_vpc_endpoint_dns_option;
+
+export 'get_vpc_endpoint_dns_option.dart';

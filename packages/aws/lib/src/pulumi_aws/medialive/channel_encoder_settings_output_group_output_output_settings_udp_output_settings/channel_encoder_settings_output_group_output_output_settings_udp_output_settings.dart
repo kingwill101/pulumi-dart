@@ -1,0 +1,61 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../channel_encoder_settings_output_group_output_output_settings_udp_output_settings_container_settings/channel_encoder_settings_output_group_output_output_settings_udp_output_settings_container_settings.dart';
+import '../channel_encoder_settings_output_group_output_output_settings_udp_output_settings_destination/channel_encoder_settings_output_group_output_output_settings_udp_output_settings_destination.dart';
+import '../channel_encoder_settings_output_group_output_output_settings_udp_output_settings_fec_output_settings/channel_encoder_settings_output_group_output_output_settings_udp_output_settings_fec_output_settings.dart';
+
+class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings {
+  /// UDP output buffering in milliseconds.
+  final int? bufferMsec;
+
+  /// UDP container settings. See Container Settings for more details.
+  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettings
+      containerSettings;
+
+  /// Destination address and port number for RTP or UDP packets. See Destination for more details.
+  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsDestination
+      destination;
+  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings?
+      fecOutputSettings;
+
+  ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings({
+    this.bufferMsec,
+    required this.containerSettings,
+    required this.destination,
+    this.fecOutputSettings,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final bufferMsecValue = bufferMsec;
+    if (bufferMsecValue != null) {
+      map['bufferMsec'] = bufferMsecValue;
+    }
+    map['containerSettings'] = containerSettings.toMap();
+    map['destination'] = destination.toMap();
+    final fecOutputSettingsValue = fecOutputSettings;
+    if (fecOutputSettingsValue != null) {
+      map['fecOutputSettings'] = fecOutputSettingsValue.toMap();
+    }
+    return map;
+  }
+
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings.fromMap(
+      Map<String, dynamic> map) {
+    return ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings(
+      bufferMsec: map['bufferMsec'] == null ? null : map['bufferMsec'] as int,
+      containerSettings:
+          ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettings
+              .fromMap(
+                  (map['containerSettings'] as Map).cast<String, dynamic>()),
+      destination:
+          ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsDestination
+              .fromMap((map['destination'] as Map).cast<String, dynamic>()),
+      fecOutputSettings: map['fecOutputSettings'] == null
+          ? null
+          : ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings
+              .fromMap(
+                  (map['fecOutputSettings'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

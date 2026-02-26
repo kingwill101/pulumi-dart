@@ -1,0 +1,3 @@
+library module_rds_reserved_instance_recurring_charge;
+
+export 'reserved_instance_recurring_charge.dart';

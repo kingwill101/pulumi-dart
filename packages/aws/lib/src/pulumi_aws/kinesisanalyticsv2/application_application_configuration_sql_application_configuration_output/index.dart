@@ -1,0 +1,3 @@
+library module_kinesisanalyticsv2_application_application_configuration_sql_application_configuration_output;
+
+export 'application_application_configuration_sql_application_configuration_output.dart';

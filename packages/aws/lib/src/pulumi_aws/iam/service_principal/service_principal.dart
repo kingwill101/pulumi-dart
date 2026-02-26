@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// IAM roles that can be assumed by an AWS service are called service roles. Service roles must include a trust policy. A service principal is an identifier that is used to grant permissions to a service.
+class ServicePrincipal {
+  /// The service principal identifier.
+  final String service;
+
+  ServicePrincipal({
+    required this.service,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['Service'] = service;
+    return map;
+  }
+
+  factory ServicePrincipal.fromMap(Map<String, dynamic> map) {
+    return ServicePrincipal(
+      service: map['Service'] as String,
+    );
+  }
+}

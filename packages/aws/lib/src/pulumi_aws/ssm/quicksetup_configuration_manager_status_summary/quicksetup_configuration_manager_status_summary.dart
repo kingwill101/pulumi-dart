@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class QuicksetupConfigurationManagerStatusSummary {
+  /// Current status.
+  final String status;
+
+  /// When applicable, returns an informational message relevant to the current status and status type of the status summary object.
+  final String statusMessage;
+
+  /// Type of a status summary.
+  final String statusType;
+
+  QuicksetupConfigurationManagerStatusSummary({
+    required this.status,
+    required this.statusMessage,
+    required this.statusType,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['status'] = status;
+    map['statusMessage'] = statusMessage;
+    map['statusType'] = statusType;
+    return map;
+  }
+
+  factory QuicksetupConfigurationManagerStatusSummary.fromMap(
+      Map<String, dynamic> map) {
+    return QuicksetupConfigurationManagerStatusSummary(
+      status: map['status'] as String,
+      statusMessage: map['statusMessage'] as String,
+      statusType: map['statusType'] as String,
+    );
+  }
+}

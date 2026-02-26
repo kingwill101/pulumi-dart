@@ -1,0 +1,3 @@
+library module_wafv2_web_acl_rule_statement_rate_based_statement_scope_down_statement_regex_match_statement;
+
+export 'web_acl_rule_statement_rate_based_statement_scope_down_statement_regex_match_statement.dart';

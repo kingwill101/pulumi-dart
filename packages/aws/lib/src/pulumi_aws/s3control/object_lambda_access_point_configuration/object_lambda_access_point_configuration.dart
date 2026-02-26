@@ -1,0 +1,63 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../object_lambda_access_point_configuration_transformation_configuration/object_lambda_access_point_configuration_transformation_configuration.dart';
+
+class ObjectLambdaAccessPointConfiguration {
+  /// Allowed features. Valid values: `GetObject-Range`, `GetObject-PartNumber`.
+  final List<String>? allowedFeatures;
+
+  /// Whether or not the CloudWatch metrics configuration is enabled.
+  final bool? cloudWatchMetricsEnabled;
+
+  /// Standard access point associated with the Object Lambda Access Point.
+  final String supportingAccessPoint;
+
+  /// List of transformation configurations for the Object Lambda Access Point. See Transformation Configuration below for more details.
+  final List<ObjectLambdaAccessPointConfigurationTransformationConfiguration>
+      transformationConfigurations;
+
+  ObjectLambdaAccessPointConfiguration({
+    this.allowedFeatures,
+    this.cloudWatchMetricsEnabled,
+    required this.supportingAccessPoint,
+    required this.transformationConfigurations,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final allowedFeaturesValue = allowedFeatures;
+    if (allowedFeaturesValue != null) {
+      map['allowedFeatures'] = allowedFeaturesValue;
+    }
+    final cloudWatchMetricsEnabledValue = cloudWatchMetricsEnabled;
+    if (cloudWatchMetricsEnabledValue != null) {
+      map['cloudWatchMetricsEnabled'] = cloudWatchMetricsEnabledValue;
+    }
+    map['supportingAccessPoint'] = supportingAccessPoint;
+    map['transformationConfigurations'] = Input.encodeList<
+            ObjectLambdaAccessPointConfigurationTransformationConfiguration,
+            Map<String, dynamic>>(
+        transformationConfigurations, (value) => value.toMap());
+    return map;
+  }
+
+  factory ObjectLambdaAccessPointConfiguration.fromMap(
+      Map<String, dynamic> map) {
+    return ObjectLambdaAccessPointConfiguration(
+      allowedFeatures: map['allowedFeatures'] == null
+          ? null
+          : (map['allowedFeatures'] as List).cast<String>(),
+      cloudWatchMetricsEnabled: map['cloudWatchMetricsEnabled'] == null
+          ? null
+          : map['cloudWatchMetricsEnabled'] as bool,
+      supportingAccessPoint: map['supportingAccessPoint'] as String,
+      transformationConfigurations: Input.decodeList<
+              ObjectLambdaAccessPointConfigurationTransformationConfiguration>(
+          map['transformationConfigurations'],
+          (value) =>
+              ObjectLambdaAccessPointConfigurationTransformationConfiguration
+                  .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

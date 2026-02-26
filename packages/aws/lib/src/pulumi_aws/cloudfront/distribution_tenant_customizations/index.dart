@@ -1,0 +1,3 @@
+library module_cloudfront_distribution_tenant_customizations;
+
+export 'distribution_tenant_customizations.dart';

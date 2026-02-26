@@ -1,0 +1,3 @@
+library module_apprunner_custom_domain_association_certificate_validation_record;
+
+export 'custom_domain_association_certificate_validation_record.dart';

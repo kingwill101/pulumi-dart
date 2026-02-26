@@ -1,0 +1,3 @@
+library module_rolesanywhere_trust_anchor_notification_setting;
+
+export 'trust_anchor_notification_setting.dart';

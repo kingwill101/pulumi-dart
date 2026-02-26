@@ -1,0 +1,50 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../classification_job_s3_job_definition_bucket_criteria_includes_and_tag_criterion_tag_value/classification_job_s3_job_definition_bucket_criteria_includes_and_tag_criterion_tag_value.dart';
+
+class ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion {
+  /// The operator to use in the condition. Valid combination and values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-jobcomparator)
+  final String? comparator;
+
+  /// The  tag key and value pairs to use in the condition. One or more blocks are allowed. (documented below)
+  final List<
+          ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterionTagValue>?
+      tagValues;
+
+  ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion({
+    this.comparator,
+    this.tagValues,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final comparatorValue = comparator;
+    if (comparatorValue != null) {
+      map['comparator'] = comparatorValue;
+    }
+    final tagValuesValue = tagValues;
+    if (tagValuesValue != null) {
+      map['tagValues'] = Input.encodeList<
+          ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterionTagValue,
+          Map<String, dynamic>>(tagValuesValue, (value) => value.toMap());
+    }
+    return map;
+  }
+
+  factory ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion.fromMap(
+      Map<String, dynamic> map) {
+    return ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion(
+      comparator:
+          map['comparator'] == null ? null : map['comparator'] as String,
+      tagValues: map['tagValues'] == null
+          ? null
+          : Input.decodeList<
+                  ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterionTagValue>(
+              map['tagValues'],
+              (value) =>
+                  ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterionTagValue
+                      .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

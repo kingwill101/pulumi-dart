@@ -1,0 +1,3 @@
+library module_appmesh_virtual_gateway_spec_logging_access_log_file_format_json;
+
+export 'virtual_gateway_spec_logging_access_log_file_format_json.dart';

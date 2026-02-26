@@ -1,0 +1,3 @@
+library module_chimesdkmediapipelines_media_insights_pipeline_configuration_element_s3_recording_sink_configuration;
+
+export 'media_insights_pipeline_configuration_element_s3_recording_sink_configuration.dart';

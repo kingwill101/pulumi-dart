@@ -1,0 +1,3 @@
+library module_transfer_web_app_endpoint_details_vpc;
+
+export 'web_app_endpoint_details_vpc.dart';

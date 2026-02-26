@@ -1,0 +1,3 @@
+library module_sagemaker_model_container_model_data_source_s3_data_source;
+
+export 'model_container_model_data_source_s3_data_source.dart';

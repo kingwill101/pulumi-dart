@@ -1,0 +1,3 @@
+library module_chime_voice_connector_streaming_media_insights_configuration;
+
+export 'voice_connector_streaming_media_insights_configuration.dart';

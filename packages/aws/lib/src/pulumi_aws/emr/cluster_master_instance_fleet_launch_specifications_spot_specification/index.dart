@@ -1,0 +1,3 @@
+library module_emr_cluster_master_instance_fleet_launch_specifications_spot_specification;
+
+export 'cluster_master_instance_fleet_launch_specifications_spot_specification.dart';

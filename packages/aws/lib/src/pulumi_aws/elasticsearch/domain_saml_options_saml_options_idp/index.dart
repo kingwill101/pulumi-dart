@@ -1,0 +1,3 @@
+library module_elasticsearch_domain_saml_options_saml_options_idp;
+
+export 'domain_saml_options_saml_options_idp.dart';

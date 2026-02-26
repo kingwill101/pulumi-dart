@@ -1,0 +1,3 @@
+library module_ssmcontacts_plan_stage_target_contact_target_info;
+
+export 'plan_stage_target_contact_target_info.dart';

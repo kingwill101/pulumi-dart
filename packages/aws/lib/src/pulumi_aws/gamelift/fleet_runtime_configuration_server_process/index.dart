@@ -1,0 +1,3 @@
+library module_gamelift_fleet_runtime_configuration_server_process;
+
+export 'fleet_runtime_configuration_server_process.dart';

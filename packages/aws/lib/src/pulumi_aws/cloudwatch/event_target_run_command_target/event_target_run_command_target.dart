@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class EventTargetRunCommandTarget {
+  /// Can be either `tag:tag-key` or `InstanceIds`.
+  final String key;
+
+  /// If Key is `tag:tag-key`, Values is a list of tag values. If Key is `InstanceIds`, Values is a list of Amazon EC2 instance IDs.
+  final List<String> values;
+
+  EventTargetRunCommandTarget({
+    required this.key,
+    required this.values,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['key'] = key;
+    map['values'] = values;
+    return map;
+  }
+
+  factory EventTargetRunCommandTarget.fromMap(Map<String, dynamic> map) {
+    return EventTargetRunCommandTarget(
+      key: map['key'] as String,
+      values: (map['values'] as List).cast<String>(),
+    );
+  }
+}

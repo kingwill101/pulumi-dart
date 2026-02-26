@@ -1,0 +1,3 @@
+library module_cloudformation_stack_instances_stack_instance_summary;
+
+export 'stack_instances_stack_instance_summary.dart';

@@ -1,0 +1,3 @@
+library module_route53domains_domain_registrant_contact;
+
+export 'domain_registrant_contact.dart';

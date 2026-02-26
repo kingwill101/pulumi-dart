@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class InstanceLoggingConfigurationAccessLogsCloudwatchLogs {
+  /// Indicates whether logging is enabled.
+  final bool enabled;
+
+  /// The name of the CloudWatch Logs Log Group.
+  final String? logGroup;
+
+  InstanceLoggingConfigurationAccessLogsCloudwatchLogs({
+    required this.enabled,
+    this.logGroup,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['enabled'] = enabled;
+    final logGroupValue = logGroup;
+    if (logGroupValue != null) {
+      map['logGroup'] = logGroupValue;
+    }
+    return map;
+  }
+
+  factory InstanceLoggingConfigurationAccessLogsCloudwatchLogs.fromMap(
+      Map<String, dynamic> map) {
+    return InstanceLoggingConfigurationAccessLogsCloudwatchLogs(
+      enabled: map['enabled'] as bool,
+      logGroup: map['logGroup'] == null ? null : map['logGroup'] as String,
+    );
+  }
+}

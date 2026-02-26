@@ -1,0 +1,147 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../route_request_parameter/route_request_parameter.dart';
+
+/// The set of arguments for Route.
+class RouteArgs {
+  /// API identifier.
+  final Input<String> apiId;
+
+  /// Boolean whether an API key is required for the route. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. Supported only for WebSocket APIs.
+  final Input<bool>? apiKeyRequired;
+
+  /// Authorization scopes supported by this route. The scopes are used with a JWT authorizer to authorize the method invocation.
+  final Input<List<String>>? authorizationScopes;
+
+  /// Authorization type for the route.
+  /// For WebSocket APIs, valid values are `NONE` for open access, `AWS_IAM` for using AWS IAM permissions, and `CUSTOM` for using a Lambda authorizer.
+  /// For HTTP APIs, valid values are `NONE` for open access, `JWT` for using JSON Web Tokens, `AWS_IAM` for using AWS IAM permissions, and `CUSTOM` for using a Lambda authorizer.
+  /// Defaults to `NONE`.
+  final Input<String>? authorizationType;
+
+  /// Identifier of the <span pulumi-lang-nodejs="`aws.apigatewayv2.Authorizer`" pulumi-lang-dotnet="`aws.apigatewayv2.Authorizer`" pulumi-lang-go="`apigatewayv2.Authorizer`" pulumi-lang-python="`apigatewayv2.Authorizer`" pulumi-lang-yaml="`aws.apigatewayv2.Authorizer`" pulumi-lang-java="`aws.apigatewayv2.Authorizer`">`aws.apigatewayv2.Authorizer`</span> resource to be associated with this route.
+  final Input<String>? authorizerId;
+
+  /// The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route. Supported only for WebSocket APIs.
+  final Input<String>? modelSelectionExpression;
+
+  /// Operation name for the route. Must be between 1 and 64 characters in length.
+  final Input<String>? operationName;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final Input<String>? region;
+
+  /// Request models for the route. Supported only for WebSocket APIs.
+  final Input<Map<String, String>>? requestModels;
+
+  /// Request parameters for the route. Supported only for WebSocket APIs.
+  final Input<List<RouteRequestParameter>>? requestParameters;
+
+  /// Route key for the route. For HTTP APIs, the route key can be either `$default`, or a combination of an HTTP method and resource path, for example, `GET /pets`.
+  final Input<String> routeKey;
+
+  /// The [route response selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-response-selection-expressions) for the route. Supported only for WebSocket APIs.
+  final Input<String>? routeResponseSelectionExpression;
+
+  /// Target for the route, of the form `integrations/`*`IntegrationID`*, where *`IntegrationID`* is the identifier of an <span pulumi-lang-nodejs="`aws.apigatewayv2.Integration`" pulumi-lang-dotnet="`aws.apigatewayv2.Integration`" pulumi-lang-go="`apigatewayv2.Integration`" pulumi-lang-python="`apigatewayv2.Integration`" pulumi-lang-yaml="`aws.apigatewayv2.Integration`" pulumi-lang-java="`aws.apigatewayv2.Integration`">`aws.apigatewayv2.Integration`</span> resource.
+  final Input<String>? target;
+
+  RouteArgs({
+    required this.apiId,
+    this.apiKeyRequired,
+    this.authorizationScopes,
+    this.authorizationType,
+    this.authorizerId,
+    this.modelSelectionExpression,
+    this.operationName,
+    this.region,
+    this.requestModels,
+    this.requestParameters,
+    required this.routeKey,
+    this.routeResponseSelectionExpression,
+    this.target,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['apiId'] = apiId;
+    final apiKeyRequiredValue = apiKeyRequired;
+    if (apiKeyRequiredValue != null) {
+      map['apiKeyRequired'] = apiKeyRequiredValue;
+    }
+    final authorizationScopesValue = authorizationScopes;
+    if (authorizationScopesValue != null) {
+      map['authorizationScopes'] = authorizationScopesValue;
+    }
+    final authorizationTypeValue = authorizationType;
+    if (authorizationTypeValue != null) {
+      map['authorizationType'] = authorizationTypeValue;
+    }
+    final authorizerIdValue = authorizerId;
+    if (authorizerIdValue != null) {
+      map['authorizerId'] = authorizerIdValue;
+    }
+    final modelSelectionExpressionValue = modelSelectionExpression;
+    if (modelSelectionExpressionValue != null) {
+      map['modelSelectionExpression'] = modelSelectionExpressionValue;
+    }
+    final operationNameValue = operationName;
+    if (operationNameValue != null) {
+      map['operationName'] = operationNameValue;
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final requestModelsValue = requestModels;
+    if (requestModelsValue != null) {
+      map['requestModels'] = requestModelsValue;
+    }
+    final requestParametersValue = requestParameters;
+    if (requestParametersValue != null) {
+      map['requestParameters'] = Input.mapOptionalInputValue<
+              List<RouteRequestParameter>, List<Map<String, dynamic>>>(
+          requestParametersValue,
+          (value) =>
+              Input.encodeList<RouteRequestParameter, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
+    }
+    map['routeKey'] = routeKey;
+    final routeResponseSelectionExpressionValue =
+        routeResponseSelectionExpression;
+    if (routeResponseSelectionExpressionValue != null) {
+      map['routeResponseSelectionExpression'] =
+          routeResponseSelectionExpressionValue;
+    }
+    final targetValue = target;
+    if (targetValue != null) {
+      map['target'] = targetValue;
+    }
+    return map;
+  }
+
+  factory RouteArgs.fromMap(Map<String, dynamic> map) {
+    return RouteArgs(
+      apiId: Input.asInput<String>(map['apiId']),
+      apiKeyRequired: Input.asOptionalInput<bool>(map['apiKeyRequired']),
+      authorizationScopes:
+          Input.asOptionalInput<List<String>>(map['authorizationScopes']),
+      authorizationType:
+          Input.asOptionalInput<String>(map['authorizationType']),
+      authorizerId: Input.asOptionalInput<String>(map['authorizerId']),
+      modelSelectionExpression:
+          Input.asOptionalInput<String>(map['modelSelectionExpression']),
+      operationName: Input.asOptionalInput<String>(map['operationName']),
+      region: Input.asOptionalInput<String>(map['region']),
+      requestModels:
+          Input.asOptionalInput<Map<String, String>>(map['requestModels']),
+      requestParameters: Input.asOptionalInput<List<RouteRequestParameter>>(
+          map['requestParameters']),
+      routeKey: Input.asInput<String>(map['routeKey']),
+      routeResponseSelectionExpression: Input.asOptionalInput<String>(
+          map['routeResponseSelectionExpression']),
+      target: Input.asOptionalInput<String>(map['target']),
+    );
+  }
+}

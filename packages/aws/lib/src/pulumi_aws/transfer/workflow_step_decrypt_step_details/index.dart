@@ -1,0 +1,3 @@
+library module_transfer_workflow_step_decrypt_step_details;
+
+export 'workflow_step_decrypt_step_details.dart';

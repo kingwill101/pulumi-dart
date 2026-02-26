@@ -1,0 +1,3 @@
+library module_athena_workgroup_configuration_result_configuration_encryption_configuration;
+
+export 'workgroup_configuration_result_configuration_encryption_configuration.dart';

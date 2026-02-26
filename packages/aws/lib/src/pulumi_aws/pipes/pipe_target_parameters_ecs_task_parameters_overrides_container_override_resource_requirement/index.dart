@@ -1,0 +1,3 @@
+library module_pipes_pipe_target_parameters_ecs_task_parameters_overrides_container_override_resource_requirement;
+
+export 'pipe_target_parameters_ecs_task_parameters_overrides_container_override_resource_requirement.dart';

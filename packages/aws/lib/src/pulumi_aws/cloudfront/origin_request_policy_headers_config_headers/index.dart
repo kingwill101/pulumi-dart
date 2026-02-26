@@ -1,0 +1,3 @@
+library module_cloudfront_origin_request_policy_headers_config_headers;
+
+export 'origin_request_policy_headers_config_headers.dart';

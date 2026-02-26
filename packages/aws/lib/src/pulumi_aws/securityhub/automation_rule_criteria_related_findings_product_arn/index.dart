@@ -1,0 +1,3 @@
+library module_securityhub_automation_rule_criteria_related_findings_product_arn;
+
+export 'automation_rule_criteria_related_findings_product_arn.dart';

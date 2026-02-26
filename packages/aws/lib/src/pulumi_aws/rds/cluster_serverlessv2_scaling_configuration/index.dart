@@ -1,0 +1,3 @@
+library module_rds_cluster_serverlessv2_scaling_configuration;
+
+export 'cluster_serverlessv2_scaling_configuration.dart';

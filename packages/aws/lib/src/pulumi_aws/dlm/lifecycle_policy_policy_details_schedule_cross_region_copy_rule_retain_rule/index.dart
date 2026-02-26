@@ -1,0 +1,3 @@
+library module_dlm_lifecycle_policy_policy_details_schedule_cross_region_copy_rule_retain_rule;
+
+export 'lifecycle_policy_policy_details_schedule_cross_region_copy_rule_retain_rule.dart';

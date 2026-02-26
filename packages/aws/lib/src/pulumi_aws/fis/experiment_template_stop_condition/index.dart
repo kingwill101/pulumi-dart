@@ -1,0 +1,3 @@
+library module_fis_experiment_template_stop_condition;
+
+export 'experiment_template_stop_condition.dart';

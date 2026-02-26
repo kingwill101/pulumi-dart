@@ -1,0 +1,3 @@
+library module_wafv2_web_acl_rule_action_challenge_custom_request_handling;
+
+export 'web_acl_rule_action_challenge_custom_request_handling.dart';

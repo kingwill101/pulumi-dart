@@ -1,0 +1,3 @@
+library module_dataexchange_event_action_action_export_revision_to_s3_encryption;
+
+export 'event_action_action_export_revision_to_s3_encryption.dart';

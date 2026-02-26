@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// Arguments for getDirectory.
+class GetDirectoryArgs {
+  /// ID of the directory.
+  final Input<String> directoryId;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final Input<String>? region;
+
+  /// A map of tags assigned to the directory/connector.
+  final Input<Map<String, String>>? tags;
+
+  GetDirectoryArgs({
+    required this.directoryId,
+    this.region,
+    this.tags,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['directoryId'] = directoryId;
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    return map;
+  }
+
+  factory GetDirectoryArgs.fromMap(Map<String, dynamic> map) {
+    return GetDirectoryArgs(
+      directoryId: Input.asInput<String>(map['directoryId']),
+      region: Input.asOptionalInput<String>(map['region']),
+      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+    );
+  }
+}

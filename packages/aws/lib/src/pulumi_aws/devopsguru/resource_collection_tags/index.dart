@@ -1,0 +1,3 @@
+library module_devopsguru_resource_collection_tags;
+
+export 'resource_collection_tags.dart';

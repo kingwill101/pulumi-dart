@@ -1,0 +1,3 @@
+library module_cloudfront_distribution_custom_error_response;
+
+export 'distribution_custom_error_response.dart';

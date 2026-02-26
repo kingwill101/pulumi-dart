@@ -1,0 +1,3 @@
+library module_redshift_idc_application_service_integration_s3_access_grants_read_write_access;
+
+export 'idc_application_service_integration_s3_access_grants_read_write_access.dart';

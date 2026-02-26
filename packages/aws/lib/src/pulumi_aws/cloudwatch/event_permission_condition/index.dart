@@ -1,0 +1,3 @@
+library module_cloudwatch_event_permission_condition;
+
+export 'event_permission_condition.dart';

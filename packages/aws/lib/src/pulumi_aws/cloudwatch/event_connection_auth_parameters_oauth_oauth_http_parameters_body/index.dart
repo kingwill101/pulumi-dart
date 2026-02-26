@@ -1,0 +1,3 @@
+library module_cloudwatch_event_connection_auth_parameters_oauth_oauth_http_parameters_body;
+
+export 'event_connection_auth_parameters_oauth_oauth_http_parameters_body.dart';

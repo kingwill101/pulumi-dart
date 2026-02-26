@@ -1,0 +1,3 @@
+library module_ssm_resource_data_sync_s3_destination;
+
+export 'resource_data_sync_s3_destination.dart';

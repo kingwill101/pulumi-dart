@@ -1,0 +1,3 @@
+library module_securityhub_insight_filters_resource_aws_ec2_instance_subnet_id;
+
+export 'insight_filters_resource_aws_ec2_instance_subnet_id.dart';

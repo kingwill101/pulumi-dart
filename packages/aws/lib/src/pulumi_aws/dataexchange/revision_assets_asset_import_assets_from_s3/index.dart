@@ -1,0 +1,3 @@
+library module_dataexchange_revision_assets_asset_import_assets_from_s3;
+
+export 'revision_assets_asset_import_assets_from_s3.dart';

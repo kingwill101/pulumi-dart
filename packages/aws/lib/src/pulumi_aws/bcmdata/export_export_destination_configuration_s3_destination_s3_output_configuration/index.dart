@@ -1,0 +1,3 @@
+library module_bcmdata_export_export_destination_configuration_s3_destination_s3_output_configuration;
+
+export 'export_export_destination_configuration_s3_destination_s3_output_configuration.dart';

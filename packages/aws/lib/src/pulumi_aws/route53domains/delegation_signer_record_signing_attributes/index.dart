@@ -1,0 +1,3 @@
+library module_route53domains_delegation_signer_record_signing_attributes;
+
+export 'delegation_signer_record_signing_attributes.dart';

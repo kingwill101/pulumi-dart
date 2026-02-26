@@ -1,0 +1,3 @@
+library module_msk_cluster_configuration_info;
+
+export 'cluster_configuration_info.dart';

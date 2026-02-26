@@ -1,0 +1,3 @@
+library module_bedrock_agentcore_gateway_workload_identity_detail;
+
+export 'agentcore_gateway_workload_identity_detail.dart';

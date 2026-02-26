@@ -1,0 +1,3 @@
+library module_ssm_contacts_rotation_recurrence_shift_coverage;
+
+export 'contacts_rotation_recurrence_shift_coverage.dart';

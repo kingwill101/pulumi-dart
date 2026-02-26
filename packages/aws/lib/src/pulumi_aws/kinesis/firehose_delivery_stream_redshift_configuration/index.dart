@@ -1,0 +1,3 @@
+library module_kinesis_firehose_delivery_stream_redshift_configuration;
+
+export 'firehose_delivery_stream_redshift_configuration.dart';

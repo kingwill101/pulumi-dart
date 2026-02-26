@@ -1,0 +1,48 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class EndpointConfigurationShadowProductionVariantManagedInstanceScaling {
+  /// Maximum number of instances that the endpoint can provision when it scales up to accommodate an increase in traffic.
+  final int? maxInstanceCount;
+
+  /// Minimum number of instances that the endpoint must retain when it scales down to accommodate a decrease in traffic.
+  final int? minInstanceCount;
+
+  /// Whether managed instance scaling is enabled. Valid values are `ENABLED` and `DISABLED`.
+  final String? status;
+
+  EndpointConfigurationShadowProductionVariantManagedInstanceScaling({
+    this.maxInstanceCount,
+    this.minInstanceCount,
+    this.status,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final maxInstanceCountValue = maxInstanceCount;
+    if (maxInstanceCountValue != null) {
+      map['maxInstanceCount'] = maxInstanceCountValue;
+    }
+    final minInstanceCountValue = minInstanceCount;
+    if (minInstanceCountValue != null) {
+      map['minInstanceCount'] = minInstanceCountValue;
+    }
+    final statusValue = status;
+    if (statusValue != null) {
+      map['status'] = statusValue;
+    }
+    return map;
+  }
+
+  factory EndpointConfigurationShadowProductionVariantManagedInstanceScaling.fromMap(
+      Map<String, dynamic> map) {
+    return EndpointConfigurationShadowProductionVariantManagedInstanceScaling(
+      maxInstanceCount: map['maxInstanceCount'] == null
+          ? null
+          : map['maxInstanceCount'] as int,
+      minInstanceCount: map['minInstanceCount'] == null
+          ? null
+          : map['minInstanceCount'] as int,
+      status: map['status'] == null ? null : map['status'] as String,
+    );
+  }
+}

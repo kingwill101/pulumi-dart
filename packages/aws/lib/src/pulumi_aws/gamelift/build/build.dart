@@ -1,0 +1,185 @@
+import 'package:pulumi/pulumi.dart';
+import '../build_storage_location/build_storage_location.dart';
+import 'build_args.dart';
+
+/// Provides an GameLift Build resource.
+///
+/// ## Example Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const test = new aws.gamelift.Build("test", {
+/// name: "example-build",
+/// operatingSystem: "WINDOWS_2012",
+/// storageLocation: {
+/// bucket: testAwsS3Bucket.id,
+/// key: testAwsS3Object.key,
+/// roleArn: testAwsIamRole.arn,
+/// },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// test = aws.gamelift.Build("test",
+/// name="example-build",
+/// operating_system="WINDOWS_2012",
+/// storage_location={
+/// "bucket": test_aws_s3_bucket["id"],
+/// "key": test_aws_s3_object["key"],
+/// "role_arn": test_aws_iam_role["arn"],
+/// })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var test = new Aws.GameLift.Build("test", new()
+/// {
+/// Name = "example-build",
+/// OperatingSystem = "WINDOWS_2012",
+/// StorageLocation = new Aws.GameLift.Inputs.BuildStorageLocationArgs
+/// {
+/// Bucket = testAwsS3Bucket.Id,
+/// Key = testAwsS3Object.Key,
+/// RoleArn = testAwsIamRole.Arn,
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/gamelift"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := gamelift.NewBuild(ctx, "test", &gamelift.BuildArgs{
+/// Name:            pulumi.String("example-build"),
+/// OperatingSystem: pulumi.String("WINDOWS_2012"),
+/// StorageLocation: &gamelift.BuildStorageLocationArgs{
+/// Bucket:  pulumi.Any(testAwsS3Bucket.Id),
+/// Key:     pulumi.Any(testAwsS3Object.Key),
+/// RoleArn: pulumi.Any(testAwsIamRole.Arn),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.gamelift.Build;
+/// import com.pulumi.aws.gamelift.BuildArgs;
+/// import com.pulumi.aws.gamelift.inputs.BuildStorageLocationArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var test = new Build("test", BuildArgs.builder()
+/// .name("example-build")
+/// .operatingSystem("WINDOWS_2012")
+/// .storageLocation(BuildStorageLocationArgs.builder()
+/// .bucket(testAwsS3Bucket.id())
+/// .key(testAwsS3Object.key())
+/// .roleArn(testAwsIamRole.arn())
+/// .build())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// test:
+/// type: aws:gamelift:Build
+/// properties:
+/// name: example-build
+/// operatingSystem: WINDOWS_2012
+/// storageLocation:
+/// bucket: ${testAwsS3Bucket.id}
+/// key: ${testAwsS3Object.key}
+/// roleArn: ${testAwsIamRole.arn}
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Using `pulumi import`, import GameLift Builds using the ID. For example:
+///
+/// ```sh
+/// $ pulumi import aws:gamelift/build:Build example <build-id>
+/// ```
+class Build extends CustomResource {
+  /// GameLift Build ARN.
+  late final Output<String> arn;
+
+  /// Name of the build
+  late final Output<String> name;
+
+  /// Operating system that the game server binaries are built to run on. Valid values: `WINDOWS_2012`, `AMAZON_LINUX`, `AMAZON_LINUX_2`, `WINDOWS_2016`, `AMAZON_LINUX_2023`.
+  late final Output<String> operatingSystem;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  /// Information indicating where your game build files are stored. See below.
+  late final Output<BuildStorageLocation> storageLocation;
+
+  /// Key-value map of resource tags. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  late final Output<Map<String, String>?> tags;
+
+  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  late final Output<Map<String, String>> tagsAll;
+
+  /// Version that is associated with this build.
+  late final Output<String?> version;
+
+  Build(
+    String name, {
+    BuildArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:gamelift/build:Build',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.arn = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.operatingSystem = Output.createUnknown<String>();
+    this.region = Output.createUnknown<String>();
+    this.storageLocation = Output.createUnknown<BuildStorageLocation>();
+    this.tags = Output.createUnknown<Map<String, String>?>();
+    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.version = Output.createUnknown<String?>();
+  }
+}

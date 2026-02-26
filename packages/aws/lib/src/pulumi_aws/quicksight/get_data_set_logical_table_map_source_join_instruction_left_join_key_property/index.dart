@@ -1,0 +1,3 @@
+library module_quicksight_get_data_set_logical_table_map_source_join_instruction_left_join_key_property;
+
+export 'get_data_set_logical_table_map_source_join_instruction_left_join_key_property.dart';

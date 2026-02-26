@@ -1,0 +1,3 @@
+library module_appfabric_ingestion_destination_destination_configuration_audit_log;
+
+export 'ingestion_destination_destination_configuration_audit_log.dart';

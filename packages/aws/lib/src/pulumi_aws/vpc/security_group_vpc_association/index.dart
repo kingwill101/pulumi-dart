@@ -1,0 +1,4 @@
+library module_vpc_security_group_vpc_association;
+
+export 'security_group_vpc_association.dart';
+export 'security_group_vpc_association_args.dart';

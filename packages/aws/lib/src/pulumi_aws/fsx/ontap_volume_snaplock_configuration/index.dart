@@ -1,0 +1,3 @@
+library module_fsx_ontap_volume_snaplock_configuration;
+
+export 'ontap_volume_snaplock_configuration.dart';

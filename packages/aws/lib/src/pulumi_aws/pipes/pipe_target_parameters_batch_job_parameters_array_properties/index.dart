@@ -1,0 +1,3 @@
+library module_pipes_pipe_target_parameters_batch_job_parameters_array_properties;
+
+export 'pipe_target_parameters_batch_job_parameters_array_properties.dart';

@@ -1,0 +1,3 @@
+library module_fsx_file_cache_lustre_configuration;
+
+export 'file_cache_lustre_configuration.dart';

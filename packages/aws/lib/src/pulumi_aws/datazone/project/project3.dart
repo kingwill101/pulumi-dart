@@ -1,0 +1,291 @@
+import 'package:pulumi/pulumi.dart';
+import '../project_failure_reason/project_failure_reason.dart';
+import '../project_timeouts/project_timeouts.dart';
+import 'project_args3.dart';
+
+/// Resource for managing an AWS DataZone Project.
+///
+/// ## Example Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const test = new aws.datazone.Project("test", {
+/// domainId: testAwsDatazoneDomain.id,
+/// glossaryTerms: ["2N8w6XJCwZf"],
+/// name: "name",
+/// description: "desc",
+/// skipDeletionCheck: true,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// test = aws.datazone.Project("test",
+/// domain_id=test_aws_datazone_domain["id"],
+/// glossary_terms=["2N8w6XJCwZf"],
+/// name="name",
+/// description="desc",
+/// skip_deletion_check=True)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var test = new Aws.DataZone.Project("test", new()
+/// {
+/// DomainId = testAwsDatazoneDomain.Id,
+/// GlossaryTerms = new[]
+/// {
+/// "2N8w6XJCwZf",
+/// },
+/// Name = "name",
+/// Description = "desc",
+/// SkipDeletionCheck = true,
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/datazone"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := datazone.NewProject(ctx, "test", &datazone.ProjectArgs{
+/// DomainId: testAwsDatazoneDomain.Id,
+/// GlossaryTerms: pulumi.StringArray{
+/// pulumi.String("2N8w6XJCwZf"),
+/// },
+/// Name:              pulumi.String("name"),
+/// Description:       pulumi.String("desc"),
+/// SkipDeletionCheck: pulumi.Bool(true),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.datazone.Project;
+/// import com.pulumi.aws.datazone.ProjectArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var test = new Project("test", ProjectArgs.builder()
+/// .domainId(testAwsDatazoneDomain.id())
+/// .glossaryTerms("2N8w6XJCwZf")
+/// .name("name")
+/// .description("desc")
+/// .skipDeletionCheck(true)
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// test:
+/// type: aws:datazone:Project
+/// properties:
+/// domainId: ${testAwsDatazoneDomain.id}
+/// glossaryTerms:
+/// - 2N8w6XJCwZf
+/// name: name
+/// description: desc
+/// skipDeletionCheck: true
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ### Basic Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const test = new aws.datazone.Project("test", {
+/// domainIdentifier: testAwsDatazoneDomain.id,
+/// name: "name",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// test = aws.datazone.Project("test",
+/// domain_identifier=test_aws_datazone_domain["id"],
+/// name="name")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var test = new Aws.DataZone.Project("test", new()
+/// {
+/// DomainIdentifier = testAwsDatazoneDomain.Id,
+/// Name = "name",
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/datazone"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := datazone.NewProject(ctx, "test", &datazone.ProjectArgs{
+/// DomainIdentifier: pulumi.Any(testAwsDatazoneDomain.Id),
+/// Name:             pulumi.String("name"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.datazone.Project;
+/// import com.pulumi.aws.datazone.ProjectArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var test = new Project("test", ProjectArgs.builder()
+/// .domainIdentifier(testAwsDatazoneDomain.id())
+/// .name("name")
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// test:
+/// type: aws:datazone:Project
+/// properties:
+/// domainIdentifier: ${testAwsDatazoneDomain.id}
+/// name: name
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Using `pulumi import`, import DataZone Project using a colon-delimited string combining <span pulumi-lang-nodejs="`domainId`" pulumi-lang-dotnet="`DomainId`" pulumi-lang-go="`domainId`" pulumi-lang-python="`domain_id`" pulumi-lang-yaml="`domainId`" pulumi-lang-java="`domainId`">`domain_id`</span> and <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+///
+/// ```sh
+/// $ pulumi import aws:datazone/project:Project example domain-1234:project-1234
+/// ```
+class Project3 extends CustomResource {
+  /// Timestamp of when the project was made.
+  late final Output<String> createdAt;
+
+  /// Creator of the project.
+  late final Output<String> createdBy;
+
+  /// Description of project.
+  late final Output<String?> description;
+
+  /// Identifier of domain which the project is part of. Must follow the regex of `^dzd[-_][a-zA-Z0-9_-]{1,36}$`.
+  late final Output<String> domainIdentifier;
+
+  /// List of error messages if operation cannot be completed.
+  late final Output<List<ProjectFailureReason>> failureReasons;
+
+  /// List of glossary terms that can be used in the project. The list cannot be empty or include over 20 values. Each value must follow the regex of `[a-zA-Z0-9_-]{1,36}$`.
+  late final Output<List<String>?> glossaryTerms;
+
+  /// Timestamp of when the project was last updated.
+  late final Output<String> lastUpdatedAt;
+
+  /// Name of the project. Must follow the regex of `^[\w -]+$`. and have a length of at most 64.
+  ///
+  /// The following arguments are optional:
+  late final Output<String> name;
+
+  /// Enum that conveys state of project. Can be `ACTIVE`, `DELETING`, or `DELETE_FAILED`.
+  late final Output<String> projectStatus;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  /// Optional flag to delete all child entities within the project.
+  late final Output<bool?> skipDeletionCheck;
+  late final Output<ProjectTimeouts?> timeouts;
+
+  Project3(
+    String name, {
+    ProjectArgs3? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:datazone/project:Project',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.createdAt = Output.createUnknown<String>();
+    this.createdBy = Output.createUnknown<String>();
+    this.description = Output.createUnknown<String?>();
+    this.domainIdentifier = Output.createUnknown<String>();
+    this.failureReasons = Output.createUnknown<List<ProjectFailureReason>>();
+    this.glossaryTerms = Output.createUnknown<List<String>?>();
+    this.lastUpdatedAt = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.projectStatus = Output.createUnknown<String>();
+    this.region = Output.createUnknown<String>();
+    this.skipDeletionCheck = Output.createUnknown<bool?>();
+    this.timeouts = Output.createUnknown<ProjectTimeouts?>();
+  }
+}

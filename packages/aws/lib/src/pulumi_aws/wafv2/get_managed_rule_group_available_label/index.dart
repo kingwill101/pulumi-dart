@@ -1,0 +1,3 @@
+library module_wafv2_get_managed_rule_group_available_label;
+
+export 'get_managed_rule_group_available_label.dart';

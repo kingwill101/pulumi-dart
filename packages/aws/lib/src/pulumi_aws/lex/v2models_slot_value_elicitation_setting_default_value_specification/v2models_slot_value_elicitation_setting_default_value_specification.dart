@@ -1,0 +1,37 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../v2models_slot_value_elicitation_setting_default_value_specification_default_value_list/v2models_slot_value_elicitation_setting_default_value_specification_default_value_list.dart';
+
+class V2modelsSlotValueElicitationSettingDefaultValueSpecification {
+  /// List of default values.
+  /// Amazon Lex chooses the default value to use in the order that they are presented in the list.
+  /// See the <span pulumi-lang-nodejs="`defaultValueList`" pulumi-lang-dotnet="`DefaultValueList`" pulumi-lang-go="`defaultValueList`" pulumi-lang-python="`default_value_list`" pulumi-lang-yaml="`defaultValueList`" pulumi-lang-java="`defaultValueList`">`default_value_list`</span> argument reference below.
+  final List<
+          V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList>
+      defaultValueLists;
+
+  V2modelsSlotValueElicitationSettingDefaultValueSpecification({
+    required this.defaultValueLists,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['defaultValueLists'] = Input.encodeList<
+        V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList,
+        Map<String, dynamic>>(defaultValueLists, (value) => value.toMap());
+    return map;
+  }
+
+  factory V2modelsSlotValueElicitationSettingDefaultValueSpecification.fromMap(
+      Map<String, dynamic> map) {
+    return V2modelsSlotValueElicitationSettingDefaultValueSpecification(
+      defaultValueLists: Input.decodeList<
+              V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList>(
+          map['defaultValueLists'],
+          (value) =>
+              V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList
+                  .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

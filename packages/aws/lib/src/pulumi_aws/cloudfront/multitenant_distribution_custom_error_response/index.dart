@@ -1,0 +1,3 @@
+library module_cloudfront_multitenant_distribution_custom_error_response;
+
+export 'multitenant_distribution_custom_error_response.dart';

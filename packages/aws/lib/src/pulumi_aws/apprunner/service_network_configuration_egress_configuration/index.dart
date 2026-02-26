@@ -1,0 +1,3 @@
+library module_apprunner_service_network_configuration_egress_configuration;
+
+export 'service_network_configuration_egress_configuration.dart';

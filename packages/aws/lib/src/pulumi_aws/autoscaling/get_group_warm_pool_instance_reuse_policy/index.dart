@@ -1,0 +1,3 @@
+library module_autoscaling_get_group_warm_pool_instance_reuse_policy;
+
+export 'get_group_warm_pool_instance_reuse_policy.dart';

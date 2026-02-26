@@ -1,0 +1,3 @@
+library module_devicefarm_test_grid_project_vpc_config;
+
+export 'test_grid_project_vpc_config.dart';

@@ -1,0 +1,3 @@
+library module_apigatewayv2_authorizer_jwt_configuration;
+
+export 'authorizer_jwt_configuration.dart';

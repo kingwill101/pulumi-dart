@@ -1,0 +1,3 @@
+library module_ecs_service_service_connect_configuration_log_configuration;
+
+export 'service_service_connect_configuration_log_configuration.dart';

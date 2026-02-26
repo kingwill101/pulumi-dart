@@ -1,0 +1,3 @@
+library module_ecs_service_ordered_placement_strategy;
+
+export 'service_ordered_placement_strategy.dart';

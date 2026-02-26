@@ -1,0 +1,3 @@
+library module_amplify_domain_association_sub_domain;
+
+export 'domain_association_sub_domain.dart';

@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSet {
+  /// Set of IPv4 or IPv6 addresses in CIDR notation to use for the Suricata `HOME_NET` variable.
+  final List<String> definitions;
+
+  FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSet({
+    required this.definitions,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['definitions'] = definitions;
+    return map;
+  }
+
+  factory FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSet.fromMap(
+      Map<String, dynamic> map) {
+    return FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSet(
+      definitions: (map['definitions'] as List).cast<String>(),
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_ec2_ami_from_instance_ebs_block_device;
+
+export 'ami_from_instance_ebs_block_device.dart';

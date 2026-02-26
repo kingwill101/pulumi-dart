@@ -1,0 +1,3 @@
+library module_networkmanager_get_core_network_policy_document_attachment_policy;
+
+export 'get_core_network_policy_document_attachment_policy.dart';

@@ -1,0 +1,3 @@
+library module_customerprofiles_domain_rule_based_matching_conflict_resolution;
+
+export 'domain_rule_based_matching_conflict_resolution.dart';

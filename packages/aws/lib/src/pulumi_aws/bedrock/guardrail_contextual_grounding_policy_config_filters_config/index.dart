@@ -1,0 +1,3 @@
+library module_bedrock_guardrail_contextual_grounding_policy_config_filters_config;
+
+export 'guardrail_contextual_grounding_policy_config_filters_config.dart';

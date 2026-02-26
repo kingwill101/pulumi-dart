@@ -1,0 +1,3 @@
+library module_iot_indexing_configuration_thing_indexing_configuration;
+
+export 'indexing_configuration_thing_indexing_configuration.dart';

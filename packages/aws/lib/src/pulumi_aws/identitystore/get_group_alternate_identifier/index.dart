@@ -1,0 +1,3 @@
+library module_identitystore_get_group_alternate_identifier;
+
+export 'get_group_alternate_identifier.dart';

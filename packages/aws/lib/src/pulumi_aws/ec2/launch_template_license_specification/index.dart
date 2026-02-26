@@ -1,0 +1,3 @@
+library module_ec2_launch_template_license_specification;
+
+export 'launch_template_license_specification.dart';

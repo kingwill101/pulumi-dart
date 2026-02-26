@@ -1,0 +1,3 @@
+library module_chatbot_slack_channel_configuration_timeouts;
+
+export 'slack_channel_configuration_timeouts.dart';

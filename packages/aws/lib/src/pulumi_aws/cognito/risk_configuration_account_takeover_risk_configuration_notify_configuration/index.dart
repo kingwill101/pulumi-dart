@@ -1,0 +1,3 @@
+library module_cognito_risk_configuration_account_takeover_risk_configuration_notify_configuration;
+
+export 'risk_configuration_account_takeover_risk_configuration_notify_configuration.dart';

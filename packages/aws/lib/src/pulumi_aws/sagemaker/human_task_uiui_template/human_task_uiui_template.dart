@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class HumanTaskUIUiTemplate {
+  /// The content of the Liquid template for the worker user interface.
+  final String? content;
+
+  /// The SHA-256 digest of the contents of the template.
+  final String? contentSha256;
+
+  /// The URL for the user interface template.
+  final String? url;
+
+  HumanTaskUIUiTemplate({
+    this.content,
+    this.contentSha256,
+    this.url,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final contentValue = content;
+    if (contentValue != null) {
+      map['content'] = contentValue;
+    }
+    final contentSha256Value = contentSha256;
+    if (contentSha256Value != null) {
+      map['contentSha256'] = contentSha256Value;
+    }
+    final urlValue = url;
+    if (urlValue != null) {
+      map['url'] = urlValue;
+    }
+    return map;
+  }
+
+  factory HumanTaskUIUiTemplate.fromMap(Map<String, dynamic> map) {
+    return HumanTaskUIUiTemplate(
+      content: map['content'] == null ? null : map['content'] as String,
+      contentSha256:
+          map['contentSha256'] == null ? null : map['contentSha256'] as String,
+      url: map['url'] == null ? null : map['url'] as String,
+    );
+  }
+}

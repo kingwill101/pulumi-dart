@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class UsagePlanApiStageThrottle {
+  /// The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
+  final int? burstLimit;
+
+  /// Method to apply the throttle settings for. Specfiy the path and method, for example `/test/GET`.
+  final String path;
+
+  /// The API request steady-state rate limit.
+  final double? rateLimit;
+
+  UsagePlanApiStageThrottle({
+    this.burstLimit,
+    required this.path,
+    this.rateLimit,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final burstLimitValue = burstLimit;
+    if (burstLimitValue != null) {
+      map['burstLimit'] = burstLimitValue;
+    }
+    map['path'] = path;
+    final rateLimitValue = rateLimit;
+    if (rateLimitValue != null) {
+      map['rateLimit'] = rateLimitValue;
+    }
+    return map;
+  }
+
+  factory UsagePlanApiStageThrottle.fromMap(Map<String, dynamic> map) {
+    return UsagePlanApiStageThrottle(
+      burstLimit: map['burstLimit'] == null ? null : map['burstLimit'] as int,
+      path: map['path'] as String,
+      rateLimit: map['rateLimit'] == null ? null : map['rateLimit'] as double,
+    );
+  }
+}

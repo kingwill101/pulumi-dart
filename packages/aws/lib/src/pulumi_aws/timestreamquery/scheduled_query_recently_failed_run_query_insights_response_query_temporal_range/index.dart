@@ -1,0 +1,3 @@
+library module_timestreamquery_scheduled_query_recently_failed_run_query_insights_response_query_temporal_range;
+
+export 'scheduled_query_recently_failed_run_query_insights_response_query_temporal_range.dart';

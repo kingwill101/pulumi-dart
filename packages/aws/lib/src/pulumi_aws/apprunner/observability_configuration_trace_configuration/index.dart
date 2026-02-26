@@ -1,0 +1,3 @@
+library module_apprunner_observability_configuration_trace_configuration;
+
+export 'observability_configuration_trace_configuration.dart';

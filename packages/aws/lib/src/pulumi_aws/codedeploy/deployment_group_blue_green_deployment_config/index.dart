@@ -1,0 +1,3 @@
+library module_codedeploy_deployment_group_blue_green_deployment_config;
+
+export 'deployment_group_blue_green_deployment_config.dart';

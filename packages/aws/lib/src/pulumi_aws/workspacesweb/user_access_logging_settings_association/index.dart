@@ -1,0 +1,4 @@
+library module_workspacesweb_user_access_logging_settings_association;
+
+export 'user_access_logging_settings_association.dart';
+export 'user_access_logging_settings_association_args.dart';

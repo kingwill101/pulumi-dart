@@ -1,0 +1,3 @@
+library module_appflow_connector_profile_connector_profile_config_connector_profile_credentials_dynatrace;
+
+export 'connector_profile_connector_profile_config_connector_profile_credentials_dynatrace.dart';

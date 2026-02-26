@@ -1,0 +1,3 @@
+library module_iot_thing_group_properties_attribute_payload;
+
+export 'thing_group_properties_attribute_payload.dart';

@@ -1,0 +1,3 @@
+library module_bedrock_agentcore_agent_runtime_request_header_configuration;
+
+export 'agentcore_agent_runtime_request_header_configuration.dart';

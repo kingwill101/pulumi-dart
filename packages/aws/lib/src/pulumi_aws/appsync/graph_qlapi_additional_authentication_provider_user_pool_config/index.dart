@@ -1,0 +1,3 @@
+library module_appsync_graph_qlapi_additional_authentication_provider_user_pool_config;
+
+export 'graph_qlapi_additional_authentication_provider_user_pool_config.dart';

@@ -1,0 +1,493 @@
+import 'package:pulumi/pulumi.dart';
+import '../faq_s3_path/faq_s3_path.dart';
+import 'faq_args.dart';
+
+/// Resource for managing an AWS Kendra FAQ.
+///
+/// ## Example Usage
+///
+/// ### Basic
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.kendra.Faq("example", {
+/// indexId: exampleAwsKendraIndex.id,
+/// name: "Example",
+/// roleArn: exampleAwsIamRole.arn,
+/// s3Path: {
+/// bucket: exampleAwsS3Bucket.id,
+/// key: exampleAwsS3Object.key,
+/// },
+/// tags: {
+/// Name: "Example Kendra Faq",
+/// },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.kendra.Faq("example",
+/// index_id=example_aws_kendra_index["id"],
+/// name="Example",
+/// role_arn=example_aws_iam_role["arn"],
+/// s3_path={
+/// "bucket": example_aws_s3_bucket["id"],
+/// "key": example_aws_s3_object["key"],
+/// },
+/// tags={
+/// "Name": "Example Kendra Faq",
+/// })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.Kendra.Faq("example", new()
+/// {
+/// IndexId = exampleAwsKendraIndex.Id,
+/// Name = "Example",
+/// RoleArn = exampleAwsIamRole.Arn,
+/// S3Path = new Aws.Kendra.Inputs.FaqS3PathArgs
+/// {
+/// Bucket = exampleAwsS3Bucket.Id,
+/// Key = exampleAwsS3Object.Key,
+/// },
+/// Tags =
+/// {
+/// { "Name", "Example Kendra Faq" },
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/kendra"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := kendra.NewFaq(ctx, "example", &kendra.FaqArgs{
+/// IndexId: pulumi.Any(exampleAwsKendraIndex.Id),
+/// Name:    pulumi.String("Example"),
+/// RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// S3Path: &kendra.FaqS3PathArgs{
+/// Bucket: pulumi.Any(exampleAwsS3Bucket.Id),
+/// Key:    pulumi.Any(exampleAwsS3Object.Key),
+/// },
+/// Tags: pulumi.StringMap{
+/// "Name": pulumi.String("Example Kendra Faq"),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.kendra.Faq;
+/// import com.pulumi.aws.kendra.FaqArgs;
+/// import com.pulumi.aws.kendra.inputs.FaqS3PathArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new Faq("example", FaqArgs.builder()
+/// .indexId(exampleAwsKendraIndex.id())
+/// .name("Example")
+/// .roleArn(exampleAwsIamRole.arn())
+/// .s3Path(FaqS3PathArgs.builder()
+/// .bucket(exampleAwsS3Bucket.id())
+/// .key(exampleAwsS3Object.key())
+/// .build())
+/// .tags(Map.of("Name", "Example Kendra Faq"))
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:kendra:Faq
+/// properties:
+/// indexId: ${exampleAwsKendraIndex.id}
+/// name: Example
+/// roleArn: ${exampleAwsIamRole.arn}
+/// s3Path:
+/// bucket: ${exampleAwsS3Bucket.id}
+/// key: ${exampleAwsS3Object.key}
+/// tags:
+/// Name: Example Kendra Faq
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ### With File Format
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.kendra.Faq("example", {
+/// indexId: exampleAwsKendraIndex.id,
+/// name: "Example",
+/// fileFormat: "CSV",
+/// roleArn: exampleAwsIamRole.arn,
+/// s3Path: {
+/// bucket: exampleAwsS3Bucket.id,
+/// key: exampleAwsS3Object.key,
+/// },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.kendra.Faq("example",
+/// index_id=example_aws_kendra_index["id"],
+/// name="Example",
+/// file_format="CSV",
+/// role_arn=example_aws_iam_role["arn"],
+/// s3_path={
+/// "bucket": example_aws_s3_bucket["id"],
+/// "key": example_aws_s3_object["key"],
+/// })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.Kendra.Faq("example", new()
+/// {
+/// IndexId = exampleAwsKendraIndex.Id,
+/// Name = "Example",
+/// FileFormat = "CSV",
+/// RoleArn = exampleAwsIamRole.Arn,
+/// S3Path = new Aws.Kendra.Inputs.FaqS3PathArgs
+/// {
+/// Bucket = exampleAwsS3Bucket.Id,
+/// Key = exampleAwsS3Object.Key,
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/kendra"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := kendra.NewFaq(ctx, "example", &kendra.FaqArgs{
+/// IndexId:    pulumi.Any(exampleAwsKendraIndex.Id),
+/// Name:       pulumi.String("Example"),
+/// FileFormat: pulumi.String("CSV"),
+/// RoleArn:    pulumi.Any(exampleAwsIamRole.Arn),
+/// S3Path: &kendra.FaqS3PathArgs{
+/// Bucket: pulumi.Any(exampleAwsS3Bucket.Id),
+/// Key:    pulumi.Any(exampleAwsS3Object.Key),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.kendra.Faq;
+/// import com.pulumi.aws.kendra.FaqArgs;
+/// import com.pulumi.aws.kendra.inputs.FaqS3PathArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new Faq("example", FaqArgs.builder()
+/// .indexId(exampleAwsKendraIndex.id())
+/// .name("Example")
+/// .fileFormat("CSV")
+/// .roleArn(exampleAwsIamRole.arn())
+/// .s3Path(FaqS3PathArgs.builder()
+/// .bucket(exampleAwsS3Bucket.id())
+/// .key(exampleAwsS3Object.key())
+/// .build())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:kendra:Faq
+/// properties:
+/// indexId: ${exampleAwsKendraIndex.id}
+/// name: Example
+/// fileFormat: CSV
+/// roleArn: ${exampleAwsIamRole.arn}
+/// s3Path:
+/// bucket: ${exampleAwsS3Bucket.id}
+/// key: ${exampleAwsS3Object.key}
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ### With Language Code
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.kendra.Faq("example", {
+/// indexId: exampleAwsKendraIndex.id,
+/// name: "Example",
+/// languageCode: "en",
+/// roleArn: exampleAwsIamRole.arn,
+/// s3Path: {
+/// bucket: exampleAwsS3Bucket.id,
+/// key: exampleAwsS3Object.key,
+/// },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.kendra.Faq("example",
+/// index_id=example_aws_kendra_index["id"],
+/// name="Example",
+/// language_code="en",
+/// role_arn=example_aws_iam_role["arn"],
+/// s3_path={
+/// "bucket": example_aws_s3_bucket["id"],
+/// "key": example_aws_s3_object["key"],
+/// })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.Kendra.Faq("example", new()
+/// {
+/// IndexId = exampleAwsKendraIndex.Id,
+/// Name = "Example",
+/// LanguageCode = "en",
+/// RoleArn = exampleAwsIamRole.Arn,
+/// S3Path = new Aws.Kendra.Inputs.FaqS3PathArgs
+/// {
+/// Bucket = exampleAwsS3Bucket.Id,
+/// Key = exampleAwsS3Object.Key,
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/kendra"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := kendra.NewFaq(ctx, "example", &kendra.FaqArgs{
+/// IndexId:      pulumi.Any(exampleAwsKendraIndex.Id),
+/// Name:         pulumi.String("Example"),
+/// LanguageCode: pulumi.String("en"),
+/// RoleArn:      pulumi.Any(exampleAwsIamRole.Arn),
+/// S3Path: &kendra.FaqS3PathArgs{
+/// Bucket: pulumi.Any(exampleAwsS3Bucket.Id),
+/// Key:    pulumi.Any(exampleAwsS3Object.Key),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.kendra.Faq;
+/// import com.pulumi.aws.kendra.FaqArgs;
+/// import com.pulumi.aws.kendra.inputs.FaqS3PathArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new Faq("example", FaqArgs.builder()
+/// .indexId(exampleAwsKendraIndex.id())
+/// .name("Example")
+/// .languageCode("en")
+/// .roleArn(exampleAwsIamRole.arn())
+/// .s3Path(FaqS3PathArgs.builder()
+/// .bucket(exampleAwsS3Bucket.id())
+/// .key(exampleAwsS3Object.key())
+/// .build())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:kendra:Faq
+/// properties:
+/// indexId: ${exampleAwsKendraIndex.id}
+/// name: Example
+/// languageCode: en
+/// roleArn: ${exampleAwsIamRole.arn}
+/// s3Path:
+/// bucket: ${exampleAwsS3Bucket.id}
+/// key: ${exampleAwsS3Object.key}
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.kendra.Faq`" pulumi-lang-dotnet="`aws.kendra.Faq`" pulumi-lang-go="`kendra.Faq`" pulumi-lang-python="`kendra.Faq`" pulumi-lang-yaml="`aws.kendra.Faq`" pulumi-lang-java="`aws.kendra.Faq`">`aws.kendra.Faq`</span> using the unique identifiers of the FAQ and index separated by a slash (`/`). For example:
+///
+/// ```sh
+/// $ pulumi import aws:kendra/faq:Faq example faq-123456780/idx-8012925589
+/// ```
+class Faq extends CustomResource {
+  /// ARN of the FAQ.
+  late final Output<String> arn;
+
+  /// The Unix datetime that the FAQ was created.
+  late final Output<String> createdAt;
+  late final Output<String?> description;
+
+  /// When the Status field value is `FAILED`, this contains a message that explains why.
+  late final Output<String> errorMessage;
+
+  /// The identifier of the FAQ.
+  late final Output<String> faqId;
+  late final Output<String?> fileFormat;
+
+  /// The identifier of the index for a FAQ.
+  late final Output<String> indexId;
+  late final Output<String> languageCode;
+
+  /// The name that should be associated with the FAQ.
+  late final Output<String> name;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+  late final Output<String> region;
+
+  /// The Amazon Resource Name (ARN) of a role with permission to access the S3 bucket that contains the FAQs. For more information, see [IAM Roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
+  late final Output<String> roleArn;
+
+  /// The S3 location of the FAQ input data. Detailed below.
+  late final Output<FaqS3Path> s3Path;
+
+  /// The status of the FAQ. It is ready to use when the status is ACTIVE.
+  late final Output<String> status;
+  late final Output<Map<String, String>?> tags;
+
+  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  late final Output<Map<String, String>> tagsAll;
+
+  /// The date and time that the FAQ was last updated.
+  late final Output<String> updatedAt;
+
+  Faq(
+    String name, {
+    FaqArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:kendra/faq:Faq',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.arn = Output.createUnknown<String>();
+    this.createdAt = Output.createUnknown<String>();
+    this.description = Output.createUnknown<String?>();
+    this.errorMessage = Output.createUnknown<String>();
+    this.faqId = Output.createUnknown<String>();
+    this.fileFormat = Output.createUnknown<String?>();
+    this.indexId = Output.createUnknown<String>();
+    this.languageCode = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.region = Output.createUnknown<String>();
+    this.roleArn = Output.createUnknown<String>();
+    this.s3Path = Output.createUnknown<FaqS3Path>();
+    this.status = Output.createUnknown<String>();
+    this.tags = Output.createUnknown<Map<String, String>?>();
+    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.updatedAt = Output.createUnknown<String>();
+  }
+}

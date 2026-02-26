@@ -1,0 +1,4 @@
+library module_cloudwatch_log_delivery_destination_policy;
+
+export 'log_delivery_destination_policy.dart';
+export 'log_delivery_destination_policy_args.dart';

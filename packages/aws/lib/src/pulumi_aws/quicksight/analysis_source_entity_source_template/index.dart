@@ -1,0 +1,3 @@
+library module_quicksight_analysis_source_entity_source_template;
+
+export 'analysis_source_entity_source_template.dart';

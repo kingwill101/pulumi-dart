@@ -1,0 +1,3 @@
+library module_sagemaker_feature_group_online_store_config;
+
+export 'feature_group_online_store_config.dart';

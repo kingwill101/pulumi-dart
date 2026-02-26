@@ -1,0 +1,3 @@
+library module_cognito_user_pool_email_mfa_configuration;
+
+export 'user_pool_email_mfa_configuration.dart';

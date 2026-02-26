@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class DistributionOriginGroupFailoverCriteria {
+  /// List of HTTP status codes for the origin group.
+  final List<int> statusCodes;
+
+  DistributionOriginGroupFailoverCriteria({
+    required this.statusCodes,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['statusCodes'] = statusCodes;
+    return map;
+  }
+
+  factory DistributionOriginGroupFailoverCriteria.fromMap(
+      Map<String, dynamic> map) {
+    return DistributionOriginGroupFailoverCriteria(
+      statusCodes: (map['statusCodes'] as List).cast<int>(),
+    );
+  }
+}

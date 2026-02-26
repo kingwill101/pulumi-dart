@@ -1,0 +1,3 @@
+library module_storagegateway_gateway_smb_active_directory_settings;
+
+export 'gateway_smb_active_directory_settings.dart';

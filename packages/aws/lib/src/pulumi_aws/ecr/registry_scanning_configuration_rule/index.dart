@@ -1,0 +1,3 @@
+library module_ecr_registry_scanning_configuration_rule;
+
+export 'registry_scanning_configuration_rule.dart';

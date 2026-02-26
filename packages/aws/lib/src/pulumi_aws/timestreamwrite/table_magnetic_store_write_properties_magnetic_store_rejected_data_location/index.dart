@@ -1,0 +1,3 @@
+library module_timestreamwrite_table_magnetic_store_write_properties_magnetic_store_rejected_data_location;
+
+export 'table_magnetic_store_write_properties_magnetic_store_rejected_data_location.dart';

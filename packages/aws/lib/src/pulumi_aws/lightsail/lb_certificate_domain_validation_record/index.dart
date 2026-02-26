@@ -1,0 +1,3 @@
+library module_lightsail_lb_certificate_domain_validation_record;
+
+export 'lb_certificate_domain_validation_record.dart';

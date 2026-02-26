@@ -1,0 +1,70 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_multi_region_access_points_access_point_public_access_block/get_multi_region_access_points_access_point_public_access_block.dart';
+import '../get_multi_region_access_points_access_point_region/get_multi_region_access_points_access_point_region.dart';
+
+class GetMultiRegionAccessPointsAccessPoint {
+  /// Alias for the multi-region access point.
+  final String alias;
+
+  /// Time the multi-region access point was created.
+  final String createdAt;
+
+  /// Name of the multi-region access point.
+  final String name;
+
+  /// Public access block configuration for this multi-region access point. See <span pulumi-lang-nodejs="`publicAccessBlock`" pulumi-lang-dotnet="`PublicAccessBlock`" pulumi-lang-go="`publicAccessBlock`" pulumi-lang-python="`public_access_block`" pulumi-lang-yaml="`publicAccessBlock`" pulumi-lang-java="`publicAccessBlock`">`public_access_block`</span> below.
+  final List<GetMultiRegionAccessPointsAccessPointPublicAccessBlock>
+      publicAccessBlocks;
+
+  /// List of AWS Regions where the multi-region access point has data support. See <span pulumi-lang-nodejs="`regions`" pulumi-lang-dotnet="`Regions`" pulumi-lang-go="`regions`" pulumi-lang-python="`regions`" pulumi-lang-yaml="`regions`" pulumi-lang-java="`regions`">`regions`</span> below.
+  final List<GetMultiRegionAccessPointsAccessPointRegion> regions;
+
+  /// Current status of the multi-region access point.
+  final String status;
+
+  GetMultiRegionAccessPointsAccessPoint({
+    required this.alias,
+    required this.createdAt,
+    required this.name,
+    required this.publicAccessBlocks,
+    required this.regions,
+    required this.status,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['alias'] = alias;
+    map['createdAt'] = createdAt;
+    map['name'] = name;
+    map['publicAccessBlocks'] = Input.encodeList<
+        GetMultiRegionAccessPointsAccessPointPublicAccessBlock,
+        Map<String, dynamic>>(publicAccessBlocks, (value) => value.toMap());
+    map['regions'] = Input.encodeList<
+        GetMultiRegionAccessPointsAccessPointRegion,
+        Map<String, dynamic>>(regions, (value) => value.toMap());
+    map['status'] = status;
+    return map;
+  }
+
+  factory GetMultiRegionAccessPointsAccessPoint.fromMap(
+      Map<String, dynamic> map) {
+    return GetMultiRegionAccessPointsAccessPoint(
+      alias: map['alias'] as String,
+      createdAt: map['createdAt'] as String,
+      name: map['name'] as String,
+      publicAccessBlocks: Input.decodeList<
+              GetMultiRegionAccessPointsAccessPointPublicAccessBlock>(
+          map['publicAccessBlocks'],
+          (value) =>
+              GetMultiRegionAccessPointsAccessPointPublicAccessBlock.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      regions: Input.decodeList<GetMultiRegionAccessPointsAccessPointRegion>(
+          map['regions'],
+          (value) => GetMultiRegionAccessPointsAccessPointRegion.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      status: map['status'] as String,
+    );
+  }
+}

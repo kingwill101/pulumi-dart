@@ -1,0 +1,3 @@
+library module_kinesis_analytics_application_inputs_schema_record_format;
+
+export 'analytics_application_inputs_schema_record_format.dart';

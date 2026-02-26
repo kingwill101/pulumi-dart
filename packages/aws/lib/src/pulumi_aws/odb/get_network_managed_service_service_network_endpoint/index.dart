@@ -1,0 +1,3 @@
+library module_odb_get_network_managed_service_service_network_endpoint;
+
+export 'get_network_managed_service_service_network_endpoint.dart';

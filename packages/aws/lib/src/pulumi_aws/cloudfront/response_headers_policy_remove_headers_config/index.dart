@@ -1,0 +1,3 @@
+library module_cloudfront_response_headers_policy_remove_headers_config;
+
+export 'response_headers_policy_remove_headers_config.dart';

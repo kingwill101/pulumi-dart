@@ -1,0 +1,3 @@
+library module_ecs_express_gateway_service_timeouts;
+
+export 'express_gateway_service_timeouts.dart';

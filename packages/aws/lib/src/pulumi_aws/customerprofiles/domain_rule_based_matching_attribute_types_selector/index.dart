@@ -1,0 +1,3 @@
+library module_customerprofiles_domain_rule_based_matching_attribute_types_selector;
+
+export 'domain_rule_based_matching_attribute_types_selector.dart';

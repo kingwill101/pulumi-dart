@@ -1,0 +1,3 @@
+library module_accessanalyzer_analyzer_configuration_internal_access_analysis_rule_inclusion;
+
+export 'analyzer_configuration_internal_access_analysis_rule_inclusion.dart';

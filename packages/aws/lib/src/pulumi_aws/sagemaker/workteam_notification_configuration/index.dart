@@ -1,0 +1,3 @@
+library module_sagemaker_workteam_notification_configuration;
+
+export 'workteam_notification_configuration.dart';

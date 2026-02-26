@@ -1,0 +1,3 @@
+library module_lex_v2models_intent_closing_setting;
+
+export 'v2models_intent_closing_setting.dart';

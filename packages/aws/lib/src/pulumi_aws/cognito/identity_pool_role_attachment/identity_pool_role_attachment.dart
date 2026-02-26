@@ -1,0 +1,43 @@
+import 'package:pulumi/pulumi.dart';
+import '../identity_pool_role_attachment_role_mapping/identity_pool_role_attachment_role_mapping.dart';
+import 'identity_pool_role_attachment_args.dart';
+
+/// Provides an AWS Cognito Identity Pool Roles Attachment.
+///
+/// ## Import
+///
+/// Using `pulumi import`, import Cognito Identity Pool Roles Attachment using the Identity Pool ID. For example:
+///
+/// ```sh
+/// $ pulumi import aws:cognito/identityPoolRoleAttachment:IdentityPoolRoleAttachment example us-west-2:b64805ad-cb56-40ba-9ffc-f5d8207e6d42
+/// ```
+class IdentityPoolRoleAttachment extends CustomResource {
+  /// An identity pool ID in the format `REGION_GUID`.
+  late final Output<String> identityPoolId;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  /// A List of Role Mapping.
+  late final Output<List<IdentityPoolRoleAttachmentRoleMapping>?> roleMappings;
+
+  /// The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.
+  late final Output<Map<String, String>> roles;
+
+  IdentityPoolRoleAttachment(
+    String name, {
+    IdentityPoolRoleAttachmentArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:cognito/identityPoolRoleAttachment:IdentityPoolRoleAttachment',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.identityPoolId = Output.createUnknown<String>();
+    this.region = Output.createUnknown<String>();
+    this.roleMappings =
+        Output.createUnknown<List<IdentityPoolRoleAttachmentRoleMapping>?>();
+    this.roles = Output.createUnknown<Map<String, String>>();
+  }
+}

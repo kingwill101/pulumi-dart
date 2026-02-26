@@ -1,0 +1,3 @@
+library module_bedrock_agentcore_gateway_interceptor_configuration;
+
+export 'agentcore_gateway_interceptor_configuration.dart';

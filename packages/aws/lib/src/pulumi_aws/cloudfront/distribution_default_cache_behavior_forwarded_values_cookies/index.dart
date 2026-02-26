@@ -1,0 +1,3 @@
+library module_cloudfront_distribution_default_cache_behavior_forwarded_values_cookies;
+
+export 'distribution_default_cache_behavior_forwarded_values_cookies.dart';

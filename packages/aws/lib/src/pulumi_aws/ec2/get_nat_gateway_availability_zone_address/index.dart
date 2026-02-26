@@ -1,0 +1,3 @@
+library module_ec2_get_nat_gateway_availability_zone_address;
+
+export 'get_nat_gateway_availability_zone_address.dart';

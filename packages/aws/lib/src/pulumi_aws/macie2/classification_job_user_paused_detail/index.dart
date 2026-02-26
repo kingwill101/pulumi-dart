@@ -1,0 +1,3 @@
+library module_macie2_classification_job_user_paused_detail;
+
+export 'classification_job_user_paused_detail.dart';

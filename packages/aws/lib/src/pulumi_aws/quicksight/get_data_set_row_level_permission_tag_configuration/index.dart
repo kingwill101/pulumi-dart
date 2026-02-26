@@ -1,0 +1,3 @@
+library module_quicksight_get_data_set_row_level_permission_tag_configuration;
+
+export 'get_data_set_row_level_permission_tag_configuration.dart';

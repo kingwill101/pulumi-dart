@@ -1,0 +1,3 @@
+library module_sesv2_email_identity_dkim_signing_attributes;
+
+export 'email_identity_dkim_signing_attributes.dart';

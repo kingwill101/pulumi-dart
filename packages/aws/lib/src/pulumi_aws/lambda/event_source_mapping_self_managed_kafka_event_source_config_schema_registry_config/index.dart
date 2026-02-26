@@ -1,0 +1,3 @@
+library module_lambda_event_source_mapping_self_managed_kafka_event_source_config_schema_registry_config;
+
+export 'event_source_mapping_self_managed_kafka_event_source_config_schema_registry_config.dart';

@@ -1,0 +1,3 @@
+library module_kinesis_firehose_delivery_stream_splunk_configuration_processing_configuration;
+
+export 'firehose_delivery_stream_splunk_configuration_processing_configuration.dart';

@@ -1,0 +1,3 @@
+library module_s3_access_point_vpc_configuration;
+
+export 'access_point_vpc_configuration.dart';

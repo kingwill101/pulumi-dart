@@ -1,0 +1,3 @@
+library module_cloudfront_cache_policy_parameters_in_cache_key_and_forwarded_to_origin_cookies_config;
+
+export 'cache_policy_parameters_in_cache_key_and_forwarded_to_origin_cookies_config.dart';

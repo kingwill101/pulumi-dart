@@ -1,0 +1,61 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../domain_domain_settings_rstudio_server_pro_domain_settings_default_resource_spec/domain_domain_settings_rstudio_server_pro_domain_settings_default_resource_spec.dart';
+
+class DomainDomainSettingsRStudioServerProDomainSettings {
+  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see <span pulumi-lang-nodejs="`defaultResourceSpec`" pulumi-lang-dotnet="`DefaultResourceSpec`" pulumi-lang-go="`defaultResourceSpec`" pulumi-lang-python="`default_resource_spec`" pulumi-lang-yaml="`defaultResourceSpec`" pulumi-lang-java="`defaultResourceSpec`">`default_resource_spec`</span> Block above.
+  final DomainDomainSettingsRStudioServerProDomainSettingsDefaultResourceSpec?
+      defaultResourceSpec;
+
+  /// The ARN of the execution role for the RStudioServerPro Domain-level app.
+  final String domainExecutionRoleArn;
+
+  /// A URL pointing to an RStudio Connect server.
+  final String? rStudioConnectUrl;
+
+  /// A URL pointing to an RStudio Package Manager server.
+  final String? rStudioPackageManagerUrl;
+
+  DomainDomainSettingsRStudioServerProDomainSettings({
+    this.defaultResourceSpec,
+    required this.domainExecutionRoleArn,
+    this.rStudioConnectUrl,
+    this.rStudioPackageManagerUrl,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final defaultResourceSpecValue = defaultResourceSpec;
+    if (defaultResourceSpecValue != null) {
+      map['defaultResourceSpec'] = defaultResourceSpecValue.toMap();
+    }
+    map['domainExecutionRoleArn'] = domainExecutionRoleArn;
+    final rStudioConnectUrlValue = rStudioConnectUrl;
+    if (rStudioConnectUrlValue != null) {
+      map['rStudioConnectUrl'] = rStudioConnectUrlValue;
+    }
+    final rStudioPackageManagerUrlValue = rStudioPackageManagerUrl;
+    if (rStudioPackageManagerUrlValue != null) {
+      map['rStudioPackageManagerUrl'] = rStudioPackageManagerUrlValue;
+    }
+    return map;
+  }
+
+  factory DomainDomainSettingsRStudioServerProDomainSettings.fromMap(
+      Map<String, dynamic> map) {
+    return DomainDomainSettingsRStudioServerProDomainSettings(
+      defaultResourceSpec: map['defaultResourceSpec'] == null
+          ? null
+          : DomainDomainSettingsRStudioServerProDomainSettingsDefaultResourceSpec
+              .fromMap(
+                  (map['defaultResourceSpec'] as Map).cast<String, dynamic>()),
+      domainExecutionRoleArn: map['domainExecutionRoleArn'] as String,
+      rStudioConnectUrl: map['rStudioConnectUrl'] == null
+          ? null
+          : map['rStudioConnectUrl'] as String,
+      rStudioPackageManagerUrl: map['rStudioPackageManagerUrl'] == null
+          ? null
+          : map['rStudioPackageManagerUrl'] as String,
+    );
+  }
+}

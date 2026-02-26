@@ -1,0 +1,3 @@
+library module_ec2transitgateway_get_route_table_routes_filter;
+
+export 'get_route_table_routes_filter.dart';

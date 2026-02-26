@@ -1,0 +1,3 @@
+library module_sagemaker_model_card_export_job_export_artifact;
+
+export 'model_card_export_job_export_artifact.dart';

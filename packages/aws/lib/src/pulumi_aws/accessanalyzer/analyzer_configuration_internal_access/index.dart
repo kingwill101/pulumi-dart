@@ -1,0 +1,3 @@
+library module_accessanalyzer_analyzer_configuration_internal_access;
+
+export 'analyzer_configuration_internal_access.dart';

@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class SigningProfileSignatureValidityPeriod {
+  /// The time unit for signature validity. Valid values: `DAYS`, `MONTHS`, `YEARS`.
+  final String type;
+
+  /// The numerical value of the time unit for signature validity.
+  final int value;
+
+  SigningProfileSignatureValidityPeriod({
+    required this.type,
+    required this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['type'] = type;
+    map['value'] = value;
+    return map;
+  }
+
+  factory SigningProfileSignatureValidityPeriod.fromMap(
+      Map<String, dynamic> map) {
+    return SigningProfileSignatureValidityPeriod(
+      type: map['type'] as String,
+      value: map['value'] as int,
+    );
+  }
+}

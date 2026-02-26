@@ -1,0 +1,3 @@
+library module_timestreamquery_scheduled_query_recently_failed_run_error_report_location_s3_report_location;
+
+export 'scheduled_query_recently_failed_run_error_report_location_s3_report_location.dart';

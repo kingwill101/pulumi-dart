@@ -1,0 +1,4 @@
+library module_ec2_network_interface_permission;
+
+export 'network_interface_permission.dart';
+export 'network_interface_permission_args.dart';

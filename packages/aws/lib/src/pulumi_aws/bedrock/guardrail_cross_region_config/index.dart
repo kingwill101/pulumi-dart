@@ -1,0 +1,3 @@
+library module_bedrock_guardrail_cross_region_config;
+
+export 'guardrail_cross_region_config.dart';

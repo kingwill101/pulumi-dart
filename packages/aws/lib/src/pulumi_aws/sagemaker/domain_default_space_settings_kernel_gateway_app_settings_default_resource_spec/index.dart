@@ -1,0 +1,3 @@
+library module_sagemaker_domain_default_space_settings_kernel_gateway_app_settings_default_resource_spec;
+
+export 'domain_default_space_settings_kernel_gateway_app_settings_default_resource_spec.dart';

@@ -1,0 +1,3 @@
+library module_mwaa_environment_logging_configuration;
+
+export 'environment_logging_configuration.dart';

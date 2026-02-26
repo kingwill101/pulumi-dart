@@ -1,0 +1,3 @@
+library module_cloudwatch_get_log_data_protection_policy_document_statement_operation_audit_findings_destination_s3;
+
+export 'get_log_data_protection_policy_document_statement_operation_audit_findings_destination_s3.dart';

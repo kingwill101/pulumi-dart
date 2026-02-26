@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../pipeline_artifact_store_encryption_key/pipeline_artifact_store_encryption_key.dart';
+
+class PipelineArtifactStore {
+  /// The encryption key block AWS CodePipeline uses to encrypt the data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. If you don't specify a key, AWS CodePipeline uses the default key for Amazon Simple Storage Service (Amazon S3). An <span pulumi-lang-nodejs="`encryptionKey`" pulumi-lang-dotnet="`EncryptionKey`" pulumi-lang-go="`encryptionKey`" pulumi-lang-python="`encryption_key`" pulumi-lang-yaml="`encryptionKey`" pulumi-lang-java="`encryptionKey`">`encryption_key`</span> block is documented below.
+  final PipelineArtifactStoreEncryptionKey? encryptionKey;
+
+  /// The location where AWS CodePipeline stores artifacts for a pipeline; currently only `S3` is supported.
+  final String location;
+
+  /// The region where the artifact store is located. Required for a cross-region CodePipeline, do not provide for a single-region CodePipeline.
+  final String? region;
+
+  /// The type of the artifact store, such as Amazon S3
+  final String type;
+
+  PipelineArtifactStore({
+    this.encryptionKey,
+    required this.location,
+    this.region,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final encryptionKeyValue = encryptionKey;
+    if (encryptionKeyValue != null) {
+      map['encryptionKey'] = encryptionKeyValue.toMap();
+    }
+    map['location'] = location;
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    map['type'] = type;
+    return map;
+  }
+
+  factory PipelineArtifactStore.fromMap(Map<String, dynamic> map) {
+    return PipelineArtifactStore(
+      encryptionKey: map['encryptionKey'] == null
+          ? null
+          : PipelineArtifactStoreEncryptionKey.fromMap(
+              (map['encryptionKey'] as Map).cast<String, dynamic>()),
+      location: map['location'] as String,
+      region: map['region'] == null ? null : map['region'] as String,
+      type: map['type'] as String,
+    );
+  }
+}

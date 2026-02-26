@@ -1,0 +1,24 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class DetectorDatasourcesKubernetesAuditLogs {
+  /// If true, enables Kubernetes audit logs as a data source for [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html).
+  /// Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  final bool enable;
+
+  DetectorDatasourcesKubernetesAuditLogs({
+    required this.enable,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['enable'] = enable;
+    return map;
+  }
+
+  factory DetectorDatasourcesKubernetesAuditLogs.fromMap(
+      Map<String, dynamic> map) {
+    return DetectorDatasourcesKubernetesAuditLogs(
+      enable: map['enable'] as bool,
+    );
+  }
+}

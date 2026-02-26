@@ -1,0 +1,3 @@
+library module_bedrock_guardrail_topic_policy_config_tier_config;
+
+export 'guardrail_topic_policy_config_tier_config.dart';

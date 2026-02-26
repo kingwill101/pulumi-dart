@@ -1,0 +1,3 @@
+library module_opensearch_serverless_vpc_endpoint_timeouts;
+
+export 'serverless_vpc_endpoint_timeouts.dart';

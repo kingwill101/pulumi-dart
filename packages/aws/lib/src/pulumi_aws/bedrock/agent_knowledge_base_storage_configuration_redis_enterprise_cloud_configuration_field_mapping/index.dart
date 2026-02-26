@@ -1,0 +1,3 @@
+library module_bedrock_agent_knowledge_base_storage_configuration_redis_enterprise_cloud_configuration_field_mapping;
+
+export 'agent_knowledge_base_storage_configuration_redis_enterprise_cloud_configuration_field_mapping.dart';

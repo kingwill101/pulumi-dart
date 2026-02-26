@@ -1,0 +1,3 @@
+library module_imagebuilder_distribution_configuration_distribution_fast_launch_configuration_snapshot_configuration;
+
+export 'distribution_configuration_distribution_fast_launch_configuration_snapshot_configuration.dart';

@@ -1,0 +1,3 @@
+library module_codebuild_project_secondary_source_version;
+
+export 'project_secondary_source_version.dart';

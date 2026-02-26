@@ -1,0 +1,3 @@
+library module_emr_instance_fleet_launch_specifications_on_demand_specification;
+
+export 'instance_fleet_launch_specifications_on_demand_specification.dart';

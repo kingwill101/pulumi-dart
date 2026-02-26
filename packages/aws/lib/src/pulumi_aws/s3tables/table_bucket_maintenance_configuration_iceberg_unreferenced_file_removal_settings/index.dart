@@ -1,0 +1,3 @@
+library module_s3tables_table_bucket_maintenance_configuration_iceberg_unreferenced_file_removal_settings;
+
+export 'table_bucket_maintenance_configuration_iceberg_unreferenced_file_removal_settings.dart';

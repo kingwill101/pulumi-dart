@@ -1,0 +1,21 @@
+library module_emrcontainers;
+
+export 'get_virtual_cluster/index.dart';
+export 'get_virtual_cluster_container_provider/index.dart';
+export 'get_virtual_cluster_container_provider_info/index.dart';
+export 'get_virtual_cluster_container_provider_info_eks_info/index.dart';
+export 'job_template/index.dart';
+export 'job_template_job_template_data/index.dart';
+export 'job_template_job_template_data_configuration_overrides/index.dart';
+export 'job_template_job_template_data_configuration_overrides_application_configuration/index.dart';
+export 'job_template_job_template_data_configuration_overrides_application_configuration_configuration/index.dart';
+export 'job_template_job_template_data_configuration_overrides_monitoring_configuration/index.dart';
+export 'job_template_job_template_data_configuration_overrides_monitoring_configuration_cloud_watch_monitoring_configuration/index.dart';
+export 'job_template_job_template_data_configuration_overrides_monitoring_configuration_s3_monitoring_configuration/index.dart';
+export 'job_template_job_template_data_job_driver/index.dart';
+export 'job_template_job_template_data_job_driver_spark_sql_job_driver/index.dart';
+export 'job_template_job_template_data_job_driver_spark_submit_job_driver/index.dart';
+export 'virtual_cluster/index.dart';
+export 'virtual_cluster_container_provider/index.dart';
+export 'virtual_cluster_container_provider_info/index.dart';
+export 'virtual_cluster_container_provider_info_eks_info/index.dart';

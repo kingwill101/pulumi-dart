@@ -1,0 +1,4 @@
+library module_networkfirewall_firewall_transit_gateway_attachment_accepter;
+
+export 'firewall_transit_gateway_attachment_accepter.dart';
+export 'firewall_transit_gateway_attachment_accepter_args.dart';

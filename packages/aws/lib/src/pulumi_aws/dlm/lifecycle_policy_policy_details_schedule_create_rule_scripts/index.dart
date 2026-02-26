@@ -1,0 +1,3 @@
+library module_dlm_lifecycle_policy_policy_details_schedule_create_rule_scripts;
+
+export 'lifecycle_policy_policy_details_schedule_create_rule_scripts.dart';

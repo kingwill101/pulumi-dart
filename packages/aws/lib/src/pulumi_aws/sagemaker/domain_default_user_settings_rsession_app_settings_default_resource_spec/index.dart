@@ -1,0 +1,3 @@
+library module_sagemaker_domain_default_user_settings_rsession_app_settings_default_resource_spec;
+
+export 'domain_default_user_settings_rsession_app_settings_default_resource_spec.dart';

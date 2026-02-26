@@ -1,0 +1,73 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_quick_connect_quick_connect_config/get_quick_connect_quick_connect_config.dart';
+
+/// Result data returned by getQuickConnect.
+class GetQuickConnectResult {
+  /// ARN of the Quick Connect.
+  final String arn;
+
+  /// Description of the Quick Connect.
+  final String description;
+
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+  final String instanceId;
+  final String name;
+
+  /// A block that defines the configuration information for the Quick Connect: <span pulumi-lang-nodejs="`quickConnectType`" pulumi-lang-dotnet="`QuickConnectType`" pulumi-lang-go="`quickConnectType`" pulumi-lang-python="`quick_connect_type`" pulumi-lang-yaml="`quickConnectType`" pulumi-lang-java="`quickConnectType`">`quick_connect_type`</span> and one of <span pulumi-lang-nodejs="`phoneConfig`" pulumi-lang-dotnet="`PhoneConfig`" pulumi-lang-go="`phoneConfig`" pulumi-lang-python="`phone_config`" pulumi-lang-yaml="`phoneConfig`" pulumi-lang-java="`phoneConfig`">`phone_config`</span>, <span pulumi-lang-nodejs="`queueConfig`" pulumi-lang-dotnet="`QueueConfig`" pulumi-lang-go="`queueConfig`" pulumi-lang-python="`queue_config`" pulumi-lang-yaml="`queueConfig`" pulumi-lang-java="`queueConfig`">`queue_config`</span>, <span pulumi-lang-nodejs="`userConfig`" pulumi-lang-dotnet="`UserConfig`" pulumi-lang-go="`userConfig`" pulumi-lang-python="`user_config`" pulumi-lang-yaml="`userConfig`" pulumi-lang-java="`userConfig`">`user_config`</span> . The Quick Connect Config block is documented below.
+  final List<GetQuickConnectQuickConnectConfig> quickConnectConfigs;
+
+  /// Identifier for the Quick Connect.
+  final String quickConnectId;
+  final String region;
+
+  /// Map of tags to assign to the Quick Connect.
+  final Map<String, String> tags;
+
+  GetQuickConnectResult({
+    required this.arn,
+    required this.description,
+    required this.id,
+    required this.instanceId,
+    required this.name,
+    required this.quickConnectConfigs,
+    required this.quickConnectId,
+    required this.region,
+    required this.tags,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['arn'] = arn;
+    map['description'] = description;
+    map['id'] = id;
+    map['instanceId'] = instanceId;
+    map['name'] = name;
+    map['quickConnectConfigs'] = Input.encodeList<
+        GetQuickConnectQuickConnectConfig,
+        Map<String, dynamic>>(quickConnectConfigs, (value) => value.toMap());
+    map['quickConnectId'] = quickConnectId;
+    map['region'] = region;
+    map['tags'] = tags;
+    return map;
+  }
+
+  factory GetQuickConnectResult.fromMap(Map<String, dynamic> map) {
+    return GetQuickConnectResult(
+      arn: map['arn'] as String,
+      description: map['description'] as String,
+      id: map['id'] as String,
+      instanceId: map['instanceId'] as String,
+      name: map['name'] as String,
+      quickConnectConfigs: Input.decodeList<GetQuickConnectQuickConnectConfig>(
+          map['quickConnectConfigs'],
+          (value) => GetQuickConnectQuickConnectConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      quickConnectId: map['quickConnectId'] as String,
+      region: map['region'] as String,
+      tags: (map['tags'] as Map).cast<String, String>(),
+    );
+  }
+}

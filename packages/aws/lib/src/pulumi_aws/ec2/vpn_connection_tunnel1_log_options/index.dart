@@ -1,0 +1,3 @@
+library module_ec2_vpn_connection_tunnel1_log_options;
+
+export 'vpn_connection_tunnel1_log_options.dart';

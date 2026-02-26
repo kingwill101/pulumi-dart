@@ -1,0 +1,3 @@
+library module_lakeformation_data_cells_filter_table_data_column_wildcard;
+
+export 'data_cells_filter_table_data_column_wildcard.dart';

@@ -1,0 +1,3 @@
+library module_bedrock_agent_prompt_variant_template_configuration_chat_tool_configuration_tool_choice_tool;
+
+export 'agent_prompt_variant_template_configuration_chat_tool_configuration_tool_choice_tool.dart';

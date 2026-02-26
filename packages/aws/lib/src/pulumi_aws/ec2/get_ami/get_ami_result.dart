@@ -1,0 +1,323 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_ami_block_device_mapping/get_ami_block_device_mapping.dart';
+import '../get_ami_filter/get_ami_filter.dart';
+import '../get_ami_product_code/get_ami_product_code.dart';
+
+/// Result data returned by getAmi.
+class GetAmiResult {
+  final bool? allowUnsafeFilter;
+
+  /// OS architecture of the AMI (ie: <span pulumi-lang-nodejs="`i386`" pulumi-lang-dotnet="`I386`" pulumi-lang-go="`i386`" pulumi-lang-python="`i386`" pulumi-lang-yaml="`i386`" pulumi-lang-java="`i386`">`i386`</span> or <span pulumi-lang-nodejs="`x8664`" pulumi-lang-dotnet="`X8664`" pulumi-lang-go="`x8664`" pulumi-lang-python="`x86_64`" pulumi-lang-yaml="`x8664`" pulumi-lang-java="`x8664`">`x86_64`</span>).
+  final String architecture;
+
+  /// ARN of the AMI.
+  final String arn;
+
+  /// Set of objects with block device mappings of the AMI.
+  final List<GetAmiBlockDeviceMapping> blockDeviceMappings;
+
+  /// Boot mode of the image.
+  final String bootMode;
+
+  /// Date and time the image was created.
+  final String creationDate;
+
+  /// Date and time when the image will be deprecated.
+  final String deprecationTime;
+
+  /// Description of the AMI that was provided during image
+  /// creation.
+  final String description;
+
+  /// Whether enhanced networking with ENA is enabled.
+  final bool enaSupport;
+  final List<String>? executableUsers;
+  final List<GetAmiFilter>? filters;
+
+  /// Hypervisor type of the image.
+  final String hypervisor;
+
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+
+  /// ID of the AMI. Should be the same as the resource <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>.
+  final String imageId;
+
+  /// Location of the AMI.
+  final String imageLocation;
+
+  /// AWS account alias (for example, <span pulumi-lang-nodejs="`amazon`" pulumi-lang-dotnet="`Amazon`" pulumi-lang-go="`amazon`" pulumi-lang-python="`amazon`" pulumi-lang-yaml="`amazon`" pulumi-lang-java="`amazon`">`amazon`</span>, <span pulumi-lang-nodejs="`self`" pulumi-lang-dotnet="`Self`" pulumi-lang-go="`self`" pulumi-lang-python="`self`" pulumi-lang-yaml="`self`" pulumi-lang-java="`self`">`self`</span>) or
+  /// the AWS account ID of the AMI owner.
+  final String imageOwnerAlias;
+
+  /// Type of image.
+  final String imageType;
+
+  /// Instance Metadata Service (IMDS) support mode for the image. Set to `v2.0` if instances ran from this image enforce IMDSv2.
+  final String imdsSupport;
+  final bool? includeDeprecated;
+
+  /// Kernel associated with the image, if any. Only applicable
+  /// for machine images.
+  final String kernelId;
+
+  /// Date and time, in ISO 8601 date-time format , when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported. For more information, see the following [AWS document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-last-launched-time.html).
+  final String lastLaunchedTime;
+  final bool? mostRecent;
+
+  /// Name of the AMI that was provided during image creation.
+  final String name;
+  final String? nameRegex;
+
+  /// AWS account ID of the image owner.
+  final String ownerId;
+  final List<String>? owners;
+
+  /// Value is Windows for `Windows` AMIs; otherwise blank.
+  final String platform;
+
+  /// Platform details associated with the billing code of the AMI.
+  final String platformDetails;
+
+  /// Any product codes associated with the AMI.
+  /// * `product_codes.#.product_code_id` - The product code.
+  /// * `product_codes.#.product_code_type` - The type of product code.
+  final List<GetAmiProductCode> productCodes;
+
+  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if the image has public launch permissions.
+  final bool public;
+
+  /// RAM disk associated with the image, if any. Only applicable
+  /// for machine images.
+  final String ramdiskId;
+  final String region;
+
+  /// Device name of the root device.
+  final String rootDeviceName;
+
+  /// Type of root device (ie: <span pulumi-lang-nodejs="`ebs`" pulumi-lang-dotnet="`Ebs`" pulumi-lang-go="`ebs`" pulumi-lang-python="`ebs`" pulumi-lang-yaml="`ebs`" pulumi-lang-java="`ebs`">`ebs`</span> or `instance-store`).
+  final String rootDeviceType;
+
+  /// Snapshot id associated with the root device, if any
+  /// (only applies to <span pulumi-lang-nodejs="`ebs`" pulumi-lang-dotnet="`Ebs`" pulumi-lang-go="`ebs`" pulumi-lang-python="`ebs`" pulumi-lang-yaml="`ebs`" pulumi-lang-java="`ebs`">`ebs`</span> root devices).
+  final String rootSnapshotId;
+
+  /// Whether enhanced networking is enabled.
+  final String sriovNetSupport;
+
+  /// Current state of the AMI. If the state is <span pulumi-lang-nodejs="`available`" pulumi-lang-dotnet="`Available`" pulumi-lang-go="`available`" pulumi-lang-python="`available`" pulumi-lang-yaml="`available`" pulumi-lang-java="`available`">`available`</span>, the image
+  /// is successfully registered and can be used to launch an instance.
+  final String state;
+
+  /// Describes a state change. Fields are `UNSET` if not available.
+  final Map<String, String> stateReason;
+
+  /// Any tags assigned to the image.
+  /// * `tags.#.key` - Key name of the tag.
+  /// * `tags.#.value` - Value of the tag.
+  final Map<String, String> tags;
+
+  /// If the image is configured for NitroTPM support, the value is `v2.0`.
+  final String tpmSupport;
+
+  /// (Optional) Base64 representation of the non-volatile UEFI variable store.
+  final String? uefiData;
+
+  /// Operation of the Amazon EC2 instance and the billing code that is associated with the AMI.
+  final String usageOperation;
+
+  /// Type of virtualization of the AMI (ie: <span pulumi-lang-nodejs="`hvm`" pulumi-lang-dotnet="`Hvm`" pulumi-lang-go="`hvm`" pulumi-lang-python="`hvm`" pulumi-lang-yaml="`hvm`" pulumi-lang-java="`hvm`">`hvm`</span> or
+  /// <span pulumi-lang-nodejs="`paravirtual`" pulumi-lang-dotnet="`Paravirtual`" pulumi-lang-go="`paravirtual`" pulumi-lang-python="`paravirtual`" pulumi-lang-yaml="`paravirtual`" pulumi-lang-java="`paravirtual`">`paravirtual`</span>).
+  final String virtualizationType;
+
+  GetAmiResult({
+    this.allowUnsafeFilter,
+    required this.architecture,
+    required this.arn,
+    required this.blockDeviceMappings,
+    required this.bootMode,
+    required this.creationDate,
+    required this.deprecationTime,
+    required this.description,
+    required this.enaSupport,
+    this.executableUsers,
+    this.filters,
+    required this.hypervisor,
+    required this.id,
+    required this.imageId,
+    required this.imageLocation,
+    required this.imageOwnerAlias,
+    required this.imageType,
+    required this.imdsSupport,
+    this.includeDeprecated,
+    required this.kernelId,
+    required this.lastLaunchedTime,
+    this.mostRecent,
+    required this.name,
+    this.nameRegex,
+    required this.ownerId,
+    this.owners,
+    required this.platform,
+    required this.platformDetails,
+    required this.productCodes,
+    required this.public,
+    required this.ramdiskId,
+    required this.region,
+    required this.rootDeviceName,
+    required this.rootDeviceType,
+    required this.rootSnapshotId,
+    required this.sriovNetSupport,
+    required this.state,
+    required this.stateReason,
+    required this.tags,
+    required this.tpmSupport,
+    this.uefiData,
+    required this.usageOperation,
+    required this.virtualizationType,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final allowUnsafeFilterValue = allowUnsafeFilter;
+    if (allowUnsafeFilterValue != null) {
+      map['allowUnsafeFilter'] = allowUnsafeFilterValue;
+    }
+    map['architecture'] = architecture;
+    map['arn'] = arn;
+    map['blockDeviceMappings'] =
+        Input.encodeList<GetAmiBlockDeviceMapping, Map<String, dynamic>>(
+            blockDeviceMappings, (value) => value.toMap());
+    map['bootMode'] = bootMode;
+    map['creationDate'] = creationDate;
+    map['deprecationTime'] = deprecationTime;
+    map['description'] = description;
+    map['enaSupport'] = enaSupport;
+    final executableUsersValue = executableUsers;
+    if (executableUsersValue != null) {
+      map['executableUsers'] = executableUsersValue;
+    }
+    final filtersValue = filters;
+    if (filtersValue != null) {
+      map['filters'] = Input.encodeList<GetAmiFilter, Map<String, dynamic>>(
+          filtersValue, (value) => value.toMap());
+    }
+    map['hypervisor'] = hypervisor;
+    map['id'] = id;
+    map['imageId'] = imageId;
+    map['imageLocation'] = imageLocation;
+    map['imageOwnerAlias'] = imageOwnerAlias;
+    map['imageType'] = imageType;
+    map['imdsSupport'] = imdsSupport;
+    final includeDeprecatedValue = includeDeprecated;
+    if (includeDeprecatedValue != null) {
+      map['includeDeprecated'] = includeDeprecatedValue;
+    }
+    map['kernelId'] = kernelId;
+    map['lastLaunchedTime'] = lastLaunchedTime;
+    final mostRecentValue = mostRecent;
+    if (mostRecentValue != null) {
+      map['mostRecent'] = mostRecentValue;
+    }
+    map['name'] = name;
+    final nameRegexValue = nameRegex;
+    if (nameRegexValue != null) {
+      map['nameRegex'] = nameRegexValue;
+    }
+    map['ownerId'] = ownerId;
+    final ownersValue = owners;
+    if (ownersValue != null) {
+      map['owners'] = ownersValue;
+    }
+    map['platform'] = platform;
+    map['platformDetails'] = platformDetails;
+    map['productCodes'] =
+        Input.encodeList<GetAmiProductCode, Map<String, dynamic>>(
+            productCodes, (value) => value.toMap());
+    map['public'] = public;
+    map['ramdiskId'] = ramdiskId;
+    map['region'] = region;
+    map['rootDeviceName'] = rootDeviceName;
+    map['rootDeviceType'] = rootDeviceType;
+    map['rootSnapshotId'] = rootSnapshotId;
+    map['sriovNetSupport'] = sriovNetSupport;
+    map['state'] = state;
+    map['stateReason'] = stateReason;
+    map['tags'] = tags;
+    map['tpmSupport'] = tpmSupport;
+    final uefiDataValue = uefiData;
+    if (uefiDataValue != null) {
+      map['uefiData'] = uefiDataValue;
+    }
+    map['usageOperation'] = usageOperation;
+    map['virtualizationType'] = virtualizationType;
+    return map;
+  }
+
+  factory GetAmiResult.fromMap(Map<String, dynamic> map) {
+    return GetAmiResult(
+      allowUnsafeFilter: map['allowUnsafeFilter'] == null
+          ? null
+          : map['allowUnsafeFilter'] as bool,
+      architecture: map['architecture'] as String,
+      arn: map['arn'] as String,
+      blockDeviceMappings: Input.decodeList<GetAmiBlockDeviceMapping>(
+          map['blockDeviceMappings'],
+          (value) => GetAmiBlockDeviceMapping.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      bootMode: map['bootMode'] as String,
+      creationDate: map['creationDate'] as String,
+      deprecationTime: map['deprecationTime'] as String,
+      description: map['description'] as String,
+      enaSupport: map['enaSupport'] as bool,
+      executableUsers: map['executableUsers'] == null
+          ? null
+          : (map['executableUsers'] as List).cast<String>(),
+      filters: map['filters'] == null
+          ? null
+          : Input.decodeList<GetAmiFilter>(
+              map['filters'],
+              (value) =>
+                  GetAmiFilter.fromMap((value as Map).cast<String, dynamic>())),
+      hypervisor: map['hypervisor'] as String,
+      id: map['id'] as String,
+      imageId: map['imageId'] as String,
+      imageLocation: map['imageLocation'] as String,
+      imageOwnerAlias: map['imageOwnerAlias'] as String,
+      imageType: map['imageType'] as String,
+      imdsSupport: map['imdsSupport'] as String,
+      includeDeprecated: map['includeDeprecated'] == null
+          ? null
+          : map['includeDeprecated'] as bool,
+      kernelId: map['kernelId'] as String,
+      lastLaunchedTime: map['lastLaunchedTime'] as String,
+      mostRecent: map['mostRecent'] == null ? null : map['mostRecent'] as bool,
+      name: map['name'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      ownerId: map['ownerId'] as String,
+      owners:
+          map['owners'] == null ? null : (map['owners'] as List).cast<String>(),
+      platform: map['platform'] as String,
+      platformDetails: map['platformDetails'] as String,
+      productCodes: Input.decodeList<GetAmiProductCode>(
+          map['productCodes'],
+          (value) => GetAmiProductCode.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      public: map['public'] as bool,
+      ramdiskId: map['ramdiskId'] as String,
+      region: map['region'] as String,
+      rootDeviceName: map['rootDeviceName'] as String,
+      rootDeviceType: map['rootDeviceType'] as String,
+      rootSnapshotId: map['rootSnapshotId'] as String,
+      sriovNetSupport: map['sriovNetSupport'] as String,
+      state: map['state'] as String,
+      stateReason: (map['stateReason'] as Map).cast<String, String>(),
+      tags: (map['tags'] as Map).cast<String, String>(),
+      tpmSupport: map['tpmSupport'] as String,
+      uefiData: map['uefiData'] == null ? null : map['uefiData'] as String,
+      usageOperation: map['usageOperation'] as String,
+      virtualizationType: map['virtualizationType'] as String,
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_bedrock_agentcore_agent_runtime_authorizer_configuration;
+
+export 'agentcore_agent_runtime_authorizer_configuration.dart';

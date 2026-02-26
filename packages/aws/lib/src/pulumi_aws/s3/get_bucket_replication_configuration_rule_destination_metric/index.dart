@@ -1,0 +1,3 @@
+library module_s3_get_bucket_replication_configuration_rule_destination_metric;
+
+export 'get_bucket_replication_configuration_rule_destination_metric.dart';

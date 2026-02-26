@@ -1,0 +1,3 @@
+library module_medialive_multiplex_multiplex_settings;
+
+export 'multiplex_multiplex_settings.dart';

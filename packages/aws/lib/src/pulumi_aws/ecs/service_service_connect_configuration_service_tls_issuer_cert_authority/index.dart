@@ -1,0 +1,3 @@
+library module_ecs_service_service_connect_configuration_service_tls_issuer_cert_authority;
+
+export 'service_service_connect_configuration_service_tls_issuer_cert_authority.dart';

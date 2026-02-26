@@ -1,0 +1,3 @@
+library module_comprehend_document_classifier_vpc_config;
+
+export 'document_classifier_vpc_config.dart';

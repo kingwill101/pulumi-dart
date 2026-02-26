@@ -1,0 +1,3 @@
+library module_guardduty_detector_datasources_s3_logs;
+
+export 'detector_datasources_s3_logs.dart';

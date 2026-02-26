@@ -1,0 +1,450 @@
+import 'package:pulumi/pulumi.dart';
+import '../resource_gateway_timeouts/resource_gateway_timeouts.dart';
+import 'resource_gateway_args.dart';
+
+/// Resource for managing an AWS VPC Lattice Resource Gateway.
+///
+/// ## Example Usage
+///
+/// ### Basic Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.vpclattice.ResourceGateway("example", {
+/// name: "Example",
+/// vpcId: exampleAwsVpc.id,
+/// subnetIds: [exampleAwsSubnet.id],
+/// tags: {
+/// Environment: "Example",
+/// },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.vpclattice.ResourceGateway("example",
+/// name="Example",
+/// vpc_id=example_aws_vpc["id"],
+/// subnet_ids=[example_aws_subnet["id"]],
+/// tags={
+/// "Environment": "Example",
+/// })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.VpcLattice.ResourceGateway("example", new()
+/// {
+/// Name = "Example",
+/// VpcId = exampleAwsVpc.Id,
+/// SubnetIds = new[]
+/// {
+/// exampleAwsSubnet.Id,
+/// },
+/// Tags =
+/// {
+/// { "Environment", "Example" },
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/vpclattice"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := vpclattice.NewResourceGateway(ctx, "example", &vpclattice.ResourceGatewayArgs{
+/// Name:  pulumi.String("Example"),
+/// VpcId: pulumi.Any(exampleAwsVpc.Id),
+/// SubnetIds: pulumi.StringArray{
+/// exampleAwsSubnet.Id,
+/// },
+/// Tags: pulumi.StringMap{
+/// "Environment": pulumi.String("Example"),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.vpclattice.ResourceGateway;
+/// import com.pulumi.aws.vpclattice.ResourceGatewayArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new ResourceGateway("example", ResourceGatewayArgs.builder()
+/// .name("Example")
+/// .vpcId(exampleAwsVpc.id())
+/// .subnetIds(exampleAwsSubnet.id())
+/// .tags(Map.of("Environment", "Example"))
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:vpclattice:ResourceGateway
+/// properties:
+/// name: Example
+/// vpcId: ${exampleAwsVpc.id}
+/// subnetIds:
+/// - ${exampleAwsSubnet.id}
+/// tags:
+/// Environment: Example
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ### Specifying IP address type
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.vpclattice.ResourceGateway("example", {
+/// name: "Example",
+/// vpcId: exampleAwsVpc.id,
+/// subnetIds: [exampleAwsSubnet.id],
+/// ipAddressType: "DUALSTACK",
+/// tags: {
+/// Environment: "Example",
+/// },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.vpclattice.ResourceGateway("example",
+/// name="Example",
+/// vpc_id=example_aws_vpc["id"],
+/// subnet_ids=[example_aws_subnet["id"]],
+/// ip_address_type="DUALSTACK",
+/// tags={
+/// "Environment": "Example",
+/// })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.VpcLattice.ResourceGateway("example", new()
+/// {
+/// Name = "Example",
+/// VpcId = exampleAwsVpc.Id,
+/// SubnetIds = new[]
+/// {
+/// exampleAwsSubnet.Id,
+/// },
+/// IpAddressType = "DUALSTACK",
+/// Tags =
+/// {
+/// { "Environment", "Example" },
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/vpclattice"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := vpclattice.NewResourceGateway(ctx, "example", &vpclattice.ResourceGatewayArgs{
+/// Name:  pulumi.String("Example"),
+/// VpcId: pulumi.Any(exampleAwsVpc.Id),
+/// SubnetIds: pulumi.StringArray{
+/// exampleAwsSubnet.Id,
+/// },
+/// IpAddressType: pulumi.String("DUALSTACK"),
+/// Tags: pulumi.StringMap{
+/// "Environment": pulumi.String("Example"),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.vpclattice.ResourceGateway;
+/// import com.pulumi.aws.vpclattice.ResourceGatewayArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new ResourceGateway("example", ResourceGatewayArgs.builder()
+/// .name("Example")
+/// .vpcId(exampleAwsVpc.id())
+/// .subnetIds(exampleAwsSubnet.id())
+/// .ipAddressType("DUALSTACK")
+/// .tags(Map.of("Environment", "Example"))
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:vpclattice:ResourceGateway
+/// properties:
+/// name: Example
+/// vpcId: ${exampleAwsVpc.id}
+/// subnetIds:
+/// - ${exampleAwsSubnet.id}
+/// ipAddressType: DUALSTACK
+/// tags:
+/// Environment: Example
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ### With security groups
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.vpclattice.ResourceGateway("example", {
+/// name: "Example",
+/// vpcId: exampleAwsVpc.id,
+/// securityGroupIds: [test.id],
+/// subnetIds: [exampleAwsSubnet.id],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.vpclattice.ResourceGateway("example",
+/// name="Example",
+/// vpc_id=example_aws_vpc["id"],
+/// security_group_ids=[test["id"]],
+/// subnet_ids=[example_aws_subnet["id"]])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.VpcLattice.ResourceGateway("example", new()
+/// {
+/// Name = "Example",
+/// VpcId = exampleAwsVpc.Id,
+/// SecurityGroupIds = new[]
+/// {
+/// test.Id,
+/// },
+/// SubnetIds = new[]
+/// {
+/// exampleAwsSubnet.Id,
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/vpclattice"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := vpclattice.NewResourceGateway(ctx, "example", &vpclattice.ResourceGatewayArgs{
+/// Name:  pulumi.String("Example"),
+/// VpcId: pulumi.Any(exampleAwsVpc.Id),
+/// SecurityGroupIds: pulumi.StringArray{
+/// test.Id,
+/// },
+/// SubnetIds: pulumi.StringArray{
+/// exampleAwsSubnet.Id,
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.vpclattice.ResourceGateway;
+/// import com.pulumi.aws.vpclattice.ResourceGatewayArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new ResourceGateway("example", ResourceGatewayArgs.builder()
+/// .name("Example")
+/// .vpcId(exampleAwsVpc.id())
+/// .securityGroupIds(test.id())
+/// .subnetIds(exampleAwsSubnet.id())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:vpclattice:ResourceGateway
+/// properties:
+/// name: Example
+/// vpcId: ${exampleAwsVpc.id}
+/// securityGroupIds:
+/// - ${test.id}
+/// subnetIds:
+/// - ${exampleAwsSubnet.id}
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Using `pulumi import`, import VPC Lattice Resource Gateway using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+///
+/// ```sh
+/// $ pulumi import aws:vpclattice/resourceGateway:ResourceGateway example rgw-0a1b2c3d4e5f
+/// ```
+class ResourceGateway extends CustomResource {
+  /// ARN of the resource gateway.
+  late final Output<String> arn;
+
+  /// IP address type used by the resource gateway. Valid values are `IPV4`, `IPV6`, and `DUALSTACK`. The IP address type of a resource gateway must be compatible with the subnets of the resource gateway and the IP address type of the resource.
+  late final Output<String> ipAddressType;
+
+  /// The number of IPv4 addresses per ENI for your resource. This argument is only applicable to `IPV4` and `DUALSTACK` IP address types. Defaults to <span pulumi-lang-nodejs="`16`" pulumi-lang-dotnet="`16`" pulumi-lang-go="`16`" pulumi-lang-python="`16`" pulumi-lang-yaml="`16`" pulumi-lang-java="`16`">`16`</span>.
+  late final Output<int> ipv4AddressesPerEni;
+
+  /// Name of the resource gateway.
+  late final Output<String> name;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  /// Security group IDs associated with the resource gateway. The security groups must be in the same VPC.
+  late final Output<List<String>> securityGroupIds;
+
+  /// Status of the resource gateway.
+  late final Output<String> status;
+
+  /// IDs of the VPC subnets in which to create the resource gateway.
+  late final Output<List<String>> subnetIds;
+
+  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  late final Output<Map<String, String>?> tags;
+
+  /// Map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  late final Output<Map<String, String>> tagsAll;
+  late final Output<ResourceGatewayTimeouts?> timeouts;
+
+  /// ID of the VPC for the resource gateway.
+  ///
+  /// The following arguments are optional:
+  late final Output<String> vpcId;
+
+  ResourceGateway(
+    String name, {
+    ResourceGatewayArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:vpclattice/resourceGateway:ResourceGateway',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.arn = Output.createUnknown<String>();
+    this.ipAddressType = Output.createUnknown<String>();
+    this.ipv4AddressesPerEni = Output.createUnknown<int>();
+    this.name = Output.createUnknown<String>();
+    this.region = Output.createUnknown<String>();
+    this.securityGroupIds = Output.createUnknown<List<String>>();
+    this.status = Output.createUnknown<String>();
+    this.subnetIds = Output.createUnknown<List<String>>();
+    this.tags = Output.createUnknown<Map<String, String>?>();
+    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.timeouts = Output.createUnknown<ResourceGatewayTimeouts?>();
+    this.vpcId = Output.createUnknown<String>();
+  }
+}

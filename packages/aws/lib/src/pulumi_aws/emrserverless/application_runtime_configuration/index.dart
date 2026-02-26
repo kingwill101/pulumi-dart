@@ -1,0 +1,3 @@
+library module_emrserverless_application_runtime_configuration;
+
+export 'application_runtime_configuration.dart';

@@ -1,0 +1,3 @@
+library module_lightsail_container_service_public_domain_names_certificate;
+
+export 'container_service_public_domain_names_certificate.dart';

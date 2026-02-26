@@ -1,0 +1,3 @@
+library module_codepipeline_webhook_authentication_configuration;
+
+export 'webhook_authentication_configuration.dart';

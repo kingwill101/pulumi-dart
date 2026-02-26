@@ -1,0 +1,3 @@
+library module_glue_security_configuration_encryption_configuration_job_bookmarks_encryption;
+
+export 'security_configuration_encryption_configuration_job_bookmarks_encryption.dart';

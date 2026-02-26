@@ -1,0 +1,3 @@
+library module_bedrock_agent_prompt_variant_template_configuration_text_input_variable;
+
+export 'agent_prompt_variant_template_configuration_text_input_variable.dart';

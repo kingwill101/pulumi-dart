@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// Arguments for getAssets.
+class GetAssetsArgs {
+  /// Outpost ARN.
+  final Input<String> arn;
+
+  /// Filters by list of Host IDs of a Dedicated Host.
+  final Input<List<String>>? hostIdFilters;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final Input<String>? region;
+
+  /// Filters by list of state status. Valid values: "ACTIVE", "RETIRING".
+  final Input<List<String>>? statusIdFilters;
+
+  GetAssetsArgs({
+    required this.arn,
+    this.hostIdFilters,
+    this.region,
+    this.statusIdFilters,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['arn'] = arn;
+    final hostIdFiltersValue = hostIdFilters;
+    if (hostIdFiltersValue != null) {
+      map['hostIdFilters'] = hostIdFiltersValue;
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final statusIdFiltersValue = statusIdFilters;
+    if (statusIdFiltersValue != null) {
+      map['statusIdFilters'] = statusIdFiltersValue;
+    }
+    return map;
+  }
+
+  factory GetAssetsArgs.fromMap(Map<String, dynamic> map) {
+    return GetAssetsArgs(
+      arn: Input.asInput<String>(map['arn']),
+      hostIdFilters: Input.asOptionalInput<List<String>>(map['hostIdFilters']),
+      region: Input.asOptionalInput<String>(map['region']),
+      statusIdFilters:
+          Input.asOptionalInput<List<String>>(map['statusIdFilters']),
+    );
+  }
+}

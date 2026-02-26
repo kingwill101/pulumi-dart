@@ -1,0 +1,152 @@
+import 'package:pulumi/pulumi.dart';
+import 'workspace_service_account_args.dart';
+
+/// > **Note:** You cannot update a service account. If you change any attribute, Terraform
+/// will delete the current and create a new one.
+///
+/// Read about Service Accounts in the [Amazon Managed Grafana user guide](https://docs.aws.amazon.com/grafana/latest/userguide/service-accounts.html).
+///
+/// ## Example Usage
+///
+/// ### Basic Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.grafana.WorkspaceServiceAccount("example", {
+/// name: "example-admin",
+/// grafanaRole: "ADMIN",
+/// workspaceId: exampleAwsGrafanaWorkspace.id,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.grafana.WorkspaceServiceAccount("example",
+/// name="example-admin",
+/// grafana_role="ADMIN",
+/// workspace_id=example_aws_grafana_workspace["id"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.Grafana.WorkspaceServiceAccount("example", new()
+/// {
+/// Name = "example-admin",
+/// GrafanaRole = "ADMIN",
+/// WorkspaceId = exampleAwsGrafanaWorkspace.Id,
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/grafana"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := grafana.NewWorkspaceServiceAccount(ctx, "example", &grafana.WorkspaceServiceAccountArgs{
+/// Name:        pulumi.String("example-admin"),
+/// GrafanaRole: pulumi.String("ADMIN"),
+/// WorkspaceId: pulumi.Any(exampleAwsGrafanaWorkspace.Id),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.grafana.WorkspaceServiceAccount;
+/// import com.pulumi.aws.grafana.WorkspaceServiceAccountArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new WorkspaceServiceAccount("example", WorkspaceServiceAccountArgs.builder()
+/// .name("example-admin")
+/// .grafanaRole("ADMIN")
+/// .workspaceId(exampleAwsGrafanaWorkspace.id())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:grafana:WorkspaceServiceAccount
+/// properties:
+/// name: example-admin
+/// grafanaRole: ADMIN
+/// workspaceId: ${exampleAwsGrafanaWorkspace.id}
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Using `pulumi import`, import Managed Grafana Workspace Service Account using the <span pulumi-lang-nodejs="`workspaceId`" pulumi-lang-dotnet="`WorkspaceId`" pulumi-lang-go="`workspaceId`" pulumi-lang-python="`workspace_id`" pulumi-lang-yaml="`workspaceId`" pulumi-lang-java="`workspaceId`">`workspace_id`</span> and <span pulumi-lang-nodejs="`serviceAccountId`" pulumi-lang-dotnet="`ServiceAccountId`" pulumi-lang-go="`serviceAccountId`" pulumi-lang-python="`service_account_id`" pulumi-lang-yaml="`serviceAccountId`" pulumi-lang-java="`serviceAccountId`">`service_account_id`</span> separated by a comma (`,`). For example:
+///
+/// ```sh
+/// $ pulumi import aws:grafana/workspaceServiceAccount:WorkspaceServiceAccount example g-abc12345,1
+/// ```
+class WorkspaceServiceAccount extends CustomResource {
+  /// The permission level to use for this service account. For more information about the roles and the permissions each has, see the [User roles](https://docs.aws.amazon.com/grafana/latest/userguide/Grafana-user-roles.html) documentation.
+  late final Output<String> grafanaRole;
+
+  /// A name for the service account. The name must be unique within the workspace, as it determines the ID associated with the service account.
+  late final Output<String> name;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  /// Identifier of the service account in the given Grafana workspace
+  late final Output<String> serviceAccountId;
+
+  /// The Grafana workspace with which the service account is associated.
+  late final Output<String> workspaceId;
+
+  WorkspaceServiceAccount(
+    String name, {
+    WorkspaceServiceAccountArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:grafana/workspaceServiceAccount:WorkspaceServiceAccount',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.grafanaRole = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.region = Output.createUnknown<String>();
+    this.serviceAccountId = Output.createUnknown<String>();
+    this.workspaceId = Output.createUnknown<String>();
+  }
+}

@@ -1,0 +1,3 @@
+library module_scheduler_schedule_target_ecs_parameters_placement_strategy;
+
+export 'schedule_target_ecs_parameters_placement_strategy.dart';

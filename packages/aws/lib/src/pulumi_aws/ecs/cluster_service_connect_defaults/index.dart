@@ -1,0 +1,3 @@
+library module_ecs_cluster_service_connect_defaults;
+
+export 'cluster_service_connect_defaults.dart';

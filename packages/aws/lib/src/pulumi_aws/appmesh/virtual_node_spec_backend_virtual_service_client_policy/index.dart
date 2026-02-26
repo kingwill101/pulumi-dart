@@ -1,0 +1,3 @@
+library module_appmesh_virtual_node_spec_backend_virtual_service_client_policy;
+
+export 'virtual_node_spec_backend_virtual_service_client_policy.dart';

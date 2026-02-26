@@ -1,0 +1,3 @@
+library module_bedrock_agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_configuration;
+
+export 'agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_configuration.dart';

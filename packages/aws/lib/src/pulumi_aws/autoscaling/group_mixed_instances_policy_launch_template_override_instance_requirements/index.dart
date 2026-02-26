@@ -1,0 +1,3 @@
+library module_autoscaling_group_mixed_instances_policy_launch_template_override_instance_requirements;
+
+export 'group_mixed_instances_policy_launch_template_override_instance_requirements.dart';

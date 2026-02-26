@@ -1,0 +1,3 @@
+library module_redshift_idc_application_authorized_token_issuer;
+
+export 'idc_application_authorized_token_issuer.dart';

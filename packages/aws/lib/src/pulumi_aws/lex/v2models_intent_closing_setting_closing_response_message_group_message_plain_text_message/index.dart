@@ -1,0 +1,3 @@
+library module_lex_v2models_intent_closing_setting_closing_response_message_group_message_plain_text_message;
+
+export 'v2models_intent_closing_setting_closing_response_message_group_message_plain_text_message.dart';

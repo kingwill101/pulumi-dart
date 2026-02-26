@@ -1,0 +1,3 @@
+library module_fsx_s3_access_point_attachment_timeouts;
+
+export 's3_access_point_attachment_timeouts.dart';

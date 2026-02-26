@@ -1,0 +1,4 @@
+library module_acmpca_certificate_authority_certificate;
+
+export 'certificate_authority_certificate.dart';
+export 'certificate_authority_certificate_args.dart';

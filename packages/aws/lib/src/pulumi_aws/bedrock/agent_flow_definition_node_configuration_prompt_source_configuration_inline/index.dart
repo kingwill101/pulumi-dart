@@ -1,0 +1,3 @@
+library module_bedrock_agent_flow_definition_node_configuration_prompt_source_configuration_inline;
+
+export 'agent_flow_definition_node_configuration_prompt_source_configuration_inline.dart';

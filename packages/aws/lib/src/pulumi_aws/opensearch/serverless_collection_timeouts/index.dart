@@ -1,0 +1,3 @@
+library module_opensearch_serverless_collection_timeouts;
+
+export 'serverless_collection_timeouts.dart';

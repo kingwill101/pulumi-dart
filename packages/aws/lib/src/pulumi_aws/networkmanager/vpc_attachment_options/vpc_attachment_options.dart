@@ -1,0 +1,60 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class VpcAttachmentOptions {
+  /// Whether to enable appliance mode support. If enabled, traffic flow between a source and destination use the same Availability Zone for the VPC attachment for the lifetime of that flow. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
+  final bool? applianceModeSupport;
+
+  /// Whether to enable DNS support. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
+  final bool? dnsSupport;
+
+  /// Whether to enable IPv6 support. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
+  final bool? ipv6Support;
+
+  /// Whether to enable security group referencing support for this VPC attachment. The default is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>. However, at the core network policy-level the default is set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
+  final bool? securityGroupReferencingSupport;
+
+  VpcAttachmentOptions({
+    this.applianceModeSupport,
+    this.dnsSupport,
+    this.ipv6Support,
+    this.securityGroupReferencingSupport,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final applianceModeSupportValue = applianceModeSupport;
+    if (applianceModeSupportValue != null) {
+      map['applianceModeSupport'] = applianceModeSupportValue;
+    }
+    final dnsSupportValue = dnsSupport;
+    if (dnsSupportValue != null) {
+      map['dnsSupport'] = dnsSupportValue;
+    }
+    final ipv6SupportValue = ipv6Support;
+    if (ipv6SupportValue != null) {
+      map['ipv6Support'] = ipv6SupportValue;
+    }
+    final securityGroupReferencingSupportValue =
+        securityGroupReferencingSupport;
+    if (securityGroupReferencingSupportValue != null) {
+      map['securityGroupReferencingSupport'] =
+          securityGroupReferencingSupportValue;
+    }
+    return map;
+  }
+
+  factory VpcAttachmentOptions.fromMap(Map<String, dynamic> map) {
+    return VpcAttachmentOptions(
+      applianceModeSupport: map['applianceModeSupport'] == null
+          ? null
+          : map['applianceModeSupport'] as bool,
+      dnsSupport: map['dnsSupport'] == null ? null : map['dnsSupport'] as bool,
+      ipv6Support:
+          map['ipv6Support'] == null ? null : map['ipv6Support'] as bool,
+      securityGroupReferencingSupport:
+          map['securityGroupReferencingSupport'] == null
+              ? null
+              : map['securityGroupReferencingSupport'] as bool,
+    );
+  }
+}

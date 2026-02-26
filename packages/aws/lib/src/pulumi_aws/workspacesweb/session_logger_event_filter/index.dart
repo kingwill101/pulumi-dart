@@ -1,0 +1,3 @@
+library module_workspacesweb_session_logger_event_filter;
+
+export 'session_logger_event_filter.dart';

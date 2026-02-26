@@ -1,0 +1,3 @@
+library module_verifiedaccess_instance_logging_configuration_access_logs_kinesis_data_firehose;
+
+export 'instance_logging_configuration_access_logs_kinesis_data_firehose.dart';

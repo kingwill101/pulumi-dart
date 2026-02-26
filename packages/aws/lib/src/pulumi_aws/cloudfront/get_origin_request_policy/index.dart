@@ -1,0 +1,5 @@
+library module_cloudfront_get_origin_request_policy;
+
+export 'get_origin_request_policy.dart';
+export 'get_origin_request_policy_args.dart';
+export 'get_origin_request_policy_result.dart';

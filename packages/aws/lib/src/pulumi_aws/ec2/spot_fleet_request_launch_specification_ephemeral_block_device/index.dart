@@ -1,0 +1,3 @@
+library module_ec2_spot_fleet_request_launch_specification_ephemeral_block_device;
+
+export 'spot_fleet_request_launch_specification_ephemeral_block_device.dart';

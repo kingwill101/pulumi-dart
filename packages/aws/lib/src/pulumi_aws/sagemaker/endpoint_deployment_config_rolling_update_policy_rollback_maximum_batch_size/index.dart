@@ -1,0 +1,3 @@
+library module_sagemaker_endpoint_deployment_config_rolling_update_policy_rollback_maximum_batch_size;
+
+export 'endpoint_deployment_config_rolling_update_policy_rollback_maximum_batch_size.dart';

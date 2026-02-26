@@ -1,0 +1,42 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetClusterCacheNode {
+  final String address;
+
+  /// Availability Zone for the cache cluster.
+  final String availabilityZone;
+  final String id;
+  final String outpostArn;
+
+  /// The port number on which each of the cache nodes will
+  /// accept connections.
+  final int port;
+
+  GetClusterCacheNode({
+    required this.address,
+    required this.availabilityZone,
+    required this.id,
+    required this.outpostArn,
+    required this.port,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['address'] = address;
+    map['availabilityZone'] = availabilityZone;
+    map['id'] = id;
+    map['outpostArn'] = outpostArn;
+    map['port'] = port;
+    return map;
+  }
+
+  factory GetClusterCacheNode.fromMap(Map<String, dynamic> map) {
+    return GetClusterCacheNode(
+      address: map['address'] as String,
+      availabilityZone: map['availabilityZone'] as String,
+      id: map['id'] as String,
+      outpostArn: map['outpostArn'] as String,
+      port: map['port'] as int,
+    );
+  }
+}

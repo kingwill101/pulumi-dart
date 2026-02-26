@@ -1,0 +1,3 @@
+library module_cfg_conformance_pack_input_parameter;
+
+export 'conformance_pack_input_parameter.dart';

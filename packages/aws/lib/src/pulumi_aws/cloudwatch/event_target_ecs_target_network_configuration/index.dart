@@ -1,0 +1,3 @@
+library module_cloudwatch_event_target_ecs_target_network_configuration;
+
+export 'event_target_ecs_target_network_configuration.dart';

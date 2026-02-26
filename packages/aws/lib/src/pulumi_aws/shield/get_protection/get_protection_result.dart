@@ -1,0 +1,42 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Result data returned by getProtection.
+class GetProtectionResult {
+  final String id;
+
+  /// Name of the protection.
+  final String name;
+
+  /// ARN of the protection.
+  final String protectionArn;
+  final String protectionId;
+  final String resourceArn;
+
+  GetProtectionResult({
+    required this.id,
+    required this.name,
+    required this.protectionArn,
+    required this.protectionId,
+    required this.resourceArn,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['id'] = id;
+    map['name'] = name;
+    map['protectionArn'] = protectionArn;
+    map['protectionId'] = protectionId;
+    map['resourceArn'] = resourceArn;
+    return map;
+  }
+
+  factory GetProtectionResult.fromMap(Map<String, dynamic> map) {
+    return GetProtectionResult(
+      id: map['id'] as String,
+      name: map['name'] as String,
+      protectionArn: map['protectionArn'] as String,
+      protectionId: map['protectionId'] as String,
+      resourceArn: map['resourceArn'] as String,
+    );
+  }
+}

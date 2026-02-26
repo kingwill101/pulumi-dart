@@ -1,0 +1,3 @@
+library module_appflow_flow_source_flow_config_source_connector_properties_sapo_data;
+
+export 'flow_source_flow_config_source_connector_properties_sapo_data.dart';

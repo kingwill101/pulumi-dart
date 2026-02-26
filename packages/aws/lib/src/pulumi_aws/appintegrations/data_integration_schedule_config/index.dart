@@ -1,0 +1,3 @@
+library module_appintegrations_data_integration_schedule_config;
+
+export 'data_integration_schedule_config.dart';

@@ -1,0 +1,3 @@
+library module_bedrock_agentcore_browser_network_configuration_vpc_config;
+
+export 'agentcore_browser_network_configuration_vpc_config.dart';

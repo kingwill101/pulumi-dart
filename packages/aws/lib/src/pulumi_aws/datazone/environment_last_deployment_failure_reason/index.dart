@@ -1,0 +1,3 @@
+library module_datazone_environment_last_deployment_failure_reason;
+
+export 'environment_last_deployment_failure_reason.dart';

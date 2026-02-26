@@ -1,0 +1,3 @@
+library module_opensearch_domain_software_update_options;
+
+export 'domain_software_update_options.dart';

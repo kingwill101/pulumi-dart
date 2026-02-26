@@ -1,0 +1,182 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../catalog_table_storage_descriptor_column/catalog_table_storage_descriptor_column.dart';
+import '../catalog_table_storage_descriptor_schema_reference/catalog_table_storage_descriptor_schema_reference.dart';
+import '../catalog_table_storage_descriptor_ser_de_info/catalog_table_storage_descriptor_ser_de_info.dart';
+import '../catalog_table_storage_descriptor_skewed_info/catalog_table_storage_descriptor_skewed_info.dart';
+import '../catalog_table_storage_descriptor_sort_column/catalog_table_storage_descriptor_sort_column.dart';
+
+class CatalogTableStorageDescriptor {
+  /// List of locations that point to the path where a Delta table is located.
+  final List<String>? additionalLocations;
+
+  /// List of reducer grouping columns, clustering columns, and bucketing columns in the table.
+  final List<String>? bucketColumns;
+
+  /// Configuration block for columns in the table. See <span pulumi-lang-nodejs="`columns`" pulumi-lang-dotnet="`Columns`" pulumi-lang-go="`columns`" pulumi-lang-python="`columns`" pulumi-lang-yaml="`columns`" pulumi-lang-java="`columns`">`columns`</span> below.
+  final List<CatalogTableStorageDescriptorColumn>? columns;
+
+  /// Whether the data in the table is compressed.
+  final bool? compressed;
+
+  /// Input format: SequenceFileInputFormat (binary), or TextInputFormat, or a custom format.
+  final String? inputFormat;
+
+  /// Physical location of the table. By default this takes the form of the warehouse location, followed by the database location in the warehouse, followed by the table name.
+  final String? location;
+
+  /// Must be specified if the table contains any dimension columns.
+  final int? numberOfBuckets;
+
+  /// Output format: SequenceFileOutputFormat (binary), or IgnoreKeyTextOutputFormat, or a custom format.
+  final String? outputFormat;
+
+  /// User-supplied properties in key-value form.
+  final Map<String, String>? parameters;
+
+  /// Object that references a schema stored in the AWS Glue Schema Registry. When creating a table, you can pass an empty list of columns for the schema, and instead use a schema reference. See Schema Reference below.
+  final CatalogTableStorageDescriptorSchemaReference? schemaReference;
+
+  /// Configuration block for serialization and deserialization ("SerDe") information. See <span pulumi-lang-nodejs="`serDeInfo`" pulumi-lang-dotnet="`SerDeInfo`" pulumi-lang-go="`serDeInfo`" pulumi-lang-python="`ser_de_info`" pulumi-lang-yaml="`serDeInfo`" pulumi-lang-java="`serDeInfo`">`ser_de_info`</span> below.
+  final CatalogTableStorageDescriptorSerDeInfo? serDeInfo;
+
+  /// Configuration block with information about values that appear very frequently in a column (skewed values). See <span pulumi-lang-nodejs="`skewedInfo`" pulumi-lang-dotnet="`SkewedInfo`" pulumi-lang-go="`skewedInfo`" pulumi-lang-python="`skewed_info`" pulumi-lang-yaml="`skewedInfo`" pulumi-lang-java="`skewedInfo`">`skewed_info`</span> below.
+  final CatalogTableStorageDescriptorSkewedInfo? skewedInfo;
+
+  /// Configuration block for the sort order of each bucket in the table. See <span pulumi-lang-nodejs="`sortColumns`" pulumi-lang-dotnet="`SortColumns`" pulumi-lang-go="`sortColumns`" pulumi-lang-python="`sort_columns`" pulumi-lang-yaml="`sortColumns`" pulumi-lang-java="`sortColumns`">`sort_columns`</span> below.
+  final List<CatalogTableStorageDescriptorSortColumn>? sortColumns;
+
+  /// Whether the table data is stored in subdirectories.
+  final bool? storedAsSubDirectories;
+
+  CatalogTableStorageDescriptor({
+    this.additionalLocations,
+    this.bucketColumns,
+    this.columns,
+    this.compressed,
+    this.inputFormat,
+    this.location,
+    this.numberOfBuckets,
+    this.outputFormat,
+    this.parameters,
+    this.schemaReference,
+    this.serDeInfo,
+    this.skewedInfo,
+    this.sortColumns,
+    this.storedAsSubDirectories,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final additionalLocationsValue = additionalLocations;
+    if (additionalLocationsValue != null) {
+      map['additionalLocations'] = additionalLocationsValue;
+    }
+    final bucketColumnsValue = bucketColumns;
+    if (bucketColumnsValue != null) {
+      map['bucketColumns'] = bucketColumnsValue;
+    }
+    final columnsValue = columns;
+    if (columnsValue != null) {
+      map['columns'] = Input.encodeList<CatalogTableStorageDescriptorColumn,
+          Map<String, dynamic>>(columnsValue, (value) => value.toMap());
+    }
+    final compressedValue = compressed;
+    if (compressedValue != null) {
+      map['compressed'] = compressedValue;
+    }
+    final inputFormatValue = inputFormat;
+    if (inputFormatValue != null) {
+      map['inputFormat'] = inputFormatValue;
+    }
+    final locationValue = location;
+    if (locationValue != null) {
+      map['location'] = locationValue;
+    }
+    final numberOfBucketsValue = numberOfBuckets;
+    if (numberOfBucketsValue != null) {
+      map['numberOfBuckets'] = numberOfBucketsValue;
+    }
+    final outputFormatValue = outputFormat;
+    if (outputFormatValue != null) {
+      map['outputFormat'] = outputFormatValue;
+    }
+    final parametersValue = parameters;
+    if (parametersValue != null) {
+      map['parameters'] = parametersValue;
+    }
+    final schemaReferenceValue = schemaReference;
+    if (schemaReferenceValue != null) {
+      map['schemaReference'] = schemaReferenceValue.toMap();
+    }
+    final serDeInfoValue = serDeInfo;
+    if (serDeInfoValue != null) {
+      map['serDeInfo'] = serDeInfoValue.toMap();
+    }
+    final skewedInfoValue = skewedInfo;
+    if (skewedInfoValue != null) {
+      map['skewedInfo'] = skewedInfoValue.toMap();
+    }
+    final sortColumnsValue = sortColumns;
+    if (sortColumnsValue != null) {
+      map['sortColumns'] = Input.encodeList<
+          CatalogTableStorageDescriptorSortColumn,
+          Map<String, dynamic>>(sortColumnsValue, (value) => value.toMap());
+    }
+    final storedAsSubDirectoriesValue = storedAsSubDirectories;
+    if (storedAsSubDirectoriesValue != null) {
+      map['storedAsSubDirectories'] = storedAsSubDirectoriesValue;
+    }
+    return map;
+  }
+
+  factory CatalogTableStorageDescriptor.fromMap(Map<String, dynamic> map) {
+    return CatalogTableStorageDescriptor(
+      additionalLocations: map['additionalLocations'] == null
+          ? null
+          : (map['additionalLocations'] as List).cast<String>(),
+      bucketColumns: map['bucketColumns'] == null
+          ? null
+          : (map['bucketColumns'] as List).cast<String>(),
+      columns: map['columns'] == null
+          ? null
+          : Input.decodeList<CatalogTableStorageDescriptorColumn>(
+              map['columns'],
+              (value) => CatalogTableStorageDescriptorColumn.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      compressed: map['compressed'] == null ? null : map['compressed'] as bool,
+      inputFormat:
+          map['inputFormat'] == null ? null : map['inputFormat'] as String,
+      location: map['location'] == null ? null : map['location'] as String,
+      numberOfBuckets:
+          map['numberOfBuckets'] == null ? null : map['numberOfBuckets'] as int,
+      outputFormat:
+          map['outputFormat'] == null ? null : map['outputFormat'] as String,
+      parameters: map['parameters'] == null
+          ? null
+          : (map['parameters'] as Map).cast<String, String>(),
+      schemaReference: map['schemaReference'] == null
+          ? null
+          : CatalogTableStorageDescriptorSchemaReference.fromMap(
+              (map['schemaReference'] as Map).cast<String, dynamic>()),
+      serDeInfo: map['serDeInfo'] == null
+          ? null
+          : CatalogTableStorageDescriptorSerDeInfo.fromMap(
+              (map['serDeInfo'] as Map).cast<String, dynamic>()),
+      skewedInfo: map['skewedInfo'] == null
+          ? null
+          : CatalogTableStorageDescriptorSkewedInfo.fromMap(
+              (map['skewedInfo'] as Map).cast<String, dynamic>()),
+      sortColumns: map['sortColumns'] == null
+          ? null
+          : Input.decodeList<CatalogTableStorageDescriptorSortColumn>(
+              map['sortColumns'],
+              (value) => CatalogTableStorageDescriptorSortColumn.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      storedAsSubDirectories: map['storedAsSubDirectories'] == null
+          ? null
+          : map['storedAsSubDirectories'] as bool,
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_codebuild_project_logs_config_cloudwatch_logs;
+
+export 'project_logs_config_cloudwatch_logs.dart';

@@ -1,0 +1,37 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_pipeline_definition_parameter_object_attribute/get_pipeline_definition_parameter_object_attribute.dart';
+
+class GetPipelineDefinitionParameterObject {
+  final List<GetPipelineDefinitionParameterObjectAttribute> attributes;
+
+  /// ID of the object.
+  final String id;
+
+  GetPipelineDefinitionParameterObject({
+    required this.attributes,
+    required this.id,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['attributes'] = Input.encodeList<
+        GetPipelineDefinitionParameterObjectAttribute,
+        Map<String, dynamic>>(attributes, (value) => value.toMap());
+    map['id'] = id;
+    return map;
+  }
+
+  factory GetPipelineDefinitionParameterObject.fromMap(
+      Map<String, dynamic> map) {
+    return GetPipelineDefinitionParameterObject(
+      attributes:
+          Input.decodeList<GetPipelineDefinitionParameterObjectAttribute>(
+              map['attributes'],
+              (value) => GetPipelineDefinitionParameterObjectAttribute.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      id: map['id'] as String,
+    );
+  }
+}

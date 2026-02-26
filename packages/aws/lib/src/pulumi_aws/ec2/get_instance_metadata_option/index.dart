@@ -1,0 +1,3 @@
+library module_ec2_get_instance_metadata_option;
+
+export 'get_instance_metadata_option.dart';

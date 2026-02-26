@@ -1,0 +1,3 @@
+library module_bedrock_agent_knowledge_base_timeouts;
+
+export 'agent_knowledge_base_timeouts.dart';

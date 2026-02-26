@@ -1,0 +1,3 @@
+library module_appsync_api_event_config_default_publish_auth_mode;
+
+export 'api_event_config_default_publish_auth_mode.dart';

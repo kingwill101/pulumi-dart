@@ -1,0 +1,3 @@
+library module_quicksight_data_set_physical_table_map_custom_sql;
+
+export 'data_set_physical_table_map_custom_sql.dart';

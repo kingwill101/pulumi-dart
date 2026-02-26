@@ -1,0 +1,3 @@
+library module_devopsguru_event_sources_config_event_source_amazon_code_guru_profiler;
+
+export 'event_sources_config_event_source_amazon_code_guru_profiler.dart';

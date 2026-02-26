@@ -1,0 +1,3 @@
+library module_dynamodb_get_table_on_demand_throughput;
+
+export 'get_table_on_demand_throughput.dart';

@@ -1,0 +1,3 @@
+library module_dms_replication_instance_kerberos_authentication_settings;
+
+export 'replication_instance_kerberos_authentication_settings.dart';

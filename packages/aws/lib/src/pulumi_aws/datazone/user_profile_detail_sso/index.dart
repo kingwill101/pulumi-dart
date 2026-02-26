@@ -1,0 +1,3 @@
+library module_datazone_user_profile_detail_sso;
+
+export 'user_profile_detail_sso.dart';

@@ -1,0 +1,4 @@
+library module_sesv2_email_identity_feedback_attributes;
+
+export 'email_identity_feedback_attributes.dart';
+export 'email_identity_feedback_attributes_args.dart';

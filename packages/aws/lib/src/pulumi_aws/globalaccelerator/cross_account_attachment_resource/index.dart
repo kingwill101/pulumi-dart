@@ -1,0 +1,3 @@
+library module_globalaccelerator_cross_account_attachment_resource;
+
+export 'cross_account_attachment_resource.dart';

@@ -1,0 +1,3 @@
+library module_kinesis_firehose_delivery_stream_splunk_configuration_s3_configuration_cloudwatch_logging_options;
+
+export 'firehose_delivery_stream_splunk_configuration_s3_configuration_cloudwatch_logging_options.dart';

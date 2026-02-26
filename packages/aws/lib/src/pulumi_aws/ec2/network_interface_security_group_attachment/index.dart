@@ -1,0 +1,4 @@
+library module_ec2_network_interface_security_group_attachment;
+
+export 'network_interface_security_group_attachment.dart';
+export 'network_interface_security_group_attachment_args.dart';

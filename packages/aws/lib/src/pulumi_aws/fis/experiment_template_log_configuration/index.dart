@@ -1,0 +1,3 @@
+library module_fis_experiment_template_log_configuration;
+
+export 'experiment_template_log_configuration.dart';

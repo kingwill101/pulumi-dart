@@ -1,0 +1,3 @@
+library module_route53domains_registered_domain_billing_contact;
+
+export 'registered_domain_billing_contact.dart';

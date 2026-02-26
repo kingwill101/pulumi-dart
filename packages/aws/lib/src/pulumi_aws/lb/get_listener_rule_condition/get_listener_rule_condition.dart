@@ -1,0 +1,121 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_listener_rule_condition_host_header/get_listener_rule_condition_host_header.dart';
+import '../get_listener_rule_condition_http_header/get_listener_rule_condition_http_header.dart';
+import '../get_listener_rule_condition_http_request_method/get_listener_rule_condition_http_request_method.dart';
+import '../get_listener_rule_condition_path_pattern/get_listener_rule_condition_path_pattern.dart';
+import '../get_listener_rule_condition_query_string/get_listener_rule_condition_query_string.dart';
+import '../get_listener_rule_condition_source_ip/get_listener_rule_condition_source_ip.dart';
+
+class GetListenerRuleCondition {
+  /// Host header patterns to match.
+  /// Detailed below.
+  final List<GetListenerRuleConditionHostHeader>? hostHeaders;
+
+  /// HTTP header and values to match.
+  /// Detailed below.
+  final List<GetListenerRuleConditionHttpHeader>? httpHeaders;
+
+  /// Contains a single attribute <span pulumi-lang-nodejs="`values`" pulumi-lang-dotnet="`Values`" pulumi-lang-go="`values`" pulumi-lang-python="`values`" pulumi-lang-yaml="`values`" pulumi-lang-java="`values`">`values`</span>, which contains a set of HTTP request methods.
+  final List<GetListenerRuleConditionHttpRequestMethod>? httpRequestMethods;
+
+  /// Path patterns to compare against the request URL.
+  /// Detailed below.
+  final List<GetListenerRuleConditionPathPattern>? pathPatterns;
+
+  /// Query string parameters to match.
+  /// Detailed below.
+  final List<GetListenerRuleConditionQueryString>? queryStrings;
+
+  /// Contains a single attribute <span pulumi-lang-nodejs="`values`" pulumi-lang-dotnet="`Values`" pulumi-lang-go="`values`" pulumi-lang-python="`values`" pulumi-lang-yaml="`values`" pulumi-lang-java="`values`">`values`</span>, which contains a set of source IPs in CIDR notation.
+  final List<GetListenerRuleConditionSourceIp>? sourceIps;
+
+  GetListenerRuleCondition({
+    this.hostHeaders,
+    this.httpHeaders,
+    this.httpRequestMethods,
+    this.pathPatterns,
+    this.queryStrings,
+    this.sourceIps,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final hostHeadersValue = hostHeaders;
+    if (hostHeadersValue != null) {
+      map['hostHeaders'] = Input.encodeList<GetListenerRuleConditionHostHeader,
+          Map<String, dynamic>>(hostHeadersValue, (value) => value.toMap());
+    }
+    final httpHeadersValue = httpHeaders;
+    if (httpHeadersValue != null) {
+      map['httpHeaders'] = Input.encodeList<GetListenerRuleConditionHttpHeader,
+          Map<String, dynamic>>(httpHeadersValue, (value) => value.toMap());
+    }
+    final httpRequestMethodsValue = httpRequestMethods;
+    if (httpRequestMethodsValue != null) {
+      map['httpRequestMethods'] = Input.encodeList<
+              GetListenerRuleConditionHttpRequestMethod, Map<String, dynamic>>(
+          httpRequestMethodsValue, (value) => value.toMap());
+    }
+    final pathPatternsValue = pathPatterns;
+    if (pathPatternsValue != null) {
+      map['pathPatterns'] = Input.encodeList<
+          GetListenerRuleConditionPathPattern,
+          Map<String, dynamic>>(pathPatternsValue, (value) => value.toMap());
+    }
+    final queryStringsValue = queryStrings;
+    if (queryStringsValue != null) {
+      map['queryStrings'] = Input.encodeList<
+          GetListenerRuleConditionQueryString,
+          Map<String, dynamic>>(queryStringsValue, (value) => value.toMap());
+    }
+    final sourceIpsValue = sourceIps;
+    if (sourceIpsValue != null) {
+      map['sourceIps'] = Input.encodeList<GetListenerRuleConditionSourceIp,
+          Map<String, dynamic>>(sourceIpsValue, (value) => value.toMap());
+    }
+    return map;
+  }
+
+  factory GetListenerRuleCondition.fromMap(Map<String, dynamic> map) {
+    return GetListenerRuleCondition(
+      hostHeaders: map['hostHeaders'] == null
+          ? null
+          : Input.decodeList<GetListenerRuleConditionHostHeader>(
+              map['hostHeaders'],
+              (value) => GetListenerRuleConditionHostHeader.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      httpHeaders: map['httpHeaders'] == null
+          ? null
+          : Input.decodeList<GetListenerRuleConditionHttpHeader>(
+              map['httpHeaders'],
+              (value) => GetListenerRuleConditionHttpHeader.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      httpRequestMethods: map['httpRequestMethods'] == null
+          ? null
+          : Input.decodeList<GetListenerRuleConditionHttpRequestMethod>(
+              map['httpRequestMethods'],
+              (value) => GetListenerRuleConditionHttpRequestMethod.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      pathPatterns: map['pathPatterns'] == null
+          ? null
+          : Input.decodeList<GetListenerRuleConditionPathPattern>(
+              map['pathPatterns'],
+              (value) => GetListenerRuleConditionPathPattern.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      queryStrings: map['queryStrings'] == null
+          ? null
+          : Input.decodeList<GetListenerRuleConditionQueryString>(
+              map['queryStrings'],
+              (value) => GetListenerRuleConditionQueryString.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      sourceIps: map['sourceIps'] == null
+          ? null
+          : Input.decodeList<GetListenerRuleConditionSourceIp>(
+              map['sourceIps'],
+              (value) => GetListenerRuleConditionSourceIp.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_finspace_kx_cluster_capacity_configuration;
+
+export 'kx_cluster_capacity_configuration.dart';

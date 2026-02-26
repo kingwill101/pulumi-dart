@@ -1,0 +1,3 @@
+library module_sagemaker_endpoint_configuration_async_inference_config_output_config_notification_config;
+
+export 'endpoint_configuration_async_inference_config_output_config_notification_config.dart';

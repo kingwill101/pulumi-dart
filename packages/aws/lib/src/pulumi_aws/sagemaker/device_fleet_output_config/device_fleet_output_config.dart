@@ -1,0 +1,31 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class DeviceFleetOutputConfig {
+  /// The AWS Key Management Service (AWS KMS) key that Amazon SageMaker AI uses to encrypt data on the storage volume after compilation job. If you don't provide a KMS key ID, Amazon SageMaker AI uses the default KMS key for Amazon S3 for your role's account.
+  final String? kmsKeyId;
+
+  /// The Amazon Simple Storage (S3) bucker URI.
+  final String s3OutputLocation;
+
+  DeviceFleetOutputConfig({
+    this.kmsKeyId,
+    required this.s3OutputLocation,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final kmsKeyIdValue = kmsKeyId;
+    if (kmsKeyIdValue != null) {
+      map['kmsKeyId'] = kmsKeyIdValue;
+    }
+    map['s3OutputLocation'] = s3OutputLocation;
+    return map;
+  }
+
+  factory DeviceFleetOutputConfig.fromMap(Map<String, dynamic> map) {
+    return DeviceFleetOutputConfig(
+      kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
+      s3OutputLocation: map['s3OutputLocation'] as String,
+    );
+  }
+}

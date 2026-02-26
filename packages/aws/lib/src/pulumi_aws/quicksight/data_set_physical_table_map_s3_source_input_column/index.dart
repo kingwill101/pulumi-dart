@@ -1,0 +1,3 @@
+library module_quicksight_data_set_physical_table_map_s3_source_input_column;
+
+export 'data_set_physical_table_map_s3_source_input_column.dart';

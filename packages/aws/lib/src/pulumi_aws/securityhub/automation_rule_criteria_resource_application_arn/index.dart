@@ -1,0 +1,3 @@
+library module_securityhub_automation_rule_criteria_resource_application_arn;
+
+export 'automation_rule_criteria_resource_application_arn.dart';

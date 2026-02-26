@@ -1,0 +1,3 @@
+library module_ec2_get_launch_template_instance_requirement_baseline_ebs_bandwidth_mbp;
+
+export 'get_launch_template_instance_requirement_baseline_ebs_bandwidth_mbp.dart';

@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class WorkgroupConfigParameter {
+  /// The key of the parameter. The options are <span pulumi-lang-nodejs="`autoMv`" pulumi-lang-dotnet="`AutoMv`" pulumi-lang-go="`autoMv`" pulumi-lang-python="`auto_mv`" pulumi-lang-yaml="`autoMv`" pulumi-lang-java="`autoMv`">`auto_mv`</span>, <span pulumi-lang-nodejs="`datestyle`" pulumi-lang-dotnet="`Datestyle`" pulumi-lang-go="`datestyle`" pulumi-lang-python="`datestyle`" pulumi-lang-yaml="`datestyle`" pulumi-lang-java="`datestyle`">`datestyle`</span>, <span pulumi-lang-nodejs="`enableCaseSensitiveIdentifier`" pulumi-lang-dotnet="`EnableCaseSensitiveIdentifier`" pulumi-lang-go="`enableCaseSensitiveIdentifier`" pulumi-lang-python="`enable_case_sensitive_identifier`" pulumi-lang-yaml="`enableCaseSensitiveIdentifier`" pulumi-lang-java="`enableCaseSensitiveIdentifier`">`enable_case_sensitive_identifier`</span>, <span pulumi-lang-nodejs="`enableUserActivityLogging`" pulumi-lang-dotnet="`EnableUserActivityLogging`" pulumi-lang-go="`enableUserActivityLogging`" pulumi-lang-python="`enable_user_activity_logging`" pulumi-lang-yaml="`enableUserActivityLogging`" pulumi-lang-java="`enableUserActivityLogging`">`enable_user_activity_logging`</span>, <span pulumi-lang-nodejs="`queryGroup`" pulumi-lang-dotnet="`QueryGroup`" pulumi-lang-go="`queryGroup`" pulumi-lang-python="`query_group`" pulumi-lang-yaml="`queryGroup`" pulumi-lang-java="`queryGroup`">`query_group`</span>, <span pulumi-lang-nodejs="`searchPath`" pulumi-lang-dotnet="`SearchPath`" pulumi-lang-go="`searchPath`" pulumi-lang-python="`search_path`" pulumi-lang-yaml="`searchPath`" pulumi-lang-java="`searchPath`">`search_path`</span>, <span pulumi-lang-nodejs="`requireSsl`" pulumi-lang-dotnet="`RequireSsl`" pulumi-lang-go="`requireSsl`" pulumi-lang-python="`require_ssl`" pulumi-lang-yaml="`requireSsl`" pulumi-lang-java="`requireSsl`">`require_ssl`</span>, <span pulumi-lang-nodejs="`useFipsSsl`" pulumi-lang-dotnet="`UseFipsSsl`" pulumi-lang-go="`useFipsSsl`" pulumi-lang-python="`use_fips_ssl`" pulumi-lang-yaml="`useFipsSsl`" pulumi-lang-java="`useFipsSsl`">`use_fips_ssl`</span>, and [query monitoring metrics](https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless) that let you define performance boundaries: <span pulumi-lang-nodejs="`maxQueryCpuTime`" pulumi-lang-dotnet="`MaxQueryCpuTime`" pulumi-lang-go="`maxQueryCpuTime`" pulumi-lang-python="`max_query_cpu_time`" pulumi-lang-yaml="`maxQueryCpuTime`" pulumi-lang-java="`maxQueryCpuTime`">`max_query_cpu_time`</span>, <span pulumi-lang-nodejs="`maxQueryBlocksRead`" pulumi-lang-dotnet="`MaxQueryBlocksRead`" pulumi-lang-go="`maxQueryBlocksRead`" pulumi-lang-python="`max_query_blocks_read`" pulumi-lang-yaml="`maxQueryBlocksRead`" pulumi-lang-java="`maxQueryBlocksRead`">`max_query_blocks_read`</span>, <span pulumi-lang-nodejs="`maxScanRowCount`" pulumi-lang-dotnet="`MaxScanRowCount`" pulumi-lang-go="`maxScanRowCount`" pulumi-lang-python="`max_scan_row_count`" pulumi-lang-yaml="`maxScanRowCount`" pulumi-lang-java="`maxScanRowCount`">`max_scan_row_count`</span>, <span pulumi-lang-nodejs="`maxQueryExecutionTime`" pulumi-lang-dotnet="`MaxQueryExecutionTime`" pulumi-lang-go="`maxQueryExecutionTime`" pulumi-lang-python="`max_query_execution_time`" pulumi-lang-yaml="`maxQueryExecutionTime`" pulumi-lang-java="`maxQueryExecutionTime`">`max_query_execution_time`</span>, <span pulumi-lang-nodejs="`maxQueryQueueTime`" pulumi-lang-dotnet="`MaxQueryQueueTime`" pulumi-lang-go="`maxQueryQueueTime`" pulumi-lang-python="`max_query_queue_time`" pulumi-lang-yaml="`maxQueryQueueTime`" pulumi-lang-java="`maxQueryQueueTime`">`max_query_queue_time`</span>, <span pulumi-lang-nodejs="`maxQueryCpuUsagePercent`" pulumi-lang-dotnet="`MaxQueryCpuUsagePercent`" pulumi-lang-go="`maxQueryCpuUsagePercent`" pulumi-lang-python="`max_query_cpu_usage_percent`" pulumi-lang-yaml="`maxQueryCpuUsagePercent`" pulumi-lang-java="`maxQueryCpuUsagePercent`">`max_query_cpu_usage_percent`</span>, <span pulumi-lang-nodejs="`maxQueryTempBlocksToDisk`" pulumi-lang-dotnet="`MaxQueryTempBlocksToDisk`" pulumi-lang-go="`maxQueryTempBlocksToDisk`" pulumi-lang-python="`max_query_temp_blocks_to_disk`" pulumi-lang-yaml="`maxQueryTempBlocksToDisk`" pulumi-lang-java="`maxQueryTempBlocksToDisk`">`max_query_temp_blocks_to_disk`</span>, <span pulumi-lang-nodejs="`maxJoinRowCount`" pulumi-lang-dotnet="`MaxJoinRowCount`" pulumi-lang-go="`maxJoinRowCount`" pulumi-lang-python="`max_join_row_count`" pulumi-lang-yaml="`maxJoinRowCount`" pulumi-lang-java="`maxJoinRowCount`">`max_join_row_count`</span> and <span pulumi-lang-nodejs="`maxNestedLoopJoinRowCount`" pulumi-lang-dotnet="`MaxNestedLoopJoinRowCount`" pulumi-lang-go="`maxNestedLoopJoinRowCount`" pulumi-lang-python="`max_nested_loop_join_row_count`" pulumi-lang-yaml="`maxNestedLoopJoinRowCount`" pulumi-lang-java="`maxNestedLoopJoinRowCount`">`max_nested_loop_join_row_count`</span>.
+  final String parameterKey;
+
+  /// The value of the parameter to set.
+  final String parameterValue;
+
+  WorkgroupConfigParameter({
+    required this.parameterKey,
+    required this.parameterValue,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['parameterKey'] = parameterKey;
+    map['parameterValue'] = parameterValue;
+    return map;
+  }
+
+  factory WorkgroupConfigParameter.fromMap(Map<String, dynamic> map) {
+    return WorkgroupConfigParameter(
+      parameterKey: map['parameterKey'] as String,
+      parameterValue: map['parameterValue'] as String,
+    );
+  }
+}

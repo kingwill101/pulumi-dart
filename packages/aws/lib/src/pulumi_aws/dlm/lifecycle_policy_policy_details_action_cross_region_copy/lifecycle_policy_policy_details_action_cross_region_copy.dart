@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../lifecycle_policy_policy_details_action_cross_region_copy_encryption_configuration/lifecycle_policy_policy_details_action_cross_region_copy_encryption_configuration.dart';
+import '../lifecycle_policy_policy_details_action_cross_region_copy_retain_rule/lifecycle_policy_policy_details_action_cross_region_copy_retain_rule.dart';
+
+class LifecyclePolicyPolicyDetailsActionCrossRegionCopy {
+  /// The encryption settings for the copied snapshot. See the <span pulumi-lang-nodejs="`encryptionConfiguration`" pulumi-lang-dotnet="`EncryptionConfiguration`" pulumi-lang-go="`encryptionConfiguration`" pulumi-lang-python="`encryption_configuration`" pulumi-lang-yaml="`encryptionConfiguration`" pulumi-lang-java="`encryptionConfiguration`">`encryption_configuration`</span> block. Max of 1 per action.
+  final LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration
+      encryptionConfiguration;
+  final LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRule? retainRule;
+  final String target;
+
+  LifecyclePolicyPolicyDetailsActionCrossRegionCopy({
+    required this.encryptionConfiguration,
+    this.retainRule,
+    required this.target,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['encryptionConfiguration'] = encryptionConfiguration.toMap();
+    final retainRuleValue = retainRule;
+    if (retainRuleValue != null) {
+      map['retainRule'] = retainRuleValue.toMap();
+    }
+    map['target'] = target;
+    return map;
+  }
+
+  factory LifecyclePolicyPolicyDetailsActionCrossRegionCopy.fromMap(
+      Map<String, dynamic> map) {
+    return LifecyclePolicyPolicyDetailsActionCrossRegionCopy(
+      encryptionConfiguration:
+          LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration
+              .fromMap((map['encryptionConfiguration'] as Map)
+                  .cast<String, dynamic>()),
+      retainRule: map['retainRule'] == null
+          ? null
+          : LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRule.fromMap(
+              (map['retainRule'] as Map).cast<String, dynamic>()),
+      target: map['target'] as String,
+    );
+  }
+}

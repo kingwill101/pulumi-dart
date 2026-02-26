@@ -1,0 +1,3 @@
+library module_kinesis_analytics_application_reference_data_sources_s3;
+
+export 'analytics_application_reference_data_sources_s3.dart';

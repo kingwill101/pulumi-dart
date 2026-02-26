@@ -1,0 +1,84 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_cluster_versions_cluster_version/get_cluster_versions_cluster_version.dart';
+
+/// Result data returned by getClusterVersions.
+class GetClusterVersionsResult {
+  /// Type of cluster that the version belongs to.
+  final String? clusterType;
+
+  /// A list of Kubernetes version information.
+  final List<GetClusterVersionsClusterVersion> clusterVersions;
+  final List<String>? clusterVersionsOnlies;
+  final bool? defaultOnly;
+
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+  final bool? includeAll;
+  final String region;
+
+  /// Status of the EKS cluster version.
+  final String? versionStatus;
+
+  GetClusterVersionsResult({
+    this.clusterType,
+    required this.clusterVersions,
+    this.clusterVersionsOnlies,
+    this.defaultOnly,
+    required this.id,
+    this.includeAll,
+    required this.region,
+    this.versionStatus,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final clusterTypeValue = clusterType;
+    if (clusterTypeValue != null) {
+      map['clusterType'] = clusterTypeValue;
+    }
+    map['clusterVersions'] = Input.encodeList<GetClusterVersionsClusterVersion,
+        Map<String, dynamic>>(clusterVersions, (value) => value.toMap());
+    final clusterVersionsOnliesValue = clusterVersionsOnlies;
+    if (clusterVersionsOnliesValue != null) {
+      map['clusterVersionsOnlies'] = clusterVersionsOnliesValue;
+    }
+    final defaultOnlyValue = defaultOnly;
+    if (defaultOnlyValue != null) {
+      map['defaultOnly'] = defaultOnlyValue;
+    }
+    map['id'] = id;
+    final includeAllValue = includeAll;
+    if (includeAllValue != null) {
+      map['includeAll'] = includeAllValue;
+    }
+    map['region'] = region;
+    final versionStatusValue = versionStatus;
+    if (versionStatusValue != null) {
+      map['versionStatus'] = versionStatusValue;
+    }
+    return map;
+  }
+
+  factory GetClusterVersionsResult.fromMap(Map<String, dynamic> map) {
+    return GetClusterVersionsResult(
+      clusterType:
+          map['clusterType'] == null ? null : map['clusterType'] as String,
+      clusterVersions: Input.decodeList<GetClusterVersionsClusterVersion>(
+          map['clusterVersions'],
+          (value) => GetClusterVersionsClusterVersion.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      clusterVersionsOnlies: map['clusterVersionsOnlies'] == null
+          ? null
+          : (map['clusterVersionsOnlies'] as List).cast<String>(),
+      defaultOnly:
+          map['defaultOnly'] == null ? null : map['defaultOnly'] as bool,
+      id: map['id'] as String,
+      includeAll: map['includeAll'] == null ? null : map['includeAll'] as bool,
+      region: map['region'] as String,
+      versionStatus:
+          map['versionStatus'] == null ? null : map['versionStatus'] as String,
+    );
+  }
+}

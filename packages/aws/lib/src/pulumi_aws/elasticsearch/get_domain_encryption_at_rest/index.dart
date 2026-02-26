@@ -1,0 +1,3 @@
+library module_elasticsearch_get_domain_encryption_at_rest;
+
+export 'get_domain_encryption_at_rest.dart';

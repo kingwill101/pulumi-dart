@@ -1,0 +1,4 @@
+library module_directconnect_hosted_public_virtual_interface;
+
+export 'hosted_public_virtual_interface.dart';
+export 'hosted_public_virtual_interface_args.dart';

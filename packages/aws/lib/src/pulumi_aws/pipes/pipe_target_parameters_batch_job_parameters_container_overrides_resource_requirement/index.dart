@@ -1,0 +1,3 @@
+library module_pipes_pipe_target_parameters_batch_job_parameters_container_overrides_resource_requirement;
+
+export 'pipe_target_parameters_batch_job_parameters_container_overrides_resource_requirement.dart';

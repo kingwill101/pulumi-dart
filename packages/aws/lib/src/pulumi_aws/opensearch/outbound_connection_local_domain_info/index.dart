@@ -1,0 +1,3 @@
+library module_opensearch_outbound_connection_local_domain_info;
+
+export 'outbound_connection_local_domain_info.dart';

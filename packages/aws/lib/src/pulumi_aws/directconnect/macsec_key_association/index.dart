@@ -1,0 +1,4 @@
+library module_directconnect_macsec_key_association;
+
+export 'macsec_key_association.dart';
+export 'macsec_key_association_args.dart';

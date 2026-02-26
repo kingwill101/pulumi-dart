@@ -1,0 +1,3 @@
+library module_mwaa_environment_network_configuration;
+
+export 'environment_network_configuration.dart';

@@ -1,0 +1,3 @@
+library module_glue_catalog_table_open_table_format_input;
+
+export 'catalog_table_open_table_format_input.dart';

@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class DistributionCacheBehavior {
+  /// Cache behavior for the specified path. Valid values: <span pulumi-lang-nodejs="`cache`" pulumi-lang-dotnet="`Cache`" pulumi-lang-go="`cache`" pulumi-lang-python="`cache`" pulumi-lang-yaml="`cache`" pulumi-lang-java="`cache`">`cache`</span>, `dont-cache`.
+  final String behavior;
+
+  /// Path to a directory or file to cache, or not cache. Use an asterisk symbol to specify wildcard directories (`path/to/assets/*`), and file types (`*.html`, `*.jpg`, `*.js`). Directories and file paths are case-sensitive.
+  final String path;
+
+  DistributionCacheBehavior({
+    required this.behavior,
+    required this.path,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['behavior'] = behavior;
+    map['path'] = path;
+    return map;
+  }
+
+  factory DistributionCacheBehavior.fromMap(Map<String, dynamic> map) {
+    return DistributionCacheBehavior(
+      behavior: map['behavior'] as String,
+      path: map['path'] as String,
+    );
+  }
+}

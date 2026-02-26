@@ -1,0 +1,3 @@
+library module_ec2_get_vpc_peering_connections_filter;
+
+export 'get_vpc_peering_connections_filter.dart';

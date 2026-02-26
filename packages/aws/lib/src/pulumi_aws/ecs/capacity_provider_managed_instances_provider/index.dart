@@ -1,0 +1,3 @@
+library module_ecs_capacity_provider_managed_instances_provider;
+
+export 'capacity_provider_managed_instances_provider.dart';

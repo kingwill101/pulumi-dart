@@ -1,0 +1,30 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../domain_rule_based_matching_exporting_config_s3_exporting/domain_rule_based_matching_exporting_config_s3_exporting.dart';
+
+class DomainRuleBasedMatchingExportingConfig {
+  final DomainRuleBasedMatchingExportingConfigS3Exporting? s3Exporting;
+
+  DomainRuleBasedMatchingExportingConfig({
+    this.s3Exporting,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final s3ExportingValue = s3Exporting;
+    if (s3ExportingValue != null) {
+      map['s3Exporting'] = s3ExportingValue.toMap();
+    }
+    return map;
+  }
+
+  factory DomainRuleBasedMatchingExportingConfig.fromMap(
+      Map<String, dynamic> map) {
+    return DomainRuleBasedMatchingExportingConfig(
+      s3Exporting: map['s3Exporting'] == null
+          ? null
+          : DomainRuleBasedMatchingExportingConfigS3Exporting.fromMap(
+              (map['s3Exporting'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

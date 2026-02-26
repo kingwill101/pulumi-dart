@@ -1,0 +1,3 @@
+library module_appconfig_configuration_profile_validator;
+
+export 'configuration_profile_validator.dart';

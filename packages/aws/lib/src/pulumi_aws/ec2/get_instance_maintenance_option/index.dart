@@ -1,0 +1,3 @@
+library module_ec2_get_instance_maintenance_option;
+
+export 'get_instance_maintenance_option.dart';

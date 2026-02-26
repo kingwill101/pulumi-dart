@@ -1,0 +1,3 @@
+library module_ec2_network_insights_analysis_explanation_destination_vpc;
+
+export 'network_insights_analysis_explanation_destination_vpc.dart';

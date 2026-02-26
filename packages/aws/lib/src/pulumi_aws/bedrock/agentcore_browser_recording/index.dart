@@ -1,0 +1,3 @@
+library module_bedrock_agentcore_browser_recording;
+
+export 'agentcore_browser_recording.dart';

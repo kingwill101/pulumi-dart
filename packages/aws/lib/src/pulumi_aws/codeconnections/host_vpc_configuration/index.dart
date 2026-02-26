@@ -1,0 +1,3 @@
+library module_codeconnections_host_vpc_configuration;
+
+export 'host_vpc_configuration.dart';

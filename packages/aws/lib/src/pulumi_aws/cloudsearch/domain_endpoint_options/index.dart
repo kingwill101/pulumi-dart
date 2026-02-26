@@ -1,0 +1,3 @@
+library module_cloudsearch_domain_endpoint_options;
+
+export 'domain_endpoint_options.dart';

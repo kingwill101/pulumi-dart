@@ -1,0 +1,3 @@
+library module_ecs_task_set_network_configuration;
+
+export 'task_set_network_configuration.dart';

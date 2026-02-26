@@ -1,0 +1,3 @@
+library module_redshiftserverless_get_workgroup_endpoint_vpc_endpoint_network_interface;
+
+export 'get_workgroup_endpoint_vpc_endpoint_network_interface.dart';

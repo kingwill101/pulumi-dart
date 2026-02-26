@@ -1,0 +1,3 @@
+library module_workspacesweb_data_protection_settings_inline_redaction_configuration_inline_redaction_pattern;
+
+export 'data_protection_settings_inline_redaction_configuration_inline_redaction_pattern.dart';

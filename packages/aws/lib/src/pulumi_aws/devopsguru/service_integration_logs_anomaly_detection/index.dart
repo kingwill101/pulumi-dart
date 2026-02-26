@@ -1,0 +1,3 @@
+library module_devopsguru_service_integration_logs_anomaly_detection;
+
+export 'service_integration_logs_anomaly_detection.dart';

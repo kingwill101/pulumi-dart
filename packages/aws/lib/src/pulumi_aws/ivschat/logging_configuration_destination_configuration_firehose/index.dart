@@ -1,0 +1,3 @@
+library module_ivschat_logging_configuration_destination_configuration_firehose;
+
+export 'logging_configuration_destination_configuration_firehose.dart';

@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class ExperimentTemplateExperimentReportConfigurationOutputsS3Configuration {
+  /// The name of the destination bucket.
+  final String bucketName;
+
+  /// The bucket prefix.
+  final String? prefix;
+
+  ExperimentTemplateExperimentReportConfigurationOutputsS3Configuration({
+    required this.bucketName,
+    this.prefix,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['bucketName'] = bucketName;
+    final prefixValue = prefix;
+    if (prefixValue != null) {
+      map['prefix'] = prefixValue;
+    }
+    return map;
+  }
+
+  factory ExperimentTemplateExperimentReportConfigurationOutputsS3Configuration.fromMap(
+      Map<String, dynamic> map) {
+    return ExperimentTemplateExperimentReportConfigurationOutputsS3Configuration(
+      bucketName: map['bucketName'] as String,
+      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+    );
+  }
+}

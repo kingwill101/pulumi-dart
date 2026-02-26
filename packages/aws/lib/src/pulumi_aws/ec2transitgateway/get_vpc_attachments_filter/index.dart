@@ -1,0 +1,3 @@
+library module_ec2transitgateway_get_vpc_attachments_filter;
+
+export 'get_vpc_attachments_filter.dart';

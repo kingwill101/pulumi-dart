@@ -1,0 +1,69 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../application_application_configuration_sql_application_configuration_input/application_application_configuration_sql_application_configuration_input.dart';
+import '../application_application_configuration_sql_application_configuration_output/application_application_configuration_sql_application_configuration_output.dart';
+import '../application_application_configuration_sql_application_configuration_reference_data_source/application_application_configuration_sql_application_configuration_reference_data_source.dart';
+
+class ApplicationApplicationConfigurationSqlApplicationConfiguration {
+  /// The input stream used by the application.
+  final ApplicationApplicationConfigurationSqlApplicationConfigurationInput?
+      input;
+
+  /// The destination streams used by the application.
+  final List<
+          ApplicationApplicationConfigurationSqlApplicationConfigurationOutput>?
+      outputs;
+
+  /// The reference data source used by the application.
+  final ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource?
+      referenceDataSource;
+
+  ApplicationApplicationConfigurationSqlApplicationConfiguration({
+    this.input,
+    this.outputs,
+    this.referenceDataSource,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final inputValue = input;
+    if (inputValue != null) {
+      map['input'] = inputValue.toMap();
+    }
+    final outputsValue = outputs;
+    if (outputsValue != null) {
+      map['outputs'] = Input.encodeList<
+          ApplicationApplicationConfigurationSqlApplicationConfigurationOutput,
+          Map<String, dynamic>>(outputsValue, (value) => value.toMap());
+    }
+    final referenceDataSourceValue = referenceDataSource;
+    if (referenceDataSourceValue != null) {
+      map['referenceDataSource'] = referenceDataSourceValue.toMap();
+    }
+    return map;
+  }
+
+  factory ApplicationApplicationConfigurationSqlApplicationConfiguration.fromMap(
+      Map<String, dynamic> map) {
+    return ApplicationApplicationConfigurationSqlApplicationConfiguration(
+      input: map['input'] == null
+          ? null
+          : ApplicationApplicationConfigurationSqlApplicationConfigurationInput
+              .fromMap((map['input'] as Map).cast<String, dynamic>()),
+      outputs: map['outputs'] == null
+          ? null
+          : Input.decodeList<
+                  ApplicationApplicationConfigurationSqlApplicationConfigurationOutput>(
+              map['outputs'],
+              (value) =>
+                  ApplicationApplicationConfigurationSqlApplicationConfigurationOutput
+                      .fromMap((value as Map).cast<String, dynamic>())),
+      referenceDataSource: map['referenceDataSource'] == null
+          ? null
+          : ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource
+              .fromMap(
+                  (map['referenceDataSource'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

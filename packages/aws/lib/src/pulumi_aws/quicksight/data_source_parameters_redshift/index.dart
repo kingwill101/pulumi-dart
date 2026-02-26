@@ -1,0 +1,3 @@
+library module_quicksight_data_source_parameters_redshift;
+
+export 'data_source_parameters_redshift.dart';

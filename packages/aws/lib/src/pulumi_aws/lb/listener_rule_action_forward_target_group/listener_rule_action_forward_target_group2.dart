@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class ListenerRuleActionForwardTargetGroup2 {
+  /// The Amazon Resource Name (ARN) of the target group.
+  final String arn;
+
+  /// The weight. The range is 0 to 999.
+  final int? weight;
+
+  ListenerRuleActionForwardTargetGroup2({
+    required this.arn,
+    this.weight,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['arn'] = arn;
+    final weightValue = weight;
+    if (weightValue != null) {
+      map['weight'] = weightValue;
+    }
+    return map;
+  }
+
+  factory ListenerRuleActionForwardTargetGroup2.fromMap(
+      Map<String, dynamic> map) {
+    return ListenerRuleActionForwardTargetGroup2(
+      arn: map['arn'] as String,
+      weight: map['weight'] == null ? null : map['weight'] as int,
+    );
+  }
+}

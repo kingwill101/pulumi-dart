@@ -1,0 +1,3 @@
+library module_codedeploy_deployment_config_zonal_config_minimum_healthy_hosts_per_zone;
+
+export 'deployment_config_zonal_config_minimum_healthy_hosts_per_zone.dart';

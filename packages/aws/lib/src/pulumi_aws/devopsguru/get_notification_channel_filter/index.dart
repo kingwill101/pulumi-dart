@@ -1,0 +1,3 @@
+library module_devopsguru_get_notification_channel_filter;
+
+export 'get_notification_channel_filter.dart';

@@ -1,0 +1,3 @@
+library module_sagemaker_user_profile_user_settings_kernel_gateway_app_settings_default_resource_spec;
+
+export 'user_profile_user_settings_kernel_gateway_app_settings_default_resource_spec.dart';

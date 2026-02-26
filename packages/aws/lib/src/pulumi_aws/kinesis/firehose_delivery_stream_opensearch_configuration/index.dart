@@ -1,0 +1,3 @@
+library module_kinesis_firehose_delivery_stream_opensearch_configuration;
+
+export 'firehose_delivery_stream_opensearch_configuration.dart';

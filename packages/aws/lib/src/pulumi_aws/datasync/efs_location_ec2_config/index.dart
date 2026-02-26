@@ -1,0 +1,3 @@
+library module_datasync_efs_location_ec2_config;
+
+export 'efs_location_ec2_config.dart';

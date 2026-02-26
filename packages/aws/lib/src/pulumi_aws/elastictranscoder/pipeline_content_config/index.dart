@@ -1,0 +1,3 @@
+library module_elastictranscoder_pipeline_content_config;
+
+export 'pipeline_content_config.dart';

@@ -1,0 +1,3 @@
+library module_ecs_get_task_execution_capacity_provider_strategy;
+
+export 'get_task_execution_capacity_provider_strategy.dart';

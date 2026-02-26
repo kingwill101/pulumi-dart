@@ -1,0 +1,3 @@
+library module_glue_get_catalog_table_partition_index;
+
+export 'get_catalog_table_partition_index.dart';

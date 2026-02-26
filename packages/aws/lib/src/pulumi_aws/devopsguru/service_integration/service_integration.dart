@@ -1,0 +1,367 @@
+import 'package:pulumi/pulumi.dart';
+import '../service_integration_kms_server_side_encryption/service_integration_kms_server_side_encryption.dart';
+import '../service_integration_logs_anomaly_detection/service_integration_logs_anomaly_detection.dart';
+import '../service_integration_ops_center/service_integration_ops_center.dart';
+import 'service_integration_args.dart';
+
+/// Resource for managing an AWS DevOps Guru Service Integration.
+///
+/// > To prevent unintentional deletion of account wide settings, destruction of this resource will only remove it from the Terraform state. To disable any configured settings, explicitly set the opt-in value to `DISABLED` and apply again before destroying.
+///
+/// ## Example Usage
+///
+/// ### Basic Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.devopsguru.ServiceIntegration("example", {
+/// kmsServerSideEncryption: {
+/// optInStatus: "ENABLED",
+/// type: "AWS_OWNED_KMS_KEY",
+/// },
+/// logsAnomalyDetection: {
+/// optInStatus: "ENABLED",
+/// },
+/// opsCenter: {
+/// optInStatus: "ENABLED",
+/// },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.devopsguru.ServiceIntegration("example",
+/// kms_server_side_encryption={
+/// "opt_in_status": "ENABLED",
+/// "type": "AWS_OWNED_KMS_KEY",
+/// },
+/// logs_anomaly_detection={
+/// "opt_in_status": "ENABLED",
+/// },
+/// ops_center={
+/// "opt_in_status": "ENABLED",
+/// })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.DevOpsGuru.ServiceIntegration("example", new()
+/// {
+/// KmsServerSideEncryption = new Aws.DevOpsGuru.Inputs.ServiceIntegrationKmsServerSideEncryptionArgs
+/// {
+/// OptInStatus = "ENABLED",
+/// Type = "AWS_OWNED_KMS_KEY",
+/// },
+/// LogsAnomalyDetection = new Aws.DevOpsGuru.Inputs.ServiceIntegrationLogsAnomalyDetectionArgs
+/// {
+/// OptInStatus = "ENABLED",
+/// },
+/// OpsCenter = new Aws.DevOpsGuru.Inputs.ServiceIntegrationOpsCenterArgs
+/// {
+/// OptInStatus = "ENABLED",
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/devopsguru"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := devopsguru.NewServiceIntegration(ctx, "example", &devopsguru.ServiceIntegrationArgs{
+/// KmsServerSideEncryption: &devopsguru.ServiceIntegrationKmsServerSideEncryptionArgs{
+/// OptInStatus: pulumi.String("ENABLED"),
+/// Type:        pulumi.String("AWS_OWNED_KMS_KEY"),
+/// },
+/// LogsAnomalyDetection: &devopsguru.ServiceIntegrationLogsAnomalyDetectionArgs{
+/// OptInStatus: pulumi.String("ENABLED"),
+/// },
+/// OpsCenter: &devopsguru.ServiceIntegrationOpsCenterArgs{
+/// OptInStatus: pulumi.String("ENABLED"),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.devopsguru.ServiceIntegration;
+/// import com.pulumi.aws.devopsguru.ServiceIntegrationArgs;
+/// import com.pulumi.aws.devopsguru.inputs.ServiceIntegrationKmsServerSideEncryptionArgs;
+/// import com.pulumi.aws.devopsguru.inputs.ServiceIntegrationLogsAnomalyDetectionArgs;
+/// import com.pulumi.aws.devopsguru.inputs.ServiceIntegrationOpsCenterArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new ServiceIntegration("example", ServiceIntegrationArgs.builder()
+/// .kmsServerSideEncryption(ServiceIntegrationKmsServerSideEncryptionArgs.builder()
+/// .optInStatus("ENABLED")
+/// .type("AWS_OWNED_KMS_KEY")
+/// .build())
+/// .logsAnomalyDetection(ServiceIntegrationLogsAnomalyDetectionArgs.builder()
+/// .optInStatus("ENABLED")
+/// .build())
+/// .opsCenter(ServiceIntegrationOpsCenterArgs.builder()
+/// .optInStatus("ENABLED")
+/// .build())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:devopsguru:ServiceIntegration
+/// properties:
+/// kmsServerSideEncryption:
+/// optInStatus: ENABLED
+/// type: AWS_OWNED_KMS_KEY
+/// logsAnomalyDetection:
+/// optInStatus: ENABLED
+/// opsCenter:
+/// optInStatus: ENABLED
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ### Customer Managed KMS Key
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.kms.Key("example", {});
+/// const exampleServiceIntegration = new aws.devopsguru.ServiceIntegration("example", {
+/// kmsServerSideEncryption: {
+/// kmsKeyId: test.arn,
+/// optInStatus: "ENABLED",
+/// type: "CUSTOMER_MANAGED_KEY",
+/// },
+/// logsAnomalyDetection: {
+/// optInStatus: "DISABLED",
+/// },
+/// opsCenter: {
+/// optInStatus: "DISABLED",
+/// },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.kms.Key("example")
+/// example_service_integration = aws.devopsguru.ServiceIntegration("example",
+/// kms_server_side_encryption={
+/// "kms_key_id": test["arn"],
+/// "opt_in_status": "ENABLED",
+/// "type": "CUSTOMER_MANAGED_KEY",
+/// },
+/// logs_anomaly_detection={
+/// "opt_in_status": "DISABLED",
+/// },
+/// ops_center={
+/// "opt_in_status": "DISABLED",
+/// })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.Kms.Key("example");
+///
+/// var exampleServiceIntegration = new Aws.DevOpsGuru.ServiceIntegration("example", new()
+/// {
+/// KmsServerSideEncryption = new Aws.DevOpsGuru.Inputs.ServiceIntegrationKmsServerSideEncryptionArgs
+/// {
+/// KmsKeyId = test.Arn,
+/// OptInStatus = "ENABLED",
+/// Type = "CUSTOMER_MANAGED_KEY",
+/// },
+/// LogsAnomalyDetection = new Aws.DevOpsGuru.Inputs.ServiceIntegrationLogsAnomalyDetectionArgs
+/// {
+/// OptInStatus = "DISABLED",
+/// },
+/// OpsCenter = new Aws.DevOpsGuru.Inputs.ServiceIntegrationOpsCenterArgs
+/// {
+/// OptInStatus = "DISABLED",
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/devopsguru"
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/kms"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := kms.NewKey(ctx, "example", nil)
+/// if err != nil {
+/// return err
+/// }
+/// _, err = devopsguru.NewServiceIntegration(ctx, "example", &devopsguru.ServiceIntegrationArgs{
+/// KmsServerSideEncryption: &devopsguru.ServiceIntegrationKmsServerSideEncryptionArgs{
+/// KmsKeyId:    pulumi.Any(test.Arn),
+/// OptInStatus: pulumi.String("ENABLED"),
+/// Type:        pulumi.String("CUSTOMER_MANAGED_KEY"),
+/// },
+/// LogsAnomalyDetection: &devopsguru.ServiceIntegrationLogsAnomalyDetectionArgs{
+/// OptInStatus: pulumi.String("DISABLED"),
+/// },
+/// OpsCenter: &devopsguru.ServiceIntegrationOpsCenterArgs{
+/// OptInStatus: pulumi.String("DISABLED"),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.kms.Key;
+/// import com.pulumi.aws.devopsguru.ServiceIntegration;
+/// import com.pulumi.aws.devopsguru.ServiceIntegrationArgs;
+/// import com.pulumi.aws.devopsguru.inputs.ServiceIntegrationKmsServerSideEncryptionArgs;
+/// import com.pulumi.aws.devopsguru.inputs.ServiceIntegrationLogsAnomalyDetectionArgs;
+/// import com.pulumi.aws.devopsguru.inputs.ServiceIntegrationOpsCenterArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new Key("example");
+///
+/// var exampleServiceIntegration = new ServiceIntegration("exampleServiceIntegration", ServiceIntegrationArgs.builder()
+/// .kmsServerSideEncryption(ServiceIntegrationKmsServerSideEncryptionArgs.builder()
+/// .kmsKeyId(test.arn())
+/// .optInStatus("ENABLED")
+/// .type("CUSTOMER_MANAGED_KEY")
+/// .build())
+/// .logsAnomalyDetection(ServiceIntegrationLogsAnomalyDetectionArgs.builder()
+/// .optInStatus("DISABLED")
+/// .build())
+/// .opsCenter(ServiceIntegrationOpsCenterArgs.builder()
+/// .optInStatus("DISABLED")
+/// .build())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:kms:Key
+/// exampleServiceIntegration:
+/// type: aws:devopsguru:ServiceIntegration
+/// name: example
+/// properties:
+/// kmsServerSideEncryption:
+/// kmsKeyId: ${test.arn}
+/// optInStatus: ENABLED
+/// type: CUSTOMER_MANAGED_KEY
+/// logsAnomalyDetection:
+/// optInStatus: DISABLED
+/// opsCenter:
+/// optInStatus: DISABLED
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Using `pulumi import`, import DevOps Guru Service Integration using the region. For example:
+///
+/// ```sh
+/// $ pulumi import aws:devopsguru/serviceIntegration:ServiceIntegration example us-east-1
+/// ```
+class ServiceIntegration extends CustomResource {
+  /// Information about whether DevOps Guru is configured to encrypt server-side data using KMS. See <span pulumi-lang-nodejs="`kmsServerSideEncryption`" pulumi-lang-dotnet="`KmsServerSideEncryption`" pulumi-lang-go="`kmsServerSideEncryption`" pulumi-lang-python="`kms_server_side_encryption`" pulumi-lang-yaml="`kmsServerSideEncryption`" pulumi-lang-java="`kmsServerSideEncryption`">`kms_server_side_encryption`</span> below.
+  late final Output<ServiceIntegrationKmsServerSideEncryption>
+      kmsServerSideEncryption;
+
+  /// Information about whether DevOps Guru is configured to perform log anomaly detection on Amazon CloudWatch log groups. See <span pulumi-lang-nodejs="`logsAnomalyDetection`" pulumi-lang-dotnet="`LogsAnomalyDetection`" pulumi-lang-go="`logsAnomalyDetection`" pulumi-lang-python="`logs_anomaly_detection`" pulumi-lang-yaml="`logsAnomalyDetection`" pulumi-lang-java="`logsAnomalyDetection`">`logs_anomaly_detection`</span> below.
+  late final Output<ServiceIntegrationLogsAnomalyDetection>
+      logsAnomalyDetection;
+
+  /// Information about whether DevOps Guru is configured to create an OpsItem in AWS Systems Manager OpsCenter for each created insight. See <span pulumi-lang-nodejs="`opsCenter`" pulumi-lang-dotnet="`OpsCenter`" pulumi-lang-go="`opsCenter`" pulumi-lang-python="`ops_center`" pulumi-lang-yaml="`opsCenter`" pulumi-lang-java="`opsCenter`">`ops_center`</span> below.
+  late final Output<ServiceIntegrationOpsCenter> opsCenter;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  ServiceIntegration(
+    String name, {
+    ServiceIntegrationArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:devopsguru/serviceIntegration:ServiceIntegration',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.kmsServerSideEncryption =
+        Output.createUnknown<ServiceIntegrationKmsServerSideEncryption>();
+    this.logsAnomalyDetection =
+        Output.createUnknown<ServiceIntegrationLogsAnomalyDetection>();
+    this.opsCenter = Output.createUnknown<ServiceIntegrationOpsCenter>();
+    this.region = Output.createUnknown<String>();
+  }
+}

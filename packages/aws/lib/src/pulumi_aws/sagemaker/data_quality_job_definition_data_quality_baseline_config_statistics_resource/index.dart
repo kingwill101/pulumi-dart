@@ -1,0 +1,3 @@
+library module_sagemaker_data_quality_job_definition_data_quality_baseline_config_statistics_resource;
+
+export 'data_quality_job_definition_data_quality_baseline_config_statistics_resource.dart';

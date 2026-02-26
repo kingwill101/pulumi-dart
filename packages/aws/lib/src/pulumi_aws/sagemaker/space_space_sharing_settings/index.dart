@@ -1,0 +1,3 @@
+library module_sagemaker_space_space_sharing_settings;
+
+export 'space_space_sharing_settings.dart';

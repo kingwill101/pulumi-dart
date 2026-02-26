@@ -1,0 +1,3 @@
+library module_eks_cluster_storage_config_block_storage;
+
+export 'cluster_storage_config_block_storage.dart';

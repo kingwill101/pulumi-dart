@@ -1,0 +1,3 @@
+library module_securityhub_insight_filters_record_state;
+
+export 'insight_filters_record_state.dart';

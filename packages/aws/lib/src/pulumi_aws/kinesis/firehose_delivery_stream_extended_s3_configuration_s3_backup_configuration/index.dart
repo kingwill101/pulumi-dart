@@ -1,0 +1,3 @@
+library module_kinesis_firehose_delivery_stream_extended_s3_configuration_s3_backup_configuration;
+
+export 'firehose_delivery_stream_extended_s3_configuration_s3_backup_configuration.dart';

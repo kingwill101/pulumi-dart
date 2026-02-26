@@ -1,0 +1,3 @@
+library module_securitylake_data_lake_configuration_encryption_configuration;
+
+export 'data_lake_configuration_encryption_configuration.dart';

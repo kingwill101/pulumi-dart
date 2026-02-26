@@ -1,0 +1,3 @@
+library module_workspaces_directory_workspace_creation_properties;
+
+export 'directory_workspace_creation_properties.dart';

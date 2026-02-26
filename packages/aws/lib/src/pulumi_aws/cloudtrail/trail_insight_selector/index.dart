@@ -1,0 +1,3 @@
+library module_cloudtrail_trail_insight_selector;
+
+export 'trail_insight_selector.dart';

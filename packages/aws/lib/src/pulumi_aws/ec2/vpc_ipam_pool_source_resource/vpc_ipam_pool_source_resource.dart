@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class VpcIpamPoolSourceResource {
+  /// ID of the resource.
+  final String resourceId;
+
+  /// Owner of the resource.
+  final String resourceOwner;
+
+  /// Region where the resource exists. Must match the <span pulumi-lang-nodejs="`locale`" pulumi-lang-dotnet="`Locale`" pulumi-lang-go="`locale`" pulumi-lang-python="`locale`" pulumi-lang-yaml="`locale`" pulumi-lang-java="`locale`">`locale`</span> of the parent IPAM Pool.
+  final String resourceRegion;
+
+  /// Type of the resource. (<span pulumi-lang-nodejs="`vpc`" pulumi-lang-dotnet="`Vpc`" pulumi-lang-go="`vpc`" pulumi-lang-python="`vpc`" pulumi-lang-yaml="`vpc`" pulumi-lang-java="`vpc`">`vpc`</span>)
+  final String resourceType;
+
+  VpcIpamPoolSourceResource({
+    required this.resourceId,
+    required this.resourceOwner,
+    required this.resourceRegion,
+    required this.resourceType,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['resourceId'] = resourceId;
+    map['resourceOwner'] = resourceOwner;
+    map['resourceRegion'] = resourceRegion;
+    map['resourceType'] = resourceType;
+    return map;
+  }
+
+  factory VpcIpamPoolSourceResource.fromMap(Map<String, dynamic> map) {
+    return VpcIpamPoolSourceResource(
+      resourceId: map['resourceId'] as String,
+      resourceOwner: map['resourceOwner'] as String,
+      resourceRegion: map['resourceRegion'] as String,
+      resourceType: map['resourceType'] as String,
+    );
+  }
+}

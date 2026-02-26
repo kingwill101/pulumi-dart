@@ -1,0 +1,4 @@
+library module_s3control_directory_bucket_access_point_scope;
+
+export 'directory_bucket_access_point_scope.dart';
+export 'directory_bucket_access_point_scope_args.dart';

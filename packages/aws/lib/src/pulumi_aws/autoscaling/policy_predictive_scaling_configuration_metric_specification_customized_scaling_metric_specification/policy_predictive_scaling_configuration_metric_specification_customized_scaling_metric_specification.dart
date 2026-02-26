@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../policy_predictive_scaling_configuration_metric_specification_customized_scaling_metric_specification_metric_data_query/policy_predictive_scaling_configuration_metric_specification_customized_scaling_metric_specification_metric_data_query.dart';
+
+class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification {
+  /// List of up to 10 structures that defines custom scaling metric in predictive scaling policy
+  final List<
+          PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQuery>
+      metricDataQueries;
+
+  PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification({
+    required this.metricDataQueries,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['metricDataQueries'] = Input.encodeList<
+        PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQuery,
+        Map<String, dynamic>>(metricDataQueries, (value) => value.toMap());
+    return map;
+  }
+
+  factory PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification.fromMap(
+      Map<String, dynamic> map) {
+    return PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification(
+      metricDataQueries: Input.decodeList<
+              PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQuery>(
+          map['metricDataQueries'],
+          (value) =>
+              PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQuery
+                  .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

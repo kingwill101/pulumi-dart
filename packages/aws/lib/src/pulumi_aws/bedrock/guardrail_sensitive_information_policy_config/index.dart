@@ -1,0 +1,3 @@
+library module_bedrock_guardrail_sensitive_information_policy_config;
+
+export 'guardrail_sensitive_information_policy_config.dart';

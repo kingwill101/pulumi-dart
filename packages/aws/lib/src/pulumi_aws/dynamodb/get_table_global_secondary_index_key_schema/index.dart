@@ -1,0 +1,3 @@
+library module_dynamodb_get_table_global_secondary_index_key_schema;
+
+export 'get_table_global_secondary_index_key_schema.dart';

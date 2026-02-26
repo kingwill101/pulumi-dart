@@ -1,0 +1,5 @@
+library module_redshift_get_cluster_credentials;
+
+export 'get_cluster_credentials.dart';
+export 'get_cluster_credentials_args.dart';
+export 'get_cluster_credentials_result.dart';

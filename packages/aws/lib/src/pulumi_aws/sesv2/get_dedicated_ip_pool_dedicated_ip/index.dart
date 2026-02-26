@@ -1,0 +1,3 @@
+library module_sesv2_get_dedicated_ip_pool_dedicated_ip;
+
+export 'get_dedicated_ip_pool_dedicated_ip.dart';

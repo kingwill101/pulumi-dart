@@ -1,0 +1,3 @@
+library module_imagebuilder_distribution_configuration_distribution_container_distribution_configuration;
+
+export 'distribution_configuration_distribution_container_distribution_configuration.dart';

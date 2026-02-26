@@ -1,0 +1,3 @@
+library module_quicksight_data_source_parameters_aws_iot_analytics;
+
+export 'data_source_parameters_aws_iot_analytics.dart';

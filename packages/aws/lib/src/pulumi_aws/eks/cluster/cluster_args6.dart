@@ -1,0 +1,247 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../cluster_access_config/cluster_access_config.dart';
+import '../cluster_compute_config/cluster_compute_config.dart';
+import '../cluster_control_plane_scaling_config/cluster_control_plane_scaling_config.dart';
+import '../cluster_encryption_config/cluster_encryption_config.dart';
+import '../cluster_kubernetes_network_config/cluster_kubernetes_network_config.dart';
+import '../cluster_outpost_config/cluster_outpost_config.dart';
+import '../cluster_remote_network_config/cluster_remote_network_config.dart';
+import '../cluster_storage_config/cluster_storage_config.dart';
+import '../cluster_upgrade_policy/cluster_upgrade_policy.dart';
+import '../cluster_vpc_config/cluster_vpc_config.dart';
+import '../cluster_zonal_shift_config/cluster_zonal_shift_config.dart';
+
+/// The set of arguments for Cluster.
+class ClusterArgs6 {
+  /// Configuration block for the access config associated with your cluster, see [Amazon EKS Access Entries](https://docs.aws.amazon.com/eks/latest/userguide/access-entries.html). Detailed below.
+  final Input<ClusterAccessConfig>? accessConfig;
+
+  /// Install default unmanaged add-ons, such as `aws-cni`, `kube-proxy`, and CoreDNS during cluster creation. If <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, you must manually install desired add-ons. Changing this value will force a new cluster to be created. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  final Input<bool>? bootstrapSelfManagedAddons;
+
+  /// Configuration block with compute configuration for EKS Auto Mode. Detailed below.
+  final Input<ClusterComputeConfig>? computeConfig;
+
+  /// Configuration block for the control plane scaling tier. See [EKS Provisioned Control Plane](https://docs.aws.amazon.com/eks/latest/userguide/eks-provisioned-control-plane-getting-started.html) for more information. Detailed below.
+  final Input<ClusterControlPlaneScalingConfig>? controlPlaneScalingConfig;
+  final Input<List<String>>? defaultAddonsToRemoves;
+
+  /// Whether to enable deletion protection for the cluster. When enabled, the cluster cannot be deleted unless deletion protection is first disabled. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  final Input<bool>? deletionProtection;
+
+  /// List of the desired control plane logging to enable. For more information, see [Amazon EKS Control Plane Logging](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html).
+  final Input<List<String>>? enabledClusterLogTypes;
+
+  /// Configuration block with encryption configuration for the cluster. Detailed below.
+  final Input<ClusterEncryptionConfig>? encryptionConfig;
+
+  /// Force version update by overriding upgrade-blocking readiness checks when updating a cluster.
+  final Input<bool>? forceUpdateVersion;
+
+  /// Configuration block with kubernetes network configuration for the cluster. Detailed below. If removed, the provider will only perform drift detection if a configuration value is provided.
+  final Input<ClusterKubernetesNetworkConfig>? kubernetesNetworkConfig;
+
+  /// Name of the cluster. Must be between 1-100 characters in length. Must begin with an alphanumeric character, and must only contain alphanumeric characters, dashes and underscores (`^[0-9A-Za-z][A-Za-z0-9\-_]*$`).
+  final Input<String>? name;
+
+  /// Configuration block representing the configuration of your local Amazon EKS cluster on an AWS Outpost. This block isn't available for creating Amazon EKS clusters on the AWS cloud.
+  final Input<ClusterOutpostConfig>? outpostConfig;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final Input<String>? region;
+
+  /// Configuration block with remote network configuration for EKS Hybrid Nodes. Detailed below.
+  final Input<ClusterRemoteNetworkConfig>? remoteNetworkConfig;
+
+  /// ARN of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf. Ensure the resource configuration includes explicit dependencies on the IAM Role permissions by adding <span pulumi-lang-nodejs="`dependsOn`" pulumi-lang-dotnet="`DependsOn`" pulumi-lang-go="`dependsOn`" pulumi-lang-python="`depends_on`" pulumi-lang-yaml="`dependsOn`" pulumi-lang-java="`dependsOn`">`depends_on`</span> if using the <span pulumi-lang-nodejs="`aws.iam.RolePolicy`" pulumi-lang-dotnet="`aws.iam.RolePolicy`" pulumi-lang-go="`iam.RolePolicy`" pulumi-lang-python="`iam.RolePolicy`" pulumi-lang-yaml="`aws.iam.RolePolicy`" pulumi-lang-java="`aws.iam.RolePolicy`">`aws.iam.RolePolicy`</span> resource or <span pulumi-lang-nodejs="`aws.iam.RolePolicyAttachment`" pulumi-lang-dotnet="`aws.iam.RolePolicyAttachment`" pulumi-lang-go="`iam.RolePolicyAttachment`" pulumi-lang-python="`iam.RolePolicyAttachment`" pulumi-lang-yaml="`aws.iam.RolePolicyAttachment`" pulumi-lang-java="`aws.iam.RolePolicyAttachment`">`aws.iam.RolePolicyAttachment`</span> resource, otherwise EKS cannot delete EKS managed EC2 infrastructure such as Security Groups on EKS Cluster deletion.
+  final Input<String> roleArn;
+
+  /// Configuration block with storage configuration for EKS Auto Mode. Detailed below.
+  final Input<ClusterStorageConfig>? storageConfig;
+
+  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final Input<Map<String, String>>? tags;
+
+  /// Configuration block for the support policy to use for the cluster.  See<span pulumi-lang-nodejs=" upgradePolicy " pulumi-lang-dotnet=" UpgradePolicy " pulumi-lang-go=" upgradePolicy " pulumi-lang-python=" upgrade_policy " pulumi-lang-yaml=" upgradePolicy " pulumi-lang-java=" upgradePolicy "> upgrade_policy </span>for details.
+  final Input<ClusterUpgradePolicy>? upgradePolicy;
+
+  /// Desired Kubernetes master version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except those automatically triggered by EKS. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by EKS.
+  final Input<String>? version;
+
+  /// Configuration block for the VPC associated with your cluster. Amazon EKS VPC resources have specific requirements to work properly with Kubernetes. For more information, see [Cluster VPC Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html) and [Cluster Security Group Considerations](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html) in the Amazon EKS User Guide. Detailed below. Also contains attributes detailed in the Attributes section.
+  ///
+  /// The following arguments are optional:
+  final Input<ClusterVpcConfig> vpcConfig;
+
+  /// Configuration block with zonal shift configuration for the cluster. Detailed below.
+  final Input<ClusterZonalShiftConfig>? zonalShiftConfig;
+
+  ClusterArgs6({
+    this.accessConfig,
+    this.bootstrapSelfManagedAddons,
+    this.computeConfig,
+    this.controlPlaneScalingConfig,
+    this.defaultAddonsToRemoves,
+    this.deletionProtection,
+    this.enabledClusterLogTypes,
+    this.encryptionConfig,
+    this.forceUpdateVersion,
+    this.kubernetesNetworkConfig,
+    this.name,
+    this.outpostConfig,
+    this.region,
+    this.remoteNetworkConfig,
+    required this.roleArn,
+    this.storageConfig,
+    this.tags,
+    this.upgradePolicy,
+    this.version,
+    required this.vpcConfig,
+    this.zonalShiftConfig,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final accessConfigValue = accessConfig;
+    if (accessConfigValue != null) {
+      map['accessConfig'] = Input.mapOptionalInputValue<ClusterAccessConfig,
+          Map<String, dynamic>>(accessConfigValue, (value) => value.toMap());
+    }
+    final bootstrapSelfManagedAddonsValue = bootstrapSelfManagedAddons;
+    if (bootstrapSelfManagedAddonsValue != null) {
+      map['bootstrapSelfManagedAddons'] = bootstrapSelfManagedAddonsValue;
+    }
+    final computeConfigValue = computeConfig;
+    if (computeConfigValue != null) {
+      map['computeConfig'] = Input.mapOptionalInputValue<ClusterComputeConfig,
+          Map<String, dynamic>>(computeConfigValue, (value) => value.toMap());
+    }
+    final controlPlaneScalingConfigValue = controlPlaneScalingConfig;
+    if (controlPlaneScalingConfigValue != null) {
+      map['controlPlaneScalingConfig'] = Input.mapOptionalInputValue<
+              ClusterControlPlaneScalingConfig, Map<String, dynamic>>(
+          controlPlaneScalingConfigValue, (value) => value.toMap());
+    }
+    final defaultAddonsToRemovesValue = defaultAddonsToRemoves;
+    if (defaultAddonsToRemovesValue != null) {
+      map['defaultAddonsToRemoves'] = defaultAddonsToRemovesValue;
+    }
+    final deletionProtectionValue = deletionProtection;
+    if (deletionProtectionValue != null) {
+      map['deletionProtection'] = deletionProtectionValue;
+    }
+    final enabledClusterLogTypesValue = enabledClusterLogTypes;
+    if (enabledClusterLogTypesValue != null) {
+      map['enabledClusterLogTypes'] = enabledClusterLogTypesValue;
+    }
+    final encryptionConfigValue = encryptionConfig;
+    if (encryptionConfigValue != null) {
+      map['encryptionConfig'] = Input.mapOptionalInputValue<
+              ClusterEncryptionConfig, Map<String, dynamic>>(
+          encryptionConfigValue, (value) => value.toMap());
+    }
+    final forceUpdateVersionValue = forceUpdateVersion;
+    if (forceUpdateVersionValue != null) {
+      map['forceUpdateVersion'] = forceUpdateVersionValue;
+    }
+    final kubernetesNetworkConfigValue = kubernetesNetworkConfig;
+    if (kubernetesNetworkConfigValue != null) {
+      map['kubernetesNetworkConfig'] = Input.mapOptionalInputValue<
+              ClusterKubernetesNetworkConfig, Map<String, dynamic>>(
+          kubernetesNetworkConfigValue, (value) => value.toMap());
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final outpostConfigValue = outpostConfig;
+    if (outpostConfigValue != null) {
+      map['outpostConfig'] = Input.mapOptionalInputValue<ClusterOutpostConfig,
+          Map<String, dynamic>>(outpostConfigValue, (value) => value.toMap());
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final remoteNetworkConfigValue = remoteNetworkConfig;
+    if (remoteNetworkConfigValue != null) {
+      map['remoteNetworkConfig'] = Input.mapOptionalInputValue<
+              ClusterRemoteNetworkConfig, Map<String, dynamic>>(
+          remoteNetworkConfigValue, (value) => value.toMap());
+    }
+    map['roleArn'] = roleArn;
+    final storageConfigValue = storageConfig;
+    if (storageConfigValue != null) {
+      map['storageConfig'] = Input.mapOptionalInputValue<ClusterStorageConfig,
+          Map<String, dynamic>>(storageConfigValue, (value) => value.toMap());
+    }
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    final upgradePolicyValue = upgradePolicy;
+    if (upgradePolicyValue != null) {
+      map['upgradePolicy'] = Input.mapOptionalInputValue<ClusterUpgradePolicy,
+          Map<String, dynamic>>(upgradePolicyValue, (value) => value.toMap());
+    }
+    final versionValue = version;
+    if (versionValue != null) {
+      map['version'] = versionValue;
+    }
+    map['vpcConfig'] =
+        Input.mapInputValue<ClusterVpcConfig, Map<String, dynamic>>(
+            vpcConfig, (value) => value.toMap());
+    final zonalShiftConfigValue = zonalShiftConfig;
+    if (zonalShiftConfigValue != null) {
+      map['zonalShiftConfig'] = Input.mapOptionalInputValue<
+              ClusterZonalShiftConfig, Map<String, dynamic>>(
+          zonalShiftConfigValue, (value) => value.toMap());
+    }
+    return map;
+  }
+
+  factory ClusterArgs6.fromMap(Map<String, dynamic> map) {
+    return ClusterArgs6(
+      accessConfig:
+          Input.asOptionalInput<ClusterAccessConfig>(map['accessConfig']),
+      bootstrapSelfManagedAddons:
+          Input.asOptionalInput<bool>(map['bootstrapSelfManagedAddons']),
+      computeConfig:
+          Input.asOptionalInput<ClusterComputeConfig>(map['computeConfig']),
+      controlPlaneScalingConfig:
+          Input.asOptionalInput<ClusterControlPlaneScalingConfig>(
+              map['controlPlaneScalingConfig']),
+      defaultAddonsToRemoves:
+          Input.asOptionalInput<List<String>>(map['defaultAddonsToRemoves']),
+      deletionProtection:
+          Input.asOptionalInput<bool>(map['deletionProtection']),
+      enabledClusterLogTypes:
+          Input.asOptionalInput<List<String>>(map['enabledClusterLogTypes']),
+      encryptionConfig: Input.asOptionalInput<ClusterEncryptionConfig>(
+          map['encryptionConfig']),
+      forceUpdateVersion:
+          Input.asOptionalInput<bool>(map['forceUpdateVersion']),
+      kubernetesNetworkConfig:
+          Input.asOptionalInput<ClusterKubernetesNetworkConfig>(
+              map['kubernetesNetworkConfig']),
+      name: Input.asOptionalInput<String>(map['name']),
+      outpostConfig:
+          Input.asOptionalInput<ClusterOutpostConfig>(map['outpostConfig']),
+      region: Input.asOptionalInput<String>(map['region']),
+      remoteNetworkConfig: Input.asOptionalInput<ClusterRemoteNetworkConfig>(
+          map['remoteNetworkConfig']),
+      roleArn: Input.asInput<String>(map['roleArn']),
+      storageConfig:
+          Input.asOptionalInput<ClusterStorageConfig>(map['storageConfig']),
+      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      upgradePolicy:
+          Input.asOptionalInput<ClusterUpgradePolicy>(map['upgradePolicy']),
+      version: Input.asOptionalInput<String>(map['version']),
+      vpcConfig: Input.asInput<ClusterVpcConfig>(map['vpcConfig']),
+      zonalShiftConfig: Input.asOptionalInput<ClusterZonalShiftConfig>(
+          map['zonalShiftConfig']),
+    );
+  }
+}

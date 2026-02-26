@@ -1,0 +1,3 @@
+library module_transfer_get_connector_egress_config_vpc_lattice;
+
+export 'get_connector_egress_config_vpc_lattice.dart';

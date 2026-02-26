@@ -1,0 +1,156 @@
+import 'package:pulumi/pulumi.dart';
+import 'log_destination_args.dart';
+
+/// Provides a CloudWatch Logs destination resource.
+///
+/// ## Example Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const testDestination = new aws.cloudwatch.LogDestination("test_destination", {
+/// name: "test_destination",
+/// roleArn: iamForCloudwatch.arn,
+/// targetArn: kinesisForCloudwatch.arn,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// test_destination = aws.cloudwatch.LogDestination("test_destination",
+/// name="test_destination",
+/// role_arn=iam_for_cloudwatch["arn"],
+/// target_arn=kinesis_for_cloudwatch["arn"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var testDestination = new Aws.CloudWatch.LogDestination("test_destination", new()
+/// {
+/// Name = "test_destination",
+/// RoleArn = iamForCloudwatch.Arn,
+/// TargetArn = kinesisForCloudwatch.Arn,
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/cloudwatch"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := cloudwatch.NewLogDestination(ctx, "test_destination", &cloudwatch.LogDestinationArgs{
+/// Name:      pulumi.String("test_destination"),
+/// RoleArn:   pulumi.Any(iamForCloudwatch.Arn),
+/// TargetArn: pulumi.Any(kinesisForCloudwatch.Arn),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.cloudwatch.LogDestination;
+/// import com.pulumi.aws.cloudwatch.LogDestinationArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var testDestination = new LogDestination("testDestination", LogDestinationArgs.builder()
+/// .name("test_destination")
+/// .roleArn(iamForCloudwatch.arn())
+/// .targetArn(kinesisForCloudwatch.arn())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// testDestination:
+/// type: aws:cloudwatch:LogDestination
+/// name: test_destination
+/// properties:
+/// name: test_destination
+/// roleArn: ${iamForCloudwatch.arn}
+/// targetArn: ${kinesisForCloudwatch.arn}
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Using `pulumi import`, import CloudWatch Logs destinations using the <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. For example:
+///
+/// ```sh
+/// $ pulumi import aws:cloudwatch/logDestination:LogDestination test_destination test_destination
+/// ```
+class LogDestination extends CustomResource {
+  /// The Amazon Resource Name (ARN) specifying the log destination.
+  late final Output<String> arn;
+
+  /// A name for the log destination.
+  late final Output<String> name;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  /// The ARN of an IAM role that grants Amazon CloudWatch Logs permissions to put data into the target.
+  late final Output<String> roleArn;
+
+  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  late final Output<Map<String, String>?> tags;
+
+  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  late final Output<Map<String, String>> tagsAll;
+
+  /// The ARN of the target Amazon Kinesis stream resource for the destination.
+  late final Output<String> targetArn;
+
+  LogDestination(
+    String name, {
+    LogDestinationArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:cloudwatch/logDestination:LogDestination',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.arn = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.region = Output.createUnknown<String>();
+    this.roleArn = Output.createUnknown<String>();
+    this.tags = Output.createUnknown<Map<String, String>?>();
+    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.targetArn = Output.createUnknown<String>();
+  }
+}

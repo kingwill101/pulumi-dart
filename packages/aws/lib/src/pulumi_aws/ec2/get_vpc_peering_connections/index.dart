@@ -1,0 +1,5 @@
+library module_ec2_get_vpc_peering_connections;
+
+export 'get_vpc_peering_connections.dart';
+export 'get_vpc_peering_connections_args.dart';
+export 'get_vpc_peering_connections_result.dart';

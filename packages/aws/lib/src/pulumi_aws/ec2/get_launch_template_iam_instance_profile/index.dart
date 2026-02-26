@@ -1,0 +1,3 @@
+library module_ec2_get_launch_template_iam_instance_profile;
+
+export 'get_launch_template_iam_instance_profile.dart';

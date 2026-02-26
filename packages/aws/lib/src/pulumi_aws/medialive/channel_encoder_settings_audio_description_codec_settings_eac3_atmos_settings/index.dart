@@ -1,0 +1,3 @@
+library module_medialive_channel_encoder_settings_audio_description_codec_settings_eac3_atmos_settings;
+
+export 'channel_encoder_settings_audio_description_codec_settings_eac3_atmos_settings.dart';

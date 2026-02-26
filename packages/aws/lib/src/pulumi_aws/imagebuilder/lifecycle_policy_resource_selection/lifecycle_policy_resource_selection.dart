@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../lifecycle_policy_resource_selection_recipe/lifecycle_policy_resource_selection_recipe.dart';
+
+class LifecyclePolicyResourceSelection {
+  /// A list of recipe that are used as selection criteria for the output images that the lifecycle policy applies to. Detailed below.
+  final List<LifecyclePolicyResourceSelectionRecipe>? recipes;
+
+  /// A list of tags that are used as selection criteria for the Image Builder image resources that the lifecycle policy applies to.
+  final Map<String, String>? tagMap;
+
+  LifecyclePolicyResourceSelection({
+    this.recipes,
+    this.tagMap,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final recipesValue = recipes;
+    if (recipesValue != null) {
+      map['recipes'] = Input.encodeList<LifecyclePolicyResourceSelectionRecipe,
+          Map<String, dynamic>>(recipesValue, (value) => value.toMap());
+    }
+    final tagMapValue = tagMap;
+    if (tagMapValue != null) {
+      map['tagMap'] = tagMapValue;
+    }
+    return map;
+  }
+
+  factory LifecyclePolicyResourceSelection.fromMap(Map<String, dynamic> map) {
+    return LifecyclePolicyResourceSelection(
+      recipes: map['recipes'] == null
+          ? null
+          : Input.decodeList<LifecyclePolicyResourceSelectionRecipe>(
+              map['recipes'],
+              (value) => LifecyclePolicyResourceSelectionRecipe.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      tagMap: map['tagMap'] == null
+          ? null
+          : (map['tagMap'] as Map).cast<String, String>(),
+    );
+  }
+}

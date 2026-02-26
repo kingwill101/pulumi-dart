@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class KeyvaluestoreKeysExclusiveResourceKeyValuePair {
+  /// Key to put.
+  final String key;
+
+  /// Value to put.
+  final String value;
+
+  KeyvaluestoreKeysExclusiveResourceKeyValuePair({
+    required this.key,
+    required this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['key'] = key;
+    map['value'] = value;
+    return map;
+  }
+
+  factory KeyvaluestoreKeysExclusiveResourceKeyValuePair.fromMap(
+      Map<String, dynamic> map) {
+    return KeyvaluestoreKeysExclusiveResourceKeyValuePair(
+      key: map['key'] as String,
+      value: map['value'] as String,
+    );
+  }
+}

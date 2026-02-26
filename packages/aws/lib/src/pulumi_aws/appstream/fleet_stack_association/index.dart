@@ -1,0 +1,4 @@
+library module_appstream_fleet_stack_association;
+
+export 'fleet_stack_association.dart';
+export 'fleet_stack_association_args.dart';

@@ -1,0 +1,57 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// Arguments for getRouterConfiguration.
+class GetRouterConfigurationArgs {
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final Input<String>? region;
+
+  /// ID of the Router Type. For example: `CiscoSystemsInc-2900SeriesRouters-IOS124`
+  ///
+  /// There is currently no AWS API to retrieve the full list of <span pulumi-lang-nodejs="`routerTypeIdentifier`" pulumi-lang-dotnet="`RouterTypeIdentifier`" pulumi-lang-go="`routerTypeIdentifier`" pulumi-lang-python="`router_type_identifier`" pulumi-lang-yaml="`routerTypeIdentifier`" pulumi-lang-java="`routerTypeIdentifier`">`router_type_identifier`</span> values. Here is a list of known `RouterType` objects that can be used:
+  ///
+  /// ```json
+  /// {
+  /// "routerTypes": [
+  /// {"platform":"2900 Series Routers","routerTypeIdentifier":"CiscoSystemsInc-2900SeriesRouters-IOS124","software":"IOS 12.4+","vendor":"Cisco Systems, Inc.","xsltTemplateName":"customer-router-cisco-generic.xslt","xsltTemplateNameForMacSec":""},
+  /// {"platform":"3700 Series Routers","routerTypeIdentifier":"CiscoSystemsInc-3700SeriesRouters-IOS124","software":"IOS 12.4+","vendor":"Cisco Systems, Inc.","xsltTemplateName":"customer-router-cisco-generic.xslt","xsltTemplateNameForMacSec":""},
+  /// {"platform":"7200 Series Routers","routerTypeIdentifier":"CiscoSystemsInc-7200SeriesRouters-IOS124","software":"IOS 12.4+","vendor":"Cisco Systems, Inc.","xsltTemplateName":"customer-router-cisco-generic.xslt","xsltTemplateNameForMacSec":""},
+  /// {"platform":"Nexus 7000 Series Switches","routerTypeIdentifier":"CiscoSystemsInc-Nexus7000SeriesSwitches-NXOS51","software":"NX-OS 5.1+","vendor":"Cisco Systems, Inc.","xsltTemplateName":"customer-switch-cisco-nexus-generic.xslt","xsltTemplateNameForMacSec":""},
+  /// {"platform":"Nexus 9K+ Series Switches","routerTypeIdentifier":"CiscoSystemsInc-Nexus9KSeriesSwitches-NXOS93","software":"NX-OS 9.3+","vendor":"Cisco Systems, Inc.","xsltTemplateName":"customer-switch-cisco-nexus-generic.xslt","xsltTemplateNameForMacSec":"customer-switch-cisco-nexus-generic-macsec.xslt"},
+  /// {"platform":"M/MX Series Routers","routerTypeIdentifier":"JuniperNetworksInc-MMXSeriesRouters-JunOS95","software":"JunOS 9.5+","vendor":"Juniper Networks, Inc.","xsltTemplateName":"customer-router-juniper-generic.xslt","xsltTemplateNameForMacSec":"customer-router-juniper-generic-macsec.xslt"},
+  /// {"platform":"SRX Series Routers","routerTypeIdentifier":"JuniperNetworksInc-SRXSeriesRouters-JunOS95","software":"JunOS 9.5+","vendor":"Juniper Networks, Inc.","xsltTemplateName":"customer-router-juniper-generic.xslt","xsltTemplateNameForMacSec":""},
+  /// {"platform":"T Series Routers","routerTypeIdentifier":"JuniperNetworksInc-TSeriesRouters-JunOS95","software":"JunOS 9.5+","vendor":"Juniper Networks, Inc.","xsltTemplateName":"customer-router-juniper-generic.xslt","xsltTemplateNameForMacSec":""},
+  /// {"platform":"PA-3000+ and 5000+ series","routerTypeIdentifier":"PaloAltoNetworks-PA3000and5000series-PANOS803","software":"PAN-OS 8.0.3+","vendor":"Palo Alto Networks","xsltTemplateName":"customer-router-palo-alto-generic.xslt","xsltTemplateNameForMacSec":""}]
+  /// }
+  /// ```
+  final Input<String> routerTypeIdentifier;
+
+  /// ID of the Direct Connect Virtual Interface
+  final Input<String> virtualInterfaceId;
+
+  GetRouterConfigurationArgs({
+    this.region,
+    required this.routerTypeIdentifier,
+    required this.virtualInterfaceId,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    map['routerTypeIdentifier'] = routerTypeIdentifier;
+    map['virtualInterfaceId'] = virtualInterfaceId;
+    return map;
+  }
+
+  factory GetRouterConfigurationArgs.fromMap(Map<String, dynamic> map) {
+    return GetRouterConfigurationArgs(
+      region: Input.asOptionalInput<String>(map['region']),
+      routerTypeIdentifier: Input.asInput<String>(map['routerTypeIdentifier']),
+      virtualInterfaceId: Input.asInput<String>(map['virtualInterfaceId']),
+    );
+  }
+}

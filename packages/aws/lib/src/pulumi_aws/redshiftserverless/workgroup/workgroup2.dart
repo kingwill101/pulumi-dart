@@ -1,0 +1,200 @@
+import 'package:pulumi/pulumi.dart';
+import '../workgroup_config_parameter/workgroup_config_parameter.dart';
+import '../workgroup_endpoint/workgroup_endpoint.dart';
+import '../workgroup_price_performance_target/workgroup_price_performance_target.dart';
+import 'workgroup_args2.dart';
+
+/// Creates a new Amazon Redshift Serverless Workgroup.
+///
+/// ## Example Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.redshiftserverless.Workgroup("example", {
+/// namespaceName: "concurrency-scaling",
+/// workgroupName: "concurrency-scaling",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.redshiftserverless.Workgroup("example",
+/// namespace_name="concurrency-scaling",
+/// workgroup_name="concurrency-scaling")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.RedshiftServerless.Workgroup("example", new()
+/// {
+/// NamespaceName = "concurrency-scaling",
+/// WorkgroupName = "concurrency-scaling",
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/redshiftserverless"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := redshiftserverless.NewWorkgroup(ctx, "example", &redshiftserverless.WorkgroupArgs{
+/// NamespaceName: pulumi.String("concurrency-scaling"),
+/// WorkgroupName: pulumi.String("concurrency-scaling"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.redshiftserverless.Workgroup;
+/// import com.pulumi.aws.redshiftserverless.WorkgroupArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new Workgroup("example", WorkgroupArgs.builder()
+/// .namespaceName("concurrency-scaling")
+/// .workgroupName("concurrency-scaling")
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:redshiftserverless:Workgroup
+/// properties:
+/// namespaceName: concurrency-scaling
+/// workgroupName: concurrency-scaling
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Using `pulumi import`, import Redshift Serverless Workgroups using the <span pulumi-lang-nodejs="`workgroupName`" pulumi-lang-dotnet="`WorkgroupName`" pulumi-lang-go="`workgroupName`" pulumi-lang-python="`workgroup_name`" pulumi-lang-yaml="`workgroupName`" pulumi-lang-java="`workgroupName`">`workgroup_name`</span>. For example:
+///
+/// ```sh
+/// $ pulumi import aws:redshiftserverless/workgroup:Workgroup example example
+/// ```
+class Workgroup2 extends CustomResource {
+  /// Amazon Resource Name (ARN) of the Redshift Serverless Workgroup.
+  late final Output<String> arn;
+
+  /// The base data warehouse capacity of the workgroup in Redshift Processing Units (RPUs).
+  late final Output<int> baseCapacity;
+
+  /// An array of parameters to set for more control over a serverless database. See `Config Parameter` below.
+  late final Output<List<WorkgroupConfigParameter>> configParameters;
+
+  /// The endpoint that is created from the workgroup. See `Endpoint` below.
+  late final Output<List<WorkgroupEndpoint>> endpoints;
+
+  /// The value that specifies whether to turn on enhanced virtual private cloud (VPC) routing, which forces Amazon Redshift Serverless to route traffic through your VPC instead of over the internet.
+  late final Output<bool?> enhancedVpcRouting;
+
+  /// The maximum data-warehouse capacity Amazon Redshift Serverless uses to serve queries, specified in Redshift Processing Units (RPUs).
+  late final Output<int?> maxCapacity;
+
+  /// The name of the namespace.
+  late final Output<String> namespaceName;
+
+  /// The port number on which the cluster accepts incoming connections.
+  late final Output<int> port;
+
+  /// Price-performance scaling for the workgroup. See `Price Performance Target` below.
+  late final Output<WorkgroupPricePerformanceTarget> pricePerformanceTarget;
+
+  /// A value that specifies whether the workgroup can be accessed from a public network.
+  late final Output<bool?> publiclyAccessible;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  /// An array of security group IDs to associate with the workgroup.
+  late final Output<List<String>> securityGroupIds;
+
+  /// An array of VPC subnet IDs to associate with the workgroup. When set, must contain at least three subnets spanning three Availability Zones. A minimum number of IP addresses is required and scales with the Base Capacity. For more information, see the following [AWS document](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-known-issues.html).
+  late final Output<List<String>> subnetIds;
+
+  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  late final Output<Map<String, String>?> tags;
+
+  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  late final Output<Map<String, String>> tagsAll;
+
+  /// The name of the track for the workgroup. If it is <span pulumi-lang-nodejs="`current`" pulumi-lang-dotnet="`Current`" pulumi-lang-go="`current`" pulumi-lang-python="`current`" pulumi-lang-yaml="`current`" pulumi-lang-java="`current`">`current`</span>, you get the most up-to-date certified release version with the latest features, security updates, and performance enhancements. If it is <span pulumi-lang-nodejs="`trailing`" pulumi-lang-dotnet="`Trailing`" pulumi-lang-go="`trailing`" pulumi-lang-python="`trailing`" pulumi-lang-yaml="`trailing`" pulumi-lang-java="`trailing`">`trailing`</span>, you will be on the previous certified release. For more information, see the following [AWS document](https://docs.aws.amazon.com/redshift/latest/mgmt/tracks.html).
+  late final Output<String> trackName;
+
+  /// The Redshift Workgroup ID.
+  late final Output<String> workgroupId;
+
+  /// The name of the workgroup.
+  ///
+  /// The following arguments are optional:
+  late final Output<String> workgroupName;
+
+  Workgroup2(
+    String name, {
+    WorkgroupArgs2? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:redshiftserverless/workgroup:Workgroup',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.arn = Output.createUnknown<String>();
+    this.baseCapacity = Output.createUnknown<int>();
+    this.configParameters =
+        Output.createUnknown<List<WorkgroupConfigParameter>>();
+    this.endpoints = Output.createUnknown<List<WorkgroupEndpoint>>();
+    this.enhancedVpcRouting = Output.createUnknown<bool?>();
+    this.maxCapacity = Output.createUnknown<int?>();
+    this.namespaceName = Output.createUnknown<String>();
+    this.port = Output.createUnknown<int>();
+    this.pricePerformanceTarget =
+        Output.createUnknown<WorkgroupPricePerformanceTarget>();
+    this.publiclyAccessible = Output.createUnknown<bool?>();
+    this.region = Output.createUnknown<String>();
+    this.securityGroupIds = Output.createUnknown<List<String>>();
+    this.subnetIds = Output.createUnknown<List<String>>();
+    this.tags = Output.createUnknown<Map<String, String>?>();
+    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.trackName = Output.createUnknown<String>();
+    this.workgroupId = Output.createUnknown<String>();
+    this.workgroupName = Output.createUnknown<String>();
+  }
+}

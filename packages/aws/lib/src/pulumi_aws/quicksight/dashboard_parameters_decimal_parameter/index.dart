@@ -1,0 +1,3 @@
+library module_quicksight_dashboard_parameters_decimal_parameter;
+
+export 'dashboard_parameters_decimal_parameter.dart';

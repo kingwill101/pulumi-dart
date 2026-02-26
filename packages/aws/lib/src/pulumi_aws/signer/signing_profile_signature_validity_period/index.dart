@@ -1,0 +1,3 @@
+library module_signer_signing_profile_signature_validity_period;
+
+export 'signing_profile_signature_validity_period.dart';

@@ -1,0 +1,3 @@
+library module_cloudfront_distribution_ordered_cache_behavior;
+
+export 'distribution_ordered_cache_behavior.dart';

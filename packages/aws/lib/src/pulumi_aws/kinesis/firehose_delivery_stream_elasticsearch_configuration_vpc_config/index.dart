@@ -1,0 +1,3 @@
+library module_kinesis_firehose_delivery_stream_elasticsearch_configuration_vpc_config;
+
+export 'firehose_delivery_stream_elasticsearch_configuration_vpc_config.dart';

@@ -1,0 +1,3 @@
+library module_sagemaker_labeling_job_human_task_config_ui_config;
+
+export 'labeling_job_human_task_config_ui_config.dart';

@@ -1,0 +1,3 @@
+library module_pipes_pipe_target_parameters_lambda_function_parameters;
+
+export 'pipe_target_parameters_lambda_function_parameters.dart';

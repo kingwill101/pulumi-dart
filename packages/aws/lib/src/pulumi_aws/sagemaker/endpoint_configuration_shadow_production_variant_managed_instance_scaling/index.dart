@@ -1,0 +1,3 @@
+library module_sagemaker_endpoint_configuration_shadow_production_variant_managed_instance_scaling;
+
+export 'endpoint_configuration_shadow_production_variant_managed_instance_scaling.dart';

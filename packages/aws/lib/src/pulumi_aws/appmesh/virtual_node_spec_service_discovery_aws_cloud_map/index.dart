@@ -1,0 +1,3 @@
+library module_appmesh_virtual_node_spec_service_discovery_aws_cloud_map;
+
+export 'virtual_node_spec_service_discovery_aws_cloud_map.dart';

@@ -1,0 +1,3 @@
+library module_lakeformation_get_permissions_table_with_columns;
+
+export 'get_permissions_table_with_columns.dart';

@@ -1,0 +1,3 @@
+library module_ec2_spot_instance_request_private_dns_name_options;
+
+export 'spot_instance_request_private_dns_name_options.dart';

@@ -1,0 +1,3 @@
+library module_ec2_spot_instance_request_maintenance_options;
+
+export 'spot_instance_request_maintenance_options.dart';

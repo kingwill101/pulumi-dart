@@ -1,0 +1,3 @@
+library module_ec2_encryption_control_resource_exclusions_elastic_file_system;
+
+export 'encryption_control_resource_exclusions_elastic_file_system.dart';

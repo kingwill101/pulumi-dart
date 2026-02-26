@@ -1,0 +1,3 @@
+library module_batch_scheduling_policy_fair_share_policy;
+
+export 'scheduling_policy_fair_share_policy.dart';

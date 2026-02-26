@@ -1,0 +1,3 @@
+library module_pipes_pipe_target_parameters_sagemaker_pipeline_parameters_pipeline_parameter;
+
+export 'pipe_target_parameters_sagemaker_pipeline_parameters_pipeline_parameter.dart';

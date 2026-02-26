@@ -1,0 +1,3 @@
+library module_networkflowmonitor_monitor_local_resource;
+
+export 'monitor_local_resource.dart';

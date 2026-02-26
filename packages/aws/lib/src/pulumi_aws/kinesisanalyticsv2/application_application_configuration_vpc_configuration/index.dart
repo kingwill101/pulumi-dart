@@ -1,0 +1,3 @@
+library module_kinesisanalyticsv2_application_application_configuration_vpc_configuration;
+
+export 'application_application_configuration_vpc_configuration.dart';

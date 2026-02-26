@@ -1,0 +1,3 @@
+library module_dlm_lifecycle_policy_policy_details_schedule_share_rule;
+
+export 'lifecycle_policy_policy_details_schedule_share_rule.dart';

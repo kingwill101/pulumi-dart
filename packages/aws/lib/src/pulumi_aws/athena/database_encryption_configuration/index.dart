@@ -1,0 +1,3 @@
+library module_athena_database_encryption_configuration;
+
+export 'database_encryption_configuration.dart';

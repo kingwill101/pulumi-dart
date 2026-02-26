@@ -1,0 +1,3 @@
+library module_ssm_contacts_rotation_recurrence_daily_setting;
+
+export 'contacts_rotation_recurrence_daily_setting.dart';

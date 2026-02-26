@@ -1,0 +1,3 @@
+library module_emrserverless_application_maximum_capacity;
+
+export 'application_maximum_capacity.dart';

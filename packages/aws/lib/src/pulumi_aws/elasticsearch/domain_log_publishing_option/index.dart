@@ -1,0 +1,3 @@
+library module_elasticsearch_domain_log_publishing_option;
+
+export 'domain_log_publishing_option.dart';

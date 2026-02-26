@@ -1,0 +1,5 @@
+library module_dms_get_replication_instance;
+
+export 'get_replication_instance.dart';
+export 'get_replication_instance_args.dart';
+export 'get_replication_instance_result.dart';

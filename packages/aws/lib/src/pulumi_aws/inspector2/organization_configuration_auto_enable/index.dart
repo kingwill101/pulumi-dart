@@ -1,0 +1,3 @@
+library module_inspector2_organization_configuration_auto_enable;
+
+export 'organization_configuration_auto_enable.dart';

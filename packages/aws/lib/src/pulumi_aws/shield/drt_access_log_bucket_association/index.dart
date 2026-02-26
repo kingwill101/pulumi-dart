@@ -1,0 +1,4 @@
+library module_shield_drt_access_log_bucket_association;
+
+export 'drt_access_log_bucket_association.dart';
+export 'drt_access_log_bucket_association_args.dart';

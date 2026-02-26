@@ -1,0 +1,3 @@
+library module_dms_replication_config_compute_config;
+
+export 'replication_config_compute_config.dart';

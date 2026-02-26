@@ -1,0 +1,3 @@
+library module_location_place_index_data_source_configuration;
+
+export 'place_index_data_source_configuration.dart';

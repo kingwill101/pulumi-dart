@@ -1,0 +1,50 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../lifecycle_policy_action/lifecycle_policy_action.dart';
+import '../lifecycle_policy_selection/lifecycle_policy_selection.dart';
+
+/// Represents a rule in an ECR lifecycle policy.
+class LifecyclePolicyRule {
+  /// The action to take when the rule is triggered.
+  final LifecyclePolicyAction action;
+
+  /// A description of the rule.
+  final String? description;
+
+  /// The priority of the rule, must be unique within the policy.
+  final int rulePriority;
+
+  /// The selection criteria for the rule.
+  final LifecyclePolicySelection selection;
+
+  LifecyclePolicyRule({
+    required this.action,
+    this.description,
+    required this.rulePriority,
+    required this.selection,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['action'] = action.toMap();
+    final descriptionValue = description;
+    if (descriptionValue != null) {
+      map['description'] = descriptionValue;
+    }
+    map['rulePriority'] = rulePriority;
+    map['selection'] = selection.toMap();
+    return map;
+  }
+
+  factory LifecyclePolicyRule.fromMap(Map<String, dynamic> map) {
+    return LifecyclePolicyRule(
+      action: LifecyclePolicyAction.fromMap(
+          (map['action'] as Map).cast<String, dynamic>()),
+      description:
+          map['description'] == null ? null : map['description'] as String,
+      rulePriority: map['rulePriority'] as int,
+      selection: LifecyclePolicySelection.fromMap(
+          (map['selection'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_ec2clientvpn_get_endpoint_client_connect_option;
+
+export 'get_endpoint_client_connect_option.dart';

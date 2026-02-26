@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../experiment_template_experiment_report_configuration_data_sources_cloudwatch_dashboard/experiment_template_experiment_report_configuration_data_sources_cloudwatch_dashboard.dart';
+
+class ExperimentTemplateExperimentReportConfigurationDataSources {
+  /// The data sources for the experiment report. See below.
+  final List<
+          ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard>?
+      cloudwatchDashboards;
+
+  ExperimentTemplateExperimentReportConfigurationDataSources({
+    this.cloudwatchDashboards,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final cloudwatchDashboardsValue = cloudwatchDashboards;
+    if (cloudwatchDashboardsValue != null) {
+      map['cloudwatchDashboards'] = Input.encodeList<
+          ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard,
+          Map<String,
+              dynamic>>(cloudwatchDashboardsValue, (value) => value.toMap());
+    }
+    return map;
+  }
+
+  factory ExperimentTemplateExperimentReportConfigurationDataSources.fromMap(
+      Map<String, dynamic> map) {
+    return ExperimentTemplateExperimentReportConfigurationDataSources(
+      cloudwatchDashboards: map['cloudwatchDashboards'] == null
+          ? null
+          : Input.decodeList<
+                  ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard>(
+              map['cloudwatchDashboards'],
+              (value) =>
+                  ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard
+                      .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

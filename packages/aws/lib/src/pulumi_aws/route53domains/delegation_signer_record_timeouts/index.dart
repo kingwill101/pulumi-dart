@@ -1,0 +1,3 @@
+library module_route53domains_delegation_signer_record_timeouts;
+
+export 'delegation_signer_record_timeouts.dart';

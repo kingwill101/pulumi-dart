@@ -1,0 +1,3 @@
+library module_sagemaker_monitoring_schedule_monitoring_schedule_config_monitoring_job_definition_monitoring_inputs;
+
+export 'monitoring_schedule_monitoring_schedule_config_monitoring_job_definition_monitoring_inputs.dart';

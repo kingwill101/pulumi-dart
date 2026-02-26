@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetThesaurusSourceS3Path {
+  /// Name of the S3 bucket that contains the file.
+  final String bucket;
+
+  /// Name of the file.
+  final String key;
+
+  GetThesaurusSourceS3Path({
+    required this.bucket,
+    required this.key,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['bucket'] = bucket;
+    map['key'] = key;
+    return map;
+  }
+
+  factory GetThesaurusSourceS3Path.fromMap(Map<String, dynamic> map) {
+    return GetThesaurusSourceS3Path(
+      bucket: map['bucket'] as String,
+      key: map['key'] as String,
+    );
+  }
+}

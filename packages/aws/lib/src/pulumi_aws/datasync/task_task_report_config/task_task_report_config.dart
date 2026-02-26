@@ -1,0 +1,69 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../task_task_report_config_report_overrides/task_task_report_config_report_overrides.dart';
+import '../task_task_report_config_s3_destination/task_task_report_config_s3_destination.dart';
+
+class TaskTaskReportConfig {
+  /// Specifies the type of task report you'd like. Valid values: `SUMMARY_ONLY` and `STANDARD`.
+  final String? outputType;
+
+  /// Specifies whether you want your task report to include only what went wrong with your transfer or a list of what succeeded and didn't. Valid values: `ERRORS_ONLY` and `SUCCESSES_AND_ERRORS`.
+  final String? reportLevel;
+
+  /// Configuration block containing the configuration of the reporting level for aspects of your task report. See <span pulumi-lang-nodejs="`reportOverrides`" pulumi-lang-dotnet="`ReportOverrides`" pulumi-lang-go="`reportOverrides`" pulumi-lang-python="`report_overrides`" pulumi-lang-yaml="`reportOverrides`" pulumi-lang-java="`reportOverrides`">`report_overrides`</span> below.
+  final TaskTaskReportConfigReportOverrides? reportOverrides;
+
+  /// Configuration block containing the configuration for the Amazon S3 bucket where DataSync uploads your task report. See <span pulumi-lang-nodejs="`s3Destination`" pulumi-lang-dotnet="`S3Destination`" pulumi-lang-go="`s3Destination`" pulumi-lang-python="`s3_destination`" pulumi-lang-yaml="`s3Destination`" pulumi-lang-java="`s3Destination`">`s3_destination`</span> below.
+  final TaskTaskReportConfigS3Destination s3Destination;
+
+  /// Specifies whether your task report includes the new version of each object transferred into an S3 bucket. This only applies if you enable versioning on your bucket. Keep in mind that setting this to INCLUDE can increase the duration of your task execution. Valid values: `INCLUDE` and `NONE`.
+  final String? s3ObjectVersioning;
+
+  TaskTaskReportConfig({
+    this.outputType,
+    this.reportLevel,
+    this.reportOverrides,
+    required this.s3Destination,
+    this.s3ObjectVersioning,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final outputTypeValue = outputType;
+    if (outputTypeValue != null) {
+      map['outputType'] = outputTypeValue;
+    }
+    final reportLevelValue = reportLevel;
+    if (reportLevelValue != null) {
+      map['reportLevel'] = reportLevelValue;
+    }
+    final reportOverridesValue = reportOverrides;
+    if (reportOverridesValue != null) {
+      map['reportOverrides'] = reportOverridesValue.toMap();
+    }
+    map['s3Destination'] = s3Destination.toMap();
+    final s3ObjectVersioningValue = s3ObjectVersioning;
+    if (s3ObjectVersioningValue != null) {
+      map['s3ObjectVersioning'] = s3ObjectVersioningValue;
+    }
+    return map;
+  }
+
+  factory TaskTaskReportConfig.fromMap(Map<String, dynamic> map) {
+    return TaskTaskReportConfig(
+      outputType:
+          map['outputType'] == null ? null : map['outputType'] as String,
+      reportLevel:
+          map['reportLevel'] == null ? null : map['reportLevel'] as String,
+      reportOverrides: map['reportOverrides'] == null
+          ? null
+          : TaskTaskReportConfigReportOverrides.fromMap(
+              (map['reportOverrides'] as Map).cast<String, dynamic>()),
+      s3Destination: TaskTaskReportConfigS3Destination.fromMap(
+          (map['s3Destination'] as Map).cast<String, dynamic>()),
+      s3ObjectVersioning: map['s3ObjectVersioning'] == null
+          ? null
+          : map['s3ObjectVersioning'] as String,
+    );
+  }
+}

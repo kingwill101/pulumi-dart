@@ -1,0 +1,3 @@
+library module_timestreamquery_scheduled_query_timeouts;
+
+export 'scheduled_query_timeouts.dart';

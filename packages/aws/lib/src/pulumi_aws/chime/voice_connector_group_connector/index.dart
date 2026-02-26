@@ -1,0 +1,3 @@
+library module_chime_voice_connector_group_connector;
+
+export 'voice_connector_group_connector.dart';

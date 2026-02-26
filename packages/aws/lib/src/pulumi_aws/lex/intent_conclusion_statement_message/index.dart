@@ -1,0 +1,3 @@
+library module_lex_intent_conclusion_statement_message;
+
+export 'intent_conclusion_statement_message.dart';

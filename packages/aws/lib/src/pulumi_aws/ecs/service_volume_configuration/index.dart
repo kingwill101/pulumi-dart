@@ -1,0 +1,3 @@
+library module_ecs_service_volume_configuration;
+
+export 'service_volume_configuration.dart';

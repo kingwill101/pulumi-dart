@@ -1,0 +1,3 @@
+library module_imagebuilder_container_recipe_target_repository;
+
+export 'container_recipe_target_repository.dart';

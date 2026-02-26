@@ -1,0 +1,3 @@
+library module_medialive_channel_input_attachment_input_settings_audio_selector_selector_settings_audio_pid_selection;
+
+export 'channel_input_attachment_input_settings_audio_selector_selector_settings_audio_pid_selection.dart';

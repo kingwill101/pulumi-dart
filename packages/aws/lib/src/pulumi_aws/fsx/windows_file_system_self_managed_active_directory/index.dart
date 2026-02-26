@@ -1,0 +1,3 @@
+library module_fsx_windows_file_system_self_managed_active_directory;
+
+export 'windows_file_system_self_managed_active_directory.dart';

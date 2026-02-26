@@ -1,0 +1,829 @@
+import 'package:pulumi/pulumi.dart';
+import '../resolver_caching_config/resolver_caching_config.dart';
+import '../resolver_pipeline_config/resolver_pipeline_config.dart';
+import '../resolver_runtime/resolver_runtime.dart';
+import '../resolver_sync_config/resolver_sync_config.dart';
+import 'resolver_args.dart';
+
+/// Provides an AppSync Resolver.
+///
+/// ## Example Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const test = new aws.appsync.GraphQLApi("test", {
+/// authenticationType: "API_KEY",
+/// name: "tf-example",
+/// schema: `type Mutation {
+/// \\tputPost(id: ID!, title: String!): Post
+/// }
+///
+/// type Post {
+/// \\tid: ID!
+/// \\ttitle: String!
+/// }
+///
+/// type Query {
+/// \\tsinglePost(id: ID!): Post
+/// }
+///
+/// schema {
+/// \\tquery: Query
+/// \\tmutation: Mutation
+/// }
+/// `,
+/// });
+/// const testDataSource = new aws.appsync.DataSource("test", {
+/// apiId: test.id,
+/// name: "my_example",
+/// type: "HTTP",
+/// httpConfig: {
+/// endpoint: "http://example.com",
+/// },
+/// });
+/// // UNIT type resolver (default)
+/// const testResolver = new aws.appsync.Resolver("test", {
+/// apiId: test.id,
+/// field: "singlePost",
+/// type: "Query",
+/// dataSource: testDataSource.name,
+/// requestTemplate: `{
+/// \\"version\\": \\"2018-05-29\\",
+/// \\"method\\": \\"GET\\",
+/// \\"resourcePath\\": \\"/\\",
+/// \\"params\\":{
+/// \\"headers\\": utils.http.copyheaders(ctx.request.headers)
+/// }
+/// }
+/// `,
+/// responseTemplate: `#if(ctx.result.statusCode == 200)
+/// ctx.result.body
+/// #else
+/// utils.appendError(ctx.result.body, ctx.result.statusCode)
+/// #end
+/// `,
+/// cachingConfig: {
+/// cachingKeys: [
+/// "$context.identity.sub",
+/// "$context.arguments.id",
+/// ],
+/// ttl: 60,
+/// },
+/// });
+/// // PIPELINE type resolver
+/// const mutationPipelineTest = new aws.appsync.Resolver("Mutation_pipelineTest", {
+/// type: "Mutation",
+/// apiId: test.id,
+/// field: "pipelineTest",
+/// requestTemplate: "{}",
+/// responseTemplate: "$util.toJson($ctx.result)",
+/// kind: "PIPELINE",
+/// pipelineConfig: {
+/// functions: [
+/// test1.functionId,
+/// test2.functionId,
+/// test3.functionId,
+/// ],
+/// },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// test = aws.appsync.GraphQLApi("test",
+/// authentication_type="API_KEY",
+/// name="tf-example",
+/// schema="""type Mutation {
+/// \tputPost(id: ID!, title: String!): Post
+/// }
+///
+/// type Post {
+/// \tid: ID!
+/// \ttitle: String!
+/// }
+///
+/// type Query {
+/// \tsinglePost(id: ID!): Post
+/// }
+///
+/// schema {
+/// \tquery: Query
+/// \tmutation: Mutation
+/// }
+/// """)
+/// test_data_source = aws.appsync.DataSource("test",
+/// api_id=test.id,
+/// name="my_example",
+/// type="HTTP",
+/// http_config={
+/// "endpoint": "http://example.com",
+/// })
+/// # UNIT type resolver (default)
+/// test_resolver = aws.appsync.Resolver("test",
+/// api_id=test.id,
+/// field="singlePost",
+/// type="Query",
+/// data_source=test_data_source.name,
+/// request_template="""{
+/// \"version\": \"2018-05-29\",
+/// \"method\": \"GET\",
+/// \"resourcePath\": \"/\",
+/// \"params\":{
+/// \"headers\": $utils.http.copyheaders($ctx.request.headers)
+/// }
+/// }
+/// """,
+/// response_template="""#if($ctx.result.statusCode == 200)
+/// $ctx.result.body
+/// #else
+/// $utils.appendError($ctx.result.body, $ctx.result.statusCode)
+/// #end
+/// """,
+/// caching_config={
+/// "caching_keys": [
+/// "$context.identity.sub",
+/// "$context.arguments.id",
+/// ],
+/// "ttl": 60,
+/// })
+/// # PIPELINE type resolver
+/// mutation_pipeline_test = aws.appsync.Resolver("Mutation_pipelineTest",
+/// type="Mutation",
+/// api_id=test.id,
+/// field="pipelineTest",
+/// request_template="{}",
+/// response_template="$util.toJson($ctx.result)",
+/// kind="PIPELINE",
+/// pipeline_config={
+/// "functions": [
+/// test1["functionId"],
+/// test2["functionId"],
+/// test3["functionId"],
+/// ],
+/// })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var test = new Aws.AppSync.GraphQLApi("test", new()
+/// {
+/// AuthenticationType = "API_KEY",
+/// Name = "tf-example",
+/// Schema = @"type Mutation {
+/// \tputPost(id: ID!, title: String!): Post
+/// }
+///
+/// type Post {
+/// \tid: ID!
+/// \ttitle: String!
+/// }
+///
+/// type Query {
+/// \tsinglePost(id: ID!): Post
+/// }
+///
+/// schema {
+/// \tquery: Query
+/// \tmutation: Mutation
+/// }
+/// ",
+/// });
+///
+/// var testDataSource = new Aws.AppSync.DataSource("test", new()
+/// {
+/// ApiId = test.Id,
+/// Name = "my_example",
+/// Type = "HTTP",
+/// HttpConfig = new Aws.AppSync.Inputs.DataSourceHttpConfigArgs
+/// {
+/// Endpoint = "http://example.com",
+/// },
+/// });
+///
+/// // UNIT type resolver (default)
+/// var testResolver = new Aws.AppSync.Resolver("test", new()
+/// {
+/// ApiId = test.Id,
+/// Field = "singlePost",
+/// Type = "Query",
+/// DataSource = testDataSource.Name,
+/// RequestTemplate = @"{
+/// \""version\"": \""2018-05-29\"",
+/// \""method\"": \""GET\"",
+/// \""resourcePath\"": \""/\"",
+/// \""params\"":{
+/// \""headers\"": $utils.http.copyheaders($ctx.request.headers)
+/// }
+/// }
+/// ",
+/// ResponseTemplate = @"#if($ctx.result.statusCode == 200)
+/// $ctx.result.body
+/// #else
+/// $utils.appendError($ctx.result.body, $ctx.result.statusCode)
+/// #end
+/// ",
+/// CachingConfig = new Aws.AppSync.Inputs.ResolverCachingConfigArgs
+/// {
+/// CachingKeys = new[]
+/// {
+/// "$context.identity.sub",
+/// "$context.arguments.id",
+/// },
+/// Ttl = 60,
+/// },
+/// });
+///
+/// // PIPELINE type resolver
+/// var mutationPipelineTest = new Aws.AppSync.Resolver("Mutation_pipelineTest", new()
+/// {
+/// Type = "Mutation",
+/// ApiId = test.Id,
+/// Field = "pipelineTest",
+/// RequestTemplate = "{}",
+/// ResponseTemplate = "$util.toJson($ctx.result)",
+/// Kind = "PIPELINE",
+/// PipelineConfig = new Aws.AppSync.Inputs.ResolverPipelineConfigArgs
+/// {
+/// Functions = new[]
+/// {
+/// test1.FunctionId,
+/// test2.FunctionId,
+/// test3.FunctionId,
+/// },
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/appsync"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// test, err := appsync.NewGraphQLApi(ctx, "test", &appsync.GraphQLApiArgs{
+/// AuthenticationType: pulumi.String("API_KEY"),
+/// Name:               pulumi.String("tf-example"),
+/// Schema: pulumi.String(`type Mutation {
+/// \tputPost(id: ID!, title: String!): Post
+/// }
+///
+/// type Post {
+/// \tid: ID!
+/// \ttitle: String!
+/// }
+///
+/// type Query {
+/// \tsinglePost(id: ID!): Post
+/// }
+///
+/// schema {
+/// \tquery: Query
+/// \tmutation: Mutation
+/// }
+/// `),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// testDataSource, err := appsync.NewDataSource(ctx, "test", &appsync.DataSourceArgs{
+/// ApiId: test.ID(),
+/// Name:  pulumi.String("my_example"),
+/// Type:  pulumi.String("HTTP"),
+/// HttpConfig: &appsync.DataSourceHttpConfigArgs{
+/// Endpoint: pulumi.String("http://example.com"),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// // UNIT type resolver (default)
+/// _, err = appsync.NewResolver(ctx, "test", &appsync.ResolverArgs{
+/// ApiId:      test.ID(),
+/// Field:      pulumi.String("singlePost"),
+/// Type:       pulumi.String("Query"),
+/// DataSource: testDataSource.Name,
+/// RequestTemplate: pulumi.String(`{
+/// \"version\": \"2018-05-29\",
+/// \"method\": \"GET\",
+/// \"resourcePath\": \"/\",
+/// \"params\":{
+/// \"headers\": $utils.http.copyheaders($ctx.request.headers)
+/// }
+/// }
+/// `),
+/// ResponseTemplate: pulumi.String(`#if($ctx.result.statusCode == 200)
+/// $ctx.result.body
+/// #else
+/// $utils.appendError($ctx.result.body, $ctx.result.statusCode)
+/// #end
+/// `),
+/// CachingConfig: &appsync.ResolverCachingConfigArgs{
+/// CachingKeys: pulumi.StringArray{
+/// pulumi.String("$context.identity.sub"),
+/// pulumi.String("$context.arguments.id"),
+/// },
+/// Ttl: pulumi.Int(60),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// // PIPELINE type resolver
+/// _, err = appsync.NewResolver(ctx, "Mutation_pipelineTest", &appsync.ResolverArgs{
+/// Type:             pulumi.String("Mutation"),
+/// ApiId:            test.ID(),
+/// Field:            pulumi.String("pipelineTest"),
+/// RequestTemplate:  pulumi.String("{}"),
+/// ResponseTemplate: pulumi.String("$util.toJson($ctx.result)"),
+/// Kind:             pulumi.String("PIPELINE"),
+/// PipelineConfig: &appsync.ResolverPipelineConfigArgs{
+/// Functions: pulumi.StringArray{
+/// test1.FunctionId,
+/// test2.FunctionId,
+/// test3.FunctionId,
+/// },
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.appsync.GraphQLApi;
+/// import com.pulumi.aws.appsync.GraphQLApiArgs;
+/// import com.pulumi.aws.appsync.DataSource;
+/// import com.pulumi.aws.appsync.DataSourceArgs;
+/// import com.pulumi.aws.appsync.inputs.DataSourceHttpConfigArgs;
+/// import com.pulumi.aws.appsync.Resolver;
+/// import com.pulumi.aws.appsync.ResolverArgs;
+/// import com.pulumi.aws.appsync.inputs.ResolverCachingConfigArgs;
+/// import com.pulumi.aws.appsync.inputs.ResolverPipelineConfigArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var test = new GraphQLApi("test", GraphQLApiArgs.builder()
+/// .authenticationType("API_KEY")
+/// .name("tf-example")
+/// .schema("""
+/// type Mutation {
+/// \tputPost(id: ID!, title: String!): Post
+/// }
+///
+/// type Post {
+/// \tid: ID!
+/// \ttitle: String!
+/// }
+///
+/// type Query {
+/// \tsinglePost(id: ID!): Post
+/// }
+///
+/// schema {
+/// \tquery: Query
+/// \tmutation: Mutation
+/// }
+/// """)
+/// .build());
+///
+/// var testDataSource = new DataSource("testDataSource", DataSourceArgs.builder()
+/// .apiId(test.id())
+/// .name("my_example")
+/// .type("HTTP")
+/// .httpConfig(DataSourceHttpConfigArgs.builder()
+/// .endpoint("http://example.com")
+/// .build())
+/// .build());
+///
+/// // UNIT type resolver (default)
+/// var testResolver = new Resolver("testResolver", ResolverArgs.builder()
+/// .apiId(test.id())
+/// .field("singlePost")
+/// .type("Query")
+/// .dataSource(testDataSource.name())
+/// .requestTemplate("""
+/// {
+/// \"version\": \"2018-05-29\",
+/// \"method\": \"GET\",
+/// \"resourcePath\": \"/\",
+/// \"params\":{
+/// \"headers\": $utils.http.copyheaders($ctx.request.headers)
+/// }
+/// }
+/// """)
+/// .responseTemplate("""
+/// #if($ctx.result.statusCode == 200)
+/// $ctx.result.body
+/// #else
+/// $utils.appendError($ctx.result.body, $ctx.result.statusCode)
+/// #end
+/// """)
+/// .cachingConfig(ResolverCachingConfigArgs.builder()
+/// .cachingKeys(
+/// "$context.identity.sub",
+/// "$context.arguments.id")
+/// .ttl(60)
+/// .build())
+/// .build());
+///
+/// // PIPELINE type resolver
+/// var mutationPipelineTest = new Resolver("mutationPipelineTest", ResolverArgs.builder()
+/// .type("Mutation")
+/// .apiId(test.id())
+/// .field("pipelineTest")
+/// .requestTemplate("{}")
+/// .responseTemplate("$util.toJson($ctx.result)")
+/// .kind("PIPELINE")
+/// .pipelineConfig(ResolverPipelineConfigArgs.builder()
+/// .functions(
+/// test1.functionId(),
+/// test2.functionId(),
+/// test3.functionId())
+/// .build())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// test:
+/// type: aws:appsync:GraphQLApi
+/// properties:
+/// authenticationType: API_KEY
+/// name: tf-example
+/// schema: |
+/// type Mutation {
+/// \tputPost(id: ID!, title: String!): Post
+/// }
+///
+/// type Post {
+/// \tid: ID!
+/// \ttitle: String!
+/// }
+///
+/// type Query {
+/// \tsinglePost(id: ID!): Post
+/// }
+///
+/// schema {
+/// \tquery: Query
+/// \tmutation: Mutation
+/// }
+/// testDataSource:
+/// type: aws:appsync:DataSource
+/// name: test
+/// properties:
+/// apiId: ${test.id}
+/// name: my_example
+/// type: HTTP
+/// httpConfig:
+/// endpoint: http://example.com
+/// # UNIT type resolver (default)
+/// testResolver:
+/// type: aws:appsync:Resolver
+/// name: test
+/// properties:
+/// apiId: ${test.id}
+/// field: singlePost
+/// type: Query
+/// dataSource: ${testDataSource.name}
+/// requestTemplate: |
+/// {
+/// \"version\": \"2018-05-29\",
+/// \"method\": \"GET\",
+/// \"resourcePath\": \"/\",
+/// \"params\":{
+/// \"headers\": $utils.http.copyheaders($ctx.request.headers)
+/// }
+/// }
+/// responseTemplate: |
+/// #if($ctx.result.statusCode == 200)
+/// $ctx.result.body
+/// #else
+/// $utils.appendError($ctx.result.body, $ctx.result.statusCode)
+/// #end
+/// cachingConfig:
+/// cachingKeys:
+/// - $context.identity.sub
+/// - $context.arguments.id
+/// ttl: 60
+/// # PIPELINE type resolver
+/// mutationPipelineTest:
+/// type: aws:appsync:Resolver
+/// name: Mutation_pipelineTest
+/// properties:
+/// type: Mutation
+/// apiId: ${test.id}
+/// field: pipelineTest
+/// requestTemplate: '{}'
+/// responseTemplate: $util.toJson($ctx.result)
+/// kind: PIPELINE
+/// pipelineConfig:
+/// functions:
+/// - ${test1.functionId}
+/// - ${test2.functionId}
+/// - ${test3.functionId}
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+///
+/// ### JS
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+/// import * as std from "@pulumi/std";
+///
+/// const example = new aws.appsync.Resolver("example", {
+/// type: "Query",
+/// apiId: testAwsAppsyncGraphqlApi.id,
+/// field: "pipelineTest",
+/// kind: "PIPELINE",
+/// code: std.file({
+/// input: "some-code-dir",
+/// }).then(invoke => invoke.result),
+/// runtime: {
+/// name: "APPSYNC_JS",
+/// runtimeVersion: "1.0.0",
+/// },
+/// pipelineConfig: {
+/// functions: [test.functionId],
+/// },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+/// import pulumi_std as std
+///
+/// example = aws.appsync.Resolver("example",
+/// type="Query",
+/// api_id=test_aws_appsync_graphql_api["id"],
+/// field="pipelineTest",
+/// kind="PIPELINE",
+/// code=std.file(input="some-code-dir").result,
+/// runtime={
+/// "name": "APPSYNC_JS",
+/// "runtime_version": "1.0.0",
+/// },
+/// pipeline_config={
+/// "functions": [test["functionId"]],
+/// })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+/// using Std = Pulumi.Std;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.AppSync.Resolver("example", new()
+/// {
+/// Type = "Query",
+/// ApiId = testAwsAppsyncGraphqlApi.Id,
+/// Field = "pipelineTest",
+/// Kind = "PIPELINE",
+/// Code = Std.File.Invoke(new()
+/// {
+/// Input = "some-code-dir",
+/// }).Apply(invoke => invoke.Result),
+/// Runtime = new Aws.AppSync.Inputs.ResolverRuntimeArgs
+/// {
+/// Name = "APPSYNC_JS",
+/// RuntimeVersion = "1.0.0",
+/// },
+/// PipelineConfig = new Aws.AppSync.Inputs.ResolverPipelineConfigArgs
+/// {
+/// Functions = new[]
+/// {
+/// test.FunctionId,
+/// },
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/appsync"
+/// "github.com/pulumi/pulumi-std/sdk/go/std"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// invokeFile, err := std.File(ctx, &std.FileArgs{
+/// Input: "some-code-dir",
+/// }, nil)
+/// if err != nil {
+/// return err
+/// }
+/// _, err = appsync.NewResolver(ctx, "example", &appsync.ResolverArgs{
+/// Type:  pulumi.String("Query"),
+/// ApiId: pulumi.Any(testAwsAppsyncGraphqlApi.Id),
+/// Field: pulumi.String("pipelineTest"),
+/// Kind:  pulumi.String("PIPELINE"),
+/// Code:  pulumi.String(invokeFile.Result),
+/// Runtime: &appsync.ResolverRuntimeArgs{
+/// Name:           pulumi.String("APPSYNC_JS"),
+/// RuntimeVersion: pulumi.String("1.0.0"),
+/// },
+/// PipelineConfig: &appsync.ResolverPipelineConfigArgs{
+/// Functions: pulumi.StringArray{
+/// test.FunctionId,
+/// },
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.appsync.Resolver;
+/// import com.pulumi.aws.appsync.ResolverArgs;
+/// import com.pulumi.aws.appsync.inputs.ResolverRuntimeArgs;
+/// import com.pulumi.aws.appsync.inputs.ResolverPipelineConfigArgs;
+/// import com.pulumi.std.StdFunctions;
+/// import com.pulumi.std.inputs.FileArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new Resolver("example", ResolverArgs.builder()
+/// .type("Query")
+/// .apiId(testAwsAppsyncGraphqlApi.id())
+/// .field("pipelineTest")
+/// .kind("PIPELINE")
+/// .code(StdFunctions.file(FileArgs.builder()
+/// .input("some-code-dir")
+/// .build()).result())
+/// .runtime(ResolverRuntimeArgs.builder()
+/// .name("APPSYNC_JS")
+/// .runtimeVersion("1.0.0")
+/// .build())
+/// .pipelineConfig(ResolverPipelineConfigArgs.builder()
+/// .functions(test.functionId())
+/// .build())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:appsync:Resolver
+/// properties:
+/// type: Query
+/// apiId: ${testAwsAppsyncGraphqlApi.id}
+/// field: pipelineTest
+/// kind: PIPELINE
+/// code:
+/// fn::invoke:
+/// function: std:file
+/// arguments:
+/// input: some-code-dir
+/// return: result
+/// runtime:
+/// name: APPSYNC_JS
+/// runtimeVersion: 1.0.0
+/// pipelineConfig:
+/// functions:
+/// - ${test.functionId}
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.appsync.Resolver`" pulumi-lang-dotnet="`aws.appsync.Resolver`" pulumi-lang-go="`appsync.Resolver`" pulumi-lang-python="`appsync.Resolver`" pulumi-lang-yaml="`aws.appsync.Resolver`" pulumi-lang-java="`aws.appsync.Resolver`">`aws.appsync.Resolver`</span> using the <span pulumi-lang-nodejs="`apiId`" pulumi-lang-dotnet="`ApiId`" pulumi-lang-go="`apiId`" pulumi-lang-python="`api_id`" pulumi-lang-yaml="`apiId`" pulumi-lang-java="`apiId`">`api_id`</span>, a hyphen, <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span>, a hypen and <span pulumi-lang-nodejs="`field`" pulumi-lang-dotnet="`Field`" pulumi-lang-go="`field`" pulumi-lang-python="`field`" pulumi-lang-yaml="`field`" pulumi-lang-java="`field`">`field`</span>. For example:
+///
+/// ```sh
+/// $ pulumi import aws:appsync/resolver:Resolver example abcdef123456-exampleType-exampleField
+/// ```
+class Resolver extends CustomResource {
+  /// API ID for the GraphQL API.
+  late final Output<String> apiId;
+
+  /// ARN
+  late final Output<String> arn;
+
+  /// The Caching Config. See Caching Config.
+  late final Output<ResolverCachingConfig?> cachingConfig;
+
+  /// The function code that contains the request and response functions. When code is used, the runtime is required. The runtime value must be APPSYNC_JS.
+  late final Output<String?> code;
+
+  /// Data source name.
+  late final Output<String?> dataSource;
+
+  /// Field name from the schema defined in the GraphQL API.
+  late final Output<String> field;
+
+  /// Resolver type. Valid values are `UNIT` and `PIPELINE`.
+  late final Output<String?> kind;
+
+  /// Maximum batching size for a resolver. Valid values are between <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and <span pulumi-lang-nodejs="`2000`" pulumi-lang-dotnet="`2000`" pulumi-lang-go="`2000`" pulumi-lang-python="`2000`" pulumi-lang-yaml="`2000`" pulumi-lang-java="`2000`">`2000`</span>.
+  late final Output<int?> maxBatchSize;
+
+  /// The caching configuration for the resolver. See Pipeline Config.
+  late final Output<ResolverPipelineConfig?> pipelineConfig;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  /// Request mapping template for UNIT resolver or 'before mapping template' for PIPELINE resolver. Required for non-Lambda resolvers.
+  late final Output<String?> requestTemplate;
+
+  /// Response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver. Required for non-Lambda resolvers.
+  late final Output<String?> responseTemplate;
+
+  /// Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See Runtime.
+  late final Output<ResolverRuntime?> runtime;
+
+  /// Describes a Sync configuration for a resolver. See Sync Config.
+  late final Output<ResolverSyncConfig?> syncConfig;
+
+  /// Type name from the schema defined in the GraphQL API.
+  late final Output<String> type;
+
+  Resolver(
+    String name, {
+    ResolverArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:appsync/resolver:Resolver',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.apiId = Output.createUnknown<String>();
+    this.arn = Output.createUnknown<String>();
+    this.cachingConfig = Output.createUnknown<ResolverCachingConfig?>();
+    this.code = Output.createUnknown<String?>();
+    this.dataSource = Output.createUnknown<String?>();
+    this.field = Output.createUnknown<String>();
+    this.kind = Output.createUnknown<String?>();
+    this.maxBatchSize = Output.createUnknown<int?>();
+    this.pipelineConfig = Output.createUnknown<ResolverPipelineConfig?>();
+    this.region = Output.createUnknown<String>();
+    this.requestTemplate = Output.createUnknown<String?>();
+    this.responseTemplate = Output.createUnknown<String?>();
+    this.runtime = Output.createUnknown<ResolverRuntime?>();
+    this.syncConfig = Output.createUnknown<ResolverSyncConfig?>();
+    this.type = Output.createUnknown<String>();
+  }
+}

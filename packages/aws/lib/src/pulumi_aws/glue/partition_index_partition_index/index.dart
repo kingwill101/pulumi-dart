@@ -1,0 +1,3 @@
+library module_glue_partition_index_partition_index;
+
+export 'partition_index_partition_index.dart';

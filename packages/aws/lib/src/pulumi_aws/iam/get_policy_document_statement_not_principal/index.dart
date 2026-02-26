@@ -1,0 +1,3 @@
+library module_iam_get_policy_document_statement_not_principal;
+
+export 'get_policy_document_statement_not_principal.dart';

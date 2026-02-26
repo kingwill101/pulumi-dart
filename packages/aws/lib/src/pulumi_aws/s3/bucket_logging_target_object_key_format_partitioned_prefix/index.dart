@@ -1,0 +1,3 @@
+library module_s3_bucket_logging_target_object_key_format_partitioned_prefix;
+
+export 'bucket_logging_target_object_key_format_partitioned_prefix.dart';

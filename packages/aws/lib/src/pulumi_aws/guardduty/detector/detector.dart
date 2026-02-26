@@ -1,0 +1,262 @@
+import 'package:pulumi/pulumi.dart';
+import '../detector_datasources/detector_datasources.dart';
+import 'detector_args.dart';
+
+/// Provides a resource to manage an Amazon GuardDuty detector.
+///
+/// > **NOTE:** Deleting this resource is equivalent to "disabling" GuardDuty for an AWS region, which removes all existing findings. You can set the <span pulumi-lang-nodejs="`enable`" pulumi-lang-dotnet="`Enable`" pulumi-lang-go="`enable`" pulumi-lang-python="`enable`" pulumi-lang-yaml="`enable`" pulumi-lang-java="`enable`">`enable`</span> attribute to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> to instead "suspend" monitoring and feedback reporting while keeping existing data. See the [Suspending or Disabling Amazon GuardDuty documentation](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_suspend-disable.html) for more information.
+///
+/// ## Example Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const myDetector = new aws.guardduty.Detector("MyDetector", {
+/// enable: true,
+/// datasources: {
+/// s3Logs: {
+/// enable: true,
+/// },
+/// kubernetes: {
+/// auditLogs: {
+/// enable: false,
+/// },
+/// },
+/// malwareProtection: {
+/// scanEc2InstanceWithFindings: {
+/// ebsVolumes: {
+/// enable: true,
+/// },
+/// },
+/// },
+/// },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// my_detector = aws.guardduty.Detector("MyDetector",
+/// enable=True,
+/// datasources={
+/// "s3_logs": {
+/// "enable": True,
+/// },
+/// "kubernetes": {
+/// "audit_logs": {
+/// "enable": False,
+/// },
+/// },
+/// "malware_protection": {
+/// "scan_ec2_instance_with_findings": {
+/// "ebs_volumes": {
+/// "enable": True,
+/// },
+/// },
+/// },
+/// })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var myDetector = new Aws.GuardDuty.Detector("MyDetector", new()
+/// {
+/// Enable = true,
+/// Datasources = new Aws.GuardDuty.Inputs.DetectorDatasourcesArgs
+/// {
+/// S3Logs = new Aws.GuardDuty.Inputs.DetectorDatasourcesS3LogsArgs
+/// {
+/// Enable = true,
+/// },
+/// Kubernetes = new Aws.GuardDuty.Inputs.DetectorDatasourcesKubernetesArgs
+/// {
+/// AuditLogs = new Aws.GuardDuty.Inputs.DetectorDatasourcesKubernetesAuditLogsArgs
+/// {
+/// Enable = false,
+/// },
+/// },
+/// MalwareProtection = new Aws.GuardDuty.Inputs.DetectorDatasourcesMalwareProtectionArgs
+/// {
+/// ScanEc2InstanceWithFindings = new Aws.GuardDuty.Inputs.DetectorDatasourcesMalwareProtectionScanEc2InstanceWithFindingsArgs
+/// {
+/// EbsVolumes = new Aws.GuardDuty.Inputs.DetectorDatasourcesMalwareProtectionScanEc2InstanceWithFindingsEbsVolumesArgs
+/// {
+/// Enable = true,
+/// },
+/// },
+/// },
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/guardduty"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := guardduty.NewDetector(ctx, "MyDetector", &guardduty.DetectorArgs{
+/// Enable: pulumi.Bool(true),
+/// Datasources: &guardduty.DetectorDatasourcesArgs{
+/// S3Logs: &guardduty.DetectorDatasourcesS3LogsArgs{
+/// Enable: pulumi.Bool(true),
+/// },
+/// Kubernetes: &guardduty.DetectorDatasourcesKubernetesArgs{
+/// AuditLogs: &guardduty.DetectorDatasourcesKubernetesAuditLogsArgs{
+/// Enable: pulumi.Bool(false),
+/// },
+/// },
+/// MalwareProtection: &guardduty.DetectorDatasourcesMalwareProtectionArgs{
+/// ScanEc2InstanceWithFindings: &guardduty.DetectorDatasourcesMalwareProtectionScanEc2InstanceWithFindingsArgs{
+/// EbsVolumes: &guardduty.DetectorDatasourcesMalwareProtectionScanEc2InstanceWithFindingsEbsVolumesArgs{
+/// Enable: pulumi.Bool(true),
+/// },
+/// },
+/// },
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.guardduty.Detector;
+/// import com.pulumi.aws.guardduty.DetectorArgs;
+/// import com.pulumi.aws.guardduty.inputs.DetectorDatasourcesArgs;
+/// import com.pulumi.aws.guardduty.inputs.DetectorDatasourcesS3LogsArgs;
+/// import com.pulumi.aws.guardduty.inputs.DetectorDatasourcesKubernetesArgs;
+/// import com.pulumi.aws.guardduty.inputs.DetectorDatasourcesKubernetesAuditLogsArgs;
+/// import com.pulumi.aws.guardduty.inputs.DetectorDatasourcesMalwareProtectionArgs;
+/// import com.pulumi.aws.guardduty.inputs.DetectorDatasourcesMalwareProtectionScanEc2InstanceWithFindingsArgs;
+/// import com.pulumi.aws.guardduty.inputs.DetectorDatasourcesMalwareProtectionScanEc2InstanceWithFindingsEbsVolumesArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var myDetector = new Detector("myDetector", DetectorArgs.builder()
+/// .enable(true)
+/// .datasources(DetectorDatasourcesArgs.builder()
+/// .s3Logs(DetectorDatasourcesS3LogsArgs.builder()
+/// .enable(true)
+/// .build())
+/// .kubernetes(DetectorDatasourcesKubernetesArgs.builder()
+/// .auditLogs(DetectorDatasourcesKubernetesAuditLogsArgs.builder()
+/// .enable(false)
+/// .build())
+/// .build())
+/// .malwareProtection(DetectorDatasourcesMalwareProtectionArgs.builder()
+/// .scanEc2InstanceWithFindings(DetectorDatasourcesMalwareProtectionScanEc2InstanceWithFindingsArgs.builder()
+/// .ebsVolumes(DetectorDatasourcesMalwareProtectionScanEc2InstanceWithFindingsEbsVolumesArgs.builder()
+/// .enable(true)
+/// .build())
+/// .build())
+/// .build())
+/// .build())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// myDetector:
+/// type: aws:guardduty:Detector
+/// name: MyDetector
+/// properties:
+/// enable: true
+/// datasources:
+/// s3Logs:
+/// enable: true
+/// kubernetes:
+/// auditLogs:
+/// enable: false
+/// malwareProtection:
+/// scanEc2InstanceWithFindings:
+/// ebsVolumes:
+/// enable: true
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Using `pulumi import`, import GuardDuty detectors using the detector ID. For example:
+///
+/// ```sh
+/// $ pulumi import aws:guardduty/detector:Detector MyDetector 00b00fd5aecc0ab60a708659477e9617
+/// ```
+///
+/// The ID of the detector can be retrieved via the [AWS CLI](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/guardduty/list-detectors.html) using `aws guardduty list-detectors`.
+class Detector extends CustomResource {
+  /// The AWS account ID of the GuardDuty detector
+  late final Output<String> accountId;
+
+  /// Amazon Resource Name (ARN) of the GuardDuty detector
+  late final Output<String> arn;
+
+  /// Describes which data sources will be enabled for the detector. See Data Sources below for more details. [Deprecated](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-feature-object-api-changes-march2023.html) in favor of <span pulumi-lang-nodejs="`aws.guardduty.DetectorFeature`" pulumi-lang-dotnet="`aws.guardduty.DetectorFeature`" pulumi-lang-go="`guardduty.DetectorFeature`" pulumi-lang-python="`guardduty.DetectorFeature`" pulumi-lang-yaml="`aws.guardduty.DetectorFeature`" pulumi-lang-java="`aws.guardduty.DetectorFeature`">`aws.guardduty.DetectorFeature`</span> resources.
+  late final Output<DetectorDatasources> datasources;
+
+  /// Enable monitoring and feedback reporting. Setting to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> is equivalent to "suspending" GuardDuty. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  late final Output<bool?> enable;
+
+  /// Specifies the frequency of notifications sent for subsequent finding occurrences. If the detector is a GuardDuty member account, the value is determined by the GuardDuty primary account and cannot be modified, otherwise defaults to `SIX_HOURS`. For standalone and GuardDuty primary accounts, it must be configured in this provider to enable drift detection. Valid values for standalone and primary accounts: `FIFTEEN_MINUTES`, `ONE_HOUR`, `SIX_HOURS`. See [AWS Documentation](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings_cloudwatch.html#guardduty_findings_cloudwatch_notification_frequency) for more information.
+  late final Output<String> findingPublishingFrequency;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  late final Output<Map<String, String>?> tags;
+
+  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  late final Output<Map<String, String>> tagsAll;
+
+  Detector(
+    String name, {
+    DetectorArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:guardduty/detector:Detector',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.accountId = Output.createUnknown<String>();
+    this.arn = Output.createUnknown<String>();
+    this.datasources = Output.createUnknown<DetectorDatasources>();
+    this.enable = Output.createUnknown<bool?>();
+    this.findingPublishingFrequency = Output.createUnknown<String>();
+    this.region = Output.createUnknown<String>();
+    this.tags = Output.createUnknown<Map<String, String>?>();
+    this.tagsAll = Output.createUnknown<Map<String, String>>();
+  }
+}

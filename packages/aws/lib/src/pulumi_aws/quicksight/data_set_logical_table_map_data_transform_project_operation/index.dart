@@ -1,0 +1,3 @@
+library module_quicksight_data_set_logical_table_map_data_transform_project_operation;
+
+export 'data_set_logical_table_map_data_transform_project_operation.dart';

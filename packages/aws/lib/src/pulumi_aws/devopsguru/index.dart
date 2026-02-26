@@ -1,0 +1,21 @@
+library module_devopsguru;
+
+export 'event_sources_config/index.dart';
+export 'event_sources_config_event_source/index.dart';
+export 'event_sources_config_event_source_amazon_code_guru_profiler/index.dart';
+export 'get_notification_channel/index.dart';
+export 'get_notification_channel_filter/index.dart';
+export 'get_notification_channel_sn/index.dart';
+export 'get_resource_collection/index.dart';
+export 'get_resource_collection_cloudformation/index.dart';
+export 'get_resource_collection_tag/index.dart';
+export 'notification_channel/index.dart';
+export 'notification_channel_filters/index.dart';
+export 'notification_channel_sns/index.dart';
+export 'resource_collection/index.dart';
+export 'resource_collection_cloudformation/index.dart';
+export 'resource_collection_tags/index.dart';
+export 'service_integration/index.dart';
+export 'service_integration_kms_server_side_encryption/index.dart';
+export 'service_integration_logs_anomaly_detection/index.dart';
+export 'service_integration_ops_center/index.dart';

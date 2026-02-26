@@ -1,0 +1,3 @@
+library module_workspacesweb_trust_store_certificate;
+
+export 'trust_store_certificate.dart';

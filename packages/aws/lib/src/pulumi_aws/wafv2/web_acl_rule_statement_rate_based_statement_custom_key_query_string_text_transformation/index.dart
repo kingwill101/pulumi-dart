@@ -1,0 +1,3 @@
+library module_wafv2_web_acl_rule_statement_rate_based_statement_custom_key_query_string_text_transformation;
+
+export 'web_acl_rule_statement_rate_based_statement_custom_key_query_string_text_transformation.dart';

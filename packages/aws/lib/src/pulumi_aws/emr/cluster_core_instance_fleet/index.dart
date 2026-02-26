@@ -1,0 +1,3 @@
+library module_emr_cluster_core_instance_fleet;
+
+export 'cluster_core_instance_fleet.dart';

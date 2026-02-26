@@ -1,0 +1,3 @@
+library module_ec2_get_vpc_peering_connection_peer_ipv6_cidr_block_set;
+
+export 'get_vpc_peering_connection_peer_ipv6_cidr_block_set.dart';

@@ -1,0 +1,3 @@
+library module_apprunner_service_source_configuration_image_repository;
+
+export 'service_source_configuration_image_repository.dart';

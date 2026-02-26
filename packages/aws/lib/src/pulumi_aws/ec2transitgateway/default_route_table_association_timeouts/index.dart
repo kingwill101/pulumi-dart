@@ -1,0 +1,3 @@
+library module_ec2transitgateway_default_route_table_association_timeouts;
+
+export 'default_route_table_association_timeouts.dart';

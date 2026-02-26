@@ -1,0 +1,3 @@
+library module_workspaces_get_workspace_workspace_property;
+
+export 'get_workspace_workspace_property.dart';

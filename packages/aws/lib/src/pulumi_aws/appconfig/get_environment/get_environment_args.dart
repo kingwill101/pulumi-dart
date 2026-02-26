@@ -1,0 +1,49 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// Arguments for getEnvironment.
+class GetEnvironmentArgs {
+  /// ID of the AppConfig Application to which this Environment belongs.
+  final Input<String> applicationId;
+
+  /// ID of the AppConfig Environment.
+  final Input<String> environmentId;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final Input<String>? region;
+
+  /// Map of tags for the resource.
+  final Input<Map<String, String>>? tags;
+
+  GetEnvironmentArgs({
+    required this.applicationId,
+    required this.environmentId,
+    this.region,
+    this.tags,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['applicationId'] = applicationId;
+    map['environmentId'] = environmentId;
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    return map;
+  }
+
+  factory GetEnvironmentArgs.fromMap(Map<String, dynamic> map) {
+    return GetEnvironmentArgs(
+      applicationId: Input.asInput<String>(map['applicationId']),
+      environmentId: Input.asInput<String>(map['environmentId']),
+      region: Input.asOptionalInput<String>(map['region']),
+      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+    );
+  }
+}

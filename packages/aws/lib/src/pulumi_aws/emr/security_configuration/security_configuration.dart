@@ -1,0 +1,233 @@
+import 'package:pulumi/pulumi.dart';
+import 'security_configuration_args.dart';
+
+/// Provides a resource to manage AWS EMR Security Configurations
+///
+/// ## Example Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const foo = new aws.emr.SecurityConfiguration("foo", {
+/// name: "emrsc_other",
+/// configuration: `{
+/// \\"EncryptionConfiguration\\": {
+/// \\"AtRestEncryptionConfiguration\\": {
+/// \\"S3EncryptionConfiguration\\": {
+/// \\"EncryptionMode\\": \\"SSE-S3\\"
+/// },
+/// \\"LocalDiskEncryptionConfiguration\\": {
+/// \\"EncryptionKeyProviderType\\": \\"AwsKms\\",
+/// \\"AwsKmsKey\\": \\"arn:aws:kms:us-west-2:187416307283:alias/my_emr_test_key\\"
+/// }
+/// },
+/// \\"EnableInTransitEncryption\\": false,
+/// \\"EnableAtRestEncryption\\": true
+/// }
+/// }
+/// `,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// foo = aws.emr.SecurityConfiguration("foo",
+/// name="emrsc_other",
+/// configuration="""{
+/// \"EncryptionConfiguration\": {
+/// \"AtRestEncryptionConfiguration\": {
+/// \"S3EncryptionConfiguration\": {
+/// \"EncryptionMode\": \"SSE-S3\"
+/// },
+/// \"LocalDiskEncryptionConfiguration\": {
+/// \"EncryptionKeyProviderType\": \"AwsKms\",
+/// \"AwsKmsKey\": \"arn:aws:kms:us-west-2:187416307283:alias/my_emr_test_key\"
+/// }
+/// },
+/// \"EnableInTransitEncryption\": false,
+/// \"EnableAtRestEncryption\": true
+/// }
+/// }
+/// """)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var foo = new Aws.Emr.SecurityConfiguration("foo", new()
+/// {
+/// Name = "emrsc_other",
+/// Configuration = @"{
+/// \""EncryptionConfiguration\"": {
+/// \""AtRestEncryptionConfiguration\"": {
+/// \""S3EncryptionConfiguration\"": {
+/// \""EncryptionMode\"": \""SSE-S3\""
+/// },
+/// \""LocalDiskEncryptionConfiguration\"": {
+/// \""EncryptionKeyProviderType\"": \""AwsKms\"",
+/// \""AwsKmsKey\"": \""arn:aws:kms:us-west-2:187416307283:alias/my_emr_test_key\""
+/// }
+/// },
+/// \""EnableInTransitEncryption\"": false,
+/// \""EnableAtRestEncryption\"": true
+/// }
+/// }
+/// ",
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/emr"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := emr.NewSecurityConfiguration(ctx, "foo", &emr.SecurityConfigurationArgs{
+/// Name: pulumi.String("emrsc_other"),
+/// Configuration: pulumi.String(`{
+/// \"EncryptionConfiguration\": {
+/// \"AtRestEncryptionConfiguration\": {
+/// \"S3EncryptionConfiguration\": {
+/// \"EncryptionMode\": \"SSE-S3\"
+/// },
+/// \"LocalDiskEncryptionConfiguration\": {
+/// \"EncryptionKeyProviderType\": \"AwsKms\",
+/// \"AwsKmsKey\": \"arn:aws:kms:us-west-2:187416307283:alias/my_emr_test_key\"
+/// }
+/// },
+/// \"EnableInTransitEncryption\": false,
+/// \"EnableAtRestEncryption\": true
+/// }
+/// }
+/// `),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.emr.SecurityConfiguration;
+/// import com.pulumi.aws.emr.SecurityConfigurationArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var foo = new SecurityConfiguration("foo", SecurityConfigurationArgs.builder()
+/// .name("emrsc_other")
+/// .configuration("""
+/// {
+/// \"EncryptionConfiguration\": {
+/// \"AtRestEncryptionConfiguration\": {
+/// \"S3EncryptionConfiguration\": {
+/// \"EncryptionMode\": \"SSE-S3\"
+/// },
+/// \"LocalDiskEncryptionConfiguration\": {
+/// \"EncryptionKeyProviderType\": \"AwsKms\",
+/// \"AwsKmsKey\": \"arn:aws:kms:us-west-2:187416307283:alias/my_emr_test_key\"
+/// }
+/// },
+/// \"EnableInTransitEncryption\": false,
+/// \"EnableAtRestEncryption\": true
+/// }
+/// }
+/// """)
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// foo:
+/// type: aws:emr:SecurityConfiguration
+/// properties:
+/// name: emrsc_other
+/// configuration: |
+/// {
+/// \"EncryptionConfiguration\": {
+/// \"AtRestEncryptionConfiguration\": {
+/// \"S3EncryptionConfiguration\": {
+/// \"EncryptionMode\": \"SSE-S3\"
+/// },
+/// \"LocalDiskEncryptionConfiguration\": {
+/// \"EncryptionKeyProviderType\": \"AwsKms\",
+/// \"AwsKmsKey\": \"arn:aws:kms:us-west-2:187416307283:alias/my_emr_test_key\"
+/// }
+/// },
+/// \"EnableInTransitEncryption\": false,
+/// \"EnableAtRestEncryption\": true
+/// }
+/// }
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Using `pulumi import`, import EMR Security Configurations using the <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. For example:
+///
+/// ```sh
+/// $ pulumi import aws:emr/securityConfiguration:SecurityConfiguration sc example-sc-name
+/// ```
+class SecurityConfiguration extends CustomResource {
+  /// A JSON formatted Security Configuration
+  late final Output<String> configuration;
+
+  /// Date the Security Configuration was created
+  late final Output<String> creationDate;
+
+  /// The name of the EMR Security Configuration. By default generated by this provider.
+  late final Output<String> name;
+
+  /// Creates a unique name beginning with the specified
+  /// prefix. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  late final Output<String> namePrefix;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  SecurityConfiguration(
+    String name, {
+    SecurityConfigurationArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:emr/securityConfiguration:SecurityConfiguration',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.configuration = Output.createUnknown<String>();
+    this.creationDate = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.namePrefix = Output.createUnknown<String>();
+    this.region = Output.createUnknown<String>();
+  }
+}

@@ -1,0 +1,3 @@
+library module_quicksight_key_registration_key_registration;
+
+export 'key_registration_key_registration.dart';

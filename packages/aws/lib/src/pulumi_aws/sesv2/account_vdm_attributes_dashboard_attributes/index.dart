@@ -1,0 +1,3 @@
+library module_sesv2_account_vdm_attributes_dashboard_attributes;
+
+export 'account_vdm_attributes_dashboard_attributes.dart';

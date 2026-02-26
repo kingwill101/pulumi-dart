@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationSsmlMessage {
+  /// SSML text that defines the prompt.
+  final String value;
+
+  V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationSsmlMessage({
+    required this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['value'] = value;
+    return map;
+  }
+
+  factory V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationSsmlMessage.fromMap(
+      Map<String, dynamic> map) {
+    return V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationSsmlMessage(
+      value: map['value'] as String,
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_rds_proxy_default_target_group_connection_pool_config;
+
+export 'proxy_default_target_group_connection_pool_config.dart';

@@ -1,0 +1,3 @@
+library module_cfg_recorder_recording_mode_recording_mode_override;
+
+export 'recorder_recording_mode_recording_mode_override.dart';

@@ -1,0 +1,3 @@
+library module_customerprofiles_domain_matching_exporting_config_s3_exporting;
+
+export 'domain_matching_exporting_config_s3_exporting.dart';

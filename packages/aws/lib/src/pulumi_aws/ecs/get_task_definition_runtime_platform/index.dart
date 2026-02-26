@@ -1,0 +1,3 @@
+library module_ecs_get_task_definition_runtime_platform;
+
+export 'get_task_definition_runtime_platform.dart';

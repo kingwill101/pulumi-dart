@@ -1,0 +1,3 @@
+library module_elasticsearch_domain_auto_tune_options_maintenance_schedule_duration;
+
+export 'domain_auto_tune_options_maintenance_schedule_duration.dart';

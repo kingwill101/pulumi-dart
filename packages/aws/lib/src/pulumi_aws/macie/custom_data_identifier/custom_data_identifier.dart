@@ -1,0 +1,237 @@
+import 'package:pulumi/pulumi.dart';
+import 'custom_data_identifier_args.dart';
+
+/// Provides a resource to manage an [AWS Macie Custom Data Identifier](https://docs.aws.amazon.com/macie/latest/APIReference/custom-data-identifiers-id.html).
+///
+/// ## Example Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.macie2.Account("example", {});
+/// const exampleCustomDataIdentifier = new aws.macie.CustomDataIdentifier("example", {
+/// name: "NAME OF CUSTOM DATA IDENTIFIER",
+/// regex: "[0-9]{3}-[0-9]{2}-[0-9]{4}",
+/// description: "DESCRIPTION",
+/// maximumMatchDistance: 10,
+/// keywords: ["keyword"],
+/// ignoreWords: ["ignore"],
+/// }, {
+/// dependsOn: [test],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.macie2.Account("example")
+/// example_custom_data_identifier = aws.macie.CustomDataIdentifier("example",
+/// name="NAME OF CUSTOM DATA IDENTIFIER",
+/// regex="[0-9]{3}-[0-9]{2}-[0-9]{4}",
+/// description="DESCRIPTION",
+/// maximum_match_distance=10,
+/// keywords=["keyword"],
+/// ignore_words=["ignore"],
+/// opts = pulumi.ResourceOptions(depends_on=[test]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.Macie2.Account("example");
+///
+/// var exampleCustomDataIdentifier = new Aws.Macie.CustomDataIdentifier("example", new()
+/// {
+/// Name = "NAME OF CUSTOM DATA IDENTIFIER",
+/// Regex = "[0-9]{3}-[0-9]{2}-[0-9]{4}",
+/// Description = "DESCRIPTION",
+/// MaximumMatchDistance = 10,
+/// Keywords = new[]
+/// {
+/// "keyword",
+/// },
+/// IgnoreWords = new[]
+/// {
+/// "ignore",
+/// },
+/// }, new CustomResourceOptions
+/// {
+/// DependsOn =
+/// {
+/// test,
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/macie"
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/macie2"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := macie2.NewAccount(ctx, "example", nil)
+/// if err != nil {
+/// return err
+/// }
+/// _, err = macie.NewCustomDataIdentifier(ctx, "example", &macie.CustomDataIdentifierArgs{
+/// Name:                 pulumi.String("NAME OF CUSTOM DATA IDENTIFIER"),
+/// Regex:                pulumi.String("[0-9]{3}-[0-9]{2}-[0-9]{4}"),
+/// Description:          pulumi.String("DESCRIPTION"),
+/// MaximumMatchDistance: pulumi.Int(10),
+/// Keywords: pulumi.StringArray{
+/// pulumi.String("keyword"),
+/// },
+/// IgnoreWords: pulumi.StringArray{
+/// pulumi.String("ignore"),
+/// },
+/// }, pulumi.DependsOn([]pulumi.Resource{
+/// test,
+/// }))
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.macie2.Account;
+/// import com.pulumi.aws.macie.CustomDataIdentifier;
+/// import com.pulumi.aws.macie.CustomDataIdentifierArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new Account("example");
+///
+/// var exampleCustomDataIdentifier = new CustomDataIdentifier("exampleCustomDataIdentifier", CustomDataIdentifierArgs.builder()
+/// .name("NAME OF CUSTOM DATA IDENTIFIER")
+/// .regex("[0-9]{3}-[0-9]{2}-[0-9]{4}")
+/// .description("DESCRIPTION")
+/// .maximumMatchDistance(10)
+/// .keywords("keyword")
+/// .ignoreWords("ignore")
+/// .build(), CustomResourceOptions.builder()
+/// .dependsOn(test)
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:macie2:Account
+/// exampleCustomDataIdentifier:
+/// type: aws:macie:CustomDataIdentifier
+/// name: example
+/// properties:
+/// name: NAME OF CUSTOM DATA IDENTIFIER
+/// regex: '[0-9]{3}-[0-9]{2}-[0-9]{4}'
+/// description: DESCRIPTION
+/// maximumMatchDistance: 10
+/// keywords:
+/// - keyword
+/// ignoreWords:
+/// - ignore
+/// options:
+/// dependsOn:
+/// - ${test}
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.macie.CustomDataIdentifier`" pulumi-lang-dotnet="`aws.macie.CustomDataIdentifier`" pulumi-lang-go="`macie.CustomDataIdentifier`" pulumi-lang-python="`macie.CustomDataIdentifier`" pulumi-lang-yaml="`aws.macie.CustomDataIdentifier`" pulumi-lang-java="`aws.macie.CustomDataIdentifier`">`aws.macie.CustomDataIdentifier`</span> using the id. For example:
+///
+/// ```sh
+/// $ pulumi import aws:macie/customDataIdentifier:CustomDataIdentifier example abcd1
+/// ```
+class CustomDataIdentifier extends CustomResource {
+  /// The Amazon Resource Name (ARN) of the custom data identifier.
+  late final Output<String> arn;
+
+  /// The date and time, in UTC and extended RFC 3339 format, when the Amazon Macie account was created.
+  late final Output<String> createdAt;
+
+  /// A custom description of the custom data identifier. The description can contain as many as 512 characters.
+  late final Output<String?> description;
+
+  /// An array that lists specific character sequences (ignore words) to exclude from the results. If the text matched by the regular expression is the same as any string in this array, Amazon Macie ignores it. The array can contain as many as 10 ignore words. Each ignore word can contain 4 - 90 characters. Ignore words are case sensitive.
+  late final Output<List<String>?> ignoreWords;
+
+  /// An array that lists specific character sequences (keywords), one of which must be within proximity (<span pulumi-lang-nodejs="`maximumMatchDistance`" pulumi-lang-dotnet="`MaximumMatchDistance`" pulumi-lang-go="`maximumMatchDistance`" pulumi-lang-python="`maximum_match_distance`" pulumi-lang-yaml="`maximumMatchDistance`" pulumi-lang-java="`maximumMatchDistance`">`maximum_match_distance`</span>) of the regular expression to match. The array can contain as many as 50 keywords. Each keyword can contain 3 - 90 characters. Keywords aren't case sensitive.
+  late final Output<List<String>?> keywords;
+
+  /// The maximum number of characters that can exist between text that matches the regex pattern and the character sequences specified by the keywords array. Macie includes or excludes a result based on the proximity of a keyword to text that matches the regex pattern. The distance can be 1 - 300 characters. The default value is 50.
+  late final Output<int> maximumMatchDistance;
+
+  /// A custom name for the custom data identifier. The name can contain as many as 128 characters. If omitted, the provider will assign a random, unique name. Conflicts with <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span>.
+  late final Output<String> name;
+
+  /// Creates a unique name beginning with the specified prefix. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  late final Output<String> namePrefix;
+
+  /// The regular expression (regex) that defines the pattern to match. The expression can contain as many as 512 characters.
+  late final Output<String?> regex;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  late final Output<Map<String, String>?> tags;
+
+  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  late final Output<Map<String, String>> tagsAll;
+
+  CustomDataIdentifier(
+    String name, {
+    CustomDataIdentifierArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:macie/customDataIdentifier:CustomDataIdentifier',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.arn = Output.createUnknown<String>();
+    this.createdAt = Output.createUnknown<String>();
+    this.description = Output.createUnknown<String?>();
+    this.ignoreWords = Output.createUnknown<List<String>?>();
+    this.keywords = Output.createUnknown<List<String>?>();
+    this.maximumMatchDistance = Output.createUnknown<int>();
+    this.name = Output.createUnknown<String>();
+    this.namePrefix = Output.createUnknown<String>();
+    this.regex = Output.createUnknown<String?>();
+    this.region = Output.createUnknown<String>();
+    this.tags = Output.createUnknown<Map<String, String>?>();
+    this.tagsAll = Output.createUnknown<Map<String, String>>();
+  }
+}

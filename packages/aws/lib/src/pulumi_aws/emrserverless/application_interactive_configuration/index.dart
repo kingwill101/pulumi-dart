@@ -1,0 +1,3 @@
+library module_emrserverless_application_interactive_configuration;
+
+export 'application_interactive_configuration.dart';

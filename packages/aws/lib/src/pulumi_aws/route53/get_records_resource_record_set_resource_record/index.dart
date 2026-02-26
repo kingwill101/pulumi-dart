@@ -1,0 +1,3 @@
+library module_route53_get_records_resource_record_set_resource_record;
+
+export 'get_records_resource_record_set_resource_record.dart';

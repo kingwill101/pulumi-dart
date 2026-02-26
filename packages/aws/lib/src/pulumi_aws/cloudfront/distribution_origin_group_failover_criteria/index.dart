@@ -1,0 +1,3 @@
+library module_cloudfront_distribution_origin_group_failover_criteria;
+
+export 'distribution_origin_group_failover_criteria.dart';

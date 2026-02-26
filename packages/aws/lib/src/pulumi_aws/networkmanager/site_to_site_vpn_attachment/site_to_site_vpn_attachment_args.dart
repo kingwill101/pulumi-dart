@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// The set of arguments for SiteToSiteVpnAttachment.
+class SiteToSiteVpnAttachmentArgs {
+  /// ID of a core network for the VPN attachment.
+  final Input<String> coreNetworkId;
+
+  /// The routing policy label to apply to the Site-to-Site VPN attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
+  final Input<String>? routingPolicyLabel;
+
+  /// Key-value tags for the attachment. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final Input<Map<String, String>>? tags;
+
+  /// ARN of the site-to-site VPN connection.
+  ///
+  /// The following arguments are optional:
+  final Input<String> vpnConnectionArn;
+
+  SiteToSiteVpnAttachmentArgs({
+    required this.coreNetworkId,
+    this.routingPolicyLabel,
+    this.tags,
+    required this.vpnConnectionArn,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['coreNetworkId'] = coreNetworkId;
+    final routingPolicyLabelValue = routingPolicyLabel;
+    if (routingPolicyLabelValue != null) {
+      map['routingPolicyLabel'] = routingPolicyLabelValue;
+    }
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    map['vpnConnectionArn'] = vpnConnectionArn;
+    return map;
+  }
+
+  factory SiteToSiteVpnAttachmentArgs.fromMap(Map<String, dynamic> map) {
+    return SiteToSiteVpnAttachmentArgs(
+      coreNetworkId: Input.asInput<String>(map['coreNetworkId']),
+      routingPolicyLabel:
+          Input.asOptionalInput<String>(map['routingPolicyLabel']),
+      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      vpnConnectionArn: Input.asInput<String>(map['vpnConnectionArn']),
+    );
+  }
+}

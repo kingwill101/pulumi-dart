@@ -1,0 +1,65 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// Arguments for getOutposts.
+class GetOutpostsArgs {
+  /// Availability Zone name.
+  final Input<String>? availabilityZone;
+
+  /// Availability Zone identifier.
+  final Input<String>? availabilityZoneId;
+
+  /// AWS Account identifier of the Outpost owner.
+  final Input<String>? ownerId;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final Input<String>? region;
+
+  /// Site identifier.
+  final Input<String>? siteId;
+
+  GetOutpostsArgs({
+    this.availabilityZone,
+    this.availabilityZoneId,
+    this.ownerId,
+    this.region,
+    this.siteId,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final availabilityZoneValue = availabilityZone;
+    if (availabilityZoneValue != null) {
+      map['availabilityZone'] = availabilityZoneValue;
+    }
+    final availabilityZoneIdValue = availabilityZoneId;
+    if (availabilityZoneIdValue != null) {
+      map['availabilityZoneId'] = availabilityZoneIdValue;
+    }
+    final ownerIdValue = ownerId;
+    if (ownerIdValue != null) {
+      map['ownerId'] = ownerIdValue;
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final siteIdValue = siteId;
+    if (siteIdValue != null) {
+      map['siteId'] = siteIdValue;
+    }
+    return map;
+  }
+
+  factory GetOutpostsArgs.fromMap(Map<String, dynamic> map) {
+    return GetOutpostsArgs(
+      availabilityZone: Input.asOptionalInput<String>(map['availabilityZone']),
+      availabilityZoneId:
+          Input.asOptionalInput<String>(map['availabilityZoneId']),
+      ownerId: Input.asOptionalInput<String>(map['ownerId']),
+      region: Input.asOptionalInput<String>(map['region']),
+      siteId: Input.asOptionalInput<String>(map['siteId']),
+    );
+  }
+}

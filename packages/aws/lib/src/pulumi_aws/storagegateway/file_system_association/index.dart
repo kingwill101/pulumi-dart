@@ -1,0 +1,4 @@
+library module_storagegateway_file_system_association;
+
+export 'file_system_association.dart';
+export 'file_system_association_args.dart';

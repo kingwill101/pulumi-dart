@@ -1,0 +1,3 @@
+library module_lambda_function_capacity_provider_config_lambda_managed_instances_capacity_provider_config;
+
+export 'function_capacity_provider_config_lambda_managed_instances_capacity_provider_config.dart';

@@ -1,0 +1,73 @@
+import 'package:pulumi/pulumi.dart';
+import 'function_args2.dart';
+
+/// Provides a CloudFront Function resource. With CloudFront Functions in Amazon CloudFront, you can write lightweight functions in JavaScript for high-scale, latency-sensitive CDN customizations.
+///
+/// See [CloudFront Functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cloudfront-functions.html)
+///
+/// > **NOTE:** You cannot delete a function if it’s associated with a cache behavior. First, update your distributions to remove the function association from all cache behaviors, then delete the function.
+///
+/// ## Example Usage
+///
+/// ## Import
+///
+/// Using `pulumi import`, import CloudFront Functions using the <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. For example:
+///
+/// ```sh
+/// $ pulumi import aws:cloudfront/function:Function test my_test_function
+/// ```
+class FunctionType2 extends CustomResource {
+  /// Amazon Resource Name (ARN) identifying your CloudFront Function.
+  late final Output<String> arn;
+
+  /// Source code of the function
+  late final Output<String> code;
+
+  /// Comment.
+  late final Output<String?> comment;
+
+  /// ETag hash of the function. This is the value for the `DEVELOPMENT` stage of the function.
+  late final Output<String> etag;
+
+  /// List of <span pulumi-lang-nodejs="`aws.cloudfront.KeyValueStore`" pulumi-lang-dotnet="`aws.cloudfront.KeyValueStore`" pulumi-lang-go="`cloudfront.KeyValueStore`" pulumi-lang-python="`cloudfront.KeyValueStore`" pulumi-lang-yaml="`aws.cloudfront.KeyValueStore`" pulumi-lang-java="`aws.cloudfront.KeyValueStore`">`aws.cloudfront.KeyValueStore`</span> ARNs to be associated to the function. AWS limits associations to one key value store per function.
+  late final Output<List<String>?> keyValueStoreAssociations;
+
+  /// ETag hash of any `LIVE` stage of the function.
+  late final Output<String> liveStageEtag;
+
+  /// Unique name for your CloudFront Function.
+  late final Output<String> name;
+
+  /// Whether to publish creation/change as Live CloudFront Function Version. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  late final Output<bool?> publish;
+
+  /// Identifier of the function's runtime. Valid values are `cloudfront-js-1.0` and `cloudfront-js-2.0`.
+  ///
+  /// The following arguments are optional:
+  late final Output<String> runtime;
+
+  /// Status of the function. Can be `UNPUBLISHED`, `UNASSOCIATED` or `ASSOCIATED`.
+  late final Output<String> status;
+
+  FunctionType2(
+    String name, {
+    FunctionArgs2? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:cloudfront/function:Function',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.arn = Output.createUnknown<String>();
+    this.code = Output.createUnknown<String>();
+    this.comment = Output.createUnknown<String?>();
+    this.etag = Output.createUnknown<String>();
+    this.keyValueStoreAssociations = Output.createUnknown<List<String>?>();
+    this.liveStageEtag = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.publish = Output.createUnknown<bool?>();
+    this.runtime = Output.createUnknown<String>();
+    this.status = Output.createUnknown<String>();
+  }
+}

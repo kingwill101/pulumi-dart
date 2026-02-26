@@ -1,0 +1,13 @@
+name: pulumi_aws
+description: A Pulumi package for creating and managing Amazon Web Services (AWS) cloud resources.
+version: 7.20.0
+license: Apache-2.0
+homepage: https://pulumi.io
+repository: https://github.com/pulumi/pulumi-aws
+topics:
+    - pulumi
+    - aws
+environment:
+    sdk: ^3.10.0
+dependencies:
+    pulumi: ^1.0.0

@@ -1,0 +1,3 @@
+library module_appstream_stack_streaming_experience_settings;
+
+export 'stack_streaming_experience_settings.dart';

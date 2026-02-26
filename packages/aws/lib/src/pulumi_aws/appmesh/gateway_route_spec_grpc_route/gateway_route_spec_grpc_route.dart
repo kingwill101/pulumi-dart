@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../gateway_route_spec_grpc_route_action/gateway_route_spec_grpc_route_action.dart';
+import '../gateway_route_spec_grpc_route_match/gateway_route_spec_grpc_route_match.dart';
+
+class GatewayRouteSpecGrpcRoute {
+  /// Action to take if a match is determined.
+  final GatewayRouteSpecGrpcRouteAction action;
+
+  /// Criteria for determining a request match.
+  final GatewayRouteSpecGrpcRouteMatch match;
+
+  GatewayRouteSpecGrpcRoute({
+    required this.action,
+    required this.match,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['action'] = action.toMap();
+    map['match'] = match.toMap();
+    return map;
+  }
+
+  factory GatewayRouteSpecGrpcRoute.fromMap(Map<String, dynamic> map) {
+    return GatewayRouteSpecGrpcRoute(
+      action: GatewayRouteSpecGrpcRouteAction.fromMap(
+          (map['action'] as Map).cast<String, dynamic>()),
+      match: GatewayRouteSpecGrpcRouteMatch.fromMap(
+          (map['match'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

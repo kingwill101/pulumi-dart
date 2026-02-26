@@ -1,0 +1,3 @@
+library module_quicksight_get_data_set_logical_table_map_data_transform_untag_column_operation;
+
+export 'get_data_set_logical_table_map_data_transform_untag_column_operation.dart';

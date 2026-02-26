@@ -1,0 +1,3 @@
+library module_datazone_asset_type_forms_input;
+
+export 'asset_type_forms_input.dart';

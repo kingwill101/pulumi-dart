@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../policy_security_service_policy_data_policy_option_network_acl_common_policy_network_acl_entry_set/policy_security_service_policy_data_policy_option_network_acl_common_policy_network_acl_entry_set.dart';
+
+class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy {
+  /// Defines NACL entries for Network ACL policy. See the <span pulumi-lang-nodejs="`networkAclEntrySet`" pulumi-lang-dotnet="`NetworkAclEntrySet`" pulumi-lang-go="`networkAclEntrySet`" pulumi-lang-python="`network_acl_entry_set`" pulumi-lang-yaml="`networkAclEntrySet`" pulumi-lang-java="`networkAclEntrySet`">`network_acl_entry_set`</span> block.
+  final PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySet?
+      networkAclEntrySet;
+
+  PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy({
+    this.networkAclEntrySet,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final networkAclEntrySetValue = networkAclEntrySet;
+    if (networkAclEntrySetValue != null) {
+      map['networkAclEntrySet'] = networkAclEntrySetValue.toMap();
+    }
+    return map;
+  }
+
+  factory PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy.fromMap(
+      Map<String, dynamic> map) {
+    return PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy(
+      networkAclEntrySet: map['networkAclEntrySet'] == null
+          ? null
+          : PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySet
+              .fromMap(
+                  (map['networkAclEntrySet'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_appfabric_app_authorization_connection_auth_request;
+
+export 'app_authorization_connection_auth_request.dart';

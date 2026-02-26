@@ -1,0 +1,3 @@
+library module_sagemaker_data_quality_job_definition_job_resources_cluster_config;
+
+export 'data_quality_job_definition_job_resources_cluster_config.dart';

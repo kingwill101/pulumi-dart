@@ -1,0 +1,3 @@
+library module_rekognition_stream_processor_input;
+
+export 'stream_processor_input.dart';

@@ -1,0 +1,3 @@
+library module_bedrock_agentcore_browser_recording_s3_location;
+
+export 'agentcore_browser_recording_s3_location.dart';

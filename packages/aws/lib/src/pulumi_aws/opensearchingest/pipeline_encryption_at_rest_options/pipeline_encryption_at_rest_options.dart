@@ -1,0 +1,22 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class PipelineEncryptionAtRestOptions {
+  /// The ARN of the KMS key used to encrypt data-at-rest in OpenSearch Ingestion. By default, data is encrypted using an AWS owned key.
+  final String kmsKeyArn;
+
+  PipelineEncryptionAtRestOptions({
+    required this.kmsKeyArn,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['kmsKeyArn'] = kmsKeyArn;
+    return map;
+  }
+
+  factory PipelineEncryptionAtRestOptions.fromMap(Map<String, dynamic> map) {
+    return PipelineEncryptionAtRestOptions(
+      kmsKeyArn: map['kmsKeyArn'] as String,
+    );
+  }
+}

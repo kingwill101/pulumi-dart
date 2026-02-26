@@ -1,0 +1,3 @@
+library module_fsx_get_ontap_file_system_endpoint_intercluster;
+
+export 'get_ontap_file_system_endpoint_intercluster.dart';

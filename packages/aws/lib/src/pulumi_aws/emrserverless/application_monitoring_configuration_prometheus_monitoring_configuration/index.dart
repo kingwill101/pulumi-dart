@@ -1,0 +1,3 @@
+library module_emrserverless_application_monitoring_configuration_prometheus_monitoring_configuration;
+
+export 'application_monitoring_configuration_prometheus_monitoring_configuration.dart';

@@ -1,0 +1,3 @@
+library module_appsync_source_api_association_timeouts;
+
+export 'source_api_association_timeouts.dart';

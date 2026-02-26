@@ -1,0 +1,5 @@
+library module_ec2_get_transit_gateway_route_tables;
+
+export 'get_transit_gateway_route_tables.dart';
+export 'get_transit_gateway_route_tables_args.dart';
+export 'get_transit_gateway_route_tables_result.dart';

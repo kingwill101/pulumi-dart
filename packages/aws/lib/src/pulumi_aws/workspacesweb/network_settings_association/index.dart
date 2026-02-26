@@ -1,0 +1,4 @@
+library module_workspacesweb_network_settings_association;
+
+export 'network_settings_association.dart';
+export 'network_settings_association_args.dart';

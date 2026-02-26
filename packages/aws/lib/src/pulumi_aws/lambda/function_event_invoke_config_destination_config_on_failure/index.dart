@@ -1,0 +1,3 @@
+library module_lambda_function_event_invoke_config_destination_config_on_failure;
+
+export 'function_event_invoke_config_destination_config_on_failure.dart';

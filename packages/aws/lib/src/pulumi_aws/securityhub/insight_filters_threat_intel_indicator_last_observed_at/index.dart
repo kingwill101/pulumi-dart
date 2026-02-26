@@ -1,0 +1,3 @@
+library module_securityhub_insight_filters_threat_intel_indicator_last_observed_at;
+
+export 'insight_filters_threat_intel_indicator_last_observed_at.dart';

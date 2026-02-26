@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetDataSetFieldFolder {
+  final List<String> columns;
+  final String description;
+  final String fieldFoldersId;
+
+  GetDataSetFieldFolder({
+    required this.columns,
+    required this.description,
+    required this.fieldFoldersId,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['columns'] = columns;
+    map['description'] = description;
+    map['fieldFoldersId'] = fieldFoldersId;
+    return map;
+  }
+
+  factory GetDataSetFieldFolder.fromMap(Map<String, dynamic> map) {
+    return GetDataSetFieldFolder(
+      columns: (map['columns'] as List).cast<String>(),
+      description: map['description'] as String,
+      fieldFoldersId: map['fieldFoldersId'] as String,
+    );
+  }
+}

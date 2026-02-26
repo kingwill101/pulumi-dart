@@ -1,0 +1,3 @@
+library module_securitylake_aws_log_source_source;
+
+export 'aws_log_source_source.dart';

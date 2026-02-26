@@ -1,0 +1,3 @@
+library module_appflow_connector_profile_connector_profile_config_connector_profile_properties_infor_nexus;
+
+export 'connector_profile_connector_profile_config_connector_profile_properties_infor_nexus.dart';

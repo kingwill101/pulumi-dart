@@ -1,0 +1,3 @@
+library module_pipes_pipe_target_parameters_batch_job_parameters;
+
+export 'pipe_target_parameters_batch_job_parameters.dart';

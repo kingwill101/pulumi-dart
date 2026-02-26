@@ -1,0 +1,3 @@
+library module_appmesh_virtual_node_spec_listener_outlier_detection_interval;
+
+export 'virtual_node_spec_listener_outlier_detection_interval.dart';

@@ -1,0 +1,3 @@
+library module_ecr_replication_configuration_replication_configuration_rule_repository_filter;
+
+export 'replication_configuration_replication_configuration_rule_repository_filter.dart';

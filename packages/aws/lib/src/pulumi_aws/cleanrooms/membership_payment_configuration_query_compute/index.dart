@@ -1,0 +1,3 @@
+library module_cleanrooms_membership_payment_configuration_query_compute;
+
+export 'membership_payment_configuration_query_compute.dart';

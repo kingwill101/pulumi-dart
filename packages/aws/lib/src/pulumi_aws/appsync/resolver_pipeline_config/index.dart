@@ -1,0 +1,3 @@
+library module_appsync_resolver_pipeline_config;
+
+export 'resolver_pipeline_config.dart';

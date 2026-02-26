@@ -1,0 +1,3 @@
+library module_s3tables_table_maintenance_configuration_iceberg_compaction;
+
+export 'table_maintenance_configuration_iceberg_compaction.dart';

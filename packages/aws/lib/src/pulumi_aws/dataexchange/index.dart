@@ -1,0 +1,20 @@
+library module_dataexchange;
+
+export 'data_set/index.dart';
+export 'event_action/index.dart';
+export 'event_action_action/index.dart';
+export 'event_action_action_export_revision_to_s3/index.dart';
+export 'event_action_action_export_revision_to_s3_encryption/index.dart';
+export 'event_action_action_export_revision_to_s3_revision_destination/index.dart';
+export 'event_action_event/index.dart';
+export 'event_action_event_revision_published/index.dart';
+export 'revision/index.dart';
+export 'revision_assets/index.dart';
+export 'revision_assets_asset/index.dart';
+export 'revision_assets_asset_create_s3_data_access_from_s3_bucket/index.dart';
+export 'revision_assets_asset_create_s3_data_access_from_s3_bucket_asset_source/index.dart';
+export 'revision_assets_asset_create_s3_data_access_from_s3_bucket_asset_source_kms_keys_to_grant/index.dart';
+export 'revision_assets_asset_import_assets_from_s3/index.dart';
+export 'revision_assets_asset_import_assets_from_s3_asset_source/index.dart';
+export 'revision_assets_asset_import_assets_from_signed_url/index.dart';
+export 'revision_assets_timeouts/index.dart';

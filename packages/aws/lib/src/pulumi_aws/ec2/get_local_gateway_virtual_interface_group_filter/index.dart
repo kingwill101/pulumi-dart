@@ -1,0 +1,3 @@
+library module_ec2_get_local_gateway_virtual_interface_group_filter;
+
+export 'get_local_gateway_virtual_interface_group_filter.dart';

@@ -1,0 +1,3 @@
+library module_dataexchange_event_action_event_revision_published;
+
+export 'event_action_event_revision_published.dart';

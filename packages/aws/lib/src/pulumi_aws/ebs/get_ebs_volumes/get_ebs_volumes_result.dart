@@ -1,0 +1,61 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_ebs_volumes_filter/get_ebs_volumes_filter.dart';
+
+/// Result data returned by getEbsVolumes.
+class GetEbsVolumesResult {
+  final List<GetEbsVolumesFilter>? filters;
+
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+
+  /// Set of all the EBS Volume IDs found. This data source will fail if
+  /// no volumes match the provided criteria.
+  final List<String> ids;
+  final String region;
+  final Map<String, String>? tags;
+
+  GetEbsVolumesResult({
+    this.filters,
+    required this.id,
+    required this.ids,
+    required this.region,
+    this.tags,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final filtersValue = filters;
+    if (filtersValue != null) {
+      map['filters'] =
+          Input.encodeList<GetEbsVolumesFilter, Map<String, dynamic>>(
+              filtersValue, (value) => value.toMap());
+    }
+    map['id'] = id;
+    map['ids'] = ids;
+    map['region'] = region;
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    return map;
+  }
+
+  factory GetEbsVolumesResult.fromMap(Map<String, dynamic> map) {
+    return GetEbsVolumesResult(
+      filters: map['filters'] == null
+          ? null
+          : Input.decodeList<GetEbsVolumesFilter>(
+              map['filters'],
+              (value) => GetEbsVolumesFilter.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      id: map['id'] as String,
+      ids: (map['ids'] as List).cast<String>(),
+      region: map['region'] as String,
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_cloudwatch_log_transformer_transformer_config_parse_waf;
+
+export 'log_transformer_transformer_config_parse_waf.dart';

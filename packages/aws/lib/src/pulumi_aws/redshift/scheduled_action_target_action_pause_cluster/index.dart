@@ -1,0 +1,3 @@
+library module_redshift_scheduled_action_target_action_pause_cluster;
+
+export 'scheduled_action_target_action_pause_cluster.dart';

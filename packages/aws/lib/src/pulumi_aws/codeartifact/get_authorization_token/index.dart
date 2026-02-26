@@ -1,0 +1,5 @@
+library module_codeartifact_get_authorization_token;
+
+export 'get_authorization_token.dart';
+export 'get_authorization_token_args.dart';
+export 'get_authorization_token_result.dart';

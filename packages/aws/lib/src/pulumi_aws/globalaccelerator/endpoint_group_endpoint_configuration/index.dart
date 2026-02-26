@@ -1,0 +1,3 @@
+library module_globalaccelerator_endpoint_group_endpoint_configuration;
+
+export 'endpoint_group_endpoint_configuration.dart';

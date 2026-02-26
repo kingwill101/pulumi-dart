@@ -1,0 +1,3 @@
+library module_m2_environment_storage_configuration_efs;
+
+export 'environment_storage_configuration_efs.dart';

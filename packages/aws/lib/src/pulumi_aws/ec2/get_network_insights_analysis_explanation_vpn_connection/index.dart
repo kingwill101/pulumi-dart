@@ -1,0 +1,3 @@
+library module_ec2_get_network_insights_analysis_explanation_vpn_connection;
+
+export 'get_network_insights_analysis_explanation_vpn_connection.dart';

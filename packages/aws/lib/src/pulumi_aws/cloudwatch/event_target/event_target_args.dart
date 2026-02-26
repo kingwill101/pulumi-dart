@@ -1,0 +1,250 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../event_target_appsync_target/event_target_appsync_target.dart';
+import '../event_target_batch_target/event_target_batch_target.dart';
+import '../event_target_dead_letter_config/event_target_dead_letter_config.dart';
+import '../event_target_ecs_target/event_target_ecs_target.dart';
+import '../event_target_http_target/event_target_http_target.dart';
+import '../event_target_input_transformer/event_target_input_transformer.dart';
+import '../event_target_kinesis_target/event_target_kinesis_target.dart';
+import '../event_target_redshift_target/event_target_redshift_target.dart';
+import '../event_target_retry_policy/event_target_retry_policy.dart';
+import '../event_target_run_command_target/event_target_run_command_target.dart';
+import '../event_target_sagemaker_pipeline_target/event_target_sagemaker_pipeline_target.dart';
+import '../event_target_sqs_target/event_target_sqs_target.dart';
+
+/// The set of arguments for EventTarget.
+class EventTargetArgs {
+  /// Parameters used when you are using the rule to invoke an AppSync GraphQL API mutation. Documented below. A maximum of 1 are allowed.
+  final Input<EventTargetAppsyncTarget>? appsyncTarget;
+
+  /// The Amazon Resource Name (ARN) of the target.
+  final Input<String> arn;
+
+  /// Parameters used when you are using the rule to invoke an Amazon Batch Job. Documented below. A maximum of 1 are allowed.
+  final Input<EventTargetBatchTarget>? batchTarget;
+
+  /// Parameters used when you are providing a dead letter config. Documented below. A maximum of 1 are allowed.
+  final Input<EventTargetDeadLetterConfig>? deadLetterConfig;
+
+  /// Parameters used when you are using the rule to invoke Amazon ECS Task. Documented below. A maximum of 1 are allowed.
+  final Input<EventTargetEcsTarget>? ecsTarget;
+
+  /// The name or ARN of the event bus to associate with the rule.
+  /// If you omit this, the <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span> event bus is used.
+  final Input<String>? eventBusName;
+
+  /// Used to delete managed rules created by AWS. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  final Input<bool>? forceDestroy;
+
+  /// Parameters used when you are using the rule to invoke an API Gateway REST endpoint. Documented below. A maximum of 1 is allowed.
+  final Input<EventTargetHttpTarget>? httpTarget;
+
+  /// Valid JSON text passed to the target. Conflicts with <span pulumi-lang-nodejs="`inputPath`" pulumi-lang-dotnet="`InputPath`" pulumi-lang-go="`inputPath`" pulumi-lang-python="`input_path`" pulumi-lang-yaml="`inputPath`" pulumi-lang-java="`inputPath`">`input_path`</span> and <span pulumi-lang-nodejs="`inputTransformer`" pulumi-lang-dotnet="`InputTransformer`" pulumi-lang-go="`inputTransformer`" pulumi-lang-python="`input_transformer`" pulumi-lang-yaml="`inputTransformer`" pulumi-lang-java="`inputTransformer`">`input_transformer`</span>.
+  final Input<String>? input;
+
+  /// The value of the [JSONPath](http://goessner.net/articles/JsonPath/) that is used for extracting part of the matched event when passing it to the target. Conflicts with <span pulumi-lang-nodejs="`input`" pulumi-lang-dotnet="`Input`" pulumi-lang-go="`input`" pulumi-lang-python="`input`" pulumi-lang-yaml="`input`" pulumi-lang-java="`input`">`input`</span> and <span pulumi-lang-nodejs="`inputTransformer`" pulumi-lang-dotnet="`InputTransformer`" pulumi-lang-go="`inputTransformer`" pulumi-lang-python="`input_transformer`" pulumi-lang-yaml="`inputTransformer`" pulumi-lang-java="`inputTransformer`">`input_transformer`</span>.
+  final Input<String>? inputPath;
+
+  /// Parameters used when you are providing a custom input to a target based on certain event data. Conflicts with <span pulumi-lang-nodejs="`input`" pulumi-lang-dotnet="`Input`" pulumi-lang-go="`input`" pulumi-lang-python="`input`" pulumi-lang-yaml="`input`" pulumi-lang-java="`input`">`input`</span> and <span pulumi-lang-nodejs="`inputPath`" pulumi-lang-dotnet="`InputPath`" pulumi-lang-go="`inputPath`" pulumi-lang-python="`input_path`" pulumi-lang-yaml="`inputPath`" pulumi-lang-java="`inputPath`">`input_path`</span>.
+  final Input<EventTargetInputTransformer>? inputTransformer;
+
+  /// Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
+  final Input<EventTargetKinesisTarget>? kinesisTarget;
+
+  /// Parameters used when you are using the rule to invoke an Amazon Redshift Statement. Documented below. A maximum of 1 are allowed.
+  final Input<EventTargetRedshiftTarget>? redshiftTarget;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final Input<String>? region;
+
+  /// Parameters used when you are providing retry policies. Documented below. A maximum of 1 are allowed.
+  final Input<EventTargetRetryPolicy>? retryPolicy;
+
+  /// The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if <span pulumi-lang-nodejs="`ecsTarget`" pulumi-lang-dotnet="`EcsTarget`" pulumi-lang-go="`ecsTarget`" pulumi-lang-python="`ecs_target`" pulumi-lang-yaml="`ecsTarget`" pulumi-lang-java="`ecsTarget`">`ecs_target`</span> is used or target in <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> is EC2 instance, Kinesis data stream, Step Functions state machine, or Event Bus in different account or region.
+  final Input<String>? roleArn;
+
+  /// The name of the rule you want to add targets to.
+  ///
+  /// The following arguments are optional:
+  final Input<String> rule;
+
+  /// Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
+  final Input<List<EventTargetRunCommandTarget>>? runCommandTargets;
+
+  /// Parameters used when you are using the rule to invoke an Amazon SageMaker AI Pipeline. Documented below. A maximum of 1 are allowed.
+  final Input<EventTargetSagemakerPipelineTarget>? sagemakerPipelineTarget;
+
+  /// Parameters used when you are using the rule to invoke an Amazon SQS Queue. Documented below. A maximum of 1 are allowed.
+  final Input<EventTargetSqsTarget>? sqsTarget;
+
+  /// The unique target assignment ID. If missing, will generate a random, unique id.
+  final Input<String>? targetId;
+
+  EventTargetArgs({
+    this.appsyncTarget,
+    required this.arn,
+    this.batchTarget,
+    this.deadLetterConfig,
+    this.ecsTarget,
+    this.eventBusName,
+    this.forceDestroy,
+    this.httpTarget,
+    this.input,
+    this.inputPath,
+    this.inputTransformer,
+    this.kinesisTarget,
+    this.redshiftTarget,
+    this.region,
+    this.retryPolicy,
+    this.roleArn,
+    required this.rule,
+    this.runCommandTargets,
+    this.sagemakerPipelineTarget,
+    this.sqsTarget,
+    this.targetId,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final appsyncTargetValue = appsyncTarget;
+    if (appsyncTargetValue != null) {
+      map['appsyncTarget'] = Input.mapOptionalInputValue<
+          EventTargetAppsyncTarget,
+          Map<String, dynamic>>(appsyncTargetValue, (value) => value.toMap());
+    }
+    map['arn'] = arn;
+    final batchTargetValue = batchTarget;
+    if (batchTargetValue != null) {
+      map['batchTarget'] = Input.mapOptionalInputValue<EventTargetBatchTarget,
+          Map<String, dynamic>>(batchTargetValue, (value) => value.toMap());
+    }
+    final deadLetterConfigValue = deadLetterConfig;
+    if (deadLetterConfigValue != null) {
+      map['deadLetterConfig'] = Input.mapOptionalInputValue<
+              EventTargetDeadLetterConfig, Map<String, dynamic>>(
+          deadLetterConfigValue, (value) => value.toMap());
+    }
+    final ecsTargetValue = ecsTarget;
+    if (ecsTargetValue != null) {
+      map['ecsTarget'] = Input.mapOptionalInputValue<EventTargetEcsTarget,
+          Map<String, dynamic>>(ecsTargetValue, (value) => value.toMap());
+    }
+    final eventBusNameValue = eventBusName;
+    if (eventBusNameValue != null) {
+      map['eventBusName'] = eventBusNameValue;
+    }
+    final forceDestroyValue = forceDestroy;
+    if (forceDestroyValue != null) {
+      map['forceDestroy'] = forceDestroyValue;
+    }
+    final httpTargetValue = httpTarget;
+    if (httpTargetValue != null) {
+      map['httpTarget'] = Input.mapOptionalInputValue<EventTargetHttpTarget,
+          Map<String, dynamic>>(httpTargetValue, (value) => value.toMap());
+    }
+    final inputValue = input;
+    if (inputValue != null) {
+      map['input'] = inputValue;
+    }
+    final inputPathValue = inputPath;
+    if (inputPathValue != null) {
+      map['inputPath'] = inputPathValue;
+    }
+    final inputTransformerValue = inputTransformer;
+    if (inputTransformerValue != null) {
+      map['inputTransformer'] = Input.mapOptionalInputValue<
+              EventTargetInputTransformer, Map<String, dynamic>>(
+          inputTransformerValue, (value) => value.toMap());
+    }
+    final kinesisTargetValue = kinesisTarget;
+    if (kinesisTargetValue != null) {
+      map['kinesisTarget'] = Input.mapOptionalInputValue<
+          EventTargetKinesisTarget,
+          Map<String, dynamic>>(kinesisTargetValue, (value) => value.toMap());
+    }
+    final redshiftTargetValue = redshiftTarget;
+    if (redshiftTargetValue != null) {
+      map['redshiftTarget'] = Input.mapOptionalInputValue<
+          EventTargetRedshiftTarget,
+          Map<String, dynamic>>(redshiftTargetValue, (value) => value.toMap());
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final retryPolicyValue = retryPolicy;
+    if (retryPolicyValue != null) {
+      map['retryPolicy'] = Input.mapOptionalInputValue<EventTargetRetryPolicy,
+          Map<String, dynamic>>(retryPolicyValue, (value) => value.toMap());
+    }
+    final roleArnValue = roleArn;
+    if (roleArnValue != null) {
+      map['roleArn'] = roleArnValue;
+    }
+    map['rule'] = rule;
+    final runCommandTargetsValue = runCommandTargets;
+    if (runCommandTargetsValue != null) {
+      map['runCommandTargets'] = Input.mapOptionalInputValue<
+              List<EventTargetRunCommandTarget>, List<Map<String, dynamic>>>(
+          runCommandTargetsValue,
+          (value) => Input.encodeList<EventTargetRunCommandTarget,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
+    }
+    final sagemakerPipelineTargetValue = sagemakerPipelineTarget;
+    if (sagemakerPipelineTargetValue != null) {
+      map['sagemakerPipelineTarget'] = Input.mapOptionalInputValue<
+              EventTargetSagemakerPipelineTarget, Map<String, dynamic>>(
+          sagemakerPipelineTargetValue, (value) => value.toMap());
+    }
+    final sqsTargetValue = sqsTarget;
+    if (sqsTargetValue != null) {
+      map['sqsTarget'] = Input.mapOptionalInputValue<EventTargetSqsTarget,
+          Map<String, dynamic>>(sqsTargetValue, (value) => value.toMap());
+    }
+    final targetIdValue = targetId;
+    if (targetIdValue != null) {
+      map['targetId'] = targetIdValue;
+    }
+    return map;
+  }
+
+  factory EventTargetArgs.fromMap(Map<String, dynamic> map) {
+    return EventTargetArgs(
+      appsyncTarget:
+          Input.asOptionalInput<EventTargetAppsyncTarget>(map['appsyncTarget']),
+      arn: Input.asInput<String>(map['arn']),
+      batchTarget:
+          Input.asOptionalInput<EventTargetBatchTarget>(map['batchTarget']),
+      deadLetterConfig: Input.asOptionalInput<EventTargetDeadLetterConfig>(
+          map['deadLetterConfig']),
+      ecsTarget: Input.asOptionalInput<EventTargetEcsTarget>(map['ecsTarget']),
+      eventBusName: Input.asOptionalInput<String>(map['eventBusName']),
+      forceDestroy: Input.asOptionalInput<bool>(map['forceDestroy']),
+      httpTarget:
+          Input.asOptionalInput<EventTargetHttpTarget>(map['httpTarget']),
+      input: Input.asOptionalInput<String>(map['input']),
+      inputPath: Input.asOptionalInput<String>(map['inputPath']),
+      inputTransformer: Input.asOptionalInput<EventTargetInputTransformer>(
+          map['inputTransformer']),
+      kinesisTarget:
+          Input.asOptionalInput<EventTargetKinesisTarget>(map['kinesisTarget']),
+      redshiftTarget: Input.asOptionalInput<EventTargetRedshiftTarget>(
+          map['redshiftTarget']),
+      region: Input.asOptionalInput<String>(map['region']),
+      retryPolicy:
+          Input.asOptionalInput<EventTargetRetryPolicy>(map['retryPolicy']),
+      roleArn: Input.asOptionalInput<String>(map['roleArn']),
+      rule: Input.asInput<String>(map['rule']),
+      runCommandTargets:
+          Input.asOptionalInput<List<EventTargetRunCommandTarget>>(
+              map['runCommandTargets']),
+      sagemakerPipelineTarget:
+          Input.asOptionalInput<EventTargetSagemakerPipelineTarget>(
+              map['sagemakerPipelineTarget']),
+      sqsTarget: Input.asOptionalInput<EventTargetSqsTarget>(map['sqsTarget']),
+      targetId: Input.asOptionalInput<String>(map['targetId']),
+    );
+  }
+}

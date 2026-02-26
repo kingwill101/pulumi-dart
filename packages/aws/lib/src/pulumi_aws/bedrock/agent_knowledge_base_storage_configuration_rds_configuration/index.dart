@@ -1,0 +1,3 @@
+library module_bedrock_agent_knowledge_base_storage_configuration_rds_configuration;
+
+export 'agent_knowledge_base_storage_configuration_rds_configuration.dart';

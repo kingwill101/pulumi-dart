@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetRepositoryEncryptionConfiguration {
+  /// Encryption type to use for the repository, either `AES256` or `KMS`.
+  final String encryptionType;
+
+  /// If <span pulumi-lang-nodejs="`encryptionType`" pulumi-lang-dotnet="`EncryptionType`" pulumi-lang-go="`encryptionType`" pulumi-lang-python="`encryption_type`" pulumi-lang-yaml="`encryptionType`" pulumi-lang-java="`encryptionType`">`encryption_type`</span> is `KMS`, the ARN of the KMS key used.
+  final String kmsKey;
+
+  GetRepositoryEncryptionConfiguration({
+    required this.encryptionType,
+    required this.kmsKey,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['encryptionType'] = encryptionType;
+    map['kmsKey'] = kmsKey;
+    return map;
+  }
+
+  factory GetRepositoryEncryptionConfiguration.fromMap(
+      Map<String, dynamic> map) {
+    return GetRepositoryEncryptionConfiguration(
+      encryptionType: map['encryptionType'] as String,
+      kmsKey: map['kmsKey'] as String,
+    );
+  }
+}

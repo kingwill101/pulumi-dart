@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../directory_bucket_access_point_scope_scope/directory_bucket_access_point_scope_scope.dart';
+
+/// The set of arguments for DirectoryBucketAccessPointScope.
+class DirectoryBucketAccessPointScopeArgs {
+  /// The AWS account ID that owns the specified access point.
+  final Input<String> accountId;
+
+  /// The name of the access point that you want to apply the scope to.
+  final Input<String>? name;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final Input<String>? region;
+
+  /// . Scope is used to restrict access to specific prefixes, API operations, or a combination of both. To remove the <span pulumi-lang-nodejs="`scope`" pulumi-lang-dotnet="`Scope`" pulumi-lang-go="`scope`" pulumi-lang-python="`scope`" pulumi-lang-yaml="`scope`" pulumi-lang-java="`scope`">`scope`</span>, set it to `{permissions=[] prefixes=[]}`. The default scope is `{permissions=[] prefixes=[]}`.
+  final Input<DirectoryBucketAccessPointScopeScope> scope;
+
+  DirectoryBucketAccessPointScopeArgs({
+    required this.accountId,
+    this.name,
+    this.region,
+    required this.scope,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['accountId'] = accountId;
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    map['scope'] = Input.mapInputValue<DirectoryBucketAccessPointScopeScope,
+        Map<String, dynamic>>(scope, (value) => value.toMap());
+    return map;
+  }
+
+  factory DirectoryBucketAccessPointScopeArgs.fromMap(
+      Map<String, dynamic> map) {
+    return DirectoryBucketAccessPointScopeArgs(
+      accountId: Input.asInput<String>(map['accountId']),
+      name: Input.asOptionalInput<String>(map['name']),
+      region: Input.asOptionalInput<String>(map['region']),
+      scope: Input.asInput<DirectoryBucketAccessPointScopeScope>(map['scope']),
+    );
+  }
+}

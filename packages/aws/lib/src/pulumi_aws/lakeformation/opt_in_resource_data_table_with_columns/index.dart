@@ -1,0 +1,3 @@
+library module_lakeformation_opt_in_resource_data_table_with_columns;
+
+export 'opt_in_resource_data_table_with_columns.dart';

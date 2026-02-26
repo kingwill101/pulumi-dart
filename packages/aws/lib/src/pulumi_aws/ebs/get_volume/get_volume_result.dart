@@ -1,0 +1,140 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_volume_filter/get_volume_filter.dart';
+
+/// Result data returned by getVolume.
+class GetVolumeResult {
+  /// Volume ARN (e.g., arn:aws:ec2:us-east-1:123456789012:volume/vol-59fcb34e).
+  final String arn;
+
+  /// Availability zone where the EBS volume exists.
+  final String availabilityZone;
+
+  /// Timestamp when volume creation was initiated.
+  final String createTime;
+
+  /// Whether the disk is encrypted.
+  final bool encrypted;
+  final List<GetVolumeFilter>? filters;
+
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+
+  /// Amount of IOPS for the disk.
+  final int iops;
+
+  /// ARN for the KMS encryption key.
+  final String kmsKeyId;
+  final bool? mostRecent;
+
+  /// (Optional) Specifies whether Amazon EBS Multi-Attach is enabled.
+  final bool multiAttachEnabled;
+
+  /// ARN of the Outpost.
+  final String outpostArn;
+  final String region;
+
+  /// Size of the drive in GiBs.
+  final int size;
+
+  /// Snapshot_id the EBS volume is based off.
+  final String snapshotId;
+
+  /// Map of tags for the resource.
+  final Map<String, String> tags;
+
+  /// Throughput that the volume supports, in MiB/s.
+  final int throughput;
+
+  /// Volume ID (e.g., vol-59fcb34e).
+  final String volumeId;
+
+  /// EBS provisioned rate for volume initialization, in MiB/s, at which to download the snapshot blocks from Amazon S3 to the volume.
+  final int volumeInitializationRate;
+
+  /// Type of EBS volume.
+  final String volumeType;
+
+  GetVolumeResult({
+    required this.arn,
+    required this.availabilityZone,
+    required this.createTime,
+    required this.encrypted,
+    this.filters,
+    required this.id,
+    required this.iops,
+    required this.kmsKeyId,
+    this.mostRecent,
+    required this.multiAttachEnabled,
+    required this.outpostArn,
+    required this.region,
+    required this.size,
+    required this.snapshotId,
+    required this.tags,
+    required this.throughput,
+    required this.volumeId,
+    required this.volumeInitializationRate,
+    required this.volumeType,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['arn'] = arn;
+    map['availabilityZone'] = availabilityZone;
+    map['createTime'] = createTime;
+    map['encrypted'] = encrypted;
+    final filtersValue = filters;
+    if (filtersValue != null) {
+      map['filters'] = Input.encodeList<GetVolumeFilter, Map<String, dynamic>>(
+          filtersValue, (value) => value.toMap());
+    }
+    map['id'] = id;
+    map['iops'] = iops;
+    map['kmsKeyId'] = kmsKeyId;
+    final mostRecentValue = mostRecent;
+    if (mostRecentValue != null) {
+      map['mostRecent'] = mostRecentValue;
+    }
+    map['multiAttachEnabled'] = multiAttachEnabled;
+    map['outpostArn'] = outpostArn;
+    map['region'] = region;
+    map['size'] = size;
+    map['snapshotId'] = snapshotId;
+    map['tags'] = tags;
+    map['throughput'] = throughput;
+    map['volumeId'] = volumeId;
+    map['volumeInitializationRate'] = volumeInitializationRate;
+    map['volumeType'] = volumeType;
+    return map;
+  }
+
+  factory GetVolumeResult.fromMap(Map<String, dynamic> map) {
+    return GetVolumeResult(
+      arn: map['arn'] as String,
+      availabilityZone: map['availabilityZone'] as String,
+      createTime: map['createTime'] as String,
+      encrypted: map['encrypted'] as bool,
+      filters: map['filters'] == null
+          ? null
+          : Input.decodeList<GetVolumeFilter>(
+              map['filters'],
+              (value) => GetVolumeFilter.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      id: map['id'] as String,
+      iops: map['iops'] as int,
+      kmsKeyId: map['kmsKeyId'] as String,
+      mostRecent: map['mostRecent'] == null ? null : map['mostRecent'] as bool,
+      multiAttachEnabled: map['multiAttachEnabled'] as bool,
+      outpostArn: map['outpostArn'] as String,
+      region: map['region'] as String,
+      size: map['size'] as int,
+      snapshotId: map['snapshotId'] as String,
+      tags: (map['tags'] as Map).cast<String, String>(),
+      throughput: map['throughput'] as int,
+      volumeId: map['volumeId'] as String,
+      volumeInitializationRate: map['volumeInitializationRate'] as int,
+      volumeType: map['volumeType'] as String,
+    );
+  }
+}

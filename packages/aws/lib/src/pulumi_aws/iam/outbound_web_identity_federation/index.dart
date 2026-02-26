@@ -1,0 +1,3 @@
+library module_iam_outbound_web_identity_federation;
+
+export 'outbound_web_identity_federation.dart';

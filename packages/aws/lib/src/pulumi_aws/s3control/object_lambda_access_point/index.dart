@@ -1,0 +1,4 @@
+library module_s3control_object_lambda_access_point;
+
+export 'object_lambda_access_point.dart';
+export 'object_lambda_access_point_args.dart';

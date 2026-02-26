@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetBrokerUser {
+  /// Whether to enable access to the ActiveMQ Web Console for the user.
+  final bool consoleAccess;
+
+  /// List of groups to which the ActiveMQ user belongs.
+  final List<String> groups;
+
+  /// Whether to set replication user.
+  final bool replicationUser;
+
+  /// Username of the user.
+  final String username;
+
+  GetBrokerUser({
+    required this.consoleAccess,
+    required this.groups,
+    required this.replicationUser,
+    required this.username,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['consoleAccess'] = consoleAccess;
+    map['groups'] = groups;
+    map['replicationUser'] = replicationUser;
+    map['username'] = username;
+    return map;
+  }
+
+  factory GetBrokerUser.fromMap(Map<String, dynamic> map) {
+    return GetBrokerUser(
+      consoleAccess: map['consoleAccess'] as bool,
+      groups: (map['groups'] as List).cast<String>(),
+      replicationUser: map['replicationUser'] as bool,
+      username: map['username'] as String,
+    );
+  }
+}

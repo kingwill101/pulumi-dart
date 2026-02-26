@@ -1,0 +1,3 @@
+library module_index_provider_assume_role_with_web_identity;
+
+export 'provider_assume_role_with_web_identity.dart';

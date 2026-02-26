@@ -1,0 +1,5 @@
+library module_outposts_get_outpost_instance_types;
+
+export 'get_outpost_instance_types.dart';
+export 'get_outpost_instance_types_args.dart';
+export 'get_outpost_instance_types_result.dart';

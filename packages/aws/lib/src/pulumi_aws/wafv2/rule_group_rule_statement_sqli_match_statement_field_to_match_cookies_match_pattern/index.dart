@@ -1,0 +1,3 @@
+library module_wafv2_rule_group_rule_statement_sqli_match_statement_field_to_match_cookies_match_pattern;
+
+export 'rule_group_rule_statement_sqli_match_statement_field_to_match_cookies_match_pattern.dart';

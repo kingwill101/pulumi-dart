@@ -1,0 +1,3 @@
+library module_ec2_vpc_encryption_control_resource_exclusions_egress_only_internet_gateway;
+
+export 'vpc_encryption_control_resource_exclusions_egress_only_internet_gateway.dart';

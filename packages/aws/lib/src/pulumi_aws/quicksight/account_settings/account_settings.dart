@@ -1,0 +1,194 @@
+import 'package:pulumi/pulumi.dart';
+import '../account_settings_timeouts/account_settings_timeouts.dart';
+import 'account_settings_args.dart';
+
+/// Resource for managing an AWS QuickSight Account Settings.
+///
+/// > Deletion of this resource will not modify any settings, only remove the resource from state.
+///
+/// ## Example Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const subscription = new aws.quicksight.AccountSubscription("subscription", {
+/// accountName: "quicksight-terraform",
+/// authenticationMethod: "IAM_AND_QUICKSIGHT",
+/// edition: "ENTERPRISE",
+/// notificationEmail: "notification@email.com",
+/// });
+/// const example = new aws.quicksight.AccountSettings("example", {terminationProtectionEnabled: false}, {
+/// dependsOn: [subscription],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// subscription = aws.quicksight.AccountSubscription("subscription",
+/// account_name="quicksight-terraform",
+/// authentication_method="IAM_AND_QUICKSIGHT",
+/// edition="ENTERPRISE",
+/// notification_email="notification@email.com")
+/// example = aws.quicksight.AccountSettings("example", termination_protection_enabled=False,
+/// opts = pulumi.ResourceOptions(depends_on=[subscription]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var subscription = new Aws.Quicksight.AccountSubscription("subscription", new()
+/// {
+/// AccountName = "quicksight-terraform",
+/// AuthenticationMethod = "IAM_AND_QUICKSIGHT",
+/// Edition = "ENTERPRISE",
+/// NotificationEmail = "notification@email.com",
+/// });
+///
+/// var example = new Aws.Quicksight.AccountSettings("example", new()
+/// {
+/// TerminationProtectionEnabled = false,
+/// }, new CustomResourceOptions
+/// {
+/// DependsOn =
+/// {
+/// subscription,
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/quicksight"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// subscription, err := quicksight.NewAccountSubscription(ctx, "subscription", &quicksight.AccountSubscriptionArgs{
+/// AccountName:          pulumi.String("quicksight-terraform"),
+/// AuthenticationMethod: pulumi.String("IAM_AND_QUICKSIGHT"),
+/// Edition:              pulumi.String("ENTERPRISE"),
+/// NotificationEmail:    pulumi.String("notification@email.com"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// _, err = quicksight.NewAccountSettings(ctx, "example", &quicksight.AccountSettingsArgs{
+/// TerminationProtectionEnabled: pulumi.Bool(false),
+/// }, pulumi.DependsOn([]pulumi.Resource{
+/// subscription,
+/// }))
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.quicksight.AccountSubscription;
+/// import com.pulumi.aws.quicksight.AccountSubscriptionArgs;
+/// import com.pulumi.aws.quicksight.AccountSettings;
+/// import com.pulumi.aws.quicksight.AccountSettingsArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var subscription = new AccountSubscription("subscription", AccountSubscriptionArgs.builder()
+/// .accountName("quicksight-terraform")
+/// .authenticationMethod("IAM_AND_QUICKSIGHT")
+/// .edition("ENTERPRISE")
+/// .notificationEmail("notification@email.com")
+/// .build());
+///
+/// var example = new AccountSettings("example", AccountSettingsArgs.builder()
+/// .terminationProtectionEnabled(false)
+/// .build(), CustomResourceOptions.builder()
+/// .dependsOn(subscription)
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// subscription:
+/// type: aws:quicksight:AccountSubscription
+/// properties:
+/// accountName: quicksight-terraform
+/// authenticationMethod: IAM_AND_QUICKSIGHT
+/// edition: ENTERPRISE
+/// notificationEmail: notification@email.com
+/// example:
+/// type: aws:quicksight:AccountSettings
+/// properties:
+/// terminationProtectionEnabled: false
+/// options:
+/// dependsOn:
+/// - ${subscription}
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Using `pulumi import`, import QuickSight Account Settings using the AWS account ID. For example:
+///
+/// ```sh
+/// $ pulumi import aws:quicksight/accountSettings:AccountSettings example "012345678901"
+/// ```
+class AccountSettings extends CustomResource {
+  /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
+  late final Output<String> awsAccountId;
+
+  /// The default namespace for this Amazon Web Services account. Currently, the default is <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.
+  late final Output<String> defaultNamespace;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  /// A boolean value that determines whether or not an Amazon QuickSight account can be deleted. If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, it does not allow the account to be deleted and results in an error message if a user tries to make a DeleteAccountSubscription request. If <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, it will allow the account to be deleted.
+  late final Output<bool> terminationProtectionEnabled;
+  late final Output<AccountSettingsTimeouts?> timeouts;
+
+  AccountSettings(
+    String name, {
+    AccountSettingsArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:quicksight/accountSettings:AccountSettings',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.awsAccountId = Output.createUnknown<String>();
+    this.defaultNamespace = Output.createUnknown<String>();
+    this.region = Output.createUnknown<String>();
+    this.terminationProtectionEnabled = Output.createUnknown<bool>();
+    this.timeouts = Output.createUnknown<AccountSettingsTimeouts?>();
+  }
+}

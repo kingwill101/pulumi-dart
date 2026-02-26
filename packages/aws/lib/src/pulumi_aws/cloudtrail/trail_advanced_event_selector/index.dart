@@ -1,0 +1,3 @@
+library module_cloudtrail_trail_advanced_event_selector;
+
+export 'trail_advanced_event_selector.dart';

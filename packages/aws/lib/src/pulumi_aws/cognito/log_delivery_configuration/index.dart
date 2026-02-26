@@ -1,0 +1,4 @@
+library module_cognito_log_delivery_configuration;
+
+export 'log_delivery_configuration.dart';
+export 'log_delivery_configuration_args.dart';

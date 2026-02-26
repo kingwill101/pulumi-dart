@@ -1,0 +1,3 @@
+library module_wafv2_rule_group_rule_statement_asn_match_statement_forwarded_ip_config;
+
+export 'rule_group_rule_statement_asn_match_statement_forwarded_ip_config.dart';

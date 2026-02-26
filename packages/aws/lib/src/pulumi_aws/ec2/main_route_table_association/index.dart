@@ -1,0 +1,4 @@
+library module_ec2_main_route_table_association;
+
+export 'main_route_table_association.dart';
+export 'main_route_table_association_args.dart';

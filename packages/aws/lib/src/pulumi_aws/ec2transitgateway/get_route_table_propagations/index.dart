@@ -1,0 +1,5 @@
+library module_ec2transitgateway_get_route_table_propagations;
+
+export 'get_route_table_propagations.dart';
+export 'get_route_table_propagations_args.dart';
+export 'get_route_table_propagations_result.dart';

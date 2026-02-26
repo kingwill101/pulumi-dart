@@ -1,0 +1,3 @@
+library module_lambda_event_source_mapping_document_db_event_source_config;
+
+export 'event_source_mapping_document_db_event_source_config.dart';

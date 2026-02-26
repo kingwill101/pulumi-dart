@@ -1,0 +1,3 @@
+library module_batch_compute_environment_eks_configuration;
+
+export 'compute_environment_eks_configuration.dart';

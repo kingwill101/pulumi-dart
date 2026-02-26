@@ -1,0 +1,3 @@
+library module_imagebuilder_get_distribution_configuration_distribution_fast_launch_configuration;
+
+export 'get_distribution_configuration_distribution_fast_launch_configuration.dart';

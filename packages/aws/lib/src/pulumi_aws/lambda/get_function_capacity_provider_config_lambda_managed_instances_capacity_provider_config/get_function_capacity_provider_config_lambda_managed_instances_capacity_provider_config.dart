@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig {
+  /// ARN of the Capacity Provider.
+  final String capacityProviderArn;
+
+  /// Memory GiB per vCPU for the execution environment.
+  final double executionEnvironmentMemoryGibPerVcpu;
+
+  /// Maximum concurrency per execution environment.
+  final int perExecutionEnvironmentMaxConcurrency;
+
+  GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig({
+    required this.capacityProviderArn,
+    required this.executionEnvironmentMemoryGibPerVcpu,
+    required this.perExecutionEnvironmentMaxConcurrency,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['capacityProviderArn'] = capacityProviderArn;
+    map['executionEnvironmentMemoryGibPerVcpu'] =
+        executionEnvironmentMemoryGibPerVcpu;
+    map['perExecutionEnvironmentMaxConcurrency'] =
+        perExecutionEnvironmentMaxConcurrency;
+    return map;
+  }
+
+  factory GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig.fromMap(
+      Map<String, dynamic> map) {
+    return GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig(
+      capacityProviderArn: map['capacityProviderArn'] as String,
+      executionEnvironmentMemoryGibPerVcpu:
+          map['executionEnvironmentMemoryGibPerVcpu'] as double,
+      perExecutionEnvironmentMaxConcurrency:
+          map['perExecutionEnvironmentMaxConcurrency'] as int,
+    );
+  }
+}

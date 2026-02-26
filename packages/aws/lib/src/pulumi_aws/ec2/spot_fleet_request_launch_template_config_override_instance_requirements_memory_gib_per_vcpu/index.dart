@@ -1,0 +1,3 @@
+library module_ec2_spot_fleet_request_launch_template_config_override_instance_requirements_memory_gib_per_vcpu;
+
+export 'spot_fleet_request_launch_template_config_override_instance_requirements_memory_gib_per_vcpu.dart';

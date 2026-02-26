@@ -1,0 +1,3 @@
+library module_mwaa_environment_last_updated_error;
+
+export 'environment_last_updated_error.dart';

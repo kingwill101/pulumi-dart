@@ -1,0 +1,4 @@
+library module_vpc_security_group_egress_rule;
+
+export 'security_group_egress_rule.dart';
+export 'security_group_egress_rule_args.dart';

@@ -1,0 +1,3 @@
+library module_lex_v2models_intent_fulfillment_code_hook_fulfillment_updates_specification_update_response;
+
+export 'v2models_intent_fulfillment_code_hook_fulfillment_updates_specification_update_response.dart';

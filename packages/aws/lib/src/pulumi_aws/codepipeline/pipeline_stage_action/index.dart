@@ -1,0 +1,3 @@
+library module_codepipeline_pipeline_stage_action;
+
+export 'pipeline_stage_action.dart';

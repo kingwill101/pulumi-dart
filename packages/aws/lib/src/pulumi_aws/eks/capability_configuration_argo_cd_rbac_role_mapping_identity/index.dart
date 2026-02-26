@@ -1,0 +1,3 @@
+library module_eks_capability_configuration_argo_cd_rbac_role_mapping_identity;
+
+export 'capability_configuration_argo_cd_rbac_role_mapping_identity.dart';

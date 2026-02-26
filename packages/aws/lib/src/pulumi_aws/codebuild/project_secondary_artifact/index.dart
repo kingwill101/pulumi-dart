@@ -1,0 +1,3 @@
+library module_codebuild_project_secondary_artifact;
+
+export 'project_secondary_artifact.dart';

@@ -1,0 +1,3 @@
+library module_sagemaker_pipeline_pipeline_definition_s3_location;
+
+export 'pipeline_pipeline_definition_s3_location.dart';

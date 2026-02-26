@@ -1,0 +1,37 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class ConnectorSftpConfig {
+  /// A list of public portion of the host key, or keys, that are used to authenticate the user to the external server to which you are connecting.(https://docs.aws.amazon.com/transfer/latest/userguide/API_SftpConnectorConfig.html)
+  final List<String>? trustedHostKeys;
+
+  /// The identifier for the secret (in AWS Secrets Manager) that contains the SFTP user's private key, password, or both. The identifier can be either the Amazon Resource Name (ARN) or the name of the secret.
+  final String? userSecretId;
+
+  ConnectorSftpConfig({
+    this.trustedHostKeys,
+    this.userSecretId,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final trustedHostKeysValue = trustedHostKeys;
+    if (trustedHostKeysValue != null) {
+      map['trustedHostKeys'] = trustedHostKeysValue;
+    }
+    final userSecretIdValue = userSecretId;
+    if (userSecretIdValue != null) {
+      map['userSecretId'] = userSecretIdValue;
+    }
+    return map;
+  }
+
+  factory ConnectorSftpConfig.fromMap(Map<String, dynamic> map) {
+    return ConnectorSftpConfig(
+      trustedHostKeys: map['trustedHostKeys'] == null
+          ? null
+          : (map['trustedHostKeys'] as List).cast<String>(),
+      userSecretId:
+          map['userSecretId'] == null ? null : map['userSecretId'] as String,
+    );
+  }
+}

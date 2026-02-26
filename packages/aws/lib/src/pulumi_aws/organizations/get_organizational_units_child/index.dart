@@ -1,0 +1,3 @@
+library module_organizations_get_organizational_units_child;
+
+export 'get_organizational_units_child.dart';

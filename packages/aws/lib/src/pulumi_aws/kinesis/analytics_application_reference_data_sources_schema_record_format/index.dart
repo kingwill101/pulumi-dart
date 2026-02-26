@@ -1,0 +1,3 @@
+library module_kinesis_analytics_application_reference_data_sources_schema_record_format;
+
+export 'analytics_application_reference_data_sources_schema_record_format.dart';

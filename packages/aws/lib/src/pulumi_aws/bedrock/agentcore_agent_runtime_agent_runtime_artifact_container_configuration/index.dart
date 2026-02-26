@@ -1,0 +1,3 @@
+library module_bedrock_agentcore_agent_runtime_agent_runtime_artifact_container_configuration;
+
+export 'agentcore_agent_runtime_agent_runtime_artifact_container_configuration.dart';

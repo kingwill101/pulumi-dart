@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GroupLaunchTemplate {
+  /// ID of the launch template. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  final String? id;
+
+  /// Name of the launch template. Conflicts with <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>.
+  final String? name;
+
+  /// Template version. Can be version number, `$Latest`, or `$Default`. (Default: `$Default`).
+  final String? version;
+
+  GroupLaunchTemplate({
+    this.id,
+    this.name,
+    this.version,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final idValue = id;
+    if (idValue != null) {
+      map['id'] = idValue;
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final versionValue = version;
+    if (versionValue != null) {
+      map['version'] = versionValue;
+    }
+    return map;
+  }
+
+  factory GroupLaunchTemplate.fromMap(Map<String, dynamic> map) {
+    return GroupLaunchTemplate(
+      id: map['id'] == null ? null : map['id'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      version: map['version'] == null ? null : map['version'] as String,
+    );
+  }
+}

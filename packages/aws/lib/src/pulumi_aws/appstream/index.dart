@@ -1,0 +1,27 @@
+library module_appstream;
+
+export 'directory_config/index.dart';
+export 'directory_config_certificate_based_auth_properties/index.dart';
+export 'directory_config_service_account_credentials/index.dart';
+export 'fleet/index.dart';
+export 'fleet_compute_capacity/index.dart';
+export 'fleet_domain_join_info/index.dart';
+export 'fleet_stack_association/index.dart';
+export 'fleet_vpc_config/index.dart';
+export 'get_image/index.dart';
+export 'get_image_application/index.dart';
+export 'get_image_application_icon_s3_location/index.dart';
+export 'get_image_image_permission/index.dart';
+export 'get_image_state_change_reason/index.dart';
+export 'image_builder/index.dart';
+export 'image_builder_access_endpoint/index.dart';
+export 'image_builder_domain_join_info/index.dart';
+export 'image_builder_vpc_config/index.dart';
+export 'stack/index.dart';
+export 'stack_access_endpoint/index.dart';
+export 'stack_application_settings/index.dart';
+export 'stack_storage_connector/index.dart';
+export 'stack_streaming_experience_settings/index.dart';
+export 'stack_user_setting/index.dart';
+export 'user/index.dart';
+export 'user_stack_association/index.dart';

@@ -1,0 +1,252 @@
+import 'package:pulumi/pulumi.dart';
+import 'replica_external_key_args.dart';
+
+/// Manages a KMS multi-Region replica key that uses external key material.
+/// See the [AWS KMS Developer Guide](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-import.html) for more information on importing key material into multi-Region keys.
+///
+/// ## Example Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const primary = new aws.kms.ExternalKey("primary", {
+/// description: "Multi-Region primary key",
+/// deletionWindowInDays: 30,
+/// multiRegion: true,
+/// enabled: true,
+/// keyMaterialBase64: "...",
+/// });
+/// const replica = new aws.kms.ReplicaExternalKey("replica", {
+/// description: "Multi-Region replica key",
+/// deletionWindowInDays: 7,
+/// primaryKeyArn: primary.arn,
+/// keyMaterialBase64: "...",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// primary = aws.kms.ExternalKey("primary",
+/// description="Multi-Region primary key",
+/// deletion_window_in_days=30,
+/// multi_region=True,
+/// enabled=True,
+/// key_material_base64="...")
+/// replica = aws.kms.ReplicaExternalKey("replica",
+/// description="Multi-Region replica key",
+/// deletion_window_in_days=7,
+/// primary_key_arn=primary.arn,
+/// key_material_base64="...")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var primary = new Aws.Kms.ExternalKey("primary", new()
+/// {
+/// Description = "Multi-Region primary key",
+/// DeletionWindowInDays = 30,
+/// MultiRegion = true,
+/// Enabled = true,
+/// KeyMaterialBase64 = "...",
+/// });
+///
+/// var replica = new Aws.Kms.ReplicaExternalKey("replica", new()
+/// {
+/// Description = "Multi-Region replica key",
+/// DeletionWindowInDays = 7,
+/// PrimaryKeyArn = primary.Arn,
+/// KeyMaterialBase64 = "...",
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/kms"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// primary, err := kms.NewExternalKey(ctx, "primary", &kms.ExternalKeyArgs{
+/// Description:          pulumi.String("Multi-Region primary key"),
+/// DeletionWindowInDays: pulumi.Int(30),
+/// MultiRegion:          pulumi.Bool(true),
+/// Enabled:              pulumi.Bool(true),
+/// KeyMaterialBase64:    pulumi.String("..."),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// _, err = kms.NewReplicaExternalKey(ctx, "replica", &kms.ReplicaExternalKeyArgs{
+/// Description:          pulumi.String("Multi-Region replica key"),
+/// DeletionWindowInDays: pulumi.Int(7),
+/// PrimaryKeyArn:        primary.Arn,
+/// KeyMaterialBase64:    pulumi.String("..."),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.kms.ExternalKey;
+/// import com.pulumi.aws.kms.ExternalKeyArgs;
+/// import com.pulumi.aws.kms.ReplicaExternalKey;
+/// import com.pulumi.aws.kms.ReplicaExternalKeyArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var primary = new ExternalKey("primary", ExternalKeyArgs.builder()
+/// .description("Multi-Region primary key")
+/// .deletionWindowInDays(30)
+/// .multiRegion(true)
+/// .enabled(true)
+/// .keyMaterialBase64("...")
+/// .build());
+///
+/// var replica = new ReplicaExternalKey("replica", ReplicaExternalKeyArgs.builder()
+/// .description("Multi-Region replica key")
+/// .deletionWindowInDays(7)
+/// .primaryKeyArn(primary.arn())
+/// .keyMaterialBase64("...")
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// primary:
+/// type: aws:kms:ExternalKey
+/// properties:
+/// description: Multi-Region primary key
+/// deletionWindowInDays: 30
+/// multiRegion: true
+/// enabled: true
+/// keyMaterialBase64: '...'
+/// replica:
+/// type: aws:kms:ReplicaExternalKey
+/// properties:
+/// description: Multi-Region replica key
+/// deletionWindowInDays: 7
+/// primaryKeyArn: ${primary.arn}
+/// keyMaterialBase64: '...'
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Using `pulumi import`, import KMS multi-Region replica keys using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+///
+/// ```sh
+/// $ pulumi import aws:kms/replicaExternalKey:ReplicaExternalKey example 1234abcd-12ab-34cd-56ef-1234567890ab
+/// ```
+class ReplicaExternalKey extends CustomResource {
+  /// The Amazon Resource Name (ARN) of the replica key. The key ARNs of related multi-Region keys differ only in the Region value.
+  late final Output<String> arn;
+
+  /// A flag to indicate whether to bypass the key policy lockout safety check.
+  /// Setting this value to true increases the risk that the KMS key becomes unmanageable. Do not set this value to true indiscriminately.
+  /// For more information, refer to the scenario in the [Default Key Policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section in the _AWS Key Management Service Developer Guide_.
+  /// The default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  late final Output<bool?> bypassPolicyLockoutSafetyCheck;
+
+  /// The waiting period, specified in number of days. After the waiting period ends, AWS KMS deletes the KMS key.
+  /// If you specify a value, it must be between <span pulumi-lang-nodejs="`7`" pulumi-lang-dotnet="`7`" pulumi-lang-go="`7`" pulumi-lang-python="`7`" pulumi-lang-yaml="`7`" pulumi-lang-java="`7`">`7`</span> and <span pulumi-lang-nodejs="`30`" pulumi-lang-dotnet="`30`" pulumi-lang-go="`30`" pulumi-lang-python="`30`" pulumi-lang-yaml="`30`" pulumi-lang-java="`30`">`30`</span>, inclusive. If you do not specify a value, it defaults to <span pulumi-lang-nodejs="`30`" pulumi-lang-dotnet="`30`" pulumi-lang-go="`30`" pulumi-lang-python="`30`" pulumi-lang-yaml="`30`" pulumi-lang-java="`30`">`30`</span>.
+  late final Output<int?> deletionWindowInDays;
+
+  /// A description of the KMS key.
+  late final Output<String?> description;
+
+  /// Specifies whether the replica key is enabled. Disabled KMS keys cannot be used in cryptographic operations. Keys pending import can only be <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. Imported keys default to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> unless expired.
+  late final Output<bool> enabled;
+
+  /// Whether the key material expires. Empty when pending key material import, otherwise `KEY_MATERIAL_EXPIRES` or `KEY_MATERIAL_DOES_NOT_EXPIRE`.
+  late final Output<String> expirationModel;
+
+  /// The key ID of the replica key. Related multi-Region keys have the same key ID.
+  late final Output<String> keyId;
+
+  /// Base64 encoded 256-bit symmetric encryption key material to import. The KMS key is permanently associated with this key material. The same key material can be [reimported](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html#reimport-key-material), but you cannot import different key material.
+  late final Output<String?> keyMaterialBase64;
+
+  /// The state of the replica key.
+  late final Output<String> keyState;
+
+  /// The [cryptographic operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations) for which you can use the KMS key. This is a shared property of multi-Region keys.
+  late final Output<String> keyUsage;
+
+  /// The key policy to attach to the KMS key. If you do not specify a key policy, AWS KMS attaches the [default key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default) to the KMS key.
+  late final Output<String> policy;
+
+  /// The ARN of the multi-Region primary key to replicate. The primary key must be in a different AWS Region of the same AWS Partition. You can create only one replica of a given primary key in each AWS Region.
+  late final Output<String> primaryKeyArn;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  /// A map of tags to assign to the replica key. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  late final Output<Map<String, String>?> tags;
+
+  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  late final Output<Map<String, String>> tagsAll;
+
+  /// Time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the key becomes unusable. If not specified, key material does not expire. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
+  late final Output<String?> validTo;
+
+  ReplicaExternalKey(
+    String name, {
+    ReplicaExternalKeyArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:kms/replicaExternalKey:ReplicaExternalKey',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.arn = Output.createUnknown<String>();
+    this.bypassPolicyLockoutSafetyCheck = Output.createUnknown<bool?>();
+    this.deletionWindowInDays = Output.createUnknown<int?>();
+    this.description = Output.createUnknown<String?>();
+    this.enabled = Output.createUnknown<bool>();
+    this.expirationModel = Output.createUnknown<String>();
+    this.keyId = Output.createUnknown<String>();
+    this.keyMaterialBase64 = Output.createUnknown<String?>();
+    this.keyState = Output.createUnknown<String>();
+    this.keyUsage = Output.createUnknown<String>();
+    this.policy = Output.createUnknown<String>();
+    this.primaryKeyArn = Output.createUnknown<String>();
+    this.region = Output.createUnknown<String>();
+    this.tags = Output.createUnknown<Map<String, String>?>();
+    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.validTo = Output.createUnknown<String?>();
+  }
+}

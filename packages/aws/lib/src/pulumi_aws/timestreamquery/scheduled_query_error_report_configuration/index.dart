@@ -1,0 +1,3 @@
+library module_timestreamquery_scheduled_query_error_report_configuration;
+
+export 'scheduled_query_error_report_configuration.dart';

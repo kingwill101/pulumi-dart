@@ -1,0 +1,3 @@
+library module_batch_job_definition_eks_properties_pod_properties;
+
+export 'job_definition_eks_properties_pod_properties.dart';

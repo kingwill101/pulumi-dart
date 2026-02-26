@@ -1,0 +1,59 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../partition_index_partition_index/partition_index_partition_index.dart';
+
+/// The set of arguments for PartitionIndex.
+class PartitionIndexArgs {
+  /// The catalog ID where the table resides.
+  final Input<String>? catalogId;
+
+  /// Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
+  final Input<String> databaseName;
+
+  /// Configuration block for a partition index. See <span pulumi-lang-nodejs="`partitionIndex`" pulumi-lang-dotnet="`PartitionIndex`" pulumi-lang-go="`partitionIndex`" pulumi-lang-python="`partition_index`" pulumi-lang-yaml="`partitionIndex`" pulumi-lang-java="`partitionIndex`">`partition_index`</span> below.
+  final Input<PartitionIndexPartitionIndex> partitionIndex;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final Input<String>? region;
+
+  /// Name of the table. For Hive compatibility, this must be entirely lowercase.
+  final Input<String> tableName;
+
+  PartitionIndexArgs({
+    this.catalogId,
+    required this.databaseName,
+    required this.partitionIndex,
+    this.region,
+    required this.tableName,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final catalogIdValue = catalogId;
+    if (catalogIdValue != null) {
+      map['catalogId'] = catalogIdValue;
+    }
+    map['databaseName'] = databaseName;
+    map['partitionIndex'] =
+        Input.mapInputValue<PartitionIndexPartitionIndex, Map<String, dynamic>>(
+            partitionIndex, (value) => value.toMap());
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    map['tableName'] = tableName;
+    return map;
+  }
+
+  factory PartitionIndexArgs.fromMap(Map<String, dynamic> map) {
+    return PartitionIndexArgs(
+      catalogId: Input.asOptionalInput<String>(map['catalogId']),
+      databaseName: Input.asInput<String>(map['databaseName']),
+      partitionIndex:
+          Input.asInput<PartitionIndexPartitionIndex>(map['partitionIndex']),
+      region: Input.asOptionalInput<String>(map['region']),
+      tableName: Input.asInput<String>(map['tableName']),
+    );
+  }
+}

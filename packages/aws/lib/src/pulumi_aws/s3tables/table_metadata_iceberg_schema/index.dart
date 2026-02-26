@@ -1,0 +1,3 @@
+library module_s3tables_table_metadata_iceberg_schema;
+
+export 'table_metadata_iceberg_schema.dart';

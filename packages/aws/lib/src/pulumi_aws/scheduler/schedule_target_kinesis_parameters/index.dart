@@ -1,0 +1,3 @@
+library module_scheduler_schedule_target_kinesis_parameters;
+
+export 'schedule_target_kinesis_parameters.dart';

@@ -1,0 +1,3 @@
+library module_lambda_event_source_mapping_destination_config;
+
+export 'event_source_mapping_destination_config.dart';

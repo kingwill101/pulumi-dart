@@ -1,0 +1,3 @@
+library module_autoscaling_group_instance_maintenance_policy;
+
+export 'group_instance_maintenance_policy.dart';

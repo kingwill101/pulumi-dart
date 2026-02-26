@@ -1,0 +1,3 @@
+library module_kinesis_analytics_application_inputs_kinesis_stream;
+
+export 'analytics_application_inputs_kinesis_stream.dart';

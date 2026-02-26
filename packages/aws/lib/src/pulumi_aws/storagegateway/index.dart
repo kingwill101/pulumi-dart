@@ -1,0 +1,20 @@
+library module_storagegateway;
+
+export 'cache/index.dart';
+export 'caches_iscsi_volume/index.dart';
+export 'file_system_association/index.dart';
+export 'file_system_association_cache_attributes/index.dart';
+export 'gateway/index.dart';
+export 'gateway_gateway_network_interface/index.dart';
+export 'gateway_maintenance_start_time/index.dart';
+export 'gateway_smb_active_directory_settings/index.dart';
+export 'get_local_disk/index.dart';
+export 'nfs_file_share/index.dart';
+export 'nfs_file_share_cache_attributes/index.dart';
+export 'nfs_file_share_nfs_file_share_defaults/index.dart';
+export 'smb_file_share/index.dart';
+export 'smb_file_share_cache_attributes/index.dart';
+export 'stored_iscsi_volume/index.dart';
+export 'tape_pool/index.dart';
+export 'upload_buffer/index.dart';
+export 'working_storage/index.dart';

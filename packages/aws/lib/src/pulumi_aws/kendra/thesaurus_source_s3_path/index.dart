@@ -1,0 +1,3 @@
+library module_kendra_thesaurus_source_s3_path;
+
+export 'thesaurus_source_s3_path.dart';

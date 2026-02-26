@@ -1,0 +1,3 @@
+library module_eks_get_node_group_scaling_config;
+
+export 'get_node_group_scaling_config.dart';

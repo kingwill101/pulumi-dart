@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetGatewayRouteSpecHttp2RouteActionRewritePrefix {
+  final String defaultPrefix;
+  final String value;
+
+  GetGatewayRouteSpecHttp2RouteActionRewritePrefix({
+    required this.defaultPrefix,
+    required this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['defaultPrefix'] = defaultPrefix;
+    map['value'] = value;
+    return map;
+  }
+
+  factory GetGatewayRouteSpecHttp2RouteActionRewritePrefix.fromMap(
+      Map<String, dynamic> map) {
+    return GetGatewayRouteSpecHttp2RouteActionRewritePrefix(
+      defaultPrefix: map['defaultPrefix'] as String,
+      value: map['value'] as String,
+    );
+  }
+}

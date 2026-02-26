@@ -1,0 +1,3 @@
+library module_pinpoint_email_template_email_template;
+
+export 'email_template_email_template.dart';

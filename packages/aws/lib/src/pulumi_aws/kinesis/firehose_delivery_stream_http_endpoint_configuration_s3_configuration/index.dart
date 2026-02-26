@@ -1,0 +1,3 @@
+library module_kinesis_firehose_delivery_stream_http_endpoint_configuration_s3_configuration;
+
+export 'firehose_delivery_stream_http_endpoint_configuration_s3_configuration.dart';

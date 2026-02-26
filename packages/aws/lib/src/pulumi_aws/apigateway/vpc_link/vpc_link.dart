@@ -1,0 +1,221 @@
+import 'package:pulumi/pulumi.dart';
+import 'vpc_link_args.dart';
+
+/// Provides an API Gateway VPC Link.
+///
+/// > **Note:** Amazon API Gateway Version 1 VPC Links enable private integrations that connect REST APIs to private resources in a VPC.
+/// To enable private integration for HTTP APIs, use the Amazon API Gateway Version 2 VPC Link resource.
+///
+/// ## Example Usage
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.lb.LoadBalancer("example", {
+/// name: "example",
+/// internal: true,
+/// loadBalancerType: "network",
+/// subnetMappings: [{
+/// subnetId: "12345",
+/// }],
+/// });
+/// const exampleVpcLink = new aws.apigateway.VpcLink("example", {
+/// name: "example",
+/// description: "example description",
+/// targetArn: example.arn,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.lb.LoadBalancer("example",
+/// name="example",
+/// internal=True,
+/// load_balancer_type="network",
+/// subnet_mappings=[{
+/// "subnet_id": "12345",
+/// }])
+/// example_vpc_link = aws.apigateway.VpcLink("example",
+/// name="example",
+/// description="example description",
+/// target_arn=example.arn)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.LB.LoadBalancer("example", new()
+/// {
+/// Name = "example",
+/// Internal = true,
+/// LoadBalancerType = "network",
+/// SubnetMappings = new[]
+/// {
+/// new Aws.LB.Inputs.LoadBalancerSubnetMappingArgs
+/// {
+/// SubnetId = "12345",
+/// },
+/// },
+/// });
+///
+/// var exampleVpcLink = new Aws.ApiGateway.VpcLink("example", new()
+/// {
+/// Name = "example",
+/// Description = "example description",
+/// TargetArn = example.Arn,
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/apigateway"
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lb"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// example, err := lb.NewLoadBalancer(ctx, "example", &lb.LoadBalancerArgs{
+/// Name:             pulumi.String("example"),
+/// Internal:         pulumi.Bool(true),
+/// LoadBalancerType: pulumi.String("network"),
+/// SubnetMappings: lb.LoadBalancerSubnetMappingArray{
+/// &lb.LoadBalancerSubnetMappingArgs{
+/// SubnetId: pulumi.String("12345"),
+/// },
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// _, err = apigateway.NewVpcLink(ctx, "example", &apigateway.VpcLinkArgs{
+/// Name:        pulumi.String("example"),
+/// Description: pulumi.String("example description"),
+/// TargetArn:   example.Arn,
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.lb.LoadBalancer;
+/// import com.pulumi.aws.lb.LoadBalancerArgs;
+/// import com.pulumi.aws.lb.inputs.LoadBalancerSubnetMappingArgs;
+/// import com.pulumi.aws.apigateway.VpcLink;
+/// import com.pulumi.aws.apigateway.VpcLinkArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new LoadBalancer("example", LoadBalancerArgs.builder()
+/// .name("example")
+/// .internal(true)
+/// .loadBalancerType("network")
+/// .subnetMappings(LoadBalancerSubnetMappingArgs.builder()
+/// .subnetId("12345")
+/// .build())
+/// .build());
+///
+/// var exampleVpcLink = new VpcLink("exampleVpcLink", VpcLinkArgs.builder()
+/// .name("example")
+/// .description("example description")
+/// .targetArn(example.arn())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:lb:LoadBalancer
+/// properties:
+/// name: example
+/// internal: true
+/// loadBalancerType: network
+/// subnetMappings:
+/// - subnetId: '12345'
+/// exampleVpcLink:
+/// type: aws:apigateway:VpcLink
+/// name: example
+/// properties:
+/// name: example
+/// description: example description
+/// targetArn: ${example.arn}
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Using `pulumi import`, import API Gateway VPC Link using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+///
+/// ```sh
+/// $ pulumi import aws:apigateway/vpcLink:VpcLink example 12345abcde
+/// ```
+class VpcLink extends CustomResource {
+  late final Output<String> arn;
+
+  /// Description of the VPC link.
+  late final Output<String?> description;
+
+  /// Name used to label and identify the VPC link.
+  late final Output<String> name;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  late final Output<Map<String, String>?> tags;
+
+  /// Map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  late final Output<Map<String, String>> tagsAll;
+
+  /// List of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
+  late final Output<String> targetArn;
+
+  VpcLink(
+    String name, {
+    VpcLinkArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:apigateway/vpcLink:VpcLink',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.arn = Output.createUnknown<String>();
+    this.description = Output.createUnknown<String?>();
+    this.name = Output.createUnknown<String>();
+    this.region = Output.createUnknown<String>();
+    this.tags = Output.createUnknown<Map<String, String>?>();
+    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.targetArn = Output.createUnknown<String>();
+  }
+}

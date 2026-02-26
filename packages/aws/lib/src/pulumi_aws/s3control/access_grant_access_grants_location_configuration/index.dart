@@ -1,0 +1,3 @@
+library module_s3control_access_grant_access_grants_location_configuration;
+
+export 'access_grant_access_grants_location_configuration.dart';

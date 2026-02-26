@@ -1,0 +1,56 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// Arguments for getAccessEntry.
+class GetAccessEntryArgs {
+  /// Name of the EKS Cluster.
+  final Input<String> clusterName;
+
+  /// The IAM Principal ARN which requires Authentication access to the EKS cluster.
+  final Input<String> principalArn;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final Input<String>? region;
+  final Input<Map<String, String>>? tags;
+
+  /// (Optional) Key-value map of resource tags, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  final Input<Map<String, String>>? tagsAll;
+
+  GetAccessEntryArgs({
+    required this.clusterName,
+    required this.principalArn,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['clusterName'] = clusterName;
+    map['principalArn'] = principalArn;
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    final tagsAllValue = tagsAll;
+    if (tagsAllValue != null) {
+      map['tagsAll'] = tagsAllValue;
+    }
+    return map;
+  }
+
+  factory GetAccessEntryArgs.fromMap(Map<String, dynamic> map) {
+    return GetAccessEntryArgs(
+      clusterName: Input.asInput<String>(map['clusterName']),
+      principalArn: Input.asInput<String>(map['principalArn']),
+      region: Input.asOptionalInput<String>(map['region']),
+      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      tagsAll: Input.asOptionalInput<Map<String, String>>(map['tagsAll']),
+    );
+  }
+}

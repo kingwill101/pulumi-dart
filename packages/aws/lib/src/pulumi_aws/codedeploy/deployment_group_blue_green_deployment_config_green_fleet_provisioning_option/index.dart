@@ -1,0 +1,3 @@
+library module_codedeploy_deployment_group_blue_green_deployment_config_green_fleet_provisioning_option;
+
+export 'deployment_group_blue_green_deployment_config_green_fleet_provisioning_option.dart';

@@ -1,0 +1,3 @@
+library module_appfabric_ingestion_destination_destination_configuration_audit_log_destination_s3_bucket;
+
+export 'ingestion_destination_destination_configuration_audit_log_destination_s3_bucket.dart';

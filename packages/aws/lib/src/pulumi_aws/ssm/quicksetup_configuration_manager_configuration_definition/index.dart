@@ -1,0 +1,3 @@
+library module_ssm_quicksetup_configuration_manager_configuration_definition;
+
+export 'quicksetup_configuration_manager_configuration_definition.dart';

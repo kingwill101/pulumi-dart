@@ -1,0 +1,3 @@
+library module_securityhub_configuration_policy_configuration_policy_security_controls_configuration;
+
+export 'configuration_policy_configuration_policy_security_controls_configuration.dart';

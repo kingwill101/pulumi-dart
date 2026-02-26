@@ -1,0 +1,4 @@
+library module_servicecatalog_principal_portfolio_association;
+
+export 'principal_portfolio_association.dart';
+export 'principal_portfolio_association_args.dart';

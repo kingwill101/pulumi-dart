@@ -1,0 +1,3 @@
+library pulumi_aws_billing;
+
+export 'package:pulumi_aws/src/pulumi_aws/billing/index.dart';

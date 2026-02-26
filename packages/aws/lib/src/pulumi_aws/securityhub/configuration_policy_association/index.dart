@@ -1,0 +1,4 @@
+library module_securityhub_configuration_policy_association;
+
+export 'configuration_policy_association.dart';
+export 'configuration_policy_association_args.dart';

@@ -1,0 +1,3 @@
+library module_m2_environment_storage_configuration_fsx;
+
+export 'environment_storage_configuration_fsx.dart';

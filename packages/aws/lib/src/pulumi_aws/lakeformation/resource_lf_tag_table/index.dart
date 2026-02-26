@@ -1,0 +1,3 @@
+library module_lakeformation_resource_lf_tag_table;
+
+export 'resource_lf_tag_table.dart';

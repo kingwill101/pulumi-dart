@@ -1,0 +1,129 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../analytics_application_inputs_kinesis_firehose/analytics_application_inputs_kinesis_firehose.dart';
+import '../analytics_application_inputs_kinesis_stream/analytics_application_inputs_kinesis_stream.dart';
+import '../analytics_application_inputs_parallelism/analytics_application_inputs_parallelism.dart';
+import '../analytics_application_inputs_processing_configuration/analytics_application_inputs_processing_configuration.dart';
+import '../analytics_application_inputs_schema/analytics_application_inputs_schema.dart';
+import '../analytics_application_inputs_starting_position_configuration/analytics_application_inputs_starting_position_configuration.dart';
+
+class AnalyticsApplicationInputs {
+  /// The ARN of the Kinesis Analytics Application.
+  final String? id;
+
+  /// The Kinesis Firehose configuration for the streaming source. Conflicts with <span pulumi-lang-nodejs="`kinesisStream`" pulumi-lang-dotnet="`KinesisStream`" pulumi-lang-go="`kinesisStream`" pulumi-lang-python="`kinesis_stream`" pulumi-lang-yaml="`kinesisStream`" pulumi-lang-java="`kinesisStream`">`kinesis_stream`</span>.
+  /// See Kinesis Firehose below for more details.
+  final AnalyticsApplicationInputsKinesisFirehose? kinesisFirehose;
+
+  /// The Kinesis Stream configuration for the streaming source. Conflicts with <span pulumi-lang-nodejs="`kinesisFirehose`" pulumi-lang-dotnet="`KinesisFirehose`" pulumi-lang-go="`kinesisFirehose`" pulumi-lang-python="`kinesis_firehose`" pulumi-lang-yaml="`kinesisFirehose`" pulumi-lang-java="`kinesisFirehose`">`kinesis_firehose`</span>.
+  /// See Kinesis Stream below for more details.
+  final AnalyticsApplicationInputsKinesisStream? kinesisStream;
+
+  /// The Name Prefix to use when creating an in-application stream.
+  final String namePrefix;
+
+  /// The number of Parallel in-application streams to create.
+  /// See Parallelism below for more details.
+  final AnalyticsApplicationInputsParallelism? parallelism;
+
+  /// The Processing Configuration to transform records as they are received from the stream.
+  /// See Processing Configuration below for more details.
+  final AnalyticsApplicationInputsProcessingConfiguration?
+      processingConfiguration;
+
+  /// The Schema format of the data in the streaming source. See Source Schema below for more details.
+  final AnalyticsApplicationInputsSchema schema;
+
+  /// The point at which the application starts processing records from the streaming source.
+  /// See Starting Position Configuration below for more details.
+  final List<AnalyticsApplicationInputsStartingPositionConfiguration>?
+      startingPositionConfigurations;
+  final List<String>? streamNames;
+
+  AnalyticsApplicationInputs({
+    this.id,
+    this.kinesisFirehose,
+    this.kinesisStream,
+    required this.namePrefix,
+    this.parallelism,
+    this.processingConfiguration,
+    required this.schema,
+    this.startingPositionConfigurations,
+    this.streamNames,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final idValue = id;
+    if (idValue != null) {
+      map['id'] = idValue;
+    }
+    final kinesisFirehoseValue = kinesisFirehose;
+    if (kinesisFirehoseValue != null) {
+      map['kinesisFirehose'] = kinesisFirehoseValue.toMap();
+    }
+    final kinesisStreamValue = kinesisStream;
+    if (kinesisStreamValue != null) {
+      map['kinesisStream'] = kinesisStreamValue.toMap();
+    }
+    map['namePrefix'] = namePrefix;
+    final parallelismValue = parallelism;
+    if (parallelismValue != null) {
+      map['parallelism'] = parallelismValue.toMap();
+    }
+    final processingConfigurationValue = processingConfiguration;
+    if (processingConfigurationValue != null) {
+      map['processingConfiguration'] = processingConfigurationValue.toMap();
+    }
+    map['schema'] = schema.toMap();
+    final startingPositionConfigurationsValue = startingPositionConfigurations;
+    if (startingPositionConfigurationsValue != null) {
+      map['startingPositionConfigurations'] = Input.encodeList<
+              AnalyticsApplicationInputsStartingPositionConfiguration,
+              Map<String, dynamic>>(
+          startingPositionConfigurationsValue, (value) => value.toMap());
+    }
+    final streamNamesValue = streamNames;
+    if (streamNamesValue != null) {
+      map['streamNames'] = streamNamesValue;
+    }
+    return map;
+  }
+
+  factory AnalyticsApplicationInputs.fromMap(Map<String, dynamic> map) {
+    return AnalyticsApplicationInputs(
+      id: map['id'] == null ? null : map['id'] as String,
+      kinesisFirehose: map['kinesisFirehose'] == null
+          ? null
+          : AnalyticsApplicationInputsKinesisFirehose.fromMap(
+              (map['kinesisFirehose'] as Map).cast<String, dynamic>()),
+      kinesisStream: map['kinesisStream'] == null
+          ? null
+          : AnalyticsApplicationInputsKinesisStream.fromMap(
+              (map['kinesisStream'] as Map).cast<String, dynamic>()),
+      namePrefix: map['namePrefix'] as String,
+      parallelism: map['parallelism'] == null
+          ? null
+          : AnalyticsApplicationInputsParallelism.fromMap(
+              (map['parallelism'] as Map).cast<String, dynamic>()),
+      processingConfiguration: map['processingConfiguration'] == null
+          ? null
+          : AnalyticsApplicationInputsProcessingConfiguration.fromMap(
+              (map['processingConfiguration'] as Map).cast<String, dynamic>()),
+      schema: AnalyticsApplicationInputsSchema.fromMap(
+          (map['schema'] as Map).cast<String, dynamic>()),
+      startingPositionConfigurations: map['startingPositionConfigurations'] ==
+              null
+          ? null
+          : Input.decodeList<
+                  AnalyticsApplicationInputsStartingPositionConfiguration>(
+              map['startingPositionConfigurations'],
+              (value) => AnalyticsApplicationInputsStartingPositionConfiguration
+                  .fromMap((value as Map).cast<String, dynamic>())),
+      streamNames: map['streamNames'] == null
+          ? null
+          : (map['streamNames'] as List).cast<String>(),
+    );
+  }
+}

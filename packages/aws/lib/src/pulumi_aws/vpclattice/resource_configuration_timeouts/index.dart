@@ -1,0 +1,3 @@
+library module_vpclattice_resource_configuration_timeouts;
+
+export 'resource_configuration_timeouts.dart';

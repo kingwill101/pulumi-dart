@@ -1,0 +1,76 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// The set of arguments for Agreement.
+class AgreementArgs {
+  /// The IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
+  final Input<String> accessRole;
+
+  /// The landing directory for the files transferred by using the AS2 protocol.
+  final Input<String> baseDirectory;
+
+  /// The Optional description of the transdfer.
+  final Input<String>? description;
+
+  /// The unique identifier for the AS2 local profile.
+  final Input<String> localProfileId;
+
+  /// The unique identifier for the AS2 partner profile.
+  final Input<String> partnerProfileId;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final Input<String>? region;
+
+  /// The unique server identifier for the server instance. This is the specific server the agreement uses.
+  final Input<String> serverId;
+
+  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final Input<Map<String, String>>? tags;
+
+  AgreementArgs({
+    required this.accessRole,
+    required this.baseDirectory,
+    this.description,
+    required this.localProfileId,
+    required this.partnerProfileId,
+    this.region,
+    required this.serverId,
+    this.tags,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['accessRole'] = accessRole;
+    map['baseDirectory'] = baseDirectory;
+    final descriptionValue = description;
+    if (descriptionValue != null) {
+      map['description'] = descriptionValue;
+    }
+    map['localProfileId'] = localProfileId;
+    map['partnerProfileId'] = partnerProfileId;
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    map['serverId'] = serverId;
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    return map;
+  }
+
+  factory AgreementArgs.fromMap(Map<String, dynamic> map) {
+    return AgreementArgs(
+      accessRole: Input.asInput<String>(map['accessRole']),
+      baseDirectory: Input.asInput<String>(map['baseDirectory']),
+      description: Input.asOptionalInput<String>(map['description']),
+      localProfileId: Input.asInput<String>(map['localProfileId']),
+      partnerProfileId: Input.asInput<String>(map['partnerProfileId']),
+      region: Input.asOptionalInput<String>(map['region']),
+      serverId: Input.asInput<String>(map['serverId']),
+      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+    );
+  }
+}

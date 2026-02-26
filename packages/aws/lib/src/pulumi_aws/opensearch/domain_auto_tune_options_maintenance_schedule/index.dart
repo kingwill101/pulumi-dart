@@ -1,0 +1,3 @@
+library module_opensearch_domain_auto_tune_options_maintenance_schedule;
+
+export 'domain_auto_tune_options_maintenance_schedule2.dart';

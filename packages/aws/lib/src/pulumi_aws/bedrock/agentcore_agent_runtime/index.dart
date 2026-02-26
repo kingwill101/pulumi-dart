@@ -1,0 +1,4 @@
+library module_bedrock_agentcore_agent_runtime;
+
+export 'agentcore_agent_runtime.dart';
+export 'agentcore_agent_runtime_args.dart';

@@ -1,0 +1,23 @@
+library module_index;
+
+export 'get_arn/index.dart';
+export 'get_availability_zone/index.dart';
+export 'get_availability_zone_filter/index.dart';
+export 'get_availability_zones/index.dart';
+export 'get_availability_zones_filter/index.dart';
+export 'get_billing_service_account/index.dart';
+export 'get_caller_identity/index.dart';
+export 'get_default_tags/index.dart';
+export 'get_ip_ranges/index.dart';
+export 'get_partition/index.dart';
+export 'get_region/index.dart';
+export 'get_regions/index.dart';
+export 'get_regions_filter/index.dart';
+export 'get_service/index.dart';
+export 'get_service_principal/index.dart';
+export 'provider_assume_role/index.dart';
+export 'provider_assume_role_with_web_identity/index.dart';
+export 'provider_default_tags/index.dart';
+export 'provider_endpoint/index.dart';
+export 'provider_ignore_tags/index.dart';
+export 'region/index.dart';

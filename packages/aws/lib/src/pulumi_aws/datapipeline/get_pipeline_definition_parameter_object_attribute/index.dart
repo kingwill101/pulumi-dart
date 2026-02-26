@@ -1,0 +1,3 @@
+library module_datapipeline_get_pipeline_definition_parameter_object_attribute;
+
+export 'get_pipeline_definition_parameter_object_attribute.dart';

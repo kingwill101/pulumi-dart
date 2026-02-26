@@ -1,0 +1,3 @@
+library module_ecs_cluster_capacity_providers_default_capacity_provider_strategy;
+
+export 'cluster_capacity_providers_default_capacity_provider_strategy.dart';

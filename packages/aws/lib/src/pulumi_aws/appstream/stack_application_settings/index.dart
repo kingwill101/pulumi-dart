@@ -1,0 +1,3 @@
+library module_appstream_stack_application_settings;
+
+export 'stack_application_settings.dart';

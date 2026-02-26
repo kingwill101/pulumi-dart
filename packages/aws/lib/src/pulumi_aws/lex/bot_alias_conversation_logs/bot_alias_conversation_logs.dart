@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../bot_alias_conversation_logs_log_setting/bot_alias_conversation_logs_log_setting.dart';
+
+class BotAliasConversationLogs {
+  /// The Amazon Resource Name (ARN) of the IAM role used to write your logs to CloudWatch Logs or an S3 bucket. Must be between 20 and 2048 characters in length.
+  final String iamRoleArn;
+
+  /// The settings for your conversation logs. You can log text, audio, or both. Attributes are documented under log_settings.
+  final List<BotAliasConversationLogsLogSetting>? logSettings;
+
+  BotAliasConversationLogs({
+    required this.iamRoleArn,
+    this.logSettings,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['iamRoleArn'] = iamRoleArn;
+    final logSettingsValue = logSettings;
+    if (logSettingsValue != null) {
+      map['logSettings'] = Input.encodeList<BotAliasConversationLogsLogSetting,
+          Map<String, dynamic>>(logSettingsValue, (value) => value.toMap());
+    }
+    return map;
+  }
+
+  factory BotAliasConversationLogs.fromMap(Map<String, dynamic> map) {
+    return BotAliasConversationLogs(
+      iamRoleArn: map['iamRoleArn'] as String,
+      logSettings: map['logSettings'] == null
+          ? null
+          : Input.decodeList<BotAliasConversationLogsLogSetting>(
+              map['logSettings'],
+              (value) => BotAliasConversationLogsLogSetting.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+    );
+  }
+}

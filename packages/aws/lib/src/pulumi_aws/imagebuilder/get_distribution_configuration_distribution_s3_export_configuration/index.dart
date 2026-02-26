@@ -1,0 +1,3 @@
+library module_imagebuilder_get_distribution_configuration_distribution_s3_export_configuration;
+
+export 'get_distribution_configuration_distribution_s3_export_configuration.dart';

@@ -1,0 +1,3 @@
+library module_wafv2_rule_group_rule_action_captcha_custom_request_handling_insert_header;
+
+export 'rule_group_rule_action_captcha_custom_request_handling_insert_header.dart';

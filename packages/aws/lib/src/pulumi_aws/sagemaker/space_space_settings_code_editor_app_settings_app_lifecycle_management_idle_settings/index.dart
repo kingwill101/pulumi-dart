@@ -1,0 +1,3 @@
+library module_sagemaker_space_space_settings_code_editor_app_settings_app_lifecycle_management_idle_settings;
+
+export 'space_space_settings_code_editor_app_settings_app_lifecycle_management_idle_settings.dart';

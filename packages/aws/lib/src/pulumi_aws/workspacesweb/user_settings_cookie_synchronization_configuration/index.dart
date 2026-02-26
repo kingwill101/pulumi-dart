@@ -1,0 +1,3 @@
+library module_workspacesweb_user_settings_cookie_synchronization_configuration;
+
+export 'user_settings_cookie_synchronization_configuration.dart';

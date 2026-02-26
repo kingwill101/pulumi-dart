@@ -1,0 +1,3 @@
+library module_imagebuilder_container_recipe_instance_configuration_block_device_mapping_ebs;
+
+export 'container_recipe_instance_configuration_block_device_mapping_ebs.dart';

@@ -1,0 +1,3 @@
+library module_ec2_launch_template_private_dns_name_options;
+
+export 'launch_template_private_dns_name_options.dart';

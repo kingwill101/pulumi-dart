@@ -1,0 +1,3 @@
+library module_cloudfront_multitenant_distribution_origin_custom_origin_config;
+
+export 'multitenant_distribution_origin_custom_origin_config.dart';

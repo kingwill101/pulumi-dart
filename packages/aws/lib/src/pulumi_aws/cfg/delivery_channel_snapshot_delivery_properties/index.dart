@@ -1,0 +1,3 @@
+library module_cfg_delivery_channel_snapshot_delivery_properties;
+
+export 'delivery_channel_snapshot_delivery_properties.dart';

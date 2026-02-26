@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class ResponseHeadersPolicyServerTimingHeadersConfig {
+  /// A Whether CloudFront adds the `Server-Timing` header to HTTP responses that it sends in response to requests that match a cache behavior that's associated with this response headers policy.
+  final bool enabled;
+
+  /// A number 0–100 (inclusive) that specifies the percentage of responses that you want CloudFront to add the Server-Timing header to. Valid range: Minimum value of 0.0. Maximum value of 100.0.
+  final double samplingRate;
+
+  ResponseHeadersPolicyServerTimingHeadersConfig({
+    required this.enabled,
+    required this.samplingRate,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['enabled'] = enabled;
+    map['samplingRate'] = samplingRate;
+    return map;
+  }
+
+  factory ResponseHeadersPolicyServerTimingHeadersConfig.fromMap(
+      Map<String, dynamic> map) {
+    return ResponseHeadersPolicyServerTimingHeadersConfig(
+      enabled: map['enabled'] as bool,
+      samplingRate: map['samplingRate'] as double,
+    );
+  }
+}

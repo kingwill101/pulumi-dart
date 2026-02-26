@@ -1,0 +1,3 @@
+library module_finspace_kx_cluster_vpc_configuration;
+
+export 'kx_cluster_vpc_configuration.dart';

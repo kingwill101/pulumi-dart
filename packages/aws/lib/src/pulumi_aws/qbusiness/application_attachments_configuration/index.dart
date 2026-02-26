@@ -1,0 +1,3 @@
+library module_qbusiness_application_attachments_configuration;
+
+export 'application_attachments_configuration.dart';

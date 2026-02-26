@@ -1,0 +1,3 @@
+library module_cleanrooms_membership_payment_configuration;
+
+export 'membership_payment_configuration.dart';

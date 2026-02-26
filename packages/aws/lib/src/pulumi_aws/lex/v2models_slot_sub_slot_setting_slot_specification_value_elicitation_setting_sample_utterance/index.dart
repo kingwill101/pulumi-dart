@@ -1,0 +1,3 @@
+library module_lex_v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_sample_utterance;
+
+export 'v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_sample_utterance.dart';

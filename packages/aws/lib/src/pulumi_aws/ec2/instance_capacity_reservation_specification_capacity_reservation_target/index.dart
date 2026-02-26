@@ -1,0 +1,3 @@
+library module_ec2_instance_capacity_reservation_specification_capacity_reservation_target;
+
+export 'instance_capacity_reservation_specification_capacity_reservation_target.dart';

@@ -1,0 +1,3 @@
+library module_keyspaces_table_capacity_specification;
+
+export 'table_capacity_specification.dart';

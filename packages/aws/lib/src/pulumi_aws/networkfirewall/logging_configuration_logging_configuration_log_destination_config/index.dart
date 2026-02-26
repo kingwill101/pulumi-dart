@@ -1,0 +1,3 @@
+library module_networkfirewall_logging_configuration_logging_configuration_log_destination_config;
+
+export 'logging_configuration_logging_configuration_log_destination_config.dart';

@@ -1,0 +1,4 @@
+library module_lambda_function_event_invoke_config;
+
+export 'function_event_invoke_config.dart';
+export 'function_event_invoke_config_args.dart';

@@ -1,0 +1,3 @@
+library module_finspace_kx_cluster_cache_storage_configuration;
+
+export 'kx_cluster_cache_storage_configuration.dart';

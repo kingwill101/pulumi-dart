@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class StreamProcessorNotificationChannel {
+  /// The Amazon Resource Number (ARN) of the Amazon Amazon Simple Notification Service topic to which Amazon Rekognition posts the completion status.
+  final String? snsTopicArn;
+
+  StreamProcessorNotificationChannel({
+    this.snsTopicArn,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final snsTopicArnValue = snsTopicArn;
+    if (snsTopicArnValue != null) {
+      map['snsTopicArn'] = snsTopicArnValue;
+    }
+    return map;
+  }
+
+  factory StreamProcessorNotificationChannel.fromMap(Map<String, dynamic> map) {
+    return StreamProcessorNotificationChannel(
+      snsTopicArn:
+          map['snsTopicArn'] == null ? null : map['snsTopicArn'] as String,
+    );
+  }
+}

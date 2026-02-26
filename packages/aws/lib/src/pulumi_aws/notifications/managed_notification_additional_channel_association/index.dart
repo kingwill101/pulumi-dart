@@ -1,0 +1,4 @@
+library module_notifications_managed_notification_additional_channel_association;
+
+export 'managed_notification_additional_channel_association.dart';
+export 'managed_notification_additional_channel_association_args.dart';

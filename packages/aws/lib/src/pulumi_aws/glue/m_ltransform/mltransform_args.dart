@@ -1,0 +1,137 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../mltransform_input_record_table/mltransform_input_record_table.dart';
+import '../mltransform_parameters/mltransform_parameters.dart';
+
+/// The set of arguments for MLTransform.
+class MLTransformArgs {
+  /// Description of the ML Transform.
+  final Input<String>? description;
+
+  /// The version of glue to use, for example "1.0". For information about available versions, see the [AWS Glue Release Notes](https://docs.aws.amazon.com/glue/latest/dg/release-notes.html).
+  final Input<String>? glueVersion;
+
+  /// A list of AWS Glue table definitions used by the transform. see Input Record Tables.
+  final Input<List<MLTransformInputRecordTable>> inputRecordTables;
+
+  /// The number of AWS Glue data processing units (DPUs) that are allocated to task runs for this transform. You can allocate from <span pulumi-lang-nodejs="`2`" pulumi-lang-dotnet="`2`" pulumi-lang-go="`2`" pulumi-lang-python="`2`" pulumi-lang-yaml="`2`" pulumi-lang-java="`2`">`2`</span> to <span pulumi-lang-nodejs="`100`" pulumi-lang-dotnet="`100`" pulumi-lang-go="`100`" pulumi-lang-python="`100`" pulumi-lang-yaml="`100`" pulumi-lang-java="`100`">`100`</span> DPUs; the default is <span pulumi-lang-nodejs="`10`" pulumi-lang-dotnet="`10`" pulumi-lang-go="`10`" pulumi-lang-python="`10`" pulumi-lang-yaml="`10`" pulumi-lang-java="`10`">`10`</span>. <span pulumi-lang-nodejs="`maxCapacity`" pulumi-lang-dotnet="`MaxCapacity`" pulumi-lang-go="`maxCapacity`" pulumi-lang-python="`max_capacity`" pulumi-lang-yaml="`maxCapacity`" pulumi-lang-java="`maxCapacity`">`max_capacity`</span> is a mutually exclusive option with <span pulumi-lang-nodejs="`numberOfWorkers`" pulumi-lang-dotnet="`NumberOfWorkers`" pulumi-lang-go="`numberOfWorkers`" pulumi-lang-python="`number_of_workers`" pulumi-lang-yaml="`numberOfWorkers`" pulumi-lang-java="`numberOfWorkers`">`number_of_workers`</span> and <span pulumi-lang-nodejs="`workerType`" pulumi-lang-dotnet="`WorkerType`" pulumi-lang-go="`workerType`" pulumi-lang-python="`worker_type`" pulumi-lang-yaml="`workerType`" pulumi-lang-java="`workerType`">`worker_type`</span>.
+  final Input<double>? maxCapacity;
+
+  /// The maximum number of times to retry this ML Transform if it fails.
+  final Input<int>? maxRetries;
+
+  /// The name you assign to this ML Transform. It must be unique in your account.
+  final Input<String>? name;
+
+  /// The number of workers of a defined <span pulumi-lang-nodejs="`workerType`" pulumi-lang-dotnet="`WorkerType`" pulumi-lang-go="`workerType`" pulumi-lang-python="`worker_type`" pulumi-lang-yaml="`workerType`" pulumi-lang-java="`workerType`">`worker_type`</span> that are allocated when an ML Transform runs. Required with <span pulumi-lang-nodejs="`workerType`" pulumi-lang-dotnet="`WorkerType`" pulumi-lang-go="`workerType`" pulumi-lang-python="`worker_type`" pulumi-lang-yaml="`workerType`" pulumi-lang-java="`workerType`">`worker_type`</span>.
+  final Input<int>? numberOfWorkers;
+
+  /// The algorithmic parameters that are specific to the transform type used. Conditionally dependent on the transform type. see Parameters.
+  final Input<MLTransformParameters> parameters;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final Input<String>? region;
+
+  /// The ARN of the IAM role associated with this ML Transform.
+  final Input<String> roleArn;
+
+  /// Key-value map of resource tags. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final Input<Map<String, String>>? tags;
+
+  /// The ML Transform timeout in minutes. The default is 2880 minutes (48 hours).
+  final Input<int>? timeout;
+
+  /// The type of predefined worker that is allocated when an ML Transform runs. Accepts a value of `Standard`, `G.1X`, or `G.2X`. Required with <span pulumi-lang-nodejs="`numberOfWorkers`" pulumi-lang-dotnet="`NumberOfWorkers`" pulumi-lang-go="`numberOfWorkers`" pulumi-lang-python="`number_of_workers`" pulumi-lang-yaml="`numberOfWorkers`" pulumi-lang-java="`numberOfWorkers`">`number_of_workers`</span>.
+  final Input<String>? workerType;
+
+  MLTransformArgs({
+    this.description,
+    this.glueVersion,
+    required this.inputRecordTables,
+    this.maxCapacity,
+    this.maxRetries,
+    this.name,
+    this.numberOfWorkers,
+    required this.parameters,
+    this.region,
+    required this.roleArn,
+    this.tags,
+    this.timeout,
+    this.workerType,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final descriptionValue = description;
+    if (descriptionValue != null) {
+      map['description'] = descriptionValue;
+    }
+    final glueVersionValue = glueVersion;
+    if (glueVersionValue != null) {
+      map['glueVersion'] = glueVersionValue;
+    }
+    map['inputRecordTables'] = Input.mapInputValue<
+            List<MLTransformInputRecordTable>, List<Map<String, dynamic>>>(
+        inputRecordTables,
+        (value) =>
+            Input.encodeList<MLTransformInputRecordTable, Map<String, dynamic>>(
+                value, (value) => value.toMap()));
+    final maxCapacityValue = maxCapacity;
+    if (maxCapacityValue != null) {
+      map['maxCapacity'] = maxCapacityValue;
+    }
+    final maxRetriesValue = maxRetries;
+    if (maxRetriesValue != null) {
+      map['maxRetries'] = maxRetriesValue;
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final numberOfWorkersValue = numberOfWorkers;
+    if (numberOfWorkersValue != null) {
+      map['numberOfWorkers'] = numberOfWorkersValue;
+    }
+    map['parameters'] =
+        Input.mapInputValue<MLTransformParameters, Map<String, dynamic>>(
+            parameters, (value) => value.toMap());
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    map['roleArn'] = roleArn;
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    final timeoutValue = timeout;
+    if (timeoutValue != null) {
+      map['timeout'] = timeoutValue;
+    }
+    final workerTypeValue = workerType;
+    if (workerTypeValue != null) {
+      map['workerType'] = workerTypeValue;
+    }
+    return map;
+  }
+
+  factory MLTransformArgs.fromMap(Map<String, dynamic> map) {
+    return MLTransformArgs(
+      description: Input.asOptionalInput<String>(map['description']),
+      glueVersion: Input.asOptionalInput<String>(map['glueVersion']),
+      inputRecordTables: Input.asInput<List<MLTransformInputRecordTable>>(
+          map['inputRecordTables']),
+      maxCapacity: Input.asOptionalInput<double>(map['maxCapacity']),
+      maxRetries: Input.asOptionalInput<int>(map['maxRetries']),
+      name: Input.asOptionalInput<String>(map['name']),
+      numberOfWorkers: Input.asOptionalInput<int>(map['numberOfWorkers']),
+      parameters: Input.asInput<MLTransformParameters>(map['parameters']),
+      region: Input.asOptionalInput<String>(map['region']),
+      roleArn: Input.asInput<String>(map['roleArn']),
+      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeout: Input.asOptionalInput<int>(map['timeout']),
+      workerType: Input.asOptionalInput<String>(map['workerType']),
+    );
+  }
+}

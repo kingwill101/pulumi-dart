@@ -1,0 +1,132 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_acfp_rule_set/web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_acfp_rule_set.dart';
+import '../web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_anti_ddos_rule_set/web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_anti_ddos_rule_set.dart';
+import '../web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_atp_rule_set/web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_atp_rule_set.dart';
+import '../web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_bot_control_rule_set/web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_bot_control_rule_set.dart';
+import '../web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_password_field/web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_password_field.dart';
+import '../web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_username_field/web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_username_field.dart';
+
+class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig {
+  /// Additional configuration for using the Account Creation Fraud Prevention managed rule group. Use this to specify information such as the registration page of your application and the type of content to accept or reject from the client.
+  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSet?
+      awsManagedRulesAcfpRuleSet;
+
+  /// Configuration for using the anti-DDoS managed rule group. See <span pulumi-lang-nodejs="`awsManagedRulesAntiDdosRuleSet`" pulumi-lang-dotnet="`AwsManagedRulesAntiDdosRuleSet`" pulumi-lang-go="`awsManagedRulesAntiDdosRuleSet`" pulumi-lang-python="`aws_managed_rules_anti_ddos_rule_set`" pulumi-lang-yaml="`awsManagedRulesAntiDdosRuleSet`" pulumi-lang-java="`awsManagedRulesAntiDdosRuleSet`">`aws_managed_rules_anti_ddos_rule_set`</span> for more details.
+  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSet?
+      awsManagedRulesAntiDdosRuleSet;
+
+  /// Additional configuration for using the Account Takeover Protection managed rule group. Use this to specify information such as the sign-in page of your application and the type of content to accept or reject from the client.
+  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSet?
+      awsManagedRulesAtpRuleSet;
+
+  /// Additional configuration for using the Bot Control managed rule group. Use this to specify the inspection level that you want to use. See <span pulumi-lang-nodejs="`awsManagedRulesBotControlRuleSet`" pulumi-lang-dotnet="`AwsManagedRulesBotControlRuleSet`" pulumi-lang-go="`awsManagedRulesBotControlRuleSet`" pulumi-lang-python="`aws_managed_rules_bot_control_rule_set`" pulumi-lang-yaml="`awsManagedRulesBotControlRuleSet`" pulumi-lang-java="`awsManagedRulesBotControlRuleSet`">`aws_managed_rules_bot_control_rule_set`</span> for more details
+  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet?
+      awsManagedRulesBotControlRuleSet;
+
+  /// The path of the login endpoint for your application.
+  final String? loginPath;
+
+  /// Details about your login page password field. See <span pulumi-lang-nodejs="`passwordField`" pulumi-lang-dotnet="`PasswordField`" pulumi-lang-go="`passwordField`" pulumi-lang-python="`password_field`" pulumi-lang-yaml="`passwordField`" pulumi-lang-java="`passwordField`">`password_field`</span> for more details.
+  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigPasswordField?
+      passwordField;
+
+  /// The payload type for your login endpoint, either JSON or form encoded.
+  final String? payloadType;
+
+  /// Details about your login page username field. See <span pulumi-lang-nodejs="`usernameField`" pulumi-lang-dotnet="`UsernameField`" pulumi-lang-go="`usernameField`" pulumi-lang-python="`username_field`" pulumi-lang-yaml="`usernameField`" pulumi-lang-java="`usernameField`">`username_field`</span> for more details.
+  final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsernameField?
+      usernameField;
+
+  WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig({
+    this.awsManagedRulesAcfpRuleSet,
+    this.awsManagedRulesAntiDdosRuleSet,
+    this.awsManagedRulesAtpRuleSet,
+    this.awsManagedRulesBotControlRuleSet,
+    this.loginPath,
+    this.passwordField,
+    this.payloadType,
+    this.usernameField,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final awsManagedRulesAcfpRuleSetValue = awsManagedRulesAcfpRuleSet;
+    if (awsManagedRulesAcfpRuleSetValue != null) {
+      map['awsManagedRulesAcfpRuleSet'] =
+          awsManagedRulesAcfpRuleSetValue.toMap();
+    }
+    final awsManagedRulesAntiDdosRuleSetValue = awsManagedRulesAntiDdosRuleSet;
+    if (awsManagedRulesAntiDdosRuleSetValue != null) {
+      map['awsManagedRulesAntiDdosRuleSet'] =
+          awsManagedRulesAntiDdosRuleSetValue.toMap();
+    }
+    final awsManagedRulesAtpRuleSetValue = awsManagedRulesAtpRuleSet;
+    if (awsManagedRulesAtpRuleSetValue != null) {
+      map['awsManagedRulesAtpRuleSet'] = awsManagedRulesAtpRuleSetValue.toMap();
+    }
+    final awsManagedRulesBotControlRuleSetValue =
+        awsManagedRulesBotControlRuleSet;
+    if (awsManagedRulesBotControlRuleSetValue != null) {
+      map['awsManagedRulesBotControlRuleSet'] =
+          awsManagedRulesBotControlRuleSetValue.toMap();
+    }
+    final loginPathValue = loginPath;
+    if (loginPathValue != null) {
+      map['loginPath'] = loginPathValue;
+    }
+    final passwordFieldValue = passwordField;
+    if (passwordFieldValue != null) {
+      map['passwordField'] = passwordFieldValue.toMap();
+    }
+    final payloadTypeValue = payloadType;
+    if (payloadTypeValue != null) {
+      map['payloadType'] = payloadTypeValue;
+    }
+    final usernameFieldValue = usernameField;
+    if (usernameFieldValue != null) {
+      map['usernameField'] = usernameFieldValue.toMap();
+    }
+    return map;
+  }
+
+  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig.fromMap(
+      Map<String, dynamic> map) {
+    return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig(
+      awsManagedRulesAcfpRuleSet: map['awsManagedRulesAcfpRuleSet'] == null
+          ? null
+          : WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSet
+              .fromMap((map['awsManagedRulesAcfpRuleSet'] as Map)
+                  .cast<String, dynamic>()),
+      awsManagedRulesAntiDdosRuleSet: map['awsManagedRulesAntiDdosRuleSet'] ==
+              null
+          ? null
+          : WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSet
+              .fromMap((map['awsManagedRulesAntiDdosRuleSet'] as Map)
+                  .cast<String, dynamic>()),
+      awsManagedRulesAtpRuleSet: map['awsManagedRulesAtpRuleSet'] == null
+          ? null
+          : WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSet
+              .fromMap((map['awsManagedRulesAtpRuleSet'] as Map)
+                  .cast<String, dynamic>()),
+      awsManagedRulesBotControlRuleSet: map[
+                  'awsManagedRulesBotControlRuleSet'] ==
+              null
+          ? null
+          : WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet
+              .fromMap((map['awsManagedRulesBotControlRuleSet'] as Map)
+                  .cast<String, dynamic>()),
+      loginPath: map['loginPath'] == null ? null : map['loginPath'] as String,
+      passwordField: map['passwordField'] == null
+          ? null
+          : WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigPasswordField
+              .fromMap((map['passwordField'] as Map).cast<String, dynamic>()),
+      payloadType:
+          map['payloadType'] == null ? null : map['payloadType'] as String,
+      usernameField: map['usernameField'] == null
+          ? null
+          : WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsernameField
+              .fromMap((map['usernameField'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_codepipeline_pipeline_trigger_all_git_configuration_push;
+
+export 'pipeline_trigger_all_git_configuration_push.dart';

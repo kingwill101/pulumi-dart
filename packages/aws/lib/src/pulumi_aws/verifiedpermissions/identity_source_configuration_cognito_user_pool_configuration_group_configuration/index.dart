@@ -1,0 +1,3 @@
+library module_verifiedpermissions_identity_source_configuration_cognito_user_pool_configuration_group_configuration;
+
+export 'identity_source_configuration_cognito_user_pool_configuration_group_configuration.dart';

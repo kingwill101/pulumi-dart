@@ -1,0 +1,3 @@
+library module_identitystore_get_users_user_email;
+
+export 'get_users_user_email.dart';

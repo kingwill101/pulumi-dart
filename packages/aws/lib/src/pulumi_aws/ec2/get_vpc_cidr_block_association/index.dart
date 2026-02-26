@@ -1,0 +1,3 @@
+library module_ec2_get_vpc_cidr_block_association;
+
+export 'get_vpc_cidr_block_association.dart';

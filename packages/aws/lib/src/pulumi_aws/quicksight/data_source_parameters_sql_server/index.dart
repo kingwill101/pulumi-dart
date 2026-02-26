@@ -1,0 +1,3 @@
+library module_quicksight_data_source_parameters_sql_server;
+
+export 'data_source_parameters_sql_server.dart';

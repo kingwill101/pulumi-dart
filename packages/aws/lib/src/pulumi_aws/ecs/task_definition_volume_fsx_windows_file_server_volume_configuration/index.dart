@@ -1,0 +1,3 @@
+library module_ecs_task_definition_volume_fsx_windows_file_server_volume_configuration;
+
+export 'task_definition_volume_fsx_windows_file_server_volume_configuration.dart';

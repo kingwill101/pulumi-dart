@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_bucket_replication_configuration_rule_destination_replication_time_time/get_bucket_replication_configuration_rule_destination_replication_time_time.dart';
+
+class GetBucketReplicationConfigurationRuleDestinationReplicationTime {
+  final String status;
+  final List<
+          GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime>
+      times;
+
+  GetBucketReplicationConfigurationRuleDestinationReplicationTime({
+    required this.status,
+    required this.times,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['status'] = status;
+    map['times'] = Input.encodeList<
+        GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime,
+        Map<String, dynamic>>(times, (value) => value.toMap());
+    return map;
+  }
+
+  factory GetBucketReplicationConfigurationRuleDestinationReplicationTime.fromMap(
+      Map<String, dynamic> map) {
+    return GetBucketReplicationConfigurationRuleDestinationReplicationTime(
+      status: map['status'] as String,
+      times: Input.decodeList<
+              GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime>(
+          map['times'],
+          (value) =>
+              GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime
+                  .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

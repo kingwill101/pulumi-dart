@@ -1,0 +1,3 @@
+library module_securityhub_insight_filters_company_name;
+
+export 'insight_filters_company_name.dart';

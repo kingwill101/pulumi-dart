@@ -1,0 +1,4 @@
+library module_redshift_snapshot_schedule_association;
+
+export 'snapshot_schedule_association.dart';
+export 'snapshot_schedule_association_args.dart';

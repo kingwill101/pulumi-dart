@@ -1,0 +1,3 @@
+library module_opensearchingest_pipeline_log_publishing_options;
+
+export 'pipeline_log_publishing_options.dart';

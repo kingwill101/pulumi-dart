@@ -1,0 +1,3 @@
+library module_ec2_instance_primary_network_interface;
+
+export 'instance_primary_network_interface.dart';

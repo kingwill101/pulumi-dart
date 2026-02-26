@@ -1,0 +1,26 @@
+library module_globalaccelerator;
+
+export 'accelerator/index.dart';
+export 'accelerator_attributes/index.dart';
+export 'accelerator_ip_set/index.dart';
+export 'cross_account_attachment/index.dart';
+export 'cross_account_attachment_resource/index.dart';
+export 'custom_routing_accelerator/index.dart';
+export 'custom_routing_accelerator_attributes/index.dart';
+export 'custom_routing_accelerator_ip_set/index.dart';
+export 'custom_routing_endpoint_group/index.dart';
+export 'custom_routing_endpoint_group_destination_configuration/index.dart';
+export 'custom_routing_endpoint_group_endpoint_configuration/index.dart';
+export 'custom_routing_listener/index.dart';
+export 'custom_routing_listener_port_range/index.dart';
+export 'endpoint_group/index.dart';
+export 'endpoint_group_endpoint_configuration/index.dart';
+export 'endpoint_group_port_override/index.dart';
+export 'get_accelerator/index.dart';
+export 'get_accelerator_attribute/index.dart';
+export 'get_accelerator_ip_set/index.dart';
+export 'get_custom_routing_accelerator/index.dart';
+export 'get_custom_routing_accelerator_attribute/index.dart';
+export 'get_custom_routing_accelerator_ip_set/index.dart';
+export 'listener/index.dart';
+export 'listener_port_range/index.dart';

@@ -1,0 +1,4 @@
+library module_detective_organization_admin_account;
+
+export 'organization_admin_account.dart';
+export 'organization_admin_account_args.dart';

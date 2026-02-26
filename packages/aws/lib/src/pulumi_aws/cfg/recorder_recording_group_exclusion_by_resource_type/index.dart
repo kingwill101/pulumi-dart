@@ -1,0 +1,3 @@
+library module_cfg_recorder_recording_group_exclusion_by_resource_type;
+
+export 'recorder_recording_group_exclusion_by_resource_type.dart';

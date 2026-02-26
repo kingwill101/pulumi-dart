@@ -1,0 +1,405 @@
+import 'package:pulumi/pulumi.dart';
+import 'user_args8.dart';
+
+/// Resource for managing QuickSight User
+///
+/// ## Example Usage
+///
+/// ### Create User With IAM Identity Type Using an IAM Role
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.quicksight.User("example", {
+/// email: "author1@example.com",
+/// identityType: "IAM",
+/// userRole: "AUTHOR",
+/// iamArn: "arn:aws:iam::123456789012:role/AuthorRole",
+/// sessionName: "author1",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.quicksight.User("example",
+/// email="author1@example.com",
+/// identity_type="IAM",
+/// user_role="AUTHOR",
+/// iam_arn="arn:aws:iam::123456789012:role/AuthorRole",
+/// session_name="author1")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.Quicksight.User("example", new()
+/// {
+/// Email = "author1@example.com",
+/// IdentityType = "IAM",
+/// UserRole = "AUTHOR",
+/// IamArn = "arn:aws:iam::123456789012:role/AuthorRole",
+/// SessionName = "author1",
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/quicksight"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := quicksight.NewUser(ctx, "example", &quicksight.UserArgs{
+/// Email:        pulumi.String("author1@example.com"),
+/// IdentityType: pulumi.String("IAM"),
+/// UserRole:     pulumi.String("AUTHOR"),
+/// IamArn:       pulumi.String("arn:aws:iam::123456789012:role/AuthorRole"),
+/// SessionName:  pulumi.String("author1"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.quicksight.User;
+/// import com.pulumi.aws.quicksight.UserArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new User("example", UserArgs.builder()
+/// .email("author1@example.com")
+/// .identityType("IAM")
+/// .userRole("AUTHOR")
+/// .iamArn("arn:aws:iam::123456789012:role/AuthorRole")
+/// .sessionName("author1")
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:quicksight:User
+/// properties:
+/// email: author1@example.com
+/// identityType: IAM
+/// userRole: AUTHOR
+/// iamArn: arn:aws:iam::123456789012:role/AuthorRole
+/// sessionName: author1
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ### Create User With IAM Identity Type Using an IAM User
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.quicksight.User("example", {
+/// email: "authorpro1@example.com",
+/// identityType: "IAM",
+/// userRole: "AUTHOR_PRO",
+/// iamArn: "arn:aws:iam::123456789012:user/authorpro1",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.quicksight.User("example",
+/// email="authorpro1@example.com",
+/// identity_type="IAM",
+/// user_role="AUTHOR_PRO",
+/// iam_arn="arn:aws:iam::123456789012:user/authorpro1")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.Quicksight.User("example", new()
+/// {
+/// Email = "authorpro1@example.com",
+/// IdentityType = "IAM",
+/// UserRole = "AUTHOR_PRO",
+/// IamArn = "arn:aws:iam::123456789012:user/authorpro1",
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/quicksight"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := quicksight.NewUser(ctx, "example", &quicksight.UserArgs{
+/// Email:        pulumi.String("authorpro1@example.com"),
+/// IdentityType: pulumi.String("IAM"),
+/// UserRole:     pulumi.String("AUTHOR_PRO"),
+/// IamArn:       pulumi.String("arn:aws:iam::123456789012:user/authorpro1"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.quicksight.User;
+/// import com.pulumi.aws.quicksight.UserArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new User("example", UserArgs.builder()
+/// .email("authorpro1@example.com")
+/// .identityType("IAM")
+/// .userRole("AUTHOR_PRO")
+/// .iamArn("arn:aws:iam::123456789012:user/authorpro1")
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:quicksight:User
+/// properties:
+/// email: authorpro1@example.com
+/// identityType: IAM
+/// userRole: AUTHOR_PRO
+/// iamArn: arn:aws:iam::123456789012:user/authorpro1
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ### Create User With QuickSight Identity Type in Non-Default Namespace
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.quicksight.User("example", {
+/// email: "reader1@example.com",
+/// identityType: "QUICKSIGHT",
+/// userRole: "READER",
+/// namespace: "example",
+/// userName: "reader1",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.quicksight.User("example",
+/// email="reader1@example.com",
+/// identity_type="QUICKSIGHT",
+/// user_role="READER",
+/// namespace="example",
+/// user_name="reader1")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Aws.Quicksight.User("example", new()
+/// {
+/// Email = "reader1@example.com",
+/// IdentityType = "QUICKSIGHT",
+/// UserRole = "READER",
+/// Namespace = "example",
+/// UserName = "reader1",
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/quicksight"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := quicksight.NewUser(ctx, "example", &quicksight.UserArgs{
+/// Email:        pulumi.String("reader1@example.com"),
+/// IdentityType: pulumi.String("QUICKSIGHT"),
+/// UserRole:     pulumi.String("READER"),
+/// Namespace:    pulumi.String("example"),
+/// UserName:     pulumi.String("reader1"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.quicksight.User;
+/// import com.pulumi.aws.quicksight.UserArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new User("example", UserArgs.builder()
+/// .email("reader1@example.com")
+/// .identityType("QUICKSIGHT")
+/// .userRole("READER")
+/// .namespace("example")
+/// .userName("reader1")
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: aws:quicksight:User
+/// properties:
+/// email: reader1@example.com
+/// identityType: QUICKSIGHT
+/// userRole: READER
+/// namespace: example
+/// userName: reader1
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// You cannot import this resource.
+class User8 extends CustomResource {
+  /// Amazon Resource Name (ARN) for the user.
+  late final Output<String> arn;
+
+  /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
+  late final Output<String> awsAccountId;
+
+  /// Email address of the user that you want to register.
+  late final Output<String> email;
+
+  /// ARN of the IAM user or role that you are registering with Amazon QuickSight. Required only for users with an identity type of `IAM`.
+  late final Output<String?> iamArn;
+
+  /// Identity type that your Amazon QuickSight account uses to manage the identity of users. Valid values: `IAM`, `QUICKSIGHT`, `IAM_IDENTITY_CENTER`.
+  late final Output<String> identityType;
+
+  /// The Amazon Quicksight namespace to create the user in. Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.
+  late final Output<String?> namespace;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final Output<String> region;
+
+  /// Name of the IAM session to use when assuming roles that can embed QuickSight dashboards. Only valid for registering users using an assumed IAM role. Additionally, if registering multiple users using the same IAM role, each user needs to have a unique session name.
+  late final Output<String?> sessionName;
+
+  /// URL the user visits to complete registration and provide a password. Returned only for users with an identity type of `QUICKSIGHT`.
+  late final Output<String> userInvitationUrl;
+
+  /// Amazon QuickSight user name that you want to create for the user you are registering. Required only for users with an identity type of `QUICKSIGHT`.
+  late final Output<String> userName;
+
+  /// Amazon QuickSight role for the user. Valid values: `READER`, `AUTHOR`, `ADMIN`, `READER_PRO`, `AUTHOR_PRO`, `ADMIN_PRO`, `RESTRICTED_AUTHOR`, `RESTRICTED_READER`.
+  ///
+  /// The following arguments are optional:
+  late final Output<String> userRole;
+
+  User8(
+    String name, {
+    UserArgs8? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'aws:quicksight/user:User',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.arn = Output.createUnknown<String>();
+    this.awsAccountId = Output.createUnknown<String>();
+    this.email = Output.createUnknown<String>();
+    this.iamArn = Output.createUnknown<String?>();
+    this.identityType = Output.createUnknown<String>();
+    this.namespace = Output.createUnknown<String?>();
+    this.region = Output.createUnknown<String>();
+    this.sessionName = Output.createUnknown<String?>();
+    this.userInvitationUrl = Output.createUnknown<String>();
+    this.userName = Output.createUnknown<String>();
+    this.userRole = Output.createUnknown<String>();
+  }
+}

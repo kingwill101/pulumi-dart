@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_virtual_node_spec_backend_virtual_service_client_policy_tl/get_virtual_node_spec_backend_virtual_service_client_policy_tl.dart';
+
+class GetVirtualNodeSpecBackendVirtualServiceClientPolicy {
+  final List<GetVirtualNodeSpecBackendVirtualServiceClientPolicyTl> tls;
+
+  GetVirtualNodeSpecBackendVirtualServiceClientPolicy({
+    required this.tls,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['tls'] = Input.encodeList<
+        GetVirtualNodeSpecBackendVirtualServiceClientPolicyTl,
+        Map<String, dynamic>>(tls, (value) => value.toMap());
+    return map;
+  }
+
+  factory GetVirtualNodeSpecBackendVirtualServiceClientPolicy.fromMap(
+      Map<String, dynamic> map) {
+    return GetVirtualNodeSpecBackendVirtualServiceClientPolicy(
+      tls: Input.decodeList<
+              GetVirtualNodeSpecBackendVirtualServiceClientPolicyTl>(
+          map['tls'],
+          (value) =>
+              GetVirtualNodeSpecBackendVirtualServiceClientPolicyTl.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+    );
+  }
+}

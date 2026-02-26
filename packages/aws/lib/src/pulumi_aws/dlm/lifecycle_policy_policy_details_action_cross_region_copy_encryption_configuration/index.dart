@@ -1,0 +1,3 @@
+library module_dlm_lifecycle_policy_policy_details_action_cross_region_copy_encryption_configuration;
+
+export 'lifecycle_policy_policy_details_action_cross_region_copy_encryption_configuration.dart';

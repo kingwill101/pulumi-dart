@@ -1,0 +1,3 @@
+library module_scheduler_schedule_flexible_time_window;
+
+export 'schedule_flexible_time_window.dart';

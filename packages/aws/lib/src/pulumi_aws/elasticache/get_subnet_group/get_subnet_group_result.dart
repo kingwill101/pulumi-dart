@@ -1,0 +1,66 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Result data returned by getSubnetGroup.
+class GetSubnetGroupResult {
+  /// ARN of the subnet group.
+  final String arn;
+
+  /// Description of the subnet group.
+  final String description;
+
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+  final String name;
+  final String region;
+
+  /// Set of VPC Subnet ID-s of the subnet group.
+  final List<String> subnetIds;
+
+  /// Map of tags assigned to the subnet group.
+  final Map<String, String>? tags;
+
+  /// The Amazon Virtual Private Cloud identifier (VPC ID) of the cache subnet group.
+  final String vpcId;
+
+  GetSubnetGroupResult({
+    required this.arn,
+    required this.description,
+    required this.id,
+    required this.name,
+    required this.region,
+    required this.subnetIds,
+    this.tags,
+    required this.vpcId,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['arn'] = arn;
+    map['description'] = description;
+    map['id'] = id;
+    map['name'] = name;
+    map['region'] = region;
+    map['subnetIds'] = subnetIds;
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    map['vpcId'] = vpcId;
+    return map;
+  }
+
+  factory GetSubnetGroupResult.fromMap(Map<String, dynamic> map) {
+    return GetSubnetGroupResult(
+      arn: map['arn'] as String,
+      description: map['description'] as String,
+      id: map['id'] as String,
+      name: map['name'] as String,
+      region: map['region'] as String,
+      subnetIds: (map['subnetIds'] as List).cast<String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+      vpcId: map['vpcId'] as String,
+    );
+  }
+}

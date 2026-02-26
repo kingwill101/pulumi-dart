@@ -1,0 +1,3 @@
+library module_lakeformation_opt_in_resource_data_table_with_columns_column_wildcard;
+
+export 'opt_in_resource_data_table_with_columns_column_wildcard.dart';

@@ -1,0 +1,3 @@
+library module_apigatewayv2_routing_rule_condition_match_base_paths;
+
+export 'routing_rule_condition_match_base_paths.dart';

@@ -1,0 +1,3 @@
+library module_networkfirewall_get_firewall_firewall_status_capacity_usage_summary_cidr_ip_set_reference;
+
+export 'get_firewall_firewall_status_capacity_usage_summary_cidr_ip_set_reference.dart';

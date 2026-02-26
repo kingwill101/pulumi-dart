@@ -1,0 +1,144 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// The set of arguments for ResolverFirewallRule.
+class ResolverFirewallRuleArgs {
+  /// The action that DNS Firewall should take on a DNS query when it matches one of the domains in the rule's domain list, or a threat in a DNS Firewall Advanced rule. Valid values: `ALLOW`, `BLOCK`, `ALERT`. Note: `ALLOW` is not valid for DNS Firewall Advanced rules.
+  final Input<String> action;
+
+  /// The DNS record's type. This determines the format of the record value that you provided in BlockOverrideDomain. Value values: `CNAME`.
+  final Input<String>? blockOverrideDnsType;
+
+  /// The custom DNS record to send back in response to the query.
+  final Input<String>? blockOverrideDomain;
+
+  /// The recommended amount of time, in seconds, for the DNS resolver or web browser to cache the provided override record. Minimum value of 0. Maximum value of 604800.
+  final Input<int>? blockOverrideTtl;
+
+  /// The way that you want DNS Firewall to block the request. Valid values: `NODATA`, `NXDOMAIN`, `OVERRIDE`.
+  final Input<String>? blockResponse;
+
+  /// The confidence threshold for DNS Firewall Advanced rules. You must provide this value when creating a DNS Firewall Advanced rule. Valid values: `LOW`, `MEDIUM`, `HIGH`. Conflicts with <span pulumi-lang-nodejs="`firewallDomainListId`" pulumi-lang-dotnet="`FirewallDomainListId`" pulumi-lang-go="`firewallDomainListId`" pulumi-lang-python="`firewall_domain_list_id`" pulumi-lang-yaml="`firewallDomainListId`" pulumi-lang-java="`firewallDomainListId`">`firewall_domain_list_id`</span>.
+  final Input<String>? confidenceThreshold;
+
+  /// The type of DNS Firewall Advanced rule. You must provide this value when creating a DNS Firewall Advanced rule. Valid values: `DGA`, `DNS_TUNNELING`. Conflicts with <span pulumi-lang-nodejs="`firewallDomainListId`" pulumi-lang-dotnet="`FirewallDomainListId`" pulumi-lang-go="`firewallDomainListId`" pulumi-lang-python="`firewall_domain_list_id`" pulumi-lang-yaml="`firewallDomainListId`" pulumi-lang-java="`firewallDomainListId`">`firewall_domain_list_id`</span>.
+  final Input<String>? dnsThreatProtection;
+
+  /// The ID of the domain list that you want to use in the rule. Required for standard rules. Conflicts with <span pulumi-lang-nodejs="`dnsThreatProtection`" pulumi-lang-dotnet="`DnsThreatProtection`" pulumi-lang-go="`dnsThreatProtection`" pulumi-lang-python="`dns_threat_protection`" pulumi-lang-yaml="`dnsThreatProtection`" pulumi-lang-java="`dnsThreatProtection`">`dns_threat_protection`</span> and <span pulumi-lang-nodejs="`confidenceThreshold`" pulumi-lang-dotnet="`ConfidenceThreshold`" pulumi-lang-go="`confidenceThreshold`" pulumi-lang-python="`confidence_threshold`" pulumi-lang-yaml="`confidenceThreshold`" pulumi-lang-java="`confidenceThreshold`">`confidence_threshold`</span>.
+  final Input<String>? firewallDomainListId;
+
+  /// Evaluate DNS redirection in the DNS redirection chain, such as CNAME, DNAME, ot ALIAS. Valid values are `INSPECT_REDIRECTION_DOMAIN` and `TRUST_REDIRECTION_DOMAIN`. Default value is `INSPECT_REDIRECTION_DOMAIN`.
+  final Input<String>? firewallDomainRedirectionAction;
+
+  /// The unique identifier of the firewall rule group where you want to create the rule.
+  final Input<String> firewallRuleGroupId;
+
+  /// A name that lets you identify the rule, to manage and use it.
+  final Input<String>? name;
+
+  /// The setting that determines the processing order of the rule in the rule group. DNS Firewall processes the rules in a rule group by order of priority, starting from the lowest setting.
+  final Input<int> priority;
+
+  /// The query type you want the rule to evaluate. Additional details can be found [here](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+  final Input<String>? qType;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final Input<String>? region;
+
+  ResolverFirewallRuleArgs({
+    required this.action,
+    this.blockOverrideDnsType,
+    this.blockOverrideDomain,
+    this.blockOverrideTtl,
+    this.blockResponse,
+    this.confidenceThreshold,
+    this.dnsThreatProtection,
+    this.firewallDomainListId,
+    this.firewallDomainRedirectionAction,
+    required this.firewallRuleGroupId,
+    this.name,
+    required this.priority,
+    this.qType,
+    this.region,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['action'] = action;
+    final blockOverrideDnsTypeValue = blockOverrideDnsType;
+    if (blockOverrideDnsTypeValue != null) {
+      map['blockOverrideDnsType'] = blockOverrideDnsTypeValue;
+    }
+    final blockOverrideDomainValue = blockOverrideDomain;
+    if (blockOverrideDomainValue != null) {
+      map['blockOverrideDomain'] = blockOverrideDomainValue;
+    }
+    final blockOverrideTtlValue = blockOverrideTtl;
+    if (blockOverrideTtlValue != null) {
+      map['blockOverrideTtl'] = blockOverrideTtlValue;
+    }
+    final blockResponseValue = blockResponse;
+    if (blockResponseValue != null) {
+      map['blockResponse'] = blockResponseValue;
+    }
+    final confidenceThresholdValue = confidenceThreshold;
+    if (confidenceThresholdValue != null) {
+      map['confidenceThreshold'] = confidenceThresholdValue;
+    }
+    final dnsThreatProtectionValue = dnsThreatProtection;
+    if (dnsThreatProtectionValue != null) {
+      map['dnsThreatProtection'] = dnsThreatProtectionValue;
+    }
+    final firewallDomainListIdValue = firewallDomainListId;
+    if (firewallDomainListIdValue != null) {
+      map['firewallDomainListId'] = firewallDomainListIdValue;
+    }
+    final firewallDomainRedirectionActionValue =
+        firewallDomainRedirectionAction;
+    if (firewallDomainRedirectionActionValue != null) {
+      map['firewallDomainRedirectionAction'] =
+          firewallDomainRedirectionActionValue;
+    }
+    map['firewallRuleGroupId'] = firewallRuleGroupId;
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    map['priority'] = priority;
+    final qTypeValue = qType;
+    if (qTypeValue != null) {
+      map['qType'] = qTypeValue;
+    }
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    return map;
+  }
+
+  factory ResolverFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
+    return ResolverFirewallRuleArgs(
+      action: Input.asInput<String>(map['action']),
+      blockOverrideDnsType:
+          Input.asOptionalInput<String>(map['blockOverrideDnsType']),
+      blockOverrideDomain:
+          Input.asOptionalInput<String>(map['blockOverrideDomain']),
+      blockOverrideTtl: Input.asOptionalInput<int>(map['blockOverrideTtl']),
+      blockResponse: Input.asOptionalInput<String>(map['blockResponse']),
+      confidenceThreshold:
+          Input.asOptionalInput<String>(map['confidenceThreshold']),
+      dnsThreatProtection:
+          Input.asOptionalInput<String>(map['dnsThreatProtection']),
+      firewallDomainListId:
+          Input.asOptionalInput<String>(map['firewallDomainListId']),
+      firewallDomainRedirectionAction:
+          Input.asOptionalInput<String>(map['firewallDomainRedirectionAction']),
+      firewallRuleGroupId: Input.asInput<String>(map['firewallRuleGroupId']),
+      name: Input.asOptionalInput<String>(map['name']),
+      priority: Input.asInput<int>(map['priority']),
+      qType: Input.asOptionalInput<String>(map['qType']),
+      region: Input.asOptionalInput<String>(map['region']),
+    );
+  }
+}

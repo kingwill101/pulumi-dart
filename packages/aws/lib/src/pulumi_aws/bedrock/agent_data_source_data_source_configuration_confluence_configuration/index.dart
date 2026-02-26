@@ -1,0 +1,3 @@
+library module_bedrock_agent_data_source_data_source_configuration_confluence_configuration;
+
+export 'agent_data_source_data_source_configuration_confluence_configuration.dart';

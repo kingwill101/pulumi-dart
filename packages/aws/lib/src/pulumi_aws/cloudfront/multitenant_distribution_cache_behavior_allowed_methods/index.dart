@@ -1,0 +1,3 @@
+library module_cloudfront_multitenant_distribution_cache_behavior_allowed_methods;
+
+export 'multitenant_distribution_cache_behavior_allowed_methods.dart';

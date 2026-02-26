@@ -1,0 +1,70 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../policy_predictive_scaling_configuration_metric_specification/policy_predictive_scaling_configuration_metric_specification.dart';
+
+class PolicyPredictiveScalingConfiguration {
+  /// Defines the behavior that should be applied if the forecast capacity approaches or exceeds the maximum capacity of the Auto Scaling group. Valid values are `HonorMaxCapacity` or `IncreaseMaxCapacity`. Default is `HonorMaxCapacity`.
+  final String? maxCapacityBreachBehavior;
+
+  /// Size of the capacity buffer to use when the forecast capacity is close to or exceeds the maximum capacity. Valid range is <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to <span pulumi-lang-nodejs="`100`" pulumi-lang-dotnet="`100`" pulumi-lang-go="`100`" pulumi-lang-python="`100`" pulumi-lang-yaml="`100`" pulumi-lang-java="`100`">`100`</span>. If set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>, Amazon EC2 Auto Scaling may scale capacity higher than the maximum capacity to equal but not exceed forecast capacity.
+  final String? maxCapacityBuffer;
+
+  /// This structure includes the metrics and target utilization to use for predictive scaling.
+  final PolicyPredictiveScalingConfigurationMetricSpecification
+      metricSpecification;
+
+  /// Predictive scaling mode. Valid values are `ForecastAndScale` and `ForecastOnly`. Default is `ForecastOnly`.
+  final String? mode;
+
+  /// Amount of time, in seconds, by which the instance launch time can be advanced. Minimum is <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>.
+  final String? schedulingBufferTime;
+
+  PolicyPredictiveScalingConfiguration({
+    this.maxCapacityBreachBehavior,
+    this.maxCapacityBuffer,
+    required this.metricSpecification,
+    this.mode,
+    this.schedulingBufferTime,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final maxCapacityBreachBehaviorValue = maxCapacityBreachBehavior;
+    if (maxCapacityBreachBehaviorValue != null) {
+      map['maxCapacityBreachBehavior'] = maxCapacityBreachBehaviorValue;
+    }
+    final maxCapacityBufferValue = maxCapacityBuffer;
+    if (maxCapacityBufferValue != null) {
+      map['maxCapacityBuffer'] = maxCapacityBufferValue;
+    }
+    map['metricSpecification'] = metricSpecification.toMap();
+    final modeValue = mode;
+    if (modeValue != null) {
+      map['mode'] = modeValue;
+    }
+    final schedulingBufferTimeValue = schedulingBufferTime;
+    if (schedulingBufferTimeValue != null) {
+      map['schedulingBufferTime'] = schedulingBufferTimeValue;
+    }
+    return map;
+  }
+
+  factory PolicyPredictiveScalingConfiguration.fromMap(
+      Map<String, dynamic> map) {
+    return PolicyPredictiveScalingConfiguration(
+      maxCapacityBreachBehavior: map['maxCapacityBreachBehavior'] == null
+          ? null
+          : map['maxCapacityBreachBehavior'] as String,
+      maxCapacityBuffer: map['maxCapacityBuffer'] == null
+          ? null
+          : map['maxCapacityBuffer'] as String,
+      metricSpecification:
+          PolicyPredictiveScalingConfigurationMetricSpecification.fromMap(
+              (map['metricSpecification'] as Map).cast<String, dynamic>()),
+      mode: map['mode'] == null ? null : map['mode'] as String,
+      schedulingBufferTime: map['schedulingBufferTime'] == null
+          ? null
+          : map['schedulingBufferTime'] as String,
+    );
+  }
+}

@@ -1,0 +1,11 @@
+library module_autoscalingplans;
+
+export 'scaling_plan/index.dart';
+export 'scaling_plan_application_source/index.dart';
+export 'scaling_plan_application_source_tag_filter/index.dart';
+export 'scaling_plan_scaling_instruction/index.dart';
+export 'scaling_plan_scaling_instruction_customized_load_metric_specification/index.dart';
+export 'scaling_plan_scaling_instruction_predefined_load_metric_specification/index.dart';
+export 'scaling_plan_scaling_instruction_target_tracking_configuration/index.dart';
+export 'scaling_plan_scaling_instruction_target_tracking_configuration_customized_scaling_metric_specification/index.dart';
+export 'scaling_plan_scaling_instruction_target_tracking_configuration_predefined_scaling_metric_specification/index.dart';

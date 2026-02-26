@@ -1,0 +1,3 @@
+library module_macie2_classification_job_s3_job_definition_bucket_criteria_excludes_and_tag_criterion_tag_value;
+
+export 'classification_job_s3_job_definition_bucket_criteria_excludes_and_tag_criterion_tag_value.dart';

@@ -1,0 +1,3 @@
+library module_sesv2_configuration_set_event_destination_event_destination_cloud_watch_destination;
+
+export 'configuration_set_event_destination_event_destination_cloud_watch_destination.dart';

@@ -1,0 +1,49 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class FunctionImageConfig {
+  /// Parameters to pass to the container image.
+  final List<String>? commands;
+
+  /// Entry point to your application.
+  final List<String>? entryPoints;
+
+  /// Working directory for the container image.
+  final String? workingDirectory;
+
+  FunctionImageConfig({
+    this.commands,
+    this.entryPoints,
+    this.workingDirectory,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final commandsValue = commands;
+    if (commandsValue != null) {
+      map['commands'] = commandsValue;
+    }
+    final entryPointsValue = entryPoints;
+    if (entryPointsValue != null) {
+      map['entryPoints'] = entryPointsValue;
+    }
+    final workingDirectoryValue = workingDirectory;
+    if (workingDirectoryValue != null) {
+      map['workingDirectory'] = workingDirectoryValue;
+    }
+    return map;
+  }
+
+  factory FunctionImageConfig.fromMap(Map<String, dynamic> map) {
+    return FunctionImageConfig(
+      commands: map['commands'] == null
+          ? null
+          : (map['commands'] as List).cast<String>(),
+      entryPoints: map['entryPoints'] == null
+          ? null
+          : (map['entryPoints'] as List).cast<String>(),
+      workingDirectory: map['workingDirectory'] == null
+          ? null
+          : map['workingDirectory'] as String,
+    );
+  }
+}

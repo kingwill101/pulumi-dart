@@ -1,0 +1,3 @@
+library module_codedeploy_deployment_config_traffic_routing_config_time_based_canary;
+
+export 'deployment_config_traffic_routing_config_time_based_canary.dart';

@@ -1,0 +1,3 @@
+library module_pipes_pipe_target_parameters_ecs_task_parameters_overrides_inference_accelerator_override;
+
+export 'pipe_target_parameters_ecs_task_parameters_overrides_inference_accelerator_override.dart';

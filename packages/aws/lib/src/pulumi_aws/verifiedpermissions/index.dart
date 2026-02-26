@@ -1,0 +1,24 @@
+library module_verifiedpermissions;
+
+export 'get_policy_store/index.dart';
+export 'get_policy_store_validation_setting/index.dart';
+export 'identity_source/index.dart';
+export 'identity_source_configuration/index.dart';
+export 'identity_source_configuration_cognito_user_pool_configuration/index.dart';
+export 'identity_source_configuration_cognito_user_pool_configuration_group_configuration/index.dart';
+export 'identity_source_configuration_open_id_connect_configuration/index.dart';
+export 'identity_source_configuration_open_id_connect_configuration_group_configuration/index.dart';
+export 'identity_source_configuration_open_id_connect_configuration_token_selection/index.dart';
+export 'identity_source_configuration_open_id_connect_configuration_token_selection_access_token_only/index.dart';
+export 'identity_source_configuration_open_id_connect_configuration_token_selection_identity_token_only/index.dart';
+export 'policy/index.dart';
+export 'policy_definition/index.dart';
+export 'policy_definition_static/index.dart';
+export 'policy_definition_template_linked/index.dart';
+export 'policy_definition_template_linked_principal/index.dart';
+export 'policy_definition_template_linked_resource/index.dart';
+export 'policy_store/index.dart';
+export 'policy_store_validation_settings/index.dart';
+export 'policy_template/index.dart';
+export 'schema/index.dart';
+export 'schema_definition/index.dart';

@@ -1,0 +1,3 @@
+library module_odb_cloud_autonomous_vm_cluster_maintenance_window_month;
+
+export 'cloud_autonomous_vm_cluster_maintenance_window_month.dart';

@@ -1,0 +1,3 @@
+library module_neptune_global_cluster_global_cluster_member;
+
+export 'global_cluster_global_cluster_member2.dart';

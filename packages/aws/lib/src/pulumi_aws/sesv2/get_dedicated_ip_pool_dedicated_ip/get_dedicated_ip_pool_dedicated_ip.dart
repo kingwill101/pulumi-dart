@@ -1,0 +1,34 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetDedicatedIpPoolDedicatedIp {
+  /// IPv4 address.
+  final String ip;
+
+  /// Indicates how complete the dedicated IP warm-up process is. When this value equals <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>, the address has completed the warm-up process and is ready for use.
+  final int warmupPercentage;
+
+  /// The warm-up status of a dedicated IP address. Valid values: `IN_PROGRESS`, `DONE`.
+  final String warmupStatus;
+
+  GetDedicatedIpPoolDedicatedIp({
+    required this.ip,
+    required this.warmupPercentage,
+    required this.warmupStatus,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['ip'] = ip;
+    map['warmupPercentage'] = warmupPercentage;
+    map['warmupStatus'] = warmupStatus;
+    return map;
+  }
+
+  factory GetDedicatedIpPoolDedicatedIp.fromMap(Map<String, dynamic> map) {
+    return GetDedicatedIpPoolDedicatedIp(
+      ip: map['ip'] as String,
+      warmupPercentage: map['warmupPercentage'] as int,
+      warmupStatus: map['warmupStatus'] as String,
+    );
+  }
+}

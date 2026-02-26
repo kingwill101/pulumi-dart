@@ -1,0 +1,3 @@
+library module_bedrock_agent_prompt_variant_metadata;
+
+export 'agent_prompt_variant_metadata.dart';

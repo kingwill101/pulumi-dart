@@ -1,0 +1,3 @@
+library module_identitystore_get_group_memberships_group_membership_member_id;
+
+export 'get_group_memberships_group_membership_member_id.dart';

@@ -1,0 +1,3 @@
+library module_appmesh_virtual_gateway_spec_backend_defaults_client_policy_tls_certificate_sds;
+
+export 'virtual_gateway_spec_backend_defaults_client_policy_tls_certificate_sds.dart';

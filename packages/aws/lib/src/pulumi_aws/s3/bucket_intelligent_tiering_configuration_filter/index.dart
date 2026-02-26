@@ -1,0 +1,3 @@
+library module_s3_bucket_intelligent_tiering_configuration_filter;
+
+export 'bucket_intelligent_tiering_configuration_filter.dart';

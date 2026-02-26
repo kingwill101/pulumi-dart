@@ -1,0 +1,3 @@
+library module_sagemaker_model_container_image_config;
+
+export 'model_container_image_config.dart';

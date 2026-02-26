@@ -1,0 +1,3 @@
+library module_bedrock_agent_data_source_data_source_configuration_share_point_configuration_source_configuration;
+
+export 'agent_data_source_data_source_configuration_share_point_configuration_source_configuration.dart';

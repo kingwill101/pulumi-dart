@@ -1,0 +1,34 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class ClusterClusterEndpoint {
+  /// DNS hostname of the node.
+  final String? address;
+
+  /// The port number on which each of the nodes accepts connections. Defaults to <span pulumi-lang-nodejs="`6379`" pulumi-lang-dotnet="`6379`" pulumi-lang-go="`6379`" pulumi-lang-python="`6379`" pulumi-lang-yaml="`6379`" pulumi-lang-java="`6379`">`6379`</span>.
+  final int? port;
+
+  ClusterClusterEndpoint({
+    this.address,
+    this.port,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final addressValue = address;
+    if (addressValue != null) {
+      map['address'] = addressValue;
+    }
+    final portValue = port;
+    if (portValue != null) {
+      map['port'] = portValue;
+    }
+    return map;
+  }
+
+  factory ClusterClusterEndpoint.fromMap(Map<String, dynamic> map) {
+    return ClusterClusterEndpoint(
+      address: map['address'] == null ? null : map['address'] as String,
+      port: map['port'] == null ? null : map['port'] as int,
+    );
+  }
+}

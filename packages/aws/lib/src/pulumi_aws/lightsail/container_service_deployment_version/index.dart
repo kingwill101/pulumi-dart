@@ -1,0 +1,4 @@
+library module_lightsail_container_service_deployment_version;
+
+export 'container_service_deployment_version.dart';
+export 'container_service_deployment_version_args.dart';

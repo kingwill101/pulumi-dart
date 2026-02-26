@@ -1,0 +1,3 @@
+library module_workspacesweb_session_logger_log_configuration_s3;
+
+export 'session_logger_log_configuration_s3.dart';

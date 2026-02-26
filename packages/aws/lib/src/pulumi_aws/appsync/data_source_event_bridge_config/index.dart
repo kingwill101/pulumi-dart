@@ -1,0 +1,3 @@
+library module_appsync_data_source_event_bridge_config;
+
+export 'data_source_event_bridge_config.dart';

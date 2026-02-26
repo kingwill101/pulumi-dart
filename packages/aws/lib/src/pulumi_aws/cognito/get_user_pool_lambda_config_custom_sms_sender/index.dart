@@ -1,0 +1,3 @@
+library module_cognito_get_user_pool_lambda_config_custom_sms_sender;
+
+export 'get_user_pool_lambda_config_custom_sms_sender.dart';

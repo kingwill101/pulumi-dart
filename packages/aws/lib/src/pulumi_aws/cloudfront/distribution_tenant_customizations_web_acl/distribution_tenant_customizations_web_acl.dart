@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class DistributionTenantCustomizationsWebAcl {
+  /// Action to take for the web ACL. Valid values: <span pulumi-lang-nodejs="`allow`" pulumi-lang-dotnet="`Allow`" pulumi-lang-go="`allow`" pulumi-lang-python="`allow`" pulumi-lang-yaml="`allow`" pulumi-lang-java="`allow`">`allow`</span>, <span pulumi-lang-nodejs="`block`" pulumi-lang-dotnet="`Block`" pulumi-lang-go="`block`" pulumi-lang-python="`block`" pulumi-lang-yaml="`block`" pulumi-lang-java="`block`">`block`</span>.
+  final String? action;
+
+  /// ARN of the distribution tenant.
+  final String? arn;
+
+  DistributionTenantCustomizationsWebAcl({
+    this.action,
+    this.arn,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final actionValue = action;
+    if (actionValue != null) {
+      map['action'] = actionValue;
+    }
+    final arnValue = arn;
+    if (arnValue != null) {
+      map['arn'] = arnValue;
+    }
+    return map;
+  }
+
+  factory DistributionTenantCustomizationsWebAcl.fromMap(
+      Map<String, dynamic> map) {
+    return DistributionTenantCustomizationsWebAcl(
+      action: map['action'] == null ? null : map['action'] as String,
+      arn: map['arn'] == null ? null : map['arn'] as String,
+    );
+  }
+}

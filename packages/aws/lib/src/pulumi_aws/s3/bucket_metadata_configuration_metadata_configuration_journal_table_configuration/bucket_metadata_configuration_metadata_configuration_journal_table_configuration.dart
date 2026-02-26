@@ -1,0 +1,62 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../bucket_metadata_configuration_metadata_configuration_journal_table_configuration_encryption_configuration/bucket_metadata_configuration_metadata_configuration_journal_table_configuration_encryption_configuration.dart';
+import '../bucket_metadata_configuration_metadata_configuration_journal_table_configuration_record_expiration/bucket_metadata_configuration_metadata_configuration_journal_table_configuration_record_expiration.dart';
+
+class BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration {
+  /// Encryption configuration for the journal table. See <span pulumi-lang-nodejs="`encryptionConfiguration`" pulumi-lang-dotnet="`EncryptionConfiguration`" pulumi-lang-go="`encryptionConfiguration`" pulumi-lang-python="`encryption_configuration`" pulumi-lang-yaml="`encryptionConfiguration`" pulumi-lang-java="`encryptionConfiguration`">`encryption_configuration`</span> Block for details.
+  final BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration?
+      encryptionConfiguration;
+
+  /// Journal table record expiration settings. See <span pulumi-lang-nodejs="`recordExpiration`" pulumi-lang-dotnet="`RecordExpiration`" pulumi-lang-go="`recordExpiration`" pulumi-lang-python="`record_expiration`" pulumi-lang-yaml="`recordExpiration`" pulumi-lang-java="`recordExpiration`">`record_expiration`</span> Block for details.
+  final BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration
+      recordExpiration;
+
+  /// Journal table ARN.
+  final String? tableArn;
+
+  /// Journal table name.
+  final String? tableName;
+
+  BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration({
+    this.encryptionConfiguration,
+    required this.recordExpiration,
+    this.tableArn,
+    this.tableName,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final encryptionConfigurationValue = encryptionConfiguration;
+    if (encryptionConfigurationValue != null) {
+      map['encryptionConfiguration'] = encryptionConfigurationValue.toMap();
+    }
+    map['recordExpiration'] = recordExpiration.toMap();
+    final tableArnValue = tableArn;
+    if (tableArnValue != null) {
+      map['tableArn'] = tableArnValue;
+    }
+    final tableNameValue = tableName;
+    if (tableNameValue != null) {
+      map['tableName'] = tableNameValue;
+    }
+    return map;
+  }
+
+  factory BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration.fromMap(
+      Map<String, dynamic> map) {
+    return BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration(
+      encryptionConfiguration: map['encryptionConfiguration'] == null
+          ? null
+          : BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration
+              .fromMap((map['encryptionConfiguration'] as Map)
+                  .cast<String, dynamic>()),
+      recordExpiration:
+          BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration
+              .fromMap(
+                  (map['recordExpiration'] as Map).cast<String, dynamic>()),
+      tableArn: map['tableArn'] == null ? null : map['tableArn'] as String,
+      tableName: map['tableName'] == null ? null : map['tableName'] as String,
+    );
+  }
+}

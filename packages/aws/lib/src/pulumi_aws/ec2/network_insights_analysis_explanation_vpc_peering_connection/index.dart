@@ -1,0 +1,3 @@
+library module_ec2_network_insights_analysis_explanation_vpc_peering_connection;
+
+export 'network_insights_analysis_explanation_vpc_peering_connection.dart';

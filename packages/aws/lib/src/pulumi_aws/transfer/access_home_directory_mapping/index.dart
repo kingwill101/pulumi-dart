@@ -1,0 +1,3 @@
+library module_transfer_access_home_directory_mapping;
+
+export 'access_home_directory_mapping.dart';

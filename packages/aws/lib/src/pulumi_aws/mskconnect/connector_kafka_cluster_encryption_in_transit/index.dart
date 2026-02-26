@@ -1,0 +1,3 @@
+library module_mskconnect_connector_kafka_cluster_encryption_in_transit;
+
+export 'connector_kafka_cluster_encryption_in_transit.dart';

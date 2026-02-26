@@ -1,0 +1,4 @@
+library module_networkmanager_site_to_site_vpn_attachment;
+
+export 'site_to_site_vpn_attachment.dart';
+export 'site_to_site_vpn_attachment_args.dart';

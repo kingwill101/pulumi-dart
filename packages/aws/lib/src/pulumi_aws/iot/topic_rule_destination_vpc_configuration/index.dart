@@ -1,0 +1,3 @@
+library module_iot_topic_rule_destination_vpc_configuration;
+
+export 'topic_rule_destination_vpc_configuration.dart';
