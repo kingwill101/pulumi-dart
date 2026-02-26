@@ -293,10 +293,10 @@ func TestGeneratePackageUsesModuleDirectoryStructure(t *testing.T) {
 	require.NoError(t, err)
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "sample")
-	assert.Contains(t, content, "// FILE: accesscontextmanager/accessLevel/access_level.dart")
-	assert.Contains(t, content, "// FILE: accesscontextmanager/accessLevel/get_access_level.dart")
-	assert.Contains(t, content, "export 'accesscontextmanager/accessLevel/access_level.dart';")
-	assert.Contains(t, content, "export 'accesscontextmanager/accessLevel/get_access_level.dart';")
+	assert.Contains(t, content, "// FILE: accesscontextmanager/access_level/access_level.dart")
+	assert.Contains(t, content, "// FILE: accesscontextmanager/access_level/get_access_level.dart")
+	assert.Contains(t, content, "export 'accesscontextmanager/access_level/access_level.dart';")
+	assert.Contains(t, content, "export 'accesscontextmanager/access_level/get_access_level.dart';")
 }
 
 func TestGeneratePackageEmitsParameterizedPackageRegistration(t *testing.T) {

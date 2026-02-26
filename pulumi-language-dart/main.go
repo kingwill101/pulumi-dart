@@ -3829,12 +3829,31 @@ func configNeedsObjectHelpers(configSpec packageConfigSpec) bool {
 	return false
 }
 
+func normalizedModulePath(modulePath string) string {
+	path := strings.TrimSpace(filepath.ToSlash(modulePath))
+	if path == "" {
+		return ""
+	}
+
+	parts := strings.Split(path, "/")
+	normalized := make([]string, 0, len(parts))
+	for _, part := range parts {
+		part = strings.TrimSpace(part)
+		if part == "" {
+			continue
+		}
+		normalized = append(normalized, toSnakeCaseIdentifier(part))
+	}
+	return strings.Join(normalized, "/")
+}
+
 func moduleClassFilePath(modulePath, className string) string {
 	fileName := toSnakeCaseIdentifier(className) + ".dart"
-	if strings.TrimSpace(modulePath) == "" {
+	normalizedModule := normalizedModulePath(modulePath)
+	if normalizedModule == "" {
 		return fileName
 	}
-	return filepath.ToSlash(filepath.Join(filepath.FromSlash(modulePath), fileName))
+	return filepath.ToSlash(filepath.Join(filepath.FromSlash(normalizedModule), fileName))
 }
 
 func uniqueGeneratedFilePath(filePath string, used map[string]int) string {
