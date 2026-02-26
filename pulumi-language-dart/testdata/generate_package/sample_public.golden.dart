@@ -1,3 +1,3 @@
-library sample;
+library pulumi_sample;
 
-export 'src/sample/sdk.dart';
+export 'src/pulumi_sample/sdk.dart';

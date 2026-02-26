@@ -42,12 +42,12 @@ class SampleConfig {
   const SampleConfig();
 
   String? _raw(String key) {
-    final deployment = DeploymentImpl.instance as DeploymentImpl;
+    final deployment = Deployment.instance;
     return deployment.getConfig(key);
   }
 
   bool _isSecret(String key) {
-    final deployment = DeploymentImpl.instance as DeploymentImpl;
+    final deployment = Deployment.instance;
     return deployment.isConfigSecret(key);
   }
 
@@ -109,7 +109,6 @@ final config = SampleConfig();
 
 // FILE: index/get_widget_details.dart
 import 'package:pulumi/pulumi.dart';
-import '../internal/pulumi_helpers.dart' as pulumi_helpers;
 import 'get_widget_details_args.dart';
 import 'get_widget_details_result.dart';
 
@@ -117,11 +116,11 @@ Future<GetWidgetDetailsResult> getWidgetDetails(
   GetWidgetDetailsArgs args, {
   InvokeOptions? options,
 }) async {
-  final deployment = DeploymentImpl.instance as DeploymentImpl;
+  final deployment = Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'sample:index:getWidgetDetails',
     args.toMap(),
-    options: pulumi_helpers.toDeploymentInvokeOptions(options),
+    options: toDeploymentInvokeOptions(options),
   );
   return GetWidgetDetailsResult.fromMap(result);
 }
@@ -130,7 +129,6 @@ Future<GetWidgetDetailsResult> getWidgetDetails(
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart';
-import '../internal/object_helpers.dart' as object_helpers;
 
 /// Arguments for getWidgetDetails.
 class GetWidgetDetailsArgs {
@@ -148,7 +146,7 @@ class GetWidgetDetailsArgs {
 
   factory GetWidgetDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetWidgetDetailsArgs(
-      id: object_helpers.asInput<String>(map['id']),
+      id: Input.asInput<String>(map['id']),
     );
   }
 }
@@ -188,7 +186,6 @@ class GetWidgetDetailsResult {
 
 // FILE: index/widget.dart
 import 'package:pulumi/pulumi.dart';
-import '../internal/pulumi_helpers.dart' as pulumi_helpers;
 import 'widget_args.dart';
 import 'widget_mode.dart';
 
@@ -203,11 +200,11 @@ class Widget extends CustomResource {
   }) : super(
           'sample:index:Widget',
           name,
-          pulumi_helpers.mapToInputs(args?.toMap() ?? const {}),
+          Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = pulumi_helpers.unknownOutput<String>();
-    this.mode = pulumi_helpers.unknownOutput<WidgetMode>();
+    this.arn = Output.createUnknown<String>();
+    this.mode = Output.createUnknown<WidgetMode>();
   }
 }
 
@@ -215,7 +212,6 @@ class Widget extends CustomResource {
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart';
-import '../internal/object_helpers.dart' as object_helpers;
 import 'widget_metadata.dart';
 import 'widget_mode.dart';
 
@@ -233,16 +229,16 @@ class WidgetArgs {
     final map = <String, dynamic>{};
     final metadataValue = metadata;
     if (metadataValue != null) {
-      map['metadata'] = object_helpers.mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadataValue, (value) => value.toMap());
+      map['metadata'] = Input.mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadataValue, (value) => value.toMap());
     }
-    map['mode'] = object_helpers.mapInputValue<WidgetMode, String>(mode, (value) => value.value);
+    map['mode'] = Input.mapInputValue<WidgetMode, String>(mode, (value) => value.value);
     return map;
   }
 
   factory WidgetArgs.fromMap(Map<String, dynamic> map) {
     return WidgetArgs(
-      metadata: object_helpers.asOptionalInput<WidgetMetadata>(map['metadata']),
-      mode: object_helpers.asInput<WidgetMode>(map['mode']),
+      metadata: Input.asOptionalInput<WidgetMetadata>(map['metadata']),
+      mode: Input.asInput<WidgetMode>(map['mode']),
     );
   }
 }
@@ -297,90 +293,8 @@ enum WidgetMode {
 }
 
 
-// FILE: internal/object_helpers.dart
-import 'package:pulumi/pulumi.dart';
-
-Input<T> asInput<T>(dynamic value) {
-  if (value is Input<T>) {
-    return value;
-  }
-  return Input.fromValue(value as T);
-}
-
-Input<T>? asOptionalInput<T>(dynamic value) {
-  if (value == null) {
-    return null;
-  }
-  if (value is Input<T>) {
-    return value;
-  }
-  return Input.fromValue(value as T);
-}
-
-Input<U> mapInputValue<T, U>(Input<T> input, U Function(T value) mapper) {
-  return Input.fromOutput(input.toOutput().apply((value) => mapper(value)));
-}
-
-Input<U>? mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapper) {
-  if (input == null) {
-    return null;
-  }
-  return mapInputValue<T, U>(input, mapper);
-}
-
-List<T> decodeList<T>(dynamic value, T Function(dynamic value) decoder) {
-  return (value as List).map((item) => decoder(item)).toList(growable: false);
-}
-
-Map<String, T> decodeMapValues<T>(dynamic value, T Function(dynamic value) decoder) {
-  final map = (value as Map).cast<String, dynamic>();
-  return map.map((key, item) => MapEntry(key, decoder(item)));
-}
-
-List<U> encodeList<T, U>(List<T> value, U Function(T value) encoder) {
-  return value.map((item) => encoder(item)).toList(growable: false);
-}
-
-Map<String, U> encodeMapValues<T, U>(Map<String, T> value, U Function(T value) encoder) {
-  return value.map((key, item) => MapEntry(key, encoder(item)));
-}
-
-// FILE: internal/pulumi_helpers.dart
-import 'package:pulumi/pulumi.dart';
-import 'package:pulumi/src/deployment/models.dart' as deployment_models;
-
-Inputs mapToInputs(Map<String, dynamic> args) {
-  final mapped = <String, Input<dynamic>>{};
-  for (final entry in args.entries) {
-    final value = entry.value;
-    if (value is Input<dynamic>) {
-      mapped[entry.key] = value;
-    } else {
-      mapped[entry.key] = Input.fromValue(value);
-    }
-  }
-  return mapped;
-}
-
-Output<T> unknownOutput<T>() {
-  return Output.createUnknown<T>();
-}
-
-deployment_models.InvokeOptions? toDeploymentInvokeOptions(InvokeOptions? options) {
-  if (options == null) {
-    return null;
-  }
-
-  return deployment_models.InvokeOptions(
-    parent: options.parent,
-    provider: options.provider,
-    version: options.version,
-    pluginDownloadURL: options.pluginDownloadURL,
-  );
-}
-
 // FILE: sdk.dart
-library sample_sdk;
+library pulumi_sample_sdk;
 
 export 'index/get_widget_details_args.dart';
 export 'index/get_widget_details_result.dart';
