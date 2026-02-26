@@ -56,14 +56,14 @@ This is the recommended local testing path and avoids publishing to pub.dev.
 
 ## Namespaced Module Imports
 
-Generated SDKs now emit module entrypoints in `lib/<module path>.dart` that map to
-`lib/src/<package>/<module path>/index.dart`.
+Generated SDKs emit root module entrypoints in `lib/<module>.dart` that map to
+`lib/src/<package>/<module>/index.dart`.
 
 Examples:
 
 ```dart
 import 'package:pulumi_aws/ec2.dart' as ec2;
-import 'package:pulumi_aws/medialive/input.dart' as medialive_input;
+import 'package:pulumi_aws/medialive.dart' as medialive;
 ```
 
 This allows using module aliases in user code and avoids relying only on the flat
