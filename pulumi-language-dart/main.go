@@ -1355,6 +1355,7 @@ type packageFunctionSpec struct {
 
 type packageObjectClassSpec struct {
 	ClassName      string
+	ModulePath     string
 	Comment        string
 	UsesInputTypes bool
 	Properties     []packagePropertySpec
@@ -1382,6 +1383,7 @@ type packageTypeSpec struct {
 
 type packageEnumSpec struct {
 	EnumName       string
+	ModulePath     string
 	Comment        string
 	UnderlyingType string
 	Values         []packageEnumValueSpec
@@ -1636,6 +1638,7 @@ func dartTypeSpecFromRawPropertyType(
 
 func makeRawObjectClassSpec(
 	baseName string,
+	modulePath string,
 	classComment string,
 	properties map[string]rawPropertyTypeSpec,
 	required []string,
@@ -1651,6 +1654,7 @@ func makeRawObjectClassSpec(
 	className := uniqueClassName(toDartClassName(baseName), usedClassNames)
 	return buildRawObjectClassSpec(
 		className,
+		modulePath,
 		classComment,
 		properties,
 		required,
@@ -1662,6 +1666,7 @@ func makeRawObjectClassSpec(
 
 func buildRawObjectClassSpec(
 	className string,
+	modulePath string,
 	classComment string,
 	properties map[string]rawPropertyTypeSpec,
 	required []string,
@@ -1706,6 +1711,7 @@ func buildRawObjectClassSpec(
 
 	return &packageObjectClassSpec{
 		ClassName:      className,
+		ModulePath:     modulePath,
 		Comment:        strings.TrimSpace(classComment),
 		UsesInputTypes: usesInputTypes,
 		Properties:     fields,
@@ -1714,6 +1720,7 @@ func buildRawObjectClassSpec(
 
 func makeRawEnumSpec(
 	typeName string,
+	modulePath string,
 	rawType rawTypeSpec,
 ) *packageEnumSpec {
 	if len(rawType.Enum) == 0 {
@@ -1740,6 +1747,7 @@ func makeRawEnumSpec(
 
 	return &packageEnumSpec{
 		EnumName:       typeName,
+		ModulePath:     modulePath,
 		Comment:        strings.TrimSpace(rawType.Description),
 		UnderlyingType: underlyingType,
 		Values:         values,
@@ -1885,7 +1893,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 
 		switch namedType.Kind {
 		case "enum":
-			if enumSpec := makeRawEnumSpec(namedType.Name, typeSpec); enumSpec != nil {
+			if enumSpec := makeRawEnumSpec(namedType.Name, tokenModulePath(token), typeSpec); enumSpec != nil {
 				spec.Enums = append(spec.Enums, *enumSpec)
 			}
 		case "object":
@@ -1894,6 +1902,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 			}
 			if classSpec := buildRawObjectClassSpec(
 				namedType.Name,
+				tokenModulePath(token),
 				typeSpec.Description,
 				typeSpec.Properties,
 				typeSpec.Required,
@@ -1910,6 +1919,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 		configClassName := uniqueClassName(toDartClassName(rawSpec.Name)+"Config", usedClassNames)
 		if configClass := buildRawObjectClassSpec(
 			configClassName,
+			"config",
 			rawSpec.Config.Description,
 			rawSpec.Config.Variables,
 			rawSpec.Config.Required,
@@ -1939,6 +1949,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 		}
 		if classSpec := makeRawObjectClassSpec(
 			toDartClassName(tokenElementName(token))+"Args",
+			tokenModulePath(token),
 			fmt.Sprintf("The set of arguments for %s.", toDartClassName(tokenElementName(token))),
 			resource.InputProperties,
 			resource.RequiredInputs,
@@ -1982,6 +1993,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 		base := toDartClassName(tokenElementName(token))
 		if classSpec := makeRawObjectClassSpec(
 			base+"Args",
+			tokenModulePath(token),
 			fmt.Sprintf("Arguments for %s.", functionNameFromToken(token, map[string]int{})),
 			inputProperties,
 			inputRequired,
@@ -1995,6 +2007,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 		}
 		if classSpec := makeRawObjectClassSpec(
 			base+"Result",
+			tokenModulePath(token),
 			fmt.Sprintf("Result data returned by %s.", functionNameFromToken(token, map[string]int{})),
 			outputProperties,
 			outputRequired,
@@ -2215,6 +2228,7 @@ resolved:
 
 func makeObjectClassSpec(
 	baseName string,
+	modulePath string,
 	classComment string,
 	properties []*schema.Property,
 	usedClassNames map[string]int,
@@ -2229,6 +2243,7 @@ func makeObjectClassSpec(
 	className := uniqueClassName(toDartClassName(baseName), usedClassNames)
 	return buildObjectClassSpec(
 		className,
+		modulePath,
 		classComment,
 		properties,
 		namedTypeRefs,
@@ -2239,6 +2254,7 @@ func makeObjectClassSpec(
 
 func buildObjectClassSpec(
 	className string,
+	modulePath string,
 	classComment string,
 	properties []*schema.Property,
 	namedTypeRefs map[string]packageNamedTypeRef,
@@ -2279,6 +2295,7 @@ func buildObjectClassSpec(
 
 	return &packageObjectClassSpec{
 		ClassName:      className,
+		ModulePath:     modulePath,
 		Comment:        strings.TrimSpace(classComment),
 		UsesInputTypes: usesInputTypes,
 		Properties:     fields,
@@ -2340,7 +2357,7 @@ func makeResourceOutputPropertySpecs(
 	return fields
 }
 
-func makeSchemaEnumSpec(typeName string, enumType *schema.EnumType) *packageEnumSpec {
+func makeSchemaEnumSpec(typeName string, modulePath string, enumType *schema.EnumType) *packageEnumSpec {
 	if enumType == nil || len(enumType.Elements) == 0 {
 		return nil
 	}
@@ -2364,6 +2381,7 @@ func makeSchemaEnumSpec(typeName string, enumType *schema.EnumType) *packageEnum
 
 	return &packageEnumSpec{
 		EnumName:       typeName,
+		ModulePath:     modulePath,
 		Comment:        strings.TrimSpace(enumType.Comment),
 		UnderlyingType: underlyingType,
 		Values:         values,
@@ -2478,7 +2496,7 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 
 		switch t := typ.(type) {
 		case *schema.EnumType:
-			if enumSpec := makeSchemaEnumSpec(namedType.Name, t); enumSpec != nil {
+			if enumSpec := makeSchemaEnumSpec(namedType.Name, tokenModulePath(token), t); enumSpec != nil {
 				spec.Enums = append(spec.Enums, *enumSpec)
 			}
 		case *schema.ObjectType:
@@ -2487,6 +2505,7 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 			}
 			if classSpec := buildObjectClassSpec(
 				namedType.Name,
+				tokenModulePath(token),
 				t.Comment,
 				t.Properties,
 				namedTypeRefs,
@@ -2502,6 +2521,7 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 		configClassName := uniqueClassName(toDartClassName(pkg.Name)+"Config", usedClassNames)
 		if configClass := buildObjectClassSpec(
 			configClassName,
+			"config",
 			fmt.Sprintf("Configuration values for the %s package.", pkg.Name),
 			pkg.Config,
 			namedTypeRefs,
@@ -2532,6 +2552,7 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 		}
 		if classSpec := makeObjectClassSpec(
 			toDartClassName(tokenElementName(resource.Token))+"Args",
+			tokenModulePath(resource.Token),
 			fmt.Sprintf("The set of arguments for %s.", toDartClassName(tokenElementName(resource.Token))),
 			resource.InputProperties,
 			usedClassNames,
@@ -2572,6 +2593,7 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 		base := toDartClassName(tokenElementName(function.Token))
 		if classSpec := makeObjectClassSpec(
 			base+"Args",
+			tokenModulePath(function.Token),
 			fmt.Sprintf("Arguments for %s.", functionNameFromToken(function.Token, map[string]int{})),
 			inputProperties,
 			usedClassNames,
@@ -2584,6 +2606,7 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 		}
 		if classSpec := makeObjectClassSpec(
 			base+"Result",
+			tokenModulePath(function.Token),
 			fmt.Sprintf("Result data returned by %s.", functionNameFromToken(function.Token, map[string]int{})),
 			outputProperties,
 			usedClassNames,
@@ -2685,6 +2708,23 @@ func tokenElementName(token string) string {
 		name = name[idx+1:]
 	}
 	return name
+}
+
+func tokenModulePath(token string) string {
+	first := strings.Index(token, ":")
+	if first < 0 || first+1 >= len(token) {
+		return "index"
+	}
+	rest := token[first+1:]
+	last := strings.LastIndex(rest, ":")
+	if last < 0 {
+		return "index"
+	}
+	module := strings.TrimSpace(rest[:last])
+	if module == "" {
+		return "index"
+	}
+	return module
 }
 
 func resourceClassNameFromToken(token string, used map[string]int) string {
@@ -2836,7 +2876,7 @@ func typeSpecDecodeExpression(typeSpec packageTypeSpec, sourceExpr string) strin
 		element := typeSpecElement(typeSpec)
 		if typeSpecNeedsDecodeConversion(element) {
 			return fmt.Sprintf(
-				"_decodeList<%s>(%s, (value) => %s)",
+				"object_helpers.decodeList<%s>(%s, (value) => %s)",
 				element.DartType,
 				sourceExpr,
 				typeSpecDecodeExpression(element, "value"),
@@ -2847,7 +2887,7 @@ func typeSpecDecodeExpression(typeSpec packageTypeSpec, sourceExpr string) strin
 		element := typeSpecElement(typeSpec)
 		if typeSpecNeedsDecodeConversion(element) {
 			return fmt.Sprintf(
-				"_decodeMapValues<%s>(%s, (value) => %s)",
+				"object_helpers.decodeMapValues<%s>(%s, (value) => %s)",
 				element.DartType,
 				sourceExpr,
 				typeSpecDecodeExpression(element, "value"),
@@ -2878,7 +2918,7 @@ func typeSpecEncodeExpression(typeSpec packageTypeSpec, sourceExpr string) strin
 		element := typeSpecElement(typeSpec)
 		if typeSpecNeedsEncodeConversion(element) {
 			return fmt.Sprintf(
-				"_encodeList<%s, %s>(%s, (value) => %s)",
+				"object_helpers.encodeList<%s, %s>(%s, (value) => %s)",
 				element.DartType,
 				typeSpecWireDartType(element),
 				sourceExpr,
@@ -2890,7 +2930,7 @@ func typeSpecEncodeExpression(typeSpec packageTypeSpec, sourceExpr string) strin
 		element := typeSpecElement(typeSpec)
 		if typeSpecNeedsEncodeConversion(element) {
 			return fmt.Sprintf(
-				"_encodeMapValues<%s, %s>(%s, (value) => %s)",
+				"object_helpers.encodeMapValues<%s, %s>(%s, (value) => %s)",
 				element.DartType,
 				typeSpecWireDartType(element),
 				sourceExpr,
@@ -2959,9 +2999,9 @@ func objectClassFromMapExpression(objectClass packageObjectClassSpec, property p
 	base := propertyBaseDartType(property)
 	if objectClass.UsesInputTypes {
 		if property.Required {
-			return fmt.Sprintf("_asInput<%s>(map['%s'])", base, property.Name)
+			return fmt.Sprintf("object_helpers.asInput<%s>(map['%s'])", base, property.Name)
 		}
-		return fmt.Sprintf("_asOptionalInput<%s>(map['%s'])", base, property.Name)
+		return fmt.Sprintf("object_helpers.asOptionalInput<%s>(map['%s'])", base, property.Name)
 	}
 
 	sourceExpr := fmt.Sprintf("map['%s']", property.Name)
@@ -2979,7 +3019,7 @@ func objectClassToMapExpressionFromSource(objectClass packageObjectClassSpec, pr
 		if typeSpecNeedsEncodeConversion(typeSpec) {
 			if property.Required {
 				return fmt.Sprintf(
-					"_mapInputValue<%s, %s>(%s, (value) => %s)",
+					"object_helpers.mapInputValue<%s, %s>(%s, (value) => %s)",
 					typeSpec.DartType,
 					typeSpecWireDartType(typeSpec),
 					sourceExpr,
@@ -2987,7 +3027,7 @@ func objectClassToMapExpressionFromSource(objectClass packageObjectClassSpec, pr
 				)
 			}
 			return fmt.Sprintf(
-				"_mapOptionalInputValue<%s, %s>(%s, (value) => %s)",
+				"object_helpers.mapOptionalInputValue<%s, %s>(%s, (value) => %s)",
 				typeSpec.DartType,
 				typeSpecWireDartType(typeSpec),
 				sourceExpr,
@@ -3763,13 +3803,161 @@ func referencedTypesFromProperties(properties []packagePropertySpec) []string {
 	return names
 }
 
+func objectClassNeedsObjectHelpers(objectClass packageObjectClassSpec) bool {
+	if objectClass.UsesInputTypes {
+		return true
+	}
+	for _, property := range objectClass.Properties {
+		typeSpec := propertyTypeSpec(property)
+		if typeSpecNeedsDecodeListHelper(typeSpec) || typeSpecNeedsDecodeMapHelper(typeSpec) {
+			return true
+		}
+		if typeSpecNeedsEncodeListHelper(typeSpec) || typeSpecNeedsEncodeMapHelper(typeSpec) {
+			return true
+		}
+	}
+	return false
+}
+
+func configNeedsObjectHelpers(configSpec packageConfigSpec) bool {
+	for _, property := range configSpec.Properties {
+		typeSpec := propertyTypeSpec(property)
+		if typeSpecNeedsDecodeListHelper(typeSpec) || typeSpecNeedsDecodeMapHelper(typeSpec) {
+			return true
+		}
+	}
+	return false
+}
+
+func moduleClassFilePath(modulePath, className string) string {
+	fileName := toSnakeCaseIdentifier(className) + ".dart"
+	if strings.TrimSpace(modulePath) == "" {
+		return fileName
+	}
+	return filepath.ToSlash(filepath.Join(filepath.FromSlash(modulePath), fileName))
+}
+
+func uniqueGeneratedFilePath(filePath string, used map[string]int) string {
+	count := used[filePath]
+	used[filePath] = count + 1
+	if count == 0 {
+		return filePath
+	}
+	ext := filepath.Ext(filePath)
+	base := strings.TrimSuffix(filePath, ext)
+	return fmt.Sprintf("%s_%d%s", base, count+1, ext)
+}
+
+func relativeDartImportPath(fromFilePath, toFilePath string) string {
+	fromDir := filepath.Dir(filepath.FromSlash(fromFilePath))
+	toPath := filepath.FromSlash(toFilePath)
+	rel, err := filepath.Rel(fromDir, toPath)
+	if err != nil {
+		return filepath.ToSlash(toFilePath)
+	}
+	return filepath.ToSlash(rel)
+}
+
+func generatedObjectHelpersFile() []byte {
+	return []byte(`import 'package:pulumi/pulumi.dart';
+
+Input<T> asInput<T>(dynamic value) {
+  if (value is Input<T>) {
+    return value;
+  }
+  return Input.fromValue(value as T);
+}
+
+Input<T>? asOptionalInput<T>(dynamic value) {
+  if (value == null) {
+    return null;
+  }
+  if (value is Input<T>) {
+    return value;
+  }
+  return Input.fromValue(value as T);
+}
+
+Input<U> mapInputValue<T, U>(Input<T> input, U Function(T value) mapper) {
+  return Input.fromOutput(input.toOutput().apply((value) => mapper(value)));
+}
+
+Input<U>? mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapper) {
+  if (input == null) {
+    return null;
+  }
+  return mapInputValue<T, U>(input, mapper);
+}
+
+List<T> decodeList<T>(dynamic value, T Function(dynamic value) decoder) {
+  return (value as List).map((item) => decoder(item)).toList(growable: false);
+}
+
+Map<String, T> decodeMapValues<T>(dynamic value, T Function(dynamic value) decoder) {
+  final map = (value as Map).cast<String, dynamic>();
+  return map.map((key, item) => MapEntry(key, decoder(item)));
+}
+
+List<U> encodeList<T, U>(List<T> value, U Function(T value) encoder) {
+  return value.map((item) => encoder(item)).toList(growable: false);
+}
+
+Map<String, U> encodeMapValues<T, U>(Map<String, T> value, U Function(T value) encoder) {
+  return value.map((key, item) => MapEntry(key, encoder(item)));
+}
+`)
+}
+
+func generatedPulumiHelpersFile() []byte {
+	return []byte(`import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/src/deployment/models.dart' as deployment_models;
+
+Inputs mapToInputs(Map<String, dynamic> args) {
+  final mapped = <String, Input<dynamic>>{};
+  for (final entry in args.entries) {
+    final value = entry.value;
+    if (value is Input<dynamic>) {
+      mapped[entry.key] = value;
+    } else {
+      mapped[entry.key] = Input.fromValue(value);
+    }
+  }
+  return mapped;
+}
+
+Output<T> unknownOutput<T>() {
+  return Output.createUnknown<T>();
+}
+
+deployment_models.InvokeOptions? toDeploymentInvokeOptions(InvokeOptions? options) {
+  if (options == null) {
+    return null;
+  }
+
+  return deployment_models.InvokeOptions(
+    parent: options.parent,
+    provider: options.provider,
+    version: options.version,
+    pluginDownloadURL: options.pluginDownloadURL,
+  );
+}
+`)
+}
+
 func generatedObjectClassFile(
 	objectClass packageObjectClassSpec,
+	filePath string,
 	typeFiles map[string]string,
+	helpersFilePath string,
 ) []byte {
 	var b strings.Builder
 	b.WriteString("// ignore_for_file: unused_element, unnecessary_cast\n\n")
-	b.WriteString("import 'package:pulumi/pulumi.dart';\n")
+	if objectClass.UsesInputTypes {
+		b.WriteString("import 'package:pulumi/pulumi.dart';\n")
+	}
+	if objectClassNeedsObjectHelpers(objectClass) {
+		fmt.Fprintf(&b, "import '%s' as object_helpers;\n", relativeDartImportPath(filePath, helpersFilePath))
+	}
 
 	imports := map[string]struct{}{}
 	for _, ref := range referencedTypesFromProperties(objectClass.Properties) {
@@ -3777,7 +3965,7 @@ func generatedObjectClassFile(
 			continue
 		}
 		if path, ok := typeFiles[ref]; ok {
-			imports[path] = struct{}{}
+			imports[relativeDartImportPath(filePath, path)] = struct{}{}
 		}
 	}
 	importPaths := make([]string, 0, len(imports))
@@ -3789,53 +3977,6 @@ func generatedObjectClassFile(
 		fmt.Fprintf(&b, "import '%s';\n", path)
 	}
 	b.WriteString("\n")
-
-	b.WriteString(`Input<T> _asInput<T>(dynamic value) {
-  if (value is Input<T>) {
-    return value;
-  }
-  return Input.fromValue(value as T);
-}
-
-Input<T>? _asOptionalInput<T>(dynamic value) {
-  if (value == null) {
-    return null;
-  }
-  if (value is Input<T>) {
-    return value;
-  }
-  return Input.fromValue(value as T);
-}
-
-Input<U> _mapInputValue<T, U>(Input<T> input, U Function(T value) mapper) {
-  return Input.fromOutput(input.toOutput().apply((value) => mapper(value as T)));
-}
-
-Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapper) {
-  if (input == null) {
-    return null;
-  }
-  return _mapInputValue<T, U>(input, mapper);
-}
-
-List<T> _decodeList<T>(dynamic value, T Function(dynamic value) decoder) {
-  return (value as List).map((item) => decoder(item)).toList(growable: false);
-}
-
-Map<String, T> _decodeMapValues<T>(dynamic value, T Function(dynamic value) decoder) {
-  final map = (value as Map).cast<String, dynamic>();
-  return map.map((key, item) => MapEntry(key, decoder(item)));
-}
-
-List<U> _encodeList<T, U>(List<T> value, U Function(T value) encoder) {
-  return value.map((item) => encoder(item)).toList(growable: false);
-}
-
-Map<String, U> _encodeMapValues<T, U>(Map<String, T> value, U Function(T value) encoder) {
-  return value.map((key, item) => MapEntry(key, encoder(item)));
-}
-
-`)
 
 	writeGeneratedObjectClass(&b, objectClass)
 	return []byte(b.String())
@@ -3851,21 +3992,28 @@ func generatedResourceFile(
 	token string,
 	resource packageResourceSpec,
 	className string,
+	filePath string,
 	hasPackageRegistration bool,
 	typeFiles map[string]string,
+	pulumiHelpersFilePath string,
+	registrationFilePath string,
 ) []byte {
 	var b strings.Builder
 	b.WriteString("import 'package:pulumi/pulumi.dart';\n")
+	needsPulumiHelpers := !resource.IsComponent || resource.ArgsClass != "" || len(resource.OutputProperties) > 0
+	if needsPulumiHelpers {
+		fmt.Fprintf(&b, "import '%s' as pulumi_helpers;\n", relativeDartImportPath(filePath, pulumiHelpersFilePath))
+	}
 
 	imports := map[string]struct{}{}
 	if resource.ArgsClass != "" {
 		if path, ok := typeFiles[resource.ArgsClass]; ok {
-			imports[path] = struct{}{}
+			imports[relativeDartImportPath(filePath, path)] = struct{}{}
 		}
 	}
 	for _, ref := range referencedTypesFromProperties(resource.OutputProperties) {
 		if path, ok := typeFiles[ref]; ok {
-			imports[path] = struct{}{}
+			imports[relativeDartImportPath(filePath, path)] = struct{}{}
 		}
 	}
 	importPaths := make([]string, 0, len(imports))
@@ -3874,31 +4022,12 @@ func generatedResourceFile(
 	}
 	sort.Strings(importPaths)
 	for _, path := range importPaths {
-		fmt.Fprintf(&b, "import '../types/%s';\n", path)
+		fmt.Fprintf(&b, "import '%s';\n", path)
 	}
 	if hasPackageRegistration && !resource.IsComponent {
-		b.WriteString("import '../internal/package_registration.dart' as package_registration;\n")
+		fmt.Fprintf(&b, "import '%s' as package_registration;\n", relativeDartImportPath(filePath, registrationFilePath))
 	}
 	b.WriteString("\n")
-
-	b.WriteString(`Inputs _mapToInputs(Map<String, dynamic> args) {
-  final mapped = <String, Input<dynamic>>{};
-  for (final entry in args.entries) {
-    final value = entry.value;
-    if (value is Input<dynamic>) {
-      mapped[entry.key] = value;
-    } else {
-      mapped[entry.key] = Input.fromValue(value);
-    }
-  }
-  return mapped;
-}
-
-Output<T> _unknownOutput<T>() {
-  return Output.createUnknown<T>();
-}
-
-`)
 
 	writeDartDocComment(&b, "", resource.Comment)
 	if resource.IsComponent {
@@ -3918,7 +4047,7 @@ Output<T> _unknownOutput<T>() {
 
 		signature := "  %s(\n    String name, {\n    ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          null,\n          options ?? ComponentResourceOptions(),\n        )"
 		if resource.ArgsClass != "" {
-			signature = "  %s(\n    String name, {\n    %s? args,\n    ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? ComponentResourceOptions(),\n        )"
+			signature = "  %s(\n    String name, {\n    %s? args,\n    ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          pulumi_helpers.mapToInputs(args?.toMap() ?? const {}),\n          options ?? ComponentResourceOptions(),\n        )"
 			fmt.Fprintf(&b, signature, className, resource.ArgsClass, token)
 		} else {
 			fmt.Fprintf(&b, signature, className, token)
@@ -3931,7 +4060,7 @@ Output<T> _unknownOutput<T>() {
 			for _, property := range resource.OutputProperties {
 				fmt.Fprintf(
 					&b,
-					"    this.%s = _unknownOutput<%s>();\n",
+					"    this.%s = pulumi_helpers.unknownOutput<%s>();\n",
 					property.FieldName,
 					resourceOutputValueType(property),
 				)
@@ -3963,7 +4092,7 @@ Output<T> _unknownOutput<T>() {
 	if resource.ArgsClass != "" {
 		fmt.Fprintf(
 			&b,
-			"  %s(\n    String name, {\n    %s? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? CustomResourceOptions()%s,\n        )",
+			"  %s(\n    String name, {\n    %s? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          pulumi_helpers.mapToInputs(args?.toMap() ?? const {}),\n          options ?? CustomResourceOptions()%s,\n        )",
 			className,
 			resource.ArgsClass,
 			token,
@@ -3972,7 +4101,7 @@ Output<T> _unknownOutput<T>() {
 	} else {
 		fmt.Fprintf(
 			&b,
-			"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args ?? const {}),\n          options ?? CustomResourceOptions()%s,\n        )",
+			"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          pulumi_helpers.mapToInputs(args ?? const {}),\n          options ?? CustomResourceOptions()%s,\n        )",
 			className,
 			token,
 			resourceRegisterPackageArg,
@@ -3986,7 +4115,7 @@ Output<T> _unknownOutput<T>() {
 	for _, property := range resource.OutputProperties {
 		fmt.Fprintf(
 			&b,
-			"    this.%s = _unknownOutput<%s>();\n",
+			"    this.%s = pulumi_helpers.unknownOutput<%s>();\n",
 			property.FieldName,
 			resourceOutputValueType(property),
 		)
@@ -3999,22 +4128,25 @@ func generatedFunctionFile(
 	token string,
 	function packageFunctionSpec,
 	funcName string,
+	filePath string,
 	hasPackageRegistration bool,
 	typeFiles map[string]string,
+	pulumiHelpersFilePath string,
+	registrationFilePath string,
 ) []byte {
 	var b strings.Builder
 	b.WriteString("import 'package:pulumi/pulumi.dart';\n")
-	b.WriteString("import 'package:pulumi/src/deployment/models.dart' as deployment_models;\n")
+	fmt.Fprintf(&b, "import '%s' as pulumi_helpers;\n", relativeDartImportPath(filePath, pulumiHelpersFilePath))
 
 	imports := map[string]struct{}{}
 	if function.ArgsClass != "" {
 		if path, ok := typeFiles[function.ArgsClass]; ok {
-			imports[path] = struct{}{}
+			imports[relativeDartImportPath(filePath, path)] = struct{}{}
 		}
 	}
 	if function.ResultClass != "" {
 		if path, ok := typeFiles[function.ResultClass]; ok {
-			imports[path] = struct{}{}
+			imports[relativeDartImportPath(filePath, path)] = struct{}{}
 		}
 	}
 	importPaths := make([]string, 0, len(imports))
@@ -4023,27 +4155,12 @@ func generatedFunctionFile(
 	}
 	sort.Strings(importPaths)
 	for _, path := range importPaths {
-		fmt.Fprintf(&b, "import '../types/%s';\n", path)
+		fmt.Fprintf(&b, "import '%s';\n", path)
 	}
 	if hasPackageRegistration {
-		b.WriteString("import '../internal/package_registration.dart' as package_registration;\n")
+		fmt.Fprintf(&b, "import '%s' as package_registration;\n", relativeDartImportPath(filePath, registrationFilePath))
 	}
 	b.WriteString("\n")
-
-	b.WriteString(`deployment_models.InvokeOptions? _toDeploymentInvokeOptions(InvokeOptions? options) {
-  if (options == null) {
-    return null;
-  }
-
-  return deployment_models.InvokeOptions(
-    parent: options.parent,
-    provider: options.provider,
-    version: options.version,
-    pluginDownloadURL: options.pluginDownloadURL,
-  );
-}
-
-`)
 
 	invokeRegisterPackageArg := ""
 	if hasPackageRegistration {
@@ -4064,7 +4181,7 @@ func generatedFunctionFile(
 	if function.ResultClass != "" {
 		fmt.Fprintf(
 			&b,
-			"Future<%s> %s(\n  %s}) async {\n  final deployment = DeploymentImpl.instance as DeploymentImpl;\n  final result = await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: _toDeploymentInvokeOptions(options)%s,\n  );\n  return %s.fromMap(result);\n}\n",
+			"Future<%s> %s(\n  %s}) async {\n  final deployment = DeploymentImpl.instance as DeploymentImpl;\n  final result = await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: pulumi_helpers.toDeploymentInvokeOptions(options)%s,\n  );\n  return %s.fromMap(result);\n}\n",
 			function.ResultClass,
 			funcName,
 			signatureArgs,
@@ -4078,7 +4195,7 @@ func generatedFunctionFile(
 
 	fmt.Fprintf(
 		&b,
-		"Future<Map<String, dynamic>> %s(\n  %s}) async {\n  final deployment = DeploymentImpl.instance as DeploymentImpl;\n  return await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: _toDeploymentInvokeOptions(options)%s,\n  );\n}\n",
+		"Future<Map<String, dynamic>> %s(\n  %s}) async {\n  final deployment = DeploymentImpl.instance as DeploymentImpl;\n  return await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: pulumi_helpers.toDeploymentInvokeOptions(options)%s,\n  );\n}\n",
 		funcName,
 		signatureArgs,
 		token,
@@ -4088,7 +4205,7 @@ func generatedFunctionFile(
 	return []byte(b.String())
 }
 
-func generatedConfigFile(spec *packageSchema, packageName string, typeFiles map[string]string) []byte {
+func generatedConfigFile(spec *packageSchema, packageName string, filePath string, typeFiles map[string]string, helpersFilePath string) []byte {
 	if spec.Config == nil {
 		return nil
 	}
@@ -4097,11 +4214,14 @@ func generatedConfigFile(spec *packageSchema, packageName string, typeFiles map[
 	b.WriteString("// ignore_for_file: unused_element, unnecessary_cast\n\n")
 	b.WriteString("import 'dart:convert';\n")
 	b.WriteString("import 'package:pulumi/pulumi.dart';\n")
+	if configNeedsObjectHelpers(*spec.Config) {
+		fmt.Fprintf(&b, "import '%s' as object_helpers;\n", relativeDartImportPath(filePath, helpersFilePath))
+	}
 
 	imports := map[string]struct{}{}
 	for _, ref := range referencedTypesFromProperties(spec.Config.Properties) {
 		if path, ok := typeFiles[ref]; ok {
-			imports[path] = struct{}{}
+			imports[relativeDartImportPath(filePath, path)] = struct{}{}
 		}
 	}
 	importPaths := make([]string, 0, len(imports))
@@ -4110,7 +4230,7 @@ func generatedConfigFile(spec *packageSchema, packageName string, typeFiles map[
 	}
 	sort.Strings(importPaths)
 	for _, path := range importPaths {
-		fmt.Fprintf(&b, "import '../types/%s';\n", path)
+		fmt.Fprintf(&b, "import '%s';\n", path)
 	}
 	b.WriteString("\n")
 
@@ -4143,15 +4263,6 @@ bool? _parseBoolConfig(String? value) {
     default:
       return null;
   }
-}
-
-List<T> _decodeList<T>(dynamic value, T Function(dynamic value) decoder) {
-  return (value as List).map((item) => decoder(item)).toList(growable: false);
-}
-
-Map<String, T> _decodeMapValues<T>(dynamic value, T Function(dynamic value) decoder) {
-  final map = (value as Map).cast<String, dynamic>();
-  return map.map((key, item) => MapEntry(key, decoder(item)));
 }
 
 `)
@@ -4198,26 +4309,39 @@ final registerPackageRequest = deployment_models.RegisterPackageRequest(
 func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName string) map[string][]byte {
 	files := map[string][]byte{}
 
+	_ = packageName
 	typeFiles := map[string]string{}
 	typeExports := make([]string, 0, len(spec.Enums)+len(spec.ObjectClasses))
+	usedPaths := map[string]int{
+		"sdk.dart": 1,
+	}
+
+	helpersFilePath := "internal/object_helpers.dart"
+	pulumiHelpersFilePath := "internal/pulumi_helpers.dart"
+	registrationFilePath := "internal/package_registration.dart"
+	files[helpersFilePath] = generatedObjectHelpersFile()
+	files[pulumiHelpersFilePath] = generatedPulumiHelpersFile()
+	usedPaths[helpersFilePath] = 1
+	usedPaths[pulumiHelpersFilePath] = 1
+
 	for _, enumSpec := range spec.Enums {
-		fileName := toSnakeCaseIdentifier(enumSpec.EnumName) + ".dart"
-		typeFiles[enumSpec.EnumName] = fileName
+		filePath := uniqueGeneratedFilePath(moduleClassFilePath(enumSpec.ModulePath, enumSpec.EnumName), usedPaths)
+		typeFiles[enumSpec.EnumName] = filePath
 	}
 	for _, objectClass := range spec.ObjectClasses {
-		fileName := toSnakeCaseIdentifier(objectClass.ClassName) + ".dart"
-		typeFiles[objectClass.ClassName] = fileName
+		filePath := uniqueGeneratedFilePath(moduleClassFilePath(objectClass.ModulePath, objectClass.ClassName), usedPaths)
+		typeFiles[objectClass.ClassName] = filePath
 	}
 
 	for _, enumSpec := range spec.Enums {
-		fileName := typeFiles[enumSpec.EnumName]
-		typeExports = append(typeExports, "types/"+fileName)
-		files["types/"+fileName] = generatedEnumFile(enumSpec)
+		filePath := typeFiles[enumSpec.EnumName]
+		typeExports = append(typeExports, filePath)
+		files[filePath] = generatedEnumFile(enumSpec)
 	}
 	for _, objectClass := range spec.ObjectClasses {
-		fileName := typeFiles[objectClass.ClassName]
-		typeExports = append(typeExports, "types/"+fileName)
-		files["types/"+fileName] = generatedObjectClassFile(objectClass, typeFiles)
+		filePath := typeFiles[objectClass.ClassName]
+		typeExports = append(typeExports, filePath)
+		files[filePath] = generatedObjectClassFile(objectClass, filePath, typeFiles, helpersFilePath)
 	}
 
 	sort.Strings(typeExports)
@@ -4240,14 +4364,17 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 	resourceExports := make([]string, 0, len(resourceTokens))
 	for _, token := range resourceTokens {
 		className := resourceClassNameFromToken(token, usedClassNames)
-		fileName := toSnakeCaseIdentifier(className) + ".dart"
-		resourceExports = append(resourceExports, "resources/"+fileName)
-		files["resources/"+fileName] = generatedResourceFile(
+		filePath := uniqueGeneratedFilePath(moduleClassFilePath(tokenModulePath(token), className), usedPaths)
+		resourceExports = append(resourceExports, filePath)
+		files[filePath] = generatedResourceFile(
 			token,
 			spec.Resources[token],
 			className,
+			filePath,
 			spec.Parameterization != nil,
 			typeFiles,
+			pulumiHelpersFilePath,
+			registrationFilePath,
 		)
 	}
 
@@ -4261,22 +4388,27 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 	functionExports := make([]string, 0, len(functionTokens))
 	for _, token := range functionTokens {
 		funcName := functionNameFromToken(token, usedFunctionNames)
-		fileName := toSnakeCaseIdentifier(funcName) + ".dart"
-		functionExports = append(functionExports, "functions/"+fileName)
-		files["functions/"+fileName] = generatedFunctionFile(
+		filePath := uniqueGeneratedFilePath(moduleClassFilePath(tokenModulePath(token), funcName), usedPaths)
+		functionExports = append(functionExports, filePath)
+		files[filePath] = generatedFunctionFile(
 			token,
 			spec.Functions[token],
 			funcName,
+			filePath,
 			spec.Parameterization != nil,
 			typeFiles,
+			pulumiHelpersFilePath,
+			registrationFilePath,
 		)
 	}
 
-	if configFile := generatedConfigFile(spec, packageName, typeFiles); configFile != nil {
+	if configFile := generatedConfigFile(spec, packageName, "config/config.dart", typeFiles, helpersFilePath); configFile != nil {
 		files["config/config.dart"] = configFile
+		usedPaths["config/config.dart"] = 1
 	}
 	if registrationFile := generatedPackageRegistrationFile(spec.Parameterization); registrationFile != nil {
-		files["internal/package_registration.dart"] = registrationFile
+		files[registrationFilePath] = registrationFile
+		usedPaths[registrationFilePath] = 1
 	}
 
 	var sdk strings.Builder
@@ -4287,9 +4419,11 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 	if spec.Config != nil {
 		sdk.WriteString("export 'config/config.dart';\n")
 	}
+	sort.Strings(resourceExports)
 	for _, exportPath := range resourceExports {
 		fmt.Fprintf(&sdk, "export '%s';\n", exportPath)
 	}
+	sort.Strings(functionExports)
 	for _, exportPath := range functionExports {
 		fmt.Fprintf(&sdk, "export '%s';\n", exportPath)
 	}

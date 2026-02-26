@@ -3,8 +3,8 @@
 
 import 'dart:convert';
 import 'package:pulumi/pulumi.dart';
-import '../types/widget_metadata.dart';
-import '../types/widget_mode.dart';
+import '../index/widget_metadata.dart';
+import '../index/widget_mode.dart';
 
 int? _parseIntConfig(String? value) {
   if (value == null) {
@@ -35,15 +35,6 @@ bool? _parseBoolConfig(String? value) {
     default:
       return null;
   }
-}
-
-List<T> _decodeList<T>(dynamic value, T Function(dynamic value) decoder) {
-  return (value as List).map((item) => decoder(item)).toList(growable: false);
-}
-
-Map<String, T> _decodeMapValues<T>(dynamic value, T Function(dynamic value) decoder) {
-  final map = (value as Map).cast<String, dynamic>();
-  return map.map((key, item) => MapEntry(key, decoder(item)));
 }
 
 /// Configuration values for the sample package.
@@ -116,24 +107,11 @@ class SampleConfig {
 final config = SampleConfig();
 
 
-// FILE: functions/get_widget_details.dart
+// FILE: index/get_widget_details.dart
 import 'package:pulumi/pulumi.dart';
-import 'package:pulumi/src/deployment/models.dart' as deployment_models;
-import '../types/get_widget_details_args.dart';
-import '../types/get_widget_details_result.dart';
-
-deployment_models.InvokeOptions? _toDeploymentInvokeOptions(InvokeOptions? options) {
-  if (options == null) {
-    return null;
-  }
-
-  return deployment_models.InvokeOptions(
-    parent: options.parent,
-    provider: options.provider,
-    version: options.version,
-    pluginDownloadURL: options.pluginDownloadURL,
-  );
-}
+import '../internal/pulumi_helpers.dart' as pulumi_helpers;
+import 'get_widget_details_args.dart';
+import 'get_widget_details_result.dart';
 
 Future<GetWidgetDetailsResult> getWidgetDetails(
   GetWidgetDetailsArgs args, {
@@ -143,113 +121,16 @@ Future<GetWidgetDetailsResult> getWidgetDetails(
   final result = await deployment.invoke<Map<String, dynamic>>(
     'sample:index:getWidgetDetails',
     args.toMap(),
-    options: _toDeploymentInvokeOptions(options),
+    options: pulumi_helpers.toDeploymentInvokeOptions(options),
   );
   return GetWidgetDetailsResult.fromMap(result);
 }
 
-// FILE: resources/widget.dart
-import 'package:pulumi/pulumi.dart';
-import '../types/widget_args.dart';
-import '../types/widget_mode.dart';
-
-Inputs _mapToInputs(Map<String, dynamic> args) {
-  final mapped = <String, Input<dynamic>>{};
-  for (final entry in args.entries) {
-    final value = entry.value;
-    if (value is Input<dynamic>) {
-      mapped[entry.key] = value;
-    } else {
-      mapped[entry.key] = Input.fromValue(value);
-    }
-  }
-  return mapped;
-}
-
-Output<T> _unknownOutput<T>() {
-  return Output.createUnknown<T>();
-}
-
-class Widget extends CustomResource {
-  late final Output<String> arn;
-  late final Output<WidgetMode> mode;
-
-  Widget(
-    String name, {
-    WidgetArgs? args,
-    CustomResourceOptions? options,
-  }) : super(
-          'sample:index:Widget',
-          name,
-          _mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
-        ) {
-    this.arn = _unknownOutput<String>();
-    this.mode = _unknownOutput<WidgetMode>();
-  }
-}
-
-// FILE: sdk.dart
-library sample_sdk;
-
-export 'types/get_widget_details_args.dart';
-export 'types/get_widget_details_result.dart';
-export 'types/widget_args.dart';
-export 'types/widget_metadata.dart';
-export 'types/widget_mode.dart';
-export 'config/config.dart';
-export 'resources/widget.dart';
-export 'functions/get_widget_details.dart';
-
-// FILE: types/get_widget_details_args.dart
+// FILE: index/get_widget_details_args.dart
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart';
-
-Input<T> _asInput<T>(dynamic value) {
-  if (value is Input<T>) {
-    return value;
-  }
-  return Input.fromValue(value as T);
-}
-
-Input<T>? _asOptionalInput<T>(dynamic value) {
-  if (value == null) {
-    return null;
-  }
-  if (value is Input<T>) {
-    return value;
-  }
-  return Input.fromValue(value as T);
-}
-
-Input<U> _mapInputValue<T, U>(Input<T> input, U Function(T value) mapper) {
-  return Input.fromOutput(input.toOutput().apply((value) => mapper(value as T)));
-}
-
-Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapper) {
-  if (input == null) {
-    return null;
-  }
-  return _mapInputValue<T, U>(input, mapper);
-}
-
-List<T> _decodeList<T>(dynamic value, T Function(dynamic value) decoder) {
-  return (value as List).map((item) => decoder(item)).toList(growable: false);
-}
-
-Map<String, T> _decodeMapValues<T>(dynamic value, T Function(dynamic value) decoder) {
-  final map = (value as Map).cast<String, dynamic>();
-  return map.map((key, item) => MapEntry(key, decoder(item)));
-}
-
-List<U> _encodeList<T, U>(List<T> value, U Function(T value) encoder) {
-  return value.map((item) => encoder(item)).toList(growable: false);
-}
-
-Map<String, U> _encodeMapValues<T, U>(Map<String, T> value, U Function(T value) encoder) {
-  return value.map((key, item) => MapEntry(key, encoder(item)));
-}
+import '../internal/object_helpers.dart' as object_helpers;
 
 /// Arguments for getWidgetDetails.
 class GetWidgetDetailsArgs {
@@ -267,63 +148,17 @@ class GetWidgetDetailsArgs {
 
   factory GetWidgetDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetWidgetDetailsArgs(
-      id: _asInput<String>(map['id']),
+      id: object_helpers.asInput<String>(map['id']),
     );
   }
 }
 
 
-// FILE: types/get_widget_details_result.dart
+// FILE: index/get_widget_details_result.dart
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
 import 'widget_metadata.dart';
 import 'widget_mode.dart';
-
-Input<T> _asInput<T>(dynamic value) {
-  if (value is Input<T>) {
-    return value;
-  }
-  return Input.fromValue(value as T);
-}
-
-Input<T>? _asOptionalInput<T>(dynamic value) {
-  if (value == null) {
-    return null;
-  }
-  if (value is Input<T>) {
-    return value;
-  }
-  return Input.fromValue(value as T);
-}
-
-Input<U> _mapInputValue<T, U>(Input<T> input, U Function(T value) mapper) {
-  return Input.fromOutput(input.toOutput().apply((value) => mapper(value as T)));
-}
-
-Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapper) {
-  if (input == null) {
-    return null;
-  }
-  return _mapInputValue<T, U>(input, mapper);
-}
-
-List<T> _decodeList<T>(dynamic value, T Function(dynamic value) decoder) {
-  return (value as List).map((item) => decoder(item)).toList(growable: false);
-}
-
-Map<String, T> _decodeMapValues<T>(dynamic value, T Function(dynamic value) decoder) {
-  final map = (value as Map).cast<String, dynamic>();
-  return map.map((key, item) => MapEntry(key, decoder(item)));
-}
-
-List<U> _encodeList<T, U>(List<T> value, U Function(T value) encoder) {
-  return value.map((item) => encoder(item)).toList(growable: false);
-}
-
-Map<String, U> _encodeMapValues<T, U>(Map<String, T> value, U Function(T value) encoder) {
-  return value.map((key, item) => MapEntry(key, encoder(item)));
-}
 
 /// Result data returned by getWidgetDetails.
 class GetWidgetDetailsResult {
@@ -351,57 +186,38 @@ class GetWidgetDetailsResult {
 }
 
 
-// FILE: types/widget_args.dart
+// FILE: index/widget.dart
+import 'package:pulumi/pulumi.dart';
+import '../internal/pulumi_helpers.dart' as pulumi_helpers;
+import 'widget_args.dart';
+import 'widget_mode.dart';
+
+class Widget extends CustomResource {
+  late final Output<String> arn;
+  late final Output<WidgetMode> mode;
+
+  Widget(
+    String name, {
+    WidgetArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'sample:index:Widget',
+          name,
+          pulumi_helpers.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.arn = pulumi_helpers.unknownOutput<String>();
+    this.mode = pulumi_helpers.unknownOutput<WidgetMode>();
+  }
+}
+
+// FILE: index/widget_args.dart
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart';
+import '../internal/object_helpers.dart' as object_helpers;
 import 'widget_metadata.dart';
 import 'widget_mode.dart';
-
-Input<T> _asInput<T>(dynamic value) {
-  if (value is Input<T>) {
-    return value;
-  }
-  return Input.fromValue(value as T);
-}
-
-Input<T>? _asOptionalInput<T>(dynamic value) {
-  if (value == null) {
-    return null;
-  }
-  if (value is Input<T>) {
-    return value;
-  }
-  return Input.fromValue(value as T);
-}
-
-Input<U> _mapInputValue<T, U>(Input<T> input, U Function(T value) mapper) {
-  return Input.fromOutput(input.toOutput().apply((value) => mapper(value as T)));
-}
-
-Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapper) {
-  if (input == null) {
-    return null;
-  }
-  return _mapInputValue<T, U>(input, mapper);
-}
-
-List<T> _decodeList<T>(dynamic value, T Function(dynamic value) decoder) {
-  return (value as List).map((item) => decoder(item)).toList(growable: false);
-}
-
-Map<String, T> _decodeMapValues<T>(dynamic value, T Function(dynamic value) decoder) {
-  final map = (value as Map).cast<String, dynamic>();
-  return map.map((key, item) => MapEntry(key, decoder(item)));
-}
-
-List<U> _encodeList<T, U>(List<T> value, U Function(T value) encoder) {
-  return value.map((item) => encoder(item)).toList(growable: false);
-}
-
-Map<String, U> _encodeMapValues<T, U>(Map<String, T> value, U Function(T value) encoder) {
-  return value.map((key, item) => MapEntry(key, encoder(item)));
-}
 
 /// The set of arguments for Widget.
 class WidgetArgs {
@@ -417,71 +233,25 @@ class WidgetArgs {
     final map = <String, dynamic>{};
     final metadataValue = metadata;
     if (metadataValue != null) {
-      map['metadata'] = _mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadataValue, (value) => value.toMap());
+      map['metadata'] = object_helpers.mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadataValue, (value) => value.toMap());
     }
-    map['mode'] = _mapInputValue<WidgetMode, String>(mode, (value) => value.value);
+    map['mode'] = object_helpers.mapInputValue<WidgetMode, String>(mode, (value) => value.value);
     return map;
   }
 
   factory WidgetArgs.fromMap(Map<String, dynamic> map) {
     return WidgetArgs(
-      metadata: _asOptionalInput<WidgetMetadata>(map['metadata']),
-      mode: _asInput<WidgetMode>(map['mode']),
+      metadata: object_helpers.asOptionalInput<WidgetMetadata>(map['metadata']),
+      mode: object_helpers.asInput<WidgetMode>(map['mode']),
     );
   }
 }
 
 
-// FILE: types/widget_metadata.dart
+// FILE: index/widget_metadata.dart
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
 import 'widget_mode.dart';
-
-Input<T> _asInput<T>(dynamic value) {
-  if (value is Input<T>) {
-    return value;
-  }
-  return Input.fromValue(value as T);
-}
-
-Input<T>? _asOptionalInput<T>(dynamic value) {
-  if (value == null) {
-    return null;
-  }
-  if (value is Input<T>) {
-    return value;
-  }
-  return Input.fromValue(value as T);
-}
-
-Input<U> _mapInputValue<T, U>(Input<T> input, U Function(T value) mapper) {
-  return Input.fromOutput(input.toOutput().apply((value) => mapper(value as T)));
-}
-
-Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapper) {
-  if (input == null) {
-    return null;
-  }
-  return _mapInputValue<T, U>(input, mapper);
-}
-
-List<T> _decodeList<T>(dynamic value, T Function(dynamic value) decoder) {
-  return (value as List).map((item) => decoder(item)).toList(growable: false);
-}
-
-Map<String, T> _decodeMapValues<T>(dynamic value, T Function(dynamic value) decoder) {
-  final map = (value as Map).cast<String, dynamic>();
-  return map.map((key, item) => MapEntry(key, decoder(item)));
-}
-
-List<U> _encodeList<T, U>(List<T> value, U Function(T value) encoder) {
-  return value.map((item) => encoder(item)).toList(growable: false);
-}
-
-Map<String, U> _encodeMapValues<T, U>(Map<String, T> value, U Function(T value) encoder) {
-  return value.map((key, item) => MapEntry(key, encoder(item)));
-}
 
 class WidgetMetadata {
   final WidgetMode mode;
@@ -508,7 +278,7 @@ class WidgetMetadata {
 }
 
 
-// FILE: types/widget_mode.dart
+// FILE: index/widget_mode.dart
 enum WidgetMode {
   readOnly("read-only"),
   readWrite("read-write");
@@ -526,4 +296,98 @@ enum WidgetMode {
   }
 }
 
+
+// FILE: internal/object_helpers.dart
+import 'package:pulumi/pulumi.dart';
+
+Input<T> asInput<T>(dynamic value) {
+  if (value is Input<T>) {
+    return value;
+  }
+  return Input.fromValue(value as T);
+}
+
+Input<T>? asOptionalInput<T>(dynamic value) {
+  if (value == null) {
+    return null;
+  }
+  if (value is Input<T>) {
+    return value;
+  }
+  return Input.fromValue(value as T);
+}
+
+Input<U> mapInputValue<T, U>(Input<T> input, U Function(T value) mapper) {
+  return Input.fromOutput(input.toOutput().apply((value) => mapper(value)));
+}
+
+Input<U>? mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapper) {
+  if (input == null) {
+    return null;
+  }
+  return mapInputValue<T, U>(input, mapper);
+}
+
+List<T> decodeList<T>(dynamic value, T Function(dynamic value) decoder) {
+  return (value as List).map((item) => decoder(item)).toList(growable: false);
+}
+
+Map<String, T> decodeMapValues<T>(dynamic value, T Function(dynamic value) decoder) {
+  final map = (value as Map).cast<String, dynamic>();
+  return map.map((key, item) => MapEntry(key, decoder(item)));
+}
+
+List<U> encodeList<T, U>(List<T> value, U Function(T value) encoder) {
+  return value.map((item) => encoder(item)).toList(growable: false);
+}
+
+Map<String, U> encodeMapValues<T, U>(Map<String, T> value, U Function(T value) encoder) {
+  return value.map((key, item) => MapEntry(key, encoder(item)));
+}
+
+// FILE: internal/pulumi_helpers.dart
+import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/src/deployment/models.dart' as deployment_models;
+
+Inputs mapToInputs(Map<String, dynamic> args) {
+  final mapped = <String, Input<dynamic>>{};
+  for (final entry in args.entries) {
+    final value = entry.value;
+    if (value is Input<dynamic>) {
+      mapped[entry.key] = value;
+    } else {
+      mapped[entry.key] = Input.fromValue(value);
+    }
+  }
+  return mapped;
+}
+
+Output<T> unknownOutput<T>() {
+  return Output.createUnknown<T>();
+}
+
+deployment_models.InvokeOptions? toDeploymentInvokeOptions(InvokeOptions? options) {
+  if (options == null) {
+    return null;
+  }
+
+  return deployment_models.InvokeOptions(
+    parent: options.parent,
+    provider: options.provider,
+    version: options.version,
+    pluginDownloadURL: options.pluginDownloadURL,
+  );
+}
+
+// FILE: sdk.dart
+library sample_sdk;
+
+export 'index/get_widget_details_args.dart';
+export 'index/get_widget_details_result.dart';
+export 'index/widget_args.dart';
+export 'index/widget_metadata.dart';
+export 'index/widget_mode.dart';
+export 'config/config.dart';
+export 'index/widget.dart';
+export 'index/get_widget_details.dart';
 
