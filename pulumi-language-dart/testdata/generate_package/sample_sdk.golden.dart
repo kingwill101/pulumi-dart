@@ -415,8 +415,9 @@ class WidgetArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    if (metadata != null) {
-      map['metadata'] = _mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap());
+    final metadataValue = metadata;
+    if (metadataValue != null) {
+      map['metadata'] = _mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadataValue, (value) => value.toMap());
     }
     map['mode'] = _mapInputValue<WidgetMode, String>(mode, (value) => value.value);
     return map;

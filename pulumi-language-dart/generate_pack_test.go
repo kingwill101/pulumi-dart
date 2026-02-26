@@ -593,7 +593,7 @@ func TestGeneratePackageEmitsNamedTypesAndRefs(t *testing.T) {
 	assert.Contains(
 		t,
 		content,
-		"_mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap())",
+		"_mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadataValue, (value) => value.toMap())",
 	)
 
 	assert.Contains(t, content, "class GetWidgetDetailsResult")
@@ -633,7 +633,7 @@ func TestGeneratePackageTreatsEmptyObjectTypesAsMaps(t *testing.T) {
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "sample")
 	assert.Contains(t, content, "final Input<Map<String, dynamic>>? opaque;")
-	assert.Contains(t, content, "map['opaque'] = opaque;")
+	assert.Contains(t, content, "map['opaque'] = opaqueValue;")
 	assert.NotContains(t, content, "Input<Opaque>")
 	assert.NotContains(t, content, "types/opaque.dart")
 }
@@ -669,6 +669,61 @@ func TestGeneratePackageAvoidsResourceTypeNameCollisions(t *testing.T) {
 	assert.Contains(t, content, "class Widget {")
 	assert.Contains(t, content, "class Widget2 extends CustomResource")
 	assert.Contains(t, content, "export 'resources/widget2.dart';")
+}
+
+func TestGeneratePackageSanitizesBuiltInResourceClassName(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"resources": {
+			"sample:index:Function": {}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, content := readGeneratedPackageLibraries(t, targetDir, "sample")
+	assert.Contains(t, content, "class FunctionType extends CustomResource")
+	assert.Contains(t, content, "export 'resources/function_type.dart';")
+}
+
+func TestGeneratePackageSanitizesRuntimeTypeFieldName(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"types": {
+			"sample:index:Thing": {
+				"type": "object",
+				"properties": {
+					"runtimeType": { "type": "string" }
+				},
+				"required": ["runtimeType"]
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, content := readGeneratedPackageLibraries(t, targetDir, "sample")
+	assert.Contains(t, content, "final String runtimeType_;")
+	assert.Contains(t, content, "map['runtimeType'] = runtimeType_;")
+	assert.Contains(t, content, "runtimeType_: map['runtimeType'] as String")
 }
 
 func TestGeneratePackageEmitsConfigClass(t *testing.T) {
@@ -829,7 +884,7 @@ func TestGeneratePackageEmitsCollectionRefMappings(t *testing.T) {
 	assert.Contains(
 		t,
 		content,
-		"_mapOptionalInputValue<Map<String, WidgetMetadata>, Map<String, Map<String, dynamic>>>(metadataById, (value) => _encodeMapValues<WidgetMetadata, Map<String, dynamic>>(value, (value) => value.toMap()))",
+		"_mapOptionalInputValue<Map<String, WidgetMetadata>, Map<String, Map<String, dynamic>>>(metadataByIdValue, (value) => _encodeMapValues<WidgetMetadata, Map<String, dynamic>>(value, (value) => value.toMap()))",
 	)
 
 	assert.Contains(t, content, "final List<WidgetMode> modes;")
