@@ -1,0 +1,257 @@
+version: "3"
+
+vars:
+  ROOT_DIR: "{{.TASKFILE_DIR}}"
+  PACKAGES_DIR: "{{.ROOT_DIR}}/packages"
+  PROJECTS_DIR: "{{.PACKAGES_DIR}}/projects"
+  SCHEMAS_DIR: "{{.PACKAGES_DIR}}/schemas"
+  ANALYSIS_DIR: "{{.PACKAGES_DIR}}/analysis"
+  LANGUAGE_HOST_DIR: "{{.ROOT_DIR}}/pulumi-language-dart"
+  PULUMI_DART_PATH: "{{.ROOT_DIR}}/pulumi-dart"
+  DAY1_PROVIDERS: "gcp gcp-global-cloudrun google-native"
+  ALL_PROVIDERS: "gcp gcp-global-cloudrun google-native random"
+
+tasks:
+  default:
+    desc: List available tasks
+    cmds:
+      - task --list
+
+  check-tools:
+    desc: Verify required tooling for SDK generation
+    cmds:
+      - |
+        set -eu
+        for tool in go dart pulumi curl jq; do
+          command -v "${tool}" >/dev/null 2>&1 || {
+            echo "Missing required tool: ${tool}" >&2
+            exit 1
+          }
+        done
+
+  setup:
+    desc: Prepare directories and build pulumi-language-dart
+    deps:
+      - check-tools
+      - prepare-dirs
+      - build-language-host
+
+  prepare-dirs:
+    desc: Create packages workspace directories
+    cmds:
+      - mkdir -p "{{.PACKAGES_DIR}}" "{{.PROJECTS_DIR}}" "{{.SCHEMAS_DIR}}"
+
+  build-language-host:
+    desc: Build pulumi-language-dart binary used by `pulumi package add`
+    deps:
+      - check-tools
+    dir: "{{.LANGUAGE_HOST_DIR}}"
+    cmds:
+      - go build -o pulumi-language-dart .
+
+  init-project:
+    internal: true
+    requires:
+      vars:
+        - PACKAGE
+    deps:
+      - prepare-dirs
+    cmds:
+      - |
+        set -eu
+        PACKAGE="{{.PACKAGE}}"
+        PROJECT_DIR="{{.PROJECTS_DIR}}/${PACKAGE}"
+        SAFE_NAME="$(printf "%s" "${PACKAGE}" | tr '-' '_')"
+        mkdir -p "${PROJECT_DIR}"
+
+        cat > "${PROJECT_DIR}/Pulumi.yaml" <<EOF
+        name: ${PACKAGE}-dart-sdk-gen
+        runtime: dart
+        description: Pulumi Dart SDK generation project for ${PACKAGE}
+        EOF
+
+        cat > "${PROJECT_DIR}/pubspec.yaml" <<EOF
+        name: ${SAFE_NAME}_dart_sdk_gen
+        description: Pulumi Dart SDK generation project for ${PACKAGE}
+        version: 0.0.1
+        environment:
+          sdk: ^3.10.0
+        dependencies:
+          pulumi: any
+        dependency_overrides:
+          pulumi:
+            path: {{.PULUMI_DART_PATH}}
+        EOF
+
+        (cd "${PROJECT_DIR}" && dart pub get)
+
+  fetch-schema:
+    internal: true
+    requires:
+      vars:
+        - PACKAGE
+        - SCHEMA_URL
+    deps:
+      - check-tools
+      - prepare-dirs
+    cmds:
+      - |
+        set -eu
+        PACKAGE="{{.PACKAGE}}"
+        SCHEMA_PATH="{{.SCHEMAS_DIR}}/${PACKAGE}.schema.json"
+        curl -fsSL "{{.SCHEMA_URL}}" -o "${SCHEMA_PATH}"
+        echo "Saved ${SCHEMA_PATH}"
+        echo "Schema package: $(jq -r '.name + "@" + .version' "${SCHEMA_PATH}")"
+
+  generate-package:
+    internal: true
+    requires:
+      vars:
+        - PACKAGE
+        - SCHEMA_URL
+    deps:
+      - build-language-host
+    cmds:
+      - task: fetch-schema
+        vars:
+          PACKAGE: "{{.PACKAGE}}"
+          SCHEMA_URL: "{{.SCHEMA_URL}}"
+      - task: init-project
+        vars:
+          PACKAGE: "{{.PACKAGE}}"
+      - |
+        set -eu
+        PACKAGE="{{.PACKAGE}}"
+        PROJECT_DIR="{{.PROJECTS_DIR}}/${PACKAGE}"
+        SCHEMA_PATH="{{.SCHEMAS_DIR}}/${PACKAGE}.schema.json"
+        export PATH="{{.LANGUAGE_HOST_DIR}}:${PATH}"
+
+        echo "Generating Dart SDK for ${PACKAGE}..."
+        (cd "${PROJECT_DIR}" && pulumi package add "${SCHEMA_PATH}")
+        echo "Done: ${PROJECT_DIR}/sdks"
+
+  generate:provider:
+    desc: Generate Dart SDK for a provider package from Pulumi Registry
+    requires:
+      vars:
+        - PACKAGE
+    cmds:
+      - task: generate-package
+        vars:
+          PACKAGE: "{{.PACKAGE}}"
+          SCHEMA_URL: "https://www.pulumi.com/registry/packages/{{.PACKAGE}}/schema.json"
+
+  generate:gcp:
+    desc: Generate Dart SDK for Pulumi GCP
+    cmds:
+      - task: generate:provider
+        vars:
+          PACKAGE: gcp
+
+  generate:gcp-global-cloudrun:
+    desc: Generate Dart SDK for Pulumi GCP Global Cloud Run
+    cmds:
+      - task: generate:provider
+        vars:
+          PACKAGE: gcp-global-cloudrun
+
+  generate:google-native:
+    desc: Generate Dart SDK for Pulumi Google Native
+    cmds:
+      - task: generate:provider
+        vars:
+          PACKAGE: google-native
+
+  generate:random:
+    desc: Generate Dart SDK for Pulumi Random
+    cmds:
+      - task: generate:provider
+        vars:
+          PACKAGE: random
+
+  generate:all:
+    desc: Generate all configured provider SDKs for Dart
+    cmds:
+      - |
+        set -eu
+        for provider in {{.ALL_PROVIDERS}}; do
+          task generate:provider PACKAGE="${provider}"
+        done
+
+  generate:day1:
+    desc: Generate Day 1 Google provider SDKs for Dart
+    cmds:
+      - |
+        set -eu
+        for provider in {{.DAY1_PROVIDERS}}; do
+          task generate:provider PACKAGE="${provider}"
+        done
+
+  analyze-package:
+    internal: true
+    requires:
+      vars:
+        - PACKAGE
+    cmds:
+      - |
+        set -eu
+        PACKAGE="{{.PACKAGE}}"
+        SDK_DIR="{{.PROJECTS_DIR}}/${PACKAGE}/sdks/${PACKAGE}"
+        REPORT_PATH="{{.ANALYSIS_DIR}}/${PACKAGE}.analyze.machine.txt"
+
+        if [ ! -f "${SDK_DIR}/pubspec.yaml" ]; then
+          echo "SDK not found at ${SDK_DIR}" >&2
+          echo "Run: task generate:${PACKAGE}" >&2
+          exit 1
+        fi
+
+        mkdir -p "{{.ANALYSIS_DIR}}"
+        (cd "${SDK_DIR}" && dart analyze --format machine . > "${REPORT_PATH}" || true)
+
+        TOTAL="$(grep -cE '^(ERROR|WARNING|INFO)\\|' "${REPORT_PATH}" || true)"
+        echo "Analysis report: ${REPORT_PATH}"
+        echo "Total issues: ${TOTAL}"
+        echo "Top issue codes:"
+        awk -F'|' '/^(ERROR|WARNING|INFO)\|/ { counts[$3]++ } END { for (code in counts) print counts[code], code }' "${REPORT_PATH}" \
+          | sort -nr \
+          | head -n 20 \
+          | awk '{ printf "  %s %s\n", $1, $2 }'
+
+  analyze:gcp:
+    desc: Analyze generated Dart SDK for Pulumi GCP
+    cmds:
+      - task: analyze-package
+        vars:
+          PACKAGE: gcp
+
+  analyze:gcp-global-cloudrun:
+    desc: Analyze generated Dart SDK for Pulumi GCP Global Cloud Run
+    cmds:
+      - task: analyze-package
+        vars:
+          PACKAGE: gcp-global-cloudrun
+
+  analyze:google-native:
+    desc: Analyze generated Dart SDK for Pulumi Google Native
+    cmds:
+      - task: analyze-package
+        vars:
+          PACKAGE: google-native
+
+  verify:gcp:
+    desc: Generate and analyze Pulumi GCP Dart SDK
+    cmds:
+      - task: generate:gcp
+      - task: analyze:gcp
+
+  list:schemas:
+    desc: Print downloaded schema package names and versions
+    cmds:
+      - |
+        set -eu
+        if [ ! -d "{{.SCHEMAS_DIR}}" ]; then
+          exit 0
+        fi
+        find "{{.SCHEMAS_DIR}}" -maxdepth 1 -type f -name '*.schema.json' | sort | while read -r schema; do
+          printf "%s -> %s\n" "$(basename "${schema}")" "$(jq -r '.name + "@" + .version' "${schema}")"
+        done
