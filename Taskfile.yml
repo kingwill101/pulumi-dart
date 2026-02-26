@@ -3,8 +3,8 @@ version: "3"
 vars:
   ROOT_DIR: "{{.TASKFILE_DIR}}"
   PACKAGES_DIR: "{{.ROOT_DIR}}/packages"
-  PROJECTS_DIR: "{{.PACKAGES_DIR}}/projects"
   SCHEMAS_DIR: "{{.PACKAGES_DIR}}/schemas"
+  GEN_PROJECT_DIR: "{{.PACKAGES_DIR}}/sdk-gen"
   ANALYSIS_DIR: "{{.PACKAGES_DIR}}/analysis"
   LANGUAGE_HOST_DIR: "{{.ROOT_DIR}}/pulumi-language-dart"
   PULUMI_DART_PATH: "{{.ROOT_DIR}}/pulumi-dart"
@@ -39,7 +39,7 @@ tasks:
   prepare-dirs:
     desc: Create packages workspace directories
     cmds:
-      - mkdir -p "{{.PACKAGES_DIR}}" "{{.PROJECTS_DIR}}" "{{.SCHEMAS_DIR}}"
+      - mkdir -p "{{.PACKAGES_DIR}}" "{{.SCHEMAS_DIR}}" "{{.GEN_PROJECT_DIR}}"
 
   build-language-host:
     desc: Build pulumi-language-dart binary used by `pulumi package add`
@@ -51,28 +51,23 @@ tasks:
 
   init-project:
     internal: true
-    requires:
-      vars:
-        - PACKAGE
     deps:
       - prepare-dirs
     cmds:
       - |
         set -eu
-        PACKAGE="{{.PACKAGE}}"
-        PROJECT_DIR="{{.PROJECTS_DIR}}/${PACKAGE}"
-        SAFE_NAME="$(printf "%s" "${PACKAGE}" | tr '-' '_')"
+        PROJECT_DIR="{{.GEN_PROJECT_DIR}}"
         mkdir -p "${PROJECT_DIR}"
 
         cat > "${PROJECT_DIR}/Pulumi.yaml" <<EOF
-        name: ${PACKAGE}-dart-sdk-gen
+        name: dart-sdk-gen
         runtime: dart
-        description: Pulumi Dart SDK generation project for ${PACKAGE}
+        description: Pulumi Dart SDK generation workspace
         EOF
 
         cat > "${PROJECT_DIR}/pubspec.yaml" <<EOF
-        name: ${SAFE_NAME}_dart_sdk_gen
-        description: Pulumi Dart SDK generation project for ${PACKAGE}
+        name: dart_sdk_gen
+        description: Pulumi Dart SDK generation workspace
         version: 0.0.1
         environment:
           sdk: ^3.10.0
@@ -122,13 +117,16 @@ tasks:
       - |
         set -eu
         PACKAGE="{{.PACKAGE}}"
-        PROJECT_DIR="{{.PROJECTS_DIR}}/${PACKAGE}"
+        PROJECT_DIR="{{.GEN_PROJECT_DIR}}"
         SCHEMA_PATH="{{.SCHEMAS_DIR}}/${PACKAGE}.schema.json"
+        OUTPUT_DIR="{{.PACKAGES_DIR}}/${PACKAGE}"
         export PATH="{{.LANGUAGE_HOST_DIR}}:${PATH}"
 
         echo "Generating Dart SDK for ${PACKAGE}..."
         (cd "${PROJECT_DIR}" && pulumi package add "${SCHEMA_PATH}")
-        echo "Done: ${PROJECT_DIR}/sdks"
+        rm -rf "${OUTPUT_DIR}"
+        cp -R "${PROJECT_DIR}/sdks/${PACKAGE}" "${OUTPUT_DIR}"
+        echo "Done: ${OUTPUT_DIR}"
 
   generate:provider:
     desc: Generate Dart SDK for a provider package from Pulumi Registry
@@ -196,7 +194,7 @@ tasks:
       - |
         set -eu
         PACKAGE="{{.PACKAGE}}"
-        SDK_DIR="{{.PROJECTS_DIR}}/${PACKAGE}/sdks/${PACKAGE}"
+        SDK_DIR="{{.PACKAGES_DIR}}/${PACKAGE}"
         REPORT_PATH="{{.ANALYSIS_DIR}}/${PACKAGE}.analyze.machine.txt"
 
         if [ ! -f "${SDK_DIR}/pubspec.yaml" ]; then
