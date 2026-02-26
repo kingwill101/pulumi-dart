@@ -1,0 +1,3 @@
+library module_cloudsecuritycompliance_framework_deployment_cloud_control_deployment_reference;
+
+export 'framework_deployment_cloud_control_deployment_reference.dart';

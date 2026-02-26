@@ -1,0 +1,3 @@
+library module_dataloss_prevention_job_trigger_inspect_job_inspect_config_rule_set_rule_hotword_rule_proximity;
+
+export 'prevention_job_trigger_inspect_job_inspect_config_rule_set_rule_hotword_rule_proximity.dart';

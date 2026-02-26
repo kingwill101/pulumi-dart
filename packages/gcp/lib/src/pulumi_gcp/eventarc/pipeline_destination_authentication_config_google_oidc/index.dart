@@ -1,0 +1,3 @@
+library module_eventarc_pipeline_destination_authentication_config_google_oidc;
+
+export 'pipeline_destination_authentication_config_google_oidc.dart';

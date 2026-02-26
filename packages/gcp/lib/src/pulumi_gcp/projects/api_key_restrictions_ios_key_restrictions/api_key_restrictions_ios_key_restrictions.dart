@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class ApiKeyRestrictionsIosKeyRestrictions {
+  /// A list of bundle IDs that are allowed when making API calls with this key.
+  final List<String> allowedBundleIds;
+
+  ApiKeyRestrictionsIosKeyRestrictions({
+    required this.allowedBundleIds,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['allowedBundleIds'] = allowedBundleIds;
+    return map;
+  }
+
+  factory ApiKeyRestrictionsIosKeyRestrictions.fromMap(
+      Map<String, dynamic> map) {
+    return ApiKeyRestrictionsIosKeyRestrictions(
+      allowedBundleIds: (map['allowedBundleIds'] as List).cast<String>(),
+    );
+  }
+}

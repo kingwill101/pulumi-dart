@@ -1,0 +1,386 @@
+import 'package:pulumi/pulumi.dart';
+import '../instance_group_named_port/instance_group_named_port.dart';
+import 'instance_group_args.dart';
+
+/// Creates a group of dissimilar Compute Engine virtual machine instances.
+/// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
+/// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
+///
+///
+/// ## Example Usage
+///
+/// ### Empty Instance Group
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const test = new gcp.compute.InstanceGroup("test", {
+/// name: "test",
+/// description: "Test instance group",
+/// zone: "us-central1-a",
+/// network: _default.id,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// test = gcp.compute.InstanceGroup("test",
+/// name="test",
+/// description="Test instance group",
+/// zone="us-central1-a",
+/// network=default["id"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var test = new Gcp.Compute.InstanceGroup("test", new()
+/// {
+/// Name = "test",
+/// Description = "Test instance group",
+/// Zone = "us-central1-a",
+/// Network = @default.Id,
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := compute.NewInstanceGroup(ctx, "test", &compute.InstanceGroupArgs{
+/// Name:        pulumi.String("test"),
+/// Description: pulumi.String("Test instance group"),
+/// Zone:        pulumi.String("us-central1-a"),
+/// Network:     pulumi.Any(_default.Id),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.InstanceGroup;
+/// import com.pulumi.gcp.compute.InstanceGroupArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var test = new InstanceGroup("test", InstanceGroupArgs.builder()
+/// .name("test")
+/// .description("Test instance group")
+/// .zone("us-central1-a")
+/// .network(default_.id())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// test:
+/// type: gcp:compute:InstanceGroup
+/// properties:
+/// name: test
+/// description: Test instance group
+/// zone: us-central1-a
+/// network: ${default.id}
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ### Example Usage - With instances and named ports
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const webservers = new gcp.compute.InstanceGroup("webservers", {
+/// name: "webservers",
+/// description: "Test instance group",
+/// instances: [
+/// test.id,
+/// test2.id,
+/// ],
+/// namedPorts: [
+/// {
+/// name: "http",
+/// port: 8080,
+/// },
+/// {
+/// name: "https",
+/// port: 8443,
+/// },
+/// ],
+/// zone: "us-central1-a",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// webservers = gcp.compute.InstanceGroup("webservers",
+/// name="webservers",
+/// description="Test instance group",
+/// instances=[
+/// test["id"],
+/// test2["id"],
+/// ],
+/// named_ports=[
+/// {
+/// "name": "http",
+/// "port": 8080,
+/// },
+/// {
+/// "name": "https",
+/// "port": 8443,
+/// },
+/// ],
+/// zone="us-central1-a")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var webservers = new Gcp.Compute.InstanceGroup("webservers", new()
+/// {
+/// Name = "webservers",
+/// Description = "Test instance group",
+/// Instances = new[]
+/// {
+/// test.Id,
+/// test2.Id,
+/// },
+/// NamedPorts = new[]
+/// {
+/// new Gcp.Compute.Inputs.InstanceGroupNamedPortArgs
+/// {
+/// Name = "http",
+/// Port = 8080,
+/// },
+/// new Gcp.Compute.Inputs.InstanceGroupNamedPortArgs
+/// {
+/// Name = "https",
+/// Port = 8443,
+/// },
+/// },
+/// Zone = "us-central1-a",
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := compute.NewInstanceGroup(ctx, "webservers", &compute.InstanceGroupArgs{
+/// Name:        pulumi.String("webservers"),
+/// Description: pulumi.String("Test instance group"),
+/// Instances: pulumi.StringArray{
+/// test.Id,
+/// test2.Id,
+/// },
+/// NamedPorts: compute.InstanceGroupNamedPortTypeArray{
+/// &compute.InstanceGroupNamedPortTypeArgs{
+/// Name: pulumi.String("http"),
+/// Port: pulumi.Int(8080),
+/// },
+/// &compute.InstanceGroupNamedPortTypeArgs{
+/// Name: pulumi.String("https"),
+/// Port: pulumi.Int(8443),
+/// },
+/// },
+/// Zone: pulumi.String("us-central1-a"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.InstanceGroup;
+/// import com.pulumi.gcp.compute.InstanceGroupArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceGroupNamedPortArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var webservers = new InstanceGroup("webservers", InstanceGroupArgs.builder()
+/// .name("webservers")
+/// .description("Test instance group")
+/// .instances(
+/// test.id(),
+/// test2.id())
+/// .namedPorts(
+/// InstanceGroupNamedPortArgs.builder()
+/// .name("http")
+/// .port(8080)
+/// .build(),
+/// InstanceGroupNamedPortArgs.builder()
+/// .name("https")
+/// .port(8443)
+/// .build())
+/// .zone("us-central1-a")
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// webservers:
+/// type: gcp:compute:InstanceGroup
+/// properties:
+/// name: webservers
+/// description: Test instance group
+/// instances:
+/// - ${test.id}
+/// - ${test2.id}
+/// namedPorts:
+/// - name: http
+/// port: '8080'
+/// - name: https
+/// port: '8443'
+/// zone: us-central1-a
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Instance groups can be imported using the `zone` and `name` with an optional `project`, e.g.
+///
+/// * `projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}`
+///
+/// * `{{project_id}}/{{zone}}/{{instance_group_id}}`
+///
+/// * `{{zone}}/{{instance_group_id}}`
+///
+/// When using the `pulumi import` command, instance groups can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:compute/instanceGroup:InstanceGroup default {{zone}}/{{instance_group_id}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:compute/instanceGroup:InstanceGroup default {{project_id}}/{{zone}}/{{instance_group_id}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:compute/instanceGroup:InstanceGroup default projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}
+/// ```
+class InstanceGroup extends CustomResource {
+  /// An optional textual description of the instance
+  /// group.
+  late final Output<String?> description;
+
+  /// The list of instances in the group, in <span pulumi-lang-nodejs="`selfLink`" pulumi-lang-dotnet="`SelfLink`" pulumi-lang-go="`selfLink`" pulumi-lang-python="`self_link`" pulumi-lang-yaml="`selfLink`" pulumi-lang-java="`selfLink`">`self_link`</span> format.
+  /// When adding instances they must all be in the same network and zone as the instance group.
+  late final Output<List<String>> instances;
+
+  /// The name of the instance group. Must be 1-63
+  /// characters long and comply with
+  /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+  /// include lowercase letters, numbers, and hyphens.
+  late final Output<String> name;
+
+  /// The named port configuration. See the section below
+  /// for details on configuration. Structure is documented below.
+  late final Output<List<InstanceGroupNamedPort>?> namedPorts;
+
+  /// The URL of the network the instance group is in. If
+  /// this is different from the network where the instances are in, the creation
+  /// fails. Defaults to the network where the instances are in (if neither
+  /// <span pulumi-lang-nodejs="`network`" pulumi-lang-dotnet="`Network`" pulumi-lang-go="`network`" pulumi-lang-python="`network`" pulumi-lang-yaml="`network`" pulumi-lang-java="`network`">`network`</span> nor <span pulumi-lang-nodejs="`instances`" pulumi-lang-dotnet="`Instances`" pulumi-lang-go="`instances`" pulumi-lang-python="`instances`" pulumi-lang-yaml="`instances`" pulumi-lang-java="`instances`">`instances`</span> is specified, this field will be blank).
+  late final Output<String> network;
+
+  /// The ID of the project in which the resource belongs. If it
+  /// is not provided, the provider project is used.
+  late final Output<String> project;
+
+  /// The URI of the created resource.
+  late final Output<String> selfLink;
+
+  /// The number of instances in the group.
+  late final Output<int> size;
+
+  /// The zone that this instance group should be created in.
+  ///
+  /// - - -
+  late final Output<String> zone;
+
+  InstanceGroup(
+    String name, {
+    InstanceGroupArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:compute/instanceGroup:InstanceGroup',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.description = Output.createUnknown<String?>();
+    this.instances = Output.createUnknown<List<String>>();
+    this.name = Output.createUnknown<String>();
+    this.namedPorts = Output.createUnknown<List<InstanceGroupNamedPort>?>();
+    this.network = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.selfLink = Output.createUnknown<String>();
+    this.size = Output.createUnknown<int>();
+    this.zone = Output.createUnknown<String>();
+  }
+}

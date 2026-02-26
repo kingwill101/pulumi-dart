@@ -1,0 +1,3 @@
+library module_applicationintegration_auth_config_client_certificate;
+
+export 'auth_config_client_certificate.dart';

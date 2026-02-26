@@ -1,0 +1,3 @@
+library module_compute_get_storage_pool_resource_status;
+
+export 'get_storage_pool_resource_status.dart';

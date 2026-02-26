@@ -1,0 +1,3 @@
+library module_certificatemanager_certificate_managed_authorization_attempt_info;
+
+export 'certificate_managed_authorization_attempt_info.dart';

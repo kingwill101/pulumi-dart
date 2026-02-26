@@ -1,0 +1,3 @@
+library module_dataloss_prevention_discovery_config_action_export_data_profile_table;
+
+export 'prevention_discovery_config_action_export_data_profile_table.dart';

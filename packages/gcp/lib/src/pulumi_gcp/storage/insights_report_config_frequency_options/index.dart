@@ -1,0 +1,3 @@
+library module_storage_insights_report_config_frequency_options;
+
+export 'insights_report_config_frequency_options.dart';

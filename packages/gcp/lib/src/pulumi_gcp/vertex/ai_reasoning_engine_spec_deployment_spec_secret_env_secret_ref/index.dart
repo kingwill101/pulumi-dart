@@ -1,0 +1,3 @@
+library module_vertex_ai_reasoning_engine_spec_deployment_spec_secret_env_secret_ref;
+
+export 'ai_reasoning_engine_spec_deployment_spec_secret_env_secret_ref.dart';

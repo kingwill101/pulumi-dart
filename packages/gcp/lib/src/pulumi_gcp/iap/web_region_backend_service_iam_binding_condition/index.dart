@@ -1,0 +1,3 @@
+library module_iap_web_region_backend_service_iam_binding_condition;
+
+export 'web_region_backend_service_iam_binding_condition.dart';

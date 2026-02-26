@@ -1,0 +1,3 @@
+library module_pubsub_topic_message_transform_javascript_udf;
+
+export 'topic_message_transform_javascript_udf.dart';

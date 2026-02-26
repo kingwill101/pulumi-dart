@@ -1,0 +1,3 @@
+library module_filestore_get_instance_directory_service_ldap;
+
+export 'get_instance_directory_service_ldap.dart';

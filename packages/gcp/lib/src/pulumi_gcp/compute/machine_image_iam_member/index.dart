@@ -1,0 +1,4 @@
+library module_compute_machine_image_iam_member;
+
+export 'machine_image_iam_member.dart';
+export 'machine_image_iam_member_args.dart';

@@ -1,0 +1,48 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../prevention_discovery_config_action_tag_resources_tag_condition_sensitivity_score/prevention_discovery_config_action_tag_resources_tag_condition_sensitivity_score.dart';
+import '../prevention_discovery_config_action_tag_resources_tag_condition_tag/prevention_discovery_config_action_tag_resources_tag_condition_tag.dart';
+
+class PreventionDiscoveryConfigActionTagResourcesTagCondition {
+  /// Conditions attaching the tag to a resource on its profile having this sensitivity score.
+  /// Structure is documented below.
+  final PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore?
+      sensitivityScore;
+
+  /// The tag value to attach to resources.
+  /// Structure is documented below.
+  final PreventionDiscoveryConfigActionTagResourcesTagConditionTag? tag;
+
+  PreventionDiscoveryConfigActionTagResourcesTagCondition({
+    this.sensitivityScore,
+    this.tag,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final sensitivityScoreValue = sensitivityScore;
+    if (sensitivityScoreValue != null) {
+      map['sensitivityScore'] = sensitivityScoreValue.toMap();
+    }
+    final tagValue = tag;
+    if (tagValue != null) {
+      map['tag'] = tagValue.toMap();
+    }
+    return map;
+  }
+
+  factory PreventionDiscoveryConfigActionTagResourcesTagCondition.fromMap(
+      Map<String, dynamic> map) {
+    return PreventionDiscoveryConfigActionTagResourcesTagCondition(
+      sensitivityScore: map['sensitivityScore'] == null
+          ? null
+          : PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore
+              .fromMap(
+                  (map['sensitivityScore'] as Map).cast<String, dynamic>()),
+      tag: map['tag'] == null
+          ? null
+          : PreventionDiscoveryConfigActionTagResourcesTagConditionTag.fromMap(
+              (map['tag'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

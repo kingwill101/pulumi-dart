@@ -1,0 +1,3 @@
+library module_container_azure_node_pool_config_ssh_config;
+
+export 'azure_node_pool_config_ssh_config.dart';

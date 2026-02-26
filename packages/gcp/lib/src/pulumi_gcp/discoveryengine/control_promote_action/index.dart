@@ -1,0 +1,3 @@
+library module_discoveryengine_control_promote_action;
+
+export 'control_promote_action.dart';

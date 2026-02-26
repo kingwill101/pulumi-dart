@@ -1,0 +1,3 @@
+library module_cloudquota_squota_preference_quota_config;
+
+export 'squota_preference_quota_config.dart';

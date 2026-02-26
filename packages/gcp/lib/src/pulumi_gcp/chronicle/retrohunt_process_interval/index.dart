@@ -1,0 +1,3 @@
+library module_chronicle_retrohunt_process_interval;
+
+export 'retrohunt_process_interval.dart';

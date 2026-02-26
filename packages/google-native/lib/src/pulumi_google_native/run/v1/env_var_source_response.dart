@@ -1,0 +1,34 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'config_map_key_selector_response.dart';
+import 'secret_key_selector_response.dart';
+
+/// EnvVarSource represents a source for the value of an EnvVar.
+class EnvVarSourceResponse {
+  /// Not supported by Cloud Run. Not supported in Cloud Run.
+  final ConfigMapKeySelectorResponse configMapKeyRef;
+
+  /// Selects a key (version) of a secret in Secret Manager.
+  final SecretKeySelectorResponse secretKeyRef;
+
+  EnvVarSourceResponse({
+    required this.configMapKeyRef,
+    required this.secretKeyRef,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['configMapKeyRef'] = configMapKeyRef.toMap();
+    map['secretKeyRef'] = secretKeyRef.toMap();
+    return map;
+  }
+
+  factory EnvVarSourceResponse.fromMap(Map<String, dynamic> map) {
+    return EnvVarSourceResponse(
+      configMapKeyRef: ConfigMapKeySelectorResponse.fromMap(
+          (map['configMapKeyRef'] as Map).cast<String, dynamic>()),
+      secretKeyRef: SecretKeySelectorResponse.fromMap(
+          (map['secretKeyRef'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

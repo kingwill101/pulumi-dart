@@ -1,0 +1,3 @@
+library module_apigateway_api_config_iam_binding_condition;
+
+export 'api_config_iam_binding_condition.dart';

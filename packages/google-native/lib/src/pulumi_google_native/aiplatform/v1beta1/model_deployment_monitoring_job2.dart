@@ -1,0 +1,148 @@
+import 'package:pulumi/pulumi.dart';
+import 'google_cloud_aiplatform_v1beta1_encryption_spec_response.dart';
+import 'google_cloud_aiplatform_v1beta1_gcs_destination_response.dart';
+import 'google_cloud_aiplatform_v1beta1_model_deployment_monitoring_big_query_table_response.dart';
+import 'google_cloud_aiplatform_v1beta1_model_deployment_monitoring_job_latest_monitoring_pipeline_metadata_response.dart';
+import 'google_cloud_aiplatform_v1beta1_model_deployment_monitoring_objective_config_response.dart';
+import 'google_cloud_aiplatform_v1beta1_model_deployment_monitoring_schedule_config_response.dart';
+import 'google_cloud_aiplatform_v1beta1_model_monitoring_alert_config_response.dart';
+import 'google_cloud_aiplatform_v1beta1_sampling_strategy_response.dart';
+import 'google_rpc_status_response2.dart';
+import 'model_deployment_monitoring_job_args2.dart';
+
+/// Creates a ModelDeploymentMonitoringJob. It will run periodically on a configured interval.
+/// Auto-naming is currently not supported for this resource.
+class ModelDeploymentMonitoringJob2 extends CustomResource {
+  /// YAML schema file uri describing the format of a single instance that you want Tensorflow Data Validation (TFDV) to analyze. If this field is empty, all the feature data types are inferred from predict_instance_schema_uri, meaning that TFDV will use the data in the exact format(data type) as prediction request/response. If there are any data type differences between predict instance and TFDV instance, this field can be used to override the schema. For models trained with Vertex AI, this field must be set as all the fields in predict instance formatted as string.
+  late final Output<String> analysisInstanceSchemaUri;
+
+  /// The created bigquery tables for the job under customer project. Customer could do their own query & analysis. There could be 4 log tables in maximum: 1. Training data logging predict request/response 2. Serving data logging predict request/response
+  late final Output<
+          List<
+              GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse>>
+      bigqueryTables;
+
+  /// Timestamp when this ModelDeploymentMonitoringJob was created.
+  late final Output<String> createTime;
+
+  /// The user-defined name of the ModelDeploymentMonitoringJob. The name can be up to 128 characters long and can consist of any UTF-8 characters. Display name of a ModelDeploymentMonitoringJob.
+  late final Output<String> displayName;
+
+  /// If true, the scheduled monitoring pipeline logs are sent to Google Cloud Logging, including pipeline status and anomalies detected. Please note the logs incur cost, which are subject to [Cloud Logging pricing](https://cloud.google.com/logging#pricing).
+  late final Output<bool> enableMonitoringPipelineLogs;
+
+  /// Customer-managed encryption key spec for a ModelDeploymentMonitoringJob. If set, this ModelDeploymentMonitoringJob and all sub-resources of this ModelDeploymentMonitoringJob will be secured by this key.
+  late final Output<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>
+      encryptionSpec;
+
+  /// Endpoint resource name. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
+  late final Output<String> endpoint;
+
+  /// Only populated when the job's state is `JOB_STATE_FAILED` or `JOB_STATE_CANCELLED`.
+  late final Output<GoogleRpcStatusResponse2> error;
+
+  /// The labels with user-defined metadata to organize your ModelDeploymentMonitoringJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+  late final Output<Map<String, String>> labels;
+
+  /// Latest triggered monitoring pipeline metadata.
+  late final Output<
+          GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse>
+      latestMonitoringPipelineMetadata;
+  late final Output<String> location;
+
+  /// The TTL of BigQuery tables in user projects which stores logs. A day is the basic unit of the TTL and we take the ceil of TTL/86400(a day). e.g. { second: 3600} indicates ttl = 1 day.
+  late final Output<String> logTtl;
+
+  /// Sample Strategy for logging.
+  late final Output<GoogleCloudAiplatformV1beta1SamplingStrategyResponse>
+      loggingSamplingStrategy;
+
+  /// The config for monitoring objectives. This is a per DeployedModel config. Each DeployedModel needs to be configured separately.
+  late final Output<
+          List<
+              GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponse>>
+      modelDeploymentMonitoringObjectiveConfigs;
+
+  /// Schedule config for running the monitoring job.
+  late final Output<
+          GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponse>
+      modelDeploymentMonitoringScheduleConfig;
+
+  /// Alert config for model monitoring.
+  late final Output<
+          GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse>
+      modelMonitoringAlertConfig;
+
+  /// Resource name of a ModelDeploymentMonitoringJob.
+  late final Output<String> name;
+
+  /// Timestamp when this monitoring pipeline will be scheduled to run for the next round.
+  late final Output<String> nextScheduleTime;
+
+  /// YAML schema file uri describing the format of a single instance, which are given to format this Endpoint's prediction (and explanation). If not set, we will generate predict schema from collected predict requests.
+  late final Output<String> predictInstanceSchemaUri;
+  late final Output<String> project;
+
+  /// Sample Predict instance, same format as PredictRequest.instances, this can be set as a replacement of ModelDeploymentMonitoringJob.predict_instance_schema_uri. If not set, we will generate predict schema from collected predict requests.
+  late final Output<dynamic> samplePredictInstance;
+
+  /// Schedule state when the monitoring job is in Running state.
+  late final Output<String> scheduleState;
+
+  /// The detailed state of the monitoring job. When the job is still creating, the state will be 'PENDING'. Once the job is successfully created, the state will be 'RUNNING'. Pause the job, the state will be 'PAUSED'. Resume the job, the state will return to 'RUNNING'.
+  late final Output<String> state;
+
+  /// Stats anomalies base folder path.
+  late final Output<GoogleCloudAiplatformV1beta1GcsDestinationResponse>
+      statsAnomaliesBaseDirectory;
+
+  /// Timestamp when this ModelDeploymentMonitoringJob was updated most recently.
+  late final Output<String> updateTime;
+
+  ModelDeploymentMonitoringJob2(
+    String name, {
+    ModelDeploymentMonitoringJobArgs2? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:aiplatform/v1beta1:ModelDeploymentMonitoringJob',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.analysisInstanceSchemaUri = Output.createUnknown<String>();
+    this.bigqueryTables = Output.createUnknown<
+        List<
+            GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse>>();
+    this.createTime = Output.createUnknown<String>();
+    this.displayName = Output.createUnknown<String>();
+    this.enableMonitoringPipelineLogs = Output.createUnknown<bool>();
+    this.encryptionSpec = Output.createUnknown<
+        GoogleCloudAiplatformV1beta1EncryptionSpecResponse>();
+    this.endpoint = Output.createUnknown<String>();
+    this.error = Output.createUnknown<GoogleRpcStatusResponse2>();
+    this.labels = Output.createUnknown<Map<String, String>>();
+    this.latestMonitoringPipelineMetadata = Output.createUnknown<
+        GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse>();
+    this.location = Output.createUnknown<String>();
+    this.logTtl = Output.createUnknown<String>();
+    this.loggingSamplingStrategy = Output.createUnknown<
+        GoogleCloudAiplatformV1beta1SamplingStrategyResponse>();
+    this.modelDeploymentMonitoringObjectiveConfigs = Output.createUnknown<
+        List<
+            GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponse>>();
+    this.modelDeploymentMonitoringScheduleConfig = Output.createUnknown<
+        GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponse>();
+    this.modelMonitoringAlertConfig = Output.createUnknown<
+        GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse>();
+    this.name = Output.createUnknown<String>();
+    this.nextScheduleTime = Output.createUnknown<String>();
+    this.predictInstanceSchemaUri = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.samplePredictInstance = Output.createUnknown<dynamic>();
+    this.scheduleState = Output.createUnknown<String>();
+    this.state = Output.createUnknown<String>();
+    this.statsAnomaliesBaseDirectory = Output.createUnknown<
+        GoogleCloudAiplatformV1beta1GcsDestinationResponse>();
+    this.updateTime = Output.createUnknown<String>();
+  }
+}

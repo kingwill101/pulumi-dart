@@ -1,0 +1,101 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../cx_page_entry_fulfillment_conditional_case/cx_page_entry_fulfillment_conditional_case.dart';
+import '../cx_page_entry_fulfillment_message/cx_page_entry_fulfillment_message.dart';
+import '../cx_page_entry_fulfillment_set_parameter_action/cx_page_entry_fulfillment_set_parameter_action.dart';
+
+class CxPageEntryFulfillment {
+  /// Conditional cases for this fulfillment.
+  /// Structure is documented below.
+  final List<CxPageEntryFulfillmentConditionalCase>? conditionalCases;
+
+  /// The list of rich message responses to present to the user.
+  /// Structure is documented below.
+  final List<CxPageEntryFulfillmentMessage>? messages;
+
+  /// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+  final bool? returnPartialResponses;
+
+  /// Set parameter values before executing the webhook.
+  /// Structure is documented below.
+  final List<CxPageEntryFulfillmentSetParameterAction>? setParameterActions;
+
+  /// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+  final String? tag;
+
+  /// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+  final String? webhook;
+
+  CxPageEntryFulfillment({
+    this.conditionalCases,
+    this.messages,
+    this.returnPartialResponses,
+    this.setParameterActions,
+    this.tag,
+    this.webhook,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final conditionalCasesValue = conditionalCases;
+    if (conditionalCasesValue != null) {
+      map['conditionalCases'] = Input.encodeList<
+              CxPageEntryFulfillmentConditionalCase, Map<String, dynamic>>(
+          conditionalCasesValue, (value) => value.toMap());
+    }
+    final messagesValue = messages;
+    if (messagesValue != null) {
+      map['messages'] =
+          Input.encodeList<CxPageEntryFulfillmentMessage, Map<String, dynamic>>(
+              messagesValue, (value) => value.toMap());
+    }
+    final returnPartialResponsesValue = returnPartialResponses;
+    if (returnPartialResponsesValue != null) {
+      map['returnPartialResponses'] = returnPartialResponsesValue;
+    }
+    final setParameterActionsValue = setParameterActions;
+    if (setParameterActionsValue != null) {
+      map['setParameterActions'] = Input.encodeList<
+              CxPageEntryFulfillmentSetParameterAction, Map<String, dynamic>>(
+          setParameterActionsValue, (value) => value.toMap());
+    }
+    final tagValue = tag;
+    if (tagValue != null) {
+      map['tag'] = tagValue;
+    }
+    final webhookValue = webhook;
+    if (webhookValue != null) {
+      map['webhook'] = webhookValue;
+    }
+    return map;
+  }
+
+  factory CxPageEntryFulfillment.fromMap(Map<String, dynamic> map) {
+    return CxPageEntryFulfillment(
+      conditionalCases: map['conditionalCases'] == null
+          ? null
+          : Input.decodeList<CxPageEntryFulfillmentConditionalCase>(
+              map['conditionalCases'],
+              (value) => CxPageEntryFulfillmentConditionalCase.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      messages: map['messages'] == null
+          ? null
+          : Input.decodeList<CxPageEntryFulfillmentMessage>(
+              map['messages'],
+              (value) => CxPageEntryFulfillmentMessage.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      returnPartialResponses: map['returnPartialResponses'] == null
+          ? null
+          : map['returnPartialResponses'] as bool,
+      setParameterActions: map['setParameterActions'] == null
+          ? null
+          : Input.decodeList<CxPageEntryFulfillmentSetParameterAction>(
+              map['setParameterActions'],
+              (value) => CxPageEntryFulfillmentSetParameterAction.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      tag: map['tag'] == null ? null : map['tag'] as String,
+      webhook: map['webhook'] == null ? null : map['webhook'] as String,
+    );
+  }
+}

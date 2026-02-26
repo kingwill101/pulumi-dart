@@ -1,0 +1,3 @@
+library module_memorystore_instance_automated_backup_config_fixed_frequency_schedule;
+
+export 'instance_automated_backup_config_fixed_frequency_schedule.dart';

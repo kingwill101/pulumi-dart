@@ -1,0 +1,3 @@
+library module_beyondcorp_security_gateway_iam_binding_condition;
+
+export 'security_gateway_iam_binding_condition.dart';

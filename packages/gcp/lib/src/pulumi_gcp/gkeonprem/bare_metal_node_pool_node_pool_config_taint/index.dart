@@ -1,0 +1,3 @@
+library module_gkeonprem_bare_metal_node_pool_node_pool_config_taint;
+
+export 'bare_metal_node_pool_node_pool_config_taint.dart';

@@ -1,0 +1,3 @@
+library module_eventarc_trigger_destination_cloud_run_service;
+
+export 'trigger_destination_cloud_run_service.dart';

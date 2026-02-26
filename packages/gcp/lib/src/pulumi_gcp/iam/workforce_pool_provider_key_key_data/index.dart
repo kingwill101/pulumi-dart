@@ -1,0 +1,3 @@
+library module_iam_workforce_pool_provider_key_key_data;
+
+export 'workforce_pool_provider_key_key_data.dart';

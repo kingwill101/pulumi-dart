@@ -1,0 +1,3 @@
+library pulumi_google_native_bigquerydatatransfer;
+
+export 'package:pulumi_google_native/src/pulumi_google_native/bigquerydatatransfer/index.dart';

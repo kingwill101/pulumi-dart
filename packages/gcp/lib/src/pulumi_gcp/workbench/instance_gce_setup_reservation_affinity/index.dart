@@ -1,0 +1,3 @@
+library module_workbench_instance_gce_setup_reservation_affinity;
+
+export 'instance_gce_setup_reservation_affinity.dart';

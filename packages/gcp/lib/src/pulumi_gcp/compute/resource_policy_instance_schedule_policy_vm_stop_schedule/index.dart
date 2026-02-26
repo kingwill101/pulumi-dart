@@ -1,0 +1,3 @@
+library module_compute_resource_policy_instance_schedule_policy_vm_stop_schedule;
+
+export 'resource_policy_instance_schedule_policy_vm_stop_schedule.dart';

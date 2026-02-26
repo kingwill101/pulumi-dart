@@ -1,0 +1,3 @@
+library module_certificateauthority_authority_config_x509_config_key_usage_extended_key_usage;
+
+export 'authority_config_x509_config_key_usage_extended_key_usage.dart';

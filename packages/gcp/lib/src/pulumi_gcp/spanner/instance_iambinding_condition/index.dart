@@ -1,0 +1,3 @@
+library module_spanner_instance_iambinding_condition;
+
+export 'instance_iambinding_condition2.dart';

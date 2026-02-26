@@ -1,0 +1,63 @@
+import 'package:pulumi/pulumi.dart';
+import 'env_references_args.dart';
+
+/// An `Environment Reference` in Apigee.
+///
+///
+/// To get more information about EnvReferences, see:
+///
+/// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.references/create)
+/// * How-to Guides
+/// * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+///
+/// ## Import
+///
+/// EnvReferences can be imported using any of these accepted formats:
+///
+/// * `{{env_id}}/references/{{name}}`
+///
+/// * `{{env_id}}/{{name}}`
+///
+/// When using the `pulumi import` command, EnvReferences can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:apigee/envReferences:EnvReferences default {{env_id}}/references/{{name}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:apigee/envReferences:EnvReferences default {{env_id}}/{{name}}
+/// ```
+class EnvReferences extends CustomResource {
+  /// Optional. A human-readable description of this reference.
+  late final Output<String?> description;
+
+  /// The Apigee environment group associated with the Apigee environment,
+  /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
+  late final Output<String> envId;
+
+  /// Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
+  late final Output<String> name;
+
+  /// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resourceType.
+  late final Output<String> refers;
+
+  /// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
+  late final Output<String> resourceType;
+
+  EnvReferences(
+    String name, {
+    EnvReferencesArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:apigee/envReferences:EnvReferences',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.description = Output.createUnknown<String?>();
+    this.envId = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.refers = Output.createUnknown<String>();
+    this.resourceType = Output.createUnknown<String>();
+  }
+}

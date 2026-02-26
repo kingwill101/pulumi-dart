@@ -1,0 +1,3 @@
+library module_certificatemanager_trust_config_allowlisted_certificate;
+
+export 'trust_config_allowlisted_certificate.dart';

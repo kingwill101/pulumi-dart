@@ -1,0 +1,76 @@
+import 'package:pulumi/pulumi.dart';
+import '../sharedflow_meta_data/sharedflow_meta_data.dart';
+import 'sharedflow_args.dart';
+
+/// You can combine policies and resources into a shared flow that you can consume from multiple API proxies, and even from other shared flows. Although it's like a proxy, a shared flow has no endpoint. It can be used only from an API proxy or shared flow that's in the same organization as the shared flow itself.
+///
+///
+/// To get more information about SharedFlow, see:
+///
+/// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.sharedflows)
+/// * How-to Guides
+/// * [Sharedflows](https://cloud.google.com/apigee/docs/resources)
+///
+/// ## Import
+///
+/// SharedFlow can be imported using any of these accepted formats:
+///
+/// * `{{org_id}}/sharedflows/{{name}}`
+///
+/// * `{{org_id}}/{{name}}`
+///
+/// When using the `pulumi import` command, SharedFlow can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/sharedflows/{{name}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/{{name}}
+/// ```
+class Sharedflow extends CustomResource {
+  /// Path to the config zip bundle.
+  ///
+  /// - - -
+  late final Output<String> configBundle;
+  late final Output<String?> detectMd5hash;
+
+  /// The id of the most recently created revision for this shared flow.
+  late final Output<String> latestRevisionId;
+
+  /// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned<span pulumi-lang-nodejs=" lastModified " pulumi-lang-dotnet=" LastModified " pulumi-lang-go=" lastModified " pulumi-lang-python=" last_modified " pulumi-lang-yaml=" lastModified " pulumi-lang-java=" lastModified "> last_modified </span>timestamp.
+  late final Output<String> md5hash;
+
+  /// Metadata describing the shared flow.
+  /// Structure is documented below.
+  late final Output<List<SharedflowMetaData>> metaDatas;
+
+  /// The ID of the shared flow.
+  late final Output<String> name;
+
+  /// The Apigee Organization name associated with the Apigee instance.
+  late final Output<String> orgId;
+
+  /// A list of revisions of this shared flow.
+  late final Output<List<String>> revisions;
+
+  Sharedflow(
+    String name, {
+    SharedflowArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:apigee/sharedflow:Sharedflow',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.configBundle = Output.createUnknown<String>();
+    this.detectMd5hash = Output.createUnknown<String?>();
+    this.latestRevisionId = Output.createUnknown<String>();
+    this.md5hash = Output.createUnknown<String>();
+    this.metaDatas = Output.createUnknown<List<SharedflowMetaData>>();
+    this.name = Output.createUnknown<String>();
+    this.orgId = Output.createUnknown<String>();
+    this.revisions = Output.createUnknown<List<String>>();
+  }
+}

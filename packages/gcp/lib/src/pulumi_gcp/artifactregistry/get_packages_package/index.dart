@@ -1,0 +1,3 @@
+library module_artifactregistry_get_packages_package;
+
+export 'get_packages_package.dart';

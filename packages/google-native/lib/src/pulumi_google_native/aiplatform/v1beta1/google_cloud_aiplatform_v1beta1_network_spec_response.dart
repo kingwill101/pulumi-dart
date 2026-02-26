@@ -1,0 +1,36 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Network spec.
+class GoogleCloudAiplatformV1beta1NetworkSpecResponse {
+  /// Whether to enable public internet access. Default false.
+  final bool enableInternetAccess;
+
+  /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks)
+  final String network;
+
+  /// The name of the subnet that this instance is in. Format: `projects/{project_id_or_number}/regions/{region}/subnetworks/{subnetwork_id}`
+  final String subnetwork;
+
+  GoogleCloudAiplatformV1beta1NetworkSpecResponse({
+    required this.enableInternetAccess,
+    required this.network,
+    required this.subnetwork,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['enableInternetAccess'] = enableInternetAccess;
+    map['network'] = network;
+    map['subnetwork'] = subnetwork;
+    return map;
+  }
+
+  factory GoogleCloudAiplatformV1beta1NetworkSpecResponse.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudAiplatformV1beta1NetworkSpecResponse(
+      enableInternetAccess: map['enableInternetAccess'] as bool,
+      network: map['network'] as String,
+      subnetwork: map['subnetwork'] as String,
+    );
+  }
+}

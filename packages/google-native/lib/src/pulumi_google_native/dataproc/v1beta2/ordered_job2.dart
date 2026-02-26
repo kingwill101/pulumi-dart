@@ -1,0 +1,160 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'hadoop_job2.dart';
+import 'hive_job2.dart';
+import 'job_scheduling2.dart';
+import 'pig_job2.dart';
+import 'presto_job2.dart';
+import 'py_spark_job2.dart';
+import 'spark_job2.dart';
+import 'spark_rjob2.dart';
+import 'spark_sql_job2.dart';
+
+/// A job executed by the workflow.
+class OrderedJob2 {
+  /// Optional. Job is a Hadoop job.
+  final HadoopJob2? hadoopJob;
+
+  /// Optional. Job is a Hive job.
+  final HiveJob2? hiveJob;
+
+  /// Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given job.
+  final Map<String, String>? labels;
+
+  /// Optional. Job is a Pig job.
+  final PigJob2? pigJob;
+
+  /// Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+  final List<String>? prerequisiteStepIds;
+
+  /// Optional. Job is a Presto job.
+  final PrestoJob2? prestoJob;
+
+  /// Optional. Job is a PySpark job.
+  final PySparkJob2? pysparkJob;
+
+  /// Optional. Job scheduling configuration.
+  final JobScheduling2? scheduling;
+
+  /// Optional. Job is a Spark job.
+  final SparkJob2? sparkJob;
+
+  /// Optional. Job is a SparkR job.
+  final SparkRJob2? sparkRJob;
+
+  /// Optional. Job is a SparkSql job.
+  final SparkSqlJob2? sparkSqlJob;
+
+  /// The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+  final String stepId;
+
+  OrderedJob2({
+    this.hadoopJob,
+    this.hiveJob,
+    this.labels,
+    this.pigJob,
+    this.prerequisiteStepIds,
+    this.prestoJob,
+    this.pysparkJob,
+    this.scheduling,
+    this.sparkJob,
+    this.sparkRJob,
+    this.sparkSqlJob,
+    required this.stepId,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final hadoopJobValue = hadoopJob;
+    if (hadoopJobValue != null) {
+      map['hadoopJob'] = hadoopJobValue.toMap();
+    }
+    final hiveJobValue = hiveJob;
+    if (hiveJobValue != null) {
+      map['hiveJob'] = hiveJobValue.toMap();
+    }
+    final labelsValue = labels;
+    if (labelsValue != null) {
+      map['labels'] = labelsValue;
+    }
+    final pigJobValue = pigJob;
+    if (pigJobValue != null) {
+      map['pigJob'] = pigJobValue.toMap();
+    }
+    final prerequisiteStepIdsValue = prerequisiteStepIds;
+    if (prerequisiteStepIdsValue != null) {
+      map['prerequisiteStepIds'] = prerequisiteStepIdsValue;
+    }
+    final prestoJobValue = prestoJob;
+    if (prestoJobValue != null) {
+      map['prestoJob'] = prestoJobValue.toMap();
+    }
+    final pysparkJobValue = pysparkJob;
+    if (pysparkJobValue != null) {
+      map['pysparkJob'] = pysparkJobValue.toMap();
+    }
+    final schedulingValue = scheduling;
+    if (schedulingValue != null) {
+      map['scheduling'] = schedulingValue.toMap();
+    }
+    final sparkJobValue = sparkJob;
+    if (sparkJobValue != null) {
+      map['sparkJob'] = sparkJobValue.toMap();
+    }
+    final sparkRJobValue = sparkRJob;
+    if (sparkRJobValue != null) {
+      map['sparkRJob'] = sparkRJobValue.toMap();
+    }
+    final sparkSqlJobValue = sparkSqlJob;
+    if (sparkSqlJobValue != null) {
+      map['sparkSqlJob'] = sparkSqlJobValue.toMap();
+    }
+    map['stepId'] = stepId;
+    return map;
+  }
+
+  factory OrderedJob2.fromMap(Map<String, dynamic> map) {
+    return OrderedJob2(
+      hadoopJob: map['hadoopJob'] == null
+          ? null
+          : HadoopJob2.fromMap(
+              (map['hadoopJob'] as Map).cast<String, dynamic>()),
+      hiveJob: map['hiveJob'] == null
+          ? null
+          : HiveJob2.fromMap((map['hiveJob'] as Map).cast<String, dynamic>()),
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
+      pigJob: map['pigJob'] == null
+          ? null
+          : PigJob2.fromMap((map['pigJob'] as Map).cast<String, dynamic>()),
+      prerequisiteStepIds: map['prerequisiteStepIds'] == null
+          ? null
+          : (map['prerequisiteStepIds'] as List).cast<String>(),
+      prestoJob: map['prestoJob'] == null
+          ? null
+          : PrestoJob2.fromMap(
+              (map['prestoJob'] as Map).cast<String, dynamic>()),
+      pysparkJob: map['pysparkJob'] == null
+          ? null
+          : PySparkJob2.fromMap(
+              (map['pysparkJob'] as Map).cast<String, dynamic>()),
+      scheduling: map['scheduling'] == null
+          ? null
+          : JobScheduling2.fromMap(
+              (map['scheduling'] as Map).cast<String, dynamic>()),
+      sparkJob: map['sparkJob'] == null
+          ? null
+          : SparkJob2.fromMap((map['sparkJob'] as Map).cast<String, dynamic>()),
+      sparkRJob: map['sparkRJob'] == null
+          ? null
+          : SparkRJob2.fromMap(
+              (map['sparkRJob'] as Map).cast<String, dynamic>()),
+      sparkSqlJob: map['sparkSqlJob'] == null
+          ? null
+          : SparkSqlJob2.fromMap(
+              (map['sparkSqlJob'] as Map).cast<String, dynamic>()),
+      stepId: map['stepId'] as String,
+    );
+  }
+}

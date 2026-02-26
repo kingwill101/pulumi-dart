@@ -1,0 +1,3 @@
+library module_diagflow_cx_agent_personalization_settings;
+
+export 'cx_agent_personalization_settings.dart';

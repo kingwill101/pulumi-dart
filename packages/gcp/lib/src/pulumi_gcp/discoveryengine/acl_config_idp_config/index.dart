@@ -1,0 +1,3 @@
+library module_discoveryengine_acl_config_idp_config;
+
+export 'acl_config_idp_config.dart';

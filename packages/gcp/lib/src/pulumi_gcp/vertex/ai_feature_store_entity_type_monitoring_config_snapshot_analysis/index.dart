@@ -1,0 +1,3 @@
+library module_vertex_ai_feature_store_entity_type_monitoring_config_snapshot_analysis;
+
+export 'ai_feature_store_entity_type_monitoring_config_snapshot_analysis.dart';

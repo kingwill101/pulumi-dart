@@ -1,0 +1,3 @@
+library module_bigquery_get_dataset_external_dataset_reference;
+
+export 'get_dataset_external_dataset_reference.dart';

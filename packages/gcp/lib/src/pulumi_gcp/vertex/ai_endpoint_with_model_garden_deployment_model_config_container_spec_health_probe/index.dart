@@ -1,0 +1,3 @@
+library module_vertex_ai_endpoint_with_model_garden_deployment_model_config_container_spec_health_probe;
+
+export 'ai_endpoint_with_model_garden_deployment_model_config_container_spec_health_probe.dart';

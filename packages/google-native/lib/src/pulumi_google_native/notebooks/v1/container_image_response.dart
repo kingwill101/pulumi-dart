@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Definition of a container image for starting a notebook instance with the environment installed in a container.
+class ContainerImageResponse {
+  /// The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+  final String repository;
+
+  /// The tag of the container image. If not specified, this defaults to the latest tag.
+  final String tag;
+
+  ContainerImageResponse({
+    required this.repository,
+    required this.tag,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['repository'] = repository;
+    map['tag'] = tag;
+    return map;
+  }
+
+  factory ContainerImageResponse.fromMap(Map<String, dynamic> map) {
+    return ContainerImageResponse(
+      repository: map['repository'] as String,
+      tag: map['tag'] as String,
+    );
+  }
+}

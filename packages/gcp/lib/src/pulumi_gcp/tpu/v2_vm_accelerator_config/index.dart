@@ -1,0 +1,3 @@
+library module_tpu_v2_vm_accelerator_config;
+
+export 'v2_vm_accelerator_config.dart';

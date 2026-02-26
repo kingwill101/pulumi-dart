@@ -1,0 +1,3 @@
+library module_dataproc_batch_environment_config_execution_config_authentication_config;
+
+export 'batch_environment_config_execution_config_authentication_config.dart';

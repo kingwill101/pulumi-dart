@@ -1,0 +1,3 @@
+library module_colab_runtime_template_data_persistent_disk_spec;
+
+export 'runtime_template_data_persistent_disk_spec.dart';

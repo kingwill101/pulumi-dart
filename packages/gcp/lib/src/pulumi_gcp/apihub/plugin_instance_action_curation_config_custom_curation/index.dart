@@ -1,0 +1,3 @@
+library module_apihub_plugin_instance_action_curation_config_custom_curation;
+
+export 'plugin_instance_action_curation_config_custom_curation.dart';

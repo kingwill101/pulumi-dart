@@ -1,0 +1,3 @@
+library module_cloudbuild_get_trigger_repository_event_config;
+
+export 'get_trigger_repository_event_config.dart';

@@ -1,0 +1,3 @@
+library module_gkeonprem_vmware_node_pool_node_pool_autoscaling;
+
+export 'vmware_node_pool_node_pool_autoscaling.dart';

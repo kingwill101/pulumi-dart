@@ -1,0 +1,3 @@
+library module_compute_interconnect_attachment_l2_forwarding;
+
+export 'interconnect_attachment_l2_forwarding.dart';

@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../v2_policy_orchestrator_for_folder_orchestration_scope_selector/v2_policy_orchestrator_for_folder_orchestration_scope_selector.dart';
+
+class V2PolicyOrchestratorForFolderOrchestrationScope {
+  /// Selectors of the orchestration scope. There is a logical AND between each
+  /// selector defined.
+  /// When there is no explicit `ResourceHierarchySelector` selector specified,
+  /// the scope is by default bounded to the parent of the policy orchestrator
+  /// resource.
+  /// Structure is documented below.
+  final List<V2PolicyOrchestratorForFolderOrchestrationScopeSelector>?
+      selectors;
+
+  V2PolicyOrchestratorForFolderOrchestrationScope({
+    this.selectors,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final selectorsValue = selectors;
+    if (selectorsValue != null) {
+      map['selectors'] = Input.encodeList<
+          V2PolicyOrchestratorForFolderOrchestrationScopeSelector,
+          Map<String, dynamic>>(selectorsValue, (value) => value.toMap());
+    }
+    return map;
+  }
+
+  factory V2PolicyOrchestratorForFolderOrchestrationScope.fromMap(
+      Map<String, dynamic> map) {
+    return V2PolicyOrchestratorForFolderOrchestrationScope(
+      selectors: map['selectors'] == null
+          ? null
+          : Input.decodeList<
+                  V2PolicyOrchestratorForFolderOrchestrationScopeSelector>(
+              map['selectors'],
+              (value) => V2PolicyOrchestratorForFolderOrchestrationScopeSelector
+                  .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

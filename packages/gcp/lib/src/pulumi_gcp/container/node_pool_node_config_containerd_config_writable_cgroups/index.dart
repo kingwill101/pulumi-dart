@@ -1,0 +1,3 @@
+library module_container_node_pool_node_config_containerd_config_writable_cgroups;
+
+export 'node_pool_node_config_containerd_config_writable_cgroups.dart';

@@ -1,0 +1,4 @@
+library module_essentialcontacts_document_ai_warehouse_location;
+
+export 'document_ai_warehouse_location.dart';
+export 'document_ai_warehouse_location_args.dart';

@@ -1,0 +1,3 @@
+library module_redis_get_cluster_cross_cluster_replication_config_secondary_cluster;
+
+export 'get_cluster_cross_cluster_replication_config_secondary_cluster.dart';

@@ -1,0 +1,3 @@
+library module_diagflow_intent_followup_intent_info;
+
+export 'intent_followup_intent_info.dart';

@@ -1,0 +1,3 @@
+library module_colab_notebook_execution_direct_notebook_source;
+
+export 'notebook_execution_direct_notebook_source.dart';

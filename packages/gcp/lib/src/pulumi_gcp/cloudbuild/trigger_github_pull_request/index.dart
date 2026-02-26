@@ -1,0 +1,3 @@
+library module_cloudbuild_trigger_github_pull_request;
+
+export 'trigger_github_pull_request.dart';

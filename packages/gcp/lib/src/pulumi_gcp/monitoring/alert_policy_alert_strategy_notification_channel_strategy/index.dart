@@ -1,0 +1,3 @@
+library module_monitoring_alert_policy_alert_strategy_notification_channel_strategy;
+
+export 'alert_policy_alert_strategy_notification_channel_strategy.dart';

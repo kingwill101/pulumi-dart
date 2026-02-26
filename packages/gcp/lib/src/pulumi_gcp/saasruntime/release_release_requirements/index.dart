@@ -1,0 +1,3 @@
+library module_saasruntime_release_release_requirements;
+
+export 'release_release_requirements.dart';

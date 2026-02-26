@@ -1,0 +1,3 @@
+library module_composer_environment_config_private_environment_config;
+
+export 'environment_config_private_environment_config.dart';

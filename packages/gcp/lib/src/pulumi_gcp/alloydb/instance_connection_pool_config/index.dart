@@ -1,0 +1,3 @@
+library module_alloydb_instance_connection_pool_config;
+
+export 'instance_connection_pool_config.dart';

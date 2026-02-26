@@ -1,0 +1,3 @@
+library module_dataproc_get_metastore_service_metadata_integration_data_catalog_config;
+
+export 'get_metastore_service_metadata_integration_data_catalog_config.dart';

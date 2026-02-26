@@ -1,0 +1,3 @@
+library module_bigqueryanalyticshub_listing_subscription_commercial_info;
+
+export 'listing_subscription_commercial_info.dart';

@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetServiceTemplateSpecContainerResource {
+  /// Limits describes the maximum amount of compute resources allowed.
+  /// CPU Limit details:
+  /// - For fractional CPU values (e.g. '0.5', '0.75', min '0.08') are also supported.
+  /// - CPU allocation must comply with memory limits and concurrency rules described in:
+  /// https://cloud.google.com/run/docs/configuring/services/cpu
+  /// The values of the map is string form of the 'quantity' k8s type:
+  /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+  final Map<String, String> limits;
+
+  /// Requests describes the minimum amount of compute resources required.
+  /// If Requests is omitted for a container, it defaults to Limits if that is
+  /// explicitly specified, otherwise to an implementation-defined value.
+  /// The values of the map is string form of the 'quantity' k8s type:
+  /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+  final Map<String, String> requests;
+
+  GetServiceTemplateSpecContainerResource({
+    required this.limits,
+    required this.requests,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['limits'] = limits;
+    map['requests'] = requests;
+    return map;
+  }
+
+  factory GetServiceTemplateSpecContainerResource.fromMap(
+      Map<String, dynamic> map) {
+    return GetServiceTemplateSpecContainerResource(
+      limits: (map['limits'] as Map).cast<String, String>(),
+      requests: (map['requests'] as Map).cast<String, String>(),
+    );
+  }
+}

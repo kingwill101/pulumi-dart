@@ -1,0 +1,3 @@
+library module_dns_managed_zone_dnssec_config_default_key_spec;
+
+export 'managed_zone_dnssec_config_default_key_spec.dart';

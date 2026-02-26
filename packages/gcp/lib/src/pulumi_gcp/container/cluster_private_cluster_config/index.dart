@@ -1,0 +1,3 @@
+library module_container_cluster_private_cluster_config;
+
+export 'cluster_private_cluster_config.dart';

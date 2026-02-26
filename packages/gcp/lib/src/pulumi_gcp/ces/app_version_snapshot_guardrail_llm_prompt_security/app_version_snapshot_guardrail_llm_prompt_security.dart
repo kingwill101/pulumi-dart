@@ -1,0 +1,64 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../app_version_snapshot_guardrail_llm_prompt_security_custom_policy/app_version_snapshot_guardrail_llm_prompt_security_custom_policy.dart';
+import '../app_version_snapshot_guardrail_llm_prompt_security_default_setting/app_version_snapshot_guardrail_llm_prompt_security_default_setting.dart';
+
+class AppVersionSnapshotGuardrailLlmPromptSecurity {
+  /// (Output)
+  /// Guardrail that blocks the conversation if the LLM response is considered
+  /// violating the policy based on the LLM classification.
+  /// Structure is documented below.
+  final List<AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy>?
+      customPolicies;
+
+  /// (Output)
+  /// Configuration for default system security settings.
+  /// Structure is documented below.
+  final List<AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting>?
+      defaultSettings;
+
+  AppVersionSnapshotGuardrailLlmPromptSecurity({
+    this.customPolicies,
+    this.defaultSettings,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final customPoliciesValue = customPolicies;
+    if (customPoliciesValue != null) {
+      map['customPolicies'] = Input.encodeList<
+          AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy,
+          Map<String, dynamic>>(customPoliciesValue, (value) => value.toMap());
+    }
+    final defaultSettingsValue = defaultSettings;
+    if (defaultSettingsValue != null) {
+      map['defaultSettings'] = Input.encodeList<
+          AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting,
+          Map<String, dynamic>>(defaultSettingsValue, (value) => value.toMap());
+    }
+    return map;
+  }
+
+  factory AppVersionSnapshotGuardrailLlmPromptSecurity.fromMap(
+      Map<String, dynamic> map) {
+    return AppVersionSnapshotGuardrailLlmPromptSecurity(
+      customPolicies: map['customPolicies'] == null
+          ? null
+          : Input.decodeList<
+                  AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy>(
+              map['customPolicies'],
+              (value) =>
+                  AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy
+                      .fromMap((value as Map).cast<String, dynamic>())),
+      defaultSettings: map['defaultSettings'] == null
+          ? null
+          : Input.decodeList<
+                  AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting>(
+              map['defaultSettings'],
+              (value) =>
+                  AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting
+                      .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

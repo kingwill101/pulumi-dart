@@ -1,0 +1,3 @@
+library module_compute_instance_from_machine_image_boot_disk;
+
+export 'instance_from_machine_image_boot_disk.dart';

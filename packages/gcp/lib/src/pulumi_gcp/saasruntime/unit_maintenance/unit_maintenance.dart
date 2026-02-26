@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class UnitMaintenance {
+  /// If present, it fixes the release on the unit until the given time; i.e.
+  /// changes to the release field will be rejected. Rollouts should and will
+  /// also respect this by not requesting an upgrade in the first place.
+  final String? pinnedUntilTime;
+
+  UnitMaintenance({
+    this.pinnedUntilTime,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final pinnedUntilTimeValue = pinnedUntilTime;
+    if (pinnedUntilTimeValue != null) {
+      map['pinnedUntilTime'] = pinnedUntilTimeValue;
+    }
+    return map;
+  }
+
+  factory UnitMaintenance.fromMap(Map<String, dynamic> map) {
+    return UnitMaintenance(
+      pinnedUntilTime: map['pinnedUntilTime'] == null
+          ? null
+          : map['pinnedUntilTime'] as String,
+    );
+  }
+}

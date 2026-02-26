@@ -1,0 +1,3 @@
+library module_bigquery_table_table_replication_info;
+
+export 'table_table_replication_info.dart';

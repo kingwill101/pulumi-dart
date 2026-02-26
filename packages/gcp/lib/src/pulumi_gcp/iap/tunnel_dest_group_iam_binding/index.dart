@@ -1,0 +1,4 @@
+library module_iap_tunnel_dest_group_iam_binding;
+
+export 'tunnel_dest_group_iam_binding.dart';
+export 'tunnel_dest_group_iam_binding_args.dart';

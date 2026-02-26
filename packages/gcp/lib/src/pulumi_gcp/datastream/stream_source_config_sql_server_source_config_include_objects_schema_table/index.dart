@@ -1,0 +1,3 @@
+library module_datastream_stream_source_config_sql_server_source_config_include_objects_schema_table;
+
+export 'stream_source_config_sql_server_source_config_include_objects_schema_table.dart';

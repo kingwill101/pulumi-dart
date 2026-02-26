@@ -1,0 +1,3 @@
+library module_apihub_plugin_instance_auth_config_user_password_config;
+
+export 'plugin_instance_auth_config_user_password_config.dart';

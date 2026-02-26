@@ -1,0 +1,3 @@
+library module_bigqueryanalyticshub_data_exchange_subscription_destination_dataset;
+
+export 'data_exchange_subscription_destination_dataset.dart';

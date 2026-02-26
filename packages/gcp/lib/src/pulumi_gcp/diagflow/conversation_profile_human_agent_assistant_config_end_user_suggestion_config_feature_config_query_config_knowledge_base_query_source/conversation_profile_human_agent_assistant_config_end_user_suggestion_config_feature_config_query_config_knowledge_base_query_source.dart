@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource {
+  /// Knowledge bases to query. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<Knowledge Base ID>.
+  final List<String> knowledgeBases;
+
+  ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource({
+    required this.knowledgeBases,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['knowledgeBases'] = knowledgeBases;
+    return map;
+  }
+
+  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource.fromMap(
+      Map<String, dynamic> map) {
+    return ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource(
+      knowledgeBases: (map['knowledgeBases'] as List).cast<String>(),
+    );
+  }
+}

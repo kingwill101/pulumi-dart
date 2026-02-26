@@ -1,0 +1,3 @@
+library module_gkehub_feature_membership_configmanagement_hierarchy_controller;
+
+export 'feature_membership_configmanagement_hierarchy_controller.dart';

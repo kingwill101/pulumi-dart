@@ -1,0 +1,3 @@
+library module_compute_interconnect_group_configured;
+
+export 'interconnect_group_configured.dart';

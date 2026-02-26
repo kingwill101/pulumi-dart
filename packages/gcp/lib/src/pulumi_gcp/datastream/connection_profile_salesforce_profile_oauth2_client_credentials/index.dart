@@ -1,0 +1,3 @@
+library module_datastream_connection_profile_salesforce_profile_oauth2_client_credentials;
+
+export 'connection_profile_salesforce_profile_oauth2_client_credentials.dart';

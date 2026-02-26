@@ -1,0 +1,3 @@
+library module_iam_workforce_pool_provider_extra_attributes_oauth2_client_client_secret_value;
+
+export 'workforce_pool_provider_extra_attributes_oauth2_client_client_secret_value.dart';

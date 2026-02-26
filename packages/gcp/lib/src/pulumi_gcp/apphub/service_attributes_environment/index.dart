@@ -1,0 +1,3 @@
+library module_apphub_service_attributes_environment;
+
+export 'service_attributes_environment.dart';

@@ -1,0 +1,43 @@
+import 'package:pulumi/pulumi.dart';
+import 'group_args3.dart';
+
+/// Create a group.
+class Group3 extends CustomResource {
+  /// The display name of the group.
+  late final Output<String> displayName;
+
+  /// Optional. The "alias" to use for the group, which will become the final component of the group's resource name. This value must be unique per project. The field is named `groupId` to comply with AIP guidance for user-specified IDs. This value should be 4-63 characters, and valid characters are `/a-z-/`. If not set, it will be generated based on the display name.
+  late final Output<String?> groupId;
+
+  /// The number of invite links for this group.
+  late final Output<int> inviteLinkCount;
+
+  /// The name of the group resource. Format: `projects/{project_number}/groups/{group_alias}`
+  late final Output<String> name;
+  late final Output<String> project;
+
+  /// The number of releases this group is permitted to access.
+  late final Output<int> releaseCount;
+
+  /// The number of testers who are members of this group.
+  late final Output<int> testerCount;
+
+  Group3(
+    String name, {
+    GroupArgs3? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:firebaseappdistribution/v1:Group',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.displayName = Output.createUnknown<String>();
+    this.groupId = Output.createUnknown<String?>();
+    this.inviteLinkCount = Output.createUnknown<int>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.releaseCount = Output.createUnknown<int>();
+    this.testerCount = Output.createUnknown<int>();
+  }
+}

@@ -1,0 +1,64 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_cluster_node_config_containerd_config_private_registry_access_config/get_cluster_node_config_containerd_config_private_registry_access_config.dart';
+import '../get_cluster_node_config_containerd_config_registry_host/get_cluster_node_config_containerd_config_registry_host.dart';
+import '../get_cluster_node_config_containerd_config_writable_cgroup/get_cluster_node_config_containerd_config_writable_cgroup.dart';
+
+class GetClusterNodeConfigContainerdConfig {
+  /// Parameters for private container registries configuration.
+  final List<GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig>
+      privateRegistryAccessConfigs;
+
+  /// Configures containerd registry host configuration. Each<span pulumi-lang-nodejs=" registryHosts " pulumi-lang-dotnet=" RegistryHosts " pulumi-lang-go=" registryHosts " pulumi-lang-python=" registry_hosts " pulumi-lang-yaml=" registryHosts " pulumi-lang-java=" registryHosts "> registry_hosts </span>entry represents a hosts.toml file.
+  final List<GetClusterNodeConfigContainerdConfigRegistryHost> registryHosts;
+
+  /// Parameters for writable cgroups configuration.
+  final List<GetClusterNodeConfigContainerdConfigWritableCgroup>
+      writableCgroups;
+
+  GetClusterNodeConfigContainerdConfig({
+    required this.privateRegistryAccessConfigs,
+    required this.registryHosts,
+    required this.writableCgroups,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['privateRegistryAccessConfigs'] = Input.encodeList<
+            GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig,
+            Map<String, dynamic>>(
+        privateRegistryAccessConfigs, (value) => value.toMap());
+    map['registryHosts'] = Input.encodeList<
+        GetClusterNodeConfigContainerdConfigRegistryHost,
+        Map<String, dynamic>>(registryHosts, (value) => value.toMap());
+    map['writableCgroups'] = Input.encodeList<
+        GetClusterNodeConfigContainerdConfigWritableCgroup,
+        Map<String, dynamic>>(writableCgroups, (value) => value.toMap());
+    return map;
+  }
+
+  factory GetClusterNodeConfigContainerdConfig.fromMap(
+      Map<String, dynamic> map) {
+    return GetClusterNodeConfigContainerdConfig(
+      privateRegistryAccessConfigs: Input.decodeList<
+              GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig>(
+          map['privateRegistryAccessConfigs'],
+          (value) =>
+              GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig
+                  .fromMap((value as Map).cast<String, dynamic>())),
+      registryHosts:
+          Input.decodeList<GetClusterNodeConfigContainerdConfigRegistryHost>(
+              map['registryHosts'],
+              (value) =>
+                  GetClusterNodeConfigContainerdConfigRegistryHost.fromMap(
+                      (value as Map).cast<String, dynamic>())),
+      writableCgroups:
+          Input.decodeList<GetClusterNodeConfigContainerdConfigWritableCgroup>(
+              map['writableCgroups'],
+              (value) =>
+                  GetClusterNodeConfigContainerdConfigWritableCgroup.fromMap(
+                      (value as Map).cast<String, dynamic>())),
+    );
+  }
+}

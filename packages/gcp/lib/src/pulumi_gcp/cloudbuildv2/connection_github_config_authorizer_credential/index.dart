@@ -1,0 +1,3 @@
+library module_cloudbuildv2_connection_github_config_authorizer_credential;
+
+export 'connection_github_config_authorizer_credential.dart';

@@ -1,0 +1,3 @@
+library module_firebase_extensions_instance_runtime_data;
+
+export 'extensions_instance_runtime_data.dart';

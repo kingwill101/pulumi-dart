@@ -1,0 +1,3 @@
+library module_identityplatform_config_sms_region_config;
+
+export 'config_sms_region_config.dart';

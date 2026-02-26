@@ -1,0 +1,3 @@
+library module_discoveryengine_assistant_customer_policy;
+
+export 'assistant_customer_policy.dart';

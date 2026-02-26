@@ -1,0 +1,499 @@
+import 'package:pulumi/pulumi.dart';
+import '../asset_discovery_spec/asset_discovery_spec.dart';
+import '../asset_discovery_status/asset_discovery_status.dart';
+import '../asset_resource_spec/asset_resource_spec.dart';
+import '../asset_resource_status/asset_resource_status.dart';
+import '../asset_security_status/asset_security_status.dart';
+import 'asset_args.dart';
+
+/// The Dataplex Asset resource
+///
+/// ## Example Usage
+///
+/// ### Basic_asset
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const basicBucket = new gcp.storage.Bucket("basic_bucket", {
+/// name: "bucket",
+/// location: "us-west1",
+/// uniformBucketLevelAccess: true,
+/// project: "my-project-name",
+/// });
+/// const basicLake = new gcp.dataplex.Lake("basic_lake", {
+/// name: "lake",
+/// location: "us-west1",
+/// project: "my-project-name",
+/// });
+/// const basicZone = new gcp.dataplex.Zone("basic_zone", {
+/// name: "zone",
+/// location: "us-west1",
+/// lake: basicLake.name,
+/// type: "RAW",
+/// discoverySpec: {
+/// enabled: false,
+/// },
+/// resourceSpec: {
+/// locationType: "SINGLE_REGION",
+/// },
+/// project: "my-project-name",
+/// });
+/// const primary = new gcp.dataplex.Asset("primary", {
+/// name: "asset",
+/// location: "us-west1",
+/// lake: basicLake.name,
+/// dataplexZone: basicZone.name,
+/// discoverySpec: {
+/// enabled: false,
+/// },
+/// resourceSpec: {
+/// name: "projects/my-project-name/buckets/bucket",
+/// type: "STORAGE_BUCKET",
+/// },
+/// labels: {
+/// env: "foo",
+/// "my-asset": "exists",
+/// },
+/// project: "my-project-name",
+/// }, {
+/// dependsOn: [basicBucket],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// basic_bucket = gcp.storage.Bucket("basic_bucket",
+/// name="bucket",
+/// location="us-west1",
+/// uniform_bucket_level_access=True,
+/// project="my-project-name")
+/// basic_lake = gcp.dataplex.Lake("basic_lake",
+/// name="lake",
+/// location="us-west1",
+/// project="my-project-name")
+/// basic_zone = gcp.dataplex.Zone("basic_zone",
+/// name="zone",
+/// location="us-west1",
+/// lake=basic_lake.name,
+/// type="RAW",
+/// discovery_spec={
+/// "enabled": False,
+/// },
+/// resource_spec={
+/// "location_type": "SINGLE_REGION",
+/// },
+/// project="my-project-name")
+/// primary = gcp.dataplex.Asset("primary",
+/// name="asset",
+/// location="us-west1",
+/// lake=basic_lake.name,
+/// dataplex_zone=basic_zone.name,
+/// discovery_spec={
+/// "enabled": False,
+/// },
+/// resource_spec={
+/// "name": "projects/my-project-name/buckets/bucket",
+/// "type": "STORAGE_BUCKET",
+/// },
+/// labels={
+/// "env": "foo",
+/// "my-asset": "exists",
+/// },
+/// project="my-project-name",
+/// opts = pulumi.ResourceOptions(depends_on=[basic_bucket]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var basicBucket = new Gcp.Storage.Bucket("basic_bucket", new()
+/// {
+/// Name = "bucket",
+/// Location = "us-west1",
+/// UniformBucketLevelAccess = true,
+/// Project = "my-project-name",
+/// });
+///
+/// var basicLake = new Gcp.DataPlex.Lake("basic_lake", new()
+/// {
+/// Name = "lake",
+/// Location = "us-west1",
+/// Project = "my-project-name",
+/// });
+///
+/// var basicZone = new Gcp.DataPlex.Zone("basic_zone", new()
+/// {
+/// Name = "zone",
+/// Location = "us-west1",
+/// Lake = basicLake.Name,
+/// Type = "RAW",
+/// DiscoverySpec = new Gcp.DataPlex.Inputs.ZoneDiscoverySpecArgs
+/// {
+/// Enabled = false,
+/// },
+/// ResourceSpec = new Gcp.DataPlex.Inputs.ZoneResourceSpecArgs
+/// {
+/// LocationType = "SINGLE_REGION",
+/// },
+/// Project = "my-project-name",
+/// });
+///
+/// var primary = new Gcp.DataPlex.Asset("primary", new()
+/// {
+/// Name = "asset",
+/// Location = "us-west1",
+/// Lake = basicLake.Name,
+/// DataplexZone = basicZone.Name,
+/// DiscoverySpec = new Gcp.DataPlex.Inputs.AssetDiscoverySpecArgs
+/// {
+/// Enabled = false,
+/// },
+/// ResourceSpec = new Gcp.DataPlex.Inputs.AssetResourceSpecArgs
+/// {
+/// Name = "projects/my-project-name/buckets/bucket",
+/// Type = "STORAGE_BUCKET",
+/// },
+/// Labels =
+/// {
+/// { "env", "foo" },
+/// { "my-asset", "exists" },
+/// },
+/// Project = "my-project-name",
+/// }, new CustomResourceOptions
+/// {
+/// DependsOn =
+/// {
+/// basicBucket,
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// basicBucket, err := storage.NewBucket(ctx, "basic_bucket", &storage.BucketArgs{
+/// Name:                     pulumi.String("bucket"),
+/// Location:                 pulumi.String("us-west1"),
+/// UniformBucketLevelAccess: pulumi.Bool(true),
+/// Project:                  pulumi.String("my-project-name"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// basicLake, err := dataplex.NewLake(ctx, "basic_lake", &dataplex.LakeArgs{
+/// Name:     pulumi.String("lake"),
+/// Location: pulumi.String("us-west1"),
+/// Project:  pulumi.String("my-project-name"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// basicZone, err := dataplex.NewZone(ctx, "basic_zone", &dataplex.ZoneArgs{
+/// Name:     pulumi.String("zone"),
+/// Location: pulumi.String("us-west1"),
+/// Lake:     basicLake.Name,
+/// Type:     pulumi.String("RAW"),
+/// DiscoverySpec: &dataplex.ZoneDiscoverySpecArgs{
+/// Enabled: pulumi.Bool(false),
+/// },
+/// ResourceSpec: &dataplex.ZoneResourceSpecArgs{
+/// LocationType: pulumi.String("SINGLE_REGION"),
+/// },
+/// Project: pulumi.String("my-project-name"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// _, err = dataplex.NewAsset(ctx, "primary", &dataplex.AssetArgs{
+/// Name:         pulumi.String("asset"),
+/// Location:     pulumi.String("us-west1"),
+/// Lake:         basicLake.Name,
+/// DataplexZone: basicZone.Name,
+/// DiscoverySpec: &dataplex.AssetDiscoverySpecArgs{
+/// Enabled: pulumi.Bool(false),
+/// },
+/// ResourceSpec: &dataplex.AssetResourceSpecArgs{
+/// Name: pulumi.String("projects/my-project-name/buckets/bucket"),
+/// Type: pulumi.String("STORAGE_BUCKET"),
+/// },
+/// Labels: pulumi.StringMap{
+/// "env":      pulumi.String("foo"),
+/// "my-asset": pulumi.String("exists"),
+/// },
+/// Project: pulumi.String("my-project-name"),
+/// }, pulumi.DependsOn([]pulumi.Resource{
+/// basicBucket,
+/// }))
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.storage.Bucket;
+/// import com.pulumi.gcp.storage.BucketArgs;
+/// import com.pulumi.gcp.dataplex.Lake;
+/// import com.pulumi.gcp.dataplex.LakeArgs;
+/// import com.pulumi.gcp.dataplex.Zone;
+/// import com.pulumi.gcp.dataplex.ZoneArgs;
+/// import com.pulumi.gcp.dataplex.inputs.ZoneDiscoverySpecArgs;
+/// import com.pulumi.gcp.dataplex.inputs.ZoneResourceSpecArgs;
+/// import com.pulumi.gcp.dataplex.Asset;
+/// import com.pulumi.gcp.dataplex.AssetArgs;
+/// import com.pulumi.gcp.dataplex.inputs.AssetDiscoverySpecArgs;
+/// import com.pulumi.gcp.dataplex.inputs.AssetResourceSpecArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var basicBucket = new Bucket("basicBucket", BucketArgs.builder()
+/// .name("bucket")
+/// .location("us-west1")
+/// .uniformBucketLevelAccess(true)
+/// .project("my-project-name")
+/// .build());
+///
+/// var basicLake = new Lake("basicLake", LakeArgs.builder()
+/// .name("lake")
+/// .location("us-west1")
+/// .project("my-project-name")
+/// .build());
+///
+/// var basicZone = new Zone("basicZone", ZoneArgs.builder()
+/// .name("zone")
+/// .location("us-west1")
+/// .lake(basicLake.name())
+/// .type("RAW")
+/// .discoverySpec(ZoneDiscoverySpecArgs.builder()
+/// .enabled(false)
+/// .build())
+/// .resourceSpec(ZoneResourceSpecArgs.builder()
+/// .locationType("SINGLE_REGION")
+/// .build())
+/// .project("my-project-name")
+/// .build());
+///
+/// var primary = new Asset("primary", AssetArgs.builder()
+/// .name("asset")
+/// .location("us-west1")
+/// .lake(basicLake.name())
+/// .dataplexZone(basicZone.name())
+/// .discoverySpec(AssetDiscoverySpecArgs.builder()
+/// .enabled(false)
+/// .build())
+/// .resourceSpec(AssetResourceSpecArgs.builder()
+/// .name("projects/my-project-name/buckets/bucket")
+/// .type("STORAGE_BUCKET")
+/// .build())
+/// .labels(Map.ofEntries(
+/// Map.entry("env", "foo"),
+/// Map.entry("my-asset", "exists")
+/// ))
+/// .project("my-project-name")
+/// .build(), CustomResourceOptions.builder()
+/// .dependsOn(basicBucket)
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// basicBucket:
+/// type: gcp:storage:Bucket
+/// name: basic_bucket
+/// properties:
+/// name: bucket
+/// location: us-west1
+/// uniformBucketLevelAccess: true
+/// project: my-project-name
+/// basicLake:
+/// type: gcp:dataplex:Lake
+/// name: basic_lake
+/// properties:
+/// name: lake
+/// location: us-west1
+/// project: my-project-name
+/// basicZone:
+/// type: gcp:dataplex:Zone
+/// name: basic_zone
+/// properties:
+/// name: zone
+/// location: us-west1
+/// lake: ${basicLake.name}
+/// type: RAW
+/// discoverySpec:
+/// enabled: false
+/// resourceSpec:
+/// locationType: SINGLE_REGION
+/// project: my-project-name
+/// primary:
+/// type: gcp:dataplex:Asset
+/// properties:
+/// name: asset
+/// location: us-west1
+/// lake: ${basicLake.name}
+/// dataplexZone: ${basicZone.name}
+/// discoverySpec:
+/// enabled: false
+/// resourceSpec:
+/// name: projects/my-project-name/buckets/bucket
+/// type: STORAGE_BUCKET
+/// labels:
+/// env: foo
+/// my-asset: exists
+/// project: my-project-name
+/// options:
+/// dependsOn:
+/// - ${basicBucket}
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Asset can be imported using any of these accepted formats:
+///
+/// * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}}`
+///
+/// * `{{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
+///
+/// * `{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
+///
+/// When using the `pulumi import` command, Asset can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:dataplex/asset:Asset default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:dataplex/asset:Asset default {{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:dataplex/asset:Asset default {{location}}/{{lake}}/{{dataplex_zone}}/{{name}}
+/// ```
+class Asset extends CustomResource {
+  /// Output only. The time when the asset was created.
+  late final Output<String> createTime;
+
+  /// The zone for the resource
+  late final Output<String> dataplexZone;
+
+  /// Optional. Description of the asset.
+  late final Output<String?> description;
+
+  /// Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
+  late final Output<AssetDiscoverySpec> discoverySpec;
+
+  /// Output only. Status of the discovery feature applied to data referenced by this asset.
+  late final Output<List<AssetDiscoveryStatus>> discoveryStatuses;
+
+  /// Optional. User friendly display name.
+  late final Output<String?> displayName;
+
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  late final Output<Map<String, String>> effectiveLabels;
+
+  /// Optional. User defined labels for the asset.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  late final Output<Map<String, String>?> labels;
+
+  /// The lake for the resource
+  late final Output<String> lake;
+
+  /// The location for the resource
+  late final Output<String> location;
+
+  /// The name of the asset.
+  late final Output<String> name;
+
+  /// The project for the resource
+  late final Output<String> project;
+
+  /// The combination of labels configured directly on the resource and default labels configured on the provider.
+  late final Output<Map<String, String>> pulumiLabels;
+
+  /// Required. Immutable. Specification of the resource that is referenced by this asset.
+  late final Output<AssetResourceSpec> resourceSpec;
+
+  /// Output only. Status of the resource referenced by this asset.
+  late final Output<List<AssetResourceStatus>> resourceStatuses;
+
+  /// Output only. Status of the security policy applied to resource referenced by this asset.
+  late final Output<List<AssetSecurityStatus>> securityStatuses;
+
+  /// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+  late final Output<String> state;
+
+  /// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
+  late final Output<String> uid;
+
+  /// Output only. The time when the asset was last updated.
+  late final Output<String> updateTime;
+
+  Asset(
+    String name, {
+    AssetArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:dataplex/asset:Asset',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.createTime = Output.createUnknown<String>();
+    this.dataplexZone = Output.createUnknown<String>();
+    this.description = Output.createUnknown<String?>();
+    this.discoverySpec = Output.createUnknown<AssetDiscoverySpec>();
+    this.discoveryStatuses = Output.createUnknown<List<AssetDiscoveryStatus>>();
+    this.displayName = Output.createUnknown<String?>();
+    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.labels = Output.createUnknown<Map<String, String>?>();
+    this.lake = Output.createUnknown<String>();
+    this.location = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+    this.resourceSpec = Output.createUnknown<AssetResourceSpec>();
+    this.resourceStatuses = Output.createUnknown<List<AssetResourceStatus>>();
+    this.securityStatuses = Output.createUnknown<List<AssetSecurityStatus>>();
+    this.state = Output.createUnknown<String>();
+    this.uid = Output.createUnknown<String>();
+    this.updateTime = Output.createUnknown<String>();
+  }
+}

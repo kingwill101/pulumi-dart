@@ -1,0 +1,3 @@
+library module_storage_batch_operations_job_put_metadata;
+
+export 'batch_operations_job_put_metadata.dart';

@@ -1,0 +1,58 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class DestinationTableProperties {
+  /// [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
+  final String? description;
+
+  /// [Internal] This field is for Google internal use only.
+  final String? expirationTime;
+
+  /// [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
+  final String? friendlyName;
+
+  /// [Optional] The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
+  final Map<String, String>? labels;
+
+  DestinationTableProperties({
+    this.description,
+    this.expirationTime,
+    this.friendlyName,
+    this.labels,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final descriptionValue = description;
+    if (descriptionValue != null) {
+      map['description'] = descriptionValue;
+    }
+    final expirationTimeValue = expirationTime;
+    if (expirationTimeValue != null) {
+      map['expirationTime'] = expirationTimeValue;
+    }
+    final friendlyNameValue = friendlyName;
+    if (friendlyNameValue != null) {
+      map['friendlyName'] = friendlyNameValue;
+    }
+    final labelsValue = labels;
+    if (labelsValue != null) {
+      map['labels'] = labelsValue;
+    }
+    return map;
+  }
+
+  factory DestinationTableProperties.fromMap(Map<String, dynamic> map) {
+    return DestinationTableProperties(
+      description:
+          map['description'] == null ? null : map['description'] as String,
+      expirationTime: map['expirationTime'] == null
+          ? null
+          : map['expirationTime'] as String,
+      friendlyName:
+          map['friendlyName'] == null ? null : map['friendlyName'] as String,
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
+    );
+  }
+}

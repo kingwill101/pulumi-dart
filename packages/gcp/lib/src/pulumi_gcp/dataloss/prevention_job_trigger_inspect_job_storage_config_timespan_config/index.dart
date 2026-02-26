@@ -1,0 +1,3 @@
+library module_dataloss_prevention_job_trigger_inspect_job_storage_config_timespan_config;
+
+export 'prevention_job_trigger_inspect_job_storage_config_timespan_config.dart';

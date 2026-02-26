@@ -1,0 +1,3 @@
+library module_compute_storage_pool_iam_binding_condition;
+
+export 'storage_pool_iam_binding_condition.dart';

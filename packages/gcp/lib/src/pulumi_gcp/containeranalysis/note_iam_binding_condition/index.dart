@@ -1,0 +1,3 @@
+library module_containeranalysis_note_iam_binding_condition;
+
+export 'note_iam_binding_condition.dart';

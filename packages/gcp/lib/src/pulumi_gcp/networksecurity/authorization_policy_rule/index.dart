@@ -1,0 +1,3 @@
+library module_networksecurity_authorization_policy_rule;
+
+export 'authorization_policy_rule.dart';

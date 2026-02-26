@@ -1,0 +1,96 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import 'lun_range_response.dart';
+import 'nfs_export_response.dart';
+
+/// Configuration parameters for a new volume.
+class VolumeConfigResponse {
+  /// The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
+  final String gcpService;
+
+  /// LUN ranges to be configured. Set only when protocol is PROTOCOL_FC.
+  final List<LunRangeResponse> lunRanges;
+
+  /// Machine ids connected to this volume. Set only when protocol is PROTOCOL_FC.
+  final List<String> machineIds;
+
+  /// The name of the volume config.
+  final String name;
+
+  /// NFS exports. Set only when protocol is PROTOCOL_NFS.
+  final List<NfsExportResponse> nfsExports;
+
+  /// Performance tier of the Volume. Default is SHARED.
+  final String performanceTier;
+
+  /// Volume protocol.
+  final String protocol;
+
+  /// The requested size of this volume, in GB.
+  final int sizeGb;
+
+  /// Whether snapshots should be enabled.
+  final bool snapshotsEnabled;
+
+  /// The type of this Volume.
+  final String type;
+
+  /// User note field, it can be used by customers to add additional information for the BMS Ops team .
+  final String userNote;
+
+  VolumeConfigResponse({
+    required this.gcpService,
+    required this.lunRanges,
+    required this.machineIds,
+    required this.name,
+    required this.nfsExports,
+    required this.performanceTier,
+    required this.protocol,
+    required this.sizeGb,
+    required this.snapshotsEnabled,
+    required this.type,
+    required this.userNote,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['gcpService'] = gcpService;
+    map['lunRanges'] = Input.encodeList<LunRangeResponse, Map<String, dynamic>>(
+        lunRanges, (value) => value.toMap());
+    map['machineIds'] = machineIds;
+    map['name'] = name;
+    map['nfsExports'] =
+        Input.encodeList<NfsExportResponse, Map<String, dynamic>>(
+            nfsExports, (value) => value.toMap());
+    map['performanceTier'] = performanceTier;
+    map['protocol'] = protocol;
+    map['sizeGb'] = sizeGb;
+    map['snapshotsEnabled'] = snapshotsEnabled;
+    map['type'] = type;
+    map['userNote'] = userNote;
+    return map;
+  }
+
+  factory VolumeConfigResponse.fromMap(Map<String, dynamic> map) {
+    return VolumeConfigResponse(
+      gcpService: map['gcpService'] as String,
+      lunRanges: Input.decodeList<LunRangeResponse>(
+          map['lunRanges'],
+          (value) =>
+              LunRangeResponse.fromMap((value as Map).cast<String, dynamic>())),
+      machineIds: (map['machineIds'] as List).cast<String>(),
+      name: map['name'] as String,
+      nfsExports: Input.decodeList<NfsExportResponse>(
+          map['nfsExports'],
+          (value) => NfsExportResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      performanceTier: map['performanceTier'] as String,
+      protocol: map['protocol'] as String,
+      sizeGb: map['sizeGb'] as int,
+      snapshotsEnabled: map['snapshotsEnabled'] as bool,
+      type: map['type'] as String,
+      userNote: map['userNote'] as String,
+    );
+  }
+}

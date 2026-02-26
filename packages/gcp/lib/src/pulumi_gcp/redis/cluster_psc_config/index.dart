@@ -1,0 +1,3 @@
+library module_redis_cluster_psc_config;
+
+export 'cluster_psc_config2.dart';

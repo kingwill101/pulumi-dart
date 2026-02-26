@@ -1,0 +1,90 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../custom_target_type_custom_actions/custom_target_type_custom_actions.dart';
+
+/// The set of arguments for CustomTargetType.
+class CustomTargetTypeArgs {
+  /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+  /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveAnnotations`" pulumi-lang-dotnet="`EffectiveAnnotations`" pulumi-lang-go="`effectiveAnnotations`" pulumi-lang-python="`effective_annotations`" pulumi-lang-yaml="`effectiveAnnotations`" pulumi-lang-java="`effectiveAnnotations`">`effective_annotations`</span> for all of the annotations present on the resource.
+  final Input<Map<String, String>>? annotations;
+
+  /// Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
+  /// Structure is documented below.
+  final Input<CustomTargetTypeCustomActions>? customActions;
+
+  /// Description of the `CustomTargetType`. Max length is 255 characters.
+  final Input<String>? description;
+
+  /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  final Input<Map<String, String>>? labels;
+
+  /// The location of the source.
+  final Input<String> location;
+
+  /// Name of the `CustomTargetType`.
+  final Input<String>? name;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final Input<String>? project;
+
+  CustomTargetTypeArgs({
+    this.annotations,
+    this.customActions,
+    this.description,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final annotationsValue = annotations;
+    if (annotationsValue != null) {
+      map['annotations'] = annotationsValue;
+    }
+    final customActionsValue = customActions;
+    if (customActionsValue != null) {
+      map['customActions'] = Input.mapOptionalInputValue<
+          CustomTargetTypeCustomActions,
+          Map<String, dynamic>>(customActionsValue, (value) => value.toMap());
+    }
+    final descriptionValue = description;
+    if (descriptionValue != null) {
+      map['description'] = descriptionValue;
+    }
+    final labelsValue = labels;
+    if (labelsValue != null) {
+      map['labels'] = labelsValue;
+    }
+    map['location'] = location;
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory CustomTargetTypeArgs.fromMap(Map<String, dynamic> map) {
+    return CustomTargetTypeArgs(
+      annotations:
+          Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      customActions: Input.asOptionalInput<CustomTargetTypeCustomActions>(
+          map['customActions']),
+      description: Input.asOptionalInput<String>(map['description']),
+      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: Input.asInput<String>(map['location']),
+      name: Input.asOptionalInput<String>(map['name']),
+      project: Input.asOptionalInput<String>(map['project']),
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_artifactregistry_repository_virtual_repository_config;
+
+export 'repository_virtual_repository_config.dart';

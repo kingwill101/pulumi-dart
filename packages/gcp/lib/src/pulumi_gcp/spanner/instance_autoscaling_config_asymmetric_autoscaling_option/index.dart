@@ -1,0 +1,3 @@
+library module_spanner_instance_autoscaling_config_asymmetric_autoscaling_option;
+
+export 'instance_autoscaling_config_asymmetric_autoscaling_option.dart';

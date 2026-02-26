@@ -1,0 +1,3 @@
+library module_compute_instance_from_machine_image_scheduling;
+
+export 'instance_from_machine_image_scheduling.dart';

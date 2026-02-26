@@ -1,0 +1,3 @@
+library module_container_aws_node_pool_config_instance_placement;
+
+export 'aws_node_pool_config_instance_placement.dart';

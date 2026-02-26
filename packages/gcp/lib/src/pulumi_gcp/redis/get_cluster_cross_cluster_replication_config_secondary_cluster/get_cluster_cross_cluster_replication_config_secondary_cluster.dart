@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetClusterCrossClusterReplicationConfigSecondaryCluster {
+  /// The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+  final String cluster;
+
+  /// The unique id of the secondary cluster.
+  final String uid;
+
+  GetClusterCrossClusterReplicationConfigSecondaryCluster({
+    required this.cluster,
+    required this.uid,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['cluster'] = cluster;
+    map['uid'] = uid;
+    return map;
+  }
+
+  factory GetClusterCrossClusterReplicationConfigSecondaryCluster.fromMap(
+      Map<String, dynamic> map) {
+    return GetClusterCrossClusterReplicationConfigSecondaryCluster(
+      cluster: map['cluster'] as String,
+      uid: map['uid'] as String,
+    );
+  }
+}

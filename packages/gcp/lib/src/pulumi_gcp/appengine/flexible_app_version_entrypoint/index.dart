@@ -1,0 +1,3 @@
+library module_appengine_flexible_app_version_entrypoint;
+
+export 'flexible_app_version_entrypoint.dart';

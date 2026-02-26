@@ -1,0 +1,3 @@
+library module_redis_get_cluster_automated_backup_config_fixed_frequency_schedule;
+
+export 'get_cluster_automated_backup_config_fixed_frequency_schedule.dart';

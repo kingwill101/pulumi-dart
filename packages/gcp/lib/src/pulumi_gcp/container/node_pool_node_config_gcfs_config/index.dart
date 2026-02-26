@@ -1,0 +1,3 @@
+library module_container_node_pool_node_config_gcfs_config;
+
+export 'node_pool_node_config_gcfs_config.dart';

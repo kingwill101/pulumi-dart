@@ -1,0 +1,3 @@
+library module_osconfig_patch_deployment_patch_config_post_step;
+
+export 'patch_deployment_patch_config_post_step.dart';

@@ -1,0 +1,3 @@
+library module_compute_interconnect_attachment_l2_forwarding_appliance_mapping_inner_vlan_to_appliance_mapping;
+
+export 'interconnect_attachment_l2_forwarding_appliance_mapping_inner_vlan_to_appliance_mapping.dart';

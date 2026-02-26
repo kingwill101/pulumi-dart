@@ -1,0 +1,3 @@
+library module_compute_image_shielded_instance_initial_state;
+
+export 'image_shielded_instance_initial_state.dart';

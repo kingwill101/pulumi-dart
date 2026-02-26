@@ -1,0 +1,3 @@
+library module_compute_instance_advanced_machine_features;
+
+export 'instance_advanced_machine_features.dart';

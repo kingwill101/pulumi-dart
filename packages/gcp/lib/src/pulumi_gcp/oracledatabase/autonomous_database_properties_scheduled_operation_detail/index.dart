@@ -1,0 +1,3 @@
+library module_oracledatabase_autonomous_database_properties_scheduled_operation_detail;
+
+export 'autonomous_database_properties_scheduled_operation_detail.dart';

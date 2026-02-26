@@ -1,0 +1,3 @@
+library module_gkeonprem_vmware_node_pool_config_vsphere_config_tag;
+
+export 'vmware_node_pool_config_vsphere_config_tag.dart';

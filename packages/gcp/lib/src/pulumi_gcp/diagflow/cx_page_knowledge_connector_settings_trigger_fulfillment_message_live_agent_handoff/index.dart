@@ -1,0 +1,3 @@
+library module_diagflow_cx_page_knowledge_connector_settings_trigger_fulfillment_message_live_agent_handoff;
+
+export 'cx_page_knowledge_connector_settings_trigger_fulfillment_message_live_agent_handoff.dart';

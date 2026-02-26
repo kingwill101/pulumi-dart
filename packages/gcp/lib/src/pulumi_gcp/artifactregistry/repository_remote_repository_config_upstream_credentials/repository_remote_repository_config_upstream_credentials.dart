@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../repository_remote_repository_config_upstream_credentials_username_password_credentials/repository_remote_repository_config_upstream_credentials_username_password_credentials.dart';
+
+class RepositoryRemoteRepositoryConfigUpstreamCredentials {
+  /// Use username and password to access the remote repository.
+  /// Structure is documented below.
+  final RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials?
+      usernamePasswordCredentials;
+
+  RepositoryRemoteRepositoryConfigUpstreamCredentials({
+    this.usernamePasswordCredentials,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final usernamePasswordCredentialsValue = usernamePasswordCredentials;
+    if (usernamePasswordCredentialsValue != null) {
+      map['usernamePasswordCredentials'] =
+          usernamePasswordCredentialsValue.toMap();
+    }
+    return map;
+  }
+
+  factory RepositoryRemoteRepositoryConfigUpstreamCredentials.fromMap(
+      Map<String, dynamic> map) {
+    return RepositoryRemoteRepositoryConfigUpstreamCredentials(
+      usernamePasswordCredentials: map['usernamePasswordCredentials'] == null
+          ? null
+          : RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials
+              .fromMap((map['usernamePasswordCredentials'] as Map)
+                  .cast<String, dynamic>()),
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_firebase_app_hosting_domain_custom_domain_status;
+
+export 'app_hosting_domain_custom_domain_status.dart';

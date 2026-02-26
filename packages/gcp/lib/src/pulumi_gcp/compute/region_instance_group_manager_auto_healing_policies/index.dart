@@ -1,0 +1,3 @@
+library module_compute_region_instance_group_manager_auto_healing_policies;
+
+export 'region_instance_group_manager_auto_healing_policies.dart';

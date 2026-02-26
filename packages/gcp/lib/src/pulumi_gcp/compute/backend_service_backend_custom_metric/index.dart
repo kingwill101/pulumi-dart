@@ -1,0 +1,3 @@
+library module_compute_backend_service_backend_custom_metric;
+
+export 'backend_service_backend_custom_metric.dart';

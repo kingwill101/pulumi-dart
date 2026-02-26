@@ -1,0 +1,3 @@
+library module_container_get_cluster_node_config_fast_socket;
+
+export 'get_cluster_node_config_fast_socket.dart';

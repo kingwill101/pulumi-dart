@@ -1,0 +1,3 @@
+library module_dataloss_prevention_job_trigger_inspect_job_action_save_findings_output_config;
+
+export 'prevention_job_trigger_inspect_job_action_save_findings_output_config.dart';

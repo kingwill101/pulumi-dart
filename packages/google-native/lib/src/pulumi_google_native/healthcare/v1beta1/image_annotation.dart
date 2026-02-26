@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import 'bounding_poly.dart';
+
+/// Image annotation.
+class ImageAnnotation {
+  /// The list of polygons outlining the sensitive regions in the image.
+  final List<BoundingPoly>? boundingPolys;
+
+  /// 0-based index of the image frame. For example, an image frame in a DICOM instance.
+  final int? frameIndex;
+
+  ImageAnnotation({
+    this.boundingPolys,
+    this.frameIndex,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final boundingPolysValue = boundingPolys;
+    if (boundingPolysValue != null) {
+      map['boundingPolys'] =
+          Input.encodeList<BoundingPoly, Map<String, dynamic>>(
+              boundingPolysValue, (value) => value.toMap());
+    }
+    final frameIndexValue = frameIndex;
+    if (frameIndexValue != null) {
+      map['frameIndex'] = frameIndexValue;
+    }
+    return map;
+  }
+
+  factory ImageAnnotation.fromMap(Map<String, dynamic> map) {
+    return ImageAnnotation(
+      boundingPolys: map['boundingPolys'] == null
+          ? null
+          : Input.decodeList<BoundingPoly>(
+              map['boundingPolys'],
+              (value) =>
+                  BoundingPoly.fromMap((value as Map).cast<String, dynamic>())),
+      frameIndex: map['frameIndex'] == null ? null : map['frameIndex'] as int,
+    );
+  }
+}

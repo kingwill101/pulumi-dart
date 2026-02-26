@@ -1,0 +1,30 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Represents a hardware accelerator request config. Note that the AcceleratorConfig can be used in both Jobs and Versions. Learn more about [accelerators for training](/ml-engine/docs/using-gpus) and [accelerators for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
+class GoogleCloudMlV1AcceleratorConfigResponse {
+  /// The number of accelerators to attach to each machine running the job.
+  final String count;
+
+  /// The type of accelerator to use.
+  final String type;
+
+  GoogleCloudMlV1AcceleratorConfigResponse({
+    required this.count,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['count'] = count;
+    map['type'] = type;
+    return map;
+  }
+
+  factory GoogleCloudMlV1AcceleratorConfigResponse.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudMlV1AcceleratorConfigResponse(
+      count: map['count'] as String,
+      type: map['type'] as String,
+    );
+  }
+}

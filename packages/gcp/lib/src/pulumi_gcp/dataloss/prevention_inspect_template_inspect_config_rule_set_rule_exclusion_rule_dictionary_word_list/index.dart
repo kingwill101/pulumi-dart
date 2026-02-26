@@ -1,0 +1,3 @@
+library module_dataloss_prevention_inspect_template_inspect_config_rule_set_rule_exclusion_rule_dictionary_word_list;
+
+export 'prevention_inspect_template_inspect_config_rule_set_rule_exclusion_rule_dictionary_word_list.dart';

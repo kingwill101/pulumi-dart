@@ -1,0 +1,3 @@
+library module_ces_app_version_snapshot_example_message;
+
+export 'app_version_snapshot_example_message.dart';

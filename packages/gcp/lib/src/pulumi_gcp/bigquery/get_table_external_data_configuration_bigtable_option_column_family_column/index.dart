@@ -1,0 +1,3 @@
+library module_bigquery_get_table_external_data_configuration_bigtable_option_column_family_column;
+
+export 'get_table_external_data_configuration_bigtable_option_column_family_column.dart';

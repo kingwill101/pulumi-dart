@@ -1,0 +1,4 @@
+library module_firebase_app_hosting_default_domain;
+
+export 'app_hosting_default_domain.dart';
+export 'app_hosting_default_domain_args.dart';

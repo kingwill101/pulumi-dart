@@ -1,0 +1,3 @@
+library module_storage_transfer_job_notification_config;
+
+export 'transfer_job_notification_config.dart';

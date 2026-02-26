@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// Arguments for getStep.
+class GetStepArgs {
+  final Input<String> executionId;
+  final Input<String> historyId;
+  final Input<String>? project;
+  final Input<String> stepId;
+
+  GetStepArgs({
+    required this.executionId,
+    required this.historyId,
+    this.project,
+    required this.stepId,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['executionId'] = executionId;
+    map['historyId'] = historyId;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['stepId'] = stepId;
+    return map;
+  }
+
+  factory GetStepArgs.fromMap(Map<String, dynamic> map) {
+    return GetStepArgs(
+      executionId: Input.asInput<String>(map['executionId']),
+      historyId: Input.asInput<String>(map['historyId']),
+      project: Input.asOptionalInput<String>(map['project']),
+      stepId: Input.asInput<String>(map['stepId']),
+    );
+  }
+}

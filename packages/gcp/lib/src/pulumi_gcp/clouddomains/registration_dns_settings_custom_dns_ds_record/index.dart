@@ -1,0 +1,3 @@
+library module_clouddomains_registration_dns_settings_custom_dns_ds_record;
+
+export 'registration_dns_settings_custom_dns_ds_record.dart';

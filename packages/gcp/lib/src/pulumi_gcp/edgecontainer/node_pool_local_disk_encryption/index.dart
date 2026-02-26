@@ -1,0 +1,3 @@
+library module_edgecontainer_node_pool_local_disk_encryption;
+
+export 'node_pool_local_disk_encryption.dart';

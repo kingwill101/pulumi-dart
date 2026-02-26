@@ -1,0 +1,3 @@
+library module_securesourcemanager_repository_initial_config;
+
+export 'repository_initial_config.dart';

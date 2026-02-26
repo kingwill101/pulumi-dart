@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// The category to which the update belongs.
+class CategoryResponse {
+  /// The identifier of the category.
+  final String categoryId;
+
+  /// The localized name of the category.
+  final String name;
+
+  CategoryResponse({
+    required this.categoryId,
+    required this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['categoryId'] = categoryId;
+    map['name'] = name;
+    return map;
+  }
+
+  factory CategoryResponse.fromMap(Map<String, dynamic> map) {
+    return CategoryResponse(
+      categoryId: map['categoryId'] as String,
+      name: map['name'] as String,
+    );
+  }
+}

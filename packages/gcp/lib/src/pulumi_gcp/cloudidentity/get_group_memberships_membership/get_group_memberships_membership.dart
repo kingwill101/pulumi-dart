@@ -1,0 +1,91 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_group_memberships_membership_member_key/get_group_memberships_membership_member_key.dart';
+import '../get_group_memberships_membership_preferred_member_key/get_group_memberships_membership_preferred_member_key.dart';
+import '../get_group_memberships_membership_role/get_group_memberships_membership_role.dart';
+
+class GetGroupMembershipsMembership {
+  /// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+  final bool createIgnoreAlreadyExists;
+
+  /// The time when the Membership was created.
+  final String createTime;
+
+  /// The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
+  final String group;
+
+  /// EntityKey of the member.  Structure is documented below.
+  final List<GetGroupMembershipsMembershipMemberKey> memberKeys;
+
+  /// The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
+  final String name;
+
+  /// EntityKey of the member.  Structure is documented below.
+  final List<GetGroupMembershipsMembershipPreferredMemberKey>
+      preferredMemberKeys;
+
+  /// The MembershipRoles that apply to the Membership. Structure is documented below.
+  final List<GetGroupMembershipsMembershipRole> roles;
+
+  /// The type of the membership.
+  final String type;
+
+  /// The time when the Membership was last updated.
+  final String updateTime;
+
+  GetGroupMembershipsMembership({
+    required this.createIgnoreAlreadyExists,
+    required this.createTime,
+    required this.group,
+    required this.memberKeys,
+    required this.name,
+    required this.preferredMemberKeys,
+    required this.roles,
+    required this.type,
+    required this.updateTime,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['createIgnoreAlreadyExists'] = createIgnoreAlreadyExists;
+    map['createTime'] = createTime;
+    map['group'] = group;
+    map['memberKeys'] = Input.encodeList<GetGroupMembershipsMembershipMemberKey,
+        Map<String, dynamic>>(memberKeys, (value) => value.toMap());
+    map['name'] = name;
+    map['preferredMemberKeys'] = Input.encodeList<
+        GetGroupMembershipsMembershipPreferredMemberKey,
+        Map<String, dynamic>>(preferredMemberKeys, (value) => value.toMap());
+    map['roles'] = Input.encodeList<GetGroupMembershipsMembershipRole,
+        Map<String, dynamic>>(roles, (value) => value.toMap());
+    map['type'] = type;
+    map['updateTime'] = updateTime;
+    return map;
+  }
+
+  factory GetGroupMembershipsMembership.fromMap(Map<String, dynamic> map) {
+    return GetGroupMembershipsMembership(
+      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] as bool,
+      createTime: map['createTime'] as String,
+      group: map['group'] as String,
+      memberKeys: Input.decodeList<GetGroupMembershipsMembershipMemberKey>(
+          map['memberKeys'],
+          (value) => GetGroupMembershipsMembershipMemberKey.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      name: map['name'] as String,
+      preferredMemberKeys:
+          Input.decodeList<GetGroupMembershipsMembershipPreferredMemberKey>(
+              map['preferredMemberKeys'],
+              (value) =>
+                  GetGroupMembershipsMembershipPreferredMemberKey.fromMap(
+                      (value as Map).cast<String, dynamic>())),
+      roles: Input.decodeList<GetGroupMembershipsMembershipRole>(
+          map['roles'],
+          (value) => GetGroupMembershipsMembershipRole.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      type: map['type'] as String,
+      updateTime: map['updateTime'] as String,
+    );
+  }
+}

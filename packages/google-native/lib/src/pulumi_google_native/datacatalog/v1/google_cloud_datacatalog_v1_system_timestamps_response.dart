@@ -1,0 +1,36 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Timestamps associated with this resource in a particular system.
+class GoogleCloudDatacatalogV1SystemTimestampsResponse {
+  /// Creation timestamp of the resource within the given system.
+  final String createTime;
+
+  /// Expiration timestamp of the resource within the given system. Currently only applicable to BigQuery resources.
+  final String expireTime;
+
+  /// Timestamp of the last modification of the resource or its metadata within a given system. Note: Depending on the source system, not every modification updates this timestamp. For example, BigQuery timestamps every metadata modification but not data or permission changes.
+  final String updateTime;
+
+  GoogleCloudDatacatalogV1SystemTimestampsResponse({
+    required this.createTime,
+    required this.expireTime,
+    required this.updateTime,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['createTime'] = createTime;
+    map['expireTime'] = expireTime;
+    map['updateTime'] = updateTime;
+    return map;
+  }
+
+  factory GoogleCloudDatacatalogV1SystemTimestampsResponse.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudDatacatalogV1SystemTimestampsResponse(
+      createTime: map['createTime'] as String,
+      expireTime: map['expireTime'] as String,
+      updateTime: map['updateTime'] as String,
+    );
+  }
+}

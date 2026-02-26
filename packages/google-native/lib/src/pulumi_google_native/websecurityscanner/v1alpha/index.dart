@@ -1,0 +1,21 @@
+library module_websecurityscanner_v1alpha;
+
+export 'authentication3.dart';
+export 'authentication_response3.dart';
+export 'custom_account2.dart';
+export 'custom_account_response2.dart';
+export 'get_scan_config2.dart';
+export 'get_scan_config_args2.dart';
+export 'get_scan_config_result2.dart';
+export 'google_account2.dart';
+export 'google_account_response2.dart';
+export 'scan_config2.dart';
+export 'scan_config_args2.dart';
+export 'scan_config_target_platforms_item.dart';
+export 'scan_config_user_agent2.dart';
+export 'scan_run.dart';
+export 'scan_run_execution_state.dart';
+export 'scan_run_response.dart';
+export 'scan_run_result_state.dart';
+export 'schedule4.dart';
+export 'schedule_response4.dart';

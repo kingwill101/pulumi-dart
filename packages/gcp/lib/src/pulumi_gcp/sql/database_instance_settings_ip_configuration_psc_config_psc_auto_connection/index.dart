@@ -1,0 +1,3 @@
+library module_sql_database_instance_settings_ip_configuration_psc_config_psc_auto_connection;
+
+export 'database_instance_settings_ip_configuration_psc_config_psc_auto_connection.dart';

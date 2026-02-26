@@ -1,0 +1,5 @@
+library module_iam_get_workload_identity_pool_iam_policy;
+
+export 'get_workload_identity_pool_iam_policy.dart';
+export 'get_workload_identity_pool_iam_policy_args.dart';
+export 'get_workload_identity_pool_iam_policy_result.dart';

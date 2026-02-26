@@ -1,0 +1,3 @@
+library module_bigquery_dataset_access_condition;
+
+export 'dataset_access_condition.dart';

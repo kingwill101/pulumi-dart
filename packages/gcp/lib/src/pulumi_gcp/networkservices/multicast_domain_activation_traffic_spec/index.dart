@@ -1,0 +1,3 @@
+library module_networkservices_multicast_domain_activation_traffic_spec;
+
+export 'multicast_domain_activation_traffic_spec.dart';

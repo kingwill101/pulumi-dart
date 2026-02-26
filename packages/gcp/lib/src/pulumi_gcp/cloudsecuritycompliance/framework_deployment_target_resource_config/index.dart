@@ -1,0 +1,3 @@
+library module_cloudsecuritycompliance_framework_deployment_target_resource_config;
+
+export 'framework_deployment_target_resource_config.dart';

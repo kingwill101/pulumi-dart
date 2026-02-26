@@ -1,0 +1,3 @@
+library module_discoveryengine_license_config_end_date;
+
+export 'license_config_end_date.dart';

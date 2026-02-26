@@ -1,0 +1,3 @@
+library module_container_cluster_node_pool_defaults_node_config_defaults_gcfs_config;
+
+export 'cluster_node_pool_defaults_node_config_defaults_gcfs_config.dart';

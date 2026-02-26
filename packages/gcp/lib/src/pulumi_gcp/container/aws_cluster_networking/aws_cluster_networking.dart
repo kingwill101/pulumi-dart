@@ -1,0 +1,49 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class AwsClusterNetworking {
+  /// Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
+  final bool? perNodePoolSgRulesDisabled;
+
+  /// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+  final List<String> podAddressCidrBlocks;
+
+  /// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
+  final List<String> serviceAddressCidrBlocks;
+
+  /// The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+  ///
+  /// - - -
+  final String vpcId;
+
+  AwsClusterNetworking({
+    this.perNodePoolSgRulesDisabled,
+    required this.podAddressCidrBlocks,
+    required this.serviceAddressCidrBlocks,
+    required this.vpcId,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final perNodePoolSgRulesDisabledValue = perNodePoolSgRulesDisabled;
+    if (perNodePoolSgRulesDisabledValue != null) {
+      map['perNodePoolSgRulesDisabled'] = perNodePoolSgRulesDisabledValue;
+    }
+    map['podAddressCidrBlocks'] = podAddressCidrBlocks;
+    map['serviceAddressCidrBlocks'] = serviceAddressCidrBlocks;
+    map['vpcId'] = vpcId;
+    return map;
+  }
+
+  factory AwsClusterNetworking.fromMap(Map<String, dynamic> map) {
+    return AwsClusterNetworking(
+      perNodePoolSgRulesDisabled: map['perNodePoolSgRulesDisabled'] == null
+          ? null
+          : map['perNodePoolSgRulesDisabled'] as bool,
+      podAddressCidrBlocks:
+          (map['podAddressCidrBlocks'] as List).cast<String>(),
+      serviceAddressCidrBlocks:
+          (map['serviceAddressCidrBlocks'] as List).cast<String>(),
+      vpcId: map['vpcId'] as String,
+    );
+  }
+}

@@ -1,0 +1,100 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../function_event_trigger_event_filter/function_event_trigger_event_filter.dart';
+
+class FunctionEventTrigger2 {
+  /// Criteria used to filter events.
+  /// Structure is documented below.
+  final List<FunctionEventTriggerEventFilter>? eventFilters;
+
+  /// Required. The type of event to observe.
+  final String eventType;
+
+  /// The name of a Pub/Sub topic in the same project that will be used
+  /// as the transport topic for the event delivery.
+  final String? pubsubTopic;
+
+  /// Describes the retry policy in case of function's execution failure.
+  /// Retried execution is charged as any other execution.
+  /// Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
+  final String? retryPolicy;
+
+  /// Optional. The email of the trigger's service account. The service account
+  /// must have permission to invoke Cloud Run services. If empty, defaults to the
+  /// Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
+  final String? serviceAccountEmail;
+
+  /// (Output)
+  /// Output only. The resource name of the Eventarc trigger.
+  final String? trigger;
+
+  /// The region that the trigger will be in. The trigger will only receive
+  /// events originating in this region. It can be the same
+  /// region as the function, a different region or multi-region, or the global
+  /// region. If not provided, defaults to the same region as the function.
+  final String? triggerRegion;
+
+  FunctionEventTrigger2({
+    this.eventFilters,
+    required this.eventType,
+    this.pubsubTopic,
+    this.retryPolicy,
+    this.serviceAccountEmail,
+    this.trigger,
+    this.triggerRegion,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final eventFiltersValue = eventFilters;
+    if (eventFiltersValue != null) {
+      map['eventFilters'] = Input.encodeList<FunctionEventTriggerEventFilter,
+          Map<String, dynamic>>(eventFiltersValue, (value) => value.toMap());
+    }
+    map['eventType'] = eventType;
+    final pubsubTopicValue = pubsubTopic;
+    if (pubsubTopicValue != null) {
+      map['pubsubTopic'] = pubsubTopicValue;
+    }
+    final retryPolicyValue = retryPolicy;
+    if (retryPolicyValue != null) {
+      map['retryPolicy'] = retryPolicyValue;
+    }
+    final serviceAccountEmailValue = serviceAccountEmail;
+    if (serviceAccountEmailValue != null) {
+      map['serviceAccountEmail'] = serviceAccountEmailValue;
+    }
+    final triggerValue = trigger;
+    if (triggerValue != null) {
+      map['trigger'] = triggerValue;
+    }
+    final triggerRegionValue = triggerRegion;
+    if (triggerRegionValue != null) {
+      map['triggerRegion'] = triggerRegionValue;
+    }
+    return map;
+  }
+
+  factory FunctionEventTrigger2.fromMap(Map<String, dynamic> map) {
+    return FunctionEventTrigger2(
+      eventFilters: map['eventFilters'] == null
+          ? null
+          : Input.decodeList<FunctionEventTriggerEventFilter>(
+              map['eventFilters'],
+              (value) => FunctionEventTriggerEventFilter.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      eventType: map['eventType'] as String,
+      pubsubTopic:
+          map['pubsubTopic'] == null ? null : map['pubsubTopic'] as String,
+      retryPolicy:
+          map['retryPolicy'] == null ? null : map['retryPolicy'] as String,
+      serviceAccountEmail: map['serviceAccountEmail'] == null
+          ? null
+          : map['serviceAccountEmail'] as String,
+      trigger: map['trigger'] == null ? null : map['trigger'] as String,
+      triggerRegion:
+          map['triggerRegion'] == null ? null : map['triggerRegion'] as String,
+    );
+  }
+}

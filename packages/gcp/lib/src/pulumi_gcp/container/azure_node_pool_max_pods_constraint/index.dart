@@ -1,0 +1,3 @@
+library module_container_azure_node_pool_max_pods_constraint;
+
+export 'azure_node_pool_max_pods_constraint.dart';

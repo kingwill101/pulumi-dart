@@ -1,0 +1,3 @@
+library module_notebooks_instance_shielded_instance_config;
+
+export 'instance_shielded_instance_config2.dart';

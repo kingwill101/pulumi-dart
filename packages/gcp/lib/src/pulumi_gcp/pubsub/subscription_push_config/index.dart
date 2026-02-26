@@ -1,0 +1,3 @@
+library module_pubsub_subscription_push_config;
+
+export 'subscription_push_config.dart';

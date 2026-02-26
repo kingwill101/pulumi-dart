@@ -1,0 +1,4 @@
+library module_iam_workforce_pool_iam_policy;
+
+export 'workforce_pool_iam_policy.dart';
+export 'workforce_pool_iam_policy_args.dart';

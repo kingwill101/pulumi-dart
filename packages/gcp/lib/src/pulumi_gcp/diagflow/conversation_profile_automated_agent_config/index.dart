@@ -1,0 +1,3 @@
+library module_diagflow_conversation_profile_automated_agent_config;
+
+export 'conversation_profile_automated_agent_config.dart';

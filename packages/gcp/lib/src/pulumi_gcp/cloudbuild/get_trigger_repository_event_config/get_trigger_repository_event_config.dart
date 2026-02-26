@@ -1,0 +1,48 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_trigger_repository_event_config_pull_request/get_trigger_repository_event_config_pull_request.dart';
+import '../get_trigger_repository_event_config_push/get_trigger_repository_event_config_push.dart';
+
+class GetTriggerRepositoryEventConfig {
+  /// Contains filter properties for matching Pull Requests.
+  final List<GetTriggerRepositoryEventConfigPullRequest> pullRequests;
+
+  /// Contains filter properties for matching git pushes.
+  final List<GetTriggerRepositoryEventConfigPush> pushes;
+
+  /// The resource name of the Repo API resource.
+  final String repository;
+
+  GetTriggerRepositoryEventConfig({
+    required this.pullRequests,
+    required this.pushes,
+    required this.repository,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['pullRequests'] = Input.encodeList<
+        GetTriggerRepositoryEventConfigPullRequest,
+        Map<String, dynamic>>(pullRequests, (value) => value.toMap());
+    map['pushes'] = Input.encodeList<GetTriggerRepositoryEventConfigPush,
+        Map<String, dynamic>>(pushes, (value) => value.toMap());
+    map['repository'] = repository;
+    return map;
+  }
+
+  factory GetTriggerRepositoryEventConfig.fromMap(Map<String, dynamic> map) {
+    return GetTriggerRepositoryEventConfig(
+      pullRequests:
+          Input.decodeList<GetTriggerRepositoryEventConfigPullRequest>(
+              map['pullRequests'],
+              (value) => GetTriggerRepositoryEventConfigPullRequest.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      pushes: Input.decodeList<GetTriggerRepositoryEventConfigPush>(
+          map['pushes'],
+          (value) => GetTriggerRepositoryEventConfigPush.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      repository: map['repository'] as String,
+    );
+  }
+}

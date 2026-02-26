@@ -1,0 +1,3 @@
+library module_compute_get_region_backend_service_failover_policy;
+
+export 'get_region_backend_service_failover_policy.dart';

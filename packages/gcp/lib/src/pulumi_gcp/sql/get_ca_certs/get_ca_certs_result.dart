@@ -1,0 +1,50 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_ca_certs_cert/get_ca_certs_cert.dart';
+
+/// Result data returned by getCaCerts.
+class GetCaCertsResult {
+  /// SHA1 fingerprint of the currently active CA certificate.
+  final String activeVersion;
+
+  /// A list of server CA certificates for the instance. Each contains:
+  final List<GetCaCertsCert> certs;
+
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+  final String instance;
+  final String project;
+
+  GetCaCertsResult({
+    required this.activeVersion,
+    required this.certs,
+    required this.id,
+    required this.instance,
+    required this.project,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['activeVersion'] = activeVersion;
+    map['certs'] = Input.encodeList<GetCaCertsCert, Map<String, dynamic>>(
+        certs, (value) => value.toMap());
+    map['id'] = id;
+    map['instance'] = instance;
+    map['project'] = project;
+    return map;
+  }
+
+  factory GetCaCertsResult.fromMap(Map<String, dynamic> map) {
+    return GetCaCertsResult(
+      activeVersion: map['activeVersion'] as String,
+      certs: Input.decodeList<GetCaCertsCert>(
+          map['certs'],
+          (value) =>
+              GetCaCertsCert.fromMap((value as Map).cast<String, dynamic>())),
+      id: map['id'] as String,
+      instance: map['instance'] as String,
+      project: map['project'] as String,
+    );
+  }
+}

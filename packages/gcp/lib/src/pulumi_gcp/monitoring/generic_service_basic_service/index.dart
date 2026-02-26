@@ -1,0 +1,3 @@
+library module_monitoring_generic_service_basic_service;
+
+export 'generic_service_basic_service.dart';

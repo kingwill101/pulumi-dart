@@ -1,0 +1,3 @@
+library module_redis_cluster_cross_cluster_replication_config_membership_primary_cluster;
+
+export 'cluster_cross_cluster_replication_config_membership_primary_cluster.dart';

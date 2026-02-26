@@ -1,0 +1,4 @@
+library module_colab_runtime_template_iam_binding;
+
+export 'runtime_template_iam_binding.dart';
+export 'runtime_template_iam_binding_args.dart';

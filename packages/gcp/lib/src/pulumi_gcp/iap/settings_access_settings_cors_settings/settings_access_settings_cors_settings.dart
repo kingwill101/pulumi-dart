@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class SettingsAccessSettingsCorsSettings {
+  /// Configuration to allow HTTP OPTIONS calls to skip authorization.
+  /// If undefined, IAP will not apply any special logic to OPTIONS requests.
+  final bool? allowHttpOptions;
+
+  SettingsAccessSettingsCorsSettings({
+    this.allowHttpOptions,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final allowHttpOptionsValue = allowHttpOptions;
+    if (allowHttpOptionsValue != null) {
+      map['allowHttpOptions'] = allowHttpOptionsValue;
+    }
+    return map;
+  }
+
+  factory SettingsAccessSettingsCorsSettings.fromMap(Map<String, dynamic> map) {
+    return SettingsAccessSettingsCorsSettings(
+      allowHttpOptions: map['allowHttpOptions'] == null
+          ? null
+          : map['allowHttpOptions'] as bool,
+    );
+  }
+}

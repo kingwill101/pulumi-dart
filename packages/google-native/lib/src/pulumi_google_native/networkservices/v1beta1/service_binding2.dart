@@ -1,0 +1,53 @@
+import 'package:pulumi/pulumi.dart';
+import 'service_binding_args2.dart';
+
+/// Creates a new ServiceBinding in a given project and location.
+class ServiceBinding2 extends CustomResource {
+  /// The timestamp when the resource was created.
+  late final Output<String> createTime;
+
+  /// Optional. A free-text description of the resource. Max length 1024 characters.
+  late final Output<String> description;
+
+  /// Optional. Set of label tags associated with the ServiceBinding resource.
+  late final Output<Map<String, String>> labels;
+  late final Output<String> location;
+
+  /// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
+  late final Output<String> name;
+  late final Output<String> project;
+
+  /// The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
+  late final Output<String> service;
+
+  /// Required. Short name of the ServiceBinding resource to be created.
+  late final Output<String> serviceBindingId;
+
+  /// The unique identifier of the Service Directory Service against which the Service Binding resource is validated. This is populated when the Service Binding resource is used in another resource (like Backend Service). This is of the UUID4 format.
+  late final Output<String> serviceId;
+
+  /// The timestamp when the resource was updated.
+  late final Output<String> updateTime;
+
+  ServiceBinding2(
+    String name, {
+    ServiceBindingArgs2? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:networkservices/v1beta1:ServiceBinding',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.createTime = Output.createUnknown<String>();
+    this.description = Output.createUnknown<String>();
+    this.labels = Output.createUnknown<Map<String, String>>();
+    this.location = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.service = Output.createUnknown<String>();
+    this.serviceBindingId = Output.createUnknown<String>();
+    this.serviceId = Output.createUnknown<String>();
+    this.updateTime = Output.createUnknown<String>();
+  }
+}

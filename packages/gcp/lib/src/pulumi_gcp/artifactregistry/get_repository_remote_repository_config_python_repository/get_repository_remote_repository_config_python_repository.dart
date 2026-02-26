@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_repository_remote_repository_config_python_repository_custom_repository/get_repository_remote_repository_config_python_repository_custom_repository.dart';
+
+class GetRepositoryRemoteRepositoryConfigPythonRepository {
+  /// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
+  final List<
+          GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository>
+      customRepositories;
+
+  /// Address of the remote repository. Possible values: ["PYPI"]
+  final String publicRepository;
+
+  GetRepositoryRemoteRepositoryConfigPythonRepository({
+    required this.customRepositories,
+    required this.publicRepository,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['customRepositories'] = Input.encodeList<
+        GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository,
+        Map<String, dynamic>>(customRepositories, (value) => value.toMap());
+    map['publicRepository'] = publicRepository;
+    return map;
+  }
+
+  factory GetRepositoryRemoteRepositoryConfigPythonRepository.fromMap(
+      Map<String, dynamic> map) {
+    return GetRepositoryRemoteRepositoryConfigPythonRepository(
+      customRepositories: Input.decodeList<
+              GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository>(
+          map['customRepositories'],
+          (value) =>
+              GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository
+                  .fromMap((value as Map).cast<String, dynamic>())),
+      publicRepository: map['publicRepository'] as String,
+    );
+  }
+}

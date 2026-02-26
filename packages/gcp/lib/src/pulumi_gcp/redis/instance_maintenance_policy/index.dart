@@ -1,0 +1,3 @@
+library module_redis_instance_maintenance_policy;
+
+export 'instance_maintenance_policy3.dart';

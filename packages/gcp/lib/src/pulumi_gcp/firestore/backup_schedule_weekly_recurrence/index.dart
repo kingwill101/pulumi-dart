@@ -1,0 +1,3 @@
+library module_firestore_backup_schedule_weekly_recurrence;
+
+export 'backup_schedule_weekly_recurrence.dart';

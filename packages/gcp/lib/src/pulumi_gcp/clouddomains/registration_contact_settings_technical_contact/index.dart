@@ -1,0 +1,3 @@
+library module_clouddomains_registration_contact_settings_technical_contact;
+
+export 'registration_contact_settings_technical_contact.dart';

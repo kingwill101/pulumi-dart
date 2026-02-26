@@ -1,0 +1,41 @@
+import 'package:pulumi/pulumi.dart';
+import 'google_cloud_orgpolicy_v2_alternate_policy_spec_response.dart';
+import 'google_cloud_orgpolicy_v2_policy_spec_response.dart';
+import 'policy_args4.dart';
+
+/// Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Google Cloud resource.
+class Policy4 extends CustomResource {
+  /// Deprecated.
+  late final Output<GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>
+      alternate;
+
+  /// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+  late final Output<GoogleCloudOrgpolicyV2PolicySpecResponse> dryRunSpec;
+
+  /// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
+  late final Output<String> name;
+  late final Output<String> project;
+
+  /// Basic information about the Organization Policy.
+  late final Output<GoogleCloudOrgpolicyV2PolicySpecResponse> spec;
+
+  Policy4(
+    String name, {
+    PolicyArgs4? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:orgpolicy/v2:Policy',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.alternate = Output.createUnknown<
+        GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>();
+    this.dryRunSpec =
+        Output.createUnknown<GoogleCloudOrgpolicyV2PolicySpecResponse>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.spec =
+        Output.createUnknown<GoogleCloudOrgpolicyV2PolicySpecResponse>();
+  }
+}

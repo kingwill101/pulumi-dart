@@ -1,0 +1,4 @@
+library module_compute_backend_bucket_iam_member;
+
+export 'backend_bucket_iam_member.dart';
+export 'backend_bucket_iam_member_args.dart';

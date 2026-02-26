@@ -1,0 +1,3 @@
+library module_composer_environment_storage_config;
+
+export 'environment_storage_config.dart';

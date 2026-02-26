@@ -1,0 +1,3 @@
+library module_logging_organization_bucket_config_index_config;
+
+export 'organization_bucket_config_index_config.dart';

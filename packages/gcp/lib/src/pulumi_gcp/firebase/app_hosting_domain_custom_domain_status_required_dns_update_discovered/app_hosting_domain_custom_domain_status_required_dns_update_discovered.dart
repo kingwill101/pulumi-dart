@@ -1,0 +1,81 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../app_hosting_domain_custom_domain_status_required_dns_update_discovered_check_error/app_hosting_domain_custom_domain_status_required_dns_update_discovered_check_error.dart';
+import '../app_hosting_domain_custom_domain_status_required_dns_update_discovered_record/app_hosting_domain_custom_domain_status_required_dns_update_discovered_record.dart';
+
+class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered {
+  /// (Output)
+  /// The `Status` type defines a logical error model that is suitable for
+  /// different programming environments, including REST APIs and RPC APIs. It is
+  /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+  /// three pieces of data: error code, error message, and error details.
+  /// You can find out more about this error model and how to work with it in the
+  /// [API Design Guide](https://cloud.google.com/apis/design/errors).
+  /// Structure is documented below.
+  final List<
+          AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError>?
+      checkErrors;
+
+  /// (Output)
+  /// The domain the record pertains to, e.g. `foo.bar.com.`.
+  final String? domainName;
+
+  /// (Output)
+  /// Records on the domain.
+  /// Structure is documented below.
+  final List<
+          AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord>?
+      records;
+
+  AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered({
+    this.checkErrors,
+    this.domainName,
+    this.records,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final checkErrorsValue = checkErrors;
+    if (checkErrorsValue != null) {
+      map['checkErrors'] = Input.encodeList<
+          AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError,
+          Map<String, dynamic>>(checkErrorsValue, (value) => value.toMap());
+    }
+    final domainNameValue = domainName;
+    if (domainNameValue != null) {
+      map['domainName'] = domainNameValue;
+    }
+    final recordsValue = records;
+    if (recordsValue != null) {
+      map['records'] = Input.encodeList<
+          AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord,
+          Map<String, dynamic>>(recordsValue, (value) => value.toMap());
+    }
+    return map;
+  }
+
+  factory AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered.fromMap(
+      Map<String, dynamic> map) {
+    return AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered(
+      checkErrors: map['checkErrors'] == null
+          ? null
+          : Input.decodeList<
+                  AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError>(
+              map['checkErrors'],
+              (value) =>
+                  AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError
+                      .fromMap((value as Map).cast<String, dynamic>())),
+      domainName:
+          map['domainName'] == null ? null : map['domainName'] as String,
+      records: map['records'] == null
+          ? null
+          : Input.decodeList<
+                  AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord>(
+              map['records'],
+              (value) =>
+                  AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord
+                      .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

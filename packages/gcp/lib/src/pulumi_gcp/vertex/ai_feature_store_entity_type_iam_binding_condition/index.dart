@@ -1,0 +1,3 @@
+library module_vertex_ai_feature_store_entity_type_iam_binding_condition;
+
+export 'ai_feature_store_entity_type_iam_binding_condition.dart';

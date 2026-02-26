@@ -1,0 +1,3 @@
+library module_discoveryengine_widget_config_ui_settings_data_store_ui_config_facet_field;
+
+export 'widget_config_ui_settings_data_store_ui_config_facet_field.dart';

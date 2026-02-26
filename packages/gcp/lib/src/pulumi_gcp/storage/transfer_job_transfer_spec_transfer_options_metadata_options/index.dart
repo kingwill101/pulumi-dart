@@ -1,0 +1,3 @@
+library module_storage_transfer_job_transfer_spec_transfer_options_metadata_options;
+
+export 'transfer_job_transfer_spec_transfer_options_metadata_options.dart';

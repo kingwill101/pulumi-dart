@@ -1,0 +1,3 @@
+library module_vertex_get_ai_index_metadata_config_algorithm_config;
+
+export 'get_ai_index_metadata_config_algorithm_config.dart';

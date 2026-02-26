@@ -1,0 +1,3 @@
+library module_apihub_plugin_instance_action_hub_instance_action;
+
+export 'plugin_instance_action_hub_instance_action.dart';

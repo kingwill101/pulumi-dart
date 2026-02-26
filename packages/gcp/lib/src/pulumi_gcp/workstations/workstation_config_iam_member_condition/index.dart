@@ -1,0 +1,3 @@
+library module_workstations_workstation_config_iam_member_condition;
+
+export 'workstation_config_iam_member_condition.dart';

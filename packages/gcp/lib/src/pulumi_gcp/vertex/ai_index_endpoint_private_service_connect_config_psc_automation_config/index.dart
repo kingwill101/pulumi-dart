@@ -1,0 +1,3 @@
+library module_vertex_ai_index_endpoint_private_service_connect_config_psc_automation_config;
+
+export 'ai_index_endpoint_private_service_connect_config_psc_automation_config.dart';

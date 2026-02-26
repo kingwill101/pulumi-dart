@@ -1,0 +1,3 @@
+library module_compute_region_network_endpoint_group_cloud_run;
+
+export 'region_network_endpoint_group_cloud_run.dart';

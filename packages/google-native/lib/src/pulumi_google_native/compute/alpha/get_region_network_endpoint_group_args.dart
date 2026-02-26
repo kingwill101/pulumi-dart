@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// Arguments for getRegionNetworkEndpointGroup.
+class GetRegionNetworkEndpointGroupArgs {
+  final Input<String> networkEndpointGroup;
+  final Input<String>? project;
+  final Input<String> region;
+
+  GetRegionNetworkEndpointGroupArgs({
+    required this.networkEndpointGroup,
+    this.project,
+    required this.region,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['networkEndpointGroup'] = networkEndpointGroup;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['region'] = region;
+    return map;
+  }
+
+  factory GetRegionNetworkEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
+    return GetRegionNetworkEndpointGroupArgs(
+      networkEndpointGroup: Input.asInput<String>(map['networkEndpointGroup']),
+      project: Input.asOptionalInput<String>(map['project']),
+      region: Input.asInput<String>(map['region']),
+    );
+  }
+}

@@ -1,0 +1,30 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Detail description of the source information of the model.
+class GoogleCloudAiplatformV1ModelSourceInfoResponse {
+  /// If this Model is copy of another Model. If true then source_type pertains to the original.
+  final bool copy;
+
+  /// Type of the model source.
+  final String sourceType;
+
+  GoogleCloudAiplatformV1ModelSourceInfoResponse({
+    required this.copy,
+    required this.sourceType,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['copy'] = copy;
+    map['sourceType'] = sourceType;
+    return map;
+  }
+
+  factory GoogleCloudAiplatformV1ModelSourceInfoResponse.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudAiplatformV1ModelSourceInfoResponse(
+      copy: map['copy'] as bool,
+      sourceType: map['sourceType'] as String,
+    );
+  }
+}

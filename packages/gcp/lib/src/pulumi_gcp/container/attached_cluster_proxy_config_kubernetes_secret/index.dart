@@ -1,0 +1,3 @@
+library module_container_attached_cluster_proxy_config_kubernetes_secret;
+
+export 'attached_cluster_proxy_config_kubernetes_secret.dart';

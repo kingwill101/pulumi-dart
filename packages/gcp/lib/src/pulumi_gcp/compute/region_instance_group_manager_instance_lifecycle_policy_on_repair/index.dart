@@ -1,0 +1,3 @@
+library module_compute_region_instance_group_manager_instance_lifecycle_policy_on_repair;
+
+export 'region_instance_group_manager_instance_lifecycle_policy_on_repair.dart';

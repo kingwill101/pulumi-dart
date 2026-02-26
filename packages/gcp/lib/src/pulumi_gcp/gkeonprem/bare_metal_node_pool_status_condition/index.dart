@@ -1,0 +1,3 @@
+library module_gkeonprem_bare_metal_node_pool_status_condition;
+
+export 'bare_metal_node_pool_status_condition.dart';

@@ -1,0 +1,81 @@
+import 'package:pulumi/pulumi.dart';
+import 'google_cloud_dataplex_v1_asset_status_response.dart';
+import 'google_cloud_dataplex_v1_lake_metastore_response.dart';
+import 'google_cloud_dataplex_v1_lake_metastore_status_response.dart';
+import 'lake_args.dart';
+
+/// Creates a lake resource.
+/// Auto-naming is currently not supported for this resource.
+class Lake extends CustomResource {
+  /// Aggregated status of the underlying assets of the lake.
+  late final Output<GoogleCloudDataplexV1AssetStatusResponse> assetStatus;
+
+  /// The time when the lake was created.
+  late final Output<String> createTime;
+
+  /// Optional. Description of the lake.
+  late final Output<String> description;
+
+  /// Optional. User friendly display name.
+  late final Output<String> displayName;
+
+  /// Optional. User-defined labels for the lake.
+  late final Output<Map<String, String>> labels;
+
+  /// Required. Lake identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the customer project / location.
+  late final Output<String> lakeId;
+  late final Output<String> location;
+
+  /// Optional. Settings to manage lake and Dataproc Metastore service instance association.
+  late final Output<GoogleCloudDataplexV1LakeMetastoreResponse> metastore;
+
+  /// Metastore status of the lake.
+  late final Output<GoogleCloudDataplexV1LakeMetastoreStatusResponse>
+      metastoreStatus;
+
+  /// The relative resource name of the lake, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
+  late final Output<String> name;
+  late final Output<String> project;
+
+  /// Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
+  late final Output<String> serviceAccount;
+
+  /// Current state of the lake.
+  late final Output<String> state;
+
+  /// System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
+  late final Output<String> uid;
+
+  /// The time when the lake was last updated.
+  late final Output<String> updateTime;
+
+  Lake(
+    String name, {
+    LakeArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:dataplex/v1:Lake',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.assetStatus =
+        Output.createUnknown<GoogleCloudDataplexV1AssetStatusResponse>();
+    this.createTime = Output.createUnknown<String>();
+    this.description = Output.createUnknown<String>();
+    this.displayName = Output.createUnknown<String>();
+    this.labels = Output.createUnknown<Map<String, String>>();
+    this.lakeId = Output.createUnknown<String>();
+    this.location = Output.createUnknown<String>();
+    this.metastore =
+        Output.createUnknown<GoogleCloudDataplexV1LakeMetastoreResponse>();
+    this.metastoreStatus = Output.createUnknown<
+        GoogleCloudDataplexV1LakeMetastoreStatusResponse>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.serviceAccount = Output.createUnknown<String>();
+    this.state = Output.createUnknown<String>();
+    this.uid = Output.createUnknown<String>();
+    this.updateTime = Output.createUnknown<String>();
+  }
+}

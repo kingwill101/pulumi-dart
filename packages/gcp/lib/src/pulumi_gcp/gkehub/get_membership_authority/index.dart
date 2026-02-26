@@ -1,0 +1,3 @@
+library module_gkehub_get_membership_authority;
+
+export 'get_membership_authority.dart';

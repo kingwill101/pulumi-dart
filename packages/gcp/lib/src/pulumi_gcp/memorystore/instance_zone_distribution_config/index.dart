@@ -1,0 +1,3 @@
+library module_memorystore_instance_zone_distribution_config;
+
+export 'instance_zone_distribution_config.dart';

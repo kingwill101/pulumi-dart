@@ -1,0 +1,3 @@
+library module_dataproc_workflow_template_placement_managed_cluster_config_gce_cluster_config_reservation_affinity;
+
+export 'workflow_template_placement_managed_cluster_config_gce_cluster_config_reservation_affinity.dart';

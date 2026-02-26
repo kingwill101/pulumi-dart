@@ -1,0 +1,72 @@
+import 'package:pulumi/pulumi.dart';
+import 'api_deployment_args.dart';
+
+/// Manages a deployment of an API proxy.
+///
+///
+/// To get more information about ApiDeployment, see:
+///
+/// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.apis.revisions.deployments)
+/// * How-to Guides
+/// * [QUICKSTART_TITLE](https://cloud.google.com/apigee/docs/api-platform/deploy/ui-deploy-overview)
+///
+/// ## Example Usage
+///
+/// ## Import
+///
+/// ApiDeployment can be imported using any of these accepted formats:
+///
+/// * `organizations/{{org_id}}/environments/{{environment}}/apis/{{proxy_id}}/revisions/{{revision}}/deployments`
+///
+/// * `organizations/{{org_id}}/environments/{{environment}}/apis/{{proxy_id}}/revisions/{{revision}}`
+///
+/// * `{{org_id}}/{{environment}}/{{proxy_id}}/{{revision}}/deployments`
+///
+/// * `{{org_id}}/{{environment}}/{{proxy_id}}/{{revision}}`
+///
+/// When using the `pulumi import` command, ApiDeployment can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:apigee/apiDeployment:ApiDeployment default organizations/{{org_id}}/environments/{{environment}}/apis/{{proxy_id}}/revisions/{{revision}}/deployments
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:apigee/apiDeployment:ApiDeployment default organizations/{{org_id}}/environments/{{environment}}/apis/{{proxy_id}}/revisions/{{revision}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:apigee/apiDeployment:ApiDeployment default {{org_id}}/{{environment}}/{{proxy_id}}/{{revision}}/deployments
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:apigee/apiDeployment:ApiDeployment default {{org_id}}/{{environment}}/{{proxy_id}}/{{revision}}
+/// ```
+class ApiDeployment extends CustomResource {
+  /// The Apigee Environment associated with the Apigee API deployment.
+  late final Output<String> environment;
+
+  /// The Apigee Organization associated with the Apigee API deployment.
+  late final Output<String> orgId;
+
+  /// The Apigee API associated with the Apigee API deployment.
+  late final Output<String> proxyId;
+
+  /// The revision of the API proxy to be deployed.
+  late final Output<String> revision;
+
+  ApiDeployment(
+    String name, {
+    ApiDeploymentArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:apigee/apiDeployment:ApiDeployment',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.environment = Output.createUnknown<String>();
+    this.orgId = Output.createUnknown<String>();
+    this.proxyId = Output.createUnknown<String>();
+    this.revision = Output.createUnknown<String>();
+  }
+}

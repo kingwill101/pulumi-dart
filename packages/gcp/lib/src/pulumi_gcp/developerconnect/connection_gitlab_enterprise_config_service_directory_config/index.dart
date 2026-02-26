@@ -1,0 +1,3 @@
+library module_developerconnect_connection_gitlab_enterprise_config_service_directory_config;
+
+export 'connection_gitlab_enterprise_config_service_directory_config.dart';

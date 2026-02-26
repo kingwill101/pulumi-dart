@@ -1,0 +1,3 @@
+library module_compute_region_security_policy_ddos_protection_config;
+
+export 'region_security_policy_ddos_protection_config.dart';

@@ -1,0 +1,3 @@
+library module_compute_get_region_instance_template_scheduling_graceful_shutdown_max_duration;
+
+export 'get_region_instance_template_scheduling_graceful_shutdown_max_duration.dart';

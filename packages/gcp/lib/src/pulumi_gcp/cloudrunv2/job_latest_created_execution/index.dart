@@ -1,0 +1,3 @@
+library module_cloudrunv2_job_latest_created_execution;
+
+export 'job_latest_created_execution.dart';

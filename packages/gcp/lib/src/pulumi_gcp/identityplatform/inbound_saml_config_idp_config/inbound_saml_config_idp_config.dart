@@ -1,0 +1,54 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../inbound_saml_config_idp_config_idp_certificate/inbound_saml_config_idp_config_idp_certificate.dart';
+
+class InboundSamlConfigIdpConfig {
+  /// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+  /// Structure is documented below.
+  final List<InboundSamlConfigIdpConfigIdpCertificate> idpCertificates;
+
+  /// Unique identifier for all SAML entities
+  final String idpEntityId;
+
+  /// Indicates if outbounding SAMLRequest should be signed.
+  final bool? signRequest;
+
+  /// URL to send Authentication request to.
+  final String ssoUrl;
+
+  InboundSamlConfigIdpConfig({
+    required this.idpCertificates,
+    required this.idpEntityId,
+    this.signRequest,
+    required this.ssoUrl,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['idpCertificates'] = Input.encodeList<
+        InboundSamlConfigIdpConfigIdpCertificate,
+        Map<String, dynamic>>(idpCertificates, (value) => value.toMap());
+    map['idpEntityId'] = idpEntityId;
+    final signRequestValue = signRequest;
+    if (signRequestValue != null) {
+      map['signRequest'] = signRequestValue;
+    }
+    map['ssoUrl'] = ssoUrl;
+    return map;
+  }
+
+  factory InboundSamlConfigIdpConfig.fromMap(Map<String, dynamic> map) {
+    return InboundSamlConfigIdpConfig(
+      idpCertificates:
+          Input.decodeList<InboundSamlConfigIdpConfigIdpCertificate>(
+              map['idpCertificates'],
+              (value) => InboundSamlConfigIdpConfigIdpCertificate.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      idpEntityId: map['idpEntityId'] as String,
+      signRequest:
+          map['signRequest'] == null ? null : map['signRequest'] as bool,
+      ssoUrl: map['ssoUrl'] as String,
+    );
+  }
+}

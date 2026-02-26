@@ -1,0 +1,3 @@
+library module_dataflow_pipeline_workload_dataflow_flex_template_request;
+
+export 'pipeline_workload_dataflow_flex_template_request.dart';

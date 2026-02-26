@@ -1,0 +1,3 @@
+library module_dataplex_glossary_iam_binding_condition;
+
+export 'glossary_iam_binding_condition.dart';

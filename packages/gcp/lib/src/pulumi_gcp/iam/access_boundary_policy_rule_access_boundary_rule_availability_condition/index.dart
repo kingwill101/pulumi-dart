@@ -1,0 +1,3 @@
+library module_iam_access_boundary_policy_rule_access_boundary_rule_availability_condition;
+
+export 'access_boundary_policy_rule_access_boundary_rule_availability_condition.dart';

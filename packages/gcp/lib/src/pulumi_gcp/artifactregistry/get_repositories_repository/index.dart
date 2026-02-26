@@ -1,0 +1,3 @@
+library module_artifactregistry_get_repositories_repository;
+
+export 'get_repositories_repository.dart';

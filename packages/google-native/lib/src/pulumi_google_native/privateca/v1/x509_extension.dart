@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'object_id.dart';
+
+/// An X509Extension specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+class X509Extension {
+  /// Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+  final bool? critical;
+
+  /// The OID for this X.509 extension.
+  final ObjectId objectId;
+
+  /// The value of this X.509 extension.
+  final String value;
+
+  X509Extension({
+    this.critical,
+    required this.objectId,
+    required this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final criticalValue = critical;
+    if (criticalValue != null) {
+      map['critical'] = criticalValue;
+    }
+    map['objectId'] = objectId.toMap();
+    map['value'] = value;
+    return map;
+  }
+
+  factory X509Extension.fromMap(Map<String, dynamic> map) {
+    return X509Extension(
+      critical: map['critical'] == null ? null : map['critical'] as bool,
+      objectId:
+          ObjectId.fromMap((map['objectId'] as Map).cast<String, dynamic>()),
+      value: map['value'] as String,
+    );
+  }
+}

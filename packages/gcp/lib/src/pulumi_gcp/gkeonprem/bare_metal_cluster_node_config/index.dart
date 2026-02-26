@@ -1,0 +1,3 @@
+library module_gkeonprem_bare_metal_cluster_node_config;
+
+export 'bare_metal_cluster_node_config.dart';

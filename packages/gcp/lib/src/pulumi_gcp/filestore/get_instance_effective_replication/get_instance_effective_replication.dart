@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_instance_effective_replication_replica/get_instance_effective_replication_replica.dart';
+
+class GetInstanceEffectiveReplication {
+  /// The replication role.
+  final List<GetInstanceEffectiveReplicationReplica> replicas;
+
+  /// The replication role.
+  final String role;
+
+  GetInstanceEffectiveReplication({
+    required this.replicas,
+    required this.role,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['replicas'] = Input.encodeList<GetInstanceEffectiveReplicationReplica,
+        Map<String, dynamic>>(replicas, (value) => value.toMap());
+    map['role'] = role;
+    return map;
+  }
+
+  factory GetInstanceEffectiveReplication.fromMap(Map<String, dynamic> map) {
+    return GetInstanceEffectiveReplication(
+      replicas: Input.decodeList<GetInstanceEffectiveReplicationReplica>(
+          map['replicas'],
+          (value) => GetInstanceEffectiveReplicationReplica.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      role: map['role'] as String,
+    );
+  }
+}

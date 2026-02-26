@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'installation_response2.dart';
+
+/// Details of a package occurrence.
+class GrafeasV1beta1PackageDetailsResponse {
+  /// Where the package was installed.
+  final InstallationResponse2 installation;
+
+  GrafeasV1beta1PackageDetailsResponse({
+    required this.installation,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['installation'] = installation.toMap();
+    return map;
+  }
+
+  factory GrafeasV1beta1PackageDetailsResponse.fromMap(
+      Map<String, dynamic> map) {
+    return GrafeasV1beta1PackageDetailsResponse(
+      installation: InstallationResponse2.fromMap(
+          (map['installation'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

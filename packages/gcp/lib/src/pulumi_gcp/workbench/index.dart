@@ -1,0 +1,22 @@
+library module_workbench;
+
+export 'get_instance_iam_policy/index.dart';
+export 'instance/index.dart';
+export 'instance_gce_setup/index.dart';
+export 'instance_gce_setup_accelerator_config/index.dart';
+export 'instance_gce_setup_boot_disk/index.dart';
+export 'instance_gce_setup_confidential_instance_config/index.dart';
+export 'instance_gce_setup_container_image/index.dart';
+export 'instance_gce_setup_data_disks/index.dart';
+export 'instance_gce_setup_network_interface/index.dart';
+export 'instance_gce_setup_network_interface_access_config/index.dart';
+export 'instance_gce_setup_reservation_affinity/index.dart';
+export 'instance_gce_setup_service_account/index.dart';
+export 'instance_gce_setup_shielded_instance_config/index.dart';
+export 'instance_gce_setup_vm_image/index.dart';
+export 'instance_iam_binding/index.dart';
+export 'instance_iam_binding_condition/index.dart';
+export 'instance_iam_member/index.dart';
+export 'instance_iam_member_condition/index.dart';
+export 'instance_iam_policy/index.dart';
+export 'instance_upgrade_history/index.dart';

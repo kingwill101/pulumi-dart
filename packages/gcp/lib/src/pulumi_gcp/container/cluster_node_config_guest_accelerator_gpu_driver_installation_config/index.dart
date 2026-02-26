@@ -1,0 +1,3 @@
+library module_container_cluster_node_config_guest_accelerator_gpu_driver_installation_config;
+
+export 'cluster_node_config_guest_accelerator_gpu_driver_installation_config.dart';

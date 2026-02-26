@@ -1,0 +1,3 @@
+library module_chronicle_watchlist_entity_population_mechanism;
+
+export 'watchlist_entity_population_mechanism.dart';

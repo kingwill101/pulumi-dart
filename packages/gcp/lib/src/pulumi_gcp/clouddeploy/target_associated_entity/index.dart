@@ -1,0 +1,3 @@
+library module_clouddeploy_target_associated_entity;
+
+export 'target_associated_entity.dart';

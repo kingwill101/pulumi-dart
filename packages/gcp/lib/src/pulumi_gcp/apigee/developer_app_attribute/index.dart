@@ -1,0 +1,3 @@
+library module_apigee_developer_app_attribute;
+
+export 'developer_app_attribute.dart';

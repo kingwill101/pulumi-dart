@@ -1,0 +1,3 @@
+library module_compute_security_policy_rule_match_config;
+
+export 'security_policy_rule_match_config.dart';

@@ -1,0 +1,3 @@
+library module_storage_bucket_hierarchical_namespace;
+
+export 'bucket_hierarchical_namespace.dart';

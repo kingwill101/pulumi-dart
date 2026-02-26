@@ -1,0 +1,3 @@
+library module_cloudrunv2_get_job_template_template_vpc_access;
+
+export 'get_job_template_template_vpc_access.dart';

@@ -1,0 +1,26 @@
+library module_artifactregistry_v1beta1;
+
+export 'binding6.dart';
+export 'binding_response6.dart';
+export 'expr7.dart';
+export 'expr_response7.dart';
+export 'get_repository2.dart';
+export 'get_repository_args2.dart';
+export 'get_repository_iam_policy2.dart';
+export 'get_repository_iam_policy_args2.dart';
+export 'get_repository_iam_policy_result2.dart';
+export 'get_repository_result2.dart';
+export 'get_tag2.dart';
+export 'get_tag_args2.dart';
+export 'get_tag_result2.dart';
+export 'repository2.dart';
+export 'repository_args2.dart';
+export 'repository_format2.dart';
+export 'repository_iam_binding2.dart';
+export 'repository_iam_binding_args2.dart';
+export 'repository_iam_member2.dart';
+export 'repository_iam_member_args2.dart';
+export 'repository_iam_policy2.dart';
+export 'repository_iam_policy_args2.dart';
+export 'tag4.dart';
+export 'tag_args2.dart';

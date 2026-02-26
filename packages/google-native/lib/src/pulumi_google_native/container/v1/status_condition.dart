@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'status_condition_canonical_code.dart';
+import 'status_condition_code.dart';
+
+/// StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
+class StatusCondition {
+  /// Canonical code of the condition.
+  final StatusConditionCanonicalCode? canonicalCode;
+
+  /// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
+  final StatusConditionCode? code;
+
+  /// Human-friendly representation of the condition
+  final String? message;
+
+  StatusCondition({
+    this.canonicalCode,
+    this.code,
+    this.message,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final canonicalCodeValue = canonicalCode;
+    if (canonicalCodeValue != null) {
+      map['canonicalCode'] = canonicalCodeValue.value;
+    }
+    final codeValue = code;
+    if (codeValue != null) {
+      map['code'] = codeValue.value;
+    }
+    final messageValue = message;
+    if (messageValue != null) {
+      map['message'] = messageValue;
+    }
+    return map;
+  }
+
+  factory StatusCondition.fromMap(Map<String, dynamic> map) {
+    return StatusCondition(
+      canonicalCode: map['canonicalCode'] == null
+          ? null
+          : StatusConditionCanonicalCode.fromValue(
+              map['canonicalCode'] as String),
+      code: map['code'] == null
+          ? null
+          : StatusConditionCode.fromValue(map['code'] as String),
+      message: map['message'] == null ? null : map['message'] as String,
+    );
+  }
+}

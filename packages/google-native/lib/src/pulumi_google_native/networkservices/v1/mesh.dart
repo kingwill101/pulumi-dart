@@ -1,0 +1,53 @@
+import 'package:pulumi/pulumi.dart';
+import 'mesh_args.dart';
+
+/// Creates a new Mesh in a given project and location.
+class Mesh extends CustomResource {
+  /// The timestamp when the resource was created.
+  late final Output<String> createTime;
+
+  /// Optional. A free-text description of the resource. Max length 1024 characters.
+  late final Output<String> description;
+
+  /// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This is applicable only for sidecar proxy deployments.
+  late final Output<int> interceptionPort;
+
+  /// Optional. Set of label tags associated with the Mesh resource.
+  late final Output<Map<String, String>> labels;
+  late final Output<String> location;
+
+  /// Required. Short name of the Mesh resource to be created.
+  late final Output<String> meshId;
+
+  /// Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
+  late final Output<String> name;
+  late final Output<String> project;
+
+  /// Server-defined URL of this resource
+  late final Output<String> selfLink;
+
+  /// The timestamp when the resource was updated.
+  late final Output<String> updateTime;
+
+  Mesh(
+    String name, {
+    MeshArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:networkservices/v1:Mesh',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.createTime = Output.createUnknown<String>();
+    this.description = Output.createUnknown<String>();
+    this.interceptionPort = Output.createUnknown<int>();
+    this.labels = Output.createUnknown<Map<String, String>>();
+    this.location = Output.createUnknown<String>();
+    this.meshId = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.selfLink = Output.createUnknown<String>();
+    this.updateTime = Output.createUnknown<String>();
+  }
+}

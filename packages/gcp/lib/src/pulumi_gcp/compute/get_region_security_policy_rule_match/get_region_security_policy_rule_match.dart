@@ -1,0 +1,48 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_region_security_policy_rule_match_config/get_region_security_policy_rule_match_config.dart';
+import '../get_region_security_policy_rule_match_expr/get_region_security_policy_rule_match_expr.dart';
+
+class GetRegionSecurityPolicyRuleMatch {
+  /// The configuration options available when specifying versionedExpr.
+  /// This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
+  final List<GetRegionSecurityPolicyRuleMatchConfig> configs;
+
+  /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. See [Sample expressions](https://cloud.google.com/armor/docs/configure-security-policies#sample-expressions) for examples.
+  final List<GetRegionSecurityPolicyRuleMatchExpr> exprs;
+
+  /// Preconfigured versioned expression. If this field is specified, config must also be specified.
+  /// Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config. Possible values: ["SRC_IPS_V1"]
+  final String versionedExpr;
+
+  GetRegionSecurityPolicyRuleMatch({
+    required this.configs,
+    required this.exprs,
+    required this.versionedExpr,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['configs'] = Input.encodeList<GetRegionSecurityPolicyRuleMatchConfig,
+        Map<String, dynamic>>(configs, (value) => value.toMap());
+    map['exprs'] = Input.encodeList<GetRegionSecurityPolicyRuleMatchExpr,
+        Map<String, dynamic>>(exprs, (value) => value.toMap());
+    map['versionedExpr'] = versionedExpr;
+    return map;
+  }
+
+  factory GetRegionSecurityPolicyRuleMatch.fromMap(Map<String, dynamic> map) {
+    return GetRegionSecurityPolicyRuleMatch(
+      configs: Input.decodeList<GetRegionSecurityPolicyRuleMatchConfig>(
+          map['configs'],
+          (value) => GetRegionSecurityPolicyRuleMatchConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      exprs: Input.decodeList<GetRegionSecurityPolicyRuleMatchExpr>(
+          map['exprs'],
+          (value) => GetRegionSecurityPolicyRuleMatchExpr.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      versionedExpr: map['versionedExpr'] as String,
+    );
+  }
+}

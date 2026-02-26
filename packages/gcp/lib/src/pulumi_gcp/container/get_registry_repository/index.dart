@@ -1,0 +1,5 @@
+library module_container_get_registry_repository;
+
+export 'get_registry_repository.dart';
+export 'get_registry_repository_args.dart';
+export 'get_registry_repository_result.dart';

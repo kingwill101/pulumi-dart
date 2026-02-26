@@ -1,0 +1,5 @@
+library module_dns_get_managed_zone_iam_policy;
+
+export 'get_managed_zone_iam_policy.dart';
+export 'get_managed_zone_iam_policy_args.dart';
+export 'get_managed_zone_iam_policy_result.dart';

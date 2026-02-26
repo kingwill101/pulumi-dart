@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'database_encryption_state.dart';
+
+/// Configuration of etcd encryption.
+class DatabaseEncryption {
+  /// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
+  final String? keyName;
+
+  /// The desired state of etcd encryption.
+  final DatabaseEncryptionState? state;
+
+  DatabaseEncryption({
+    this.keyName,
+    this.state,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final keyNameValue = keyName;
+    if (keyNameValue != null) {
+      map['keyName'] = keyNameValue;
+    }
+    final stateValue = state;
+    if (stateValue != null) {
+      map['state'] = stateValue.value;
+    }
+    return map;
+  }
+
+  factory DatabaseEncryption.fromMap(Map<String, dynamic> map) {
+    return DatabaseEncryption(
+      keyName: map['keyName'] == null ? null : map['keyName'] as String,
+      state: map['state'] == null
+          ? null
+          : DatabaseEncryptionState.fromValue(map['state'] as String),
+    );
+  }
+}

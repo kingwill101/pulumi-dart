@@ -1,0 +1,62 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../prevention_deidentify_template_deidentify_config_record_transformations_field_transformation_info_type_transformations_transformation_primitive_transformation_date_shift_config_context/prevention_deidentify_template_deidentify_config_record_transformations_field_transformation_info_type_transformations_transformation_primitive_transformation_date_shift_config_context.dart';
+import '../prevention_deidentify_template_deidentify_config_record_transformations_field_transformation_info_type_transformations_transformation_primitive_transformation_date_shift_config_crypto_key/prevention_deidentify_template_deidentify_config_record_transformations_field_transformation_info_type_transformations_transformation_primitive_transformation_date_shift_config_crypto_key.dart';
+
+class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig {
+  /// Points to the field that contains the context, for example, an entity id.
+  /// If set, must also set cryptoKey. If set, shift will be consistent for the given context.
+  /// Structure is documented below.
+  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContext?
+      context;
+
+  /// Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
+  /// Structure is documented below.
+  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKey?
+      cryptoKey;
+
+  /// For example, -5 means shift date to at most 5 days back in the past.
+  final int lowerBoundDays;
+
+  /// Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction.
+  /// For example, 3 means shift date to at most 3 days into the future.
+  final int upperBoundDays;
+
+  PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig({
+    this.context,
+    this.cryptoKey,
+    required this.lowerBoundDays,
+    required this.upperBoundDays,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final contextValue = context;
+    if (contextValue != null) {
+      map['context'] = contextValue.toMap();
+    }
+    final cryptoKeyValue = cryptoKey;
+    if (cryptoKeyValue != null) {
+      map['cryptoKey'] = cryptoKeyValue.toMap();
+    }
+    map['lowerBoundDays'] = lowerBoundDays;
+    map['upperBoundDays'] = upperBoundDays;
+    return map;
+  }
+
+  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig.fromMap(
+      Map<String, dynamic> map) {
+    return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig(
+      context: map['context'] == null
+          ? null
+          : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContext
+              .fromMap((map['context'] as Map).cast<String, dynamic>()),
+      cryptoKey: map['cryptoKey'] == null
+          ? null
+          : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKey
+              .fromMap((map['cryptoKey'] as Map).cast<String, dynamic>()),
+      lowerBoundDays: map['lowerBoundDays'] as int,
+      upperBoundDays: map['upperBoundDays'] as int,
+    );
+  }
+}

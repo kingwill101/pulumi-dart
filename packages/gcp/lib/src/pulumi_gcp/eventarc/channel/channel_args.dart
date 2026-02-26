@@ -1,0 +1,74 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// The set of arguments for Channel.
+class ChannelArgs {
+  /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+  final Input<String>? cryptoKeyName;
+
+  /// User-defined labels for the channel.
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  final Input<Map<String, String>>? labels;
+
+  /// The location for the resource
+  final Input<String> location;
+
+  /// The resource name of the channel. Must be unique within the location on the project.
+  final Input<String>? name;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final Input<String>? project;
+
+  /// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
+  final Input<String>? thirdPartyProvider;
+
+  ChannelArgs({
+    this.cryptoKeyName,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+    this.thirdPartyProvider,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final cryptoKeyNameValue = cryptoKeyName;
+    if (cryptoKeyNameValue != null) {
+      map['cryptoKeyName'] = cryptoKeyNameValue;
+    }
+    final labelsValue = labels;
+    if (labelsValue != null) {
+      map['labels'] = labelsValue;
+    }
+    map['location'] = location;
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    final thirdPartyProviderValue = thirdPartyProvider;
+    if (thirdPartyProviderValue != null) {
+      map['thirdPartyProvider'] = thirdPartyProviderValue;
+    }
+    return map;
+  }
+
+  factory ChannelArgs.fromMap(Map<String, dynamic> map) {
+    return ChannelArgs(
+      cryptoKeyName: Input.asOptionalInput<String>(map['cryptoKeyName']),
+      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: Input.asInput<String>(map['location']),
+      name: Input.asOptionalInput<String>(map['name']),
+      project: Input.asOptionalInput<String>(map['project']),
+      thirdPartyProvider:
+          Input.asOptionalInput<String>(map['thirdPartyProvider']),
+    );
+  }
+}

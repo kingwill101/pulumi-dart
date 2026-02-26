@@ -1,0 +1,60 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../prevention_discovery_config_target_cloud_sql_target_filter_collection/prevention_discovery_config_target_cloud_sql_target_filter_collection.dart';
+import '../prevention_discovery_config_target_cloud_sql_target_filter_database_resource_reference/prevention_discovery_config_target_cloud_sql_target_filter_database_resource_reference.dart';
+
+class PreventionDiscoveryConfigTargetCloudSqlTargetFilter {
+  /// A collection of resources for this filter to apply to.
+  /// Structure is documented below.
+  final PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection?
+      collection;
+
+  /// The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
+  /// Structure is documented below.
+  final PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference?
+      databaseResourceReference;
+
+  /// Match discovery resources not covered by any other filter.
+  final Map<String, dynamic>? others;
+
+  PreventionDiscoveryConfigTargetCloudSqlTargetFilter({
+    this.collection,
+    this.databaseResourceReference,
+    this.others,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final collectionValue = collection;
+    if (collectionValue != null) {
+      map['collection'] = collectionValue.toMap();
+    }
+    final databaseResourceReferenceValue = databaseResourceReference;
+    if (databaseResourceReferenceValue != null) {
+      map['databaseResourceReference'] = databaseResourceReferenceValue.toMap();
+    }
+    final othersValue = others;
+    if (othersValue != null) {
+      map['others'] = othersValue;
+    }
+    return map;
+  }
+
+  factory PreventionDiscoveryConfigTargetCloudSqlTargetFilter.fromMap(
+      Map<String, dynamic> map) {
+    return PreventionDiscoveryConfigTargetCloudSqlTargetFilter(
+      collection: map['collection'] == null
+          ? null
+          : PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollection
+              .fromMap((map['collection'] as Map).cast<String, dynamic>()),
+      databaseResourceReference: map['databaseResourceReference'] == null
+          ? null
+          : PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference
+              .fromMap((map['databaseResourceReference'] as Map)
+                  .cast<String, dynamic>()),
+      others: map['others'] == null
+          ? null
+          : (map['others'] as Map).cast<String, dynamic>(),
+    );
+  }
+}

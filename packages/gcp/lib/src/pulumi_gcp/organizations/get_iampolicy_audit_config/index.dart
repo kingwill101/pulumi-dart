@@ -1,0 +1,3 @@
+library module_organizations_get_iampolicy_audit_config;
+
+export 'get_iampolicy_audit_config.dart';

@@ -1,0 +1,3 @@
+library module_firebase_app_hosting_build_error;
+
+export 'app_hosting_build_error.dart';

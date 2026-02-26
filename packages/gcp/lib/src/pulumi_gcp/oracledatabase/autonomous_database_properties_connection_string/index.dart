@@ -1,0 +1,3 @@
+library module_oracledatabase_autonomous_database_properties_connection_string;
+
+export 'autonomous_database_properties_connection_string.dart';

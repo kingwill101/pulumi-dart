@@ -1,0 +1,3 @@
+library module_container_cluster_node_pool_node_drain_config;
+
+export 'cluster_node_pool_node_drain_config.dart';

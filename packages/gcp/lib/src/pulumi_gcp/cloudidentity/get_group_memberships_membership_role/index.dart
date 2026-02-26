@@ -1,0 +1,3 @@
+library module_cloudidentity_get_group_memberships_membership_role;
+
+export 'get_group_memberships_membership_role.dart';

@@ -1,0 +1,5 @@
+library module_cloudbuildv2_get_connection_iam_policy;
+
+export 'get_connection_iam_policy2.dart';
+export 'get_connection_iam_policy_args2.dart';
+export 'get_connection_iam_policy_result2.dart';

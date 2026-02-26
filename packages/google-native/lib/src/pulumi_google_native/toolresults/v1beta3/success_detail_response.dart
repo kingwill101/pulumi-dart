@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Details for an outcome with a SUCCESS outcome summary. LINT.IfChange
+class SuccessDetailResponse {
+  /// If a native process other than the app crashed.
+  final bool otherNativeCrash;
+
+  SuccessDetailResponse({
+    required this.otherNativeCrash,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['otherNativeCrash'] = otherNativeCrash;
+    return map;
+  }
+
+  factory SuccessDetailResponse.fromMap(Map<String, dynamic> map) {
+    return SuccessDetailResponse(
+      otherNativeCrash: map['otherNativeCrash'] as bool,
+    );
+  }
+}

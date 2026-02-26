@@ -1,0 +1,3 @@
+library module_pubsub_schema_iam_member_condition;
+
+export 'schema_iam_member_condition.dart';

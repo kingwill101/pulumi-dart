@@ -1,0 +1,48 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../stream_backfill_all_postgresql_excluded_objects_postgresql_schema_postgresql_table_postgresql_column/stream_backfill_all_postgresql_excluded_objects_postgresql_schema_postgresql_table_postgresql_column.dart';
+
+class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable {
+  /// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+  /// Structure is documented below.
+  final List<
+          StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn>?
+      postgresqlColumns;
+
+  /// Table name.
+  final String table;
+
+  StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable({
+    this.postgresqlColumns,
+    required this.table,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final postgresqlColumnsValue = postgresqlColumns;
+    if (postgresqlColumnsValue != null) {
+      map['postgresqlColumns'] = Input.encodeList<
+          StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn,
+          Map<String,
+              dynamic>>(postgresqlColumnsValue, (value) => value.toMap());
+    }
+    map['table'] = table;
+    return map;
+  }
+
+  factory StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable.fromMap(
+      Map<String, dynamic> map) {
+    return StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable(
+      postgresqlColumns: map['postgresqlColumns'] == null
+          ? null
+          : Input.decodeList<
+                  StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn>(
+              map['postgresqlColumns'],
+              (value) =>
+                  StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn
+                      .fromMap((value as Map).cast<String, dynamic>())),
+      table: map['table'] as String,
+    );
+  }
+}

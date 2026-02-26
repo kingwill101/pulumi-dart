@@ -1,0 +1,3 @@
+library module_developerconnect_connection_bitbucket_cloud_config_read_authorizer_credential;
+
+export 'connection_bitbucket_cloud_config_read_authorizer_credential2.dart';

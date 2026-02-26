@@ -1,0 +1,182 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import 'container3.dart';
+import 'customer_encryption_key5.dart';
+import 'host.dart';
+import 'persistent_directory.dart';
+import 'readiness_check3.dart';
+
+/// The set of arguments for WorkstationConfig.
+class WorkstationConfigArgs {
+  /// Optional. Client-specified annotations.
+  final Input<Map<String, String>>? annotations;
+
+  /// Optional. Container that runs upon startup for each workstation using this workstation configuration.
+  final Input<Container3>? container;
+
+  /// Optional. Human-readable name for this workstation configuration.
+  final Input<String>? displayName;
+
+  /// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
+  final Input<CustomerEncryptionKey5>? encryptionKey;
+
+  /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
+  final Input<String>? etag;
+
+  /// Optional. Runtime host for the workstation.
+  final Input<Host>? host;
+
+  /// Optional. Number of seconds to wait before automatically stopping a workstation after it last received user traffic. A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration should never time out due to idleness. Provide [duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration) terminated by `s` for seconds—for example, `"7200s"` (2 hours). The default is `"1200s"` (20 minutes).
+  final Input<String>? idleTimeout;
+
+  /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation configuration and that are also propagated to the underlying Compute Engine resources.
+  final Input<Map<String, String>>? labels;
+  final Input<String>? location;
+
+  /// Identifier. Full name of this workstation configuration.
+  final Input<String>? name;
+
+  /// Optional. Directories to persist across workstation sessions.
+  final Input<List<PersistentDirectory>>? persistentDirectories;
+  final Input<String>? project;
+
+  /// Optional. Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+  final Input<List<ReadinessCheck3>>? readinessChecks;
+
+  /// Optional. Immutable. Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`. If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
+  final Input<List<String>>? replicaZones;
+
+  /// Optional. Number of seconds that a workstation can run until it is automatically shut down. We recommend that workstations be shut down daily to reduce costs and so that security updates can be applied upon restart. The idle_timeout and running_timeout fields are independent of each other. Note that the running_timeout field shuts down VMs after the specified time, regardless of whether or not the VMs are idle. Provide duration terminated by `s` for seconds—for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12 hours). A value of `"0s"` indicates that workstations using this configuration should never time out. If encryption_key is set, it must be greater than `"0s"` and less than `"86400s"` (24 hours). Warning: A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration have no maximum running time. This is strongly discouraged because you incur costs and will not pick up security updates.
+  final Input<String>? runningTimeout;
+  final Input<String> workstationClusterId;
+
+  /// Required. ID to use for the workstation configuration.
+  final Input<String> workstationConfigId;
+
+  WorkstationConfigArgs({
+    this.annotations,
+    this.container,
+    this.displayName,
+    this.encryptionKey,
+    this.etag,
+    this.host,
+    this.idleTimeout,
+    this.labels,
+    this.location,
+    this.name,
+    this.persistentDirectories,
+    this.project,
+    this.readinessChecks,
+    this.replicaZones,
+    this.runningTimeout,
+    required this.workstationClusterId,
+    required this.workstationConfigId,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final annotationsValue = annotations;
+    if (annotationsValue != null) {
+      map['annotations'] = annotationsValue;
+    }
+    final containerValue = container;
+    if (containerValue != null) {
+      map['container'] =
+          Input.mapOptionalInputValue<Container3, Map<String, dynamic>>(
+              containerValue, (value) => value.toMap());
+    }
+    final displayNameValue = displayName;
+    if (displayNameValue != null) {
+      map['displayName'] = displayNameValue;
+    }
+    final encryptionKeyValue = encryptionKey;
+    if (encryptionKeyValue != null) {
+      map['encryptionKey'] = Input.mapOptionalInputValue<CustomerEncryptionKey5,
+          Map<String, dynamic>>(encryptionKeyValue, (value) => value.toMap());
+    }
+    final etagValue = etag;
+    if (etagValue != null) {
+      map['etag'] = etagValue;
+    }
+    final hostValue = host;
+    if (hostValue != null) {
+      map['host'] = Input.mapOptionalInputValue<Host, Map<String, dynamic>>(
+          hostValue, (value) => value.toMap());
+    }
+    final idleTimeoutValue = idleTimeout;
+    if (idleTimeoutValue != null) {
+      map['idleTimeout'] = idleTimeoutValue;
+    }
+    final labelsValue = labels;
+    if (labelsValue != null) {
+      map['labels'] = labelsValue;
+    }
+    final locationValue = location;
+    if (locationValue != null) {
+      map['location'] = locationValue;
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final persistentDirectoriesValue = persistentDirectories;
+    if (persistentDirectoriesValue != null) {
+      map['persistentDirectories'] = Input.mapOptionalInputValue<
+              List<PersistentDirectory>, List<Map<String, dynamic>>>(
+          persistentDirectoriesValue,
+          (value) =>
+              Input.encodeList<PersistentDirectory, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
+    }
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    final readinessChecksValue = readinessChecks;
+    if (readinessChecksValue != null) {
+      map['readinessChecks'] = Input.mapOptionalInputValue<
+              List<ReadinessCheck3>, List<Map<String, dynamic>>>(
+          readinessChecksValue,
+          (value) => Input.encodeList<ReadinessCheck3, Map<String, dynamic>>(
+              value, (value) => value.toMap()));
+    }
+    final replicaZonesValue = replicaZones;
+    if (replicaZonesValue != null) {
+      map['replicaZones'] = replicaZonesValue;
+    }
+    final runningTimeoutValue = runningTimeout;
+    if (runningTimeoutValue != null) {
+      map['runningTimeout'] = runningTimeoutValue;
+    }
+    map['workstationClusterId'] = workstationClusterId;
+    map['workstationConfigId'] = workstationConfigId;
+    return map;
+  }
+
+  factory WorkstationConfigArgs.fromMap(Map<String, dynamic> map) {
+    return WorkstationConfigArgs(
+      annotations:
+          Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      container: Input.asOptionalInput<Container3>(map['container']),
+      displayName: Input.asOptionalInput<String>(map['displayName']),
+      encryptionKey:
+          Input.asOptionalInput<CustomerEncryptionKey5>(map['encryptionKey']),
+      etag: Input.asOptionalInput<String>(map['etag']),
+      host: Input.asOptionalInput<Host>(map['host']),
+      idleTimeout: Input.asOptionalInput<String>(map['idleTimeout']),
+      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: Input.asOptionalInput<String>(map['location']),
+      name: Input.asOptionalInput<String>(map['name']),
+      persistentDirectories: Input.asOptionalInput<List<PersistentDirectory>>(
+          map['persistentDirectories']),
+      project: Input.asOptionalInput<String>(map['project']),
+      readinessChecks:
+          Input.asOptionalInput<List<ReadinessCheck3>>(map['readinessChecks']),
+      replicaZones: Input.asOptionalInput<List<String>>(map['replicaZones']),
+      runningTimeout: Input.asOptionalInput<String>(map['runningTimeout']),
+      workstationClusterId: Input.asInput<String>(map['workstationClusterId']),
+      workstationConfigId: Input.asInput<String>(map['workstationConfigId']),
+    );
+  }
+}

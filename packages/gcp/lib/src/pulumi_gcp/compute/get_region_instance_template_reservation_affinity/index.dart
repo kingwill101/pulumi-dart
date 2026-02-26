@@ -1,0 +1,3 @@
+library module_compute_get_region_instance_template_reservation_affinity;
+
+export 'get_region_instance_template_reservation_affinity.dart';

@@ -1,0 +1,3 @@
+library module_transcoder_job_config_mux_stream_segment_settings;
+
+export 'job_config_mux_stream_segment_settings.dart';

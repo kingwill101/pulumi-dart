@@ -1,0 +1,3 @@
+library module_monitoring_alert_policy_documentation_link;
+
+export 'alert_policy_documentation_link.dart';

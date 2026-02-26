@@ -1,0 +1,3 @@
+library module_securitycenter_notification_config_streaming_config;
+
+export 'notification_config_streaming_config.dart';

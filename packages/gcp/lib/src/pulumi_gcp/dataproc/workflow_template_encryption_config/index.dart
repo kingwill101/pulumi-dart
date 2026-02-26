@@ -1,0 +1,3 @@
+library module_dataproc_workflow_template_encryption_config;
+
+export 'workflow_template_encryption_config.dart';

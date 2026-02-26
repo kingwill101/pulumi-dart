@@ -1,0 +1,3 @@
+library module_artifactregistry_get_npm_packages_npm_package;
+
+export 'get_npm_packages_npm_package.dart';

@@ -1,0 +1,3 @@
+library module_endpoints_consumers_iam_binding_condition;
+
+export 'consumers_iam_binding_condition.dart';

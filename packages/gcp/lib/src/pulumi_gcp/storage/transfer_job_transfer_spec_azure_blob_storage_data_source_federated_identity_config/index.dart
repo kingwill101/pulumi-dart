@@ -1,0 +1,3 @@
+library module_storage_transfer_job_transfer_spec_azure_blob_storage_data_source_federated_identity_config;
+
+export 'transfer_job_transfer_spec_azure_blob_storage_data_source_federated_identity_config.dart';

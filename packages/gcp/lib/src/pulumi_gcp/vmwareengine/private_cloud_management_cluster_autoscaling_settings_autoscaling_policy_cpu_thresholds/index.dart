@@ -1,0 +1,3 @@
+library module_vmwareengine_private_cloud_management_cluster_autoscaling_settings_autoscaling_policy_cpu_thresholds;
+
+export 'private_cloud_management_cluster_autoscaling_settings_autoscaling_policy_cpu_thresholds.dart';

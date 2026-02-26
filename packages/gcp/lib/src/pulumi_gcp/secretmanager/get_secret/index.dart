@@ -1,0 +1,5 @@
+library module_secretmanager_get_secret;
+
+export 'get_secret.dart';
+export 'get_secret_args.dart';
+export 'get_secret_result.dart';

@@ -1,0 +1,3 @@
+library module_apphub_service_service_property_extended_metadata;
+
+export 'service_service_property_extended_metadata.dart';

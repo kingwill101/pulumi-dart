@@ -1,0 +1,3 @@
+library module_datastream_stream_source_config_salesforce_source_config_include_objects_object;
+
+export 'stream_source_config_salesforce_source_config_include_objects_object.dart';

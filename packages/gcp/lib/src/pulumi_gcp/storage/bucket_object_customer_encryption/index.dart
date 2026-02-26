@@ -1,0 +1,3 @@
+library module_storage_bucket_object_customer_encryption;
+
+export 'bucket_object_customer_encryption.dart';

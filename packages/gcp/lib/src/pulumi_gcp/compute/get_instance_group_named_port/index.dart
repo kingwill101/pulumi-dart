@@ -1,0 +1,3 @@
+library module_compute_get_instance_group_named_port;
+
+export 'get_instance_group_named_port.dart';

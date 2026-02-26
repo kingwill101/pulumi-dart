@@ -1,0 +1,3 @@
+library module_diagflow_cx_webhook_generic_web_service_service_account_auth_config;
+
+export 'cx_webhook_generic_web_service_service_account_auth_config.dart';

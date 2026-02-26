@@ -1,0 +1,3 @@
+library module_ces_app_version_snapshot_app_data_store_setting;
+
+export 'app_version_snapshot_app_data_store_setting.dart';

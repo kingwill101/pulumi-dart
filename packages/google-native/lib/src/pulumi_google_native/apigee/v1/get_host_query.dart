@@ -1,0 +1,17 @@
+import 'package:pulumi/pulumi.dart';
+import 'get_host_query_args.dart';
+import 'get_host_query_result.dart';
+
+/// Get status of a query submitted at host level. If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
+Future<GetHostQueryResult> getHostQuery(
+  GetHostQueryArgs args, {
+  InvokeOptions? options,
+}) async {
+  final deployment = Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'google-native:apigee/v1:getHostQuery',
+    args.toMap(),
+    options: toDeploymentInvokeOptions(options),
+  );
+  return GetHostQueryResult.fromMap(result);
+}

@@ -1,0 +1,3 @@
+library module_bigqueryanalyticshub_listing_bigquery_dataset_selected_resource;
+
+export 'listing_bigquery_dataset_selected_resource.dart';

@@ -1,0 +1,3 @@
+library module_notebooks_instance_iam_binding_condition;
+
+export 'instance_iam_binding_condition2.dart';

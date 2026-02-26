@@ -1,0 +1,3 @@
+library module_vmwareengine_get_private_cloud_management_cluster_autoscaling_setting;
+
+export 'get_private_cloud_management_cluster_autoscaling_setting.dart';

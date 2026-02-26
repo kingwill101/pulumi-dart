@@ -1,0 +1,3 @@
+library module_gkebackup_restore_plan_restore_config_volume_data_restore_policy_binding;
+
+export 'restore_plan_restore_config_volume_data_restore_policy_binding.dart';

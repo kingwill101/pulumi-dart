@@ -1,0 +1,282 @@
+import 'package:pulumi/pulumi.dart';
+import '../inbound_saml_config_idp_config/inbound_saml_config_idp_config.dart';
+import '../inbound_saml_config_sp_config/inbound_saml_config_sp_config.dart';
+import 'inbound_saml_config_args.dart';
+
+/// Inbound SAML configuration for a Identity Toolkit project.
+///
+/// You must enable the
+/// [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
+/// the marketplace prior to using this resource.
+///
+///
+///
+/// ## Example Usage
+///
+/// ### Identity Platform Inbound Saml Config Basic
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as std from "@pulumi/std";
+///
+/// const samlConfig = new gcp.identityplatform.InboundSamlConfig("saml_config", {
+/// name: "saml.tf-config",
+/// displayName: "Display Name",
+/// idpConfig: {
+/// idpEntityId: "tf-idp",
+/// signRequest: true,
+/// ssoUrl: "https://example.com",
+/// idpCertificates: [{
+/// x509Certificate: std.file({
+/// input: "test-fixtures/rsa_cert.pem",
+/// }).then(invoke => invoke.result),
+/// }],
+/// },
+/// spConfig: {
+/// spEntityId: "tf-sp",
+/// callbackUri: "https://example.com",
+/// },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumi_std as std
+///
+/// saml_config = gcp.identityplatform.InboundSamlConfig("saml_config",
+/// name="saml.tf-config",
+/// display_name="Display Name",
+/// idp_config={
+/// "idp_entity_id": "tf-idp",
+/// "sign_request": True,
+/// "sso_url": "https://example.com",
+/// "idp_certificates": [{
+/// "x509_certificate": std.file(input="test-fixtures/rsa_cert.pem").result,
+/// }],
+/// },
+/// sp_config={
+/// "sp_entity_id": "tf-sp",
+/// "callback_uri": "https://example.com",
+/// })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Std = Pulumi.Std;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var samlConfig = new Gcp.IdentityPlatform.InboundSamlConfig("saml_config", new()
+/// {
+/// Name = "saml.tf-config",
+/// DisplayName = "Display Name",
+/// IdpConfig = new Gcp.IdentityPlatform.Inputs.InboundSamlConfigIdpConfigArgs
+/// {
+/// IdpEntityId = "tf-idp",
+/// SignRequest = true,
+/// SsoUrl = "https://example.com",
+/// IdpCertificates = new[]
+/// {
+/// new Gcp.IdentityPlatform.Inputs.InboundSamlConfigIdpConfigIdpCertificateArgs
+/// {
+/// X509Certificate = Std.File.Invoke(new()
+/// {
+/// Input = "test-fixtures/rsa_cert.pem",
+/// }).Apply(invoke => invoke.Result),
+/// },
+/// },
+/// },
+/// SpConfig = new Gcp.IdentityPlatform.Inputs.InboundSamlConfigSpConfigArgs
+/// {
+/// SpEntityId = "tf-sp",
+/// CallbackUri = "https://example.com",
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/identityplatform"
+/// "github.com/pulumi/pulumi-std/sdk/go/std"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// invokeFile, err := std.File(ctx, &std.FileArgs{
+/// Input: "test-fixtures/rsa_cert.pem",
+/// }, nil)
+/// if err != nil {
+/// return err
+/// }
+/// _, err = identityplatform.NewInboundSamlConfig(ctx, "saml_config", &identityplatform.InboundSamlConfigArgs{
+/// Name:        pulumi.String("saml.tf-config"),
+/// DisplayName: pulumi.String("Display Name"),
+/// IdpConfig: &identityplatform.InboundSamlConfigIdpConfigArgs{
+/// IdpEntityId: pulumi.String("tf-idp"),
+/// SignRequest: pulumi.Bool(true),
+/// SsoUrl:      pulumi.String("https://example.com"),
+/// IdpCertificates: identityplatform.InboundSamlConfigIdpConfigIdpCertificateArray{
+/// &identityplatform.InboundSamlConfigIdpConfigIdpCertificateArgs{
+/// X509Certificate: pulumi.String(invokeFile.Result),
+/// },
+/// },
+/// },
+/// SpConfig: &identityplatform.InboundSamlConfigSpConfigArgs{
+/// SpEntityId:  pulumi.String("tf-sp"),
+/// CallbackUri: pulumi.String("https://example.com"),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.identityplatform.InboundSamlConfig;
+/// import com.pulumi.gcp.identityplatform.InboundSamlConfigArgs;
+/// import com.pulumi.gcp.identityplatform.inputs.InboundSamlConfigIdpConfigArgs;
+/// import com.pulumi.gcp.identityplatform.inputs.InboundSamlConfigSpConfigArgs;
+/// import com.pulumi.std.StdFunctions;
+/// import com.pulumi.std.inputs.FileArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var samlConfig = new InboundSamlConfig("samlConfig", InboundSamlConfigArgs.builder()
+/// .name("saml.tf-config")
+/// .displayName("Display Name")
+/// .idpConfig(InboundSamlConfigIdpConfigArgs.builder()
+/// .idpEntityId("tf-idp")
+/// .signRequest(true)
+/// .ssoUrl("https://example.com")
+/// .idpCertificates(InboundSamlConfigIdpConfigIdpCertificateArgs.builder()
+/// .x509Certificate(StdFunctions.file(FileArgs.builder()
+/// .input("test-fixtures/rsa_cert.pem")
+/// .build()).result())
+/// .build())
+/// .build())
+/// .spConfig(InboundSamlConfigSpConfigArgs.builder()
+/// .spEntityId("tf-sp")
+/// .callbackUri("https://example.com")
+/// .build())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// samlConfig:
+/// type: gcp:identityplatform:InboundSamlConfig
+/// name: saml_config
+/// properties:
+/// name: saml.tf-config
+/// displayName: Display Name
+/// idpConfig:
+/// idpEntityId: tf-idp
+/// signRequest: true
+/// ssoUrl: https://example.com
+/// idpCertificates:
+/// - x509Certificate:
+/// fn::invoke:
+/// function: std:file
+/// arguments:
+/// input: test-fixtures/rsa_cert.pem
+/// return: result
+/// spConfig:
+/// spEntityId: tf-sp
+/// callbackUri: https://example.com
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// InboundSamlConfig can be imported using any of these accepted formats:
+///
+/// * `projects/{{project}}/inboundSamlConfigs/{{name}}`
+///
+/// * `{{project}}/{{name}}`
+///
+/// * `{{name}}`
+///
+/// When using the `pulumi import` command, InboundSamlConfig can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default projects/{{project}}/inboundSamlConfigs/{{name}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{project}}/{{name}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{name}}
+/// ```
+class InboundSamlConfig extends CustomResource {
+  /// Human friendly display name.
+  late final Output<String> displayName;
+
+  /// If this config allows users to sign in with the provider.
+  late final Output<bool?> enabled;
+
+  /// SAML IdP configuration when the project acts as the relying party
+  /// Structure is documented below.
+  late final Output<InboundSamlConfigIdpConfig> idpConfig;
+
+  /// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
+  /// hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
+  /// alphanumeric character, and have at least 2 characters.
+  late final Output<String> name;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  late final Output<String> project;
+
+  /// SAML SP (Service Provider) configuration when the project acts as the relying party to receive
+  /// and accept an authentication assertion issued by a SAML identity provider.
+  /// Structure is documented below.
+  late final Output<InboundSamlConfigSpConfig> spConfig;
+
+  InboundSamlConfig(
+    String name, {
+    InboundSamlConfigArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:identityplatform/inboundSamlConfig:InboundSamlConfig',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.displayName = Output.createUnknown<String>();
+    this.enabled = Output.createUnknown<bool?>();
+    this.idpConfig = Output.createUnknown<InboundSamlConfigIdpConfig>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.spConfig = Output.createUnknown<InboundSamlConfigSpConfig>();
+  }
+}

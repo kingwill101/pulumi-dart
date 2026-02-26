@@ -1,0 +1,3 @@
+library module_container_get_cluster_node_pool_upgrade_setting_blue_green_setting_autoscaled_rollout_policy;
+
+export 'get_cluster_node_pool_upgrade_setting_blue_green_setting_autoscaled_rollout_policy.dart';

@@ -1,0 +1,3 @@
+library module_discoveryengine_control_boost_action_interpolation_boost_spec_control_point;
+
+export 'control_boost_action_interpolation_boost_spec_control_point.dart';

@@ -1,0 +1,3 @@
+library module_compute_instance_network_interface;
+
+export 'instance_network_interface.dart';

@@ -1,0 +1,101 @@
+import 'package:pulumi/pulumi.dart';
+import 'argument_response.dart';
+import 'remote_function_options_response.dart';
+import 'routine_args.dart';
+import 'routine_reference_response.dart';
+import 'spark_options_response.dart';
+import 'standard_sql_data_type_response.dart';
+import 'standard_sql_table_type_response.dart';
+
+/// Creates a new routine in the dataset.
+/// Auto-naming is currently not supported for this resource.
+class Routine extends CustomResource {
+  /// Optional.
+  late final Output<List<ArgumentResponse>> arguments;
+
+  /// The time when this routine was created, in milliseconds since the epoch.
+  late final Output<String> creationTime;
+
+  /// Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+  late final Output<String> dataGovernanceType;
+  late final Output<String> datasetId;
+
+  /// The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
+  late final Output<String> definitionBody;
+
+  /// Optional. The description of the routine, if defined.
+  late final Output<String> description;
+
+  /// Optional. The determinism level of the JavaScript UDF, if defined.
+  late final Output<String> determinismLevel;
+
+  /// A hash of this resource.
+  late final Output<String> etag;
+
+  /// Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
+  late final Output<List<String>> importedLibraries;
+
+  /// Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
+  late final Output<String> language;
+
+  /// The time when this routine was last modified, in milliseconds since the epoch.
+  late final Output<String> lastModifiedTime;
+  late final Output<String> project;
+
+  /// Optional. Remote function specific options.
+  late final Output<RemoteFunctionOptionsResponse> remoteFunctionOptions;
+
+  /// Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specified in return table type, at query time.
+  late final Output<StandardSqlTableTypeResponse> returnTableType;
+
+  /// Optional if language = "SQL"; required otherwise. Cannot be set if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
+  late final Output<StandardSqlDataTypeResponse> returnType;
+
+  /// Reference describing the ID of this routine.
+  late final Output<RoutineReferenceResponse> routineReference;
+
+  /// The type of routine.
+  late final Output<String> routineType;
+
+  /// Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+  late final Output<String> securityMode;
+
+  /// Optional. Spark specific options.
+  late final Output<SparkOptionsResponse> sparkOptions;
+
+  /// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+  late final Output<bool> strictMode;
+
+  Routine(
+    String name, {
+    RoutineArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:bigquery/v2:Routine',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.arguments = Output.createUnknown<List<ArgumentResponse>>();
+    this.creationTime = Output.createUnknown<String>();
+    this.dataGovernanceType = Output.createUnknown<String>();
+    this.datasetId = Output.createUnknown<String>();
+    this.definitionBody = Output.createUnknown<String>();
+    this.description = Output.createUnknown<String>();
+    this.determinismLevel = Output.createUnknown<String>();
+    this.etag = Output.createUnknown<String>();
+    this.importedLibraries = Output.createUnknown<List<String>>();
+    this.language = Output.createUnknown<String>();
+    this.lastModifiedTime = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.remoteFunctionOptions =
+        Output.createUnknown<RemoteFunctionOptionsResponse>();
+    this.returnTableType = Output.createUnknown<StandardSqlTableTypeResponse>();
+    this.returnType = Output.createUnknown<StandardSqlDataTypeResponse>();
+    this.routineReference = Output.createUnknown<RoutineReferenceResponse>();
+    this.routineType = Output.createUnknown<String>();
+    this.securityMode = Output.createUnknown<String>();
+    this.sparkOptions = Output.createUnknown<SparkOptionsResponse>();
+    this.strictMode = Output.createUnknown<bool>();
+  }
+}

@@ -1,0 +1,3 @@
+library module_folder_iam_audit_config_audit_log_config;
+
+export 'iam_audit_config_audit_log_config.dart';

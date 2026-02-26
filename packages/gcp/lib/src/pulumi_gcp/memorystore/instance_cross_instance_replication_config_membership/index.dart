@@ -1,0 +1,3 @@
+library module_memorystore_instance_cross_instance_replication_config_membership;
+
+export 'instance_cross_instance_replication_config_membership.dart';

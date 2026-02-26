@@ -1,0 +1,3 @@
+library module_compute_region_resize_request_requested_run_duration;
+
+export 'region_resize_request_requested_run_duration.dart';

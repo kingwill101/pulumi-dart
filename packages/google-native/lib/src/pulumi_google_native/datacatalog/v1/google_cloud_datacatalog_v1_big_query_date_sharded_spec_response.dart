@@ -1,0 +1,42 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
+class GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse {
+  /// The Data Catalog resource name of the dataset entry the current table belongs to. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`.
+  final String dataset;
+
+  /// BigQuery resource name of the latest shard.
+  final String latestShardResource;
+
+  /// Total number of shards.
+  final String shardCount;
+
+  /// The table name prefix of the shards. The name of any given shard is `[table_prefix]YYYYMMDD`. For example, for the `MyTable20180101` shard, the `table_prefix` is `MyTable`.
+  final String tablePrefix;
+
+  GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse({
+    required this.dataset,
+    required this.latestShardResource,
+    required this.shardCount,
+    required this.tablePrefix,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['dataset'] = dataset;
+    map['latestShardResource'] = latestShardResource;
+    map['shardCount'] = shardCount;
+    map['tablePrefix'] = tablePrefix;
+    return map;
+  }
+
+  factory GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse(
+      dataset: map['dataset'] as String,
+      latestShardResource: map['latestShardResource'] as String,
+      shardCount: map['shardCount'] as String,
+      tablePrefix: map['tablePrefix'] as String,
+    );
+  }
+}

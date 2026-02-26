@@ -1,0 +1,3 @@
+library module_iam_workforce_pool_provider_oidc_client_secret_value;
+
+export 'workforce_pool_provider_oidc_client_secret_value.dart';

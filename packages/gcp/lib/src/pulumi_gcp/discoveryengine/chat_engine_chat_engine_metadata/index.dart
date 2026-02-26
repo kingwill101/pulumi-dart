@@ -1,0 +1,3 @@
+library module_discoveryengine_chat_engine_chat_engine_metadata;
+
+export 'chat_engine_chat_engine_metadata.dart';

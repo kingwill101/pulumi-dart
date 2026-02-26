@@ -1,0 +1,3 @@
+library module_composer_get_environment_config_node_config_ip_allocation_policy;
+
+export 'get_environment_config_node_config_ip_allocation_policy.dart';

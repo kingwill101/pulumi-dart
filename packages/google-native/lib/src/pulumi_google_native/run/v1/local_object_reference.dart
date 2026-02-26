@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Not supported by Cloud Run. LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+class LocalObjectReference {
+  /// Name of the referent.
+  final String? name;
+
+  LocalObjectReference({
+    this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    return map;
+  }
+
+  factory LocalObjectReference.fromMap(Map<String, dynamic> map) {
+    return LocalObjectReference(
+      name: map['name'] == null ? null : map['name'] as String,
+    );
+  }
+}

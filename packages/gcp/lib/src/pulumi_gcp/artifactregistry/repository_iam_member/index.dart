@@ -1,0 +1,4 @@
+library module_artifactregistry_repository_iam_member;
+
+export 'repository_iam_member.dart';
+export 'repository_iam_member_args.dart';

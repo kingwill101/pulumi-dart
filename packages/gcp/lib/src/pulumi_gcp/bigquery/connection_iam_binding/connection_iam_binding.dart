@@ -1,0 +1,976 @@
+import 'package:pulumi/pulumi.dart';
+import '../connection_iam_binding_condition/connection_iam_binding_condition.dart';
+import 'connection_iam_binding_args.dart';
+
+/// Three different resources help you manage your IAM policy for BigQuery Connection Connection. Each of these resources serves a different use case:
+///
+/// * <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-go="`bigquery.ConnectionIamPolicy`" pulumi-lang-python="`bigquery.ConnectionIamPolicy`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-java="`gcp.bigquery.ConnectionIamPolicy`">`gcp.bigquery.ConnectionIamPolicy`</span>: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
+/// * <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-go="`bigquery.ConnectionIamBinding`" pulumi-lang-python="`bigquery.ConnectionIamBinding`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-java="`gcp.bigquery.ConnectionIamBinding`">`gcp.bigquery.ConnectionIamBinding`</span>: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
+/// * <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-go="`bigquery.ConnectionIamMember`" pulumi-lang-python="`bigquery.ConnectionIamMember`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-java="`gcp.bigquery.ConnectionIamMember`">`gcp.bigquery.ConnectionIamMember`</span>: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
+///
+/// A data source can be used to retrieve policy data in advent you do not need creation
+///
+/// * <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-go="`bigquery.ConnectionIamPolicy`" pulumi-lang-python="`bigquery.ConnectionIamPolicy`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-java="`gcp.bigquery.ConnectionIamPolicy`">`gcp.bigquery.ConnectionIamPolicy`</span>: Retrieves the IAM policy for the connection
+///
+/// > **Note:** <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-go="`bigquery.ConnectionIamPolicy`" pulumi-lang-python="`bigquery.ConnectionIamPolicy`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-java="`gcp.bigquery.ConnectionIamPolicy`">`gcp.bigquery.ConnectionIamPolicy`</span> **cannot** be used in conjunction with <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-go="`bigquery.ConnectionIamBinding`" pulumi-lang-python="`bigquery.ConnectionIamBinding`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-java="`gcp.bigquery.ConnectionIamBinding`">`gcp.bigquery.ConnectionIamBinding`</span> and <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-go="`bigquery.ConnectionIamMember`" pulumi-lang-python="`bigquery.ConnectionIamMember`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-java="`gcp.bigquery.ConnectionIamMember`">`gcp.bigquery.ConnectionIamMember`</span> or they will fight over what your policy should be.
+///
+/// > **Note:** <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-go="`bigquery.ConnectionIamBinding`" pulumi-lang-python="`bigquery.ConnectionIamBinding`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-java="`gcp.bigquery.ConnectionIamBinding`">`gcp.bigquery.ConnectionIamBinding`</span> resources **can be** used in conjunction with <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-go="`bigquery.ConnectionIamMember`" pulumi-lang-python="`bigquery.ConnectionIamMember`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-java="`gcp.bigquery.ConnectionIamMember`">`gcp.bigquery.ConnectionIamMember`</span> resources **only if** they do not grant privilege to the same role.
+///
+///
+///
+/// ##<span pulumi-lang-nodejs=" gcp.bigquery.ConnectionIamPolicy
+/// " pulumi-lang-dotnet=" gcp.bigquery.ConnectionIamPolicy
+/// " pulumi-lang-go=" bigquery.ConnectionIamPolicy
+/// " pulumi-lang-python=" bigquery.ConnectionIamPolicy
+/// " pulumi-lang-yaml=" gcp.bigquery.ConnectionIamPolicy
+/// " pulumi-lang-java=" gcp.bigquery.ConnectionIamPolicy
+/// "> gcp.bigquery.ConnectionIamPolicy
+/// </span>
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const admin = gcp.organizations.getIAMPolicy({
+/// bindings: [{
+/// role: "roles/viewer",
+/// members: ["user:jane@example.com"],
+/// }],
+/// });
+/// const policy = new gcp.bigquery.ConnectionIamPolicy("policy", {
+/// project: connection.project,
+/// location: connection.location,
+/// connectionId: connection.connectionId,
+/// policyData: admin.then(admin => admin.policyData),
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// admin = gcp.organizations.get_iam_policy(bindings=[{
+/// "role": "roles/viewer",
+/// "members": ["user:jane@example.com"],
+/// }])
+/// policy = gcp.bigquery.ConnectionIamPolicy("policy",
+/// project=connection["project"],
+/// location=connection["location"],
+/// connection_id=connection["connectionId"],
+/// policy_data=admin.policy_data)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+/// {
+/// Bindings = new[]
+/// {
+/// new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+/// {
+/// Role = "roles/viewer",
+/// Members = new[]
+/// {
+/// "user:jane@example.com",
+/// },
+/// },
+/// },
+/// });
+///
+/// var policy = new Gcp.BigQuery.ConnectionIamPolicy("policy", new()
+/// {
+/// Project = connection.Project,
+/// Location = connection.Location,
+/// ConnectionId = connection.ConnectionId,
+/// PolicyData = admin.Apply(getIAMPolicyResult => getIAMPolicyResult.PolicyData),
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+/// Bindings: []organizations.GetIAMPolicyBinding{
+/// {
+/// Role: "roles/viewer",
+/// Members: []string{
+/// "user:jane@example.com",
+/// },
+/// },
+/// },
+/// }, nil)
+/// if err != nil {
+/// return err
+/// }
+/// _, err = bigquery.NewConnectionIamPolicy(ctx, "policy", &bigquery.ConnectionIamPolicyArgs{
+/// Project:      pulumi.Any(connection.Project),
+/// Location:     pulumi.Any(connection.Location),
+/// ConnectionId: pulumi.Any(connection.ConnectionId),
+/// PolicyData:   pulumi.String(admin.PolicyData),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.bigquery.ConnectionIamPolicy;
+/// import com.pulumi.gcp.bigquery.ConnectionIamPolicyArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+/// .bindings(GetIAMPolicyBindingArgs.builder()
+/// .role("roles/viewer")
+/// .members("user:jane@example.com")
+/// .build())
+/// .build());
+///
+/// var policy = new ConnectionIamPolicy("policy", ConnectionIamPolicyArgs.builder()
+/// .project(connection.project())
+/// .location(connection.location())
+/// .connectionId(connection.connectionId())
+/// .policyData(admin.policyData())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// policy:
+/// type: gcp:bigquery:ConnectionIamPolicy
+/// properties:
+/// project: ${connection.project}
+/// location: ${connection.location}
+/// connectionId: ${connection.connectionId}
+/// policyData: ${admin.policyData}
+/// variables:
+/// admin:
+/// fn::invoke:
+/// function: gcp:organizations:getIAMPolicy
+/// arguments:
+/// bindings:
+/// - role: roles/viewer
+/// members:
+/// - user:jane@example.com
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ##<span pulumi-lang-nodejs=" gcp.bigquery.ConnectionIamBinding
+/// " pulumi-lang-dotnet=" gcp.bigquery.ConnectionIamBinding
+/// " pulumi-lang-go=" bigquery.ConnectionIamBinding
+/// " pulumi-lang-python=" bigquery.ConnectionIamBinding
+/// " pulumi-lang-yaml=" gcp.bigquery.ConnectionIamBinding
+/// " pulumi-lang-java=" gcp.bigquery.ConnectionIamBinding
+/// "> gcp.bigquery.ConnectionIamBinding
+/// </span>
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const binding = new gcp.bigquery.ConnectionIamBinding("binding", {
+/// project: connection.project,
+/// location: connection.location,
+/// connectionId: connection.connectionId,
+/// role: "roles/viewer",
+/// members: ["user:jane@example.com"],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// binding = gcp.bigquery.ConnectionIamBinding("binding",
+/// project=connection["project"],
+/// location=connection["location"],
+/// connection_id=connection["connectionId"],
+/// role="roles/viewer",
+/// members=["user:jane@example.com"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var binding = new Gcp.BigQuery.ConnectionIamBinding("binding", new()
+/// {
+/// Project = connection.Project,
+/// Location = connection.Location,
+/// ConnectionId = connection.ConnectionId,
+/// Role = "roles/viewer",
+/// Members = new[]
+/// {
+/// "user:jane@example.com",
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := bigquery.NewConnectionIamBinding(ctx, "binding", &bigquery.ConnectionIamBindingArgs{
+/// Project:      pulumi.Any(connection.Project),
+/// Location:     pulumi.Any(connection.Location),
+/// ConnectionId: pulumi.Any(connection.ConnectionId),
+/// Role:         pulumi.String("roles/viewer"),
+/// Members: pulumi.StringArray{
+/// pulumi.String("user:jane@example.com"),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.bigquery.ConnectionIamBinding;
+/// import com.pulumi.gcp.bigquery.ConnectionIamBindingArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var binding = new ConnectionIamBinding("binding", ConnectionIamBindingArgs.builder()
+/// .project(connection.project())
+/// .location(connection.location())
+/// .connectionId(connection.connectionId())
+/// .role("roles/viewer")
+/// .members("user:jane@example.com")
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// binding:
+/// type: gcp:bigquery:ConnectionIamBinding
+/// properties:
+/// project: ${connection.project}
+/// location: ${connection.location}
+/// connectionId: ${connection.connectionId}
+/// role: roles/viewer
+/// members:
+/// - user:jane@example.com
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ##<span pulumi-lang-nodejs=" gcp.bigquery.ConnectionIamMember
+/// " pulumi-lang-dotnet=" gcp.bigquery.ConnectionIamMember
+/// " pulumi-lang-go=" bigquery.ConnectionIamMember
+/// " pulumi-lang-python=" bigquery.ConnectionIamMember
+/// " pulumi-lang-yaml=" gcp.bigquery.ConnectionIamMember
+/// " pulumi-lang-java=" gcp.bigquery.ConnectionIamMember
+/// "> gcp.bigquery.ConnectionIamMember
+/// </span>
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const member = new gcp.bigquery.ConnectionIamMember("member", {
+/// project: connection.project,
+/// location: connection.location,
+/// connectionId: connection.connectionId,
+/// role: "roles/viewer",
+/// member: "user:jane@example.com",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// member = gcp.bigquery.ConnectionIamMember("member",
+/// project=connection["project"],
+/// location=connection["location"],
+/// connection_id=connection["connectionId"],
+/// role="roles/viewer",
+/// member="user:jane@example.com")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var member = new Gcp.BigQuery.ConnectionIamMember("member", new()
+/// {
+/// Project = connection.Project,
+/// Location = connection.Location,
+/// ConnectionId = connection.ConnectionId,
+/// Role = "roles/viewer",
+/// Member = "user:jane@example.com",
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := bigquery.NewConnectionIamMember(ctx, "member", &bigquery.ConnectionIamMemberArgs{
+/// Project:      pulumi.Any(connection.Project),
+/// Location:     pulumi.Any(connection.Location),
+/// ConnectionId: pulumi.Any(connection.ConnectionId),
+/// Role:         pulumi.String("roles/viewer"),
+/// Member:       pulumi.String("user:jane@example.com"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.bigquery.ConnectionIamMember;
+/// import com.pulumi.gcp.bigquery.ConnectionIamMemberArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var member = new ConnectionIamMember("member", ConnectionIamMemberArgs.builder()
+/// .project(connection.project())
+/// .location(connection.location())
+/// .connectionId(connection.connectionId())
+/// .role("roles/viewer")
+/// .member("user:jane@example.com")
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// member:
+/// type: gcp:bigquery:ConnectionIamMember
+/// properties:
+/// project: ${connection.project}
+/// location: ${connection.location}
+/// connectionId: ${connection.connectionId}
+/// role: roles/viewer
+/// member: user:jane@example.com
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+///
+/// ## This resource supports User Project Overrides.
+///
+/// -
+///
+/// # IAM policy for BigQuery Connection Connection
+///
+/// Three different resources help you manage your IAM policy for BigQuery Connection Connection. Each of these resources serves a different use case:
+///
+/// * <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-go="`bigquery.ConnectionIamPolicy`" pulumi-lang-python="`bigquery.ConnectionIamPolicy`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-java="`gcp.bigquery.ConnectionIamPolicy`">`gcp.bigquery.ConnectionIamPolicy`</span>: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
+/// * <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-go="`bigquery.ConnectionIamBinding`" pulumi-lang-python="`bigquery.ConnectionIamBinding`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-java="`gcp.bigquery.ConnectionIamBinding`">`gcp.bigquery.ConnectionIamBinding`</span>: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
+/// * <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-go="`bigquery.ConnectionIamMember`" pulumi-lang-python="`bigquery.ConnectionIamMember`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-java="`gcp.bigquery.ConnectionIamMember`">`gcp.bigquery.ConnectionIamMember`</span>: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
+///
+/// A data source can be used to retrieve policy data in advent you do not need creation
+///
+/// * <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-go="`bigquery.ConnectionIamPolicy`" pulumi-lang-python="`bigquery.ConnectionIamPolicy`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-java="`gcp.bigquery.ConnectionIamPolicy`">`gcp.bigquery.ConnectionIamPolicy`</span>: Retrieves the IAM policy for the connection
+///
+/// > **Note:** <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-go="`bigquery.ConnectionIamPolicy`" pulumi-lang-python="`bigquery.ConnectionIamPolicy`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamPolicy`" pulumi-lang-java="`gcp.bigquery.ConnectionIamPolicy`">`gcp.bigquery.ConnectionIamPolicy`</span> **cannot** be used in conjunction with <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-go="`bigquery.ConnectionIamBinding`" pulumi-lang-python="`bigquery.ConnectionIamBinding`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-java="`gcp.bigquery.ConnectionIamBinding`">`gcp.bigquery.ConnectionIamBinding`</span> and <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-go="`bigquery.ConnectionIamMember`" pulumi-lang-python="`bigquery.ConnectionIamMember`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-java="`gcp.bigquery.ConnectionIamMember`">`gcp.bigquery.ConnectionIamMember`</span> or they will fight over what your policy should be.
+///
+/// > **Note:** <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-go="`bigquery.ConnectionIamBinding`" pulumi-lang-python="`bigquery.ConnectionIamBinding`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-java="`gcp.bigquery.ConnectionIamBinding`">`gcp.bigquery.ConnectionIamBinding`</span> resources **can be** used in conjunction with <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-go="`bigquery.ConnectionIamMember`" pulumi-lang-python="`bigquery.ConnectionIamMember`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamMember`" pulumi-lang-java="`gcp.bigquery.ConnectionIamMember`">`gcp.bigquery.ConnectionIamMember`</span> resources **only if** they do not grant privilege to the same role.
+///
+///
+///
+/// ##<span pulumi-lang-nodejs=" gcp.bigquery.ConnectionIamPolicy
+/// " pulumi-lang-dotnet=" gcp.bigquery.ConnectionIamPolicy
+/// " pulumi-lang-go=" bigquery.ConnectionIamPolicy
+/// " pulumi-lang-python=" bigquery.ConnectionIamPolicy
+/// " pulumi-lang-yaml=" gcp.bigquery.ConnectionIamPolicy
+/// " pulumi-lang-java=" gcp.bigquery.ConnectionIamPolicy
+/// "> gcp.bigquery.ConnectionIamPolicy
+/// </span>
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const admin = gcp.organizations.getIAMPolicy({
+/// bindings: [{
+/// role: "roles/viewer",
+/// members: ["user:jane@example.com"],
+/// }],
+/// });
+/// const policy = new gcp.bigquery.ConnectionIamPolicy("policy", {
+/// project: connection.project,
+/// location: connection.location,
+/// connectionId: connection.connectionId,
+/// policyData: admin.then(admin => admin.policyData),
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// admin = gcp.organizations.get_iam_policy(bindings=[{
+/// "role": "roles/viewer",
+/// "members": ["user:jane@example.com"],
+/// }])
+/// policy = gcp.bigquery.ConnectionIamPolicy("policy",
+/// project=connection["project"],
+/// location=connection["location"],
+/// connection_id=connection["connectionId"],
+/// policy_data=admin.policy_data)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+/// {
+/// Bindings = new[]
+/// {
+/// new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+/// {
+/// Role = "roles/viewer",
+/// Members = new[]
+/// {
+/// "user:jane@example.com",
+/// },
+/// },
+/// },
+/// });
+///
+/// var policy = new Gcp.BigQuery.ConnectionIamPolicy("policy", new()
+/// {
+/// Project = connection.Project,
+/// Location = connection.Location,
+/// ConnectionId = connection.ConnectionId,
+/// PolicyData = admin.Apply(getIAMPolicyResult => getIAMPolicyResult.PolicyData),
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+/// Bindings: []organizations.GetIAMPolicyBinding{
+/// {
+/// Role: "roles/viewer",
+/// Members: []string{
+/// "user:jane@example.com",
+/// },
+/// },
+/// },
+/// }, nil)
+/// if err != nil {
+/// return err
+/// }
+/// _, err = bigquery.NewConnectionIamPolicy(ctx, "policy", &bigquery.ConnectionIamPolicyArgs{
+/// Project:      pulumi.Any(connection.Project),
+/// Location:     pulumi.Any(connection.Location),
+/// ConnectionId: pulumi.Any(connection.ConnectionId),
+/// PolicyData:   pulumi.String(admin.PolicyData),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.bigquery.ConnectionIamPolicy;
+/// import com.pulumi.gcp.bigquery.ConnectionIamPolicyArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+/// .bindings(GetIAMPolicyBindingArgs.builder()
+/// .role("roles/viewer")
+/// .members("user:jane@example.com")
+/// .build())
+/// .build());
+///
+/// var policy = new ConnectionIamPolicy("policy", ConnectionIamPolicyArgs.builder()
+/// .project(connection.project())
+/// .location(connection.location())
+/// .connectionId(connection.connectionId())
+/// .policyData(admin.policyData())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// policy:
+/// type: gcp:bigquery:ConnectionIamPolicy
+/// properties:
+/// project: ${connection.project}
+/// location: ${connection.location}
+/// connectionId: ${connection.connectionId}
+/// policyData: ${admin.policyData}
+/// variables:
+/// admin:
+/// fn::invoke:
+/// function: gcp:organizations:getIAMPolicy
+/// arguments:
+/// bindings:
+/// - role: roles/viewer
+/// members:
+/// - user:jane@example.com
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ##<span pulumi-lang-nodejs=" gcp.bigquery.ConnectionIamBinding
+/// " pulumi-lang-dotnet=" gcp.bigquery.ConnectionIamBinding
+/// " pulumi-lang-go=" bigquery.ConnectionIamBinding
+/// " pulumi-lang-python=" bigquery.ConnectionIamBinding
+/// " pulumi-lang-yaml=" gcp.bigquery.ConnectionIamBinding
+/// " pulumi-lang-java=" gcp.bigquery.ConnectionIamBinding
+/// "> gcp.bigquery.ConnectionIamBinding
+/// </span>
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const binding = new gcp.bigquery.ConnectionIamBinding("binding", {
+/// project: connection.project,
+/// location: connection.location,
+/// connectionId: connection.connectionId,
+/// role: "roles/viewer",
+/// members: ["user:jane@example.com"],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// binding = gcp.bigquery.ConnectionIamBinding("binding",
+/// project=connection["project"],
+/// location=connection["location"],
+/// connection_id=connection["connectionId"],
+/// role="roles/viewer",
+/// members=["user:jane@example.com"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var binding = new Gcp.BigQuery.ConnectionIamBinding("binding", new()
+/// {
+/// Project = connection.Project,
+/// Location = connection.Location,
+/// ConnectionId = connection.ConnectionId,
+/// Role = "roles/viewer",
+/// Members = new[]
+/// {
+/// "user:jane@example.com",
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := bigquery.NewConnectionIamBinding(ctx, "binding", &bigquery.ConnectionIamBindingArgs{
+/// Project:      pulumi.Any(connection.Project),
+/// Location:     pulumi.Any(connection.Location),
+/// ConnectionId: pulumi.Any(connection.ConnectionId),
+/// Role:         pulumi.String("roles/viewer"),
+/// Members: pulumi.StringArray{
+/// pulumi.String("user:jane@example.com"),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.bigquery.ConnectionIamBinding;
+/// import com.pulumi.gcp.bigquery.ConnectionIamBindingArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var binding = new ConnectionIamBinding("binding", ConnectionIamBindingArgs.builder()
+/// .project(connection.project())
+/// .location(connection.location())
+/// .connectionId(connection.connectionId())
+/// .role("roles/viewer")
+/// .members("user:jane@example.com")
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// binding:
+/// type: gcp:bigquery:ConnectionIamBinding
+/// properties:
+/// project: ${connection.project}
+/// location: ${connection.location}
+/// connectionId: ${connection.connectionId}
+/// role: roles/viewer
+/// members:
+/// - user:jane@example.com
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ##<span pulumi-lang-nodejs=" gcp.bigquery.ConnectionIamMember
+/// " pulumi-lang-dotnet=" gcp.bigquery.ConnectionIamMember
+/// " pulumi-lang-go=" bigquery.ConnectionIamMember
+/// " pulumi-lang-python=" bigquery.ConnectionIamMember
+/// " pulumi-lang-yaml=" gcp.bigquery.ConnectionIamMember
+/// " pulumi-lang-java=" gcp.bigquery.ConnectionIamMember
+/// "> gcp.bigquery.ConnectionIamMember
+/// </span>
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const member = new gcp.bigquery.ConnectionIamMember("member", {
+/// project: connection.project,
+/// location: connection.location,
+/// connectionId: connection.connectionId,
+/// role: "roles/viewer",
+/// member: "user:jane@example.com",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// member = gcp.bigquery.ConnectionIamMember("member",
+/// project=connection["project"],
+/// location=connection["location"],
+/// connection_id=connection["connectionId"],
+/// role="roles/viewer",
+/// member="user:jane@example.com")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var member = new Gcp.BigQuery.ConnectionIamMember("member", new()
+/// {
+/// Project = connection.Project,
+/// Location = connection.Location,
+/// ConnectionId = connection.ConnectionId,
+/// Role = "roles/viewer",
+/// Member = "user:jane@example.com",
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := bigquery.NewConnectionIamMember(ctx, "member", &bigquery.ConnectionIamMemberArgs{
+/// Project:      pulumi.Any(connection.Project),
+/// Location:     pulumi.Any(connection.Location),
+/// ConnectionId: pulumi.Any(connection.ConnectionId),
+/// Role:         pulumi.String("roles/viewer"),
+/// Member:       pulumi.String("user:jane@example.com"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.bigquery.ConnectionIamMember;
+/// import com.pulumi.gcp.bigquery.ConnectionIamMemberArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var member = new ConnectionIamMember("member", ConnectionIamMemberArgs.builder()
+/// .project(connection.project())
+/// .location(connection.location())
+/// .connectionId(connection.connectionId())
+/// .role("roles/viewer")
+/// .member("user:jane@example.com")
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// member:
+/// type: gcp:bigquery:ConnectionIamMember
+/// properties:
+/// project: ${connection.project}
+/// location: ${connection.location}
+/// connectionId: ${connection.connectionId}
+/// role: roles/viewer
+/// member: user:jane@example.com
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// For all import syntaxes, the "resource in question" can take any of the following forms:
+///
+/// * projects/{{project}}/locations/{{location}}/connections/{{connection_id}}
+///
+/// * {{project}}/{{location}}/{{connection_id}}
+///
+/// * {{location}}/{{connection_id}}
+///
+/// * {{connection_id}}
+///
+/// Any variables not passed in the import command will be taken from the provider configuration.
+///
+/// BigQuery Connection connection IAM resources can be imported using the resource identifiers, role, and member.
+///
+/// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+///
+/// ```sh
+/// $ pulumi import gcp:bigquery/connectionIamBinding:ConnectionIamBinding editor "projects/{{project}}/locations/{{location}}/connections/{{connection_id}} roles/viewer user:jane@example.com"
+/// ```
+///
+/// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+///
+/// ```sh
+/// $ pulumi import gcp:bigquery/connectionIamBinding:ConnectionIamBinding editor "projects/{{project}}/locations/{{location}}/connections/{{connection_id}} roles/viewer"
+/// ```
+///
+/// IAM policy imports use the identifier of the resource in question, e.g.
+///
+/// ```sh
+/// $ pulumi import gcp:bigquery/connectionIamBinding:ConnectionIamBinding editor projects/{{project}}/locations/{{location}}/connections/{{connection_id}}
+/// ```
+///
+/// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+///
+/// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+class ConnectionIamBinding extends CustomResource {
+  late final Output<ConnectionIamBindingCondition?> condition;
+
+  /// Used to find the parent resource to bind the IAM policy to
+  late final Output<String> connectionId;
+
+  /// (Computed) The etag of the IAM policy.
+  late final Output<String> etag;
+
+  /// The geographic location where the connection should reside.
+  /// Cloud SQL instance must be in the same location as the connection
+  /// with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
+  /// Examples: US, EU, asia-northeast1, us-central1, europe-west1.
+  /// Spanner Connections same as spanner region
+  /// AWS allowed regions are aws-us-east-1
+  /// Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to. If not specified,
+  /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+  /// location is specified, it is taken from the provider configuration.
+  late final Output<String> location;
+
+  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Each entry can have one of the following values:
+  /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+  /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+  /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+  /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+  /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+  /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+  /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+  /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+  /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+  /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
+  late final Output<List<String>> members;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+  late final Output<String> project;
+
+  /// The role that should be applied. Only one
+  /// <span pulumi-lang-nodejs="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-dotnet="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-go="`bigquery.ConnectionIamBinding`" pulumi-lang-python="`bigquery.ConnectionIamBinding`" pulumi-lang-yaml="`gcp.bigquery.ConnectionIamBinding`" pulumi-lang-java="`gcp.bigquery.ConnectionIamBinding`">`gcp.bigquery.ConnectionIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+  late final Output<String> role;
+
+  ConnectionIamBinding(
+    String name, {
+    ConnectionIamBindingArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:bigquery/connectionIamBinding:ConnectionIamBinding',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.condition = Output.createUnknown<ConnectionIamBindingCondition?>();
+    this.connectionId = Output.createUnknown<String>();
+    this.etag = Output.createUnknown<String>();
+    this.location = Output.createUnknown<String>();
+    this.members = Output.createUnknown<List<String>>();
+    this.project = Output.createUnknown<String>();
+    this.role = Output.createUnknown<String>();
+  }
+}

@@ -1,0 +1,3 @@
+library module_gkeonprem_vmware_cluster_anti_affinity_groups;
+
+export 'vmware_cluster_anti_affinity_groups.dart';

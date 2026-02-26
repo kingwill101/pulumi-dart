@@ -1,0 +1,3 @@
+library module_dataproc_gdc_spark_application_pyspark_application_config;
+
+export 'gdc_spark_application_pyspark_application_config.dart';

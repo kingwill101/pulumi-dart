@@ -1,0 +1,25 @@
+import 'package:pulumi/pulumi.dart';
+import 'topic_args3.dart';
+
+/// Creates the given topic with the given name.
+class Topic4 extends CustomResource {
+  /// The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
+  late final Output<String> name;
+  late final Output<String> project;
+  late final Output<String> topicId;
+
+  Topic4(
+    String name, {
+    TopicArgs3? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:pubsub/v1beta2:Topic',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.topicId = Output.createUnknown<String>();
+  }
+}

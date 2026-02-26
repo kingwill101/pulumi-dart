@@ -1,0 +1,74 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_discovered_workload_workload_property/get_discovered_workload_workload_property.dart';
+import '../get_discovered_workload_workload_reference/get_discovered_workload_workload_reference.dart';
+
+/// Result data returned by getDiscoveredWorkload.
+class GetDiscoveredWorkloadResult {
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+
+  /// The location that the underlying resource resides in.
+  final String location;
+
+  /// Resource name of a Workload. Format: "projects/{host-project-id}/locations/{location}/applications/{application-id}/workloads/{workload-id}".
+  final String name;
+  final String? project;
+
+  /// Properties of an underlying compute resource that can comprise a Workload. Structure is documented below
+  final List<GetDiscoveredWorkloadWorkloadProperty> workloadProperties;
+
+  /// Reference to an underlying networking resource that can comprise a Workload. Structure is documented below
+  final List<GetDiscoveredWorkloadWorkloadReference> workloadReferences;
+  final String workloadUri;
+
+  GetDiscoveredWorkloadResult({
+    required this.id,
+    required this.location,
+    required this.name,
+    this.project,
+    required this.workloadProperties,
+    required this.workloadReferences,
+    required this.workloadUri,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['id'] = id;
+    map['location'] = location;
+    map['name'] = name;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['workloadProperties'] = Input.encodeList<
+        GetDiscoveredWorkloadWorkloadProperty,
+        Map<String, dynamic>>(workloadProperties, (value) => value.toMap());
+    map['workloadReferences'] = Input.encodeList<
+        GetDiscoveredWorkloadWorkloadReference,
+        Map<String, dynamic>>(workloadReferences, (value) => value.toMap());
+    map['workloadUri'] = workloadUri;
+    return map;
+  }
+
+  factory GetDiscoveredWorkloadResult.fromMap(Map<String, dynamic> map) {
+    return GetDiscoveredWorkloadResult(
+      id: map['id'] as String,
+      location: map['location'] as String,
+      name: map['name'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+      workloadProperties:
+          Input.decodeList<GetDiscoveredWorkloadWorkloadProperty>(
+              map['workloadProperties'],
+              (value) => GetDiscoveredWorkloadWorkloadProperty.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      workloadReferences:
+          Input.decodeList<GetDiscoveredWorkloadWorkloadReference>(
+              map['workloadReferences'],
+              (value) => GetDiscoveredWorkloadWorkloadReference.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      workloadUri: map['workloadUri'] as String,
+    );
+  }
+}

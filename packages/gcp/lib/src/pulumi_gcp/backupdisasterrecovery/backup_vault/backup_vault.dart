@@ -1,0 +1,621 @@
+import 'package:pulumi/pulumi.dart';
+import '../backup_vault_encryption_config/backup_vault_encryption_config.dart';
+import 'backup_vault_args.dart';
+
+/// Container to store and organize immutable and indelible backups.
+///
+///
+///
+/// ## Example Usage
+///
+/// ### Backup Dr Backup Vault Simple
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const backup_vault_test = new gcp.backupdisasterrecovery.BackupVault("backup-vault-test", {
+/// location: "us-central1",
+/// backupVaultId: "backup-vault-test",
+/// description: "This is a second backup vault built by Terraform.",
+/// backupMinimumEnforcedRetentionDuration: "100000s",
+/// annotations: {
+/// annotations1: "bar1",
+/// annotations2: "baz1",
+/// },
+/// labels: {
+/// foo: "bar1",
+/// bar: "baz1",
+/// },
+/// forceUpdate: true,
+/// accessRestriction: "WITHIN_ORGANIZATION",
+/// backupRetentionInheritance: "INHERIT_VAULT_RETENTION",
+/// ignoreInactiveDatasources: true,
+/// ignoreBackupPlanReferences: true,
+/// allowMissing: true,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// backup_vault_test = gcp.backupdisasterrecovery.BackupVault("backup-vault-test",
+/// location="us-central1",
+/// backup_vault_id="backup-vault-test",
+/// description="This is a second backup vault built by Terraform.",
+/// backup_minimum_enforced_retention_duration="100000s",
+/// annotations={
+/// "annotations1": "bar1",
+/// "annotations2": "baz1",
+/// },
+/// labels={
+/// "foo": "bar1",
+/// "bar": "baz1",
+/// },
+/// force_update=True,
+/// access_restriction="WITHIN_ORGANIZATION",
+/// backup_retention_inheritance="INHERIT_VAULT_RETENTION",
+/// ignore_inactive_datasources=True,
+/// ignore_backup_plan_references=True,
+/// allow_missing=True)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var backup_vault_test = new Gcp.BackupDisasterRecovery.BackupVault("backup-vault-test", new()
+/// {
+/// Location = "us-central1",
+/// BackupVaultId = "backup-vault-test",
+/// Description = "This is a second backup vault built by Terraform.",
+/// BackupMinimumEnforcedRetentionDuration = "100000s",
+/// Annotations =
+/// {
+/// { "annotations1", "bar1" },
+/// { "annotations2", "baz1" },
+/// },
+/// Labels =
+/// {
+/// { "foo", "bar1" },
+/// { "bar", "baz1" },
+/// },
+/// ForceUpdate = true,
+/// AccessRestriction = "WITHIN_ORGANIZATION",
+/// BackupRetentionInheritance = "INHERIT_VAULT_RETENTION",
+/// IgnoreInactiveDatasources = true,
+/// IgnoreBackupPlanReferences = true,
+/// AllowMissing = true,
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := backupdisasterrecovery.NewBackupVault(ctx, "backup-vault-test", &backupdisasterrecovery.BackupVaultArgs{
+/// Location:                               pulumi.String("us-central1"),
+/// BackupVaultId:                          pulumi.String("backup-vault-test"),
+/// Description:                            pulumi.String("This is a second backup vault built by Terraform."),
+/// BackupMinimumEnforcedRetentionDuration: pulumi.String("100000s"),
+/// Annotations: pulumi.StringMap{
+/// "annotations1": pulumi.String("bar1"),
+/// "annotations2": pulumi.String("baz1"),
+/// },
+/// Labels: pulumi.StringMap{
+/// "foo": pulumi.String("bar1"),
+/// "bar": pulumi.String("baz1"),
+/// },
+/// ForceUpdate:                pulumi.Bool(true),
+/// AccessRestriction:          pulumi.String("WITHIN_ORGANIZATION"),
+/// BackupRetentionInheritance: pulumi.String("INHERIT_VAULT_RETENTION"),
+/// IgnoreInactiveDatasources:  pulumi.Bool(true),
+/// IgnoreBackupPlanReferences: pulumi.Bool(true),
+/// AllowMissing:               pulumi.Bool(true),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.backupdisasterrecovery.BackupVault;
+/// import com.pulumi.gcp.backupdisasterrecovery.BackupVaultArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var backup_vault_test = new BackupVault("backup-vault-test", BackupVaultArgs.builder()
+/// .location("us-central1")
+/// .backupVaultId("backup-vault-test")
+/// .description("This is a second backup vault built by Terraform.")
+/// .backupMinimumEnforcedRetentionDuration("100000s")
+/// .annotations(Map.ofEntries(
+/// Map.entry("annotations1", "bar1"),
+/// Map.entry("annotations2", "baz1")
+/// ))
+/// .labels(Map.ofEntries(
+/// Map.entry("foo", "bar1"),
+/// Map.entry("bar", "baz1")
+/// ))
+/// .forceUpdate(true)
+/// .accessRestriction("WITHIN_ORGANIZATION")
+/// .backupRetentionInheritance("INHERIT_VAULT_RETENTION")
+/// .ignoreInactiveDatasources(true)
+/// .ignoreBackupPlanReferences(true)
+/// .allowMissing(true)
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// backup-vault-test:
+/// type: gcp:backupdisasterrecovery:BackupVault
+/// properties:
+/// location: us-central1
+/// backupVaultId: backup-vault-test
+/// description: This is a second backup vault built by Terraform.
+/// backupMinimumEnforcedRetentionDuration: 100000s
+/// annotations:
+/// annotations1: bar1
+/// annotations2: baz1
+/// labels:
+/// foo: bar1
+/// bar: baz1
+/// forceUpdate: 'true'
+/// accessRestriction: WITHIN_ORGANIZATION
+/// backupRetentionInheritance: INHERIT_VAULT_RETENTION
+/// ignoreInactiveDatasources: 'true'
+/// ignoreBackupPlanReferences: 'true'
+/// allowMissing: 'true'
+/// ```
+/// <!--End PulumiCodeChooser -->
+/// ### Backup Dr Backup Vault Cmek
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const testProject = gcp.organizations.getProject({
+/// projectId: "my-project-name",
+/// });
+/// const backup_vault_cmek = new gcp.backupdisasterrecovery.BackupVault("backup-vault-cmek", {
+/// location: "us-central1",
+/// backupVaultId: "backup-vault-cmek",
+/// description: "This is a second backup vault built by Terraform.",
+/// backupMinimumEnforcedRetentionDuration: "100000s",
+/// annotations: {
+/// annotations1: "bar1",
+/// annotations2: "baz1",
+/// },
+/// labels: {
+/// foo: "bar1",
+/// bar: "baz1",
+/// },
+/// encryptionConfig: {
+/// kmsKeyName: "bkpvault-key",
+/// },
+/// forceUpdate: true,
+/// accessRestriction: "WITHIN_ORGANIZATION",
+/// backupRetentionInheritance: "INHERIT_VAULT_RETENTION",
+/// ignoreInactiveDatasources: true,
+/// ignoreBackupPlanReferences: true,
+/// allowMissing: true,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// test_project = gcp.organizations.get_project(project_id="my-project-name")
+/// backup_vault_cmek = gcp.backupdisasterrecovery.BackupVault("backup-vault-cmek",
+/// location="us-central1",
+/// backup_vault_id="backup-vault-cmek",
+/// description="This is a second backup vault built by Terraform.",
+/// backup_minimum_enforced_retention_duration="100000s",
+/// annotations={
+/// "annotations1": "bar1",
+/// "annotations2": "baz1",
+/// },
+/// labels={
+/// "foo": "bar1",
+/// "bar": "baz1",
+/// },
+/// encryption_config={
+/// "kms_key_name": "bkpvault-key",
+/// },
+/// force_update=True,
+/// access_restriction="WITHIN_ORGANIZATION",
+/// backup_retention_inheritance="INHERIT_VAULT_RETENTION",
+/// ignore_inactive_datasources=True,
+/// ignore_backup_plan_references=True,
+/// allow_missing=True)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var testProject = Gcp.Organizations.GetProject.Invoke(new()
+/// {
+/// ProjectId = "my-project-name",
+/// });
+///
+/// var backup_vault_cmek = new Gcp.BackupDisasterRecovery.BackupVault("backup-vault-cmek", new()
+/// {
+/// Location = "us-central1",
+/// BackupVaultId = "backup-vault-cmek",
+/// Description = "This is a second backup vault built by Terraform.",
+/// BackupMinimumEnforcedRetentionDuration = "100000s",
+/// Annotations =
+/// {
+/// { "annotations1", "bar1" },
+/// { "annotations2", "baz1" },
+/// },
+/// Labels =
+/// {
+/// { "foo", "bar1" },
+/// { "bar", "baz1" },
+/// },
+/// EncryptionConfig = new Gcp.BackupDisasterRecovery.Inputs.BackupVaultEncryptionConfigArgs
+/// {
+/// KmsKeyName = "bkpvault-key",
+/// },
+/// ForceUpdate = true,
+/// AccessRestriction = "WITHIN_ORGANIZATION",
+/// BackupRetentionInheritance = "INHERIT_VAULT_RETENTION",
+/// IgnoreInactiveDatasources = true,
+/// IgnoreBackupPlanReferences = true,
+/// AllowMissing = true,
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+/// ProjectId: pulumi.StringRef("my-project-name"),
+/// }, nil)
+/// if err != nil {
+/// return err
+/// }
+/// _, err = backupdisasterrecovery.NewBackupVault(ctx, "backup-vault-cmek", &backupdisasterrecovery.BackupVaultArgs{
+/// Location:                               pulumi.String("us-central1"),
+/// BackupVaultId:                          pulumi.String("backup-vault-cmek"),
+/// Description:                            pulumi.String("This is a second backup vault built by Terraform."),
+/// BackupMinimumEnforcedRetentionDuration: pulumi.String("100000s"),
+/// Annotations: pulumi.StringMap{
+/// "annotations1": pulumi.String("bar1"),
+/// "annotations2": pulumi.String("baz1"),
+/// },
+/// Labels: pulumi.StringMap{
+/// "foo": pulumi.String("bar1"),
+/// "bar": pulumi.String("baz1"),
+/// },
+/// EncryptionConfig: &backupdisasterrecovery.BackupVaultEncryptionConfigArgs{
+/// KmsKeyName: pulumi.String("bkpvault-key"),
+/// },
+/// ForceUpdate:                pulumi.Bool(true),
+/// AccessRestriction:          pulumi.String("WITHIN_ORGANIZATION"),
+/// BackupRetentionInheritance: pulumi.String("INHERIT_VAULT_RETENTION"),
+/// IgnoreInactiveDatasources:  pulumi.Bool(true),
+/// IgnoreBackupPlanReferences: pulumi.Bool(true),
+/// AllowMissing:               pulumi.Bool(true),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+/// import com.pulumi.gcp.backupdisasterrecovery.BackupVault;
+/// import com.pulumi.gcp.backupdisasterrecovery.BackupVaultArgs;
+/// import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupVaultEncryptionConfigArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// final var testProject = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+/// .projectId("my-project-name")
+/// .build());
+///
+/// var backup_vault_cmek = new BackupVault("backup-vault-cmek", BackupVaultArgs.builder()
+/// .location("us-central1")
+/// .backupVaultId("backup-vault-cmek")
+/// .description("This is a second backup vault built by Terraform.")
+/// .backupMinimumEnforcedRetentionDuration("100000s")
+/// .annotations(Map.ofEntries(
+/// Map.entry("annotations1", "bar1"),
+/// Map.entry("annotations2", "baz1")
+/// ))
+/// .labels(Map.ofEntries(
+/// Map.entry("foo", "bar1"),
+/// Map.entry("bar", "baz1")
+/// ))
+/// .encryptionConfig(BackupVaultEncryptionConfigArgs.builder()
+/// .kmsKeyName("bkpvault-key")
+/// .build())
+/// .forceUpdate(true)
+/// .accessRestriction("WITHIN_ORGANIZATION")
+/// .backupRetentionInheritance("INHERIT_VAULT_RETENTION")
+/// .ignoreInactiveDatasources(true)
+/// .ignoreBackupPlanReferences(true)
+/// .allowMissing(true)
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// backup-vault-cmek:
+/// type: gcp:backupdisasterrecovery:BackupVault
+/// properties:
+/// location: us-central1
+/// backupVaultId: backup-vault-cmek
+/// description: This is a second backup vault built by Terraform.
+/// backupMinimumEnforcedRetentionDuration: 100000s
+/// annotations:
+/// annotations1: bar1
+/// annotations2: baz1
+/// labels:
+/// foo: bar1
+/// bar: baz1
+/// encryptionConfig:
+/// kmsKeyName: bkpvault-key
+/// forceUpdate: 'true'
+/// accessRestriction: WITHIN_ORGANIZATION
+/// backupRetentionInheritance: INHERIT_VAULT_RETENTION
+/// ignoreInactiveDatasources: 'true'
+/// ignoreBackupPlanReferences: 'true'
+/// allowMissing: 'true'
+/// variables:
+/// testProject:
+/// fn::invoke:
+/// function: gcp:organizations:getProject
+/// arguments:
+/// projectId: my-project-name
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// BackupVault can be imported using any of these accepted formats:
+///
+/// * `projects/{{project}}/locations/{{location}}/backupVaults/{{backup_vault_id}}`
+///
+/// * `{{project}}/{{location}}/{{backup_vault_id}}`
+///
+/// * `{{location}}/{{backup_vault_id}}`
+///
+/// When using the `pulumi import` command, BackupVault can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default projects/{{project}}/locations/{{location}}/backupVaults/{{backup_vault_id}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{project}}/{{location}}/{{backup_vault_id}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{location}}/{{backup_vault_id}}
+/// ```
+class BackupVault extends CustomResource {
+  /// Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+  /// Default value is `WITHIN_ORGANIZATION`.
+  /// Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+  late final Output<String?> accessRestriction;
+
+  /// Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
+  late final Output<bool?> allowMissing;
+
+  /// Optional. User annotations. See https://google.aip.dev/128#annotations
+  /// Stores small amounts of arbitrary data.
+  /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveAnnotations`" pulumi-lang-dotnet="`EffectiveAnnotations`" pulumi-lang-go="`effectiveAnnotations`" pulumi-lang-python="`effective_annotations`" pulumi-lang-yaml="`effectiveAnnotations`" pulumi-lang-java="`effectiveAnnotations`">`effective_annotations`</span> for all of the annotations present on the resource.
+  late final Output<Map<String, String>?> annotations;
+
+  /// Output only. The number of backups in this backup vault.
+  late final Output<String> backupCount;
+
+  /// Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
+  late final Output<String> backupMinimumEnforcedRetentionDuration;
+
+  /// How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+  /// Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+  late final Output<String?> backupRetentionInheritance;
+
+  /// Required. ID of the requesting object.
+  late final Output<String> backupVaultId;
+
+  /// Output only. The time when the instance was created.
+  late final Output<String> createTime;
+
+  /// Output only. Set to true when there are no backups nested under this resource.
+  late final Output<bool> deletable;
+
+  /// Optional. The description of the BackupVault instance (2048 characters or less).
+  late final Output<String?> description;
+  late final Output<Map<String, String>> effectiveAnnotations;
+
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  late final Output<Map<String, String>> effectiveLabels;
+
+  /// Optional. Time after which the BackupVault resource is locked.
+  late final Output<String?> effectiveTime;
+
+  /// Encryption configuration for the backup vault.
+  /// Structure is documented below.
+  late final Output<BackupVaultEncryptionConfig?> encryptionConfig;
+
+  /// Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
+  late final Output<String> etag;
+
+  /// (Optional, Deprecated)
+  /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+  /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+  /// * deletion of a backup vault instance that is being referenced by an active backup plan.
+  ///
+  /// > **Warning:** <span pulumi-lang-nodejs="`forceDelete`" pulumi-lang-dotnet="`ForceDelete`" pulumi-lang-go="`forceDelete`" pulumi-lang-python="`force_delete`" pulumi-lang-yaml="`forceDelete`" pulumi-lang-java="`forceDelete`">`force_delete`</span> is deprecated and will be removed in a future major release. Use <span pulumi-lang-nodejs="`ignoreInactiveDatasources`" pulumi-lang-dotnet="`IgnoreInactiveDatasources`" pulumi-lang-go="`ignoreInactiveDatasources`" pulumi-lang-python="`ignore_inactive_datasources`" pulumi-lang-yaml="`ignoreInactiveDatasources`" pulumi-lang-java="`ignoreInactiveDatasources`">`ignore_inactive_datasources`</span> instead.
+  late final Output<bool?> forceDelete;
+
+  /// If set, allow update to extend the minimum enforced retention for backup vault. This overrides
+  /// the restriction against conflicting retention periods. This conflict may occur when the
+  /// expiration schedule defined by the associated backup plan is shorter than the minimum
+  /// retention set by the backup vault.
+  late final Output<bool?> forceUpdate;
+
+  /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+  /// * deletion of a backup vault instance that is being referenced by an active backup plan.
+  late final Output<bool?> ignoreBackupPlanReferences;
+
+  /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+  /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+  late final Output<bool?> ignoreInactiveDatasources;
+
+  /// Optional. Resource labels to represent user provided metadata.
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  late final Output<Map<String, String>?> labels;
+
+  /// The GCP location for the backup vault.
+  late final Output<String> location;
+
+  /// Output only. Identifier. The resource name.
+  late final Output<String> name;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  late final Output<String> project;
+
+  /// The combination of labels configured directly on the resource
+  /// and default labels configured on the provider.
+  late final Output<Map<String, String>> pulumiLabels;
+
+  /// Output only. Service account used by the BackupVault Service for this BackupVault.  The user should grant this account permissions in their workload project to enable the service to run backups and restores there.
+  late final Output<String> serviceAccount;
+
+  /// Output only. The BackupVault resource instance state.
+  /// Possible values:
+  /// STATE_UNSPECIFIED
+  /// CREATING
+  /// ACTIVE
+  /// DELETING
+  /// ERROR
+  late final Output<String> state;
+
+  /// Output only. Total size of the storage used by all backup resources.
+  late final Output<String> totalStoredBytes;
+
+  /// Output only. Output only Immutable after resource creation until resource deletion.
+  late final Output<String> uid;
+
+  /// Output only. The time when the instance was updated.
+  late final Output<String> updateTime;
+
+  BackupVault(
+    String name, {
+    BackupVaultArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:backupdisasterrecovery/backupVault:BackupVault',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.accessRestriction = Output.createUnknown<String?>();
+    this.allowMissing = Output.createUnknown<bool?>();
+    this.annotations = Output.createUnknown<Map<String, String>?>();
+    this.backupCount = Output.createUnknown<String>();
+    this.backupMinimumEnforcedRetentionDuration =
+        Output.createUnknown<String>();
+    this.backupRetentionInheritance = Output.createUnknown<String?>();
+    this.backupVaultId = Output.createUnknown<String>();
+    this.createTime = Output.createUnknown<String>();
+    this.deletable = Output.createUnknown<bool>();
+    this.description = Output.createUnknown<String?>();
+    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
+    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.effectiveTime = Output.createUnknown<String?>();
+    this.encryptionConfig =
+        Output.createUnknown<BackupVaultEncryptionConfig?>();
+    this.etag = Output.createUnknown<String>();
+    this.forceDelete = Output.createUnknown<bool?>();
+    this.forceUpdate = Output.createUnknown<bool?>();
+    this.ignoreBackupPlanReferences = Output.createUnknown<bool?>();
+    this.ignoreInactiveDatasources = Output.createUnknown<bool?>();
+    this.labels = Output.createUnknown<Map<String, String>?>();
+    this.location = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+    this.serviceAccount = Output.createUnknown<String>();
+    this.state = Output.createUnknown<String>();
+    this.totalStoredBytes = Output.createUnknown<String>();
+    this.uid = Output.createUnknown<String>();
+    this.updateTime = Output.createUnknown<String>();
+  }
+}

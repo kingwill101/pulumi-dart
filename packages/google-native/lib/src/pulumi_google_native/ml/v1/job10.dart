@@ -1,0 +1,82 @@
+import 'package:pulumi/pulumi.dart';
+import 'google_cloud_ml_v1_prediction_input_response.dart';
+import 'google_cloud_ml_v1_prediction_output_response.dart';
+import 'google_cloud_ml_v1_training_input_response.dart';
+import 'google_cloud_ml_v1_training_output_response.dart';
+import 'job_args10.dart';
+
+/// Creates a training or a batch prediction job.
+/// Auto-naming is currently not supported for this resource.
+/// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+/// on Google Cloud even though it will be deleted from Pulumi state.
+class Job10 extends CustomResource {
+  /// When the job was created.
+  late final Output<String> createTime;
+
+  /// When the job processing was completed.
+  late final Output<String> endTime;
+
+  /// The details of a failure or a cancellation.
+  late final Output<String> errorMessage;
+
+  /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
+  late final Output<String> etag;
+
+  /// The user-specified id of the job.
+  late final Output<String> jobId;
+
+  /// It's only effect when the job is in QUEUED state. If it's positive, it indicates the job's position in the job scheduler. It's 0 when the job is already scheduled.
+  late final Output<String> jobPosition;
+
+  /// Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
+  late final Output<Map<String, String>> labels;
+
+  /// Input parameters to create a prediction job.
+  late final Output<GoogleCloudMlV1PredictionInputResponse> predictionInput;
+
+  /// The current prediction job result.
+  late final Output<GoogleCloudMlV1PredictionOutputResponse> predictionOutput;
+  late final Output<String> project;
+
+  /// When the job processing was started.
+  late final Output<String> startTime;
+
+  /// The detailed state of a job.
+  late final Output<String> state;
+
+  /// Input parameters to create a training job.
+  late final Output<GoogleCloudMlV1TrainingInputResponse> trainingInput;
+
+  /// The current training job result.
+  late final Output<GoogleCloudMlV1TrainingOutputResponse> trainingOutput;
+
+  Job10(
+    String name, {
+    JobArgs10? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:ml/v1:Job',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.createTime = Output.createUnknown<String>();
+    this.endTime = Output.createUnknown<String>();
+    this.errorMessage = Output.createUnknown<String>();
+    this.etag = Output.createUnknown<String>();
+    this.jobId = Output.createUnknown<String>();
+    this.jobPosition = Output.createUnknown<String>();
+    this.labels = Output.createUnknown<Map<String, String>>();
+    this.predictionInput =
+        Output.createUnknown<GoogleCloudMlV1PredictionInputResponse>();
+    this.predictionOutput =
+        Output.createUnknown<GoogleCloudMlV1PredictionOutputResponse>();
+    this.project = Output.createUnknown<String>();
+    this.startTime = Output.createUnknown<String>();
+    this.state = Output.createUnknown<String>();
+    this.trainingInput =
+        Output.createUnknown<GoogleCloudMlV1TrainingInputResponse>();
+    this.trainingOutput =
+        Output.createUnknown<GoogleCloudMlV1TrainingOutputResponse>();
+  }
+}

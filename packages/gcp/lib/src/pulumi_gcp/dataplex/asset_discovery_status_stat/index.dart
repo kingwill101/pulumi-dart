@@ -1,0 +1,3 @@
+library module_dataplex_asset_discovery_status_stat;
+
+export 'asset_discovery_status_stat.dart';

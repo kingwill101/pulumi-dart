@@ -1,0 +1,3 @@
+library module_diagflow_cx_page_transition_route_trigger_fulfillment_message_play_audio;
+
+export 'cx_page_transition_route_trigger_fulfillment_message_play_audio.dart';

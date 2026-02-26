@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse2 {
+  /// A bit indicating if all of the group's per-instance configurations (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+  final bool allEffective;
+
+  InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse2({
+    required this.allEffective,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['allEffective'] = allEffective;
+    return map;
+  }
+
+  factory InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse2.fromMap(
+      Map<String, dynamic> map) {
+    return InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse2(
+      allEffective: map['allEffective'] as bool,
+    );
+  }
+}

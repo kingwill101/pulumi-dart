@@ -1,0 +1,3 @@
+library module_dataplex_datascan_data_quality_spec_rule_table_condition_expectation;
+
+export 'datascan_data_quality_spec_rule_table_condition_expectation.dart';

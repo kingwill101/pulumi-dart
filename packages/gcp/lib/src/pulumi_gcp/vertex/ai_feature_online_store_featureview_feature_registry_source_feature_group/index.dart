@@ -1,0 +1,3 @@
+library module_vertex_ai_feature_online_store_featureview_feature_registry_source_feature_group;
+
+export 'ai_feature_online_store_featureview_feature_registry_source_feature_group.dart';

@@ -1,0 +1,3 @@
+library module_monitoring_alert_policy_creation_record;
+
+export 'alert_policy_creation_record.dart';

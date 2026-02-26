@@ -1,0 +1,3 @@
+library module_filestore_get_instance_network_psc_config;
+
+export 'get_instance_network_psc_config.dart';

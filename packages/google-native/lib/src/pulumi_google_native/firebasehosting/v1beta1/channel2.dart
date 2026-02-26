@@ -1,0 +1,62 @@
+import 'package:pulumi/pulumi.dart';
+import 'channel_args2.dart';
+import 'release_response.dart';
+
+/// Creates a new channel in the specified site.
+class Channel2 extends CustomResource {
+  /// Required. Immutable. A unique ID within the site that identifies the channel.
+  late final Output<String> channelId;
+
+  /// The time at which the channel was created.
+  late final Output<String> createTime;
+
+  /// The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
+  late final Output<String> expireTime;
+
+  /// Text labels used for extra metadata and/or filtering.
+  late final Output<Map<String, String>> labels;
+
+  /// The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
+  late final Output<String> name;
+  late final Output<String> project;
+
+  /// The current release for the channel, if any.
+  late final Output<ReleaseResponse> release;
+
+  /// The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
+  late final Output<int> retainedReleaseCount;
+  late final Output<String> siteId;
+
+  /// Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
+  late final Output<String> ttl;
+
+  /// The time at which the channel was last updated.
+  late final Output<String> updateTime;
+
+  /// The URL at which the content of this channel's current release can be viewed. This URL is a Firebase-provided subdomain of `web.app`. The content of this channel's current release can also be viewed at the Firebase-provided subdomain of `firebaseapp.com`. If this channel is the `live` channel for the Hosting site, then the content of this channel's current release can also be viewed at any connected custom domains.
+  late final Output<String> url;
+
+  Channel2(
+    String name, {
+    ChannelArgs2? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:firebasehosting/v1beta1:Channel',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.channelId = Output.createUnknown<String>();
+    this.createTime = Output.createUnknown<String>();
+    this.expireTime = Output.createUnknown<String>();
+    this.labels = Output.createUnknown<Map<String, String>>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.release = Output.createUnknown<ReleaseResponse>();
+    this.retainedReleaseCount = Output.createUnknown<int>();
+    this.siteId = Output.createUnknown<String>();
+    this.ttl = Output.createUnknown<String>();
+    this.updateTime = Output.createUnknown<String>();
+    this.url = Output.createUnknown<String>();
+  }
+}

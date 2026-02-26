@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Configuration of a specific monitoring destination (the producer project or the consumer project).
+class MonitoringDestination {
+  /// Types of the metrics to report to this monitoring destination. Each type must be defined in Service.metrics section.
+  final List<String>? metrics;
+
+  /// The monitored resource type. The type must be defined in Service.monitored_resources section.
+  final String? monitoredResource;
+
+  MonitoringDestination({
+    this.metrics,
+    this.monitoredResource,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final metricsValue = metrics;
+    if (metricsValue != null) {
+      map['metrics'] = metricsValue;
+    }
+    final monitoredResourceValue = monitoredResource;
+    if (monitoredResourceValue != null) {
+      map['monitoredResource'] = monitoredResourceValue;
+    }
+    return map;
+  }
+
+  factory MonitoringDestination.fromMap(Map<String, dynamic> map) {
+    return MonitoringDestination(
+      metrics: map['metrics'] == null
+          ? null
+          : (map['metrics'] as List).cast<String>(),
+      monitoredResource: map['monitoredResource'] == null
+          ? null
+          : map['monitoredResource'] as String,
+    );
+  }
+}

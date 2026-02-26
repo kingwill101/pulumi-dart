@@ -1,0 +1,4 @@
+library module_folder_access_approval_settings;
+
+export 'access_approval_settings.dart';
+export 'access_approval_settings_args.dart';

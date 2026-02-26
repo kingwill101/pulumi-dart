@@ -1,0 +1,74 @@
+import 'package:pulumi/pulumi.dart';
+import 'phrase_response.dart';
+import 'phrase_set_args.dart';
+
+/// Create a set of phrase hints. Each item in the set can be a single word or a multi-word phrase. The items in the PhraseSet are favored by the recognition model when you send a call that includes the PhraseSet.
+class PhraseSet extends CustomResource {
+  /// Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.
+  late final Output<Map<String, String>> annotations;
+
+  /// Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.
+  late final Output<double> boost;
+
+  /// The time at which this resource was requested for deletion. This field is not used.
+  late final Output<String> deleteTime;
+
+  /// User-settable, human-readable name for the PhraseSet. Must be 63 characters or less. This field is not used.
+  late final Output<String> displayName;
+
+  /// This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding. This field is not used.
+  late final Output<String> etag;
+
+  /// The time at which this resource will be purged. This field is not used.
+  late final Output<String> expireTime;
+
+  /// The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  late final Output<String> kmsKeyName;
+
+  /// The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+  late final Output<String> kmsKeyVersionName;
+  late final Output<String> location;
+
+  /// The resource name of the phrase set.
+  late final Output<String> name;
+
+  /// A list of word and phrases.
+  late final Output<List<PhraseResponse>> phrases;
+  late final Output<String> project;
+
+  /// Whether or not this PhraseSet is in the process of being updated. This field is not used.
+  late final Output<bool> reconciling;
+
+  /// The CustomClass lifecycle state. This field is not used.
+  late final Output<String> state;
+
+  /// System-assigned unique identifier for the PhraseSet. This field is not used.
+  late final Output<String> uid;
+
+  PhraseSet(
+    String name, {
+    PhraseSetArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:speech/v1:PhraseSet',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.annotations = Output.createUnknown<Map<String, String>>();
+    this.boost = Output.createUnknown<double>();
+    this.deleteTime = Output.createUnknown<String>();
+    this.displayName = Output.createUnknown<String>();
+    this.etag = Output.createUnknown<String>();
+    this.expireTime = Output.createUnknown<String>();
+    this.kmsKeyName = Output.createUnknown<String>();
+    this.kmsKeyVersionName = Output.createUnknown<String>();
+    this.location = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.phrases = Output.createUnknown<List<PhraseResponse>>();
+    this.project = Output.createUnknown<String>();
+    this.reconciling = Output.createUnknown<bool>();
+    this.state = Output.createUnknown<String>();
+    this.uid = Output.createUnknown<String>();
+  }
+}

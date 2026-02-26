@@ -1,0 +1,3 @@
+library module_firestore_index_field_vector_config;
+
+export 'index_field_vector_config.dart';

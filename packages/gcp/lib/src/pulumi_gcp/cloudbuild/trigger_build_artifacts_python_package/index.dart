@@ -1,0 +1,3 @@
+library module_cloudbuild_trigger_build_artifacts_python_package;
+
+export 'trigger_build_artifacts_python_package.dart';

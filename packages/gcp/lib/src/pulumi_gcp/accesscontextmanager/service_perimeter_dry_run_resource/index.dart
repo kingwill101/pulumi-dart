@@ -1,0 +1,4 @@
+library module_accesscontextmanager_service_perimeter_dry_run_resource;
+
+export 'service_perimeter_dry_run_resource.dart';
+export 'service_perimeter_dry_run_resource_args.dart';

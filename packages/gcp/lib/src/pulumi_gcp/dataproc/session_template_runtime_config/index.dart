@@ -1,0 +1,3 @@
+library module_dataproc_session_template_runtime_config;
+
+export 'session_template_runtime_config.dart';

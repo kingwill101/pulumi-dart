@@ -1,0 +1,3 @@
+library module_dataloss_prevention_deidentify_template_deidentify_config_record_transformations;
+
+export 'prevention_deidentify_template_deidentify_config_record_transformations.dart';

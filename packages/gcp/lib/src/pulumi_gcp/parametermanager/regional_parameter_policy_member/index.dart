@@ -1,0 +1,3 @@
+library module_parametermanager_regional_parameter_policy_member;
+
+export 'regional_parameter_policy_member.dart';

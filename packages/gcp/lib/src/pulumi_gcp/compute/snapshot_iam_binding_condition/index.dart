@@ -1,0 +1,3 @@
+library module_compute_snapshot_iam_binding_condition;
+
+export 'snapshot_iam_binding_condition.dart';

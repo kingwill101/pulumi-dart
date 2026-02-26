@@ -1,0 +1,3 @@
+library module_iam_workforce_pool_provider_saml;
+
+export 'workforce_pool_provider_saml.dart';

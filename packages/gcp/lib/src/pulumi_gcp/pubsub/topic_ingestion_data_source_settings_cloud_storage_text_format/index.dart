@@ -1,0 +1,3 @@
+library module_pubsub_topic_ingestion_data_source_settings_cloud_storage_text_format;
+
+export 'topic_ingestion_data_source_settings_cloud_storage_text_format.dart';

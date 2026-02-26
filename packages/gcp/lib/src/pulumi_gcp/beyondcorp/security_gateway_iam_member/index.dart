@@ -1,0 +1,4 @@
+library module_beyondcorp_security_gateway_iam_member;
+
+export 'security_gateway_iam_member.dart';
+export 'security_gateway_iam_member_args.dart';

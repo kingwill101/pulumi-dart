@@ -1,0 +1,3 @@
+library module_assuredworkloads_workload_workload_options;
+
+export 'workload_workload_options.dart';

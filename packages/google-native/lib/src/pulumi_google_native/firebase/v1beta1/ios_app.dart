@@ -1,0 +1,61 @@
+import 'package:pulumi/pulumi.dart';
+import 'ios_app_args.dart';
+
+/// Requests the creation of a new IosApp in the specified FirebaseProject. The result of this call is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically deleted after completion, so there is no need to call `DeleteOperation`.
+/// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+/// on Google Cloud even though it will be deleted from Pulumi state.
+class IosApp extends CustomResource {
+  /// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the `IosApp`. Be aware that this value is the UID of the API key, _not_ the [`keyString`](https://cloud.google.com/api-keys/docs/reference/rest/v2/projects.locations.keys#Key.FIELDS.key_string) of the API key. The `keyString` is the value that can be found in the App's [configuration artifact](../../rest/v1beta1/projects.iosApps/getConfig). If `api_key_id` is not set in requests to [`iosApps.Create`](../../rest/v1beta1/projects.iosApps/create), then Firebase automatically associates an `api_key_id` with the `IosApp`. This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned. In patch requests, `api_key_id` cannot be set to an empty value, and the new UID must have no restrictions or only have restrictions that are valid for the associated `IosApp`. We recommend using the [Google Cloud Console](https://console.cloud.google.com/apis/credentials) to manage API keys.
+  late final Output<String> apiKeyId;
+
+  /// Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier should be treated as an opaque token, as the data format is not specified.
+  late final Output<String> appId;
+
+  /// The automatically generated Apple ID assigned to the iOS app by Apple in the iOS App Store.
+  late final Output<String> appStoreId;
+
+  /// Immutable. The canonical bundle ID of the iOS app as it would appear in the iOS AppStore.
+  late final Output<String> bundleId;
+
+  /// The user-assigned display name for the `IosApp`.
+  late final Output<String> displayName;
+
+  /// This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated.
+  late final Output<String> etag;
+
+  /// Timestamp of when the App will be considered expired and cannot be undeleted. This value is only provided if the App is in the `DELETED` state.
+  late final Output<String> expireTime;
+
+  /// The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
+  late final Output<String> name;
+  late final Output<String> project;
+
+  /// The lifecycle state of the App.
+  late final Output<String> state;
+
+  /// The Apple Developer Team ID associated with the App in the App Store.
+  late final Output<String> teamId;
+
+  IosApp(
+    String name, {
+    IosAppArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:firebase/v1beta1:IosApp',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.apiKeyId = Output.createUnknown<String>();
+    this.appId = Output.createUnknown<String>();
+    this.appStoreId = Output.createUnknown<String>();
+    this.bundleId = Output.createUnknown<String>();
+    this.displayName = Output.createUnknown<String>();
+    this.etag = Output.createUnknown<String>();
+    this.expireTime = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.state = Output.createUnknown<String>();
+    this.teamId = Output.createUnknown<String>();
+  }
+}

@@ -1,0 +1,3 @@
+library module_compute_get_machine_types_machine_type_deprecated;
+
+export 'get_machine_types_machine_type_deprecated.dart';

@@ -1,0 +1,3 @@
+library module_dataproc_session_template_environment_config_execution_config_authentication_config;
+
+export 'session_template_environment_config_execution_config_authentication_config.dart';

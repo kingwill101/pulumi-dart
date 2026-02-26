@@ -1,0 +1,3 @@
+library module_gkehub_feature_membership_configmanagement;
+
+export 'feature_membership_configmanagement.dart';

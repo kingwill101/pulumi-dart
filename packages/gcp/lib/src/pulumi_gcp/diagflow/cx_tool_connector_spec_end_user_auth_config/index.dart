@@ -1,0 +1,3 @@
+library module_diagflow_cx_tool_connector_spec_end_user_auth_config;
+
+export 'cx_tool_connector_spec_end_user_auth_config.dart';

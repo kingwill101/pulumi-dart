@@ -1,0 +1,3 @@
+library module_networkservices_edge_cache_keyset_public_key;
+
+export 'edge_cache_keyset_public_key.dart';

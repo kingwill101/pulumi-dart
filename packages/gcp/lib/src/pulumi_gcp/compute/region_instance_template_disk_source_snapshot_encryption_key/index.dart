@@ -1,0 +1,3 @@
+library module_compute_region_instance_template_disk_source_snapshot_encryption_key;
+
+export 'region_instance_template_disk_source_snapshot_encryption_key.dart';

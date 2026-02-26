@@ -1,0 +1,3 @@
+library module_dataplex_datascan_execution_spec_trigger_schedule;
+
+export 'datascan_execution_spec_trigger_schedule.dart';

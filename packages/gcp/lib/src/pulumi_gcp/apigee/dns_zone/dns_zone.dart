@@ -1,0 +1,293 @@
+import 'package:pulumi/pulumi.dart';
+import '../dns_zone_peering_config/dns_zone_peering_config.dart';
+import 'dns_zone_args.dart';
+
+/// Apigee Dns Zone.
+///
+///
+/// To get more information about DnsZone, see:
+///
+/// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.dnsZones/create)
+/// * How-to Guides
+/// * [Creating a DnsZone](https://cloud.google.com/apigee/docs/api-platform/get-started/create-dns)
+///
+/// ## Example Usage
+///
+/// ### Apigee Dns Zone Basic
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const current = gcp.organizations.getClientConfig({});
+/// const apigeeNetwork = new gcp.compute.Network("apigee_network", {name: "apigee-network"});
+/// const org = new gcp.apigee.Organization("org", {
+/// description: "Terraform-provisioned basic Apigee Org without VPC Peering.",
+/// analyticsRegion: "us-central1",
+/// projectId: current.then(current => current.project),
+/// disableVpcPeering: true,
+/// });
+/// const apigeeDnsZone = new gcp.apigee.DnsZone("apigee_dns_zone", {
+/// orgId: apigeeOrg.id,
+/// dnsZoneId: "test1",
+/// domain: "foo.com",
+/// description: "test",
+/// peeringConfig: {
+/// targetProjectId: current.then(current => current.project),
+/// targetNetworkId: apigeeNetwork.id,
+/// },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// current = gcp.organizations.get_client_config()
+/// apigee_network = gcp.compute.Network("apigee_network", name="apigee-network")
+/// org = gcp.apigee.Organization("org",
+/// description="Terraform-provisioned basic Apigee Org without VPC Peering.",
+/// analytics_region="us-central1",
+/// project_id=current.project,
+/// disable_vpc_peering=True)
+/// apigee_dns_zone = gcp.apigee.DnsZone("apigee_dns_zone",
+/// org_id=apigee_org["id"],
+/// dns_zone_id="test1",
+/// domain="foo.com",
+/// description="test",
+/// peering_config={
+/// "target_project_id": current.project,
+/// "target_network_id": apigee_network.id,
+/// })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var current = Gcp.Organizations.GetClientConfig.Invoke();
+///
+/// var apigeeNetwork = new Gcp.Compute.Network("apigee_network", new()
+/// {
+/// Name = "apigee-network",
+/// });
+///
+/// var org = new Gcp.Apigee.Organization("org", new()
+/// {
+/// Description = "Terraform-provisioned basic Apigee Org without VPC Peering.",
+/// AnalyticsRegion = "us-central1",
+/// ProjectId = current.Apply(getClientConfigResult => getClientConfigResult.Project),
+/// DisableVpcPeering = true,
+/// });
+///
+/// var apigeeDnsZone = new Gcp.Apigee.DnsZone("apigee_dns_zone", new()
+/// {
+/// OrgId = apigeeOrg.Id,
+/// DnsZoneId = "test1",
+/// Domain = "foo.com",
+/// Description = "test",
+/// PeeringConfig = new Gcp.Apigee.Inputs.DnsZonePeeringConfigArgs
+/// {
+/// TargetProjectId = current.Apply(getClientConfigResult => getClientConfigResult.Project),
+/// TargetNetworkId = apigeeNetwork.Id,
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// current, err := organizations.GetClientConfig(ctx, map[string]interface{}{}, nil)
+/// if err != nil {
+/// return err
+/// }
+/// apigeeNetwork, err := compute.NewNetwork(ctx, "apigee_network", &compute.NetworkArgs{
+/// Name: pulumi.String("apigee-network"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// _, err = apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
+/// Description:       pulumi.String("Terraform-provisioned basic Apigee Org without VPC Peering."),
+/// AnalyticsRegion:   pulumi.String("us-central1"),
+/// ProjectId:         pulumi.String(current.Project),
+/// DisableVpcPeering: pulumi.Bool(true),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// _, err = apigee.NewDnsZone(ctx, "apigee_dns_zone", &apigee.DnsZoneArgs{
+/// OrgId:       pulumi.Any(apigeeOrg.Id),
+/// DnsZoneId:   pulumi.String("test1"),
+/// Domain:      pulumi.String("foo.com"),
+/// Description: pulumi.String("test"),
+/// PeeringConfig: &apigee.DnsZonePeeringConfigArgs{
+/// TargetProjectId: pulumi.String(current.Project),
+/// TargetNetworkId: apigeeNetwork.ID(),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.compute.Network;
+/// import com.pulumi.gcp.compute.NetworkArgs;
+/// import com.pulumi.gcp.apigee.Organization;
+/// import com.pulumi.gcp.apigee.OrganizationArgs;
+/// import com.pulumi.gcp.apigee.DnsZone;
+/// import com.pulumi.gcp.apigee.DnsZoneArgs;
+/// import com.pulumi.gcp.apigee.inputs.DnsZonePeeringConfigArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// final var current = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+///
+/// var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()
+/// .name("apigee-network")
+/// .build());
+///
+/// var org = new Organization("org", OrganizationArgs.builder()
+/// .description("Terraform-provisioned basic Apigee Org without VPC Peering.")
+/// .analyticsRegion("us-central1")
+/// .projectId(current.project())
+/// .disableVpcPeering(true)
+/// .build());
+///
+/// var apigeeDnsZone = new DnsZone("apigeeDnsZone", DnsZoneArgs.builder()
+/// .orgId(apigeeOrg.id())
+/// .dnsZoneId("test1")
+/// .domain("foo.com")
+/// .description("test")
+/// .peeringConfig(DnsZonePeeringConfigArgs.builder()
+/// .targetProjectId(current.project())
+/// .targetNetworkId(apigeeNetwork.id())
+/// .build())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// apigeeNetwork:
+/// type: gcp:compute:Network
+/// name: apigee_network
+/// properties:
+/// name: apigee-network
+/// org:
+/// type: gcp:apigee:Organization
+/// properties:
+/// description: Terraform-provisioned basic Apigee Org without VPC Peering.
+/// analyticsRegion: us-central1
+/// projectId: ${current.project}
+/// disableVpcPeering: true
+/// apigeeDnsZone:
+/// type: gcp:apigee:DnsZone
+/// name: apigee_dns_zone
+/// properties:
+/// orgId: ${apigeeOrg.id}
+/// dnsZoneId: test1
+/// domain: foo.com
+/// description: test
+/// peeringConfig:
+/// targetProjectId: ${current.project}
+/// targetNetworkId: ${apigeeNetwork.id}
+/// variables:
+/// current:
+/// fn::invoke:
+/// function: gcp:organizations:getClientConfig
+/// arguments: {}
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// DnsZone can be imported using any of these accepted formats:
+///
+/// * `{{org_id}}/dnsZones/{{dns_zone_id}}`
+///
+/// * `{{org_id}}/{{dns_zone_id}}`
+///
+/// When using the `pulumi import` command, DnsZone can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:apigee/dnsZone:DnsZone default {{org_id}}/dnsZones/{{dns_zone_id}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:apigee/dnsZone:DnsZone default {{org_id}}/{{dns_zone_id}}
+/// ```
+class DnsZone extends CustomResource {
+  /// Description for the zone.
+  late final Output<String> description;
+
+  /// ID of the dns zone.
+  late final Output<String> dnsZoneId;
+
+  /// Doamin for the zone.
+  late final Output<String> domain;
+
+  /// Name of the Dns Zone in the following format:
+  /// organizations/{organization}/dnsZones/{dnsZone}.
+  late final Output<String> name;
+
+  /// The Apigee Organization associated with the Apigee instance,
+  /// in the format `organizations/{{org_name}}`.
+  late final Output<String> orgId;
+
+  /// Peering zone config
+  /// Structure is documented below.
+  late final Output<DnsZonePeeringConfig> peeringConfig;
+
+  DnsZone(
+    String name, {
+    DnsZoneArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:apigee/dnsZone:DnsZone',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.description = Output.createUnknown<String>();
+    this.dnsZoneId = Output.createUnknown<String>();
+    this.domain = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.orgId = Output.createUnknown<String>();
+    this.peeringConfig = Output.createUnknown<DnsZonePeeringConfig>();
+  }
+}

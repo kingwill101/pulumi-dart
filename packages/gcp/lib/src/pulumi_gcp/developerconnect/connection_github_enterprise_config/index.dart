@@ -1,0 +1,3 @@
+library module_developerconnect_connection_github_enterprise_config;
+
+export 'connection_github_enterprise_config2.dart';

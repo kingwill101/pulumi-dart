@@ -1,0 +1,12 @@
+library module_migrationcenter;
+
+export 'group/index.dart';
+export 'preference_set/index.dart';
+export 'preference_set_virtual_machine_preferences/index.dart';
+export 'preference_set_virtual_machine_preferences_compute_engine_preferences/index.dart';
+export 'preference_set_virtual_machine_preferences_compute_engine_preferences_machine_preferences/index.dart';
+export 'preference_set_virtual_machine_preferences_compute_engine_preferences_machine_preferences_allowed_machine_series/index.dart';
+export 'preference_set_virtual_machine_preferences_region_preferences/index.dart';
+export 'preference_set_virtual_machine_preferences_sole_tenancy_preferences/index.dart';
+export 'preference_set_virtual_machine_preferences_sole_tenancy_preferences_node_type/index.dart';
+export 'preference_set_virtual_machine_preferences_vmware_engine_preferences/index.dart';

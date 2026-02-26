@@ -1,0 +1,79 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../bare_metal_node_pool_node_pool_config_node_config/bare_metal_node_pool_node_pool_config_node_config.dart';
+import '../bare_metal_node_pool_node_pool_config_taint/bare_metal_node_pool_node_pool_config_taint.dart';
+
+class BareMetalNodePoolNodePoolConfig {
+  /// The map of Kubernetes labels (key/value pairs) to be applied to
+  /// each node. These will added in addition to any default label(s)
+  /// that Kubernetes may apply to the node. In case of conflict in
+  /// label keys, the applied set may differ depending on the Kubernetes
+  /// version -- it's best to assume the behavior is undefined and
+  /// conflicts should be avoided. For more information, including usage
+  /// and the valid values, see:
+  /// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+  /// An object containing a list of "key": value pairs.
+  /// For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+  final Map<String, String>? labels;
+
+  /// The list of machine addresses in the Bare Metal Node Pool.
+  /// Structure is documented below.
+  final List<BareMetalNodePoolNodePoolConfigNodeConfig> nodeConfigs;
+
+  /// Specifies the nodes operating system (default: LINUX).
+  final String? operatingSystem;
+
+  /// The initial taints assigned to nodes of this node pool.
+  /// Structure is documented below.
+  final List<BareMetalNodePoolNodePoolConfigTaint>? taints;
+
+  BareMetalNodePoolNodePoolConfig({
+    this.labels,
+    required this.nodeConfigs,
+    this.operatingSystem,
+    this.taints,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final labelsValue = labels;
+    if (labelsValue != null) {
+      map['labels'] = labelsValue;
+    }
+    map['nodeConfigs'] = Input.encodeList<
+        BareMetalNodePoolNodePoolConfigNodeConfig,
+        Map<String, dynamic>>(nodeConfigs, (value) => value.toMap());
+    final operatingSystemValue = operatingSystem;
+    if (operatingSystemValue != null) {
+      map['operatingSystem'] = operatingSystemValue;
+    }
+    final taintsValue = taints;
+    if (taintsValue != null) {
+      map['taints'] = Input.encodeList<BareMetalNodePoolNodePoolConfigTaint,
+          Map<String, dynamic>>(taintsValue, (value) => value.toMap());
+    }
+    return map;
+  }
+
+  factory BareMetalNodePoolNodePoolConfig.fromMap(Map<String, dynamic> map) {
+    return BareMetalNodePoolNodePoolConfig(
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
+      nodeConfigs: Input.decodeList<BareMetalNodePoolNodePoolConfigNodeConfig>(
+          map['nodeConfigs'],
+          (value) => BareMetalNodePoolNodePoolConfigNodeConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      operatingSystem: map['operatingSystem'] == null
+          ? null
+          : map['operatingSystem'] as String,
+      taints: map['taints'] == null
+          ? null
+          : Input.decodeList<BareMetalNodePoolNodePoolConfigTaint>(
+              map['taints'],
+              (value) => BareMetalNodePoolNodePoolConfigTaint.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+    );
+  }
+}

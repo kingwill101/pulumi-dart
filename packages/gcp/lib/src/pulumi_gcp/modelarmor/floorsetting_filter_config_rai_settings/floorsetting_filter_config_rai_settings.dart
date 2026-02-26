@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../floorsetting_filter_config_rai_settings_rai_filter/floorsetting_filter_config_rai_settings_rai_filter.dart';
+
+class FloorsettingFilterConfigRaiSettings {
+  /// List of Responsible AI filters enabled for template.
+  /// Structure is documented below.
+  final List<FloorsettingFilterConfigRaiSettingsRaiFilter> raiFilters;
+
+  FloorsettingFilterConfigRaiSettings({
+    required this.raiFilters,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['raiFilters'] = Input.encodeList<
+        FloorsettingFilterConfigRaiSettingsRaiFilter,
+        Map<String, dynamic>>(raiFilters, (value) => value.toMap());
+    return map;
+  }
+
+  factory FloorsettingFilterConfigRaiSettings.fromMap(
+      Map<String, dynamic> map) {
+    return FloorsettingFilterConfigRaiSettings(
+      raiFilters:
+          Input.decodeList<FloorsettingFilterConfigRaiSettingsRaiFilter>(
+              map['raiFilters'],
+              (value) => FloorsettingFilterConfigRaiSettingsRaiFilter.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+    );
+  }
+}

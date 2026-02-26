@@ -1,0 +1,3 @@
+library module_container_get_cluster_node_pool_queued_provisioning;
+
+export 'get_cluster_node_pool_queued_provisioning.dart';

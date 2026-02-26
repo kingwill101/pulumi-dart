@@ -1,0 +1,114 @@
+import 'package:pulumi/pulumi.dart';
+import 'agent_args2.dart';
+import 'google_cloud_dialogflow_cx_v3beta1_advanced_settings_response.dart';
+import 'google_cloud_dialogflow_cx_v3beta1_agent_answer_feedback_settings_response.dart';
+import 'google_cloud_dialogflow_cx_v3beta1_agent_gen_app_builder_settings_response.dart';
+import 'google_cloud_dialogflow_cx_v3beta1_agent_git_integration_settings_response.dart';
+import 'google_cloud_dialogflow_cx_v3beta1_speech_to_text_settings_response.dart';
+import 'google_cloud_dialogflow_cx_v3beta1_text_to_speech_settings_response.dart';
+
+/// Creates an agent in the specified location. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+class Agent2 extends CustomResource {
+  /// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+  late final Output<GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse>
+      advancedSettings;
+
+  /// Optional. Answer feedback collection settings.
+  late final Output<
+          GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsResponse>
+      answerFeedbackSettings;
+
+  /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
+  late final Output<String> avatarUri;
+
+  /// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+  late final Output<String> defaultLanguageCode;
+
+  /// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
+  late final Output<String> description;
+
+  /// The human-readable name of the agent, unique within the location.
+  late final Output<String> displayName;
+
+  /// Indicates if automatic spell correction is enabled in detect intent requests.
+  late final Output<bool> enableSpellCorrection;
+
+  /// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
+  late final Output<bool> enableStackdriverLogging;
+
+  /// Gen App Builder-related agent-level settings.
+  late final Output<
+          GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsResponse>
+      genAppBuilderSettings;
+
+  /// Git integration settings for this agent.
+  late final Output<
+          GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse>
+      gitIntegrationSettings;
+  late final Output<String> location;
+
+  /// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
+  late final Output<bool> locked;
+
+  /// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
+  late final Output<String> name;
+  late final Output<String> project;
+
+  /// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+  late final Output<String> securitySettings;
+
+  /// Speech recognition related settings.
+  late final Output<GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse>
+      speechToTextSettings;
+
+  /// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
+  late final Output<String> startFlow;
+
+  /// The list of all languages supported by the agent (except for the `default_language_code`).
+  late final Output<List<String>> supportedLanguageCodes;
+
+  /// Settings on instructing the speech synthesizer on how to generate the output audio content.
+  late final Output<GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse>
+      textToSpeechSettings;
+
+  /// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+  late final Output<String> timeZone;
+
+  Agent2(
+    String name, {
+    AgentArgs2? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:dialogflow/v3beta1:Agent',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.advancedSettings = Output.createUnknown<
+        GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse>();
+    this.answerFeedbackSettings = Output.createUnknown<
+        GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsResponse>();
+    this.avatarUri = Output.createUnknown<String>();
+    this.defaultLanguageCode = Output.createUnknown<String>();
+    this.description = Output.createUnknown<String>();
+    this.displayName = Output.createUnknown<String>();
+    this.enableSpellCorrection = Output.createUnknown<bool>();
+    this.enableStackdriverLogging = Output.createUnknown<bool>();
+    this.genAppBuilderSettings = Output.createUnknown<
+        GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsResponse>();
+    this.gitIntegrationSettings = Output.createUnknown<
+        GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse>();
+    this.location = Output.createUnknown<String>();
+    this.locked = Output.createUnknown<bool>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.securitySettings = Output.createUnknown<String>();
+    this.speechToTextSettings = Output.createUnknown<
+        GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse>();
+    this.startFlow = Output.createUnknown<String>();
+    this.supportedLanguageCodes = Output.createUnknown<List<String>>();
+    this.textToSpeechSettings = Output.createUnknown<
+        GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse>();
+    this.timeZone = Output.createUnknown<String>();
+  }
+}

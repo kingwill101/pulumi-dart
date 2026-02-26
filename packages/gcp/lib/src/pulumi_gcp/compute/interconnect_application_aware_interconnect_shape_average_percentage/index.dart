@@ -1,0 +1,3 @@
+library module_compute_interconnect_application_aware_interconnect_shape_average_percentage;
+
+export 'interconnect_application_aware_interconnect_shape_average_percentage.dart';

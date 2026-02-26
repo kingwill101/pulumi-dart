@@ -1,0 +1,3 @@
+library module_managedkafka_connect_cluster_gcp_config_access_config;
+
+export 'connect_cluster_gcp_config_access_config.dart';

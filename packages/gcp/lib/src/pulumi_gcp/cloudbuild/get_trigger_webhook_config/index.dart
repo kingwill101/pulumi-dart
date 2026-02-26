@@ -1,0 +1,3 @@
+library module_cloudbuild_get_trigger_webhook_config;
+
+export 'get_trigger_webhook_config.dart';

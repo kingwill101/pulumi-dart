@@ -1,0 +1,3 @@
+library module_osconfig_v2_policy_orchestrator_orchestrated_resource_os_policy_assignment_v1_payload_os_policy;
+
+export 'v2_policy_orchestrator_orchestrated_resource_os_policy_assignment_v1_payload_os_policy.dart';

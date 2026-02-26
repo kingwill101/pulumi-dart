@@ -1,0 +1,3 @@
+library module_gkeonprem_bare_metal_cluster_control_plane_control_plane_node_pool_config;
+
+export 'bare_metal_cluster_control_plane_control_plane_node_pool_config.dart';

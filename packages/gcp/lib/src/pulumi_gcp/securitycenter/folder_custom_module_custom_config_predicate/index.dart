@@ -1,0 +1,3 @@
+library module_securitycenter_folder_custom_module_custom_config_predicate;
+
+export 'folder_custom_module_custom_config_predicate.dart';

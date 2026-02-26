@@ -1,0 +1,3 @@
+library module_developerconnect_connection_gitlab_enterprise_config_authorizer_credential;
+
+export 'connection_gitlab_enterprise_config_authorizer_credential.dart';

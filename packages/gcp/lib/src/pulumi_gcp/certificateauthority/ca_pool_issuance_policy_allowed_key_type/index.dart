@@ -1,0 +1,3 @@
+library module_certificateauthority_ca_pool_issuance_policy_allowed_key_type;
+
+export 'ca_pool_issuance_policy_allowed_key_type.dart';

@@ -1,0 +1,3 @@
+library module_edgecontainer_cluster_control_plane_local;
+
+export 'cluster_control_plane_local.dart';

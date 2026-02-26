@@ -1,0 +1,3 @@
+library module_storage_control_project_intelligence_config_trial_config;
+
+export 'control_project_intelligence_config_trial_config.dart';

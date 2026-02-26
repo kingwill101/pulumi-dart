@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// Arguments for getOsPolicyAssignment.
+class GetOsPolicyAssignmentArgs {
+  final Input<String> location;
+  final Input<String> osPolicyAssignmentId;
+  final Input<String>? project;
+
+  GetOsPolicyAssignmentArgs({
+    required this.location,
+    required this.osPolicyAssignmentId,
+    this.project,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['location'] = location;
+    map['osPolicyAssignmentId'] = osPolicyAssignmentId;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetOsPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
+    return GetOsPolicyAssignmentArgs(
+      location: Input.asInput<String>(map['location']),
+      osPolicyAssignmentId: Input.asInput<String>(map['osPolicyAssignmentId']),
+      project: Input.asOptionalInput<String>(map['project']),
+    );
+  }
+}

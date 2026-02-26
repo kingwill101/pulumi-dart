@@ -1,0 +1,3 @@
+library module_certificateauthority_ca_pool_publishing_options;
+
+export 'ca_pool_publishing_options.dart';

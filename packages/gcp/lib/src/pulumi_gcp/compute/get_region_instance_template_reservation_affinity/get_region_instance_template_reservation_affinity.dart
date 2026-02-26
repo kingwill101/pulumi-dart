@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_region_instance_template_reservation_affinity_specific_reservation/get_region_instance_template_reservation_affinity_specific_reservation.dart';
+
+class GetRegionInstanceTemplateReservationAffinity {
+  /// Specifies the label selector for the reservation to use.
+  final List<GetRegionInstanceTemplateReservationAffinitySpecificReservation>
+      specificReservations;
+
+  /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+  final String type;
+
+  GetRegionInstanceTemplateReservationAffinity({
+    required this.specificReservations,
+    required this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['specificReservations'] = Input.encodeList<
+        GetRegionInstanceTemplateReservationAffinitySpecificReservation,
+        Map<String, dynamic>>(specificReservations, (value) => value.toMap());
+    map['type'] = type;
+    return map;
+  }
+
+  factory GetRegionInstanceTemplateReservationAffinity.fromMap(
+      Map<String, dynamic> map) {
+    return GetRegionInstanceTemplateReservationAffinity(
+      specificReservations: Input.decodeList<
+              GetRegionInstanceTemplateReservationAffinitySpecificReservation>(
+          map['specificReservations'],
+          (value) =>
+              GetRegionInstanceTemplateReservationAffinitySpecificReservation
+                  .fromMap((value as Map).cast<String, dynamic>())),
+      type: map['type'] as String,
+    );
+  }
+}

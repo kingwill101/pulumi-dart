@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// The bucket's billing configuration.
+class BucketBillingResponse {
+  /// When set to true, Requester Pays is enabled for this bucket.
+  final bool requesterPays;
+
+  BucketBillingResponse({
+    required this.requesterPays,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['requesterPays'] = requesterPays;
+    return map;
+  }
+
+  factory BucketBillingResponse.fromMap(Map<String, dynamic> map) {
+    return BucketBillingResponse(
+      requesterPays: map['requesterPays'] as bool,
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_compute_region_instance_group_manager_status_stateful_per_instance_config;
+
+export 'region_instance_group_manager_status_stateful_per_instance_config.dart';

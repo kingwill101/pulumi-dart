@@ -1,0 +1,3 @@
+library module_monitoring_alert_policy_condition_condition_monitoring_query_language_trigger;
+
+export 'alert_policy_condition_condition_monitoring_query_language_trigger.dart';

@@ -1,0 +1,81 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import 'google_cloud_run_v2_container_response.dart';
+import 'google_cloud_run_v2_volume_response.dart';
+import 'google_cloud_run_v2_vpc_access_response.dart';
+
+/// TaskTemplate describes the data a task should have when created from a template.
+class GoogleCloudRunV2TaskTemplateResponse {
+  /// Holds the single container that defines the unit of execution for this task.
+  final List<GoogleCloudRunV2ContainerResponse> containers;
+
+  /// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+  final String encryptionKey;
+
+  /// The execution environment being used to host this Task.
+  final String executionEnvironment;
+
+  /// Number of retries allowed per Task, before marking this Task failed. Defaults to 3.
+  final int maxRetries;
+
+  /// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+  final String serviceAccount;
+
+  /// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
+  final String timeout;
+
+  /// A list of Volumes to make available to containers.
+  final List<GoogleCloudRunV2VolumeResponse> volumes;
+
+  /// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+  final GoogleCloudRunV2VpcAccessResponse vpcAccess;
+
+  GoogleCloudRunV2TaskTemplateResponse({
+    required this.containers,
+    required this.encryptionKey,
+    required this.executionEnvironment,
+    required this.maxRetries,
+    required this.serviceAccount,
+    required this.timeout,
+    required this.volumes,
+    required this.vpcAccess,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['containers'] = Input.encodeList<GoogleCloudRunV2ContainerResponse,
+        Map<String, dynamic>>(containers, (value) => value.toMap());
+    map['encryptionKey'] = encryptionKey;
+    map['executionEnvironment'] = executionEnvironment;
+    map['maxRetries'] = maxRetries;
+    map['serviceAccount'] = serviceAccount;
+    map['timeout'] = timeout;
+    map['volumes'] =
+        Input.encodeList<GoogleCloudRunV2VolumeResponse, Map<String, dynamic>>(
+            volumes, (value) => value.toMap());
+    map['vpcAccess'] = vpcAccess.toMap();
+    return map;
+  }
+
+  factory GoogleCloudRunV2TaskTemplateResponse.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudRunV2TaskTemplateResponse(
+      containers: Input.decodeList<GoogleCloudRunV2ContainerResponse>(
+          map['containers'],
+          (value) => GoogleCloudRunV2ContainerResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      encryptionKey: map['encryptionKey'] as String,
+      executionEnvironment: map['executionEnvironment'] as String,
+      maxRetries: map['maxRetries'] as int,
+      serviceAccount: map['serviceAccount'] as String,
+      timeout: map['timeout'] as String,
+      volumes: Input.decodeList<GoogleCloudRunV2VolumeResponse>(
+          map['volumes'],
+          (value) => GoogleCloudRunV2VolumeResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      vpcAccess: GoogleCloudRunV2VpcAccessResponse.fromMap(
+          (map['vpcAccess'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

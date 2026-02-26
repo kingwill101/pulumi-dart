@@ -1,0 +1,3 @@
+library module_compute_reservation_share_settings;
+
+export 'reservation_share_settings.dart';

@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_instance_automated_backup_config_fixed_frequency_schedule_start_time/get_instance_automated_backup_config_fixed_frequency_schedule_start_time.dart';
+
+class GetInstanceAutomatedBackupConfigFixedFrequencySchedule {
+  /// The start time of every automated backup in UTC.
+  /// It must be set to the start of an hour. This field is required.
+  final List<GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime>
+      startTimes;
+
+  GetInstanceAutomatedBackupConfigFixedFrequencySchedule({
+    required this.startTimes,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['startTimes'] = Input.encodeList<
+        GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime,
+        Map<String, dynamic>>(startTimes, (value) => value.toMap());
+    return map;
+  }
+
+  factory GetInstanceAutomatedBackupConfigFixedFrequencySchedule.fromMap(
+      Map<String, dynamic> map) {
+    return GetInstanceAutomatedBackupConfigFixedFrequencySchedule(
+      startTimes: Input.decodeList<
+              GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime>(
+          map['startTimes'],
+          (value) =>
+              GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime
+                  .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

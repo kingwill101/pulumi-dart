@@ -1,0 +1,3 @@
+library module_gkeonprem_vmware_cluster_authorization;
+
+export 'vmware_cluster_authorization.dart';

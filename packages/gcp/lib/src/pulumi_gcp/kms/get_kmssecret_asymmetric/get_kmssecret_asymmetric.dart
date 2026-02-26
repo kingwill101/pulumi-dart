@@ -1,0 +1,554 @@
+import 'package:pulumi/pulumi.dart';
+import 'get_kmssecret_asymmetric_args.dart';
+import 'get_kmssecret_asymmetric_result.dart';
+
+/// This data source allows you to use data encrypted with a Google Cloud KMS asymmetric key
+/// within your resource definitions.
+///
+/// For more information see
+/// [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa).
+///
+/// > **NOTE:** Using this data provider will allow you to conceal secret data within your
+/// resource definitions, but it does not take care of protecting that data in the
+/// logging output, plan output, or state output.  Please take care to secure your secret
+/// data outside of resource definitions.
+///
+/// ## Example Usage
+///
+/// First, create a KMS KeyRing and CryptoKey using the resource definitions:
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const myKeyRing = new gcp.kms.KeyRing("my_key_ring", {
+/// project: "my-project",
+/// name: "my-key-ring",
+/// location: "us-central1",
+/// });
+/// const myCryptoKeyCryptoKey = new gcp.kms.CryptoKey("my_crypto_key", {
+/// name: "my-crypto-key",
+/// keyRing: myKeyRing.id,
+/// purpose: "ASYMMETRIC_DECRYPT",
+/// versionTemplate: {
+/// algorithm: "RSA_DECRYPT_OAEP_4096_SHA256",
+/// },
+/// });
+/// const myCryptoKey = gcp.kms.getKMSCryptoKeyVersionOutput({
+/// cryptoKey: myCryptoKeyCryptoKey.id,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// my_key_ring = gcp.kms.KeyRing("my_key_ring",
+/// project="my-project",
+/// name="my-key-ring",
+/// location="us-central1")
+/// my_crypto_key_crypto_key = gcp.kms.CryptoKey("my_crypto_key",
+/// name="my-crypto-key",
+/// key_ring=my_key_ring.id,
+/// purpose="ASYMMETRIC_DECRYPT",
+/// version_template={
+/// "algorithm": "RSA_DECRYPT_OAEP_4096_SHA256",
+/// })
+/// my_crypto_key = gcp.kms.get_kms_crypto_key_version_output(crypto_key=my_crypto_key_crypto_key.id)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var myKeyRing = new Gcp.Kms.KeyRing("my_key_ring", new()
+/// {
+/// Project = "my-project",
+/// Name = "my-key-ring",
+/// Location = "us-central1",
+/// });
+///
+/// var myCryptoKeyCryptoKey = new Gcp.Kms.CryptoKey("my_crypto_key", new()
+/// {
+/// Name = "my-crypto-key",
+/// KeyRing = myKeyRing.Id,
+/// Purpose = "ASYMMETRIC_DECRYPT",
+/// VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
+/// {
+/// Algorithm = "RSA_DECRYPT_OAEP_4096_SHA256",
+/// },
+/// });
+///
+/// var myCryptoKey = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new()
+/// {
+/// CryptoKey = myCryptoKeyCryptoKey.Id,
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// myKeyRing, err := kms.NewKeyRing(ctx, "my_key_ring", &kms.KeyRingArgs{
+/// Project:  pulumi.String("my-project"),
+/// Name:     pulumi.String("my-key-ring"),
+/// Location: pulumi.String("us-central1"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// myCryptoKeyCryptoKey, err := kms.NewCryptoKey(ctx, "my_crypto_key", &kms.CryptoKeyArgs{
+/// Name:    pulumi.String("my-crypto-key"),
+/// KeyRing: myKeyRing.ID(),
+/// Purpose: pulumi.String("ASYMMETRIC_DECRYPT"),
+/// VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
+/// Algorithm: pulumi.String("RSA_DECRYPT_OAEP_4096_SHA256"),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// _ = kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
+/// CryptoKey: myCryptoKeyCryptoKey.ID(),
+/// }, nil)
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.kms.KeyRing;
+/// import com.pulumi.gcp.kms.KeyRingArgs;
+/// import com.pulumi.gcp.kms.CryptoKey;
+/// import com.pulumi.gcp.kms.CryptoKeyArgs;
+/// import com.pulumi.gcp.kms.inputs.CryptoKeyVersionTemplateArgs;
+/// import com.pulumi.gcp.kms.KmsFunctions;
+/// import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyVersionArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var myKeyRing = new KeyRing("myKeyRing", KeyRingArgs.builder()
+/// .project("my-project")
+/// .name("my-key-ring")
+/// .location("us-central1")
+/// .build());
+///
+/// var myCryptoKeyCryptoKey = new CryptoKey("myCryptoKeyCryptoKey", CryptoKeyArgs.builder()
+/// .name("my-crypto-key")
+/// .keyRing(myKeyRing.id())
+/// .purpose("ASYMMETRIC_DECRYPT")
+/// .versionTemplate(CryptoKeyVersionTemplateArgs.builder()
+/// .algorithm("RSA_DECRYPT_OAEP_4096_SHA256")
+/// .build())
+/// .build());
+///
+/// final var myCryptoKey = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
+/// .cryptoKey(myCryptoKeyCryptoKey.id())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// myKeyRing:
+/// type: gcp:kms:KeyRing
+/// name: my_key_ring
+/// properties:
+/// project: my-project
+/// name: my-key-ring
+/// location: us-central1
+/// myCryptoKeyCryptoKey:
+/// type: gcp:kms:CryptoKey
+/// name: my_crypto_key
+/// properties:
+/// name: my-crypto-key
+/// keyRing: ${myKeyRing.id}
+/// purpose: ASYMMETRIC_DECRYPT
+/// versionTemplate:
+/// algorithm: RSA_DECRYPT_OAEP_4096_SHA256
+/// variables:
+/// myCryptoKey:
+/// fn::invoke:
+/// function: gcp:kms:getKMSCryptoKeyVersion
+/// arguments:
+/// cryptoKey: ${myCryptoKeyCryptoKey.id}
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
+/// some sensitive information:
+///
+/// ```bash
+/// ## get the public key to encrypt the secret with
+/// $ gcloud kms keys versions get-public-key 1 \
+/// --project my-project \
+/// --location us-central1 \
+/// --keyring my-key-ring \
+/// --key my-crypto-key \
+/// --output-file public-key.pem
+///
+/// ## encrypt secret with the public key
+/// $ echo -n my-secret-password | \
+/// openssl pkeyutl -in - \
+/// -encrypt \
+/// -pubin \
+/// -inkey public-key.pem \
+/// -pkeyopt rsa_padding_mode:oaep \
+/// -pkeyopt rsa_oaep_md:sha256 \
+/// -pkeyopt rsa_mgf1_md:sha256 > \
+/// my-secret-password.enc
+///
+/// ## base64 encode the ciphertext
+/// $ openssl base64 -in my-secret-password.enc
+/// M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
+/// ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
+/// 4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
+/// eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs
+/// wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr
+/// LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc
+/// yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1
+/// J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL
+/// IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
+/// mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
+/// A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
+///
+/// ## optionally calculate the CRC32 of the ciphertext
+/// $ go get github.com/binxio/crc32
+/// $ $GOPATH/bin/crc32 -polynomial castagnoli < my-secret-password.enc
+/// 12c59e54
+/// ```
+///
+/// Finally, reference the encrypted ciphertext in your resource definitions:
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as random from "@pulumi/random";
+///
+/// const sqlUserPassword = gcp.kms.getKMSSecretAsymmetric({
+/// cryptoKeyVersion: myCryptoKey.id,
+/// crc32: "12c59e54",
+/// ciphertext: `    M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
+/// ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
+/// 4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
+/// eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs
+/// wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr
+/// LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc
+/// yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1
+/// J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL
+/// IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
+/// mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
+/// A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
+/// `,
+/// });
+/// const dbNameSuffix = new random.index.Id("db_name_suffix", {byteLength: 4});
+/// const main = new gcp.sql.DatabaseInstance("main", {
+/// name: `main-instance-${dbNameSuffix.hex}`,
+/// databaseVersion: "MYSQL_5_7",
+/// settings: {
+/// tier: "db-f1-micro",
+/// },
+/// });
+/// const users = new gcp.sql.User("users", {
+/// name: "me",
+/// instance: main.name,
+/// host: "me.com",
+/// password: sqlUserPasswordGoogleKmsSecret.plaintext,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumi_random as random
+///
+/// sql_user_password = gcp.kms.get_kms_secret_asymmetric(crypto_key_version=my_crypto_key["id"],
+/// crc32="12c59e54",
+/// ciphertext="""    M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
+/// ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
+/// 4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
+/// eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs
+/// wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr
+/// LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc
+/// yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1
+/// J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL
+/// IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
+/// mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
+/// A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
+/// """)
+/// db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+/// main = gcp.sql.DatabaseInstance("main",
+/// name=f"main-instance-{db_name_suffix['hex']}",
+/// database_version="MYSQL_5_7",
+/// settings={
+/// "tier": "db-f1-micro",
+/// })
+/// users = gcp.sql.User("users",
+/// name="me",
+/// instance=main.name,
+/// host="me.com",
+/// password=sql_user_password_google_kms_secret["plaintext"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Random = Pulumi.Random;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var sqlUserPassword = Gcp.Kms.GetKMSSecretAsymmetric.Invoke(new()
+/// {
+/// CryptoKeyVersion = myCryptoKey.Id,
+/// Crc32 = "12c59e54",
+/// Ciphertext = @"    M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
+/// ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
+/// 4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
+/// eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs
+/// wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr
+/// LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc
+/// yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1
+/// J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL
+/// IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
+/// mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
+/// A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
+/// ",
+/// });
+///
+/// var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+/// {
+/// ByteLength = 4,
+/// });
+///
+/// var main = new Gcp.Sql.DatabaseInstance("main", new()
+/// {
+/// Name = $"main-instance-{dbNameSuffix.Hex}",
+/// DatabaseVersion = "MYSQL_5_7",
+/// Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+/// {
+/// Tier = "db-f1-micro",
+/// },
+/// });
+///
+/// var users = new Gcp.Sql.User("users", new()
+/// {
+/// Name = "me",
+/// Instance = main.Name,
+/// Host = "me.com",
+/// Password = sqlUserPasswordGoogleKmsSecret.Plaintext,
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "fmt"
+///
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// "github.com/pulumi/pulumi-random/sdk/v4/go/random"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := kms.GetKMSSecretAsymmetric(ctx, &kms.GetKMSSecretAsymmetricArgs{
+/// CryptoKeyVersion: myCryptoKey.Id,
+/// Crc32:            pulumi.StringRef("12c59e54"),
+/// Ciphertext: `    M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
+/// ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
+/// 4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
+/// eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs
+/// wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr
+/// LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc
+/// yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1
+/// J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL
+/// IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
+/// mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
+/// A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
+/// `,
+/// }, nil)
+/// if err != nil {
+/// return err
+/// }
+/// dbNameSuffix, err := random.NewId(ctx, "db_name_suffix", &random.IdArgs{
+/// ByteLength: 4,
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// main, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
+/// Name:            pulumi.Sprintf("main-instance-%v", dbNameSuffix.Hex),
+/// DatabaseVersion: pulumi.String("MYSQL_5_7"),
+/// Settings: &sql.DatabaseInstanceSettingsArgs{
+/// Tier: pulumi.String("db-f1-micro"),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// _, err = sql.NewUser(ctx, "users", &sql.UserArgs{
+/// Name:     pulumi.String("me"),
+/// Instance: main.Name,
+/// Host:     pulumi.String("me.com"),
+/// Password: pulumi.Any(sqlUserPasswordGoogleKmsSecret.Plaintext),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.kms.KmsFunctions;
+/// import com.pulumi.gcp.kms.inputs.GetKMSSecretAsymmetricArgs;
+/// import com.pulumi.random.Id;
+/// import com.pulumi.random.IdArgs;
+/// import com.pulumi.gcp.sql.DatabaseInstance;
+/// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+/// import com.pulumi.gcp.sql.User;
+/// import com.pulumi.gcp.sql.UserArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// final var sqlUserPassword = KmsFunctions.getKMSSecretAsymmetric(GetKMSSecretAsymmetricArgs.builder()
+/// .cryptoKeyVersion(myCryptoKey.id())
+/// .crc32("12c59e54")
+/// .ciphertext("""
+/// M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
+/// ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
+/// 4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
+/// eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs
+/// wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr
+/// LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc
+/// yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1
+/// J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL
+/// IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
+/// mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
+/// A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
+/// """)
+/// .build());
+///
+/// var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
+/// .byteLength(4)
+/// .build());
+///
+/// var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
+/// .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+/// .databaseVersion("MYSQL_5_7")
+/// .settings(DatabaseInstanceSettingsArgs.builder()
+/// .tier("db-f1-micro")
+/// .build())
+/// .build());
+///
+/// var users = new User("users", UserArgs.builder()
+/// .name("me")
+/// .instance(main.name())
+/// .host("me.com")
+/// .password(sqlUserPasswordGoogleKmsSecret.plaintext())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// dbNameSuffix:
+/// type: random:Id
+/// name: db_name_suffix
+/// properties:
+/// byteLength: 4
+/// main:
+/// type: gcp:sql:DatabaseInstance
+/// properties:
+/// name: main-instance-${dbNameSuffix.hex}
+/// databaseVersion: MYSQL_5_7
+/// settings:
+/// tier: db-f1-micro
+/// users:
+/// type: gcp:sql:User
+/// properties:
+/// name: me
+/// instance: ${main.name}
+/// host: me.com
+/// password: ${sqlUserPasswordGoogleKmsSecret.plaintext}
+/// variables:
+/// sqlUserPassword:
+/// fn::invoke:
+/// function: gcp:kms:getKMSSecretAsymmetric
+/// arguments:
+/// cryptoKeyVersion: ${myCryptoKey.id}
+/// crc32: 12c59e54
+/// ciphertext: |2
+/// M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
+/// ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
+/// 4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
+/// eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs
+/// wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr
+/// LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc
+/// yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1
+/// J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL
+/// IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
+/// mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
+/// A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// This will result in a Cloud SQL user being created with password `my-secret-password`.
+Future<GetKMSSecretAsymmetricResult> getKMSSecretAsymmetric(
+  GetKMSSecretAsymmetricArgs args, {
+  InvokeOptions? options,
+}) async {
+  final deployment = Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric',
+    args.toMap(),
+    options: toDeploymentInvokeOptions(options),
+  );
+  return GetKMSSecretAsymmetricResult.fromMap(result);
+}

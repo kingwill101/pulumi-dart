@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class DatabaseInstanceRestoreBackupContext {
+  /// The ID of the backup run to restore from.
+  final int backupRunId;
+
+  /// The ID of the instance that the backup was taken from. If left empty,
+  /// this instance's ID will be used.
+  final String? instanceId;
+
+  /// The full project ID of the source instance.`
+  final String? project;
+
+  DatabaseInstanceRestoreBackupContext({
+    required this.backupRunId,
+    this.instanceId,
+    this.project,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['backupRunId'] = backupRunId;
+    final instanceIdValue = instanceId;
+    if (instanceIdValue != null) {
+      map['instanceId'] = instanceIdValue;
+    }
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory DatabaseInstanceRestoreBackupContext.fromMap(
+      Map<String, dynamic> map) {
+    return DatabaseInstanceRestoreBackupContext(
+      backupRunId: map['backupRunId'] as int,
+      instanceId:
+          map['instanceId'] == null ? null : map['instanceId'] as String,
+      project: map['project'] == null ? null : map['project'] as String,
+    );
+  }
+}

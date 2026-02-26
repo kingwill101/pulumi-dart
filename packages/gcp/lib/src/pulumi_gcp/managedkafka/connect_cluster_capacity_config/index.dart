@@ -1,0 +1,3 @@
+library module_managedkafka_connect_cluster_capacity_config;
+
+export 'connect_cluster_capacity_config.dart';

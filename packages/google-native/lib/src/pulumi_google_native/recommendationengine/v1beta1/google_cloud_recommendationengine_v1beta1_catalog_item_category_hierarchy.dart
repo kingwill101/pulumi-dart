@@ -1,0 +1,24 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Category represents catalog item category hierarchy.
+class GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy {
+  /// Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
+  final List<String> categories;
+
+  GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy({
+    required this.categories,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['categories'] = categories;
+    return map;
+  }
+
+  factory GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(
+      categories: (map['categories'] as List).cast<String>(),
+    );
+  }
+}

@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GuestPoliciesRecipeUpdateStepRpmInstallation {
+  /// The id of the relevant artifact in the recipe.
+  final String artifactId;
+
+  GuestPoliciesRecipeUpdateStepRpmInstallation({
+    required this.artifactId,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['artifactId'] = artifactId;
+    return map;
+  }
+
+  factory GuestPoliciesRecipeUpdateStepRpmInstallation.fromMap(
+      Map<String, dynamic> map) {
+    return GuestPoliciesRecipeUpdateStepRpmInstallation(
+      artifactId: map['artifactId'] as String,
+    );
+  }
+}

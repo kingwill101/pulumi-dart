@@ -1,0 +1,3 @@
+library module_storage_batch_operations_job_rewrite_object;
+
+export 'batch_operations_job_rewrite_object.dart';

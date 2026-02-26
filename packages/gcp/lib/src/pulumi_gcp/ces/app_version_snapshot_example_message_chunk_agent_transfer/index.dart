@@ -1,0 +1,3 @@
+library module_ces_app_version_snapshot_example_message_chunk_agent_transfer;
+
+export 'app_version_snapshot_example_message_chunk_agent_transfer.dart';

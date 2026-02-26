@@ -1,0 +1,4 @@
+library module_iap_web_backend_service_iam_policy;
+
+export 'web_backend_service_iam_policy.dart';
+export 'web_backend_service_iam_policy_args.dart';

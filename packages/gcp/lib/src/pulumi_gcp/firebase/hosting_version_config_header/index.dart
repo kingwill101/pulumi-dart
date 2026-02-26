@@ -1,0 +1,3 @@
+library module_firebase_hosting_version_config_header;
+
+export 'hosting_version_config_header.dart';

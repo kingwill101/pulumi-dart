@@ -1,0 +1,4 @@
+library module_memorystore_instance_desired_user_created_endpoints;
+
+export 'instance_desired_user_created_endpoints.dart';
+export 'instance_desired_user_created_endpoints_args.dart';

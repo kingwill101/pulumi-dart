@@ -1,0 +1,3 @@
+library module_compute_future_reservation_share_settings;
+
+export 'future_reservation_share_settings.dart';

@@ -1,0 +1,39 @@
+import 'package:pulumi/pulumi.dart';
+import 'google_cloud_contentwarehouse_v1_rule_response.dart';
+import 'rule_set_args.dart';
+
+/// Creates a ruleset.
+class RuleSet extends CustomResource {
+  /// Short description of the rule-set.
+  late final Output<String> description;
+  late final Output<String> location;
+
+  /// The resource name of the rule set. Managed internally. Format: projects/{project_number}/locations/{location}/ruleSet/{rule_set_id}. The name is ignored when creating a rule set.
+  late final Output<String> name;
+  late final Output<String> project;
+
+  /// List of rules given by the customer.
+  late final Output<List<GoogleCloudContentwarehouseV1RuleResponse>> rules;
+
+  /// Source of the rules i.e., customer name.
+  late final Output<String> source;
+
+  RuleSet(
+    String name, {
+    RuleSetArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:contentwarehouse/v1:RuleSet',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.description = Output.createUnknown<String>();
+    this.location = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.rules =
+        Output.createUnknown<List<GoogleCloudContentwarehouseV1RuleResponse>>();
+    this.source = Output.createUnknown<String>();
+  }
+}

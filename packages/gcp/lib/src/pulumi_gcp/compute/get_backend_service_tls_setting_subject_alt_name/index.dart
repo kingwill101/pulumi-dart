@@ -1,0 +1,3 @@
+library module_compute_get_backend_service_tls_setting_subject_alt_name;
+
+export 'get_backend_service_tls_setting_subject_alt_name.dart';

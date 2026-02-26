@@ -1,0 +1,132 @@
+import 'package:pulumi/pulumi.dart';
+import 'client_connection_config_response3.dart';
+import 'instance_args3.dart';
+import 'machine_config_response3.dart';
+import 'node_response3.dart';
+import 'query_insights_instance_config_response3.dart';
+import 'read_pool_config_response3.dart';
+import 'update_policy_response2.dart';
+
+/// Creates a new Instance in a given project and location.
+/// Auto-naming is currently not supported for this resource.
+class Instance3 extends CustomResource {
+  /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+  late final Output<Map<String, String>> annotations;
+
+  /// Availability type of an Instance. If empty, defaults to REGIONAL for primary instances. For read pools, availability_type is always UNSPECIFIED. Instances in the read pools are evenly distributed across available zones within the region (i.e. read pools with more than one node will have a node in at least two zones).
+  late final Output<String> availabilityType;
+
+  /// Optional. Client connection specific configurations
+  late final Output<ClientConnectionConfigResponse3> clientConnectionConfig;
+  late final Output<String> clusterId;
+
+  /// Create time stamp
+  late final Output<String> createTime;
+
+  /// Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary. This is a list of "key": "value" pairs. "key": The name of the flag. These flags are passed at instance setup time, so include both server options and system variables for Postgres. Flags are specified with underscores, not hyphens. "value": The value of the flag. Booleans are set to **on** for true and **off** for false. This field must be omitted if the flag doesn't take a value.
+  late final Output<Map<String, String>> databaseFlags;
+
+  /// Delete time stamp
+  late final Output<String> deleteTime;
+
+  /// User-settable and human-readable display name for the Instance.
+  late final Output<String> displayName;
+
+  /// For Resource freshness validation (https://google.aip.dev/154)
+  late final Output<String> etag;
+
+  /// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+  late final Output<String> gceZone;
+
+  /// Required. ID of the requesting object.
+  late final Output<String> instanceId;
+
+  /// The type of the instance. Specified at creation time.
+  late final Output<String> instanceType;
+
+  /// The IP address for the Instance. This is the connection endpoint for an end-user application.
+  late final Output<String> ipAddress;
+
+  /// Labels as key value pairs
+  late final Output<Map<String, String>> labels;
+  late final Output<String> location;
+
+  /// Configurations for the machines that host the underlying database engine.
+  late final Output<MachineConfigResponse3> machineConfig;
+
+  /// The name of the instance resource with the format: * projects/{project}/locations/{region}/clusters/{cluster_id}/instances/{instance_id} where the cluster and instance ID segments should satisfy the regex expression `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`, e.g. 1-63 characters of lowercase letters, numbers, and dashes, starting with a letter, and ending with a letter or number. For more details see https://google.aip.dev/122. The prefix of the instance resource name is the name of the parent resource: * projects/{project}/locations/{region}/clusters/{cluster_id}
+  late final Output<String> name;
+
+  /// List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
+  late final Output<List<NodeResponse3>> nodes;
+  late final Output<String> project;
+
+  /// Configuration for query insights.
+  late final Output<QueryInsightsInstanceConfigResponse3> queryInsightsConfig;
+
+  /// Read pool instance configuration. This is required if the value of instanceType is READ_POOL.
+  late final Output<ReadPoolConfigResponse3> readPoolConfig;
+
+  /// Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
+  late final Output<bool> reconciling;
+
+  /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+  late final Output<String?> requestId;
+
+  /// The current serving state of the instance.
+  late final Output<String> state;
+
+  /// The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
+  late final Output<String> uid;
+
+  /// Update policy that will be applied during instance update. This field is not persisted when you update the instance. To use a non-default update policy, you must specify explicitly specify the value in each update request.
+  late final Output<UpdatePolicyResponse2> updatePolicy;
+
+  /// Update time stamp
+  late final Output<String> updateTime;
+
+  /// This is set for the read-write VM of the PRIMARY instance only.
+  late final Output<NodeResponse3> writableNode;
+
+  Instance3(
+    String name, {
+    InstanceArgs3? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:alloydb/v1beta:Instance',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.annotations = Output.createUnknown<Map<String, String>>();
+    this.availabilityType = Output.createUnknown<String>();
+    this.clientConnectionConfig =
+        Output.createUnknown<ClientConnectionConfigResponse3>();
+    this.clusterId = Output.createUnknown<String>();
+    this.createTime = Output.createUnknown<String>();
+    this.databaseFlags = Output.createUnknown<Map<String, String>>();
+    this.deleteTime = Output.createUnknown<String>();
+    this.displayName = Output.createUnknown<String>();
+    this.etag = Output.createUnknown<String>();
+    this.gceZone = Output.createUnknown<String>();
+    this.instanceId = Output.createUnknown<String>();
+    this.instanceType = Output.createUnknown<String>();
+    this.ipAddress = Output.createUnknown<String>();
+    this.labels = Output.createUnknown<Map<String, String>>();
+    this.location = Output.createUnknown<String>();
+    this.machineConfig = Output.createUnknown<MachineConfigResponse3>();
+    this.name = Output.createUnknown<String>();
+    this.nodes = Output.createUnknown<List<NodeResponse3>>();
+    this.project = Output.createUnknown<String>();
+    this.queryInsightsConfig =
+        Output.createUnknown<QueryInsightsInstanceConfigResponse3>();
+    this.readPoolConfig = Output.createUnknown<ReadPoolConfigResponse3>();
+    this.reconciling = Output.createUnknown<bool>();
+    this.requestId = Output.createUnknown<String?>();
+    this.state = Output.createUnknown<String>();
+    this.uid = Output.createUnknown<String>();
+    this.updatePolicy = Output.createUnknown<UpdatePolicyResponse2>();
+    this.updateTime = Output.createUnknown<String>();
+    this.writableNode = Output.createUnknown<NodeResponse3>();
+  }
+}

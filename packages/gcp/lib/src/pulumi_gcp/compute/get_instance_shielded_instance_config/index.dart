@@ -1,0 +1,3 @@
+library module_compute_get_instance_shielded_instance_config;
+
+export 'get_instance_shielded_instance_config.dart';

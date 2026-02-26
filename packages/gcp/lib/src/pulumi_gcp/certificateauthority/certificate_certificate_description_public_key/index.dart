@@ -1,0 +1,3 @@
+library module_certificateauthority_certificate_certificate_description_public_key;
+
+export 'certificate_certificate_description_public_key.dart';

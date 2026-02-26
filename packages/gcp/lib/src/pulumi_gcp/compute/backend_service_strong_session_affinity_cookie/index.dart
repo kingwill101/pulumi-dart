@@ -1,0 +1,3 @@
+library module_compute_backend_service_strong_session_affinity_cookie;
+
+export 'backend_service_strong_session_affinity_cookie.dart';

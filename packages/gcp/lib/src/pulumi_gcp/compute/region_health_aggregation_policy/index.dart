@@ -1,0 +1,4 @@
+library module_compute_region_health_aggregation_policy;
+
+export 'region_health_aggregation_policy.dart';
+export 'region_health_aggregation_policy_args.dart';

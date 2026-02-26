@@ -1,0 +1,3 @@
+library module_composer_get_environment_config_node_config;
+
+export 'get_environment_config_node_config.dart';

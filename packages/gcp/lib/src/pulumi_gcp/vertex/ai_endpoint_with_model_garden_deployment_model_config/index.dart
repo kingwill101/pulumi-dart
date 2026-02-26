@@ -1,0 +1,3 @@
+library module_vertex_ai_endpoint_with_model_garden_deployment_model_config;
+
+export 'ai_endpoint_with_model_garden_deployment_model_config.dart';

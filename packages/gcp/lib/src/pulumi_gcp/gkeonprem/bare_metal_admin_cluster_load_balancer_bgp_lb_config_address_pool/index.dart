@@ -1,0 +1,3 @@
+library module_gkeonprem_bare_metal_admin_cluster_load_balancer_bgp_lb_config_address_pool;
+
+export 'bare_metal_admin_cluster_load_balancer_bgp_lb_config_address_pool.dart';

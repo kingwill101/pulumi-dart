@@ -1,0 +1,4 @@
+library module_storage_insights_dataset_config;
+
+export 'insights_dataset_config.dart';
+export 'insights_dataset_config_args.dart';

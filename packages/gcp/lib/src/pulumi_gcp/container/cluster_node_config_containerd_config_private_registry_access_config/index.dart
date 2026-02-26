@@ -1,0 +1,3 @@
+library module_container_cluster_node_config_containerd_config_private_registry_access_config;
+
+export 'cluster_node_config_containerd_config_private_registry_access_config.dart';

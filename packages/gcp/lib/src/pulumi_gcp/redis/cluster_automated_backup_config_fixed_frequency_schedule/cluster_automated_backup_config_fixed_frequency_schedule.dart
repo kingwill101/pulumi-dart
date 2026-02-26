@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../cluster_automated_backup_config_fixed_frequency_schedule_start_time/cluster_automated_backup_config_fixed_frequency_schedule_start_time.dart';
+
+class ClusterAutomatedBackupConfigFixedFrequencySchedule {
+  /// The start time of every automated backup in UTC.
+  /// It must be set to the start of an hour. This field is required.
+  /// Structure is documented below.
+  final ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime startTime;
+
+  ClusterAutomatedBackupConfigFixedFrequencySchedule({
+    required this.startTime,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['startTime'] = startTime.toMap();
+    return map;
+  }
+
+  factory ClusterAutomatedBackupConfigFixedFrequencySchedule.fromMap(
+      Map<String, dynamic> map) {
+    return ClusterAutomatedBackupConfigFixedFrequencySchedule(
+      startTime:
+          ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime.fromMap(
+              (map['startTime'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

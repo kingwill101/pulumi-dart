@@ -1,0 +1,3 @@
+library module_gkeonprem_bare_metal_admin_cluster_network_config;
+
+export 'bare_metal_admin_cluster_network_config.dart';

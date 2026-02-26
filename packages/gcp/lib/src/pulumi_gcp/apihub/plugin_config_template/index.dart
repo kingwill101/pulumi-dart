@@ -1,0 +1,3 @@
+library module_apihub_plugin_config_template;
+
+export 'plugin_config_template.dart';

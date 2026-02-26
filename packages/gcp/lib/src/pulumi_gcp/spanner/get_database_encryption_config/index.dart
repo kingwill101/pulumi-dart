@@ -1,0 +1,3 @@
+library module_spanner_get_database_encryption_config;
+
+export 'get_database_encryption_config.dart';

@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'google_cloud_retail_v2beta_search_request_dynamic_facet_spec_mode.dart';
+
+/// The specifications of dynamically generated facets.
+class GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec {
+  /// Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+  final GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode? mode;
+
+  GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec({
+    this.mode,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final modeValue = mode;
+    if (modeValue != null) {
+      map['mode'] = modeValue.value;
+    }
+    return map;
+  }
+
+  factory GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec(
+      mode: map['mode'] == null
+          ? null
+          : GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode.fromValue(
+              map['mode'] as String),
+    );
+  }
+}

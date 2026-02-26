@@ -1,0 +1,3 @@
+library module_container_azure_cluster_control_plane_proxy_config;
+
+export 'azure_cluster_control_plane_proxy_config.dart';

@@ -1,0 +1,104 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../private_cloud_management_cluster/private_cloud_management_cluster.dart';
+import '../private_cloud_network_config/private_cloud_network_config.dart';
+
+/// The set of arguments for PrivateCloud.
+class PrivateCloudArgs {
+  /// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+  final Input<int>? deletionDelayHours;
+
+  /// User-provided description for this private cloud.
+  final Input<String>? description;
+
+  /// The location where the PrivateCloud should reside.
+  final Input<String> location;
+
+  /// The management cluster for this private cloud. This used for creating and managing the default cluster.
+  /// Structure is documented below.
+  final Input<PrivateCloudManagementCluster> managementCluster;
+
+  /// The ID of the PrivateCloud.
+  final Input<String>? name;
+
+  /// Network configuration in the consumer project with which the peering has to be done.
+  /// Structure is documented below.
+  final Input<PrivateCloudNetworkConfig> networkConfig;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final Input<String>? project;
+
+  /// While set true,<span pulumi-lang-nodejs=" deletionDelayHours " pulumi-lang-dotnet=" DeletionDelayHours " pulumi-lang-go=" deletionDelayHours " pulumi-lang-python=" deletion_delay_hours " pulumi-lang-yaml=" deletionDelayHours " pulumi-lang-java=" deletionDelayHours "> deletion_delay_hours </span>value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the<span pulumi-lang-nodejs=" deletionDelayHours " pulumi-lang-dotnet=" DeletionDelayHours " pulumi-lang-go=" deletionDelayHours " pulumi-lang-python=" deletion_delay_hours " pulumi-lang-yaml=" deletionDelayHours " pulumi-lang-java=" deletionDelayHours "> deletion_delay_hours </span>field. It can be used both alone and together with deletion_delay_hours.
+  final Input<bool>? sendDeletionDelayHoursIfZero;
+
+  /// Initial type of the private cloud.
+  /// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+  final Input<String>? type;
+
+  PrivateCloudArgs({
+    this.deletionDelayHours,
+    this.description,
+    required this.location,
+    required this.managementCluster,
+    this.name,
+    required this.networkConfig,
+    this.project,
+    this.sendDeletionDelayHoursIfZero,
+    this.type,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final deletionDelayHoursValue = deletionDelayHours;
+    if (deletionDelayHoursValue != null) {
+      map['deletionDelayHours'] = deletionDelayHoursValue;
+    }
+    final descriptionValue = description;
+    if (descriptionValue != null) {
+      map['description'] = descriptionValue;
+    }
+    map['location'] = location;
+    map['managementCluster'] = Input.mapInputValue<
+        PrivateCloudManagementCluster,
+        Map<String, dynamic>>(managementCluster, (value) => value.toMap());
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    map['networkConfig'] =
+        Input.mapInputValue<PrivateCloudNetworkConfig, Map<String, dynamic>>(
+            networkConfig, (value) => value.toMap());
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    final sendDeletionDelayHoursIfZeroValue = sendDeletionDelayHoursIfZero;
+    if (sendDeletionDelayHoursIfZeroValue != null) {
+      map['sendDeletionDelayHoursIfZero'] = sendDeletionDelayHoursIfZeroValue;
+    }
+    final typeValue = type;
+    if (typeValue != null) {
+      map['type'] = typeValue;
+    }
+    return map;
+  }
+
+  factory PrivateCloudArgs.fromMap(Map<String, dynamic> map) {
+    return PrivateCloudArgs(
+      deletionDelayHours: Input.asOptionalInput<int>(map['deletionDelayHours']),
+      description: Input.asOptionalInput<String>(map['description']),
+      location: Input.asInput<String>(map['location']),
+      managementCluster: Input.asInput<PrivateCloudManagementCluster>(
+          map['managementCluster']),
+      name: Input.asOptionalInput<String>(map['name']),
+      networkConfig:
+          Input.asInput<PrivateCloudNetworkConfig>(map['networkConfig']),
+      project: Input.asOptionalInput<String>(map['project']),
+      sendDeletionDelayHoursIfZero:
+          Input.asOptionalInput<bool>(map['sendDeletionDelayHoursIfZero']),
+      type: Input.asOptionalInput<String>(map['type']),
+    );
+  }
+}

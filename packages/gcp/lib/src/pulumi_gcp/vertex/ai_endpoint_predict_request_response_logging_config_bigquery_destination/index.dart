@@ -1,0 +1,3 @@
+library module_vertex_ai_endpoint_predict_request_response_logging_config_bigquery_destination;
+
+export 'ai_endpoint_predict_request_response_logging_config_bigquery_destination.dart';

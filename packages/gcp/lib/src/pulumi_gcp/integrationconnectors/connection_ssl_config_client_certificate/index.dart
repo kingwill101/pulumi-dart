@@ -1,0 +1,3 @@
+library module_integrationconnectors_connection_ssl_config_client_certificate;
+
+export 'connection_ssl_config_client_certificate.dart';

@@ -1,0 +1,3 @@
+library module_bigquery_job_query_default_dataset;
+
+export 'job_query_default_dataset.dart';

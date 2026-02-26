@@ -1,0 +1,3 @@
+library module_container_aws_cluster_control_plane_aws_services_authentication;
+
+export 'aws_cluster_control_plane_aws_services_authentication.dart';

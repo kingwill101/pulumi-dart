@@ -1,0 +1,3 @@
+library module_storage_get_control_organization_intelligence_config_effective_intelligence_config;
+
+export 'get_control_organization_intelligence_config_effective_intelligence_config.dart';

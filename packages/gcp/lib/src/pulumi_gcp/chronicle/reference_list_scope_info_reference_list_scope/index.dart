@@ -1,0 +1,3 @@
+library module_chronicle_reference_list_scope_info_reference_list_scope;
+
+export 'reference_list_scope_info_reference_list_scope.dart';

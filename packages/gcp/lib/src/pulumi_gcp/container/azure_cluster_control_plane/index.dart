@@ -1,0 +1,3 @@
+library module_container_azure_cluster_control_plane;
+
+export 'azure_cluster_control_plane.dart';

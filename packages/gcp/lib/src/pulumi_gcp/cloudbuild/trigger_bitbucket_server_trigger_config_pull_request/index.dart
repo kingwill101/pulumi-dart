@@ -1,0 +1,3 @@
+library module_cloudbuild_trigger_bitbucket_server_trigger_config_pull_request;
+
+export 'trigger_bitbucket_server_trigger_config_pull_request.dart';

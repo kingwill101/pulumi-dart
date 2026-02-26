@@ -1,0 +1,3 @@
+library module_apigateway_gateway_iam_member_condition;
+
+export 'gateway_iam_member_condition.dart';

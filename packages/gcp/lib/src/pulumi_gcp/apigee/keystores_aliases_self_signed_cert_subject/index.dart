@@ -1,0 +1,3 @@
+library module_apigee_keystores_aliases_self_signed_cert_subject;
+
+export 'keystores_aliases_self_signed_cert_subject.dart';

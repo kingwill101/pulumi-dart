@@ -1,0 +1,3 @@
+library module_dataloss_prevention_deidentify_template_deidentify_config_image_transformations;
+
+export 'prevention_deidentify_template_deidentify_config_image_transformations.dart';

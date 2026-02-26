@@ -1,0 +1,3 @@
+library module_compute_backend_service_consistent_hash;
+
+export 'backend_service_consistent_hash.dart';

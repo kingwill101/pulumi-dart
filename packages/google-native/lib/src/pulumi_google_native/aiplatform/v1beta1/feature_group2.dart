@@ -1,0 +1,57 @@
+import 'package:pulumi/pulumi.dart';
+import 'feature_group_args2.dart';
+import 'google_cloud_aiplatform_v1beta1_feature_group_big_query_response.dart';
+
+/// Creates a new FeatureGroup in a given project and location.
+/// Auto-naming is currently not supported for this resource.
+class FeatureGroup2 extends CustomResource {
+  /// Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entity_id and a feature_timestamp column in the source.
+  late final Output<GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponse>
+      bigQuery;
+
+  /// Timestamp when this FeatureGroup was created.
+  late final Output<String> createTime;
+
+  /// Optional. Description of the FeatureGroup.
+  late final Output<String> description;
+
+  /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+  late final Output<String> etag;
+
+  /// Required. The ID to use for this FeatureGroup, which will become the final component of the FeatureGroup's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location.
+  late final Output<String> featureGroupId;
+
+  /// Optional. The labels with user-defined metadata to organize your FeatureGroup. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureGroup(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+  late final Output<Map<String, String>> labels;
+  late final Output<String> location;
+
+  /// Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
+  late final Output<String> name;
+  late final Output<String> project;
+
+  /// Timestamp when this FeatureGroup was last updated.
+  late final Output<String> updateTime;
+
+  FeatureGroup2(
+    String name, {
+    FeatureGroupArgs2? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:aiplatform/v1beta1:FeatureGroup',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.bigQuery = Output.createUnknown<
+        GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponse>();
+    this.createTime = Output.createUnknown<String>();
+    this.description = Output.createUnknown<String>();
+    this.etag = Output.createUnknown<String>();
+    this.featureGroupId = Output.createUnknown<String>();
+    this.labels = Output.createUnknown<Map<String, String>>();
+    this.location = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.updateTime = Output.createUnknown<String>();
+  }
+}

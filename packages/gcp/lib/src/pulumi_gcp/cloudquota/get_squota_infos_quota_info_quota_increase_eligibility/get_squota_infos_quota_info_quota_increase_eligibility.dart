@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility {
+  /// The enumeration of reasons when it is ineligible to request increase adjustment.
+  final String ineligibilityReason;
+
+  /// Whether a higher quota value can be requested for the quota.
+  final bool isEligible;
+
+  GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility({
+    required this.ineligibilityReason,
+    required this.isEligible,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['ineligibilityReason'] = ineligibilityReason;
+    map['isEligible'] = isEligible;
+    return map;
+  }
+
+  factory GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility.fromMap(
+      Map<String, dynamic> map) {
+    return GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility(
+      ineligibilityReason: map['ineligibilityReason'] as String,
+      isEligible: map['isEligible'] as bool,
+    );
+  }
+}

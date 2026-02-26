@@ -1,0 +1,3 @@
+library module_compute_wire_group_wire_group_properties;
+
+export 'wire_group_wire_group_properties.dart';

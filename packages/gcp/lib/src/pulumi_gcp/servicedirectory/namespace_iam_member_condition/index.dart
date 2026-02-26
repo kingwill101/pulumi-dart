@@ -1,0 +1,3 @@
+library module_servicedirectory_namespace_iam_member_condition;
+
+export 'namespace_iam_member_condition.dart';

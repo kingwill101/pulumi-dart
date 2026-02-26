@@ -1,0 +1,3 @@
+library module_gkeonprem_vmware_cluster_load_balancer;
+
+export 'vmware_cluster_load_balancer.dart';

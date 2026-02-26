@@ -1,0 +1,3 @@
+library module_diagflow_conversation_profile_human_agent_assistant_config_message_analysis_config;
+
+export 'conversation_profile_human_agent_assistant_config_message_analysis_config.dart';

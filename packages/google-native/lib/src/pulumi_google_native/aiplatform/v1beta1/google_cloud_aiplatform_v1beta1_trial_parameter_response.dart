@@ -1,0 +1,30 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// A message representing a parameter to be tuned.
+class GoogleCloudAiplatformV1beta1TrialParameterResponse {
+  /// The ID of the parameter. The parameter should be defined in StudySpec's Parameters.
+  final String parameterId;
+
+  /// The value of the parameter. `number_value` will be set if a parameter defined in StudySpec is in type 'INTEGER', 'DOUBLE' or 'DISCRETE'. `string_value` will be set if a parameter defined in StudySpec is in type 'CATEGORICAL'.
+  final dynamic value;
+
+  GoogleCloudAiplatformV1beta1TrialParameterResponse({
+    required this.parameterId,
+    required this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['parameterId'] = parameterId;
+    map['value'] = value;
+    return map;
+  }
+
+  factory GoogleCloudAiplatformV1beta1TrialParameterResponse.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudAiplatformV1beta1TrialParameterResponse(
+      parameterId: map['parameterId'] as String,
+      value: map['value'],
+    );
+  }
+}

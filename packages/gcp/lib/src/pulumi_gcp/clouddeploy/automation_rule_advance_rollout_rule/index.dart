@@ -1,0 +1,3 @@
+library module_clouddeploy_automation_rule_advance_rollout_rule;
+
+export 'automation_rule_advance_rollout_rule.dart';

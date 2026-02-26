@@ -1,0 +1,3 @@
+library module_certificateauthority_certificate_template_predefined_values_additional_extension_object_id;
+
+export 'certificate_template_predefined_values_additional_extension_object_id.dart';

@@ -1,0 +1,3 @@
+library module_dataplex_datascan_data_quality_spec_rule_sql_assertion;
+
+export 'datascan_data_quality_spec_rule_sql_assertion.dart';

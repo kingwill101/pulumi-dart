@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'pubsub_response.dart';
+
+/// Represents the transport intermediaries created for the trigger to deliver events.
+class TransportResponse {
+  /// The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
+  final PubsubResponse pubsub;
+
+  TransportResponse({
+    required this.pubsub,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['pubsub'] = pubsub.toMap();
+    return map;
+  }
+
+  factory TransportResponse.fromMap(Map<String, dynamic> map) {
+    return TransportResponse(
+      pubsub: PubsubResponse.fromMap(
+          (map['pubsub'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

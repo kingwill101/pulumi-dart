@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Certificate data for a SelfManaged Certificate. SelfManaged Certificates are uploaded by the user. Updating such certificates before they expire remains the user's responsibility.
+class SelfManagedCertificateResponse {
+  /// Input only. The PEM-encoded certificate chain. Leaf certificate comes first, followed by intermediate ones if any.
+  final String pemCertificate;
+
+  /// Input only. The PEM-encoded private key of the leaf certificate.
+  final String pemPrivateKey;
+
+  SelfManagedCertificateResponse({
+    required this.pemCertificate,
+    required this.pemPrivateKey,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['pemCertificate'] = pemCertificate;
+    map['pemPrivateKey'] = pemPrivateKey;
+    return map;
+  }
+
+  factory SelfManagedCertificateResponse.fromMap(Map<String, dynamic> map) {
+    return SelfManagedCertificateResponse(
+      pemCertificate: map['pemCertificate'] as String,
+      pemPrivateKey: map['pemPrivateKey'] as String,
+    );
+  }
+}

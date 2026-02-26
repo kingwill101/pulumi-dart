@@ -1,0 +1,4 @@
+library module_gemini_repository_group_iam_policy;
+
+export 'repository_group_iam_policy.dart';
+export 'repository_group_iam_policy_args.dart';

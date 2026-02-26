@@ -1,0 +1,36 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../stream_source_config_postgresql_source_config_include_objects_postgresql_schema/stream_source_config_postgresql_source_config_include_objects_postgresql_schema.dart';
+
+class StreamSourceConfigPostgresqlSourceConfigIncludeObjects {
+  /// PostgreSQL schemas on the server
+  /// Structure is documented below.
+  final List<
+          StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema>
+      postgresqlSchemas;
+
+  StreamSourceConfigPostgresqlSourceConfigIncludeObjects({
+    required this.postgresqlSchemas,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['postgresqlSchemas'] = Input.encodeList<
+        StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema,
+        Map<String, dynamic>>(postgresqlSchemas, (value) => value.toMap());
+    return map;
+  }
+
+  factory StreamSourceConfigPostgresqlSourceConfigIncludeObjects.fromMap(
+      Map<String, dynamic> map) {
+    return StreamSourceConfigPostgresqlSourceConfigIncludeObjects(
+      postgresqlSchemas: Input.decodeList<
+              StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema>(
+          map['postgresqlSchemas'],
+          (value) =>
+              StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema
+                  .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

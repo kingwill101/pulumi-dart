@@ -1,0 +1,3 @@
+library module_vertex_ai_index_encryption_spec;
+
+export 'ai_index_encryption_spec.dart';

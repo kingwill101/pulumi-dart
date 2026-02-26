@@ -1,0 +1,3 @@
+library module_gkeonprem_bare_metal_cluster_network_config_sr_iov_config;
+
+export 'bare_metal_cluster_network_config_sr_iov_config.dart';

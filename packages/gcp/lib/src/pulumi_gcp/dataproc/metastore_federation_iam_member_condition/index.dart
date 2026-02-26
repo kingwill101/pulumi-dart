@@ -1,0 +1,3 @@
+library module_dataproc_metastore_federation_iam_member_condition;
+
+export 'metastore_federation_iam_member_condition.dart';

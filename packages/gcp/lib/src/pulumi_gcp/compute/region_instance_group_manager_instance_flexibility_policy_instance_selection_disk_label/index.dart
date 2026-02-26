@@ -1,0 +1,3 @@
+library module_compute_region_instance_group_manager_instance_flexibility_policy_instance_selection_disk_label;
+
+export 'region_instance_group_manager_instance_flexibility_policy_instance_selection_disk_label.dart';

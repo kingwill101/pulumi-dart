@@ -1,0 +1,3 @@
+library module_container_get_cluster_node_config_ephemeral_storage_local_ssd_config;
+
+export 'get_cluster_node_config_ephemeral_storage_local_ssd_config.dart';

@@ -1,0 +1,3 @@
+library module_bigquery_datapolicyv2_data_policy_iam_binding_condition;
+
+export 'datapolicyv2_data_policy_iam_binding_condition.dart';

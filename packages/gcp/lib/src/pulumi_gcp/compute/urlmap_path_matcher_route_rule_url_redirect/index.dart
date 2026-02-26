@@ -1,0 +1,3 @@
+library module_compute_urlmap_path_matcher_route_rule_url_redirect;
+
+export 'urlmap_path_matcher_route_rule_url_redirect.dart';

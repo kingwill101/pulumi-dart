@@ -1,0 +1,3 @@
+library module_datastream_stream_source_config_mongodb_source_config_exclude_objects_database_collection_field;
+
+export 'stream_source_config_mongodb_source_config_exclude_objects_database_collection_field.dart';

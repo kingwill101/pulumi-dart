@@ -1,0 +1,31 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'sign_in_behavior_redirect_condition.dart';
+
+/// Controls sign-in behavior.
+class SignInBehavior {
+  /// When to redirect sign-ins to the IdP.
+  final SignInBehaviorRedirectCondition? redirectCondition;
+
+  SignInBehavior({
+    this.redirectCondition,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final redirectConditionValue = redirectCondition;
+    if (redirectConditionValue != null) {
+      map['redirectCondition'] = redirectConditionValue.value;
+    }
+    return map;
+  }
+
+  factory SignInBehavior.fromMap(Map<String, dynamic> map) {
+    return SignInBehavior(
+      redirectCondition: map['redirectCondition'] == null
+          ? null
+          : SignInBehaviorRedirectCondition.fromValue(
+              map['redirectCondition'] as String),
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_discoveryengine_assistant_customer_policy_model_armor_config;
+
+export 'assistant_customer_policy_model_armor_config.dart';

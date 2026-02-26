@@ -1,0 +1,3 @@
+library module_networkservices_multicast_consumer_association_state;
+
+export 'multicast_consumer_association_state.dart';

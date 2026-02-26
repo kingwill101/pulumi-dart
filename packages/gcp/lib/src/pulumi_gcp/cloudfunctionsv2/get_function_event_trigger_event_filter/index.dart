@@ -1,0 +1,3 @@
+library module_cloudfunctionsv2_get_function_event_trigger_event_filter;
+
+export 'get_function_event_trigger_event_filter.dart';

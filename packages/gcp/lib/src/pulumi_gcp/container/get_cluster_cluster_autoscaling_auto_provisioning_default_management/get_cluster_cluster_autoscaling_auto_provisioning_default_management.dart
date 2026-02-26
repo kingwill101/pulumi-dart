@@ -1,0 +1,47 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_cluster_cluster_autoscaling_auto_provisioning_default_management_upgrade_option/get_cluster_cluster_autoscaling_auto_provisioning_default_management_upgrade_option.dart';
+
+class GetClusterClusterAutoscalingAutoProvisioningDefaultManagement {
+  /// Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+  final bool autoRepair;
+
+  /// Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
+  final bool autoUpgrade;
+
+  /// Specifies the Auto Upgrade knobs for the node pool.
+  final List<
+          GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption>
+      upgradeOptions;
+
+  GetClusterClusterAutoscalingAutoProvisioningDefaultManagement({
+    required this.autoRepair,
+    required this.autoUpgrade,
+    required this.upgradeOptions,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['autoRepair'] = autoRepair;
+    map['autoUpgrade'] = autoUpgrade;
+    map['upgradeOptions'] = Input.encodeList<
+        GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption,
+        Map<String, dynamic>>(upgradeOptions, (value) => value.toMap());
+    return map;
+  }
+
+  factory GetClusterClusterAutoscalingAutoProvisioningDefaultManagement.fromMap(
+      Map<String, dynamic> map) {
+    return GetClusterClusterAutoscalingAutoProvisioningDefaultManagement(
+      autoRepair: map['autoRepair'] as bool,
+      autoUpgrade: map['autoUpgrade'] as bool,
+      upgradeOptions: Input.decodeList<
+              GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption>(
+          map['upgradeOptions'],
+          (value) =>
+              GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption
+                  .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

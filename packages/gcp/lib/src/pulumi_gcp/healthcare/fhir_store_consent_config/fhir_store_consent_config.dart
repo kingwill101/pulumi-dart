@@ -1,0 +1,77 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../fhir_store_consent_config_access_determination_log_config/fhir_store_consent_config_access_determination_log_config.dart';
+import '../fhir_store_consent_config_consent_header_handling/fhir_store_consent_config_consent_header_handling.dart';
+
+class FhirStoreConsentConfig {
+  /// Specifies how the server logs the consent-aware requests. If not specified, the AccessDeterminationLogConfig.LogLevel.MINIMUM option is used.
+  /// Structure is documented below.
+  final FhirStoreConsentConfigAccessDeterminationLogConfig?
+      accessDeterminationLogConfig;
+
+  /// The default value is false. If set to true, when accessing FHIR resources, the consent headers will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
+  final bool? accessEnforced;
+
+  /// Different options to configure the behaviour of the server when handling the X-Consent-Scope header.
+  /// Structure is documented below.
+  final FhirStoreConsentConfigConsentHeaderHandling? consentHeaderHandling;
+
+  /// (Output)
+  /// The versioned names of the enforced admin Consent resource(s), in the format projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}/_history/{version_id}. For FHIR stores with disableResourceVersioning=true, the format is projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}. This field can only be updated using [fhirStores.applyAdminConsents][].
+  final List<String>? enforcedAdminConsents;
+
+  /// Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either [fhirStores.create][] or [fhirStores.patch][]. After that, you must call [fhirStores.applyConsents][] to change the version.
+  /// Possible values are: `CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED`, `V1`.
+  final String version;
+
+  FhirStoreConsentConfig({
+    this.accessDeterminationLogConfig,
+    this.accessEnforced,
+    this.consentHeaderHandling,
+    this.enforcedAdminConsents,
+    required this.version,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final accessDeterminationLogConfigValue = accessDeterminationLogConfig;
+    if (accessDeterminationLogConfigValue != null) {
+      map['accessDeterminationLogConfig'] =
+          accessDeterminationLogConfigValue.toMap();
+    }
+    final accessEnforcedValue = accessEnforced;
+    if (accessEnforcedValue != null) {
+      map['accessEnforced'] = accessEnforcedValue;
+    }
+    final consentHeaderHandlingValue = consentHeaderHandling;
+    if (consentHeaderHandlingValue != null) {
+      map['consentHeaderHandling'] = consentHeaderHandlingValue.toMap();
+    }
+    final enforcedAdminConsentsValue = enforcedAdminConsents;
+    if (enforcedAdminConsentsValue != null) {
+      map['enforcedAdminConsents'] = enforcedAdminConsentsValue;
+    }
+    map['version'] = version;
+    return map;
+  }
+
+  factory FhirStoreConsentConfig.fromMap(Map<String, dynamic> map) {
+    return FhirStoreConsentConfig(
+      accessDeterminationLogConfig: map['accessDeterminationLogConfig'] == null
+          ? null
+          : FhirStoreConsentConfigAccessDeterminationLogConfig.fromMap(
+              (map['accessDeterminationLogConfig'] as Map)
+                  .cast<String, dynamic>()),
+      accessEnforced:
+          map['accessEnforced'] == null ? null : map['accessEnforced'] as bool,
+      consentHeaderHandling: map['consentHeaderHandling'] == null
+          ? null
+          : FhirStoreConsentConfigConsentHeaderHandling.fromMap(
+              (map['consentHeaderHandling'] as Map).cast<String, dynamic>()),
+      enforcedAdminConsents: map['enforcedAdminConsents'] == null
+          ? null
+          : (map['enforcedAdminConsents'] as List).cast<String>(),
+      version: map['version'] as String,
+    );
+  }
+}

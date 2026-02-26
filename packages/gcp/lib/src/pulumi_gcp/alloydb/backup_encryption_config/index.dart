@@ -1,0 +1,3 @@
+library module_alloydb_backup_encryption_config;
+
+export 'backup_encryption_config.dart';

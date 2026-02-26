@@ -1,0 +1,3 @@
+library module_certificatemanager_dns_authorization_dns_resource_record;
+
+export 'dns_authorization_dns_resource_record.dart';

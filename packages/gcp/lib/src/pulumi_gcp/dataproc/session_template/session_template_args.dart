@@ -1,0 +1,113 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../session_template_environment_config/session_template_environment_config.dart';
+import '../session_template_jupyter_session/session_template_jupyter_session.dart';
+import '../session_template_runtime_config/session_template_runtime_config.dart';
+
+/// The set of arguments for SessionTemplate.
+class SessionTemplateArgs {
+  /// Environment configuration for the session execution.
+  /// Structure is documented below.
+  final Input<SessionTemplateEnvironmentConfig>? environmentConfig;
+
+  /// Jupyter configuration for an interactive session.
+  /// Structure is documented below.
+  final Input<SessionTemplateJupyterSession>? jupyterSession;
+
+  /// The labels to associate with this session template.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  final Input<Map<String, String>>? labels;
+
+  /// The location in which the session template will be created in.
+  final Input<String>? location;
+
+  /// The resource name of the session template in the following format:
+  /// projects/{project}/locations/{location}/sessionTemplates/{template_id}
+  final Input<String>? name;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final Input<String>? project;
+
+  /// Runtime configuration for the session template.
+  /// Structure is documented below.
+  final Input<SessionTemplateRuntimeConfig>? runtimeConfig;
+
+  /// Spark connect configuration for an interactive session.
+  final Input<Map<String, dynamic>>? sparkConnectSession;
+
+  SessionTemplateArgs({
+    this.environmentConfig,
+    this.jupyterSession,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.runtimeConfig,
+    this.sparkConnectSession,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final environmentConfigValue = environmentConfig;
+    if (environmentConfigValue != null) {
+      map['environmentConfig'] = Input.mapOptionalInputValue<
+              SessionTemplateEnvironmentConfig, Map<String, dynamic>>(
+          environmentConfigValue, (value) => value.toMap());
+    }
+    final jupyterSessionValue = jupyterSession;
+    if (jupyterSessionValue != null) {
+      map['jupyterSession'] = Input.mapOptionalInputValue<
+          SessionTemplateJupyterSession,
+          Map<String, dynamic>>(jupyterSessionValue, (value) => value.toMap());
+    }
+    final labelsValue = labels;
+    if (labelsValue != null) {
+      map['labels'] = labelsValue;
+    }
+    final locationValue = location;
+    if (locationValue != null) {
+      map['location'] = locationValue;
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    final runtimeConfigValue = runtimeConfig;
+    if (runtimeConfigValue != null) {
+      map['runtimeConfig'] = Input.mapOptionalInputValue<
+          SessionTemplateRuntimeConfig,
+          Map<String, dynamic>>(runtimeConfigValue, (value) => value.toMap());
+    }
+    final sparkConnectSessionValue = sparkConnectSession;
+    if (sparkConnectSessionValue != null) {
+      map['sparkConnectSession'] = sparkConnectSessionValue;
+    }
+    return map;
+  }
+
+  factory SessionTemplateArgs.fromMap(Map<String, dynamic> map) {
+    return SessionTemplateArgs(
+      environmentConfig:
+          Input.asOptionalInput<SessionTemplateEnvironmentConfig>(
+              map['environmentConfig']),
+      jupyterSession: Input.asOptionalInput<SessionTemplateJupyterSession>(
+          map['jupyterSession']),
+      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: Input.asOptionalInput<String>(map['location']),
+      name: Input.asOptionalInput<String>(map['name']),
+      project: Input.asOptionalInput<String>(map['project']),
+      runtimeConfig: Input.asOptionalInput<SessionTemplateRuntimeConfig>(
+          map['runtimeConfig']),
+      sparkConnectSession: Input.asOptionalInput<Map<String, dynamic>>(
+          map['sparkConnectSession']),
+    );
+  }
+}

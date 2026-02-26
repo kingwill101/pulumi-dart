@@ -1,0 +1,212 @@
+import 'package:pulumi/pulumi.dart';
+import 'release_channel_setting_args.dart';
+
+/// The resource for managing ReleaseChannel settings for Admin Control.
+///
+///
+///
+/// ## Example Usage
+///
+/// ### Gemini Release Channel Setting Basic
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const example = new gcp.gemini.ReleaseChannelSetting("example", {
+/// releaseChannelSettingId: "ls1-tf",
+/// location: "global",
+/// labels: {
+/// my_key: "my_value",
+/// },
+/// releaseChannel: "EXPERIMENTAL",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// example = gcp.gemini.ReleaseChannelSetting("example",
+/// release_channel_setting_id="ls1-tf",
+/// location="global",
+/// labels={
+/// "my_key": "my_value",
+/// },
+/// release_channel="EXPERIMENTAL")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Gcp.Gemini.ReleaseChannelSetting("example", new()
+/// {
+/// ReleaseChannelSettingId = "ls1-tf",
+/// Location = "global",
+/// Labels =
+/// {
+/// { "my_key", "my_value" },
+/// },
+/// ReleaseChannel = "EXPERIMENTAL",
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gemini"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := gemini.NewReleaseChannelSetting(ctx, "example", &gemini.ReleaseChannelSettingArgs{
+/// ReleaseChannelSettingId: pulumi.String("ls1-tf"),
+/// Location:                pulumi.String("global"),
+/// Labels: pulumi.StringMap{
+/// "my_key": pulumi.String("my_value"),
+/// },
+/// ReleaseChannel: pulumi.String("EXPERIMENTAL"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.gemini.ReleaseChannelSetting;
+/// import com.pulumi.gcp.gemini.ReleaseChannelSettingArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new ReleaseChannelSetting("example", ReleaseChannelSettingArgs.builder()
+/// .releaseChannelSettingId("ls1-tf")
+/// .location("global")
+/// .labels(Map.of("my_key", "my_value"))
+/// .releaseChannel("EXPERIMENTAL")
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: gcp:gemini:ReleaseChannelSetting
+/// properties:
+/// releaseChannelSettingId: ls1-tf
+/// location: global
+/// labels:
+/// my_key: my_value
+/// releaseChannel: EXPERIMENTAL
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// ReleaseChannelSetting can be imported using any of these accepted formats:
+///
+/// * `projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}`
+///
+/// * `{{project}}/{{location}}/{{release_channel_setting_id}}`
+///
+/// * `{{location}}/{{release_channel_setting_id}}`
+///
+/// When using the `pulumi import` command, ReleaseChannelSetting can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default {{project}}/{{location}}/{{release_channel_setting_id}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default {{location}}/{{release_channel_setting_id}}
+/// ```
+class ReleaseChannelSetting extends CustomResource {
+  /// Create time stamp.
+  late final Output<String> createTime;
+
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  late final Output<Map<String, String>> effectiveLabels;
+
+  /// Labels as key value pairs.
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  late final Output<Map<String, String>?> labels;
+
+  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  late final Output<String> location;
+
+  /// Identifier. Name of the resource.
+  /// Format:projects/{project}/locations/{location}/releaseChannelSettings/{releaseChannelSetting}
+  late final Output<String> name;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  late final Output<String> project;
+
+  /// The combination of labels configured directly on the resource
+  /// and default labels configured on the provider.
+  late final Output<Map<String, String>> pulumiLabels;
+
+  /// Release channel to be used.
+  /// Possible values:
+  /// STABLE
+  /// EXPERIMENTAL
+  late final Output<String?> releaseChannel;
+
+  /// Id of the Release Channel Setting.
+  late final Output<String> releaseChannelSettingId;
+
+  /// Update time stamp.
+  late final Output<String> updateTime;
+
+  ReleaseChannelSetting(
+    String name, {
+    ReleaseChannelSettingArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:gemini/releaseChannelSetting:ReleaseChannelSetting',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.createTime = Output.createUnknown<String>();
+    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.labels = Output.createUnknown<Map<String, String>?>();
+    this.location = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+    this.releaseChannel = Output.createUnknown<String?>();
+    this.releaseChannelSettingId = Output.createUnknown<String>();
+    this.updateTime = Output.createUnknown<String>();
+  }
+}

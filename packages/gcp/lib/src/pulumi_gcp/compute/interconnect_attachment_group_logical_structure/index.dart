@@ -1,0 +1,3 @@
+library module_compute_interconnect_attachment_group_logical_structure;
+
+export 'interconnect_attachment_group_logical_structure.dart';

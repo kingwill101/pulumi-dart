@@ -1,0 +1,3 @@
+library module_parametermanager_get_regional_parameters_parameter;
+
+export 'get_regional_parameters_parameter.dart';

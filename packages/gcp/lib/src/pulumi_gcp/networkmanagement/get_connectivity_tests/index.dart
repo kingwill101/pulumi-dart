@@ -1,0 +1,5 @@
+library module_networkmanagement_get_connectivity_tests;
+
+export 'get_connectivity_tests.dart';
+export 'get_connectivity_tests_args.dart';
+export 'get_connectivity_tests_result.dart';

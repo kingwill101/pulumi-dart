@@ -1,0 +1,3 @@
+library module_identityplatform_config_sign_in_anonymous;
+
+export 'config_sign_in_anonymous.dart';

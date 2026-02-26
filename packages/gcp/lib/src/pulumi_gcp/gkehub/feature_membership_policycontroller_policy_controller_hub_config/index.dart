@@ -1,0 +1,3 @@
+library module_gkehub_feature_membership_policycontroller_policy_controller_hub_config;
+
+export 'feature_membership_policycontroller_policy_controller_hub_config.dart';

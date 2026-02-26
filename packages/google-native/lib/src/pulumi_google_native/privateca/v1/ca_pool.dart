@@ -1,0 +1,52 @@
+import 'package:pulumi/pulumi.dart';
+import 'ca_pool_args.dart';
+import 'issuance_policy_response.dart';
+import 'publishing_options_response.dart';
+
+/// Create a CaPool.
+/// Auto-naming is currently not supported for this resource.
+class CaPool extends CustomResource {
+  /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+  late final Output<String> caPoolId;
+
+  /// Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool.
+  late final Output<IssuancePolicyResponse> issuancePolicy;
+
+  /// Optional. Labels with user-defined metadata.
+  late final Output<Map<String, String>> labels;
+  late final Output<String> location;
+
+  /// The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.
+  late final Output<String> name;
+  late final Output<String> project;
+
+  /// Optional. The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
+  late final Output<PublishingOptionsResponse> publishingOptions;
+
+  /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+  late final Output<String?> requestId;
+
+  /// Immutable. The Tier of this CaPool.
+  late final Output<String> tier;
+
+  CaPool(
+    String name, {
+    CaPoolArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:privateca/v1:CaPool',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.caPoolId = Output.createUnknown<String>();
+    this.issuancePolicy = Output.createUnknown<IssuancePolicyResponse>();
+    this.labels = Output.createUnknown<Map<String, String>>();
+    this.location = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.publishingOptions = Output.createUnknown<PublishingOptionsResponse>();
+    this.requestId = Output.createUnknown<String?>();
+    this.tier = Output.createUnknown<String>();
+  }
+}

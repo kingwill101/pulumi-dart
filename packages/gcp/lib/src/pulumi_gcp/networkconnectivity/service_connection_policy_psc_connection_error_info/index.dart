@@ -1,0 +1,3 @@
+library module_networkconnectivity_service_connection_policy_psc_connection_error_info;
+
+export 'service_connection_policy_psc_connection_error_info.dart';

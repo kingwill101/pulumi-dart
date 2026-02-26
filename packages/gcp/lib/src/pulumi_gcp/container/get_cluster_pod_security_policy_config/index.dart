@@ -1,0 +1,3 @@
+library module_container_get_cluster_pod_security_policy_config;
+
+export 'get_cluster_pod_security_policy_config.dart';

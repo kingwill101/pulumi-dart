@@ -1,0 +1,3 @@
+library module_alloydb_cluster_network_config;
+
+export 'cluster_network_config.dart';

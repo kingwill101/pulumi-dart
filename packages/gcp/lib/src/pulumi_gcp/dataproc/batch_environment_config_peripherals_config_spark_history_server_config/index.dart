@@ -1,0 +1,3 @@
+library module_dataproc_batch_environment_config_peripherals_config_spark_history_server_config;
+
+export 'batch_environment_config_peripherals_config_spark_history_server_config.dart';

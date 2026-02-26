@@ -1,0 +1,3 @@
+library module_datastream_stream_source_config_postgresql_source_config;
+
+export 'stream_source_config_postgresql_source_config.dart';

@@ -1,0 +1,3 @@
+library module_beyondcorp_security_gateway_application_upstream_egress_policy;
+
+export 'security_gateway_application_upstream_egress_policy.dart';

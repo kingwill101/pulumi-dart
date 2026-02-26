@@ -1,0 +1,3 @@
+library module_sourcerepo_get_repository_pubsub_config;
+
+export 'get_repository_pubsub_config.dart';

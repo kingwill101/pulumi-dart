@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig {
+  /// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+  final String? dataprocCluster;
+
+  SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig({
+    this.dataprocCluster,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final dataprocClusterValue = dataprocCluster;
+    if (dataprocClusterValue != null) {
+      map['dataprocCluster'] = dataprocClusterValue;
+    }
+    return map;
+  }
+
+  factory SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig.fromMap(
+      Map<String, dynamic> map) {
+    return SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig(
+      dataprocCluster: map['dataprocCluster'] == null
+          ? null
+          : map['dataprocCluster'] as String,
+    );
+  }
+}

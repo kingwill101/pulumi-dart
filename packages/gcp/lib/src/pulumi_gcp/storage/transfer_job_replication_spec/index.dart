@@ -1,0 +1,3 @@
+library module_storage_transfer_job_replication_spec;
+
+export 'transfer_job_replication_spec.dart';

@@ -1,0 +1,3 @@
+library module_container_cluster_identity_service_config;
+
+export 'cluster_identity_service_config.dart';

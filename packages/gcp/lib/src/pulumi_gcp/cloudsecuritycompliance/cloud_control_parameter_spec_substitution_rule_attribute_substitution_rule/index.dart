@@ -1,0 +1,3 @@
+library module_cloudsecuritycompliance_cloud_control_parameter_spec_substitution_rule_attribute_substitution_rule;
+
+export 'cloud_control_parameter_spec_substitution_rule_attribute_substitution_rule.dart';

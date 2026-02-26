@@ -1,0 +1,3 @@
+library module_gkeonprem_vmware_cluster_control_plane_node_vsphere_config;
+
+export 'vmware_cluster_control_plane_node_vsphere_config.dart';

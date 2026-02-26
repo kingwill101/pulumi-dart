@@ -1,0 +1,4 @@
+library module_servicedirectory_namespace_iam_binding;
+
+export 'namespace_iam_binding.dart';
+export 'namespace_iam_binding_args.dart';

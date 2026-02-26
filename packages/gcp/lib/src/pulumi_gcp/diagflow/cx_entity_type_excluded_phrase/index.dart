@@ -1,0 +1,3 @@
+library module_diagflow_cx_entity_type_excluded_phrase;
+
+export 'cx_entity_type_excluded_phrase.dart';

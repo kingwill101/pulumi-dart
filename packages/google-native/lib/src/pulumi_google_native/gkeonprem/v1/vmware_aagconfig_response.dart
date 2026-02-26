@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Specifies anti affinity group config for the VMware user cluster.
+class VmwareAAGConfigResponse {
+  /// Spread nodes across at least three physical hosts (requires at least three hosts). Enabled by default.
+  final bool aagConfigDisabled;
+
+  VmwareAAGConfigResponse({
+    required this.aagConfigDisabled,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['aagConfigDisabled'] = aagConfigDisabled;
+    return map;
+  }
+
+  factory VmwareAAGConfigResponse.fromMap(Map<String, dynamic> map) {
+    return VmwareAAGConfigResponse(
+      aagConfigDisabled: map['aagConfigDisabled'] as bool,
+    );
+  }
+}

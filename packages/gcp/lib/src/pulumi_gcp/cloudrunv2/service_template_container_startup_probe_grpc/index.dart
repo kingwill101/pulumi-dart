@@ -1,0 +1,3 @@
+library module_cloudrunv2_service_template_container_startup_probe_grpc;
+
+export 'service_template_container_startup_probe_grpc.dart';

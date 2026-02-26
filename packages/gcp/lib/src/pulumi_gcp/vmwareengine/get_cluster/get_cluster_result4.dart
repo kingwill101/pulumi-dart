@@ -1,0 +1,74 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_cluster_autoscaling_setting/get_cluster_autoscaling_setting.dart';
+import '../get_cluster_node_type_config/get_cluster_node_type_config.dart';
+
+/// Result data returned by getCluster.
+class GetClusterResult4 {
+  final List<GetClusterAutoscalingSetting> autoscalingSettings;
+  final String createTime;
+
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+  final bool management;
+  final String name;
+  final List<GetClusterNodeTypeConfig> nodeTypeConfigs;
+  final String parent;
+  final String state;
+  final String uid;
+  final String updateTime;
+
+  GetClusterResult4({
+    required this.autoscalingSettings,
+    required this.createTime,
+    required this.id,
+    required this.management,
+    required this.name,
+    required this.nodeTypeConfigs,
+    required this.parent,
+    required this.state,
+    required this.uid,
+    required this.updateTime,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['autoscalingSettings'] =
+        Input.encodeList<GetClusterAutoscalingSetting, Map<String, dynamic>>(
+            autoscalingSettings, (value) => value.toMap());
+    map['createTime'] = createTime;
+    map['id'] = id;
+    map['management'] = management;
+    map['name'] = name;
+    map['nodeTypeConfigs'] =
+        Input.encodeList<GetClusterNodeTypeConfig, Map<String, dynamic>>(
+            nodeTypeConfigs, (value) => value.toMap());
+    map['parent'] = parent;
+    map['state'] = state;
+    map['uid'] = uid;
+    map['updateTime'] = updateTime;
+    return map;
+  }
+
+  factory GetClusterResult4.fromMap(Map<String, dynamic> map) {
+    return GetClusterResult4(
+      autoscalingSettings: Input.decodeList<GetClusterAutoscalingSetting>(
+          map['autoscalingSettings'],
+          (value) => GetClusterAutoscalingSetting.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      createTime: map['createTime'] as String,
+      id: map['id'] as String,
+      management: map['management'] as bool,
+      name: map['name'] as String,
+      nodeTypeConfigs: Input.decodeList<GetClusterNodeTypeConfig>(
+          map['nodeTypeConfigs'],
+          (value) => GetClusterNodeTypeConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      parent: map['parent'] as String,
+      state: map['state'] as String,
+      uid: map['uid'] as String,
+      updateTime: map['updateTime'] as String,
+    );
+  }
+}

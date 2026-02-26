@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Message defining a list of words or phrases to search for in the data.
+class GooglePrivacyDlpV2WordList {
+  /// Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits. [required]
+  final List<String>? words;
+
+  GooglePrivacyDlpV2WordList({
+    this.words,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final wordsValue = words;
+    if (wordsValue != null) {
+      map['words'] = wordsValue;
+    }
+    return map;
+  }
+
+  factory GooglePrivacyDlpV2WordList.fromMap(Map<String, dynamic> map) {
+    return GooglePrivacyDlpV2WordList(
+      words:
+          map['words'] == null ? null : (map['words'] as List).cast<String>(),
+    );
+  }
+}

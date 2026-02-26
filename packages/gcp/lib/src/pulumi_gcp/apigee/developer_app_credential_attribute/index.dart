@@ -1,0 +1,3 @@
+library module_apigee_developer_app_credential_attribute;
+
+export 'developer_app_credential_attribute.dart';

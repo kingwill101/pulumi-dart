@@ -1,0 +1,3 @@
+library module_artifactregistry_repository_iam_member_condition;
+
+export 'repository_iam_member_condition.dart';

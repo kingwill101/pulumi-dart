@@ -1,0 +1,22 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetClusterVerticalPodAutoscaling {
+  /// Enables vertical pod autoscaling.
+  final bool enabled;
+
+  GetClusterVerticalPodAutoscaling({
+    required this.enabled,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['enabled'] = enabled;
+    return map;
+  }
+
+  factory GetClusterVerticalPodAutoscaling.fromMap(Map<String, dynamic> map) {
+    return GetClusterVerticalPodAutoscaling(
+      enabled: map['enabled'] as bool,
+    );
+  }
+}

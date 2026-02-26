@@ -1,0 +1,3 @@
+library module_networkservices_service_lb_policies_isolation_config;
+
+export 'service_lb_policies_isolation_config.dart';

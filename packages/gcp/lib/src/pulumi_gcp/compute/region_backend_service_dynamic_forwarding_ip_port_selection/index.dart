@@ -1,0 +1,3 @@
+library module_compute_region_backend_service_dynamic_forwarding_ip_port_selection;
+
+export 'region_backend_service_dynamic_forwarding_ip_port_selection.dart';

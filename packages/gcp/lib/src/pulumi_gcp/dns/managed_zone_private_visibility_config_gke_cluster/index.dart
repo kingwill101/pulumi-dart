@@ -1,0 +1,3 @@
+library module_dns_managed_zone_private_visibility_config_gke_cluster;
+
+export 'managed_zone_private_visibility_config_gke_cluster.dart';

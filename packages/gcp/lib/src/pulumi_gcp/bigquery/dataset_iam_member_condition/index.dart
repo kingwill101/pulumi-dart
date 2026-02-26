@@ -1,0 +1,3 @@
+library module_bigquery_dataset_iam_member_condition;
+
+export 'dataset_iam_member_condition.dart';

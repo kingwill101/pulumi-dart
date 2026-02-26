@@ -1,0 +1,60 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../inbound_saml_config_sp_config_sp_certificate/inbound_saml_config_sp_config_sp_certificate.dart';
+
+class InboundSamlConfigSpConfig {
+  /// Callback URI where responses from IDP are handled. Must start with `https://`.
+  final String? callbackUri;
+
+  /// (Output)
+  /// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+  /// Structure is documented below.
+  ///
+  ///
+  /// <a name=<span pulumi-lang-nodejs=""nestedSpConfigSpCertificates"" pulumi-lang-dotnet=""NestedSpConfigSpCertificates"" pulumi-lang-go=""nestedSpConfigSpCertificates"" pulumi-lang-python=""nested_sp_config_sp_certificates"" pulumi-lang-yaml=""nestedSpConfigSpCertificates"" pulumi-lang-java=""nestedSpConfigSpCertificates"">"nested_sp_config_sp_certificates"</span>></a>The <span pulumi-lang-nodejs="`spCertificates`" pulumi-lang-dotnet="`SpCertificates`" pulumi-lang-go="`spCertificates`" pulumi-lang-python="`sp_certificates`" pulumi-lang-yaml="`spCertificates`" pulumi-lang-java="`spCertificates`">`sp_certificates`</span> block contains:
+  final List<InboundSamlConfigSpConfigSpCertificate>? spCertificates;
+
+  /// Unique identifier for all SAML entities.
+  final String? spEntityId;
+
+  InboundSamlConfigSpConfig({
+    this.callbackUri,
+    this.spCertificates,
+    this.spEntityId,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final callbackUriValue = callbackUri;
+    if (callbackUriValue != null) {
+      map['callbackUri'] = callbackUriValue;
+    }
+    final spCertificatesValue = spCertificates;
+    if (spCertificatesValue != null) {
+      map['spCertificates'] = Input.encodeList<
+          InboundSamlConfigSpConfigSpCertificate,
+          Map<String, dynamic>>(spCertificatesValue, (value) => value.toMap());
+    }
+    final spEntityIdValue = spEntityId;
+    if (spEntityIdValue != null) {
+      map['spEntityId'] = spEntityIdValue;
+    }
+    return map;
+  }
+
+  factory InboundSamlConfigSpConfig.fromMap(Map<String, dynamic> map) {
+    return InboundSamlConfigSpConfig(
+      callbackUri:
+          map['callbackUri'] == null ? null : map['callbackUri'] as String,
+      spCertificates: map['spCertificates'] == null
+          ? null
+          : Input.decodeList<InboundSamlConfigSpConfigSpCertificate>(
+              map['spCertificates'],
+              (value) => InboundSamlConfigSpConfigSpCertificate.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      spEntityId:
+          map['spEntityId'] == null ? null : map['spEntityId'] as String,
+    );
+  }
+}

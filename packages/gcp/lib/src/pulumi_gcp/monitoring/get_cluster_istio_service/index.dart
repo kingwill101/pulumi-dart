@@ -1,0 +1,5 @@
+library module_monitoring_get_cluster_istio_service;
+
+export 'get_cluster_istio_service.dart';
+export 'get_cluster_istio_service_args.dart';
+export 'get_cluster_istio_service_result.dart';

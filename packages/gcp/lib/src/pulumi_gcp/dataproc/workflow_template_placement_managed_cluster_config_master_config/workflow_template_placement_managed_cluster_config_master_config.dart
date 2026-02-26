@@ -1,0 +1,148 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../workflow_template_placement_managed_cluster_config_master_config_accelerator/workflow_template_placement_managed_cluster_config_master_config_accelerator.dart';
+import '../workflow_template_placement_managed_cluster_config_master_config_disk_config/workflow_template_placement_managed_cluster_config_master_config_disk_config.dart';
+import '../workflow_template_placement_managed_cluster_config_master_config_managed_group_config/workflow_template_placement_managed_cluster_config_master_config_managed_group_config.dart';
+
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
+  /// The Compute Engine accelerator configuration for these instances.
+  final List<
+          WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator>?
+      accelerators;
+
+  /// Disk option config settings.
+  final WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig?
+      diskConfig;
+
+  /// The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+  final String? image;
+
+  /// Output only. The list of instance names. Dataproc derives the names from <span pulumi-lang-nodejs="`clusterName`" pulumi-lang-dotnet="`ClusterName`" pulumi-lang-go="`clusterName`" pulumi-lang-python="`cluster_name`" pulumi-lang-yaml="`clusterName`" pulumi-lang-java="`clusterName`">`cluster_name`</span>, <span pulumi-lang-nodejs="`numInstances`" pulumi-lang-dotnet="`NumInstances`" pulumi-lang-go="`numInstances`" pulumi-lang-python="`num_instances`" pulumi-lang-yaml="`numInstances`" pulumi-lang-java="`numInstances`">`num_instances`</span>, and the instance group.
+  final List<String>? instanceNames;
+
+  /// Output only. Specifies that this instance group contains preemptible instances.
+  final bool? isPreemptible;
+
+  /// The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+  final String? machineType;
+
+  /// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+  final List<
+          WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig>?
+      managedGroupConfigs;
+
+  /// Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+  final String? minCpuPlatform;
+
+  /// The number of VM instances in the instance group. For master instance groups, must be set to 1.
+  final int? numInstances;
+
+  /// Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+  final String? preemptibility;
+
+  WorkflowTemplatePlacementManagedClusterConfigMasterConfig({
+    this.accelerators,
+    this.diskConfig,
+    this.image,
+    this.instanceNames,
+    this.isPreemptible,
+    this.machineType,
+    this.managedGroupConfigs,
+    this.minCpuPlatform,
+    this.numInstances,
+    this.preemptibility,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final acceleratorsValue = accelerators;
+    if (acceleratorsValue != null) {
+      map['accelerators'] = Input.encodeList<
+          WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator,
+          Map<String, dynamic>>(acceleratorsValue, (value) => value.toMap());
+    }
+    final diskConfigValue = diskConfig;
+    if (diskConfigValue != null) {
+      map['diskConfig'] = diskConfigValue.toMap();
+    }
+    final imageValue = image;
+    if (imageValue != null) {
+      map['image'] = imageValue;
+    }
+    final instanceNamesValue = instanceNames;
+    if (instanceNamesValue != null) {
+      map['instanceNames'] = instanceNamesValue;
+    }
+    final isPreemptibleValue = isPreemptible;
+    if (isPreemptibleValue != null) {
+      map['isPreemptible'] = isPreemptibleValue;
+    }
+    final machineTypeValue = machineType;
+    if (machineTypeValue != null) {
+      map['machineType'] = machineTypeValue;
+    }
+    final managedGroupConfigsValue = managedGroupConfigs;
+    if (managedGroupConfigsValue != null) {
+      map['managedGroupConfigs'] = Input.encodeList<
+          WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig,
+          Map<String,
+              dynamic>>(managedGroupConfigsValue, (value) => value.toMap());
+    }
+    final minCpuPlatformValue = minCpuPlatform;
+    if (minCpuPlatformValue != null) {
+      map['minCpuPlatform'] = minCpuPlatformValue;
+    }
+    final numInstancesValue = numInstances;
+    if (numInstancesValue != null) {
+      map['numInstances'] = numInstancesValue;
+    }
+    final preemptibilityValue = preemptibility;
+    if (preemptibilityValue != null) {
+      map['preemptibility'] = preemptibilityValue;
+    }
+    return map;
+  }
+
+  factory WorkflowTemplatePlacementManagedClusterConfigMasterConfig.fromMap(
+      Map<String, dynamic> map) {
+    return WorkflowTemplatePlacementManagedClusterConfigMasterConfig(
+      accelerators: map['accelerators'] == null
+          ? null
+          : Input.decodeList<
+                  WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator>(
+              map['accelerators'],
+              (value) =>
+                  WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator
+                      .fromMap((value as Map).cast<String, dynamic>())),
+      diskConfig: map['diskConfig'] == null
+          ? null
+          : WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig
+              .fromMap((map['diskConfig'] as Map).cast<String, dynamic>()),
+      image: map['image'] == null ? null : map['image'] as String,
+      instanceNames: map['instanceNames'] == null
+          ? null
+          : (map['instanceNames'] as List).cast<String>(),
+      isPreemptible:
+          map['isPreemptible'] == null ? null : map['isPreemptible'] as bool,
+      machineType:
+          map['machineType'] == null ? null : map['machineType'] as String,
+      managedGroupConfigs: map['managedGroupConfigs'] == null
+          ? null
+          : Input.decodeList<
+                  WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig>(
+              map['managedGroupConfigs'],
+              (value) =>
+                  WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig
+                      .fromMap((value as Map).cast<String, dynamic>())),
+      minCpuPlatform: map['minCpuPlatform'] == null
+          ? null
+          : map['minCpuPlatform'] as String,
+      numInstances:
+          map['numInstances'] == null ? null : map['numInstances'] as int,
+      preemptibility: map['preemptibility'] == null
+          ? null
+          : map['preemptibility'] as String,
+    );
+  }
+}

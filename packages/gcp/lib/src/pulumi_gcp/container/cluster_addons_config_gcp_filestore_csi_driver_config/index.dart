@@ -1,0 +1,3 @@
+library module_container_cluster_addons_config_gcp_filestore_csi_driver_config;
+
+export 'cluster_addons_config_gcp_filestore_csi_driver_config.dart';

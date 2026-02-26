@@ -1,0 +1,3 @@
+library module_diagflow_cx_page_knowledge_connector_settings_data_store_connection;
+
+export 'cx_page_knowledge_connector_settings_data_store_connection.dart';

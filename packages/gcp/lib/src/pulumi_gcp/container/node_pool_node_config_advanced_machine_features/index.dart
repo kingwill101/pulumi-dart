@@ -1,0 +1,3 @@
+library module_container_node_pool_node_config_advanced_machine_features;
+
+export 'node_pool_node_config_advanced_machine_features.dart';

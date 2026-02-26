@@ -1,0 +1,3 @@
+library module_datacatalog_policy_tag_iam_member_condition;
+
+export 'policy_tag_iam_member_condition.dart';

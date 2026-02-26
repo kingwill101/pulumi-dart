@@ -1,0 +1,4 @@
+library module_gkebackup_restore_plan_iam_policy;
+
+export 'restore_plan_iam_policy.dart';
+export 'restore_plan_iam_policy_args.dart';

@@ -1,0 +1,3 @@
+library module_certificateauthority_ca_pool_issuance_policy_identity_constraints;
+
+export 'ca_pool_issuance_policy_identity_constraints.dart';

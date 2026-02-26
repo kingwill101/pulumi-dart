@@ -1,0 +1,3 @@
+library module_ces_app_version_snapshot_tool_data_store_tool_modality_config_rewriter_config_model_setting;
+
+export 'app_version_snapshot_tool_data_store_tool_modality_config_rewriter_config_model_setting.dart';

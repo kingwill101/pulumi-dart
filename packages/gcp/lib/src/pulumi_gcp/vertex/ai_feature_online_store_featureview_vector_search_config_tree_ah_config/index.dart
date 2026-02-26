@@ -1,0 +1,3 @@
+library module_vertex_ai_feature_online_store_featureview_vector_search_config_tree_ah_config;
+
+export 'ai_feature_online_store_featureview_vector_search_config_tree_ah_config.dart';

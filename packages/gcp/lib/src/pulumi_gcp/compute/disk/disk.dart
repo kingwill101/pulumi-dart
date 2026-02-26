@@ -1,0 +1,870 @@
+import 'package:pulumi/pulumi.dart';
+import '../disk_async_primary_disk/disk_async_primary_disk.dart';
+import '../disk_disk_encryption_key/disk_disk_encryption_key.dart';
+import '../disk_guest_os_feature/disk_guest_os_feature.dart';
+import '../disk_params/disk_params.dart';
+import '../disk_source_image_encryption_key/disk_source_image_encryption_key.dart';
+import '../disk_source_snapshot_encryption_key/disk_source_snapshot_encryption_key.dart';
+import 'disk_args.dart';
+
+/// Persistent disks are durable storage devices that function similarly to
+/// the physical disks in a desktop or a server. Compute Engine manages the
+/// hardware behind these devices to ensure data redundancy and optimize
+/// performance for you. Persistent disks are available as either standard
+/// hard disk drives (HDD) or solid-state drives (SSD).
+///
+/// Persistent disks are located independently from your virtual machine
+/// instances, so you can detach or move persistent disks to keep your data
+/// even after you delete your instances. Persistent disk performance scales
+/// automatically with size, so you can resize your existing persistent disks
+/// or add more persistent disks to an instance to meet your performance and
+/// storage space requirements.
+///
+/// Add a persistent disk to your instance when you need reliable and
+/// affordable storage with consistent performance characteristics.
+///
+///
+/// To get more information about Disk, see:
+///
+/// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/disks)
+/// * How-to Guides
+/// * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
+///
+///
+/// ## Example Usage
+///
+/// ### Disk Basic
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.compute.Disk("default", {
+/// name: "test-disk",
+/// type: "pd-ssd",
+/// zone: "us-central1-a",
+/// image: "debian-11-bullseye-v20220719",
+/// labels: {
+/// environment: "dev",
+/// },
+/// physicalBlockSizeBytes: 4096,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.compute.Disk("default",
+/// name="test-disk",
+/// type="pd-ssd",
+/// zone="us-central1-a",
+/// image="debian-11-bullseye-v20220719",
+/// labels={
+/// "environment": "dev",
+/// },
+/// physical_block_size_bytes=4096)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var @default = new Gcp.Compute.Disk("default", new()
+/// {
+/// Name = "test-disk",
+/// Type = "pd-ssd",
+/// Zone = "us-central1-a",
+/// Image = "debian-11-bullseye-v20220719",
+/// Labels =
+/// {
+/// { "environment", "dev" },
+/// },
+/// PhysicalBlockSizeBytes = 4096,
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := compute.NewDisk(ctx, "default", &compute.DiskArgs{
+/// Name:  pulumi.String("test-disk"),
+/// Type:  pulumi.String("pd-ssd"),
+/// Zone:  pulumi.String("us-central1-a"),
+/// Image: pulumi.String("debian-11-bullseye-v20220719"),
+/// Labels: pulumi.StringMap{
+/// "environment": pulumi.String("dev"),
+/// },
+/// PhysicalBlockSizeBytes: pulumi.Int(4096),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.Disk;
+/// import com.pulumi.gcp.compute.DiskArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var default_ = new Disk("default", DiskArgs.builder()
+/// .name("test-disk")
+/// .type("pd-ssd")
+/// .zone("us-central1-a")
+/// .image("debian-11-bullseye-v20220719")
+/// .labels(Map.of("environment", "dev"))
+/// .physicalBlockSizeBytes(4096)
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// default:
+/// type: gcp:compute:Disk
+/// properties:
+/// name: test-disk
+/// type: pd-ssd
+/// zone: us-central1-a
+/// image: debian-11-bullseye-v20220719
+/// labels:
+/// environment: dev
+/// physicalBlockSizeBytes: 4096
+/// ```
+/// <!--End PulumiCodeChooser -->
+/// ### Disk Async
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const primary = new gcp.compute.Disk("primary", {
+/// name: "async-test-disk",
+/// type: "pd-ssd",
+/// zone: "us-central1-a",
+/// physicalBlockSizeBytes: 4096,
+/// });
+/// const secondary = new gcp.compute.Disk("secondary", {
+/// name: "async-secondary-test-disk",
+/// type: "pd-ssd",
+/// zone: "us-east1-c",
+/// asyncPrimaryDisk: {
+/// disk: primary.id,
+/// },
+/// physicalBlockSizeBytes: 4096,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// primary = gcp.compute.Disk("primary",
+/// name="async-test-disk",
+/// type="pd-ssd",
+/// zone="us-central1-a",
+/// physical_block_size_bytes=4096)
+/// secondary = gcp.compute.Disk("secondary",
+/// name="async-secondary-test-disk",
+/// type="pd-ssd",
+/// zone="us-east1-c",
+/// async_primary_disk={
+/// "disk": primary.id,
+/// },
+/// physical_block_size_bytes=4096)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var primary = new Gcp.Compute.Disk("primary", new()
+/// {
+/// Name = "async-test-disk",
+/// Type = "pd-ssd",
+/// Zone = "us-central1-a",
+/// PhysicalBlockSizeBytes = 4096,
+/// });
+///
+/// var secondary = new Gcp.Compute.Disk("secondary", new()
+/// {
+/// Name = "async-secondary-test-disk",
+/// Type = "pd-ssd",
+/// Zone = "us-east1-c",
+/// AsyncPrimaryDisk = new Gcp.Compute.Inputs.DiskAsyncPrimaryDiskArgs
+/// {
+/// Disk = primary.Id,
+/// },
+/// PhysicalBlockSizeBytes = 4096,
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// primary, err := compute.NewDisk(ctx, "primary", &compute.DiskArgs{
+/// Name:                   pulumi.String("async-test-disk"),
+/// Type:                   pulumi.String("pd-ssd"),
+/// Zone:                   pulumi.String("us-central1-a"),
+/// PhysicalBlockSizeBytes: pulumi.Int(4096),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// _, err = compute.NewDisk(ctx, "secondary", &compute.DiskArgs{
+/// Name: pulumi.String("async-secondary-test-disk"),
+/// Type: pulumi.String("pd-ssd"),
+/// Zone: pulumi.String("us-east1-c"),
+/// AsyncPrimaryDisk: &compute.DiskAsyncPrimaryDiskArgs{
+/// Disk: primary.ID(),
+/// },
+/// PhysicalBlockSizeBytes: pulumi.Int(4096),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.Disk;
+/// import com.pulumi.gcp.compute.DiskArgs;
+/// import com.pulumi.gcp.compute.inputs.DiskAsyncPrimaryDiskArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var primary = new Disk("primary", DiskArgs.builder()
+/// .name("async-test-disk")
+/// .type("pd-ssd")
+/// .zone("us-central1-a")
+/// .physicalBlockSizeBytes(4096)
+/// .build());
+///
+/// var secondary = new Disk("secondary", DiskArgs.builder()
+/// .name("async-secondary-test-disk")
+/// .type("pd-ssd")
+/// .zone("us-east1-c")
+/// .asyncPrimaryDisk(DiskAsyncPrimaryDiskArgs.builder()
+/// .disk(primary.id())
+/// .build())
+/// .physicalBlockSizeBytes(4096)
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// primary:
+/// type: gcp:compute:Disk
+/// properties:
+/// name: async-test-disk
+/// type: pd-ssd
+/// zone: us-central1-a
+/// physicalBlockSizeBytes: 4096
+/// secondary:
+/// type: gcp:compute:Disk
+/// properties:
+/// name: async-secondary-test-disk
+/// type: pd-ssd
+/// zone: us-east1-c
+/// asyncPrimaryDisk:
+/// disk: ${primary.id}
+/// physicalBlockSizeBytes: 4096
+/// ```
+/// <!--End PulumiCodeChooser -->
+/// ### Disk Features
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.compute.Disk("default", {
+/// name: "test-disk-features",
+/// type: "pd-ssd",
+/// zone: "us-central1-a",
+/// labels: {
+/// environment: "dev",
+/// },
+/// guestOsFeatures: [
+/// {
+/// type: "SECURE_BOOT",
+/// },
+/// {
+/// type: "MULTI_IP_SUBNET",
+/// },
+/// {
+/// type: "WINDOWS",
+/// },
+/// ],
+/// licenses: ["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
+/// physicalBlockSizeBytes: 4096,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.compute.Disk("default",
+/// name="test-disk-features",
+/// type="pd-ssd",
+/// zone="us-central1-a",
+/// labels={
+/// "environment": "dev",
+/// },
+/// guest_os_features=[
+/// {
+/// "type": "SECURE_BOOT",
+/// },
+/// {
+/// "type": "MULTI_IP_SUBNET",
+/// },
+/// {
+/// "type": "WINDOWS",
+/// },
+/// ],
+/// licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
+/// physical_block_size_bytes=4096)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var @default = new Gcp.Compute.Disk("default", new()
+/// {
+/// Name = "test-disk-features",
+/// Type = "pd-ssd",
+/// Zone = "us-central1-a",
+/// Labels =
+/// {
+/// { "environment", "dev" },
+/// },
+/// GuestOsFeatures = new[]
+/// {
+/// new Gcp.Compute.Inputs.DiskGuestOsFeatureArgs
+/// {
+/// Type = "SECURE_BOOT",
+/// },
+/// new Gcp.Compute.Inputs.DiskGuestOsFeatureArgs
+/// {
+/// Type = "MULTI_IP_SUBNET",
+/// },
+/// new Gcp.Compute.Inputs.DiskGuestOsFeatureArgs
+/// {
+/// Type = "WINDOWS",
+/// },
+/// },
+/// Licenses = new[]
+/// {
+/// "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core",
+/// },
+/// PhysicalBlockSizeBytes = 4096,
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := compute.NewDisk(ctx, "default", &compute.DiskArgs{
+/// Name: pulumi.String("test-disk-features"),
+/// Type: pulumi.String("pd-ssd"),
+/// Zone: pulumi.String("us-central1-a"),
+/// Labels: pulumi.StringMap{
+/// "environment": pulumi.String("dev"),
+/// },
+/// GuestOsFeatures: compute.DiskGuestOsFeatureArray{
+/// &compute.DiskGuestOsFeatureArgs{
+/// Type: pulumi.String("SECURE_BOOT"),
+/// },
+/// &compute.DiskGuestOsFeatureArgs{
+/// Type: pulumi.String("MULTI_IP_SUBNET"),
+/// },
+/// &compute.DiskGuestOsFeatureArgs{
+/// Type: pulumi.String("WINDOWS"),
+/// },
+/// },
+/// Licenses: pulumi.StringArray{
+/// pulumi.String("https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"),
+/// },
+/// PhysicalBlockSizeBytes: pulumi.Int(4096),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.Disk;
+/// import com.pulumi.gcp.compute.DiskArgs;
+/// import com.pulumi.gcp.compute.inputs.DiskGuestOsFeatureArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var default_ = new Disk("default", DiskArgs.builder()
+/// .name("test-disk-features")
+/// .type("pd-ssd")
+/// .zone("us-central1-a")
+/// .labels(Map.of("environment", "dev"))
+/// .guestOsFeatures(
+/// DiskGuestOsFeatureArgs.builder()
+/// .type("SECURE_BOOT")
+/// .build(),
+/// DiskGuestOsFeatureArgs.builder()
+/// .type("MULTI_IP_SUBNET")
+/// .build(),
+/// DiskGuestOsFeatureArgs.builder()
+/// .type("WINDOWS")
+/// .build())
+/// .licenses("https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core")
+/// .physicalBlockSizeBytes(4096)
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// default:
+/// type: gcp:compute:Disk
+/// properties:
+/// name: test-disk-features
+/// type: pd-ssd
+/// zone: us-central1-a
+/// labels:
+/// environment: dev
+/// guestOsFeatures:
+/// - type: SECURE_BOOT
+/// - type: MULTI_IP_SUBNET
+/// - type: WINDOWS
+/// licenses:
+/// - https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core
+/// physicalBlockSizeBytes: 4096
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Disk can be imported using any of these accepted formats:
+///
+/// * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
+///
+/// * `{{project}}/{{zone}}/{{name}}`
+///
+/// * `{{zone}}/{{name}}`
+///
+/// * `{{name}}`
+///
+/// When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:compute/disk:Disk default {{name}}
+/// ```
+class Disk extends CustomResource {
+  /// The access mode of the disk.
+  /// For example:
+  /// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
+  /// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
+  /// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
+  /// The AccessMode is only valid for Hyperdisk disk types.
+  late final Output<String> accessMode;
+
+  /// The architecture of the disk. Values include `X86_64`, `ARM64`.
+  late final Output<String?> architecture;
+
+  /// A nested object resource.
+  /// Structure is documented below.
+  late final Output<DiskAsyncPrimaryDisk?> asyncPrimaryDisk;
+
+  /// If set to true, a snapshot of the disk will be created before it is destroyed.
+  /// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
+  /// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
+  late final Output<bool?> createSnapshotBeforeDestroy;
+
+  /// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+  late final Output<String?> createSnapshotBeforeDestroyPrefix;
+
+  /// Creation timestamp in RFC3339 text format.
+  late final Output<String> creationTimestamp;
+
+  /// An optional description of this resource. Provide this property when
+  /// you create the resource.
+  late final Output<String?> description;
+
+  /// Encrypts the disk using a customer-supplied encryption key.
+  /// After you encrypt a disk with a customer-supplied key, you must
+  /// provide the same key if you use the disk later (e.g. to create a disk
+  /// snapshot or an image, or to attach the disk to a virtual machine).
+  /// Customer-supplied encryption keys do not protect access to metadata of
+  /// the disk.
+  /// If you do not provide an encryption key when creating the disk, then
+  /// the disk will be encrypted using an automatically generated key and
+  /// you do not need to provide a key to use the disk later.
+  /// Structure is documented below.
+  late final Output<DiskDiskEncryptionKey?> diskEncryptionKey;
+
+  /// The unique identifier for the resource. This identifier is defined by the server.
+  late final Output<String> diskId;
+
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  late final Output<Map<String, String>> effectiveLabels;
+
+  /// Whether this disk is using confidential compute mode.
+  /// Note: Only supported on hyperdisk skus,<span pulumi-lang-nodejs=" diskEncryptionKey " pulumi-lang-dotnet=" DiskEncryptionKey " pulumi-lang-go=" diskEncryptionKey " pulumi-lang-python=" disk_encryption_key " pulumi-lang-yaml=" diskEncryptionKey " pulumi-lang-java=" diskEncryptionKey "> disk_encryption_key </span>is required when setting to true
+  late final Output<bool> enableConfidentialCompute;
+
+  /// A list of features to enable on the guest operating system.
+  /// Applicable only for bootable disks.
+  /// Structure is documented below.
+  late final Output<List<DiskGuestOsFeature>> guestOsFeatures;
+
+  /// The image from which to initialize this disk. This can be
+  /// one of: the image's <span pulumi-lang-nodejs="`selfLink`" pulumi-lang-dotnet="`SelfLink`" pulumi-lang-go="`selfLink`" pulumi-lang-python="`self_link`" pulumi-lang-yaml="`selfLink`" pulumi-lang-java="`selfLink`">`self_link`</span>, `projects/{project}/global/images/{image}`,
+  /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+  /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+  /// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+  /// images names must include the family name. If they don't, use the
+  /// <span pulumi-lang-nodejs="[gcp.compute.Image " pulumi-lang-dotnet="[gcp.compute.Image " pulumi-lang-go="[compute.Image " pulumi-lang-python="[compute.Image " pulumi-lang-yaml="[gcp.compute.Image " pulumi-lang-java="[gcp.compute.Image ">[gcp.compute.Image </span>data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+  /// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+  /// These images can be referred by family name here.
+  late final Output<String?> image;
+
+  /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+  ///
+  /// > **Warning:** <span pulumi-lang-nodejs="`interface`" pulumi-lang-dotnet="`Interface`" pulumi-lang-go="`interface`" pulumi-lang-python="`interface`" pulumi-lang-yaml="`interface`" pulumi-lang-java="`interface`">`interface`</span> is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+  late final Output<String?> interface;
+
+  /// The fingerprint used for optimistic locking of this resource.  Used
+  /// internally during updates.
+  late final Output<String> labelFingerprint;
+
+  /// Labels to apply to this disk.  A list of key->value pairs.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  late final Output<Map<String, String>?> labels;
+
+  /// Last attach timestamp in RFC3339 text format.
+  late final Output<String> lastAttachTimestamp;
+
+  /// Last detach timestamp in RFC3339 text format.
+  late final Output<String> lastDetachTimestamp;
+
+  /// Any applicable license URI.
+  late final Output<List<String>> licenses;
+
+  /// Indicates whether or not the disk can be read/write attached to more than one instance.
+  late final Output<bool?> multiWriter;
+
+  /// Name of the resource. Provided by the client when the resource is
+  /// created. The name must be 1-63 characters long, and comply with
+  /// RFC1035. Specifically, the name must be 1-63 characters long and match
+  /// the regular expression `a-z?` which means the
+  /// first character must be a lowercase letter, and all following
+  /// characters must be a dash, lowercase letter, or digit, except the last
+  /// character, which cannot be a dash.
+  late final Output<String> name;
+
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  late final Output<DiskParams?> params;
+
+  /// Physical block size of the persistent disk, in bytes. If not present
+  /// in a request, a default value is used. Currently supported sizes
+  /// are 4096 and 16384, other sizes may be added in the future.
+  /// If an unsupported value is requested, the error message will list
+  /// the supported values for the caller's project.
+  late final Output<int> physicalBlockSizeBytes;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  late final Output<String> project;
+
+  /// Indicates how many IOPS must be provisioned for the disk.
+  /// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+  /// allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+  late final Output<int> provisionedIops;
+
+  /// Indicates how much Throughput must be provisioned for the disk.
+  /// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+  /// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+  late final Output<int> provisionedThroughput;
+
+  /// The combination of labels configured directly on the resource
+  /// and default labels configured on the provider.
+  late final Output<Map<String, String>> pulumiLabels;
+
+  /// Resource policies applied to this disk for automatic snapshot creations.
+  /// ~>**NOTE** This value does not support updating the
+  /// resource policy, as resource policies can not be updated more than
+  /// one at a time. Use
+  /// <span pulumi-lang-nodejs="`gcp.compute.DiskResourcePolicyAttachment`" pulumi-lang-dotnet="`gcp.compute.DiskResourcePolicyAttachment`" pulumi-lang-go="`compute.DiskResourcePolicyAttachment`" pulumi-lang-python="`compute.DiskResourcePolicyAttachment`" pulumi-lang-yaml="`gcp.compute.DiskResourcePolicyAttachment`" pulumi-lang-java="`gcp.compute.DiskResourcePolicyAttachment`">`gcp.compute.DiskResourcePolicyAttachment`</span>
+  /// to allow for updating the resource policy attached to the disk.
+  late final Output<List<String>> resourcePolicies;
+
+  /// The URI of the created resource.
+  late final Output<String> selfLink;
+
+  /// Size of the persistent disk, specified in GB. You can specify this
+  /// field when creating a persistent disk using the <span pulumi-lang-nodejs="`image`" pulumi-lang-dotnet="`Image`" pulumi-lang-go="`image`" pulumi-lang-python="`image`" pulumi-lang-yaml="`image`" pulumi-lang-java="`image`">`image`</span> or
+  /// <span pulumi-lang-nodejs="`snapshot`" pulumi-lang-dotnet="`Snapshot`" pulumi-lang-go="`snapshot`" pulumi-lang-python="`snapshot`" pulumi-lang-yaml="`snapshot`" pulumi-lang-java="`snapshot`">`snapshot`</span> parameter, or specify it alone to create an empty
+  /// persistent disk.
+  /// If you specify this field along with <span pulumi-lang-nodejs="`image`" pulumi-lang-dotnet="`Image`" pulumi-lang-go="`image`" pulumi-lang-python="`image`" pulumi-lang-yaml="`image`" pulumi-lang-java="`image`">`image`</span> or <span pulumi-lang-nodejs="`snapshot`" pulumi-lang-dotnet="`Snapshot`" pulumi-lang-go="`snapshot`" pulumi-lang-python="`snapshot`" pulumi-lang-yaml="`snapshot`" pulumi-lang-java="`snapshot`">`snapshot`</span>,
+  /// the value must not be less than the size of the image
+  /// or the size of the snapshot.
+  /// ~>**NOTE** If you change the size, the provider updates the disk size
+  /// if upsizing is detected but recreates the disk if downsizing is requested.
+  /// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+  /// and recreating.
+  late final Output<int> size;
+
+  /// The source snapshot used to create this disk. You can provide this as
+  /// a partial or full URL to the resource. If the snapshot is in another
+  /// project than this disk, you must supply a full URL. For example, the
+  /// following are valid values:
+  /// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+  /// * `projects/project/global/snapshots/snapshot`
+  /// * `global/snapshots/snapshot`
+  late final Output<String?> snapshot;
+
+  /// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+  /// For example, the following are valid values:
+  /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+  /// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+  /// * projects/{project}/zones/{zone}/disks/{disk}
+  /// * projects/{project}/regions/{region}/disks/{disk}
+  /// * zones/{zone}/disks/{disk}
+  /// * regions/{region}/disks/{disk}
+  late final Output<String?> sourceDisk;
+
+  /// The ID value of the disk used to create this image. This value may
+  /// be used to determine whether the image was taken from the current
+  /// or a previous instance of a given disk name.
+  late final Output<String> sourceDiskId;
+
+  /// The customer-supplied encryption key of the source image. Required if
+  /// the source image is protected by a customer-supplied encryption key.
+  /// Structure is documented below.
+  late final Output<DiskSourceImageEncryptionKey?> sourceImageEncryptionKey;
+
+  /// The ID value of the image used to create this disk. This value
+  /// identifies the exact image that was used to create this persistent
+  /// disk. For example, if you created the persistent disk from an image
+  /// that was later deleted and recreated under the same name, the source
+  /// image ID would identify the exact version of the image that was used.
+  late final Output<String> sourceImageId;
+
+  /// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
+  /// For example, the following are valid values:
+  /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
+  /// * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
+  /// * `zones/zone/instantSnapshots/instantSnapshot`
+  late final Output<String?> sourceInstantSnapshot;
+
+  /// The unique ID of the instant snapshot used to create this disk. This value identifies
+  /// the exact instant snapshot that was used to create this persistent disk.
+  /// For example, if you created the persistent disk from an instant snapshot that was later
+  /// deleted and recreated under the same name, the source instant snapshot ID would identify
+  /// the exact version of the instant snapshot that was used.
+  late final Output<String> sourceInstantSnapshotId;
+
+  /// The customer-supplied encryption key of the source snapshot. Required
+  /// if the source snapshot is protected by a customer-supplied encryption
+  /// key.
+  /// Structure is documented below.
+  late final Output<DiskSourceSnapshotEncryptionKey?>
+      sourceSnapshotEncryptionKey;
+
+  /// The unique ID of the snapshot used to create this disk. This value
+  /// identifies the exact snapshot that was used to create this persistent
+  /// disk. For example, if you created the persistent disk from a snapshot
+  /// that was later deleted and recreated under the same name, the source
+  /// snapshot ID would identify the exact version of the snapshot that was
+  /// used.
+  late final Output<String> sourceSnapshotId;
+
+  /// The full Google Cloud Storage URI where the disk image is stored.
+  /// This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
+  /// Valid URIs may start with gs:// or https://storage.googleapis.com/.
+  /// This flag is not optimized for creating multiple disks from a source storage object.
+  /// To create many disks from a source storage object, use gcloud compute images import instead.
+  late final Output<String?> sourceStorageObject;
+
+  /// The URL or the name of the storage pool in which the new disk is created.
+  /// For example:
+  /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+  /// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+  /// * /zones/{zone}/storagePools/{storagePool}
+  /// * /{storagePool}
+  late final Output<String?> storagePool;
+
+  /// URL of the disk type resource describing which disk type to use to
+  /// create the disk. Provide this when creating the disk.
+  late final Output<String?> type;
+
+  /// Links to the users of the disk (attached instances) in form:
+  /// project/zones/zone/instances/instance
+  late final Output<List<String>> users;
+
+  /// A reference to the zone where the disk resides.
+  late final Output<String> zone;
+
+  Disk(
+    String name, {
+    DiskArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:compute/disk:Disk',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.accessMode = Output.createUnknown<String>();
+    this.architecture = Output.createUnknown<String?>();
+    this.asyncPrimaryDisk = Output.createUnknown<DiskAsyncPrimaryDisk?>();
+    this.createSnapshotBeforeDestroy = Output.createUnknown<bool?>();
+    this.createSnapshotBeforeDestroyPrefix = Output.createUnknown<String?>();
+    this.creationTimestamp = Output.createUnknown<String>();
+    this.description = Output.createUnknown<String?>();
+    this.diskEncryptionKey = Output.createUnknown<DiskDiskEncryptionKey?>();
+    this.diskId = Output.createUnknown<String>();
+    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.enableConfidentialCompute = Output.createUnknown<bool>();
+    this.guestOsFeatures = Output.createUnknown<List<DiskGuestOsFeature>>();
+    this.image = Output.createUnknown<String?>();
+    this.interface = Output.createUnknown<String?>();
+    this.labelFingerprint = Output.createUnknown<String>();
+    this.labels = Output.createUnknown<Map<String, String>?>();
+    this.lastAttachTimestamp = Output.createUnknown<String>();
+    this.lastDetachTimestamp = Output.createUnknown<String>();
+    this.licenses = Output.createUnknown<List<String>>();
+    this.multiWriter = Output.createUnknown<bool?>();
+    this.name = Output.createUnknown<String>();
+    this.params = Output.createUnknown<DiskParams?>();
+    this.physicalBlockSizeBytes = Output.createUnknown<int>();
+    this.project = Output.createUnknown<String>();
+    this.provisionedIops = Output.createUnknown<int>();
+    this.provisionedThroughput = Output.createUnknown<int>();
+    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+    this.resourcePolicies = Output.createUnknown<List<String>>();
+    this.selfLink = Output.createUnknown<String>();
+    this.size = Output.createUnknown<int>();
+    this.snapshot = Output.createUnknown<String?>();
+    this.sourceDisk = Output.createUnknown<String?>();
+    this.sourceDiskId = Output.createUnknown<String>();
+    this.sourceImageEncryptionKey =
+        Output.createUnknown<DiskSourceImageEncryptionKey?>();
+    this.sourceImageId = Output.createUnknown<String>();
+    this.sourceInstantSnapshot = Output.createUnknown<String?>();
+    this.sourceInstantSnapshotId = Output.createUnknown<String>();
+    this.sourceSnapshotEncryptionKey =
+        Output.createUnknown<DiskSourceSnapshotEncryptionKey?>();
+    this.sourceSnapshotId = Output.createUnknown<String>();
+    this.sourceStorageObject = Output.createUnknown<String?>();
+    this.storagePool = Output.createUnknown<String?>();
+    this.type = Output.createUnknown<String?>();
+    this.users = Output.createUnknown<List<String>>();
+    this.zone = Output.createUnknown<String>();
+  }
+}

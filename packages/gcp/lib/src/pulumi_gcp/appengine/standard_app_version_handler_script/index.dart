@@ -1,0 +1,3 @@
+library module_appengine_standard_app_version_handler_script;
+
+export 'standard_app_version_handler_script.dart';

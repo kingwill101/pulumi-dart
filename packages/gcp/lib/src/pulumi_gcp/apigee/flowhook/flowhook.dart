@@ -1,0 +1,66 @@
+import 'package:pulumi/pulumi.dart';
+import 'flowhook_args.dart';
+
+/// Represents a sharedflow attachment to a flowhook point.
+///
+///
+/// To get more information about Flowhook, see:
+///
+/// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.flowhooks#FlowHook)
+/// * How-to Guides
+/// * [organizations.environments.flowhooks](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.flowhooks#FlowHook)
+///
+/// ## Import
+///
+/// Flowhook can be imported using any of these accepted formats:
+///
+/// * `organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}`
+///
+/// * `{{org_id}}/{{environment}}/{{flow_hook_point}}`
+///
+/// When using the `pulumi import` command, Flowhook can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:apigee/flowhook:Flowhook default organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:apigee/flowhook:Flowhook default {{org_id}}/{{environment}}/{{flow_hook_point}}
+/// ```
+class Flowhook extends CustomResource {
+  /// Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
+  late final Output<bool?> continueOnError;
+
+  /// Description of the flow hook.
+  late final Output<String?> description;
+
+  /// The resource ID of the environment.
+  late final Output<String> environment;
+
+  /// Where in the API call flow the flow hook is invoked. Must be one of PreProxyFlowHook, PostProxyFlowHook, PreTargetFlowHook, or PostTargetFlowHook.
+  late final Output<String> flowHookPoint;
+
+  /// The Apigee Organization associated with the environment
+  late final Output<String> orgId;
+
+  /// Id of the Sharedflow attaching to a flowhook point.
+  late final Output<String> sharedflow;
+
+  Flowhook(
+    String name, {
+    FlowhookArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:apigee/flowhook:Flowhook',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.continueOnError = Output.createUnknown<bool?>();
+    this.description = Output.createUnknown<String?>();
+    this.environment = Output.createUnknown<String>();
+    this.flowHookPoint = Output.createUnknown<String>();
+    this.orgId = Output.createUnknown<String>();
+    this.sharedflow = Output.createUnknown<String>();
+  }
+}

@@ -1,0 +1,3 @@
+library module_compute_instance_template_disk_disk_encryption_key;
+
+export 'instance_template_disk_disk_encryption_key.dart';

@@ -1,0 +1,4 @@
+library module_iap_tunnel_instance_iampolicy;
+
+export 'tunnel_instance_iampolicy.dart';
+export 'tunnel_instance_iampolicy_args.dart';

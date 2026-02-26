@@ -1,0 +1,3 @@
+library module_dataplex_datascan_data_quality_spec_rule_statistic_range_expectation;
+
+export 'datascan_data_quality_spec_rule_statistic_range_expectation.dart';

@@ -1,0 +1,3 @@
+library module_folder_organization_policy_list_policy_allow;
+
+export 'organization_policy_list_policy_allow.dart';

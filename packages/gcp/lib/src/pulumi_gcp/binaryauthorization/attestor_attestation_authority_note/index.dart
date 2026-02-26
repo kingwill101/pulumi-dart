@@ -1,0 +1,3 @@
+library module_binaryauthorization_attestor_attestation_authority_note;
+
+export 'attestor_attestation_authority_note.dart';

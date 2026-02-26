@@ -1,0 +1,3 @@
+library module_compute_instance_group_manager_standby_policy;
+
+export 'instance_group_manager_standby_policy.dart';

@@ -1,0 +1,3 @@
+library module_certificatemanager_trust_config_trust_store_intermediate_ca;
+
+export 'trust_config_trust_store_intermediate_ca.dart';

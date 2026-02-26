@@ -1,0 +1,3 @@
+library module_compute_region_backend_service_dynamic_forwarding;
+
+export 'region_backend_service_dynamic_forwarding.dart';

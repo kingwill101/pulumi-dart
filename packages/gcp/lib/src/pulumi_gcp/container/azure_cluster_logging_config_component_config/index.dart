@@ -1,0 +1,3 @@
+library module_container_azure_cluster_logging_config_component_config;
+
+export 'azure_cluster_logging_config_component_config.dart';

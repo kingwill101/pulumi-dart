@@ -1,0 +1,3 @@
+library module_cloudrunv2_job_template_template_volume;
+
+export 'job_template_template_volume.dart';

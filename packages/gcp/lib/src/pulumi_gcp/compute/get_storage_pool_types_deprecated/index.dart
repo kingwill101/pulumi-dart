@@ -1,0 +1,3 @@
+library module_compute_get_storage_pool_types_deprecated;
+
+export 'get_storage_pool_types_deprecated.dart';

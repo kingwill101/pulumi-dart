@@ -1,0 +1,3 @@
+library module_cloudbuild_get_trigger_git_file_source;
+
+export 'get_trigger_git_file_source.dart';

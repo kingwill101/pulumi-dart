@@ -1,0 +1,3 @@
+library module_identityplatform_config_sign_in_hash_config;
+
+export 'config_sign_in_hash_config.dart';

@@ -1,0 +1,3 @@
+library module_datastream_connection_profile_postgresql_profile;
+
+export 'connection_profile_postgresql_profile.dart';

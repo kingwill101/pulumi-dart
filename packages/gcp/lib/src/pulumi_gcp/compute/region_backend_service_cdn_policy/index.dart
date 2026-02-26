@@ -1,0 +1,3 @@
+library module_compute_region_backend_service_cdn_policy;
+
+export 'region_backend_service_cdn_policy.dart';

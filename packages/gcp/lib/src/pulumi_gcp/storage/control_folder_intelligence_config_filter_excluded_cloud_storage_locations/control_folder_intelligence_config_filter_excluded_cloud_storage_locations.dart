@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations {
+  /// List of locations.
+  final List<String> locations;
+
+  ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations({
+    required this.locations,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['locations'] = locations;
+    return map;
+  }
+
+  factory ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations.fromMap(
+      Map<String, dynamic> map) {
+    return ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations(
+      locations: (map['locations'] as List).cast<String>(),
+    );
+  }
+}

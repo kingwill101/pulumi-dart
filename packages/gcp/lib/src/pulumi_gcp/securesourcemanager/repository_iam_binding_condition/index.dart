@@ -1,0 +1,3 @@
+library module_securesourcemanager_repository_iam_binding_condition;
+
+export 'repository_iam_binding_condition3.dart';

@@ -1,0 +1,3 @@
+library module_artifactregistry_repository_remote_repository_config_apt_repository;
+
+export 'repository_remote_repository_config_apt_repository.dart';

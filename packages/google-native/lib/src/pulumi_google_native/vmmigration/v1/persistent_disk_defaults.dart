@@ -1,0 +1,82 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'encryption2.dart';
+import 'persistent_disk_defaults_disk_type.dart';
+import 'vm_attachment_details.dart';
+
+/// Details for creation of a Persistent Disk.
+class PersistentDiskDefaults {
+  /// A map of labels to associate with the Persistent Disk.
+  final Map<String, String>? additionalLabels;
+
+  /// Optional. The name of the Persistent Disk to create.
+  final String? diskName;
+
+  /// The disk type to use.
+  final PersistentDiskDefaultsDiskType? diskType;
+
+  /// Optional. The encryption to apply to the disk.
+  final Encryption2? encryption;
+
+  /// The ordinal number of the source VM disk.
+  final int sourceDiskNumber;
+
+  /// Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target VM.
+  final VmAttachmentDetails? vmAttachmentDetails;
+
+  PersistentDiskDefaults({
+    this.additionalLabels,
+    this.diskName,
+    this.diskType,
+    this.encryption,
+    required this.sourceDiskNumber,
+    this.vmAttachmentDetails,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final additionalLabelsValue = additionalLabels;
+    if (additionalLabelsValue != null) {
+      map['additionalLabels'] = additionalLabelsValue;
+    }
+    final diskNameValue = diskName;
+    if (diskNameValue != null) {
+      map['diskName'] = diskNameValue;
+    }
+    final diskTypeValue = diskType;
+    if (diskTypeValue != null) {
+      map['diskType'] = diskTypeValue.value;
+    }
+    final encryptionValue = encryption;
+    if (encryptionValue != null) {
+      map['encryption'] = encryptionValue.toMap();
+    }
+    map['sourceDiskNumber'] = sourceDiskNumber;
+    final vmAttachmentDetailsValue = vmAttachmentDetails;
+    if (vmAttachmentDetailsValue != null) {
+      map['vmAttachmentDetails'] = vmAttachmentDetailsValue.toMap();
+    }
+    return map;
+  }
+
+  factory PersistentDiskDefaults.fromMap(Map<String, dynamic> map) {
+    return PersistentDiskDefaults(
+      additionalLabels: map['additionalLabels'] == null
+          ? null
+          : (map['additionalLabels'] as Map).cast<String, String>(),
+      diskName: map['diskName'] == null ? null : map['diskName'] as String,
+      diskType: map['diskType'] == null
+          ? null
+          : PersistentDiskDefaultsDiskType.fromValue(map['diskType'] as String),
+      encryption: map['encryption'] == null
+          ? null
+          : Encryption2.fromMap(
+              (map['encryption'] as Map).cast<String, dynamic>()),
+      sourceDiskNumber: map['sourceDiskNumber'] as int,
+      vmAttachmentDetails: map['vmAttachmentDetails'] == null
+          ? null
+          : VmAttachmentDetails.fromMap(
+              (map['vmAttachmentDetails'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

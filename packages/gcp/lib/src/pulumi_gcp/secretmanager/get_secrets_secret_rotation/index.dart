@@ -1,0 +1,3 @@
+library module_secretmanager_get_secrets_secret_rotation;
+
+export 'get_secrets_secret_rotation.dart';

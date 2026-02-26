@@ -1,0 +1,57 @@
+import 'package:pulumi/pulumi.dart';
+import 'feature_online_store_args.dart';
+import 'google_cloud_aiplatform_v1_feature_online_store_bigtable_response.dart';
+
+/// Creates a new FeatureOnlineStore in a given project and location.
+/// Auto-naming is currently not supported for this resource.
+class FeatureOnlineStore extends CustomResource {
+  /// Contains settings for the Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
+  late final Output<GoogleCloudAiplatformV1FeatureOnlineStoreBigtableResponse>
+      bigtable;
+
+  /// Timestamp when this FeatureOnlineStore was created.
+  late final Output<String> createTime;
+
+  /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+  late final Output<String> etag;
+
+  /// Required. The ID to use for this FeatureOnlineStore, which will become the final component of the FeatureOnlineStore's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location.
+  late final Output<String> featureOnlineStoreId;
+
+  /// Optional. The labels with user-defined metadata to organize your FeatureOnlineStore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+  late final Output<Map<String, String>> labels;
+  late final Output<String> location;
+
+  /// Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+  late final Output<String> name;
+  late final Output<String> project;
+
+  /// State of the featureOnlineStore.
+  late final Output<String> state;
+
+  /// Timestamp when this FeatureOnlineStore was last updated.
+  late final Output<String> updateTime;
+
+  FeatureOnlineStore(
+    String name, {
+    FeatureOnlineStoreArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:aiplatform/v1:FeatureOnlineStore',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.bigtable = Output.createUnknown<
+        GoogleCloudAiplatformV1FeatureOnlineStoreBigtableResponse>();
+    this.createTime = Output.createUnknown<String>();
+    this.etag = Output.createUnknown<String>();
+    this.featureOnlineStoreId = Output.createUnknown<String>();
+    this.labels = Output.createUnknown<Map<String, String>>();
+    this.location = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.state = Output.createUnknown<String>();
+    this.updateTime = Output.createUnknown<String>();
+  }
+}

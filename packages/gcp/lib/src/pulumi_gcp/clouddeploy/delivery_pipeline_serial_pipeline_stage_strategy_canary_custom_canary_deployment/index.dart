@@ -1,0 +1,3 @@
+library module_clouddeploy_delivery_pipeline_serial_pipeline_stage_strategy_canary_custom_canary_deployment;
+
+export 'delivery_pipeline_serial_pipeline_stage_strategy_canary_custom_canary_deployment.dart';

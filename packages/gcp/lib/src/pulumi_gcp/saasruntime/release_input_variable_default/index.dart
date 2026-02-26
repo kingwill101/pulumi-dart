@@ -1,0 +1,3 @@
+library module_saasruntime_release_input_variable_default;
+
+export 'release_input_variable_default.dart';

@@ -1,0 +1,47 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../patch_deployment_patch_config_post_step_linux_exec_step_config/patch_deployment_patch_config_post_step_linux_exec_step_config.dart';
+import '../patch_deployment_patch_config_post_step_windows_exec_step_config/patch_deployment_patch_config_post_step_windows_exec_step_config.dart';
+
+class PatchDeploymentPatchConfigPostStep {
+  /// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+  /// Structure is documented below.
+  final PatchDeploymentPatchConfigPostStepLinuxExecStepConfig?
+      linuxExecStepConfig;
+
+  /// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+  /// Structure is documented below.
+  final PatchDeploymentPatchConfigPostStepWindowsExecStepConfig?
+      windowsExecStepConfig;
+
+  PatchDeploymentPatchConfigPostStep({
+    this.linuxExecStepConfig,
+    this.windowsExecStepConfig,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final linuxExecStepConfigValue = linuxExecStepConfig;
+    if (linuxExecStepConfigValue != null) {
+      map['linuxExecStepConfig'] = linuxExecStepConfigValue.toMap();
+    }
+    final windowsExecStepConfigValue = windowsExecStepConfig;
+    if (windowsExecStepConfigValue != null) {
+      map['windowsExecStepConfig'] = windowsExecStepConfigValue.toMap();
+    }
+    return map;
+  }
+
+  factory PatchDeploymentPatchConfigPostStep.fromMap(Map<String, dynamic> map) {
+    return PatchDeploymentPatchConfigPostStep(
+      linuxExecStepConfig: map['linuxExecStepConfig'] == null
+          ? null
+          : PatchDeploymentPatchConfigPostStepLinuxExecStepConfig.fromMap(
+              (map['linuxExecStepConfig'] as Map).cast<String, dynamic>()),
+      windowsExecStepConfig: map['windowsExecStepConfig'] == null
+          ? null
+          : PatchDeploymentPatchConfigPostStepWindowsExecStepConfig.fromMap(
+              (map['windowsExecStepConfig'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

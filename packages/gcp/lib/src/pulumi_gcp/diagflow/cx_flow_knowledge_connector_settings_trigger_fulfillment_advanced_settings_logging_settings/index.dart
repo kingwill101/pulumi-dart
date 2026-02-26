@@ -1,0 +1,3 @@
+library module_diagflow_cx_flow_knowledge_connector_settings_trigger_fulfillment_advanced_settings_logging_settings;
+
+export 'cx_flow_knowledge_connector_settings_trigger_fulfillment_advanced_settings_logging_settings.dart';

@@ -1,0 +1,3 @@
+library module_compute_instance_from_machine_image_scheduling_local_ssd_recovery_timeout;
+
+export 'instance_from_machine_image_scheduling_local_ssd_recovery_timeout.dart';

@@ -1,0 +1,3 @@
+library module_diagflow_cx_page_entry_fulfillment_message_text;
+
+export 'cx_page_entry_fulfillment_message_text.dart';

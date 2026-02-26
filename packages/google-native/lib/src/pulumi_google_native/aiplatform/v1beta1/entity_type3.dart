@@ -1,0 +1,63 @@
+import 'package:pulumi/pulumi.dart';
+import 'entity_type_args2.dart';
+import 'google_cloud_aiplatform_v1beta1_featurestore_monitoring_config_response.dart';
+
+/// Creates a new EntityType in a given Featurestore.
+class EntityType3 extends CustomResource {
+  /// Timestamp when this EntityType was created.
+  late final Output<String> createTime;
+
+  /// Optional. Description of the EntityType.
+  late final Output<String> description;
+
+  /// Required. The ID to use for the EntityType, which will become the final component of the EntityType's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within a featurestore.
+  late final Output<String> entityTypeId;
+
+  /// Optional. Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+  late final Output<String> etag;
+  late final Output<String> featurestoreId;
+
+  /// Optional. The labels with user-defined metadata to organize your EntityTypes. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one EntityType (System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+  late final Output<Map<String, String>> labels;
+  late final Output<String> location;
+
+  /// Optional. The default monitoring configuration for all Features with value type (Feature.ValueType) BOOL, STRING, DOUBLE or INT64 under this EntityType. If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
+  late final Output<
+          GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponse>
+      monitoringConfig;
+
+  /// Immutable. Name of the EntityType. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}` The last part entity_type is assigned by the client. The entity_type can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z and underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given a featurestore.
+  late final Output<String> name;
+
+  /// Optional. Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than `offline_storage_ttl_days` since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+  late final Output<int> offlineStorageTtlDays;
+  late final Output<String> project;
+
+  /// Timestamp when this EntityType was most recently updated.
+  late final Output<String> updateTime;
+
+  EntityType3(
+    String name, {
+    EntityTypeArgs2? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:aiplatform/v1beta1:EntityType',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.createTime = Output.createUnknown<String>();
+    this.description = Output.createUnknown<String>();
+    this.entityTypeId = Output.createUnknown<String>();
+    this.etag = Output.createUnknown<String>();
+    this.featurestoreId = Output.createUnknown<String>();
+    this.labels = Output.createUnknown<Map<String, String>>();
+    this.location = Output.createUnknown<String>();
+    this.monitoringConfig = Output.createUnknown<
+        GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponse>();
+    this.name = Output.createUnknown<String>();
+    this.offlineStorageTtlDays = Output.createUnknown<int>();
+    this.project = Output.createUnknown<String>();
+    this.updateTime = Output.createUnknown<String>();
+  }
+}

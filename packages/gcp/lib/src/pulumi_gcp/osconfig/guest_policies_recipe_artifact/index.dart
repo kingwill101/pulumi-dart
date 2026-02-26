@@ -1,0 +1,3 @@
+library module_osconfig_guest_policies_recipe_artifact;
+
+export 'guest_policies_recipe_artifact.dart';

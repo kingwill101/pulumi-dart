@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import '../bare_metal_admin_cluster_security_config_authorization/bare_metal_admin_cluster_security_config_authorization.dart';
+
+class BareMetalAdminClusterSecurityConfig {
+  /// Configures user access to the Bare Metal User cluster.
+  /// Structure is documented below.
+  final BareMetalAdminClusterSecurityConfigAuthorization? authorization;
+
+  BareMetalAdminClusterSecurityConfig({
+    this.authorization,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final authorizationValue = authorization;
+    if (authorizationValue != null) {
+      map['authorization'] = authorizationValue.toMap();
+    }
+    return map;
+  }
+
+  factory BareMetalAdminClusterSecurityConfig.fromMap(
+      Map<String, dynamic> map) {
+    return BareMetalAdminClusterSecurityConfig(
+      authorization: map['authorization'] == null
+          ? null
+          : BareMetalAdminClusterSecurityConfigAuthorization.fromMap(
+              (map['authorization'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

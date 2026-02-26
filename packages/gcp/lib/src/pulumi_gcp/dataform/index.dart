@@ -1,0 +1,21 @@
+library module_dataform;
+
+export 'get_repository_iam_policy/index.dart';
+export 'repository/index.dart';
+export 'repository_git_remote_settings/index.dart';
+export 'repository_git_remote_settings_ssh_authentication_config/index.dart';
+export 'repository_iam_binding/index.dart';
+export 'repository_iam_binding_condition/index.dart';
+export 'repository_iam_member/index.dart';
+export 'repository_iam_member_condition/index.dart';
+export 'repository_iam_policy/index.dart';
+export 'repository_release_config/index.dart';
+export 'repository_release_config_code_compilation_config/index.dart';
+export 'repository_release_config_recent_scheduled_release_record/index.dart';
+export 'repository_release_config_recent_scheduled_release_record_error_status/index.dart';
+export 'repository_workflow_config/index.dart';
+export 'repository_workflow_config_invocation_config/index.dart';
+export 'repository_workflow_config_invocation_config_included_target/index.dart';
+export 'repository_workflow_config_recent_scheduled_execution_record/index.dart';
+export 'repository_workflow_config_recent_scheduled_execution_record_error_status/index.dart';
+export 'repository_workspace_compilation_overrides/index.dart';

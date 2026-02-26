@@ -1,0 +1,3 @@
+library module_networkservices_edge_cache_origin_timeout;
+
+export 'edge_cache_origin_timeout.dart';

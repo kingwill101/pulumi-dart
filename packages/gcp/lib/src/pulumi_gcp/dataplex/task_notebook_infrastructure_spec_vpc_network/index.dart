@@ -1,0 +1,3 @@
+library module_dataplex_task_notebook_infrastructure_spec_vpc_network;
+
+export 'task_notebook_infrastructure_spec_vpc_network.dart';

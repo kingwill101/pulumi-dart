@@ -1,0 +1,3 @@
+library module_memcache_get_instance_maintenance_policy_weekly_maintenance_window;
+
+export 'get_instance_maintenance_policy_weekly_maintenance_window.dart';

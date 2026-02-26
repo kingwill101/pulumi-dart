@@ -1,0 +1,3 @@
+library module_dataproc_cluster_virtual_cluster_config_kubernetes_cluster_config_gke_cluster_config_node_pool_target;
+
+export 'cluster_virtual_cluster_config_kubernetes_cluster_config_gke_cluster_config_node_pool_target.dart';

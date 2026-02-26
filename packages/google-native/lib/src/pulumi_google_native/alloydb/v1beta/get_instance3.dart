@@ -1,0 +1,17 @@
+import 'package:pulumi/pulumi.dart';
+import 'get_instance_args3.dart';
+import 'get_instance_result3.dart';
+
+/// Gets details of a single Instance.
+Future<GetInstanceResult3> getInstance3(
+  GetInstanceArgs3 args, {
+  InvokeOptions? options,
+}) async {
+  final deployment = Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'google-native:alloydb/v1beta:getInstance',
+    args.toMap(),
+    options: toDeploymentInvokeOptions(options),
+  );
+  return GetInstanceResult3.fromMap(result);
+}

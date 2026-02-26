@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class ReservationResourceStatusSpecificSkuAllocation {
+  /// (Output)
+  /// ID of the instance template used to populate reservation properties.
+  final String? sourceInstanceTemplateId;
+
+  /// (Output)
+  /// Per service utilization breakdown. The Key is the Google Cloud managed service name.
+  final Map<String, String>? utilizations;
+
+  ReservationResourceStatusSpecificSkuAllocation({
+    this.sourceInstanceTemplateId,
+    this.utilizations,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final sourceInstanceTemplateIdValue = sourceInstanceTemplateId;
+    if (sourceInstanceTemplateIdValue != null) {
+      map['sourceInstanceTemplateId'] = sourceInstanceTemplateIdValue;
+    }
+    final utilizationsValue = utilizations;
+    if (utilizationsValue != null) {
+      map['utilizations'] = utilizationsValue;
+    }
+    return map;
+  }
+
+  factory ReservationResourceStatusSpecificSkuAllocation.fromMap(
+      Map<String, dynamic> map) {
+    return ReservationResourceStatusSpecificSkuAllocation(
+      sourceInstanceTemplateId: map['sourceInstanceTemplateId'] == null
+          ? null
+          : map['sourceInstanceTemplateId'] as String,
+      utilizations: map['utilizations'] == null
+          ? null
+          : (map['utilizations'] as Map).cast<String, String>(),
+    );
+  }
+}

@@ -1,0 +1,31 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class NoteRelatedUrl {
+  /// Label to describe usage of the URL
+  final String? label;
+
+  /// Specific URL associated with the resource.
+  final String url;
+
+  NoteRelatedUrl({
+    this.label,
+    required this.url,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final labelValue = label;
+    if (labelValue != null) {
+      map['label'] = labelValue;
+    }
+    map['url'] = url;
+    return map;
+  }
+
+  factory NoteRelatedUrl.fromMap(Map<String, dynamic> map) {
+    return NoteRelatedUrl(
+      label: map['label'] == null ? null : map['label'] as String,
+      url: map['url'] as String,
+    );
+  }
+}

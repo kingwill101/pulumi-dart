@@ -1,0 +1,3 @@
+library module_diagflow_cx_page_knowledge_connector_settings_trigger_fulfillment_advanced_settings_speech_settings;
+
+export 'cx_page_knowledge_connector_settings_trigger_fulfillment_advanced_settings_speech_settings.dart';

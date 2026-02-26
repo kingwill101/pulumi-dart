@@ -1,0 +1,4 @@
+library module_compute_network_firewall_policy_packet_mirroring_rule;
+
+export 'network_firewall_policy_packet_mirroring_rule.dart';
+export 'network_firewall_policy_packet_mirroring_rule_args.dart';

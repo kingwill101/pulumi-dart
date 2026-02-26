@@ -1,0 +1,3 @@
+library module_notebooks_runtime_software_config_kernel;
+
+export 'runtime_software_config_kernel.dart';

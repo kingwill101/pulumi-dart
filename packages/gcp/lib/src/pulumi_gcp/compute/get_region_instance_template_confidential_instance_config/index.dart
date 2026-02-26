@@ -1,0 +1,3 @@
+library module_compute_get_region_instance_template_confidential_instance_config;
+
+export 'get_region_instance_template_confidential_instance_config.dart';

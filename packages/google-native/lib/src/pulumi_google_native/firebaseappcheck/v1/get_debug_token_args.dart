@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// Arguments for getDebugToken.
+class GetDebugTokenArgs {
+  final Input<String> appId;
+  final Input<String> debugTokenId;
+  final Input<String>? project;
+
+  GetDebugTokenArgs({
+    required this.appId,
+    required this.debugTokenId,
+    this.project,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['appId'] = appId;
+    map['debugTokenId'] = debugTokenId;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetDebugTokenArgs.fromMap(Map<String, dynamic> map) {
+    return GetDebugTokenArgs(
+      appId: Input.asInput<String>(map['appId']),
+      debugTokenId: Input.asInput<String>(map['debugTokenId']),
+      project: Input.asOptionalInput<String>(map['project']),
+    );
+  }
+}

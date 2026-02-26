@@ -1,0 +1,3 @@
+library module_kms_get_crypto_key_latest_version_public_key;
+
+export 'get_crypto_key_latest_version_public_key.dart';

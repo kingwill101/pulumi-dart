@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class InstanceIamMemberCondition {
+  /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+  ///
+  /// For <span pulumi-lang-nodejs="`gcp.bigtable.InstanceIamPolicy`" pulumi-lang-dotnet="`gcp.bigtable.InstanceIamPolicy`" pulumi-lang-go="`bigtable.InstanceIamPolicy`" pulumi-lang-python="`bigtable.InstanceIamPolicy`" pulumi-lang-yaml="`gcp.bigtable.InstanceIamPolicy`" pulumi-lang-java="`gcp.bigtable.InstanceIamPolicy`">`gcp.bigtable.InstanceIamPolicy`</span> only:
+  final String? description;
+
+  /// Textual representation of an expression in Common Expression Language syntax.
+  final String expression;
+
+  /// A title for the expression, i.e. a short string describing its purpose.
+  final String title;
+
+  InstanceIamMemberCondition({
+    this.description,
+    required this.expression,
+    required this.title,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final descriptionValue = description;
+    if (descriptionValue != null) {
+      map['description'] = descriptionValue;
+    }
+    map['expression'] = expression;
+    map['title'] = title;
+    return map;
+  }
+
+  factory InstanceIamMemberCondition.fromMap(Map<String, dynamic> map) {
+    return InstanceIamMemberCondition(
+      description:
+          map['description'] == null ? null : map['description'] as String,
+      expression: map['expression'] as String,
+      title: map['title'] as String,
+    );
+  }
+}

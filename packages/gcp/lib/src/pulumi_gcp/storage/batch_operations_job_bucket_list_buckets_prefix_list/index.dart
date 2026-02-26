@@ -1,0 +1,3 @@
+library module_storage_batch_operations_job_bucket_list_buckets_prefix_list;
+
+export 'batch_operations_job_bucket_list_buckets_prefix_list.dart';

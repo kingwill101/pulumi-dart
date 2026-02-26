@@ -1,0 +1,3 @@
+library module_integrationconnectors_connection_auth_config_oauth2_jwt_bearer_jwt_claims;
+
+export 'connection_auth_config_oauth2_jwt_bearer_jwt_claims.dart';

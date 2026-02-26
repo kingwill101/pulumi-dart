@@ -1,0 +1,1019 @@
+import 'package:pulumi/pulumi.dart';
+import '../instance_directory_services/instance_directory_services.dart';
+import '../instance_effective_replication/instance_effective_replication.dart';
+import '../instance_file_shares/instance_file_shares.dart';
+import '../instance_initial_replication/instance_initial_replication.dart';
+import '../instance_network/instance_network.dart';
+import '../instance_performance_config/instance_performance_config.dart';
+import 'instance_args6.dart';
+
+/// A Google Cloud Filestore instance.
+///
+///
+/// To get more information about Instance, see:
+///
+/// * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
+/// * How-to Guides
+/// * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
+/// * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
+/// * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
+///
+/// ## Example Usage
+///
+/// ### Filestore Instance Basic
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const instance = new gcp.filestore.Instance("instance", {
+/// name: "test-instance",
+/// location: "us-central1-b",
+/// tier: "BASIC_HDD",
+/// fileShares: {
+/// capacityGb: 1024,
+/// name: "share1",
+/// },
+/// networks: [{
+/// network: "default",
+/// modes: ["MODE_IPV4"],
+/// }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// instance = gcp.filestore.Instance("instance",
+/// name="test-instance",
+/// location="us-central1-b",
+/// tier="BASIC_HDD",
+/// file_shares={
+/// "capacity_gb": 1024,
+/// "name": "share1",
+/// },
+/// networks=[{
+/// "network": "default",
+/// "modes": ["MODE_IPV4"],
+/// }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var instance = new Gcp.Filestore.Instance("instance", new()
+/// {
+/// Name = "test-instance",
+/// Location = "us-central1-b",
+/// Tier = "BASIC_HDD",
+/// FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
+/// {
+/// CapacityGb = 1024,
+/// Name = "share1",
+/// },
+/// Networks = new[]
+/// {
+/// new Gcp.Filestore.Inputs.InstanceNetworkArgs
+/// {
+/// Network = "default",
+/// Modes = new[]
+/// {
+/// "MODE_IPV4",
+/// },
+/// },
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+/// Name:     pulumi.String("test-instance"),
+/// Location: pulumi.String("us-central1-b"),
+/// Tier:     pulumi.String("BASIC_HDD"),
+/// FileShares: &filestore.InstanceFileSharesArgs{
+/// CapacityGb: pulumi.Int(1024),
+/// Name:       pulumi.String("share1"),
+/// },
+/// Networks: filestore.InstanceNetworkArray{
+/// &filestore.InstanceNetworkArgs{
+/// Network: pulumi.String("default"),
+/// Modes: pulumi.StringArray{
+/// pulumi.String("MODE_IPV4"),
+/// },
+/// },
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.filestore.Instance;
+/// import com.pulumi.gcp.filestore.InstanceArgs;
+/// import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
+/// import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var instance = new Instance("instance", InstanceArgs.builder()
+/// .name("test-instance")
+/// .location("us-central1-b")
+/// .tier("BASIC_HDD")
+/// .fileShares(InstanceFileSharesArgs.builder()
+/// .capacityGb(1024)
+/// .name("share1")
+/// .build())
+/// .networks(InstanceNetworkArgs.builder()
+/// .network("default")
+/// .modes("MODE_IPV4")
+/// .build())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// instance:
+/// type: gcp:filestore:Instance
+/// properties:
+/// name: test-instance
+/// location: us-central1-b
+/// tier: BASIC_HDD
+/// fileShares:
+/// capacityGb: 1024
+/// name: share1
+/// networks:
+/// - network: default
+/// modes:
+/// - MODE_IPV4
+/// ```
+/// <!--End PulumiCodeChooser -->
+/// ### Filestore Instance Full
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const instance = new gcp.filestore.Instance("instance", {
+/// name: "test-instance",
+/// location: "us-central1-b",
+/// tier: "BASIC_SSD",
+/// fileShares: {
+/// capacityGb: 2560,
+/// name: "share1",
+/// nfsExportOptions: [
+/// {
+/// ipRanges: ["10.0.0.0/24"],
+/// accessMode: "READ_WRITE",
+/// squashMode: "NO_ROOT_SQUASH",
+/// },
+/// {
+/// ipRanges: ["10.10.0.0/24"],
+/// accessMode: "READ_ONLY",
+/// squashMode: "ROOT_SQUASH",
+/// anonUid: 123,
+/// anonGid: 456,
+/// },
+/// ],
+/// },
+/// networks: [{
+/// network: "default",
+/// modes: ["MODE_IPV4"],
+/// connectMode: "DIRECT_PEERING",
+/// }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// instance = gcp.filestore.Instance("instance",
+/// name="test-instance",
+/// location="us-central1-b",
+/// tier="BASIC_SSD",
+/// file_shares={
+/// "capacity_gb": 2560,
+/// "name": "share1",
+/// "nfs_export_options": [
+/// {
+/// "ip_ranges": ["10.0.0.0/24"],
+/// "access_mode": "READ_WRITE",
+/// "squash_mode": "NO_ROOT_SQUASH",
+/// },
+/// {
+/// "ip_ranges": ["10.10.0.0/24"],
+/// "access_mode": "READ_ONLY",
+/// "squash_mode": "ROOT_SQUASH",
+/// "anon_uid": 123,
+/// "anon_gid": 456,
+/// },
+/// ],
+/// },
+/// networks=[{
+/// "network": "default",
+/// "modes": ["MODE_IPV4"],
+/// "connect_mode": "DIRECT_PEERING",
+/// }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var instance = new Gcp.Filestore.Instance("instance", new()
+/// {
+/// Name = "test-instance",
+/// Location = "us-central1-b",
+/// Tier = "BASIC_SSD",
+/// FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
+/// {
+/// CapacityGb = 2560,
+/// Name = "share1",
+/// NfsExportOptions = new[]
+/// {
+/// new Gcp.Filestore.Inputs.InstanceFileSharesNfsExportOptionArgs
+/// {
+/// IpRanges = new[]
+/// {
+/// "10.0.0.0/24",
+/// },
+/// AccessMode = "READ_WRITE",
+/// SquashMode = "NO_ROOT_SQUASH",
+/// },
+/// new Gcp.Filestore.Inputs.InstanceFileSharesNfsExportOptionArgs
+/// {
+/// IpRanges = new[]
+/// {
+/// "10.10.0.0/24",
+/// },
+/// AccessMode = "READ_ONLY",
+/// SquashMode = "ROOT_SQUASH",
+/// AnonUid = 123,
+/// AnonGid = 456,
+/// },
+/// },
+/// },
+/// Networks = new[]
+/// {
+/// new Gcp.Filestore.Inputs.InstanceNetworkArgs
+/// {
+/// Network = "default",
+/// Modes = new[]
+/// {
+/// "MODE_IPV4",
+/// },
+/// ConnectMode = "DIRECT_PEERING",
+/// },
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+/// Name:     pulumi.String("test-instance"),
+/// Location: pulumi.String("us-central1-b"),
+/// Tier:     pulumi.String("BASIC_SSD"),
+/// FileShares: &filestore.InstanceFileSharesArgs{
+/// CapacityGb: pulumi.Int(2560),
+/// Name:       pulumi.String("share1"),
+/// NfsExportOptions: filestore.InstanceFileSharesNfsExportOptionArray{
+/// &filestore.InstanceFileSharesNfsExportOptionArgs{
+/// IpRanges: pulumi.StringArray{
+/// pulumi.String("10.0.0.0/24"),
+/// },
+/// AccessMode: pulumi.String("READ_WRITE"),
+/// SquashMode: pulumi.String("NO_ROOT_SQUASH"),
+/// },
+/// &filestore.InstanceFileSharesNfsExportOptionArgs{
+/// IpRanges: pulumi.StringArray{
+/// pulumi.String("10.10.0.0/24"),
+/// },
+/// AccessMode: pulumi.String("READ_ONLY"),
+/// SquashMode: pulumi.String("ROOT_SQUASH"),
+/// AnonUid:    pulumi.Int(123),
+/// AnonGid:    pulumi.Int(456),
+/// },
+/// },
+/// },
+/// Networks: filestore.InstanceNetworkArray{
+/// &filestore.InstanceNetworkArgs{
+/// Network: pulumi.String("default"),
+/// Modes: pulumi.StringArray{
+/// pulumi.String("MODE_IPV4"),
+/// },
+/// ConnectMode: pulumi.String("DIRECT_PEERING"),
+/// },
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.filestore.Instance;
+/// import com.pulumi.gcp.filestore.InstanceArgs;
+/// import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
+/// import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var instance = new Instance("instance", InstanceArgs.builder()
+/// .name("test-instance")
+/// .location("us-central1-b")
+/// .tier("BASIC_SSD")
+/// .fileShares(InstanceFileSharesArgs.builder()
+/// .capacityGb(2560)
+/// .name("share1")
+/// .nfsExportOptions(
+/// InstanceFileSharesNfsExportOptionArgs.builder()
+/// .ipRanges("10.0.0.0/24")
+/// .accessMode("READ_WRITE")
+/// .squashMode("NO_ROOT_SQUASH")
+/// .build(),
+/// InstanceFileSharesNfsExportOptionArgs.builder()
+/// .ipRanges("10.10.0.0/24")
+/// .accessMode("READ_ONLY")
+/// .squashMode("ROOT_SQUASH")
+/// .anonUid(123)
+/// .anonGid(456)
+/// .build())
+/// .build())
+/// .networks(InstanceNetworkArgs.builder()
+/// .network("default")
+/// .modes("MODE_IPV4")
+/// .connectMode("DIRECT_PEERING")
+/// .build())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// instance:
+/// type: gcp:filestore:Instance
+/// properties:
+/// name: test-instance
+/// location: us-central1-b
+/// tier: BASIC_SSD
+/// fileShares:
+/// capacityGb: 2560
+/// name: share1
+/// nfsExportOptions:
+/// - ipRanges:
+/// - 10.0.0.0/24
+/// accessMode: READ_WRITE
+/// squashMode: NO_ROOT_SQUASH
+/// - ipRanges:
+/// - 10.10.0.0/24
+/// accessMode: READ_ONLY
+/// squashMode: ROOT_SQUASH
+/// anonUid: 123
+/// anonGid: 456
+/// networks:
+/// - network: default
+/// modes:
+/// - MODE_IPV4
+/// connectMode: DIRECT_PEERING
+/// ```
+/// <!--End PulumiCodeChooser -->
+/// ### Filestore Instance Protocol
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const instance = new gcp.filestore.Instance("instance", {
+/// name: "test-instance",
+/// location: "us-central1",
+/// tier: "ENTERPRISE",
+/// protocol: "NFS_V4_1",
+/// fileShares: {
+/// capacityGb: 1024,
+/// name: "share1",
+/// },
+/// networks: [{
+/// network: "default",
+/// modes: ["MODE_IPV4"],
+/// }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// instance = gcp.filestore.Instance("instance",
+/// name="test-instance",
+/// location="us-central1",
+/// tier="ENTERPRISE",
+/// protocol="NFS_V4_1",
+/// file_shares={
+/// "capacity_gb": 1024,
+/// "name": "share1",
+/// },
+/// networks=[{
+/// "network": "default",
+/// "modes": ["MODE_IPV4"],
+/// }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var instance = new Gcp.Filestore.Instance("instance", new()
+/// {
+/// Name = "test-instance",
+/// Location = "us-central1",
+/// Tier = "ENTERPRISE",
+/// Protocol = "NFS_V4_1",
+/// FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
+/// {
+/// CapacityGb = 1024,
+/// Name = "share1",
+/// },
+/// Networks = new[]
+/// {
+/// new Gcp.Filestore.Inputs.InstanceNetworkArgs
+/// {
+/// Network = "default",
+/// Modes = new[]
+/// {
+/// "MODE_IPV4",
+/// },
+/// },
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+/// Name:     pulumi.String("test-instance"),
+/// Location: pulumi.String("us-central1"),
+/// Tier:     pulumi.String("ENTERPRISE"),
+/// Protocol: pulumi.String("NFS_V4_1"),
+/// FileShares: &filestore.InstanceFileSharesArgs{
+/// CapacityGb: pulumi.Int(1024),
+/// Name:       pulumi.String("share1"),
+/// },
+/// Networks: filestore.InstanceNetworkArray{
+/// &filestore.InstanceNetworkArgs{
+/// Network: pulumi.String("default"),
+/// Modes: pulumi.StringArray{
+/// pulumi.String("MODE_IPV4"),
+/// },
+/// },
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.filestore.Instance;
+/// import com.pulumi.gcp.filestore.InstanceArgs;
+/// import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
+/// import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var instance = new Instance("instance", InstanceArgs.builder()
+/// .name("test-instance")
+/// .location("us-central1")
+/// .tier("ENTERPRISE")
+/// .protocol("NFS_V4_1")
+/// .fileShares(InstanceFileSharesArgs.builder()
+/// .capacityGb(1024)
+/// .name("share1")
+/// .build())
+/// .networks(InstanceNetworkArgs.builder()
+/// .network("default")
+/// .modes("MODE_IPV4")
+/// .build())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// instance:
+/// type: gcp:filestore:Instance
+/// properties:
+/// name: test-instance
+/// location: us-central1
+/// tier: ENTERPRISE
+/// protocol: NFS_V4_1
+/// fileShares:
+/// capacityGb: 1024
+/// name: share1
+/// networks:
+/// - network: default
+/// modes:
+/// - MODE_IPV4
+/// ```
+/// <!--End PulumiCodeChooser -->
+/// ### Filestore Instance Enterprise
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const filestoreKeyring = new gcp.kms.KeyRing("filestore_keyring", {
+/// name: "filestore-keyring",
+/// location: "us-central1",
+/// });
+/// const filestoreKey = new gcp.kms.CryptoKey("filestore_key", {
+/// name: "filestore-key",
+/// keyRing: filestoreKeyring.id,
+/// });
+/// const instance = new gcp.filestore.Instance("instance", {
+/// name: "test-instance",
+/// location: "us-central1",
+/// tier: "ENTERPRISE",
+/// fileShares: {
+/// capacityGb: 1024,
+/// name: "share1",
+/// },
+/// networks: [{
+/// network: "default",
+/// modes: ["MODE_IPV4"],
+/// }],
+/// kmsKeyName: filestoreKey.id,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// filestore_keyring = gcp.kms.KeyRing("filestore_keyring",
+/// name="filestore-keyring",
+/// location="us-central1")
+/// filestore_key = gcp.kms.CryptoKey("filestore_key",
+/// name="filestore-key",
+/// key_ring=filestore_keyring.id)
+/// instance = gcp.filestore.Instance("instance",
+/// name="test-instance",
+/// location="us-central1",
+/// tier="ENTERPRISE",
+/// file_shares={
+/// "capacity_gb": 1024,
+/// "name": "share1",
+/// },
+/// networks=[{
+/// "network": "default",
+/// "modes": ["MODE_IPV4"],
+/// }],
+/// kms_key_name=filestore_key.id)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var filestoreKeyring = new Gcp.Kms.KeyRing("filestore_keyring", new()
+/// {
+/// Name = "filestore-keyring",
+/// Location = "us-central1",
+/// });
+///
+/// var filestoreKey = new Gcp.Kms.CryptoKey("filestore_key", new()
+/// {
+/// Name = "filestore-key",
+/// KeyRing = filestoreKeyring.Id,
+/// });
+///
+/// var instance = new Gcp.Filestore.Instance("instance", new()
+/// {
+/// Name = "test-instance",
+/// Location = "us-central1",
+/// Tier = "ENTERPRISE",
+/// FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
+/// {
+/// CapacityGb = 1024,
+/// Name = "share1",
+/// },
+/// Networks = new[]
+/// {
+/// new Gcp.Filestore.Inputs.InstanceNetworkArgs
+/// {
+/// Network = "default",
+/// Modes = new[]
+/// {
+/// "MODE_IPV4",
+/// },
+/// },
+/// },
+/// KmsKeyName = filestoreKey.Id,
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// filestoreKeyring, err := kms.NewKeyRing(ctx, "filestore_keyring", &kms.KeyRingArgs{
+/// Name:     pulumi.String("filestore-keyring"),
+/// Location: pulumi.String("us-central1"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// filestoreKey, err := kms.NewCryptoKey(ctx, "filestore_key", &kms.CryptoKeyArgs{
+/// Name:    pulumi.String("filestore-key"),
+/// KeyRing: filestoreKeyring.ID(),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// _, err = filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+/// Name:     pulumi.String("test-instance"),
+/// Location: pulumi.String("us-central1"),
+/// Tier:     pulumi.String("ENTERPRISE"),
+/// FileShares: &filestore.InstanceFileSharesArgs{
+/// CapacityGb: pulumi.Int(1024),
+/// Name:       pulumi.String("share1"),
+/// },
+/// Networks: filestore.InstanceNetworkArray{
+/// &filestore.InstanceNetworkArgs{
+/// Network: pulumi.String("default"),
+/// Modes: pulumi.StringArray{
+/// pulumi.String("MODE_IPV4"),
+/// },
+/// },
+/// },
+/// KmsKeyName: filestoreKey.ID(),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.kms.KeyRing;
+/// import com.pulumi.gcp.kms.KeyRingArgs;
+/// import com.pulumi.gcp.kms.CryptoKey;
+/// import com.pulumi.gcp.kms.CryptoKeyArgs;
+/// import com.pulumi.gcp.filestore.Instance;
+/// import com.pulumi.gcp.filestore.InstanceArgs;
+/// import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
+/// import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var filestoreKeyring = new KeyRing("filestoreKeyring", KeyRingArgs.builder()
+/// .name("filestore-keyring")
+/// .location("us-central1")
+/// .build());
+///
+/// var filestoreKey = new CryptoKey("filestoreKey", CryptoKeyArgs.builder()
+/// .name("filestore-key")
+/// .keyRing(filestoreKeyring.id())
+/// .build());
+///
+/// var instance = new Instance("instance", InstanceArgs.builder()
+/// .name("test-instance")
+/// .location("us-central1")
+/// .tier("ENTERPRISE")
+/// .fileShares(InstanceFileSharesArgs.builder()
+/// .capacityGb(1024)
+/// .name("share1")
+/// .build())
+/// .networks(InstanceNetworkArgs.builder()
+/// .network("default")
+/// .modes("MODE_IPV4")
+/// .build())
+/// .kmsKeyName(filestoreKey.id())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// instance:
+/// type: gcp:filestore:Instance
+/// properties:
+/// name: test-instance
+/// location: us-central1
+/// tier: ENTERPRISE
+/// fileShares:
+/// capacityGb: 1024
+/// name: share1
+/// networks:
+/// - network: default
+/// modes:
+/// - MODE_IPV4
+/// kmsKeyName: ${filestoreKey.id}
+/// filestoreKeyring:
+/// type: gcp:kms:KeyRing
+/// name: filestore_keyring
+/// properties:
+/// name: filestore-keyring
+/// location: us-central1
+/// filestoreKey:
+/// type: gcp:kms:CryptoKey
+/// name: filestore_key
+/// properties:
+/// name: filestore-key
+/// keyRing: ${filestoreKeyring.id}
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Instance can be imported using any of these accepted formats:
+///
+/// * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
+///
+/// * `{{project}}/{{location}}/{{name}}`
+///
+/// * `{{location}}/{{name}}`
+///
+/// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{location}}/{{name}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:filestore/instance:Instance default {{location}}/{{name}}
+/// ```
+class Instance6 extends CustomResource {
+  /// Creation timestamp in RFC3339 text format.
+  late final Output<String> createTime;
+
+  /// Indicates whether the instance is protected against deletion.
+  late final Output<bool?> deletionProtectionEnabled;
+
+  /// The reason for enabling deletion protection.
+  late final Output<String?> deletionProtectionReason;
+
+  /// A description of the instance.
+  late final Output<String?> description;
+
+  /// Directory Services configuration.
+  /// Should only be set if protocol is "NFS_V4_1".
+  /// Structure is documented below.
+  late final Output<InstanceDirectoryServices?> directoryServices;
+
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  late final Output<Map<String, String>> effectiveLabels;
+
+  /// Output only fields for replication configuration.
+  /// Structure is documented below.
+  late final Output<List<InstanceEffectiveReplication>> effectiveReplications;
+
+  /// Server-specified ETag for the instance resource to prevent
+  /// simultaneous updates from overwriting each other.
+  late final Output<String> etag;
+
+  /// File system shares on the instance. For this version, only a
+  /// single file share is supported.
+  /// Structure is documented below.
+  late final Output<InstanceFileShares> fileShares;
+
+  /// Replication configuration, once set, this cannot be updated.
+  /// Additionally this should be specified on the replica instance only, indicating the active as the<span pulumi-lang-nodejs=" peerInstance
+  /// " pulumi-lang-dotnet=" PeerInstance
+  /// " pulumi-lang-go=" peerInstance
+  /// " pulumi-lang-python=" peer_instance
+  /// " pulumi-lang-yaml=" peerInstance
+  /// " pulumi-lang-java=" peerInstance
+  /// "> peer_instance
+  /// </span>Structure is documented below.
+  late final Output<InstanceInitialReplication?> initialReplication;
+
+  /// KMS key name used for data encryption.
+  late final Output<String?> kmsKeyName;
+
+  /// Resource labels to represent user-provided metadata.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  late final Output<Map<String, String>?> labels;
+
+  /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
+  late final Output<String> location;
+
+  /// The resource name of the instance.
+  late final Output<String> name;
+
+  /// VPC networks to which the instance is connected. For this version,
+  /// only a single network is supported.
+  /// Structure is documented below.
+  late final Output<List<InstanceNetwork>> networks;
+
+  /// Performance configuration for the instance. If not provided,
+  /// the default performance settings will be used.
+  /// Structure is documented below.
+  late final Output<InstancePerformanceConfig?> performanceConfig;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  late final Output<String> project;
+
+  /// Either NFSv3, for using NFS version 3 as file sharing protocol,
+  /// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+  /// NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+  /// The default is NFSv3.
+  /// Default value is `NFS_V3`.
+  /// Possible values are: `NFS_V3`, `NFS_V4_1`.
+  late final Output<String?> protocol;
+
+  /// The combination of labels configured directly on the resource
+  /// and default labels configured on the provider.
+  late final Output<Map<String, String>> pulumiLabels;
+
+  /// A map of resource manager tags. Resource manager tag keys
+  /// and values have the same definition as resource manager
+  /// tags. Keys must be in the format tagKeys/{tag_key_id},
+  /// and values are in the format tagValues/456. The field is
+  /// ignored when empty. The field is immutable and causes
+  /// resource replacement when mutated. This field is only set
+  /// at create time and modifying this field after creation
+  /// will trigger recreation. To apply tags to an existing
+  /// resource, see the <span pulumi-lang-nodejs="`gcp.tags.TagValue`" pulumi-lang-dotnet="`gcp.tags.TagValue`" pulumi-lang-go="`tags.TagValue`" pulumi-lang-python="`tags.TagValue`" pulumi-lang-yaml="`gcp.tags.TagValue`" pulumi-lang-java="`gcp.tags.TagValue`">`gcp.tags.TagValue`</span> resource.
+  late final Output<Map<String, String>?> tags;
+
+  /// The service tier of the instance.
+  /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
+  late final Output<String> tier;
+
+  /// (Optional, Deprecated)
+  /// The name of the Filestore zone of the instance.
+  ///
+  /// > **Warning:** <span pulumi-lang-nodejs="`zone`" pulumi-lang-dotnet="`Zone`" pulumi-lang-go="`zone`" pulumi-lang-python="`zone`" pulumi-lang-yaml="`zone`" pulumi-lang-java="`zone`">`zone`</span> is deprecated and will be removed in a future major release. Use <span pulumi-lang-nodejs="`location`" pulumi-lang-dotnet="`Location`" pulumi-lang-go="`location`" pulumi-lang-python="`location`" pulumi-lang-yaml="`location`" pulumi-lang-java="`location`">`location`</span> instead.
+  late final Output<String> zone;
+
+  Instance6(
+    String name, {
+    InstanceArgs6? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:filestore/instance:Instance',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.createTime = Output.createUnknown<String>();
+    this.deletionProtectionEnabled = Output.createUnknown<bool?>();
+    this.deletionProtectionReason = Output.createUnknown<String?>();
+    this.description = Output.createUnknown<String?>();
+    this.directoryServices = Output.createUnknown<InstanceDirectoryServices?>();
+    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.effectiveReplications =
+        Output.createUnknown<List<InstanceEffectiveReplication>>();
+    this.etag = Output.createUnknown<String>();
+    this.fileShares = Output.createUnknown<InstanceFileShares>();
+    this.initialReplication =
+        Output.createUnknown<InstanceInitialReplication?>();
+    this.kmsKeyName = Output.createUnknown<String?>();
+    this.labels = Output.createUnknown<Map<String, String>?>();
+    this.location = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.networks = Output.createUnknown<List<InstanceNetwork>>();
+    this.performanceConfig = Output.createUnknown<InstancePerformanceConfig?>();
+    this.project = Output.createUnknown<String>();
+    this.protocol = Output.createUnknown<String?>();
+    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+    this.tags = Output.createUnknown<Map<String, String>?>();
+    this.tier = Output.createUnknown<String>();
+    this.zone = Output.createUnknown<String>();
+  }
+}

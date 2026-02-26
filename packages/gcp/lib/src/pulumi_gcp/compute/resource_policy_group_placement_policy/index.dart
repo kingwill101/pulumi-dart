@@ -1,0 +1,3 @@
+library module_compute_resource_policy_group_placement_policy;
+
+export 'resource_policy_group_placement_policy.dart';

@@ -1,0 +1,3 @@
+library module_apphub_service_service_property_functional_type;
+
+export 'service_service_property_functional_type.dart';

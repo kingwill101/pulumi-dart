@@ -1,0 +1,3 @@
+library module_healthcare_dicom_store_stream_config_bigquery_destination;
+
+export 'dicom_store_stream_config_bigquery_destination.dart';

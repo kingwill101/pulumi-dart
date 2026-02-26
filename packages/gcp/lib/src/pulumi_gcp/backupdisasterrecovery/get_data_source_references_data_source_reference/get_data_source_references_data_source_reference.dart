@@ -1,0 +1,63 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetDataSourceReferencesDataSourceReference {
+  /// The state of the backup config for the data source.
+  final String backupConfigState;
+
+  /// The number of backups for the data source.
+  final int backupCount;
+
+  /// The underlying data source resource.
+  final String dataSource;
+
+  /// The GCP resource name for the data source.
+  final String gcpResourceName;
+
+  /// The state of the last backup.
+  final String lastBackupState;
+
+  /// The last time a successful backup was made.
+  final String lastSuccessfulBackupTime;
+  final String name;
+
+  /// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". <span pulumi-lang-nodejs="`resourceType`" pulumi-lang-dotnet="`ResourceType`" pulumi-lang-go="`resourceType`" pulumi-lang-python="`resource_type`" pulumi-lang-yaml="`resourceType`" pulumi-lang-java="`resourceType`">`resource_type`</span> is deprecated and will be removed in a future major release.
+  final String resourceType;
+
+  GetDataSourceReferencesDataSourceReference({
+    required this.backupConfigState,
+    required this.backupCount,
+    required this.dataSource,
+    required this.gcpResourceName,
+    required this.lastBackupState,
+    required this.lastSuccessfulBackupTime,
+    required this.name,
+    required this.resourceType,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['backupConfigState'] = backupConfigState;
+    map['backupCount'] = backupCount;
+    map['dataSource'] = dataSource;
+    map['gcpResourceName'] = gcpResourceName;
+    map['lastBackupState'] = lastBackupState;
+    map['lastSuccessfulBackupTime'] = lastSuccessfulBackupTime;
+    map['name'] = name;
+    map['resourceType'] = resourceType;
+    return map;
+  }
+
+  factory GetDataSourceReferencesDataSourceReference.fromMap(
+      Map<String, dynamic> map) {
+    return GetDataSourceReferencesDataSourceReference(
+      backupConfigState: map['backupConfigState'] as String,
+      backupCount: map['backupCount'] as int,
+      dataSource: map['dataSource'] as String,
+      gcpResourceName: map['gcpResourceName'] as String,
+      lastBackupState: map['lastBackupState'] as String,
+      lastSuccessfulBackupTime: map['lastSuccessfulBackupTime'] as String,
+      name: map['name'] as String,
+      resourceType: map['resourceType'] as String,
+    );
+  }
+}

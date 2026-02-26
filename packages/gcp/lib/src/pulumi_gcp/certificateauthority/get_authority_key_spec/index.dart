@@ -1,0 +1,3 @@
+library module_certificateauthority_get_authority_key_spec;
+
+export 'get_authority_key_spec.dart';

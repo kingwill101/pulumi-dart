@@ -1,0 +1,3 @@
+library module_storage_get_bucket_soft_delete_policy;
+
+export 'get_bucket_soft_delete_policy.dart';

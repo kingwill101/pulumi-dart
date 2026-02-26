@@ -1,0 +1,5 @@
+library module_securitycenter_get_v2_organization_source_iam_policy;
+
+export 'get_v2_organization_source_iam_policy.dart';
+export 'get_v2_organization_source_iam_policy_args.dart';
+export 'get_v2_organization_source_iam_policy_result.dart';

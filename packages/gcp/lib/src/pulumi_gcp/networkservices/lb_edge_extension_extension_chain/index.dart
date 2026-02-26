@@ -1,0 +1,3 @@
+library module_networkservices_lb_edge_extension_extension_chain;
+
+export 'lb_edge_extension_extension_chain.dart';

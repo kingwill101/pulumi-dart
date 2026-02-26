@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'image_config_text_redaction_mode2.dart';
+
+/// Specifies how to handle de-identification of image pixels.
+class ImageConfig2 {
+  /// Additional InfoTypes to redact in the images in addition to those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT`, `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS` or `TEXT_REDACTION_MODE_UNSPECIFIED`.
+  final List<String>? additionalInfoTypes;
+
+  /// InfoTypes to skip redacting, overriding those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT` or `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS`.
+  final List<String>? excludeInfoTypes;
+
+  /// Determines how to redact text from image.
+  final ImageConfigTextRedactionMode2? textRedactionMode;
+
+  ImageConfig2({
+    this.additionalInfoTypes,
+    this.excludeInfoTypes,
+    this.textRedactionMode,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final additionalInfoTypesValue = additionalInfoTypes;
+    if (additionalInfoTypesValue != null) {
+      map['additionalInfoTypes'] = additionalInfoTypesValue;
+    }
+    final excludeInfoTypesValue = excludeInfoTypes;
+    if (excludeInfoTypesValue != null) {
+      map['excludeInfoTypes'] = excludeInfoTypesValue;
+    }
+    final textRedactionModeValue = textRedactionMode;
+    if (textRedactionModeValue != null) {
+      map['textRedactionMode'] = textRedactionModeValue.value;
+    }
+    return map;
+  }
+
+  factory ImageConfig2.fromMap(Map<String, dynamic> map) {
+    return ImageConfig2(
+      additionalInfoTypes: map['additionalInfoTypes'] == null
+          ? null
+          : (map['additionalInfoTypes'] as List).cast<String>(),
+      excludeInfoTypes: map['excludeInfoTypes'] == null
+          ? null
+          : (map['excludeInfoTypes'] as List).cast<String>(),
+      textRedactionMode: map['textRedactionMode'] == null
+          ? null
+          : ImageConfigTextRedactionMode2.fromValue(
+              map['textRedactionMode'] as String),
+    );
+  }
+}

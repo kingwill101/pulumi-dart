@@ -1,0 +1,3 @@
+library module_dataproc_workflow_template_job_pig_job;
+
+export 'workflow_template_job_pig_job.dart';

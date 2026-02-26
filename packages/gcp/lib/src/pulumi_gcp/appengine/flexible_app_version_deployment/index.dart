@@ -1,0 +1,3 @@
+library module_appengine_flexible_app_version_deployment;
+
+export 'flexible_app_version_deployment.dart';

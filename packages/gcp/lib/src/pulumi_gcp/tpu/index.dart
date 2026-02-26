@@ -1,0 +1,19 @@
+library module_tpu;
+
+export 'get_v2_accelerator_types/index.dart';
+export 'get_v2_runtime_versions/index.dart';
+export 'v2_queued_resource/index.dart';
+export 'v2_queued_resource_tpu/index.dart';
+export 'v2_queued_resource_tpu_node_spec/index.dart';
+export 'v2_queued_resource_tpu_node_spec_node/index.dart';
+export 'v2_queued_resource_tpu_node_spec_node_network_config/index.dart';
+export 'v2_vm/index.dart';
+export 'v2_vm_accelerator_config/index.dart';
+export 'v2_vm_data_disk/index.dart';
+export 'v2_vm_network_config/index.dart';
+export 'v2_vm_network_endpoint/index.dart';
+export 'v2_vm_network_endpoint_access_config/index.dart';
+export 'v2_vm_scheduling_config/index.dart';
+export 'v2_vm_service_account/index.dart';
+export 'v2_vm_shielded_instance_config/index.dart';
+export 'v2_vm_symptom/index.dart';

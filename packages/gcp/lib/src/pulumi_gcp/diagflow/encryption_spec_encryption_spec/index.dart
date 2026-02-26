@@ -1,0 +1,3 @@
+library module_diagflow_encryption_spec_encryption_spec;
+
+export 'encryption_spec_encryption_spec.dart';

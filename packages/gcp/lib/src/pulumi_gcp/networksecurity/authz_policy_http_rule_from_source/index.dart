@@ -1,0 +1,3 @@
+library module_networksecurity_authz_policy_http_rule_from_source;
+
+export 'authz_policy_http_rule_from_source.dart';

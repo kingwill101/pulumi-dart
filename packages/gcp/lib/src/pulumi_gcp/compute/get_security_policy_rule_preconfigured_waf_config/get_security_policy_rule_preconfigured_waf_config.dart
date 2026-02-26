@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_security_policy_rule_preconfigured_waf_config_exclusion/get_security_policy_rule_preconfigured_waf_config_exclusion.dart';
+
+class GetSecurityPolicyRulePreconfiguredWafConfig {
+  /// An exclusion to apply during preconfigured WAF evaluation.
+  final List<GetSecurityPolicyRulePreconfiguredWafConfigExclusion> exclusions;
+
+  GetSecurityPolicyRulePreconfiguredWafConfig({
+    required this.exclusions,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['exclusions'] = Input.encodeList<
+        GetSecurityPolicyRulePreconfiguredWafConfigExclusion,
+        Map<String, dynamic>>(exclusions, (value) => value.toMap());
+    return map;
+  }
+
+  factory GetSecurityPolicyRulePreconfiguredWafConfig.fromMap(
+      Map<String, dynamic> map) {
+    return GetSecurityPolicyRulePreconfiguredWafConfig(
+      exclusions: Input.decodeList<
+              GetSecurityPolicyRulePreconfiguredWafConfigExclusion>(
+          map['exclusions'],
+          (value) =>
+              GetSecurityPolicyRulePreconfiguredWafConfigExclusion.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+    );
+  }
+}

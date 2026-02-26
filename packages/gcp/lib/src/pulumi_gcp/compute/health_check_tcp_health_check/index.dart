@@ -1,0 +1,3 @@
+library module_compute_health_check_tcp_health_check;
+
+export 'health_check_tcp_health_check.dart';

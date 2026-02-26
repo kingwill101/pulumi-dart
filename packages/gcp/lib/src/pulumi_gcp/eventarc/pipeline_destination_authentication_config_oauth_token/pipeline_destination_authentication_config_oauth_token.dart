@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class PipelineDestinationAuthenticationConfigOauthToken {
+  /// OAuth scope to be used for generating OAuth access token. If not
+  /// specified, "https://www.googleapis.com/auth/cloud-platform" will be
+  /// used.
+  final String? scope;
+
+  /// Service account email used to generate the [OAuth
+  /// token](https://developers.google.com/identity/protocols/OAuth2).
+  /// The principal who calls this API must have
+  /// iam.serviceAccounts.actAs permission in the service account. See
+  /// https://cloud.google.com/iam/docs/understanding-service-accounts
+  /// for more information. Eventarc service agents must have
+  /// roles/roles/iam.serviceAccountTokenCreator role to allow Pipeline
+  /// to create OAuth2 tokens for authenticated requests.
+  final String serviceAccount;
+
+  PipelineDestinationAuthenticationConfigOauthToken({
+    this.scope,
+    required this.serviceAccount,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final scopeValue = scope;
+    if (scopeValue != null) {
+      map['scope'] = scopeValue;
+    }
+    map['serviceAccount'] = serviceAccount;
+    return map;
+  }
+
+  factory PipelineDestinationAuthenticationConfigOauthToken.fromMap(
+      Map<String, dynamic> map) {
+    return PipelineDestinationAuthenticationConfigOauthToken(
+      scope: map['scope'] == null ? null : map['scope'] as String,
+      serviceAccount: map['serviceAccount'] as String,
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_vertex_ai_endpoint_iam_member_condition;
+
+export 'ai_endpoint_iam_member_condition.dart';

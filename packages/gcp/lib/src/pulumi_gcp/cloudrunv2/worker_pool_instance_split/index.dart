@@ -1,0 +1,3 @@
+library module_cloudrunv2_worker_pool_instance_split;
+
+export 'worker_pool_instance_split.dart';

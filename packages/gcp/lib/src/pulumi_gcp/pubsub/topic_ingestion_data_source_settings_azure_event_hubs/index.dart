@@ -1,0 +1,3 @@
+library module_pubsub_topic_ingestion_data_source_settings_azure_event_hubs;
+
+export 'topic_ingestion_data_source_settings_azure_event_hubs.dart';

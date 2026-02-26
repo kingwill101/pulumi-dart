@@ -1,0 +1,3 @@
+library module_datacatalog_entry_group_iam_binding_condition;
+
+export 'entry_group_iam_binding_condition.dart';

@@ -1,0 +1,3 @@
+library module_bigquery_data_transfer_config_sensitive_params;
+
+export 'data_transfer_config_sensitive_params.dart';

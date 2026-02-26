@@ -1,0 +1,3 @@
+library module_compute_get_region_backend_service_strong_session_affinity_cooky;
+
+export 'get_region_backend_service_strong_session_affinity_cooky.dart';

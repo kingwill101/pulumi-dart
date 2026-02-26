@@ -1,0 +1,3 @@
+library module_datastream_stream_source_config_sql_server_source_config_exclude_objects_schema;
+
+export 'stream_source_config_sql_server_source_config_exclude_objects_schema.dart';

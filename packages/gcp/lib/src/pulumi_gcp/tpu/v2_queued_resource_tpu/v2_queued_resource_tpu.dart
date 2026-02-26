@@ -1,0 +1,36 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../v2_queued_resource_tpu_node_spec/v2_queued_resource_tpu_node_spec.dart';
+
+class V2QueuedResourceTpu {
+  /// The TPU node(s) being requested.
+  /// Structure is documented below.
+  final List<V2QueuedResourceTpuNodeSpec>? nodeSpecs;
+
+  V2QueuedResourceTpu({
+    this.nodeSpecs,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final nodeSpecsValue = nodeSpecs;
+    if (nodeSpecsValue != null) {
+      map['nodeSpecs'] =
+          Input.encodeList<V2QueuedResourceTpuNodeSpec, Map<String, dynamic>>(
+              nodeSpecsValue, (value) => value.toMap());
+    }
+    return map;
+  }
+
+  factory V2QueuedResourceTpu.fromMap(Map<String, dynamic> map) {
+    return V2QueuedResourceTpu(
+      nodeSpecs: map['nodeSpecs'] == null
+          ? null
+          : Input.decodeList<V2QueuedResourceTpuNodeSpec>(
+              map['nodeSpecs'],
+              (value) => V2QueuedResourceTpuNodeSpec.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+    );
+  }
+}

@@ -1,0 +1,77 @@
+import 'package:pulumi/pulumi.dart';
+import 'google_cloud_apigee_v1_async_query_result_response.dart';
+import 'google_cloud_apigee_v1_query_metadata_response.dart';
+import 'host_query_args.dart';
+
+/// Submit a query at host level to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded.
+/// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+/// on Google Cloud even though it will be deleted from Pulumi state.
+class HostQuery extends CustomResource {
+  /// Creation time of the query.
+  late final Output<String> created;
+
+  /// Hostname is available only when query is executed at host level.
+  late final Output<String> envgroupHostname;
+
+  /// Error is set when query fails.
+  late final Output<String> error;
+
+  /// ExecutionTime is available only after the query is completed.
+  late final Output<String> executionTime;
+
+  /// Asynchronous Query Name.
+  late final Output<String> name;
+  late final Output<String> organizationId;
+
+  /// Contains information like metrics, dimenstions etc of the AsyncQuery.
+  late final Output<GoogleCloudApigeeV1QueryMetadataResponse> queryParams;
+
+  /// Asynchronous Report ID.
+  late final Output<String> reportDefinitionId;
+
+  /// Result is available only after the query is completed.
+  late final Output<GoogleCloudApigeeV1AsyncQueryResultResponse> result;
+
+  /// ResultFileSize is available only after the query is completed.
+  late final Output<String> resultFileSize;
+
+  /// ResultRows is available only after the query is completed.
+  late final Output<String> resultRows;
+
+  /// Self link of the query. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
+  late final Output<String> self;
+
+  /// Query state could be "enqueued", "running", "completed", "failed".
+  late final Output<String> state;
+
+  /// Last updated timestamp for the query.
+  late final Output<String> updated;
+
+  HostQuery(
+    String name, {
+    HostQueryArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:apigee/v1:HostQuery',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.created = Output.createUnknown<String>();
+    this.envgroupHostname = Output.createUnknown<String>();
+    this.error = Output.createUnknown<String>();
+    this.executionTime = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.organizationId = Output.createUnknown<String>();
+    this.queryParams =
+        Output.createUnknown<GoogleCloudApigeeV1QueryMetadataResponse>();
+    this.reportDefinitionId = Output.createUnknown<String>();
+    this.result =
+        Output.createUnknown<GoogleCloudApigeeV1AsyncQueryResultResponse>();
+    this.resultFileSize = Output.createUnknown<String>();
+    this.resultRows = Output.createUnknown<String>();
+    this.self = Output.createUnknown<String>();
+    this.state = Output.createUnknown<String>();
+    this.updated = Output.createUnknown<String>();
+  }
+}

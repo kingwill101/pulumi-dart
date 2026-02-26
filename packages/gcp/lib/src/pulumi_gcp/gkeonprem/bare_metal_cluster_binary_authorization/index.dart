@@ -1,0 +1,3 @@
+library module_gkeonprem_bare_metal_cluster_binary_authorization;
+
+export 'bare_metal_cluster_binary_authorization.dart';

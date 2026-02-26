@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetClusterIpAllocationPolicyAutoIpamConfig {
+  /// The flag that enables Auto IPAM on this cluster.
+  final bool enabled;
+
+  GetClusterIpAllocationPolicyAutoIpamConfig({
+    required this.enabled,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['enabled'] = enabled;
+    return map;
+  }
+
+  factory GetClusterIpAllocationPolicyAutoIpamConfig.fromMap(
+      Map<String, dynamic> map) {
+    return GetClusterIpAllocationPolicyAutoIpamConfig(
+      enabled: map['enabled'] as bool,
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_compute_get_resource_policy_workload_policy;
+
+export 'get_resource_policy_workload_policy.dart';

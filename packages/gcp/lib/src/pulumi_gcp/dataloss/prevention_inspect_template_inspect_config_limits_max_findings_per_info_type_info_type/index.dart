@@ -1,0 +1,3 @@
+library module_dataloss_prevention_inspect_template_inspect_config_limits_max_findings_per_info_type_info_type;
+
+export 'prevention_inspect_template_inspect_config_limits_max_findings_per_info_type_info_type.dart';

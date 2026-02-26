@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_cluster_maintenance_update_policy_maintenance_window/get_cluster_maintenance_update_policy_maintenance_window.dart';
+
+class GetClusterMaintenanceUpdatePolicy {
+  /// Preferred windows to perform maintenance. Currently limited to 1.
+  final List<GetClusterMaintenanceUpdatePolicyMaintenanceWindow>
+      maintenanceWindows;
+
+  GetClusterMaintenanceUpdatePolicy({
+    required this.maintenanceWindows,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['maintenanceWindows'] = Input.encodeList<
+        GetClusterMaintenanceUpdatePolicyMaintenanceWindow,
+        Map<String, dynamic>>(maintenanceWindows, (value) => value.toMap());
+    return map;
+  }
+
+  factory GetClusterMaintenanceUpdatePolicy.fromMap(Map<String, dynamic> map) {
+    return GetClusterMaintenanceUpdatePolicy(
+      maintenanceWindows:
+          Input.decodeList<GetClusterMaintenanceUpdatePolicyMaintenanceWindow>(
+              map['maintenanceWindows'],
+              (value) =>
+                  GetClusterMaintenanceUpdatePolicyMaintenanceWindow.fromMap(
+                      (value as Map).cast<String, dynamic>())),
+    );
+  }
+}

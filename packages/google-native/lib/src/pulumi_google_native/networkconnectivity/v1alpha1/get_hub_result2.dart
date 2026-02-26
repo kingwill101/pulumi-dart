@@ -1,0 +1,65 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Result data returned by getHub.
+class GetHubResult2 {
+  /// Time when the Hub was created.
+  final String createTime;
+
+  /// Short description of the hub resource.
+  final String description;
+
+  /// User-defined labels.
+  final Map<String, String> labels;
+
+  /// Immutable. The name of a Hub resource.
+  final String name;
+
+  /// A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.
+  final List<String> spokes;
+
+  /// The current lifecycle state of this Hub.
+  final String state;
+
+  /// Google-generated UUID for this resource. This is unique across all Hub resources. If a Hub resource is deleted and another with the same name is created, it gets a different unique_id.
+  final String uniqueId;
+
+  /// Time when the Hub was updated.
+  final String updateTime;
+
+  GetHubResult2({
+    required this.createTime,
+    required this.description,
+    required this.labels,
+    required this.name,
+    required this.spokes,
+    required this.state,
+    required this.uniqueId,
+    required this.updateTime,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['createTime'] = createTime;
+    map['description'] = description;
+    map['labels'] = labels;
+    map['name'] = name;
+    map['spokes'] = spokes;
+    map['state'] = state;
+    map['uniqueId'] = uniqueId;
+    map['updateTime'] = updateTime;
+    return map;
+  }
+
+  factory GetHubResult2.fromMap(Map<String, dynamic> map) {
+    return GetHubResult2(
+      createTime: map['createTime'] as String,
+      description: map['description'] as String,
+      labels: (map['labels'] as Map).cast<String, String>(),
+      name: map['name'] as String,
+      spokes: (map['spokes'] as List).cast<String>(),
+      state: map['state'] as String,
+      uniqueId: map['uniqueId'] as String,
+      updateTime: map['updateTime'] as String,
+    );
+  }
+}

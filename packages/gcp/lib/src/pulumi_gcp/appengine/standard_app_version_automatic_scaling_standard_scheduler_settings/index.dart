@@ -1,0 +1,3 @@
+library module_appengine_standard_app_version_automatic_scaling_standard_scheduler_settings;
+
+export 'standard_app_version_automatic_scaling_standard_scheduler_settings.dart';

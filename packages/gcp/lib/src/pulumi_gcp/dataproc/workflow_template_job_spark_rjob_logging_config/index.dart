@@ -1,0 +1,3 @@
+library module_dataproc_workflow_template_job_spark_rjob_logging_config;
+
+export 'workflow_template_job_spark_rjob_logging_config.dart';

@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Start and end times for a build execution phase.
+class TimeSpanResponse {
+  /// End of time span.
+  final String endTime;
+
+  /// Start of time span.
+  final String startTime;
+
+  TimeSpanResponse({
+    required this.endTime,
+    required this.startTime,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['endTime'] = endTime;
+    map['startTime'] = startTime;
+    return map;
+  }
+
+  factory TimeSpanResponse.fromMap(Map<String, dynamic> map) {
+    return TimeSpanResponse(
+      endTime: map['endTime'] as String,
+      startTime: map['startTime'] as String,
+    );
+  }
+}

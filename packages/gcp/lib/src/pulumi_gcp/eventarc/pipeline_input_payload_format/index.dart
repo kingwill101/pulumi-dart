@@ -1,0 +1,3 @@
+library module_eventarc_pipeline_input_payload_format;
+
+export 'pipeline_input_payload_format.dart';

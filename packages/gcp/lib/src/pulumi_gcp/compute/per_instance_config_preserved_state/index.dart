@@ -1,0 +1,3 @@
+library module_compute_per_instance_config_preserved_state;
+
+export 'per_instance_config_preserved_state.dart';

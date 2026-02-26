@@ -1,0 +1,3 @@
+library module_redis_get_cluster_zone_distribution_config;
+
+export 'get_cluster_zone_distribution_config.dart';

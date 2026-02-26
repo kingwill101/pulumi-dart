@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import 'dynamic_group_query_response.dart';
+import 'dynamic_group_status_response.dart';
+
+/// Dynamic group metadata like queries and status.
+class DynamicGroupMetadataResponse {
+  /// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+  final List<DynamicGroupQueryResponse> queries;
+
+  /// Status of the dynamic group.
+  final DynamicGroupStatusResponse status;
+
+  DynamicGroupMetadataResponse({
+    required this.queries,
+    required this.status,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['queries'] =
+        Input.encodeList<DynamicGroupQueryResponse, Map<String, dynamic>>(
+            queries, (value) => value.toMap());
+    map['status'] = status.toMap();
+    return map;
+  }
+
+  factory DynamicGroupMetadataResponse.fromMap(Map<String, dynamic> map) {
+    return DynamicGroupMetadataResponse(
+      queries: Input.decodeList<DynamicGroupQueryResponse>(
+          map['queries'],
+          (value) => DynamicGroupQueryResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      status: DynamicGroupStatusResponse.fromMap(
+          (map['status'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetClusterNodePoolNodeConfigConfidentialNode {
+  /// Defines the type of technology used by the confidential node.
+  final String confidentialInstanceType;
+
+  /// Whether Confidential Nodes feature is enabled for all nodes in this pool.
+  final bool enabled;
+
+  GetClusterNodePoolNodeConfigConfidentialNode({
+    required this.confidentialInstanceType,
+    required this.enabled,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['confidentialInstanceType'] = confidentialInstanceType;
+    map['enabled'] = enabled;
+    return map;
+  }
+
+  factory GetClusterNodePoolNodeConfigConfidentialNode.fromMap(
+      Map<String, dynamic> map) {
+    return GetClusterNodePoolNodeConfigConfidentialNode(
+      confidentialInstanceType: map['confidentialInstanceType'] as String,
+      enabled: map['enabled'] as bool,
+    );
+  }
+}

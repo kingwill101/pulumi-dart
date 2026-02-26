@@ -1,0 +1,3 @@
+library module_datastream_stream_rule_set_object_filter_source_object_identifier_salesforce_identifier;
+
+export 'stream_rule_set_object_filter_source_object_identifier_salesforce_identifier.dart';

@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../cx_page_knowledge_connector_settings_trigger_fulfillment_message_mixed_audio_segment/cx_page_knowledge_connector_settings_trigger_fulfillment_message_mixed_audio_segment.dart';
+
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio {
+  /// Segments this audio response is composed of.
+  final List<
+          CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment>?
+      segments;
+
+  CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio({
+    this.segments,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final segmentsValue = segments;
+    if (segmentsValue != null) {
+      map['segments'] = Input.encodeList<
+          CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment,
+          Map<String, dynamic>>(segmentsValue, (value) => value.toMap());
+    }
+    return map;
+  }
+
+  factory CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio.fromMap(
+      Map<String, dynamic> map) {
+    return CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio(
+      segments: map['segments'] == null
+          ? null
+          : Input.decodeList<
+                  CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment>(
+              map['segments'],
+              (value) =>
+                  CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment
+                      .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

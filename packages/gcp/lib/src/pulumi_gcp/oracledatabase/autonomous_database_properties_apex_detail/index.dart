@@ -1,0 +1,3 @@
+library module_oracledatabase_autonomous_database_properties_apex_detail;
+
+export 'autonomous_database_properties_apex_detail.dart';

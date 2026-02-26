@@ -1,0 +1,3 @@
+library module_certificateauthority_certificate_certificate_description_cert_fingerprint;
+
+export 'certificate_certificate_description_cert_fingerprint.dart';

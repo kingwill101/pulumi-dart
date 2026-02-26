@@ -1,0 +1,3 @@
+library module_gkeonprem_vmware_admin_cluster_platform_config;
+
+export 'vmware_admin_cluster_platform_config.dart';

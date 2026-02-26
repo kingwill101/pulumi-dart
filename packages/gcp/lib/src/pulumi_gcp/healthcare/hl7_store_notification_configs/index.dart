@@ -1,0 +1,3 @@
+library module_healthcare_hl7_store_notification_configs;
+
+export 'hl7_store_notification_configs.dart';

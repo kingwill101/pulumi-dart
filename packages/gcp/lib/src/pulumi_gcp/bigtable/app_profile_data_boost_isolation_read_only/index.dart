@@ -1,0 +1,3 @@
+library module_bigtable_app_profile_data_boost_isolation_read_only;
+
+export 'app_profile_data_boost_isolation_read_only2.dart';

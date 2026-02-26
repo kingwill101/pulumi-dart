@@ -1,0 +1,3 @@
+library module_storage_get_insights_dataset_config_include_cloud_storage_bucket_cloud_storage_bucket;
+
+export 'get_insights_dataset_config_include_cloud_storage_bucket_cloud_storage_bucket.dart';

@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class TargetGke {
+  /// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
+  final String? cluster;
+
+  /// Optional. If set, the cluster will be accessed using the DNS endpoint. Note that both <span pulumi-lang-nodejs="`dnsEndpoint`" pulumi-lang-dotnet="`DnsEndpoint`" pulumi-lang-go="`dnsEndpoint`" pulumi-lang-python="`dns_endpoint`" pulumi-lang-yaml="`dnsEndpoint`" pulumi-lang-java="`dnsEndpoint`">`dns_endpoint`</span> and <span pulumi-lang-nodejs="`internalIp`" pulumi-lang-dotnet="`InternalIp`" pulumi-lang-go="`internalIp`" pulumi-lang-python="`internal_ip`" pulumi-lang-yaml="`internalIp`" pulumi-lang-java="`internalIp`">`internal_ip`</span> cannot be set to true.
+  final bool? dnsEndpoint;
+
+  /// Optional. If true, <span pulumi-lang-nodejs="`cluster`" pulumi-lang-dotnet="`Cluster`" pulumi-lang-go="`cluster`" pulumi-lang-python="`cluster`" pulumi-lang-yaml="`cluster`" pulumi-lang-java="`cluster`">`cluster`</span> is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when <span pulumi-lang-nodejs="`cluster`" pulumi-lang-dotnet="`Cluster`" pulumi-lang-go="`cluster`" pulumi-lang-python="`cluster`" pulumi-lang-yaml="`cluster`" pulumi-lang-java="`cluster`">`cluster`</span> is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+  final bool? internalIp;
+
+  /// Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+  final String? proxyUrl;
+
+  TargetGke({
+    this.cluster,
+    this.dnsEndpoint,
+    this.internalIp,
+    this.proxyUrl,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final clusterValue = cluster;
+    if (clusterValue != null) {
+      map['cluster'] = clusterValue;
+    }
+    final dnsEndpointValue = dnsEndpoint;
+    if (dnsEndpointValue != null) {
+      map['dnsEndpoint'] = dnsEndpointValue;
+    }
+    final internalIpValue = internalIp;
+    if (internalIpValue != null) {
+      map['internalIp'] = internalIpValue;
+    }
+    final proxyUrlValue = proxyUrl;
+    if (proxyUrlValue != null) {
+      map['proxyUrl'] = proxyUrlValue;
+    }
+    return map;
+  }
+
+  factory TargetGke.fromMap(Map<String, dynamic> map) {
+    return TargetGke(
+      cluster: map['cluster'] == null ? null : map['cluster'] as String,
+      dnsEndpoint:
+          map['dnsEndpoint'] == null ? null : map['dnsEndpoint'] as bool,
+      internalIp: map['internalIp'] == null ? null : map['internalIp'] as bool,
+      proxyUrl: map['proxyUrl'] == null ? null : map['proxyUrl'] as String,
+    );
+  }
+}

@@ -1,0 +1,111 @@
+import 'package:pulumi/pulumi.dart';
+import 'email_preferences_response.dart';
+import 'encryption_configuration_response2.dart';
+import 'schedule_options_response.dart';
+import 'transfer_config_args.dart';
+import 'user_info_response.dart';
+
+/// Creates a new data transfer configuration.
+/// Auto-naming is currently not supported for this resource.
+class TransferConfig extends CustomResource {
+  /// Optional OAuth2 authorization code to use with this transfer configuration. This is required only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code&client_id=client_id&scope=data_source_scopes * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
+  late final Output<String?> authorizationCode;
+
+  /// The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
+  late final Output<int> dataRefreshWindowDays;
+
+  /// Data source ID. This cannot be changed once data transfer is created. The full list of available data source IDs can be returned through an API call: https://cloud.google.com/bigquery-transfer/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/list
+  late final Output<String> dataSourceId;
+
+  /// Region in which BigQuery dataset is located.
+  late final Output<String> datasetRegion;
+
+  /// The BigQuery target dataset id.
+  late final Output<String> destinationDatasetId;
+
+  /// Is this config disabled. When set to true, no runs are scheduled for a given transfer.
+  late final Output<bool> disabled;
+
+  /// User specified display name for the data transfer.
+  late final Output<String> displayName;
+
+  /// Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
+  late final Output<EmailPreferencesResponse> emailPreferences;
+
+  /// The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
+  late final Output<EncryptionConfigurationResponse2> encryptionConfiguration;
+  late final Output<String> location;
+
+  /// The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+  late final Output<String> name;
+
+  /// Next time when data transfer will run.
+  late final Output<String> nextRunTime;
+
+  /// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
+  late final Output<String> notificationPubsubTopic;
+
+  /// Information about the user whose credentials are used to transfer data. Populated only for `transferConfigs.get` requests. In case the user information is not available, this field will not be populated.
+  late final Output<UserInfoResponse> ownerInfo;
+
+  /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+  late final Output<Map<String, String>> params;
+  late final Output<String> project;
+
+  /// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source.
+  late final Output<String> schedule;
+
+  /// Options customizing the data transfer schedule.
+  late final Output<ScheduleOptionsResponse> scheduleOptions;
+
+  /// Optional service account email. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
+  late final Output<String?> serviceAccountName;
+
+  /// State of the most recently updated transfer run.
+  late final Output<String> state;
+
+  /// Data transfer modification time. Ignored by server on input.
+  late final Output<String> updateTime;
+
+  /// Deprecated. Unique ID of the user on whose behalf transfer is done.
+  late final Output<String> userId;
+
+  /// Optional version info. This is required only if `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain version info, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info&client_id=client_id&scope=data_source_scopes * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
+  late final Output<String?> versionInfo;
+
+  TransferConfig(
+    String name, {
+    TransferConfigArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:bigquerydatatransfer/v1:TransferConfig',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.authorizationCode = Output.createUnknown<String?>();
+    this.dataRefreshWindowDays = Output.createUnknown<int>();
+    this.dataSourceId = Output.createUnknown<String>();
+    this.datasetRegion = Output.createUnknown<String>();
+    this.destinationDatasetId = Output.createUnknown<String>();
+    this.disabled = Output.createUnknown<bool>();
+    this.displayName = Output.createUnknown<String>();
+    this.emailPreferences = Output.createUnknown<EmailPreferencesResponse>();
+    this.encryptionConfiguration =
+        Output.createUnknown<EncryptionConfigurationResponse2>();
+    this.location = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.nextRunTime = Output.createUnknown<String>();
+    this.notificationPubsubTopic = Output.createUnknown<String>();
+    this.ownerInfo = Output.createUnknown<UserInfoResponse>();
+    this.params = Output.createUnknown<Map<String, String>>();
+    this.project = Output.createUnknown<String>();
+    this.schedule = Output.createUnknown<String>();
+    this.scheduleOptions = Output.createUnknown<ScheduleOptionsResponse>();
+    this.serviceAccountName = Output.createUnknown<String?>();
+    this.state = Output.createUnknown<String>();
+    this.updateTime = Output.createUnknown<String>();
+    this.userId = Output.createUnknown<String>();
+    this.versionInfo = Output.createUnknown<String?>();
+  }
+}

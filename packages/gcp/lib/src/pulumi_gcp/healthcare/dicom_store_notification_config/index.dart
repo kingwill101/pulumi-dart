@@ -1,0 +1,3 @@
+library module_healthcare_dicom_store_notification_config;
+
+export 'dicom_store_notification_config.dart';

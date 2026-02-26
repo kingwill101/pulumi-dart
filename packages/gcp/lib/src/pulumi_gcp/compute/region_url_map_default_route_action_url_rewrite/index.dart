@@ -1,0 +1,3 @@
+library module_compute_region_url_map_default_route_action_url_rewrite;
+
+export 'region_url_map_default_route_action_url_rewrite.dart';

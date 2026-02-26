@@ -1,0 +1,257 @@
+import 'package:pulumi/pulumi.dart';
+import 'odb_subnet_args.dart';
+
+/// An OdbSubnet resource which represents a subnet under an OdbNetwork.
+///
+///
+/// To get more information about OdbSubnet, see:
+/// * How-to Guides
+/// * [OracleDatabase@Google Cloud](https://cloud.google.com/oracle/database/docs/overview')
+///
+/// ## Example Usage
+///
+/// ### Oracledatabase Odbsubnet
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const my_odbsubnet = new gcp.oracledatabase.OdbSubnet("my-odbsubnet", {
+/// odbSubnetId: "my-odbsubnet",
+/// location: "europe-west2",
+/// project: "my-project",
+/// odbnetwork: "my-odbnetwork",
+/// cidrRange: "10.1.1.0/24",
+/// purpose: "CLIENT_SUBNET",
+/// labels: {
+/// terraform_created: "true",
+/// },
+/// deletionProtection: true,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// my_odbsubnet = gcp.oracledatabase.OdbSubnet("my-odbsubnet",
+/// odb_subnet_id="my-odbsubnet",
+/// location="europe-west2",
+/// project="my-project",
+/// odbnetwork="my-odbnetwork",
+/// cidr_range="10.1.1.0/24",
+/// purpose="CLIENT_SUBNET",
+/// labels={
+/// "terraform_created": "true",
+/// },
+/// deletion_protection=True)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var my_odbsubnet = new Gcp.OracleDatabase.OdbSubnet("my-odbsubnet", new()
+/// {
+/// OdbSubnetId = "my-odbsubnet",
+/// Location = "europe-west2",
+/// Project = "my-project",
+/// Odbnetwork = "my-odbnetwork",
+/// CidrRange = "10.1.1.0/24",
+/// Purpose = "CLIENT_SUBNET",
+/// Labels =
+/// {
+/// { "terraform_created", "true" },
+/// },
+/// DeletionProtection = true,
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := oracledatabase.NewOdbSubnet(ctx, "my-odbsubnet", &oracledatabase.OdbSubnetArgs{
+/// OdbSubnetId: pulumi.String("my-odbsubnet"),
+/// Location:    pulumi.String("europe-west2"),
+/// Project:     pulumi.String("my-project"),
+/// Odbnetwork:  pulumi.String("my-odbnetwork"),
+/// CidrRange:   pulumi.String("10.1.1.0/24"),
+/// Purpose:     pulumi.String("CLIENT_SUBNET"),
+/// Labels: pulumi.StringMap{
+/// "terraform_created": pulumi.String("true"),
+/// },
+/// DeletionProtection: pulumi.Bool(true),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.oracledatabase.OdbSubnet;
+/// import com.pulumi.gcp.oracledatabase.OdbSubnetArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var my_odbsubnet = new OdbSubnet("my-odbsubnet", OdbSubnetArgs.builder()
+/// .odbSubnetId("my-odbsubnet")
+/// .location("europe-west2")
+/// .project("my-project")
+/// .odbnetwork("my-odbnetwork")
+/// .cidrRange("10.1.1.0/24")
+/// .purpose("CLIENT_SUBNET")
+/// .labels(Map.of("terraform_created", "true"))
+/// .deletionProtection(true)
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// my-odbsubnet:
+/// type: gcp:oracledatabase:OdbSubnet
+/// properties:
+/// odbSubnetId: my-odbsubnet
+/// location: europe-west2
+/// project: my-project
+/// odbnetwork: my-odbnetwork
+/// cidrRange: 10.1.1.0/24
+/// purpose: CLIENT_SUBNET
+/// labels:
+/// terraform_created: 'true'
+/// deletionProtection: 'true'
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// OdbSubnet can be imported using any of these accepted formats:
+///
+/// * `projects/{{project}}/locations/{{location}}/odbNetworks/{{odbnetwork}}/odbSubnets/{{odb_subnet_id}}`
+///
+/// * `{{project}}/{{location}}/{{odbnetwork}}/{{odb_subnet_id}}`
+///
+/// * `{{location}}/{{odbnetwork}}/{{odb_subnet_id}}`
+///
+/// When using the `pulumi import` command, OdbSubnet can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:oracledatabase/odbSubnet:OdbSubnet default projects/{{project}}/locations/{{location}}/odbNetworks/{{odbnetwork}}/odbSubnets/{{odb_subnet_id}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:oracledatabase/odbSubnet:OdbSubnet default {{project}}/{{location}}/{{odbnetwork}}/{{odb_subnet_id}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:oracledatabase/odbSubnet:OdbSubnet default {{location}}/{{odbnetwork}}/{{odb_subnet_id}}
+/// ```
+class OdbSubnet extends CustomResource {
+  /// The CIDR range of the subnet.
+  late final Output<String> cidrRange;
+
+  /// The date and time that the OdbNetwork was created.
+  late final Output<String> createTime;
+  late final Output<bool?> deletionProtection;
+
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  late final Output<Map<String, String>> effectiveLabels;
+
+  /// Labels or tags associated with the resource.
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  late final Output<Map<String, String>?> labels;
+
+  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  late final Output<String> location;
+
+  /// Identifier. The name of the OdbSubnet resource in the following format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+  late final Output<String> name;
+
+  /// The ID of the OdbSubnet to create. This value is restricted
+  /// to (^a-z?$) and must be a maximum of 63
+  /// characters in length. The value must start with a letter and end with
+  /// a letter or a number.
+  late final Output<String> odbSubnetId;
+
+  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  late final Output<String> odbnetwork;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  late final Output<String> project;
+
+  /// The combination of labels configured directly on the resource
+  /// and default labels configured on the provider.
+  late final Output<Map<String, String>> pulumiLabels;
+
+  /// Purpose of the subnet.
+  /// Possible values:
+  /// CLIENT_SUBNET
+  /// BACKUP_SUBNET
+  late final Output<String> purpose;
+
+  /// State of the ODB Subnet.
+  /// Possible values:
+  /// PROVISIONING
+  /// AVAILABLE
+  /// TERMINATING
+  /// FAILED
+  late final Output<String> state;
+
+  OdbSubnet(
+    String name, {
+    OdbSubnetArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:oracledatabase/odbSubnet:OdbSubnet',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.cidrRange = Output.createUnknown<String>();
+    this.createTime = Output.createUnknown<String>();
+    this.deletionProtection = Output.createUnknown<bool?>();
+    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.labels = Output.createUnknown<Map<String, String>?>();
+    this.location = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.odbSubnetId = Output.createUnknown<String>();
+    this.odbnetwork = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+    this.purpose = Output.createUnknown<String>();
+    this.state = Output.createUnknown<String>();
+  }
+}

@@ -1,0 +1,3 @@
+library module_certificateauthority_get_authority_subordinate_config_pem_issuer_chain;
+
+export 'get_authority_subordinate_config_pem_issuer_chain.dart';

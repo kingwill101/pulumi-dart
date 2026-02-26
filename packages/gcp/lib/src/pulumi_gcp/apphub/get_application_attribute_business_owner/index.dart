@@ -1,0 +1,3 @@
+library module_apphub_get_application_attribute_business_owner;
+
+export 'get_application_attribute_business_owner.dart';

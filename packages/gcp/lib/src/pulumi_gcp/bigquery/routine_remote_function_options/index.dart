@@ -1,0 +1,3 @@
+library module_bigquery_routine_remote_function_options;
+
+export 'routine_remote_function_options.dart';

@@ -1,0 +1,3 @@
+library module_securitycenter_management_project_security_health_analytics_custom_module_custom_config_resource_selector;
+
+export 'management_project_security_health_analytics_custom_module_custom_config_resource_selector.dart';

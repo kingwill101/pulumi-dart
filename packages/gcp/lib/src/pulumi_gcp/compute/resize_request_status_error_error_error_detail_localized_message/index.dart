@@ -1,0 +1,3 @@
+library module_compute_resize_request_status_error_error_error_detail_localized_message;
+
+export 'resize_request_status_error_error_error_detail_localized_message.dart';

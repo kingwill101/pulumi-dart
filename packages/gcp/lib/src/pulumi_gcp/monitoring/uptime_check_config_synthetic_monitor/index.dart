@@ -1,0 +1,3 @@
+library module_monitoring_uptime_check_config_synthetic_monitor;
+
+export 'uptime_check_config_synthetic_monitor.dart';

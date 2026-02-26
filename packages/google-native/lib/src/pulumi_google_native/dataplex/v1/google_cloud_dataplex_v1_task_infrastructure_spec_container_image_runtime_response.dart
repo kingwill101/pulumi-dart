@@ -1,0 +1,42 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Container Image Runtime Configuration used with Batch execution.
+class GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse {
+  /// Optional. Container image to use.
+  final String image;
+
+  /// Optional. A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
+  final List<String> javaJars;
+
+  /// Optional. Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+  final Map<String, String> properties;
+
+  /// Optional. A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
+  final List<String> pythonPackages;
+
+  GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse({
+    required this.image,
+    required this.javaJars,
+    required this.properties,
+    required this.pythonPackages,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['image'] = image;
+    map['javaJars'] = javaJars;
+    map['properties'] = properties;
+    map['pythonPackages'] = pythonPackages;
+    return map;
+  }
+
+  factory GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeResponse(
+      image: map['image'] as String,
+      javaJars: (map['javaJars'] as List).cast<String>(),
+      properties: (map['properties'] as Map).cast<String, String>(),
+      pythonPackages: (map['pythonPackages'] as List).cast<String>(),
+    );
+  }
+}

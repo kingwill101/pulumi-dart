@@ -1,0 +1,3 @@
+library module_ces_deployment_channel_profile_web_widget_config;
+
+export 'deployment_channel_profile_web_widget_config.dart';

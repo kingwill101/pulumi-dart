@@ -1,0 +1,34 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// Arguments for getAccessPolicy.
+class GetAccessPolicyArgs {
+  /// The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: `organizations/{{organization_id}}`
+  final Input<String> parent;
+
+  /// Folder or project on which this policy is applicable. Format: `folders/{{folder_id}}` or `projects/{{project_number}}`
+  final Input<List<String>>? scopes;
+
+  GetAccessPolicyArgs({
+    required this.parent,
+    this.scopes,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['parent'] = parent;
+    final scopesValue = scopes;
+    if (scopesValue != null) {
+      map['scopes'] = scopesValue;
+    }
+    return map;
+  }
+
+  factory GetAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
+    return GetAccessPolicyArgs(
+      parent: Input.asInput<String>(map['parent']),
+      scopes: Input.asOptionalInput<List<String>>(map['scopes']),
+    );
+  }
+}

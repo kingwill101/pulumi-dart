@@ -1,0 +1,3 @@
+library module_chronicle_watchlist_watchlist_user_preferences;
+
+export 'watchlist_watchlist_user_preferences.dart';

@@ -1,0 +1,3 @@
+library module_developerconnect_insights_config_error_detail;
+
+export 'insights_config_error_detail.dart';

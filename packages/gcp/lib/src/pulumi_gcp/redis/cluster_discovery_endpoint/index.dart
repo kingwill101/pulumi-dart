@@ -1,0 +1,3 @@
+library module_redis_cluster_discovery_endpoint;
+
+export 'cluster_discovery_endpoint.dart';

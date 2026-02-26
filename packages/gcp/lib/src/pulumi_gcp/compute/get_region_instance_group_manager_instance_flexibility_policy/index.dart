@@ -1,0 +1,3 @@
+library module_compute_get_region_instance_group_manager_instance_flexibility_policy;
+
+export 'get_region_instance_group_manager_instance_flexibility_policy.dart';

@@ -1,0 +1,31 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'performance_config_dump_parallel_level.dart';
+
+/// Performance configuration definition.
+class PerformanceConfig {
+  /// Initial dump parallelism level.
+  final PerformanceConfigDumpParallelLevel? dumpParallelLevel;
+
+  PerformanceConfig({
+    this.dumpParallelLevel,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final dumpParallelLevelValue = dumpParallelLevel;
+    if (dumpParallelLevelValue != null) {
+      map['dumpParallelLevel'] = dumpParallelLevelValue.value;
+    }
+    return map;
+  }
+
+  factory PerformanceConfig.fromMap(Map<String, dynamic> map) {
+    return PerformanceConfig(
+      dumpParallelLevel: map['dumpParallelLevel'] == null
+          ? null
+          : PerformanceConfigDumpParallelLevel.fromValue(
+              map['dumpParallelLevel'] as String),
+    );
+  }
+}

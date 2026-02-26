@@ -1,0 +1,3 @@
+library module_compute_get_instance_group_manager_status_all_instances_config;
+
+export 'get_instance_group_manager_status_all_instances_config.dart';

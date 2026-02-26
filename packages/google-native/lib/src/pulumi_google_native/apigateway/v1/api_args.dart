@@ -1,0 +1,66 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// The set of arguments for Api.
+class ApiArgs {
+  /// Required. Identifier to assign to the API. Must be unique within scope of the parent resource.
+  final Input<String> apiId;
+
+  /// Optional. Display name.
+  final Input<String>? displayName;
+
+  /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+  final Input<Map<String, String>>? labels;
+  final Input<String>? location;
+
+  /// Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
+  final Input<String>? managedService;
+  final Input<String>? project;
+
+  ApiArgs({
+    required this.apiId,
+    this.displayName,
+    this.labels,
+    this.location,
+    this.managedService,
+    this.project,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['apiId'] = apiId;
+    final displayNameValue = displayName;
+    if (displayNameValue != null) {
+      map['displayName'] = displayNameValue;
+    }
+    final labelsValue = labels;
+    if (labelsValue != null) {
+      map['labels'] = labelsValue;
+    }
+    final locationValue = location;
+    if (locationValue != null) {
+      map['location'] = locationValue;
+    }
+    final managedServiceValue = managedService;
+    if (managedServiceValue != null) {
+      map['managedService'] = managedServiceValue;
+    }
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory ApiArgs.fromMap(Map<String, dynamic> map) {
+    return ApiArgs(
+      apiId: Input.asInput<String>(map['apiId']),
+      displayName: Input.asOptionalInput<String>(map['displayName']),
+      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: Input.asOptionalInput<String>(map['location']),
+      managedService: Input.asOptionalInput<String>(map['managedService']),
+      project: Input.asOptionalInput<String>(map['project']),
+    );
+  }
+}

@@ -1,0 +1,4 @@
+library module_compute_interconnect_attachment_group;
+
+export 'interconnect_attachment_group.dart';
+export 'interconnect_attachment_group_args.dart';

@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Online serving scaling configuration. If min_node_count and max_node_count are set to the same value, the cluster will be configured with the fixed number of node (no auto-scaling).
+class GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScaling {
+  /// Optional. The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set or set to 0, default to 50.
+  final int? cpuUtilizationTarget;
+
+  /// The maximum number of nodes to scale up to. Must be greater than min_node_count, and less than or equal to 10 times of 'min_node_count'.
+  final int? maxNodeCount;
+
+  /// The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+  final int minNodeCount;
+
+  GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScaling({
+    this.cpuUtilizationTarget,
+    this.maxNodeCount,
+    required this.minNodeCount,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final cpuUtilizationTargetValue = cpuUtilizationTarget;
+    if (cpuUtilizationTargetValue != null) {
+      map['cpuUtilizationTarget'] = cpuUtilizationTargetValue;
+    }
+    final maxNodeCountValue = maxNodeCount;
+    if (maxNodeCountValue != null) {
+      map['maxNodeCount'] = maxNodeCountValue;
+    }
+    map['minNodeCount'] = minNodeCount;
+    return map;
+  }
+
+  factory GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScaling.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigScaling(
+      cpuUtilizationTarget: map['cpuUtilizationTarget'] == null
+          ? null
+          : map['cpuUtilizationTarget'] as int,
+      maxNodeCount:
+          map['maxNodeCount'] == null ? null : map['maxNodeCount'] as int,
+      minNodeCount: map['minNodeCount'] as int,
+    );
+  }
+}

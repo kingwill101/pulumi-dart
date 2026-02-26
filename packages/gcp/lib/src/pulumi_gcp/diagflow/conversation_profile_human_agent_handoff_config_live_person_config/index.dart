@@ -1,0 +1,3 @@
+library module_diagflow_conversation_profile_human_agent_handoff_config_live_person_config;
+
+export 'conversation_profile_human_agent_handoff_config_live_person_config.dart';

@@ -1,0 +1,31 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// Arguments for getLicense.
+class GetLicenseArgs {
+  final Input<String> license;
+  final Input<String>? project;
+
+  GetLicenseArgs({
+    required this.license,
+    this.project,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['license'] = license;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetLicenseArgs.fromMap(Map<String, dynamic> map) {
+    return GetLicenseArgs(
+      license: Input.asInput<String>(map['license']),
+      project: Input.asOptionalInput<String>(map['project']),
+    );
+  }
+}

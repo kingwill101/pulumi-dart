@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_workload_identity_pool_inline_trust_config_additional_trust_bundle_trust_anchor/get_workload_identity_pool_inline_trust_config_additional_trust_bundle_trust_anchor.dart';
+
+class GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle {
+  /// List of Trust Anchors to be used while performing validation against a given
+  /// 'TrustStore'. The incoming end entity's certificate must be chained up to one of the
+  /// trust anchors here.
+  final List<
+          GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor>
+      trustAnchors;
+  final String trustDomain;
+
+  GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle({
+    required this.trustAnchors,
+    required this.trustDomain,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['trustAnchors'] = Input.encodeList<
+        GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor,
+        Map<String, dynamic>>(trustAnchors, (value) => value.toMap());
+    map['trustDomain'] = trustDomain;
+    return map;
+  }
+
+  factory GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle.fromMap(
+      Map<String, dynamic> map) {
+    return GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle(
+      trustAnchors: Input.decodeList<
+              GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor>(
+          map['trustAnchors'],
+          (value) =>
+              GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor
+                  .fromMap((value as Map).cast<String, dynamic>())),
+      trustDomain: map['trustDomain'] as String,
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_appengine_standard_app_version_basic_scaling;
+
+export 'standard_app_version_basic_scaling.dart';

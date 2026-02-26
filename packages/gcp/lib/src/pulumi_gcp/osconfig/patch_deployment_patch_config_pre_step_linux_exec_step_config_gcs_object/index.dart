@@ -1,0 +1,3 @@
+library module_osconfig_patch_deployment_patch_config_pre_step_linux_exec_step_config_gcs_object;
+
+export 'patch_deployment_patch_config_pre_step_linux_exec_step_config_gcs_object.dart';

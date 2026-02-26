@@ -1,0 +1,3 @@
+library module_vertex_ai_feature_online_store_bigtable_auto_scaling;
+
+export 'ai_feature_online_store_bigtable_auto_scaling.dart';

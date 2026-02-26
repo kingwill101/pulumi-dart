@@ -1,0 +1,3 @@
+library module_monitoring_notification_channel_sensitive_labels;
+
+export 'notification_channel_sensitive_labels.dart';

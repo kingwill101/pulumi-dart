@@ -1,0 +1,3 @@
+library module_clouddomains_registration_management_settings;
+
+export 'registration_management_settings.dart';

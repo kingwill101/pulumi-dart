@@ -1,0 +1,3 @@
+library module_datacatalog_tag_template_field_type;
+
+export 'tag_template_field_type.dart';

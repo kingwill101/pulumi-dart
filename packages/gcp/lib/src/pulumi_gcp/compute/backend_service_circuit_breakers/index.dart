@@ -1,0 +1,3 @@
+library module_compute_backend_service_circuit_breakers;
+
+export 'backend_service_circuit_breakers.dart';

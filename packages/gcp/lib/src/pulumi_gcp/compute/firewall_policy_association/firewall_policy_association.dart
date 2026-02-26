@@ -1,0 +1,242 @@
+import 'package:pulumi/pulumi.dart';
+import 'firewall_policy_association_args.dart';
+
+/// Allows associating hierarchical firewall policies with the target where they are applied. This allows creating policies and rules in a different location than they are applied.
+/// For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/firewall/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
+///
+///
+/// To get more information about FirewallPolicyAssociation, see:
+///
+/// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/firewallPolicies/addAssociation)
+///
+/// ## Example Usage
+///
+/// ### Firewall Policy Association
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const folder = new gcp.organizations.Folder("folder", {
+/// displayName: "folder-fpa",
+/// parent: "organizations/123456789",
+/// deletionProtection: false,
+/// });
+/// const policy = new gcp.compute.FirewallPolicy("policy", {
+/// parent: "organizations/123456789",
+/// shortName: "my-policy",
+/// description: "Example Resource",
+/// });
+/// const _default = new gcp.compute.FirewallPolicyAssociation("default", {
+/// firewallPolicy: policy.id,
+/// attachmentTarget: folder.name,
+/// name: "my-association",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// folder = gcp.organizations.Folder("folder",
+/// display_name="folder-fpa",
+/// parent="organizations/123456789",
+/// deletion_protection=False)
+/// policy = gcp.compute.FirewallPolicy("policy",
+/// parent="organizations/123456789",
+/// short_name="my-policy",
+/// description="Example Resource")
+/// default = gcp.compute.FirewallPolicyAssociation("default",
+/// firewall_policy=policy.id,
+/// attachment_target=folder.name,
+/// name="my-association")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var folder = new Gcp.Organizations.Folder("folder", new()
+/// {
+/// DisplayName = "folder-fpa",
+/// Parent = "organizations/123456789",
+/// DeletionProtection = false,
+/// });
+///
+/// var policy = new Gcp.Compute.FirewallPolicy("policy", new()
+/// {
+/// Parent = "organizations/123456789",
+/// ShortName = "my-policy",
+/// Description = "Example Resource",
+/// });
+///
+/// var @default = new Gcp.Compute.FirewallPolicyAssociation("default", new()
+/// {
+/// FirewallPolicy = policy.Id,
+/// AttachmentTarget = folder.Name,
+/// Name = "my-association",
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// folder, err := organizations.NewFolder(ctx, "folder", &organizations.FolderArgs{
+/// DisplayName:        pulumi.String("folder-fpa"),
+/// Parent:             pulumi.String("organizations/123456789"),
+/// DeletionProtection: pulumi.Bool(false),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// policy, err := compute.NewFirewallPolicy(ctx, "policy", &compute.FirewallPolicyArgs{
+/// Parent:      pulumi.String("organizations/123456789"),
+/// ShortName:   pulumi.String("my-policy"),
+/// Description: pulumi.String("Example Resource"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// _, err = compute.NewFirewallPolicyAssociation(ctx, "default", &compute.FirewallPolicyAssociationArgs{
+/// FirewallPolicy:   policy.ID(),
+/// AttachmentTarget: folder.Name,
+/// Name:             pulumi.String("my-association"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.Folder;
+/// import com.pulumi.gcp.organizations.FolderArgs;
+/// import com.pulumi.gcp.compute.FirewallPolicy;
+/// import com.pulumi.gcp.compute.FirewallPolicyArgs;
+/// import com.pulumi.gcp.compute.FirewallPolicyAssociation;
+/// import com.pulumi.gcp.compute.FirewallPolicyAssociationArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var folder = new Folder("folder", FolderArgs.builder()
+/// .displayName("folder-fpa")
+/// .parent("organizations/123456789")
+/// .deletionProtection(false)
+/// .build());
+///
+/// var policy = new FirewallPolicy("policy", FirewallPolicyArgs.builder()
+/// .parent("organizations/123456789")
+/// .shortName("my-policy")
+/// .description("Example Resource")
+/// .build());
+///
+/// var default_ = new FirewallPolicyAssociation("default", FirewallPolicyAssociationArgs.builder()
+/// .firewallPolicy(policy.id())
+/// .attachmentTarget(folder.name())
+/// .name("my-association")
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// folder:
+/// type: gcp:organizations:Folder
+/// properties:
+/// displayName: folder-fpa
+/// parent: organizations/123456789
+/// deletionProtection: false
+/// policy:
+/// type: gcp:compute:FirewallPolicy
+/// properties:
+/// parent: organizations/123456789
+/// shortName: my-policy
+/// description: Example Resource
+/// default:
+/// type: gcp:compute:FirewallPolicyAssociation
+/// properties:
+/// firewallPolicy: ${policy.id}
+/// attachmentTarget: ${folder.name}
+/// name: my-association
+/// ```
+/// <!--End PulumiCodeChooser -->
+/// ## Import
+///
+/// FirewallPolicyAssociation can be imported using any of these accepted formats:
+///
+/// * `locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
+///
+/// * `{{firewall_policy}}/{{name}}`
+///
+/// When using the `pulumi import` command, FirewallPolicyAssociation can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation default locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation default {{firewall_policy}}/{{name}}
+/// ```
+class FirewallPolicyAssociation extends CustomResource {
+  /// The target that the firewall policy is attached to.
+  late final Output<String> attachmentTarget;
+
+  /// The firewall policy of the resource.
+  /// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
+  /// firewall policy with the flag to override the existing attachmentTarget's policy association.
+  /// **Note** Due to potential risks with this operation it is *highly* recommended to use the <span pulumi-lang-nodejs="`createBeforeDestroy`" pulumi-lang-dotnet="`CreateBeforeDestroy`" pulumi-lang-go="`createBeforeDestroy`" pulumi-lang-python="`create_before_destroy`" pulumi-lang-yaml="`createBeforeDestroy`" pulumi-lang-java="`createBeforeDestroy`">`create_before_destroy`</span> life cycle option
+  /// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
+  late final Output<String> firewallPolicy;
+
+  /// The name for an association.
+  late final Output<String> name;
+
+  /// The short name of the firewall policy of the association.
+  late final Output<String> shortName;
+
+  FirewallPolicyAssociation(
+    String name, {
+    FirewallPolicyAssociationArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.attachmentTarget = Output.createUnknown<String>();
+    this.firewallPolicy = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.shortName = Output.createUnknown<String>();
+  }
+}

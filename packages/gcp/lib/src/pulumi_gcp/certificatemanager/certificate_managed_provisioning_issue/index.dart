@@ -1,0 +1,3 @@
+library module_certificatemanager_certificate_managed_provisioning_issue;
+
+export 'certificate_managed_provisioning_issue.dart';

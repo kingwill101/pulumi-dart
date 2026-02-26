@@ -1,0 +1,3 @@
+library module_compute_external_vpn_gateway_interface;
+
+export 'external_vpn_gateway_interface.dart';

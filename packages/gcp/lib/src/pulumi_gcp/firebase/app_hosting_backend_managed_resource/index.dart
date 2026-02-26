@@ -1,0 +1,3 @@
+library module_firebase_app_hosting_backend_managed_resource;
+
+export 'app_hosting_backend_managed_resource.dart';

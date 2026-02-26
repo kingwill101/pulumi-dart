@@ -1,0 +1,69 @@
+import 'package:pulumi/pulumi.dart';
+import 'featurestore_args2.dart';
+import 'google_cloud_aiplatform_v1beta1_encryption_spec_response.dart';
+import 'google_cloud_aiplatform_v1beta1_featurestore_online_serving_config_response.dart';
+
+/// Creates a new Featurestore in a given project and location.
+/// Auto-naming is currently not supported for this resource.
+class Featurestore2 extends CustomResource {
+  /// Timestamp when this Featurestore was created.
+  late final Output<String> createTime;
+
+  /// Optional. Customer-managed encryption key spec for data storage. If set, both of the online and offline data storage will be secured by this key.
+  late final Output<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>
+      encryptionSpec;
+
+  /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+  late final Output<String> etag;
+
+  /// Required. The ID to use for this Featurestore, which will become the final component of the Featurestore's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location.
+  late final Output<String> featurestoreId;
+
+  /// Optional. The labels with user-defined metadata to organize your Featurestore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one Featurestore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+  late final Output<Map<String, String>> labels;
+  late final Output<String> location;
+
+  /// Name of the Featurestore. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}`
+  late final Output<String> name;
+
+  /// Optional. Config for online storage resources. The field should not co-exist with the field of `OnlineStoreReplicationConfig`. If both of it and OnlineStoreReplicationConfig are unset, the feature store will not have an online store and cannot be used for online serving.
+  late final Output<
+          GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigResponse>
+      onlineServingConfig;
+
+  /// Optional. TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than `online_storage_ttl_days` since the feature generation time. Note that `online_storage_ttl_days` should be less than or equal to `offline_storage_ttl_days` for each EntityType under a featurestore. If not set, default to 4000 days
+  late final Output<int> onlineStorageTtlDays;
+  late final Output<String> project;
+
+  /// State of the featurestore.
+  late final Output<String> state;
+
+  /// Timestamp when this Featurestore was last updated.
+  late final Output<String> updateTime;
+
+  Featurestore2(
+    String name, {
+    FeaturestoreArgs2? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:aiplatform/v1beta1:Featurestore',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.createTime = Output.createUnknown<String>();
+    this.encryptionSpec = Output.createUnknown<
+        GoogleCloudAiplatformV1beta1EncryptionSpecResponse>();
+    this.etag = Output.createUnknown<String>();
+    this.featurestoreId = Output.createUnknown<String>();
+    this.labels = Output.createUnknown<Map<String, String>>();
+    this.location = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.onlineServingConfig = Output.createUnknown<
+        GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigResponse>();
+    this.onlineStorageTtlDays = Output.createUnknown<int>();
+    this.project = Output.createUnknown<String>();
+    this.state = Output.createUnknown<String>();
+    this.updateTime = Output.createUnknown<String>();
+  }
+}

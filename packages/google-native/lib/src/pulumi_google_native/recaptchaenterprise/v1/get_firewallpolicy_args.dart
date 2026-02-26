@@ -1,0 +1,31 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// Arguments for getFirewallpolicy.
+class GetFirewallpolicyArgs {
+  final Input<String> firewallpolicyId;
+  final Input<String>? project;
+
+  GetFirewallpolicyArgs({
+    required this.firewallpolicyId,
+    this.project,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['firewallpolicyId'] = firewallpolicyId;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetFirewallpolicyArgs.fromMap(Map<String, dynamic> map) {
+    return GetFirewallpolicyArgs(
+      firewallpolicyId: Input.asInput<String>(map['firewallpolicyId']),
+      project: Input.asOptionalInput<String>(map['project']),
+    );
+  }
+}

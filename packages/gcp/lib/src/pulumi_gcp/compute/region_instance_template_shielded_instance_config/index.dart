@@ -1,0 +1,3 @@
+library module_compute_region_instance_template_shielded_instance_config;
+
+export 'region_instance_template_shielded_instance_config.dart';

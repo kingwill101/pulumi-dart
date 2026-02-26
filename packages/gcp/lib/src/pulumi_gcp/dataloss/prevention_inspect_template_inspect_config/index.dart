@@ -1,0 +1,3 @@
+library module_dataloss_prevention_inspect_template_inspect_config;
+
+export 'prevention_inspect_template_inspect_config.dart';

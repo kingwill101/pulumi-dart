@@ -1,0 +1,3 @@
+library module_compute_urlmap_path_matcher_route_rule_http_filter_metadata;
+
+export 'urlmap_path_matcher_route_rule_http_filter_metadata.dart';

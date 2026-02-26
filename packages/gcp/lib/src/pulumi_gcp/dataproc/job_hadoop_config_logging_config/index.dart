@@ -1,0 +1,3 @@
+library module_dataproc_job_hadoop_config_logging_config;
+
+export 'job_hadoop_config_logging_config.dart';

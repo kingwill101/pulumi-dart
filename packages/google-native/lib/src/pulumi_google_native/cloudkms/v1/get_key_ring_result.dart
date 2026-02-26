@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Result data returned by getKeyRing.
+class GetKeyRingResult {
+  /// The time at which this KeyRing was created.
+  final String createTime;
+
+  /// The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
+  final String name;
+
+  GetKeyRingResult({
+    required this.createTime,
+    required this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['createTime'] = createTime;
+    map['name'] = name;
+    return map;
+  }
+
+  factory GetKeyRingResult.fromMap(Map<String, dynamic> map) {
+    return GetKeyRingResult(
+      createTime: map['createTime'] as String,
+      name: map['name'] as String,
+    );
+  }
+}

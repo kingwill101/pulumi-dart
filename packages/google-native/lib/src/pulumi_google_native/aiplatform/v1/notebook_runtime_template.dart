@@ -1,0 +1,98 @@
+import 'package:pulumi/pulumi.dart';
+import 'google_cloud_aiplatform_v1_machine_spec_response.dart';
+import 'google_cloud_aiplatform_v1_network_spec_response.dart';
+import 'google_cloud_aiplatform_v1_notebook_euc_config_response.dart';
+import 'google_cloud_aiplatform_v1_notebook_idle_shutdown_config_response.dart';
+import 'google_cloud_aiplatform_v1_persistent_disk_spec_response.dart';
+import 'notebook_runtime_template_args.dart';
+
+/// Creates a NotebookRuntimeTemplate.
+/// Auto-naming is currently not supported for this resource.
+class NotebookRuntimeTemplate extends CustomResource {
+  /// Timestamp when this NotebookRuntimeTemplate was created.
+  late final Output<String> createTime;
+
+  /// Optional. The specification of persistent disk attached to the runtime as data disk storage.
+  late final Output<GoogleCloudAiplatformV1PersistentDiskSpecResponse>
+      dataPersistentDiskSpec;
+
+  /// The description of the NotebookRuntimeTemplate.
+  late final Output<String> description;
+
+  /// The display name of the NotebookRuntimeTemplate. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+  late final Output<String> displayName;
+
+  /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+  late final Output<String> etag;
+
+  /// EUC configuration of the NotebookRuntimeTemplate.
+  late final Output<GoogleCloudAiplatformV1NotebookEucConfigResponse> eucConfig;
+
+  /// The idle shutdown configuration of NotebookRuntimeTemplate. This config will only be set when idle shutdown is enabled.
+  late final Output<GoogleCloudAiplatformV1NotebookIdleShutdownConfigResponse>
+      idleShutdownConfig;
+
+  /// The default template to use if not specified.
+  late final Output<bool> isDefault;
+
+  /// The labels with user-defined metadata to organize the NotebookRuntimeTemplates. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+  late final Output<Map<String, String>> labels;
+  late final Output<String> location;
+
+  /// Optional. Immutable. The specification of a single machine for the template.
+  late final Output<GoogleCloudAiplatformV1MachineSpecResponse> machineSpec;
+
+  /// The resource name of the NotebookRuntimeTemplate.
+  late final Output<String> name;
+
+  /// Optional. Network spec.
+  late final Output<GoogleCloudAiplatformV1NetworkSpecResponse> networkSpec;
+
+  /// Optional. User specified ID for the notebook runtime template.
+  late final Output<String?> notebookRuntimeTemplateId;
+
+  /// Optional. Immutable. The type of the notebook runtime template.
+  late final Output<String> notebookRuntimeType;
+  late final Output<String> project;
+
+  /// The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+  late final Output<String> serviceAccount;
+
+  /// Timestamp when this NotebookRuntimeTemplate was most recently updated.
+  late final Output<String> updateTime;
+
+  NotebookRuntimeTemplate(
+    String name, {
+    NotebookRuntimeTemplateArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:aiplatform/v1:NotebookRuntimeTemplate',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.createTime = Output.createUnknown<String>();
+    this.dataPersistentDiskSpec = Output.createUnknown<
+        GoogleCloudAiplatformV1PersistentDiskSpecResponse>();
+    this.description = Output.createUnknown<String>();
+    this.displayName = Output.createUnknown<String>();
+    this.etag = Output.createUnknown<String>();
+    this.eucConfig = Output.createUnknown<
+        GoogleCloudAiplatformV1NotebookEucConfigResponse>();
+    this.idleShutdownConfig = Output.createUnknown<
+        GoogleCloudAiplatformV1NotebookIdleShutdownConfigResponse>();
+    this.isDefault = Output.createUnknown<bool>();
+    this.labels = Output.createUnknown<Map<String, String>>();
+    this.location = Output.createUnknown<String>();
+    this.machineSpec =
+        Output.createUnknown<GoogleCloudAiplatformV1MachineSpecResponse>();
+    this.name = Output.createUnknown<String>();
+    this.networkSpec =
+        Output.createUnknown<GoogleCloudAiplatformV1NetworkSpecResponse>();
+    this.notebookRuntimeTemplateId = Output.createUnknown<String?>();
+    this.notebookRuntimeType = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.serviceAccount = Output.createUnknown<String>();
+    this.updateTime = Output.createUnknown<String>();
+  }
+}

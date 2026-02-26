@@ -1,0 +1,4 @@
+library module_networkconnectivity_multicloud_data_transfer_config;
+
+export 'multicloud_data_transfer_config.dart';
+export 'multicloud_data_transfer_config_args.dart';

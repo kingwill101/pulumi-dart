@@ -1,0 +1,23 @@
+/// Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
+enum GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType {
+  contextProductsTypeUnspecified("CONTEXT_PRODUCTS_TYPE_UNSPECIFIED"),
+  singleContextProduct("SINGLE_CONTEXT_PRODUCT"),
+  multipleContextProducts("MULTIPLE_CONTEXT_PRODUCTS");
+
+  const GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType(
+      this.value);
+  final String value;
+
+  static GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType
+      fromValue(String value) {
+    for (final item
+        in GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType
+            .values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError(
+        'Unknown GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType value: $value');
+  }
+}

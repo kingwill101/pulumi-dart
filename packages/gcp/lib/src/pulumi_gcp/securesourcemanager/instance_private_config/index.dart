@@ -1,0 +1,3 @@
+library module_securesourcemanager_instance_private_config;
+
+export 'instance_private_config.dart';

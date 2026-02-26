@@ -1,0 +1,3 @@
+library module_assuredworkloads_workload_saa_enrollment_response;
+
+export 'workload_saa_enrollment_response.dart';

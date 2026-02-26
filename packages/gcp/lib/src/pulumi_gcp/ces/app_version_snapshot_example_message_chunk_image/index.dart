@@ -1,0 +1,3 @@
+library module_ces_app_version_snapshot_example_message_chunk_image;
+
+export 'app_version_snapshot_example_message_chunk_image.dart';

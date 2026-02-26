@@ -1,0 +1,3 @@
+library module_dataloss_prevention_job_trigger_inspect_job_inspect_config_custom_info_type_stored_type;
+
+export 'prevention_job_trigger_inspect_job_inspect_config_custom_info_type_stored_type.dart';

@@ -1,0 +1,49 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import 'column_settings_response.dart';
+import 'table_data_set_response.dart';
+
+/// A table that displays time series data.
+class TimeSeriesTableResponse {
+  /// Optional. The list of the persistent column settings for the table.
+  final List<ColumnSettingsResponse> columnSettings;
+
+  /// The data displayed in this table.
+  final List<TableDataSetResponse> dataSets;
+
+  /// Optional. Store rendering strategy
+  final String metricVisualization;
+
+  TimeSeriesTableResponse({
+    required this.columnSettings,
+    required this.dataSets,
+    required this.metricVisualization,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['columnSettings'] =
+        Input.encodeList<ColumnSettingsResponse, Map<String, dynamic>>(
+            columnSettings, (value) => value.toMap());
+    map['dataSets'] =
+        Input.encodeList<TableDataSetResponse, Map<String, dynamic>>(
+            dataSets, (value) => value.toMap());
+    map['metricVisualization'] = metricVisualization;
+    return map;
+  }
+
+  factory TimeSeriesTableResponse.fromMap(Map<String, dynamic> map) {
+    return TimeSeriesTableResponse(
+      columnSettings: Input.decodeList<ColumnSettingsResponse>(
+          map['columnSettings'],
+          (value) => ColumnSettingsResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      dataSets: Input.decodeList<TableDataSetResponse>(
+          map['dataSets'],
+          (value) => TableDataSetResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      metricVisualization: map['metricVisualization'] as String,
+    );
+  }
+}

@@ -1,0 +1,20 @@
+library module_recommendationengine_v1beta1;
+
+export 'catalog_item.dart';
+export 'catalog_item_args.dart';
+export 'get_catalog_item.dart';
+export 'get_catalog_item_args.dart';
+export 'get_catalog_item_result.dart';
+export 'google_cloud_recommendationengine_v1beta1_catalog_item_category_hierarchy.dart';
+export 'google_cloud_recommendationengine_v1beta1_catalog_item_category_hierarchy_response.dart';
+export 'google_cloud_recommendationengine_v1beta1_feature_map.dart';
+export 'google_cloud_recommendationengine_v1beta1_feature_map_response.dart';
+export 'google_cloud_recommendationengine_v1beta1_image.dart';
+export 'google_cloud_recommendationengine_v1beta1_image_response.dart';
+export 'google_cloud_recommendationengine_v1beta1_product_catalog_item.dart';
+export 'google_cloud_recommendationengine_v1beta1_product_catalog_item_exact_price.dart';
+export 'google_cloud_recommendationengine_v1beta1_product_catalog_item_exact_price_response.dart';
+export 'google_cloud_recommendationengine_v1beta1_product_catalog_item_price_range.dart';
+export 'google_cloud_recommendationengine_v1beta1_product_catalog_item_price_range_response.dart';
+export 'google_cloud_recommendationengine_v1beta1_product_catalog_item_response.dart';
+export 'google_cloud_recommendationengine_v1beta1_product_catalog_item_stock_state.dart';

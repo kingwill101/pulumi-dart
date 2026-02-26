@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Configuration for MPEG Common Encryption (MPEG-CENC).
+class MpegCommonEncryptionResponse {
+  /// Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`
+  final String scheme;
+
+  MpegCommonEncryptionResponse({
+    required this.scheme,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['scheme'] = scheme;
+    return map;
+  }
+
+  factory MpegCommonEncryptionResponse.fromMap(Map<String, dynamic> map) {
+    return MpegCommonEncryptionResponse(
+      scheme: map['scheme'] as String,
+    );
+  }
+}

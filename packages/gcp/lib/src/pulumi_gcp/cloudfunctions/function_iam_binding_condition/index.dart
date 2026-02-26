@@ -1,0 +1,3 @@
+library module_cloudfunctions_function_iam_binding_condition;
+
+export 'function_iam_binding_condition.dart';

@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// An image freshness check, which rejects images that were uploaded before the set number of days ago to the supported repositories.
+class ImageFreshnessCheck {
+  /// The max number of days that is allowed since the image was uploaded. Must be greater than zero.
+  final int maxUploadAgeDays;
+
+  ImageFreshnessCheck({
+    required this.maxUploadAgeDays,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['maxUploadAgeDays'] = maxUploadAgeDays;
+    return map;
+  }
+
+  factory ImageFreshnessCheck.fromMap(Map<String, dynamic> map) {
+    return ImageFreshnessCheck(
+      maxUploadAgeDays: map['maxUploadAgeDays'] as int,
+    );
+  }
+}

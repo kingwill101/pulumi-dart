@@ -1,0 +1,35 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../delivery_pipeline_serial_pipeline_stage_strategy_canary_custom_canary_deployment_phase_config/delivery_pipeline_serial_pipeline_stage_strategy_canary_custom_canary_deployment_phase_config.dart';
+
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment {
+  /// Required. Configuration for each phase in the canary deployment in the order executed.
+  final List<
+          DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig>
+      phaseConfigs;
+
+  DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment({
+    required this.phaseConfigs,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['phaseConfigs'] = Input.encodeList<
+        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig,
+        Map<String, dynamic>>(phaseConfigs, (value) => value.toMap());
+    return map;
+  }
+
+  factory DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment.fromMap(
+      Map<String, dynamic> map) {
+    return DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment(
+      phaseConfigs: Input.decodeList<
+              DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig>(
+          map['phaseConfigs'],
+          (value) =>
+              DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig
+                  .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

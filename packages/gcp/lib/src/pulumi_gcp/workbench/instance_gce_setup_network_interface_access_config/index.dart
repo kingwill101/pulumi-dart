@@ -1,0 +1,3 @@
+library module_workbench_instance_gce_setup_network_interface_access_config;
+
+export 'instance_gce_setup_network_interface_access_config.dart';

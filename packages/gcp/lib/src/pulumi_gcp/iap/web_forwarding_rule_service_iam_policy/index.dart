@@ -1,0 +1,4 @@
+library module_iap_web_forwarding_rule_service_iam_policy;
+
+export 'web_forwarding_rule_service_iam_policy.dart';
+export 'web_forwarding_rule_service_iam_policy_args.dart';

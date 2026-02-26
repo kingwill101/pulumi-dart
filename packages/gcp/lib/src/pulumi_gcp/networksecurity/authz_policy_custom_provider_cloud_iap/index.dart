@@ -1,0 +1,3 @@
+library module_networksecurity_authz_policy_custom_provider_cloud_iap;
+
+export 'authz_policy_custom_provider_cloud_iap.dart';

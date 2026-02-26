@@ -1,0 +1,3 @@
+library module_cloudfunctionsv2_function_build_config_source;
+
+export 'function_build_config_source.dart';

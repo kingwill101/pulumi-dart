@@ -1,0 +1,3 @@
+library module_alloydb_get_cluster_automated_backup_policy_encryption_config;
+
+export 'get_cluster_automated_backup_policy_encryption_config.dart';

@@ -1,0 +1,19 @@
+/// The disk type to use.
+enum PersistentDiskDefaultsDiskType {
+  computeEngineDiskTypeUnspecified("COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"),
+  computeEngineDiskTypeStandard("COMPUTE_ENGINE_DISK_TYPE_STANDARD"),
+  computeEngineDiskTypeSsd("COMPUTE_ENGINE_DISK_TYPE_SSD"),
+  computeEngineDiskTypeBalanced("COMPUTE_ENGINE_DISK_TYPE_BALANCED");
+
+  const PersistentDiskDefaultsDiskType(this.value);
+  final String value;
+
+  static PersistentDiskDefaultsDiskType fromValue(String value) {
+    for (final item in PersistentDiskDefaultsDiskType.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown PersistentDiskDefaultsDiskType value: $value');
+  }
+}

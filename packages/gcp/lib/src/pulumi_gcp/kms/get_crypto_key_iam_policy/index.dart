@@ -1,0 +1,5 @@
+library module_kms_get_crypto_key_iam_policy;
+
+export 'get_crypto_key_iam_policy.dart';
+export 'get_crypto_key_iam_policy_args.dart';
+export 'get_crypto_key_iam_policy_result.dart';

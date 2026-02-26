@@ -1,0 +1,57 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'explicit.dart';
+import 'exponential.dart';
+import 'linear.dart';
+
+/// BucketOptions describes the bucket boundaries used to create a histogram for the distribution. The buckets can be in a linear sequence, an exponential sequence, or each bucket can be specified explicitly. BucketOptions does not include the number of values in each bucket.A bucket has an inclusive lower bound and exclusive upper bound for the values that are counted for that bucket. The upper bound of a bucket must be strictly greater than the lower bound. The sequence of N buckets for a distribution consists of an underflow bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an overflow bucket (number N - 1). The buckets are contiguous: the lower bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets span the whole range of finite values: lower bound of the underflow bucket is -infinity and the upper bound of the overflow bucket is +infinity. The finite buckets are so-called because both bounds are finite.
+class BucketOptions {
+  /// The explicit buckets.
+  final Explicit? explicitBuckets;
+
+  /// The exponential buckets.
+  final Exponential? exponentialBuckets;
+
+  /// The linear bucket.
+  final Linear? linearBuckets;
+
+  BucketOptions({
+    this.explicitBuckets,
+    this.exponentialBuckets,
+    this.linearBuckets,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final explicitBucketsValue = explicitBuckets;
+    if (explicitBucketsValue != null) {
+      map['explicitBuckets'] = explicitBucketsValue.toMap();
+    }
+    final exponentialBucketsValue = exponentialBuckets;
+    if (exponentialBucketsValue != null) {
+      map['exponentialBuckets'] = exponentialBucketsValue.toMap();
+    }
+    final linearBucketsValue = linearBuckets;
+    if (linearBucketsValue != null) {
+      map['linearBuckets'] = linearBucketsValue.toMap();
+    }
+    return map;
+  }
+
+  factory BucketOptions.fromMap(Map<String, dynamic> map) {
+    return BucketOptions(
+      explicitBuckets: map['explicitBuckets'] == null
+          ? null
+          : Explicit.fromMap(
+              (map['explicitBuckets'] as Map).cast<String, dynamic>()),
+      exponentialBuckets: map['exponentialBuckets'] == null
+          ? null
+          : Exponential.fromMap(
+              (map['exponentialBuckets'] as Map).cast<String, dynamic>()),
+      linearBuckets: map['linearBuckets'] == null
+          ? null
+          : Linear.fromMap(
+              (map['linearBuckets'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

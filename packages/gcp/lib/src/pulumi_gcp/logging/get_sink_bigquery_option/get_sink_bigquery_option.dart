@@ -1,0 +1,22 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetSinkBigqueryOption {
+  /// Whether [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables) are used.
+  final bool usePartitionedTables;
+
+  GetSinkBigqueryOption({
+    required this.usePartitionedTables,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['usePartitionedTables'] = usePartitionedTables;
+    return map;
+  }
+
+  factory GetSinkBigqueryOption.fromMap(Map<String, dynamic> map) {
+    return GetSinkBigqueryOption(
+      usePartitionedTables: map['usePartitionedTables'] as bool,
+    );
+  }
+}

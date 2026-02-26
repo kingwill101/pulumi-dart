@@ -1,0 +1,3 @@
+library module_compute_resize_request_status_last_attempt_error_error;
+
+export 'resize_request_status_last_attempt_error_error.dart';

@@ -1,0 +1,3 @@
+library module_compute_region_instance_template_advanced_machine_features;
+
+export 'region_instance_template_advanced_machine_features.dart';

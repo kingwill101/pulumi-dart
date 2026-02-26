@@ -1,0 +1,132 @@
+import 'package:pulumi/pulumi.dart';
+import 'google_cloud_run_v2_binary_authorization_response.dart';
+import 'google_cloud_run_v2_condition_response.dart';
+import 'google_cloud_run_v2_execution_reference_response.dart';
+import 'google_cloud_run_v2_execution_template_response.dart';
+import 'job_args11.dart';
+
+/// Creates a Job.
+class Job11 extends CustomResource {
+  /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources. All system annotations in v1 now have a corresponding field in v2 Job. This field follows Kubernetes annotations' namespacing, limits, and rules.
+  late final Output<Map<String, String>> annotations;
+
+  /// Settings for the Binary Authorization feature.
+  late final Output<GoogleCloudRunV2BinaryAuthorizationResponse>
+      binaryAuthorization;
+
+  /// Arbitrary identifier for the API client.
+  late final Output<String> client;
+
+  /// Arbitrary version identifier for the API client.
+  late final Output<String> clientVersion;
+
+  /// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
+  late final Output<List<GoogleCloudRunV2ConditionResponse>> conditions;
+
+  /// The creation time.
+  late final Output<String> createTime;
+
+  /// Email address of the authenticated creator.
+  late final Output<String> creator;
+
+  /// The deletion time.
+  late final Output<String> deleteTime;
+
+  /// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
+  late final Output<String> etag;
+
+  /// Number of executions created for this job.
+  late final Output<int> executionCount;
+
+  /// For a deleted resource, the time after which it will be permamently deleted.
+  late final Output<String> expireTime;
+
+  /// A number that monotonically increases every time the user modifies the desired state.
+  late final Output<String> generation;
+
+  /// Required. The unique identifier for the Job. The name of the job becomes {parent}/jobs/{job_id}.
+  late final Output<String> jobId;
+
+  /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Job.
+  late final Output<Map<String, String>> labels;
+
+  /// Email address of the last authenticated modifier.
+  late final Output<String> lastModifier;
+
+  /// Name of the last created execution.
+  late final Output<GoogleCloudRunV2ExecutionReferenceResponse>
+      latestCreatedExecution;
+
+  /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+  late final Output<String> launchStage;
+  late final Output<String> location;
+
+  /// The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
+  late final Output<String> name;
+
+  /// The generation of this Job. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
+  late final Output<String> observedGeneration;
+  late final Output<String> project;
+
+  /// Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, `observed_generation` and `latest_succeeded_execution`, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `observed_generation` and `generation`, `latest_succeeded_execution` and `latest_created_execution`. If reconciliation failed, `observed_generation` and `latest_succeeded_execution` will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in `terminal_condition` and `conditions`.
+  late final Output<bool> reconciling;
+
+  /// Reserved for future use.
+  late final Output<bool> satisfiesPzs;
+
+  /// The template used to create executions for this Job.
+  late final Output<GoogleCloudRunV2ExecutionTemplateResponse> template;
+
+  /// The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state.
+  late final Output<GoogleCloudRunV2ConditionResponse> terminalCondition;
+
+  /// Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+  late final Output<String> uid;
+
+  /// The last-modified time.
+  late final Output<String> updateTime;
+
+  Job11(
+    String name, {
+    JobArgs11? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:run/v2:Job',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.annotations = Output.createUnknown<Map<String, String>>();
+    this.binaryAuthorization =
+        Output.createUnknown<GoogleCloudRunV2BinaryAuthorizationResponse>();
+    this.client = Output.createUnknown<String>();
+    this.clientVersion = Output.createUnknown<String>();
+    this.conditions =
+        Output.createUnknown<List<GoogleCloudRunV2ConditionResponse>>();
+    this.createTime = Output.createUnknown<String>();
+    this.creator = Output.createUnknown<String>();
+    this.deleteTime = Output.createUnknown<String>();
+    this.etag = Output.createUnknown<String>();
+    this.executionCount = Output.createUnknown<int>();
+    this.expireTime = Output.createUnknown<String>();
+    this.generation = Output.createUnknown<String>();
+    this.jobId = Output.createUnknown<String>();
+    this.labels = Output.createUnknown<Map<String, String>>();
+    this.lastModifier = Output.createUnknown<String>();
+    this.latestCreatedExecution =
+        Output.createUnknown<GoogleCloudRunV2ExecutionReferenceResponse>();
+    this.launchStage = Output.createUnknown<String>();
+    this.location = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.observedGeneration = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.reconciling = Output.createUnknown<bool>();
+    this.satisfiesPzs = Output.createUnknown<bool>();
+    this.template =
+        Output.createUnknown<GoogleCloudRunV2ExecutionTemplateResponse>();
+    this.terminalCondition =
+        Output.createUnknown<GoogleCloudRunV2ConditionResponse>();
+    this.uid = Output.createUnknown<String>();
+    this.updateTime = Output.createUnknown<String>();
+  }
+}

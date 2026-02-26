@@ -1,0 +1,3 @@
+library module_compute_region_resize_request_status_last_attempt;
+
+export 'region_resize_request_status_last_attempt.dart';

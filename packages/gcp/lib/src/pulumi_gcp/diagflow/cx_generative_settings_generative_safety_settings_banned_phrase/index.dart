@@ -1,0 +1,3 @@
+library module_diagflow_cx_generative_settings_generative_safety_settings_banned_phrase;
+
+export 'cx_generative_settings_generative_safety_settings_banned_phrase.dart';

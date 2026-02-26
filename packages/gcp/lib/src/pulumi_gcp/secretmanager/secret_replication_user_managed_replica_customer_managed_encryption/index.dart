@@ -1,0 +1,3 @@
+library module_secretmanager_secret_replication_user_managed_replica_customer_managed_encryption;
+
+export 'secret_replication_user_managed_replica_customer_managed_encryption.dart';

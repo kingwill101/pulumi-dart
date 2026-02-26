@@ -1,0 +1,3 @@
+library module_compute_interconnect_group_physical_structure;
+
+export 'interconnect_group_physical_structure.dart';

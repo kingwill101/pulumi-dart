@@ -1,0 +1,3 @@
+library module_bigquery_connection_spark_metastore_service_config;
+
+export 'connection_spark_metastore_service_config.dart';

@@ -1,0 +1,3 @@
+library module_compute_get_region_instance_template_network_interface_ipv6_access_config;
+
+export 'get_region_instance_template_network_interface_ipv6_access_config.dart';

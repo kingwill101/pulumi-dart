@@ -1,0 +1,3 @@
+library module_bigquery_app_profile_single_cluster_routing;
+
+export 'app_profile_single_cluster_routing.dart';

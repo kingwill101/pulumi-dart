@@ -1,0 +1,3 @@
+library module_diagflow_cx_agent_speech_to_text_settings;
+
+export 'cx_agent_speech_to_text_settings.dart';

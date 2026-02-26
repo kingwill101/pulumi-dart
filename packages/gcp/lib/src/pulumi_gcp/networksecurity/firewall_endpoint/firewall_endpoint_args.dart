@@ -1,0 +1,73 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../firewall_endpoint_endpoint_settings/firewall_endpoint_endpoint_settings.dart';
+
+/// The set of arguments for FirewallEndpoint.
+class FirewallEndpointArgs {
+  /// Project to bill on endpoint uptime usage.
+  final Input<String> billingProjectId;
+
+  /// Settings for the endpoint.
+  /// Structure is documented below.
+  final Input<FirewallEndpointEndpointSettings>? endpointSettings;
+
+  /// A map of key/value label pairs to assign to the resource.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  final Input<Map<String, String>>? labels;
+
+  /// The location (zone) of the firewall endpoint.
+  final Input<String> location;
+
+  /// The name of the firewall endpoint resource.
+  final Input<String>? name;
+
+  /// The name of the parent this firewall endpoint belongs to.
+  /// Format: organizations/{organization_id}.
+  final Input<String> parent;
+
+  FirewallEndpointArgs({
+    required this.billingProjectId,
+    this.endpointSettings,
+    this.labels,
+    required this.location,
+    this.name,
+    required this.parent,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['billingProjectId'] = billingProjectId;
+    final endpointSettingsValue = endpointSettings;
+    if (endpointSettingsValue != null) {
+      map['endpointSettings'] = Input.mapOptionalInputValue<
+              FirewallEndpointEndpointSettings, Map<String, dynamic>>(
+          endpointSettingsValue, (value) => value.toMap());
+    }
+    final labelsValue = labels;
+    if (labelsValue != null) {
+      map['labels'] = labelsValue;
+    }
+    map['location'] = location;
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    map['parent'] = parent;
+    return map;
+  }
+
+  factory FirewallEndpointArgs.fromMap(Map<String, dynamic> map) {
+    return FirewallEndpointArgs(
+      billingProjectId: Input.asInput<String>(map['billingProjectId']),
+      endpointSettings: Input.asOptionalInput<FirewallEndpointEndpointSettings>(
+          map['endpointSettings']),
+      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: Input.asInput<String>(map['location']),
+      name: Input.asOptionalInput<String>(map['name']),
+      parent: Input.asInput<String>(map['parent']),
+    );
+  }
+}

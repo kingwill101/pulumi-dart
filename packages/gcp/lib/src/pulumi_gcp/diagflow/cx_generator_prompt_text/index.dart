@@ -1,0 +1,3 @@
+library module_diagflow_cx_generator_prompt_text;
+
+export 'cx_generator_prompt_text.dart';

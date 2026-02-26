@@ -1,0 +1,3 @@
+library module_compute_instance_from_template_scheduling;
+
+export 'instance_from_template_scheduling.dart';

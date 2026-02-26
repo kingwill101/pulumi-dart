@@ -1,0 +1,3 @@
+library module_apigee_developer_app_credential_api_product;
+
+export 'developer_app_credential_api_product.dart';

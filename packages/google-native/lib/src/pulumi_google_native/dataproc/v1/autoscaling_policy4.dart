@@ -1,0 +1,47 @@
+import 'package:pulumi/pulumi.dart';
+import 'autoscaling_policy_args.dart';
+import 'basic_autoscaling_algorithm_response.dart';
+import 'instance_group_autoscaling_policy_config_response.dart';
+
+/// Creates new autoscaling policy.
+/// Auto-naming is currently not supported for this resource.
+class AutoscalingPolicy4 extends CustomResource {
+  late final Output<BasicAutoscalingAlgorithmResponse> basicAlgorithm;
+
+  /// Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
+  late final Output<Map<String, String>> labels;
+  late final Output<String> location;
+
+  /// The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
+  late final Output<String> name;
+  late final Output<String> project;
+
+  /// Optional. Describes how the autoscaler will operate for secondary workers.
+  late final Output<InstanceGroupAutoscalingPolicyConfigResponse>
+      secondaryWorkerConfig;
+
+  /// Describes how the autoscaler will operate for primary workers.
+  late final Output<InstanceGroupAutoscalingPolicyConfigResponse> workerConfig;
+
+  AutoscalingPolicy4(
+    String name, {
+    AutoscalingPolicyArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:dataproc/v1:AutoscalingPolicy',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.basicAlgorithm =
+        Output.createUnknown<BasicAutoscalingAlgorithmResponse>();
+    this.labels = Output.createUnknown<Map<String, String>>();
+    this.location = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.secondaryWorkerConfig =
+        Output.createUnknown<InstanceGroupAutoscalingPolicyConfigResponse>();
+    this.workerConfig =
+        Output.createUnknown<InstanceGroupAutoscalingPolicyConfigResponse>();
+  }
+}

@@ -1,0 +1,5 @@
+library module_kms_get_crypto_key_latest_version;
+
+export 'get_crypto_key_latest_version.dart';
+export 'get_crypto_key_latest_version_args.dart';
+export 'get_crypto_key_latest_version_result.dart';

@@ -1,0 +1,3 @@
+library module_compute_manged_ssl_certificate_managed;
+
+export 'manged_ssl_certificate_managed.dart';

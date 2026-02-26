@@ -1,0 +1,3 @@
+library module_datafusion_instance_network_config_private_service_connect_config;
+
+export 'instance_network_config_private_service_connect_config.dart';

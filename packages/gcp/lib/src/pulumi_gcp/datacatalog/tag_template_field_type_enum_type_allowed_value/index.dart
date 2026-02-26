@@ -1,0 +1,3 @@
+library module_datacatalog_tag_template_field_type_enum_type_allowed_value;
+
+export 'tag_template_field_type_enum_type_allowed_value.dart';

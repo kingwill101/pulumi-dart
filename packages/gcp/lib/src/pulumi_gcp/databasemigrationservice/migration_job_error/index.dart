@@ -1,0 +1,3 @@
+library module_databasemigrationservice_migration_job_error;
+
+export 'migration_job_error.dart';

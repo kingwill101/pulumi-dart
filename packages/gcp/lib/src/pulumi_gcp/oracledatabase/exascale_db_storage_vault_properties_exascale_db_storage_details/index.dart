@@ -1,0 +1,3 @@
+library module_oracledatabase_exascale_db_storage_vault_properties_exascale_db_storage_details;
+
+export 'exascale_db_storage_vault_properties_exascale_db_storage_details.dart';

@@ -1,0 +1,38 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence {
+  /// Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
+  /// Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+  final String? frequency;
+
+  /// The types of schema modifications to consider. Defaults to NEW_COLUMNS.
+  /// Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
+  final List<String>? types;
+
+  PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence({
+    this.frequency,
+    this.types,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final frequencyValue = frequency;
+    if (frequencyValue != null) {
+      map['frequency'] = frequencyValue;
+    }
+    final typesValue = types;
+    if (typesValue != null) {
+      map['types'] = typesValue;
+    }
+    return map;
+  }
+
+  factory PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence.fromMap(
+      Map<String, dynamic> map) {
+    return PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence(
+      frequency: map['frequency'] == null ? null : map['frequency'] as String,
+      types:
+          map['types'] == null ? null : (map['types'] as List).cast<String>(),
+    );
+  }
+}

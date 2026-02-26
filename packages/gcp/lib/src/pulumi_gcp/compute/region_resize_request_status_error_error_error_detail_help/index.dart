@@ -1,0 +1,3 @@
+library module_compute_region_resize_request_status_error_error_error_detail_help;
+
+export 'region_resize_request_status_error_error_error_detail_help.dart';

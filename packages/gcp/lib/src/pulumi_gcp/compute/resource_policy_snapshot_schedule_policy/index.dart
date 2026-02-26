@@ -1,0 +1,3 @@
+library module_compute_resource_policy_snapshot_schedule_policy;
+
+export 'resource_policy_snapshot_schedule_policy.dart';

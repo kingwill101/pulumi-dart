@@ -1,0 +1,50 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import 'source_context_response.dart';
+
+/// Source describes the location of the source used for the build.
+class SourceResponse6 {
+  /// If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
+  final List<SourceContextResponse> additionalContexts;
+
+  /// If provided, the input binary artifacts for the build came from this location.
+  final String artifactStorageSourceUri;
+
+  /// If provided, the source code used for the build came from this location.
+  final SourceContextResponse context;
+
+  /// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
+  final Map<String, String> fileHashes;
+
+  SourceResponse6({
+    required this.additionalContexts,
+    required this.artifactStorageSourceUri,
+    required this.context,
+    required this.fileHashes,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['additionalContexts'] =
+        Input.encodeList<SourceContextResponse, Map<String, dynamic>>(
+            additionalContexts, (value) => value.toMap());
+    map['artifactStorageSourceUri'] = artifactStorageSourceUri;
+    map['context'] = context.toMap();
+    map['fileHashes'] = fileHashes;
+    return map;
+  }
+
+  factory SourceResponse6.fromMap(Map<String, dynamic> map) {
+    return SourceResponse6(
+      additionalContexts: Input.decodeList<SourceContextResponse>(
+          map['additionalContexts'],
+          (value) => SourceContextResponse.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      artifactStorageSourceUri: map['artifactStorageSourceUri'] as String,
+      context: SourceContextResponse.fromMap(
+          (map['context'] as Map).cast<String, dynamic>()),
+      fileHashes: (map['fileHashes'] as Map).cast<String, String>(),
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_cloudasset_project_feed_feed_output_config_pubsub_destination;
+
+export 'project_feed_feed_output_config_pubsub_destination.dart';

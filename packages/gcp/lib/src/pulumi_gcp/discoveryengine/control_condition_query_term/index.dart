@@ -1,0 +1,3 @@
+library module_discoveryengine_control_condition_query_term;
+
+export 'control_condition_query_term.dart';

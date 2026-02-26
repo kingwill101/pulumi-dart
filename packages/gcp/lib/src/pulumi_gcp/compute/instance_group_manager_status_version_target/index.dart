@@ -1,0 +1,3 @@
+library module_compute_instance_group_manager_status_version_target;
+
+export 'instance_group_manager_status_version_target.dart';

@@ -1,0 +1,90 @@
+import 'package:pulumi/pulumi.dart';
+import 'folder_args.dart';
+
+/// Allows management of a Google Cloud Platform folder. For more information see
+/// [the official documentation](https://docs.cloud.google.com/resource-manager/docs/creating-managing-folders)
+/// and
+/// [API](https://docs.cloud.google.com/resource-manager/reference/rest/v2/folders).
+///
+/// A folder can contain projects, other folders, or a combination of both. You can use folders to group projects under an organization in a hierarchy. For example, your organization might contain multiple departments, each with its own set of Cloud Platform resources. Folders allows you to group these resources on a per-department basis. Folders are used to group resources that share common IAM policies.
+///
+/// Folders created live inside an Organization. See the [Organization documentation](https://docs.cloud.google.com/resource-manager/docs/quickstarts) for more details.
+///
+/// The service account used to run the provider when creating a <span pulumi-lang-nodejs="`gcp.organizations.Folder`" pulumi-lang-dotnet="`gcp.organizations.Folder`" pulumi-lang-go="`organizations.Folder`" pulumi-lang-python="`organizations.Folder`" pulumi-lang-yaml="`gcp.organizations.Folder`" pulumi-lang-java="`gcp.organizations.Folder`">`gcp.organizations.Folder`</span>
+/// resource must have `roles/resourcemanager.folderCreator`. See the
+/// [Access Control for Folders Using IAM](https://docs.cloud.google.com/resource-manager/docs/access-control-folders)
+/// doc for more information.
+///
+/// > It may take a while for the attached tag bindings to be deleted after the folder is scheduled to be deleted.
+///
+/// ## Import
+///
+/// Folders can be imported using the folder's id, e.g.
+///
+/// * `folders/{{folder_id}}`
+///
+/// * `{{folder_id}}`
+///
+/// When using the `pulumi import` command, Folders can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:organizations/folder:Folder default {{folder_id}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:organizations/folder:Folder default folders/{{folder_id}}
+/// ```
+class Folder extends CustomResource {
+  /// Optional capabilities configured for this folder.
+  late final Output<List<String>> configuredCapabilities;
+
+  /// Timestamp when the Folder was created. Assigned by the server.
+  /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+  late final Output<String> createTime;
+  late final Output<bool?> deletionProtection;
+
+  /// The folder’s display name.
+  /// A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
+  late final Output<String> displayName;
+
+  /// The folder id from the name "folders/{folder_id}"
+  late final Output<String> folderId;
+
+  /// The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
+  late final Output<String> lifecycleState;
+
+  /// Management Project associated with this folder (if capability is enabled).
+  late final Output<String> managementProject;
+
+  /// The resource name of the Folder. Its format is folders/{folder_id}.
+  late final Output<String> name;
+
+  /// The resource name of the parent Folder or Organization.
+  /// Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
+  late final Output<String> parent;
+
+  /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the <span pulumi-lang-nodejs="`gcp.tags.TagValue`" pulumi-lang-dotnet="`gcp.tags.TagValue`" pulumi-lang-go="`tags.TagValue`" pulumi-lang-python="`tags.TagValue`" pulumi-lang-yaml="`gcp.tags.TagValue`" pulumi-lang-java="`gcp.tags.TagValue`">`gcp.tags.TagValue`</span> resource.
+  late final Output<Map<String, String>?> tags;
+
+  Folder(
+    String name, {
+    FolderArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:organizations/folder:Folder',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.configuredCapabilities = Output.createUnknown<List<String>>();
+    this.createTime = Output.createUnknown<String>();
+    this.deletionProtection = Output.createUnknown<bool?>();
+    this.displayName = Output.createUnknown<String>();
+    this.folderId = Output.createUnknown<String>();
+    this.lifecycleState = Output.createUnknown<String>();
+    this.managementProject = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.parent = Output.createUnknown<String>();
+    this.tags = Output.createUnknown<Map<String, String>?>();
+  }
+}

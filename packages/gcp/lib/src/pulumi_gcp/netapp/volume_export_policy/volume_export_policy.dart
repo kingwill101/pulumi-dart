@@ -1,0 +1,31 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../volume_export_policy_rule/volume_export_policy_rule.dart';
+
+class VolumeExportPolicy {
+  /// Export rules (up to 5) control NFS volume access.
+  /// Structure is documented below.
+  final List<VolumeExportPolicyRule> rules;
+
+  VolumeExportPolicy({
+    required this.rules,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['rules'] =
+        Input.encodeList<VolumeExportPolicyRule, Map<String, dynamic>>(
+            rules, (value) => value.toMap());
+    return map;
+  }
+
+  factory VolumeExportPolicy.fromMap(Map<String, dynamic> map) {
+    return VolumeExportPolicy(
+      rules: Input.decodeList<VolumeExportPolicyRule>(
+          map['rules'],
+          (value) => VolumeExportPolicyRule.fromMap(
+              (value as Map).cast<String, dynamic>())),
+    );
+  }
+}

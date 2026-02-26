@@ -1,0 +1,600 @@
+import 'package:pulumi/pulumi.dart';
+import '../application_attributes/application_attributes.dart';
+import '../application_scope/application_scope.dart';
+import 'application_args2.dart';
+
+/// Application is a functional grouping of Services and Workloads that helps achieve a desired end-to-end business functionality. Services and Workloads are owned by the Application.
+///
+///
+///
+/// ## Example Usage
+///
+/// ### Apphub Application Basic
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const example = new gcp.apphub.Application("example", {
+/// location: "us-east1",
+/// applicationId: "example-application",
+/// scope: {
+/// type: "REGIONAL",
+/// },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// example = gcp.apphub.Application("example",
+/// location="us-east1",
+/// application_id="example-application",
+/// scope={
+/// "type": "REGIONAL",
+/// })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Gcp.Apphub.Application("example", new()
+/// {
+/// Location = "us-east1",
+/// ApplicationId = "example-application",
+/// Scope = new Gcp.Apphub.Inputs.ApplicationScopeArgs
+/// {
+/// Type = "REGIONAL",
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := apphub.NewApplication(ctx, "example", &apphub.ApplicationArgs{
+/// Location:      pulumi.String("us-east1"),
+/// ApplicationId: pulumi.String("example-application"),
+/// Scope: &apphub.ApplicationScopeArgs{
+/// Type: pulumi.String("REGIONAL"),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.apphub.Application;
+/// import com.pulumi.gcp.apphub.ApplicationArgs;
+/// import com.pulumi.gcp.apphub.inputs.ApplicationScopeArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new Application("example", ApplicationArgs.builder()
+/// .location("us-east1")
+/// .applicationId("example-application")
+/// .scope(ApplicationScopeArgs.builder()
+/// .type("REGIONAL")
+/// .build())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: gcp:apphub:Application
+/// properties:
+/// location: us-east1
+/// applicationId: example-application
+/// scope:
+/// type: REGIONAL
+/// ```
+/// <!--End PulumiCodeChooser -->
+/// ### Apphub Application Global Basic
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const example = new gcp.apphub.Application("example", {
+/// location: "global",
+/// applicationId: "example-application",
+/// scope: {
+/// type: "GLOBAL",
+/// },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// example = gcp.apphub.Application("example",
+/// location="global",
+/// application_id="example-application",
+/// scope={
+/// "type": "GLOBAL",
+/// })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example = new Gcp.Apphub.Application("example", new()
+/// {
+/// Location = "global",
+/// ApplicationId = "example-application",
+/// Scope = new Gcp.Apphub.Inputs.ApplicationScopeArgs
+/// {
+/// Type = "GLOBAL",
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := apphub.NewApplication(ctx, "example", &apphub.ApplicationArgs{
+/// Location:      pulumi.String("global"),
+/// ApplicationId: pulumi.String("example-application"),
+/// Scope: &apphub.ApplicationScopeArgs{
+/// Type: pulumi.String("GLOBAL"),
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.apphub.Application;
+/// import com.pulumi.gcp.apphub.ApplicationArgs;
+/// import com.pulumi.gcp.apphub.inputs.ApplicationScopeArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example = new Application("example", ApplicationArgs.builder()
+/// .location("global")
+/// .applicationId("example-application")
+/// .scope(ApplicationScopeArgs.builder()
+/// .type("GLOBAL")
+/// .build())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example:
+/// type: gcp:apphub:Application
+/// properties:
+/// location: global
+/// applicationId: example-application
+/// scope:
+/// type: GLOBAL
+/// ```
+/// <!--End PulumiCodeChooser -->
+/// ### Apphub Application Full
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const example2 = new gcp.apphub.Application("example2", {
+/// location: "us-east1",
+/// applicationId: "example-application",
+/// displayName: "Application Full",
+/// scope: {
+/// type: "REGIONAL",
+/// },
+/// description: "Application for testing",
+/// attributes: {
+/// environment: {
+/// type: "STAGING",
+/// },
+/// criticality: {
+/// type: "MISSION_CRITICAL",
+/// },
+/// businessOwners: [{
+/// displayName: "Alice",
+/// email: "alice@google.com",
+/// }],
+/// developerOwners: [{
+/// displayName: "Bob",
+/// email: "bob@google.com",
+/// }],
+/// operatorOwners: [{
+/// displayName: "Charlie",
+/// email: "charlie@google.com",
+/// }],
+/// },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// example2 = gcp.apphub.Application("example2",
+/// location="us-east1",
+/// application_id="example-application",
+/// display_name="Application Full",
+/// scope={
+/// "type": "REGIONAL",
+/// },
+/// description="Application for testing",
+/// attributes={
+/// "environment": {
+/// "type": "STAGING",
+/// },
+/// "criticality": {
+/// "type": "MISSION_CRITICAL",
+/// },
+/// "business_owners": [{
+/// "display_name": "Alice",
+/// "email": "alice@google.com",
+/// }],
+/// "developer_owners": [{
+/// "display_name": "Bob",
+/// "email": "bob@google.com",
+/// }],
+/// "operator_owners": [{
+/// "display_name": "Charlie",
+/// "email": "charlie@google.com",
+/// }],
+/// })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var example2 = new Gcp.Apphub.Application("example2", new()
+/// {
+/// Location = "us-east1",
+/// ApplicationId = "example-application",
+/// DisplayName = "Application Full",
+/// Scope = new Gcp.Apphub.Inputs.ApplicationScopeArgs
+/// {
+/// Type = "REGIONAL",
+/// },
+/// Description = "Application for testing",
+/// Attributes = new Gcp.Apphub.Inputs.ApplicationAttributesArgs
+/// {
+/// Environment = new Gcp.Apphub.Inputs.ApplicationAttributesEnvironmentArgs
+/// {
+/// Type = "STAGING",
+/// },
+/// Criticality = new Gcp.Apphub.Inputs.ApplicationAttributesCriticalityArgs
+/// {
+/// Type = "MISSION_CRITICAL",
+/// },
+/// BusinessOwners = new[]
+/// {
+/// new Gcp.Apphub.Inputs.ApplicationAttributesBusinessOwnerArgs
+/// {
+/// DisplayName = "Alice",
+/// Email = "alice@google.com",
+/// },
+/// },
+/// DeveloperOwners = new[]
+/// {
+/// new Gcp.Apphub.Inputs.ApplicationAttributesDeveloperOwnerArgs
+/// {
+/// DisplayName = "Bob",
+/// Email = "bob@google.com",
+/// },
+/// },
+/// OperatorOwners = new[]
+/// {
+/// new Gcp.Apphub.Inputs.ApplicationAttributesOperatorOwnerArgs
+/// {
+/// DisplayName = "Charlie",
+/// Email = "charlie@google.com",
+/// },
+/// },
+/// },
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := apphub.NewApplication(ctx, "example2", &apphub.ApplicationArgs{
+/// Location:      pulumi.String("us-east1"),
+/// ApplicationId: pulumi.String("example-application"),
+/// DisplayName:   pulumi.String("Application Full"),
+/// Scope: &apphub.ApplicationScopeArgs{
+/// Type: pulumi.String("REGIONAL"),
+/// },
+/// Description: pulumi.String("Application for testing"),
+/// Attributes: &apphub.ApplicationAttributesArgs{
+/// Environment: &apphub.ApplicationAttributesEnvironmentArgs{
+/// Type: pulumi.String("STAGING"),
+/// },
+/// Criticality: &apphub.ApplicationAttributesCriticalityArgs{
+/// Type: pulumi.String("MISSION_CRITICAL"),
+/// },
+/// BusinessOwners: apphub.ApplicationAttributesBusinessOwnerArray{
+/// &apphub.ApplicationAttributesBusinessOwnerArgs{
+/// DisplayName: pulumi.String("Alice"),
+/// Email:       pulumi.String("alice@google.com"),
+/// },
+/// },
+/// DeveloperOwners: apphub.ApplicationAttributesDeveloperOwnerArray{
+/// &apphub.ApplicationAttributesDeveloperOwnerArgs{
+/// DisplayName: pulumi.String("Bob"),
+/// Email:       pulumi.String("bob@google.com"),
+/// },
+/// },
+/// OperatorOwners: apphub.ApplicationAttributesOperatorOwnerArray{
+/// &apphub.ApplicationAttributesOperatorOwnerArgs{
+/// DisplayName: pulumi.String("Charlie"),
+/// Email:       pulumi.String("charlie@google.com"),
+/// },
+/// },
+/// },
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.apphub.Application;
+/// import com.pulumi.gcp.apphub.ApplicationArgs;
+/// import com.pulumi.gcp.apphub.inputs.ApplicationScopeArgs;
+/// import com.pulumi.gcp.apphub.inputs.ApplicationAttributesArgs;
+/// import com.pulumi.gcp.apphub.inputs.ApplicationAttributesEnvironmentArgs;
+/// import com.pulumi.gcp.apphub.inputs.ApplicationAttributesCriticalityArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// var example2 = new Application("example2", ApplicationArgs.builder()
+/// .location("us-east1")
+/// .applicationId("example-application")
+/// .displayName("Application Full")
+/// .scope(ApplicationScopeArgs.builder()
+/// .type("REGIONAL")
+/// .build())
+/// .description("Application for testing")
+/// .attributes(ApplicationAttributesArgs.builder()
+/// .environment(ApplicationAttributesEnvironmentArgs.builder()
+/// .type("STAGING")
+/// .build())
+/// .criticality(ApplicationAttributesCriticalityArgs.builder()
+/// .type("MISSION_CRITICAL")
+/// .build())
+/// .businessOwners(ApplicationAttributesBusinessOwnerArgs.builder()
+/// .displayName("Alice")
+/// .email("alice@google.com")
+/// .build())
+/// .developerOwners(ApplicationAttributesDeveloperOwnerArgs.builder()
+/// .displayName("Bob")
+/// .email("bob@google.com")
+/// .build())
+/// .operatorOwners(ApplicationAttributesOperatorOwnerArgs.builder()
+/// .displayName("Charlie")
+/// .email("charlie@google.com")
+/// .build())
+/// .build())
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// example2:
+/// type: gcp:apphub:Application
+/// properties:
+/// location: us-east1
+/// applicationId: example-application
+/// displayName: Application Full
+/// scope:
+/// type: REGIONAL
+/// description: Application for testing
+/// attributes:
+/// environment:
+/// type: STAGING
+/// criticality:
+/// type: MISSION_CRITICAL
+/// businessOwners:
+/// - displayName: Alice
+/// email: alice@google.com
+/// developerOwners:
+/// - displayName: Bob
+/// email: bob@google.com
+/// operatorOwners:
+/// - displayName: Charlie
+/// email: charlie@google.com
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Application can be imported using any of these accepted formats:
+///
+/// * `projects/{{project}}/locations/{{location}}/applications/{{application_id}}`
+///
+/// * `{{project}}/{{location}}/{{application_id}}`
+///
+/// * `{{location}}/{{application_id}}`
+///
+/// When using the `pulumi import` command, Application can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:apphub/application:Application default projects/{{project}}/locations/{{location}}/applications/{{application_id}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:apphub/application:Application default {{project}}/{{location}}/{{application_id}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:apphub/application:Application default {{location}}/{{application_id}}
+/// ```
+class Application2 extends CustomResource {
+  /// Required. The Application identifier.
+  late final Output<String> applicationId;
+
+  /// Consumer provided attributes.
+  /// Structure is documented below.
+  late final Output<ApplicationAttributes?> attributes;
+
+  /// Output only. Create time.
+  late final Output<String> createTime;
+
+  /// Optional. User-defined description of an Application.
+  late final Output<String?> description;
+
+  /// Optional. User-defined name for the Application.
+  late final Output<String?> displayName;
+
+  /// Part of <span pulumi-lang-nodejs="`parent`" pulumi-lang-dotnet="`Parent`" pulumi-lang-go="`parent`" pulumi-lang-python="`parent`" pulumi-lang-yaml="`parent`" pulumi-lang-java="`parent`">`parent`</span>. See documentation of `projectsId`.
+  late final Output<String> location;
+
+  /// Identifier. The resource name of an Application. Format:
+  /// "projects/{host-project-id}/locations/{location}/applications/{application-id}"
+  late final Output<String> name;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  late final Output<String> project;
+
+  /// Scope of an application.
+  /// Structure is documented below.
+  late final Output<ApplicationScope> scope;
+
+  /// Output only. Application state.
+  /// Possible values:
+  /// STATE_UNSPECIFIED
+  /// CREATING
+  /// ACTIVE
+  /// DELETING
+  late final Output<String> state;
+
+  /// Output only. A universally unique identifier (in UUID4 format) for the `Application`.
+  late final Output<String> uid;
+
+  /// Output only. Update time.
+  late final Output<String> updateTime;
+
+  Application2(
+    String name, {
+    ApplicationArgs2? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:apphub/application:Application',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.applicationId = Output.createUnknown<String>();
+    this.attributes = Output.createUnknown<ApplicationAttributes?>();
+    this.createTime = Output.createUnknown<String>();
+    this.description = Output.createUnknown<String?>();
+    this.displayName = Output.createUnknown<String?>();
+    this.location = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.scope = Output.createUnknown<ApplicationScope>();
+    this.state = Output.createUnknown<String>();
+    this.uid = Output.createUnknown<String>();
+    this.updateTime = Output.createUnknown<String>();
+  }
+}

@@ -1,0 +1,3 @@
+library module_compute_autoscaler_autoscaling_policy_metric;
+
+export 'autoscaler_autoscaling_policy_metric.dart';

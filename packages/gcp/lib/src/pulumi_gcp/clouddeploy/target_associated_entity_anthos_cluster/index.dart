@@ -1,0 +1,3 @@
+library module_clouddeploy_target_associated_entity_anthos_cluster;
+
+export 'target_associated_entity_anthos_cluster.dart';

@@ -1,0 +1,3 @@
+library module_compute_instance_network_interface_ipv6_access_config;
+
+export 'instance_network_interface_ipv6_access_config.dart';

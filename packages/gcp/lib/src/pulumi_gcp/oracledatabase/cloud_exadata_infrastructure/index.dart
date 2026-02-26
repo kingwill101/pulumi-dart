@@ -1,0 +1,4 @@
+library module_oracledatabase_cloud_exadata_infrastructure;
+
+export 'cloud_exadata_infrastructure.dart';
+export 'cloud_exadata_infrastructure_args.dart';

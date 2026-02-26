@@ -1,0 +1,3 @@
+library module_compute_backend_bucket_iam_member_condition;
+
+export 'backend_bucket_iam_member_condition.dart';

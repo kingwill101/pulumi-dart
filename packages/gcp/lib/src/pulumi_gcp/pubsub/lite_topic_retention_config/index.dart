@@ -1,0 +1,3 @@
+library module_pubsub_lite_topic_retention_config;
+
+export 'lite_topic_retention_config.dart';

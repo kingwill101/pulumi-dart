@@ -1,0 +1,3 @@
+library module_redis_get_cluster_psc_service_attachment;
+
+export 'get_cluster_psc_service_attachment.dart';

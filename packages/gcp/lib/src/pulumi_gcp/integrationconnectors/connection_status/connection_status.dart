@@ -1,0 +1,47 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class ConnectionStatus {
+  /// An arbitrary description for the Connection.
+  final String? description;
+
+  /// (Output)
+  /// State of the Eventing
+  final String? state;
+
+  /// (Output)
+  /// Current status of eventing.
+  /// Structure is documented below.
+  final String? status;
+
+  ConnectionStatus({
+    this.description,
+    this.state,
+    this.status,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final descriptionValue = description;
+    if (descriptionValue != null) {
+      map['description'] = descriptionValue;
+    }
+    final stateValue = state;
+    if (stateValue != null) {
+      map['state'] = stateValue;
+    }
+    final statusValue = status;
+    if (statusValue != null) {
+      map['status'] = statusValue;
+    }
+    return map;
+  }
+
+  factory ConnectionStatus.fromMap(Map<String, dynamic> map) {
+    return ConnectionStatus(
+      description:
+          map['description'] == null ? null : map['description'] as String,
+      state: map['state'] == null ? null : map['state'] as String,
+      status: map['status'] == null ? null : map['status'] as String,
+    );
+  }
+}

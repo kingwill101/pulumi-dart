@@ -1,0 +1,3 @@
+library module_gkeonprem_bare_metal_cluster_security_config_authorization_admin_user;
+
+export 'bare_metal_cluster_security_config_authorization_admin_user.dart';

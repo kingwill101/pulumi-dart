@@ -1,0 +1,3 @@
+library module_appengine_application_url_dispatch_rule;
+
+export 'application_url_dispatch_rule.dart';

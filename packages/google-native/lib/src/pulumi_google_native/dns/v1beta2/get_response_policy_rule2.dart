@@ -1,0 +1,17 @@
+import 'package:pulumi/pulumi.dart';
+import 'get_response_policy_rule_args2.dart';
+import 'get_response_policy_rule_result2.dart';
+
+/// Fetches the representation of an existing Response Policy Rule.
+Future<GetResponsePolicyRuleResult2> getResponsePolicyRule2(
+  GetResponsePolicyRuleArgs2 args, {
+  InvokeOptions? options,
+}) async {
+  final deployment = Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'google-native:dns/v1beta2:getResponsePolicyRule',
+    args.toMap(),
+    options: toDeploymentInvokeOptions(options),
+  );
+  return GetResponsePolicyRuleResult2.fromMap(result);
+}

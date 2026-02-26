@@ -1,0 +1,490 @@
+import 'package:pulumi/pulumi.dart';
+import '../volume_backup_config/volume_backup_config.dart';
+import '../volume_block_device/volume_block_device.dart';
+import '../volume_cache_parameters/volume_cache_parameters.dart';
+import '../volume_export_policy/volume_export_policy.dart';
+import '../volume_hybrid_replication_parameters/volume_hybrid_replication_parameters.dart';
+import '../volume_mount_option/volume_mount_option.dart';
+import '../volume_restore_parameters/volume_restore_parameters.dart';
+import '../volume_snapshot_policy/volume_snapshot_policy.dart';
+import '../volume_tiering_policy/volume_tiering_policy.dart';
+import 'volume_args.dart';
+
+/// A volume is a file system container in a storage pool that stores application, database, and user data.
+///
+/// You can create a volume's capacity using the available capacity in the storage pool and you can define and resize the capacity without disruption to any processes.
+///
+/// Storage pool settings apply to the volumes contained within them automatically.
+///
+///
+/// To get more information about Volume, see:
+///
+/// * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes)
+/// * How-to Guides
+/// * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
+/// * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
+///
+/// ## Example Usage
+///
+/// ### Netapp Volume Basic
+///
+///
+/// <!--Start PulumiCodeChooser -->
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = gcp.compute.getNetwork({
+/// name: "test-network",
+/// });
+/// const defaultStoragePool = new gcp.netapp.StoragePool("default", {
+/// name: "test-pool",
+/// location: "us-west2",
+/// serviceLevel: "PREMIUM",
+/// capacityGib: "2048",
+/// network: _default.then(_default => _default.id),
+/// });
+/// const testVolume = new gcp.netapp.Volume("test_volume", {
+/// location: "us-west2",
+/// name: "test-volume",
+/// capacityGib: "100",
+/// shareName: "test-volume",
+/// storagePool: defaultStoragePool.name,
+/// protocols: ["NFSV3"],
+/// deletionPolicy: "DEFAULT",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.compute.get_network(name="test-network")
+/// default_storage_pool = gcp.netapp.StoragePool("default",
+/// name="test-pool",
+/// location="us-west2",
+/// service_level="PREMIUM",
+/// capacity_gib="2048",
+/// network=default.id)
+/// test_volume = gcp.netapp.Volume("test_volume",
+/// location="us-west2",
+/// name="test-volume",
+/// capacity_gib="100",
+/// share_name="test-volume",
+/// storage_pool=default_storage_pool.name,
+/// protocols=["NFSV3"],
+/// deletion_policy="DEFAULT")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+/// var @default = Gcp.Compute.GetNetwork.Invoke(new()
+/// {
+/// Name = "test-network",
+/// });
+///
+/// var defaultStoragePool = new Gcp.Netapp.StoragePool("default", new()
+/// {
+/// Name = "test-pool",
+/// Location = "us-west2",
+/// ServiceLevel = "PREMIUM",
+/// CapacityGib = "2048",
+/// Network = @default.Apply(@default => @default.Apply(getNetworkResult => getNetworkResult.Id)),
+/// });
+///
+/// var testVolume = new Gcp.Netapp.Volume("test_volume", new()
+/// {
+/// Location = "us-west2",
+/// Name = "test-volume",
+/// CapacityGib = "100",
+/// ShareName = "test-volume",
+/// StoragePool = defaultStoragePool.Name,
+/// Protocols = new[]
+/// {
+/// "NFSV3",
+/// },
+/// DeletionPolicy = "DEFAULT",
+/// });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
+/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+/// Name: "test-network",
+/// }, nil)
+/// if err != nil {
+/// return err
+/// }
+/// defaultStoragePool, err := netapp.NewStoragePool(ctx, "default", &netapp.StoragePoolArgs{
+/// Name:         pulumi.String("test-pool"),
+/// Location:     pulumi.String("us-west2"),
+/// ServiceLevel: pulumi.String("PREMIUM"),
+/// CapacityGib:  pulumi.String("2048"),
+/// Network:      pulumi.String(_default.Id),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// _, err = netapp.NewVolume(ctx, "test_volume", &netapp.VolumeArgs{
+/// Location:    pulumi.String("us-west2"),
+/// Name:        pulumi.String("test-volume"),
+/// CapacityGib: pulumi.String("100"),
+/// ShareName:   pulumi.String("test-volume"),
+/// StoragePool: defaultStoragePool.Name,
+/// Protocols: pulumi.StringArray{
+/// pulumi.String("NFSV3"),
+/// },
+/// DeletionPolicy: pulumi.String("DEFAULT"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+/// import com.pulumi.gcp.netapp.StoragePool;
+/// import com.pulumi.gcp.netapp.StoragePoolArgs;
+/// import com.pulumi.gcp.netapp.Volume;
+/// import com.pulumi.gcp.netapp.VolumeArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+/// public static void main(String[] args) {
+/// Pulumi.run(App::stack);
+/// }
+///
+/// public static void stack(Context ctx) {
+/// final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+/// .name("test-network")
+/// .build());
+///
+/// var defaultStoragePool = new StoragePool("defaultStoragePool", StoragePoolArgs.builder()
+/// .name("test-pool")
+/// .location("us-west2")
+/// .serviceLevel("PREMIUM")
+/// .capacityGib("2048")
+/// .network(default_.id())
+/// .build());
+///
+/// var testVolume = new Volume("testVolume", VolumeArgs.builder()
+/// .location("us-west2")
+/// .name("test-volume")
+/// .capacityGib("100")
+/// .shareName("test-volume")
+/// .storagePool(defaultStoragePool.name())
+/// .protocols("NFSV3")
+/// .deletionPolicy("DEFAULT")
+/// .build());
+///
+/// }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+/// defaultStoragePool:
+/// type: gcp:netapp:StoragePool
+/// name: default
+/// properties:
+/// name: test-pool
+/// location: us-west2
+/// serviceLevel: PREMIUM
+/// capacityGib: '2048'
+/// network: ${default.id}
+/// testVolume:
+/// type: gcp:netapp:Volume
+/// name: test_volume
+/// properties:
+/// location: us-west2
+/// name: test-volume
+/// capacityGib: '100'
+/// shareName: test-volume
+/// storagePool: ${defaultStoragePool.name}
+/// protocols:
+/// - NFSV3
+/// deletionPolicy: DEFAULT
+/// variables:
+/// default:
+/// fn::invoke:
+/// function: gcp:compute:getNetwork
+/// arguments:
+/// name: test-network
+/// ```
+/// <!--End PulumiCodeChooser -->
+///
+/// ## Import
+///
+/// Volume can be imported using any of these accepted formats:
+///
+/// * `projects/{{project}}/locations/{{location}}/volumes/{{name}}`
+///
+/// * `{{project}}/{{location}}/{{name}}`
+///
+/// * `{{location}}/{{name}}`
+///
+/// When using the `pulumi import` command, Volume can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:netapp/volume:Volume default projects/{{project}}/locations/{{location}}/volumes/{{name}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:netapp/volume:Volume default {{project}}/{{location}}/{{name}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:netapp/volume:Volume default {{location}}/{{name}}
+/// ```
+class Volume extends CustomResource {
+  /// Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
+  late final Output<String> activeDirectory;
+
+  /// Backup configuration for the volume.
+  /// Structure is documented below.
+  late final Output<VolumeBackupConfig?> backupConfig;
+
+  /// Block device represents the device(s) which are stored in the block volume.
+  /// Currently, only one block device is permitted per Volume.
+  /// Structure is documented below.
+  late final Output<List<VolumeBlockDevice>?> blockDevices;
+
+  /// Cache parameters for the volume.
+  /// Structure is documented below.
+  late final Output<VolumeCacheParameters?> cacheParameters;
+
+  /// Capacity of the volume (in GiB).
+  late final Output<String> capacityGib;
+
+  /// Output only. Size of the volume cold tier data in GiB.
+  late final Output<String> coldTierSizeGib;
+
+  /// Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+  late final Output<String> createTime;
+
+  /// Policy to determine if the volume should be deleted forcefully.
+  /// Volumes may have nested snapshot resources. Deleting such a volume will fail.
+  /// Setting this parameter to FORCE will delete volumes including nested snapshots.
+  /// Possible values: DEFAULT, FORCE.
+  late final Output<String?> deletionPolicy;
+
+  /// An optional description of this resource.
+  late final Output<String?> description;
+
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  late final Output<Map<String, String>> effectiveLabels;
+
+  /// Reports the data-at-rest encryption type of the volume. Inherited from storage pool.
+  late final Output<String> encryptionType;
+
+  /// Export policy of the volume for NFSV3 and/or NFSV4.1 access.
+  /// Structure is documented below.
+  late final Output<VolumeExportPolicy?> exportPolicy;
+
+  /// Indicates whether the volume is part of a volume replication relationship.
+  late final Output<bool> hasReplication;
+
+  /// Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
+  late final Output<String> hotTierSizeUsedGib;
+
+  /// [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+  /// [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+  /// are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
+  /// Structure is documented below.
+  late final Output<VolumeHybridReplicationParameters?>
+      hybridReplicationParameters;
+
+  /// Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
+  late final Output<bool?> kerberosEnabled;
+
+  /// Reports the CMEK policy resurce name being used for volume encryption. Inherited from storage pool.
+  late final Output<String> kmsConfig;
+
+  /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  late final Output<Map<String, String>?> labels;
+
+  /// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+  late final Output<bool?> largeCapacity;
+
+  /// Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
+  late final Output<bool> ldapEnabled;
+
+  /// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+  late final Output<String> location;
+
+  /// Reports mount instructions for this volume.
+  /// Structure is documented below.
+  late final Output<List<VolumeMountOption>> mountOptions;
+
+  /// Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+  /// Only the volume with largeCapacity will be allowed to have multiple endpoints.
+  late final Output<bool?> multipleEndpoints;
+
+  /// The name of the volume. Needs to be unique per location.
+  late final Output<String> name;
+
+  /// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`. Inherited from storage pool.
+  late final Output<String> network;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  late final Output<String> project;
+
+  /// The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
+  /// Each value may be one of: `NFSV3`, `NFSV4`, `SMB`, `ISCSI`.
+  late final Output<List<String>> protocols;
+
+  /// Name of the Private Service Access allocated range. Inherited from storage pool.
+  late final Output<String> psaRange;
+
+  /// The combination of labels configured directly on the resource
+  /// and default labels configured on the provider.
+  late final Output<Map<String, String>> pulumiLabels;
+
+  /// Specifies the replica zone for regional volume.
+  late final Output<String> replicaZone;
+
+  /// Used to create this volume from a snapshot (= cloning) or an backup.
+  /// Structure is documented below.
+  late final Output<VolumeRestoreParameters?> restoreParameters;
+
+  /// List of actions that are restricted on this volume.
+  /// Each value may be one of: `DELETE`.
+  late final Output<List<String>?> restrictedActions;
+
+  /// Security Style of the Volume. Use UNIX to use UNIX or NFSV4 ACLs for file permissions.
+  /// Use NTFS to use NTFS ACLs for file permissions. Can only be set for volumes which use SMB together with NFS as protocol.
+  /// Possible values are: `NTFS`, `UNIX`.
+  late final Output<String> securityStyle;
+
+  /// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
+  late final Output<String> serviceLevel;
+
+  /// Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
+  late final Output<String?> shareName;
+
+  /// Settings for volumes with SMB access.
+  /// Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
+  late final Output<List<String>> smbSettings;
+
+  /// If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
+  late final Output<bool?> snapshotDirectory;
+
+  /// Snapshot policy defines the schedule for automatic snapshot creation.
+  /// To disable automatic snapshot creation you have to remove the whole<span pulumi-lang-nodejs=" snapshotPolicy " pulumi-lang-dotnet=" SnapshotPolicy " pulumi-lang-go=" snapshotPolicy " pulumi-lang-python=" snapshot_policy " pulumi-lang-yaml=" snapshotPolicy " pulumi-lang-java=" snapshotPolicy "> snapshot_policy </span>block.
+  /// Structure is documented below.
+  late final Output<VolumeSnapshotPolicy?> snapshotPolicy;
+
+  /// State of the volume.
+  late final Output<String> state;
+
+  /// State details of the volume.
+  late final Output<String> stateDetails;
+
+  /// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
+  late final Output<String> storagePool;
+
+  /// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+  late final Output<double> throughputMibps;
+
+  /// Tiering policy for the volume.
+  /// Structure is documented below.
+  late final Output<VolumeTieringPolicy?> tieringPolicy;
+
+  /// Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
+  late final Output<String> unixPermissions;
+
+  /// Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
+  late final Output<String> usedGib;
+
+  /// Specifies the active zone for regional volume.
+  late final Output<String> zone;
+
+  Volume(
+    String name, {
+    VolumeArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'gcp:netapp/volume:Volume',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.activeDirectory = Output.createUnknown<String>();
+    this.backupConfig = Output.createUnknown<VolumeBackupConfig?>();
+    this.blockDevices = Output.createUnknown<List<VolumeBlockDevice>?>();
+    this.cacheParameters = Output.createUnknown<VolumeCacheParameters?>();
+    this.capacityGib = Output.createUnknown<String>();
+    this.coldTierSizeGib = Output.createUnknown<String>();
+    this.createTime = Output.createUnknown<String>();
+    this.deletionPolicy = Output.createUnknown<String?>();
+    this.description = Output.createUnknown<String?>();
+    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.encryptionType = Output.createUnknown<String>();
+    this.exportPolicy = Output.createUnknown<VolumeExportPolicy?>();
+    this.hasReplication = Output.createUnknown<bool>();
+    this.hotTierSizeUsedGib = Output.createUnknown<String>();
+    this.hybridReplicationParameters =
+        Output.createUnknown<VolumeHybridReplicationParameters?>();
+    this.kerberosEnabled = Output.createUnknown<bool?>();
+    this.kmsConfig = Output.createUnknown<String>();
+    this.labels = Output.createUnknown<Map<String, String>?>();
+    this.largeCapacity = Output.createUnknown<bool?>();
+    this.ldapEnabled = Output.createUnknown<bool>();
+    this.location = Output.createUnknown<String>();
+    this.mountOptions = Output.createUnknown<List<VolumeMountOption>>();
+    this.multipleEndpoints = Output.createUnknown<bool?>();
+    this.name = Output.createUnknown<String>();
+    this.network = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.protocols = Output.createUnknown<List<String>>();
+    this.psaRange = Output.createUnknown<String>();
+    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+    this.replicaZone = Output.createUnknown<String>();
+    this.restoreParameters = Output.createUnknown<VolumeRestoreParameters?>();
+    this.restrictedActions = Output.createUnknown<List<String>?>();
+    this.securityStyle = Output.createUnknown<String>();
+    this.serviceLevel = Output.createUnknown<String>();
+    this.shareName = Output.createUnknown<String?>();
+    this.smbSettings = Output.createUnknown<List<String>>();
+    this.snapshotDirectory = Output.createUnknown<bool?>();
+    this.snapshotPolicy = Output.createUnknown<VolumeSnapshotPolicy?>();
+    this.state = Output.createUnknown<String>();
+    this.stateDetails = Output.createUnknown<String>();
+    this.storagePool = Output.createUnknown<String>();
+    this.throughputMibps = Output.createUnknown<double>();
+    this.tieringPolicy = Output.createUnknown<VolumeTieringPolicy?>();
+    this.unixPermissions = Output.createUnknown<String>();
+    this.usedGib = Output.createUnknown<String>();
+    this.zone = Output.createUnknown<String>();
+  }
+}

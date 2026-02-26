@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'bucket_lifecycle_rule_item_action_response.dart';
+import 'bucket_lifecycle_rule_item_condition_response.dart';
+
+class BucketLifecycleRuleItemResponse {
+  /// The action to take.
+  final BucketLifecycleRuleItemActionResponse action;
+
+  /// The condition(s) under which the action will be taken.
+  final BucketLifecycleRuleItemConditionResponse condition;
+
+  BucketLifecycleRuleItemResponse({
+    required this.action,
+    required this.condition,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['action'] = action.toMap();
+    map['condition'] = condition.toMap();
+    return map;
+  }
+
+  factory BucketLifecycleRuleItemResponse.fromMap(Map<String, dynamic> map) {
+    return BucketLifecycleRuleItemResponse(
+      action: BucketLifecycleRuleItemActionResponse.fromMap(
+          (map['action'] as Map).cast<String, dynamic>()),
+      condition: BucketLifecycleRuleItemConditionResponse.fromMap(
+          (map['condition'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

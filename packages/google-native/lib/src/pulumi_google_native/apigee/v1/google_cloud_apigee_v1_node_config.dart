@@ -1,0 +1,37 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// NodeConfig for setting the min/max number of nodes associated with the environment.
+class GoogleCloudApigeeV1NodeConfig {
+  /// Optional. The maximum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended maximum number of nodes for that gateway.
+  final String? maxNodeCount;
+
+  /// Optional. The minimum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended minimum number of nodes for that gateway.
+  final String? minNodeCount;
+
+  GoogleCloudApigeeV1NodeConfig({
+    this.maxNodeCount,
+    this.minNodeCount,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final maxNodeCountValue = maxNodeCount;
+    if (maxNodeCountValue != null) {
+      map['maxNodeCount'] = maxNodeCountValue;
+    }
+    final minNodeCountValue = minNodeCount;
+    if (minNodeCountValue != null) {
+      map['minNodeCount'] = minNodeCountValue;
+    }
+    return map;
+  }
+
+  factory GoogleCloudApigeeV1NodeConfig.fromMap(Map<String, dynamic> map) {
+    return GoogleCloudApigeeV1NodeConfig(
+      maxNodeCount:
+          map['maxNodeCount'] == null ? null : map['maxNodeCount'] as String,
+      minNodeCount:
+          map['minNodeCount'] == null ? null : map['minNodeCount'] as String,
+    );
+  }
+}

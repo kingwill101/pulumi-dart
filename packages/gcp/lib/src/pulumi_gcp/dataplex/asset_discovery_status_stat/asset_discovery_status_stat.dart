@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class AssetDiscoveryStatusStat {
+  /// The count of data items within the referenced resource.
+  final int? dataItems;
+
+  /// The number of stored data bytes within the referenced resource.
+  final int? dataSize;
+
+  /// The count of fileset entities within the referenced resource.
+  final int? filesets;
+
+  /// The count of table entities within the referenced resource.
+  final int? tables;
+
+  AssetDiscoveryStatusStat({
+    this.dataItems,
+    this.dataSize,
+    this.filesets,
+    this.tables,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final dataItemsValue = dataItems;
+    if (dataItemsValue != null) {
+      map['dataItems'] = dataItemsValue;
+    }
+    final dataSizeValue = dataSize;
+    if (dataSizeValue != null) {
+      map['dataSize'] = dataSizeValue;
+    }
+    final filesetsValue = filesets;
+    if (filesetsValue != null) {
+      map['filesets'] = filesetsValue;
+    }
+    final tablesValue = tables;
+    if (tablesValue != null) {
+      map['tables'] = tablesValue;
+    }
+    return map;
+  }
+
+  factory AssetDiscoveryStatusStat.fromMap(Map<String, dynamic> map) {
+    return AssetDiscoveryStatusStat(
+      dataItems: map['dataItems'] == null ? null : map['dataItems'] as int,
+      dataSize: map['dataSize'] == null ? null : map['dataSize'] as int,
+      filesets: map['filesets'] == null ? null : map['filesets'] as int,
+      tables: map['tables'] == null ? null : map['tables'] as int,
+    );
+  }
+}

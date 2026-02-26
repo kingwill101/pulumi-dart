@@ -1,0 +1,135 @@
+import 'package:pulumi/pulumi.dart';
+import 'conversion_workspace_info_response.dart';
+import 'database_type_response.dart';
+import 'dump_flags_response.dart';
+import 'migration_job_args.dart';
+import 'performance_config_response.dart';
+import 'reverse_ssh_connectivity_response.dart';
+import 'status_response15.dart';
+import 'vpc_peering_connectivity_response.dart';
+
+/// Creates a new migration job in a given project and location.
+class MigrationJob extends CustomResource {
+  /// The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+  late final Output<String> cmekKeyName;
+
+  /// The conversion workspace used by the migration.
+  late final Output<ConversionWorkspaceInfoResponse> conversionWorkspace;
+
+  /// The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+  late final Output<String> createTime;
+
+  /// The resource name (URI) of the destination connection profile.
+  late final Output<String> destination;
+
+  /// The database engine type and provider of the destination.
+  late final Output<DatabaseTypeResponse> destinationDatabase;
+
+  /// The migration job display name.
+  late final Output<String> displayName;
+
+  /// The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+  late final Output<DumpFlagsResponse> dumpFlags;
+
+  /// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
+  late final Output<String> dumpPath;
+
+  /// The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+  late final Output<String> duration;
+
+  /// If the migration job is completed, the time when it was completed.
+  late final Output<String> endTime;
+
+  /// The error details in case of state FAILED.
+  late final Output<StatusResponse15> error;
+
+  /// This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
+  late final Output<String> filter;
+
+  /// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+  late final Output<Map<String, String>> labels;
+  late final Output<String> location;
+
+  /// Required. The ID of the instance to create.
+  late final Output<String> migrationJobId;
+
+  /// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
+  late final Output<String> name;
+
+  /// Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+  late final Output<PerformanceConfigResponse> performanceConfig;
+
+  /// The current migration job phase.
+  late final Output<String> phase;
+  late final Output<String> project;
+
+  /// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+  late final Output<String?> requestId;
+
+  /// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
+  late final Output<ReverseSshConnectivityResponse> reverseSshConnectivity;
+
+  /// The resource name (URI) of the source connection profile.
+  late final Output<String> source;
+
+  /// The database engine type and provider of the source.
+  late final Output<DatabaseTypeResponse> sourceDatabase;
+
+  /// The current migration job state.
+  late final Output<String> state;
+
+  /// static ip connectivity data (default, no additional details needed).
+  late final Output<Map<String, dynamic>> staticIpConnectivity;
+
+  /// The migration job type.
+  late final Output<String> type;
+
+  /// The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+  late final Output<String> updateTime;
+
+  /// The details of the VPC network that the source database is located in.
+  late final Output<VpcPeeringConnectivityResponse> vpcPeeringConnectivity;
+
+  MigrationJob(
+    String name, {
+    MigrationJobArgs? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:datamigration/v1:MigrationJob',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.cmekKeyName = Output.createUnknown<String>();
+    this.conversionWorkspace =
+        Output.createUnknown<ConversionWorkspaceInfoResponse>();
+    this.createTime = Output.createUnknown<String>();
+    this.destination = Output.createUnknown<String>();
+    this.destinationDatabase = Output.createUnknown<DatabaseTypeResponse>();
+    this.displayName = Output.createUnknown<String>();
+    this.dumpFlags = Output.createUnknown<DumpFlagsResponse>();
+    this.dumpPath = Output.createUnknown<String>();
+    this.duration = Output.createUnknown<String>();
+    this.endTime = Output.createUnknown<String>();
+    this.error = Output.createUnknown<StatusResponse15>();
+    this.filter = Output.createUnknown<String>();
+    this.labels = Output.createUnknown<Map<String, String>>();
+    this.location = Output.createUnknown<String>();
+    this.migrationJobId = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.performanceConfig = Output.createUnknown<PerformanceConfigResponse>();
+    this.phase = Output.createUnknown<String>();
+    this.project = Output.createUnknown<String>();
+    this.requestId = Output.createUnknown<String?>();
+    this.reverseSshConnectivity =
+        Output.createUnknown<ReverseSshConnectivityResponse>();
+    this.source = Output.createUnknown<String>();
+    this.sourceDatabase = Output.createUnknown<DatabaseTypeResponse>();
+    this.state = Output.createUnknown<String>();
+    this.staticIpConnectivity = Output.createUnknown<Map<String, dynamic>>();
+    this.type = Output.createUnknown<String>();
+    this.updateTime = Output.createUnknown<String>();
+    this.vpcPeeringConnectivity =
+        Output.createUnknown<VpcPeeringConnectivityResponse>();
+  }
+}

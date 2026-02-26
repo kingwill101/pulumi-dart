@@ -1,0 +1,3 @@
+library module_healthcare_fhir_store_validation_config;
+
+export 'fhir_store_validation_config.dart';

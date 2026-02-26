@@ -1,0 +1,3 @@
+library module_healthcare_fhir_store_stream_config_bigquery_destination_schema_config;
+
+export 'fhir_store_stream_config_bigquery_destination_schema_config.dart';

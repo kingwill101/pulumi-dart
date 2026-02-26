@@ -1,0 +1,3 @@
+library module_container_get_cluster_confidential_node;
+
+export 'get_cluster_confidential_node.dart';

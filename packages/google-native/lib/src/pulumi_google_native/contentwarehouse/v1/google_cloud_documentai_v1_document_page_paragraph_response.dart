@@ -1,0 +1,50 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import 'google_cloud_documentai_v1_document_page_detected_language_response.dart';
+import 'google_cloud_documentai_v1_document_page_layout_response.dart';
+import 'google_cloud_documentai_v1_document_provenance_response.dart';
+
+/// A collection of lines that a human would perceive as a paragraph.
+class GoogleCloudDocumentaiV1DocumentPageParagraphResponse {
+  /// A list of detected languages together with confidence.
+  final List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>
+      detectedLanguages;
+
+  /// Layout for Paragraph.
+  final GoogleCloudDocumentaiV1DocumentPageLayoutResponse layout;
+
+  /// The history of this annotation.
+  final GoogleCloudDocumentaiV1DocumentProvenanceResponse provenance;
+
+  GoogleCloudDocumentaiV1DocumentPageParagraphResponse({
+    required this.detectedLanguages,
+    required this.layout,
+    required this.provenance,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['detectedLanguages'] = Input.encodeList<
+        GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse,
+        Map<String, dynamic>>(detectedLanguages, (value) => value.toMap());
+    map['layout'] = layout.toMap();
+    map['provenance'] = provenance.toMap();
+    return map;
+  }
+
+  factory GoogleCloudDocumentaiV1DocumentPageParagraphResponse.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudDocumentaiV1DocumentPageParagraphResponse(
+      detectedLanguages: Input.decodeList<
+              GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>(
+          map['detectedLanguages'],
+          (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse
+              .fromMap((value as Map).cast<String, dynamic>())),
+      layout: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap(
+          (map['layout'] as Map).cast<String, dynamic>()),
+      provenance: GoogleCloudDocumentaiV1DocumentProvenanceResponse.fromMap(
+          (map['provenance'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

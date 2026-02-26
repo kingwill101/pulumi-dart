@@ -1,0 +1,3 @@
+library module_compute_interconnect_application_aware_interconnect_bandwidth_percentage_policy_bandwidth_percentage;
+
+export 'interconnect_application_aware_interconnect_bandwidth_percentage_policy_bandwidth_percentage.dart';

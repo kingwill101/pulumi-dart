@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class GetClusterNotificationConfigPubsubFilter {
+  /// Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT, SECURITY_BULLETIN_EVENT, and UPGRADE_INFO_EVENT
+  final List<String> eventTypes;
+
+  GetClusterNotificationConfigPubsubFilter({
+    required this.eventTypes,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['eventTypes'] = eventTypes;
+    return map;
+  }
+
+  factory GetClusterNotificationConfigPubsubFilter.fromMap(
+      Map<String, dynamic> map) {
+    return GetClusterNotificationConfigPubsubFilter(
+      eventTypes: (map['eventTypes'] as List).cast<String>(),
+    );
+  }
+}

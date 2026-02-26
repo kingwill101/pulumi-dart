@@ -1,0 +1,28 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class ToolsetOpenApiToolsetServiceDirectoryConfig {
+  /// The name of [Service
+  /// Directory](https://cloud.google.com/service-directory) service.
+  /// Format:
+  /// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
+  /// Location of the service directory must be the same as the location of the
+  /// app.
+  final String service;
+
+  ToolsetOpenApiToolsetServiceDirectoryConfig({
+    required this.service,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['service'] = service;
+    return map;
+  }
+
+  factory ToolsetOpenApiToolsetServiceDirectoryConfig.fromMap(
+      Map<String, dynamic> map) {
+    return ToolsetOpenApiToolsetServiceDirectoryConfig(
+      service: map['service'] as String,
+    );
+  }
+}

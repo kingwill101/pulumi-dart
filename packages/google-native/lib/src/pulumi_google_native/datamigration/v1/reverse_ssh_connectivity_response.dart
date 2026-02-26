@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// The details needed to configure a reverse SSH tunnel between the source and destination databases. These details will be used when calling the generateSshScript method (see https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.migrationJobs/generateSshScript) to produce the script that will help set up the reverse SSH tunnel, and to set up the VPC peering between the Cloud SQL private network and the VPC.
+class ReverseSshConnectivityResponse {
+  /// The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+  final String vm;
+
+  /// The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+  final String vmIp;
+
+  /// The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+  final int vmPort;
+
+  /// The name of the VPC to peer with the Cloud SQL private network.
+  final String vpc;
+
+  ReverseSshConnectivityResponse({
+    required this.vm,
+    required this.vmIp,
+    required this.vmPort,
+    required this.vpc,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['vm'] = vm;
+    map['vmIp'] = vmIp;
+    map['vmPort'] = vmPort;
+    map['vpc'] = vpc;
+    return map;
+  }
+
+  factory ReverseSshConnectivityResponse.fromMap(Map<String, dynamic> map) {
+    return ReverseSshConnectivityResponse(
+      vm: map['vm'] as String,
+      vmIp: map['vmIp'] as String,
+      vmPort: map['vmPort'] as int,
+      vpc: map['vpc'] as String,
+    );
+  }
+}

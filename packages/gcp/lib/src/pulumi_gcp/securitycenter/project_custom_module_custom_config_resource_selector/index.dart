@@ -1,0 +1,3 @@
+library module_securitycenter_project_custom_module_custom_config_resource_selector;
+
+export 'project_custom_module_custom_config_resource_selector.dart';

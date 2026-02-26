@@ -1,0 +1,3 @@
+library module_diagflow_cx_agent_git_integration_settings;
+
+export 'cx_agent_git_integration_settings.dart';

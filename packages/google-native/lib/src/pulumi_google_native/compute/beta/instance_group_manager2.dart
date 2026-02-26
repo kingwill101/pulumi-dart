@@ -1,0 +1,166 @@
+import 'package:pulumi/pulumi.dart';
+import 'distribution_policy_response2.dart';
+import 'instance_group_manager_actions_summary_response2.dart';
+import 'instance_group_manager_all_instances_config_response2.dart';
+import 'instance_group_manager_args2.dart';
+import 'instance_group_manager_auto_healing_policy_response2.dart';
+import 'instance_group_manager_instance_flexibility_policy_response2.dart';
+import 'instance_group_manager_instance_lifecycle_policy_response2.dart';
+import 'instance_group_manager_standby_policy_response2.dart';
+import 'instance_group_manager_status_response2.dart';
+import 'instance_group_manager_update_policy_response2.dart';
+import 'instance_group_manager_version_response2.dart';
+import 'named_port_response2.dart';
+import 'stateful_policy_response2.dart';
+
+/// Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method. A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you need an increase in this limit.
+class InstanceGroupManager2 extends CustomResource {
+  /// Specifies configuration that overrides the instance template configuration for the group.
+  late final Output<InstanceGroupManagerAllInstancesConfigResponse2>
+      allInstancesConfig;
+
+  /// The autohealing policy for this managed instance group. You can specify only one value.
+  late final Output<List<InstanceGroupManagerAutoHealingPolicyResponse2>>
+      autoHealingPolicies;
+
+  /// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
+  late final Output<String> baseInstanceName;
+
+  /// The creation timestamp for this managed instance group in RFC3339 text format.
+  late final Output<String> creationTimestamp;
+
+  /// The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
+  late final Output<InstanceGroupManagerActionsSummaryResponse2> currentActions;
+
+  /// An optional description of this resource.
+  late final Output<String> description;
+
+  /// Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
+  late final Output<DistributionPolicyResponse2> distributionPolicy;
+
+  /// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
+  late final Output<String> failoverAction;
+
+  /// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
+  late final Output<String> fingerprint;
+
+  /// Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+  late final Output<InstanceGroupManagerInstanceFlexibilityPolicyResponse2>
+      instanceFlexibilityPolicy;
+
+  /// The URL of the Instance Group resource.
+  late final Output<String> instanceGroup;
+
+  /// The repair policy for this managed instance group.
+  late final Output<InstanceGroupManagerInstanceLifecyclePolicyResponse2>
+      instanceLifecyclePolicy;
+
+  /// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
+  late final Output<String> instanceTemplate;
+
+  /// The resource type, which is always compute#instanceGroupManager for managed instance groups.
+  late final Output<String> kind;
+
+  /// Pagination behavior of the listManagedInstances API method for this managed instance group.
+  late final Output<String> listManagedInstancesResults;
+
+  /// The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
+  late final Output<String> name;
+
+  /// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
+  late final Output<List<NamedPortResponse2>> namedPorts;
+  late final Output<String> project;
+
+  /// The URL of the region where the managed instance group resides (for regional resources).
+  late final Output<String> region;
+
+  /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+  late final Output<String?> requestId;
+
+  /// The URL for this managed instance group. The server defines this URL.
+  late final Output<String> selfLink;
+
+  /// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+  late final Output<String> serviceAccount;
+
+  /// Standby policy for stopped and suspended instances.
+  late final Output<InstanceGroupManagerStandbyPolicyResponse2> standbyPolicy;
+
+  /// Stateful configuration for this Instanced Group Manager
+  late final Output<StatefulPolicyResponse2> statefulPolicy;
+
+  /// The status of this managed instance group.
+  late final Output<InstanceGroupManagerStatusResponse2> status;
+
+  /// The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
+  late final Output<List<String>> targetPools;
+
+  /// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
+  late final Output<int> targetSize;
+
+  /// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method.
+  late final Output<int> targetStoppedSize;
+
+  /// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method.
+  late final Output<int> targetSuspendedSize;
+
+  /// The update policy for this managed instance group.
+  late final Output<InstanceGroupManagerUpdatePolicyResponse2> updatePolicy;
+
+  /// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+  late final Output<List<InstanceGroupManagerVersionResponse2>> versions;
+  late final Output<String> zone;
+
+  InstanceGroupManager2(
+    String name, {
+    InstanceGroupManagerArgs2? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:compute/beta:InstanceGroupManager',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.allInstancesConfig =
+        Output.createUnknown<InstanceGroupManagerAllInstancesConfigResponse2>();
+    this.autoHealingPolicies = Output.createUnknown<
+        List<InstanceGroupManagerAutoHealingPolicyResponse2>>();
+    this.baseInstanceName = Output.createUnknown<String>();
+    this.creationTimestamp = Output.createUnknown<String>();
+    this.currentActions =
+        Output.createUnknown<InstanceGroupManagerActionsSummaryResponse2>();
+    this.description = Output.createUnknown<String>();
+    this.distributionPolicy =
+        Output.createUnknown<DistributionPolicyResponse2>();
+    this.failoverAction = Output.createUnknown<String>();
+    this.fingerprint = Output.createUnknown<String>();
+    this.instanceFlexibilityPolicy = Output.createUnknown<
+        InstanceGroupManagerInstanceFlexibilityPolicyResponse2>();
+    this.instanceGroup = Output.createUnknown<String>();
+    this.instanceLifecyclePolicy = Output.createUnknown<
+        InstanceGroupManagerInstanceLifecyclePolicyResponse2>();
+    this.instanceTemplate = Output.createUnknown<String>();
+    this.kind = Output.createUnknown<String>();
+    this.listManagedInstancesResults = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.namedPorts = Output.createUnknown<List<NamedPortResponse2>>();
+    this.project = Output.createUnknown<String>();
+    this.region = Output.createUnknown<String>();
+    this.requestId = Output.createUnknown<String?>();
+    this.selfLink = Output.createUnknown<String>();
+    this.serviceAccount = Output.createUnknown<String>();
+    this.standbyPolicy =
+        Output.createUnknown<InstanceGroupManagerStandbyPolicyResponse2>();
+    this.statefulPolicy = Output.createUnknown<StatefulPolicyResponse2>();
+    this.status = Output.createUnknown<InstanceGroupManagerStatusResponse2>();
+    this.targetPools = Output.createUnknown<List<String>>();
+    this.targetSize = Output.createUnknown<int>();
+    this.targetStoppedSize = Output.createUnknown<int>();
+    this.targetSuspendedSize = Output.createUnknown<int>();
+    this.updatePolicy =
+        Output.createUnknown<InstanceGroupManagerUpdatePolicyResponse2>();
+    this.versions =
+        Output.createUnknown<List<InstanceGroupManagerVersionResponse2>>();
+    this.zone = Output.createUnknown<String>();
+  }
+}

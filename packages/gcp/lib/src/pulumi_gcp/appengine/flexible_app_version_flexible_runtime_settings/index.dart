@@ -1,0 +1,3 @@
+library module_appengine_flexible_app_version_flexible_runtime_settings;
+
+export 'flexible_app_version_flexible_runtime_settings.dart';

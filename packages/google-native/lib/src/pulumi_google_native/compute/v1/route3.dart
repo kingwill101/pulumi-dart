@@ -1,0 +1,109 @@
+import 'package:pulumi/pulumi.dart';
+import 'route_args3.dart';
+import 'route_as_path_response3.dart';
+import 'route_warnings_item_response3.dart';
+
+/// Creates a Route resource in the specified project using the data included in the request.
+class Route3 extends CustomResource {
+  /// AS path.
+  late final Output<List<RouteAsPathResponse3>> asPaths;
+
+  /// Creation timestamp in RFC3339 text format.
+  late final Output<String> creationTimestamp;
+
+  /// An optional description of this resource. Provide this field when you create the resource.
+  late final Output<String> description;
+
+  /// The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported. Must specify an IPv4 range (e.g. 192.0.2.0/24) or an IPv6 range in RFC 4291 format (e.g. 2001:db8::/32). IPv6 range will be displayed using RFC 5952 compressed format.
+  late final Output<String> destRange;
+
+  /// Type of this resource. Always compute#routes for Route resources.
+  late final Output<String> kind;
+
+  /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
+  late final Output<String> name;
+
+  /// Fully-qualified URL of the network that this route applies to.
+  late final Output<String> network;
+
+  /// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
+  late final Output<String> nextHopGateway;
+
+  /// The full resource name of the Network Connectivity Center hub that will handle matching packets.
+  late final Output<String> nextHopHub;
+
+  /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule
+  late final Output<String> nextHopIlb;
+
+  /// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+  late final Output<String> nextHopInstance;
+
+  /// The network IP address of an instance that should handle matching packets. Both IPv6 address and IPv4 addresses are supported. Must specify an IPv4 address in dot-decimal notation (e.g. 192.0.2.99) or an IPv6 address in RFC 4291 format (e.g. 2001:db8::2d9:51:0:0 or 2001:db8:0:0:2d9:51:0:0). IPv6 addresses will be displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should never be an IPv4-mapped IPv6 address.
+  late final Output<String> nextHopIp;
+
+  /// The URL of the local network if it should handle matching packets.
+  late final Output<String> nextHopNetwork;
+
+  /// The network peering name that should handle matching packets, which should conform to RFC1035.
+  late final Output<String> nextHopPeering;
+
+  /// The URL to a VpnTunnel that should handle matching packets.
+  late final Output<String> nextHopVpnTunnel;
+
+  /// The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive.
+  late final Output<int> priority;
+  late final Output<String> project;
+
+  /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+  late final Output<String?> requestId;
+
+  /// [Output only] The status of the route.
+  late final Output<String> routeStatus;
+
+  /// The type of this route, which can be one of the following values: - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers - 'SUBNET' for a route from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this router - 'STATIC' for a static route
+  late final Output<String> routeType;
+
+  /// Server-defined fully-qualified URL for this resource.
+  late final Output<String> selfLink;
+
+  /// A list of instance tags to which this route applies.
+  late final Output<List<String>> tags;
+
+  /// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+  late final Output<List<RouteWarningsItemResponse3>> warnings;
+
+  Route3(
+    String name, {
+    RouteArgs3? args,
+    CustomResourceOptions? options,
+  }) : super(
+          'google-native:compute/v1:Route',
+          name,
+          Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? CustomResourceOptions(),
+        ) {
+    this.asPaths = Output.createUnknown<List<RouteAsPathResponse3>>();
+    this.creationTimestamp = Output.createUnknown<String>();
+    this.description = Output.createUnknown<String>();
+    this.destRange = Output.createUnknown<String>();
+    this.kind = Output.createUnknown<String>();
+    this.name = Output.createUnknown<String>();
+    this.network = Output.createUnknown<String>();
+    this.nextHopGateway = Output.createUnknown<String>();
+    this.nextHopHub = Output.createUnknown<String>();
+    this.nextHopIlb = Output.createUnknown<String>();
+    this.nextHopInstance = Output.createUnknown<String>();
+    this.nextHopIp = Output.createUnknown<String>();
+    this.nextHopNetwork = Output.createUnknown<String>();
+    this.nextHopPeering = Output.createUnknown<String>();
+    this.nextHopVpnTunnel = Output.createUnknown<String>();
+    this.priority = Output.createUnknown<int>();
+    this.project = Output.createUnknown<String>();
+    this.requestId = Output.createUnknown<String?>();
+    this.routeStatus = Output.createUnknown<String>();
+    this.routeType = Output.createUnknown<String>();
+    this.selfLink = Output.createUnknown<String>();
+    this.tags = Output.createUnknown<List<String>>();
+    this.warnings = Output.createUnknown<List<RouteWarningsItemResponse3>>();
+  }
+}

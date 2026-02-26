@@ -1,0 +1,3 @@
+library module_compute_packet_mirroring_mirrored_resources_subnetwork;
+
+export 'packet_mirroring_mirrored_resources_subnetwork.dart';

@@ -1,0 +1,3 @@
+library module_dataproc_cluster_cluster_config_preemptible_worker_config;
+
+export 'cluster_cluster_config_preemptible_worker_config.dart';

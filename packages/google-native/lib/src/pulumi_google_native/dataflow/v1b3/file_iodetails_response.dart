@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Metadata for a File connector used by the job.
+class FileIODetailsResponse {
+  /// File Pattern used to access files by the connector.
+  final String filePattern;
+
+  FileIODetailsResponse({
+    required this.filePattern,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['filePattern'] = filePattern;
+    return map;
+  }
+
+  factory FileIODetailsResponse.fromMap(Map<String, dynamic> map) {
+    return FileIODetailsResponse(
+      filePattern: map['filePattern'] as String,
+    );
+  }
+}

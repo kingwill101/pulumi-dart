@@ -1,0 +1,3 @@
+library module_container_get_cluster_binary_authorization;
+
+export 'get_cluster_binary_authorization.dart';

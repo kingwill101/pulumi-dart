@@ -1,0 +1,3 @@
+library module_container_cluster_notification_config_pubsub_filter;
+
+export 'cluster_notification_config_pubsub_filter.dart';

@@ -1,0 +1,3 @@
+library module_dataproc_metastore_service_scaling_config_autoscaling_config_limit_config;
+
+export 'metastore_service_scaling_config_autoscaling_config_limit_config.dart';

@@ -1,0 +1,3 @@
+library module_transcoder_job_template_config_elementary_stream_video_stream_h264;
+
+export 'job_template_config_elementary_stream_video_stream_h264.dart';

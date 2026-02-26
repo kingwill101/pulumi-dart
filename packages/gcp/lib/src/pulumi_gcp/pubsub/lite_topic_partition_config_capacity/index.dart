@@ -1,0 +1,3 @@
+library module_pubsub_lite_topic_partition_config_capacity;
+
+export 'lite_topic_partition_config_capacity.dart';

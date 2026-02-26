@@ -1,0 +1,3 @@
+library module_vertex_ai_feature_store_online_serving_config;
+
+export 'ai_feature_store_online_serving_config.dart';

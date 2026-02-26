@@ -1,0 +1,3 @@
+library module_container_cluster_monitoring_config_advanced_datapath_observability_config;
+
+export 'cluster_monitoring_config_advanced_datapath_observability_config.dart';

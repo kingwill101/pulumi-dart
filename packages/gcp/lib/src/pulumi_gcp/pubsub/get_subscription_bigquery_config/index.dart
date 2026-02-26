@@ -1,0 +1,3 @@
+library module_pubsub_get_subscription_bigquery_config;
+
+export 'get_subscription_bigquery_config.dart';

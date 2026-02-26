@@ -1,0 +1,3 @@
+library module_sql_get_database_instances_instance_setting_read_pool_auto_scale_config_target_metric;
+
+export 'get_database_instances_instance_setting_read_pool_auto_scale_config_target_metric.dart';

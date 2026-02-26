@@ -1,0 +1,47 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+
+/// Arguments for getIamPolicy.
+class GetIamPolicyArgs {
+  /// Used to find the parent resource to bind the IAM policy to
+  final Input<String> dataPolicyId;
+
+  /// The name of the location of the data policy.
+  /// Used to find the parent resource to bind the IAM policy to. If not specified,
+  /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+  /// location is specified, it is taken from the provider configuration.
+  final Input<String>? location;
+
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+  final Input<String>? project;
+
+  GetIamPolicyArgs({
+    required this.dataPolicyId,
+    this.location,
+    this.project,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['dataPolicyId'] = dataPolicyId;
+    final locationValue = location;
+    if (locationValue != null) {
+      map['location'] = locationValue;
+    }
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+    return GetIamPolicyArgs(
+      dataPolicyId: Input.asInput<String>(map['dataPolicyId']),
+      location: Input.asOptionalInput<String>(map['location']),
+      project: Input.asOptionalInput<String>(map['project']),
+    );
+  }
+}

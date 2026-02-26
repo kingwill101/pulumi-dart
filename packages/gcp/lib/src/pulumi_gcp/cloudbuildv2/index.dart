@@ -1,0 +1,26 @@
+library module_cloudbuildv2;
+
+export 'connection/index.dart';
+export 'connection_bitbucket_cloud_config/index.dart';
+export 'connection_bitbucket_cloud_config_authorizer_credential/index.dart';
+export 'connection_bitbucket_cloud_config_read_authorizer_credential/index.dart';
+export 'connection_bitbucket_data_center_config/index.dart';
+export 'connection_bitbucket_data_center_config_authorizer_credential/index.dart';
+export 'connection_bitbucket_data_center_config_read_authorizer_credential/index.dart';
+export 'connection_bitbucket_data_center_config_service_directory_config/index.dart';
+export 'connection_github_config/index.dart';
+export 'connection_github_config_authorizer_credential/index.dart';
+export 'connection_github_enterprise_config/index.dart';
+export 'connection_github_enterprise_config_service_directory_config/index.dart';
+export 'connection_gitlab_config/index.dart';
+export 'connection_gitlab_config_authorizer_credential/index.dart';
+export 'connection_gitlab_config_read_authorizer_credential/index.dart';
+export 'connection_gitlab_config_service_directory_config/index.dart';
+export 'connection_iambinding/index.dart';
+export 'connection_iambinding_condition/index.dart';
+export 'connection_iammember/index.dart';
+export 'connection_iammember_condition/index.dart';
+export 'connection_iampolicy/index.dart';
+export 'connection_installation_state/index.dart';
+export 'get_connection_iam_policy/index.dart';
+export 'repository/index.dart';

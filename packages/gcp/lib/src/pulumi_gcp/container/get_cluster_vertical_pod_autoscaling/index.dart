@@ -1,0 +1,3 @@
+library module_container_get_cluster_vertical_pod_autoscaling;
+
+export 'get_cluster_vertical_pod_autoscaling.dart';

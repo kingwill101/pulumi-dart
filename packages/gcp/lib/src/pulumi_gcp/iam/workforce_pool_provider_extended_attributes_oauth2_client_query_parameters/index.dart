@@ -1,0 +1,3 @@
+library module_iam_workforce_pool_provider_extended_attributes_oauth2_client_query_parameters;
+
+export 'workforce_pool_provider_extended_attributes_oauth2_client_query_parameters.dart';

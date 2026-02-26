@@ -1,0 +1,3 @@
+library module_apihub_plugin_config_template_additional_config_template_multi_select_option;
+
+export 'plugin_config_template_additional_config_template_multi_select_option.dart';

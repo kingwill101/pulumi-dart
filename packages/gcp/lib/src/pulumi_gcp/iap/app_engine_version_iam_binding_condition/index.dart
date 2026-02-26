@@ -1,0 +1,3 @@
+library module_iap_app_engine_version_iam_binding_condition;
+
+export 'app_engine_version_iam_binding_condition.dart';

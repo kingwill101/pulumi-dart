@@ -1,0 +1,3 @@
+library module_apphub_workload_attributes_criticality;
+
+export 'workload_attributes_criticality.dart';

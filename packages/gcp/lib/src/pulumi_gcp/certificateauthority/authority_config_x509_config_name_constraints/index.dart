@@ -1,0 +1,3 @@
+library module_certificateauthority_authority_config_x509_config_name_constraints;
+
+export 'authority_config_x509_config_name_constraints.dart';

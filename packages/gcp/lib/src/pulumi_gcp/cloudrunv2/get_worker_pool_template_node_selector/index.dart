@@ -1,0 +1,3 @@
+library module_cloudrunv2_get_worker_pool_template_node_selector;
+
+export 'get_worker_pool_template_node_selector.dart';

@@ -1,0 +1,3 @@
+library module_healthcare_pipeline_job_mapping_pipeline_job_mapping_config;
+
+export 'pipeline_job_mapping_pipeline_job_mapping_config.dart';

@@ -1,0 +1,30 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class AppHostingBackendManagedResourceRunService {
+  /// (Output)
+  /// The name of the Cloud Run
+  /// [<span pulumi-lang-nodejs="`service`" pulumi-lang-dotnet="`Service`" pulumi-lang-go="`service`" pulumi-lang-python="`service`" pulumi-lang-yaml="`service`" pulumi-lang-java="`service`">`service`</span>](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service),
+  /// in the format:
+  /// projects/{project}/locations/{location}/services/{serviceId}
+  final String? service;
+
+  AppHostingBackendManagedResourceRunService({
+    this.service,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final serviceValue = service;
+    if (serviceValue != null) {
+      map['service'] = serviceValue;
+    }
+    return map;
+  }
+
+  factory AppHostingBackendManagedResourceRunService.fromMap(
+      Map<String, dynamic> map) {
+    return AppHostingBackendManagedResourceRunService(
+      service: map['service'] == null ? null : map['service'] as String,
+    );
+  }
+}

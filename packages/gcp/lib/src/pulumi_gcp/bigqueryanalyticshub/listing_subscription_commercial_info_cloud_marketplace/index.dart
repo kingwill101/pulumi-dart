@@ -1,0 +1,3 @@
+library module_bigqueryanalyticshub_listing_subscription_commercial_info_cloud_marketplace;
+
+export 'listing_subscription_commercial_info_cloud_marketplace.dart';

@@ -1,0 +1,3 @@
+library module_discoveryengine_widget_config_homepage_setting;
+
+export 'widget_config_homepage_setting.dart';

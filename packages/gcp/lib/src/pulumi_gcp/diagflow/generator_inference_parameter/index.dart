@@ -1,0 +1,3 @@
+library module_diagflow_generator_inference_parameter;
+
+export 'generator_inference_parameter.dart';

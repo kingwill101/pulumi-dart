@@ -1,0 +1,149 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../database_instance_settings_ip_configuration_authorized_network/database_instance_settings_ip_configuration_authorized_network.dart';
+import '../database_instance_settings_ip_configuration_psc_config/database_instance_settings_ip_configuration_psc_config.dart';
+
+class DatabaseInstanceSettingsIpConfiguration {
+  /// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+  final String? allocatedIpRange;
+  final List<DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork>?
+      authorizedNetworks;
+
+  /// The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the <span pulumi-lang-nodejs="`serverCaMode`" pulumi-lang-dotnet="`ServerCaMode`" pulumi-lang-go="`serverCaMode`" pulumi-lang-python="`server_ca_mode`" pulumi-lang-yaml="`serverCaMode`" pulumi-lang-java="`serverCaMode`">`server_ca_mode`</span>.
+  final List<String>? customSubjectAlternativeNames;
+
+  /// Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+  final bool? enablePrivatePathForGoogleCloudServices;
+
+  /// Whether this Cloud SQL instance should be assigned
+  /// a public IPV4 address. At least <span pulumi-lang-nodejs="`ipv4Enabled`" pulumi-lang-dotnet="`Ipv4Enabled`" pulumi-lang-go="`ipv4Enabled`" pulumi-lang-python="`ipv4_enabled`" pulumi-lang-yaml="`ipv4Enabled`" pulumi-lang-java="`ipv4Enabled`">`ipv4_enabled`</span> must be enabled or a
+  /// <span pulumi-lang-nodejs="`privateNetwork`" pulumi-lang-dotnet="`PrivateNetwork`" pulumi-lang-go="`privateNetwork`" pulumi-lang-python="`private_network`" pulumi-lang-yaml="`privateNetwork`" pulumi-lang-java="`privateNetwork`">`private_network`</span> must be configured.
+  final bool? ipv4Enabled;
+
+  /// The VPC network from which the Cloud SQL
+  /// instance is accessible for private IP. For example, projects/myProject/global/networks/default.
+  /// Specifying a network enables private IP.
+  /// At least <span pulumi-lang-nodejs="`ipv4Enabled`" pulumi-lang-dotnet="`Ipv4Enabled`" pulumi-lang-go="`ipv4Enabled`" pulumi-lang-python="`ipv4_enabled`" pulumi-lang-yaml="`ipv4Enabled`" pulumi-lang-java="`ipv4Enabled`">`ipv4_enabled`</span> must be enabled or a <span pulumi-lang-nodejs="`privateNetwork`" pulumi-lang-dotnet="`PrivateNetwork`" pulumi-lang-go="`privateNetwork`" pulumi-lang-python="`private_network`" pulumi-lang-yaml="`privateNetwork`" pulumi-lang-java="`privateNetwork`">`private_network`</span> must be configured.
+  /// This setting can be updated, but it cannot be removed after it is set.
+  final String? privateNetwork;
+
+  /// PSC settings for a Cloud SQL instance.
+  final List<DatabaseInstanceSettingsIpConfigurationPscConfig>? pscConfigs;
+
+  /// Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
+  final String? serverCaMode;
+
+  /// The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the <span pulumi-lang-nodejs="`serverCaMode`" pulumi-lang-dotnet="`ServerCaMode`" pulumi-lang-go="`serverCaMode`" pulumi-lang-python="`server_ca_mode`" pulumi-lang-yaml="`serverCaMode`" pulumi-lang-java="`serverCaMode`">`server_ca_mode`</span>.
+  final String? serverCaPool;
+
+  /// Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
+  final String? sslMode;
+
+  DatabaseInstanceSettingsIpConfiguration({
+    this.allocatedIpRange,
+    this.authorizedNetworks,
+    this.customSubjectAlternativeNames,
+    this.enablePrivatePathForGoogleCloudServices,
+    this.ipv4Enabled,
+    this.privateNetwork,
+    this.pscConfigs,
+    this.serverCaMode,
+    this.serverCaPool,
+    this.sslMode,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final allocatedIpRangeValue = allocatedIpRange;
+    if (allocatedIpRangeValue != null) {
+      map['allocatedIpRange'] = allocatedIpRangeValue;
+    }
+    final authorizedNetworksValue = authorizedNetworks;
+    if (authorizedNetworksValue != null) {
+      map['authorizedNetworks'] = Input.encodeList<
+              DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork,
+              Map<String, dynamic>>(
+          authorizedNetworksValue, (value) => value.toMap());
+    }
+    final customSubjectAlternativeNamesValue = customSubjectAlternativeNames;
+    if (customSubjectAlternativeNamesValue != null) {
+      map['customSubjectAlternativeNames'] = customSubjectAlternativeNamesValue;
+    }
+    final enablePrivatePathForGoogleCloudServicesValue =
+        enablePrivatePathForGoogleCloudServices;
+    if (enablePrivatePathForGoogleCloudServicesValue != null) {
+      map['enablePrivatePathForGoogleCloudServices'] =
+          enablePrivatePathForGoogleCloudServicesValue;
+    }
+    final ipv4EnabledValue = ipv4Enabled;
+    if (ipv4EnabledValue != null) {
+      map['ipv4Enabled'] = ipv4EnabledValue;
+    }
+    final privateNetworkValue = privateNetwork;
+    if (privateNetworkValue != null) {
+      map['privateNetwork'] = privateNetworkValue;
+    }
+    final pscConfigsValue = pscConfigs;
+    if (pscConfigsValue != null) {
+      map['pscConfigs'] = Input.encodeList<
+          DatabaseInstanceSettingsIpConfigurationPscConfig,
+          Map<String, dynamic>>(pscConfigsValue, (value) => value.toMap());
+    }
+    final serverCaModeValue = serverCaMode;
+    if (serverCaModeValue != null) {
+      map['serverCaMode'] = serverCaModeValue;
+    }
+    final serverCaPoolValue = serverCaPool;
+    if (serverCaPoolValue != null) {
+      map['serverCaPool'] = serverCaPoolValue;
+    }
+    final sslModeValue = sslMode;
+    if (sslModeValue != null) {
+      map['sslMode'] = sslModeValue;
+    }
+    return map;
+  }
+
+  factory DatabaseInstanceSettingsIpConfiguration.fromMap(
+      Map<String, dynamic> map) {
+    return DatabaseInstanceSettingsIpConfiguration(
+      allocatedIpRange: map['allocatedIpRange'] == null
+          ? null
+          : map['allocatedIpRange'] as String,
+      authorizedNetworks: map['authorizedNetworks'] == null
+          ? null
+          : Input.decodeList<
+                  DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork>(
+              map['authorizedNetworks'],
+              (value) =>
+                  DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork
+                      .fromMap((value as Map).cast<String, dynamic>())),
+      customSubjectAlternativeNames:
+          map['customSubjectAlternativeNames'] == null
+              ? null
+              : (map['customSubjectAlternativeNames'] as List).cast<String>(),
+      enablePrivatePathForGoogleCloudServices:
+          map['enablePrivatePathForGoogleCloudServices'] == null
+              ? null
+              : map['enablePrivatePathForGoogleCloudServices'] as bool,
+      ipv4Enabled:
+          map['ipv4Enabled'] == null ? null : map['ipv4Enabled'] as bool,
+      privateNetwork: map['privateNetwork'] == null
+          ? null
+          : map['privateNetwork'] as String,
+      pscConfigs: map['pscConfigs'] == null
+          ? null
+          : Input.decodeList<DatabaseInstanceSettingsIpConfigurationPscConfig>(
+              map['pscConfigs'],
+              (value) =>
+                  DatabaseInstanceSettingsIpConfigurationPscConfig.fromMap(
+                      (value as Map).cast<String, dynamic>())),
+      serverCaMode:
+          map['serverCaMode'] == null ? null : map['serverCaMode'] as String,
+      serverCaPool:
+          map['serverCaPool'] == null ? null : map['serverCaPool'] as String,
+      sslMode: map['sslMode'] == null ? null : map['sslMode'] as String,
+    );
+  }
+}

@@ -1,0 +1,3 @@
+library module_storage_control_folder_intelligence_config_filter;
+
+export 'control_folder_intelligence_config_filter.dart';

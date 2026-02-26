@@ -1,0 +1,3 @@
+library module_vertex_ai_feature_group_iam_binding_condition;
+
+export 'ai_feature_group_iam_binding_condition.dart';

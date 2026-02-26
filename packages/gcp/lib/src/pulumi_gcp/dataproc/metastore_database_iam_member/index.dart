@@ -1,0 +1,4 @@
+library module_dataproc_metastore_database_iam_member;
+
+export 'metastore_database_iam_member.dart';
+export 'metastore_database_iam_member_args.dart';

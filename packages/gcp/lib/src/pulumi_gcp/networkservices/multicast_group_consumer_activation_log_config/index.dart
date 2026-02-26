@@ -1,0 +1,3 @@
+library module_networkservices_multicast_group_consumer_activation_log_config;
+
+export 'multicast_group_consumer_activation_log_config.dart';

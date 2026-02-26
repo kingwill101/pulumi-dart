@@ -1,0 +1,3 @@
+library module_container_get_cluster_control_plane_endpoints_config_ip_endpoints_config;
+
+export 'get_cluster_control_plane_endpoints_config_ip_endpoints_config.dart';

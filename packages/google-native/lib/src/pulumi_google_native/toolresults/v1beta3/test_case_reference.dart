@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// A reference to a test case. Test case references are canonically ordered lexicographically by these three factors: * First, by test_suite_name. * Second, by class_name. * Third, by name.
+class TestCaseReference {
+  /// The name of the class.
+  final String? className;
+
+  /// The name of the test case. Required.
+  final String? name;
+
+  /// The name of the test suite to which this test case belongs.
+  final String? testSuiteName;
+
+  TestCaseReference({
+    this.className,
+    this.name,
+    this.testSuiteName,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final classNameValue = className;
+    if (classNameValue != null) {
+      map['className'] = classNameValue;
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final testSuiteNameValue = testSuiteName;
+    if (testSuiteNameValue != null) {
+      map['testSuiteName'] = testSuiteNameValue;
+    }
+    return map;
+  }
+
+  factory TestCaseReference.fromMap(Map<String, dynamic> map) {
+    return TestCaseReference(
+      className: map['className'] == null ? null : map['className'] as String,
+      name: map['name'] == null ? null : map['name'] as String,
+      testSuiteName:
+          map['testSuiteName'] == null ? null : map['testSuiteName'] as String,
+    );
+  }
+}

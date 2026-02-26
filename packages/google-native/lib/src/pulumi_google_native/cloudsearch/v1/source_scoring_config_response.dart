@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Set the scoring configuration. This allows modifying the ranking of results for a source.
+class SourceScoringConfigResponse {
+  /// Importance of the source.
+  final String sourceImportance;
+
+  SourceScoringConfigResponse({
+    required this.sourceImportance,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['sourceImportance'] = sourceImportance;
+    return map;
+  }
+
+  factory SourceScoringConfigResponse.fromMap(Map<String, dynamic> map) {
+    return SourceScoringConfigResponse(
+      sourceImportance: map['sourceImportance'] as String,
+    );
+  }
+}

@@ -1,0 +1,64 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'google_cloud_aiplatform_v1beta1_big_query_source_response.dart';
+import 'google_cloud_aiplatform_v1beta1_gcs_source_response.dart';
+import 'google_cloud_aiplatform_v1beta1_sampling_strategy_response.dart';
+
+/// Training Dataset information.
+class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse {
+  /// The BigQuery table of the unmanaged Dataset used to train this Model.
+  final GoogleCloudAiplatformV1beta1BigQuerySourceResponse bigquerySource;
+
+  /// Data format of the dataset, only applicable if the input is from Google Cloud Storage. The possible formats are: "tf-record" The source file is a TFRecord file. "csv" The source file is a CSV file. "jsonl" The source file is a JSONL file.
+  final String dataFormat;
+
+  /// The resource name of the Dataset used to train this Model.
+  final String dataset;
+
+  /// The Google Cloud Storage uri of the unmanaged Dataset used to train this Model.
+  final GoogleCloudAiplatformV1beta1GcsSourceResponse gcsSource;
+
+  /// Strategy to sample data from Training Dataset. If not set, we process the whole dataset.
+  final GoogleCloudAiplatformV1beta1SamplingStrategyResponse
+      loggingSamplingStrategy;
+
+  /// The target field name the model is to predict. This field will be excluded when doing Predict and (or) Explain for the training data.
+  final String targetField;
+
+  GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse({
+    required this.bigquerySource,
+    required this.dataFormat,
+    required this.dataset,
+    required this.gcsSource,
+    required this.loggingSamplingStrategy,
+    required this.targetField,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['bigquerySource'] = bigquerySource.toMap();
+    map['dataFormat'] = dataFormat;
+    map['dataset'] = dataset;
+    map['gcsSource'] = gcsSource.toMap();
+    map['loggingSamplingStrategy'] = loggingSamplingStrategy.toMap();
+    map['targetField'] = targetField;
+    return map;
+  }
+
+  factory GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse(
+      bigquerySource:
+          GoogleCloudAiplatformV1beta1BigQuerySourceResponse.fromMap(
+              (map['bigquerySource'] as Map).cast<String, dynamic>()),
+      dataFormat: map['dataFormat'] as String,
+      dataset: map['dataset'] as String,
+      gcsSource: GoogleCloudAiplatformV1beta1GcsSourceResponse.fromMap(
+          (map['gcsSource'] as Map).cast<String, dynamic>()),
+      loggingSamplingStrategy:
+          GoogleCloudAiplatformV1beta1SamplingStrategyResponse.fromMap(
+              (map['loggingSamplingStrategy'] as Map).cast<String, dynamic>()),
+      targetField: map['targetField'] as String,
+    );
+  }
+}

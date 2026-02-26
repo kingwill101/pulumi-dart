@@ -1,0 +1,4 @@
+library module_networkmanagement_organization_vpc_flow_logs_config;
+
+export 'organization_vpc_flow_logs_config.dart';
+export 'organization_vpc_flow_logs_config_args.dart';

@@ -1,0 +1,3 @@
+library module_cloudfunctions_function_secret_volume_version;
+
+export 'function_secret_volume_version.dart';

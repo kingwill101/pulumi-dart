@@ -1,0 +1,3 @@
+library module_gkebackup_backup_plan_backup_config_selected_namespaces;
+
+export 'backup_plan_backup_config_selected_namespaces.dart';

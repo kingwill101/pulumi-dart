@@ -1,0 +1,3 @@
+library module_bigquery_data_transfer_config_encryption_configuration;
+
+export 'data_transfer_config_encryption_configuration.dart';

@@ -1,0 +1,3 @@
+library module_compute_instance_from_machine_image_instance_encryption_key;
+
+export 'instance_from_machine_image_instance_encryption_key.dart';

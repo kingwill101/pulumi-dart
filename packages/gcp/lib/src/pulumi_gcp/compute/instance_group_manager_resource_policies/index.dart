@@ -1,0 +1,3 @@
+library module_compute_instance_group_manager_resource_policies;
+
+export 'instance_group_manager_resource_policies.dart';

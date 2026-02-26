@@ -1,0 +1,3 @@
+library module_datastream_private_connection_vpc_peering_config;
+
+export 'private_connection_vpc_peering_config2.dart';

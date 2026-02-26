@@ -1,0 +1,3 @@
+library module_developerconnect_insights_config_artifact_config;
+
+export 'insights_config_artifact_config.dart';

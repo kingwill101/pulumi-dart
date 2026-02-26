@@ -1,0 +1,3 @@
+library module_pubsub_subscription_iammember_condition;
+
+export 'subscription_iammember_condition.dart';

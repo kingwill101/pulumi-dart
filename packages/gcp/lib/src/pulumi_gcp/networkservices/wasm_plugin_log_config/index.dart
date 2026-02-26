@@ -1,0 +1,3 @@
+library module_networkservices_wasm_plugin_log_config;
+
+export 'wasm_plugin_log_config.dart';

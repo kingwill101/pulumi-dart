@@ -1,0 +1,3 @@
+library module_osconfig_v2_policy_orchestrator_for_folder_orchestration_scope_selector;
+
+export 'v2_policy_orchestrator_for_folder_orchestration_scope_selector.dart';

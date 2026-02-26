@@ -1,0 +1,3 @@
+library module_datacatalog_taxonomy_iam_binding_condition;
+
+export 'taxonomy_iam_binding_condition.dart';

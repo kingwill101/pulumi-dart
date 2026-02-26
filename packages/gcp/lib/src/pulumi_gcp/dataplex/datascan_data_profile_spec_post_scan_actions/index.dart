@@ -1,0 +1,3 @@
+library module_dataplex_datascan_data_profile_spec_post_scan_actions;
+
+export 'datascan_data_profile_spec_post_scan_actions.dart';

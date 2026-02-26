@@ -1,0 +1,3 @@
+library module_container_get_cluster_addons_config_istio_config;
+
+export 'get_cluster_addons_config_istio_config.dart';

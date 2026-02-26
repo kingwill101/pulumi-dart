@@ -1,0 +1,3 @@
+library module_certificateauthority_certificate_config_subject_config;
+
+export 'certificate_config_subject_config.dart';

@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import 'attribute2.dart';
+import 'expr70.dart';
+
+/// Represents a user's consent in terms of the resources that can be accessed and under what conditions.
+class GoogleCloudHealthcareV1beta1ConsentPolicy {
+  /// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+  final Expr70 authorizationRule;
+
+  /// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
+  final List<Attribute2>? resourceAttributes;
+
+  GoogleCloudHealthcareV1beta1ConsentPolicy({
+    required this.authorizationRule,
+    this.resourceAttributes,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['authorizationRule'] = authorizationRule.toMap();
+    final resourceAttributesValue = resourceAttributes;
+    if (resourceAttributesValue != null) {
+      map['resourceAttributes'] =
+          Input.encodeList<Attribute2, Map<String, dynamic>>(
+              resourceAttributesValue, (value) => value.toMap());
+    }
+    return map;
+  }
+
+  factory GoogleCloudHealthcareV1beta1ConsentPolicy.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudHealthcareV1beta1ConsentPolicy(
+      authorizationRule: Expr70.fromMap(
+          (map['authorizationRule'] as Map).cast<String, dynamic>()),
+      resourceAttributes: map['resourceAttributes'] == null
+          ? null
+          : Input.decodeList<Attribute2>(
+              map['resourceAttributes'],
+              (value) =>
+                  Attribute2.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

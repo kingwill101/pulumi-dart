@@ -1,0 +1,17 @@
+import 'package:pulumi/pulumi.dart';
+import 'get_instant_snapshot_args.dart';
+import 'get_instant_snapshot_result.dart';
+
+/// Returns the specified InstantSnapshot resource in the specified zone.
+Future<GetInstantSnapshotResult> getInstantSnapshot(
+  GetInstantSnapshotArgs args, {
+  InvokeOptions? options,
+}) async {
+  final deployment = Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'google-native:compute/alpha:getInstantSnapshot',
+    args.toMap(),
+    options: toDeploymentInvokeOptions(options),
+  );
+  return GetInstantSnapshotResult.fromMap(result);
+}

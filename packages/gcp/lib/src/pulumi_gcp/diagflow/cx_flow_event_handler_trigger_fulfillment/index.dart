@@ -1,0 +1,3 @@
+library module_diagflow_cx_flow_event_handler_trigger_fulfillment;
+
+export 'cx_flow_event_handler_trigger_fulfillment.dart';

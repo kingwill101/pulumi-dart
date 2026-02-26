@@ -1,0 +1,3 @@
+library module_bigquery_table_external_data_configuration_hive_partitioning_options;
+
+export 'table_external_data_configuration_hive_partitioning_options.dart';

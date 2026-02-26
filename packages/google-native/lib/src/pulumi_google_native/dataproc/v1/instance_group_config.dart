@@ -1,0 +1,140 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import 'accelerator_config6.dart';
+import 'disk_config.dart';
+import 'instance_flexibility_policy.dart';
+import 'instance_group_config_preemptibility.dart';
+import 'startup_config.dart';
+
+/// The config settings for Compute Engine resources in an instance group, such as a master or worker group.
+class InstanceGroupConfig {
+  /// Optional. The Compute Engine accelerator configuration for these instances.
+  final List<AcceleratorConfig6>? accelerators;
+
+  /// Optional. Disk option config settings.
+  final DiskConfig? diskConfig;
+
+  /// Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or image family.Image examples: https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/[image-id] projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most recent image from the family: https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/family/[custom-image-family-name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be inferred from SoftwareConfig.image_version or the system default.
+  final String? imageUri;
+
+  /// Optional. Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+  final InstanceFlexibilityPolicy? instanceFlexibilityPolicy;
+
+  /// Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
+  final String? machineTypeUri;
+
+  /// Optional. Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+  final String? minCpuPlatform;
+
+  /// Optional. The minimum number of primary worker instances to create. If min_num_instances is set, cluster creation will succeed if the number of primary workers created is at least equal to the min_num_instances number.Example: Cluster creation request with num_instances = 5 and min_num_instances = 3: If 4 VMs are created and 1 instance fails, the failed VM is deleted. The cluster is resized to 4 instances and placed in a RUNNING state. If 2 instances are created and 3 instances fail, the cluster in placed in an ERROR state. The failed VMs are not deleted.
+  final int? minNumInstances;
+
+  /// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
+  final int? numInstances;
+
+  /// Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
+  final InstanceGroupConfigPreemptibility? preemptibility;
+
+  /// Optional. Configuration to handle the startup of instances during cluster create and update process.
+  final StartupConfig? startupConfig;
+
+  InstanceGroupConfig({
+    this.accelerators,
+    this.diskConfig,
+    this.imageUri,
+    this.instanceFlexibilityPolicy,
+    this.machineTypeUri,
+    this.minCpuPlatform,
+    this.minNumInstances,
+    this.numInstances,
+    this.preemptibility,
+    this.startupConfig,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final acceleratorsValue = accelerators;
+    if (acceleratorsValue != null) {
+      map['accelerators'] =
+          Input.encodeList<AcceleratorConfig6, Map<String, dynamic>>(
+              acceleratorsValue, (value) => value.toMap());
+    }
+    final diskConfigValue = diskConfig;
+    if (diskConfigValue != null) {
+      map['diskConfig'] = diskConfigValue.toMap();
+    }
+    final imageUriValue = imageUri;
+    if (imageUriValue != null) {
+      map['imageUri'] = imageUriValue;
+    }
+    final instanceFlexibilityPolicyValue = instanceFlexibilityPolicy;
+    if (instanceFlexibilityPolicyValue != null) {
+      map['instanceFlexibilityPolicy'] = instanceFlexibilityPolicyValue.toMap();
+    }
+    final machineTypeUriValue = machineTypeUri;
+    if (machineTypeUriValue != null) {
+      map['machineTypeUri'] = machineTypeUriValue;
+    }
+    final minCpuPlatformValue = minCpuPlatform;
+    if (minCpuPlatformValue != null) {
+      map['minCpuPlatform'] = minCpuPlatformValue;
+    }
+    final minNumInstancesValue = minNumInstances;
+    if (minNumInstancesValue != null) {
+      map['minNumInstances'] = minNumInstancesValue;
+    }
+    final numInstancesValue = numInstances;
+    if (numInstancesValue != null) {
+      map['numInstances'] = numInstancesValue;
+    }
+    final preemptibilityValue = preemptibility;
+    if (preemptibilityValue != null) {
+      map['preemptibility'] = preemptibilityValue.value;
+    }
+    final startupConfigValue = startupConfig;
+    if (startupConfigValue != null) {
+      map['startupConfig'] = startupConfigValue.toMap();
+    }
+    return map;
+  }
+
+  factory InstanceGroupConfig.fromMap(Map<String, dynamic> map) {
+    return InstanceGroupConfig(
+      accelerators: map['accelerators'] == null
+          ? null
+          : Input.decodeList<AcceleratorConfig6>(
+              map['accelerators'],
+              (value) => AcceleratorConfig6.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      diskConfig: map['diskConfig'] == null
+          ? null
+          : DiskConfig.fromMap(
+              (map['diskConfig'] as Map).cast<String, dynamic>()),
+      imageUri: map['imageUri'] == null ? null : map['imageUri'] as String,
+      instanceFlexibilityPolicy: map['instanceFlexibilityPolicy'] == null
+          ? null
+          : InstanceFlexibilityPolicy.fromMap(
+              (map['instanceFlexibilityPolicy'] as Map)
+                  .cast<String, dynamic>()),
+      machineTypeUri: map['machineTypeUri'] == null
+          ? null
+          : map['machineTypeUri'] as String,
+      minCpuPlatform: map['minCpuPlatform'] == null
+          ? null
+          : map['minCpuPlatform'] as String,
+      minNumInstances:
+          map['minNumInstances'] == null ? null : map['minNumInstances'] as int,
+      numInstances:
+          map['numInstances'] == null ? null : map['numInstances'] as int,
+      preemptibility: map['preemptibility'] == null
+          ? null
+          : InstanceGroupConfigPreemptibility.fromValue(
+              map['preemptibility'] as String),
+      startupConfig: map['startupConfig'] == null
+          ? null
+          : StartupConfig.fromMap(
+              (map['startupConfig'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

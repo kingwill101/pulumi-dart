@@ -1,0 +1,3 @@
+library module_container_attached_cluster_monitoring_config;
+
+export 'attached_cluster_monitoring_config.dart';

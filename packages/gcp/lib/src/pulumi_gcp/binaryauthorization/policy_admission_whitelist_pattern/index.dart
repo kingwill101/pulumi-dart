@@ -1,0 +1,3 @@
+library module_binaryauthorization_policy_admission_whitelist_pattern;
+
+export 'policy_admission_whitelist_pattern.dart';

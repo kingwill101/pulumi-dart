@@ -1,0 +1,3 @@
+library module_discoveryengine_assistant_generation_config_system_instruction;
+
+export 'assistant_generation_config_system_instruction.dart';

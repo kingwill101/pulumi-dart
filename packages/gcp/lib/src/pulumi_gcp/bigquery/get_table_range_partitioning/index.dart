@@ -1,0 +1,3 @@
+library module_bigquery_get_table_range_partitioning;
+
+export 'get_table_range_partitioning.dart';

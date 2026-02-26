@@ -1,0 +1,86 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart';
+import '../get_private_cloud_management_cluster_autoscaling_setting_autoscaling_policy_consumed_memory_threshold/get_private_cloud_management_cluster_autoscaling_setting_autoscaling_policy_consumed_memory_threshold.dart';
+import '../get_private_cloud_management_cluster_autoscaling_setting_autoscaling_policy_cpu_threshold/get_private_cloud_management_cluster_autoscaling_setting_autoscaling_policy_cpu_threshold.dart';
+import '../get_private_cloud_management_cluster_autoscaling_setting_autoscaling_policy_storage_threshold/get_private_cloud_management_cluster_autoscaling_setting_autoscaling_policy_storage_threshold.dart';
+
+class GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy {
+  final String autoscalePolicyId;
+
+  /// Utilization thresholds pertaining to amount of consumed memory.
+  final List<
+          GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold>
+      consumedMemoryThresholds;
+
+  /// Utilization thresholds pertaining to CPU utilization.
+  final List<
+          GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold>
+      cpuThresholds;
+
+  /// The canonical identifier of the node type to add or remove.
+  final String nodeTypeId;
+
+  /// Number of nodes to add to a cluster during a scale-out operation.
+  /// Must be divisible by 2 for stretched clusters.
+  final int scaleOutSize;
+
+  /// Utilization thresholds pertaining to amount of consumed storage.
+  final List<
+          GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold>
+      storageThresholds;
+
+  GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy({
+    required this.autoscalePolicyId,
+    required this.consumedMemoryThresholds,
+    required this.cpuThresholds,
+    required this.nodeTypeId,
+    required this.scaleOutSize,
+    required this.storageThresholds,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['autoscalePolicyId'] = autoscalePolicyId;
+    map['consumedMemoryThresholds'] = Input.encodeList<
+        GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold,
+        Map<String,
+            dynamic>>(consumedMemoryThresholds, (value) => value.toMap());
+    map['cpuThresholds'] = Input.encodeList<
+        GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold,
+        Map<String, dynamic>>(cpuThresholds, (value) => value.toMap());
+    map['nodeTypeId'] = nodeTypeId;
+    map['scaleOutSize'] = scaleOutSize;
+    map['storageThresholds'] = Input.encodeList<
+        GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold,
+        Map<String, dynamic>>(storageThresholds, (value) => value.toMap());
+    return map;
+  }
+
+  factory GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy.fromMap(
+      Map<String, dynamic> map) {
+    return GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy(
+      autoscalePolicyId: map['autoscalePolicyId'] as String,
+      consumedMemoryThresholds: Input.decodeList<
+              GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold>(
+          map['consumedMemoryThresholds'],
+          (value) =>
+              GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold
+                  .fromMap((value as Map).cast<String, dynamic>())),
+      cpuThresholds: Input.decodeList<
+              GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold>(
+          map['cpuThresholds'],
+          (value) =>
+              GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold
+                  .fromMap((value as Map).cast<String, dynamic>())),
+      nodeTypeId: map['nodeTypeId'] as String,
+      scaleOutSize: map['scaleOutSize'] as int,
+      storageThresholds: Input.decodeList<
+              GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold>(
+          map['storageThresholds'],
+          (value) =>
+              GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold
+                  .fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}

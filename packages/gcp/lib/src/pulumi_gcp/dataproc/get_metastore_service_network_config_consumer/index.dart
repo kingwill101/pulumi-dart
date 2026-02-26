@@ -1,0 +1,3 @@
+library module_dataproc_get_metastore_service_network_config_consumer;
+
+export 'get_metastore_service_network_config_consumer.dart';

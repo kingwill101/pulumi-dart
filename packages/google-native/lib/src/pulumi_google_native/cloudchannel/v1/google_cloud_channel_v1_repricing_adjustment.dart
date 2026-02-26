@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'google_cloud_channel_v1_percentage_adjustment.dart';
+
+/// A type that represents the various adjustments you can apply to a bill.
+class GoogleCloudChannelV1RepricingAdjustment {
+  /// Flat markup or markdown on an entire bill.
+  final GoogleCloudChannelV1PercentageAdjustment? percentageAdjustment;
+
+  GoogleCloudChannelV1RepricingAdjustment({
+    this.percentageAdjustment,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final percentageAdjustmentValue = percentageAdjustment;
+    if (percentageAdjustmentValue != null) {
+      map['percentageAdjustment'] = percentageAdjustmentValue.toMap();
+    }
+    return map;
+  }
+
+  factory GoogleCloudChannelV1RepricingAdjustment.fromMap(
+      Map<String, dynamic> map) {
+    return GoogleCloudChannelV1RepricingAdjustment(
+      percentageAdjustment: map['percentageAdjustment'] == null
+          ? null
+          : GoogleCloudChannelV1PercentageAdjustment.fromMap(
+              (map['percentageAdjustment'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

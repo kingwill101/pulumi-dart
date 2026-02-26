@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class RegionInstanceGroupManagerAllInstancesConfig {
+  /// , The label key-value pairs that you want to patch onto the instance.
+  ///
+  /// - - -
+  final Map<String, String>? labels;
+
+  /// , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+  final Map<String, String>? metadata;
+
+  RegionInstanceGroupManagerAllInstancesConfig({
+    this.labels,
+    this.metadata,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final labelsValue = labels;
+    if (labelsValue != null) {
+      map['labels'] = labelsValue;
+    }
+    final metadataValue = metadata;
+    if (metadataValue != null) {
+      map['metadata'] = metadataValue;
+    }
+    return map;
+  }
+
+  factory RegionInstanceGroupManagerAllInstancesConfig.fromMap(
+      Map<String, dynamic> map) {
+    return RegionInstanceGroupManagerAllInstancesConfig(
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
+      metadata: map['metadata'] == null
+          ? null
+          : (map['metadata'] as Map).cast<String, String>(),
+    );
+  }
+}
