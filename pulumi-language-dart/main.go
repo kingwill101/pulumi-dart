@@ -2048,17 +2048,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 }
 
 func uniqueClassName(base string, used map[string]int) string {
-	if base == "" {
-		base = "GeneratedType"
-	}
-	base = sanitizeTypeName(base)
-
-	count := used[base]
-	used[base] = count + 1
-	if count == 0 {
-		return base
-	}
-	return fmt.Sprintf("%s%d", base, count+1)
+	return claimUniqueTypeName(base, used)
 }
 
 var dartReservedIdentifiers = map[string]struct{}{
@@ -2079,7 +2069,20 @@ var dartDisallowedFieldNames = map[string]struct{}{
 }
 
 var dartDisallowedTypeNames = map[string]struct{}{
-	"Function": {},
+	"ComponentResource":     {},
+	"CustomResource":        {},
+	"CustomResourceOptions": {},
+	"Deployment":            {},
+	"Function":              {},
+	"Input":                 {},
+	"InputArgs":             {},
+	"InvokeOptions":         {},
+	"List":                  {},
+	"Map":                   {},
+	"Output":                {},
+	"Resource":              {},
+	"ResourceOptions":       {},
+	"Set":                   {},
 }
 
 func sanitizeTypeName(name string) string {
@@ -2090,6 +2093,45 @@ func sanitizeTypeName(name string) string {
 		return name + "Type"
 	}
 	return name
+}
+
+func claimUniqueTypeName(base string, used map[string]int) string {
+	if base == "" {
+		base = "GeneratedType"
+	}
+	base = sanitizeTypeName(base)
+
+	if _, exists := used[base]; !exists {
+		used[base] = 1
+		return base
+	}
+
+	stem := base
+	start := 2
+	for i := len(base) - 1; i >= 0; i-- {
+		if base[i] < '0' || base[i] > '9' {
+			if i < len(base)-1 {
+				parsed, err := strconv.Atoi(base[i+1:])
+				if err == nil && parsed >= 1 {
+					start = parsed + 1
+					stem = base[:i+1]
+				}
+			}
+			break
+		}
+		if i == 0 {
+			stem = base
+			start = 2
+		}
+	}
+
+	for suffix := start; ; suffix++ {
+		candidate := fmt.Sprintf("%s%d", stem, suffix)
+		if _, exists := used[candidate]; !exists {
+			used[candidate] = 1
+			return candidate
+		}
+	}
 }
 
 func propertyFieldName(name string, used map[string]int) string {
@@ -2755,12 +2797,7 @@ func tokenModulePath(token string) string {
 
 func resourceClassNameFromToken(token string, used map[string]int) string {
 	base := sanitizeTypeName(toDartClassName(tokenElementName(token)))
-	count := used[base]
-	used[base] = count + 1
-	if count == 0 {
-		return base
-	}
-	return fmt.Sprintf("%s%d", base, count+1)
+	return claimUniqueTypeName(base, used)
 }
 
 func functionNameFromToken(token string, used map[string]int) string {
@@ -2783,12 +2820,13 @@ func functionNameFromToken(token string, used map[string]int) string {
 		candidate = "invoke"
 	}
 
-	count := used[candidate]
-	used[candidate] = count + 1
-	if count == 0 {
-		return candidate
+	for suffix := 2; ; suffix++ {
+		if _, exists := used[candidate]; !exists {
+			used[candidate] = 1
+			return candidate
+		}
+		candidate = fmt.Sprintf("%s%d", string(runes), suffix)
 	}
-	return fmt.Sprintf("%s%d", candidate, count+1)
 }
 
 func propertyTypeSpec(property packagePropertySpec) packageTypeSpec {
@@ -4163,7 +4201,17 @@ func generatedConfigFile(spec *packageSchema, packageName string, filePath strin
 
 	var b strings.Builder
 	b.WriteString("// ignore_for_file: unused_element, unnecessary_cast\n\n")
-	b.WriteString("import 'dart:convert';\n")
+
+	configNeedsJSONDecode := false
+	for _, property := range spec.Config.Properties {
+		if configTypeRequiresJSONDecode(propertyTypeSpec(property)) {
+			configNeedsJSONDecode = true
+			break
+		}
+	}
+	if configNeedsJSONDecode {
+		b.WriteString("import 'dart:convert';\n")
+	}
 	b.WriteString("import 'package:pulumi/pulumi.dart';\n")
 
 	imports := map[string]struct{}{}

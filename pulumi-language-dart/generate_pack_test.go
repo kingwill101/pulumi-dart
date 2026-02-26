@@ -830,6 +830,68 @@ func TestGeneratePackageSanitizesBuiltInResourceClassName(t *testing.T) {
 	assert.Contains(t, content, "export 'index/function_type.dart';")
 }
 
+func TestGeneratePackageSanitizesCoreTypeResourceClassNames(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"resources": {
+			"sample:index:Map": {},
+			"sample:index:Input": {}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
+	assert.Contains(t, content, "class MapType extends CustomResource")
+	assert.Contains(t, content, "class InputType extends CustomResource")
+	assert.Contains(t, content, "export 'index/map_type.dart';")
+	assert.Contains(t, content, "export 'index/input_type.dart';")
+}
+
+func TestGeneratePackageAvoidsNumericSuffixClassNameCollisions(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"types": {
+			"sample:index:Foo": {
+				"type": "object",
+				"properties": {
+					"owner": { "type": "string" }
+				}
+			}
+		},
+		"resources": {
+			"sample:index:Foo": {},
+			"sample:index:Foo2": {}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
+	assert.Contains(t, content, "class Foo2 extends CustomResource")
+	assert.Contains(t, content, "class Foo3 extends CustomResource")
+	assert.Contains(t, content, "export 'index/foo2.dart';")
+	assert.Contains(t, content, "export 'index/foo3.dart';")
+}
+
 func TestGeneratePackageSanitizesRuntimeTypeFieldName(t *testing.T) {
 	t.Parallel()
 
