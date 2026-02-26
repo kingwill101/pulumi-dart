@@ -4,9 +4,13 @@ import (
 	"archive/tar"
 	"compress/gzip"
 	"context"
+	"fmt"
 	"io"
+	"io/fs"
 	"os"
 	"path/filepath"
+	"sort"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -20,9 +24,39 @@ func readGeneratedPackageLibraries(t *testing.T, targetDir, packageName string) 
 
 	rootData, err := os.ReadFile(filepath.Join(targetDir, "lib", packageName+".dart"))
 	require.NoError(t, err)
-	sdkData, err := os.ReadFile(filepath.Join(targetDir, "lib", "src", packageName, "sdk.dart"))
+
+	sdkDir := filepath.Join(targetDir, "lib", "src", packageName)
+	paths := make([]string, 0, 16)
+	err = filepath.WalkDir(sdkDir, func(path string, d fs.DirEntry, walkErr error) error {
+		if walkErr != nil {
+			return walkErr
+		}
+		if d.IsDir() || filepath.Ext(path) != ".dart" {
+			return nil
+		}
+		rel, relErr := filepath.Rel(sdkDir, path)
+		if relErr != nil {
+			return relErr
+		}
+		paths = append(paths, filepath.ToSlash(rel))
+		return nil
+	})
 	require.NoError(t, err)
-	return string(rootData), string(sdkData)
+	sort.Strings(paths)
+
+	var b strings.Builder
+	for _, rel := range paths {
+		content, readErr := os.ReadFile(filepath.Join(sdkDir, filepath.FromSlash(rel)))
+		require.NoError(t, readErr)
+		fmt.Fprintf(&b, "// FILE: %s\n", rel)
+		b.Write(content)
+		if len(content) == 0 || content[len(content)-1] != '\n' {
+			b.WriteString("\n")
+		}
+		b.WriteString("\n")
+	}
+
+	return string(rootData), b.String()
 }
 
 func assertGoldenFile(t *testing.T, goldenPath string, actual string) {
@@ -194,6 +228,12 @@ func TestGeneratePackageEmitsResourceClasses(t *testing.T) {
 	rootContent, content := readGeneratedPackageLibraries(t, targetDir, "sample")
 	assert.Contains(t, rootContent, "library sample;")
 	assert.Contains(t, rootContent, "export 'src/sample/sdk.dart';")
+	assert.Contains(t, content, "// FILE: sdk.dart")
+	assert.Contains(t, content, "// FILE: resources/widget.dart")
+	assert.Contains(t, content, "// FILE: resources/widget_component.dart")
+	assert.Contains(t, content, "// FILE: functions/do_thing.dart")
+	assert.NotContains(t, content, "part of ")
+	assert.NotContains(t, content, "part '")
 	assert.Contains(t, content, "class Widget extends CustomResource")
 	assert.Contains(t, content, "class WidgetComponent extends ComponentResource")
 	assert.Contains(t, content, "_mapToInputs")
@@ -263,13 +303,14 @@ func TestGeneratePackageEmitsParameterizedPackageRegistration(t *testing.T) {
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pkg")
 	assert.Contains(t, content, "import 'package:pulumi/src/deployment/models.dart' as deployment_models;")
-	assert.Contains(t, content, "final deployment_models.RegisterPackageRequest _registerPackageRequest = deployment_models.RegisterPackageRequest(")
+	assert.Contains(t, content, "// FILE: internal/package_registration.dart")
+	assert.Contains(t, content, "final registerPackageRequest = deployment_models.RegisterPackageRequest(")
 	assert.Contains(t, content, `name: "testprovider",`)
 	assert.Contains(t, content, `version: "0.0.1",`)
 	assert.Contains(t, content, "parameterization: deployment_models.Parameterization(")
 	assert.Contains(t, content, `name: "pkg",`)
 	assert.Contains(t, content, `value: <int>[112, 107, 103],`)
-	assert.Contains(t, content, "registerPackageRequest: _registerPackageRequest")
+	assert.Contains(t, content, "registerPackageRequest: package_registration.registerPackageRequest")
 }
 
 func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
@@ -325,6 +366,11 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 
 	rootContent, content := readGeneratedPackageLibraries(t, targetDir, "sample")
 	assert.Contains(t, rootContent, "export 'src/sample/sdk.dart';")
+	assert.Contains(t, content, "// FILE: types/widget_args.dart")
+	assert.Contains(t, content, "// FILE: types/get_widget_args.dart")
+	assert.Contains(t, content, "// FILE: types/get_widget_result.dart")
+	assert.Contains(t, content, "// FILE: resources/widget.dart")
+	assert.Contains(t, content, "// FILE: functions/get_widget.dart")
 
 	assert.Contains(t, content, "class WidgetArgs")
 	assert.Contains(t, content, "final Input<int> size;")
@@ -700,6 +746,11 @@ func TestGeneratePackageEmitsCollectionRefMappings(t *testing.T) {
 	require.NoError(t, err)
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "sample")
+	assert.Contains(t, content, "// FILE: types/widget_mode.dart")
+	assert.Contains(t, content, "// FILE: types/widget_metadata.dart")
+	assert.Contains(t, content, "// FILE: types/get_widget_details_result.dart")
+	assert.Contains(t, content, "// FILE: resources/widget.dart")
+	assert.Contains(t, content, "// FILE: functions/get_widget_details.dart")
 	assert.Contains(t, content, "final Input<List<WidgetMode>> modes;")
 	assert.Contains(t, content, "final Input<Map<String, WidgetMetadata>>? metadataById;")
 	assert.Contains(
