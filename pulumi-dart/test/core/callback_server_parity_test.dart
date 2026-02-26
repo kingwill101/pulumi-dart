@@ -14,6 +14,15 @@ import 'package:pulumi/src/invoke.dart';
 import 'package:pulumi/src/struct_converter.dart';
 import 'package:test/test.dart';
 
+class _CancelledErrorLike {
+  final String message;
+
+  _CancelledErrorLike(this.message);
+
+  @override
+  String toString() => 'CancelledError("$message")';
+}
+
 class _CapturingResourceMonitorService extends ResourceMonitorServiceBase {
   final List<pulumirpc.RegisterResourceHookRequest> resourceHookRequests = [];
   final List<pulumirpc.RegisterErrorHookRequest> errorHookRequests = [];
@@ -339,6 +348,64 @@ void main() {
     );
 
     test(
+      'resource transform callback failure handles cancellation-like throwables with stack context',
+      () async {
+        Future<ResourceTransformResult?> transformCancelledError(
+          ResourceTransformArgs args, [
+          CancellationToken? cancellationToken,
+        ]) async {
+          await Future<void>.value();
+          throw _CancelledErrorLike('noes');
+        }
+
+        final callback = await callbackServer.registerTransform(
+          transformCancelledError,
+        );
+        final callbackChannel = _channelForTarget(callback.target);
+        final callbacksClient = CallbacksClient(callbackChannel);
+
+        final request = TransformRequest()
+          ..name = 'res'
+          ..type = 'pkg:index:Res'
+          ..custom = true
+          ..properties = await StructConverter.toStruct({'enabled': true});
+
+        await expectLater(
+          callbacksClient.invoke(
+            CallbackInvokeRequest()
+              ..token = callback.token
+              ..request = request.writeToBuffer(),
+          ),
+          throwsA(
+            isA<GrpcError>()
+                .having(
+                  (error) => error.message ?? '',
+                  'message',
+                  contains('transform failed'),
+                )
+                .having(
+                  (error) => error.message ?? '',
+                  'message',
+                  contains('CancelledError("noes")'),
+                )
+                .having(
+                  (error) => error.message ?? '',
+                  'message',
+                  contains('transformCancelledError'),
+                )
+                .having(
+                  (error) => error.message ?? '',
+                  'message',
+                  contains('callback_server_parity_test.dart'),
+                ),
+          ),
+        );
+
+        await callbackChannel.shutdown();
+      },
+    );
+
+    test(
       'invoke transform callback failure includes stack context in gRPC error',
       () async {
         Future<InvokeTransformResult?> transformException(
@@ -379,6 +446,61 @@ void main() {
                   (error) => error.message ?? '',
                   'message',
                   contains('transformException'),
+                )
+                .having(
+                  (error) => error.message ?? '',
+                  'message',
+                  contains('callback_server_parity_test.dart'),
+                ),
+          ),
+        );
+
+        await callbackChannel.shutdown();
+      },
+    );
+
+    test(
+      'invoke transform callback failure handles cancellation-like throwables with stack context',
+      () async {
+        Future<InvokeTransformResult?> transformCancelledError(
+          InvokeTransformArgs args,
+        ) async {
+          await Future<void>.value();
+          throw _CancelledErrorLike('noes');
+        }
+
+        final callback = await callbackServer.registerStackInvokeTransformAsync(
+          transformCancelledError,
+        );
+        final callbackChannel = _channelForTarget(callback.target);
+        final callbacksClient = CallbacksClient(callbackChannel);
+
+        final request = TransformInvokeRequest()
+          ..token = 'pkg:index:getThing'
+          ..args = await StructConverter.toStruct({'name': 'example'});
+
+        await expectLater(
+          callbacksClient.invoke(
+            CallbackInvokeRequest()
+              ..token = callback.token
+              ..request = request.writeToBuffer(),
+          ),
+          throwsA(
+            isA<GrpcError>()
+                .having(
+                  (error) => error.message ?? '',
+                  'message',
+                  contains('transform failed'),
+                )
+                .having(
+                  (error) => error.message ?? '',
+                  'message',
+                  contains('CancelledError("noes")'),
+                )
+                .having(
+                  (error) => error.message ?? '',
+                  'message',
+                  contains('transformCancelledError'),
                 )
                 .having(
                   (error) => error.message ?? '',
