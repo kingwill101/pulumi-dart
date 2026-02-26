@@ -54,6 +54,21 @@ The smoke project is created under `.gen/smoke/<provider>` and is configured wit
 
 This is the recommended local testing path and avoids publishing to pub.dev.
 
+## Namespaced Module Imports
+
+Generated SDKs now emit module entrypoints in `lib/<module path>.dart` that map to
+`lib/src/<package>/<module path>/index.dart`.
+
+Examples:
+
+```dart
+import 'package:pulumi_aws/ec2.dart' as ec2;
+import 'package:pulumi_aws/medialive/input.dart' as medialive_input;
+```
+
+This allows using module aliases in user code and avoids relying only on the flat
+root export surface.
+
 If you already have a Pulumi Dart project and want to test a generated provider locally:
 
 ```bash

@@ -24,6 +24,10 @@ task generate:provider PACKAGE=gcp STRICT_FORMAT=true
 
 Generated SDKs are placed under `packages/<provider>`.
 
+Generated providers also include namespaced module entrypoints under
+`lib/<module path>.dart` (for example `package:pulumi_aws/ec2.dart`), so
+consumer code can import modules with explicit aliases.
+
 ### Quick smoke test project
 
 ```bash
