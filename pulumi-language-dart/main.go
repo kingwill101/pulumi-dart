@@ -1341,11 +1341,13 @@ type packageParameterizationSpec struct {
 
 type packageResourceSpec struct {
 	IsComponent      bool                  `json:"isComponent"`
+	Comment          string                `json:"-"`
 	ArgsClass        string                `json:"-"`
 	OutputProperties []packagePropertySpec `json:"-"`
 }
 
 type packageFunctionSpec struct {
+	Comment     string `json:"-"`
 	HasArgs     bool   `json:"-"`
 	ArgsClass   string `json:"-"`
 	ResultClass string `json:"-"`
@@ -1353,6 +1355,7 @@ type packageFunctionSpec struct {
 
 type packageObjectClassSpec struct {
 	ClassName      string
+	Comment        string
 	UsesInputTypes bool
 	Properties     []packagePropertySpec
 }
@@ -1360,6 +1363,7 @@ type packageObjectClassSpec struct {
 type packagePropertySpec struct {
 	Name              string
 	FieldName         string
+	Comment           string
 	Required          bool
 	TypeSpec          packageTypeSpec
 	DartType          string
@@ -1378,17 +1382,20 @@ type packageTypeSpec struct {
 
 type packageEnumSpec struct {
 	EnumName       string
+	Comment        string
 	UnderlyingType string
 	Values         []packageEnumValueSpec
 }
 
 type packageEnumValueSpec struct {
 	Name    string
+	Comment string
 	Literal string
 }
 
 type packageConfigSpec struct {
 	ClassName  string
+	Comment    string
 	Properties []packagePropertySpec
 }
 
@@ -1409,11 +1416,13 @@ type rawPackageSchema struct {
 }
 
 type rawConfigSpec struct {
-	Variables map[string]rawPropertyTypeSpec `json:"variables"`
-	Required  []string                       `json:"required"`
+	Description string                         `json:"description"`
+	Variables   map[string]rawPropertyTypeSpec `json:"variables"`
+	Required    []string                       `json:"required"`
 }
 
 type rawResourceSpec struct {
+	Description     string                         `json:"description"`
 	IsComponent     bool                           `json:"isComponent"`
 	InputProperties map[string]rawPropertyTypeSpec `json:"inputProperties"`
 	RequiredInputs  []string                       `json:"requiredInputs"`
@@ -1422,8 +1431,9 @@ type rawResourceSpec struct {
 }
 
 type rawFunctionSpec struct {
-	Inputs  *rawObjectSpec `json:"inputs"`
-	Outputs *rawObjectSpec `json:"outputs"`
+	Description string         `json:"description"`
+	Inputs      *rawObjectSpec `json:"inputs"`
+	Outputs     *rawObjectSpec `json:"outputs"`
 }
 
 type rawObjectSpec struct {
@@ -1432,6 +1442,7 @@ type rawObjectSpec struct {
 }
 
 type rawTypeSpec struct {
+	Description          string                         `json:"description"`
 	Type                 string                         `json:"type"`
 	Enum                 []rawEnumValueSpec             `json:"enum"`
 	Properties           map[string]rawPropertyTypeSpec `json:"properties"`
@@ -1441,11 +1452,13 @@ type rawTypeSpec struct {
 }
 
 type rawEnumValueSpec struct {
-	Name  string `json:"name"`
-	Value any    `json:"value"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
+	Value       any    `json:"value"`
 }
 
 type rawPropertyTypeSpec struct {
+	Description          string                `json:"description"`
 	Type                 string                `json:"type"`
 	Ref                  string                `json:"$ref"`
 	Items                *rawPropertyTypeSpec  `json:"items"`
@@ -1619,6 +1632,7 @@ func dartTypeSpecFromRawPropertyType(
 
 func makeRawObjectClassSpec(
 	baseName string,
+	classComment string,
 	properties map[string]rawPropertyTypeSpec,
 	required []string,
 	usedClassNames map[string]int,
@@ -1633,6 +1647,7 @@ func makeRawObjectClassSpec(
 	className := uniqueClassName(toDartClassName(baseName), usedClassNames)
 	return buildRawObjectClassSpec(
 		className,
+		classComment,
 		properties,
 		required,
 		namedTypeRefs,
@@ -1643,6 +1658,7 @@ func makeRawObjectClassSpec(
 
 func buildRawObjectClassSpec(
 	className string,
+	classComment string,
 	properties map[string]rawPropertyTypeSpec,
 	required []string,
 	namedTypeRefs map[string]packageNamedTypeRef,
@@ -1674,6 +1690,7 @@ func buildRawObjectClassSpec(
 		fields = append(fields, packagePropertySpec{
 			Name:              propertyName,
 			FieldName:         propertyFieldName(propertyName, usedFieldNames),
+			Comment:           strings.TrimSpace(property.Description),
 			Required:          isRequired,
 			TypeSpec:          typeSpec,
 			DartType:          typeSpec.DartType,
@@ -1685,6 +1702,7 @@ func buildRawObjectClassSpec(
 
 	return &packageObjectClassSpec{
 		ClassName:      className,
+		Comment:        strings.TrimSpace(classComment),
 		UsesInputTypes: usesInputTypes,
 		Properties:     fields,
 	}
@@ -1708,6 +1726,7 @@ func makeRawEnumSpec(
 		}
 		values = append(values, packageEnumValueSpec{
 			Name:    enumValueName(enumValue.Name, enumValue.Value, usedValueNames),
+			Comment: strings.TrimSpace(enumValue.Description),
 			Literal: literal,
 		})
 	}
@@ -1717,6 +1736,7 @@ func makeRawEnumSpec(
 
 	return &packageEnumSpec{
 		EnumName:       typeName,
+		Comment:        strings.TrimSpace(rawType.Description),
 		UnderlyingType: underlyingType,
 		Values:         values,
 	}
@@ -1779,6 +1799,7 @@ func makeRawResourceOutputPropertySpecs(
 		fields = append(fields, packagePropertySpec{
 			Name:              propertyName,
 			FieldName:         propertyFieldName(propertyName, usedFieldNames),
+			Comment:           strings.TrimSpace(property.Description),
 			Required:          isRequired,
 			TypeSpec:          typeSpec,
 			DartType:          typeSpec.DartType,
@@ -1858,6 +1879,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 		case "object":
 			if classSpec := buildRawObjectClassSpec(
 				namedType.Name,
+				typeSpec.Description,
 				typeSpec.Properties,
 				typeSpec.Required,
 				namedTypeRefs,
@@ -1873,6 +1895,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 		configClassName := uniqueClassName(toDartClassName(rawSpec.Name)+"Config", usedClassNames)
 		if configClass := buildRawObjectClassSpec(
 			configClassName,
+			rawSpec.Config.Description,
 			rawSpec.Config.Variables,
 			rawSpec.Config.Required,
 			namedTypeRefs,
@@ -1881,6 +1904,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 		); configClass != nil {
 			spec.Config = &packageConfigSpec{
 				ClassName:  configClass.ClassName,
+				Comment:    configClass.Comment,
 				Properties: configClass.Properties,
 			}
 		}
@@ -1896,9 +1920,11 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 		resource := rawSpec.Resources[token]
 		resourceSpec := packageResourceSpec{
 			IsComponent: resource.IsComponent,
+			Comment:     strings.TrimSpace(resource.Description),
 		}
 		if classSpec := makeRawObjectClassSpec(
 			toDartClassName(tokenElementName(token))+"Args",
+			fmt.Sprintf("The set of arguments for %s.", toDartClassName(tokenElementName(token))),
 			resource.InputProperties,
 			resource.RequiredInputs,
 			usedClassNames,
@@ -1935,11 +1961,13 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 		}
 
 		functionSpec := packageFunctionSpec{
+			Comment: strings.TrimSpace(function.Description),
 			HasArgs: len(inputProperties) > 0,
 		}
 		base := toDartClassName(tokenElementName(token))
 		if classSpec := makeRawObjectClassSpec(
 			base+"Args",
+			fmt.Sprintf("Arguments for %s.", functionNameFromToken(token, map[string]int{})),
 			inputProperties,
 			inputRequired,
 			usedClassNames,
@@ -1952,6 +1980,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 		}
 		if classSpec := makeRawObjectClassSpec(
 			base+"Result",
+			fmt.Sprintf("Result data returned by %s.", functionNameFromToken(token, map[string]int{})),
 			outputProperties,
 			outputRequired,
 			usedClassNames,
@@ -2135,6 +2164,7 @@ resolved:
 
 func makeObjectClassSpec(
 	baseName string,
+	classComment string,
 	properties []*schema.Property,
 	usedClassNames map[string]int,
 	namedTypeRefs map[string]packageNamedTypeRef,
@@ -2148,6 +2178,7 @@ func makeObjectClassSpec(
 	className := uniqueClassName(toDartClassName(baseName), usedClassNames)
 	return buildObjectClassSpec(
 		className,
+		classComment,
 		properties,
 		namedTypeRefs,
 		useReferenceTypes,
@@ -2157,6 +2188,7 @@ func makeObjectClassSpec(
 
 func buildObjectClassSpec(
 	className string,
+	classComment string,
 	properties []*schema.Property,
 	namedTypeRefs map[string]packageNamedTypeRef,
 	useReferenceTypes bool,
@@ -2184,6 +2216,7 @@ func buildObjectClassSpec(
 		fields = append(fields, packagePropertySpec{
 			Name:              property.Name,
 			FieldName:         propertyFieldName(property.Name, usedFieldNames),
+			Comment:           strings.TrimSpace(property.Comment),
 			Required:          property.IsRequired(),
 			TypeSpec:          typeSpec,
 			DartType:          typeSpec.DartType,
@@ -2195,6 +2228,7 @@ func buildObjectClassSpec(
 
 	return &packageObjectClassSpec{
 		ClassName:      className,
+		Comment:        strings.TrimSpace(classComment),
 		UsesInputTypes: usesInputTypes,
 		Properties:     fields,
 	}
@@ -2239,6 +2273,7 @@ func makeResourceOutputPropertySpecs(
 		fields = append(fields, packagePropertySpec{
 			Name:              property.Name,
 			FieldName:         propertyFieldName(property.Name, usedFieldNames),
+			Comment:           strings.TrimSpace(property.Comment),
 			Required:          property.IsRequired(),
 			TypeSpec:          typeSpec,
 			DartType:          typeSpec.DartType,
@@ -2278,6 +2313,7 @@ func makeSchemaEnumSpec(typeName string, enumType *schema.EnumType) *packageEnum
 
 	return &packageEnumSpec{
 		EnumName:       typeName,
+		Comment:        strings.TrimSpace(enumType.Comment),
 		UnderlyingType: underlyingType,
 		Values:         values,
 	}
@@ -2389,6 +2425,7 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 		case *schema.ObjectType:
 			if classSpec := buildObjectClassSpec(
 				namedType.Name,
+				t.Comment,
 				t.Properties,
 				namedTypeRefs,
 				true,
@@ -2403,6 +2440,7 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 		configClassName := uniqueClassName(toDartClassName(pkg.Name)+"Config", usedClassNames)
 		if configClass := buildObjectClassSpec(
 			configClassName,
+			fmt.Sprintf("Configuration values for the %s package.", pkg.Name),
 			pkg.Config,
 			namedTypeRefs,
 			true,
@@ -2410,6 +2448,7 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 		); configClass != nil {
 			spec.Config = &packageConfigSpec{
 				ClassName:  configClass.ClassName,
+				Comment:    configClass.Comment,
 				Properties: configClass.Properties,
 			}
 		}
@@ -2427,9 +2466,11 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 		resource := resourceByToken[token]
 		resourceSpec := packageResourceSpec{
 			IsComponent: resource.IsComponent,
+			Comment:     strings.TrimSpace(resource.Comment),
 		}
 		if classSpec := makeObjectClassSpec(
 			toDartClassName(tokenElementName(resource.Token))+"Args",
+			fmt.Sprintf("The set of arguments for %s.", toDartClassName(tokenElementName(resource.Token))),
 			resource.InputProperties,
 			usedClassNames,
 			namedTypeRefs,
@@ -2463,14 +2504,31 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 		}
 
 		functionSpec := packageFunctionSpec{
+			Comment: strings.TrimSpace(function.Comment),
 			HasArgs: len(inputProperties) > 0,
 		}
 		base := toDartClassName(tokenElementName(function.Token))
-		if classSpec := makeObjectClassSpec(base+"Args", inputProperties, usedClassNames, namedTypeRefs, true, true); classSpec != nil {
+		if classSpec := makeObjectClassSpec(
+			base+"Args",
+			fmt.Sprintf("Arguments for %s.", functionNameFromToken(function.Token, map[string]int{})),
+			inputProperties,
+			usedClassNames,
+			namedTypeRefs,
+			true,
+			true,
+		); classSpec != nil {
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			functionSpec.ArgsClass = classSpec.ClassName
 		}
-		if classSpec := makeObjectClassSpec(base+"Result", outputProperties, usedClassNames, namedTypeRefs, true, false); classSpec != nil {
+		if classSpec := makeObjectClassSpec(
+			base+"Result",
+			fmt.Sprintf("Result data returned by %s.", functionNameFromToken(function.Token, map[string]int{})),
+			outputProperties,
+			usedClassNames,
+			namedTypeRefs,
+			true,
+			false,
+		); classSpec != nil {
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			functionSpec.ResultClass = classSpec.ClassName
 		}
@@ -2987,6 +3045,7 @@ func configPropertyParseExpression(property packagePropertySpec, rawExpr string)
 }
 
 func writeGeneratedConfigClass(b *strings.Builder, configSpec packageConfigSpec) {
+	writeDartDocComment(b, "", configSpec.Comment)
 	fmt.Fprintf(b, "class %s {\n", configSpec.ClassName)
 	fmt.Fprintf(b, "  const %s();\n\n", configSpec.ClassName)
 	b.WriteString(
@@ -3003,6 +3062,7 @@ func writeGeneratedConfigClass(b *strings.Builder, configSpec packageConfigSpec)
 	)
 
 	for _, property := range configSpec.Properties {
+		writeDartDocComment(b, "  ", property.Comment)
 		getterType := configPropertyGetterType(property)
 		fmt.Fprintf(b, "  %s get %s {\n", getterType, property.FieldName)
 		fmt.Fprintf(b, "    final raw = _raw('%s');\n", property.Name)
@@ -3030,13 +3090,31 @@ func writeGeneratedConfigClass(b *strings.Builder, configSpec packageConfigSpec)
 	b.WriteString(fmt.Sprintf("final config = %s();\n\n", configSpec.ClassName))
 }
 
+func writeDartDocComment(b *strings.Builder, indent, comment string) {
+	comment = strings.TrimSpace(comment)
+	if comment == "" {
+		return
+	}
+
+	for _, rawLine := range strings.Split(comment, "\n") {
+		line := strings.TrimSpace(rawLine)
+		if line == "" {
+			fmt.Fprintf(b, "%s///\n", indent)
+			continue
+		}
+		fmt.Fprintf(b, "%s/// %s\n", indent, line)
+	}
+}
+
 func writeGeneratedEnumClass(b *strings.Builder, enumSpec packageEnumSpec) {
+	writeDartDocComment(b, "", enumSpec.Comment)
 	fmt.Fprintf(b, "enum %s {\n", enumSpec.EnumName)
 	for i, enumValue := range enumSpec.Values {
 		suffix := ","
 		if i == len(enumSpec.Values)-1 {
 			suffix = ";"
 		}
+		writeDartDocComment(b, "  ", enumValue.Comment)
 		fmt.Fprintf(b, "  %s(%s)%s\n", enumValue.Name, enumValue.Literal, suffix)
 	}
 	b.WriteString("\n")
@@ -3054,8 +3132,10 @@ func writeGeneratedEnumClass(b *strings.Builder, enumSpec packageEnumSpec) {
 }
 
 func writeGeneratedObjectClass(b *strings.Builder, objectClass packageObjectClassSpec) {
+	writeDartDocComment(b, "", objectClass.Comment)
 	fmt.Fprintf(b, "class %s {\n", objectClass.ClassName)
 	for _, property := range objectClass.Properties {
+		writeDartDocComment(b, "  ", property.Comment)
 		fmt.Fprintf(
 			b,
 			"  final %s %s;\n",
@@ -3423,10 +3503,12 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 	for _, token := range resourceTokens {
 		resource := spec.Resources[token]
 		className := resourceClassNameFromToken(token, usedClassNames)
+		writeDartDocComment(&b, "", resource.Comment)
 
 		if resource.IsComponent {
 			fmt.Fprintf(&b, "class %s extends ComponentResource {\n", className)
 			for _, property := range resource.OutputProperties {
+				writeDartDocComment(&b, "  ", property.Comment)
 				fmt.Fprintf(
 					&b,
 					"  late final Output<%s> %s;\n",
@@ -3465,6 +3547,7 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 
 		fmt.Fprintf(&b, "class %s extends CustomResource {\n", className)
 		for _, property := range resource.OutputProperties {
+			writeDartDocComment(&b, "  ", property.Comment)
 			fmt.Fprintf(
 				&b,
 				"  late final Output<%s> %s;\n",
@@ -3517,6 +3600,7 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 	for _, token := range functionTokens {
 		funcName := functionNameFromToken(token, usedFunctionNames)
 		function := spec.Functions[token]
+		writeDartDocComment(&b, "", function.Comment)
 
 		signatureArgs := "Map<String, dynamic> args, {\n  InvokeOptions? options,\n"
 		invokeArgs := "args"
@@ -3555,6 +3639,589 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 	}
 
 	return []byte(b.String())
+}
+
+func toSnakeCaseIdentifier(value string) string {
+	if value == "" {
+		return "generated"
+	}
+
+	var out []rune
+	var prev rune
+	for i, r := range value {
+		isUpper := r >= 'A' && r <= 'Z'
+		isLower := r >= 'a' && r <= 'z'
+		isDigit := r >= '0' && r <= '9'
+		if isUpper {
+			if i > 0 && (prev >= 'a' && prev <= 'z' || prev >= '0' && prev <= '9') {
+				out = append(out, '_')
+			}
+			out = append(out, r-'A'+'a')
+		} else if isLower || isDigit {
+			out = append(out, r)
+		} else if len(out) > 0 && out[len(out)-1] != '_' {
+			out = append(out, '_')
+		}
+		prev = r
+	}
+
+	result := strings.Trim(strings.TrimSpace(string(out)), "_")
+	if result == "" {
+		return "generated"
+	}
+	return result
+}
+
+func collectReferenceTypes(typeSpec packageTypeSpec, refs map[string]struct{}) {
+	if typeSpec.ReferenceType != "" {
+		refs[typeSpec.ReferenceType] = struct{}{}
+	}
+	if typeSpec.ElementType != nil {
+		collectReferenceTypes(*typeSpec.ElementType, refs)
+	}
+}
+
+func referencedTypesFromProperties(properties []packagePropertySpec) []string {
+	refs := map[string]struct{}{}
+	for _, property := range properties {
+		collectReferenceTypes(property.TypeSpec, refs)
+	}
+	names := make([]string, 0, len(refs))
+	for name := range refs {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+	return names
+}
+
+func generatedObjectClassFile(
+	objectClass packageObjectClassSpec,
+	typeFiles map[string]string,
+) []byte {
+	var b strings.Builder
+	b.WriteString("// ignore_for_file: unused_element, unnecessary_cast\n\n")
+	b.WriteString("import 'package:pulumi/pulumi.dart';\n")
+
+	imports := map[string]struct{}{}
+	for _, ref := range referencedTypesFromProperties(objectClass.Properties) {
+		if ref == objectClass.ClassName {
+			continue
+		}
+		if path, ok := typeFiles[ref]; ok {
+			imports[path] = struct{}{}
+		}
+	}
+	importPaths := make([]string, 0, len(imports))
+	for path := range imports {
+		importPaths = append(importPaths, path)
+	}
+	sort.Strings(importPaths)
+	for _, path := range importPaths {
+		fmt.Fprintf(&b, "import '%s';\n", path)
+	}
+	b.WriteString("\n")
+
+	b.WriteString(`Input<T> _asInput<T>(dynamic value) {
+  if (value is Input<T>) {
+    return value;
+  }
+  return Input.fromValue(value as T);
+}
+
+Input<T>? _asOptionalInput<T>(dynamic value) {
+  if (value == null) {
+    return null;
+  }
+  if (value is Input<T>) {
+    return value;
+  }
+  return Input.fromValue(value as T);
+}
+
+Input<U> _mapInputValue<T, U>(Input<T> input, U Function(T value) mapper) {
+  return Input.fromOutput(input.toOutput().apply((value) => mapper(value as T)));
+}
+
+Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapper) {
+  if (input == null) {
+    return null;
+  }
+  return _mapInputValue<T, U>(input, mapper);
+}
+
+List<T> _decodeList<T>(dynamic value, T Function(dynamic value) decoder) {
+  return (value as List).map((item) => decoder(item)).toList(growable: false);
+}
+
+Map<String, T> _decodeMapValues<T>(dynamic value, T Function(dynamic value) decoder) {
+  final map = (value as Map).cast<String, dynamic>();
+  return map.map((key, item) => MapEntry(key, decoder(item)));
+}
+
+List<U> _encodeList<T, U>(List<T> value, U Function(T value) encoder) {
+  return value.map((item) => encoder(item)).toList(growable: false);
+}
+
+Map<String, U> _encodeMapValues<T, U>(Map<String, T> value, U Function(T value) encoder) {
+  return value.map((key, item) => MapEntry(key, encoder(item)));
+}
+
+`)
+
+	writeGeneratedObjectClass(&b, objectClass)
+	return []byte(b.String())
+}
+
+func generatedEnumFile(enumSpec packageEnumSpec) []byte {
+	var b strings.Builder
+	writeGeneratedEnumClass(&b, enumSpec)
+	return []byte(b.String())
+}
+
+func generatedResourceFile(
+	token string,
+	resource packageResourceSpec,
+	className string,
+	hasPackageRegistration bool,
+	typeFiles map[string]string,
+) []byte {
+	var b strings.Builder
+	b.WriteString("import 'package:pulumi/pulumi.dart';\n")
+
+	imports := map[string]struct{}{}
+	if resource.ArgsClass != "" {
+		if path, ok := typeFiles[resource.ArgsClass]; ok {
+			imports[path] = struct{}{}
+		}
+	}
+	for _, ref := range referencedTypesFromProperties(resource.OutputProperties) {
+		if path, ok := typeFiles[ref]; ok {
+			imports[path] = struct{}{}
+		}
+	}
+	importPaths := make([]string, 0, len(imports))
+	for path := range imports {
+		importPaths = append(importPaths, path)
+	}
+	sort.Strings(importPaths)
+	for _, path := range importPaths {
+		fmt.Fprintf(&b, "import '../types/%s';\n", path)
+	}
+	if hasPackageRegistration && !resource.IsComponent {
+		b.WriteString("import '../internal/package_registration.dart' as package_registration;\n")
+	}
+	b.WriteString("\n")
+
+	b.WriteString(`Inputs _mapToInputs(Map<String, dynamic> args) {
+  final mapped = <String, Input<dynamic>>{};
+  for (final entry in args.entries) {
+    final value = entry.value;
+    if (value is Input<dynamic>) {
+      mapped[entry.key] = value;
+    } else {
+      mapped[entry.key] = Input.fromValue(value);
+    }
+  }
+  return mapped;
+}
+
+Output<T> _unknownOutput<T>() {
+  return Output.createUnknown<T>();
+}
+
+`)
+
+	writeDartDocComment(&b, "", resource.Comment)
+	if resource.IsComponent {
+		fmt.Fprintf(&b, "class %s extends ComponentResource {\n", className)
+		for _, property := range resource.OutputProperties {
+			writeDartDocComment(&b, "  ", property.Comment)
+			fmt.Fprintf(
+				&b,
+				"  late final Output<%s> %s;\n",
+				resourceOutputValueType(property),
+				property.FieldName,
+			)
+		}
+		if len(resource.OutputProperties) > 0 {
+			b.WriteString("\n")
+		}
+
+		signature := "  %s(\n    String name, {\n    ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          null,\n          options ?? ComponentResourceOptions(),\n        )"
+		if resource.ArgsClass != "" {
+			signature = "  %s(\n    String name, {\n    %s? args,\n    ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? ComponentResourceOptions(),\n        )"
+			fmt.Fprintf(&b, signature, className, resource.ArgsClass, token)
+		} else {
+			fmt.Fprintf(&b, signature, className, token)
+		}
+
+		if len(resource.OutputProperties) == 0 {
+			b.WriteString(";\n}\n")
+		} else {
+			b.WriteString(" {\n")
+			for _, property := range resource.OutputProperties {
+				fmt.Fprintf(
+					&b,
+					"    this.%s = _unknownOutput<%s>();\n",
+					property.FieldName,
+					resourceOutputValueType(property),
+				)
+			}
+			b.WriteString("  }\n}\n")
+		}
+		return []byte(b.String())
+	}
+
+	fmt.Fprintf(&b, "class %s extends CustomResource {\n", className)
+	for _, property := range resource.OutputProperties {
+		writeDartDocComment(&b, "  ", property.Comment)
+		fmt.Fprintf(
+			&b,
+			"  late final Output<%s> %s;\n",
+			resourceOutputValueType(property),
+			property.FieldName,
+		)
+	}
+	if len(resource.OutputProperties) > 0 {
+		b.WriteString("\n")
+	}
+
+	resourceRegisterPackageArg := ""
+	if hasPackageRegistration {
+		resourceRegisterPackageArg = ",\n          registerPackageRequest: package_registration.registerPackageRequest"
+	}
+
+	if resource.ArgsClass != "" {
+		fmt.Fprintf(
+			&b,
+			"  %s(\n    String name, {\n    %s? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? CustomResourceOptions()%s,\n        )",
+			className,
+			resource.ArgsClass,
+			token,
+			resourceRegisterPackageArg,
+		)
+	} else {
+		fmt.Fprintf(
+			&b,
+			"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args ?? const {}),\n          options ?? CustomResourceOptions()%s,\n        )",
+			className,
+			token,
+			resourceRegisterPackageArg,
+		)
+	}
+	if len(resource.OutputProperties) == 0 {
+		b.WriteString(";\n}\n")
+		return []byte(b.String())
+	}
+	b.WriteString(" {\n")
+	for _, property := range resource.OutputProperties {
+		fmt.Fprintf(
+			&b,
+			"    this.%s = _unknownOutput<%s>();\n",
+			property.FieldName,
+			resourceOutputValueType(property),
+		)
+	}
+	b.WriteString("  }\n}\n")
+	return []byte(b.String())
+}
+
+func generatedFunctionFile(
+	token string,
+	function packageFunctionSpec,
+	funcName string,
+	hasPackageRegistration bool,
+	typeFiles map[string]string,
+) []byte {
+	var b strings.Builder
+	b.WriteString("import 'package:pulumi/pulumi.dart';\n")
+	b.WriteString("import 'package:pulumi/src/deployment/models.dart' as deployment_models;\n")
+
+	imports := map[string]struct{}{}
+	if function.ArgsClass != "" {
+		if path, ok := typeFiles[function.ArgsClass]; ok {
+			imports[path] = struct{}{}
+		}
+	}
+	if function.ResultClass != "" {
+		if path, ok := typeFiles[function.ResultClass]; ok {
+			imports[path] = struct{}{}
+		}
+	}
+	importPaths := make([]string, 0, len(imports))
+	for path := range imports {
+		importPaths = append(importPaths, path)
+	}
+	sort.Strings(importPaths)
+	for _, path := range importPaths {
+		fmt.Fprintf(&b, "import '../types/%s';\n", path)
+	}
+	if hasPackageRegistration {
+		b.WriteString("import '../internal/package_registration.dart' as package_registration;\n")
+	}
+	b.WriteString("\n")
+
+	b.WriteString(`deployment_models.InvokeOptions? _toDeploymentInvokeOptions(InvokeOptions? options) {
+  if (options == null) {
+    return null;
+  }
+
+  return deployment_models.InvokeOptions(
+    parent: options.parent,
+    provider: options.provider,
+    version: options.version,
+    pluginDownloadURL: options.pluginDownloadURL,
+  );
+}
+
+`)
+
+	invokeRegisterPackageArg := ""
+	if hasPackageRegistration {
+		invokeRegisterPackageArg = ",\n    registerPackageRequest: package_registration.registerPackageRequest"
+	}
+
+	writeDartDocComment(&b, "", function.Comment)
+	signatureArgs := "Map<String, dynamic> args, {\n  InvokeOptions? options,\n"
+	invokeArgs := "args"
+	if function.ArgsClass != "" {
+		signatureArgs = fmt.Sprintf("%s args, {\n  InvokeOptions? options,\n", function.ArgsClass)
+		invokeArgs = "args.toMap()"
+	} else if !function.HasArgs {
+		signatureArgs = "{\n  InvokeOptions? options,\n"
+		invokeArgs = "const <String, dynamic>{}"
+	}
+
+	if function.ResultClass != "" {
+		fmt.Fprintf(
+			&b,
+			"Future<%s> %s(\n  %s}) async {\n  final deployment = DeploymentImpl.instance as DeploymentImpl;\n  final result = await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: _toDeploymentInvokeOptions(options)%s,\n  );\n  return %s.fromMap(result);\n}\n",
+			function.ResultClass,
+			funcName,
+			signatureArgs,
+			token,
+			invokeArgs,
+			invokeRegisterPackageArg,
+			function.ResultClass,
+		)
+		return []byte(b.String())
+	}
+
+	fmt.Fprintf(
+		&b,
+		"Future<Map<String, dynamic>> %s(\n  %s}) async {\n  final deployment = DeploymentImpl.instance as DeploymentImpl;\n  return await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: _toDeploymentInvokeOptions(options)%s,\n  );\n}\n",
+		funcName,
+		signatureArgs,
+		token,
+		invokeArgs,
+		invokeRegisterPackageArg,
+	)
+	return []byte(b.String())
+}
+
+func generatedConfigFile(spec *packageSchema, packageName string, typeFiles map[string]string) []byte {
+	if spec.Config == nil {
+		return nil
+	}
+
+	var b strings.Builder
+	b.WriteString("// ignore_for_file: unused_element, unnecessary_cast\n\n")
+	b.WriteString("import 'dart:convert';\n")
+	b.WriteString("import 'package:pulumi/pulumi.dart';\n")
+
+	imports := map[string]struct{}{}
+	for _, ref := range referencedTypesFromProperties(spec.Config.Properties) {
+		if path, ok := typeFiles[ref]; ok {
+			imports[path] = struct{}{}
+		}
+	}
+	importPaths := make([]string, 0, len(imports))
+	for path := range imports {
+		importPaths = append(importPaths, path)
+	}
+	sort.Strings(importPaths)
+	for _, path := range importPaths {
+		fmt.Fprintf(&b, "import '../types/%s';\n", path)
+	}
+	b.WriteString("\n")
+
+	b.WriteString(`int? _parseIntConfig(String? value) {
+  if (value == null) {
+    return null;
+  }
+  return int.tryParse(value);
+}
+
+double? _parseDoubleConfig(String? value) {
+  if (value == null) {
+    return null;
+  }
+  return double.tryParse(value);
+}
+
+bool? _parseBoolConfig(String? value) {
+  if (value == null) {
+    return null;
+  }
+
+  switch (value.toLowerCase()) {
+    case 'true':
+    case '1':
+      return true;
+    case 'false':
+    case '0':
+      return false;
+    default:
+      return null;
+  }
+}
+
+List<T> _decodeList<T>(dynamic value, T Function(dynamic value) decoder) {
+  return (value as List).map((item) => decoder(item)).toList(growable: false);
+}
+
+Map<String, T> _decodeMapValues<T>(dynamic value, T Function(dynamic value) decoder) {
+  final map = (value as Map).cast<String, dynamic>();
+  return map.map((key, item) => MapEntry(key, decoder(item)));
+}
+
+`)
+
+	writeGeneratedConfigClass(&b, *spec.Config)
+	return []byte(b.String())
+}
+
+func generatedPackageRegistrationFile(parameterization *packageParameterizationSpec) []byte {
+	if parameterization == nil ||
+		parameterization.PluginName == "" ||
+		parameterization.PluginVersion == "" ||
+		parameterization.PackageVersion == "" {
+		return nil
+	}
+
+	downloadURLLine := ""
+	if parameterization.DownloadURL != "" {
+		downloadURLLine = fmt.Sprintf("\n  downloadUrl: %q,", parameterization.DownloadURL)
+	}
+
+	return []byte(fmt.Sprintf(
+		`import 'package:pulumi/src/deployment/models.dart' as deployment_models;
+
+final registerPackageRequest = deployment_models.RegisterPackageRequest(
+  name: %q,
+  version: %q,%s
+  parameterization: deployment_models.Parameterization(
+    name: %q,
+    version: %q,
+    value: %s,
+  ),
+);
+`,
+		parameterization.PluginName,
+		parameterization.PluginVersion,
+		downloadURLLine,
+		parameterization.PackageName,
+		parameterization.PackageVersion,
+		dartByteListLiteral(parameterization.Value),
+	))
+}
+
+func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName string) map[string][]byte {
+	files := map[string][]byte{}
+
+	typeFiles := map[string]string{}
+	typeExports := make([]string, 0, len(spec.Enums)+len(spec.ObjectClasses))
+	for _, enumSpec := range spec.Enums {
+		fileName := toSnakeCaseIdentifier(enumSpec.EnumName) + ".dart"
+		typeFiles[enumSpec.EnumName] = fileName
+	}
+	for _, objectClass := range spec.ObjectClasses {
+		fileName := toSnakeCaseIdentifier(objectClass.ClassName) + ".dart"
+		typeFiles[objectClass.ClassName] = fileName
+	}
+
+	for _, enumSpec := range spec.Enums {
+		fileName := typeFiles[enumSpec.EnumName]
+		typeExports = append(typeExports, "types/"+fileName)
+		files["types/"+fileName] = generatedEnumFile(enumSpec)
+	}
+	for _, objectClass := range spec.ObjectClasses {
+		fileName := typeFiles[objectClass.ClassName]
+		typeExports = append(typeExports, "types/"+fileName)
+		files["types/"+fileName] = generatedObjectClassFile(objectClass, typeFiles)
+	}
+
+	sort.Strings(typeExports)
+
+	resourceTokens := make([]string, 0, len(spec.Resources))
+	for token := range spec.Resources {
+		resourceTokens = append(resourceTokens, token)
+	}
+	sort.Strings(resourceTokens)
+
+	usedClassNames := map[string]int{}
+	resourceExports := make([]string, 0, len(resourceTokens))
+	for _, token := range resourceTokens {
+		className := resourceClassNameFromToken(token, usedClassNames)
+		fileName := toSnakeCaseIdentifier(className) + ".dart"
+		resourceExports = append(resourceExports, "resources/"+fileName)
+		files["resources/"+fileName] = generatedResourceFile(
+			token,
+			spec.Resources[token],
+			className,
+			spec.Parameterization != nil,
+			typeFiles,
+		)
+	}
+
+	functionTokens := make([]string, 0, len(spec.Functions))
+	for token := range spec.Functions {
+		functionTokens = append(functionTokens, token)
+	}
+	sort.Strings(functionTokens)
+
+	usedFunctionNames := map[string]int{}
+	functionExports := make([]string, 0, len(functionTokens))
+	for _, token := range functionTokens {
+		funcName := functionNameFromToken(token, usedFunctionNames)
+		fileName := toSnakeCaseIdentifier(funcName) + ".dart"
+		functionExports = append(functionExports, "functions/"+fileName)
+		files["functions/"+fileName] = generatedFunctionFile(
+			token,
+			spec.Functions[token],
+			funcName,
+			spec.Parameterization != nil,
+			typeFiles,
+		)
+	}
+
+	if configFile := generatedConfigFile(spec, packageName, typeFiles); configFile != nil {
+		files["config/config.dart"] = configFile
+	}
+	if registrationFile := generatedPackageRegistrationFile(spec.Parameterization); registrationFile != nil {
+		files["internal/package_registration.dart"] = registrationFile
+	}
+
+	var sdk strings.Builder
+	fmt.Fprintf(&sdk, "library %s;\n\n", sdkLibraryName)
+	for _, exportPath := range typeExports {
+		fmt.Fprintf(&sdk, "export '%s';\n", exportPath)
+	}
+	if spec.Config != nil {
+		sdk.WriteString("export 'config/config.dart';\n")
+	}
+	for _, exportPath := range resourceExports {
+		fmt.Fprintf(&sdk, "export '%s';\n", exportPath)
+	}
+	for _, exportPath := range functionExports {
+		fmt.Fprintf(&sdk, "export '%s';\n", exportPath)
+	}
+	if len(typeExports) == 0 && len(resourceExports) == 0 && len(functionExports) == 0 && spec.Config == nil {
+		sdk.WriteString("// This package schema did not define resources or functions.\n")
+	}
+	files["sdk.dart"] = []byte(sdk.String())
+
+	return files
 }
 
 func generatedPackageRootLibrary(packageName string) []byte {
@@ -3850,11 +4517,25 @@ func (host *dartLanguageHost) GeneratePackage(
 	if err := os.MkdirAll(sdkDir, 0o700); err != nil {
 		return nil, fmt.Errorf("failed to create generated SDK source directory: %w", err)
 	}
-	sdkLibraryFile := filepath.Join(sdkDir, "sdk.dart")
 	sdkLibraryName := packageName + "_sdk"
-	sdkLibraryContent := generatedPackageLibrary(spec, sdkLibraryName)
-	if err := os.WriteFile(sdkLibraryFile, sdkLibraryContent, 0o600); err != nil {
-		return nil, fmt.Errorf("failed to write generated SDK library file: %w", err)
+
+	sdkSources := generatedPackageSources(spec, packageName, sdkLibraryName)
+	sdkPaths := make([]string, 0, len(sdkSources))
+	for relativePath := range sdkSources {
+		sdkPaths = append(sdkPaths, relativePath)
+	}
+	sort.Strings(sdkPaths)
+	for _, relativePath := range sdkPaths {
+		outputPath, err := safeOutputPath(sdkDir, filepath.FromSlash(relativePath))
+		if err != nil {
+			return nil, fmt.Errorf("invalid generated SDK source path %q: %w", relativePath, err)
+		}
+		if err := os.MkdirAll(filepath.Dir(outputPath), 0o700); err != nil {
+			return nil, fmt.Errorf("failed to create generated SDK source directory for %s: %w", relativePath, err)
+		}
+		if err := os.WriteFile(outputPath, sdkSources[relativePath], 0o600); err != nil {
+			return nil, fmt.Errorf("failed to write generated SDK source file %s: %w", relativePath, err)
+		}
 	}
 
 	for filename, contents := range req.GetExtraFiles() {
