@@ -1,0 +1,76 @@
+{
+  "name": "gcp-global-cloudrun",
+  "version": "0.0.3",
+  "meta": {
+    "moduleFormat": "(.*)"
+  },
+  "language": {
+    "csharp": {
+      "packageReferences": {
+        "Pulumi": "3.*",
+        "Pulumi.Gcp": "5.*"
+      },
+      "namespaces": {
+        "gcp-global-cloudrun": "GcpGlobalCloudRun"
+      }
+    },
+    "go": {
+      "generateResourceContainerTypes": true,
+      "importBasePath": "github.com/pulumi/pulumi-gcp-global-cloudrun/sdk/go/gcp"
+    },
+    "nodejs": {
+      "dependencies": {
+        "@pulumi/gcp": "^5.0.0"
+      },
+      "devDependencies": {
+        "typescript": "^3.7.0"
+      }
+    },
+    "python": {
+      "requires": {
+        "pulumi": ">=3.0.0,<4.0.0",
+        "pulumi-gcp": ">=5.0.0,<6.0.0"
+      }
+    }
+  },
+  "config": {},
+  "provider": {
+    "type": "object"
+  },
+  "resources": {
+    "gcp-global-cloudrun:index:Deployment": {
+      "properties": {
+        "ipAddress": {
+          "type": "string",
+          "description": "The IP Address of the global service"
+        }
+      },
+      "type": "object",
+      "required": [
+        "ipAddress"
+      ],
+      "inputProperties": {
+        "imageName": {
+          "type": "string",
+          "description": "The name of the image to deploy to cloudrun"
+        },
+        "projectId": {
+          "type": "string",
+          "plain": true,
+          "description": "The project in which to create the cloudrun resources"
+        },
+        "serviceName": {
+          "type": "string",
+          "plain": true,
+          "description": "The name of the cloudrun service"
+        }
+      },
+      "requiredInputs": [
+        "imageName",
+        "projectId",
+        "serviceName"
+      ],
+      "isComponent": true
+    }
+  }
+}
