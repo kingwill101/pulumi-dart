@@ -4521,7 +4521,7 @@ func generatedModuleIndexFiles(symbolFilePaths []string) map[string][]byte {
 }
 
 func generatedPublicModuleEntryPoints(packageName string, sdkSources map[string][]byte) map[string][]byte {
-	moduleDirs := map[string]struct{}{}
+	rootModules := map[string]struct{}{}
 	for relativePath := range sdkSources {
 		normalized := filepath.ToSlash(relativePath)
 		if !strings.HasSuffix(normalized, "/index.dart") {
@@ -4533,12 +4533,16 @@ func generatedPublicModuleEntryPoints(packageName string, sdkSources map[string]
 			strings.HasPrefix(moduleDir, "config") {
 			continue
 		}
-		moduleDirs[moduleDir] = struct{}{}
+		root := moduleDir
+		if slash := strings.Index(root, "/"); slash > 0 {
+			root = root[:slash]
+		}
+		rootModules[root] = struct{}{}
 	}
 
 	entryPoints := map[string][]byte{}
-	modulePaths := make([]string, 0, len(moduleDirs))
-	for moduleDir := range moduleDirs {
+	modulePaths := make([]string, 0, len(rootModules))
+	for moduleDir := range rootModules {
 		modulePaths = append(modulePaths, moduleDir)
 	}
 	sort.Strings(modulePaths)

@@ -299,13 +299,13 @@ func TestGeneratePackageUsesModuleDirectoryStructure(t *testing.T) {
 	assert.Contains(t, content, "export 'accesscontextmanager/access_level/access_level.dart';")
 	assert.Contains(t, content, "export 'accesscontextmanager/access_level/get_access_level.dart';")
 
-	leafModuleEntry, err := os.ReadFile(filepath.Join(targetDir, "lib", "accesscontextmanager", "access_level.dart"))
-	require.NoError(t, err)
-	assert.Contains(t, string(leafModuleEntry), "export 'package:pulumi_sample/src/pulumi_sample/accesscontextmanager/access_level/index.dart';")
-
 	parentModuleEntry, err := os.ReadFile(filepath.Join(targetDir, "lib", "accesscontextmanager.dart"))
 	require.NoError(t, err)
 	assert.Contains(t, string(parentModuleEntry), "export 'package:pulumi_sample/src/pulumi_sample/accesscontextmanager/index.dart';")
+
+	_, err = os.Stat(filepath.Join(targetDir, "lib", "accesscontextmanager"))
+	require.Error(t, err)
+	assert.True(t, os.IsNotExist(err))
 }
 
 func TestGeneratePackageEmitsParameterizedPackageRegistration(t *testing.T) {
