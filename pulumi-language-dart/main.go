@@ -1400,9 +1400,10 @@ type packageConfigSpec struct {
 }
 
 type packageNamedTypeRef struct {
-	Kind           string
-	Name           string
-	UnderlyingType string
+	Kind             string
+	Name             string
+	UnderlyingType   string
+	UseReferenceType bool
 }
 
 type rawPackageSchema struct {
@@ -1563,6 +1564,9 @@ func dartTypeSpecFromRawPropertyType(
 ) packageTypeSpec {
 	if token := rawRefToken(typ.Ref); token != "" {
 		if namedType, ok := namedTypeRefs[token]; ok {
+			if namedType.Kind == "object" && !namedType.UseReferenceType {
+				return makePackageTypeSpec("object", "Map<String, dynamic>")
+			}
 			if useReferenceTypes {
 				return packageTypeSpec{
 					Kind:              namedType.Kind,
@@ -1846,20 +1850,28 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 
 	for _, token := range typeTokens {
 		typeSpec := rawSpec.Types[token]
-		typeName := uniqueClassName(toDartClassName(tokenElementName(token)), usedClassNames)
 		if len(typeSpec.Enum) > 0 {
+			typeName := uniqueClassName(toDartClassName(tokenElementName(token)), usedClassNames)
 			namedTypeRefs[token] = packageNamedTypeRef{
-				Kind:           "enum",
-				Name:           typeName,
-				UnderlyingType: dartTypeFromRawTypeName(typeSpec.Type),
+				Kind:             "enum",
+				Name:             typeName,
+				UnderlyingType:   dartTypeFromRawTypeName(typeSpec.Type),
+				UseReferenceType: true,
 			}
 			continue
 		}
-		if typeSpec.Type == "object" || len(typeSpec.Properties) > 0 {
+		if typeSpec.Type == "object" {
+			typeName := ""
+			useReferenceType := false
+			if len(typeSpec.Properties) > 0 {
+				typeName = uniqueClassName(toDartClassName(tokenElementName(token)), usedClassNames)
+				useReferenceType = true
+			}
 			namedTypeRefs[token] = packageNamedTypeRef{
-				Kind:           "object",
-				Name:           typeName,
-				UnderlyingType: "Map<String, dynamic>",
+				Kind:             "object",
+				Name:             typeName,
+				UnderlyingType:   "Map<String, dynamic>",
+				UseReferenceType: useReferenceType,
 			}
 		}
 	}
@@ -1877,6 +1889,9 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 				spec.Enums = append(spec.Enums, *enumSpec)
 			}
 		case "object":
+			if !namedType.UseReferenceType {
+				continue
+			}
 			if classSpec := buildRawObjectClassSpec(
 				namedType.Name,
 				typeSpec.Description,
@@ -2094,6 +2109,9 @@ resolved:
 	case *schema.EnumType:
 		if namedTypeRefs != nil {
 			if namedType, ok := namedTypeRefs[t.Token]; ok {
+				if !namedType.UseReferenceType {
+					return makePackageTypeSpec("scalar", namedType.UnderlyingType)
+				}
 				if useReferenceTypes {
 					return packageTypeSpec{
 						Kind:              namedType.Kind,
@@ -2109,6 +2127,9 @@ resolved:
 	case *schema.TokenType:
 		if namedTypeRefs != nil {
 			if namedType, ok := namedTypeRefs[t.Token]; ok {
+				if namedType.Kind == "object" && !namedType.UseReferenceType {
+					return makePackageTypeSpec("object", "Map<String, dynamic>")
+				}
 				if useReferenceTypes {
 					return packageTypeSpec{
 						Kind:              namedType.Kind,
@@ -2130,6 +2151,9 @@ resolved:
 	case *schema.ObjectType:
 		if namedTypeRefs != nil && t.Token != "" {
 			if namedType, ok := namedTypeRefs[t.Token]; ok {
+				if namedType.Kind == "object" && !namedType.UseReferenceType {
+					return makePackageTypeSpec("object", "Map<String, dynamic>")
+				}
 				if useReferenceTypes {
 					return packageTypeSpec{
 						Kind:              namedType.Kind,
@@ -2392,20 +2416,28 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 
 	for _, token := range typeTokens {
 		typ := typesByToken[token]
-		typeName := uniqueClassName(toDartClassName(tokenElementName(token)), usedClassNames)
 		switch t := typ.(type) {
 		case *schema.EnumType:
+			typeName := uniqueClassName(toDartClassName(tokenElementName(token)), usedClassNames)
 			underlyingType := dartTypeSpecFromSchemaType(t.ElementType, nil, false).DartType
 			namedTypeRefs[token] = packageNamedTypeRef{
-				Kind:           "enum",
-				Name:           typeName,
-				UnderlyingType: underlyingType,
+				Kind:             "enum",
+				Name:             typeName,
+				UnderlyingType:   underlyingType,
+				UseReferenceType: true,
 			}
 		case *schema.ObjectType:
+			typeName := ""
+			useReferenceType := false
+			if len(t.Properties) > 0 {
+				typeName = uniqueClassName(toDartClassName(tokenElementName(token)), usedClassNames)
+				useReferenceType = true
+			}
 			namedTypeRefs[token] = packageNamedTypeRef{
-				Kind:           "object",
-				Name:           typeName,
-				UnderlyingType: "Map<String, dynamic>",
+				Kind:             "object",
+				Name:             typeName,
+				UnderlyingType:   "Map<String, dynamic>",
+				UseReferenceType: useReferenceType,
 			}
 		}
 	}
@@ -2423,6 +2455,9 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 				spec.Enums = append(spec.Enums, *enumSpec)
 			}
 		case *schema.ObjectType:
+			if !namedType.UseReferenceType {
+				continue
+			}
 			if classSpec := buildObjectClassSpec(
 				namedType.Name,
 				t.Comment,
@@ -4160,6 +4195,14 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 	sort.Strings(resourceTokens)
 
 	usedClassNames := map[string]int{}
+	for className := range typeFiles {
+		if className != "" {
+			usedClassNames[className] = 1
+		}
+	}
+	if spec.Config != nil && spec.Config.ClassName != "" {
+		usedClassNames[spec.Config.ClassName] = 1
+	}
 	resourceExports := make([]string, 0, len(resourceTokens))
 	for _, token := range resourceTokens {
 		className := resourceClassNameFromToken(token, usedClassNames)
