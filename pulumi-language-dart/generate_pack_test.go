@@ -15,6 +15,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 )
@@ -88,6 +90,16 @@ func TestGenerateProgramProducesMainDart(t *testing.T) {
 	assert.Contains(t, string(resp.Source["main.dart"]), "main.pp")
 }
 
+func TestGenerateProgramRequiresRequest(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	_, err := host.GenerateProgram(context.Background(), nil)
+	require.Error(t, err)
+	assert.Equal(t, codes.InvalidArgument, status.Code(err))
+	assert.Contains(t, err.Error(), "request is required")
+}
+
 func TestGenerateProjectWritesProjectScaffold(t *testing.T) {
 	t.Parallel()
 
@@ -118,6 +130,16 @@ func TestGenerateProjectWritesProjectScaffold(t *testing.T) {
 	pulumiProjectData, err := os.ReadFile(filepath.Join(targetDir, "Pulumi.yaml"))
 	require.NoError(t, err)
 	assert.Contains(t, string(pulumiProjectData), "name: example_project")
+}
+
+func TestGenerateProjectRequiresTargetDirectory(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	_, err := host.GenerateProject(context.Background(), &pulumirpc.GenerateProjectRequest{})
+	require.Error(t, err)
+	assert.Equal(t, codes.InvalidArgument, status.Code(err))
+	assert.Contains(t, err.Error(), "target directory is required")
 }
 
 func TestPackProducesArchive(t *testing.T) {
@@ -170,6 +192,7 @@ func TestPackRequiresPackageDirectory(t *testing.T) {
 		DestinationDirectory: t.TempDir(),
 	})
 	require.Error(t, err)
+	assert.Equal(t, codes.InvalidArgument, status.Code(err))
 	assert.Contains(t, err.Error(), "package directory is required")
 }
 
@@ -181,6 +204,7 @@ func TestPackRequiresDestinationDirectory(t *testing.T) {
 		PackageDirectory: t.TempDir(),
 	})
 	require.Error(t, err)
+	assert.Equal(t, codes.InvalidArgument, status.Code(err))
 	assert.Contains(t, err.Error(), "destination directory is required")
 }
 
@@ -194,7 +218,23 @@ func TestPackMissingPackageDirectoryReturnsError(t *testing.T) {
 		DestinationDirectory: t.TempDir(),
 	})
 	require.Error(t, err)
-	assert.Contains(t, err.Error(), "failed to enumerate package files")
+	assert.Equal(t, codes.InvalidArgument, status.Code(err))
+	assert.Contains(t, err.Error(), "package directory does not exist")
+}
+
+func TestPackRejectsFilePackageDirectory(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	filePath := filepath.Join(t.TempDir(), "not-a-dir")
+	require.NoError(t, os.WriteFile(filePath, []byte("x"), 0o600))
+	_, err := host.Pack(context.Background(), &pulumirpc.PackRequest{
+		PackageDirectory:     filePath,
+		DestinationDirectory: t.TempDir(),
+	})
+	require.Error(t, err)
+	assert.Equal(t, codes.InvalidArgument, status.Code(err))
+	assert.Contains(t, err.Error(), "package directory must be a directory")
 }
 
 func TestGeneratePackageEmitsResourceClasses(t *testing.T) {
@@ -452,6 +492,30 @@ func TestGeneratePackageInvalidSchemaReturnsError(t *testing.T) {
 	assert.Contains(t, err.Error(), "failed to parse package schema")
 }
 
+func TestGeneratePackageRequiresDirectory(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Schema: `{"name":"sample"}`,
+	})
+	require.Error(t, err)
+	assert.Equal(t, codes.InvalidArgument, status.Code(err))
+	assert.Contains(t, err.Error(), "directory is required")
+}
+
+func TestGeneratePackageRequiresSchema(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: t.TempDir(),
+	})
+	require.Error(t, err)
+	assert.Equal(t, codes.InvalidArgument, status.Code(err))
+	assert.Contains(t, err.Error(), "schema is required")
+}
+
 func TestGeneratePackageWritesPulumiDependency(t *testing.T) {
 	t.Parallel()
 
@@ -654,6 +718,27 @@ func TestGeneratePackageWritesExtraFiles(t *testing.T) {
 	extra, err := os.ReadFile(filepath.Join(targetDir, "lib", "src", "sample", "extra.dart"))
 	require.NoError(t, err)
 	assert.Equal(t, "const marker = 'ok';\n", string(extra))
+}
+
+func TestGeneratePackageRejectsExtraFileCollisions(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.0.0"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+		ExtraFiles: map[string][]byte{
+			"pubspec.yaml": []byte("name: should_not_override"),
+		},
+	})
+	require.Error(t, err)
+	assert.Contains(t, err.Error(), "conflicts with generated file output")
 }
 
 func TestGeneratePackageWritesExampleMain(t *testing.T) {

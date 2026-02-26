@@ -11,8 +11,10 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/health"
 	healthpb "google.golang.org/grpc/health/grpc_health_v1"
+	"google.golang.org/grpc/status"
 	pbempty "google.golang.org/protobuf/types/known/emptypb"
 
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
@@ -45,7 +47,9 @@ func TestHandshakeRequiresEngineAddress(t *testing.T) {
 	host := &dartLanguageHost{}
 	_, err := host.Handshake(context.Background(), &pulumirpc.LanguageHandshakeRequest{})
 	require.Error(t, err)
-	assert.Contains(t, err.Error(), "must contain engine address")
+	assert.Equal(t, codes.InvalidArgument, status.Code(err))
+	assert.Contains(t, err.Error(), "engine address is required")
+	assert.Empty(t, host.engineAddress)
 }
 
 func TestHandshakeSetsEngineAddress(t *testing.T) {
@@ -72,7 +76,20 @@ func TestGetRequiredPackagesRequiresProgramInfo(t *testing.T) {
 	host := &dartLanguageHost{}
 	_, err := host.GetRequiredPackages(context.Background(), &pulumirpc.GetRequiredPackagesRequest{})
 	require.Error(t, err)
+	assert.Equal(t, codes.InvalidArgument, status.Code(err))
 	assert.Contains(t, err.Error(), "missing program info")
+}
+
+func TestGetRequiredPackagesRequiresProgramOrRootDirectory(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	_, err := host.GetRequiredPackages(context.Background(), &pulumirpc.GetRequiredPackagesRequest{
+		Info: &pulumirpc.ProgramInfo{},
+	})
+	require.Error(t, err)
+	assert.Equal(t, codes.InvalidArgument, status.Code(err))
+	assert.Contains(t, err.Error(), "program directory or root directory must be set")
 }
 
 func TestGetRequiredPackagesMissingPubspecReturnsEmpty(t *testing.T) {
@@ -244,6 +261,15 @@ func TestCancelCancelsActiveOperation(t *testing.T) {
 	case <-time.After(2 * time.Second):
 		t.Fatal("expected active operation context to be canceled")
 	}
+}
+
+func TestCancelWithoutActiveOperationIsNoOp(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	resp, err := host.Cancel(context.Background(), &pbempty.Empty{})
+	require.NoError(t, err)
+	require.NotNil(t, resp)
 }
 
 func TestRunRequiresHandshake(t *testing.T) {
