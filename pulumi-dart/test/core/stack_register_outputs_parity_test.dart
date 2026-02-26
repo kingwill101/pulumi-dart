@@ -8,6 +8,15 @@ class _EmptyStack extends Stack {
   _EmptyStack();
 }
 
+class _SingleOutputStack extends Stack {
+  _SingleOutputStack();
+
+  @override
+  List<OutputProperty> getOutputProperties() {
+    return [OutputProperty('result', Output.create<Object?>('value'))];
+  }
+}
+
 void main() {
   group('stack register outputs parity', () {
     late MockDeploymentImpl mockDeployment;
@@ -53,5 +62,26 @@ void main() {
       )..called(1);
       expect(verification.captured.first, same(stack));
     });
+
+    test(
+      'stack with output property registers outputs and preserves output key in payload assumptions',
+      () async {
+        final stack = _SingleOutputStack();
+
+        stack.registerPropertyOutputs();
+
+        final verification = verify(
+          mockDeployment.registerResourceOutputs(captureAny, captureAny),
+        )..called(1);
+
+        final capturedResource = verification.captured[0] as Resource;
+        final capturedOutputs =
+            verification.captured[1] as Output<Map<String, dynamic>>;
+        final outputsMap = await capturedOutputs.getValue();
+
+        expect(capturedResource, same(stack));
+        expect(outputsMap, contains('result'));
+      },
+    );
   });
 }
