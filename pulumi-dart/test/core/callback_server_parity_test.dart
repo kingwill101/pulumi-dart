@@ -324,6 +324,11 @@ void main() {
                 .having(
                   (error) => error.message ?? '',
                   'message',
+                  contains('transformException'),
+                )
+                .having(
+                  (error) => error.message ?? '',
+                  'message',
                   contains('callback_server_parity_test.dart'),
                 ),
           ),
@@ -373,6 +378,11 @@ void main() {
                 .having(
                   (error) => error.message ?? '',
                   'message',
+                  contains('transformException'),
+                )
+                .having(
+                  (error) => error.message ?? '',
+                  'message',
                   contains('callback_server_parity_test.dart'),
                 ),
           ),
@@ -416,6 +426,11 @@ void main() {
                   (error) => error.message ?? '',
                   'message',
                   contains('assert-noes'),
+                )
+                .having(
+                  (error) => error.message ?? '',
+                  'message',
+                  contains('transformAssertion'),
                 )
                 .having(
                   (error) => error.message ?? '',
