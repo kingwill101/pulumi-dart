@@ -1,3 +1,0 @@
-name: failing_transformation_exits
-description: A program that has a resource transformation which throws an exception
-runtime: dotnet

@@ -1,3 +1,0 @@
-name: provider_dotnet
-description: A program that constructs remote custom resources.
-runtime: dotnet
