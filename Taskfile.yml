@@ -4,12 +4,17 @@ vars:
   ROOT_DIR: "{{.TASKFILE_DIR}}"
   PACKAGES_DIR: "{{.ROOT_DIR}}/packages"
   SCHEMAS_DIR: "{{.PACKAGES_DIR}}/schemas"
-  GEN_PROJECT_DIR: "{{.PACKAGES_DIR}}/sdk-gen"
+  GEN_PROJECT_DIR: "{{.ROOT_DIR}}/.gen/sdk-gen"
+  SMOKE_DIR: "{{.ROOT_DIR}}/.gen/smoke"
   ANALYSIS_DIR: "{{.PACKAGES_DIR}}/analysis"
   LANGUAGE_HOST_DIR: "{{.ROOT_DIR}}/pulumi-language-dart"
   PULUMI_DART_PATH: "{{.ROOT_DIR}}/pulumi-dart"
+  DEFAULT_PULUMI_CONFIG_PASSPHRASE: "banana"
+  PRESERVE_EXAMPLES: "true"
+  FORMAT_GENERATED: "true"
+  STRICT_FORMAT: "false"
   DAY1_PROVIDERS: "gcp gcp-global-cloudrun google-native"
-  ALL_PROVIDERS: "gcp gcp-global-cloudrun google-native random"
+  ALL_PROVIDERS: "gcp gcp-global-cloudrun google-native aws awsx random"
 
 tasks:
   default:
@@ -39,7 +44,12 @@ tasks:
   prepare-dirs:
     desc: Create packages workspace directories
     cmds:
-      - mkdir -p "{{.PACKAGES_DIR}}" "{{.SCHEMAS_DIR}}" "{{.GEN_PROJECT_DIR}}"
+      - mkdir -p "{{.PACKAGES_DIR}}" "{{.SCHEMAS_DIR}}" "{{.GEN_PROJECT_DIR}}" "{{.ANALYSIS_DIR}}"
+
+  clean:layout:
+    desc: Remove legacy generation layout directories under packages/
+    cmds:
+      - rm -rf "{{.PACKAGES_DIR}}/projects" "{{.PACKAGES_DIR}}/sdk-gen"
 
   build-language-host:
     desc: Build pulumi-language-dart binary used by `pulumi package add`
@@ -120,12 +130,47 @@ tasks:
         PROJECT_DIR="{{.GEN_PROJECT_DIR}}"
         SCHEMA_PATH="{{.SCHEMAS_DIR}}/${PACKAGE}.schema.json"
         OUTPUT_DIR="{{.PACKAGES_DIR}}/${PACKAGE}"
+        PRESERVE_EXAMPLES="{{.PRESERVE_EXAMPLES}}"
+        FORMAT_GENERATED="{{.FORMAT_GENERATED}}"
+        STRICT_FORMAT="{{.STRICT_FORMAT}}"
+        EXAMPLE_BACKUP_DIR=""
         export PATH="{{.LANGUAGE_HOST_DIR}}:${PATH}"
 
         echo "Generating Dart SDK for ${PACKAGE}..."
         (cd "${PROJECT_DIR}" && pulumi package add "${SCHEMA_PATH}")
+
+        if [ "${PRESERVE_EXAMPLES}" = "true" ] && [ -d "${OUTPUT_DIR}/example" ]; then
+          EXAMPLE_BACKUP_DIR="$(mktemp -d)"
+          cp -R "${OUTPUT_DIR}/example" "${EXAMPLE_BACKUP_DIR}/example"
+          echo "Preserved existing examples from ${OUTPUT_DIR}/example"
+        fi
+
         rm -rf "${OUTPUT_DIR}"
         cp -R "${PROJECT_DIR}/sdks/${PACKAGE}" "${OUTPUT_DIR}"
+
+        if [ -n "${EXAMPLE_BACKUP_DIR}" ] && [ -d "${EXAMPLE_BACKUP_DIR}/example" ]; then
+          rm -rf "${OUTPUT_DIR}/example"
+          cp -R "${EXAMPLE_BACKUP_DIR}/example" "${OUTPUT_DIR}/example"
+          rm -rf "${EXAMPLE_BACKUP_DIR}"
+          echo "Restored preserved examples to ${OUTPUT_DIR}/example"
+        fi
+
+        if [ "${FORMAT_GENERATED}" = "true" ]; then
+          FORMAT_LOG="$(mktemp)"
+          if (cd "${OUTPUT_DIR}" && dart format . >"${FORMAT_LOG}" 2>&1); then
+            tail -n 1 "${FORMAT_LOG}" || true
+          else
+            echo "Warning: dart format reported parse/format errors for ${OUTPUT_DIR}" >&2
+            grep -E "Could not format|line [0-9]+, column [0-9]+|Unterminated string literal|Expected to find" "${FORMAT_LOG}" | head -n 20 >&2 || true
+            if [ "${STRICT_FORMAT}" = "true" ]; then
+              cat "${FORMAT_LOG}" >&2
+              rm -f "${FORMAT_LOG}"
+              exit 65
+            fi
+          fi
+          rm -f "${FORMAT_LOG}"
+        fi
+
         echo "Done: ${OUTPUT_DIR}"
 
   generate:provider:
@@ -159,6 +204,20 @@ tasks:
       - task: generate:provider
         vars:
           PACKAGE: google-native
+
+  generate:aws:
+    desc: Generate Dart SDK for Pulumi AWS
+    cmds:
+      - task: generate:provider
+        vars:
+          PACKAGE: aws
+
+  generate:awsx:
+    desc: Generate Dart SDK for Pulumi AWSX
+    cmds:
+      - task: generate:provider
+        vars:
+          PACKAGE: awsx
 
   generate:random:
     desc: Generate Dart SDK for Pulumi Random
@@ -236,11 +295,206 @@ tasks:
         vars:
           PACKAGE: google-native
 
+  analyze:aws:
+    desc: Analyze generated Dart SDK for Pulumi AWS
+    cmds:
+      - task: analyze-package
+        vars:
+          PACKAGE: aws
+
+  analyze:awsx:
+    desc: Analyze generated Dart SDK for Pulumi AWSX
+    cmds:
+      - task: analyze-package
+        vars:
+          PACKAGE: awsx
+
   verify:gcp:
     desc: Generate and analyze Pulumi GCP Dart SDK
     cmds:
       - task: generate:gcp
       - task: analyze:gcp
+
+  smoke:init:
+    desc: Create/update a local Pulumi Dart smoke project using a generated provider SDK via path dependencies
+    requires:
+      vars:
+        - PACKAGE
+    cmds:
+      - task: generate:provider
+        vars:
+          PACKAGE: "{{.PACKAGE}}"
+      - |
+        set -eu
+        PACKAGE="{{.PACKAGE}}"
+        PACKAGE_UNDERSCORE="$(printf '%s' "${PACKAGE}" | tr '-' '_')"
+        PROVIDER_PACKAGE="pulumi_${PACKAGE_UNDERSCORE}"
+        PROJECT_NAME="smoke_${PACKAGE_UNDERSCORE}"
+        PROJECT_DIR="{{.SMOKE_DIR}}/${PACKAGE}"
+        ENTRYPOINT="smoke_${PACKAGE_UNDERSCORE}.dart"
+
+        mkdir -p "${PROJECT_DIR}/bin"
+
+        cat > "${PROJECT_DIR}/Pulumi.yaml" <<EOF
+        name: smoke-${PACKAGE}
+        runtime: dart
+        description: Local smoke test for ${PROVIDER_PACKAGE}
+        EOF
+
+        cat > "${PROJECT_DIR}/pubspec.yaml" <<EOF
+        name: ${PROJECT_NAME}
+        publish_to: none
+        version: 0.0.1
+        environment:
+          sdk: ^3.10.0
+        dependencies:
+          pulumi: any
+          ${PROVIDER_PACKAGE}:
+            path: {{.PACKAGES_DIR}}/${PACKAGE}
+        dependency_overrides:
+          pulumi:
+            path: {{.PULUMI_DART_PATH}}
+        EOF
+
+        if [ "${PACKAGE}" = "random" ]; then
+          cat > "${PROJECT_DIR}/bin/${ENTRYPOINT}" <<EOF
+        import 'package:pulumi/pulumi.dart';
+        import 'package:${PROVIDER_PACKAGE}/${PROVIDER_PACKAGE}.dart' as provider;
+
+        class SmokeStack extends Stack {
+          SmokeStack() {
+            final pet = provider.RandomPet(
+              'smoke-pet',
+              args: provider.RandomPetArgs(length: Input.fromValue(2)),
+            );
+
+            registerOutputs({
+              'petName': pet.id,
+            });
+          }
+        }
+
+        Future<void> main() async {
+          await Deployment.run(() => SmokeStack());
+        }
+        EOF
+        else
+          cat > "${PROJECT_DIR}/bin/${ENTRYPOINT}" <<EOF
+        // ignore_for_file: unused_import
+        import 'package:pulumi/pulumi.dart';
+        import 'package:${PROVIDER_PACKAGE}/${PROVIDER_PACKAGE}.dart' as provider;
+
+        class SmokeStack extends Stack {
+          SmokeStack();
+        }
+
+        Future<void> main() async {
+          await Deployment.run(() => SmokeStack());
+        }
+        EOF
+        fi
+
+        (cd "${PROJECT_DIR}" && dart pub get)
+
+        echo "Smoke project ready: ${PROJECT_DIR}"
+        echo "Preferred: task smoke:preview PACKAGE=${PACKAGE}"
+        echo "Also available: task smoke:exec PACKAGE=${PACKAGE} CMD='pulumi about'"
+
+  smoke:exec:
+    desc: Run any shell command in a smoke project with Pulumi Dart env configured
+    requires:
+      vars:
+        - PACKAGE
+        - CMD
+    cmds:
+      - task: smoke:init
+        vars:
+          PACKAGE: "{{.PACKAGE}}"
+      - |
+        set -eu
+        PROJECT_DIR="{{.SMOKE_DIR}}/{{.PACKAGE}}"
+        (
+          cd "${PROJECT_DIR}" && \
+          export PATH="{{.LANGUAGE_HOST_DIR}}:${PATH}" && \
+          if [ -z "${PULUMI_CONFIG_PASSPHRASE:-}" ] && [ -z "${PULUMI_CONFIG_PASSPHRASE_FILE:-}" ]; then
+            export PULUMI_CONFIG_PASSPHRASE="{{.DEFAULT_PULUMI_CONFIG_PASSPHRASE}}"
+          fi && \
+          CMD='{{.CMD}}' && \
+          sh -c "${CMD}"
+        )
+
+  smoke:stack:
+    desc: Ensure `dev` stack exists/selected for a smoke project
+    requires:
+      vars:
+        - PACKAGE
+    cmds:
+      - task: smoke:exec
+        vars:
+          PACKAGE: "{{.PACKAGE}}"
+          CMD: "pulumi stack select dev --create --non-interactive >/dev/null"
+
+  smoke:preview:
+    desc: Run Pulumi preview for a local smoke project wired to generated provider SDK path dependencies
+    requires:
+      vars:
+        - PACKAGE
+    cmds:
+      - task: smoke:exec
+        vars:
+          PACKAGE: "{{.PACKAGE}}"
+          CMD: "pulumi stack select dev --create --non-interactive >/dev/null && pulumi preview --non-interactive"
+
+  smoke:up:
+    desc: Run Pulumi up for a local smoke project wired to generated provider SDK path dependencies
+    requires:
+      vars:
+        - PACKAGE
+    cmds:
+      - task: smoke:exec
+        vars:
+          PACKAGE: "{{.PACKAGE}}"
+          CMD: "pulumi stack select dev --create --non-interactive >/dev/null && pulumi up --yes --non-interactive"
+
+  project:use-local-provider:
+    desc: Wire an existing Pulumi Dart project to a locally generated provider SDK and local pulumi-dart
+    requires:
+      vars:
+        - PROJECT_DIR
+        - PACKAGE
+    cmds:
+      - |
+        set -eu
+        PROJECT_DIR="{{.PROJECT_DIR}}"
+        PACKAGE="{{.PACKAGE}}"
+        PACKAGE_UNDERSCORE="$(printf '%s' "${PACKAGE}" | tr '-' '_')"
+        PROVIDER_PACKAGE="pulumi_${PACKAGE_UNDERSCORE}"
+        PROVIDER_DIR="{{.PACKAGES_DIR}}/${PACKAGE}"
+        PULUMI_DIR="{{.PULUMI_DART_PATH}}"
+
+        if [ ! -d "${PROJECT_DIR}" ]; then
+          echo "Project directory not found: ${PROJECT_DIR}" >&2
+          exit 1
+        fi
+        if [ ! -f "${PROJECT_DIR}/pubspec.yaml" ]; then
+          echo "Expected pubspec.yaml in project directory: ${PROJECT_DIR}" >&2
+          exit 1
+        fi
+
+        if [ ! -f "${PROVIDER_DIR}/pubspec.yaml" ]; then
+          echo "Generated provider SDK not found at ${PROVIDER_DIR}" >&2
+          echo "Run: task generate:provider PACKAGE=${PACKAGE}" >&2
+          exit 1
+        fi
+
+        dart pub add -C "${PROJECT_DIR}" "${PROVIDER_PACKAGE}:{path: ${PROVIDER_DIR}}"
+        dart pub add -C "${PROJECT_DIR}" "override:pulumi:{path: ${PULUMI_DIR}}"
+        dart pub get -C "${PROJECT_DIR}"
+
+        echo "Local provider wiring complete."
+        echo "Project: ${PROJECT_DIR}"
+        echo "Provider package: ${PROVIDER_PACKAGE} -> ${PROVIDER_DIR}"
+        echo "Pulumi override: pulumi -> ${PULUMI_DIR}"
 
   list:schemas:
     desc: Print downloaded schema package names and versions
