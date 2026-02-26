@@ -28,6 +28,28 @@ import '../resource/custom_resource.dart';
 import 'stack.dart';
 
 abstract class Deployment {
+  static Deployment get instance => DeploymentImpl.instance;
+
+  static Future<int> run(
+    Function() func, {
+    String? organizationName,
+    String? projectName,
+    String? stackName,
+    bool? isDryRun,
+    monitorpkg.Monitor? monitor,
+    Engine? engine,
+  }) {
+    return DeploymentImpl.run(
+      func,
+      organizationName: organizationName,
+      projectName: projectName,
+      stackName: stackName,
+      isDryRun: isDryRun,
+      monitor: monitor,
+      engine: engine,
+    );
+  }
+
   String get organizationName;
 
   String get projectName;
@@ -74,6 +96,20 @@ abstract class Deployment {
   Future<void> registerResourceTransform(ResourceTransform transform);
 
   Future<void> registerInvokeTransform(pulumi_invoke.InvokeTransform transform);
+
+  Future<T> invoke<T>(
+    String token,
+    Map<String, dynamic> args, {
+    models.InvokeOptions? options,
+    models.RegisterPackageRequest? registerPackageRequest,
+  });
+
+  Future<T> invokeSingle<T>(
+    String token,
+    Map<String, dynamic> args, {
+    models.InvokeOptions? options,
+    models.RegisterPackageRequest? registerPackageRequest,
+  });
 }
 
 class DeploymentImpl extends Deployment

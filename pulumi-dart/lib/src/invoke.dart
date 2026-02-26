@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:pulumi/src/deployment/models.dart' as deployment_models;
 import 'package:pulumi/src/input.dart';
 import 'package:pulumi/src/resource/resource.dart';
 import 'resource/provider_resource.dart';
@@ -40,6 +41,21 @@ class InvokeOptions {
   });
 }
 
+deployment_models.InvokeOptions? toDeploymentInvokeOptions(
+  InvokeOptions? options,
+) {
+  if (options == null) {
+    return null;
+  }
+
+  return deployment_models.InvokeOptions(
+    parent: options.parent,
+    provider: options.provider,
+    version: options.version,
+    pluginDownloadURL: options.pluginDownloadURL,
+  );
+}
+
 /// [InvokeTransform] is the callback signature for the `transforms`
 /// resource option for invokes. A transform is passed the same set of inputs
 /// provided to the [Invoke] constructor, and can optionally return back
@@ -48,8 +64,8 @@ class InvokeOptions {
 /// in place of the original call to the [Invoke]. If the transform
 /// returns null, this indicates
 /// that the Invoke should proceed with the original arguments.
-typedef InvokeTransform = FutureOr<InvokeTransformResult?> Function(
-    InvokeTransformArgs args);
+typedef InvokeTransform =
+    FutureOr<InvokeTransformResult?> Function(InvokeTransformArgs args);
 
 /// [InvokeTransformArgs] is the argument bag passed to an invoke transform.
 class InvokeTransformArgs {
@@ -79,8 +95,5 @@ class InvokeTransformResult {
   /// The new resource options to use in place of the original `opts`.
   final InvokeOptions opts;
 
-  InvokeTransformResult({
-    required this.args,
-    required this.opts,
-  });
+  InvokeTransformResult({required this.args, required this.opts});
 }
