@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class TaskDefinitionMountPoint {
+  final String? containerPath;
+  final bool? readOnly;
+  final String? sourceVolume;
+
+  TaskDefinitionMountPoint({
+    this.containerPath,
+    this.readOnly,
+    this.sourceVolume,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final containerPathValue = containerPath;
+    if (containerPathValue != null) {
+      map['containerPath'] = containerPathValue;
+    }
+    final readOnlyValue = readOnly;
+    if (readOnlyValue != null) {
+      map['readOnly'] = readOnlyValue;
+    }
+    final sourceVolumeValue = sourceVolume;
+    if (sourceVolumeValue != null) {
+      map['sourceVolume'] = sourceVolumeValue;
+    }
+    return map;
+  }
+
+  factory TaskDefinitionMountPoint.fromMap(Map<String, dynamic> map) {
+    return TaskDefinitionMountPoint(
+      containerPath:
+          map['containerPath'] == null ? null : map['containerPath'] as String,
+      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
+      sourceVolume:
+          map['sourceVolume'] == null ? null : map['sourceVolume'] as String,
+    );
+  }
+}
