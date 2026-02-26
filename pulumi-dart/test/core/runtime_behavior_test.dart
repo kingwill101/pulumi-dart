@@ -145,6 +145,43 @@ void main() {
       expect(runtime.hasEngine, isFalse);
     });
 
+    test('disconnect waits for rpc keep-alive release', () async {
+      final release = runtime.rpcKeepAlive();
+      var disconnected = false;
+
+      final disconnectFuture = runtime.disconnect().then((_) {
+        disconnected = true;
+      });
+
+      await Future<void>.delayed(Duration.zero);
+      expect(disconnected, isFalse);
+
+      release();
+      await disconnectFuture;
+      expect(disconnected, isTrue);
+    });
+
+    test('rpcKeepAlive drains only after all releases', () async {
+      final releaseOne = runtime.rpcKeepAlive();
+      final releaseTwo = runtime.rpcKeepAlive();
+      var disconnected = false;
+
+      final disconnectFuture = runtime.disconnect().then((_) {
+        disconnected = true;
+      });
+
+      await Future<void>.delayed(Duration.zero);
+      expect(disconnected, isFalse);
+
+      releaseOne();
+      await Future<void>.delayed(Duration.zero);
+      expect(disconnected, isFalse);
+
+      releaseTwo();
+      await disconnectFuture;
+      expect(disconnected, isTrue);
+    });
+
     test('tryGetSyncInvokes returns null when syncDir is unset', () {
       runtime.resetOptions();
       expect(runtime.tryGetSyncInvokes(), isNull);

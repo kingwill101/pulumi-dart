@@ -28,6 +28,8 @@ class Runtime {
   bool supportsInvokeTransforms = false;
   ICallbackServer? callbacks;
   ComponentResource? stackResource;
+  int _activeRpcKeepAlives = 0;
+  Completer<void>? _rpcDrainCompleter;
 
   static const int maxRPCMessageSize = 1024 * 1024 * 400; // 400 MB
 
@@ -225,13 +227,23 @@ class Runtime {
   }
 
   Future<void> _waitForRPCs({bool disconnectFromServers = false}) async {
-    // Implement RPC queue draining logic here
+    while (_activeRpcKeepAlives > 0) {
+      final drainCompleter = _rpcDrainCompleter;
+      if (drainCompleter == null) {
+        break;
+      }
+      await drainCompleter.future;
+    }
     if (disconnectFromServers) {
       disconnectSync();
     }
   }
 
   void disconnectSync() {
+    _activeRpcKeepAlives = 0;
+    _rpcDrainCompleter?.complete();
+    _rpcDrainCompleter = null;
+
     callbacks?.shutdown();
     callbacks = null;
 
@@ -245,8 +257,26 @@ class Runtime {
   }
 
   void Function() rpcKeepAlive() {
-    // Implement RPC keep-alive logic here
-    return () {};
+    _activeRpcKeepAlives += 1;
+    _rpcDrainCompleter ??= Completer<void>();
+
+    var released = false;
+    return () {
+      if (released) {
+        return;
+      }
+      released = true;
+
+      if (_activeRpcKeepAlives == 0) {
+        return;
+      }
+
+      _activeRpcKeepAlives -= 1;
+      if (_activeRpcKeepAlives == 0) {
+        _rpcDrainCompleter?.complete();
+        _rpcDrainCompleter = null;
+      }
+    };
   }
 
   Future<void> setRootResource(ComponentResource res) async {
