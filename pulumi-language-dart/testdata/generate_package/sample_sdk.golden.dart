@@ -184,6 +184,17 @@ class GetWidgetDetailsResult {
 }
 
 
+// FILE: index/index.dart
+library module_index;
+
+export 'get_widget_details.dart';
+export 'get_widget_details_args.dart';
+export 'get_widget_details_result.dart';
+export 'widget.dart';
+export 'widget_args.dart';
+export 'widget_metadata.dart';
+export 'widget_mode.dart';
+
 // FILE: index/widget.dart
 import 'package:pulumi/pulumi.dart';
 import 'widget_args.dart';

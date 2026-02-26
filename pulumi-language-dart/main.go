@@ -4335,6 +4335,8 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 	}
 
 	sort.Strings(typeExports)
+	moduleSymbolFiles := make([]string, 0, len(typeExports)+len(spec.Resources)+len(spec.Functions))
+	moduleSymbolFiles = append(moduleSymbolFiles, typeExports...)
 
 	resourceTokens := make([]string, 0, len(spec.Resources))
 	for token := range spec.Resources {
@@ -4408,10 +4410,12 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 		sdk.WriteString("export 'config/config.dart';\n")
 	}
 	sort.Strings(resourceExports)
+	moduleSymbolFiles = append(moduleSymbolFiles, resourceExports...)
 	for _, exportPath := range resourceExports {
 		fmt.Fprintf(&sdk, "export '%s';\n", exportPath)
 	}
 	sort.Strings(functionExports)
+	moduleSymbolFiles = append(moduleSymbolFiles, functionExports...)
 	for _, exportPath := range functionExports {
 		fmt.Fprintf(&sdk, "export '%s';\n", exportPath)
 	}
@@ -4419,8 +4423,140 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 		sdk.WriteString("// This package schema did not define resources or functions.\n")
 	}
 	files["sdk.dart"] = []byte(sdk.String())
+	for indexPath, indexContent := range generatedModuleIndexFiles(moduleSymbolFiles) {
+		files[indexPath] = indexContent
+	}
 
 	return files
+}
+
+func generatedModuleIndexFiles(symbolFilePaths []string) map[string][]byte {
+	if len(symbolFilePaths) == 0 {
+		return map[string][]byte{}
+	}
+
+	directFilesByDir := map[string]map[string]struct{}{}
+	moduleDirs := map[string]struct{}{}
+	for _, filePath := range symbolFilePaths {
+		normalized := filepath.ToSlash(strings.TrimSpace(filePath))
+		if normalized == "" {
+			continue
+		}
+		dir := filepath.ToSlash(filepath.Dir(normalized))
+		if dir == "." || dir == "" {
+			continue
+		}
+		moduleDirs[dir] = struct{}{}
+		if _, ok := directFilesByDir[dir]; !ok {
+			directFilesByDir[dir] = map[string]struct{}{}
+		}
+		directFilesByDir[dir][filepath.Base(normalized)] = struct{}{}
+	}
+
+	// Ensure parent module directories get index files that export child modules.
+	for dir := range moduleDirs {
+		current := dir
+		for {
+			parent := filepath.ToSlash(filepath.Dir(current))
+			if parent == "." || parent == "" {
+				break
+			}
+			moduleDirs[parent] = struct{}{}
+			current = parent
+		}
+	}
+
+	childDirsByDir := map[string]map[string]struct{}{}
+	for dir := range moduleDirs {
+		parent := filepath.ToSlash(filepath.Dir(dir))
+		if parent == "." || parent == "" {
+			continue
+		}
+		if _, ok := childDirsByDir[parent]; !ok {
+			childDirsByDir[parent] = map[string]struct{}{}
+		}
+		childDirsByDir[parent][filepath.Base(dir)] = struct{}{}
+	}
+
+	dirs := make([]string, 0, len(moduleDirs))
+	for dir := range moduleDirs {
+		dirs = append(dirs, dir)
+	}
+	sort.Strings(dirs)
+
+	indexFiles := map[string][]byte{}
+	for _, dir := range dirs {
+		var b strings.Builder
+		fmt.Fprintf(&b, "library %s;\n\n", sanitizeDartIdentifier("module_"+strings.ReplaceAll(dir, "/", "_")))
+
+		fileNames := make([]string, 0, len(directFilesByDir[dir]))
+		for fileName := range directFilesByDir[dir] {
+			if fileName == "index.dart" {
+				continue
+			}
+			fileNames = append(fileNames, fileName)
+		}
+		sort.Strings(fileNames)
+		for _, fileName := range fileNames {
+			fmt.Fprintf(&b, "export '%s';\n", fileName)
+		}
+
+		childDirs := make([]string, 0, len(childDirsByDir[dir]))
+		for childDir := range childDirsByDir[dir] {
+			childDirs = append(childDirs, childDir)
+		}
+		sort.Strings(childDirs)
+		for _, childDir := range childDirs {
+			fmt.Fprintf(&b, "export '%s/index.dart';\n", childDir)
+		}
+
+		if len(fileNames) == 0 && len(childDirs) == 0 {
+			b.WriteString("// No symbols generated for this module directory.\n")
+		}
+
+		indexFiles[filepath.ToSlash(filepath.Join(dir, "index.dart"))] = []byte(b.String())
+	}
+
+	return indexFiles
+}
+
+func generatedPublicModuleEntryPoints(packageName string, sdkSources map[string][]byte) map[string][]byte {
+	moduleDirs := map[string]struct{}{}
+	for relativePath := range sdkSources {
+		normalized := filepath.ToSlash(relativePath)
+		if !strings.HasSuffix(normalized, "/index.dart") {
+			continue
+		}
+		moduleDir := strings.TrimSuffix(normalized, "/index.dart")
+		if moduleDir == "" || moduleDir == "." ||
+			strings.HasPrefix(moduleDir, "internal") ||
+			strings.HasPrefix(moduleDir, "config") {
+			continue
+		}
+		moduleDirs[moduleDir] = struct{}{}
+	}
+
+	entryPoints := map[string][]byte{}
+	modulePaths := make([]string, 0, len(moduleDirs))
+	for moduleDir := range moduleDirs {
+		modulePaths = append(modulePaths, moduleDir)
+	}
+	sort.Strings(modulePaths)
+
+	for _, moduleDir := range modulePaths {
+		entryPath := filepath.ToSlash(moduleDir + ".dart")
+		libraryName := sanitizeDartIdentifier(packageName + "_" + strings.ReplaceAll(moduleDir, "/", "_"))
+		entryContent := fmt.Sprintf(
+			"library %s;\n\nexport 'package:%s/src/%s/%s/index.dart';\n",
+			libraryName,
+			packageName,
+			packageName,
+			moduleDir,
+		)
+		entryPoints[entryPath] = []byte(entryContent)
+	}
+
+	return entryPoints
 }
 
 func generatedPackageRootLibrary(packageName string) []byte {
@@ -4849,6 +4985,25 @@ func (host *dartLanguageHost) GeneratePackage(
 		}
 		if err := os.WriteFile(outputPath, sdkSources[relativePath], 0o600); err != nil {
 			return nil, fmt.Errorf("failed to write generated SDK source file %s: %w", relativePath, err)
+		}
+	}
+
+	publicModuleSources := generatedPublicModuleEntryPoints(packageName, sdkSources)
+	publicModulePaths := make([]string, 0, len(publicModuleSources))
+	for relativePath := range publicModuleSources {
+		publicModulePaths = append(publicModulePaths, relativePath)
+	}
+	sort.Strings(publicModulePaths)
+	for _, relativePath := range publicModulePaths {
+		outputPath, err := safeOutputPath(libDir, filepath.FromSlash(relativePath))
+		if err != nil {
+			return nil, fmt.Errorf("invalid generated module entrypoint path %q: %w", relativePath, err)
+		}
+		if err := os.MkdirAll(filepath.Dir(outputPath), 0o700); err != nil {
+			return nil, fmt.Errorf("failed to create generated module directory for %s: %w", relativePath, err)
+		}
+		if err := os.WriteFile(outputPath, publicModuleSources[relativePath], 0o600); err != nil {
+			return nil, fmt.Errorf("failed to write generated module entrypoint %s: %w", relativePath, err)
 		}
 	}
 
