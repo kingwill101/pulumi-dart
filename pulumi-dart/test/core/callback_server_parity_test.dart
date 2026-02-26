@@ -382,6 +382,53 @@ void main() {
       },
     );
 
+    test(
+      'transform callback failure handles non-Exception throwables with stack context',
+      () async {
+        Future<ResourceTransformResult?> transformAssertion(
+          ResourceTransformArgs args, [
+          CancellationToken? cancellationToken,
+        ]) async {
+          throw AssertionError('assert-noes');
+        }
+
+        final callback = await callbackServer.registerTransform(
+          transformAssertion,
+        );
+        final callbackChannel = _channelForTarget(callback.target);
+        final callbacksClient = CallbacksClient(callbackChannel);
+
+        final request = TransformRequest()
+          ..name = 'res'
+          ..type = 'pkg:index:Res'
+          ..custom = true
+          ..properties = await StructConverter.toStruct({'enabled': true});
+
+        await expectLater(
+          callbacksClient.invoke(
+            CallbackInvokeRequest()
+              ..token = callback.token
+              ..request = request.writeToBuffer(),
+          ),
+          throwsA(
+            isA<GrpcError>()
+                .having(
+                  (error) => error.message ?? '',
+                  'message',
+                  contains('assert-noes'),
+                )
+                .having(
+                  (error) => error.message ?? '',
+                  'message',
+                  contains('callback_server_parity_test.dart'),
+                ),
+          ),
+        );
+
+        await callbackChannel.shutdown();
+      },
+    );
+
     test('error hook callback returns retry and surfaces errors', () async {
       await callbackServer.registerErrorHook(
         ErrorHook('retry', (args) async => true),

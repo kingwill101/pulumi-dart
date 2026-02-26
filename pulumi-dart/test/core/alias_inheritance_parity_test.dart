@@ -224,5 +224,46 @@ void main() {
         ),
       );
     });
+
+    test(
+      'large alias lineage chains keep parent type information in computed aliases',
+      () async {
+        const parentTypeChain = 'test:index:MyResource\$test:index:MyResource';
+        final parent = DependencyResource(
+          'urn:pulumi:$stack::$project::$parentTypeChain::testResource2',
+        );
+
+        final childAliases = List<Alias>.generate(
+          1000,
+          (i) => Alias(
+            name: Input.fromValue('my-alias-$i'),
+            stack: Input.fromValue('my-stack'),
+            project: Input.fromValue('my-project'),
+            type: Input.fromValue('test:index:MyOtherResource'),
+          ),
+          growable: false,
+        );
+
+        final aliases = allAliases(
+          childAliases: childAliases,
+          childName: 'testResource3',
+          childType: 'test:index:MyOtherResource',
+          parent: parent,
+          parentName: 'testResource2',
+          project: project,
+          stack: stack,
+        );
+
+        expect(aliases, hasLength(1000));
+        final first = await aliases.first.toOutput().getValue();
+        expect(first, contains('test:index:MyResource'));
+        expect(
+          first,
+          equals(
+            'urn:pulumi:stack::project::$parentTypeChain\$test:index:MyOtherResource::my-alias-0',
+          ),
+        );
+      },
+    );
   });
 }
