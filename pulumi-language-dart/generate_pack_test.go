@@ -603,6 +603,74 @@ func TestGeneratePackageEmitsNamedTypesAndRefs(t *testing.T) {
 	assert.Contains(t, content, "mode: WidgetMode.fromValue(map['mode'] as String)")
 }
 
+func TestGeneratePackageTreatsEmptyObjectTypesAsMaps(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"types": {
+			"sample:index:Opaque": {
+				"type": "object"
+			}
+		},
+		"resources": {
+			"sample:index:Widget": {
+				"inputProperties": {
+					"opaque": { "$ref": "#/types/sample:index:Opaque" }
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, content := readGeneratedPackageLibraries(t, targetDir, "sample")
+	assert.Contains(t, content, "final Input<Map<String, dynamic>>? opaque;")
+	assert.Contains(t, content, "map['opaque'] = opaque;")
+	assert.NotContains(t, content, "Input<Opaque>")
+	assert.NotContains(t, content, "types/opaque.dart")
+}
+
+func TestGeneratePackageAvoidsResourceTypeNameCollisions(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"types": {
+			"sample:index:Widget": {
+				"type": "object",
+				"properties": {
+					"owner": { "type": "string" }
+				}
+			}
+		},
+		"resources": {
+			"sample:index:Widget": {}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, content := readGeneratedPackageLibraries(t, targetDir, "sample")
+	assert.Contains(t, content, "class Widget {")
+	assert.Contains(t, content, "class Widget2 extends CustomResource")
+	assert.Contains(t, content, "export 'resources/widget2.dart';")
+}
+
 func TestGeneratePackageEmitsConfigClass(t *testing.T) {
 	t.Parallel()
 
