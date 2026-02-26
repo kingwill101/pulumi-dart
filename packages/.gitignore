@@ -1,0 +1,10 @@
+# Keep generated SDK sources, ignore local build/state artifacts.
+**/.dart_tool/
+**/.packages
+**/pubspec.lock
+**/.pulumi/
+**/Pulumi.*.yaml
+**/.DS_Store
+
+# Local analyzer outputs
+analysis/

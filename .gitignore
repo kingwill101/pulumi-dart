@@ -10,3 +10,7 @@
 .idea/
 pulumi-language-dart/.vscode/
 pulumi-language-dart/pulumi-language-dart
+
+# Local Codex workspace artifacts
+.codex/
+.gen/
