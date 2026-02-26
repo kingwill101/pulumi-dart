@@ -61,15 +61,8 @@ mixin InvokeMixin {
   Future<String?> _resolvePackageRef(
     models.RegisterPackageRequest request,
   ) async {
-    try {
-      final response = await monitor.registerPackage(request.toProto());
-      return response.ref;
-    } catch (_) {
-      if (request.parameterization != null) {
-        rethrow;
-      }
-      return null;
-    }
+    final response = await monitor.registerPackage(request.toProto());
+    return response.ref;
   }
 
   T _deserializeInvokeResponse<T>(Struct response) {

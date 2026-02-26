@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' show DeploymentImpl, Stack;
 import 'package:pulumi/src/monitor.dart' as mon;
 import 'package:pulumi/src/output.dart';
+import 'package:pulumi/src/struct_converter.dart';
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/provider.pb.dart';
@@ -18,7 +19,7 @@ class MockMonitor implements mon.Monitor {
 
   @override
   ResourceMonitorClient get client =>
-      throw UnimplementedError('MockMonitor.client is not implemented');
+      throw StateError('MockMonitor.client is not used by this harness');
 
   @override
   Future<InvokeResponse> invoke(ResourceInvokeRequest request) async {
@@ -78,7 +79,7 @@ class MockMonitor implements mon.Monitor {
 
     _registeredResources[urn] = {
       "urn": urn,
-      "id": ?id,
+      "id": id,
       "state": serializedState,
     };
 
@@ -86,7 +87,7 @@ class MockMonitor implements mon.Monitor {
 
     return ReadResourceResponse(
       urn: urn,
-      properties: _toStruct(serializedState),
+      properties: await _toStruct(serializedState),
     );
   }
 
@@ -126,7 +127,7 @@ class MockMonitor implements mon.Monitor {
     return RegisterResourceResponse(
       id: id ?? request.importId,
       urn: urn,
-      object: _toStruct(serializedState),
+      object: await _toStruct(serializedState),
     );
   }
 
@@ -140,24 +141,22 @@ class MockMonitor implements mon.Monitor {
   }
 
   Map<String, dynamic> _toDartMap(Struct struct) {
-    final result = <String, dynamic>{};
-    for (final _ in struct.fields.entries) {
-      //FIXME we dont have the concept of a deserializer yet
-      // final data = Deserializer.deserialize(entry.value);
-      // if (data.isKnown && data.value != null) {
-      //   result[entry.key] = data.value;
-      // }
-    }
-    return result;
+    return StructConverter.fromStruct(struct);
   }
 
   Future<Map<String, dynamic>> _serializeToDartMap(dynamic o) async {
-    if (o is Map<String, dynamic>) {
-      return Map.unmodifiable(o);
+    if (o is Map) {
+      return o.map((key, value) => MapEntry(key.toString(), value));
     }
-    // Implement serialization logic here
-    throw UnimplementedError(
-      "Serialization not implemented for ${o.runtimeType}",
+
+    final serialized = await StructConverter.toValue(o);
+    final decoded = StructConverter.fromValue(serialized);
+    if (decoded is Map) {
+      return decoded.map((key, value) => MapEntry(key.toString(), value));
+    }
+
+    throw StateError(
+      'MockMonitor expected Map-compatible value but got ${decoded.runtimeType}',
     );
   }
 
@@ -166,9 +165,8 @@ class MockMonitor implements mon.Monitor {
     return _toStruct(dict);
   }
 
-  Struct _toStruct(Map<String, dynamic> map) {
-    // Implement conversion from Dart Map to Struct
-    throw UnimplementedError("Conversion to Struct not implemented");
+  Future<Struct> _toStruct(Map<String, dynamic> map) {
+    return StructConverter.toStruct(map);
   }
 
   @override
@@ -184,10 +182,10 @@ class MockMonitor implements mon.Monitor {
     RegisterResourceOutputsRequest request,
   ) async {
     final outputs = <String, Output<dynamic>>{};
-    for (final _ in request.outputs.fields.entries) {
-      //FIXME
-      // final data = Deserializer.deserialize(entry.value);
-      // outputs[entry.key] = Output.create(data);
+    for (final entry in request.outputs.fields.entries) {
+      outputs[entry.key] = Output.create(
+        StructConverter.fromValue(entry.value),
+      );
     }
 
     final mockRequest = MockRegisterResourceOutputsRequest(

@@ -46,7 +46,7 @@ class _CapturingResourceMonitorService extends ResourceMonitorServiceBase {
     ServiceCall call,
     pulumirpc.ResourceInvokeRequest request,
   ) async {
-    throw UnimplementedError();
+    throw GrpcError.unimplemented('invoke not used in this test suite');
   }
 
   @override
@@ -54,7 +54,7 @@ class _CapturingResourceMonitorService extends ResourceMonitorServiceBase {
     ServiceCall call,
     pulumirpc.ResourceCallRequest request,
   ) async {
-    throw UnimplementedError();
+    throw GrpcError.unimplemented('call not used in this test suite');
   }
 
   @override
@@ -62,7 +62,7 @@ class _CapturingResourceMonitorService extends ResourceMonitorServiceBase {
     ServiceCall call,
     pulumirpc.ReadResourceRequest request,
   ) async {
-    throw UnimplementedError();
+    throw GrpcError.unimplemented('readResource not used in this test suite');
   }
 
   @override
@@ -70,7 +70,9 @@ class _CapturingResourceMonitorService extends ResourceMonitorServiceBase {
     ServiceCall call,
     pulumirpc.RegisterResourceRequest request,
   ) async {
-    throw UnimplementedError();
+    throw GrpcError.unimplemented(
+      'registerResource not used in this test suite',
+    );
   }
 
   @override

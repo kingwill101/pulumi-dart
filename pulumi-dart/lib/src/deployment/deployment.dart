@@ -173,6 +173,25 @@ class DeploymentImpl extends Deployment
     _instance = null;
   }
 
+  @visibleForTesting
+  static DeploymentImpl createForTesting({
+    required String organizationName,
+    required String projectName,
+    required String stackName,
+    required bool isDryRun,
+    required monitorpkg.Monitor monitor,
+    required Engine engine,
+  }) {
+    return DeploymentImpl._(
+      organizationName: organizationName,
+      projectName: projectName,
+      stackName: stackName,
+      isDryRun: isDryRun,
+      monitor: monitor,
+      engine: engine,
+    );
+  }
+
   static void setTestInstance(Deployment testInstance) {
     _instance = testInstance;
   }
@@ -380,8 +399,9 @@ class DeploymentImpl extends Deployment
     if (opts.version != null) {
       request.version = opts.version!;
     }
-    if (opts.ignoreChanges != null && opts.ignoreChanges!.isNotEmpty) {
-      request.ignoreChanges.addAll(opts.ignoreChanges!);
+    final validatedIgnoreChanges = _validateIgnoreChanges(opts.ignoreChanges);
+    if (validatedIgnoreChanges.isNotEmpty) {
+      request.ignoreChanges.addAll(validatedIgnoreChanges);
     }
     if (opts.pluginDownloadURL != null) {
       request.pluginDownloadURL = opts.pluginDownloadURL!;
@@ -461,15 +481,32 @@ class DeploymentImpl extends Deployment
   Future<String?> _resolvePackageRef(
     models.RegisterPackageRequest request,
   ) async {
-    try {
-      final response = await monitor.registerPackage(request.toProto());
-      return response.ref;
-    } catch (_) {
-      if (request.parameterization != null) {
-        rethrow;
-      }
-      return null;
+    final response = await monitor.registerPackage(request.toProto());
+    return response.ref;
+  }
+
+  List<String> _validateIgnoreChanges(List<String>? ignoreChanges) {
+    if (ignoreChanges == null || ignoreChanges.isEmpty) {
+      return const <String>[];
     }
+
+    final validated = <String>[];
+    for (var i = 0; i < ignoreChanges.length; i++) {
+      final rawPath = ignoreChanges[i];
+      final path = rawPath.trim();
+      if (path.isEmpty) {
+        throw ArgumentError(
+          'ignoreChanges[$i] must be a non-empty property path.',
+        );
+      }
+      if (path.startsWith('.') || path.endsWith('.') || path.contains('..')) {
+        throw ArgumentError(
+          'ignoreChanges[$i] contains an invalid property path: "$rawPath".',
+        );
+      }
+      validated.add(path);
+    }
+    return validated;
   }
 
   Future<bool> _monitorSupportsTransforms() async {

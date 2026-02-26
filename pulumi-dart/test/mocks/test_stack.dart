@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart';
-import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 
 class TestStack extends Stack {
   TestStack(void Function() createResources) {
@@ -21,11 +20,5 @@ class TestStack extends Stack {
   ) {
     outputs = {};
     createResources().then((value) => outputs.addAll(value));
-  }
-
-  @override
-  Future<Value> serializeOutputValue(OutputData outputData) {
-    // TODO: implement serializeOutputValue
-    throw UnimplementedError();
   }
 }

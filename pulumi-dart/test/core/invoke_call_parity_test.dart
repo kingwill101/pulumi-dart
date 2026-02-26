@@ -41,7 +41,8 @@ class _FakeMonitor implements Monitor {
   Object? registerPackageError;
 
   @override
-  ResourceMonitorClient get client => throw UnimplementedError();
+  ResourceMonitorClient get client =>
+      throw StateError('client is not used in this parity test harness');
 
   @override
   Future<SupportsFeatureResponse> supportsFeature(
@@ -84,7 +85,7 @@ class _FakeMonitor implements Monitor {
     Resource resource,
     ReadResourceRequest request,
   ) async {
-    throw UnimplementedError();
+    throw GrpcError.unimplemented('readResource not used in this test');
   }
 
   @override
@@ -92,14 +93,16 @@ class _FakeMonitor implements Monitor {
     Resource resource,
     RegisterResourceRequest request,
   ) async {
-    throw UnimplementedError();
+    throw GrpcError.unimplemented('registerResource not used in this test');
   }
 
   @override
   Future<Empty> registerResourceOutputs(
     RegisterResourceOutputsRequest request,
   ) async {
-    throw UnimplementedError();
+    throw GrpcError.unimplemented(
+      'registerResourceOutputs not used in this test',
+    );
   }
 }
 
@@ -187,20 +190,20 @@ void main() {
       );
     });
 
-    test('invoke ignores non-parameterized registerPackage failure', () async {
+    test('invoke surfaces non-parameterized registerPackage failure', () async {
       monitor.registerPackageError = StateError('register package failed');
-      await harness.invoke<Map<String, dynamic>>(
-        'test:index:getThing',
-        {},
-        registerPackageRequest: deployment_models.RegisterPackageRequest(
-          name: 'pulumi-test',
-          version: '1.0.0',
+      await expectLater(
+        harness.invoke<Map<String, dynamic>>(
+          'test:index:getThing',
+          {},
+          registerPackageRequest: deployment_models.RegisterPackageRequest(
+            name: 'pulumi-test',
+            version: '1.0.0',
+          ),
         ),
+        throwsStateError,
       );
-
-      final request = monitor.capturedInvokeRequest;
-      expect(request, isNotNull);
-      expect(request!.hasPackageRef(), isFalse);
+      expect(monitor.capturedInvokeRequest, isNull);
     });
 
     test('invoke rethrows parameterized registerPackage failure', () async {
@@ -329,6 +332,24 @@ void main() {
       final request = monitor.capturedCallRequest;
       expect(request, isNotNull);
       expect(request!.packageRef, equals('pkg-ref-xyz'));
+    });
+
+    test('call surfaces registerPackage failure', () async {
+      monitor.registerPackageError = StateError('register package failed');
+
+      await expectLater(
+        harness.callWithResult<Map<String, dynamic>>(
+          'test:index:Resource/method',
+          {},
+          registerPackageRequest: deployment_models.RegisterPackageRequest(
+            name: 'pulumi-test',
+            version: '1.0.0',
+          ),
+        ),
+        throwsStateError,
+      );
+
+      expect(monitor.capturedCallRequest, isNull);
     });
 
     test('call surfaces failures from monitor response', () async {

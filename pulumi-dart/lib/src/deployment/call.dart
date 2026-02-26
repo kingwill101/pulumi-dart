@@ -38,8 +38,7 @@ mixin CallMixin {
       requestArgs['__self__'] = self;
     }
 
-    final provider =
-        options?.provider ?? (self?.getProvider(token));
+    final provider = options?.provider ?? (self?.getProvider(token));
     final urn = await provider?.urn.getValue() ?? '';
     final serializedArgs = await StructConverter.toStruct(requestArgs);
     final request = pb.ResourceCallRequest()
@@ -70,15 +69,8 @@ mixin CallMixin {
   Future<String?> _resolvePackageRef(
     models.RegisterPackageRequest request,
   ) async {
-    try {
-      final response = await monitor.registerPackage(request.toProto());
-      return response.ref;
-    } catch (_) {
-      if (request.parameterization != null) {
-        rethrow;
-      }
-      return null;
-    }
+    final response = await monitor.registerPackage(request.toProto());
+    return response.ref;
   }
 
   T _deserializeCallResponse<T>(Struct response) {

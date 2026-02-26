@@ -1,3 +1,4 @@
+import 'package:grpc/grpc.dart';
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
 import 'package:pulumi/src/deployment/invoke.dart';
 import 'package:pulumi/src/monitor.dart' as monitorpkg;
@@ -24,7 +25,8 @@ class _FakeMonitor implements monitorpkg.Monitor {
   Map<String, dynamic> invokePayload = const {};
 
   @override
-  ResourceMonitorClient get client => throw UnimplementedError();
+  ResourceMonitorClient get client =>
+      throw StateError('client is not used in this parity test harness');
 
   @override
   Future<monitorpkg.SupportsFeatureResponse> supportsFeature(
@@ -48,7 +50,7 @@ class _FakeMonitor implements monitorpkg.Monitor {
 
   @override
   Future<CallResponse> call(ResourceCallRequest request) async {
-    throw UnimplementedError();
+    throw GrpcError.unimplemented('call not used in this test');
   }
 
   @override
@@ -56,7 +58,7 @@ class _FakeMonitor implements monitorpkg.Monitor {
     Resource resource,
     ReadResourceRequest request,
   ) async {
-    throw UnimplementedError();
+    throw GrpcError.unimplemented('readResource not used in this test');
   }
 
   @override
@@ -64,14 +66,16 @@ class _FakeMonitor implements monitorpkg.Monitor {
     Resource resource,
     RegisterResourceRequest request,
   ) async {
-    throw UnimplementedError();
+    throw GrpcError.unimplemented('registerResource not used in this test');
   }
 
   @override
   Future<Empty> registerResourceOutputs(
     RegisterResourceOutputsRequest request,
   ) async {
-    throw UnimplementedError();
+    throw GrpcError.unimplemented(
+      'registerResourceOutputs not used in this test',
+    );
   }
 }
 
