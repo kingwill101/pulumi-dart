@@ -2023,6 +2023,7 @@ func uniqueClassName(base string, used map[string]int) string {
 	if base == "" {
 		base = "GeneratedType"
 	}
+	base = sanitizeTypeName(base)
 
 	count := used[base]
 	used[base] = count + 1
@@ -2040,6 +2041,29 @@ var dartReservedIdentifiers = map[string]struct{}{
 	"var": {}, "void": {}, "while": {}, "with": {},
 }
 
+var dartDisallowedFieldNames = map[string]struct{}{
+	"runtimeType":  {},
+	"hashCode":     {},
+	"toString":     {},
+	"noSuchMethod": {},
+	"toMap":        {},
+	"fromMap":      {},
+}
+
+var dartDisallowedTypeNames = map[string]struct{}{
+	"Function": {},
+}
+
+func sanitizeTypeName(name string) string {
+	if name == "" {
+		return "GeneratedType"
+	}
+	if _, disallowed := dartDisallowedTypeNames[name]; disallowed {
+		return name + "Type"
+	}
+	return name
+}
+
 func propertyFieldName(name string, used map[string]int) string {
 	candidate := toDartClassName(name)
 	if candidate == "" {
@@ -2051,6 +2075,9 @@ func propertyFieldName(name string, used map[string]int) string {
 	}
 	candidate = string(runes)
 	if _, reserved := dartReservedIdentifiers[candidate]; reserved {
+		candidate += "_"
+	}
+	if _, disallowed := dartDisallowedFieldNames[candidate]; disallowed {
 		candidate += "_"
 	}
 	count := used[candidate]
@@ -2661,7 +2688,7 @@ func tokenElementName(token string) string {
 }
 
 func resourceClassNameFromToken(token string, used map[string]int) string {
-	base := toDartClassName(tokenElementName(token))
+	base := sanitizeTypeName(toDartClassName(tokenElementName(token)))
 	count := used[base]
 	used[base] = count + 1
 	if count == 0 {
@@ -2946,7 +2973,7 @@ func objectClassFromMapExpression(objectClass packageObjectClassSpec, property p
 	return fmt.Sprintf("%s == null ? null : %s", sourceExpr, decodedExpr)
 }
 
-func objectClassToMapExpression(objectClass packageObjectClassSpec, property packagePropertySpec) string {
+func objectClassToMapExpressionFromSource(objectClass packageObjectClassSpec, property packagePropertySpec, sourceExpr string) string {
 	typeSpec := propertyTypeSpec(property)
 	if objectClass.UsesInputTypes {
 		if typeSpecNeedsEncodeConversion(typeSpec) {
@@ -2955,7 +2982,7 @@ func objectClassToMapExpression(objectClass packageObjectClassSpec, property pac
 					"_mapInputValue<%s, %s>(%s, (value) => %s)",
 					typeSpec.DartType,
 					typeSpecWireDartType(typeSpec),
-					property.FieldName,
+					sourceExpr,
 					typeSpecEncodeExpression(typeSpec, "value"),
 				)
 			}
@@ -2963,17 +2990,21 @@ func objectClassToMapExpression(objectClass packageObjectClassSpec, property pac
 				"_mapOptionalInputValue<%s, %s>(%s, (value) => %s)",
 				typeSpec.DartType,
 				typeSpecWireDartType(typeSpec),
-				property.FieldName,
+				sourceExpr,
 				typeSpecEncodeExpression(typeSpec, "value"),
 			)
 		}
-		return property.FieldName
+		return sourceExpr
 	}
 
 	if typeSpecNeedsEncodeConversion(typeSpec) {
-		return typeSpecEncodeExpression(typeSpec, property.FieldName)
+		return typeSpecEncodeExpression(typeSpec, sourceExpr)
 	}
-	return property.FieldName
+	return sourceExpr
+}
+
+func objectClassToMapExpression(objectClass packageObjectClassSpec, property packagePropertySpec) string {
+	return objectClassToMapExpressionFromSource(objectClass, property, property.FieldName)
 }
 
 func resourceOutputValueType(property packagePropertySpec) string {
@@ -3204,12 +3235,15 @@ func writeGeneratedObjectClass(b *strings.Builder, objectClass packageObjectClas
 				objectClassToMapExpression(objectClass, property),
 			)
 		} else {
+			valueName := property.FieldName + "Value"
 			fmt.Fprintf(
 				b,
-				"    if (%s != null) {\n      map['%s'] = %s;\n    }\n",
+				"    final %s = %s;\n    if (%s != null) {\n      map['%s'] = %s;\n    }\n",
+				valueName,
 				property.FieldName,
+				valueName,
 				property.Name,
-				objectClassToMapExpression(objectClass, property),
+				objectClassToMapExpressionFromSource(objectClass, property, valueName),
 			)
 		}
 	}
