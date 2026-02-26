@@ -720,24 +720,26 @@ class PrivateCloud extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.deletionDelayHours = Output.createUnknown<int?>();
-    this.description = Output.createUnknown<String?>();
-    this.expireTime = Output.createUnknown<String>();
-    this.hcxes = Output.createUnknown<List<PrivateCloudHcx>>();
-    this.location = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.deletionDelayHours = registerOutput<int?>('deletionDelayHours');
+    this.description = registerOutput<String?>('description');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.hcxes = registerOutput<List<PrivateCloudHcx>>('hcxes');
+    this.location = registerOutput<String>('location');
     this.managementCluster =
-        Output.createUnknown<PrivateCloudManagementCluster>();
-    this.name = Output.createUnknown<String>();
-    this.networkConfig = Output.createUnknown<PrivateCloudNetworkConfig>();
-    this.nsxes = Output.createUnknown<List<PrivateCloudNsx>>();
-    this.project = Output.createUnknown<String>();
-    this.sendDeletionDelayHoursIfZero = Output.createUnknown<bool?>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String?>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vcenters = Output.createUnknown<List<PrivateCloudVcenter>>();
+        registerOutput<PrivateCloudManagementCluster>('managementCluster');
+    this.name = registerOutput<String>('name');
+    this.networkConfig =
+        registerOutput<PrivateCloudNetworkConfig>('networkConfig');
+    this.nsxes = registerOutput<List<PrivateCloudNsx>>('nsxes');
+    this.project = registerOutput<String>('project');
+    this.sendDeletionDelayHoursIfZero =
+        registerOutput<bool?>('sendDeletionDelayHoursIfZero');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String?>('type');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vcenters = registerOutput<List<PrivateCloudVcenter>>('vcenters');
   }
 }

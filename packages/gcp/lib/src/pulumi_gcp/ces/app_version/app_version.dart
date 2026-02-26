@@ -258,16 +258,16 @@ class AppVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.app = Output.createUnknown<String>();
-    this.appVersionId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.creator = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.snapshots = Output.createUnknown<List<AppVersionSnapshot>>();
+    this.app = registerOutput<String>('app');
+    this.appVersionId = registerOutput<String>('appVersionId');
+    this.createTime = registerOutput<String>('createTime');
+    this.creator = registerOutput<String>('creator');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.snapshots = registerOutput<List<AppVersionSnapshot>>('snapshots');
   }
 }

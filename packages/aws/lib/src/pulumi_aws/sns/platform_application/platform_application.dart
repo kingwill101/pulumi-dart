@@ -403,20 +403,28 @@ class PlatformApplication extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applePlatformBundleId = Output.createUnknown<String?>();
-    this.applePlatformTeamId = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.eventDeliveryFailureTopicArn = Output.createUnknown<String?>();
-    this.eventEndpointCreatedTopicArn = Output.createUnknown<String?>();
-    this.eventEndpointDeletedTopicArn = Output.createUnknown<String?>();
-    this.eventEndpointUpdatedTopicArn = Output.createUnknown<String?>();
-    this.failureFeedbackRoleArn = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.platform = Output.createUnknown<String>();
-    this.platformCredential = Output.createUnknown<String>();
-    this.platformPrincipal = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.successFeedbackRoleArn = Output.createUnknown<String?>();
-    this.successFeedbackSampleRate = Output.createUnknown<String?>();
+    this.applePlatformBundleId =
+        registerOutput<String?>('applePlatformBundleId');
+    this.applePlatformTeamId = registerOutput<String?>('applePlatformTeamId');
+    this.arn = registerOutput<String>('arn');
+    this.eventDeliveryFailureTopicArn =
+        registerOutput<String?>('eventDeliveryFailureTopicArn');
+    this.eventEndpointCreatedTopicArn =
+        registerOutput<String?>('eventEndpointCreatedTopicArn');
+    this.eventEndpointDeletedTopicArn =
+        registerOutput<String?>('eventEndpointDeletedTopicArn');
+    this.eventEndpointUpdatedTopicArn =
+        registerOutput<String?>('eventEndpointUpdatedTopicArn');
+    this.failureFeedbackRoleArn =
+        registerOutput<String?>('failureFeedbackRoleArn');
+    this.name = registerOutput<String>('name');
+    this.platform = registerOutput<String>('platform');
+    this.platformCredential = registerOutput<String>('platformCredential');
+    this.platformPrincipal = registerOutput<String?>('platformPrincipal');
+    this.region = registerOutput<String>('region');
+    this.successFeedbackRoleArn =
+        registerOutput<String?>('successFeedbackRoleArn');
+    this.successFeedbackSampleRate =
+        registerOutput<String?>('successFeedbackSampleRate');
   }
 }

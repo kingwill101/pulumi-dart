@@ -54,20 +54,22 @@ class SecuritySetting extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.audioExportSettings = Output.createUnknown<
-        GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse>();
-    this.deidentifyTemplate = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.insightsExportSettings = Output.createUnknown<
-        GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse>();
-    this.inspectTemplate = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.purgeDataTypes = Output.createUnknown<List<String>>();
-    this.redactionScope = Output.createUnknown<String>();
-    this.redactionStrategy = Output.createUnknown<String>();
-    this.retentionStrategy = Output.createUnknown<String>();
-    this.retentionWindowDays = Output.createUnknown<int>();
+    this.audioExportSettings = registerOutput<
+            GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse>(
+        'audioExportSettings');
+    this.deidentifyTemplate = registerOutput<String>('deidentifyTemplate');
+    this.displayName = registerOutput<String>('displayName');
+    this.insightsExportSettings = registerOutput<
+            GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse>(
+        'insightsExportSettings');
+    this.inspectTemplate = registerOutput<String>('inspectTemplate');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.purgeDataTypes = registerOutput<List<String>>('purgeDataTypes');
+    this.redactionScope = registerOutput<String>('redactionScope');
+    this.redactionStrategy = registerOutput<String>('redactionStrategy');
+    this.retentionStrategy = registerOutput<String>('retentionStrategy');
+    this.retentionWindowDays = registerOutput<int>('retentionWindowDays');
   }
 }

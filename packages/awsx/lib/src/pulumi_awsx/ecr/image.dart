@@ -16,6 +16,6 @@ class Image extends ComponentResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? ComponentResourceOptions(),
         ) {
-    this.imageUri = Output.createUnknown<String>();
+    this.imageUri = registerOutput<String>('imageUri');
   }
 }

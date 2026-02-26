@@ -52,21 +52,24 @@ class DiscoveryConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.actions = Output.createUnknown<
-        List<GooglePrivacyDlpV2DataProfileActionResponse>>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.errors = Output.createUnknown<List<GooglePrivacyDlpV2ErrorResponse>>();
-    this.inspectTemplates = Output.createUnknown<List<String>>();
-    this.lastRunTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.actions =
+        registerOutput<List<GooglePrivacyDlpV2DataProfileActionResponse>>(
+            'actions');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.errors =
+        registerOutput<List<GooglePrivacyDlpV2ErrorResponse>>('errors');
+    this.inspectTemplates = registerOutput<List<String>>('inspectTemplates');
+    this.lastRunTime = registerOutput<String>('lastRunTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.orgConfig =
-        Output.createUnknown<GooglePrivacyDlpV2OrgConfigResponse>();
-    this.project = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+        registerOutput<GooglePrivacyDlpV2OrgConfigResponse>('orgConfig');
+    this.project = registerOutput<String>('project');
+    this.status = registerOutput<String>('status');
     this.targets =
-        Output.createUnknown<List<GooglePrivacyDlpV2DiscoveryTargetResponse>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<GooglePrivacyDlpV2DiscoveryTargetResponse>>(
+            'targets');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

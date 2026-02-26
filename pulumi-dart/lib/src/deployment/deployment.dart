@@ -12,6 +12,7 @@ import 'package:pulumi/src/deployment/models.dart' as models;
 import 'package:pulumi/src/input.dart';
 import 'package:pulumi/src/invoke.dart' as pulumi_invoke;
 import 'package:pulumi/src/monitor.dart' as monitorpkg;
+import 'package:pulumi/src/alias.dart' as aliaspkg;
 import 'package:pulumi/src/resource/provider_resource.dart';
 import 'package:pulumi/src/resource/resource_hooks.dart';
 import 'package:pulumi/src/resource/resource_transformation.dart';
@@ -119,7 +120,6 @@ class DeploymentImpl extends Deployment
   final String _organizationName;
   final String _projectName;
   final bool _isDryRun;
-  final Map<String, Resource> _resources = {};
   final Map<String, Output<dynamic>> _outputs = {};
   final List<Exception> _swallowedExceptions = [];
   final List<Future<void>> _resourceOperations = [];
@@ -413,8 +413,7 @@ class DeploymentImpl extends Deployment
         opts.additionalSecretOutputs!.isNotEmpty) {
       request.additionalSecretOutputs.addAll(opts.additionalSecretOutputs!);
     }
-    final replacementTrigger =
-        opts.replacementTrigger ?? opts.replacementOptions;
+    final replacementTrigger = opts.effectiveReplacementTrigger;
     if (replacementTrigger != null) {
       final serializer = Serializer();
       final serialized = await serializer.serializeAsync(
@@ -444,8 +443,16 @@ class DeploymentImpl extends Deployment
       }
     }
 
-    final response = await monitor.registerResource(resource, request);
+    RegisterResourceResponse response;
+    try {
+      response = await monitor.registerResource(resource, request);
+    } catch (error) {
+      resource.failOutputs(error);
+      rethrow;
+    }
+
     resource.resolveUrn(response.urn);
+    resource.resolveOutputs(response.object);
     if (resource.isCustom) {
       (resource as CustomResource).resolveId(response.id, isKnown: !isDryRun);
     }
@@ -598,7 +605,17 @@ class DeploymentImpl extends Deployment
     String type,
     Resource? parent,
   ) {
-    return Input.fromValue('$type:$name');
+    if (alias is! aliaspkg.Alias) {
+      throw ArgumentError('Expected alias to be an Alias instance.');
+    }
+    return aliaspkg.collapseAliasToUrn(
+      alias,
+      name: name,
+      type: type,
+      parent: parent,
+      project: _projectName,
+      stack: _stackName,
+    );
   }
 
   @override

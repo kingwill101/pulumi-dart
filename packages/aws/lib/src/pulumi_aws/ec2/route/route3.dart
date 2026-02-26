@@ -385,24 +385,27 @@ class Route3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.carrierGatewayId = Output.createUnknown<String?>();
-    this.coreNetworkArn = Output.createUnknown<String?>();
-    this.destinationCidrBlock = Output.createUnknown<String?>();
-    this.destinationIpv6CidrBlock = Output.createUnknown<String?>();
-    this.destinationPrefixListId = Output.createUnknown<String?>();
-    this.egressOnlyGatewayId = Output.createUnknown<String?>();
-    this.gatewayId = Output.createUnknown<String?>();
-    this.instanceId = Output.createUnknown<String>();
-    this.instanceOwnerId = Output.createUnknown<String>();
-    this.localGatewayId = Output.createUnknown<String?>();
-    this.natGatewayId = Output.createUnknown<String?>();
-    this.networkInterfaceId = Output.createUnknown<String>();
-    this.origin = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.routeTableId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.transitGatewayId = Output.createUnknown<String?>();
-    this.vpcEndpointId = Output.createUnknown<String?>();
-    this.vpcPeeringConnectionId = Output.createUnknown<String?>();
+    this.carrierGatewayId = registerOutput<String?>('carrierGatewayId');
+    this.coreNetworkArn = registerOutput<String?>('coreNetworkArn');
+    this.destinationCidrBlock = registerOutput<String?>('destinationCidrBlock');
+    this.destinationIpv6CidrBlock =
+        registerOutput<String?>('destinationIpv6CidrBlock');
+    this.destinationPrefixListId =
+        registerOutput<String?>('destinationPrefixListId');
+    this.egressOnlyGatewayId = registerOutput<String?>('egressOnlyGatewayId');
+    this.gatewayId = registerOutput<String?>('gatewayId');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.instanceOwnerId = registerOutput<String>('instanceOwnerId');
+    this.localGatewayId = registerOutput<String?>('localGatewayId');
+    this.natGatewayId = registerOutput<String?>('natGatewayId');
+    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    this.origin = registerOutput<String>('origin');
+    this.region = registerOutput<String>('region');
+    this.routeTableId = registerOutput<String>('routeTableId');
+    this.state = registerOutput<String>('state');
+    this.transitGatewayId = registerOutput<String?>('transitGatewayId');
+    this.vpcEndpointId = registerOutput<String?>('vpcEndpointId');
+    this.vpcPeeringConnectionId =
+        registerOutput<String?>('vpcPeeringConnectionId');
   }
 }

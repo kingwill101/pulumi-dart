@@ -32,11 +32,12 @@ class OrganizationEnvironmentIamPolicy extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.auditConfigs =
-        Output.createUnknown<List<GoogleIamV1AuditConfigResponse>>();
-    this.bindings = Output.createUnknown<List<GoogleIamV1BindingResponse3>>();
-    this.environmentId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+        registerOutput<List<GoogleIamV1AuditConfigResponse>>('auditConfigs');
+    this.bindings =
+        registerOutput<List<GoogleIamV1BindingResponse3>>('bindings');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.etag = registerOutput<String>('etag');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.version = registerOutput<int>('version');
   }
 }

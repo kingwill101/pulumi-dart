@@ -64,19 +64,20 @@ class DefaultObjectAccessControl extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.domain = Output.createUnknown<String>();
-    this.email = Output.createUnknown<String>();
-    this.entity = Output.createUnknown<String>();
-    this.entityId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.generation = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.object = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.domain = registerOutput<String>('domain');
+    this.email = registerOutput<String>('email');
+    this.entity = registerOutput<String>('entity');
+    this.entityId = registerOutput<String>('entityId');
+    this.etag = registerOutput<String>('etag');
+    this.generation = registerOutput<String>('generation');
+    this.kind = registerOutput<String>('kind');
+    this.object = registerOutput<String>('object');
     this.projectTeam =
-        Output.createUnknown<DefaultObjectAccessControlProjectTeamResponse>();
-    this.role = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.userProject = Output.createUnknown<String?>();
+        registerOutput<DefaultObjectAccessControlProjectTeamResponse>(
+            'projectTeam');
+    this.role = registerOutput<String>('role');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.userProject = registerOutput<String?>('userProject');
   }
 }

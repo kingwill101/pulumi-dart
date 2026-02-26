@@ -1190,24 +1190,26 @@ class InsightsConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.appHubApplication = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.appHubApplication = registerOutput<String>('appHubApplication');
     this.artifactConfigs =
-        Output.createUnknown<List<InsightsConfigArtifactConfig>?>();
-    this.createTime = Output.createUnknown<String>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.errors = Output.createUnknown<List<InsightsConfigError>>();
-    this.insightsConfigId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.reconciling = Output.createUnknown<bool>();
+        registerOutput<List<InsightsConfigArtifactConfig>?>('artifactConfigs');
+    this.createTime = registerOutput<String>('createTime');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.errors = registerOutput<List<InsightsConfigError>>('errors');
+    this.insightsConfigId = registerOutput<String>('insightsConfigId');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.reconciling = registerOutput<bool>('reconciling');
     this.runtimeConfigs =
-        Output.createUnknown<List<InsightsConfigRuntimeConfig>>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<InsightsConfigRuntimeConfig>>('runtimeConfigs');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

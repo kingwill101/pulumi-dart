@@ -182,12 +182,13 @@ class SdkvoiceSipRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.disabled = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.disabled = registerOutput<bool?>('disabled');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
     this.targetApplications =
-        Output.createUnknown<List<SdkvoiceSipRuleTargetApplication>>();
-    this.triggerType = Output.createUnknown<String>();
-    this.triggerValue = Output.createUnknown<String>();
+        registerOutput<List<SdkvoiceSipRuleTargetApplication>>(
+            'targetApplications');
+    this.triggerType = registerOutput<String>('triggerType');
+    this.triggerValue = registerOutput<String>('triggerValue');
   }
 }

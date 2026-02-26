@@ -49,21 +49,23 @@ class Trial3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clientId = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
+    this.clientId = registerOutput<String>('clientId');
+    this.endTime = registerOutput<String>('endTime');
     this.finalMeasurement =
-        Output.createUnknown<GoogleCloudMlV1MeasurementResponse>();
-    this.infeasibleReason = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
+        registerOutput<GoogleCloudMlV1MeasurementResponse>('finalMeasurement');
+    this.infeasibleReason = registerOutput<String>('infeasibleReason');
+    this.location = registerOutput<String>('location');
     this.measurements =
-        Output.createUnknown<List<GoogleCloudMlV1MeasurementResponse>>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<List<GoogleCloudMlV1MeasurementResponse>>(
+            'measurements');
+    this.name = registerOutput<String>('name');
     this.parameters =
-        Output.createUnknown<List<GoogleCloudMlV1TrialParameterResponse>>();
-    this.project = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.studyId = Output.createUnknown<String>();
-    this.trialInfeasible = Output.createUnknown<bool>();
+        registerOutput<List<GoogleCloudMlV1TrialParameterResponse>>(
+            'parameters');
+    this.project = registerOutput<String>('project');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
+    this.studyId = registerOutput<String>('studyId');
+    this.trialInfeasible = registerOutput<bool>('trialInfeasible');
   }
 }

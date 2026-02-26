@@ -1,6 +1,6 @@
 // This is a generated file - do not edit.
 //
-// Generated from google/rpc/status.proto.
+// Generated from google/protobuf/status.proto.
 
 // @dart = 3.3
 

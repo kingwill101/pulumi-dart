@@ -959,12 +959,12 @@ class LakeIamMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<LakeIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.lake = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.condition = registerOutput<LakeIamMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.lake = registerOutput<String>('lake');
+    this.location = registerOutput<String>('location');
+    this.member = registerOutput<String>('member');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
   }
 }

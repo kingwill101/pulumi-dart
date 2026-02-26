@@ -83,29 +83,33 @@ class TransferConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authorizationCode = Output.createUnknown<String?>();
-    this.dataRefreshWindowDays = Output.createUnknown<int>();
-    this.dataSourceId = Output.createUnknown<String>();
-    this.datasetRegion = Output.createUnknown<String>();
-    this.destinationDatasetId = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool>();
-    this.displayName = Output.createUnknown<String>();
-    this.emailPreferences = Output.createUnknown<EmailPreferencesResponse>();
+    this.authorizationCode = registerOutput<String?>('authorizationCode');
+    this.dataRefreshWindowDays = registerOutput<int>('dataRefreshWindowDays');
+    this.dataSourceId = registerOutput<String>('dataSourceId');
+    this.datasetRegion = registerOutput<String>('datasetRegion');
+    this.destinationDatasetId = registerOutput<String>('destinationDatasetId');
+    this.disabled = registerOutput<bool>('disabled');
+    this.displayName = registerOutput<String>('displayName');
+    this.emailPreferences =
+        registerOutput<EmailPreferencesResponse>('emailPreferences');
     this.encryptionConfiguration =
-        Output.createUnknown<EncryptionConfigurationResponse2>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.nextRunTime = Output.createUnknown<String>();
-    this.notificationPubsubTopic = Output.createUnknown<String>();
-    this.ownerInfo = Output.createUnknown<UserInfoResponse>();
-    this.params = Output.createUnknown<Map<String, String>>();
-    this.project = Output.createUnknown<String>();
-    this.schedule = Output.createUnknown<String>();
-    this.scheduleOptions = Output.createUnknown<ScheduleOptionsResponse>();
-    this.serviceAccountName = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.userId = Output.createUnknown<String>();
-    this.versionInfo = Output.createUnknown<String?>();
+        registerOutput<EncryptionConfigurationResponse2>(
+            'encryptionConfiguration');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.nextRunTime = registerOutput<String>('nextRunTime');
+    this.notificationPubsubTopic =
+        registerOutput<String>('notificationPubsubTopic');
+    this.ownerInfo = registerOutput<UserInfoResponse>('ownerInfo');
+    this.params = registerOutput<Map<String, String>>('params');
+    this.project = registerOutput<String>('project');
+    this.schedule = registerOutput<String>('schedule');
+    this.scheduleOptions =
+        registerOutput<ScheduleOptionsResponse>('scheduleOptions');
+    this.serviceAccountName = registerOutput<String?>('serviceAccountName');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.userId = registerOutput<String>('userId');
+    this.versionInfo = registerOutput<String?>('versionInfo');
   }
 }

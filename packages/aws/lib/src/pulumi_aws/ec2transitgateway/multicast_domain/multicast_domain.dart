@@ -902,14 +902,15 @@ class MulticastDomain extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.autoAcceptSharedAssociations = Output.createUnknown<String?>();
-    this.igmpv2Support = Output.createUnknown<String?>();
-    this.ownerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.staticSourcesSupport = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.transitGatewayId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.autoAcceptSharedAssociations =
+        registerOutput<String?>('autoAcceptSharedAssociations');
+    this.igmpv2Support = registerOutput<String?>('igmpv2Support');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.region = registerOutput<String>('region');
+    this.staticSourcesSupport = registerOutput<String?>('staticSourcesSupport');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.transitGatewayId = registerOutput<String>('transitGatewayId');
   }
 }

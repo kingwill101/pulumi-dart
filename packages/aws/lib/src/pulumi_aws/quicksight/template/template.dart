@@ -634,20 +634,20 @@ class Template extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.awsAccountId = Output.createUnknown<String>();
-    this.createdTime = Output.createUnknown<String>();
-    this.lastUpdatedTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.permissions = Output.createUnknown<List<TemplatePermission>?>();
-    this.region = Output.createUnknown<String>();
-    this.sourceEntity = Output.createUnknown<TemplateSourceEntity?>();
-    this.sourceEntityArn = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.templateId = Output.createUnknown<String>();
-    this.versionDescription = Output.createUnknown<String>();
-    this.versionNumber = Output.createUnknown<int>();
+    this.arn = registerOutput<String>('arn');
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.createdTime = registerOutput<String>('createdTime');
+    this.lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    this.name = registerOutput<String>('name');
+    this.permissions = registerOutput<List<TemplatePermission>?>('permissions');
+    this.region = registerOutput<String>('region');
+    this.sourceEntity = registerOutput<TemplateSourceEntity?>('sourceEntity');
+    this.sourceEntityArn = registerOutput<String>('sourceEntityArn');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.templateId = registerOutput<String>('templateId');
+    this.versionDescription = registerOutput<String>('versionDescription');
+    this.versionNumber = registerOutput<int>('versionNumber');
   }
 }

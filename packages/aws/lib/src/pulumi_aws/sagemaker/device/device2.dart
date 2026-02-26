@@ -147,10 +147,10 @@ class Device2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentVersion = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.device = Output.createUnknown<DeviceDevice>();
-    this.deviceFleetName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.agentVersion = registerOutput<String>('agentVersion');
+    this.arn = registerOutput<String>('arn');
+    this.device = registerOutput<DeviceDevice>('device');
+    this.deviceFleetName = registerOutput<String>('deviceFleetName');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -36,15 +36,15 @@ class ResponsePolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clientOperationId = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String>();
+    this.clientOperationId = registerOutput<String?>('clientOperationId');
+    this.description = registerOutput<String>('description');
     this.gkeClusters =
-        Output.createUnknown<List<ResponsePolicyGKEClusterResponse2>>();
-    this.kind = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<ResponsePolicyGKEClusterResponse2>>('gkeClusters');
+    this.kind = registerOutput<String>('kind');
+    this.labels = registerOutput<Map<String, String>>('labels');
     this.networks =
-        Output.createUnknown<List<ResponsePolicyNetworkResponse2>>();
-    this.project = Output.createUnknown<String>();
-    this.responsePolicyName = Output.createUnknown<String>();
+        registerOutput<List<ResponsePolicyNetworkResponse2>>('networks');
+    this.project = registerOutput<String>('project');
+    this.responsePolicyName = registerOutput<String>('responsePolicyName');
   }
 }

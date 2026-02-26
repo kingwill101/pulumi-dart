@@ -2019,10 +2019,10 @@ class BucketReplicationConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.rules = Output.createUnknown<List<BucketReplicationConfigRule>>();
-    this.token = Output.createUnknown<String?>();
+    this.bucket = registerOutput<String>('bucket');
+    this.region = registerOutput<String>('region');
+    this.role = registerOutput<String>('role');
+    this.rules = registerOutput<List<BucketReplicationConfigRule>>('rules');
+    this.token = registerOutput<String?>('token');
   }
 }

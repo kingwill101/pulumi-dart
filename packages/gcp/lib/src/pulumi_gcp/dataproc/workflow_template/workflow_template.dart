@@ -501,20 +501,22 @@ class WorkflowTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.dagTimeout = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.createTime = registerOutput<String>('createTime');
+    this.dagTimeout = registerOutput<String?>('dagTimeout');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.encryptionConfig =
-        Output.createUnknown<WorkflowTemplateEncryptionConfig?>();
-    this.jobs = Output.createUnknown<List<WorkflowTemplateJob>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parameters = Output.createUnknown<List<WorkflowTemplateParameter>?>();
-    this.placement = Output.createUnknown<WorkflowTemplatePlacement>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.updateTime = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+        registerOutput<WorkflowTemplateEncryptionConfig?>('encryptionConfig');
+    this.jobs = registerOutput<List<WorkflowTemplateJob>>('jobs');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.parameters =
+        registerOutput<List<WorkflowTemplateParameter>?>('parameters');
+    this.placement = registerOutput<WorkflowTemplatePlacement>('placement');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.version = registerOutput<int>('version');
   }
 }

@@ -209,16 +209,19 @@ class InterconnectAttachmentGroup extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.attachments =
-        Output.createUnknown<List<InterconnectAttachmentGroupAttachment>?>();
+        registerOutput<List<InterconnectAttachmentGroupAttachment>?>(
+            'attachments');
     this.configureds =
-        Output.createUnknown<List<InterconnectAttachmentGroupConfigured>>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.intent = Output.createUnknown<InterconnectAttachmentGroupIntent>();
-    this.interconnectGroup = Output.createUnknown<String?>();
-    this.logicalStructures = Output.createUnknown<
-        List<InterconnectAttachmentGroupLogicalStructure>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<List<InterconnectAttachmentGroupConfigured>>(
+            'configureds');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.intent = registerOutput<InterconnectAttachmentGroupIntent>('intent');
+    this.interconnectGroup = registerOutput<String?>('interconnectGroup');
+    this.logicalStructures =
+        registerOutput<List<InterconnectAttachmentGroupLogicalStructure>>(
+            'logicalStructures');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

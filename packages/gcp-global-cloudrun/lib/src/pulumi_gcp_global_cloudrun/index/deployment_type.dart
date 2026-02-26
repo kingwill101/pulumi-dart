@@ -15,6 +15,6 @@ class DeploymentType extends ComponentResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? ComponentResourceOptions(),
         ) {
-    this.ipAddress = Output.createUnknown<String>();
+    this.ipAddress = registerOutput<String>('ipAddress');
   }
 }

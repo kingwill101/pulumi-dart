@@ -3250,57 +3250,68 @@ class FunctionType3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.architectures = Output.createUnknown<List<String>>();
-    this.arn = Output.createUnknown<String>();
+    this.architectures = registerOutput<List<String>>('architectures');
+    this.arn = registerOutput<String>('arn');
     this.capacityProviderConfig =
-        Output.createUnknown<FunctionCapacityProviderConfig?>();
-    this.code = Output.createUnknown<dynamic>();
-    this.codeSha256 = Output.createUnknown<String>();
-    this.codeSigningConfigArn = Output.createUnknown<String?>();
-    this.deadLetterConfig = Output.createUnknown<FunctionDeadLetterConfig?>();
-    this.description = Output.createUnknown<String?>();
-    this.durableConfig = Output.createUnknown<FunctionDurableConfig?>();
-    this.environment = Output.createUnknown<FunctionEnvironment?>();
-    this.ephemeralStorage = Output.createUnknown<FunctionEphemeralStorage>();
-    this.fileSystemConfig = Output.createUnknown<FunctionFileSystemConfig?>();
-    this.handler = Output.createUnknown<String?>();
-    this.imageConfig = Output.createUnknown<FunctionImageConfig?>();
-    this.imageUri = Output.createUnknown<String?>();
-    this.invokeArn = Output.createUnknown<String>();
-    this.kmsKeyArn = Output.createUnknown<String?>();
-    this.lastModified = Output.createUnknown<String>();
-    this.layers = Output.createUnknown<List<String>?>();
-    this.loggingConfig = Output.createUnknown<FunctionLoggingConfig>();
-    this.memorySize = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.packageType = Output.createUnknown<String?>();
-    this.publish = Output.createUnknown<bool?>();
-    this.publishTo = Output.createUnknown<String?>();
-    this.qualifiedArn = Output.createUnknown<String>();
-    this.qualifiedInvokeArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.replaceSecurityGroupsOnDestroy = Output.createUnknown<bool?>();
-    this.replacementSecurityGroupIds = Output.createUnknown<List<String>?>();
-    this.reservedConcurrentExecutions = Output.createUnknown<int?>();
-    this.responseStreamingInvokeArn = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.runtime = Output.createUnknown<String?>();
-    this.s3Bucket = Output.createUnknown<String?>();
-    this.s3Key = Output.createUnknown<String?>();
-    this.s3ObjectVersion = Output.createUnknown<String?>();
-    this.signingJobArn = Output.createUnknown<String>();
-    this.signingProfileVersionArn = Output.createUnknown<String>();
-    this.skipDestroy = Output.createUnknown<bool?>();
-    this.snapStart = Output.createUnknown<FunctionSnapStart?>();
-    this.sourceCodeHash = Output.createUnknown<String>();
-    this.sourceCodeSize = Output.createUnknown<int>();
-    this.sourceKmsKeyArn = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tenancyConfig = Output.createUnknown<FunctionTenancyConfig?>();
-    this.timeout = Output.createUnknown<int?>();
-    this.tracingConfig = Output.createUnknown<FunctionTracingConfig>();
-    this.version = Output.createUnknown<String>();
-    this.vpcConfig = Output.createUnknown<FunctionVpcConfig?>();
+        registerOutput<FunctionCapacityProviderConfig?>(
+            'capacityProviderConfig');
+    this.code = registerOutput<dynamic>('code');
+    this.codeSha256 = registerOutput<String>('codeSha256');
+    this.codeSigningConfigArn = registerOutput<String?>('codeSigningConfigArn');
+    this.deadLetterConfig =
+        registerOutput<FunctionDeadLetterConfig?>('deadLetterConfig');
+    this.description = registerOutput<String?>('description');
+    this.durableConfig =
+        registerOutput<FunctionDurableConfig?>('durableConfig');
+    this.environment = registerOutput<FunctionEnvironment?>('environment');
+    this.ephemeralStorage =
+        registerOutput<FunctionEphemeralStorage>('ephemeralStorage');
+    this.fileSystemConfig =
+        registerOutput<FunctionFileSystemConfig?>('fileSystemConfig');
+    this.handler = registerOutput<String?>('handler');
+    this.imageConfig = registerOutput<FunctionImageConfig?>('imageConfig');
+    this.imageUri = registerOutput<String?>('imageUri');
+    this.invokeArn = registerOutput<String>('invokeArn');
+    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.lastModified = registerOutput<String>('lastModified');
+    this.layers = registerOutput<List<String>?>('layers');
+    this.loggingConfig = registerOutput<FunctionLoggingConfig>('loggingConfig');
+    this.memorySize = registerOutput<int?>('memorySize');
+    this.name = registerOutput<String>('name');
+    this.packageType = registerOutput<String?>('packageType');
+    this.publish = registerOutput<bool?>('publish');
+    this.publishTo = registerOutput<String?>('publishTo');
+    this.qualifiedArn = registerOutput<String>('qualifiedArn');
+    this.qualifiedInvokeArn = registerOutput<String>('qualifiedInvokeArn');
+    this.region = registerOutput<String>('region');
+    this.replaceSecurityGroupsOnDestroy =
+        registerOutput<bool?>('replaceSecurityGroupsOnDestroy');
+    this.replacementSecurityGroupIds =
+        registerOutput<List<String>?>('replacementSecurityGroupIds');
+    this.reservedConcurrentExecutions =
+        registerOutput<int?>('reservedConcurrentExecutions');
+    this.responseStreamingInvokeArn =
+        registerOutput<String>('responseStreamingInvokeArn');
+    this.role = registerOutput<String>('role');
+    this.runtime = registerOutput<String?>('runtime');
+    this.s3Bucket = registerOutput<String?>('s3Bucket');
+    this.s3Key = registerOutput<String?>('s3Key');
+    this.s3ObjectVersion = registerOutput<String?>('s3ObjectVersion');
+    this.signingJobArn = registerOutput<String>('signingJobArn');
+    this.signingProfileVersionArn =
+        registerOutput<String>('signingProfileVersionArn');
+    this.skipDestroy = registerOutput<bool?>('skipDestroy');
+    this.snapStart = registerOutput<FunctionSnapStart?>('snapStart');
+    this.sourceCodeHash = registerOutput<String>('sourceCodeHash');
+    this.sourceCodeSize = registerOutput<int>('sourceCodeSize');
+    this.sourceKmsKeyArn = registerOutput<String?>('sourceKmsKeyArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tenancyConfig =
+        registerOutput<FunctionTenancyConfig?>('tenancyConfig');
+    this.timeout = registerOutput<int?>('timeout');
+    this.tracingConfig = registerOutput<FunctionTracingConfig>('tracingConfig');
+    this.version = registerOutput<String>('version');
+    this.vpcConfig = registerOutput<FunctionVpcConfig?>('vpcConfig');
   }
 }

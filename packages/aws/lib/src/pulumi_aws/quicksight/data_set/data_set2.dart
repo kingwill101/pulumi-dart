@@ -1478,31 +1478,39 @@ class DataSet2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.awsAccountId = Output.createUnknown<String>();
-    this.columnGroups = Output.createUnknown<List<DataSetColumnGroup>?>();
+    this.arn = registerOutput<String>('arn');
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.columnGroups =
+        registerOutput<List<DataSetColumnGroup>?>('columnGroups');
     this.columnLevelPermissionRules =
-        Output.createUnknown<List<DataSetColumnLevelPermissionRule>?>();
-    this.dataSetId = Output.createUnknown<String>();
+        registerOutput<List<DataSetColumnLevelPermissionRule>?>(
+            'columnLevelPermissionRules');
+    this.dataSetId = registerOutput<String>('dataSetId');
     this.dataSetUsageConfiguration =
-        Output.createUnknown<DataSetDataSetUsageConfiguration>();
-    this.fieldFolders = Output.createUnknown<List<DataSetFieldFolder>?>();
-    this.importMode = Output.createUnknown<String>();
+        registerOutput<DataSetDataSetUsageConfiguration>(
+            'dataSetUsageConfiguration');
+    this.fieldFolders =
+        registerOutput<List<DataSetFieldFolder>?>('fieldFolders');
+    this.importMode = registerOutput<String>('importMode');
     this.logicalTableMaps =
-        Output.createUnknown<List<DataSetLogicalTableMap>>();
-    this.name = Output.createUnknown<String>();
-    this.outputColumns = Output.createUnknown<List<DataSetOutputColumn>>();
-    this.permissions = Output.createUnknown<List<DataSetPermission>?>();
+        registerOutput<List<DataSetLogicalTableMap>>('logicalTableMaps');
+    this.name = registerOutput<String>('name');
+    this.outputColumns =
+        registerOutput<List<DataSetOutputColumn>>('outputColumns');
+    this.permissions = registerOutput<List<DataSetPermission>?>('permissions');
     this.physicalTableMaps =
-        Output.createUnknown<List<DataSetPhysicalTableMap>?>();
-    this.refreshProperties = Output.createUnknown<DataSetRefreshProperties?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<DataSetPhysicalTableMap>?>('physicalTableMaps');
+    this.refreshProperties =
+        registerOutput<DataSetRefreshProperties?>('refreshProperties');
+    this.region = registerOutput<String>('region');
     this.rowLevelPermissionDataSet =
-        Output.createUnknown<DataSetRowLevelPermissionDataSet?>();
+        registerOutput<DataSetRowLevelPermissionDataSet?>(
+            'rowLevelPermissionDataSet');
     this.rowLevelPermissionTagConfiguration =
-        Output.createUnknown<DataSetRowLevelPermissionTagConfiguration?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.useAs = Output.createUnknown<String?>();
+        registerOutput<DataSetRowLevelPermissionTagConfiguration?>(
+            'rowLevelPermissionTagConfiguration');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.useAs = registerOutput<String?>('useAs');
   }
 }

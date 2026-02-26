@@ -244,16 +244,17 @@ class OutboundConnection extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceptConnection = Output.createUnknown<bool?>();
-    this.connectionAlias = Output.createUnknown<String>();
-    this.connectionMode = Output.createUnknown<String>();
+    this.acceptConnection = registerOutput<bool?>('acceptConnection');
+    this.connectionAlias = registerOutput<String>('connectionAlias');
+    this.connectionMode = registerOutput<String>('connectionMode');
     this.connectionProperties =
-        Output.createUnknown<OutboundConnectionConnectionProperties>();
-    this.connectionStatus = Output.createUnknown<String>();
+        registerOutput<OutboundConnectionConnectionProperties>(
+            'connectionProperties');
+    this.connectionStatus = registerOutput<String>('connectionStatus');
     this.localDomainInfo =
-        Output.createUnknown<OutboundConnectionLocalDomainInfo>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<OutboundConnectionLocalDomainInfo>('localDomainInfo');
+    this.region = registerOutput<String>('region');
     this.remoteDomainInfo =
-        Output.createUnknown<OutboundConnectionRemoteDomainInfo>();
+        registerOutput<OutboundConnectionRemoteDomainInfo>('remoteDomainInfo');
   }
 }

@@ -64,22 +64,24 @@ class Case extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.classification = Output.createUnknown<CaseClassificationResponse>();
-    this.contactEmail = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.creator = Output.createUnknown<ActorResponse>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.escalated = Output.createUnknown<bool>();
-    this.languageCode = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.priority = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.subscriberEmailAddresses = Output.createUnknown<List<String>>();
-    this.testCase = Output.createUnknown<bool>();
-    this.timeZone = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.v2Id = Output.createUnknown<String>();
-    this.v2Id1 = Output.createUnknown<String>();
+    this.classification =
+        registerOutput<CaseClassificationResponse>('classification');
+    this.contactEmail = registerOutput<String>('contactEmail');
+    this.createTime = registerOutput<String>('createTime');
+    this.creator = registerOutput<ActorResponse>('creator');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.escalated = registerOutput<bool>('escalated');
+    this.languageCode = registerOutput<String>('languageCode');
+    this.name = registerOutput<String>('name');
+    this.priority = registerOutput<String>('priority');
+    this.state = registerOutput<String>('state');
+    this.subscriberEmailAddresses =
+        registerOutput<List<String>>('subscriberEmailAddresses');
+    this.testCase = registerOutput<bool>('testCase');
+    this.timeZone = registerOutput<String>('timeZone');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.v2Id = registerOutput<String>('v2Id');
+    this.v2Id1 = registerOutput<String>('v2Id1');
   }
 }

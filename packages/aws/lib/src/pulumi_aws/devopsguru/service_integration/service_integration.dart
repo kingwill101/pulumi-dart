@@ -358,10 +358,12 @@ class ServiceIntegration extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.kmsServerSideEncryption =
-        Output.createUnknown<ServiceIntegrationKmsServerSideEncryption>();
+        registerOutput<ServiceIntegrationKmsServerSideEncryption>(
+            'kmsServerSideEncryption');
     this.logsAnomalyDetection =
-        Output.createUnknown<ServiceIntegrationLogsAnomalyDetection>();
-    this.opsCenter = Output.createUnknown<ServiceIntegrationOpsCenter>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<ServiceIntegrationLogsAnomalyDetection>(
+            'logsAnomalyDetection');
+    this.opsCenter = registerOutput<ServiceIntegrationOpsCenter>('opsCenter');
+    this.region = registerOutput<String>('region');
   }
 }

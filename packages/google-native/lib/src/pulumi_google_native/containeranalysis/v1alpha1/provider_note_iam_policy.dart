@@ -27,10 +27,10 @@ class ProviderNoteIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bindings = Output.createUnknown<List<BindingResponse37>>();
-    this.etag = Output.createUnknown<String>();
-    this.noteId = Output.createUnknown<String>();
-    this.providerId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.bindings = registerOutput<List<BindingResponse37>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.noteId = registerOutput<String>('noteId');
+    this.providerId = registerOutput<String>('providerId');
+    this.version = registerOutput<int>('version');
   }
 }

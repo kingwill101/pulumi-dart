@@ -46,17 +46,17 @@ class MetadataImport extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.databaseDump = Output.createUnknown<DatabaseDumpResponse>();
-    this.description = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.metadataImportId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.serviceId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.databaseDump = registerOutput<DatabaseDumpResponse>('databaseDump');
+    this.description = registerOutput<String>('description');
+    this.endTime = registerOutput<String>('endTime');
+    this.location = registerOutput<String>('location');
+    this.metadataImportId = registerOutput<String>('metadataImportId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.serviceId = registerOutput<String>('serviceId');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

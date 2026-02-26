@@ -182,11 +182,12 @@ class TrustStoreRevocation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.revocationId = Output.createUnknown<int>();
-    this.revocationsS3Bucket = Output.createUnknown<String>();
-    this.revocationsS3Key = Output.createUnknown<String>();
-    this.revocationsS3ObjectVersion = Output.createUnknown<String?>();
-    this.trustStoreArn = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.revocationId = registerOutput<int>('revocationId');
+    this.revocationsS3Bucket = registerOutput<String>('revocationsS3Bucket');
+    this.revocationsS3Key = registerOutput<String>('revocationsS3Key');
+    this.revocationsS3ObjectVersion =
+        registerOutput<String?>('revocationsS3ObjectVersion');
+    this.trustStoreArn = registerOutput<String>('trustStoreArn');
   }
 }

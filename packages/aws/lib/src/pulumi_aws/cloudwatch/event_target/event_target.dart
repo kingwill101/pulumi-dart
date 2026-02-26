@@ -3895,30 +3895,34 @@ class EventTarget extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appsyncTarget = Output.createUnknown<EventTargetAppsyncTarget?>();
-    this.arn = Output.createUnknown<String>();
-    this.batchTarget = Output.createUnknown<EventTargetBatchTarget?>();
+    this.appsyncTarget =
+        registerOutput<EventTargetAppsyncTarget?>('appsyncTarget');
+    this.arn = registerOutput<String>('arn');
+    this.batchTarget = registerOutput<EventTargetBatchTarget?>('batchTarget');
     this.deadLetterConfig =
-        Output.createUnknown<EventTargetDeadLetterConfig?>();
-    this.ecsTarget = Output.createUnknown<EventTargetEcsTarget?>();
-    this.eventBusName = Output.createUnknown<String?>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.httpTarget = Output.createUnknown<EventTargetHttpTarget?>();
-    this.input = Output.createUnknown<String?>();
-    this.inputPath = Output.createUnknown<String?>();
+        registerOutput<EventTargetDeadLetterConfig?>('deadLetterConfig');
+    this.ecsTarget = registerOutput<EventTargetEcsTarget?>('ecsTarget');
+    this.eventBusName = registerOutput<String?>('eventBusName');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.httpTarget = registerOutput<EventTargetHttpTarget?>('httpTarget');
+    this.input = registerOutput<String?>('input');
+    this.inputPath = registerOutput<String?>('inputPath');
     this.inputTransformer =
-        Output.createUnknown<EventTargetInputTransformer?>();
-    this.kinesisTarget = Output.createUnknown<EventTargetKinesisTarget?>();
-    this.redshiftTarget = Output.createUnknown<EventTargetRedshiftTarget?>();
-    this.region = Output.createUnknown<String>();
-    this.retryPolicy = Output.createUnknown<EventTargetRetryPolicy?>();
-    this.roleArn = Output.createUnknown<String?>();
-    this.rule = Output.createUnknown<String>();
+        registerOutput<EventTargetInputTransformer?>('inputTransformer');
+    this.kinesisTarget =
+        registerOutput<EventTargetKinesisTarget?>('kinesisTarget');
+    this.redshiftTarget =
+        registerOutput<EventTargetRedshiftTarget?>('redshiftTarget');
+    this.region = registerOutput<String>('region');
+    this.retryPolicy = registerOutput<EventTargetRetryPolicy?>('retryPolicy');
+    this.roleArn = registerOutput<String?>('roleArn');
+    this.rule = registerOutput<String>('rule');
     this.runCommandTargets =
-        Output.createUnknown<List<EventTargetRunCommandTarget>?>();
+        registerOutput<List<EventTargetRunCommandTarget>?>('runCommandTargets');
     this.sagemakerPipelineTarget =
-        Output.createUnknown<EventTargetSagemakerPipelineTarget?>();
-    this.sqsTarget = Output.createUnknown<EventTargetSqsTarget?>();
-    this.targetId = Output.createUnknown<String>();
+        registerOutput<EventTargetSagemakerPipelineTarget?>(
+            'sagemakerPipelineTarget');
+    this.sqsTarget = registerOutput<EventTargetSqsTarget?>('sqsTarget');
+    this.targetId = registerOutput<String>('targetId');
   }
 }

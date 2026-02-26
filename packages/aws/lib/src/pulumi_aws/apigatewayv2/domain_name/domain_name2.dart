@@ -379,16 +379,19 @@ class DomainName2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiMappingSelectionExpression = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.domainName = Output.createUnknown<String>();
+    this.apiMappingSelectionExpression =
+        registerOutput<String>('apiMappingSelectionExpression');
+    this.arn = registerOutput<String>('arn');
+    this.domainName = registerOutput<String>('domainName');
     this.domainNameConfiguration =
-        Output.createUnknown<DomainNameDomainNameConfiguration>();
+        registerOutput<DomainNameDomainNameConfiguration>(
+            'domainNameConfiguration');
     this.mutualTlsAuthentication =
-        Output.createUnknown<DomainNameMutualTlsAuthentication2?>();
-    this.region = Output.createUnknown<String>();
-    this.routingMode = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<DomainNameMutualTlsAuthentication2?>(
+            'mutualTlsAuthentication');
+    this.region = registerOutput<String>('region');
+    this.routingMode = registerOutput<String>('routingMode');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

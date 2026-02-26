@@ -267,22 +267,22 @@ class DocumentClassifier extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.dataAccessRoleArn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.dataAccessRoleArn = registerOutput<String>('dataAccessRoleArn');
     this.inputDataConfig =
-        Output.createUnknown<DocumentClassifierInputDataConfig>();
-    this.languageCode = Output.createUnknown<String>();
-    this.mode = Output.createUnknown<String?>();
-    this.modelKmsKeyId = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<DocumentClassifierInputDataConfig>('inputDataConfig');
+    this.languageCode = registerOutput<String>('languageCode');
+    this.mode = registerOutput<String?>('mode');
+    this.modelKmsKeyId = registerOutput<String?>('modelKmsKeyId');
+    this.name = registerOutput<String>('name');
     this.outputDataConfig =
-        Output.createUnknown<DocumentClassifierOutputDataConfig>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.versionName = Output.createUnknown<String>();
-    this.versionNamePrefix = Output.createUnknown<String>();
-    this.volumeKmsKeyId = Output.createUnknown<String?>();
-    this.vpcConfig = Output.createUnknown<DocumentClassifierVpcConfig?>();
+        registerOutput<DocumentClassifierOutputDataConfig>('outputDataConfig');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.versionName = registerOutput<String>('versionName');
+    this.versionNamePrefix = registerOutput<String>('versionNamePrefix');
+    this.volumeKmsKeyId = registerOutput<String?>('volumeKmsKeyId');
+    this.vpcConfig = registerOutput<DocumentClassifierVpcConfig?>('vpcConfig');
   }
 }

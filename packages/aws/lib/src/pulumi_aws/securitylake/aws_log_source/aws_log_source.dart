@@ -175,7 +175,7 @@ class AwsLogSource extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.source = Output.createUnknown<AwsLogSourceSource>();
+    this.region = registerOutput<String>('region');
+    this.source = registerOutput<AwsLogSourceSource>('source');
   }
 }

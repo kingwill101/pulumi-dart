@@ -670,38 +670,48 @@ class WindowsFileSystem extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activeDirectoryId = Output.createUnknown<String?>();
-    this.aliases = Output.createUnknown<List<String>?>();
-    this.arn = Output.createUnknown<String>();
+    this.activeDirectoryId = registerOutput<String?>('activeDirectoryId');
+    this.aliases = registerOutput<List<String>?>('aliases');
+    this.arn = registerOutput<String>('arn');
     this.auditLogConfiguration =
-        Output.createUnknown<WindowsFileSystemAuditLogConfiguration>();
-    this.automaticBackupRetentionDays = Output.createUnknown<int?>();
-    this.backupId = Output.createUnknown<String?>();
-    this.copyTagsToBackups = Output.createUnknown<bool?>();
-    this.dailyAutomaticBackupStartTime = Output.createUnknown<String>();
-    this.deploymentType = Output.createUnknown<String?>();
+        registerOutput<WindowsFileSystemAuditLogConfiguration>(
+            'auditLogConfiguration');
+    this.automaticBackupRetentionDays =
+        registerOutput<int?>('automaticBackupRetentionDays');
+    this.backupId = registerOutput<String?>('backupId');
+    this.copyTagsToBackups = registerOutput<bool?>('copyTagsToBackups');
+    this.dailyAutomaticBackupStartTime =
+        registerOutput<String>('dailyAutomaticBackupStartTime');
+    this.deploymentType = registerOutput<String?>('deploymentType');
     this.diskIopsConfiguration =
-        Output.createUnknown<WindowsFileSystemDiskIopsConfiguration>();
-    this.dnsName = Output.createUnknown<String>();
-    this.finalBackupTags = Output.createUnknown<Map<String, String>?>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.networkInterfaceIds = Output.createUnknown<List<String>>();
-    this.ownerId = Output.createUnknown<String>();
-    this.preferredFileServerIp = Output.createUnknown<String>();
-    this.preferredSubnetId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.remoteAdministrationEndpoint = Output.createUnknown<String>();
-    this.securityGroupIds = Output.createUnknown<List<String>?>();
+        registerOutput<WindowsFileSystemDiskIopsConfiguration>(
+            'diskIopsConfiguration');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.finalBackupTags =
+        registerOutput<Map<String, String>?>('finalBackupTags');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.networkInterfaceIds =
+        registerOutput<List<String>>('networkInterfaceIds');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.preferredFileServerIp =
+        registerOutput<String>('preferredFileServerIp');
+    this.preferredSubnetId = registerOutput<String>('preferredSubnetId');
+    this.region = registerOutput<String>('region');
+    this.remoteAdministrationEndpoint =
+        registerOutput<String>('remoteAdministrationEndpoint');
+    this.securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
     this.selfManagedActiveDirectory =
-        Output.createUnknown<WindowsFileSystemSelfManagedActiveDirectory?>();
-    this.skipFinalBackup = Output.createUnknown<bool?>();
-    this.storageCapacity = Output.createUnknown<int>();
-    this.storageType = Output.createUnknown<String?>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.throughputCapacity = Output.createUnknown<int>();
-    this.vpcId = Output.createUnknown<String>();
-    this.weeklyMaintenanceStartTime = Output.createUnknown<String>();
+        registerOutput<WindowsFileSystemSelfManagedActiveDirectory?>(
+            'selfManagedActiveDirectory');
+    this.skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
+    this.storageCapacity = registerOutput<int>('storageCapacity');
+    this.storageType = registerOutput<String?>('storageType');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.throughputCapacity = registerOutput<int>('throughputCapacity');
+    this.vpcId = registerOutput<String>('vpcId');
+    this.weeklyMaintenanceStartTime =
+        registerOutput<String>('weeklyMaintenanceStartTime');
   }
 }

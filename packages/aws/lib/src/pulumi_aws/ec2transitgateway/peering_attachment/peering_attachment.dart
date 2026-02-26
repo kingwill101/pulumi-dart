@@ -259,15 +259,15 @@ class PeeringAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.options = Output.createUnknown<PeeringAttachmentOptions?>();
-    this.peerAccountId = Output.createUnknown<String>();
-    this.peerRegion = Output.createUnknown<String>();
-    this.peerTransitGatewayId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.transitGatewayId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.options = registerOutput<PeeringAttachmentOptions?>('options');
+    this.peerAccountId = registerOutput<String>('peerAccountId');
+    this.peerRegion = registerOutput<String>('peerRegion');
+    this.peerTransitGatewayId = registerOutput<String>('peerTransitGatewayId');
+    this.region = registerOutput<String>('region');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.transitGatewayId = registerOutput<String>('transitGatewayId');
   }
 }

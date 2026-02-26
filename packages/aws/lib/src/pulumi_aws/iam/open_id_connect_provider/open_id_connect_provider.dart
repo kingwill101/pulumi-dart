@@ -264,11 +264,11 @@ class OpenIdConnectProvider extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.clientIdLists = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.thumbprintLists = Output.createUnknown<List<String>>();
-    this.url = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.clientIdLists = registerOutput<List<String>>('clientIdLists');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.thumbprintLists = registerOutput<List<String>>('thumbprintLists');
+    this.url = registerOutput<String>('url');
   }
 }

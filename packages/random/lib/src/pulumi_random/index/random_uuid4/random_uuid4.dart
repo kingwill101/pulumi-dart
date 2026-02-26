@@ -157,7 +157,7 @@ class RandomUuid4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.keepers = Output.createUnknown<Map<String, String>?>();
-    this.result = Output.createUnknown<String>();
+    this.keepers = registerOutput<Map<String, String>?>('keepers');
+    this.result = registerOutput<String>('result');
   }
 }

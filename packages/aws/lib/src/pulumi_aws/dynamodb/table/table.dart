@@ -2052,39 +2052,46 @@ class Table extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.attributes = Output.createUnknown<List<TableAttribute>>();
-    this.billingMode = Output.createUnknown<String?>();
-    this.deletionProtectionEnabled = Output.createUnknown<bool?>();
+    this.arn = registerOutput<String>('arn');
+    this.attributes = registerOutput<List<TableAttribute>>('attributes');
+    this.billingMode = registerOutput<String?>('billingMode');
+    this.deletionProtectionEnabled =
+        registerOutput<bool?>('deletionProtectionEnabled');
     this.globalSecondaryIndexes =
-        Output.createUnknown<List<TableGlobalSecondaryIndex>>();
-    this.globalTableWitness = Output.createUnknown<TableGlobalTableWitness>();
-    this.hashKey = Output.createUnknown<String>();
-    this.importTable = Output.createUnknown<TableImportTable?>();
+        registerOutput<List<TableGlobalSecondaryIndex>>(
+            'globalSecondaryIndexes');
+    this.globalTableWitness =
+        registerOutput<TableGlobalTableWitness>('globalTableWitness');
+    this.hashKey = registerOutput<String>('hashKey');
+    this.importTable = registerOutput<TableImportTable?>('importTable');
     this.localSecondaryIndexes =
-        Output.createUnknown<List<TableLocalSecondaryIndex>?>();
-    this.name = Output.createUnknown<String>();
-    this.onDemandThroughput = Output.createUnknown<TableOnDemandThroughput?>();
-    this.pointInTimeRecovery = Output.createUnknown<TablePointInTimeRecovery>();
-    this.rangeKey = Output.createUnknown<String?>();
-    this.readCapacity = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.replicas = Output.createUnknown<List<TableReplica>?>();
-    this.restoreDateTime = Output.createUnknown<String?>();
-    this.restoreSourceName = Output.createUnknown<String?>();
-    this.restoreSourceTableArn = Output.createUnknown<String?>();
-    this.restoreToLatestTime = Output.createUnknown<bool?>();
+        registerOutput<List<TableLocalSecondaryIndex>?>(
+            'localSecondaryIndexes');
+    this.name = registerOutput<String>('name');
+    this.onDemandThroughput =
+        registerOutput<TableOnDemandThroughput?>('onDemandThroughput');
+    this.pointInTimeRecovery =
+        registerOutput<TablePointInTimeRecovery>('pointInTimeRecovery');
+    this.rangeKey = registerOutput<String?>('rangeKey');
+    this.readCapacity = registerOutput<int>('readCapacity');
+    this.region = registerOutput<String>('region');
+    this.replicas = registerOutput<List<TableReplica>?>('replicas');
+    this.restoreDateTime = registerOutput<String?>('restoreDateTime');
+    this.restoreSourceName = registerOutput<String?>('restoreSourceName');
+    this.restoreSourceTableArn =
+        registerOutput<String?>('restoreSourceTableArn');
+    this.restoreToLatestTime = registerOutput<bool?>('restoreToLatestTime');
     this.serverSideEncryption =
-        Output.createUnknown<TableServerSideEncryption>();
-    this.streamArn = Output.createUnknown<String>();
-    this.streamEnabled = Output.createUnknown<bool?>();
-    this.streamLabel = Output.createUnknown<String>();
-    this.streamViewType = Output.createUnknown<String>();
-    this.tableClass = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.ttl = Output.createUnknown<TableTtl>();
-    this.warmThroughput = Output.createUnknown<TableWarmThroughput>();
-    this.writeCapacity = Output.createUnknown<int>();
+        registerOutput<TableServerSideEncryption>('serverSideEncryption');
+    this.streamArn = registerOutput<String>('streamArn');
+    this.streamEnabled = registerOutput<bool?>('streamEnabled');
+    this.streamLabel = registerOutput<String>('streamLabel');
+    this.streamViewType = registerOutput<String>('streamViewType');
+    this.tableClass = registerOutput<String?>('tableClass');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.ttl = registerOutput<TableTtl>('ttl');
+    this.warmThroughput = registerOutput<TableWarmThroughput>('warmThroughput');
+    this.writeCapacity = registerOutput<int>('writeCapacity');
   }
 }

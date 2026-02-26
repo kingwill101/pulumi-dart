@@ -32,12 +32,12 @@ class Exclusion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool>();
-    this.filter = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.disabled = registerOutput<bool>('disabled');
+    this.filter = registerOutput<String>('filter');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

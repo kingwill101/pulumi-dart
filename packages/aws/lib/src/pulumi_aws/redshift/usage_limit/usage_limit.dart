@@ -159,15 +159,15 @@ class UsageLimit extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.amount = Output.createUnknown<int>();
-    this.arn = Output.createUnknown<String>();
-    this.breachAction = Output.createUnknown<String?>();
-    this.clusterIdentifier = Output.createUnknown<String>();
-    this.featureType = Output.createUnknown<String>();
-    this.limitType = Output.createUnknown<String>();
-    this.period = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.amount = registerOutput<int>('amount');
+    this.arn = registerOutput<String>('arn');
+    this.breachAction = registerOutput<String?>('breachAction');
+    this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    this.featureType = registerOutput<String>('featureType');
+    this.limitType = registerOutput<String>('limitType');
+    this.period = registerOutput<String?>('period');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

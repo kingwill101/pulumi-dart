@@ -375,16 +375,18 @@ class Replicator extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.currentVersion = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.kafkaClusters = Output.createUnknown<List<ReplicatorKafkaCluster>>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.currentVersion = registerOutput<String>('currentVersion');
+    this.description = registerOutput<String?>('description');
+    this.kafkaClusters =
+        registerOutput<List<ReplicatorKafkaCluster>>('kafkaClusters');
+    this.region = registerOutput<String>('region');
     this.replicationInfoList =
-        Output.createUnknown<ReplicatorReplicationInfoList>();
-    this.replicatorName = Output.createUnknown<String>();
-    this.serviceExecutionRoleArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<ReplicatorReplicationInfoList>('replicationInfoList');
+    this.replicatorName = registerOutput<String>('replicatorName');
+    this.serviceExecutionRoleArn =
+        registerOutput<String>('serviceExecutionRoleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

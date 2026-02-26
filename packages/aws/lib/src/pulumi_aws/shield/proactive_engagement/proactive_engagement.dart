@@ -417,7 +417,8 @@ class ProactiveEngagement extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.emergencyContacts =
-        Output.createUnknown<List<ProactiveEngagementEmergencyContact>>();
-    this.enabled = Output.createUnknown<bool>();
+        registerOutput<List<ProactiveEngagementEmergencyContact>>(
+            'emergencyContacts');
+    this.enabled = registerOutput<bool>('enabled');
   }
 }

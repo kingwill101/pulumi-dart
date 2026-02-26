@@ -135,14 +135,15 @@ class AccessPoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.fileSystemArn = Output.createUnknown<String>();
-    this.fileSystemId = Output.createUnknown<String>();
-    this.ownerId = Output.createUnknown<String>();
-    this.posixUser = Output.createUnknown<AccessPointPosixUser?>();
-    this.region = Output.createUnknown<String>();
-    this.rootDirectory = Output.createUnknown<AccessPointRootDirectory>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.fileSystemArn = registerOutput<String>('fileSystemArn');
+    this.fileSystemId = registerOutput<String>('fileSystemId');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.posixUser = registerOutput<AccessPointPosixUser?>('posixUser');
+    this.region = registerOutput<String>('region');
+    this.rootDirectory =
+        registerOutput<AccessPointRootDirectory>('rootDirectory');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

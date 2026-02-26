@@ -551,9 +551,9 @@ class EngineSplitTraffic extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.migrateTraffic = Output.createUnknown<bool?>();
-    this.project = Output.createUnknown<String>();
-    this.service = Output.createUnknown<String>();
-    this.split = Output.createUnknown<EngineSplitTrafficSplit>();
+    this.migrateTraffic = registerOutput<bool?>('migrateTraffic');
+    this.project = registerOutput<String>('project');
+    this.service = registerOutput<String>('service');
+    this.split = registerOutput<EngineSplitTrafficSplit>('split');
   }
 }

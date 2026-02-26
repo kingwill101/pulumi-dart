@@ -560,16 +560,17 @@ class FileSystemAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.auditDestinationArn = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.auditDestinationArn = registerOutput<String?>('auditDestinationArn');
     this.cacheAttributes =
-        Output.createUnknown<FileSystemAssociationCacheAttributes?>();
-    this.gatewayArn = Output.createUnknown<String>();
-    this.locationArn = Output.createUnknown<String>();
-    this.password = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.username = Output.createUnknown<String>();
+        registerOutput<FileSystemAssociationCacheAttributes?>(
+            'cacheAttributes');
+    this.gatewayArn = registerOutput<String>('gatewayArn');
+    this.locationArn = registerOutput<String>('locationArn');
+    this.password = registerOutput<String>('password');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.username = registerOutput<String>('username');
   }
 }

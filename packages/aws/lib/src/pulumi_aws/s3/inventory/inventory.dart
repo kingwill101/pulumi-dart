@@ -487,14 +487,15 @@ class Inventory extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.destination = Output.createUnknown<InventoryDestination>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.filter = Output.createUnknown<InventoryFilter?>();
-    this.includedObjectVersions = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.optionalFields = Output.createUnknown<List<String>?>();
-    this.region = Output.createUnknown<String>();
-    this.schedule = Output.createUnknown<InventorySchedule>();
+    this.bucket = registerOutput<String>('bucket');
+    this.destination = registerOutput<InventoryDestination>('destination');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.filter = registerOutput<InventoryFilter?>('filter');
+    this.includedObjectVersions =
+        registerOutput<String>('includedObjectVersions');
+    this.name = registerOutput<String>('name');
+    this.optionalFields = registerOutput<List<String>?>('optionalFields');
+    this.region = registerOutput<String>('region');
+    this.schedule = registerOutput<InventorySchedule>('schedule');
   }
 }

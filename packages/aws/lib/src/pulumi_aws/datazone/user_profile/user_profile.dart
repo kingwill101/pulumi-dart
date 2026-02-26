@@ -151,13 +151,13 @@ class UserProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.details = Output.createUnknown<List<UserProfileDetail>>();
-    this.domainIdentifier = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<UserProfileTimeouts?>();
-    this.type = Output.createUnknown<String>();
-    this.userIdentifier = Output.createUnknown<String>();
-    this.userType = Output.createUnknown<String>();
+    this.details = registerOutput<List<UserProfileDetail>>('details');
+    this.domainIdentifier = registerOutput<String>('domainIdentifier');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.timeouts = registerOutput<UserProfileTimeouts?>('timeouts');
+    this.type = registerOutput<String>('type');
+    this.userIdentifier = registerOutput<String>('userIdentifier');
+    this.userType = registerOutput<String>('userType');
   }
 }

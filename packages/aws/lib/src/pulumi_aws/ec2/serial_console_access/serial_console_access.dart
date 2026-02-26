@@ -116,7 +116,7 @@ class SerialConsoleAccess extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.enabled = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
+    this.enabled = registerOutput<bool?>('enabled');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -198,15 +198,15 @@ class EnvironmentApiRevisionDeployment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.api = Output.createUnknown<String>();
-    this.basepaths = Output.createUnknown<List<String>>();
-    this.deployStartTime = Output.createUnknown<String>();
-    this.environment = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.override = Output.createUnknown<bool?>();
-    this.revision = Output.createUnknown<int>();
-    this.sequencedRollout = Output.createUnknown<bool?>();
-    this.serviceAccount = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
+    this.api = registerOutput<String>('api');
+    this.basepaths = registerOutput<List<String>>('basepaths');
+    this.deployStartTime = registerOutput<String>('deployStartTime');
+    this.environment = registerOutput<String>('environment');
+    this.orgId = registerOutput<String>('orgId');
+    this.override = registerOutput<bool?>('override');
+    this.revision = registerOutput<int>('revision');
+    this.sequencedRollout = registerOutput<bool?>('sequencedRollout');
+    this.serviceAccount = registerOutput<String?>('serviceAccount');
+    this.state = registerOutput<String>('state');
   }
 }

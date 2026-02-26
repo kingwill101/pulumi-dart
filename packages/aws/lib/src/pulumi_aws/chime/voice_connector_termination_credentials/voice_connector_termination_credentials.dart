@@ -278,9 +278,10 @@ class VoiceConnectorTerminationCredentials extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.credentials = Output.createUnknown<
-        List<VoiceConnectorTerminationCredentialsCredential>>();
-    this.region = Output.createUnknown<String>();
-    this.voiceConnectorId = Output.createUnknown<String>();
+    this.credentials =
+        registerOutput<List<VoiceConnectorTerminationCredentialsCredential>>(
+            'credentials');
+    this.region = registerOutput<String>('region');
+    this.voiceConnectorId = registerOutput<String>('voiceConnectorId');
   }
 }

@@ -135,11 +135,11 @@ class AggregateAuthorization extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.authorizedAwsRegion = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.accountId = registerOutput<String>('accountId');
+    this.arn = registerOutput<String>('arn');
+    this.authorizedAwsRegion = registerOutput<String?>('authorizedAwsRegion');
+    this.region = registerOutput<String?>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

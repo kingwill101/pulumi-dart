@@ -619,19 +619,22 @@ class Task extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.cloudwatchLogGroupArn = Output.createUnknown<String?>();
-    this.destinationLocationArn = Output.createUnknown<String>();
-    this.excludes = Output.createUnknown<TaskExcludes?>();
-    this.includes = Output.createUnknown<TaskIncludes?>();
-    this.name = Output.createUnknown<String>();
-    this.options = Output.createUnknown<TaskOptions?>();
-    this.region = Output.createUnknown<String>();
-    this.schedule = Output.createUnknown<TaskSchedule?>();
-    this.sourceLocationArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.taskMode = Output.createUnknown<String>();
-    this.taskReportConfig = Output.createUnknown<TaskTaskReportConfig?>();
+    this.arn = registerOutput<String>('arn');
+    this.cloudwatchLogGroupArn =
+        registerOutput<String?>('cloudwatchLogGroupArn');
+    this.destinationLocationArn =
+        registerOutput<String>('destinationLocationArn');
+    this.excludes = registerOutput<TaskExcludes?>('excludes');
+    this.includes = registerOutput<TaskIncludes?>('includes');
+    this.name = registerOutput<String>('name');
+    this.options = registerOutput<TaskOptions?>('options');
+    this.region = registerOutput<String>('region');
+    this.schedule = registerOutput<TaskSchedule?>('schedule');
+    this.sourceLocationArn = registerOutput<String>('sourceLocationArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.taskMode = registerOutput<String>('taskMode');
+    this.taskReportConfig =
+        registerOutput<TaskTaskReportConfig?>('taskReportConfig');
   }
 }

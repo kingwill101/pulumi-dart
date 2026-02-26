@@ -655,29 +655,34 @@ class Domain9 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appNetworkAccessType = Output.createUnknown<String?>();
-    this.appSecurityGroupManagement = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.authMode = Output.createUnknown<String>();
+    this.appNetworkAccessType = registerOutput<String?>('appNetworkAccessType');
+    this.appSecurityGroupManagement =
+        registerOutput<String?>('appSecurityGroupManagement');
+    this.arn = registerOutput<String>('arn');
+    this.authMode = registerOutput<String>('authMode');
     this.defaultSpaceSettings =
-        Output.createUnknown<DomainDefaultSpaceSettings?>();
+        registerOutput<DomainDefaultSpaceSettings?>('defaultSpaceSettings');
     this.defaultUserSettings =
-        Output.createUnknown<DomainDefaultUserSettings>();
-    this.domainName = Output.createUnknown<String>();
-    this.domainSettings = Output.createUnknown<DomainDomainSettings?>();
-    this.homeEfsFileSystemId = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.retentionPolicy = Output.createUnknown<DomainRetentionPolicy?>();
-    this.securityGroupIdForDomainBoundary = Output.createUnknown<String>();
-    this.singleSignOnApplicationArn = Output.createUnknown<String>();
+        registerOutput<DomainDefaultUserSettings>('defaultUserSettings');
+    this.domainName = registerOutput<String>('domainName');
+    this.domainSettings =
+        registerOutput<DomainDomainSettings?>('domainSettings');
+    this.homeEfsFileSystemId = registerOutput<String>('homeEfsFileSystemId');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.region = registerOutput<String>('region');
+    this.retentionPolicy =
+        registerOutput<DomainRetentionPolicy?>('retentionPolicy');
+    this.securityGroupIdForDomainBoundary =
+        registerOutput<String>('securityGroupIdForDomainBoundary');
+    this.singleSignOnApplicationArn =
+        registerOutput<String>('singleSignOnApplicationArn');
     this.singleSignOnManagedApplicationInstanceId =
-        Output.createUnknown<String>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tagPropagation = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.url = Output.createUnknown<String>();
-    this.vpcId = Output.createUnknown<String>();
+        registerOutput<String>('singleSignOnManagedApplicationInstanceId');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tagPropagation = registerOutput<String?>('tagPropagation');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.url = registerOutput<String>('url');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

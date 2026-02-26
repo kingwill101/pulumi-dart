@@ -158,15 +158,15 @@ class HostKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.hostKeyBody = Output.createUnknown<String?>();
-    this.hostKeyBodyWo = Output.createUnknown<String?>();
-    this.hostKeyFingerprint = Output.createUnknown<String>();
-    this.hostKeyId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.serverId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.hostKeyBody = registerOutput<String?>('hostKeyBody');
+    this.hostKeyBodyWo = registerOutput<String?>('hostKeyBodyWo');
+    this.hostKeyFingerprint = registerOutput<String>('hostKeyFingerprint');
+    this.hostKeyId = registerOutput<String>('hostKeyId');
+    this.region = registerOutput<String>('region');
+    this.serverId = registerOutput<String>('serverId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

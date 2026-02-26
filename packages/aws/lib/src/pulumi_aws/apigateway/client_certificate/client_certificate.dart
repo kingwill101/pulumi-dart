@@ -132,13 +132,14 @@ class ClientCertificate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdDate = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.expirationDate = Output.createUnknown<String>();
-    this.pemEncodedCertificate = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.createdDate = registerOutput<String>('createdDate');
+    this.description = registerOutput<String?>('description');
+    this.expirationDate = registerOutput<String>('expirationDate');
+    this.pemEncodedCertificate =
+        registerOutput<String>('pemEncodedCertificate');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

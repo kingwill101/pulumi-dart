@@ -2011,13 +2011,13 @@ class LogViewIamMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.condition = Output.createUnknown<LogViewIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.condition = registerOutput<LogViewIamMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.member = registerOutput<String>('member');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.role = registerOutput<String>('role');
   }
 }

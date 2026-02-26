@@ -262,8 +262,8 @@ class Registry extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucketSelfLink = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
+    this.bucketSelfLink = registerOutput<String>('bucketSelfLink');
+    this.location = registerOutput<String?>('location');
+    this.project = registerOutput<String>('project');
   }
 }

@@ -16,7 +16,7 @@ class Union<T0, T1> {
   dynamic get value => _which == 0 ? _t0 : _t1;
 
   TResult match<TResult>(TResult Function(T0) f0, TResult Function(T1) f1) {
-    if (_which == 0) return f0(_t0!);
-    return f1(_t1!);
+    if (_which == 0) return f0(_t0 as T0);
+    return f1(_t1 as T1);
   }
 }

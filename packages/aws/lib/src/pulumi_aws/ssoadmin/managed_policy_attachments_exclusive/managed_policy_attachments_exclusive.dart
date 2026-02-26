@@ -323,11 +323,11 @@ class ManagedPolicyAttachmentsExclusive extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.instanceArn = Output.createUnknown<String>();
-    this.managedPolicyArns = Output.createUnknown<List<String>>();
-    this.permissionSetArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.instanceArn = registerOutput<String>('instanceArn');
+    this.managedPolicyArns = registerOutput<List<String>>('managedPolicyArns');
+    this.permissionSetArn = registerOutput<String>('permissionSetArn');
+    this.region = registerOutput<String>('region');
     this.timeouts =
-        Output.createUnknown<ManagedPolicyAttachmentsExclusiveTimeouts?>();
+        registerOutput<ManagedPolicyAttachmentsExclusiveTimeouts?>('timeouts');
   }
 }

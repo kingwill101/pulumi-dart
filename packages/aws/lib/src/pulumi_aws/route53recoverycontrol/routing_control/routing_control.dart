@@ -234,10 +234,10 @@ class RoutingControl extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.clusterArn = Output.createUnknown<String>();
-    this.controlPanelArn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.clusterArn = registerOutput<String>('clusterArn');
+    this.controlPanelArn = registerOutput<String>('controlPanelArn');
+    this.name = registerOutput<String>('name');
+    this.status = registerOutput<String>('status');
   }
 }

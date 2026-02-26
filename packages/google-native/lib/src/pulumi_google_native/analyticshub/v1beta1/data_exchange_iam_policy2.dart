@@ -32,12 +32,13 @@ class DataExchangeIamPolicy2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse3>>();
-    this.bindings = Output.createUnknown<List<BindingResponse3>>();
-    this.dataExchangeId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse3>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse3>>('bindings');
+    this.dataExchangeId = registerOutput<String>('dataExchangeId');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

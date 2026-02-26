@@ -304,15 +304,15 @@ class ProjectSccBigQueryExport extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bigQueryExportId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataset = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.filter = Output.createUnknown<String?>();
-    this.mostRecentEditor = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.principal = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.bigQueryExportId = registerOutput<String>('bigQueryExportId');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataset = registerOutput<String?>('dataset');
+    this.description = registerOutput<String?>('description');
+    this.filter = registerOutput<String?>('filter');
+    this.mostRecentEditor = registerOutput<String>('mostRecentEditor');
+    this.name = registerOutput<String>('name');
+    this.principal = registerOutput<String>('principal');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

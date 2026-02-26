@@ -252,16 +252,16 @@ class ProfilesResourceAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
-    this.ownerId = Output.createUnknown<String>();
-    this.profileId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
-    this.resourceProperties = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.statusMessage = Output.createUnknown<String>();
+    this.name = registerOutput<String>('name');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.profileId = registerOutput<String>('profileId');
+    this.region = registerOutput<String>('region');
+    this.resourceArn = registerOutput<String>('resourceArn');
+    this.resourceProperties = registerOutput<String>('resourceProperties');
+    this.resourceType = registerOutput<String>('resourceType');
+    this.status = registerOutput<String>('status');
+    this.statusMessage = registerOutput<String>('statusMessage');
     this.timeouts =
-        Output.createUnknown<ProfilesResourceAssociationTimeouts?>();
+        registerOutput<ProfilesResourceAssociationTimeouts?>('timeouts');
   }
 }

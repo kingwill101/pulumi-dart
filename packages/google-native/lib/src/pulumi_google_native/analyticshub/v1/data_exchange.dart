@@ -44,17 +44,18 @@ class DataExchange extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dataExchangeId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.documentation = Output.createUnknown<String>();
-    this.icon = Output.createUnknown<String>();
-    this.listingCount = Output.createUnknown<int>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.primaryContact = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.dataExchangeId = registerOutput<String>('dataExchangeId');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.documentation = registerOutput<String>('documentation');
+    this.icon = registerOutput<String>('icon');
+    this.listingCount = registerOutput<int>('listingCount');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.primaryContact = registerOutput<String>('primaryContact');
+    this.project = registerOutput<String>('project');
     this.sharingEnvironmentConfig =
-        Output.createUnknown<SharingEnvironmentConfigResponse>();
+        registerOutput<SharingEnvironmentConfigResponse>(
+            'sharingEnvironmentConfig');
   }
 }

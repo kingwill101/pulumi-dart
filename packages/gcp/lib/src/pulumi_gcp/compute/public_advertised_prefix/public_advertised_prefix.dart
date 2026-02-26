@@ -429,14 +429,14 @@ class PublicAdvertisedPrefix extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.dnsVerificationIp = Output.createUnknown<String?>();
-    this.ipCidrRange = Output.createUnknown<String>();
-    this.ipv6AccessType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.pdpScope = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.sharedSecret = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.dnsVerificationIp = registerOutput<String?>('dnsVerificationIp');
+    this.ipCidrRange = registerOutput<String>('ipCidrRange');
+    this.ipv6AccessType = registerOutput<String>('ipv6AccessType');
+    this.name = registerOutput<String>('name');
+    this.pdpScope = registerOutput<String?>('pdpScope');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.sharedSecret = registerOutput<String>('sharedSecret');
   }
 }

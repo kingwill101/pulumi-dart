@@ -193,20 +193,23 @@ class SlackChannelConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.chatConfigurationArn = Output.createUnknown<String>();
-    this.configurationName = Output.createUnknown<String>();
-    this.guardrailPolicyArns = Output.createUnknown<List<String>>();
-    this.iamRoleArn = Output.createUnknown<String>();
-    this.loggingLevel = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.slackChannelId = Output.createUnknown<String>();
-    this.slackChannelName = Output.createUnknown<String>();
-    this.slackTeamId = Output.createUnknown<String>();
-    this.slackTeamName = Output.createUnknown<String>();
-    this.snsTopicArns = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<SlackChannelConfigurationTimeouts?>();
-    this.userAuthorizationRequired = Output.createUnknown<bool>();
+    this.chatConfigurationArn = registerOutput<String>('chatConfigurationArn');
+    this.configurationName = registerOutput<String>('configurationName');
+    this.guardrailPolicyArns =
+        registerOutput<List<String>>('guardrailPolicyArns');
+    this.iamRoleArn = registerOutput<String>('iamRoleArn');
+    this.loggingLevel = registerOutput<String>('loggingLevel');
+    this.region = registerOutput<String>('region');
+    this.slackChannelId = registerOutput<String>('slackChannelId');
+    this.slackChannelName = registerOutput<String>('slackChannelName');
+    this.slackTeamId = registerOutput<String>('slackTeamId');
+    this.slackTeamName = registerOutput<String>('slackTeamName');
+    this.snsTopicArns = registerOutput<List<String>>('snsTopicArns');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts =
+        registerOutput<SlackChannelConfigurationTimeouts?>('timeouts');
+    this.userAuthorizationRequired =
+        registerOutput<bool>('userAuthorizationRequired');
   }
 }

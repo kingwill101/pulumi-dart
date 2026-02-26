@@ -138,47 +138,52 @@ class BucketObject extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acl = Output.createUnknown<List<ObjectAccessControlResponse>>();
-    this.bucket = Output.createUnknown<String>();
-    this.cacheControl = Output.createUnknown<String>();
-    this.componentCount = Output.createUnknown<int>();
-    this.contentDisposition = Output.createUnknown<String>();
-    this.contentEncoding = Output.createUnknown<String>();
-    this.contentLanguage = Output.createUnknown<String>();
-    this.contentType = Output.createUnknown<String>();
-    this.crc32c = Output.createUnknown<String>();
-    this.customTime = Output.createUnknown<String>();
+    this.acl = registerOutput<List<ObjectAccessControlResponse>>('acl');
+    this.bucket = registerOutput<String>('bucket');
+    this.cacheControl = registerOutput<String>('cacheControl');
+    this.componentCount = registerOutput<int>('componentCount');
+    this.contentDisposition = registerOutput<String>('contentDisposition');
+    this.contentEncoding = registerOutput<String>('contentEncoding');
+    this.contentLanguage = registerOutput<String>('contentLanguage');
+    this.contentType = registerOutput<String>('contentType');
+    this.crc32c = registerOutput<String>('crc32c');
+    this.customTime = registerOutput<String>('customTime');
     this.customerEncryption =
-        Output.createUnknown<BucketObjectCustomerEncryptionResponse>();
-    this.etag = Output.createUnknown<String>();
-    this.eventBasedHold = Output.createUnknown<bool>();
-    this.generation = Output.createUnknown<String>();
-    this.hardDeleteTime = Output.createUnknown<String>();
-    this.ifGenerationMatch = Output.createUnknown<String?>();
-    this.ifGenerationNotMatch = Output.createUnknown<String?>();
-    this.ifMetagenerationMatch = Output.createUnknown<String?>();
-    this.ifMetagenerationNotMatch = Output.createUnknown<String?>();
-    this.kind = Output.createUnknown<String>();
-    this.kmsKeyName = Output.createUnknown<String>();
-    this.md5Hash = Output.createUnknown<String>();
-    this.mediaLink = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>>();
-    this.metageneration = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.owner = Output.createUnknown<BucketObjectOwnerResponse>();
-    this.predefinedAcl = Output.createUnknown<String?>();
-    this.projection = Output.createUnknown<String?>();
-    this.retention = Output.createUnknown<BucketObjectRetentionResponse>();
-    this.retentionExpirationTime = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.size = Output.createUnknown<String>();
-    this.softDeleteTime = Output.createUnknown<String>();
-    this.storageClass = Output.createUnknown<String>();
-    this.temporaryHold = Output.createUnknown<bool>();
-    this.timeCreated = Output.createUnknown<String>();
-    this.timeDeleted = Output.createUnknown<String>();
-    this.timeStorageClassUpdated = Output.createUnknown<String>();
-    this.updated = Output.createUnknown<String>();
-    this.userProject = Output.createUnknown<String?>();
+        registerOutput<BucketObjectCustomerEncryptionResponse>(
+            'customerEncryption');
+    this.etag = registerOutput<String>('etag');
+    this.eventBasedHold = registerOutput<bool>('eventBasedHold');
+    this.generation = registerOutput<String>('generation');
+    this.hardDeleteTime = registerOutput<String>('hardDeleteTime');
+    this.ifGenerationMatch = registerOutput<String?>('ifGenerationMatch');
+    this.ifGenerationNotMatch = registerOutput<String?>('ifGenerationNotMatch');
+    this.ifMetagenerationMatch =
+        registerOutput<String?>('ifMetagenerationMatch');
+    this.ifMetagenerationNotMatch =
+        registerOutput<String?>('ifMetagenerationNotMatch');
+    this.kind = registerOutput<String>('kind');
+    this.kmsKeyName = registerOutput<String>('kmsKeyName');
+    this.md5Hash = registerOutput<String>('md5Hash');
+    this.mediaLink = registerOutput<String>('mediaLink');
+    this.metadata = registerOutput<Map<String, String>>('metadata');
+    this.metageneration = registerOutput<String>('metageneration');
+    this.name = registerOutput<String>('name');
+    this.owner = registerOutput<BucketObjectOwnerResponse>('owner');
+    this.predefinedAcl = registerOutput<String?>('predefinedAcl');
+    this.projection = registerOutput<String?>('projection');
+    this.retention = registerOutput<BucketObjectRetentionResponse>('retention');
+    this.retentionExpirationTime =
+        registerOutput<String>('retentionExpirationTime');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.size = registerOutput<String>('size');
+    this.softDeleteTime = registerOutput<String>('softDeleteTime');
+    this.storageClass = registerOutput<String>('storageClass');
+    this.temporaryHold = registerOutput<bool>('temporaryHold');
+    this.timeCreated = registerOutput<String>('timeCreated');
+    this.timeDeleted = registerOutput<String>('timeDeleted');
+    this.timeStorageClassUpdated =
+        registerOutput<String>('timeStorageClassUpdated');
+    this.updated = registerOutput<String>('updated');
+    this.userProject = registerOutput<String?>('userProject');
   }
 }

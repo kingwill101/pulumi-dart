@@ -471,12 +471,15 @@ class PipelineDefinition extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.parameterObjects =
-        Output.createUnknown<List<PipelineDefinitionParameterObject>?>();
+        registerOutput<List<PipelineDefinitionParameterObject>?>(
+            'parameterObjects');
     this.parameterValues =
-        Output.createUnknown<List<PipelineDefinitionParameterValue>?>();
-    this.pipelineId = Output.createUnknown<String>();
+        registerOutput<List<PipelineDefinitionParameterValue>?>(
+            'parameterValues');
+    this.pipelineId = registerOutput<String>('pipelineId');
     this.pipelineObjects =
-        Output.createUnknown<List<PipelineDefinitionPipelineObject>>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<PipelineDefinitionPipelineObject>>(
+            'pipelineObjects');
+    this.region = registerOutput<String>('region');
   }
 }

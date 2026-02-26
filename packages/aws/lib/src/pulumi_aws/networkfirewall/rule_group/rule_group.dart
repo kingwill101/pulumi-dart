@@ -2225,18 +2225,19 @@ class RuleGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.capacity = Output.createUnknown<int>();
-    this.description = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.capacity = registerOutput<int>('capacity');
+    this.description = registerOutput<String?>('description');
     this.encryptionConfiguration =
-        Output.createUnknown<RuleGroupEncryptionConfiguration?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.ruleGroup = Output.createUnknown<RuleGroupRuleGroup>();
-    this.rules = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
-    this.updateToken = Output.createUnknown<String>();
+        registerOutput<RuleGroupEncryptionConfiguration?>(
+            'encryptionConfiguration');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.ruleGroup = registerOutput<RuleGroupRuleGroup>('ruleGroup');
+    this.rules = registerOutput<String?>('rules');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
+    this.updateToken = registerOutput<String>('updateToken');
   }
 }

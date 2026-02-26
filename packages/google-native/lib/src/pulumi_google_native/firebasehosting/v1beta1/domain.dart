@@ -36,13 +36,15 @@ class Domain extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.domainName = Output.createUnknown<String>();
-    this.domainRedirect = Output.createUnknown<DomainRedirectResponse>();
-    this.project = Output.createUnknown<String>();
-    this.provisioning = Output.createUnknown<DomainProvisioningResponse>();
-    this.site = Output.createUnknown<String>();
-    this.siteId = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.domainName = registerOutput<String>('domainName');
+    this.domainRedirect =
+        registerOutput<DomainRedirectResponse>('domainRedirect');
+    this.project = registerOutput<String>('project');
+    this.provisioning =
+        registerOutput<DomainProvisioningResponse>('provisioning');
+    this.site = registerOutput<String>('site');
+    this.siteId = registerOutput<String>('siteId');
+    this.status = registerOutput<String>('status');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

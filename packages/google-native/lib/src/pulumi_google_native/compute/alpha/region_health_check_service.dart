@@ -54,20 +54,24 @@ class RegionHealthCheckService extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.healthChecks = Output.createUnknown<List<String>>();
-    this.healthStatusAggregationPolicy = Output.createUnknown<String>();
-    this.healthStatusAggregationStrategy = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.networkEndpointGroups = Output.createUnknown<List<String>>();
-    this.notificationEndpoints = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.healthChecks = registerOutput<List<String>>('healthChecks');
+    this.healthStatusAggregationPolicy =
+        registerOutput<String>('healthStatusAggregationPolicy');
+    this.healthStatusAggregationStrategy =
+        registerOutput<String>('healthStatusAggregationStrategy');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.networkEndpointGroups =
+        registerOutput<List<String>>('networkEndpointGroups');
+    this.notificationEndpoints =
+        registerOutput<List<String>>('notificationEndpoints');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
   }
 }

@@ -1361,32 +1361,39 @@ class RouterNat extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoNetworkTier = Output.createUnknown<String>();
-    this.drainNatIps = Output.createUnknown<List<String>>();
-    this.enableDynamicPortAllocation = Output.createUnknown<bool>();
-    this.enableEndpointIndependentMapping = Output.createUnknown<bool>();
-    this.endpointTypes = Output.createUnknown<List<String>>();
-    this.icmpIdleTimeoutSec = Output.createUnknown<int?>();
-    this.initialNatIps = Output.createUnknown<List<String>?>();
-    this.logConfig = Output.createUnknown<RouterNatLogConfig?>();
-    this.maxPortsPerVm = Output.createUnknown<int?>();
-    this.minPortsPerVm = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
+    this.autoNetworkTier = registerOutput<String>('autoNetworkTier');
+    this.drainNatIps = registerOutput<List<String>>('drainNatIps');
+    this.enableDynamicPortAllocation =
+        registerOutput<bool>('enableDynamicPortAllocation');
+    this.enableEndpointIndependentMapping =
+        registerOutput<bool>('enableEndpointIndependentMapping');
+    this.endpointTypes = registerOutput<List<String>>('endpointTypes');
+    this.icmpIdleTimeoutSec = registerOutput<int?>('icmpIdleTimeoutSec');
+    this.initialNatIps = registerOutput<List<String>?>('initialNatIps');
+    this.logConfig = registerOutput<RouterNatLogConfig?>('logConfig');
+    this.maxPortsPerVm = registerOutput<int?>('maxPortsPerVm');
+    this.minPortsPerVm = registerOutput<int>('minPortsPerVm');
+    this.name = registerOutput<String>('name');
     this.nat64Subnetworks =
-        Output.createUnknown<List<RouterNatNat64Subnetwork>?>();
-    this.natIpAllocateOption = Output.createUnknown<String?>();
-    this.natIps = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.router = Output.createUnknown<String>();
-    this.rules = Output.createUnknown<List<RouterNatRule>?>();
-    this.sourceSubnetworkIpRangesToNat = Output.createUnknown<String>();
-    this.sourceSubnetworkIpRangesToNat64 = Output.createUnknown<String?>();
-    this.subnetworks = Output.createUnknown<List<RouterNatSubnetwork>?>();
-    this.tcpEstablishedIdleTimeoutSec = Output.createUnknown<int?>();
-    this.tcpTimeWaitTimeoutSec = Output.createUnknown<int?>();
-    this.tcpTransitoryIdleTimeoutSec = Output.createUnknown<int?>();
-    this.type = Output.createUnknown<String?>();
-    this.udpIdleTimeoutSec = Output.createUnknown<int?>();
+        registerOutput<List<RouterNatNat64Subnetwork>?>('nat64Subnetworks');
+    this.natIpAllocateOption = registerOutput<String?>('natIpAllocateOption');
+    this.natIps = registerOutput<List<String>>('natIps');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.router = registerOutput<String>('router');
+    this.rules = registerOutput<List<RouterNatRule>?>('rules');
+    this.sourceSubnetworkIpRangesToNat =
+        registerOutput<String>('sourceSubnetworkIpRangesToNat');
+    this.sourceSubnetworkIpRangesToNat64 =
+        registerOutput<String?>('sourceSubnetworkIpRangesToNat64');
+    this.subnetworks =
+        registerOutput<List<RouterNatSubnetwork>?>('subnetworks');
+    this.tcpEstablishedIdleTimeoutSec =
+        registerOutput<int?>('tcpEstablishedIdleTimeoutSec');
+    this.tcpTimeWaitTimeoutSec = registerOutput<int?>('tcpTimeWaitTimeoutSec');
+    this.tcpTransitoryIdleTimeoutSec =
+        registerOutput<int?>('tcpTransitoryIdleTimeoutSec');
+    this.type = registerOutput<String?>('type');
+    this.udpIdleTimeoutSec = registerOutput<int?>('udpIdleTimeoutSec');
   }
 }

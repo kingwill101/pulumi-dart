@@ -203,20 +203,23 @@ class CustomActionType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.category = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.category = registerOutput<String>('category');
     this.configurationProperties =
-        Output.createUnknown<List<CustomActionTypeConfigurationProperty>?>();
+        registerOutput<List<CustomActionTypeConfigurationProperty>?>(
+            'configurationProperties');
     this.inputArtifactDetails =
-        Output.createUnknown<CustomActionTypeInputArtifactDetails>();
+        registerOutput<CustomActionTypeInputArtifactDetails>(
+            'inputArtifactDetails');
     this.outputArtifactDetails =
-        Output.createUnknown<CustomActionTypeOutputArtifactDetails>();
-    this.owner = Output.createUnknown<String>();
-    this.providerName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.settings = Output.createUnknown<CustomActionTypeSettings?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.version = Output.createUnknown<String>();
+        registerOutput<CustomActionTypeOutputArtifactDetails>(
+            'outputArtifactDetails');
+    this.owner = registerOutput<String>('owner');
+    this.providerName = registerOutput<String>('providerName');
+    this.region = registerOutput<String>('region');
+    this.settings = registerOutput<CustomActionTypeSettings?>('settings');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.version = registerOutput<String>('version');
   }
 }

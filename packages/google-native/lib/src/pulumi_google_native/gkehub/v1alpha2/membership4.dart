@@ -65,22 +65,23 @@ class Membership4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authority = Output.createUnknown<AuthorityResponse3>();
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.endpoint = Output.createUnknown<MembershipEndpointResponse2>();
-    this.externalId = Output.createUnknown<String>();
-    this.infrastructureType = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lastConnectionTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.membershipId = Output.createUnknown<String>();
-    this.monitoringConfig = Output.createUnknown<MonitoringConfigResponse4>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<MembershipStateResponse2>();
-    this.uniqueId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.authority = registerOutput<AuthorityResponse3>('authority');
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.description = registerOutput<String>('description');
+    this.endpoint = registerOutput<MembershipEndpointResponse2>('endpoint');
+    this.externalId = registerOutput<String>('externalId');
+    this.infrastructureType = registerOutput<String>('infrastructureType');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lastConnectionTime = registerOutput<String>('lastConnectionTime');
+    this.location = registerOutput<String>('location');
+    this.membershipId = registerOutput<String>('membershipId');
+    this.monitoringConfig =
+        registerOutput<MonitoringConfigResponse4>('monitoringConfig');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<MembershipStateResponse2>('state');
+    this.uniqueId = registerOutput<String>('uniqueId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

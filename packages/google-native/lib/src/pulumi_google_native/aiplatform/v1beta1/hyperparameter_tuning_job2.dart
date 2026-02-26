@@ -71,27 +71,31 @@ class HyperparameterTuningJob2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.encryptionSpec = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1EncryptionSpecResponse>();
-    this.endTime = Output.createUnknown<String>();
-    this.error = Output.createUnknown<GoogleRpcStatusResponse2>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.maxFailedTrialCount = Output.createUnknown<int>();
-    this.maxTrialCount = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.parallelTrialCount = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.encryptionSpec =
+        registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>(
+            'encryptionSpec');
+    this.endTime = registerOutput<String>('endTime');
+    this.error = registerOutput<GoogleRpcStatusResponse2>('error');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.maxFailedTrialCount = registerOutput<int>('maxFailedTrialCount');
+    this.maxTrialCount = registerOutput<int>('maxTrialCount');
+    this.name = registerOutput<String>('name');
+    this.parallelTrialCount = registerOutput<int>('parallelTrialCount');
+    this.project = registerOutput<String>('project');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
     this.studySpec =
-        Output.createUnknown<GoogleCloudAiplatformV1beta1StudySpecResponse>();
-    this.trialJobSpec = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1CustomJobSpecResponse>();
+        registerOutput<GoogleCloudAiplatformV1beta1StudySpecResponse>(
+            'studySpec');
+    this.trialJobSpec =
+        registerOutput<GoogleCloudAiplatformV1beta1CustomJobSpecResponse>(
+            'trialJobSpec');
     this.trials =
-        Output.createUnknown<List<GoogleCloudAiplatformV1beta1TrialResponse>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<GoogleCloudAiplatformV1beta1TrialResponse>>(
+            'trials');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

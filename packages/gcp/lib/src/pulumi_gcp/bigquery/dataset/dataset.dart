@@ -1641,32 +1641,39 @@ class Dataset extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accesses = Output.createUnknown<List<DatasetAccess>>();
-    this.creationTime = Output.createUnknown<int>();
-    this.datasetId = Output.createUnknown<String>();
-    this.defaultCollation = Output.createUnknown<String>();
+    this.accesses = registerOutput<List<DatasetAccess>>('accesses');
+    this.creationTime = registerOutput<int>('creationTime');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.defaultCollation = registerOutput<String>('defaultCollation');
     this.defaultEncryptionConfiguration =
-        Output.createUnknown<DatasetDefaultEncryptionConfiguration?>();
-    this.defaultPartitionExpirationMs = Output.createUnknown<int?>();
-    this.defaultTableExpirationMs = Output.createUnknown<int?>();
-    this.deleteContentsOnDestroy = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
+        registerOutput<DatasetDefaultEncryptionConfiguration?>(
+            'defaultEncryptionConfiguration');
+    this.defaultPartitionExpirationMs =
+        registerOutput<int?>('defaultPartitionExpirationMs');
+    this.defaultTableExpirationMs =
+        registerOutput<int?>('defaultTableExpirationMs');
+    this.deleteContentsOnDestroy =
+        registerOutput<bool?>('deleteContentsOnDestroy');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.etag = registerOutput<String>('etag');
     this.externalCatalogDatasetOptions =
-        Output.createUnknown<DatasetExternalCatalogDatasetOptions?>();
+        registerOutput<DatasetExternalCatalogDatasetOptions?>(
+            'externalCatalogDatasetOptions');
     this.externalDatasetReference =
-        Output.createUnknown<DatasetExternalDatasetReference?>();
-    this.friendlyName = Output.createUnknown<String?>();
-    this.isCaseInsensitive = Output.createUnknown<bool>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.lastModifiedTime = Output.createUnknown<int>();
-    this.location = Output.createUnknown<String?>();
-    this.maxTimeTravelHours = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.resourceTags = Output.createUnknown<Map<String, String>?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.storageBillingModel = Output.createUnknown<String>();
+        registerOutput<DatasetExternalDatasetReference?>(
+            'externalDatasetReference');
+    this.friendlyName = registerOutput<String?>('friendlyName');
+    this.isCaseInsensitive = registerOutput<bool>('isCaseInsensitive');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.lastModifiedTime = registerOutput<int>('lastModifiedTime');
+    this.location = registerOutput<String?>('location');
+    this.maxTimeTravelHours = registerOutput<String>('maxTimeTravelHours');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.resourceTags = registerOutput<Map<String, String>?>('resourceTags');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.storageBillingModel = registerOutput<String>('storageBillingModel');
   }
 }

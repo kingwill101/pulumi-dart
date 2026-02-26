@@ -42,15 +42,16 @@ class Environment12 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.containerImage = Output.createUnknown<ContainerImageResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.environmentId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.postStartupScript = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.vmImage = Output.createUnknown<VmImageResponse>();
+    this.containerImage =
+        registerOutput<ContainerImageResponse>('containerImage');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.postStartupScript = registerOutput<String>('postStartupScript');
+    this.project = registerOutput<String>('project');
+    this.vmImage = registerOutput<VmImageResponse>('vmImage');
   }
 }

@@ -44,10 +44,10 @@ class DeploymentType2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiId = Output.createUnknown<String>();
-    this.autoDeployed = Output.createUnknown<bool>();
-    this.description = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.triggers = Output.createUnknown<Map<String, String>?>();
+    this.apiId = registerOutput<String>('apiId');
+    this.autoDeployed = registerOutput<bool>('autoDeployed');
+    this.description = registerOutput<String?>('description');
+    this.region = registerOutput<String>('region');
+    this.triggers = registerOutput<Map<String, String>?>('triggers');
   }
 }

@@ -157,7 +157,7 @@ class EventSourcesConfig extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.eventSources =
-        Output.createUnknown<List<EventSourcesConfigEventSource>>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<EventSourcesConfigEventSource>>('eventSources');
+    this.region = registerOutput<String>('region');
   }
 }

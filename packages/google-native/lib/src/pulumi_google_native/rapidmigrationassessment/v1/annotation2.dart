@@ -35,13 +35,13 @@ class Annotation2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

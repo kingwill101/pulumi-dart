@@ -177,12 +177,12 @@ class UsageLimit2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.amount = Output.createUnknown<int>();
-    this.arn = Output.createUnknown<String>();
-    this.breachAction = Output.createUnknown<String?>();
-    this.period = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
-    this.usageType = Output.createUnknown<String>();
+    this.amount = registerOutput<int>('amount');
+    this.arn = registerOutput<String>('arn');
+    this.breachAction = registerOutput<String?>('breachAction');
+    this.period = registerOutput<String?>('period');
+    this.region = registerOutput<String>('region');
+    this.resourceArn = registerOutput<String>('resourceArn');
+    this.usageType = registerOutput<String>('usageType');
   }
 }

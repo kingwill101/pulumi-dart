@@ -144,14 +144,15 @@ class InstanceProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.excludeAppPackagesFromCleanups = Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
-    this.packageCleanup = Output.createUnknown<bool?>();
-    this.rebootAfterUse = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.excludeAppPackagesFromCleanups =
+        registerOutput<List<String>?>('excludeAppPackagesFromCleanups');
+    this.name = registerOutput<String>('name');
+    this.packageCleanup = registerOutput<bool?>('packageCleanup');
+    this.rebootAfterUse = registerOutput<bool?>('rebootAfterUse');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

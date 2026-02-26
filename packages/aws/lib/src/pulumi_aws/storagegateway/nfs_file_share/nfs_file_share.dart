@@ -212,31 +212,33 @@ class NfsFileShare extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.auditDestinationArn = Output.createUnknown<String?>();
-    this.bucketRegion = Output.createUnknown<String?>();
-    this.cacheAttributes = Output.createUnknown<NfsFileShareCacheAttributes?>();
-    this.clientLists = Output.createUnknown<List<String>>();
-    this.defaultStorageClass = Output.createUnknown<String?>();
-    this.fileShareName = Output.createUnknown<String>();
-    this.fileshareId = Output.createUnknown<String>();
-    this.gatewayArn = Output.createUnknown<String>();
-    this.guessMimeTypeEnabled = Output.createUnknown<bool?>();
-    this.kmsEncrypted = Output.createUnknown<bool?>();
-    this.kmsKeyArn = Output.createUnknown<String?>();
-    this.locationArn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.auditDestinationArn = registerOutput<String?>('auditDestinationArn');
+    this.bucketRegion = registerOutput<String?>('bucketRegion');
+    this.cacheAttributes =
+        registerOutput<NfsFileShareCacheAttributes?>('cacheAttributes');
+    this.clientLists = registerOutput<List<String>>('clientLists');
+    this.defaultStorageClass = registerOutput<String?>('defaultStorageClass');
+    this.fileShareName = registerOutput<String>('fileShareName');
+    this.fileshareId = registerOutput<String>('fileshareId');
+    this.gatewayArn = registerOutput<String>('gatewayArn');
+    this.guessMimeTypeEnabled = registerOutput<bool?>('guessMimeTypeEnabled');
+    this.kmsEncrypted = registerOutput<bool?>('kmsEncrypted');
+    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.locationArn = registerOutput<String>('locationArn');
     this.nfsFileShareDefaults =
-        Output.createUnknown<NfsFileShareNfsFileShareDefaults?>();
-    this.notificationPolicy = Output.createUnknown<String?>();
-    this.objectAcl = Output.createUnknown<String?>();
-    this.path = Output.createUnknown<String>();
-    this.readOnly = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.requesterPays = Output.createUnknown<bool?>();
-    this.roleArn = Output.createUnknown<String>();
-    this.squash = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcEndpointDnsName = Output.createUnknown<String?>();
+        registerOutput<NfsFileShareNfsFileShareDefaults?>(
+            'nfsFileShareDefaults');
+    this.notificationPolicy = registerOutput<String?>('notificationPolicy');
+    this.objectAcl = registerOutput<String?>('objectAcl');
+    this.path = registerOutput<String>('path');
+    this.readOnly = registerOutput<bool?>('readOnly');
+    this.region = registerOutput<String>('region');
+    this.requesterPays = registerOutput<bool?>('requesterPays');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.squash = registerOutput<String?>('squash');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcEndpointDnsName = registerOutput<String?>('vpcEndpointDnsName');
   }
 }

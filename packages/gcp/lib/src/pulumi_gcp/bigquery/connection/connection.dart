@@ -1998,19 +1998,20 @@ class Connection extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aws = Output.createUnknown<ConnectionAws?>();
-    this.azure = Output.createUnknown<ConnectionAzure?>();
-    this.cloudResource = Output.createUnknown<ConnectionCloudResource?>();
-    this.cloudSpanner = Output.createUnknown<ConnectionCloudSpanner?>();
-    this.cloudSql = Output.createUnknown<ConnectionCloudSql?>();
-    this.connectionId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.friendlyName = Output.createUnknown<String?>();
-    this.hasCredential = Output.createUnknown<bool>();
-    this.kmsKeyName = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.spark = Output.createUnknown<ConnectionSpark?>();
+    this.aws = registerOutput<ConnectionAws?>('aws');
+    this.azure = registerOutput<ConnectionAzure?>('azure');
+    this.cloudResource =
+        registerOutput<ConnectionCloudResource?>('cloudResource');
+    this.cloudSpanner = registerOutput<ConnectionCloudSpanner?>('cloudSpanner');
+    this.cloudSql = registerOutput<ConnectionCloudSql?>('cloudSql');
+    this.connectionId = registerOutput<String>('connectionId');
+    this.description = registerOutput<String?>('description');
+    this.friendlyName = registerOutput<String?>('friendlyName');
+    this.hasCredential = registerOutput<bool>('hasCredential');
+    this.kmsKeyName = registerOutput<String?>('kmsKeyName');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.spark = registerOutput<ConnectionSpark?>('spark');
   }
 }

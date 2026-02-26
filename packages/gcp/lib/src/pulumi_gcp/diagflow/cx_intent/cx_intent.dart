@@ -472,20 +472,23 @@ class CxIntent extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.isDefaultNegativeIntent = Output.createUnknown<bool?>();
-    this.isDefaultWelcomeIntent = Output.createUnknown<bool?>();
-    this.isFallback = Output.createUnknown<bool?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.languageCode = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.parameters = Output.createUnknown<List<CxIntentParameter>?>();
-    this.parent = Output.createUnknown<String?>();
-    this.priority = Output.createUnknown<int?>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.isDefaultNegativeIntent =
+        registerOutput<bool?>('isDefaultNegativeIntent');
+    this.isDefaultWelcomeIntent =
+        registerOutput<bool?>('isDefaultWelcomeIntent');
+    this.isFallback = registerOutput<bool?>('isFallback');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.languageCode = registerOutput<String?>('languageCode');
+    this.name = registerOutput<String>('name');
+    this.parameters = registerOutput<List<CxIntentParameter>?>('parameters');
+    this.parent = registerOutput<String?>('parent');
+    this.priority = registerOutput<int?>('priority');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.trainingPhrases =
-        Output.createUnknown<List<CxIntentTrainingPhrase>?>();
+        registerOutput<List<CxIntentTrainingPhrase>?>('trainingPhrases');
   }
 }

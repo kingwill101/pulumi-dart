@@ -837,11 +837,12 @@ class ScalingPlan extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.applicationSource =
-        Output.createUnknown<ScalingPlanApplicationSource>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<ScalingPlanApplicationSource>('applicationSource');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
     this.scalingInstructions =
-        Output.createUnknown<List<ScalingPlanScalingInstruction>>();
-    this.scalingPlanVersion = Output.createUnknown<int>();
+        registerOutput<List<ScalingPlanScalingInstruction>>(
+            'scalingInstructions');
+    this.scalingPlanVersion = registerOutput<int>('scalingPlanVersion');
   }
 }

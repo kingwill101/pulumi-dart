@@ -143,8 +143,9 @@ class RegexPatternSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.regexPatternStrings = Output.createUnknown<List<String>?>();
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    this.regexPatternStrings =
+        registerOutput<List<String>?>('regexPatternStrings');
   }
 }

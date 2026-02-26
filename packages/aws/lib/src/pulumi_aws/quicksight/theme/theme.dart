@@ -300,20 +300,20 @@ class Theme extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.awsAccountId = Output.createUnknown<String>();
-    this.baseThemeId = Output.createUnknown<String>();
-    this.configuration = Output.createUnknown<ThemeConfiguration?>();
-    this.createdTime = Output.createUnknown<String>();
-    this.lastUpdatedTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.permissions = Output.createUnknown<List<ThemePermission>?>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.themeId = Output.createUnknown<String>();
-    this.versionDescription = Output.createUnknown<String?>();
-    this.versionNumber = Output.createUnknown<int>();
+    this.arn = registerOutput<String>('arn');
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.baseThemeId = registerOutput<String>('baseThemeId');
+    this.configuration = registerOutput<ThemeConfiguration?>('configuration');
+    this.createdTime = registerOutput<String>('createdTime');
+    this.lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    this.name = registerOutput<String>('name');
+    this.permissions = registerOutput<List<ThemePermission>?>('permissions');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.themeId = registerOutput<String>('themeId');
+    this.versionDescription = registerOutput<String?>('versionDescription');
+    this.versionNumber = registerOutput<int>('versionNumber');
   }
 }

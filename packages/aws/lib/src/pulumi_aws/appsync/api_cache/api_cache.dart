@@ -183,12 +183,14 @@ class ApiCache extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiCachingBehavior = Output.createUnknown<String>();
-    this.apiId = Output.createUnknown<String>();
-    this.atRestEncryptionEnabled = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.transitEncryptionEnabled = Output.createUnknown<bool>();
-    this.ttl = Output.createUnknown<int>();
-    this.type = Output.createUnknown<String>();
+    this.apiCachingBehavior = registerOutput<String>('apiCachingBehavior');
+    this.apiId = registerOutput<String>('apiId');
+    this.atRestEncryptionEnabled =
+        registerOutput<bool>('atRestEncryptionEnabled');
+    this.region = registerOutput<String>('region');
+    this.transitEncryptionEnabled =
+        registerOutput<bool>('transitEncryptionEnabled');
+    this.ttl = registerOutput<int>('ttl');
+    this.type = registerOutput<String>('type');
   }
 }

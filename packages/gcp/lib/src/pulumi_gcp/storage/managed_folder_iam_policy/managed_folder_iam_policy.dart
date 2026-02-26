@@ -1838,9 +1838,9 @@ class ManagedFolderIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.managedFolder = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.etag = registerOutput<String>('etag');
+    this.managedFolder = registerOutput<String>('managedFolder');
+    this.policyData = registerOutput<String>('policyData');
   }
 }

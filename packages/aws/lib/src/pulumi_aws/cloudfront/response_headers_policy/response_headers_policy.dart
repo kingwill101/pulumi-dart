@@ -629,18 +629,23 @@ class ResponseHeadersPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.comment = Output.createUnknown<String?>();
-    this.corsConfig = Output.createUnknown<ResponseHeadersPolicyCorsConfig?>();
+    this.arn = registerOutput<String>('arn');
+    this.comment = registerOutput<String?>('comment');
+    this.corsConfig =
+        registerOutput<ResponseHeadersPolicyCorsConfig?>('corsConfig');
     this.customHeadersConfig =
-        Output.createUnknown<ResponseHeadersPolicyCustomHeadersConfig?>();
-    this.etag = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<ResponseHeadersPolicyCustomHeadersConfig?>(
+            'customHeadersConfig');
+    this.etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
     this.removeHeadersConfig =
-        Output.createUnknown<ResponseHeadersPolicyRemoveHeadersConfig?>();
+        registerOutput<ResponseHeadersPolicyRemoveHeadersConfig?>(
+            'removeHeadersConfig');
     this.securityHeadersConfig =
-        Output.createUnknown<ResponseHeadersPolicySecurityHeadersConfig?>();
+        registerOutput<ResponseHeadersPolicySecurityHeadersConfig?>(
+            'securityHeadersConfig');
     this.serverTimingHeadersConfig =
-        Output.createUnknown<ResponseHeadersPolicyServerTimingHeadersConfig?>();
+        registerOutput<ResponseHeadersPolicyServerTimingHeadersConfig?>(
+            'serverTimingHeadersConfig');
   }
 }

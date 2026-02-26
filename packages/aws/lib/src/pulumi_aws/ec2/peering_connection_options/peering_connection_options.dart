@@ -607,9 +607,12 @@ class PeeringConnectionOptions extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accepter = Output.createUnknown<PeeringConnectionOptionsAccepter>();
-    this.region = Output.createUnknown<String>();
-    this.requester = Output.createUnknown<PeeringConnectionOptionsRequester>();
-    this.vpcPeeringConnectionId = Output.createUnknown<String>();
+    this.accepter =
+        registerOutput<PeeringConnectionOptionsAccepter>('accepter');
+    this.region = registerOutput<String>('region');
+    this.requester =
+        registerOutput<PeeringConnectionOptionsRequester>('requester');
+    this.vpcPeeringConnectionId =
+        registerOutput<String>('vpcPeeringConnectionId');
   }
 }

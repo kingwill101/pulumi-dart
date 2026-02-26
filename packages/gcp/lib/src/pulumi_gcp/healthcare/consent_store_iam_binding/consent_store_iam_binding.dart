@@ -916,11 +916,12 @@ class ConsentStoreIamBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<ConsentStoreIamBindingCondition?>();
-    this.consentStoreId = Output.createUnknown<String>();
-    this.dataset = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.role = Output.createUnknown<String>();
+    this.condition =
+        registerOutput<ConsentStoreIamBindingCondition?>('condition');
+    this.consentStoreId = registerOutput<String>('consentStoreId');
+    this.dataset = registerOutput<String>('dataset');
+    this.etag = registerOutput<String>('etag');
+    this.members = registerOutput<List<String>>('members');
+    this.role = registerOutput<String>('role');
   }
 }

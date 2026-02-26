@@ -36,14 +36,15 @@ class FolderBucketLink extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bigqueryDataset = Output.createUnknown<BigQueryDatasetResponse>();
-    this.bucketId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.folderId = Output.createUnknown<String>();
-    this.lifecycleState = Output.createUnknown<String>();
-    this.linkId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.bigqueryDataset =
+        registerOutput<BigQueryDatasetResponse>('bigqueryDataset');
+    this.bucketId = registerOutput<String>('bucketId');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.folderId = registerOutput<String>('folderId');
+    this.lifecycleState = registerOutput<String>('lifecycleState');
+    this.linkId = registerOutput<String>('linkId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
   }
 }

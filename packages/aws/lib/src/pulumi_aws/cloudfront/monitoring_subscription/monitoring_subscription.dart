@@ -151,8 +151,9 @@ class MonitoringSubscription extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.distributionId = Output.createUnknown<String>();
+    this.distributionId = registerOutput<String>('distributionId');
     this.monitoringSubscription =
-        Output.createUnknown<MonitoringSubscriptionMonitoringSubscription>();
+        registerOutput<MonitoringSubscriptionMonitoringSubscription>(
+            'monitoringSubscription');
   }
 }

@@ -959,14 +959,15 @@ class AiFeatureOnlineStoreFeatureviewIamMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<
-        AiFeatureOnlineStoreFeatureviewIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.featureOnlineStore = Output.createUnknown<String>();
-    this.featureView = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.condition =
+        registerOutput<AiFeatureOnlineStoreFeatureviewIamMemberCondition?>(
+            'condition');
+    this.etag = registerOutput<String>('etag');
+    this.featureOnlineStore = registerOutput<String>('featureOnlineStore');
+    this.featureView = registerOutput<String>('featureView');
+    this.member = registerOutput<String>('member');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.role = registerOutput<String>('role');
   }
 }

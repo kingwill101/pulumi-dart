@@ -385,7 +385,7 @@ class Owner extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.email = Output.createUnknown<String>();
-    this.webResourceId = Output.createUnknown<String>();
+    this.email = registerOutput<String>('email');
+    this.webResourceId = registerOutput<String>('webResourceId');
   }
 }

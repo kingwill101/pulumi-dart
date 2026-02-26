@@ -260,9 +260,9 @@ class Tag2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.key = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
-    this.value = Output.createUnknown<String>();
+    this.key = registerOutput<String>('key');
+    this.region = registerOutput<String>('region');
+    this.resourceArn = registerOutput<String>('resourceArn');
+    this.value = registerOutput<String>('value');
   }
 }

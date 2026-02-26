@@ -167,9 +167,9 @@ class IamAuditConfig2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.auditLogConfigs =
-        Output.createUnknown<List<IamAuditConfigAuditLogConfig2>>();
-    this.etag = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.service = Output.createUnknown<String>();
+        registerOutput<List<IamAuditConfigAuditLogConfig2>>('auditLogConfigs');
+    this.etag = registerOutput<String>('etag');
+    this.orgId = registerOutput<String>('orgId');
+    this.service = registerOutput<String>('service');
   }
 }

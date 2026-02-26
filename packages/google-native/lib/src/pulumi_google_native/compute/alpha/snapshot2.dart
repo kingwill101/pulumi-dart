@@ -137,49 +137,58 @@ class Snapshot2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.architecture = Output.createUnknown<String>();
-    this.autoCreated = Output.createUnknown<bool>();
-    this.chainName = Output.createUnknown<String>();
-    this.creationSizeBytes = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.diskSizeGb = Output.createUnknown<String>();
-    this.downloadBytes = Output.createUnknown<String>();
-    this.enableConfidentialCompute = Output.createUnknown<bool>();
-    this.guestFlush = Output.createUnknown<bool>();
-    this.guestOsFeatures = Output.createUnknown<List<GuestOsFeatureResponse>>();
-    this.kind = Output.createUnknown<String>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.licenseCodes = Output.createUnknown<List<String>>();
-    this.licenses = Output.createUnknown<List<String>>();
-    this.locationHint = Output.createUnknown<String>();
-    this.maxRetentionDays = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
+    this.architecture = registerOutput<String>('architecture');
+    this.autoCreated = registerOutput<bool>('autoCreated');
+    this.chainName = registerOutput<String>('chainName');
+    this.creationSizeBytes = registerOutput<String>('creationSizeBytes');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.diskSizeGb = registerOutput<String>('diskSizeGb');
+    this.downloadBytes = registerOutput<String>('downloadBytes');
+    this.enableConfidentialCompute =
+        registerOutput<bool>('enableConfidentialCompute');
+    this.guestFlush = registerOutput<bool>('guestFlush');
+    this.guestOsFeatures =
+        registerOutput<List<GuestOsFeatureResponse>>('guestOsFeatures');
+    this.kind = registerOutput<String>('kind');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.licenseCodes = registerOutput<List<String>>('licenseCodes');
+    this.licenses = registerOutput<List<String>>('licenses');
+    this.locationHint = registerOutput<String>('locationHint');
+    this.maxRetentionDays = registerOutput<int>('maxRetentionDays');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
     this.snapshotEncryptionKey =
-        Output.createUnknown<CustomerEncryptionKeyResponse>();
-    this.snapshotType = Output.createUnknown<String>();
-    this.sourceDisk = Output.createUnknown<String>();
+        registerOutput<CustomerEncryptionKeyResponse>('snapshotEncryptionKey');
+    this.snapshotType = registerOutput<String>('snapshotType');
+    this.sourceDisk = registerOutput<String>('sourceDisk');
     this.sourceDiskEncryptionKey =
-        Output.createUnknown<CustomerEncryptionKeyResponse>();
-    this.sourceDiskForRecoveryCheckpoint = Output.createUnknown<String>();
-    this.sourceDiskId = Output.createUnknown<String>();
-    this.sourceInstantSnapshot = Output.createUnknown<String>();
+        registerOutput<CustomerEncryptionKeyResponse>(
+            'sourceDiskEncryptionKey');
+    this.sourceDiskForRecoveryCheckpoint =
+        registerOutput<String>('sourceDiskForRecoveryCheckpoint');
+    this.sourceDiskId = registerOutput<String>('sourceDiskId');
+    this.sourceInstantSnapshot =
+        registerOutput<String>('sourceInstantSnapshot');
     this.sourceInstantSnapshotEncryptionKey =
-        Output.createUnknown<CustomerEncryptionKeyResponse>();
-    this.sourceInstantSnapshotId = Output.createUnknown<String>();
-    this.sourceSnapshotSchedulePolicy = Output.createUnknown<String>();
-    this.sourceSnapshotSchedulePolicyId = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.storageBytes = Output.createUnknown<String>();
-    this.storageBytesStatus = Output.createUnknown<String>();
-    this.storageLocations = Output.createUnknown<List<String>>();
-    this.userLicenses = Output.createUnknown<List<String>>();
+        registerOutput<CustomerEncryptionKeyResponse>(
+            'sourceInstantSnapshotEncryptionKey');
+    this.sourceInstantSnapshotId =
+        registerOutput<String>('sourceInstantSnapshotId');
+    this.sourceSnapshotSchedulePolicy =
+        registerOutput<String>('sourceSnapshotSchedulePolicy');
+    this.sourceSnapshotSchedulePolicyId =
+        registerOutput<String>('sourceSnapshotSchedulePolicyId');
+    this.status = registerOutput<String>('status');
+    this.storageBytes = registerOutput<String>('storageBytes');
+    this.storageBytesStatus = registerOutput<String>('storageBytesStatus');
+    this.storageLocations = registerOutput<List<String>>('storageLocations');
+    this.userLicenses = registerOutput<List<String>>('userLicenses');
   }
 }

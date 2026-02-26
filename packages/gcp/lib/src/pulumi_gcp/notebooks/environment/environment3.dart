@@ -196,14 +196,15 @@ class Environment3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.containerImage = Output.createUnknown<EnvironmentContainerImage?>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.postStartupScript = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.vmImage = Output.createUnknown<EnvironmentVmImage?>();
+    this.containerImage =
+        registerOutput<EnvironmentContainerImage?>('containerImage');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.postStartupScript = registerOutput<String?>('postStartupScript');
+    this.project = registerOutput<String>('project');
+    this.vmImage = registerOutput<EnvironmentVmImage?>('vmImage');
   }
 }

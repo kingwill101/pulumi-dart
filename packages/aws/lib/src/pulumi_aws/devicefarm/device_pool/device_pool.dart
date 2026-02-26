@@ -189,15 +189,15 @@ class DevicePool extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.maxDevices = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.projectArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.rules = Output.createUnknown<List<DevicePoolRule>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.maxDevices = registerOutput<int?>('maxDevices');
+    this.name = registerOutput<String>('name');
+    this.projectArn = registerOutput<String>('projectArn');
+    this.region = registerOutput<String>('region');
+    this.rules = registerOutput<List<DevicePoolRule>>('rules');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
   }
 }

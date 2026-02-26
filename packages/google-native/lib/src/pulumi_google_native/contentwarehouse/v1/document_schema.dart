@@ -39,15 +39,16 @@ class DocumentSchema extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.documentIsFolder = Output.createUnknown<bool>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.propertyDefinitions = Output.createUnknown<
-        List<GoogleCloudContentwarehouseV1PropertyDefinitionResponse>>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.documentIsFolder = registerOutput<bool>('documentIsFolder');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.propertyDefinitions = registerOutput<
+            List<GoogleCloudContentwarehouseV1PropertyDefinitionResponse>>(
+        'propertyDefinitions');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

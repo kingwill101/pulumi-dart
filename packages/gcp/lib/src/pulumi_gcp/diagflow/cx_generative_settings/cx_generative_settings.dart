@@ -398,15 +398,19 @@ class CxGenerativeSettings extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.fallbackSettings =
-        Output.createUnknown<CxGenerativeSettingsFallbackSettings?>();
+        registerOutput<CxGenerativeSettingsFallbackSettings?>(
+            'fallbackSettings');
     this.generativeSafetySettings =
-        Output.createUnknown<CxGenerativeSettingsGenerativeSafetySettings?>();
+        registerOutput<CxGenerativeSettingsGenerativeSafetySettings?>(
+            'generativeSafetySettings');
     this.knowledgeConnectorSettings =
-        Output.createUnknown<CxGenerativeSettingsKnowledgeConnectorSettings?>();
-    this.languageCode = Output.createUnknown<String>();
+        registerOutput<CxGenerativeSettingsKnowledgeConnectorSettings?>(
+            'knowledgeConnectorSettings');
+    this.languageCode = registerOutput<String>('languageCode');
     this.llmModelSettings =
-        Output.createUnknown<CxGenerativeSettingsLlmModelSettings?>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String?>();
+        registerOutput<CxGenerativeSettingsLlmModelSettings?>(
+            'llmModelSettings');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String?>('parent');
   }
 }

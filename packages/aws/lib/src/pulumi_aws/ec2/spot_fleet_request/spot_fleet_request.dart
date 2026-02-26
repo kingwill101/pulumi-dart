@@ -1283,37 +1283,50 @@ class SpotFleetRequest extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allocationStrategy = Output.createUnknown<String?>();
-    this.clientToken = Output.createUnknown<String>();
-    this.context = Output.createUnknown<String?>();
-    this.excessCapacityTerminationPolicy = Output.createUnknown<String?>();
-    this.fleetType = Output.createUnknown<String?>();
-    this.iamFleetRole = Output.createUnknown<String>();
-    this.instanceInterruptionBehaviour = Output.createUnknown<String?>();
-    this.instancePoolsToUseCount = Output.createUnknown<int?>();
+    this.allocationStrategy = registerOutput<String?>('allocationStrategy');
+    this.clientToken = registerOutput<String>('clientToken');
+    this.context = registerOutput<String?>('context');
+    this.excessCapacityTerminationPolicy =
+        registerOutput<String?>('excessCapacityTerminationPolicy');
+    this.fleetType = registerOutput<String?>('fleetType');
+    this.iamFleetRole = registerOutput<String>('iamFleetRole');
+    this.instanceInterruptionBehaviour =
+        registerOutput<String?>('instanceInterruptionBehaviour');
+    this.instancePoolsToUseCount =
+        registerOutput<int?>('instancePoolsToUseCount');
     this.launchSpecifications =
-        Output.createUnknown<List<SpotFleetRequestLaunchSpecification>?>();
+        registerOutput<List<SpotFleetRequestLaunchSpecification>?>(
+            'launchSpecifications');
     this.launchTemplateConfigs =
-        Output.createUnknown<List<SpotFleetRequestLaunchTemplateConfig>?>();
-    this.loadBalancers = Output.createUnknown<List<String>>();
-    this.onDemandAllocationStrategy = Output.createUnknown<String?>();
-    this.onDemandMaxTotalPrice = Output.createUnknown<String?>();
-    this.onDemandTargetCapacity = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
-    this.replaceUnhealthyInstances = Output.createUnknown<bool?>();
+        registerOutput<List<SpotFleetRequestLaunchTemplateConfig>?>(
+            'launchTemplateConfigs');
+    this.loadBalancers = registerOutput<List<String>>('loadBalancers');
+    this.onDemandAllocationStrategy =
+        registerOutput<String?>('onDemandAllocationStrategy');
+    this.onDemandMaxTotalPrice =
+        registerOutput<String?>('onDemandMaxTotalPrice');
+    this.onDemandTargetCapacity =
+        registerOutput<int?>('onDemandTargetCapacity');
+    this.region = registerOutput<String>('region');
+    this.replaceUnhealthyInstances =
+        registerOutput<bool?>('replaceUnhealthyInstances');
     this.spotMaintenanceStrategies =
-        Output.createUnknown<SpotFleetRequestSpotMaintenanceStrategies?>();
-    this.spotPrice = Output.createUnknown<String?>();
-    this.spotRequestState = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetCapacity = Output.createUnknown<int>();
-    this.targetCapacityUnitType = Output.createUnknown<String?>();
-    this.targetGroupArns = Output.createUnknown<List<String>>();
-    this.terminateInstancesOnDelete = Output.createUnknown<String?>();
-    this.terminateInstancesWithExpiration = Output.createUnknown<bool?>();
-    this.validFrom = Output.createUnknown<String?>();
-    this.validUntil = Output.createUnknown<String?>();
-    this.waitForFulfillment = Output.createUnknown<bool?>();
+        registerOutput<SpotFleetRequestSpotMaintenanceStrategies?>(
+            'spotMaintenanceStrategies');
+    this.spotPrice = registerOutput<String?>('spotPrice');
+    this.spotRequestState = registerOutput<String>('spotRequestState');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetCapacity = registerOutput<int>('targetCapacity');
+    this.targetCapacityUnitType =
+        registerOutput<String?>('targetCapacityUnitType');
+    this.targetGroupArns = registerOutput<List<String>>('targetGroupArns');
+    this.terminateInstancesOnDelete =
+        registerOutput<String?>('terminateInstancesOnDelete');
+    this.terminateInstancesWithExpiration =
+        registerOutput<bool?>('terminateInstancesWithExpiration');
+    this.validFrom = registerOutput<String?>('validFrom');
+    this.validUntil = registerOutput<String?>('validUntil');
+    this.waitForFulfillment = registerOutput<bool?>('waitForFulfillment');
   }
 }

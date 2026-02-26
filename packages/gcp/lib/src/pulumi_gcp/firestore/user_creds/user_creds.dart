@@ -496,14 +496,14 @@ class UserCreds extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.database = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.database = registerOutput<String>('database');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.resourceIdentities =
-        Output.createUnknown<List<UserCredsResourceIdentity>>();
-    this.securePassword = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<UserCredsResourceIdentity>>('resourceIdentities');
+    this.securePassword = registerOutput<String>('securePassword');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

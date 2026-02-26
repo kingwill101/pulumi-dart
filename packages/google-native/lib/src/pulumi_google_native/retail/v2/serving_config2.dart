@@ -81,30 +81,38 @@ class ServingConfig2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.boostControlIds = Output.createUnknown<List<String>>();
-    this.catalogId = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.diversityLevel = Output.createUnknown<String>();
-    this.diversityType = Output.createUnknown<String>();
-    this.doNotAssociateControlIds = Output.createUnknown<List<String>>();
-    this.dynamicFacetSpec = Output.createUnknown<
-        GoogleCloudRetailV2SearchRequestDynamicFacetSpecResponse>();
-    this.enableCategoryFilterLevel = Output.createUnknown<String>();
-    this.facetControlIds = Output.createUnknown<List<String>>();
-    this.filterControlIds = Output.createUnknown<List<String>>();
-    this.ignoreControlIds = Output.createUnknown<List<String>>();
-    this.location = Output.createUnknown<String>();
-    this.modelId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.onewaySynonymsControlIds = Output.createUnknown<List<String>>();
-    this.personalizationSpec = Output.createUnknown<
-        GoogleCloudRetailV2SearchRequestPersonalizationSpecResponse>();
-    this.priceRerankingLevel = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.redirectControlIds = Output.createUnknown<List<String>>();
-    this.replacementControlIds = Output.createUnknown<List<String>>();
-    this.servingConfigId = Output.createUnknown<String>();
-    this.solutionTypes = Output.createUnknown<List<String>>();
-    this.twowaySynonymsControlIds = Output.createUnknown<List<String>>();
+    this.boostControlIds = registerOutput<List<String>>('boostControlIds');
+    this.catalogId = registerOutput<String>('catalogId');
+    this.displayName = registerOutput<String>('displayName');
+    this.diversityLevel = registerOutput<String>('diversityLevel');
+    this.diversityType = registerOutput<String>('diversityType');
+    this.doNotAssociateControlIds =
+        registerOutput<List<String>>('doNotAssociateControlIds');
+    this.dynamicFacetSpec = registerOutput<
+            GoogleCloudRetailV2SearchRequestDynamicFacetSpecResponse>(
+        'dynamicFacetSpec');
+    this.enableCategoryFilterLevel =
+        registerOutput<String>('enableCategoryFilterLevel');
+    this.facetControlIds = registerOutput<List<String>>('facetControlIds');
+    this.filterControlIds = registerOutput<List<String>>('filterControlIds');
+    this.ignoreControlIds = registerOutput<List<String>>('ignoreControlIds');
+    this.location = registerOutput<String>('location');
+    this.modelId = registerOutput<String>('modelId');
+    this.name = registerOutput<String>('name');
+    this.onewaySynonymsControlIds =
+        registerOutput<List<String>>('onewaySynonymsControlIds');
+    this.personalizationSpec = registerOutput<
+            GoogleCloudRetailV2SearchRequestPersonalizationSpecResponse>(
+        'personalizationSpec');
+    this.priceRerankingLevel = registerOutput<String>('priceRerankingLevel');
+    this.project = registerOutput<String>('project');
+    this.redirectControlIds =
+        registerOutput<List<String>>('redirectControlIds');
+    this.replacementControlIds =
+        registerOutput<List<String>>('replacementControlIds');
+    this.servingConfigId = registerOutput<String>('servingConfigId');
+    this.solutionTypes = registerOutput<List<String>>('solutionTypes');
+    this.twowaySynonymsControlIds =
+        registerOutput<List<String>>('twowaySynonymsControlIds');
   }
 }

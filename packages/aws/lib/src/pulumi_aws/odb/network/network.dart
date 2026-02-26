@@ -121,38 +121,42 @@ class Network extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.availabilityZoneId = Output.createUnknown<String>();
-    this.backupSubnetCidr = Output.createUnknown<String>();
-    this.clientSubnetCidr = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.customDomainName = Output.createUnknown<String?>();
-    this.defaultDnsPrefix = Output.createUnknown<String?>();
-    this.deleteAssociatedResources = Output.createUnknown<bool>();
-    this.displayName = Output.createUnknown<String>();
-    this.kmsAccess = Output.createUnknown<String>();
-    this.kmsPolicyDocument = Output.createUnknown<String?>();
-    this.managedServices = Output.createUnknown<List<NetworkManagedService>>();
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.availabilityZoneId = registerOutput<String>('availabilityZoneId');
+    this.backupSubnetCidr = registerOutput<String>('backupSubnetCidr');
+    this.clientSubnetCidr = registerOutput<String>('clientSubnetCidr');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.customDomainName = registerOutput<String?>('customDomainName');
+    this.defaultDnsPrefix = registerOutput<String?>('defaultDnsPrefix');
+    this.deleteAssociatedResources =
+        registerOutput<bool>('deleteAssociatedResources');
+    this.displayName = registerOutput<String>('displayName');
+    this.kmsAccess = registerOutput<String>('kmsAccess');
+    this.kmsPolicyDocument = registerOutput<String?>('kmsPolicyDocument');
+    this.managedServices =
+        registerOutput<List<NetworkManagedService>>('managedServices');
     this.ociDnsForwardingConfigs =
-        Output.createUnknown<List<NetworkOciDnsForwardingConfig>>();
-    this.ociNetworkAnchorId = Output.createUnknown<String>();
-    this.ociNetworkAnchorUrl = Output.createUnknown<String>();
-    this.ociResourceAnchorName = Output.createUnknown<String>();
-    this.ociVcnId = Output.createUnknown<String>();
-    this.ociVcnUrl = Output.createUnknown<String>();
-    this.peeredCidrs = Output.createUnknown<List<String>>();
-    this.percentProgress = Output.createUnknown<double>();
-    this.region = Output.createUnknown<String>();
-    this.s3Access = Output.createUnknown<String>();
-    this.s3PolicyDocument = Output.createUnknown<String?>();
-    this.status = Output.createUnknown<String>();
-    this.statusReason = Output.createUnknown<String>();
-    this.stsAccess = Output.createUnknown<String>();
-    this.stsPolicyDocument = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<NetworkTimeouts?>();
-    this.zeroEtlAccess = Output.createUnknown<String>();
+        registerOutput<List<NetworkOciDnsForwardingConfig>>(
+            'ociDnsForwardingConfigs');
+    this.ociNetworkAnchorId = registerOutput<String>('ociNetworkAnchorId');
+    this.ociNetworkAnchorUrl = registerOutput<String>('ociNetworkAnchorUrl');
+    this.ociResourceAnchorName =
+        registerOutput<String>('ociResourceAnchorName');
+    this.ociVcnId = registerOutput<String>('ociVcnId');
+    this.ociVcnUrl = registerOutput<String>('ociVcnUrl');
+    this.peeredCidrs = registerOutput<List<String>>('peeredCidrs');
+    this.percentProgress = registerOutput<double>('percentProgress');
+    this.region = registerOutput<String>('region');
+    this.s3Access = registerOutput<String>('s3Access');
+    this.s3PolicyDocument = registerOutput<String?>('s3PolicyDocument');
+    this.status = registerOutput<String>('status');
+    this.statusReason = registerOutput<String>('statusReason');
+    this.stsAccess = registerOutput<String>('stsAccess');
+    this.stsPolicyDocument = registerOutput<String?>('stsPolicyDocument');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<NetworkTimeouts?>('timeouts');
+    this.zeroEtlAccess = registerOutput<String>('zeroEtlAccess');
   }
 }

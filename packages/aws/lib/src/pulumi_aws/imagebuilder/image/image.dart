@@ -197,28 +197,33 @@ class Image extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.containerRecipeArn = Output.createUnknown<String?>();
-    this.dateCreated = Output.createUnknown<String>();
-    this.distributionConfigurationArn = Output.createUnknown<String?>();
-    this.enhancedImageMetadataEnabled = Output.createUnknown<bool?>();
-    this.executionRole = Output.createUnknown<String>();
-    this.imageRecipeArn = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.containerRecipeArn = registerOutput<String?>('containerRecipeArn');
+    this.dateCreated = registerOutput<String>('dateCreated');
+    this.distributionConfigurationArn =
+        registerOutput<String?>('distributionConfigurationArn');
+    this.enhancedImageMetadataEnabled =
+        registerOutput<bool?>('enhancedImageMetadataEnabled');
+    this.executionRole = registerOutput<String>('executionRole');
+    this.imageRecipeArn = registerOutput<String?>('imageRecipeArn');
     this.imageScanningConfiguration =
-        Output.createUnknown<ImageImageScanningConfiguration>();
+        registerOutput<ImageImageScanningConfiguration>(
+            'imageScanningConfiguration');
     this.imageTestsConfiguration =
-        Output.createUnknown<ImageImageTestsConfiguration>();
-    this.infrastructureConfigurationArn = Output.createUnknown<String>();
+        registerOutput<ImageImageTestsConfiguration>('imageTestsConfiguration');
+    this.infrastructureConfigurationArn =
+        registerOutput<String>('infrastructureConfigurationArn');
     this.loggingConfiguration =
-        Output.createUnknown<ImageLoggingConfiguration?>();
-    this.name = Output.createUnknown<String>();
-    this.osVersion = Output.createUnknown<String>();
-    this.outputResources = Output.createUnknown<List<ImageOutputResource>>();
-    this.platform = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.version = Output.createUnknown<String>();
-    this.workflows = Output.createUnknown<List<ImageWorkflow>>();
+        registerOutput<ImageLoggingConfiguration?>('loggingConfiguration');
+    this.name = registerOutput<String>('name');
+    this.osVersion = registerOutput<String>('osVersion');
+    this.outputResources =
+        registerOutput<List<ImageOutputResource>>('outputResources');
+    this.platform = registerOutput<String>('platform');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.version = registerOutput<String>('version');
+    this.workflows = registerOutput<List<ImageWorkflow>>('workflows');
   }
 }

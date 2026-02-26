@@ -898,9 +898,9 @@ class AttestorIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attestor = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.attestor = registerOutput<String>('attestor');
+    this.etag = registerOutput<String>('etag');
+    this.policyData = registerOutput<String>('policyData');
+    this.project = registerOutput<String>('project');
   }
 }

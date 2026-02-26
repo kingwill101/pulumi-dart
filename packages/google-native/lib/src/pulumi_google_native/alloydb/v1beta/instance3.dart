@@ -98,35 +98,39 @@ class Instance3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.availabilityType = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.availabilityType = registerOutput<String>('availabilityType');
     this.clientConnectionConfig =
-        Output.createUnknown<ClientConnectionConfigResponse3>();
-    this.clusterId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.databaseFlags = Output.createUnknown<Map<String, String>>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.gceZone = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.instanceType = Output.createUnknown<String>();
-    this.ipAddress = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.machineConfig = Output.createUnknown<MachineConfigResponse3>();
-    this.name = Output.createUnknown<String>();
-    this.nodes = Output.createUnknown<List<NodeResponse3>>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<ClientConnectionConfigResponse3>(
+            'clientConnectionConfig');
+    this.clusterId = registerOutput<String>('clusterId');
+    this.createTime = registerOutput<String>('createTime');
+    this.databaseFlags = registerOutput<Map<String, String>>('databaseFlags');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.gceZone = registerOutput<String>('gceZone');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.instanceType = registerOutput<String>('instanceType');
+    this.ipAddress = registerOutput<String>('ipAddress');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.machineConfig =
+        registerOutput<MachineConfigResponse3>('machineConfig');
+    this.name = registerOutput<String>('name');
+    this.nodes = registerOutput<List<NodeResponse3>>('nodes');
+    this.project = registerOutput<String>('project');
     this.queryInsightsConfig =
-        Output.createUnknown<QueryInsightsInstanceConfigResponse3>();
-    this.readPoolConfig = Output.createUnknown<ReadPoolConfigResponse3>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.requestId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updatePolicy = Output.createUnknown<UpdatePolicyResponse2>();
-    this.updateTime = Output.createUnknown<String>();
-    this.writableNode = Output.createUnknown<NodeResponse3>();
+        registerOutput<QueryInsightsInstanceConfigResponse3>(
+            'queryInsightsConfig');
+    this.readPoolConfig =
+        registerOutput<ReadPoolConfigResponse3>('readPoolConfig');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.requestId = registerOutput<String?>('requestId');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updatePolicy = registerOutput<UpdatePolicyResponse2>('updatePolicy');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.writableNode = registerOutput<NodeResponse3>('writableNode');
   }
 }

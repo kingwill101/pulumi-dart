@@ -419,25 +419,30 @@ class UnitKind extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.createTime = Output.createUnknown<String>();
-    this.defaultRelease = Output.createUnknown<String?>();
-    this.dependencies = Output.createUnknown<List<UnitKindDependency>?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.createTime = registerOutput<String>('createTime');
+    this.defaultRelease = registerOutput<String?>('defaultRelease');
+    this.dependencies =
+        registerOutput<List<UnitKindDependency>?>('dependencies');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.etag = registerOutput<String>('etag');
     this.inputVariableMappings =
-        Output.createUnknown<List<UnitKindInputVariableMapping>?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<List<UnitKindInputVariableMapping>?>(
+            'inputVariableMappings');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.outputVariableMappings =
-        Output.createUnknown<List<UnitKindOutputVariableMapping>?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.saas = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.unitKindId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<UnitKindOutputVariableMapping>?>(
+            'outputVariableMappings');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.saas = registerOutput<String>('saas');
+    this.uid = registerOutput<String>('uid');
+    this.unitKindId = registerOutput<String>('unitKindId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

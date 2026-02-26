@@ -408,19 +408,21 @@ class CapacityProvider2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.capacityProviderScalingConfigs = Output.createUnknown<
-        List<CapacityProviderCapacityProviderScalingConfig>>();
+    this.arn = registerOutput<String>('arn');
+    this.capacityProviderScalingConfigs =
+        registerOutput<List<CapacityProviderCapacityProviderScalingConfig>>(
+            'capacityProviderScalingConfigs');
     this.instanceRequirements =
-        Output.createUnknown<List<CapacityProviderInstanceRequirement>>();
-    this.kmsKeyArn = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<List<CapacityProviderInstanceRequirement>>(
+            'instanceRequirements');
+    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.name = registerOutput<String>('name');
     this.permissionsConfig =
-        Output.createUnknown<CapacityProviderPermissionsConfig>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<CapacityProviderTimeouts?>();
-    this.vpcConfig = Output.createUnknown<CapacityProviderVpcConfig>();
+        registerOutput<CapacityProviderPermissionsConfig>('permissionsConfig');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<CapacityProviderTimeouts?>('timeouts');
+    this.vpcConfig = registerOutput<CapacityProviderVpcConfig>('vpcConfig');
   }
 }

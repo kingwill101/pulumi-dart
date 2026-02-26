@@ -565,15 +565,16 @@ class GroupMembership extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createIgnoreAlreadyExists = Output.createUnknown<bool?>();
-    this.createTime = Output.createUnknown<String>();
-    this.group = Output.createUnknown<String>();
-    this.memberKey = Output.createUnknown<GroupMembershipMemberKey>();
-    this.name = Output.createUnknown<String>();
+    this.createIgnoreAlreadyExists =
+        registerOutput<bool?>('createIgnoreAlreadyExists');
+    this.createTime = registerOutput<String>('createTime');
+    this.group = registerOutput<String>('group');
+    this.memberKey = registerOutput<GroupMembershipMemberKey>('memberKey');
+    this.name = registerOutput<String>('name');
     this.preferredMemberKey =
-        Output.createUnknown<GroupMembershipPreferredMemberKey>();
-    this.roles = Output.createUnknown<List<GroupMembershipRole>>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GroupMembershipPreferredMemberKey>('preferredMemberKey');
+    this.roles = registerOutput<List<GroupMembershipRole>>('roles');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

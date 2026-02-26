@@ -31,12 +31,12 @@ class ProductSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String>();
-    this.indexError = Output.createUnknown<StatusResponse29>();
-    this.indexTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.productSetId = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
+    this.displayName = registerOutput<String>('displayName');
+    this.indexError = registerOutput<StatusResponse29>('indexError');
+    this.indexTime = registerOutput<String>('indexTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.productSetId = registerOutput<String?>('productSetId');
+    this.project = registerOutput<String>('project');
   }
 }

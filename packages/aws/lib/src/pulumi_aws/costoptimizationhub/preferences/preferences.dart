@@ -202,7 +202,9 @@ class Preferences extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.memberAccountDiscountVisibility = Output.createUnknown<String>();
-    this.savingsEstimationMode = Output.createUnknown<String>();
+    this.memberAccountDiscountVisibility =
+        registerOutput<String>('memberAccountDiscountVisibility');
+    this.savingsEstimationMode =
+        registerOutput<String>('savingsEstimationMode');
   }
 }

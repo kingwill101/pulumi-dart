@@ -33,13 +33,14 @@ class BrowserDlpRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.group = Output.createUnknown<
-        GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.partnerTenantId = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.ruleSetting = Output.createUnknown<
-        GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse>();
+    this.group = registerOutput<
+        GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse>('group');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.partnerTenantId = registerOutput<String>('partnerTenantId');
+    this.requestId = registerOutput<String?>('requestId');
+    this.ruleSetting = registerOutput<
+            GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse>(
+        'ruleSetting');
   }
 }

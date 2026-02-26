@@ -146,18 +146,22 @@ class InternetMonitor extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.healthEventsConfig =
-        Output.createUnknown<InternetMonitorHealthEventsConfig?>();
+        registerOutput<InternetMonitorHealthEventsConfig?>(
+            'healthEventsConfig');
     this.internetMeasurementsLogDelivery =
-        Output.createUnknown<InternetMonitorInternetMeasurementsLogDelivery?>();
-    this.maxCityNetworksToMonitor = Output.createUnknown<int?>();
-    this.monitorName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resources = Output.createUnknown<List<String>?>();
-    this.status = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.trafficPercentageToMonitor = Output.createUnknown<int?>();
+        registerOutput<InternetMonitorInternetMeasurementsLogDelivery?>(
+            'internetMeasurementsLogDelivery');
+    this.maxCityNetworksToMonitor =
+        registerOutput<int?>('maxCityNetworksToMonitor');
+    this.monitorName = registerOutput<String>('monitorName');
+    this.region = registerOutput<String>('region');
+    this.resources = registerOutput<List<String>?>('resources');
+    this.status = registerOutput<String?>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.trafficPercentageToMonitor =
+        registerOutput<int?>('trafficPercentageToMonitor');
   }
 }

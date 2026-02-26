@@ -264,10 +264,10 @@ class RegionSettings extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
     this.resourceTypeManagementPreference =
-        Output.createUnknown<Map<String, bool>>();
+        registerOutput<Map<String, bool>>('resourceTypeManagementPreference');
     this.resourceTypeOptInPreference =
-        Output.createUnknown<Map<String, bool>>();
+        registerOutput<Map<String, bool>>('resourceTypeOptInPreference');
   }
 }

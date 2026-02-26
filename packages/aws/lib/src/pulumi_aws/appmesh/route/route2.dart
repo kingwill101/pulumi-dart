@@ -934,17 +934,17 @@ class Route2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdDate = Output.createUnknown<String>();
-    this.lastUpdatedDate = Output.createUnknown<String>();
-    this.meshName = Output.createUnknown<String>();
-    this.meshOwner = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceOwner = Output.createUnknown<String>();
-    this.spec = Output.createUnknown<RouteSpec>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.virtualRouterName = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.createdDate = registerOutput<String>('createdDate');
+    this.lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+    this.meshName = registerOutput<String>('meshName');
+    this.meshOwner = registerOutput<String>('meshOwner');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.resourceOwner = registerOutput<String>('resourceOwner');
+    this.spec = registerOutput<RouteSpec>('spec');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.virtualRouterName = registerOutput<String>('virtualRouterName');
   }
 }

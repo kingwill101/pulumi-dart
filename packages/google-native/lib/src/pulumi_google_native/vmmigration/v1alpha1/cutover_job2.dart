@@ -76,27 +76,30 @@ class CutoverJob2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.computeEngineDisksTargetDetails =
-        Output.createUnknown<ComputeEngineDisksTargetDetailsResponse2>();
+        registerOutput<ComputeEngineDisksTargetDetailsResponse2>(
+            'computeEngineDisksTargetDetails');
     this.computeEngineTargetDetails =
-        Output.createUnknown<ComputeEngineTargetDetailsResponse2>();
+        registerOutput<ComputeEngineTargetDetailsResponse2>(
+            'computeEngineTargetDetails');
     this.computeEngineVmDetails =
-        Output.createUnknown<TargetVMDetailsResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.cutoverJobId = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
-    this.error = Output.createUnknown<StatusResponse31>();
-    this.location = Output.createUnknown<String>();
-    this.migratingVmId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.progress = Output.createUnknown<int>();
-    this.progressPercent = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.sourceId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.stateMessage = Output.createUnknown<String>();
-    this.stateTime = Output.createUnknown<String>();
-    this.steps = Output.createUnknown<List<CutoverStepResponse2>>();
-    this.targetDetails = Output.createUnknown<TargetVMDetailsResponse>();
+        registerOutput<TargetVMDetailsResponse>('computeEngineVmDetails');
+    this.createTime = registerOutput<String>('createTime');
+    this.cutoverJobId = registerOutput<String>('cutoverJobId');
+    this.endTime = registerOutput<String>('endTime');
+    this.error = registerOutput<StatusResponse31>('error');
+    this.location = registerOutput<String>('location');
+    this.migratingVmId = registerOutput<String>('migratingVmId');
+    this.name = registerOutput<String>('name');
+    this.progress = registerOutput<int>('progress');
+    this.progressPercent = registerOutput<int>('progressPercent');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.sourceId = registerOutput<String>('sourceId');
+    this.state = registerOutput<String>('state');
+    this.stateMessage = registerOutput<String>('stateMessage');
+    this.stateTime = registerOutput<String>('stateTime');
+    this.steps = registerOutput<List<CutoverStepResponse2>>('steps');
+    this.targetDetails =
+        registerOutput<TargetVMDetailsResponse>('targetDetails');
   }
 }

@@ -275,9 +275,9 @@ class SecretPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.blockPublicPolicy = Output.createUnknown<bool?>();
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.secretArn = Output.createUnknown<String>();
+    this.blockPublicPolicy = registerOutput<bool?>('blockPublicPolicy');
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
+    this.secretArn = registerOutput<String>('secretArn');
   }
 }

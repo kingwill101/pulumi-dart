@@ -16,6 +16,6 @@ class Topic3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
+    this.name = registerOutput<String>('name');
   }
 }

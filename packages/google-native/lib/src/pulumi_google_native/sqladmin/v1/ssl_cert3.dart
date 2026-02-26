@@ -40,15 +40,15 @@ class SslCert3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cert = Output.createUnknown<String>();
-    this.certSerialNumber = Output.createUnknown<String>();
-    this.commonName = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.expirationTime = Output.createUnknown<String>();
-    this.instance = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.sha1Fingerprint = Output.createUnknown<String>();
+    this.cert = registerOutput<String>('cert');
+    this.certSerialNumber = registerOutput<String>('certSerialNumber');
+    this.commonName = registerOutput<String>('commonName');
+    this.createTime = registerOutput<String>('createTime');
+    this.expirationTime = registerOutput<String>('expirationTime');
+    this.instance = registerOutput<String>('instance');
+    this.kind = registerOutput<String>('kind');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.sha1Fingerprint = registerOutput<String>('sha1Fingerprint');
   }
 }

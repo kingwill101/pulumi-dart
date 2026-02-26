@@ -40,16 +40,18 @@ class Webhook extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentId = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool>();
-    this.displayName = Output.createUnknown<String>();
-    this.genericWebService = Output.createUnknown<
-        GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.serviceDirectory = Output.createUnknown<
-        GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse>();
-    this.timeout = Output.createUnknown<String>();
+    this.agentId = registerOutput<String>('agentId');
+    this.disabled = registerOutput<bool>('disabled');
+    this.displayName = registerOutput<String>('displayName');
+    this.genericWebService = registerOutput<
+            GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse>(
+        'genericWebService');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.serviceDirectory = registerOutput<
+            GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse>(
+        'serviceDirectory');
+    this.timeout = registerOutput<String>('timeout');
   }
 }

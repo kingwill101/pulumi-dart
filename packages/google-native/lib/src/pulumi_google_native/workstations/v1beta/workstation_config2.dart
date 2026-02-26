@@ -95,35 +95,38 @@ class WorkstationConfig2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.conditions = Output.createUnknown<List<StatusResponse35>>();
-    this.container = Output.createUnknown<ContainerResponse4>();
-    this.createTime = Output.createUnknown<String>();
-    this.degraded = Output.createUnknown<bool>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.disableTcpConnections = Output.createUnknown<bool>();
-    this.displayName = Output.createUnknown<String>();
-    this.enableAuditAgent = Output.createUnknown<bool>();
-    this.encryptionKey = Output.createUnknown<CustomerEncryptionKeyResponse6>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.conditions = registerOutput<List<StatusResponse35>>('conditions');
+    this.container = registerOutput<ContainerResponse4>('container');
+    this.createTime = registerOutput<String>('createTime');
+    this.degraded = registerOutput<bool>('degraded');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.disableTcpConnections = registerOutput<bool>('disableTcpConnections');
+    this.displayName = registerOutput<String>('displayName');
+    this.enableAuditAgent = registerOutput<bool>('enableAuditAgent');
+    this.encryptionKey =
+        registerOutput<CustomerEncryptionKeyResponse6>('encryptionKey');
     this.ephemeralDirectories =
-        Output.createUnknown<List<EphemeralDirectoryResponse>>();
-    this.etag = Output.createUnknown<String>();
-    this.host = Output.createUnknown<HostResponse2>();
-    this.idleTimeout = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<List<EphemeralDirectoryResponse>>(
+            'ephemeralDirectories');
+    this.etag = registerOutput<String>('etag');
+    this.host = registerOutput<HostResponse2>('host');
+    this.idleTimeout = registerOutput<String>('idleTimeout');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.persistentDirectories =
-        Output.createUnknown<List<PersistentDirectoryResponse2>>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<List<PersistentDirectoryResponse2>>(
+            'persistentDirectories');
+    this.project = registerOutput<String>('project');
     this.readinessChecks =
-        Output.createUnknown<List<ReadinessCheckResponse4>>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.replicaZones = Output.createUnknown<List<String>>();
-    this.runningTimeout = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.workstationClusterId = Output.createUnknown<String>();
-    this.workstationConfigId = Output.createUnknown<String>();
+        registerOutput<List<ReadinessCheckResponse4>>('readinessChecks');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.replicaZones = registerOutput<List<String>>('replicaZones');
+    this.runningTimeout = registerOutput<String>('runningTimeout');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.workstationClusterId = registerOutput<String>('workstationClusterId');
+    this.workstationConfigId = registerOutput<String>('workstationConfigId');
   }
 }

@@ -50,18 +50,18 @@ class Connector extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.connectorId = Output.createUnknown<String?>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.principalInfo = Output.createUnknown<PrincipalInfoResponse>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.resourceInfo = Output.createUnknown<ResourceInfoResponse>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.connectorId = registerOutput<String?>('connectorId');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.principalInfo = registerOutput<PrincipalInfoResponse>('principalInfo');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.resourceInfo = registerOutput<ResourceInfoResponse>('resourceInfo');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

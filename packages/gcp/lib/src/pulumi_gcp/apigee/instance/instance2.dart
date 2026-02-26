@@ -1489,18 +1489,20 @@ class Instance2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.accessLoggingConfig =
-        Output.createUnknown<InstanceAccessLoggingConfig?>();
-    this.consumerAcceptLists = Output.createUnknown<List<String>>();
-    this.description = Output.createUnknown<String?>();
-    this.diskEncryptionKeyName = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.host = Output.createUnknown<String>();
-    this.ipRange = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.peeringCidrRange = Output.createUnknown<String>();
-    this.port = Output.createUnknown<String>();
-    this.serviceAttachment = Output.createUnknown<String>();
+        registerOutput<InstanceAccessLoggingConfig?>('accessLoggingConfig');
+    this.consumerAcceptLists =
+        registerOutput<List<String>>('consumerAcceptLists');
+    this.description = registerOutput<String?>('description');
+    this.diskEncryptionKeyName =
+        registerOutput<String?>('diskEncryptionKeyName');
+    this.displayName = registerOutput<String?>('displayName');
+    this.host = registerOutput<String>('host');
+    this.ipRange = registerOutput<String?>('ipRange');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.orgId = registerOutput<String>('orgId');
+    this.peeringCidrRange = registerOutput<String>('peeringCidrRange');
+    this.port = registerOutput<String>('port');
+    this.serviceAttachment = registerOutput<String>('serviceAttachment');
   }
 }

@@ -132,8 +132,8 @@ class AttachmentRoutingPolicyLabel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attachmentId = Output.createUnknown<String>();
-    this.coreNetworkId = Output.createUnknown<String>();
-    this.routingPolicyLabel = Output.createUnknown<String>();
+    this.attachmentId = registerOutput<String>('attachmentId');
+    this.coreNetworkId = registerOutput<String>('coreNetworkId');
+    this.routingPolicyLabel = registerOutput<String>('routingPolicyLabel');
   }
 }

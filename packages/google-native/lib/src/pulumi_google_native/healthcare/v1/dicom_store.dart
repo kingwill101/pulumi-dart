@@ -35,15 +35,16 @@ class DicomStore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.datasetId = Output.createUnknown<String>();
-    this.dicomStoreId = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.datasetId = registerOutput<String>('datasetId');
+    this.dicomStoreId = registerOutput<String?>('dicomStoreId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.notificationConfig =
-        Output.createUnknown<NotificationConfigResponse3>();
-    this.project = Output.createUnknown<String>();
-    this.streamConfigs = Output.createUnknown<
-        List<GoogleCloudHealthcareV1DicomStreamConfigResponse>>();
+        registerOutput<NotificationConfigResponse3>('notificationConfig');
+    this.project = registerOutput<String>('project');
+    this.streamConfigs =
+        registerOutput<List<GoogleCloudHealthcareV1DicomStreamConfigResponse>>(
+            'streamConfigs');
   }
 }

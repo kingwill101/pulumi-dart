@@ -543,15 +543,16 @@ class MangedSslCertificate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificateId = Output.createUnknown<int>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.expireTime = Output.createUnknown<String>();
-    this.managed = Output.createUnknown<MangedSslCertificateManaged?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.subjectAlternativeNames = Output.createUnknown<List<String>>();
-    this.type = Output.createUnknown<String?>();
+    this.certificateId = registerOutput<int>('certificateId');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.managed = registerOutput<MangedSslCertificateManaged?>('managed');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.subjectAlternativeNames =
+        registerOutput<List<String>>('subjectAlternativeNames');
+    this.type = registerOutput<String?>('type');
   }
 }

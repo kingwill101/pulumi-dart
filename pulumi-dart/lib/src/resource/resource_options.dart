@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use_from_same_package
+
 import 'package:pulumi/src/alias.dart';
 
 import 'provider_resource.dart';
@@ -57,6 +59,9 @@ class ResourceOptions {
     this.hooks,
   }) : providers = providers ?? const [];
 
+  dynamic get effectiveReplacementTrigger =>
+      replacementTrigger ?? replacementOptions;
+
   ResourceOptions merge(ResourceOptions? options) {
     if (options == null) return this;
 
@@ -68,15 +73,15 @@ class ResourceOptions {
       dependsOn: [...?dependsOn, ...?options.dependsOn],
       protect: options.protect ?? protect,
       resourceTransformations: [
-        ...options.resourceTransformations,
         ...options2.resourceTransformations,
+        ...options.resourceTransformations,
       ],
       resourceTransforms: [
-        ...options.resourceTransforms,
         ...options2.resourceTransforms,
+        ...options.resourceTransforms,
       ],
       provider: options.provider ?? provider,
-      providers: mergeProviders(options.providers, options2.providers),
+      providers: mergeProviders(options2.providers, options.providers),
       aliases: [...?aliases, ...?options.aliases],
       customTimeouts: options.customTimeouts ?? customTimeouts,
       deleteBeforeReplace: options.deleteBeforeReplace ?? deleteBeforeReplace,
@@ -86,7 +91,7 @@ class ResourceOptions {
         ...?additionalSecretOutputs,
         ...?options.additionalSecretOutputs,
       ],
-      ignoreChanges: options.ignoreChanges ?? ignoreChanges,
+      ignoreChanges: [...?ignoreChanges, ...?options.ignoreChanges],
       version: options.version ?? version,
       pluginDownloadURL: options.pluginDownloadURL ?? pluginDownloadURL,
       replacementTrigger:
@@ -95,35 +100,44 @@ class ResourceOptions {
           replacementTrigger ??
           replacementOptions,
       replacementOptions: options.replacementOptions ?? replacementOptions,
-      hooks: options.hooks ?? hooks,
+      hooks: mergeHooks(hooks, options.hooks),
     );
   }
 
   ResourceOptions clone() => createComponentResourceOptionsCopy(this);
 }
 
+ResourceHookBinding? mergeHooks(
+  ResourceHookBinding? binding1,
+  ResourceHookBinding? binding2,
+) {
+  if (binding1 == null && binding2 == null) {
+    return null;
+  }
+
+  return ResourceHookBinding(
+    beforeCreate: [...?binding1?.beforeCreate, ...?binding2?.beforeCreate],
+    afterCreate: [...?binding1?.afterCreate, ...?binding2?.afterCreate],
+    beforeUpdate: [...?binding1?.beforeUpdate, ...?binding2?.beforeUpdate],
+    afterUpdate: [...?binding1?.afterUpdate, ...?binding2?.afterUpdate],
+    beforeDelete: [...?binding1?.beforeDelete, ...?binding2?.beforeDelete],
+    afterDelete: [...?binding1?.afterDelete, ...?binding2?.afterDelete],
+    onError: [...?binding1?.onError, ...?binding2?.onError],
+  );
+}
+
 List<ProviderResource> mergeProviders(
   List<ProviderResource> prov1,
   List<ProviderResource> prov2,
 ) {
-  var result = <ProviderResource>[];
-  var taken = <String>{};
-
-  void addProviders(List<ProviderResource> list) {
-    for (var i = list.length - 1; i >= 0; i--) {
-      var p = list[i];
-      if (!taken.contains(p.package)) {
-        result.add(p);
-        taken.add(p.package);
-      }
-    }
+  final byPackage = <String, ProviderResource>{};
+  for (final provider in [...prov1, ...prov2]) {
+    // Keep one provider per package while preserving stable "last writer wins"
+    // ordering by moving overwritten keys to the end.
+    byPackage.remove(provider.package);
+    byPackage[provider.package] = provider;
   }
-
-  addProviders(prov2);
-  addProviders(prov1);
-
-  // Reverse the list to keep the order as much as possible
-  return result.reversed.toList();
+  return byPackage.values.toList(growable: false);
 }
 
 ResourceOptions createComponentResourceOptionsCopy(ResourceOptions options) {

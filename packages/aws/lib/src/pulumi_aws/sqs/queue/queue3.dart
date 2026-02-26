@@ -884,27 +884,32 @@ class Queue3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.contentBasedDeduplication = Output.createUnknown<bool?>();
-    this.deduplicationScope = Output.createUnknown<String>();
-    this.delaySeconds = Output.createUnknown<int?>();
-    this.fifoQueue = Output.createUnknown<bool?>();
-    this.fifoThroughputLimit = Output.createUnknown<String>();
-    this.kmsDataKeyReusePeriodSeconds = Output.createUnknown<int>();
-    this.kmsMasterKeyId = Output.createUnknown<String?>();
-    this.maxMessageSize = Output.createUnknown<int?>();
-    this.messageRetentionSeconds = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
-    this.receiveWaitTimeSeconds = Output.createUnknown<int?>();
-    this.redriveAllowPolicy = Output.createUnknown<String>();
-    this.redrivePolicy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.sqsManagedSseEnabled = Output.createUnknown<bool>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.url = Output.createUnknown<String>();
-    this.visibilityTimeoutSeconds = Output.createUnknown<int?>();
+    this.arn = registerOutput<String>('arn');
+    this.contentBasedDeduplication =
+        registerOutput<bool?>('contentBasedDeduplication');
+    this.deduplicationScope = registerOutput<String>('deduplicationScope');
+    this.delaySeconds = registerOutput<int?>('delaySeconds');
+    this.fifoQueue = registerOutput<bool?>('fifoQueue');
+    this.fifoThroughputLimit = registerOutput<String>('fifoThroughputLimit');
+    this.kmsDataKeyReusePeriodSeconds =
+        registerOutput<int>('kmsDataKeyReusePeriodSeconds');
+    this.kmsMasterKeyId = registerOutput<String?>('kmsMasterKeyId');
+    this.maxMessageSize = registerOutput<int?>('maxMessageSize');
+    this.messageRetentionSeconds =
+        registerOutput<int?>('messageRetentionSeconds');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.policy = registerOutput<String>('policy');
+    this.receiveWaitTimeSeconds =
+        registerOutput<int?>('receiveWaitTimeSeconds');
+    this.redriveAllowPolicy = registerOutput<String>('redriveAllowPolicy');
+    this.redrivePolicy = registerOutput<String>('redrivePolicy');
+    this.region = registerOutput<String>('region');
+    this.sqsManagedSseEnabled = registerOutput<bool>('sqsManagedSseEnabled');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.url = registerOutput<String>('url');
+    this.visibilityTimeoutSeconds =
+        registerOutput<int?>('visibilityTimeoutSeconds');
   }
 }

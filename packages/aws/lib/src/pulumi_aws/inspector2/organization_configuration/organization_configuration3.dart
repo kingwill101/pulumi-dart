@@ -154,8 +154,9 @@ class OrganizationConfiguration3 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.autoEnable =
-        Output.createUnknown<OrganizationConfigurationAutoEnable>();
-    this.maxAccountLimitReached = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<OrganizationConfigurationAutoEnable>('autoEnable');
+    this.maxAccountLimitReached =
+        registerOutput<bool>('maxAccountLimitReached');
+    this.region = registerOutput<String>('region');
   }
 }

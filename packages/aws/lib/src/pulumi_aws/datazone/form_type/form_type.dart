@@ -681,19 +681,20 @@ class FormType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createdAt = Output.createUnknown<String>();
-    this.createdBy = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.domainIdentifier = Output.createUnknown<String>();
-    this.imports = Output.createUnknown<List<FormTypeImport>>();
-    this.model = Output.createUnknown<FormTypeModel>();
-    this.name = Output.createUnknown<String>();
-    this.originDomainId = Output.createUnknown<String>();
-    this.originProjectId = Output.createUnknown<String>();
-    this.owningProjectIdentifier = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.revision = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<FormTypeTimeouts?>();
+    this.createdAt = registerOutput<String>('createdAt');
+    this.createdBy = registerOutput<String>('createdBy');
+    this.description = registerOutput<String?>('description');
+    this.domainIdentifier = registerOutput<String>('domainIdentifier');
+    this.imports = registerOutput<List<FormTypeImport>>('imports');
+    this.model = registerOutput<FormTypeModel>('model');
+    this.name = registerOutput<String>('name');
+    this.originDomainId = registerOutput<String>('originDomainId');
+    this.originProjectId = registerOutput<String>('originProjectId');
+    this.owningProjectIdentifier =
+        registerOutput<String>('owningProjectIdentifier');
+    this.region = registerOutput<String>('region');
+    this.revision = registerOutput<String>('revision');
+    this.status = registerOutput<String>('status');
+    this.timeouts = registerOutput<FormTypeTimeouts?>('timeouts');
   }
 }

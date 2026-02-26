@@ -407,10 +407,11 @@ class WorkspaceConfiguration extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.limitsPerLabelSets =
-        Output.createUnknown<List<WorkspaceConfigurationLimitsPerLabelSet>?>();
-    this.region = Output.createUnknown<String>();
-    this.retentionPeriodInDays = Output.createUnknown<int>();
-    this.timeouts = Output.createUnknown<WorkspaceConfigurationTimeouts?>();
-    this.workspaceId = Output.createUnknown<String>();
+        registerOutput<List<WorkspaceConfigurationLimitsPerLabelSet>?>(
+            'limitsPerLabelSets');
+    this.region = registerOutput<String>('region');
+    this.retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');
+    this.timeouts = registerOutput<WorkspaceConfigurationTimeouts?>('timeouts');
+    this.workspaceId = registerOutput<String>('workspaceId');
   }
 }

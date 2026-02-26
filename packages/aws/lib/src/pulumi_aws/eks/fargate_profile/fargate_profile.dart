@@ -383,15 +383,15 @@ class FargateProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.clusterName = Output.createUnknown<String>();
-    this.fargateProfileName = Output.createUnknown<String>();
-    this.podExecutionRoleArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.selectors = Output.createUnknown<List<FargateProfileSelector>>();
-    this.status = Output.createUnknown<String>();
-    this.subnetIds = Output.createUnknown<List<String>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.clusterName = registerOutput<String>('clusterName');
+    this.fargateProfileName = registerOutput<String>('fargateProfileName');
+    this.podExecutionRoleArn = registerOutput<String>('podExecutionRoleArn');
+    this.region = registerOutput<String>('region');
+    this.selectors = registerOutput<List<FargateProfileSelector>>('selectors');
+    this.status = registerOutput<String>('status');
+    this.subnetIds = registerOutput<List<String>?>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

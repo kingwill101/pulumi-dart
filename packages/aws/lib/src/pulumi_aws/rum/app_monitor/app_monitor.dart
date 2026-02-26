@@ -152,17 +152,18 @@ class AppMonitor extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.appMonitorConfiguration =
-        Output.createUnknown<AppMonitorAppMonitorConfiguration>();
-    this.appMonitorId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.customEvents = Output.createUnknown<AppMonitorCustomEvents>();
-    this.cwLogEnabled = Output.createUnknown<bool?>();
-    this.cwLogGroup = Output.createUnknown<String>();
-    this.domain = Output.createUnknown<String?>();
-    this.domainLists = Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<AppMonitorAppMonitorConfiguration>(
+            'appMonitorConfiguration');
+    this.appMonitorId = registerOutput<String>('appMonitorId');
+    this.arn = registerOutput<String>('arn');
+    this.customEvents = registerOutput<AppMonitorCustomEvents>('customEvents');
+    this.cwLogEnabled = registerOutput<bool?>('cwLogEnabled');
+    this.cwLogGroup = registerOutput<String>('cwLogGroup');
+    this.domain = registerOutput<String?>('domain');
+    this.domainLists = registerOutput<List<String>?>('domainLists');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

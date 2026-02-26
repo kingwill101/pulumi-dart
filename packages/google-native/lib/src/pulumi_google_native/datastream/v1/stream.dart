@@ -68,23 +68,26 @@ class Stream extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backfillAll = Output.createUnknown<BackfillAllStrategyResponse>();
-    this.backfillNone = Output.createUnknown<Map<String, dynamic>>();
-    this.createTime = Output.createUnknown<String>();
-    this.customerManagedEncryptionKey = Output.createUnknown<String>();
-    this.destinationConfig = Output.createUnknown<DestinationConfigResponse2>();
-    this.displayName = Output.createUnknown<String>();
-    this.errors = Output.createUnknown<List<ErrorResponse>>();
-    this.force = Output.createUnknown<bool?>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lastRecoveryTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.sourceConfig = Output.createUnknown<SourceConfigResponse2>();
-    this.state = Output.createUnknown<String>();
-    this.streamId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.backfillAll =
+        registerOutput<BackfillAllStrategyResponse>('backfillAll');
+    this.backfillNone = registerOutput<Map<String, dynamic>>('backfillNone');
+    this.createTime = registerOutput<String>('createTime');
+    this.customerManagedEncryptionKey =
+        registerOutput<String>('customerManagedEncryptionKey');
+    this.destinationConfig =
+        registerOutput<DestinationConfigResponse2>('destinationConfig');
+    this.displayName = registerOutput<String>('displayName');
+    this.errors = registerOutput<List<ErrorResponse>>('errors');
+    this.force = registerOutput<bool?>('force');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lastRecoveryTime = registerOutput<String>('lastRecoveryTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.sourceConfig = registerOutput<SourceConfigResponse2>('sourceConfig');
+    this.state = registerOutput<String>('state');
+    this.streamId = registerOutput<String>('streamId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

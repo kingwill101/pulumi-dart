@@ -1841,9 +1841,9 @@ class SecretIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.secretId = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.policyData = registerOutput<String>('policyData');
+    this.project = registerOutput<String>('project');
+    this.secretId = registerOutput<String>('secretId');
   }
 }

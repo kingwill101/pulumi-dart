@@ -144,12 +144,12 @@ class ContributorInsightRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
-    this.ruleDefinition = Output.createUnknown<String>();
-    this.ruleName = Output.createUnknown<String>();
-    this.ruleState = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.region = registerOutput<String>('region');
+    this.resourceArn = registerOutput<String>('resourceArn');
+    this.ruleDefinition = registerOutput<String>('ruleDefinition');
+    this.ruleName = registerOutput<String>('ruleName');
+    this.ruleState = registerOutput<String?>('ruleState');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

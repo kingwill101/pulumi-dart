@@ -237,12 +237,14 @@ class IdentityProvider extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attributeMapping = Output.createUnknown<Map<String, String>>();
-    this.idpIdentifiers = Output.createUnknown<List<String>?>();
-    this.providerDetails = Output.createUnknown<Map<String, String>>();
-    this.providerName = Output.createUnknown<String>();
-    this.providerType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.userPoolId = Output.createUnknown<String>();
+    this.attributeMapping =
+        registerOutput<Map<String, String>>('attributeMapping');
+    this.idpIdentifiers = registerOutput<List<String>?>('idpIdentifiers');
+    this.providerDetails =
+        registerOutput<Map<String, String>>('providerDetails');
+    this.providerName = registerOutput<String>('providerName');
+    this.providerType = registerOutput<String>('providerType');
+    this.region = registerOutput<String>('region');
+    this.userPoolId = registerOutput<String>('userPoolId');
   }
 }

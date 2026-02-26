@@ -1303,18 +1303,18 @@ class Example extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.app = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.entryAgent = Output.createUnknown<String?>();
-    this.etag = Output.createUnknown<String>();
-    this.exampleId = Output.createUnknown<String>();
-    this.invalid = Output.createUnknown<bool>();
-    this.location = Output.createUnknown<String>();
-    this.messages = Output.createUnknown<List<ExampleMessage>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.app = registerOutput<String>('app');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.entryAgent = registerOutput<String?>('entryAgent');
+    this.etag = registerOutput<String>('etag');
+    this.exampleId = registerOutput<String>('exampleId');
+    this.invalid = registerOutput<bool>('invalid');
+    this.location = registerOutput<String>('location');
+    this.messages = registerOutput<List<ExampleMessage>?>('messages');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

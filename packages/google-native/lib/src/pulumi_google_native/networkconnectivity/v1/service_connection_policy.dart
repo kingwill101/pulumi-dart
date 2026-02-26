@@ -56,20 +56,22 @@ class ServiceConnectionPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.infrastructure = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pscConfig = Output.createUnknown<PscConfigResponse2>();
-    this.pscConnections = Output.createUnknown<List<PscConnectionResponse>>();
-    this.requestId = Output.createUnknown<String?>();
-    this.serviceClass = Output.createUnknown<String>();
-    this.serviceConnectionPolicyId = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.infrastructure = registerOutput<String>('infrastructure');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.project = registerOutput<String>('project');
+    this.pscConfig = registerOutput<PscConfigResponse2>('pscConfig');
+    this.pscConnections =
+        registerOutput<List<PscConnectionResponse>>('pscConnections');
+    this.requestId = registerOutput<String?>('requestId');
+    this.serviceClass = registerOutput<String>('serviceClass');
+    this.serviceConnectionPolicyId =
+        registerOutput<String?>('serviceConnectionPolicyId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

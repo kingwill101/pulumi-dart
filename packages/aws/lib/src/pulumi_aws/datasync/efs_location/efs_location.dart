@@ -183,16 +183,17 @@ class EfsLocation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessPointArn = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.ec2Config = Output.createUnknown<EfsLocationEc2Config>();
-    this.efsFileSystemArn = Output.createUnknown<String>();
-    this.fileSystemAccessRoleArn = Output.createUnknown<String?>();
-    this.inTransitEncryption = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.subdirectory = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.uri = Output.createUnknown<String>();
+    this.accessPointArn = registerOutput<String?>('accessPointArn');
+    this.arn = registerOutput<String>('arn');
+    this.ec2Config = registerOutput<EfsLocationEc2Config>('ec2Config');
+    this.efsFileSystemArn = registerOutput<String>('efsFileSystemArn');
+    this.fileSystemAccessRoleArn =
+        registerOutput<String?>('fileSystemAccessRoleArn');
+    this.inTransitEncryption = registerOutput<String?>('inTransitEncryption');
+    this.region = registerOutput<String>('region');
+    this.subdirectory = registerOutput<String?>('subdirectory');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.uri = registerOutput<String>('uri');
   }
 }

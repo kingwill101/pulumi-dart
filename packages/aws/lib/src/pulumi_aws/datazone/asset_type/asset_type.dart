@@ -163,15 +163,17 @@ class AssetType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createdAt = Output.createUnknown<String>();
-    this.createdBy = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.domainIdentifier = Output.createUnknown<String>();
-    this.formsInputs = Output.createUnknown<List<AssetTypeFormsInput>?>();
-    this.name = Output.createUnknown<String>();
-    this.owningProjectIdentifier = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.revision = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<AssetTypeTimeouts?>();
+    this.createdAt = registerOutput<String>('createdAt');
+    this.createdBy = registerOutput<String>('createdBy');
+    this.description = registerOutput<String?>('description');
+    this.domainIdentifier = registerOutput<String>('domainIdentifier');
+    this.formsInputs =
+        registerOutput<List<AssetTypeFormsInput>?>('formsInputs');
+    this.name = registerOutput<String>('name');
+    this.owningProjectIdentifier =
+        registerOutput<String>('owningProjectIdentifier');
+    this.region = registerOutput<String>('region');
+    this.revision = registerOutput<String>('revision');
+    this.timeouts = registerOutput<AssetTypeTimeouts?>('timeouts');
   }
 }

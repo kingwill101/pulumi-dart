@@ -349,26 +349,28 @@ class Instance8 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.accessRulesOptions =
-        Output.createUnknown<InstanceAccessRulesOptions?>();
-    this.capacityGib = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.filesystem = Output.createUnknown<String>();
-    this.gkeSupportEnabled = Output.createUnknown<bool?>();
-    this.instanceId = Output.createUnknown<String>();
-    this.kmsKey = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.mountPoint = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.perUnitStorageThroughput = Output.createUnknown<String>();
-    this.placementPolicy = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.state = Output.createUnknown<String>();
-    this.stateReason = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<InstanceAccessRulesOptions?>('accessRulesOptions');
+    this.capacityGib = registerOutput<String>('capacityGib');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.filesystem = registerOutput<String>('filesystem');
+    this.gkeSupportEnabled = registerOutput<bool?>('gkeSupportEnabled');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.kmsKey = registerOutput<String?>('kmsKey');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.mountPoint = registerOutput<String>('mountPoint');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.perUnitStorageThroughput =
+        registerOutput<String>('perUnitStorageThroughput');
+    this.placementPolicy = registerOutput<String?>('placementPolicy');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.state = registerOutput<String>('state');
+    this.stateReason = registerOutput<String>('stateReason');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

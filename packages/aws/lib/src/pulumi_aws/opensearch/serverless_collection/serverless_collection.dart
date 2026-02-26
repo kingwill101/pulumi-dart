@@ -264,17 +264,17 @@ class ServerlessCollection extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.collectionEndpoint = Output.createUnknown<String>();
-    this.dashboardEndpoint = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.kmsKeyArn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.standbyReplicas = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ServerlessCollectionTimeouts?>();
-    this.type = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.collectionEndpoint = registerOutput<String>('collectionEndpoint');
+    this.dashboardEndpoint = registerOutput<String>('dashboardEndpoint');
+    this.description = registerOutput<String?>('description');
+    this.kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.standbyReplicas = registerOutput<String>('standbyReplicas');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ServerlessCollectionTimeouts?>('timeouts');
+    this.type = registerOutput<String>('type');
   }
 }

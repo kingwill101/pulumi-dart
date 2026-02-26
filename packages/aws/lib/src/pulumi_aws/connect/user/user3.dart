@@ -922,19 +922,20 @@ class User3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.directoryUserId = Output.createUnknown<String>();
-    this.hierarchyGroupId = Output.createUnknown<String?>();
-    this.identityInfo = Output.createUnknown<UserIdentityInfo?>();
-    this.instanceId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.password = Output.createUnknown<String?>();
-    this.phoneConfig = Output.createUnknown<UserPhoneConfig>();
-    this.region = Output.createUnknown<String>();
-    this.routingProfileId = Output.createUnknown<String>();
-    this.securityProfileIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.userId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.directoryUserId = registerOutput<String>('directoryUserId');
+    this.hierarchyGroupId = registerOutput<String?>('hierarchyGroupId');
+    this.identityInfo = registerOutput<UserIdentityInfo?>('identityInfo');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    this.password = registerOutput<String?>('password');
+    this.phoneConfig = registerOutput<UserPhoneConfig>('phoneConfig');
+    this.region = registerOutput<String>('region');
+    this.routingProfileId = registerOutput<String>('routingProfileId');
+    this.securityProfileIds =
+        registerOutput<List<String>>('securityProfileIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.userId = registerOutput<String>('userId');
   }
 }

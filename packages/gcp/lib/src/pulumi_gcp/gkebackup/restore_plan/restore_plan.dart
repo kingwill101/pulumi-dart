@@ -3801,18 +3801,20 @@ class RestorePlan extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupPlan = Output.createUnknown<String>();
-    this.cluster = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.restoreConfig = Output.createUnknown<RestorePlanRestoreConfig>();
-    this.state = Output.createUnknown<String>();
-    this.stateReason = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
+    this.backupPlan = registerOutput<String>('backupPlan');
+    this.cluster = registerOutput<String>('cluster');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.restoreConfig =
+        registerOutput<RestorePlanRestoreConfig>('restoreConfig');
+    this.state = registerOutput<String>('state');
+    this.stateReason = registerOutput<String>('stateReason');
+    this.uid = registerOutput<String>('uid');
   }
 }

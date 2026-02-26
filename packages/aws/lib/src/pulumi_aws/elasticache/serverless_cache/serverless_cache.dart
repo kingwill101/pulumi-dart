@@ -661,29 +661,30 @@ class ServerlessCache extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.cacheUsageLimits =
-        Output.createUnknown<ServerlessCacheCacheUsageLimits?>();
-    this.createTime = Output.createUnknown<String>();
-    this.dailySnapshotTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.endpoints = Output.createUnknown<List<ServerlessCacheEndpoint>>();
-    this.engine = Output.createUnknown<String>();
-    this.fullEngineVersion = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String?>();
-    this.majorEngineVersion = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<ServerlessCacheCacheUsageLimits?>('cacheUsageLimits');
+    this.createTime = registerOutput<String>('createTime');
+    this.dailySnapshotTime = registerOutput<String>('dailySnapshotTime');
+    this.description = registerOutput<String>('description');
+    this.endpoints = registerOutput<List<ServerlessCacheEndpoint>>('endpoints');
+    this.engine = registerOutput<String>('engine');
+    this.fullEngineVersion = registerOutput<String>('fullEngineVersion');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.majorEngineVersion = registerOutput<String>('majorEngineVersion');
+    this.name = registerOutput<String>('name');
     this.readerEndpoints =
-        Output.createUnknown<List<ServerlessCacheReaderEndpoint>>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupIds = Output.createUnknown<List<String>>();
-    this.snapshotArnsToRestores = Output.createUnknown<List<String>?>();
-    this.snapshotRetentionLimit = Output.createUnknown<int>();
-    this.status = Output.createUnknown<String>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ServerlessCacheTimeouts?>();
-    this.userGroupId = Output.createUnknown<String?>();
+        registerOutput<List<ServerlessCacheReaderEndpoint>>('readerEndpoints');
+    this.region = registerOutput<String>('region');
+    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    this.snapshotArnsToRestores =
+        registerOutput<List<String>?>('snapshotArnsToRestores');
+    this.snapshotRetentionLimit = registerOutput<int>('snapshotRetentionLimit');
+    this.status = registerOutput<String>('status');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ServerlessCacheTimeouts?>('timeouts');
+    this.userGroupId = registerOutput<String?>('userGroupId');
   }
 }

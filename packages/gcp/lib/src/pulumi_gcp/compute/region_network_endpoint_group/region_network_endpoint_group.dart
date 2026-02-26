@@ -2336,21 +2336,24 @@ class RegionNetworkEndpointGroup extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.appEngine =
-        Output.createUnknown<RegionNetworkEndpointGroupAppEngine?>();
+        registerOutput<RegionNetworkEndpointGroupAppEngine?>('appEngine');
     this.cloudFunction =
-        Output.createUnknown<RegionNetworkEndpointGroupCloudFunction?>();
-    this.cloudRun = Output.createUnknown<RegionNetworkEndpointGroupCloudRun?>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.networkEndpointType = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.pscData = Output.createUnknown<RegionNetworkEndpointGroupPscData>();
-    this.pscTargetService = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<RegionNetworkEndpointGroupCloudFunction?>(
+            'cloudFunction');
+    this.cloudRun =
+        registerOutput<RegionNetworkEndpointGroupCloudRun?>('cloudRun');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.networkEndpointType = registerOutput<String?>('networkEndpointType');
+    this.project = registerOutput<String>('project');
+    this.pscData = registerOutput<RegionNetworkEndpointGroupPscData>('pscData');
+    this.pscTargetService = registerOutput<String?>('pscTargetService');
+    this.region = registerOutput<String>('region');
+    this.selfLink = registerOutput<String>('selfLink');
     this.serverlessDeployment =
-        Output.createUnknown<RegionNetworkEndpointGroupServerlessDeployment?>();
-    this.subnetwork = Output.createUnknown<String?>();
+        registerOutput<RegionNetworkEndpointGroupServerlessDeployment?>(
+            'serverlessDeployment');
+    this.subnetwork = registerOutput<String?>('subnetwork');
   }
 }

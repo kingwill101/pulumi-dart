@@ -183,19 +183,20 @@ class MaintenanceWindow extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowUnassociatedTargets = Output.createUnknown<bool?>();
-    this.cutoff = Output.createUnknown<int>();
-    this.description = Output.createUnknown<String?>();
-    this.duration = Output.createUnknown<int>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.endDate = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.schedule = Output.createUnknown<String>();
-    this.scheduleOffset = Output.createUnknown<int?>();
-    this.scheduleTimezone = Output.createUnknown<String?>();
-    this.startDate = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.allowUnassociatedTargets =
+        registerOutput<bool?>('allowUnassociatedTargets');
+    this.cutoff = registerOutput<int>('cutoff');
+    this.description = registerOutput<String?>('description');
+    this.duration = registerOutput<int>('duration');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.endDate = registerOutput<String?>('endDate');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.schedule = registerOutput<String>('schedule');
+    this.scheduleOffset = registerOutput<int?>('scheduleOffset');
+    this.scheduleTimezone = registerOutput<String?>('scheduleTimezone');
+    this.startDate = registerOutput<String?>('startDate');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

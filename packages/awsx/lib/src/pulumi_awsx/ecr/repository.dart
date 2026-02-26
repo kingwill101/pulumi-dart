@@ -24,8 +24,8 @@ class Repository extends ComponentResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? ComponentResourceOptions(),
         ) {
-    this.lifecyclePolicy = Output.createUnknown<dynamic>();
-    this.repository = Output.createUnknown<dynamic>();
-    this.url = Output.createUnknown<String>();
+    this.lifecyclePolicy = registerOutput<dynamic>('lifecyclePolicy');
+    this.repository = registerOutput<dynamic>('repository');
+    this.url = registerOutput<String>('url');
   }
 }

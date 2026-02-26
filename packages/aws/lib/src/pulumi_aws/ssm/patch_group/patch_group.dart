@@ -156,8 +156,8 @@ class PatchGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.baselineId = Output.createUnknown<String>();
-    this.patchGroup = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.baselineId = registerOutput<String>('baselineId');
+    this.patchGroup = registerOutput<String>('patchGroup');
+    this.region = registerOutput<String>('region');
   }
 }

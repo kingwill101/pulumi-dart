@@ -168,9 +168,9 @@ class RandomBytes extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.base64 = Output.createUnknown<String>();
-    this.hex = Output.createUnknown<String>();
-    this.keepers = Output.createUnknown<Map<String, String>?>();
-    this.length = Output.createUnknown<int>();
+    this.base64 = registerOutput<String>('base64');
+    this.hex = registerOutput<String>('hex');
+    this.keepers = registerOutput<Map<String, String>?>('keepers');
+    this.length = registerOutput<int>('length');
   }
 }

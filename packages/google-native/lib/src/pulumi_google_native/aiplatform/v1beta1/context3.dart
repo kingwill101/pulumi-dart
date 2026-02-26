@@ -52,20 +52,20 @@ class Context3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.contextId = Output.createUnknown<String?>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>>();
-    this.metadataStoreId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parentContexts = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.schemaTitle = Output.createUnknown<String>();
-    this.schemaVersion = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.contextId = registerOutput<String?>('contextId');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<Map<String, String>>('metadata');
+    this.metadataStoreId = registerOutput<String>('metadataStoreId');
+    this.name = registerOutput<String>('name');
+    this.parentContexts = registerOutput<List<String>>('parentContexts');
+    this.project = registerOutput<String>('project');
+    this.schemaTitle = registerOutput<String>('schemaTitle');
+    this.schemaVersion = registerOutput<String>('schemaVersion');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

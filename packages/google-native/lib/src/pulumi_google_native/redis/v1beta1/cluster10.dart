@@ -64,23 +64,25 @@ class Cluster10 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authorizationMode = Output.createUnknown<String>();
-    this.clusterId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
+    this.authorizationMode = registerOutput<String>('authorizationMode');
+    this.clusterId = registerOutput<String>('clusterId');
+    this.createTime = registerOutput<String>('createTime');
     this.discoveryEndpoints =
-        Output.createUnknown<List<DiscoveryEndpointResponse2>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pscConfigs = Output.createUnknown<List<PscConfigResponse4>>();
-    this.pscConnections = Output.createUnknown<List<PscConnectionResponse3>>();
-    this.replicaCount = Output.createUnknown<int>();
-    this.requestId = Output.createUnknown<String?>();
-    this.shardCount = Output.createUnknown<int>();
-    this.sizeGb = Output.createUnknown<int>();
-    this.state = Output.createUnknown<String>();
-    this.stateInfo = Output.createUnknown<StateInfoResponse2>();
-    this.transitEncryptionMode = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
+        registerOutput<List<DiscoveryEndpointResponse2>>('discoveryEndpoints');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pscConfigs = registerOutput<List<PscConfigResponse4>>('pscConfigs');
+    this.pscConnections =
+        registerOutput<List<PscConnectionResponse3>>('pscConnections');
+    this.replicaCount = registerOutput<int>('replicaCount');
+    this.requestId = registerOutput<String?>('requestId');
+    this.shardCount = registerOutput<int>('shardCount');
+    this.sizeGb = registerOutput<int>('sizeGb');
+    this.state = registerOutput<String>('state');
+    this.stateInfo = registerOutput<StateInfoResponse2>('stateInfo');
+    this.transitEncryptionMode =
+        registerOutput<String>('transitEncryptionMode');
+    this.uid = registerOutput<String>('uid');
   }
 }

@@ -210,16 +210,16 @@ class LicenseConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.licenseCount = Output.createUnknown<int?>();
-    this.licenseCountHardLimit = Output.createUnknown<bool?>();
-    this.licenseCountingType = Output.createUnknown<String>();
-    this.licenseRules = Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
-    this.ownerAccountId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.licenseCount = registerOutput<int?>('licenseCount');
+    this.licenseCountHardLimit = registerOutput<bool?>('licenseCountHardLimit');
+    this.licenseCountingType = registerOutput<String>('licenseCountingType');
+    this.licenseRules = registerOutput<List<String>?>('licenseRules');
+    this.name = registerOutput<String>('name');
+    this.ownerAccountId = registerOutput<String>('ownerAccountId');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

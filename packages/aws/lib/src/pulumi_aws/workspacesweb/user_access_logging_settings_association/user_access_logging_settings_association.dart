@@ -204,8 +204,9 @@ class UserAccessLoggingSettingsAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.portalArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.userAccessLoggingSettingsArn = Output.createUnknown<String>();
+    this.portalArn = registerOutput<String>('portalArn');
+    this.region = registerOutput<String>('region');
+    this.userAccessLoggingSettingsArn =
+        registerOutput<String>('userAccessLoggingSettingsArn');
   }
 }

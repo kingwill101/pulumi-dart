@@ -65,25 +65,28 @@ class TestCase3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.creatorEmail = Output.createUnknown<String>();
-    this.databasePersistencePolicy = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.integrationId = Output.createUnknown<String>();
-    this.lastModifierEmail = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.lockHolderEmail = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.testCaseId = Output.createUnknown<String>();
-    this.testInputParameters = Output.createUnknown<
-        List<GoogleCloudIntegrationsV1alphaIntegrationParameterResponse>>();
-    this.testTaskConfigs = Output.createUnknown<
-        List<GoogleCloudIntegrationsV1alphaTestTaskConfigResponse>>();
-    this.triggerId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.versionId = Output.createUnknown<String>();
-    this.workflowId = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.creatorEmail = registerOutput<String>('creatorEmail');
+    this.databasePersistencePolicy =
+        registerOutput<String>('databasePersistencePolicy');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.integrationId = registerOutput<String>('integrationId');
+    this.lastModifierEmail = registerOutput<String>('lastModifierEmail');
+    this.location = registerOutput<String>('location');
+    this.lockHolderEmail = registerOutput<String>('lockHolderEmail');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.testCaseId = registerOutput<String>('testCaseId');
+    this.testInputParameters = registerOutput<
+            List<GoogleCloudIntegrationsV1alphaIntegrationParameterResponse>>(
+        'testInputParameters');
+    this.testTaskConfigs = registerOutput<
+            List<GoogleCloudIntegrationsV1alphaTestTaskConfigResponse>>(
+        'testTaskConfigs');
+    this.triggerId = registerOutput<String>('triggerId');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.versionId = registerOutput<String>('versionId');
+    this.workflowId = registerOutput<String>('workflowId');
   }
 }

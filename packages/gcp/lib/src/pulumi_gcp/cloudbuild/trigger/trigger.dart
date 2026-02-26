@@ -5199,34 +5199,38 @@ class Trigger extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.approvalConfig = Output.createUnknown<TriggerApprovalConfig>();
+    this.approvalConfig =
+        registerOutput<TriggerApprovalConfig>('approvalConfig');
     this.bitbucketServerTriggerConfig =
-        Output.createUnknown<TriggerBitbucketServerTriggerConfig?>();
-    this.build = Output.createUnknown<TriggerBuild?>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
+        registerOutput<TriggerBitbucketServerTriggerConfig?>(
+            'bitbucketServerTriggerConfig');
+    this.build = registerOutput<TriggerBuild?>('build');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
     this.developerConnectEventConfig =
-        Output.createUnknown<TriggerDeveloperConnectEventConfig?>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.filename = Output.createUnknown<String?>();
-    this.filter = Output.createUnknown<String?>();
-    this.gitFileSource = Output.createUnknown<TriggerGitFileSource?>();
-    this.github = Output.createUnknown<TriggerGithub?>();
-    this.ignoredFiles = Output.createUnknown<List<String>?>();
-    this.includeBuildLogs = Output.createUnknown<String?>();
-    this.includedFiles = Output.createUnknown<List<String>?>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pubsubConfig = Output.createUnknown<TriggerPubsubConfig?>();
+        registerOutput<TriggerDeveloperConnectEventConfig?>(
+            'developerConnectEventConfig');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.filename = registerOutput<String?>('filename');
+    this.filter = registerOutput<String?>('filter');
+    this.gitFileSource = registerOutput<TriggerGitFileSource?>('gitFileSource');
+    this.github = registerOutput<TriggerGithub?>('github');
+    this.ignoredFiles = registerOutput<List<String>?>('ignoredFiles');
+    this.includeBuildLogs = registerOutput<String?>('includeBuildLogs');
+    this.includedFiles = registerOutput<List<String>?>('includedFiles');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pubsubConfig = registerOutput<TriggerPubsubConfig?>('pubsubConfig');
     this.repositoryEventConfig =
-        Output.createUnknown<TriggerRepositoryEventConfig?>();
-    this.serviceAccount = Output.createUnknown<String?>();
-    this.sourceToBuild = Output.createUnknown<TriggerSourceToBuild?>();
-    this.substitutions = Output.createUnknown<Map<String, String>?>();
-    this.tags = Output.createUnknown<List<String>?>();
-    this.triggerId = Output.createUnknown<String>();
-    this.triggerTemplate = Output.createUnknown<TriggerTriggerTemplate?>();
-    this.webhookConfig = Output.createUnknown<TriggerWebhookConfig?>();
+        registerOutput<TriggerRepositoryEventConfig?>('repositoryEventConfig');
+    this.serviceAccount = registerOutput<String?>('serviceAccount');
+    this.sourceToBuild = registerOutput<TriggerSourceToBuild?>('sourceToBuild');
+    this.substitutions = registerOutput<Map<String, String>?>('substitutions');
+    this.tags = registerOutput<List<String>?>('tags');
+    this.triggerId = registerOutput<String>('triggerId');
+    this.triggerTemplate =
+        registerOutput<TriggerTriggerTemplate?>('triggerTemplate');
+    this.webhookConfig = registerOutput<TriggerWebhookConfig?>('webhookConfig');
   }
 }

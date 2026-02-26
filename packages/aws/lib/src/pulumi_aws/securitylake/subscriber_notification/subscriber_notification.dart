@@ -271,10 +271,10 @@ class SubscriberNotification extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.configuration =
-        Output.createUnknown<SubscriberNotificationConfiguration>();
-    this.endpointId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.subscriberEndpoint = Output.createUnknown<String>();
-    this.subscriberId = Output.createUnknown<String>();
+        registerOutput<SubscriberNotificationConfiguration>('configuration');
+    this.endpointId = registerOutput<String>('endpointId');
+    this.region = registerOutput<String>('region');
+    this.subscriberEndpoint = registerOutput<String>('subscriberEndpoint');
+    this.subscriberId = registerOutput<String>('subscriberId');
   }
 }

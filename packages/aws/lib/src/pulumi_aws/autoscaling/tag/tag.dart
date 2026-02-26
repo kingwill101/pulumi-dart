@@ -137,8 +137,8 @@ class Tag extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoscalingGroupName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tag = Output.createUnknown<TagTag>();
+    this.autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
+    this.region = registerOutput<String>('region');
+    this.tag = registerOutput<TagTag>('tag');
   }
 }

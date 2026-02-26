@@ -35,13 +35,15 @@ class OrganizationReplay2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.config = Output.createUnknown<
-        GoogleCloudPolicysimulatorV1alphaReplayConfigResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.resultsSummary = Output.createUnknown<
-        GoogleCloudPolicysimulatorV1alphaReplayResultsSummaryResponse>();
-    this.state = Output.createUnknown<String>();
+    this.config =
+        registerOutput<GoogleCloudPolicysimulatorV1alphaReplayConfigResponse>(
+            'config');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.resultsSummary = registerOutput<
+            GoogleCloudPolicysimulatorV1alphaReplayResultsSummaryResponse>(
+        'resultsSummary');
+    this.state = registerOutput<String>('state');
   }
 }

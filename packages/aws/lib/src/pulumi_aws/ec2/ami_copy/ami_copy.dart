@@ -243,43 +243,46 @@ class AmiCopy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.architecture = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.bootMode = Output.createUnknown<String>();
-    this.deprecationTime = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.destinationOutpostArn = Output.createUnknown<String?>();
-    this.ebsBlockDevices = Output.createUnknown<List<AmiCopyEbsBlockDevice>>();
-    this.enaSupport = Output.createUnknown<bool>();
-    this.encrypted = Output.createUnknown<bool?>();
+    this.architecture = registerOutput<String>('architecture');
+    this.arn = registerOutput<String>('arn');
+    this.bootMode = registerOutput<String>('bootMode');
+    this.deprecationTime = registerOutput<String?>('deprecationTime');
+    this.description = registerOutput<String?>('description');
+    this.destinationOutpostArn =
+        registerOutput<String?>('destinationOutpostArn');
+    this.ebsBlockDevices =
+        registerOutput<List<AmiCopyEbsBlockDevice>>('ebsBlockDevices');
+    this.enaSupport = registerOutput<bool>('enaSupport');
+    this.encrypted = registerOutput<bool?>('encrypted');
     this.ephemeralBlockDevices =
-        Output.createUnknown<List<AmiCopyEphemeralBlockDevice>>();
-    this.hypervisor = Output.createUnknown<String>();
-    this.imageLocation = Output.createUnknown<String>();
-    this.imageOwnerAlias = Output.createUnknown<String>();
-    this.imageType = Output.createUnknown<String>();
-    this.imdsSupport = Output.createUnknown<String>();
-    this.kernelId = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.lastLaunchedTime = Output.createUnknown<String>();
-    this.manageEbsSnapshots = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.ownerId = Output.createUnknown<String>();
-    this.platform = Output.createUnknown<String>();
-    this.platformDetails = Output.createUnknown<String>();
-    this.public = Output.createUnknown<bool>();
-    this.ramdiskId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.rootDeviceName = Output.createUnknown<String>();
-    this.rootSnapshotId = Output.createUnknown<String>();
-    this.sourceAmiId = Output.createUnknown<String>();
-    this.sourceAmiRegion = Output.createUnknown<String>();
-    this.sriovNetSupport = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tpmSupport = Output.createUnknown<String>();
-    this.uefiData = Output.createUnknown<String>();
-    this.usageOperation = Output.createUnknown<String>();
-    this.virtualizationType = Output.createUnknown<String>();
+        registerOutput<List<AmiCopyEphemeralBlockDevice>>(
+            'ephemeralBlockDevices');
+    this.hypervisor = registerOutput<String>('hypervisor');
+    this.imageLocation = registerOutput<String>('imageLocation');
+    this.imageOwnerAlias = registerOutput<String>('imageOwnerAlias');
+    this.imageType = registerOutput<String>('imageType');
+    this.imdsSupport = registerOutput<String>('imdsSupport');
+    this.kernelId = registerOutput<String>('kernelId');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.lastLaunchedTime = registerOutput<String>('lastLaunchedTime');
+    this.manageEbsSnapshots = registerOutput<bool>('manageEbsSnapshots');
+    this.name = registerOutput<String>('name');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.platform = registerOutput<String>('platform');
+    this.platformDetails = registerOutput<String>('platformDetails');
+    this.public = registerOutput<bool>('public');
+    this.ramdiskId = registerOutput<String>('ramdiskId');
+    this.region = registerOutput<String>('region');
+    this.rootDeviceName = registerOutput<String>('rootDeviceName');
+    this.rootSnapshotId = registerOutput<String>('rootSnapshotId');
+    this.sourceAmiId = registerOutput<String>('sourceAmiId');
+    this.sourceAmiRegion = registerOutput<String>('sourceAmiRegion');
+    this.sriovNetSupport = registerOutput<String>('sriovNetSupport');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tpmSupport = registerOutput<String>('tpmSupport');
+    this.uefiData = registerOutput<String>('uefiData');
+    this.usageOperation = registerOutput<String>('usageOperation');
+    this.virtualizationType = registerOutput<String>('virtualizationType');
   }
 }

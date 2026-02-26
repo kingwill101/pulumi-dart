@@ -686,19 +686,20 @@ class RuleDeployment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alerting = Output.createUnknown<bool?>();
-    this.archiveTime = Output.createUnknown<String>();
-    this.archived = Output.createUnknown<bool?>();
-    this.consumerRules = Output.createUnknown<List<String>>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.executionState = Output.createUnknown<String>();
-    this.instance = Output.createUnknown<String>();
-    this.lastAlertStatusChangeTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.producerRules = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.rule = Output.createUnknown<String>();
-    this.runFrequency = Output.createUnknown<String?>();
+    this.alerting = registerOutput<bool?>('alerting');
+    this.archiveTime = registerOutput<String>('archiveTime');
+    this.archived = registerOutput<bool?>('archived');
+    this.consumerRules = registerOutput<List<String>>('consumerRules');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.executionState = registerOutput<String>('executionState');
+    this.instance = registerOutput<String>('instance');
+    this.lastAlertStatusChangeTime =
+        registerOutput<String>('lastAlertStatusChangeTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.producerRules = registerOutput<List<String>>('producerRules');
+    this.project = registerOutput<String>('project');
+    this.rule = registerOutput<String>('rule');
+    this.runFrequency = registerOutput<String?>('runFrequency');
   }
 }

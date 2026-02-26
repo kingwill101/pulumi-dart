@@ -35,14 +35,15 @@ class Study2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.inactiveReason = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.inactiveReason = registerOutput<String>('inactiveReason');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
     this.studySpec =
-        Output.createUnknown<GoogleCloudAiplatformV1beta1StudySpecResponse>();
+        registerOutput<GoogleCloudAiplatformV1beta1StudySpecResponse>(
+            'studySpec');
   }
 }

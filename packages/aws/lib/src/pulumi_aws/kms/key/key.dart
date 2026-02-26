@@ -2133,22 +2133,24 @@ class Key extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.bypassPolicyLockoutSafetyCheck = Output.createUnknown<bool?>();
-    this.customKeyStoreId = Output.createUnknown<String?>();
-    this.customerMasterKeySpec = Output.createUnknown<String?>();
-    this.deletionWindowInDays = Output.createUnknown<int?>();
-    this.description = Output.createUnknown<String>();
-    this.enableKeyRotation = Output.createUnknown<bool?>();
-    this.isEnabled = Output.createUnknown<bool?>();
-    this.keyId = Output.createUnknown<String>();
-    this.keyUsage = Output.createUnknown<String?>();
-    this.multiRegion = Output.createUnknown<bool>();
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.rotationPeriodInDays = Output.createUnknown<int>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.xksKeyId = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.bypassPolicyLockoutSafetyCheck =
+        registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
+    this.customKeyStoreId = registerOutput<String?>('customKeyStoreId');
+    this.customerMasterKeySpec =
+        registerOutput<String?>('customerMasterKeySpec');
+    this.deletionWindowInDays = registerOutput<int?>('deletionWindowInDays');
+    this.description = registerOutput<String>('description');
+    this.enableKeyRotation = registerOutput<bool?>('enableKeyRotation');
+    this.isEnabled = registerOutput<bool?>('isEnabled');
+    this.keyId = registerOutput<String>('keyId');
+    this.keyUsage = registerOutput<String?>('keyUsage');
+    this.multiRegion = registerOutput<bool>('multiRegion');
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
+    this.rotationPeriodInDays = registerOutput<int>('rotationPeriodInDays');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.xksKeyId = registerOutput<String?>('xksKeyId');
   }
 }

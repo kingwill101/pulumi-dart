@@ -74,26 +74,31 @@ class Certificate4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.caPoolId = Output.createUnknown<String>();
+    this.caPoolId = registerOutput<String>('caPoolId');
     this.certificateDescription =
-        Output.createUnknown<CertificateDescriptionResponse>();
-    this.certificateId = Output.createUnknown<String?>();
-    this.certificateTemplate = Output.createUnknown<String>();
-    this.config = Output.createUnknown<CertificateConfigResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.issuerCertificateAuthority = Output.createUnknown<String>();
-    this.issuingCertificateAuthorityId = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lifetime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.pemCertificate = Output.createUnknown<String>();
-    this.pemCertificateChain = Output.createUnknown<List<String>>();
-    this.pemCsr = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.revocationDetails = Output.createUnknown<RevocationDetailsResponse>();
-    this.subjectMode = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<CertificateDescriptionResponse>(
+            'certificateDescription');
+    this.certificateId = registerOutput<String?>('certificateId');
+    this.certificateTemplate = registerOutput<String>('certificateTemplate');
+    this.config = registerOutput<CertificateConfigResponse>('config');
+    this.createTime = registerOutput<String>('createTime');
+    this.issuerCertificateAuthority =
+        registerOutput<String>('issuerCertificateAuthority');
+    this.issuingCertificateAuthorityId =
+        registerOutput<String?>('issuingCertificateAuthorityId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lifetime = registerOutput<String>('lifetime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.pemCertificate = registerOutput<String>('pemCertificate');
+    this.pemCertificateChain =
+        registerOutput<List<String>>('pemCertificateChain');
+    this.pemCsr = registerOutput<String>('pemCsr');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.revocationDetails =
+        registerOutput<RevocationDetailsResponse>('revocationDetails');
+    this.subjectMode = registerOutput<String>('subjectMode');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

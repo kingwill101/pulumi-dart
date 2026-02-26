@@ -93,34 +93,42 @@ class Intent extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.defaultResponsePlatforms = Output.createUnknown<List<String>>();
-    this.displayName = Output.createUnknown<String>();
-    this.endInteraction = Output.createUnknown<bool>();
-    this.events = Output.createUnknown<List<String>>();
-    this.followupIntentInfo = Output.createUnknown<
-        List<GoogleCloudDialogflowV2IntentFollowupIntentInfoResponse>>();
-    this.inputContextNames = Output.createUnknown<List<String>>();
-    this.intentView = Output.createUnknown<String?>();
-    this.isFallback = Output.createUnknown<bool>();
-    this.languageCode = Output.createUnknown<String?>();
-    this.liveAgentHandoff = Output.createUnknown<bool>();
-    this.location = Output.createUnknown<String>();
-    this.messages = Output.createUnknown<
-        List<GoogleCloudDialogflowV2IntentMessageResponse>>();
-    this.mlDisabled = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
+    this.action = registerOutput<String>('action');
+    this.defaultResponsePlatforms =
+        registerOutput<List<String>>('defaultResponsePlatforms');
+    this.displayName = registerOutput<String>('displayName');
+    this.endInteraction = registerOutput<bool>('endInteraction');
+    this.events = registerOutput<List<String>>('events');
+    this.followupIntentInfo = registerOutput<
+            List<GoogleCloudDialogflowV2IntentFollowupIntentInfoResponse>>(
+        'followupIntentInfo');
+    this.inputContextNames = registerOutput<List<String>>('inputContextNames');
+    this.intentView = registerOutput<String?>('intentView');
+    this.isFallback = registerOutput<bool>('isFallback');
+    this.languageCode = registerOutput<String?>('languageCode');
+    this.liveAgentHandoff = registerOutput<bool>('liveAgentHandoff');
+    this.location = registerOutput<String>('location');
+    this.messages =
+        registerOutput<List<GoogleCloudDialogflowV2IntentMessageResponse>>(
+            'messages');
+    this.mlDisabled = registerOutput<bool>('mlDisabled');
+    this.name = registerOutput<String>('name');
     this.outputContexts =
-        Output.createUnknown<List<GoogleCloudDialogflowV2ContextResponse>>();
-    this.parameters = Output.createUnknown<
-        List<GoogleCloudDialogflowV2IntentParameterResponse>>();
-    this.parentFollowupIntentName = Output.createUnknown<String>();
-    this.priority = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.resetContexts = Output.createUnknown<bool>();
-    this.rootFollowupIntentName = Output.createUnknown<String>();
-    this.trainingPhrases = Output.createUnknown<
-        List<GoogleCloudDialogflowV2IntentTrainingPhraseResponse>>();
-    this.webhookState = Output.createUnknown<String>();
+        registerOutput<List<GoogleCloudDialogflowV2ContextResponse>>(
+            'outputContexts');
+    this.parameters =
+        registerOutput<List<GoogleCloudDialogflowV2IntentParameterResponse>>(
+            'parameters');
+    this.parentFollowupIntentName =
+        registerOutput<String>('parentFollowupIntentName');
+    this.priority = registerOutput<int>('priority');
+    this.project = registerOutput<String>('project');
+    this.resetContexts = registerOutput<bool>('resetContexts');
+    this.rootFollowupIntentName =
+        registerOutput<String>('rootFollowupIntentName');
+    this.trainingPhrases = registerOutput<
+            List<GoogleCloudDialogflowV2IntentTrainingPhraseResponse>>(
+        'trainingPhrases');
+    this.webhookState = registerOutput<String>('webhookState');
   }
 }

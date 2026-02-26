@@ -61,23 +61,25 @@ class Zone extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.assetStatus =
-        Output.createUnknown<GoogleCloudDataplexV1AssetStatusResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDataplexV1AssetStatusResponse>('assetStatus');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
     this.discoverySpec =
-        Output.createUnknown<GoogleCloudDataplexV1ZoneDiscoverySpecResponse>();
-    this.displayName = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lakeId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDataplexV1ZoneDiscoverySpecResponse>(
+            'discoverySpec');
+    this.displayName = registerOutput<String>('displayName');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lakeId = registerOutput<String>('lakeId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.resourceSpec =
-        Output.createUnknown<GoogleCloudDataplexV1ZoneResourceSpecResponse>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.zoneId = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDataplexV1ZoneResourceSpecResponse>(
+            'resourceSpec');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String>('type');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.zoneId = registerOutput<String>('zoneId');
   }
 }

@@ -540,24 +540,25 @@ class TableExport extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.billedSizeInBytes = Output.createUnknown<int>();
-    this.endTime = Output.createUnknown<String>();
-    this.exportFormat = Output.createUnknown<String?>();
-    this.exportStatus = Output.createUnknown<String>();
-    this.exportTime = Output.createUnknown<String>();
-    this.exportType = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.billedSizeInBytes = registerOutput<int>('billedSizeInBytes');
+    this.endTime = registerOutput<String>('endTime');
+    this.exportFormat = registerOutput<String?>('exportFormat');
+    this.exportStatus = registerOutput<String>('exportStatus');
+    this.exportTime = registerOutput<String>('exportTime');
+    this.exportType = registerOutput<String>('exportType');
     this.incrementalExportSpecification =
-        Output.createUnknown<TableExportIncrementalExportSpecification?>();
-    this.itemCount = Output.createUnknown<int>();
-    this.manifestFilesS3Key = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.s3Bucket = Output.createUnknown<String>();
-    this.s3BucketOwner = Output.createUnknown<String>();
-    this.s3Prefix = Output.createUnknown<String>();
-    this.s3SseAlgorithm = Output.createUnknown<String>();
-    this.s3SseKmsKeyId = Output.createUnknown<String?>();
-    this.startTime = Output.createUnknown<String>();
-    this.tableArn = Output.createUnknown<String>();
+        registerOutput<TableExportIncrementalExportSpecification?>(
+            'incrementalExportSpecification');
+    this.itemCount = registerOutput<int>('itemCount');
+    this.manifestFilesS3Key = registerOutput<String>('manifestFilesS3Key');
+    this.region = registerOutput<String>('region');
+    this.s3Bucket = registerOutput<String>('s3Bucket');
+    this.s3BucketOwner = registerOutput<String>('s3BucketOwner');
+    this.s3Prefix = registerOutput<String>('s3Prefix');
+    this.s3SseAlgorithm = registerOutput<String>('s3SseAlgorithm');
+    this.s3SseKmsKeyId = registerOutput<String?>('s3SseKmsKeyId');
+    this.startTime = registerOutput<String>('startTime');
+    this.tableArn = registerOutput<String>('tableArn');
   }
 }

@@ -2257,32 +2257,33 @@ class RegionHealthCheck extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.checkIntervalSec = Output.createUnknown<int?>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
+    this.checkIntervalSec = registerOutput<int?>('checkIntervalSec');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
     this.grpcHealthCheck =
-        Output.createUnknown<RegionHealthCheckGrpcHealthCheck?>();
+        registerOutput<RegionHealthCheckGrpcHealthCheck?>('grpcHealthCheck');
     this.grpcTlsHealthCheck =
-        Output.createUnknown<RegionHealthCheckGrpcTlsHealthCheck?>();
-    this.healthCheckId = Output.createUnknown<int>();
-    this.healthyThreshold = Output.createUnknown<int?>();
+        registerOutput<RegionHealthCheckGrpcTlsHealthCheck?>(
+            'grpcTlsHealthCheck');
+    this.healthCheckId = registerOutput<int>('healthCheckId');
+    this.healthyThreshold = registerOutput<int?>('healthyThreshold');
     this.http2HealthCheck =
-        Output.createUnknown<RegionHealthCheckHttp2HealthCheck?>();
+        registerOutput<RegionHealthCheckHttp2HealthCheck?>('http2HealthCheck');
     this.httpHealthCheck =
-        Output.createUnknown<RegionHealthCheckHttpHealthCheck?>();
+        registerOutput<RegionHealthCheckHttpHealthCheck?>('httpHealthCheck');
     this.httpsHealthCheck =
-        Output.createUnknown<RegionHealthCheckHttpsHealthCheck?>();
-    this.logConfig = Output.createUnknown<RegionHealthCheckLogConfig>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<RegionHealthCheckHttpsHealthCheck?>('httpsHealthCheck');
+    this.logConfig = registerOutput<RegionHealthCheckLogConfig>('logConfig');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.selfLink = registerOutput<String>('selfLink');
     this.sslHealthCheck =
-        Output.createUnknown<RegionHealthCheckSslHealthCheck?>();
+        registerOutput<RegionHealthCheckSslHealthCheck?>('sslHealthCheck');
     this.tcpHealthCheck =
-        Output.createUnknown<RegionHealthCheckTcpHealthCheck?>();
-    this.timeoutSec = Output.createUnknown<int?>();
-    this.type = Output.createUnknown<String>();
-    this.unhealthyThreshold = Output.createUnknown<int?>();
+        registerOutput<RegionHealthCheckTcpHealthCheck?>('tcpHealthCheck');
+    this.timeoutSec = registerOutput<int?>('timeoutSec');
+    this.type = registerOutput<String>('type');
+    this.unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
   }
 }

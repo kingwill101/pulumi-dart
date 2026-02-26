@@ -554,17 +554,17 @@ class ContactFlow extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.contactFlowId = Output.createUnknown<String>();
-    this.content = Output.createUnknown<String>();
-    this.contentHash = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.filename = Output.createUnknown<String?>();
-    this.instanceId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.contactFlowId = registerOutput<String>('contactFlowId');
+    this.content = registerOutput<String>('content');
+    this.contentHash = registerOutput<String?>('contentHash');
+    this.description = registerOutput<String?>('description');
+    this.filename = registerOutput<String?>('filename');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String?>('type');
   }
 }

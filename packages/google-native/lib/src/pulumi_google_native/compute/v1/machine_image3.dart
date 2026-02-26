@@ -71,27 +71,30 @@ class MachineImage3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.guestFlush = Output.createUnknown<bool>();
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.guestFlush = registerOutput<bool>('guestFlush');
     this.instanceProperties =
-        Output.createUnknown<InstancePropertiesResponse3>();
-    this.kind = Output.createUnknown<String>();
+        registerOutput<InstancePropertiesResponse3>('instanceProperties');
+    this.kind = registerOutput<String>('kind');
     this.machineImageEncryptionKey =
-        Output.createUnknown<CustomerEncryptionKeyResponse3>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.savedDisks = Output.createUnknown<List<SavedDiskResponse3>>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<CustomerEncryptionKeyResponse3>(
+            'machineImageEncryptionKey');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.savedDisks = registerOutput<List<SavedDiskResponse3>>('savedDisks');
+    this.selfLink = registerOutput<String>('selfLink');
     this.sourceDiskEncryptionKeys =
-        Output.createUnknown<List<SourceDiskEncryptionKeyResponse3>>();
-    this.sourceInstance = Output.createUnknown<String>();
+        registerOutput<List<SourceDiskEncryptionKeyResponse3>>(
+            'sourceDiskEncryptionKeys');
+    this.sourceInstance = registerOutput<String>('sourceInstance');
     this.sourceInstanceProperties =
-        Output.createUnknown<SourceInstancePropertiesResponse3>();
-    this.status = Output.createUnknown<String>();
-    this.storageLocations = Output.createUnknown<List<String>>();
-    this.totalStorageBytes = Output.createUnknown<String>();
+        registerOutput<SourceInstancePropertiesResponse3>(
+            'sourceInstanceProperties');
+    this.status = registerOutput<String>('status');
+    this.storageLocations = registerOutput<List<String>>('storageLocations');
+    this.totalStorageBytes = registerOutput<String>('totalStorageBytes');
   }
 }

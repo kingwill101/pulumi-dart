@@ -372,8 +372,9 @@ class QueryLog extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.cloudwatchLogGroupArn = Output.createUnknown<String>();
-    this.zoneId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.cloudwatchLogGroupArn =
+        registerOutput<String>('cloudwatchLogGroupArn');
+    this.zoneId = registerOutput<String>('zoneId');
   }
 }

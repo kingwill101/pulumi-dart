@@ -432,18 +432,19 @@ class OdbNetwork extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.entitlementId = Output.createUnknown<String>();
-    this.gcpOracleZone = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.odbNetworkId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.state = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.entitlementId = registerOutput<String>('entitlementId');
+    this.gcpOracleZone = registerOutput<String>('gcpOracleZone');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.odbNetworkId = registerOutput<String>('odbNetworkId');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.state = registerOutput<String>('state');
   }
 }

@@ -777,21 +777,25 @@ class DataStore extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.advancedSiteSearchConfig =
-        Output.createUnknown<DataStoreAdvancedSiteSearchConfig>();
-    this.contentConfig = Output.createUnknown<String>();
-    this.createAdvancedSiteSearch = Output.createUnknown<bool?>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataStoreId = Output.createUnknown<String>();
-    this.defaultSchemaId = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
+        registerOutput<DataStoreAdvancedSiteSearchConfig>(
+            'advancedSiteSearchConfig');
+    this.contentConfig = registerOutput<String>('contentConfig');
+    this.createAdvancedSiteSearch =
+        registerOutput<bool?>('createAdvancedSiteSearch');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataStoreId = registerOutput<String>('dataStoreId');
+    this.defaultSchemaId = registerOutput<String>('defaultSchemaId');
+    this.displayName = registerOutput<String>('displayName');
     this.documentProcessingConfig =
-        Output.createUnknown<DataStoreDocumentProcessingConfig?>();
-    this.industryVertical = Output.createUnknown<String>();
-    this.kmsKeyName = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.skipDefaultSchemaCreation = Output.createUnknown<bool?>();
-    this.solutionTypes = Output.createUnknown<List<String>?>();
+        registerOutput<DataStoreDocumentProcessingConfig?>(
+            'documentProcessingConfig');
+    this.industryVertical = registerOutput<String>('industryVertical');
+    this.kmsKeyName = registerOutput<String?>('kmsKeyName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.skipDefaultSchemaCreation =
+        registerOutput<bool?>('skipDefaultSchemaCreation');
+    this.solutionTypes = registerOutput<List<String>?>('solutionTypes');
   }
 }

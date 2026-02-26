@@ -387,14 +387,14 @@ class AppleApp extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiKeyId = Output.createUnknown<String>();
-    this.appId = Output.createUnknown<String>();
-    this.appStoreId = Output.createUnknown<String?>();
-    this.bundleId = Output.createUnknown<String>();
-    this.deletionPolicy = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.teamId = Output.createUnknown<String?>();
+    this.apiKeyId = registerOutput<String>('apiKeyId');
+    this.appId = registerOutput<String>('appId');
+    this.appStoreId = registerOutput<String?>('appStoreId');
+    this.bundleId = registerOutput<String>('bundleId');
+    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
+    this.displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.teamId = registerOutput<String?>('teamId');
   }
 }

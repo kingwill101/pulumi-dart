@@ -158,16 +158,16 @@ class Partition extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.catalogId = Output.createUnknown<String>();
-    this.creationTime = Output.createUnknown<String>();
-    this.databaseName = Output.createUnknown<String>();
-    this.lastAccessedTime = Output.createUnknown<String>();
-    this.lastAnalyzedTime = Output.createUnknown<String>();
-    this.parameters = Output.createUnknown<Map<String, String>?>();
-    this.partitionValues = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
+    this.catalogId = registerOutput<String>('catalogId');
+    this.creationTime = registerOutput<String>('creationTime');
+    this.databaseName = registerOutput<String>('databaseName');
+    this.lastAccessedTime = registerOutput<String>('lastAccessedTime');
+    this.lastAnalyzedTime = registerOutput<String>('lastAnalyzedTime');
+    this.parameters = registerOutput<Map<String, String>?>('parameters');
+    this.partitionValues = registerOutput<List<String>>('partitionValues');
+    this.region = registerOutput<String>('region');
     this.storageDescriptor =
-        Output.createUnknown<PartitionStorageDescriptor?>();
-    this.tableName = Output.createUnknown<String>();
+        registerOutput<PartitionStorageDescriptor?>('storageDescriptor');
+    this.tableName = registerOutput<String>('tableName');
   }
 }

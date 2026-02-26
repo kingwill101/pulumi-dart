@@ -48,18 +48,19 @@ class TlsInspectionPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.caPool = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.customTlsFeatures = Output.createUnknown<List<String>>();
-    this.description = Output.createUnknown<String>();
-    this.excludePublicCaSet = Output.createUnknown<bool>();
-    this.location = Output.createUnknown<String>();
-    this.minTlsVersion = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.tlsFeatureProfile = Output.createUnknown<String>();
-    this.tlsInspectionPolicyId = Output.createUnknown<String>();
-    this.trustConfig = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.caPool = registerOutput<String>('caPool');
+    this.createTime = registerOutput<String>('createTime');
+    this.customTlsFeatures = registerOutput<List<String>>('customTlsFeatures');
+    this.description = registerOutput<String>('description');
+    this.excludePublicCaSet = registerOutput<bool>('excludePublicCaSet');
+    this.location = registerOutput<String>('location');
+    this.minTlsVersion = registerOutput<String>('minTlsVersion');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.tlsFeatureProfile = registerOutput<String>('tlsFeatureProfile');
+    this.tlsInspectionPolicyId =
+        registerOutput<String>('tlsInspectionPolicyId');
+    this.trustConfig = registerOutput<String>('trustConfig');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

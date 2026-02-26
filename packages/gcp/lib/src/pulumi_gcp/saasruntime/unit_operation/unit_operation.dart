@@ -1316,27 +1316,30 @@ class UnitOperation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.conditions = Output.createUnknown<List<UnitOperationCondition>>();
-    this.createTime = Output.createUnknown<String>();
-    this.deprovision = Output.createUnknown<Map<String, dynamic>?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.engineState = Output.createUnknown<String>();
-    this.errorCategory = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.provision = Output.createUnknown<UnitOperationProvision?>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.unit = Output.createUnknown<String>();
-    this.unitOperationId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.upgrade = Output.createUnknown<UnitOperationUpgrade?>();
-    this.waitForCompletion = Output.createUnknown<bool?>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.conditions =
+        registerOutput<List<UnitOperationCondition>>('conditions');
+    this.createTime = registerOutput<String>('createTime');
+    this.deprovision = registerOutput<Map<String, dynamic>?>('deprovision');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.engineState = registerOutput<String>('engineState');
+    this.errorCategory = registerOutput<String>('errorCategory');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.provision = registerOutput<UnitOperationProvision?>('provision');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.unit = registerOutput<String>('unit');
+    this.unitOperationId = registerOutput<String>('unitOperationId');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.upgrade = registerOutput<UnitOperationUpgrade?>('upgrade');
+    this.waitForCompletion = registerOutput<bool?>('waitForCompletion');
   }
 }

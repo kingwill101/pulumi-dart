@@ -335,7 +335,7 @@ class ProjectCloudArmorTier extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cloudArmorTier = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.cloudArmorTier = registerOutput<String>('cloudArmorTier');
+    this.project = registerOutput<String>('project');
   }
 }

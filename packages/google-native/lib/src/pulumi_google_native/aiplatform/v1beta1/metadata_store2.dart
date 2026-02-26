@@ -42,16 +42,18 @@ class MetadataStore2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.encryptionSpec = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1EncryptionSpecResponse>();
-    this.location = Output.createUnknown<String>();
-    this.metadataStoreId = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.encryptionSpec =
+        registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>(
+            'encryptionSpec');
+    this.location = registerOutput<String>('location');
+    this.metadataStoreId = registerOutput<String?>('metadataStoreId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<
+            GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse>(
+        'state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

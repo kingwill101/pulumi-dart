@@ -112,38 +112,43 @@ class Connection4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authConfig = Output.createUnknown<AuthConfigResponse>();
-    this.configVariables = Output.createUnknown<List<ConfigVariableResponse>>();
-    this.connectionId = Output.createUnknown<String>();
-    this.connectionRevision = Output.createUnknown<String>();
-    this.connectorVersion = Output.createUnknown<String>();
+    this.authConfig = registerOutput<AuthConfigResponse>('authConfig');
+    this.configVariables =
+        registerOutput<List<ConfigVariableResponse>>('configVariables');
+    this.connectionId = registerOutput<String>('connectionId');
+    this.connectionRevision = registerOutput<String>('connectionRevision');
+    this.connectorVersion = registerOutput<String>('connectorVersion');
     this.connectorVersionInfraConfig =
-        Output.createUnknown<ConnectorVersionInfraConfigResponse>();
-    this.connectorVersionLaunchStage = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
+        registerOutput<ConnectorVersionInfraConfigResponse>(
+            'connectorVersionInfraConfig');
+    this.connectorVersionLaunchStage =
+        registerOutput<String>('connectorVersionLaunchStage');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
     this.destinationConfigs =
-        Output.createUnknown<List<DestinationConfigResponse>>();
-    this.envoyImageLocation = Output.createUnknown<String>();
-    this.eventingConfig = Output.createUnknown<EventingConfigResponse>();
-    this.eventingEnablementType = Output.createUnknown<String>();
+        registerOutput<List<DestinationConfigResponse>>('destinationConfigs');
+    this.envoyImageLocation = registerOutput<String>('envoyImageLocation');
+    this.eventingConfig =
+        registerOutput<EventingConfigResponse>('eventingConfig');
+    this.eventingEnablementType =
+        registerOutput<String>('eventingEnablementType');
     this.eventingRuntimeData =
-        Output.createUnknown<EventingRuntimeDataResponse>();
-    this.imageLocation = Output.createUnknown<String>();
-    this.isTrustedTester = Output.createUnknown<bool>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.lockConfig = Output.createUnknown<LockConfigResponse>();
-    this.logConfig = Output.createUnknown<ConnectorsLogConfigResponse>();
-    this.name = Output.createUnknown<String>();
-    this.nodeConfig = Output.createUnknown<NodeConfigResponse3>();
-    this.project = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.serviceDirectory = Output.createUnknown<String>();
-    this.sslConfig = Output.createUnknown<SslConfigResponse4>();
-    this.status = Output.createUnknown<ConnectionStatusResponse>();
-    this.subscriptionType = Output.createUnknown<String>();
-    this.suspended = Output.createUnknown<bool>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<EventingRuntimeDataResponse>('eventingRuntimeData');
+    this.imageLocation = registerOutput<String>('imageLocation');
+    this.isTrustedTester = registerOutput<bool>('isTrustedTester');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.lockConfig = registerOutput<LockConfigResponse>('lockConfig');
+    this.logConfig = registerOutput<ConnectorsLogConfigResponse>('logConfig');
+    this.name = registerOutput<String>('name');
+    this.nodeConfig = registerOutput<NodeConfigResponse3>('nodeConfig');
+    this.project = registerOutput<String>('project');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.serviceDirectory = registerOutput<String>('serviceDirectory');
+    this.sslConfig = registerOutput<SslConfigResponse4>('sslConfig');
+    this.status = registerOutput<ConnectionStatusResponse>('status');
+    this.subscriptionType = registerOutput<String>('subscriptionType');
+    this.suspended = registerOutput<bool>('suspended');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

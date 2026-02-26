@@ -183,9 +183,9 @@ class BucketAbac extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.abacStatus = Output.createUnknown<BucketAbacAbacStatus>();
-    this.bucket = Output.createUnknown<String>();
-    this.expectedBucketOwner = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.abacStatus = registerOutput<BucketAbacAbacStatus>('abacStatus');
+    this.bucket = registerOutput<String>('bucket');
+    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    this.region = registerOutput<String>('region');
   }
 }

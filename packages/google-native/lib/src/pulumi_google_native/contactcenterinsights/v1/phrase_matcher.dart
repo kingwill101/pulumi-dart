@@ -51,19 +51,21 @@ class PhraseMatcher extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activationUpdateTime = Output.createUnknown<String>();
-    this.active = Output.createUnknown<bool>();
-    this.displayName = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.phraseMatchRuleGroups = Output.createUnknown<
-        List<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse>>();
-    this.project = Output.createUnknown<String>();
-    this.revisionCreateTime = Output.createUnknown<String>();
-    this.revisionId = Output.createUnknown<String>();
-    this.roleMatch = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.versionTag = Output.createUnknown<String>();
+    this.activationUpdateTime = registerOutput<String>('activationUpdateTime');
+    this.active = registerOutput<bool>('active');
+    this.displayName = registerOutput<String>('displayName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.phraseMatchRuleGroups = registerOutput<
+            List<
+                GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse>>(
+        'phraseMatchRuleGroups');
+    this.project = registerOutput<String>('project');
+    this.revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.roleMatch = registerOutput<String>('roleMatch');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.versionTag = registerOutput<String>('versionTag');
   }
 }

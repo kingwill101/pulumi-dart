@@ -1875,15 +1875,18 @@ class MediaInsightsPipelineConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.elements =
-        Output.createUnknown<List<MediaInsightsPipelineConfigurationElement>>();
-    this.name = Output.createUnknown<String>();
-    this.realTimeAlertConfiguration = Output.createUnknown<
-        MediaInsightsPipelineConfigurationRealTimeAlertConfiguration?>();
-    this.region = Output.createUnknown<String>();
-    this.resourceAccessRoleArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<MediaInsightsPipelineConfigurationElement>>(
+            'elements');
+    this.name = registerOutput<String>('name');
+    this.realTimeAlertConfiguration = registerOutput<
+            MediaInsightsPipelineConfigurationRealTimeAlertConfiguration?>(
+        'realTimeAlertConfiguration');
+    this.region = registerOutput<String>('region');
+    this.resourceAccessRoleArn =
+        registerOutput<String>('resourceAccessRoleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

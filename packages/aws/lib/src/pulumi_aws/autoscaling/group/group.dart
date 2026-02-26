@@ -2837,55 +2837,67 @@ class Group extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.availabilityZoneDistribution =
-        Output.createUnknown<GroupAvailabilityZoneDistribution>();
-    this.availabilityZones = Output.createUnknown<List<String>>();
-    this.capacityRebalance = Output.createUnknown<bool?>();
+        registerOutput<GroupAvailabilityZoneDistribution>(
+            'availabilityZoneDistribution');
+    this.availabilityZones = registerOutput<List<String>>('availabilityZones');
+    this.capacityRebalance = registerOutput<bool?>('capacityRebalance');
     this.capacityReservationSpecification =
-        Output.createUnknown<GroupCapacityReservationSpecification>();
-    this.context = Output.createUnknown<String?>();
-    this.defaultCooldown = Output.createUnknown<int>();
-    this.defaultInstanceWarmup = Output.createUnknown<int?>();
-    this.desiredCapacity = Output.createUnknown<int>();
-    this.desiredCapacityType = Output.createUnknown<String?>();
-    this.enabledMetrics = Output.createUnknown<List<Metric>?>();
-    this.forceDelete = Output.createUnknown<bool?>();
-    this.forceDeleteWarmPool = Output.createUnknown<bool?>();
-    this.healthCheckGracePeriod = Output.createUnknown<int?>();
-    this.healthCheckType = Output.createUnknown<String>();
-    this.ignoreFailedScalingActivities = Output.createUnknown<bool?>();
+        registerOutput<GroupCapacityReservationSpecification>(
+            'capacityReservationSpecification');
+    this.context = registerOutput<String?>('context');
+    this.defaultCooldown = registerOutput<int>('defaultCooldown');
+    this.defaultInstanceWarmup = registerOutput<int?>('defaultInstanceWarmup');
+    this.desiredCapacity = registerOutput<int>('desiredCapacity');
+    this.desiredCapacityType = registerOutput<String?>('desiredCapacityType');
+    this.enabledMetrics = registerOutput<List<Metric>?>('enabledMetrics');
+    this.forceDelete = registerOutput<bool?>('forceDelete');
+    this.forceDeleteWarmPool = registerOutput<bool?>('forceDeleteWarmPool');
+    this.healthCheckGracePeriod =
+        registerOutput<int?>('healthCheckGracePeriod');
+    this.healthCheckType = registerOutput<String>('healthCheckType');
+    this.ignoreFailedScalingActivities =
+        registerOutput<bool?>('ignoreFailedScalingActivities');
     this.initialLifecycleHooks =
-        Output.createUnknown<List<GroupInitialLifecycleHook>?>();
+        registerOutput<List<GroupInitialLifecycleHook>?>(
+            'initialLifecycleHooks');
     this.instanceMaintenancePolicy =
-        Output.createUnknown<GroupInstanceMaintenancePolicy?>();
-    this.instanceRefresh = Output.createUnknown<GroupInstanceRefresh?>();
-    this.launchConfiguration = Output.createUnknown<String?>();
-    this.launchTemplate = Output.createUnknown<GroupLaunchTemplate>();
-    this.loadBalancers = Output.createUnknown<List<String>>();
-    this.maxInstanceLifetime = Output.createUnknown<int?>();
-    this.maxSize = Output.createUnknown<int>();
-    this.metricsGranularity = Output.createUnknown<String?>();
-    this.minElbCapacity = Output.createUnknown<int?>();
-    this.minSize = Output.createUnknown<int>();
+        registerOutput<GroupInstanceMaintenancePolicy?>(
+            'instanceMaintenancePolicy');
+    this.instanceRefresh =
+        registerOutput<GroupInstanceRefresh?>('instanceRefresh');
+    this.launchConfiguration = registerOutput<String?>('launchConfiguration');
+    this.launchTemplate = registerOutput<GroupLaunchTemplate>('launchTemplate');
+    this.loadBalancers = registerOutput<List<String>>('loadBalancers');
+    this.maxInstanceLifetime = registerOutput<int?>('maxInstanceLifetime');
+    this.maxSize = registerOutput<int>('maxSize');
+    this.metricsGranularity = registerOutput<String?>('metricsGranularity');
+    this.minElbCapacity = registerOutput<int?>('minElbCapacity');
+    this.minSize = registerOutput<int>('minSize');
     this.mixedInstancesPolicy =
-        Output.createUnknown<GroupMixedInstancesPolicy>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.placementGroup = Output.createUnknown<String?>();
-    this.predictedCapacity = Output.createUnknown<int>();
-    this.protectFromScaleIn = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.serviceLinkedRoleArn = Output.createUnknown<String>();
-    this.suspendedProcesses = Output.createUnknown<List<String>?>();
-    this.tags = Output.createUnknown<List<GroupTag>?>();
-    this.targetGroupArns = Output.createUnknown<List<String>>();
-    this.terminationPolicies = Output.createUnknown<List<String>?>();
-    this.trafficSources = Output.createUnknown<List<GroupTrafficSource>>();
-    this.vpcZoneIdentifiers = Output.createUnknown<List<String>>();
-    this.waitForCapacityTimeout = Output.createUnknown<String?>();
-    this.waitForElbCapacity = Output.createUnknown<int?>();
-    this.warmPool = Output.createUnknown<GroupWarmPool?>();
-    this.warmPoolSize = Output.createUnknown<int>();
+        registerOutput<GroupMixedInstancesPolicy>('mixedInstancesPolicy');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.placementGroup = registerOutput<String?>('placementGroup');
+    this.predictedCapacity = registerOutput<int>('predictedCapacity');
+    this.protectFromScaleIn = registerOutput<bool?>('protectFromScaleIn');
+    this.region = registerOutput<String>('region');
+    this.serviceLinkedRoleArn = registerOutput<String>('serviceLinkedRoleArn');
+    this.suspendedProcesses =
+        registerOutput<List<String>?>('suspendedProcesses');
+    this.tags = registerOutput<List<GroupTag>?>('tags');
+    this.targetGroupArns = registerOutput<List<String>>('targetGroupArns');
+    this.terminationPolicies =
+        registerOutput<List<String>?>('terminationPolicies');
+    this.trafficSources =
+        registerOutput<List<GroupTrafficSource>>('trafficSources');
+    this.vpcZoneIdentifiers =
+        registerOutput<List<String>>('vpcZoneIdentifiers');
+    this.waitForCapacityTimeout =
+        registerOutput<String?>('waitForCapacityTimeout');
+    this.waitForElbCapacity = registerOutput<int?>('waitForElbCapacity');
+    this.warmPool = registerOutput<GroupWarmPool?>('warmPool');
+    this.warmPoolSize = registerOutput<int>('warmPoolSize');
   }
 }

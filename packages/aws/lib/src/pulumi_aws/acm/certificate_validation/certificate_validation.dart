@@ -452,8 +452,9 @@ class CertificateValidation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificateArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.validationRecordFqdns = Output.createUnknown<List<String>?>();
+    this.certificateArn = registerOutput<String>('certificateArn');
+    this.region = registerOutput<String>('region');
+    this.validationRecordFqdns =
+        registerOutput<List<String>?>('validationRecordFqdns');
   }
 }

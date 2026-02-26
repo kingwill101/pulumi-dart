@@ -142,12 +142,14 @@ class SmsChannel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationId = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.promotionalMessagesPerSecond = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.senderId = Output.createUnknown<String?>();
-    this.shortCode = Output.createUnknown<String?>();
-    this.transactionalMessagesPerSecond = Output.createUnknown<int>();
+    this.applicationId = registerOutput<String>('applicationId');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.promotionalMessagesPerSecond =
+        registerOutput<int>('promotionalMessagesPerSecond');
+    this.region = registerOutput<String>('region');
+    this.senderId = registerOutput<String?>('senderId');
+    this.shortCode = registerOutput<String?>('shortCode');
+    this.transactionalMessagesPerSecond =
+        registerOutput<int>('transactionalMessagesPerSecond');
   }
 }

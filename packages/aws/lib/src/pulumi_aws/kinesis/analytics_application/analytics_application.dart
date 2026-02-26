@@ -870,23 +870,25 @@ class AnalyticsApplication extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.cloudwatchLoggingOptions =
-        Output.createUnknown<AnalyticsApplicationCloudwatchLoggingOptions?>();
-    this.code = Output.createUnknown<String?>();
-    this.createTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.inputs = Output.createUnknown<AnalyticsApplicationInputs?>();
-    this.lastUpdateTimestamp = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.outputs = Output.createUnknown<List<AnalyticsApplicationOutput>?>();
+        registerOutput<AnalyticsApplicationCloudwatchLoggingOptions?>(
+            'cloudwatchLoggingOptions');
+    this.code = registerOutput<String?>('code');
+    this.createTimestamp = registerOutput<String>('createTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.inputs = registerOutput<AnalyticsApplicationInputs?>('inputs');
+    this.lastUpdateTimestamp = registerOutput<String>('lastUpdateTimestamp');
+    this.name = registerOutput<String>('name');
+    this.outputs = registerOutput<List<AnalyticsApplicationOutput>?>('outputs');
     this.referenceDataSources =
-        Output.createUnknown<AnalyticsApplicationReferenceDataSources?>();
-    this.region = Output.createUnknown<String>();
-    this.startApplication = Output.createUnknown<bool?>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.version = Output.createUnknown<int>();
+        registerOutput<AnalyticsApplicationReferenceDataSources?>(
+            'referenceDataSources');
+    this.region = registerOutput<String>('region');
+    this.startApplication = registerOutput<bool?>('startApplication');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.version = registerOutput<int>('version');
   }
 }

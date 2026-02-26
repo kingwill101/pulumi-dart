@@ -550,16 +550,17 @@ class SecurityFeedback extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.comment = Output.createUnknown<String?>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String?>();
+    this.comment = registerOutput<String?>('comment');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String?>('displayName');
     this.feedbackContexts =
-        Output.createUnknown<List<SecurityFeedbackFeedbackContext>>();
-    this.feedbackId = Output.createUnknown<String>();
-    this.feedbackType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.reason = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<SecurityFeedbackFeedbackContext>>(
+            'feedbackContexts');
+    this.feedbackId = registerOutput<String>('feedbackId');
+    this.feedbackType = registerOutput<String>('feedbackType');
+    this.name = registerOutput<String>('name');
+    this.orgId = registerOutput<String>('orgId');
+    this.reason = registerOutput<String?>('reason');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

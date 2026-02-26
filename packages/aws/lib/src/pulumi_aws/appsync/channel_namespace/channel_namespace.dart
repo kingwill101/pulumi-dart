@@ -155,18 +155,20 @@ class ChannelNamespace extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiId = Output.createUnknown<String>();
-    this.channelNamespaceArn = Output.createUnknown<String>();
-    this.codeHandlers = Output.createUnknown<String?>();
+    this.apiId = registerOutput<String>('apiId');
+    this.channelNamespaceArn = registerOutput<String>('channelNamespaceArn');
+    this.codeHandlers = registerOutput<String?>('codeHandlers');
     this.handlerConfigs =
-        Output.createUnknown<ChannelNamespaceHandlerConfigs?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<ChannelNamespaceHandlerConfigs?>('handlerConfigs');
+    this.name = registerOutput<String>('name');
     this.publishAuthModes =
-        Output.createUnknown<List<ChannelNamespacePublishAuthMode>?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<ChannelNamespacePublishAuthMode>?>(
+            'publishAuthModes');
+    this.region = registerOutput<String>('region');
     this.subscribeAuthModes =
-        Output.createUnknown<List<ChannelNamespaceSubscribeAuthMode>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<ChannelNamespaceSubscribeAuthMode>?>(
+            'subscribeAuthModes');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

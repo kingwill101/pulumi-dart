@@ -235,14 +235,14 @@ class ThingGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.metadatas = Output.createUnknown<List<ThingGroupMetadata>>();
-    this.name = Output.createUnknown<String>();
-    this.parentGroupName = Output.createUnknown<String?>();
-    this.properties = Output.createUnknown<ThingGroupProperties?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.version = Output.createUnknown<int>();
+    this.arn = registerOutput<String>('arn');
+    this.metadatas = registerOutput<List<ThingGroupMetadata>>('metadatas');
+    this.name = registerOutput<String>('name');
+    this.parentGroupName = registerOutput<String?>('parentGroupName');
+    this.properties = registerOutput<ThingGroupProperties?>('properties');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.version = registerOutput<int>('version');
   }
 }

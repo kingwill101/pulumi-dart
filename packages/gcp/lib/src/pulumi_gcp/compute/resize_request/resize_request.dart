@@ -554,16 +554,17 @@ class ResizeRequest extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.instanceGroupManager = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.instanceGroupManager = registerOutput<String>('instanceGroupManager');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.requestedRunDuration =
-        Output.createUnknown<ResizeRequestRequestedRunDuration?>();
-    this.resizeBy = Output.createUnknown<int>();
-    this.state = Output.createUnknown<String>();
-    this.statuses = Output.createUnknown<List<ResizeRequestStatus>>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<ResizeRequestRequestedRunDuration?>(
+            'requestedRunDuration');
+    this.resizeBy = registerOutput<int>('resizeBy');
+    this.state = registerOutput<String>('state');
+    this.statuses = registerOutput<List<ResizeRequestStatus>>('statuses');
+    this.zone = registerOutput<String>('zone');
   }
 }

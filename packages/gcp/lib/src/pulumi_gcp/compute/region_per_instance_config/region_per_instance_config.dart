@@ -630,15 +630,20 @@ class RegionPerInstanceConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.minimalAction = Output.createUnknown<String?>();
-    this.mostDisruptiveAllowedAction = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
+    this.minimalAction = registerOutput<String?>('minimalAction');
+    this.mostDisruptiveAllowedAction =
+        registerOutput<String?>('mostDisruptiveAllowedAction');
+    this.name = registerOutput<String>('name');
     this.preservedState =
-        Output.createUnknown<RegionPerInstanceConfigPreservedState?>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.regionInstanceGroupManager = Output.createUnknown<String>();
-    this.removeInstanceOnDestroy = Output.createUnknown<bool?>();
-    this.removeInstanceStateOnDestroy = Output.createUnknown<bool?>();
+        registerOutput<RegionPerInstanceConfigPreservedState?>(
+            'preservedState');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.regionInstanceGroupManager =
+        registerOutput<String>('regionInstanceGroupManager');
+    this.removeInstanceOnDestroy =
+        registerOutput<bool?>('removeInstanceOnDestroy');
+    this.removeInstanceStateOnDestroy =
+        registerOutput<bool?>('removeInstanceStateOnDestroy');
   }
 }

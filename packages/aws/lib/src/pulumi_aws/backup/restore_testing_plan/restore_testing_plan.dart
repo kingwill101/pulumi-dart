@@ -189,15 +189,17 @@ class RestoreTestingPlan extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
     this.recoveryPointSelection =
-        Output.createUnknown<RestoreTestingPlanRecoveryPointSelection>();
-    this.region = Output.createUnknown<String>();
-    this.scheduleExpression = Output.createUnknown<String>();
-    this.scheduleExpressionTimezone = Output.createUnknown<String>();
-    this.startWindowHours = Output.createUnknown<int>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<RestoreTestingPlanRecoveryPointSelection>(
+            'recoveryPointSelection');
+    this.region = registerOutput<String>('region');
+    this.scheduleExpression = registerOutput<String>('scheduleExpression');
+    this.scheduleExpressionTimezone =
+        registerOutput<String>('scheduleExpressionTimezone');
+    this.startWindowHours = registerOutput<int>('startWindowHours');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

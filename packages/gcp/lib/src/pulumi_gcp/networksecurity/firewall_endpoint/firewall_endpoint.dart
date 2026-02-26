@@ -220,20 +220,22 @@ class FirewallEndpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.associatedNetworks = Output.createUnknown<List<String>>();
-    this.billingProjectId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.associatedNetworks =
+        registerOutput<List<String>>('associatedNetworks');
+    this.billingProjectId = registerOutput<String>('billingProjectId');
+    this.createTime = registerOutput<String>('createTime');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.endpointSettings =
-        Output.createUnknown<FirewallEndpointEndpointSettings?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.selfLink = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<FirewallEndpointEndpointSettings?>('endpointSettings');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

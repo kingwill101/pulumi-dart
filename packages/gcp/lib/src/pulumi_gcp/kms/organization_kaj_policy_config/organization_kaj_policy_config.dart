@@ -170,8 +170,9 @@ class OrganizationKajPolicyConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.defaultKeyAccessJustificationPolicy = Output.createUnknown<
-        OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy?>();
-    this.organization = Output.createUnknown<String>();
+    this.defaultKeyAccessJustificationPolicy = registerOutput<
+            OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy?>(
+        'defaultKeyAccessJustificationPolicy');
+    this.organization = registerOutput<String>('organization');
   }
 }

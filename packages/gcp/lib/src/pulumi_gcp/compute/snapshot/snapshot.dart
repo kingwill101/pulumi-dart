@@ -1061,29 +1061,32 @@ class Snapshot extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.chainName = Output.createUnknown<String?>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.diskSizeGb = Output.createUnknown<int>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.guestFlush = Output.createUnknown<bool?>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.licenses = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.selfLink = Output.createUnknown<String>();
+    this.chainName = registerOutput<String?>('chainName');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.diskSizeGb = registerOutput<int>('diskSizeGb');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.guestFlush = registerOutput<bool?>('guestFlush');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.licenses = registerOutput<List<String>>('licenses');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.selfLink = registerOutput<String>('selfLink');
     this.snapshotEncryptionKey =
-        Output.createUnknown<SnapshotSnapshotEncryptionKey?>();
-    this.snapshotId = Output.createUnknown<int>();
-    this.snapshotType = Output.createUnknown<String?>();
-    this.sourceDisk = Output.createUnknown<String>();
+        registerOutput<SnapshotSnapshotEncryptionKey?>('snapshotEncryptionKey');
+    this.snapshotId = registerOutput<int>('snapshotId');
+    this.snapshotType = registerOutput<String?>('snapshotType');
+    this.sourceDisk = registerOutput<String>('sourceDisk');
     this.sourceDiskEncryptionKey =
-        Output.createUnknown<SnapshotSourceDiskEncryptionKey?>();
-    this.sourceInstantSnapshot = Output.createUnknown<String?>();
-    this.storageBytes = Output.createUnknown<int>();
-    this.storageLocations = Output.createUnknown<List<String>>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<SnapshotSourceDiskEncryptionKey?>(
+            'sourceDiskEncryptionKey');
+    this.sourceInstantSnapshot =
+        registerOutput<String?>('sourceInstantSnapshot');
+    this.storageBytes = registerOutput<int>('storageBytes');
+    this.storageLocations = registerOutput<List<String>>('storageLocations');
+    this.zone = registerOutput<String>('zone');
   }
 }

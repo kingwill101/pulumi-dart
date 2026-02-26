@@ -227,10 +227,10 @@ class AppCookieStickinessPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cookieName = Output.createUnknown<String>();
-    this.lbPort = Output.createUnknown<int>();
-    this.loadBalancer = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.cookieName = registerOutput<String>('cookieName');
+    this.lbPort = registerOutput<int>('lbPort');
+    this.loadBalancer = registerOutput<String>('loadBalancer');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

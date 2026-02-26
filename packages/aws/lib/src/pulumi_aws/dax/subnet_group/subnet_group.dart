@@ -149,10 +149,10 @@ class SubnetGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.vpcId = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

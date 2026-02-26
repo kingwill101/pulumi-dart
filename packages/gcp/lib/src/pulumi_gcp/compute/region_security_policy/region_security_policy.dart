@@ -775,20 +775,23 @@ class RegionSecurityPolicy extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.advancedOptionsConfig =
-        Output.createUnknown<RegionSecurityPolicyAdvancedOptionsConfig?>();
+        registerOutput<RegionSecurityPolicyAdvancedOptionsConfig?>(
+            'advancedOptionsConfig');
     this.ddosProtectionConfig =
-        Output.createUnknown<RegionSecurityPolicyDdosProtectionConfig?>();
-    this.description = Output.createUnknown<String?>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.policyId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.rules = Output.createUnknown<List<RegionSecurityPolicyRule>>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithPolicyId = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String?>();
+        registerOutput<RegionSecurityPolicyDdosProtectionConfig?>(
+            'ddosProtectionConfig');
+    this.description = registerOutput<String?>('description');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.name = registerOutput<String>('name');
+    this.policyId = registerOutput<String>('policyId');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.rules = registerOutput<List<RegionSecurityPolicyRule>>('rules');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithPolicyId = registerOutput<String>('selfLinkWithPolicyId');
+    this.type = registerOutput<String?>('type');
     this.userDefinedFields =
-        Output.createUnknown<List<RegionSecurityPolicyUserDefinedField>?>();
+        registerOutput<List<RegionSecurityPolicyUserDefinedField>?>(
+            'userDefinedFields');
   }
 }

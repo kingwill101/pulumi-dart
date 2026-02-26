@@ -91,31 +91,34 @@ class Backup2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.backupId = Output.createUnknown<String>();
-    this.clusterName = Output.createUnknown<String>();
-    this.clusterUid = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.databaseVersion = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.encryptionConfig = Output.createUnknown<EncryptionConfigResponse2>();
-    this.encryptionInfo = Output.createUnknown<EncryptionInfoResponse2>();
-    this.etag = Output.createUnknown<String>();
-    this.expiryQuantity = Output.createUnknown<QuantityBasedExpiryResponse2>();
-    this.expiryTime = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.requestId = Output.createUnknown<String?>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.sizeBytes = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.backupId = registerOutput<String>('backupId');
+    this.clusterName = registerOutput<String>('clusterName');
+    this.clusterUid = registerOutput<String>('clusterUid');
+    this.createTime = registerOutput<String>('createTime');
+    this.databaseVersion = registerOutput<String>('databaseVersion');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.encryptionConfig =
+        registerOutput<EncryptionConfigResponse2>('encryptionConfig');
+    this.encryptionInfo =
+        registerOutput<EncryptionInfoResponse2>('encryptionInfo');
+    this.etag = registerOutput<String>('etag');
+    this.expiryQuantity =
+        registerOutput<QuantityBasedExpiryResponse2>('expiryQuantity');
+    this.expiryTime = registerOutput<String>('expiryTime');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.requestId = registerOutput<String?>('requestId');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.sizeBytes = registerOutput<String>('sizeBytes');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String>('type');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

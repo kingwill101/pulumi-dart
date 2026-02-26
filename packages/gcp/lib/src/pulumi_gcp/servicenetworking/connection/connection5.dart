@@ -309,11 +309,12 @@ class Connection5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.deletionPolicy = Output.createUnknown<String?>();
-    this.network = Output.createUnknown<String>();
-    this.peering = Output.createUnknown<String>();
-    this.reservedPeeringRanges = Output.createUnknown<List<String>>();
-    this.service = Output.createUnknown<String>();
-    this.updateOnCreationFail = Output.createUnknown<bool?>();
+    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
+    this.network = registerOutput<String>('network');
+    this.peering = registerOutput<String>('peering');
+    this.reservedPeeringRanges =
+        registerOutput<List<String>>('reservedPeeringRanges');
+    this.service = registerOutput<String>('service');
+    this.updateOnCreationFail = registerOutput<bool?>('updateOnCreationFail');
   }
 }

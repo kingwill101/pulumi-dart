@@ -236,18 +236,20 @@ class Key2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.deletionWindowInDays = Output.createUnknown<int>();
-    this.enabled = Output.createUnknown<bool>();
-    this.exportable = Output.createUnknown<bool>();
-    this.keyAttributes = Output.createUnknown<List<KeyKeyAttribute>?>();
-    this.keyCheckValue = Output.createUnknown<String>();
-    this.keyCheckValueAlgorithm = Output.createUnknown<String>();
-    this.keyOrigin = Output.createUnknown<String>();
-    this.keyState = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<KeyTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.deletionWindowInDays = registerOutput<int>('deletionWindowInDays');
+    this.enabled = registerOutput<bool>('enabled');
+    this.exportable = registerOutput<bool>('exportable');
+    this.keyAttributes =
+        registerOutput<List<KeyKeyAttribute>?>('keyAttributes');
+    this.keyCheckValue = registerOutput<String>('keyCheckValue');
+    this.keyCheckValueAlgorithm =
+        registerOutput<String>('keyCheckValueAlgorithm');
+    this.keyOrigin = registerOutput<String>('keyOrigin');
+    this.keyState = registerOutput<String>('keyState');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<KeyTimeouts?>('timeouts');
   }
 }

@@ -141,50 +141,61 @@ class InterconnectAttachment2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.adminEnabled = Output.createUnknown<bool>();
-    this.bandwidth = Output.createUnknown<String>();
-    this.candidateIpv6Subnets = Output.createUnknown<List<String>>();
-    this.candidateSubnets = Output.createUnknown<List<String>>();
-    this.cloudRouterIpAddress = Output.createUnknown<String>();
-    this.cloudRouterIpv6Address = Output.createUnknown<String>();
-    this.cloudRouterIpv6InterfaceId = Output.createUnknown<String>();
-    this.configurationConstraints = Output.createUnknown<
-        InterconnectAttachmentConfigurationConstraintsResponse>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.customerRouterIpAddress = Output.createUnknown<String>();
-    this.customerRouterIpv6Address = Output.createUnknown<String>();
-    this.customerRouterIpv6InterfaceId = Output.createUnknown<String>();
-    this.dataplaneVersion = Output.createUnknown<int>();
-    this.description = Output.createUnknown<String>();
-    this.edgeAvailabilityDomain = Output.createUnknown<String>();
-    this.encryption = Output.createUnknown<String>();
-    this.googleReferenceId = Output.createUnknown<String>();
-    this.interconnect = Output.createUnknown<String>();
-    this.ipsecInternalAddresses = Output.createUnknown<List<String>>();
-    this.kind = Output.createUnknown<String>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.mtu = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.operationalStatus = Output.createUnknown<String>();
-    this.pairingKey = Output.createUnknown<String>();
-    this.partnerAsn = Output.createUnknown<String>();
+    this.adminEnabled = registerOutput<bool>('adminEnabled');
+    this.bandwidth = registerOutput<String>('bandwidth');
+    this.candidateIpv6Subnets =
+        registerOutput<List<String>>('candidateIpv6Subnets');
+    this.candidateSubnets = registerOutput<List<String>>('candidateSubnets');
+    this.cloudRouterIpAddress = registerOutput<String>('cloudRouterIpAddress');
+    this.cloudRouterIpv6Address =
+        registerOutput<String>('cloudRouterIpv6Address');
+    this.cloudRouterIpv6InterfaceId =
+        registerOutput<String>('cloudRouterIpv6InterfaceId');
+    this.configurationConstraints =
+        registerOutput<InterconnectAttachmentConfigurationConstraintsResponse>(
+            'configurationConstraints');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.customerRouterIpAddress =
+        registerOutput<String>('customerRouterIpAddress');
+    this.customerRouterIpv6Address =
+        registerOutput<String>('customerRouterIpv6Address');
+    this.customerRouterIpv6InterfaceId =
+        registerOutput<String>('customerRouterIpv6InterfaceId');
+    this.dataplaneVersion = registerOutput<int>('dataplaneVersion');
+    this.description = registerOutput<String>('description');
+    this.edgeAvailabilityDomain =
+        registerOutput<String>('edgeAvailabilityDomain');
+    this.encryption = registerOutput<String>('encryption');
+    this.googleReferenceId = registerOutput<String>('googleReferenceId');
+    this.interconnect = registerOutput<String>('interconnect');
+    this.ipsecInternalAddresses =
+        registerOutput<List<String>>('ipsecInternalAddresses');
+    this.kind = registerOutput<String>('kind');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.mtu = registerOutput<int>('mtu');
+    this.name = registerOutput<String>('name');
+    this.operationalStatus = registerOutput<String>('operationalStatus');
+    this.pairingKey = registerOutput<String>('pairingKey');
+    this.partnerAsn = registerOutput<String>('partnerAsn');
     this.partnerMetadata =
-        Output.createUnknown<InterconnectAttachmentPartnerMetadataResponse>();
+        registerOutput<InterconnectAttachmentPartnerMetadataResponse>(
+            'partnerMetadata');
     this.privateInterconnectInfo =
-        Output.createUnknown<InterconnectAttachmentPrivateInfoResponse>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.remoteService = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.router = Output.createUnknown<String>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
-    this.stackType = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.subnetLength = Output.createUnknown<int>();
-    this.type = Output.createUnknown<String>();
-    this.vlanTag8021q = Output.createUnknown<int>();
+        registerOutput<InterconnectAttachmentPrivateInfoResponse>(
+            'privateInterconnectInfo');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.remoteService = registerOutput<String>('remoteService');
+    this.requestId = registerOutput<String?>('requestId');
+    this.router = registerOutput<String>('router');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    this.stackType = registerOutput<String>('stackType');
+    this.state = registerOutput<String>('state');
+    this.subnetLength = registerOutput<int>('subnetLength');
+    this.type = registerOutput<String>('type');
+    this.vlanTag8021q = registerOutput<int>('vlanTag8021q');
   }
 }

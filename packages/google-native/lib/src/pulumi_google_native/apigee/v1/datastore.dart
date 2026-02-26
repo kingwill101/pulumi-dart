@@ -37,14 +37,15 @@ class Datastore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
     this.datastoreConfig =
-        Output.createUnknown<GoogleCloudApigeeV1DatastoreConfigResponse>();
-    this.displayName = Output.createUnknown<String>();
-    this.lastUpdateTime = Output.createUnknown<String>();
-    this.org = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.self = Output.createUnknown<String>();
-    this.targetType = Output.createUnknown<String>();
+        registerOutput<GoogleCloudApigeeV1DatastoreConfigResponse>(
+            'datastoreConfig');
+    this.displayName = registerOutput<String>('displayName');
+    this.lastUpdateTime = registerOutput<String>('lastUpdateTime');
+    this.org = registerOutput<String>('org');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.self = registerOutput<String>('self');
+    this.targetType = registerOutput<String>('targetType');
   }
 }

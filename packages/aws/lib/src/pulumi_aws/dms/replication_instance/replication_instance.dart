@@ -624,29 +624,40 @@ class ReplicationInstance extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allocatedStorage = Output.createUnknown<int>();
-    this.allowMajorVersionUpgrade = Output.createUnknown<bool?>();
-    this.applyImmediately = Output.createUnknown<bool?>();
-    this.autoMinorVersionUpgrade = Output.createUnknown<bool>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.dnsNameServers = Output.createUnknown<String?>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.kerberosAuthenticationSettings = Output.createUnknown<
-        ReplicationInstanceKerberosAuthenticationSettings?>();
-    this.kmsKeyArn = Output.createUnknown<String>();
-    this.multiAz = Output.createUnknown<bool>();
-    this.networkType = Output.createUnknown<String>();
-    this.preferredMaintenanceWindow = Output.createUnknown<String>();
-    this.publiclyAccessible = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.replicationInstanceArn = Output.createUnknown<String>();
-    this.replicationInstanceClass = Output.createUnknown<String>();
-    this.replicationInstanceId = Output.createUnknown<String>();
-    this.replicationInstancePrivateIps = Output.createUnknown<List<String>>();
-    this.replicationInstancePublicIps = Output.createUnknown<List<String>>();
-    this.replicationSubnetGroupId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcSecurityGroupIds = Output.createUnknown<List<String>>();
+    this.allocatedStorage = registerOutput<int>('allocatedStorage');
+    this.allowMajorVersionUpgrade =
+        registerOutput<bool?>('allowMajorVersionUpgrade');
+    this.applyImmediately = registerOutput<bool?>('applyImmediately');
+    this.autoMinorVersionUpgrade =
+        registerOutput<bool>('autoMinorVersionUpgrade');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.dnsNameServers = registerOutput<String?>('dnsNameServers');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.kerberosAuthenticationSettings =
+        registerOutput<ReplicationInstanceKerberosAuthenticationSettings?>(
+            'kerberosAuthenticationSettings');
+    this.kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    this.multiAz = registerOutput<bool>('multiAz');
+    this.networkType = registerOutput<String>('networkType');
+    this.preferredMaintenanceWindow =
+        registerOutput<String>('preferredMaintenanceWindow');
+    this.publiclyAccessible = registerOutput<bool>('publiclyAccessible');
+    this.region = registerOutput<String>('region');
+    this.replicationInstanceArn =
+        registerOutput<String>('replicationInstanceArn');
+    this.replicationInstanceClass =
+        registerOutput<String>('replicationInstanceClass');
+    this.replicationInstanceId =
+        registerOutput<String>('replicationInstanceId');
+    this.replicationInstancePrivateIps =
+        registerOutput<List<String>>('replicationInstancePrivateIps');
+    this.replicationInstancePublicIps =
+        registerOutput<List<String>>('replicationInstancePublicIps');
+    this.replicationSubnetGroupId =
+        registerOutput<String>('replicationSubnetGroupId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcSecurityGroupIds =
+        registerOutput<List<String>>('vpcSecurityGroupIds');
   }
 }

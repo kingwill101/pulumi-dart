@@ -296,19 +296,21 @@ class Workspace3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bundleId = Output.createUnknown<String>();
-    this.computerName = Output.createUnknown<String>();
-    this.directoryId = Output.createUnknown<String>();
-    this.ipAddress = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.rootVolumeEncryptionEnabled = Output.createUnknown<bool?>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.userName = Output.createUnknown<String>();
-    this.userVolumeEncryptionEnabled = Output.createUnknown<bool?>();
-    this.volumeEncryptionKey = Output.createUnknown<String?>();
+    this.bundleId = registerOutput<String>('bundleId');
+    this.computerName = registerOutput<String>('computerName');
+    this.directoryId = registerOutput<String>('directoryId');
+    this.ipAddress = registerOutput<String>('ipAddress');
+    this.region = registerOutput<String>('region');
+    this.rootVolumeEncryptionEnabled =
+        registerOutput<bool?>('rootVolumeEncryptionEnabled');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.userName = registerOutput<String>('userName');
+    this.userVolumeEncryptionEnabled =
+        registerOutput<bool?>('userVolumeEncryptionEnabled');
+    this.volumeEncryptionKey = registerOutput<String?>('volumeEncryptionKey');
     this.workspaceProperties =
-        Output.createUnknown<WorkspaceWorkspaceProperties>();
+        registerOutput<WorkspaceWorkspaceProperties>('workspaceProperties');
   }
 }

@@ -184,7 +184,7 @@ class DefaultObjectACL extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.roleEntities = Output.createUnknown<List<String>>();
+    this.bucket = registerOutput<String>('bucket');
+    this.roleEntities = registerOutput<List<String>>('roleEntities');
   }
 }

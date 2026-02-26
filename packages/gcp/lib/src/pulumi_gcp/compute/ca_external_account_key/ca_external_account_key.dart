@@ -149,11 +149,11 @@ class CaExternalAccountKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.b64MacKey = Output.createUnknown<String>();
-    this.b64urlMacKey = Output.createUnknown<String>();
-    this.keyId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.b64MacKey = registerOutput<String>('b64MacKey');
+    this.b64urlMacKey = registerOutput<String>('b64urlMacKey');
+    this.keyId = registerOutput<String>('keyId');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

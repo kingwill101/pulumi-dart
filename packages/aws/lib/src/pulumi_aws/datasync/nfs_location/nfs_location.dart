@@ -178,14 +178,15 @@ class NfsLocation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.mountOptions = Output.createUnknown<NfsLocationMountOptions?>();
-    this.onPremConfig = Output.createUnknown<NfsLocationOnPremConfig>();
-    this.region = Output.createUnknown<String>();
-    this.serverHostname = Output.createUnknown<String>();
-    this.subdirectory = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.uri = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.mountOptions =
+        registerOutput<NfsLocationMountOptions?>('mountOptions');
+    this.onPremConfig = registerOutput<NfsLocationOnPremConfig>('onPremConfig');
+    this.region = registerOutput<String>('region');
+    this.serverHostname = registerOutput<String>('serverHostname');
+    this.subdirectory = registerOutput<String>('subdirectory');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.uri = registerOutput<String>('uri');
   }
 }

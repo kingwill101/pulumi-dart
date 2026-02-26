@@ -878,18 +878,19 @@ class BitbucketServerConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiKey = Output.createUnknown<String>();
-    this.configId = Output.createUnknown<String>();
+    this.apiKey = registerOutput<String>('apiKey');
+    this.configId = registerOutput<String>('configId');
     this.connectedRepositories =
-        Output.createUnknown<List<BitbucketServerConfigConnectedRepository>?>();
-    this.hostUri = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.peeredNetwork = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.secrets = Output.createUnknown<BitbucketServerConfigSecrets>();
-    this.sslCa = Output.createUnknown<String?>();
-    this.username = Output.createUnknown<String>();
-    this.webhookKey = Output.createUnknown<String>();
+        registerOutput<List<BitbucketServerConfigConnectedRepository>?>(
+            'connectedRepositories');
+    this.hostUri = registerOutput<String>('hostUri');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.peeredNetwork = registerOutput<String?>('peeredNetwork');
+    this.project = registerOutput<String>('project');
+    this.secrets = registerOutput<BitbucketServerConfigSecrets>('secrets');
+    this.sslCa = registerOutput<String?>('sslCa');
+    this.username = registerOutput<String>('username');
+    this.webhookKey = registerOutput<String>('webhookKey');
   }
 }

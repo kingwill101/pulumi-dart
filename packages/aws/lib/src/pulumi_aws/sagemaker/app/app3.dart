@@ -162,15 +162,15 @@ class App3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appName = Output.createUnknown<String>();
-    this.appType = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.domainId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceSpec = Output.createUnknown<AppResourceSpec>();
-    this.spaceName = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.userProfileName = Output.createUnknown<String?>();
+    this.appName = registerOutput<String>('appName');
+    this.appType = registerOutput<String>('appType');
+    this.arn = registerOutput<String>('arn');
+    this.domainId = registerOutput<String>('domainId');
+    this.region = registerOutput<String>('region');
+    this.resourceSpec = registerOutput<AppResourceSpec>('resourceSpec');
+    this.spaceName = registerOutput<String?>('spaceName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.userProfileName = registerOutput<String?>('userProfileName');
   }
 }

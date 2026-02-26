@@ -321,14 +321,15 @@ class VpcBlockPublicAccessExclusion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.internetGatewayExclusionMode = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
-    this.subnetId = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.internetGatewayExclusionMode =
+        registerOutput<String>('internetGatewayExclusionMode');
+    this.region = registerOutput<String>('region');
+    this.resourceArn = registerOutput<String>('resourceArn');
+    this.subnetId = registerOutput<String?>('subnetId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.timeouts =
-        Output.createUnknown<VpcBlockPublicAccessExclusionTimeouts?>();
-    this.vpcId = Output.createUnknown<String?>();
+        registerOutput<VpcBlockPublicAccessExclusionTimeouts?>('timeouts');
+    this.vpcId = registerOutput<String?>('vpcId');
   }
 }

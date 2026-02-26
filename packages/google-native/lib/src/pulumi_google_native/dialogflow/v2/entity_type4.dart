@@ -39,15 +39,16 @@ class EntityType4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoExpansionMode = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.enableFuzzyExtraction = Output.createUnknown<bool>();
-    this.entities = Output.createUnknown<
-        List<GoogleCloudDialogflowV2EntityTypeEntityResponse>>();
-    this.kind = Output.createUnknown<String>();
-    this.languageCode = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.autoExpansionMode = registerOutput<String>('autoExpansionMode');
+    this.displayName = registerOutput<String>('displayName');
+    this.enableFuzzyExtraction = registerOutput<bool>('enableFuzzyExtraction');
+    this.entities =
+        registerOutput<List<GoogleCloudDialogflowV2EntityTypeEntityResponse>>(
+            'entities');
+    this.kind = registerOutput<String>('kind');
+    this.languageCode = registerOutput<String?>('languageCode');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

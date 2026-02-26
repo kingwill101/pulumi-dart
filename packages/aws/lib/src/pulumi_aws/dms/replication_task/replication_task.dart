@@ -225,21 +225,23 @@ class ReplicationTask extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cdcStartPosition = Output.createUnknown<String>();
-    this.cdcStartTime = Output.createUnknown<String?>();
-    this.migrationType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.replicationInstanceArn = Output.createUnknown<String>();
-    this.replicationTaskArn = Output.createUnknown<String>();
-    this.replicationTaskId = Output.createUnknown<String>();
-    this.replicationTaskSettings = Output.createUnknown<String>();
-    this.resourceIdentifier = Output.createUnknown<String?>();
-    this.sourceEndpointArn = Output.createUnknown<String>();
-    this.startReplicationTask = Output.createUnknown<bool?>();
-    this.status = Output.createUnknown<String>();
-    this.tableMappings = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetEndpointArn = Output.createUnknown<String>();
+    this.cdcStartPosition = registerOutput<String>('cdcStartPosition');
+    this.cdcStartTime = registerOutput<String?>('cdcStartTime');
+    this.migrationType = registerOutput<String>('migrationType');
+    this.region = registerOutput<String>('region');
+    this.replicationInstanceArn =
+        registerOutput<String>('replicationInstanceArn');
+    this.replicationTaskArn = registerOutput<String>('replicationTaskArn');
+    this.replicationTaskId = registerOutput<String>('replicationTaskId');
+    this.replicationTaskSettings =
+        registerOutput<String>('replicationTaskSettings');
+    this.resourceIdentifier = registerOutput<String?>('resourceIdentifier');
+    this.sourceEndpointArn = registerOutput<String>('sourceEndpointArn');
+    this.startReplicationTask = registerOutput<bool?>('startReplicationTask');
+    this.status = registerOutput<String>('status');
+    this.tableMappings = registerOutput<String>('tableMappings');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetEndpointArn = registerOutput<String>('targetEndpointArn');
   }
 }

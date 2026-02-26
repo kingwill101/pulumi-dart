@@ -185,15 +185,16 @@ class Connect extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.protocol = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.protocol = registerOutput<String?>('protocol');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.transitGatewayDefaultRouteTableAssociation =
-        Output.createUnknown<bool?>();
+        registerOutput<bool?>('transitGatewayDefaultRouteTableAssociation');
     this.transitGatewayDefaultRouteTablePropagation =
-        Output.createUnknown<bool?>();
-    this.transitGatewayId = Output.createUnknown<String>();
-    this.transportAttachmentId = Output.createUnknown<String>();
+        registerOutput<bool?>('transitGatewayDefaultRouteTablePropagation');
+    this.transitGatewayId = registerOutput<String>('transitGatewayId');
+    this.transportAttachmentId =
+        registerOutput<String>('transportAttachmentId');
   }
 }

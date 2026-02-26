@@ -74,30 +74,38 @@ class ConversationProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.automatedAgentConfig = Output.createUnknown<
-        GoogleCloudDialogflowV2AutomatedAgentConfigResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.humanAgentAssistantConfig = Output.createUnknown<
-        GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse>();
-    this.humanAgentHandoffConfig = Output.createUnknown<
-        GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse>();
-    this.languageCode = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
+    this.automatedAgentConfig =
+        registerOutput<GoogleCloudDialogflowV2AutomatedAgentConfigResponse>(
+            'automatedAgentConfig');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.humanAgentAssistantConfig = registerOutput<
+            GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse>(
+        'humanAgentAssistantConfig');
+    this.humanAgentHandoffConfig =
+        registerOutput<GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse>(
+            'humanAgentHandoffConfig');
+    this.languageCode = registerOutput<String>('languageCode');
+    this.location = registerOutput<String>('location');
     this.loggingConfig =
-        Output.createUnknown<GoogleCloudDialogflowV2LoggingConfigResponse>();
-    this.name = Output.createUnknown<String>();
-    this.newMessageEventNotificationConfig = Output.createUnknown<
-        GoogleCloudDialogflowV2NotificationConfigResponse>();
-    this.notificationConfig = Output.createUnknown<
-        GoogleCloudDialogflowV2NotificationConfigResponse>();
-    this.project = Output.createUnknown<String>();
-    this.securitySettings = Output.createUnknown<String>();
-    this.sttConfig = Output.createUnknown<
-        GoogleCloudDialogflowV2SpeechToTextConfigResponse>();
-    this.timeZone = Output.createUnknown<String>();
-    this.ttsConfig = Output.createUnknown<
-        GoogleCloudDialogflowV2SynthesizeSpeechConfigResponse>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDialogflowV2LoggingConfigResponse>(
+            'loggingConfig');
+    this.name = registerOutput<String>('name');
+    this.newMessageEventNotificationConfig =
+        registerOutput<GoogleCloudDialogflowV2NotificationConfigResponse>(
+            'newMessageEventNotificationConfig');
+    this.notificationConfig =
+        registerOutput<GoogleCloudDialogflowV2NotificationConfigResponse>(
+            'notificationConfig');
+    this.project = registerOutput<String>('project');
+    this.securitySettings = registerOutput<String>('securitySettings');
+    this.sttConfig =
+        registerOutput<GoogleCloudDialogflowV2SpeechToTextConfigResponse>(
+            'sttConfig');
+    this.timeZone = registerOutput<String>('timeZone');
+    this.ttsConfig =
+        registerOutput<GoogleCloudDialogflowV2SynthesizeSpeechConfigResponse>(
+            'ttsConfig');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

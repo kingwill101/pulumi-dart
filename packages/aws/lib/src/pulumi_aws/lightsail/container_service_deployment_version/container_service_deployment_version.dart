@@ -286,14 +286,16 @@ class ContainerServiceDeploymentVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.containers = Output.createUnknown<
-        List<ContainerServiceDeploymentVersionContainer>>();
-    this.createdAt = Output.createUnknown<String>();
-    this.publicEndpoint = Output.createUnknown<
-        ContainerServiceDeploymentVersionPublicEndpoint?>();
-    this.region = Output.createUnknown<String>();
-    this.serviceName = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.containers =
+        registerOutput<List<ContainerServiceDeploymentVersionContainer>>(
+            'containers');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.publicEndpoint =
+        registerOutput<ContainerServiceDeploymentVersionPublicEndpoint?>(
+            'publicEndpoint');
+    this.region = registerOutput<String>('region');
+    this.serviceName = registerOutput<String>('serviceName');
+    this.state = registerOutput<String>('state');
+    this.version = registerOutput<int>('version');
   }
 }

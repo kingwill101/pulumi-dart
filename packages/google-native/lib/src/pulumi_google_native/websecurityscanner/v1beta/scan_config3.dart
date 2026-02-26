@@ -62,21 +62,24 @@ class ScanConfig3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authentication = Output.createUnknown<AuthenticationResponse4>();
-    this.blacklistPatterns = Output.createUnknown<List<String>>();
-    this.displayName = Output.createUnknown<String>();
-    this.exportToSecurityCommandCenter = Output.createUnknown<String>();
-    this.ignoreHttpStatusErrors = Output.createUnknown<bool>();
-    this.latestRun = Output.createUnknown<ScanRunResponse2>();
-    this.managedScan = Output.createUnknown<bool>();
-    this.maxQps = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.riskLevel = Output.createUnknown<String>();
-    this.schedule = Output.createUnknown<ScheduleResponse5>();
-    this.startingUrls = Output.createUnknown<List<String>>();
-    this.staticIpScan = Output.createUnknown<bool>();
-    this.targetPlatforms = Output.createUnknown<List<String>>();
-    this.userAgent = Output.createUnknown<String>();
+    this.authentication =
+        registerOutput<AuthenticationResponse4>('authentication');
+    this.blacklistPatterns = registerOutput<List<String>>('blacklistPatterns');
+    this.displayName = registerOutput<String>('displayName');
+    this.exportToSecurityCommandCenter =
+        registerOutput<String>('exportToSecurityCommandCenter');
+    this.ignoreHttpStatusErrors =
+        registerOutput<bool>('ignoreHttpStatusErrors');
+    this.latestRun = registerOutput<ScanRunResponse2>('latestRun');
+    this.managedScan = registerOutput<bool>('managedScan');
+    this.maxQps = registerOutput<int>('maxQps');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.riskLevel = registerOutput<String>('riskLevel');
+    this.schedule = registerOutput<ScheduleResponse5>('schedule');
+    this.startingUrls = registerOutput<List<String>>('startingUrls');
+    this.staticIpScan = registerOutput<bool>('staticIpScan');
+    this.targetPlatforms = registerOutput<List<String>>('targetPlatforms');
+    this.userAgent = registerOutput<String>('userAgent');
   }
 }

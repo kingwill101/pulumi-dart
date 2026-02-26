@@ -133,10 +133,10 @@ class NetworkAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.associationId = Output.createUnknown<String>();
-    this.clientVpnEndpointId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.subnetId = Output.createUnknown<String>();
-    this.vpcId = Output.createUnknown<String>();
+    this.associationId = registerOutput<String>('associationId');
+    this.clientVpnEndpointId = registerOutput<String>('clientVpnEndpointId');
+    this.region = registerOutput<String>('region');
+    this.subnetId = registerOutput<String>('subnetId');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

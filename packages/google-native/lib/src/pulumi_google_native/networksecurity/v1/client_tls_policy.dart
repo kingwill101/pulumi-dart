@@ -45,18 +45,19 @@ class ClientTlsPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clientCertificate = Output.createUnknown<
-        GoogleCloudNetworksecurityV1CertificateProviderResponse>();
-    this.clientTlsPolicyId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.clientCertificate =
+        registerOutput<GoogleCloudNetworksecurityV1CertificateProviderResponse>(
+            'clientCertificate');
+    this.clientTlsPolicyId = registerOutput<String>('clientTlsPolicyId');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.serverValidationCa =
-        Output.createUnknown<List<ValidationCAResponse>>();
-    this.sni = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<ValidationCAResponse>>('serverValidationCa');
+    this.sni = registerOutput<String>('sni');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

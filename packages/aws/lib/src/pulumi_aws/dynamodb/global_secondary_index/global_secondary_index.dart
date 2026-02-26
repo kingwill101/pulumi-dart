@@ -674,19 +674,22 @@ class GlobalSecondaryIndex extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.indexName = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.indexName = registerOutput<String>('indexName');
     this.keySchemas =
-        Output.createUnknown<List<GlobalSecondaryIndexKeySchema>?>();
+        registerOutput<List<GlobalSecondaryIndexKeySchema>?>('keySchemas');
     this.onDemandThroughput =
-        Output.createUnknown<GlobalSecondaryIndexOnDemandThroughput?>();
-    this.projection = Output.createUnknown<GlobalSecondaryIndexProjection?>();
+        registerOutput<GlobalSecondaryIndexOnDemandThroughput?>(
+            'onDemandThroughput');
+    this.projection =
+        registerOutput<GlobalSecondaryIndexProjection?>('projection');
     this.provisionedThroughput =
-        Output.createUnknown<GlobalSecondaryIndexProvisionedThroughput?>();
-    this.region = Output.createUnknown<String>();
-    this.tableName = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<GlobalSecondaryIndexTimeouts?>();
+        registerOutput<GlobalSecondaryIndexProvisionedThroughput?>(
+            'provisionedThroughput');
+    this.region = registerOutput<String>('region');
+    this.tableName = registerOutput<String>('tableName');
+    this.timeouts = registerOutput<GlobalSecondaryIndexTimeouts?>('timeouts');
     this.warmThroughput =
-        Output.createUnknown<GlobalSecondaryIndexWarmThroughput>();
+        registerOutput<GlobalSecondaryIndexWarmThroughput>('warmThroughput');
   }
 }

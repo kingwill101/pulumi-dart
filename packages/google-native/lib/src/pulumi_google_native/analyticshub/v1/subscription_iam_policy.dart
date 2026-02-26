@@ -32,12 +32,13 @@ class SubscriptionIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse2>>();
-    this.bindings = Output.createUnknown<List<BindingResponse2>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.subscriptionId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse2>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse2>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.subscriptionId = registerOutput<String>('subscriptionId');
+    this.version = registerOutput<int>('version');
   }
 }

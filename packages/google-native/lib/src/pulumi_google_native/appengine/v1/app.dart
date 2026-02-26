@@ -62,21 +62,24 @@ class App extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authDomain = Output.createUnknown<String>();
-    this.codeBucket = Output.createUnknown<String>();
-    this.databaseType = Output.createUnknown<String>();
-    this.defaultBucket = Output.createUnknown<String>();
-    this.defaultCookieExpiration = Output.createUnknown<String>();
-    this.defaultHostname = Output.createUnknown<String>();
-    this.dispatchRules = Output.createUnknown<List<UrlDispatchRuleResponse>>();
-    this.featureSettings = Output.createUnknown<FeatureSettingsResponse>();
-    this.gcrDomain = Output.createUnknown<String>();
+    this.authDomain = registerOutput<String>('authDomain');
+    this.codeBucket = registerOutput<String>('codeBucket');
+    this.databaseType = registerOutput<String>('databaseType');
+    this.defaultBucket = registerOutput<String>('defaultBucket');
+    this.defaultCookieExpiration =
+        registerOutput<String>('defaultCookieExpiration');
+    this.defaultHostname = registerOutput<String>('defaultHostname');
+    this.dispatchRules =
+        registerOutput<List<UrlDispatchRuleResponse>>('dispatchRules');
+    this.featureSettings =
+        registerOutput<FeatureSettingsResponse>('featureSettings');
+    this.gcrDomain = registerOutput<String>('gcrDomain');
     this.generatedCustomerMetadata =
-        Output.createUnknown<Map<String, String>>();
-    this.iap = Output.createUnknown<IdentityAwareProxyResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.servingStatus = Output.createUnknown<String>();
+        registerOutput<Map<String, String>>('generatedCustomerMetadata');
+    this.iap = registerOutput<IdentityAwareProxyResponse>('iap');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.servingStatus = registerOutput<String>('servingStatus');
   }
 }

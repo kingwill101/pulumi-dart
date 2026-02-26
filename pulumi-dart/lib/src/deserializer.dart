@@ -1,10 +1,6 @@
 import 'package:pulumi/pulumi.dart';
 import 'package:pulumi/src/constants.dart';
-import 'package:pulumi/src/resource/component_resource.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
-
-import 'resource/dependency_resource.dart';
-import 'resource/provider_resource.dart';
 
 class Deserializer {
   static OutputData<T> deserialize<T>(Value value) {
@@ -46,6 +42,10 @@ class Deserializer {
         isSecret: false,
         resources: {},
       );
+    }
+
+    if (_isSpecialStruct(value) case (true, var sig?)) {
+      throw Exception('Unknown special signature when deserializing: $sig');
     }
 
     var innerData = _deserializeCore<T>(value);
@@ -203,7 +203,7 @@ class Deserializer {
           : null;
       return (
         true,
-        _createOutput(dependencies, resultValue, isKnown, isSecret),
+        _createFlattenedOutput(dependencies, resultValue, isKnown, isSecret),
       );
     }
     return (false, null);
@@ -319,6 +319,40 @@ class Deserializer {
           resources: resources,
         ),
       ),
+    );
+  }
+
+  static Output<dynamic> _createFlattenedOutput(
+    Set<Resource> resources,
+    dynamic value,
+    bool isKnown,
+    bool isSecret,
+  ) {
+    if (value is! Output) {
+      return _createOutput<dynamic>(resources, value, isKnown, isSecret);
+    }
+
+    return Output<dynamic>(
+      value.getData().then((inner) {
+        final combinedResources = {...resources, ...inner.resources};
+        final combinedSecret = isSecret || inner.isSecret;
+
+        if (!isKnown || !inner.isKnown) {
+          return OutputData<dynamic>(
+            value: null,
+            isKnown: false,
+            isSecret: combinedSecret,
+            resources: combinedResources,
+          );
+        }
+
+        return OutputData<dynamic>(
+          value: inner.value,
+          isKnown: true,
+          isSecret: combinedSecret,
+          resources: combinedResources,
+        );
+      }),
     );
   }
 }

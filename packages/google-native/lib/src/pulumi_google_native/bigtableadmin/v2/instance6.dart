@@ -35,13 +35,13 @@ class Instance6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String>('type');
   }
 }

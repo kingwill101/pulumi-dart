@@ -365,9 +365,9 @@ class ResourcePolicyAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.instance = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+    this.instance = registerOutput<String>('instance');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.zone = registerOutput<String>('zone');
   }
 }

@@ -68,24 +68,28 @@ class DatacenterConnector extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applianceInfrastructureVersion = Output.createUnknown<String>();
-    this.applianceSoftwareVersion = Output.createUnknown<String>();
-    this.availableVersions = Output.createUnknown<AvailableUpdatesResponse>();
-    this.bucket = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.datacenterConnectorId = Output.createUnknown<String>();
-    this.error = Output.createUnknown<StatusResponse30>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.registrationId = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.sourceId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.stateTime = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.upgradeStatus = Output.createUnknown<UpgradeStatusResponse>();
-    this.version = Output.createUnknown<String>();
+    this.applianceInfrastructureVersion =
+        registerOutput<String>('applianceInfrastructureVersion');
+    this.applianceSoftwareVersion =
+        registerOutput<String>('applianceSoftwareVersion');
+    this.availableVersions =
+        registerOutput<AvailableUpdatesResponse>('availableVersions');
+    this.bucket = registerOutput<String>('bucket');
+    this.createTime = registerOutput<String>('createTime');
+    this.datacenterConnectorId =
+        registerOutput<String>('datacenterConnectorId');
+    this.error = registerOutput<StatusResponse30>('error');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.registrationId = registerOutput<String>('registrationId');
+    this.requestId = registerOutput<String?>('requestId');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.sourceId = registerOutput<String>('sourceId');
+    this.state = registerOutput<String>('state');
+    this.stateTime = registerOutput<String>('stateTime');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.upgradeStatus = registerOutput<UpgradeStatusResponse>('upgradeStatus');
+    this.version = registerOutput<String>('version');
   }
 }

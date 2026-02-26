@@ -176,25 +176,26 @@ class Workgroup2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.baseCapacity = Output.createUnknown<int>();
+    this.arn = registerOutput<String>('arn');
+    this.baseCapacity = registerOutput<int>('baseCapacity');
     this.configParameters =
-        Output.createUnknown<List<WorkgroupConfigParameter>>();
-    this.endpoints = Output.createUnknown<List<WorkgroupEndpoint>>();
-    this.enhancedVpcRouting = Output.createUnknown<bool?>();
-    this.maxCapacity = Output.createUnknown<int?>();
-    this.namespaceName = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
+        registerOutput<List<WorkgroupConfigParameter>>('configParameters');
+    this.endpoints = registerOutput<List<WorkgroupEndpoint>>('endpoints');
+    this.enhancedVpcRouting = registerOutput<bool?>('enhancedVpcRouting');
+    this.maxCapacity = registerOutput<int?>('maxCapacity');
+    this.namespaceName = registerOutput<String>('namespaceName');
+    this.port = registerOutput<int>('port');
     this.pricePerformanceTarget =
-        Output.createUnknown<WorkgroupPricePerformanceTarget>();
-    this.publiclyAccessible = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupIds = Output.createUnknown<List<String>>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.trackName = Output.createUnknown<String>();
-    this.workgroupId = Output.createUnknown<String>();
-    this.workgroupName = Output.createUnknown<String>();
+        registerOutput<WorkgroupPricePerformanceTarget>(
+            'pricePerformanceTarget');
+    this.publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
+    this.region = registerOutput<String>('region');
+    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.trackName = registerOutput<String>('trackName');
+    this.workgroupId = registerOutput<String>('workgroupId');
+    this.workgroupName = registerOutput<String>('workgroupName');
   }
 }

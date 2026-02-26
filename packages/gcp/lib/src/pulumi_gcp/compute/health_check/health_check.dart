@@ -2712,27 +2712,31 @@ class HealthCheck extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.checkIntervalSec = Output.createUnknown<int?>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.grpcHealthCheck = Output.createUnknown<HealthCheckGrpcHealthCheck?>();
+    this.checkIntervalSec = registerOutput<int?>('checkIntervalSec');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.grpcHealthCheck =
+        registerOutput<HealthCheckGrpcHealthCheck?>('grpcHealthCheck');
     this.grpcTlsHealthCheck =
-        Output.createUnknown<HealthCheckGrpcTlsHealthCheck?>();
-    this.healthyThreshold = Output.createUnknown<int?>();
+        registerOutput<HealthCheckGrpcTlsHealthCheck?>('grpcTlsHealthCheck');
+    this.healthyThreshold = registerOutput<int?>('healthyThreshold');
     this.http2HealthCheck =
-        Output.createUnknown<HealthCheckHttp2HealthCheck?>();
-    this.httpHealthCheck = Output.createUnknown<HealthCheckHttpHealthCheck?>();
+        registerOutput<HealthCheckHttp2HealthCheck?>('http2HealthCheck');
+    this.httpHealthCheck =
+        registerOutput<HealthCheckHttpHealthCheck?>('httpHealthCheck');
     this.httpsHealthCheck =
-        Output.createUnknown<HealthCheckHttpsHealthCheck?>();
-    this.logConfig = Output.createUnknown<HealthCheckLogConfig>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.sourceRegions = Output.createUnknown<List<String>?>();
-    this.sslHealthCheck = Output.createUnknown<HealthCheckSslHealthCheck?>();
-    this.tcpHealthCheck = Output.createUnknown<HealthCheckTcpHealthCheck?>();
-    this.timeoutSec = Output.createUnknown<int?>();
-    this.type = Output.createUnknown<String>();
-    this.unhealthyThreshold = Output.createUnknown<int?>();
+        registerOutput<HealthCheckHttpsHealthCheck?>('httpsHealthCheck');
+    this.logConfig = registerOutput<HealthCheckLogConfig>('logConfig');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.sourceRegions = registerOutput<List<String>?>('sourceRegions');
+    this.sslHealthCheck =
+        registerOutput<HealthCheckSslHealthCheck?>('sslHealthCheck');
+    this.tcpHealthCheck =
+        registerOutput<HealthCheckTcpHealthCheck?>('tcpHealthCheck');
+    this.timeoutSec = registerOutput<int?>('timeoutSec');
+    this.type = registerOutput<String>('type');
+    this.unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
   }
 }

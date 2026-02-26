@@ -2084,27 +2084,30 @@ class Batch extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.batchId = Output.createUnknown<String?>();
-    this.createTime = Output.createUnknown<String>();
-    this.creator = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.environmentConfig = Output.createUnknown<BatchEnvironmentConfig?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.operation = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.pysparkBatch = Output.createUnknown<BatchPysparkBatch?>();
-    this.runtimeConfig = Output.createUnknown<BatchRuntimeConfig?>();
-    this.runtimeInfos = Output.createUnknown<List<BatchRuntimeInfo>>();
-    this.sparkBatch = Output.createUnknown<BatchSparkBatch?>();
-    this.sparkRBatch = Output.createUnknown<BatchSparkRBatch?>();
-    this.sparkSqlBatch = Output.createUnknown<BatchSparkSqlBatch?>();
-    this.state = Output.createUnknown<String>();
-    this.stateHistories = Output.createUnknown<List<BatchStateHistory>>();
-    this.stateMessage = Output.createUnknown<String>();
-    this.stateTime = Output.createUnknown<String>();
-    this.uuid = Output.createUnknown<String>();
+    this.batchId = registerOutput<String?>('batchId');
+    this.createTime = registerOutput<String>('createTime');
+    this.creator = registerOutput<String>('creator');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.environmentConfig =
+        registerOutput<BatchEnvironmentConfig?>('environmentConfig');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.operation = registerOutput<String>('operation');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.pysparkBatch = registerOutput<BatchPysparkBatch?>('pysparkBatch');
+    this.runtimeConfig = registerOutput<BatchRuntimeConfig?>('runtimeConfig');
+    this.runtimeInfos = registerOutput<List<BatchRuntimeInfo>>('runtimeInfos');
+    this.sparkBatch = registerOutput<BatchSparkBatch?>('sparkBatch');
+    this.sparkRBatch = registerOutput<BatchSparkRBatch?>('sparkRBatch');
+    this.sparkSqlBatch = registerOutput<BatchSparkSqlBatch?>('sparkSqlBatch');
+    this.state = registerOutput<String>('state');
+    this.stateHistories =
+        registerOutput<List<BatchStateHistory>>('stateHistories');
+    this.stateMessage = registerOutput<String>('stateMessage');
+    this.stateTime = registerOutput<String>('stateTime');
+    this.uuid = registerOutput<String>('uuid');
   }
 }

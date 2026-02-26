@@ -1600,38 +1600,40 @@ class Project extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.artifacts = Output.createUnknown<ProjectArtifacts>();
-    this.autoRetryLimit = Output.createUnknown<int>();
-    this.badgeEnabled = Output.createUnknown<bool?>();
-    this.badgeUrl = Output.createUnknown<String>();
-    this.buildBatchConfig = Output.createUnknown<ProjectBuildBatchConfig?>();
-    this.buildTimeout = Output.createUnknown<int?>();
-    this.cache = Output.createUnknown<ProjectCache?>();
-    this.concurrentBuildLimit = Output.createUnknown<int?>();
-    this.description = Output.createUnknown<String>();
-    this.encryptionKey = Output.createUnknown<String>();
-    this.environment = Output.createUnknown<ProjectEnvironment>();
+    this.arn = registerOutput<String>('arn');
+    this.artifacts = registerOutput<ProjectArtifacts>('artifacts');
+    this.autoRetryLimit = registerOutput<int>('autoRetryLimit');
+    this.badgeEnabled = registerOutput<bool?>('badgeEnabled');
+    this.badgeUrl = registerOutput<String>('badgeUrl');
+    this.buildBatchConfig =
+        registerOutput<ProjectBuildBatchConfig?>('buildBatchConfig');
+    this.buildTimeout = registerOutput<int?>('buildTimeout');
+    this.cache = registerOutput<ProjectCache?>('cache');
+    this.concurrentBuildLimit = registerOutput<int?>('concurrentBuildLimit');
+    this.description = registerOutput<String>('description');
+    this.encryptionKey = registerOutput<String>('encryptionKey');
+    this.environment = registerOutput<ProjectEnvironment>('environment');
     this.fileSystemLocations =
-        Output.createUnknown<List<ProjectFileSystemLocation>?>();
-    this.logsConfig = Output.createUnknown<ProjectLogsConfig?>();
-    this.name = Output.createUnknown<String>();
-    this.projectVisibility = Output.createUnknown<String?>();
-    this.publicProjectAlias = Output.createUnknown<String>();
-    this.queuedTimeout = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
-    this.resourceAccessRole = Output.createUnknown<String?>();
+        registerOutput<List<ProjectFileSystemLocation>?>('fileSystemLocations');
+    this.logsConfig = registerOutput<ProjectLogsConfig?>('logsConfig');
+    this.name = registerOutput<String>('name');
+    this.projectVisibility = registerOutput<String?>('projectVisibility');
+    this.publicProjectAlias = registerOutput<String>('publicProjectAlias');
+    this.queuedTimeout = registerOutput<int?>('queuedTimeout');
+    this.region = registerOutput<String>('region');
+    this.resourceAccessRole = registerOutput<String?>('resourceAccessRole');
     this.secondaryArtifacts =
-        Output.createUnknown<List<ProjectSecondaryArtifact>?>();
+        registerOutput<List<ProjectSecondaryArtifact>?>('secondaryArtifacts');
     this.secondarySourceVersions =
-        Output.createUnknown<List<ProjectSecondarySourceVersion>?>();
+        registerOutput<List<ProjectSecondarySourceVersion>?>(
+            'secondarySourceVersions');
     this.secondarySources =
-        Output.createUnknown<List<ProjectSecondarySource>?>();
-    this.serviceRole = Output.createUnknown<String>();
-    this.source = Output.createUnknown<ProjectSource>();
-    this.sourceVersion = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcConfig = Output.createUnknown<ProjectVpcConfig?>();
+        registerOutput<List<ProjectSecondarySource>?>('secondarySources');
+    this.serviceRole = registerOutput<String>('serviceRole');
+    this.source = registerOutput<ProjectSource>('source');
+    this.sourceVersion = registerOutput<String?>('sourceVersion');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcConfig = registerOutput<ProjectVpcConfig?>('vpcConfig');
   }
 }

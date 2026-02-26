@@ -196,9 +196,9 @@ class ManagedPrefixListEntry2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cidr = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.prefixListId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.cidr = registerOutput<String>('cidr');
+    this.description = registerOutput<String?>('description');
+    this.prefixListId = registerOutput<String>('prefixListId');
+    this.region = registerOutput<String>('region');
   }
 }

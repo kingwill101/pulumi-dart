@@ -316,16 +316,20 @@ class Authorizer2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiId = Output.createUnknown<String>();
-    this.authorizerCredentialsArn = Output.createUnknown<String?>();
-    this.authorizerPayloadFormatVersion = Output.createUnknown<String?>();
-    this.authorizerResultTtlInSeconds = Output.createUnknown<int>();
-    this.authorizerType = Output.createUnknown<String>();
-    this.authorizerUri = Output.createUnknown<String?>();
-    this.enableSimpleResponses = Output.createUnknown<bool?>();
-    this.identitySources = Output.createUnknown<List<String>?>();
-    this.jwtConfiguration = Output.createUnknown<AuthorizerJwtConfiguration?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.apiId = registerOutput<String>('apiId');
+    this.authorizerCredentialsArn =
+        registerOutput<String?>('authorizerCredentialsArn');
+    this.authorizerPayloadFormatVersion =
+        registerOutput<String?>('authorizerPayloadFormatVersion');
+    this.authorizerResultTtlInSeconds =
+        registerOutput<int>('authorizerResultTtlInSeconds');
+    this.authorizerType = registerOutput<String>('authorizerType');
+    this.authorizerUri = registerOutput<String?>('authorizerUri');
+    this.enableSimpleResponses = registerOutput<bool?>('enableSimpleResponses');
+    this.identitySources = registerOutput<List<String>?>('identitySources');
+    this.jwtConfiguration =
+        registerOutput<AuthorizerJwtConfiguration?>('jwtConfiguration');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

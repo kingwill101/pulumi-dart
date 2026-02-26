@@ -265,16 +265,16 @@ class Schedule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.autoscalingGroupName = Output.createUnknown<String>();
-    this.desiredCapacity = Output.createUnknown<int>();
-    this.endTime = Output.createUnknown<String>();
-    this.maxSize = Output.createUnknown<int>();
-    this.minSize = Output.createUnknown<int>();
-    this.recurrence = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.scheduledActionName = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.timeZone = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
+    this.desiredCapacity = registerOutput<int>('desiredCapacity');
+    this.endTime = registerOutput<String>('endTime');
+    this.maxSize = registerOutput<int>('maxSize');
+    this.minSize = registerOutput<int>('minSize');
+    this.recurrence = registerOutput<String>('recurrence');
+    this.region = registerOutput<String>('region');
+    this.scheduledActionName = registerOutput<String>('scheduledActionName');
+    this.startTime = registerOutput<String>('startTime');
+    this.timeZone = registerOutput<String>('timeZone');
   }
 }

@@ -273,19 +273,20 @@ class OauthClient extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowedGrantTypes = Output.createUnknown<List<String>>();
-    this.allowedRedirectUris = Output.createUnknown<List<String>>();
-    this.allowedScopes = Output.createUnknown<List<String>>();
-    this.clientId = Output.createUnknown<String>();
-    this.clientType = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.expireTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.oauthClientId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.allowedGrantTypes = registerOutput<List<String>>('allowedGrantTypes');
+    this.allowedRedirectUris =
+        registerOutput<List<String>>('allowedRedirectUris');
+    this.allowedScopes = registerOutput<List<String>>('allowedScopes');
+    this.clientId = registerOutput<String>('clientId');
+    this.clientType = registerOutput<String?>('clientType');
+    this.description = registerOutput<String?>('description');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.displayName = registerOutput<String?>('displayName');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.oauthClientId = registerOutput<String>('oauthClientId');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
   }
 }

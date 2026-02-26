@@ -1,6 +1,5 @@
 import 'package:pulumi/src/resource/resource.dart';
 
-import 'pulumirpc/pulumi/engine.pbenum.dart';
 import 'pulumirpc/pulumi/engine.pbgrpc.dart';
 import 'settings.dart';
 import 'store/store.dart';

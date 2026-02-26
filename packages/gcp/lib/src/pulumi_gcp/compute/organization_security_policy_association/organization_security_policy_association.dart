@@ -228,9 +228,9 @@ class OrganizationSecurityPolicyAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attachmentId = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.policyId = Output.createUnknown<String>();
+    this.attachmentId = registerOutput<String>('attachmentId');
+    this.displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    this.policyId = registerOutput<String>('policyId');
   }
 }

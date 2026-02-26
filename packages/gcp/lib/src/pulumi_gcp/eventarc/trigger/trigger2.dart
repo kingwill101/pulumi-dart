@@ -516,24 +516,25 @@ class Trigger2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.channel = Output.createUnknown<String?>();
-    this.conditions = Output.createUnknown<Map<String, String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.destination = Output.createUnknown<TriggerDestination>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.eventDataContentType = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
+    this.channel = registerOutput<String?>('channel');
+    this.conditions = registerOutput<Map<String, String>>('conditions');
+    this.createTime = registerOutput<String>('createTime');
+    this.destination = registerOutput<TriggerDestination>('destination');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.etag = registerOutput<String>('etag');
+    this.eventDataContentType = registerOutput<String>('eventDataContentType');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
     this.matchingCriterias =
-        Output.createUnknown<List<TriggerMatchingCriteria>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.retryPolicy = Output.createUnknown<TriggerRetryPolicy?>();
-    this.serviceAccount = Output.createUnknown<String?>();
-    this.transport = Output.createUnknown<TriggerTransport>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<TriggerMatchingCriteria>>('matchingCriterias');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.retryPolicy = registerOutput<TriggerRetryPolicy?>('retryPolicy');
+    this.serviceAccount = registerOutput<String?>('serviceAccount');
+    this.transport = registerOutput<TriggerTransport>('transport');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

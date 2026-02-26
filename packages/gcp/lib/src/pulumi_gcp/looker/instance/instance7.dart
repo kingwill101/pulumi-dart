@@ -1819,38 +1819,43 @@ class Instance7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.adminSettings = Output.createUnknown<InstanceAdminSettings?>();
-    this.consumerNetwork = Output.createUnknown<String?>();
+    this.adminSettings =
+        registerOutput<InstanceAdminSettings?>('adminSettings');
+    this.consumerNetwork = registerOutput<String?>('consumerNetwork');
     this.controlledEgressConfig =
-        Output.createUnknown<InstanceControlledEgressConfig?>();
-    this.controlledEgressEnabled = Output.createUnknown<bool?>();
-    this.createTime = Output.createUnknown<String>();
-    this.customDomain = Output.createUnknown<InstanceCustomDomain?>();
-    this.deletionPolicy = Output.createUnknown<String?>();
+        registerOutput<InstanceControlledEgressConfig?>(
+            'controlledEgressConfig');
+    this.controlledEgressEnabled =
+        registerOutput<bool?>('controlledEgressEnabled');
+    this.createTime = registerOutput<String>('createTime');
+    this.customDomain = registerOutput<InstanceCustomDomain?>('customDomain');
+    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
     this.denyMaintenancePeriod =
-        Output.createUnknown<InstanceDenyMaintenancePeriod?>();
-    this.egressPublicIp = Output.createUnknown<String>();
-    this.encryptionConfig = Output.createUnknown<InstanceEncryptionConfig>();
-    this.fipsEnabled = Output.createUnknown<bool?>();
-    this.geminiEnabled = Output.createUnknown<bool?>();
-    this.ingressPrivateIp = Output.createUnknown<String>();
-    this.ingressPublicIp = Output.createUnknown<String>();
-    this.lookerUri = Output.createUnknown<String>();
-    this.lookerVersion = Output.createUnknown<String>();
-    this.maintenanceWindow = Output.createUnknown<InstanceMaintenanceWindow?>();
-    this.name = Output.createUnknown<String>();
-    this.oauthConfig = Output.createUnknown<InstanceOauthConfig>();
+        registerOutput<InstanceDenyMaintenancePeriod?>('denyMaintenancePeriod');
+    this.egressPublicIp = registerOutput<String>('egressPublicIp');
+    this.encryptionConfig =
+        registerOutput<InstanceEncryptionConfig>('encryptionConfig');
+    this.fipsEnabled = registerOutput<bool?>('fipsEnabled');
+    this.geminiEnabled = registerOutput<bool?>('geminiEnabled');
+    this.ingressPrivateIp = registerOutput<String>('ingressPrivateIp');
+    this.ingressPublicIp = registerOutput<String>('ingressPublicIp');
+    this.lookerUri = registerOutput<String>('lookerUri');
+    this.lookerVersion = registerOutput<String>('lookerVersion');
+    this.maintenanceWindow =
+        registerOutput<InstanceMaintenanceWindow?>('maintenanceWindow');
+    this.name = registerOutput<String>('name');
+    this.oauthConfig = registerOutput<InstanceOauthConfig>('oauthConfig');
     this.periodicExportConfig =
-        Output.createUnknown<InstancePeriodicExportConfig?>();
-    this.platformEdition = Output.createUnknown<String?>();
-    this.privateIpEnabled = Output.createUnknown<bool?>();
-    this.project = Output.createUnknown<String>();
-    this.pscConfig = Output.createUnknown<InstancePscConfig>();
-    this.pscEnabled = Output.createUnknown<bool?>();
-    this.publicIpEnabled = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.reservedRange = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
-    this.userMetadata = Output.createUnknown<InstanceUserMetadata?>();
+        registerOutput<InstancePeriodicExportConfig?>('periodicExportConfig');
+    this.platformEdition = registerOutput<String?>('platformEdition');
+    this.privateIpEnabled = registerOutput<bool?>('privateIpEnabled');
+    this.project = registerOutput<String>('project');
+    this.pscConfig = registerOutput<InstancePscConfig>('pscConfig');
+    this.pscEnabled = registerOutput<bool?>('pscEnabled');
+    this.publicIpEnabled = registerOutput<bool?>('publicIpEnabled');
+    this.region = registerOutput<String>('region');
+    this.reservedRange = registerOutput<String?>('reservedRange');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.userMetadata = registerOutput<InstanceUserMetadata?>('userMetadata');
   }
 }

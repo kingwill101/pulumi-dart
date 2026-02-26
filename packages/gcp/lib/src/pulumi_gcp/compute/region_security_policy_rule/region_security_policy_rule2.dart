@@ -1745,19 +1745,21 @@ class RegionSecurityPolicyRule2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.match = Output.createUnknown<RegionSecurityPolicyRuleMatch?>();
+    this.action = registerOutput<String>('action');
+    this.description = registerOutput<String?>('description');
+    this.match = registerOutput<RegionSecurityPolicyRuleMatch?>('match');
     this.networkMatch =
-        Output.createUnknown<RegionSecurityPolicyRuleNetworkMatch?>();
+        registerOutput<RegionSecurityPolicyRuleNetworkMatch?>('networkMatch');
     this.preconfiguredWafConfig =
-        Output.createUnknown<RegionSecurityPolicyRulePreconfiguredWafConfig?>();
-    this.preview = Output.createUnknown<bool?>();
-    this.priority = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<RegionSecurityPolicyRulePreconfiguredWafConfig?>(
+            'preconfiguredWafConfig');
+    this.preview = registerOutput<bool?>('preview');
+    this.priority = registerOutput<int>('priority');
+    this.project = registerOutput<String>('project');
     this.rateLimitOptions =
-        Output.createUnknown<RegionSecurityPolicyRuleRateLimitOptions?>();
-    this.region = Output.createUnknown<String>();
-    this.securityPolicy = Output.createUnknown<String>();
+        registerOutput<RegionSecurityPolicyRuleRateLimitOptions?>(
+            'rateLimitOptions');
+    this.region = registerOutput<String>('region');
+    this.securityPolicy = registerOutput<String>('securityPolicy');
   }
 }

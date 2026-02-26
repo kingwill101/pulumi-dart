@@ -48,18 +48,18 @@ class Trigger4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.destination = Output.createUnknown<DestinationResponse3>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.destination = registerOutput<DestinationResponse3>('destination');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
     this.matchingCriteria =
-        Output.createUnknown<List<MatchingCriteriaResponse>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.transport = Output.createUnknown<TransportResponse2>();
-    this.triggerId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<MatchingCriteriaResponse>>('matchingCriteria');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.transport = registerOutput<TransportResponse2>('transport');
+    this.triggerId = registerOutput<String>('triggerId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

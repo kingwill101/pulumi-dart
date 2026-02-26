@@ -19,7 +19,8 @@ class TargetGroupAttachment extends ComponentResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? ComponentResourceOptions(),
         ) {
-    this.lambdaPermission = Output.createUnknown<dynamic>();
-    this.targetGroupAttachment = Output.createUnknown<dynamic>();
+    this.lambdaPermission = registerOutput<dynamic>('lambdaPermission');
+    this.targetGroupAttachment =
+        registerOutput<dynamic>('targetGroupAttachment');
   }
 }

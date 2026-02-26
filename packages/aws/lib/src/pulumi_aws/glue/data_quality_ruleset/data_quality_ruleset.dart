@@ -494,16 +494,17 @@ class DataQualityRuleset extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdOn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.lastModifiedOn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.recommendationRunId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.ruleset = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetTable = Output.createUnknown<DataQualityRulesetTargetTable?>();
+    this.arn = registerOutput<String>('arn');
+    this.createdOn = registerOutput<String>('createdOn');
+    this.description = registerOutput<String?>('description');
+    this.lastModifiedOn = registerOutput<String>('lastModifiedOn');
+    this.name = registerOutput<String>('name');
+    this.recommendationRunId = registerOutput<String>('recommendationRunId');
+    this.region = registerOutput<String>('region');
+    this.ruleset = registerOutput<String>('ruleset');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetTable =
+        registerOutput<DataQualityRulesetTargetTable?>('targetTable');
   }
 }

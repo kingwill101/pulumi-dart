@@ -36,14 +36,14 @@ class User3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusterId = Output.createUnknown<String>();
-    this.databaseRoles = Output.createUnknown<List<String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.password = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.userId = Output.createUnknown<String>();
-    this.userType = Output.createUnknown<String>();
+    this.clusterId = registerOutput<String>('clusterId');
+    this.databaseRoles = registerOutput<List<String>>('databaseRoles');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.password = registerOutput<String>('password');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.userId = registerOutput<String>('userId');
+    this.userType = registerOutput<String>('userType');
   }
 }

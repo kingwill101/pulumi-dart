@@ -39,14 +39,16 @@ class CompositeType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String>();
-    this.insertTime = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<List<CompositeTypeLabelEntryResponse>>();
-    this.name = Output.createUnknown<String>();
-    this.operation = Output.createUnknown<OperationResponse2>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.templateContents = Output.createUnknown<TemplateContentsResponse>();
+    this.description = registerOutput<String>('description');
+    this.insertTime = registerOutput<String>('insertTime');
+    this.labels =
+        registerOutput<List<CompositeTypeLabelEntryResponse>>('labels');
+    this.name = registerOutput<String>('name');
+    this.operation = registerOutput<OperationResponse2>('operation');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.status = registerOutput<String>('status');
+    this.templateContents =
+        registerOutput<TemplateContentsResponse>('templateContents');
   }
 }

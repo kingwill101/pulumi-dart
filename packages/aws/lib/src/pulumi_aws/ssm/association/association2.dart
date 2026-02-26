@@ -1668,25 +1668,29 @@ class Association2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applyOnlyAtCronInterval = Output.createUnknown<bool?>();
-    this.arn = Output.createUnknown<String>();
-    this.associationId = Output.createUnknown<String>();
-    this.associationName = Output.createUnknown<String?>();
-    this.automationTargetParameterName = Output.createUnknown<String?>();
-    this.calendarNames = Output.createUnknown<List<String>?>();
-    this.complianceSeverity = Output.createUnknown<String?>();
-    this.documentVersion = Output.createUnknown<String>();
-    this.maxConcurrency = Output.createUnknown<String?>();
-    this.maxErrors = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.outputLocation = Output.createUnknown<AssociationOutputLocation?>();
-    this.parameters = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String>();
-    this.scheduleExpression = Output.createUnknown<String?>();
-    this.syncCompliance = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targets = Output.createUnknown<List<AssociationTarget>>();
-    this.waitForSuccessTimeoutSeconds = Output.createUnknown<int?>();
+    this.applyOnlyAtCronInterval =
+        registerOutput<bool?>('applyOnlyAtCronInterval');
+    this.arn = registerOutput<String>('arn');
+    this.associationId = registerOutput<String>('associationId');
+    this.associationName = registerOutput<String?>('associationName');
+    this.automationTargetParameterName =
+        registerOutput<String?>('automationTargetParameterName');
+    this.calendarNames = registerOutput<List<String>?>('calendarNames');
+    this.complianceSeverity = registerOutput<String?>('complianceSeverity');
+    this.documentVersion = registerOutput<String>('documentVersion');
+    this.maxConcurrency = registerOutput<String?>('maxConcurrency');
+    this.maxErrors = registerOutput<String?>('maxErrors');
+    this.name = registerOutput<String>('name');
+    this.outputLocation =
+        registerOutput<AssociationOutputLocation?>('outputLocation');
+    this.parameters = registerOutput<Map<String, String>>('parameters');
+    this.region = registerOutput<String>('region');
+    this.scheduleExpression = registerOutput<String?>('scheduleExpression');
+    this.syncCompliance = registerOutput<String?>('syncCompliance');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targets = registerOutput<List<AssociationTarget>>('targets');
+    this.waitForSuccessTimeoutSeconds =
+        registerOutput<int?>('waitForSuccessTimeoutSeconds');
   }
 }

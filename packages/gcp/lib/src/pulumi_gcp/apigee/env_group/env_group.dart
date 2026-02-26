@@ -355,8 +355,8 @@ class EnvGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.hostnames = Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
+    this.hostnames = registerOutput<List<String>?>('hostnames');
+    this.name = registerOutput<String>('name');
+    this.orgId = registerOutput<String>('orgId');
   }
 }

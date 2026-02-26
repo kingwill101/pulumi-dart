@@ -869,23 +869,25 @@ class Directory extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessUrl = Output.createUnknown<String>();
-    this.alias = Output.createUnknown<String>();
-    this.connectSettings = Output.createUnknown<DirectoryConnectSettings?>();
-    this.description = Output.createUnknown<String?>();
-    this.desiredNumberOfDomainControllers = Output.createUnknown<int>();
-    this.dnsIpAddresses = Output.createUnknown<List<String>>();
-    this.edition = Output.createUnknown<String>();
-    this.enableSso = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.password = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupId = Output.createUnknown<String>();
-    this.shortName = Output.createUnknown<String>();
-    this.size = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String?>();
-    this.vpcSettings = Output.createUnknown<DirectoryVpcSettings?>();
+    this.accessUrl = registerOutput<String>('accessUrl');
+    this.alias = registerOutput<String>('alias');
+    this.connectSettings =
+        registerOutput<DirectoryConnectSettings?>('connectSettings');
+    this.description = registerOutput<String?>('description');
+    this.desiredNumberOfDomainControllers =
+        registerOutput<int>('desiredNumberOfDomainControllers');
+    this.dnsIpAddresses = registerOutput<List<String>>('dnsIpAddresses');
+    this.edition = registerOutput<String>('edition');
+    this.enableSso = registerOutput<bool?>('enableSso');
+    this.name = registerOutput<String>('name');
+    this.password = registerOutput<String>('password');
+    this.region = registerOutput<String>('region');
+    this.securityGroupId = registerOutput<String>('securityGroupId');
+    this.shortName = registerOutput<String>('shortName');
+    this.size = registerOutput<String>('size');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String?>('type');
+    this.vpcSettings = registerOutput<DirectoryVpcSettings?>('vpcSettings');
   }
 }

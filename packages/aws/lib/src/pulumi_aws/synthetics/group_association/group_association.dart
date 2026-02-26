@@ -132,10 +132,10 @@ class GroupAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.canaryArn = Output.createUnknown<String>();
-    this.groupArn = Output.createUnknown<String>();
-    this.groupId = Output.createUnknown<String>();
-    this.groupName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.canaryArn = registerOutput<String>('canaryArn');
+    this.groupArn = registerOutput<String>('groupArn');
+    this.groupId = registerOutput<String>('groupId');
+    this.groupName = registerOutput<String>('groupName');
+    this.region = registerOutput<String>('region');
   }
 }

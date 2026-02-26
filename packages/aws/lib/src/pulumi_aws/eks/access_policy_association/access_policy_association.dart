@@ -177,12 +177,12 @@ class AccessPolicyAssociation extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.accessScope =
-        Output.createUnknown<AccessPolicyAssociationAccessScope>();
-    this.associatedAt = Output.createUnknown<String>();
-    this.clusterName = Output.createUnknown<String>();
-    this.modifiedAt = Output.createUnknown<String>();
-    this.policyArn = Output.createUnknown<String>();
-    this.principalArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<AccessPolicyAssociationAccessScope>('accessScope');
+    this.associatedAt = registerOutput<String>('associatedAt');
+    this.clusterName = registerOutput<String>('clusterName');
+    this.modifiedAt = registerOutput<String>('modifiedAt');
+    this.policyArn = registerOutput<String>('policyArn');
+    this.principalArn = registerOutput<String>('principalArn');
+    this.region = registerOutput<String>('region');
   }
 }

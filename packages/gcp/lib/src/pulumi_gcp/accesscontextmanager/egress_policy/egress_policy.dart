@@ -39,8 +39,8 @@ class EgressPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessPolicyId = Output.createUnknown<String>();
-    this.egressPolicyName = Output.createUnknown<String>();
-    this.resource = Output.createUnknown<String>();
+    this.accessPolicyId = registerOutput<String>('accessPolicyId');
+    this.egressPolicyName = registerOutput<String>('egressPolicyName');
+    this.resource = registerOutput<String>('resource');
   }
 }

@@ -68,15 +68,15 @@ class KeystoresAliasesPkcs12 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alias = Output.createUnknown<String>();
+    this.alias = registerOutput<String>('alias');
     this.certsInfos =
-        Output.createUnknown<List<KeystoresAliasesPkcs12CertsInfo>>();
-    this.environment = Output.createUnknown<String>();
-    this.file = Output.createUnknown<String>();
-    this.filehash = Output.createUnknown<String>();
-    this.keystore = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.password = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<List<KeystoresAliasesPkcs12CertsInfo>>('certsInfos');
+    this.environment = registerOutput<String>('environment');
+    this.file = registerOutput<String>('file');
+    this.filehash = registerOutput<String>('filehash');
+    this.keystore = registerOutput<String>('keystore');
+    this.orgId = registerOutput<String>('orgId');
+    this.password = registerOutput<String>('password');
+    this.type = registerOutput<String>('type');
   }
 }

@@ -586,14 +586,15 @@ class OrganizationPolicy2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.booleanPolicy =
-        Output.createUnknown<OrganizationPolicyBooleanPolicy2?>();
-    this.constraint = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.listPolicy = Output.createUnknown<OrganizationPolicyListPolicy2?>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<OrganizationPolicyBooleanPolicy2?>('booleanPolicy');
+    this.constraint = registerOutput<String>('constraint');
+    this.etag = registerOutput<String>('etag');
+    this.listPolicy =
+        registerOutput<OrganizationPolicyListPolicy2?>('listPolicy');
+    this.project = registerOutput<String>('project');
     this.restorePolicy =
-        Output.createUnknown<OrganizationPolicyRestorePolicy2?>();
-    this.updateTime = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+        registerOutput<OrganizationPolicyRestorePolicy2?>('restorePolicy');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.version = registerOutput<int>('version');
   }
 }

@@ -1264,17 +1264,20 @@ class Runtime2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessConfig = Output.createUnknown<RuntimeAccessConfig?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.healthState = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.metrics = Output.createUnknown<List<RuntimeMetric>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.softwareConfig = Output.createUnknown<RuntimeSoftwareConfig>();
-    this.state = Output.createUnknown<String>();
-    this.virtualMachine = Output.createUnknown<RuntimeVirtualMachine?>();
+    this.accessConfig = registerOutput<RuntimeAccessConfig?>('accessConfig');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.healthState = registerOutput<String>('healthState');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.metrics = registerOutput<List<RuntimeMetric>>('metrics');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.softwareConfig =
+        registerOutput<RuntimeSoftwareConfig>('softwareConfig');
+    this.state = registerOutput<String>('state');
+    this.virtualMachine =
+        registerOutput<RuntimeVirtualMachine?>('virtualMachine');
   }
 }

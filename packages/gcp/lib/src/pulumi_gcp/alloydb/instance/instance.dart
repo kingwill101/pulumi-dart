@@ -1047,39 +1047,45 @@ class Instance extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activationPolicy = Output.createUnknown<String>();
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.availabilityType = Output.createUnknown<String>();
+    this.activationPolicy = registerOutput<String>('activationPolicy');
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.availabilityType = registerOutput<String>('availabilityType');
     this.clientConnectionConfig =
-        Output.createUnknown<InstanceClientConnectionConfig>();
-    this.cluster = Output.createUnknown<String>();
+        registerOutput<InstanceClientConnectionConfig>(
+            'clientConnectionConfig');
+    this.cluster = registerOutput<String>('cluster');
     this.connectionPoolConfig =
-        Output.createUnknown<InstanceConnectionPoolConfig?>();
-    this.createTime = Output.createUnknown<String>();
-    this.databaseFlags = Output.createUnknown<Map<String, String>>();
-    this.displayName = Output.createUnknown<String?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.gceZone = Output.createUnknown<String?>();
-    this.instanceId = Output.createUnknown<String>();
-    this.instanceType = Output.createUnknown<String>();
-    this.ipAddress = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.machineConfig = Output.createUnknown<InstanceMachineConfig>();
-    this.name = Output.createUnknown<String>();
-    this.networkConfig = Output.createUnknown<InstanceNetworkConfig>();
+        registerOutput<InstanceConnectionPoolConfig?>('connectionPoolConfig');
+    this.createTime = registerOutput<String>('createTime');
+    this.databaseFlags = registerOutput<Map<String, String>>('databaseFlags');
+    this.displayName = registerOutput<String?>('displayName');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.gceZone = registerOutput<String?>('gceZone');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.instanceType = registerOutput<String>('instanceType');
+    this.ipAddress = registerOutput<String>('ipAddress');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.machineConfig = registerOutput<InstanceMachineConfig>('machineConfig');
+    this.name = registerOutput<String>('name');
+    this.networkConfig = registerOutput<InstanceNetworkConfig>('networkConfig');
     this.observabilityConfig =
-        Output.createUnknown<InstanceObservabilityConfig>();
-    this.outboundPublicIpAddresses = Output.createUnknown<List<String>>();
-    this.pscInstanceConfig = Output.createUnknown<InstancePscInstanceConfig>();
-    this.publicIpAddress = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<InstanceObservabilityConfig>('observabilityConfig');
+    this.outboundPublicIpAddresses =
+        registerOutput<List<String>>('outboundPublicIpAddresses');
+    this.pscInstanceConfig =
+        registerOutput<InstancePscInstanceConfig>('pscInstanceConfig');
+    this.publicIpAddress = registerOutput<String>('publicIpAddress');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.queryInsightsConfig =
-        Output.createUnknown<InstanceQueryInsightsConfig>();
-    this.readPoolConfig = Output.createUnknown<InstanceReadPoolConfig?>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<InstanceQueryInsightsConfig>('queryInsightsConfig');
+    this.readPoolConfig =
+        registerOutput<InstanceReadPoolConfig?>('readPoolConfig');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

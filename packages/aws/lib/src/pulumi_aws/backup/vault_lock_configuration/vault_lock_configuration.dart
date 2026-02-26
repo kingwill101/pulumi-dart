@@ -147,11 +147,11 @@ class VaultLockConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupVaultArn = Output.createUnknown<String>();
-    this.backupVaultName = Output.createUnknown<String>();
-    this.changeableForDays = Output.createUnknown<int?>();
-    this.maxRetentionDays = Output.createUnknown<int?>();
-    this.minRetentionDays = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
+    this.backupVaultArn = registerOutput<String>('backupVaultArn');
+    this.backupVaultName = registerOutput<String>('backupVaultName');
+    this.changeableForDays = registerOutput<int?>('changeableForDays');
+    this.maxRetentionDays = registerOutput<int?>('maxRetentionDays');
+    this.minRetentionDays = registerOutput<int?>('minRetentionDays');
+    this.region = registerOutput<String>('region');
   }
 }

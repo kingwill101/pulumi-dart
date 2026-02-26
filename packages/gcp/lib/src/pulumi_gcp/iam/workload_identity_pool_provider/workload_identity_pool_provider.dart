@@ -2223,19 +2223,22 @@ class WorkloadIdentityPoolProvider extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attributeCondition = Output.createUnknown<String?>();
-    this.attributeMapping = Output.createUnknown<Map<String, String>?>();
-    this.aws = Output.createUnknown<WorkloadIdentityPoolProviderAws?>();
-    this.description = Output.createUnknown<String?>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.oidc = Output.createUnknown<WorkloadIdentityPoolProviderOidc?>();
-    this.project = Output.createUnknown<String>();
-    this.saml = Output.createUnknown<WorkloadIdentityPoolProviderSaml?>();
-    this.state = Output.createUnknown<String>();
-    this.workloadIdentityPoolId = Output.createUnknown<String>();
-    this.workloadIdentityPoolProviderId = Output.createUnknown<String>();
-    this.x509 = Output.createUnknown<WorkloadIdentityPoolProviderX509?>();
+    this.attributeCondition = registerOutput<String?>('attributeCondition');
+    this.attributeMapping =
+        registerOutput<Map<String, String>?>('attributeMapping');
+    this.aws = registerOutput<WorkloadIdentityPoolProviderAws?>('aws');
+    this.description = registerOutput<String?>('description');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    this.oidc = registerOutput<WorkloadIdentityPoolProviderOidc?>('oidc');
+    this.project = registerOutput<String>('project');
+    this.saml = registerOutput<WorkloadIdentityPoolProviderSaml?>('saml');
+    this.state = registerOutput<String>('state');
+    this.workloadIdentityPoolId =
+        registerOutput<String>('workloadIdentityPoolId');
+    this.workloadIdentityPoolProviderId =
+        registerOutput<String>('workloadIdentityPoolProviderId');
+    this.x509 = registerOutput<WorkloadIdentityPoolProviderX509?>('x509');
   }
 }

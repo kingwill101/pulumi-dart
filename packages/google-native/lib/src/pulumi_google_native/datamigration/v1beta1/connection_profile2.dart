@@ -54,19 +54,20 @@ class ConnectionProfile2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cloudsql = Output.createUnknown<CloudSqlConnectionProfileResponse2>();
-    this.connectionProfileId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.error = Output.createUnknown<StatusResponse16>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.mysql = Output.createUnknown<MySqlConnectionProfileResponse2>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.provider = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.cloudsql =
+        registerOutput<CloudSqlConnectionProfileResponse2>('cloudsql');
+    this.connectionProfileId = registerOutput<String>('connectionProfileId');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.error = registerOutput<StatusResponse16>('error');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.mysql = registerOutput<MySqlConnectionProfileResponse2>('mysql');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.provider = registerOutput<String>('provider');
+    this.requestId = registerOutput<String?>('requestId');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

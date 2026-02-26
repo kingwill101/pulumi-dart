@@ -834,10 +834,10 @@ class AccountIamBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.billingAccountId = Output.createUnknown<String>();
-    this.condition = Output.createUnknown<AccountIamBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.role = Output.createUnknown<String>();
+    this.billingAccountId = registerOutput<String>('billingAccountId');
+    this.condition = registerOutput<AccountIamBindingCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.members = registerOutput<List<String>>('members');
+    this.role = registerOutput<String>('role');
   }
 }

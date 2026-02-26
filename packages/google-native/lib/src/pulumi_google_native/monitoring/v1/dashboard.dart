@@ -46,16 +46,16 @@ class Dashboard extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.columnLayout = Output.createUnknown<ColumnLayoutResponse>();
+    this.columnLayout = registerOutput<ColumnLayoutResponse>('columnLayout');
     this.dashboardFilters =
-        Output.createUnknown<List<DashboardFilterResponse>>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.gridLayout = Output.createUnknown<GridLayoutResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.mosaicLayout = Output.createUnknown<MosaicLayoutResponse>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rowLayout = Output.createUnknown<RowLayoutResponse>();
+        registerOutput<List<DashboardFilterResponse>>('dashboardFilters');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.gridLayout = registerOutput<GridLayoutResponse>('gridLayout');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.mosaicLayout = registerOutput<MosaicLayoutResponse>('mosaicLayout');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.rowLayout = registerOutput<RowLayoutResponse>('rowLayout');
   }
 }

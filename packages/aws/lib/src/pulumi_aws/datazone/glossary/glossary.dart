@@ -684,11 +684,12 @@ class Glossary extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.domainIdentifier = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.owningProjectIdentifier = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String?>();
+    this.description = registerOutput<String?>('description');
+    this.domainIdentifier = registerOutput<String>('domainIdentifier');
+    this.name = registerOutput<String>('name');
+    this.owningProjectIdentifier =
+        registerOutput<String>('owningProjectIdentifier');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String?>('status');
   }
 }

@@ -304,33 +304,38 @@ class ClusterInstance2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.address = Output.createUnknown<String>();
-    this.applyImmediately = Output.createUnknown<bool>();
-    this.arn = Output.createUnknown<String>();
-    this.autoMinorVersionUpgrade = Output.createUnknown<bool?>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.clusterIdentifier = Output.createUnknown<String>();
-    this.dbiResourceId = Output.createUnknown<String>();
-    this.endpoint = Output.createUnknown<String>();
-    this.engine = Output.createUnknown<String?>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.identifier = Output.createUnknown<String>();
-    this.identifierPrefix = Output.createUnknown<String>();
-    this.instanceClass = Output.createUnknown<String>();
-    this.kmsKeyArn = Output.createUnknown<String>();
-    this.neptuneParameterGroupName = Output.createUnknown<String>();
-    this.neptuneSubnetGroupName = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int?>();
-    this.preferredBackupWindow = Output.createUnknown<String>();
-    this.preferredMaintenanceWindow = Output.createUnknown<String>();
-    this.promotionTier = Output.createUnknown<int?>();
-    this.publiclyAccessible = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.skipFinalSnapshot = Output.createUnknown<bool?>();
-    this.storageEncrypted = Output.createUnknown<bool>();
-    this.storageType = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.writer = Output.createUnknown<bool>();
+    this.address = registerOutput<String>('address');
+    this.applyImmediately = registerOutput<bool>('applyImmediately');
+    this.arn = registerOutput<String>('arn');
+    this.autoMinorVersionUpgrade =
+        registerOutput<bool?>('autoMinorVersionUpgrade');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    this.dbiResourceId = registerOutput<String>('dbiResourceId');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.engine = registerOutput<String?>('engine');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.identifier = registerOutput<String>('identifier');
+    this.identifierPrefix = registerOutput<String>('identifierPrefix');
+    this.instanceClass = registerOutput<String>('instanceClass');
+    this.kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    this.neptuneParameterGroupName =
+        registerOutput<String>('neptuneParameterGroupName');
+    this.neptuneSubnetGroupName =
+        registerOutput<String>('neptuneSubnetGroupName');
+    this.port = registerOutput<int?>('port');
+    this.preferredBackupWindow =
+        registerOutput<String>('preferredBackupWindow');
+    this.preferredMaintenanceWindow =
+        registerOutput<String>('preferredMaintenanceWindow');
+    this.promotionTier = registerOutput<int?>('promotionTier');
+    this.publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
+    this.region = registerOutput<String>('region');
+    this.skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
+    this.storageEncrypted = registerOutput<bool>('storageEncrypted');
+    this.storageType = registerOutput<String>('storageType');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.writer = registerOutput<bool>('writer');
   }
 }

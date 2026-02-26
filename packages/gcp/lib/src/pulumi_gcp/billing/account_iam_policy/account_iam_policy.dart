@@ -822,8 +822,8 @@ class AccountIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.billingAccountId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
+    this.billingAccountId = registerOutput<String>('billingAccountId');
+    this.etag = registerOutput<String>('etag');
+    this.policyData = registerOutput<String>('policyData');
   }
 }

@@ -172,20 +172,24 @@ class IdcApplication extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationType = Output.createUnknown<String>();
+    this.applicationType = registerOutput<String>('applicationType');
     this.authorizedTokenIssuer =
-        Output.createUnknown<IdcApplicationAuthorizedTokenIssuer?>();
-    this.iamRoleArn = Output.createUnknown<String>();
-    this.idcDisplayName = Output.createUnknown<String>();
-    this.idcInstanceArn = Output.createUnknown<String>();
-    this.idcManagedApplicationArn = Output.createUnknown<String>();
-    this.identityNamespace = Output.createUnknown<String>();
-    this.redshiftIdcApplicationArn = Output.createUnknown<String>();
-    this.redshiftIdcApplicationName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<IdcApplicationAuthorizedTokenIssuer?>(
+            'authorizedTokenIssuer');
+    this.iamRoleArn = registerOutput<String>('iamRoleArn');
+    this.idcDisplayName = registerOutput<String>('idcDisplayName');
+    this.idcInstanceArn = registerOutput<String>('idcInstanceArn');
+    this.idcManagedApplicationArn =
+        registerOutput<String>('idcManagedApplicationArn');
+    this.identityNamespace = registerOutput<String>('identityNamespace');
+    this.redshiftIdcApplicationArn =
+        registerOutput<String>('redshiftIdcApplicationArn');
+    this.redshiftIdcApplicationName =
+        registerOutput<String>('redshiftIdcApplicationName');
+    this.region = registerOutput<String>('region');
     this.serviceIntegration =
-        Output.createUnknown<IdcApplicationServiceIntegration?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<IdcApplicationServiceIntegration?>('serviceIntegration');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

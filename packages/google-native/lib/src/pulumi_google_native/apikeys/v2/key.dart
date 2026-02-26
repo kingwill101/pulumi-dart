@@ -50,18 +50,18 @@ class Key extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.keyId = Output.createUnknown<String?>();
-    this.keyString = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.restrictions = Output.createUnknown<V2RestrictionsResponse>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.keyId = registerOutput<String?>('keyId');
+    this.keyString = registerOutput<String>('keyString');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.restrictions = registerOutput<V2RestrictionsResponse>('restrictions');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

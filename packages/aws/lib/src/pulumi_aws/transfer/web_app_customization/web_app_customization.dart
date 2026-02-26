@@ -40,10 +40,10 @@ class WebAppCustomization extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.faviconFile = Output.createUnknown<String>();
-    this.logoFile = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.title = Output.createUnknown<String?>();
-    this.webAppId = Output.createUnknown<String>();
+    this.faviconFile = registerOutput<String>('faviconFile');
+    this.logoFile = registerOutput<String>('logoFile');
+    this.region = registerOutput<String>('region');
+    this.title = registerOutput<String?>('title');
+    this.webAppId = registerOutput<String>('webAppId');
   }
 }

@@ -162,8 +162,10 @@ class AuthenticationProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authenticationProfileContent = Output.createUnknown<String>();
-    this.authenticationProfileName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.authenticationProfileContent =
+        registerOutput<String>('authenticationProfileContent');
+    this.authenticationProfileName =
+        registerOutput<String>('authenticationProfileName');
+    this.region = registerOutput<String>('region');
   }
 }

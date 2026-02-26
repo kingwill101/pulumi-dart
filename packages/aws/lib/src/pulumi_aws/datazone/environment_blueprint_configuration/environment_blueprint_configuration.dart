@@ -251,13 +251,14 @@ class EnvironmentBlueprintConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.domainId = Output.createUnknown<String>();
-    this.enabledRegions = Output.createUnknown<List<String>>();
-    this.environmentBlueprintId = Output.createUnknown<String>();
-    this.manageAccessRoleArn = Output.createUnknown<String?>();
-    this.provisioningRoleArn = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.domainId = registerOutput<String>('domainId');
+    this.enabledRegions = registerOutput<List<String>>('enabledRegions');
+    this.environmentBlueprintId =
+        registerOutput<String>('environmentBlueprintId');
+    this.manageAccessRoleArn = registerOutput<String?>('manageAccessRoleArn');
+    this.provisioningRoleArn = registerOutput<String?>('provisioningRoleArn');
+    this.region = registerOutput<String>('region');
     this.regionalParameters =
-        Output.createUnknown<Map<String, Map<String, String>>?>();
+        registerOutput<Map<String, Map<String, String>>?>('regionalParameters');
   }
 }

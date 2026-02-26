@@ -307,11 +307,11 @@ class EntityType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String>();
-    this.enableFuzzyExtraction = Output.createUnknown<bool?>();
-    this.entities = Output.createUnknown<List<EntityTypeEntity>?>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.displayName = registerOutput<String>('displayName');
+    this.enableFuzzyExtraction = registerOutput<bool?>('enableFuzzyExtraction');
+    this.entities = registerOutput<List<EntityTypeEntity>?>('entities');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

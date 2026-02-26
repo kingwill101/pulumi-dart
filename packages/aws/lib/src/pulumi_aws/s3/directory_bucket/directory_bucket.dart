@@ -288,14 +288,14 @@ class DirectoryBucket extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.bucket = Output.createUnknown<String>();
-    this.dataRedundancy = Output.createUnknown<String>();
-    this.forceDestroy = Output.createUnknown<bool>();
-    this.location = Output.createUnknown<DirectoryBucketLocation>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.bucket = registerOutput<String>('bucket');
+    this.dataRedundancy = registerOutput<String>('dataRedundancy');
+    this.forceDestroy = registerOutput<bool>('forceDestroy');
+    this.location = registerOutput<DirectoryBucketLocation>('location');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
   }
 }

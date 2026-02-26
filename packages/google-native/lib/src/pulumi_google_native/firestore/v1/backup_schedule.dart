@@ -36,14 +36,16 @@ class BackupSchedule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.dailyRecurrence = Output.createUnknown<Map<String, dynamic>>();
-    this.databaseId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.retention = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.dailyRecurrence =
+        registerOutput<Map<String, dynamic>>('dailyRecurrence');
+    this.databaseId = registerOutput<String>('databaseId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.retention = registerOutput<String>('retention');
+    this.updateTime = registerOutput<String>('updateTime');
     this.weeklyRecurrence =
-        Output.createUnknown<GoogleFirestoreAdminV1WeeklyRecurrenceResponse>();
+        registerOutput<GoogleFirestoreAdminV1WeeklyRecurrenceResponse>(
+            'weeklyRecurrence');
   }
 }

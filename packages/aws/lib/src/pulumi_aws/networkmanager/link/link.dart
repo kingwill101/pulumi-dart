@@ -178,14 +178,14 @@ class Link extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.bandwidth = Output.createUnknown<LinkBandwidth>();
-    this.description = Output.createUnknown<String?>();
-    this.globalNetworkId = Output.createUnknown<String>();
-    this.providerName = Output.createUnknown<String?>();
-    this.siteId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.bandwidth = registerOutput<LinkBandwidth>('bandwidth');
+    this.description = registerOutput<String?>('description');
+    this.globalNetworkId = registerOutput<String>('globalNetworkId');
+    this.providerName = registerOutput<String?>('providerName');
+    this.siteId = registerOutput<String>('siteId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String?>('type');
   }
 }

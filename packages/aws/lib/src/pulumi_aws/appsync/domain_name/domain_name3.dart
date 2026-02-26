@@ -135,11 +135,11 @@ class DomainName3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appsyncDomainName = Output.createUnknown<String>();
-    this.certificateArn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.domainName = Output.createUnknown<String>();
-    this.hostedZoneId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.appsyncDomainName = registerOutput<String>('appsyncDomainName');
+    this.certificateArn = registerOutput<String>('certificateArn');
+    this.description = registerOutput<String?>('description');
+    this.domainName = registerOutput<String>('domainName');
+    this.hostedZoneId = registerOutput<String>('hostedZoneId');
+    this.region = registerOutput<String>('region');
   }
 }

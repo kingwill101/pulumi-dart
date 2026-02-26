@@ -45,17 +45,18 @@ class Appgroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appGroupId = Output.createUnknown<String>();
+    this.appGroupId = registerOutput<String>('appGroupId');
     this.attributes =
-        Output.createUnknown<List<GoogleCloudApigeeV1AttributeResponse>>();
-    this.channelId = Output.createUnknown<String>();
-    this.channelUri = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.lastModifiedAt = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organization = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+        registerOutput<List<GoogleCloudApigeeV1AttributeResponse>>(
+            'attributes');
+    this.channelId = registerOutput<String>('channelId');
+    this.channelUri = registerOutput<String>('channelUri');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.displayName = registerOutput<String>('displayName');
+    this.lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    this.organization = registerOutput<String>('organization');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.status = registerOutput<String>('status');
   }
 }

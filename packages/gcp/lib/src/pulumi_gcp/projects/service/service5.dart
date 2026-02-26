@@ -148,10 +148,12 @@ class Service5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.checkIfServiceHasUsageOnDestroy = Output.createUnknown<bool?>();
-    this.disableDependentServices = Output.createUnknown<bool?>();
-    this.disableOnDestroy = Output.createUnknown<bool?>();
-    this.project = Output.createUnknown<String>();
-    this.service = Output.createUnknown<String>();
+    this.checkIfServiceHasUsageOnDestroy =
+        registerOutput<bool?>('checkIfServiceHasUsageOnDestroy');
+    this.disableDependentServices =
+        registerOutput<bool?>('disableDependentServices');
+    this.disableOnDestroy = registerOutput<bool?>('disableOnDestroy');
+    this.project = registerOutput<String>('project');
+    this.service = registerOutput<String>('service');
   }
 }

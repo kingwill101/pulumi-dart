@@ -1288,45 +1288,56 @@ class InstanceGroupManager extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.allInstancesConfig =
-        Output.createUnknown<InstanceGroupManagerAllInstancesConfig?>();
+        registerOutput<InstanceGroupManagerAllInstancesConfig?>(
+            'allInstancesConfig');
     this.autoHealingPolicies =
-        Output.createUnknown<InstanceGroupManagerAutoHealingPolicies?>();
-    this.baseInstanceName = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.instanceGroup = Output.createUnknown<String>();
-    this.instanceGroupManagerId = Output.createUnknown<int>();
+        registerOutput<InstanceGroupManagerAutoHealingPolicies?>(
+            'autoHealingPolicies');
+    this.baseInstanceName = registerOutput<String>('baseInstanceName');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.instanceGroup = registerOutput<String>('instanceGroup');
+    this.instanceGroupManagerId = registerOutput<int>('instanceGroupManagerId');
     this.instanceLifecyclePolicy =
-        Output.createUnknown<InstanceGroupManagerInstanceLifecyclePolicy>();
-    this.listManagedInstancesResults = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<InstanceGroupManagerInstanceLifecyclePolicy>(
+            'instanceLifecyclePolicy');
+    this.listManagedInstancesResults =
+        registerOutput<String?>('listManagedInstancesResults');
+    this.name = registerOutput<String>('name');
     this.namedPorts =
-        Output.createUnknown<List<InstanceGroupManagerNamedPort>?>();
-    this.operation = Output.createUnknown<String>();
-    this.params = Output.createUnknown<InstanceGroupManagerParams?>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<List<InstanceGroupManagerNamedPort>?>('namedPorts');
+    this.operation = registerOutput<String>('operation');
+    this.params = registerOutput<InstanceGroupManagerParams?>('params');
+    this.project = registerOutput<String>('project');
     this.resourcePolicies =
-        Output.createUnknown<InstanceGroupManagerResourcePolicies?>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<InstanceGroupManagerResourcePolicies?>(
+            'resourcePolicies');
+    this.selfLink = registerOutput<String>('selfLink');
     this.standbyPolicy =
-        Output.createUnknown<InstanceGroupManagerStandbyPolicy>();
+        registerOutput<InstanceGroupManagerStandbyPolicy>('standbyPolicy');
     this.statefulDisks =
-        Output.createUnknown<List<InstanceGroupManagerStatefulDisk>?>();
+        registerOutput<List<InstanceGroupManagerStatefulDisk>?>(
+            'statefulDisks');
     this.statefulExternalIps =
-        Output.createUnknown<List<InstanceGroupManagerStatefulExternalIp>?>();
+        registerOutput<List<InstanceGroupManagerStatefulExternalIp>?>(
+            'statefulExternalIps');
     this.statefulInternalIps =
-        Output.createUnknown<List<InstanceGroupManagerStatefulInternalIp>?>();
-    this.statuses = Output.createUnknown<List<InstanceGroupManagerStatus>>();
-    this.targetPools = Output.createUnknown<List<String>?>();
-    this.targetSize = Output.createUnknown<int>();
-    this.targetStoppedSize = Output.createUnknown<int>();
-    this.targetSuspendedSize = Output.createUnknown<int>();
+        registerOutput<List<InstanceGroupManagerStatefulInternalIp>?>(
+            'statefulInternalIps');
+    this.statuses =
+        registerOutput<List<InstanceGroupManagerStatus>>('statuses');
+    this.targetPools = registerOutput<List<String>?>('targetPools');
+    this.targetSize = registerOutput<int>('targetSize');
+    this.targetStoppedSize = registerOutput<int>('targetStoppedSize');
+    this.targetSuspendedSize = registerOutput<int>('targetSuspendedSize');
     this.updatePolicy =
-        Output.createUnknown<InstanceGroupManagerUpdatePolicy>();
-    this.versions = Output.createUnknown<List<InstanceGroupManagerVersion>>();
-    this.waitForInstances = Output.createUnknown<bool?>();
-    this.waitForInstancesStatus = Output.createUnknown<String?>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<InstanceGroupManagerUpdatePolicy>('updatePolicy');
+    this.versions =
+        registerOutput<List<InstanceGroupManagerVersion>>('versions');
+    this.waitForInstances = registerOutput<bool?>('waitForInstances');
+    this.waitForInstancesStatus =
+        registerOutput<String?>('waitForInstancesStatus');
+    this.zone = registerOutput<String>('zone');
   }
 }

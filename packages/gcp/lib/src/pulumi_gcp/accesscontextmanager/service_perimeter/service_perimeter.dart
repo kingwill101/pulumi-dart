@@ -1409,15 +1409,15 @@ class ServicePerimeter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.perimeterType = Output.createUnknown<String?>();
-    this.spec = Output.createUnknown<ServicePerimeterSpec?>();
-    this.status = Output.createUnknown<ServicePerimeterStatus?>();
-    this.title = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.useExplicitDryRunSpec = Output.createUnknown<bool?>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.perimeterType = registerOutput<String?>('perimeterType');
+    this.spec = registerOutput<ServicePerimeterSpec?>('spec');
+    this.status = registerOutput<ServicePerimeterStatus?>('status');
+    this.title = registerOutput<String>('title');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.useExplicitDryRunSpec = registerOutput<bool?>('useExplicitDryRunSpec');
   }
 }

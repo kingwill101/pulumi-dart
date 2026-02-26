@@ -942,10 +942,10 @@ class AspectTypeIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aspectTypeId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.aspectTypeId = registerOutput<String>('aspectTypeId');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.policyData = registerOutput<String>('policyData');
+    this.project = registerOutput<String>('project');
   }
 }

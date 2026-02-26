@@ -470,12 +470,13 @@ class OriginAccessIdentity extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.callerReference = Output.createUnknown<String>();
-    this.cloudfrontAccessIdentityPath = Output.createUnknown<String>();
-    this.comment = Output.createUnknown<String?>();
-    this.etag = Output.createUnknown<String>();
-    this.iamArn = Output.createUnknown<String>();
-    this.s3CanonicalUserId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.callerReference = registerOutput<String>('callerReference');
+    this.cloudfrontAccessIdentityPath =
+        registerOutput<String>('cloudfrontAccessIdentityPath');
+    this.comment = registerOutput<String?>('comment');
+    this.etag = registerOutput<String>('etag');
+    this.iamArn = registerOutput<String>('iamArn');
+    this.s3CanonicalUserId = registerOutput<String>('s3CanonicalUserId');
   }
 }

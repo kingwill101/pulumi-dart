@@ -148,16 +148,17 @@ class EndpointAccess2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.address = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.endpointName = Output.createUnknown<String>();
-    this.ownerAccount = Output.createUnknown<String?>();
-    this.port = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.subnetIds = Output.createUnknown<List<String>>();
+    this.address = registerOutput<String>('address');
+    this.arn = registerOutput<String>('arn');
+    this.endpointName = registerOutput<String>('endpointName');
+    this.ownerAccount = registerOutput<String?>('ownerAccount');
+    this.port = registerOutput<int>('port');
+    this.region = registerOutput<String>('region');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
     this.vpcEndpoints =
-        Output.createUnknown<List<EndpointAccessVpcEndpoint2>>();
-    this.vpcSecurityGroupIds = Output.createUnknown<List<String>>();
-    this.workgroupName = Output.createUnknown<String>();
+        registerOutput<List<EndpointAccessVpcEndpoint2>>('vpcEndpoints');
+    this.vpcSecurityGroupIds =
+        registerOutput<List<String>>('vpcSecurityGroupIds');
+    this.workgroupName = registerOutput<String>('workgroupName');
   }
 }

@@ -228,9 +228,9 @@ class DocumentationVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.restApiId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.region = registerOutput<String>('region');
+    this.restApiId = registerOutput<String>('restApiId');
+    this.version = registerOutput<String>('version');
   }
 }

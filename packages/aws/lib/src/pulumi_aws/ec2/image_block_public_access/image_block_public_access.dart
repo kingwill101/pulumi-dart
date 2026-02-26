@@ -119,7 +119,7 @@ class ImageBlockPublicAccess extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.state = registerOutput<String>('state');
   }
 }

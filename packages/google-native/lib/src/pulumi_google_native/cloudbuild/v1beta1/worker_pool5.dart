@@ -54,19 +54,20 @@ class WorkerPool5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.networkConfig = Output.createUnknown<NetworkConfigResponse8>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.workerConfig = Output.createUnknown<WorkerConfigResponse4>();
-    this.workerPoolId = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.networkConfig =
+        registerOutput<NetworkConfigResponse8>('networkConfig');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.workerConfig = registerOutput<WorkerConfigResponse4>('workerConfig');
+    this.workerPoolId = registerOutput<String>('workerPoolId');
   }
 }

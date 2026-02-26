@@ -44,15 +44,15 @@ class Project3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.projectId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.projectId = registerOutput<String>('projectId');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

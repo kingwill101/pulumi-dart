@@ -33,12 +33,13 @@ class OrganizationNotificationConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.configId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.pubsubTopic = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.streamingConfig = Output.createUnknown<StreamingConfigResponse>();
+    this.configId = registerOutput<String>('configId');
+    this.description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.pubsubTopic = registerOutput<String>('pubsubTopic');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.streamingConfig =
+        registerOutput<StreamingConfigResponse>('streamingConfig');
   }
 }

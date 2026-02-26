@@ -357,16 +357,16 @@ class SafetyRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.assertedControls = Output.createUnknown<List<String>?>();
-    this.controlPanelArn = Output.createUnknown<String>();
-    this.gatingControls = Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
-    this.ruleConfig = Output.createUnknown<SafetyRuleRuleConfig>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetControls = Output.createUnknown<List<String>?>();
-    this.waitPeriodMs = Output.createUnknown<int>();
+    this.arn = registerOutput<String>('arn');
+    this.assertedControls = registerOutput<List<String>?>('assertedControls');
+    this.controlPanelArn = registerOutput<String>('controlPanelArn');
+    this.gatingControls = registerOutput<List<String>?>('gatingControls');
+    this.name = registerOutput<String>('name');
+    this.ruleConfig = registerOutput<SafetyRuleRuleConfig>('ruleConfig');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetControls = registerOutput<List<String>?>('targetControls');
+    this.waitPeriodMs = registerOutput<int>('waitPeriodMs');
   }
 }

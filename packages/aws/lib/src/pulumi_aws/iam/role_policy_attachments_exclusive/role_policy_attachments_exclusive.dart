@@ -237,7 +237,7 @@ class RolePolicyAttachmentsExclusive extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.policyArns = Output.createUnknown<List<String>>();
-    this.roleName = Output.createUnknown<String>();
+    this.policyArns = registerOutput<List<String>>('policyArns');
+    this.roleName = registerOutput<String>('roleName');
   }
 }

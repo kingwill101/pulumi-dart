@@ -552,22 +552,23 @@ class AuthzExtension extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authority = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.failOpen = Output.createUnknown<bool>();
-    this.forwardHeaders = Output.createUnknown<List<String>?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.loadBalancingScheme = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.service = Output.createUnknown<String>();
-    this.timeout = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.wireFormat = Output.createUnknown<String>();
+    this.authority = registerOutput<String>('authority');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.failOpen = registerOutput<bool>('failOpen');
+    this.forwardHeaders = registerOutput<List<String>?>('forwardHeaders');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.loadBalancingScheme = registerOutput<String>('loadBalancingScheme');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<Map<String, String>?>('metadata');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.service = registerOutput<String>('service');
+    this.timeout = registerOutput<String>('timeout');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.wireFormat = registerOutput<String>('wireFormat');
   }
 }

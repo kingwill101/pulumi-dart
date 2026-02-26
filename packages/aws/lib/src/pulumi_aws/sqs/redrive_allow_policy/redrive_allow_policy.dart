@@ -247,8 +247,8 @@ class RedriveAllowPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.queueUrl = Output.createUnknown<String>();
-    this.redriveAllowPolicy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.queueUrl = registerOutput<String>('queueUrl');
+    this.redriveAllowPolicy = registerOutput<String>('redriveAllowPolicy');
+    this.region = registerOutput<String>('region');
   }
 }

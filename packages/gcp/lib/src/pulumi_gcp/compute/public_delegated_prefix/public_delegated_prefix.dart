@@ -953,19 +953,22 @@ class PublicDelegatedPrefix extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allocatablePrefixLength = Output.createUnknown<int>();
-    this.description = Output.createUnknown<String?>();
-    this.enableEnhancedIpv4Allocation = Output.createUnknown<bool>();
-    this.ipCidrRange = Output.createUnknown<String>();
-    this.ipv6AccessType = Output.createUnknown<String>();
-    this.isLiveMigration = Output.createUnknown<bool?>();
-    this.mode = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.parentPrefix = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.publicDelegatedSubPrefixs = Output.createUnknown<
-        List<PublicDelegatedPrefixPublicDelegatedSubPrefix>>();
-    this.region = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
+    this.allocatablePrefixLength =
+        registerOutput<int>('allocatablePrefixLength');
+    this.description = registerOutput<String?>('description');
+    this.enableEnhancedIpv4Allocation =
+        registerOutput<bool>('enableEnhancedIpv4Allocation');
+    this.ipCidrRange = registerOutput<String>('ipCidrRange');
+    this.ipv6AccessType = registerOutput<String>('ipv6AccessType');
+    this.isLiveMigration = registerOutput<bool?>('isLiveMigration');
+    this.mode = registerOutput<String?>('mode');
+    this.name = registerOutput<String>('name');
+    this.parentPrefix = registerOutput<String>('parentPrefix');
+    this.project = registerOutput<String>('project');
+    this.publicDelegatedSubPrefixs =
+        registerOutput<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>>(
+            'publicDelegatedSubPrefixs');
+    this.region = registerOutput<String>('region');
+    this.selfLink = registerOutput<String>('selfLink');
   }
 }

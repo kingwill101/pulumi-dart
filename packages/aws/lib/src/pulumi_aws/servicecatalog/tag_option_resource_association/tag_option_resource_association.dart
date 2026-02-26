@@ -142,12 +142,12 @@ class TagOptionResourceAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
-    this.resourceCreatedTime = Output.createUnknown<String>();
-    this.resourceDescription = Output.createUnknown<String>();
-    this.resourceId = Output.createUnknown<String>();
-    this.resourceName = Output.createUnknown<String>();
-    this.tagOptionId = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.resourceArn = registerOutput<String>('resourceArn');
+    this.resourceCreatedTime = registerOutput<String>('resourceCreatedTime');
+    this.resourceDescription = registerOutput<String>('resourceDescription');
+    this.resourceId = registerOutput<String>('resourceId');
+    this.resourceName = registerOutput<String>('resourceName');
+    this.tagOptionId = registerOutput<String>('tagOptionId');
   }
 }

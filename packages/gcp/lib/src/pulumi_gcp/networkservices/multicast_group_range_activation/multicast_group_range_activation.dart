@@ -506,25 +506,28 @@ class MulticastGroupRangeActivation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.ipCidrRange = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.ipCidrRange = registerOutput<String>('ipCidrRange');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
     this.logConfig =
-        Output.createUnknown<MulticastGroupRangeActivationLogConfig?>();
-    this.multicastDomainActivation = Output.createUnknown<String>();
+        registerOutput<MulticastGroupRangeActivationLogConfig?>('logConfig');
+    this.multicastDomainActivation =
+        registerOutput<String>('multicastDomainActivation');
     this.multicastGroupConsumerActivations =
-        Output.createUnknown<List<String>>();
-    this.multicastGroupRange = Output.createUnknown<String>();
-    this.multicastGroupRangeActivationId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<String>>('multicastGroupConsumerActivations');
+    this.multicastGroupRange = registerOutput<String>('multicastGroupRange');
+    this.multicastGroupRangeActivationId =
+        registerOutput<String>('multicastGroupRangeActivationId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.states =
-        Output.createUnknown<List<MulticastGroupRangeActivationState>>();
-    this.uniqueId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<MulticastGroupRangeActivationState>>('states');
+    this.uniqueId = registerOutput<String>('uniqueId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

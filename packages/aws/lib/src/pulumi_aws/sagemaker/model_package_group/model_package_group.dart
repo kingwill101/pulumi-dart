@@ -128,11 +128,13 @@ class ModelPackageGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.modelPackageGroupDescription = Output.createUnknown<String?>();
-    this.modelPackageGroupName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.modelPackageGroupDescription =
+        registerOutput<String?>('modelPackageGroupDescription');
+    this.modelPackageGroupName =
+        registerOutput<String>('modelPackageGroupName');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

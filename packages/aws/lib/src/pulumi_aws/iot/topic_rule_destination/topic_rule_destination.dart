@@ -143,10 +143,11 @@ class TopicRuleDestination extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.region = registerOutput<String>('region');
     this.vpcConfiguration =
-        Output.createUnknown<TopicRuleDestinationVpcConfiguration>();
+        registerOutput<TopicRuleDestinationVpcConfiguration>(
+            'vpcConfiguration');
   }
 }

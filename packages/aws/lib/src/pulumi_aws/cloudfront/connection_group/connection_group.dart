@@ -166,19 +166,19 @@ class ConnectionGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.anycastIpListId = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool>();
-    this.etag = Output.createUnknown<String>();
-    this.ipv6Enabled = Output.createUnknown<bool>();
-    this.isDefault = Output.createUnknown<bool>();
-    this.lastModifiedTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.routingEndpoint = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ConnectionGroupTimeouts?>();
-    this.waitForDeployment = Output.createUnknown<bool>();
+    this.anycastIpListId = registerOutput<String?>('anycastIpListId');
+    this.arn = registerOutput<String>('arn');
+    this.enabled = registerOutput<bool>('enabled');
+    this.etag = registerOutput<String>('etag');
+    this.ipv6Enabled = registerOutput<bool>('ipv6Enabled');
+    this.isDefault = registerOutput<bool>('isDefault');
+    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.name = registerOutput<String>('name');
+    this.routingEndpoint = registerOutput<String>('routingEndpoint');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ConnectionGroupTimeouts?>('timeouts');
+    this.waitForDeployment = registerOutput<bool>('waitForDeployment');
   }
 }

@@ -204,14 +204,15 @@ class DataIntegration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.kmsKey = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.scheduleConfig = Output.createUnknown<DataIntegrationScheduleConfig>();
-    this.sourceUri = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.kmsKey = registerOutput<String>('kmsKey');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.scheduleConfig =
+        registerOutput<DataIntegrationScheduleConfig>('scheduleConfig');
+    this.sourceUri = registerOutput<String>('sourceUri');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -156,16 +156,17 @@ class AgentcoreAgentRuntimeEndpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentRuntimeArn = Output.createUnknown<String>();
-    this.agentRuntimeEndpointArn = Output.createUnknown<String>();
-    this.agentRuntimeId = Output.createUnknown<String>();
-    this.agentRuntimeVersion = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
+    this.agentRuntimeEndpointArn =
+        registerOutput<String>('agentRuntimeEndpointArn');
+    this.agentRuntimeId = registerOutput<String>('agentRuntimeId');
+    this.agentRuntimeVersion = registerOutput<String>('agentRuntimeVersion');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.timeouts =
-        Output.createUnknown<AgentcoreAgentRuntimeEndpointTimeouts?>();
+        registerOutput<AgentcoreAgentRuntimeEndpointTimeouts?>('timeouts');
   }
 }

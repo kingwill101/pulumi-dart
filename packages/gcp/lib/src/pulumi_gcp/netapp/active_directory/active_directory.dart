@@ -401,31 +401,32 @@ class ActiveDirectory extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.administrators = Output.createUnknown<List<String>?>();
-    this.aesEncryption = Output.createUnknown<bool?>();
-    this.backupOperators = Output.createUnknown<List<String>?>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.dns = Output.createUnknown<String>();
-    this.domain = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.encryptDcConnections = Output.createUnknown<bool?>();
-    this.kdcHostname = Output.createUnknown<String?>();
-    this.kdcIp = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.ldapSigning = Output.createUnknown<bool?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.netBiosPrefix = Output.createUnknown<String>();
-    this.nfsUsersWithLdap = Output.createUnknown<bool?>();
-    this.organizationalUnit = Output.createUnknown<String>();
-    this.password = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.securityOperators = Output.createUnknown<List<String>?>();
-    this.site = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.stateDetails = Output.createUnknown<String>();
-    this.username = Output.createUnknown<String>();
+    this.administrators = registerOutput<List<String>?>('administrators');
+    this.aesEncryption = registerOutput<bool?>('aesEncryption');
+    this.backupOperators = registerOutput<List<String>?>('backupOperators');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.dns = registerOutput<String>('dns');
+    this.domain = registerOutput<String>('domain');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.encryptDcConnections = registerOutput<bool?>('encryptDcConnections');
+    this.kdcHostname = registerOutput<String?>('kdcHostname');
+    this.kdcIp = registerOutput<String?>('kdcIp');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.ldapSigning = registerOutput<bool?>('ldapSigning');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.netBiosPrefix = registerOutput<String>('netBiosPrefix');
+    this.nfsUsersWithLdap = registerOutput<bool?>('nfsUsersWithLdap');
+    this.organizationalUnit = registerOutput<String>('organizationalUnit');
+    this.password = registerOutput<String>('password');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.securityOperators = registerOutput<List<String>?>('securityOperators');
+    this.site = registerOutput<String?>('site');
+    this.state = registerOutput<String>('state');
+    this.stateDetails = registerOutput<String>('stateDetails');
+    this.username = registerOutput<String>('username');
   }
 }

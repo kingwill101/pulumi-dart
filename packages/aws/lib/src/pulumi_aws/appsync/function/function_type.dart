@@ -617,19 +617,21 @@ class FunctionType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.code = Output.createUnknown<String?>();
-    this.dataSource = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.functionId = Output.createUnknown<String>();
-    this.functionVersion = Output.createUnknown<String>();
-    this.maxBatchSize = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestMappingTemplate = Output.createUnknown<String?>();
-    this.responseMappingTemplate = Output.createUnknown<String?>();
-    this.runtime = Output.createUnknown<FunctionRuntime?>();
-    this.syncConfig = Output.createUnknown<FunctionSyncConfig?>();
+    this.apiId = registerOutput<String>('apiId');
+    this.arn = registerOutput<String>('arn');
+    this.code = registerOutput<String?>('code');
+    this.dataSource = registerOutput<String>('dataSource');
+    this.description = registerOutput<String?>('description');
+    this.functionId = registerOutput<String>('functionId');
+    this.functionVersion = registerOutput<String>('functionVersion');
+    this.maxBatchSize = registerOutput<int?>('maxBatchSize');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.requestMappingTemplate =
+        registerOutput<String?>('requestMappingTemplate');
+    this.responseMappingTemplate =
+        registerOutput<String?>('responseMappingTemplate');
+    this.runtime = registerOutput<FunctionRuntime?>('runtime');
+    this.syncConfig = registerOutput<FunctionSyncConfig?>('syncConfig');
   }
 }

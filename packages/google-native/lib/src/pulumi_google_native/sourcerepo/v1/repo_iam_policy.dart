@@ -31,11 +31,12 @@ class RepoIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse68>>();
-    this.bindings = Output.createUnknown<List<BindingResponse99>>();
-    this.etag = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.repoId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse68>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse99>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.project = registerOutput<String>('project');
+    this.repoId = registerOutput<String>('repoId');
+    this.version = registerOutput<int>('version');
   }
 }

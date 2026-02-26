@@ -28,10 +28,10 @@ class Source14 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.canonicalName = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
+    this.canonicalName = registerOutput<String>('canonicalName');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
   }
 }

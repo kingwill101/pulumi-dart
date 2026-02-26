@@ -358,22 +358,23 @@ class OrganizationsPolicyBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.condition =
-        Output.createUnknown<OrganizationsPolicyBindingCondition?>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organization = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
-    this.policyBindingId = Output.createUnknown<String>();
-    this.policyKind = Output.createUnknown<String?>();
-    this.policyUid = Output.createUnknown<String>();
-    this.target = Output.createUnknown<OrganizationsPolicyBindingTarget>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<OrganizationsPolicyBindingCondition?>('condition');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String?>('displayName');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.organization = registerOutput<String>('organization');
+    this.policy = registerOutput<String>('policy');
+    this.policyBindingId = registerOutput<String>('policyBindingId');
+    this.policyKind = registerOutput<String?>('policyKind');
+    this.policyUid = registerOutput<String>('policyUid');
+    this.target = registerOutput<OrganizationsPolicyBindingTarget>('target');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

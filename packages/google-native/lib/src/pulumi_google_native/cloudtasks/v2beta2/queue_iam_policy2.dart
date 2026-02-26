@@ -28,11 +28,11 @@ class QueueIamPolicy2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bindings = Output.createUnknown<List<BindingResponse30>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.queueId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.bindings = registerOutput<List<BindingResponse30>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.queueId = registerOutput<String>('queueId');
+    this.version = registerOutput<int>('version');
   }
 }

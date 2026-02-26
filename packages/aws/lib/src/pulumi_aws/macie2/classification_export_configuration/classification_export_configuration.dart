@@ -172,8 +172,9 @@ class ClassificationExportConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
     this.s3Destination =
-        Output.createUnknown<ClassificationExportConfigurationS3Destination>();
+        registerOutput<ClassificationExportConfigurationS3Destination>(
+            's3Destination');
   }
 }

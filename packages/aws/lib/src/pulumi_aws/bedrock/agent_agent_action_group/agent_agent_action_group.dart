@@ -841,20 +841,24 @@ class AgentAgentActionGroup extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.actionGroupExecutor =
-        Output.createUnknown<AgentAgentActionGroupActionGroupExecutor?>();
-    this.actionGroupId = Output.createUnknown<String>();
-    this.actionGroupName = Output.createUnknown<String>();
-    this.actionGroupState = Output.createUnknown<String>();
-    this.agentId = Output.createUnknown<String>();
-    this.agentVersion = Output.createUnknown<String>();
-    this.apiSchema = Output.createUnknown<AgentAgentActionGroupApiSchema?>();
-    this.description = Output.createUnknown<String?>();
+        registerOutput<AgentAgentActionGroupActionGroupExecutor?>(
+            'actionGroupExecutor');
+    this.actionGroupId = registerOutput<String>('actionGroupId');
+    this.actionGroupName = registerOutput<String>('actionGroupName');
+    this.actionGroupState = registerOutput<String>('actionGroupState');
+    this.agentId = registerOutput<String>('agentId');
+    this.agentVersion = registerOutput<String>('agentVersion');
+    this.apiSchema =
+        registerOutput<AgentAgentActionGroupApiSchema?>('apiSchema');
+    this.description = registerOutput<String?>('description');
     this.functionSchema =
-        Output.createUnknown<AgentAgentActionGroupFunctionSchema?>();
-    this.parentActionGroupSignature = Output.createUnknown<String?>();
-    this.prepareAgent = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.skipResourceInUseCheck = Output.createUnknown<bool>();
-    this.timeouts = Output.createUnknown<AgentAgentActionGroupTimeouts?>();
+        registerOutput<AgentAgentActionGroupFunctionSchema?>('functionSchema');
+    this.parentActionGroupSignature =
+        registerOutput<String?>('parentActionGroupSignature');
+    this.prepareAgent = registerOutput<bool>('prepareAgent');
+    this.region = registerOutput<String>('region');
+    this.skipResourceInUseCheck =
+        registerOutput<bool>('skipResourceInUseCheck');
+    this.timeouts = registerOutput<AgentAgentActionGroupTimeouts?>('timeouts');
   }
 }

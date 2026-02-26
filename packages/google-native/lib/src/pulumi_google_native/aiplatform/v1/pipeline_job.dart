@@ -84,31 +84,35 @@ class PipelineJob extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
     this.encryptionSpec =
-        Output.createUnknown<GoogleCloudAiplatformV1EncryptionSpecResponse>();
-    this.endTime = Output.createUnknown<String>();
-    this.error = Output.createUnknown<GoogleRpcStatusResponse>();
-    this.jobDetail = Output.createUnknown<
-        GoogleCloudAiplatformV1PipelineJobDetailResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.pipelineJobId = Output.createUnknown<String?>();
-    this.pipelineSpec = Output.createUnknown<Map<String, String>>();
-    this.project = Output.createUnknown<String>();
-    this.reservedIpRanges = Output.createUnknown<List<String>>();
-    this.runtimeConfig = Output.createUnknown<
-        GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse>();
-    this.scheduleName = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.templateMetadata = Output.createUnknown<
-        GoogleCloudAiplatformV1PipelineTemplateMetadataResponse>();
-    this.templateUri = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>(
+            'encryptionSpec');
+    this.endTime = registerOutput<String>('endTime');
+    this.error = registerOutput<GoogleRpcStatusResponse>('error');
+    this.jobDetail =
+        registerOutput<GoogleCloudAiplatformV1PipelineJobDetailResponse>(
+            'jobDetail');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.pipelineJobId = registerOutput<String?>('pipelineJobId');
+    this.pipelineSpec = registerOutput<Map<String, String>>('pipelineSpec');
+    this.project = registerOutput<String>('project');
+    this.reservedIpRanges = registerOutput<List<String>>('reservedIpRanges');
+    this.runtimeConfig =
+        registerOutput<GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse>(
+            'runtimeConfig');
+    this.scheduleName = registerOutput<String>('scheduleName');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
+    this.templateMetadata =
+        registerOutput<GoogleCloudAiplatformV1PipelineTemplateMetadataResponse>(
+            'templateMetadata');
+    this.templateUri = registerOutput<String>('templateUri');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

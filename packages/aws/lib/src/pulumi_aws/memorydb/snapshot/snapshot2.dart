@@ -150,16 +150,17 @@ class Snapshot2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.clusterConfigurations =
-        Output.createUnknown<List<SnapshotClusterConfiguration>>();
-    this.clusterName = Output.createUnknown<String>();
-    this.kmsKeyArn = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.source = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<SnapshotClusterConfiguration>>(
+            'clusterConfigurations');
+    this.clusterName = registerOutput<String>('clusterName');
+    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.region = registerOutput<String>('region');
+    this.source = registerOutput<String>('source');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

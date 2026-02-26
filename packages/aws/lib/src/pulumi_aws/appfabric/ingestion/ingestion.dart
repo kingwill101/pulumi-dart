@@ -172,13 +172,13 @@ class Ingestion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.app = Output.createUnknown<String>();
-    this.appBundleArn = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.ingestionType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tenantId = Output.createUnknown<String>();
+    this.app = registerOutput<String>('app');
+    this.appBundleArn = registerOutput<String>('appBundleArn');
+    this.arn = registerOutput<String>('arn');
+    this.ingestionType = registerOutput<String>('ingestionType');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tenantId = registerOutput<String>('tenantId');
   }
 }

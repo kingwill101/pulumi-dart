@@ -411,14 +411,14 @@ class Workspace extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alias = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.kmsKeyArn = Output.createUnknown<String?>();
+    this.alias = registerOutput<String?>('alias');
+    this.arn = registerOutput<String>('arn');
+    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.loggingConfiguration =
-        Output.createUnknown<WorkspaceLoggingConfiguration?>();
-    this.prometheusEndpoint = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<WorkspaceLoggingConfiguration?>('loggingConfiguration');
+    this.prometheusEndpoint = registerOutput<String>('prometheusEndpoint');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

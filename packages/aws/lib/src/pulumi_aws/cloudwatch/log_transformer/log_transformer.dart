@@ -178,9 +178,10 @@ class LogTransformer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.logGroupArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.logGroupArn = registerOutput<String>('logGroupArn');
+    this.region = registerOutput<String>('region');
     this.transformerConfigs =
-        Output.createUnknown<List<LogTransformerTransformerConfig>>();
+        registerOutput<List<LogTransformerTransformerConfig>>(
+            'transformerConfigs');
   }
 }

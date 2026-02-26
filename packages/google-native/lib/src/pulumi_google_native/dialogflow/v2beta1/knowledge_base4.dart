@@ -24,10 +24,10 @@ class KnowledgeBase4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String>();
-    this.languageCode = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.displayName = registerOutput<String>('displayName');
+    this.languageCode = registerOutput<String>('languageCode');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

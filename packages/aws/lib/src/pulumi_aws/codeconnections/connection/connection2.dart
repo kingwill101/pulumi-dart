@@ -155,15 +155,15 @@ class Connection2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.connectionStatus = Output.createUnknown<String>();
-    this.hostArn = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.ownerAccountId = Output.createUnknown<String>();
-    this.providerType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ConnectionTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.connectionStatus = registerOutput<String>('connectionStatus');
+    this.hostArn = registerOutput<String?>('hostArn');
+    this.name = registerOutput<String>('name');
+    this.ownerAccountId = registerOutput<String>('ownerAccountId');
+    this.providerType = registerOutput<String>('providerType');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ConnectionTimeouts?>('timeouts');
   }
 }

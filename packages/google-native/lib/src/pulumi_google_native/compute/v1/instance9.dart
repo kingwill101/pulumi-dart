@@ -163,62 +163,74 @@ class Instance9 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.advancedMachineFeatures =
-        Output.createUnknown<AdvancedMachineFeaturesResponse3>();
-    this.canIpForward = Output.createUnknown<bool>();
+        registerOutput<AdvancedMachineFeaturesResponse3>(
+            'advancedMachineFeatures');
+    this.canIpForward = registerOutput<bool>('canIpForward');
     this.confidentialInstanceConfig =
-        Output.createUnknown<ConfidentialInstanceConfigResponse3>();
-    this.cpuPlatform = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<bool>();
-    this.description = Output.createUnknown<String>();
-    this.disks = Output.createUnknown<List<AttachedDiskResponse4>>();
-    this.displayDevice = Output.createUnknown<DisplayDeviceResponse3>();
-    this.fingerprint = Output.createUnknown<String>();
+        registerOutput<ConfidentialInstanceConfigResponse3>(
+            'confidentialInstanceConfig');
+    this.cpuPlatform = registerOutput<String>('cpuPlatform');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.deletionProtection = registerOutput<bool>('deletionProtection');
+    this.description = registerOutput<String>('description');
+    this.disks = registerOutput<List<AttachedDiskResponse4>>('disks');
+    this.displayDevice =
+        registerOutput<DisplayDeviceResponse3>('displayDevice');
+    this.fingerprint = registerOutput<String>('fingerprint');
     this.guestAccelerators =
-        Output.createUnknown<List<AcceleratorConfigResponse3>>();
-    this.hostname = Output.createUnknown<String>();
+        registerOutput<List<AcceleratorConfigResponse3>>('guestAccelerators');
+    this.hostname = registerOutput<String>('hostname');
     this.instanceEncryptionKey =
-        Output.createUnknown<CustomerEncryptionKeyResponse3>();
-    this.keyRevocationActionType = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lastStartTimestamp = Output.createUnknown<String>();
-    this.lastStopTimestamp = Output.createUnknown<String>();
-    this.lastSuspendedTimestamp = Output.createUnknown<String>();
-    this.machineType = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<MetadataResponse4>();
-    this.minCpuPlatform = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<CustomerEncryptionKeyResponse3>('instanceEncryptionKey');
+    this.keyRevocationActionType =
+        registerOutput<String>('keyRevocationActionType');
+    this.kind = registerOutput<String>('kind');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lastStartTimestamp = registerOutput<String>('lastStartTimestamp');
+    this.lastStopTimestamp = registerOutput<String>('lastStopTimestamp');
+    this.lastSuspendedTimestamp =
+        registerOutput<String>('lastSuspendedTimestamp');
+    this.machineType = registerOutput<String>('machineType');
+    this.metadata = registerOutput<MetadataResponse4>('metadata');
+    this.minCpuPlatform = registerOutput<String>('minCpuPlatform');
+    this.name = registerOutput<String>('name');
     this.networkInterfaces =
-        Output.createUnknown<List<NetworkInterfaceResponse4>>();
+        registerOutput<List<NetworkInterfaceResponse4>>('networkInterfaces');
     this.networkPerformanceConfig =
-        Output.createUnknown<NetworkPerformanceConfigResponse3>();
-    this.params = Output.createUnknown<InstanceParamsResponse3>();
-    this.privateIpv6GoogleAccess = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
+        registerOutput<NetworkPerformanceConfigResponse3>(
+            'networkPerformanceConfig');
+    this.params = registerOutput<InstanceParamsResponse3>('params');
+    this.privateIpv6GoogleAccess =
+        registerOutput<String>('privateIpv6GoogleAccess');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
     this.reservationAffinity =
-        Output.createUnknown<ReservationAffinityResponse3>();
-    this.resourcePolicies = Output.createUnknown<List<String>>();
-    this.resourceStatus = Output.createUnknown<ResourceStatusResponse3>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.scheduling = Output.createUnknown<SchedulingResponse3>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<ReservationAffinityResponse3>('reservationAffinity');
+    this.resourcePolicies = registerOutput<List<String>>('resourcePolicies');
+    this.resourceStatus =
+        registerOutput<ResourceStatusResponse3>('resourceStatus');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.scheduling = registerOutput<SchedulingResponse3>('scheduling');
+    this.selfLink = registerOutput<String>('selfLink');
     this.serviceAccounts =
-        Output.createUnknown<List<ServiceAccountResponse5>>();
+        registerOutput<List<ServiceAccountResponse5>>('serviceAccounts');
     this.shieldedInstanceConfig =
-        Output.createUnknown<ShieldedInstanceConfigResponse3>();
+        registerOutput<ShieldedInstanceConfigResponse3>(
+            'shieldedInstanceConfig');
     this.shieldedInstanceIntegrityPolicy =
-        Output.createUnknown<ShieldedInstanceIntegrityPolicyResponse3>();
-    this.sourceInstanceTemplate = Output.createUnknown<String?>();
-    this.sourceMachineImage = Output.createUnknown<String>();
+        registerOutput<ShieldedInstanceIntegrityPolicyResponse3>(
+            'shieldedInstanceIntegrityPolicy');
+    this.sourceInstanceTemplate =
+        registerOutput<String?>('sourceInstanceTemplate');
+    this.sourceMachineImage = registerOutput<String>('sourceMachineImage');
     this.sourceMachineImageEncryptionKey =
-        Output.createUnknown<CustomerEncryptionKeyResponse3>();
-    this.startRestricted = Output.createUnknown<bool>();
-    this.status = Output.createUnknown<String>();
-    this.statusMessage = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<TagsResponse3>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<CustomerEncryptionKeyResponse3>(
+            'sourceMachineImageEncryptionKey');
+    this.startRestricted = registerOutput<bool>('startRestricted');
+    this.status = registerOutput<String>('status');
+    this.statusMessage = registerOutput<String>('statusMessage');
+    this.tags = registerOutput<TagsResponse3>('tags');
+    this.zone = registerOutput<String>('zone');
   }
 }

@@ -32,12 +32,13 @@ class AnnotationSpecSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotationSpecs = Output.createUnknown<
-        List<GoogleCloudDatalabelingV1beta1AnnotationSpecResponse>>();
-    this.blockingResources = Output.createUnknown<List<String>>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.annotationSpecs = registerOutput<
+            List<GoogleCloudDatalabelingV1beta1AnnotationSpecResponse>>(
+        'annotationSpecs');
+    this.blockingResources = registerOutput<List<String>>('blockingResources');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

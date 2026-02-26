@@ -242,16 +242,17 @@ class ConfiguredTable extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowedColumns = Output.createUnknown<List<String>>();
-    this.analysisMethod = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tableReference = Output.createUnknown<ConfiguredTableTableReference>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.updateTime = Output.createUnknown<String>();
+    this.allowedColumns = registerOutput<List<String>>('allowedColumns');
+    this.analysisMethod = registerOutput<String>('analysisMethod');
+    this.arn = registerOutput<String>('arn');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tableReference =
+        registerOutput<ConfiguredTableTableReference>('tableReference');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

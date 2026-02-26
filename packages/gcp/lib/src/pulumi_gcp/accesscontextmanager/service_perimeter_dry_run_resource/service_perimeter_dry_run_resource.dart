@@ -267,9 +267,9 @@ class ServicePerimeterDryRunResource extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessPolicyId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.perimeterName = Output.createUnknown<String>();
-    this.resource = Output.createUnknown<String>();
+    this.accessPolicyId = registerOutput<String>('accessPolicyId');
+    this.etag = registerOutput<String>('etag');
+    this.perimeterName = registerOutput<String>('perimeterName');
+    this.resource = registerOutput<String>('resource');
   }
 }

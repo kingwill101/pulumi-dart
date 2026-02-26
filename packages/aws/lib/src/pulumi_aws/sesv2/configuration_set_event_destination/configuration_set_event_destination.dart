@@ -926,10 +926,11 @@ class ConfigurationSetEventDestination extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.configurationSetName = Output.createUnknown<String>();
-    this.eventDestination = Output.createUnknown<
-        ConfigurationSetEventDestinationEventDestination>();
-    this.eventDestinationName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.configurationSetName = registerOutput<String>('configurationSetName');
+    this.eventDestination =
+        registerOutput<ConfigurationSetEventDestinationEventDestination>(
+            'eventDestination');
+    this.eventDestinationName = registerOutput<String>('eventDestinationName');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -1922,25 +1922,29 @@ class Integration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cacheKeyParameters = Output.createUnknown<List<String>?>();
-    this.cacheNamespace = Output.createUnknown<String>();
-    this.connectionId = Output.createUnknown<String?>();
-    this.connectionType = Output.createUnknown<String?>();
-    this.contentHandling = Output.createUnknown<String?>();
-    this.credentials = Output.createUnknown<String?>();
-    this.httpMethod = Output.createUnknown<String>();
-    this.integrationHttpMethod = Output.createUnknown<String?>();
-    this.integrationTarget = Output.createUnknown<String?>();
-    this.passthroughBehavior = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestParameters = Output.createUnknown<Map<String, String>?>();
-    this.requestTemplates = Output.createUnknown<Map<String, String>?>();
-    this.resourceId = Output.createUnknown<String>();
-    this.responseTransferMode = Output.createUnknown<String>();
-    this.restApi = Output.createUnknown<String>();
-    this.timeoutMilliseconds = Output.createUnknown<int?>();
-    this.tlsConfig = Output.createUnknown<IntegrationTlsConfig?>();
-    this.type = Output.createUnknown<String>();
-    this.uri = Output.createUnknown<String?>();
+    this.cacheKeyParameters =
+        registerOutput<List<String>?>('cacheKeyParameters');
+    this.cacheNamespace = registerOutput<String>('cacheNamespace');
+    this.connectionId = registerOutput<String?>('connectionId');
+    this.connectionType = registerOutput<String?>('connectionType');
+    this.contentHandling = registerOutput<String?>('contentHandling');
+    this.credentials = registerOutput<String?>('credentials');
+    this.httpMethod = registerOutput<String>('httpMethod');
+    this.integrationHttpMethod =
+        registerOutput<String?>('integrationHttpMethod');
+    this.integrationTarget = registerOutput<String?>('integrationTarget');
+    this.passthroughBehavior = registerOutput<String>('passthroughBehavior');
+    this.region = registerOutput<String>('region');
+    this.requestParameters =
+        registerOutput<Map<String, String>?>('requestParameters');
+    this.requestTemplates =
+        registerOutput<Map<String, String>?>('requestTemplates');
+    this.resourceId = registerOutput<String>('resourceId');
+    this.responseTransferMode = registerOutput<String>('responseTransferMode');
+    this.restApi = registerOutput<String>('restApi');
+    this.timeoutMilliseconds = registerOutput<int?>('timeoutMilliseconds');
+    this.tlsConfig = registerOutput<IntegrationTlsConfig?>('tlsConfig');
+    this.type = registerOutput<String>('type');
+    this.uri = registerOutput<String?>('uri');
   }
 }

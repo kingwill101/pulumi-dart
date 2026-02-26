@@ -1941,13 +1941,15 @@ class WebRegionForwardingRuleServiceIamMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<
-        WebRegionForwardingRuleServiceIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.forwardingRuleRegionServiceName = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.condition =
+        registerOutput<WebRegionForwardingRuleServiceIamMemberCondition?>(
+            'condition');
+    this.etag = registerOutput<String>('etag');
+    this.forwardingRuleRegionServiceName =
+        registerOutput<String>('forwardingRuleRegionServiceName');
+    this.member = registerOutput<String>('member');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.role = registerOutput<String>('role');
   }
 }

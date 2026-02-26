@@ -428,22 +428,23 @@ class Backup3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupRegion = Output.createUnknown<String>();
-    this.backupType = Output.createUnknown<String>();
-    this.chainStorageBytes = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.sourceSnapshot = Output.createUnknown<String?>();
-    this.sourceVolume = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.vaultName = Output.createUnknown<String>();
-    this.volumeRegion = Output.createUnknown<String>();
-    this.volumeUsageBytes = Output.createUnknown<String>();
+    this.backupRegion = registerOutput<String>('backupRegion');
+    this.backupType = registerOutput<String>('backupType');
+    this.chainStorageBytes = registerOutput<String>('chainStorageBytes');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.sourceSnapshot = registerOutput<String?>('sourceSnapshot');
+    this.sourceVolume = registerOutput<String?>('sourceVolume');
+    this.state = registerOutput<String>('state');
+    this.vaultName = registerOutput<String>('vaultName');
+    this.volumeRegion = registerOutput<String>('volumeRegion');
+    this.volumeUsageBytes = registerOutput<String>('volumeUsageBytes');
   }
 }

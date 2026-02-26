@@ -2177,18 +2177,21 @@ class Connection5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.athenaProperties = Output.createUnknown<Map<String, String>?>();
-    this.catalogId = Output.createUnknown<String>();
-    this.connectionProperties = Output.createUnknown<Map<String, String>?>();
-    this.connectionType = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.matchCriterias = Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.athenaProperties =
+        registerOutput<Map<String, String>?>('athenaProperties');
+    this.catalogId = registerOutput<String>('catalogId');
+    this.connectionProperties =
+        registerOutput<Map<String, String>?>('connectionProperties');
+    this.connectionType = registerOutput<String?>('connectionType');
+    this.description = registerOutput<String?>('description');
+    this.matchCriterias = registerOutput<List<String>?>('matchCriterias');
+    this.name = registerOutput<String>('name');
     this.physicalConnectionRequirements =
-        Output.createUnknown<ConnectionPhysicalConnectionRequirements?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<ConnectionPhysicalConnectionRequirements?>(
+            'physicalConnectionRequirements');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

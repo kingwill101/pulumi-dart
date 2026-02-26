@@ -722,21 +722,25 @@ class KxEnvironment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZones = Output.createUnknown<List<String>>();
-    this.createdTimestamp = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZones = registerOutput<List<String>>('availabilityZones');
+    this.createdTimestamp = registerOutput<String>('createdTimestamp');
     this.customDnsConfigurations =
-        Output.createUnknown<List<KxEnvironmentCustomDnsConfiguration>?>();
-    this.description = Output.createUnknown<String?>();
-    this.infrastructureAccountId = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.lastModifiedTimestamp = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<KxEnvironmentCustomDnsConfiguration>?>(
+            'customDnsConfigurations');
+    this.description = registerOutput<String?>('description');
+    this.infrastructureAccountId =
+        registerOutput<String>('infrastructureAccountId');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.lastModifiedTimestamp =
+        registerOutput<String>('lastModifiedTimestamp');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.transitGatewayConfiguration =
-        Output.createUnknown<KxEnvironmentTransitGatewayConfiguration?>();
+        registerOutput<KxEnvironmentTransitGatewayConfiguration?>(
+            'transitGatewayConfiguration');
   }
 }

@@ -839,10 +839,10 @@ class BucketAclV2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.accessControlPolicy =
-        Output.createUnknown<BucketAclV2AccessControlPolicy>();
-    this.acl = Output.createUnknown<String?>();
-    this.bucket = Output.createUnknown<String>();
-    this.expectedBucketOwner = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<BucketAclV2AccessControlPolicy>('accessControlPolicy');
+    this.acl = registerOutput<String?>('acl');
+    this.bucket = registerOutput<String>('bucket');
+    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    this.region = registerOutput<String>('region');
   }
 }

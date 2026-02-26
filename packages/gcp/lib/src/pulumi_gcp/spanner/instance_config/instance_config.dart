@@ -85,14 +85,15 @@ class InstanceConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.baseConfig = Output.createUnknown<String>();
-    this.configType = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.replicas = Output.createUnknown<List<InstanceConfigReplica>>();
+    this.baseConfig = registerOutput<String>('baseConfig');
+    this.configType = registerOutput<String>('configType');
+    this.displayName = registerOutput<String>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.replicas = registerOutput<List<InstanceConfigReplica>>('replicas');
   }
 }

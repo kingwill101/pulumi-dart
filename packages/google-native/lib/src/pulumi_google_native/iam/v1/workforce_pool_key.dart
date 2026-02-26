@@ -36,14 +36,15 @@ class WorkforcePoolKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.expireTime = Output.createUnknown<String>();
-    this.keyData = Output.createUnknown<KeyDataResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.providerId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.use = Output.createUnknown<String>();
-    this.workforcePoolId = Output.createUnknown<String>();
-    this.workforcePoolProviderKeyId = Output.createUnknown<String>();
+    this.expireTime = registerOutput<String>('expireTime');
+    this.keyData = registerOutput<KeyDataResponse>('keyData');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.providerId = registerOutput<String>('providerId');
+    this.state = registerOutput<String>('state');
+    this.use = registerOutput<String>('use');
+    this.workforcePoolId = registerOutput<String>('workforcePoolId');
+    this.workforcePoolProviderKeyId =
+        registerOutput<String>('workforcePoolProviderKeyId');
   }
 }

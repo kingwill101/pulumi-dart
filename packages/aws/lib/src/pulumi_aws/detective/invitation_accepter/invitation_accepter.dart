@@ -189,7 +189,7 @@ class InvitationAccepter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.graphArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.graphArn = registerOutput<String>('graphArn');
+    this.region = registerOutput<String>('region');
   }
 }

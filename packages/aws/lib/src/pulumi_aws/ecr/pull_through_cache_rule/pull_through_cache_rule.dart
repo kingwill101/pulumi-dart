@@ -147,12 +147,13 @@ class PullThroughCacheRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.credentialArn = Output.createUnknown<String?>();
-    this.customRoleArn = Output.createUnknown<String?>();
-    this.ecrRepositoryPrefix = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.registryId = Output.createUnknown<String>();
-    this.upstreamRegistryUrl = Output.createUnknown<String>();
-    this.upstreamRepositoryPrefix = Output.createUnknown<String?>();
+    this.credentialArn = registerOutput<String?>('credentialArn');
+    this.customRoleArn = registerOutput<String?>('customRoleArn');
+    this.ecrRepositoryPrefix = registerOutput<String>('ecrRepositoryPrefix');
+    this.region = registerOutput<String>('region');
+    this.registryId = registerOutput<String>('registryId');
+    this.upstreamRegistryUrl = registerOutput<String>('upstreamRegistryUrl');
+    this.upstreamRepositoryPrefix =
+        registerOutput<String?>('upstreamRepositoryPrefix');
   }
 }

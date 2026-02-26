@@ -371,8 +371,9 @@ class ServiceNetworkSettings extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.networkSettings =
-        Output.createUnknown<ServiceNetworkSettingsNetworkSettings>();
-    this.project = Output.createUnknown<String>();
-    this.service = Output.createUnknown<String>();
+        registerOutput<ServiceNetworkSettingsNetworkSettings>(
+            'networkSettings');
+    this.project = registerOutput<String>('project');
+    this.service = registerOutput<String>('service');
   }
 }

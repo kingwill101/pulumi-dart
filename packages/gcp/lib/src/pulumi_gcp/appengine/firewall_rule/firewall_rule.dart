@@ -261,10 +261,10 @@ class FirewallRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.priority = Output.createUnknown<int?>();
-    this.project = Output.createUnknown<String>();
-    this.sourceRange = Output.createUnknown<String>();
+    this.action = registerOutput<String>('action');
+    this.description = registerOutput<String?>('description');
+    this.priority = registerOutput<int?>('priority');
+    this.project = registerOutput<String>('project');
+    this.sourceRange = registerOutput<String>('sourceRange');
   }
 }

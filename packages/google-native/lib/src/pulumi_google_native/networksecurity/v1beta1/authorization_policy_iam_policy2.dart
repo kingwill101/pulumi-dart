@@ -33,12 +33,14 @@ class AuthorizationPolicyIamPolicy2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.auditConfigs =
-        Output.createUnknown<List<GoogleIamV1AuditConfigResponse11>>();
-    this.authorizationPolicyId = Output.createUnknown<String>();
-    this.bindings = Output.createUnknown<List<GoogleIamV1BindingResponse13>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+        registerOutput<List<GoogleIamV1AuditConfigResponse11>>('auditConfigs');
+    this.authorizationPolicyId =
+        registerOutput<String>('authorizationPolicyId');
+    this.bindings =
+        registerOutput<List<GoogleIamV1BindingResponse13>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

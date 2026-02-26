@@ -236,12 +236,12 @@ class RandomId extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.b64Std = Output.createUnknown<String>();
-    this.b64Url = Output.createUnknown<String>();
-    this.byteLength = Output.createUnknown<int>();
-    this.dec = Output.createUnknown<String>();
-    this.hex = Output.createUnknown<String>();
-    this.keepers = Output.createUnknown<Map<String, String>?>();
-    this.prefix = Output.createUnknown<String?>();
+    this.b64Std = registerOutput<String>('b64Std');
+    this.b64Url = registerOutput<String>('b64Url');
+    this.byteLength = registerOutput<int>('byteLength');
+    this.dec = registerOutput<String>('dec');
+    this.hex = registerOutput<String>('hex');
+    this.keepers = registerOutput<Map<String, String>?>('keepers');
+    this.prefix = registerOutput<String?>('prefix');
   }
 }

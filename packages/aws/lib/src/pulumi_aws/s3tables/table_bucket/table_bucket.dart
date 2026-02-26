@@ -151,17 +151,19 @@ class TableBucket extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.createdAt = registerOutput<String>('createdAt');
     this.encryptionConfiguration =
-        Output.createUnknown<TableBucketEncryptionConfiguration?>();
-    this.forceDestroy = Output.createUnknown<bool>();
+        registerOutput<TableBucketEncryptionConfiguration?>(
+            'encryptionConfiguration');
+    this.forceDestroy = registerOutput<bool>('forceDestroy');
     this.maintenanceConfiguration =
-        Output.createUnknown<TableBucketMaintenanceConfiguration>();
-    this.name = Output.createUnknown<String>();
-    this.ownerAccountId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<TableBucketMaintenanceConfiguration>(
+            'maintenanceConfiguration');
+    this.name = registerOutput<String>('name');
+    this.ownerAccountId = registerOutput<String>('ownerAccountId');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

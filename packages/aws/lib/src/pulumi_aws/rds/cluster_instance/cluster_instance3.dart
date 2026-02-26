@@ -359,41 +359,48 @@ class ClusterInstance3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applyImmediately = Output.createUnknown<bool>();
-    this.arn = Output.createUnknown<String>();
-    this.autoMinorVersionUpgrade = Output.createUnknown<bool?>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.caCertIdentifier = Output.createUnknown<String>();
-    this.clusterIdentifier = Output.createUnknown<String>();
-    this.copyTagsToSnapshot = Output.createUnknown<bool?>();
-    this.customIamInstanceProfile = Output.createUnknown<String?>();
-    this.dbParameterGroupName = Output.createUnknown<String>();
-    this.dbSubnetGroupName = Output.createUnknown<String>();
-    this.dbiResourceId = Output.createUnknown<String>();
-    this.endpoint = Output.createUnknown<String>();
-    this.engine = Output.createUnknown<EngineType>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.engineVersionActual = Output.createUnknown<String>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.identifier = Output.createUnknown<String>();
-    this.identifierPrefix = Output.createUnknown<String>();
-    this.instanceClass = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.monitoringInterval = Output.createUnknown<int?>();
-    this.monitoringRoleArn = Output.createUnknown<String>();
-    this.networkType = Output.createUnknown<String>();
-    this.performanceInsightsEnabled = Output.createUnknown<bool>();
-    this.performanceInsightsKmsKeyId = Output.createUnknown<String>();
-    this.performanceInsightsRetentionPeriod = Output.createUnknown<int>();
-    this.port = Output.createUnknown<int>();
-    this.preferredBackupWindow = Output.createUnknown<String>();
-    this.preferredMaintenanceWindow = Output.createUnknown<String>();
-    this.promotionTier = Output.createUnknown<int?>();
-    this.publiclyAccessible = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.storageEncrypted = Output.createUnknown<bool>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.writer = Output.createUnknown<bool>();
+    this.applyImmediately = registerOutput<bool>('applyImmediately');
+    this.arn = registerOutput<String>('arn');
+    this.autoMinorVersionUpgrade =
+        registerOutput<bool?>('autoMinorVersionUpgrade');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.caCertIdentifier = registerOutput<String>('caCertIdentifier');
+    this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    this.copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
+    this.customIamInstanceProfile =
+        registerOutput<String?>('customIamInstanceProfile');
+    this.dbParameterGroupName = registerOutput<String>('dbParameterGroupName');
+    this.dbSubnetGroupName = registerOutput<String>('dbSubnetGroupName');
+    this.dbiResourceId = registerOutput<String>('dbiResourceId');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.engine = registerOutput<EngineType>('engine');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.engineVersionActual = registerOutput<String>('engineVersionActual');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.identifier = registerOutput<String>('identifier');
+    this.identifierPrefix = registerOutput<String>('identifierPrefix');
+    this.instanceClass = registerOutput<String>('instanceClass');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.monitoringInterval = registerOutput<int?>('monitoringInterval');
+    this.monitoringRoleArn = registerOutput<String>('monitoringRoleArn');
+    this.networkType = registerOutput<String>('networkType');
+    this.performanceInsightsEnabled =
+        registerOutput<bool>('performanceInsightsEnabled');
+    this.performanceInsightsKmsKeyId =
+        registerOutput<String>('performanceInsightsKmsKeyId');
+    this.performanceInsightsRetentionPeriod =
+        registerOutput<int>('performanceInsightsRetentionPeriod');
+    this.port = registerOutput<int>('port');
+    this.preferredBackupWindow =
+        registerOutput<String>('preferredBackupWindow');
+    this.preferredMaintenanceWindow =
+        registerOutput<String>('preferredMaintenanceWindow');
+    this.promotionTier = registerOutput<int?>('promotionTier');
+    this.publiclyAccessible = registerOutput<bool>('publiclyAccessible');
+    this.region = registerOutput<String>('region');
+    this.storageEncrypted = registerOutput<bool>('storageEncrypted');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.writer = registerOutput<bool>('writer');
   }
 }

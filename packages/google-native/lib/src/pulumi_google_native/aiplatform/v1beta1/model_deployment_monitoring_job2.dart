@@ -109,40 +109,52 @@ class ModelDeploymentMonitoringJob2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.analysisInstanceSchemaUri = Output.createUnknown<String>();
-    this.bigqueryTables = Output.createUnknown<
-        List<
-            GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse>>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.enableMonitoringPipelineLogs = Output.createUnknown<bool>();
-    this.encryptionSpec = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1EncryptionSpecResponse>();
-    this.endpoint = Output.createUnknown<String>();
-    this.error = Output.createUnknown<GoogleRpcStatusResponse2>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.latestMonitoringPipelineMetadata = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse>();
-    this.location = Output.createUnknown<String>();
-    this.logTtl = Output.createUnknown<String>();
-    this.loggingSamplingStrategy = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1SamplingStrategyResponse>();
-    this.modelDeploymentMonitoringObjectiveConfigs = Output.createUnknown<
-        List<
-            GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponse>>();
-    this.modelDeploymentMonitoringScheduleConfig = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponse>();
-    this.modelMonitoringAlertConfig = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse>();
-    this.name = Output.createUnknown<String>();
-    this.nextScheduleTime = Output.createUnknown<String>();
-    this.predictInstanceSchemaUri = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.samplePredictInstance = Output.createUnknown<dynamic>();
-    this.scheduleState = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.statsAnomaliesBaseDirectory = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1GcsDestinationResponse>();
-    this.updateTime = Output.createUnknown<String>();
+    this.analysisInstanceSchemaUri =
+        registerOutput<String>('analysisInstanceSchemaUri');
+    this.bigqueryTables = registerOutput<
+            List<
+                GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse>>(
+        'bigqueryTables');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.enableMonitoringPipelineLogs =
+        registerOutput<bool>('enableMonitoringPipelineLogs');
+    this.encryptionSpec =
+        registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>(
+            'encryptionSpec');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.error = registerOutput<GoogleRpcStatusResponse2>('error');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.latestMonitoringPipelineMetadata = registerOutput<
+            GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse>(
+        'latestMonitoringPipelineMetadata');
+    this.location = registerOutput<String>('location');
+    this.logTtl = registerOutput<String>('logTtl');
+    this.loggingSamplingStrategy =
+        registerOutput<GoogleCloudAiplatformV1beta1SamplingStrategyResponse>(
+            'loggingSamplingStrategy');
+    this.modelDeploymentMonitoringObjectiveConfigs = registerOutput<
+            List<
+                GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponse>>(
+        'modelDeploymentMonitoringObjectiveConfigs');
+    this.modelDeploymentMonitoringScheduleConfig = registerOutput<
+            GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponse>(
+        'modelDeploymentMonitoringScheduleConfig');
+    this.modelMonitoringAlertConfig = registerOutput<
+            GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse>(
+        'modelMonitoringAlertConfig');
+    this.name = registerOutput<String>('name');
+    this.nextScheduleTime = registerOutput<String>('nextScheduleTime');
+    this.predictInstanceSchemaUri =
+        registerOutput<String>('predictInstanceSchemaUri');
+    this.project = registerOutput<String>('project');
+    this.samplePredictInstance =
+        registerOutput<dynamic>('samplePredictInstance');
+    this.scheduleState = registerOutput<String>('scheduleState');
+    this.state = registerOutput<String>('state');
+    this.statsAnomaliesBaseDirectory =
+        registerOutput<GoogleCloudAiplatformV1beta1GcsDestinationResponse>(
+            'statsAnomaliesBaseDirectory');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

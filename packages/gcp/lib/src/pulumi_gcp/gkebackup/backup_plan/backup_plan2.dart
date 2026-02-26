@@ -2915,22 +2915,25 @@ class BackupPlan2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupConfig = Output.createUnknown<BackupPlanBackupConfig?>();
-    this.backupSchedule = Output.createUnknown<BackupPlanBackupSchedule?>();
-    this.cluster = Output.createUnknown<String>();
-    this.deactivated = Output.createUnknown<bool>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.protectedPodCount = Output.createUnknown<int>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.retentionPolicy = Output.createUnknown<BackupPlanRetentionPolicy?>();
-    this.state = Output.createUnknown<String>();
-    this.stateReason = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
+    this.backupConfig = registerOutput<BackupPlanBackupConfig?>('backupConfig');
+    this.backupSchedule =
+        registerOutput<BackupPlanBackupSchedule?>('backupSchedule');
+    this.cluster = registerOutput<String>('cluster');
+    this.deactivated = registerOutput<bool>('deactivated');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.protectedPodCount = registerOutput<int>('protectedPodCount');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.retentionPolicy =
+        registerOutput<BackupPlanRetentionPolicy?>('retentionPolicy');
+    this.state = registerOutput<String>('state');
+    this.stateReason = registerOutput<String>('stateReason');
+    this.uid = registerOutput<String>('uid');
   }
 }

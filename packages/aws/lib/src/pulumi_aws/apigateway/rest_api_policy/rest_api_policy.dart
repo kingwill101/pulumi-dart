@@ -303,8 +303,8 @@ class RestApiPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.restApiId = Output.createUnknown<String>();
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
+    this.restApiId = registerOutput<String>('restApiId');
   }
 }

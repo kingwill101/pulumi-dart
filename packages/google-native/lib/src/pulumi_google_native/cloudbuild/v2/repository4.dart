@@ -40,16 +40,16 @@ class Repository4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.connectionId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.remoteUri = Output.createUnknown<String>();
-    this.repositoryId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.webhookId = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.connectionId = registerOutput<String>('connectionId');
+    this.createTime = registerOutput<String>('createTime');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.remoteUri = registerOutput<String>('remoteUri');
+    this.repositoryId = registerOutput<String>('repositoryId');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.webhookId = registerOutput<String>('webhookId');
   }
 }

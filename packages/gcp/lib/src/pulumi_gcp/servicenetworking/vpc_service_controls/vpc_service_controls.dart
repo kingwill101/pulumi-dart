@@ -356,9 +356,9 @@ class VpcServiceControls extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.enabled = Output.createUnknown<bool>();
-    this.network = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String?>();
-    this.service = Output.createUnknown<String>();
+    this.enabled = registerOutput<bool>('enabled');
+    this.network = registerOutput<String>('network');
+    this.project = registerOutput<String?>('project');
+    this.service = registerOutput<String>('service');
   }
 }

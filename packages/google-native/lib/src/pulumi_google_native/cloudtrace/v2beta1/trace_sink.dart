@@ -24,9 +24,9 @@ class TraceSink extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
-    this.outputConfig = Output.createUnknown<OutputConfigResponse>();
-    this.project = Output.createUnknown<String>();
-    this.writerIdentity = Output.createUnknown<String>();
+    this.name = registerOutput<String>('name');
+    this.outputConfig = registerOutput<OutputConfigResponse>('outputConfig');
+    this.project = registerOutput<String>('project');
+    this.writerIdentity = registerOutput<String>('writerIdentity');
   }
 }

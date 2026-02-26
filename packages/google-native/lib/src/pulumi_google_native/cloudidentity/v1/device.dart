@@ -109,37 +109,39 @@ class Device extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.androidSpecificAttributes = Output.createUnknown<
-        GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse>();
-    this.assetTag = Output.createUnknown<String>();
-    this.basebandVersion = Output.createUnknown<String>();
-    this.bootloaderVersion = Output.createUnknown<String>();
-    this.brand = Output.createUnknown<String>();
-    this.buildNumber = Output.createUnknown<String>();
-    this.compromisedState = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.customer = Output.createUnknown<String?>();
-    this.deviceId = Output.createUnknown<String>();
-    this.deviceType = Output.createUnknown<String>();
-    this.enabledDeveloperOptions = Output.createUnknown<bool>();
-    this.enabledUsbDebugging = Output.createUnknown<bool>();
-    this.encryptionState = Output.createUnknown<String>();
-    this.hostname = Output.createUnknown<String>();
-    this.imei = Output.createUnknown<String>();
-    this.kernelVersion = Output.createUnknown<String>();
-    this.lastSyncTime = Output.createUnknown<String>();
-    this.managementState = Output.createUnknown<String>();
-    this.manufacturer = Output.createUnknown<String>();
-    this.meid = Output.createUnknown<String>();
-    this.model = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.networkOperator = Output.createUnknown<String>();
-    this.osVersion = Output.createUnknown<String>();
-    this.otherAccounts = Output.createUnknown<List<String>>();
-    this.ownerType = Output.createUnknown<String>();
-    this.releaseVersion = Output.createUnknown<String>();
-    this.securityPatchTime = Output.createUnknown<String>();
-    this.serialNumber = Output.createUnknown<String>();
-    this.wifiMacAddresses = Output.createUnknown<List<String>>();
+    this.androidSpecificAttributes = registerOutput<
+            GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse>(
+        'androidSpecificAttributes');
+    this.assetTag = registerOutput<String>('assetTag');
+    this.basebandVersion = registerOutput<String>('basebandVersion');
+    this.bootloaderVersion = registerOutput<String>('bootloaderVersion');
+    this.brand = registerOutput<String>('brand');
+    this.buildNumber = registerOutput<String>('buildNumber');
+    this.compromisedState = registerOutput<String>('compromisedState');
+    this.createTime = registerOutput<String>('createTime');
+    this.customer = registerOutput<String?>('customer');
+    this.deviceId = registerOutput<String>('deviceId');
+    this.deviceType = registerOutput<String>('deviceType');
+    this.enabledDeveloperOptions =
+        registerOutput<bool>('enabledDeveloperOptions');
+    this.enabledUsbDebugging = registerOutput<bool>('enabledUsbDebugging');
+    this.encryptionState = registerOutput<String>('encryptionState');
+    this.hostname = registerOutput<String>('hostname');
+    this.imei = registerOutput<String>('imei');
+    this.kernelVersion = registerOutput<String>('kernelVersion');
+    this.lastSyncTime = registerOutput<String>('lastSyncTime');
+    this.managementState = registerOutput<String>('managementState');
+    this.manufacturer = registerOutput<String>('manufacturer');
+    this.meid = registerOutput<String>('meid');
+    this.model = registerOutput<String>('model');
+    this.name = registerOutput<String>('name');
+    this.networkOperator = registerOutput<String>('networkOperator');
+    this.osVersion = registerOutput<String>('osVersion');
+    this.otherAccounts = registerOutput<List<String>>('otherAccounts');
+    this.ownerType = registerOutput<String>('ownerType');
+    this.releaseVersion = registerOutput<String>('releaseVersion');
+    this.securityPatchTime = registerOutput<String>('securityPatchTime');
+    this.serialNumber = registerOutput<String>('serialNumber');
+    this.wifiMacAddresses = registerOutput<List<String>>('wifiMacAddresses');
   }
 }

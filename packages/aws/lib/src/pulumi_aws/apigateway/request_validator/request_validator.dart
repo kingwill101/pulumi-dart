@@ -144,10 +144,11 @@ class RequestValidator extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.restApi = Output.createUnknown<String>();
-    this.validateRequestBody = Output.createUnknown<bool?>();
-    this.validateRequestParameters = Output.createUnknown<bool?>();
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.restApi = registerOutput<String>('restApi');
+    this.validateRequestBody = registerOutput<bool?>('validateRequestBody');
+    this.validateRequestParameters =
+        registerOutput<bool?>('validateRequestParameters');
   }
 }

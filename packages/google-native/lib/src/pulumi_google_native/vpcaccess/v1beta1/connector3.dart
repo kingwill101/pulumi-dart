@@ -52,19 +52,19 @@ class Connector3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.connectedProjects = Output.createUnknown<List<String>>();
-    this.connectorId = Output.createUnknown<String>();
-    this.ipCidrRange = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.machineType = Output.createUnknown<String>();
-    this.maxInstances = Output.createUnknown<int>();
-    this.maxThroughput = Output.createUnknown<int>();
-    this.minInstances = Output.createUnknown<int>();
-    this.minThroughput = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.subnet = Output.createUnknown<SubnetResponse2>();
+    this.connectedProjects = registerOutput<List<String>>('connectedProjects');
+    this.connectorId = registerOutput<String>('connectorId');
+    this.ipCidrRange = registerOutput<String>('ipCidrRange');
+    this.location = registerOutput<String>('location');
+    this.machineType = registerOutput<String>('machineType');
+    this.maxInstances = registerOutput<int>('maxInstances');
+    this.maxThroughput = registerOutput<int>('maxThroughput');
+    this.minInstances = registerOutput<int>('minInstances');
+    this.minThroughput = registerOutput<int>('minThroughput');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.subnet = registerOutput<SubnetResponse2>('subnet');
   }
 }

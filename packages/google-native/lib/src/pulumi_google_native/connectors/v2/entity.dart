@@ -25,11 +25,11 @@ class Entity extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.connectionId = Output.createUnknown<String>();
-    this.entityTypeId = Output.createUnknown<String>();
-    this.fields = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.connectionId = registerOutput<String>('connectionId');
+    this.entityTypeId = registerOutput<String>('entityTypeId');
+    this.fields = registerOutput<Map<String, String>>('fields');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

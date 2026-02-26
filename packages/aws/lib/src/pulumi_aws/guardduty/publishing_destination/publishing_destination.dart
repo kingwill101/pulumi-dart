@@ -726,10 +726,10 @@ class PublishingDestination extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.destinationArn = Output.createUnknown<String>();
-    this.destinationType = Output.createUnknown<String?>();
-    this.detectorId = Output.createUnknown<String>();
-    this.kmsKeyArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.destinationArn = registerOutput<String>('destinationArn');
+    this.destinationType = registerOutput<String?>('destinationType');
+    this.detectorId = registerOutput<String>('detectorId');
+    this.kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    this.region = registerOutput<String>('region');
   }
 }

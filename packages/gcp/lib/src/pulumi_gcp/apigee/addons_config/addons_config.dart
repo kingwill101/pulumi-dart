@@ -725,7 +725,8 @@ class AddonsConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.addonsConfig = Output.createUnknown<AddonsConfigAddonsConfig?>();
-    this.org = Output.createUnknown<String>();
+    this.addonsConfig =
+        registerOutput<AddonsConfigAddonsConfig?>('addonsConfig');
+    this.org = registerOutput<String>('org');
   }
 }

@@ -150,48 +150,56 @@ class CloudExadataInfrastructure extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activatedStorageCount = Output.createUnknown<int>();
-    this.additionalStorageCount = Output.createUnknown<int>();
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.availabilityZoneId = Output.createUnknown<String>();
-    this.availableStorageSizeInGbs = Output.createUnknown<int>();
-    this.computeCount = Output.createUnknown<int>();
-    this.computeModel = Output.createUnknown<String>();
-    this.cpuCount = Output.createUnknown<int>();
-    this.createdAt = Output.createUnknown<String>();
-    this.customerContactsToSendToOcis = Output.createUnknown<
-        List<CloudExadataInfrastructureCustomerContactsToSendToOci>?>();
-    this.dataStorageSizeInTbs = Output.createUnknown<double>();
-    this.databaseServerType = Output.createUnknown<String?>();
-    this.dbNodeStorageSizeInGbs = Output.createUnknown<int>();
-    this.dbServerVersion = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.lastMaintenanceRunId = Output.createUnknown<String>();
+    this.activatedStorageCount = registerOutput<int>('activatedStorageCount');
+    this.additionalStorageCount = registerOutput<int>('additionalStorageCount');
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.availabilityZoneId = registerOutput<String>('availabilityZoneId');
+    this.availableStorageSizeInGbs =
+        registerOutput<int>('availableStorageSizeInGbs');
+    this.computeCount = registerOutput<int>('computeCount');
+    this.computeModel = registerOutput<String>('computeModel');
+    this.cpuCount = registerOutput<int>('cpuCount');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.customerContactsToSendToOcis = registerOutput<
+            List<CloudExadataInfrastructureCustomerContactsToSendToOci>?>(
+        'customerContactsToSendToOcis');
+    this.dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
+    this.databaseServerType = registerOutput<String?>('databaseServerType');
+    this.dbNodeStorageSizeInGbs = registerOutput<int>('dbNodeStorageSizeInGbs');
+    this.dbServerVersion = registerOutput<String>('dbServerVersion');
+    this.displayName = registerOutput<String>('displayName');
+    this.lastMaintenanceRunId = registerOutput<String>('lastMaintenanceRunId');
     this.maintenanceWindow =
-        Output.createUnknown<CloudExadataInfrastructureMaintenanceWindow>();
-    this.maxCpuCount = Output.createUnknown<int>();
-    this.maxDataStorageInTbs = Output.createUnknown<double>();
-    this.maxDbNodeStorageSizeInGbs = Output.createUnknown<int>();
-    this.maxMemoryInGbs = Output.createUnknown<int>();
-    this.memorySizeInGbs = Output.createUnknown<int>();
-    this.monthlyDbServerVersion = Output.createUnknown<String>();
-    this.monthlyStorageServerVersion = Output.createUnknown<String>();
-    this.nextMaintenanceRunId = Output.createUnknown<String>();
-    this.ociResourceAnchorName = Output.createUnknown<String>();
-    this.ociUrl = Output.createUnknown<String>();
-    this.ocid = Output.createUnknown<String>();
-    this.percentProgress = Output.createUnknown<double>();
-    this.region = Output.createUnknown<String>();
-    this.shape = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.statusReason = Output.createUnknown<String>();
-    this.storageCount = Output.createUnknown<int>();
-    this.storageServerType = Output.createUnknown<String?>();
-    this.storageServerVersion = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<CloudExadataInfrastructureTimeouts?>();
-    this.totalStorageSizeInGbs = Output.createUnknown<int>();
+        registerOutput<CloudExadataInfrastructureMaintenanceWindow>(
+            'maintenanceWindow');
+    this.maxCpuCount = registerOutput<int>('maxCpuCount');
+    this.maxDataStorageInTbs = registerOutput<double>('maxDataStorageInTbs');
+    this.maxDbNodeStorageSizeInGbs =
+        registerOutput<int>('maxDbNodeStorageSizeInGbs');
+    this.maxMemoryInGbs = registerOutput<int>('maxMemoryInGbs');
+    this.memorySizeInGbs = registerOutput<int>('memorySizeInGbs');
+    this.monthlyDbServerVersion =
+        registerOutput<String>('monthlyDbServerVersion');
+    this.monthlyStorageServerVersion =
+        registerOutput<String>('monthlyStorageServerVersion');
+    this.nextMaintenanceRunId = registerOutput<String>('nextMaintenanceRunId');
+    this.ociResourceAnchorName =
+        registerOutput<String>('ociResourceAnchorName');
+    this.ociUrl = registerOutput<String>('ociUrl');
+    this.ocid = registerOutput<String>('ocid');
+    this.percentProgress = registerOutput<double>('percentProgress');
+    this.region = registerOutput<String>('region');
+    this.shape = registerOutput<String>('shape');
+    this.status = registerOutput<String>('status');
+    this.statusReason = registerOutput<String>('statusReason');
+    this.storageCount = registerOutput<int>('storageCount');
+    this.storageServerType = registerOutput<String?>('storageServerType');
+    this.storageServerVersion = registerOutput<String>('storageServerVersion');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts =
+        registerOutput<CloudExadataInfrastructureTimeouts?>('timeouts');
+    this.totalStorageSizeInGbs = registerOutput<int>('totalStorageSizeInGbs');
   }
 }

@@ -64,25 +64,29 @@ class Environment7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.endpoints = Output.createUnknown<
-        GoogleCloudDataplexV1EnvironmentEndpointsResponse>();
-    this.environmentId = Output.createUnknown<String>();
-    this.infrastructureSpec = Output.createUnknown<
-        GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lakeId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.sessionSpec = Output.createUnknown<
-        GoogleCloudDataplexV1EnvironmentSessionSpecResponse>();
-    this.sessionStatus = Output.createUnknown<
-        GoogleCloudDataplexV1EnvironmentSessionStatusResponse>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.endpoints =
+        registerOutput<GoogleCloudDataplexV1EnvironmentEndpointsResponse>(
+            'endpoints');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.infrastructureSpec = registerOutput<
+            GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse>(
+        'infrastructureSpec');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lakeId = registerOutput<String>('lakeId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.sessionSpec =
+        registerOutput<GoogleCloudDataplexV1EnvironmentSessionSpecResponse>(
+            'sessionSpec');
+    this.sessionStatus =
+        registerOutput<GoogleCloudDataplexV1EnvironmentSessionStatusResponse>(
+            'sessionStatus');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

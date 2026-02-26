@@ -47,17 +47,18 @@ class CanaryEvaluation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.control = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.metricLabels = Output.createUnknown<
-        GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.treatment = Output.createUnknown<String>();
-    this.verdict = Output.createUnknown<String>();
+    this.control = registerOutput<String>('control');
+    this.createTime = registerOutput<String>('createTime');
+    this.endTime = registerOutput<String>('endTime');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.metricLabels =
+        registerOutput<GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse>(
+            'metricLabels');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
+    this.treatment = registerOutput<String>('treatment');
+    this.verdict = registerOutput<String>('verdict');
   }
 }

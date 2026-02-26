@@ -503,17 +503,17 @@ class Connector2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessRole = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.as2Config = Output.createUnknown<ConnectorAs2Config?>();
-    this.connectorId = Output.createUnknown<String>();
-    this.egressConfig = Output.createUnknown<ConnectorEgressConfig?>();
-    this.loggingRole = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.securityPolicyName = Output.createUnknown<String>();
-    this.sftpConfig = Output.createUnknown<ConnectorSftpConfig?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.url = Output.createUnknown<String?>();
+    this.accessRole = registerOutput<String>('accessRole');
+    this.arn = registerOutput<String>('arn');
+    this.as2Config = registerOutput<ConnectorAs2Config?>('as2Config');
+    this.connectorId = registerOutput<String>('connectorId');
+    this.egressConfig = registerOutput<ConnectorEgressConfig?>('egressConfig');
+    this.loggingRole = registerOutput<String?>('loggingRole');
+    this.region = registerOutput<String>('region');
+    this.securityPolicyName = registerOutput<String>('securityPolicyName');
+    this.sftpConfig = registerOutput<ConnectorSftpConfig?>('sftpConfig');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.url = registerOutput<String?>('url');
   }
 }

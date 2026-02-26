@@ -384,16 +384,16 @@ class TargetSSLProxy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backendService = Output.createUnknown<String>();
-    this.certificateMap = Output.createUnknown<String?>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.proxyHeader = Output.createUnknown<String?>();
-    this.proxyId = Output.createUnknown<int>();
-    this.selfLink = Output.createUnknown<String>();
-    this.sslCertificates = Output.createUnknown<List<String>?>();
-    this.sslPolicy = Output.createUnknown<String?>();
+    this.backendService = registerOutput<String>('backendService');
+    this.certificateMap = registerOutput<String?>('certificateMap');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.proxyHeader = registerOutput<String?>('proxyHeader');
+    this.proxyId = registerOutput<int>('proxyId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.sslCertificates = registerOutput<List<String>?>('sslCertificates');
+    this.sslPolicy = registerOutput<String?>('sslPolicy');
   }
 }

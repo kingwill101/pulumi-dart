@@ -1012,28 +1012,35 @@ class AiEndpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.dedicatedEndpointDns = Output.createUnknown<String>();
-    this.dedicatedEndpointEnabled = Output.createUnknown<bool?>();
-    this.deployedModels = Output.createUnknown<List<AiEndpointDeployedModel>>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.encryptionSpec = Output.createUnknown<AiEndpointEncryptionSpec?>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.modelDeploymentMonitoringJob = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String?>();
+    this.createTime = registerOutput<String>('createTime');
+    this.dedicatedEndpointDns = registerOutput<String>('dedicatedEndpointDns');
+    this.dedicatedEndpointEnabled =
+        registerOutput<bool?>('dedicatedEndpointEnabled');
+    this.deployedModels =
+        registerOutput<List<AiEndpointDeployedModel>>('deployedModels');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.encryptionSpec =
+        registerOutput<AiEndpointEncryptionSpec?>('encryptionSpec');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.modelDeploymentMonitoringJob =
+        registerOutput<String>('modelDeploymentMonitoringJob');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String?>('network');
     this.predictRequestResponseLoggingConfig =
-        Output.createUnknown<AiEndpointPredictRequestResponseLoggingConfig?>();
+        registerOutput<AiEndpointPredictRequestResponseLoggingConfig?>(
+            'predictRequestResponseLoggingConfig');
     this.privateServiceConnectConfig =
-        Output.createUnknown<AiEndpointPrivateServiceConnectConfig?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String?>();
-    this.trafficSplit = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<AiEndpointPrivateServiceConnectConfig?>(
+            'privateServiceConnectConfig');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String?>('region');
+    this.trafficSplit = registerOutput<String>('trafficSplit');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

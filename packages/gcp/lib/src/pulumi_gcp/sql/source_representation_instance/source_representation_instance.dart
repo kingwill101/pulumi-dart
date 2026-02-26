@@ -352,17 +352,17 @@ class SourceRepresentationInstance extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.caCertificate = Output.createUnknown<String?>();
-    this.clientCertificate = Output.createUnknown<String?>();
-    this.clientKey = Output.createUnknown<String?>();
-    this.databaseVersion = Output.createUnknown<String>();
-    this.dumpFilePath = Output.createUnknown<String?>();
-    this.host = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.password = Output.createUnknown<String?>();
-    this.port = Output.createUnknown<int?>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.username = Output.createUnknown<String?>();
+    this.caCertificate = registerOutput<String?>('caCertificate');
+    this.clientCertificate = registerOutput<String?>('clientCertificate');
+    this.clientKey = registerOutput<String?>('clientKey');
+    this.databaseVersion = registerOutput<String>('databaseVersion');
+    this.dumpFilePath = registerOutput<String?>('dumpFilePath');
+    this.host = registerOutput<String>('host');
+    this.name = registerOutput<String>('name');
+    this.password = registerOutput<String?>('password');
+    this.port = registerOutput<int?>('port');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.username = registerOutput<String?>('username');
   }
 }

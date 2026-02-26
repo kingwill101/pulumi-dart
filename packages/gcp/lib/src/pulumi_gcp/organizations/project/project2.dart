@@ -451,17 +451,18 @@ class Project2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoCreateNetwork = Output.createUnknown<bool?>();
-    this.billingAccount = Output.createUnknown<String?>();
-    this.deletionPolicy = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.folderId = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.number = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String?>();
-    this.projectId = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
+    this.autoCreateNetwork = registerOutput<bool?>('autoCreateNetwork');
+    this.billingAccount = registerOutput<String?>('billingAccount');
+    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.folderId = registerOutput<String?>('folderId');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.number = registerOutput<String>('number');
+    this.orgId = registerOutput<String?>('orgId');
+    this.projectId = registerOutput<String>('projectId');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.tags = registerOutput<Map<String, String>?>('tags');
   }
 }

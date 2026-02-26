@@ -438,7 +438,7 @@ class HostedZoneDnsSec extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.hostedZoneId = Output.createUnknown<String>();
-    this.signingStatus = Output.createUnknown<String?>();
+    this.hostedZoneId = registerOutput<String>('hostedZoneId');
+    this.signingStatus = registerOutput<String?>('signingStatus');
   }
 }

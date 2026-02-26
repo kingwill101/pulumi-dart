@@ -2783,38 +2783,42 @@ class Job2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.binaryAuthorization = Output.createUnknown<JobBinaryAuthorization?>();
-    this.client = Output.createUnknown<String?>();
-    this.clientVersion = Output.createUnknown<String?>();
-    this.conditions = Output.createUnknown<List<JobCondition>>();
-    this.createTime = Output.createUnknown<String>();
-    this.creator = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.executionCount = Output.createUnknown<int>();
-    this.expireTime = Output.createUnknown<String>();
-    this.generation = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.lastModifier = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.binaryAuthorization =
+        registerOutput<JobBinaryAuthorization?>('binaryAuthorization');
+    this.client = registerOutput<String?>('client');
+    this.clientVersion = registerOutput<String?>('clientVersion');
+    this.conditions = registerOutput<List<JobCondition>>('conditions');
+    this.createTime = registerOutput<String>('createTime');
+    this.creator = registerOutput<String>('creator');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.etag = registerOutput<String>('etag');
+    this.executionCount = registerOutput<int>('executionCount');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.generation = registerOutput<String>('generation');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.lastModifier = registerOutput<String>('lastModifier');
     this.latestCreatedExecutions =
-        Output.createUnknown<List<JobLatestCreatedExecution>>();
-    this.launchStage = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.observedGeneration = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.runExecutionToken = Output.createUnknown<String?>();
-    this.startExecutionToken = Output.createUnknown<String?>();
-    this.template = Output.createUnknown<JobTemplate>();
+        registerOutput<List<JobLatestCreatedExecution>>(
+            'latestCreatedExecutions');
+    this.launchStage = registerOutput<String>('launchStage');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.observedGeneration = registerOutput<String>('observedGeneration');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.runExecutionToken = registerOutput<String?>('runExecutionToken');
+    this.startExecutionToken = registerOutput<String?>('startExecutionToken');
+    this.template = registerOutput<JobTemplate>('template');
     this.terminalConditions =
-        Output.createUnknown<List<JobTerminalCondition>>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<JobTerminalCondition>>('terminalConditions');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

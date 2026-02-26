@@ -1635,9 +1635,9 @@ class HostingVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.config = Output.createUnknown<HostingVersionConfig?>();
-    this.name = Output.createUnknown<String>();
-    this.siteId = Output.createUnknown<String>();
-    this.versionId = Output.createUnknown<String>();
+    this.config = registerOutput<HostingVersionConfig?>('config');
+    this.name = registerOutput<String>('name');
+    this.siteId = registerOutput<String>('siteId');
+    this.versionId = registerOutput<String>('versionId');
   }
 }

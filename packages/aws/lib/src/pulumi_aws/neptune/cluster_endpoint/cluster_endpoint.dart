@@ -153,15 +153,16 @@ class ClusterEndpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.clusterEndpointIdentifier = Output.createUnknown<String>();
-    this.clusterIdentifier = Output.createUnknown<String>();
-    this.endpoint = Output.createUnknown<String>();
-    this.endpointType = Output.createUnknown<String>();
-    this.excludedMembers = Output.createUnknown<List<String>?>();
-    this.region = Output.createUnknown<String>();
-    this.staticMembers = Output.createUnknown<List<String>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.clusterEndpointIdentifier =
+        registerOutput<String>('clusterEndpointIdentifier');
+    this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.endpointType = registerOutput<String>('endpointType');
+    this.excludedMembers = registerOutput<List<String>?>('excludedMembers');
+    this.region = registerOutput<String>('region');
+    this.staticMembers = registerOutput<List<String>?>('staticMembers');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

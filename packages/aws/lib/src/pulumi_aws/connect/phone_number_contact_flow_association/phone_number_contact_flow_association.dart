@@ -135,9 +135,9 @@ class PhoneNumberContactFlowAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.contactFlowId = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.phoneNumberId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.contactFlowId = registerOutput<String>('contactFlowId');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.phoneNumberId = registerOutput<String>('phoneNumberId');
+    this.region = registerOutput<String>('region');
   }
 }

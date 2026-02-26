@@ -2125,13 +2125,14 @@ class BucketLifecycleConfigurationV2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.expectedBucketOwner = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.expectedBucketOwner = registerOutput<String>('expectedBucketOwner');
+    this.region = registerOutput<String>('region');
     this.rules =
-        Output.createUnknown<List<BucketLifecycleConfigurationV2Rule>?>();
+        registerOutput<List<BucketLifecycleConfigurationV2Rule>?>('rules');
     this.timeouts =
-        Output.createUnknown<BucketLifecycleConfigurationV2Timeouts?>();
-    this.transitionDefaultMinimumObjectSize = Output.createUnknown<String>();
+        registerOutput<BucketLifecycleConfigurationV2Timeouts?>('timeouts');
+    this.transitionDefaultMinimumObjectSize =
+        registerOutput<String>('transitionDefaultMinimumObjectSize');
   }
 }

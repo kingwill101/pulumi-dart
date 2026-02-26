@@ -947,33 +947,39 @@ class Gateway2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activationKey = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.averageDownloadRateLimitInBitsPerSec = Output.createUnknown<int?>();
-    this.averageUploadRateLimitInBitsPerSec = Output.createUnknown<int?>();
-    this.cloudwatchLogGroupArn = Output.createUnknown<String?>();
-    this.ec2InstanceId = Output.createUnknown<String>();
-    this.endpointType = Output.createUnknown<String>();
-    this.gatewayId = Output.createUnknown<String>();
-    this.gatewayIpAddress = Output.createUnknown<String>();
-    this.gatewayName = Output.createUnknown<String>();
+    this.activationKey = registerOutput<String>('activationKey');
+    this.arn = registerOutput<String>('arn');
+    this.averageDownloadRateLimitInBitsPerSec =
+        registerOutput<int?>('averageDownloadRateLimitInBitsPerSec');
+    this.averageUploadRateLimitInBitsPerSec =
+        registerOutput<int?>('averageUploadRateLimitInBitsPerSec');
+    this.cloudwatchLogGroupArn =
+        registerOutput<String?>('cloudwatchLogGroupArn');
+    this.ec2InstanceId = registerOutput<String>('ec2InstanceId');
+    this.endpointType = registerOutput<String>('endpointType');
+    this.gatewayId = registerOutput<String>('gatewayId');
+    this.gatewayIpAddress = registerOutput<String>('gatewayIpAddress');
+    this.gatewayName = registerOutput<String>('gatewayName');
     this.gatewayNetworkInterfaces =
-        Output.createUnknown<List<GatewayGatewayNetworkInterface>>();
-    this.gatewayTimezone = Output.createUnknown<String>();
-    this.gatewayType = Output.createUnknown<String?>();
-    this.gatewayVpcEndpoint = Output.createUnknown<String?>();
-    this.hostEnvironment = Output.createUnknown<String>();
+        registerOutput<List<GatewayGatewayNetworkInterface>>(
+            'gatewayNetworkInterfaces');
+    this.gatewayTimezone = registerOutput<String>('gatewayTimezone');
+    this.gatewayType = registerOutput<String?>('gatewayType');
+    this.gatewayVpcEndpoint = registerOutput<String?>('gatewayVpcEndpoint');
+    this.hostEnvironment = registerOutput<String>('hostEnvironment');
     this.maintenanceStartTime =
-        Output.createUnknown<GatewayMaintenanceStartTime>();
-    this.mediumChangerType = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<GatewayMaintenanceStartTime>('maintenanceStartTime');
+    this.mediumChangerType = registerOutput<String?>('mediumChangerType');
+    this.region = registerOutput<String>('region');
     this.smbActiveDirectorySettings =
-        Output.createUnknown<GatewaySmbActiveDirectorySettings?>();
-    this.smbFileShareVisibility = Output.createUnknown<bool?>();
-    this.smbGuestPassword = Output.createUnknown<String?>();
-    this.smbSecurityStrategy = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tapeDriveType = Output.createUnknown<String?>();
+        registerOutput<GatewaySmbActiveDirectorySettings?>(
+            'smbActiveDirectorySettings');
+    this.smbFileShareVisibility =
+        registerOutput<bool?>('smbFileShareVisibility');
+    this.smbGuestPassword = registerOutput<String?>('smbGuestPassword');
+    this.smbSecurityStrategy = registerOutput<String>('smbSecurityStrategy');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tapeDriveType = registerOutput<String?>('tapeDriveType');
   }
 }

@@ -997,45 +997,56 @@ class InterconnectAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.adminEnabled = Output.createUnknown<bool?>();
-    this.attachmentGroup = Output.createUnknown<String>();
-    this.bandwidth = Output.createUnknown<String>();
-    this.candidateCloudRouterIpAddress = Output.createUnknown<String?>();
-    this.candidateCloudRouterIpv6Address = Output.createUnknown<String?>();
-    this.candidateCustomerRouterIpAddress = Output.createUnknown<String?>();
-    this.candidateCustomerRouterIpv6Address = Output.createUnknown<String?>();
-    this.candidateSubnets = Output.createUnknown<List<String>?>();
-    this.cloudRouterIpAddress = Output.createUnknown<String>();
-    this.cloudRouterIpv6Address = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.customerRouterIpAddress = Output.createUnknown<String>();
-    this.customerRouterIpv6Address = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.edgeAvailabilityDomain = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.encryption = Output.createUnknown<String?>();
-    this.googleReferenceId = Output.createUnknown<String>();
-    this.interconnect = Output.createUnknown<String?>();
-    this.ipsecInternalAddresses = Output.createUnknown<List<String>?>();
+    this.adminEnabled = registerOutput<bool?>('adminEnabled');
+    this.attachmentGroup = registerOutput<String>('attachmentGroup');
+    this.bandwidth = registerOutput<String>('bandwidth');
+    this.candidateCloudRouterIpAddress =
+        registerOutput<String?>('candidateCloudRouterIpAddress');
+    this.candidateCloudRouterIpv6Address =
+        registerOutput<String?>('candidateCloudRouterIpv6Address');
+    this.candidateCustomerRouterIpAddress =
+        registerOutput<String?>('candidateCustomerRouterIpAddress');
+    this.candidateCustomerRouterIpv6Address =
+        registerOutput<String?>('candidateCustomerRouterIpv6Address');
+    this.candidateSubnets = registerOutput<List<String>?>('candidateSubnets');
+    this.cloudRouterIpAddress = registerOutput<String>('cloudRouterIpAddress');
+    this.cloudRouterIpv6Address =
+        registerOutput<String>('cloudRouterIpv6Address');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.customerRouterIpAddress =
+        registerOutput<String>('customerRouterIpAddress');
+    this.customerRouterIpv6Address =
+        registerOutput<String>('customerRouterIpv6Address');
+    this.description = registerOutput<String?>('description');
+    this.edgeAvailabilityDomain =
+        registerOutput<String>('edgeAvailabilityDomain');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.encryption = registerOutput<String?>('encryption');
+    this.googleReferenceId = registerOutput<String>('googleReferenceId');
+    this.interconnect = registerOutput<String?>('interconnect');
+    this.ipsecInternalAddresses =
+        registerOutput<List<String>?>('ipsecInternalAddresses');
     this.l2Forwarding =
-        Output.createUnknown<InterconnectAttachmentL2Forwarding?>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.mtu = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.pairingKey = Output.createUnknown<String>();
-    this.partnerAsn = Output.createUnknown<String>();
-    this.privateInterconnectInfos = Output.createUnknown<
-        List<InterconnectAttachmentPrivateInterconnectInfo>>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String>();
-    this.router = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.stackType = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.subnetLength = Output.createUnknown<int?>();
-    this.type = Output.createUnknown<String>();
-    this.vlanTag8021q = Output.createUnknown<int>();
+        registerOutput<InterconnectAttachmentL2Forwarding?>('l2Forwarding');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.mtu = registerOutput<String>('mtu');
+    this.name = registerOutput<String>('name');
+    this.pairingKey = registerOutput<String>('pairingKey');
+    this.partnerAsn = registerOutput<String>('partnerAsn');
+    this.privateInterconnectInfos =
+        registerOutput<List<InterconnectAttachmentPrivateInterconnectInfo>>(
+            'privateInterconnectInfos');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String>('region');
+    this.router = registerOutput<String?>('router');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.stackType = registerOutput<String>('stackType');
+    this.state = registerOutput<String>('state');
+    this.subnetLength = registerOutput<int?>('subnetLength');
+    this.type = registerOutput<String>('type');
+    this.vlanTag8021q = registerOutput<int>('vlanTag8021q');
   }
 }

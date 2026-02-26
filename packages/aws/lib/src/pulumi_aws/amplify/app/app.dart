@@ -1282,33 +1282,38 @@ class App extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessToken = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
+    this.accessToken = registerOutput<String?>('accessToken');
+    this.arn = registerOutput<String>('arn');
     this.autoBranchCreationConfig =
-        Output.createUnknown<AppAutoBranchCreationConfig>();
-    this.autoBranchCreationPatterns = Output.createUnknown<List<String>?>();
-    this.basicAuthCredentials = Output.createUnknown<String?>();
-    this.buildSpec = Output.createUnknown<String>();
-    this.cacheConfig = Output.createUnknown<AppCacheConfig>();
-    this.computeRoleArn = Output.createUnknown<String?>();
-    this.customHeaders = Output.createUnknown<String>();
-    this.customRules = Output.createUnknown<List<AppCustomRule>?>();
-    this.defaultDomain = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.enableAutoBranchCreation = Output.createUnknown<bool?>();
-    this.enableBasicAuth = Output.createUnknown<bool?>();
-    this.enableBranchAutoBuild = Output.createUnknown<bool?>();
-    this.enableBranchAutoDeletion = Output.createUnknown<bool?>();
-    this.environmentVariables = Output.createUnknown<Map<String, String>?>();
-    this.iamServiceRoleArn = Output.createUnknown<String?>();
-    this.jobConfig = Output.createUnknown<AppJobConfig>();
-    this.name = Output.createUnknown<String>();
-    this.oauthToken = Output.createUnknown<String?>();
-    this.platform = Output.createUnknown<String?>();
-    this.productionBranches = Output.createUnknown<List<AppProductionBranch>>();
-    this.region = Output.createUnknown<String>();
-    this.repository = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<AppAutoBranchCreationConfig>('autoBranchCreationConfig');
+    this.autoBranchCreationPatterns =
+        registerOutput<List<String>?>('autoBranchCreationPatterns');
+    this.basicAuthCredentials = registerOutput<String?>('basicAuthCredentials');
+    this.buildSpec = registerOutput<String>('buildSpec');
+    this.cacheConfig = registerOutput<AppCacheConfig>('cacheConfig');
+    this.computeRoleArn = registerOutput<String?>('computeRoleArn');
+    this.customHeaders = registerOutput<String>('customHeaders');
+    this.customRules = registerOutput<List<AppCustomRule>?>('customRules');
+    this.defaultDomain = registerOutput<String>('defaultDomain');
+    this.description = registerOutput<String?>('description');
+    this.enableAutoBranchCreation =
+        registerOutput<bool?>('enableAutoBranchCreation');
+    this.enableBasicAuth = registerOutput<bool?>('enableBasicAuth');
+    this.enableBranchAutoBuild = registerOutput<bool?>('enableBranchAutoBuild');
+    this.enableBranchAutoDeletion =
+        registerOutput<bool?>('enableBranchAutoDeletion');
+    this.environmentVariables =
+        registerOutput<Map<String, String>?>('environmentVariables');
+    this.iamServiceRoleArn = registerOutput<String?>('iamServiceRoleArn');
+    this.jobConfig = registerOutput<AppJobConfig>('jobConfig');
+    this.name = registerOutput<String>('name');
+    this.oauthToken = registerOutput<String?>('oauthToken');
+    this.platform = registerOutput<String?>('platform');
+    this.productionBranches =
+        registerOutput<List<AppProductionBranch>>('productionBranches');
+    this.region = registerOutput<String>('region');
+    this.repository = registerOutput<String?>('repository');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

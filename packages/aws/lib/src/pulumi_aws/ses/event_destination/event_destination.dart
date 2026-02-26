@@ -511,17 +511,19 @@ class EventDestination extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.cloudwatchDestinations =
-        Output.createUnknown<List<EventDestinationCloudwatchDestination>?>();
-    this.configurationSetName = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool?>();
+        registerOutput<List<EventDestinationCloudwatchDestination>?>(
+            'cloudwatchDestinations');
+    this.configurationSetName = registerOutput<String>('configurationSetName');
+    this.enabled = registerOutput<bool?>('enabled');
     this.kinesisDestination =
-        Output.createUnknown<EventDestinationKinesisDestination?>();
-    this.matchingTypes = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<EventDestinationKinesisDestination?>(
+            'kinesisDestination');
+    this.matchingTypes = registerOutput<List<String>>('matchingTypes');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
     this.snsDestination =
-        Output.createUnknown<EventDestinationSnsDestination?>();
+        registerOutput<EventDestinationSnsDestination?>('snsDestination');
   }
 }

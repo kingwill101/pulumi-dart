@@ -44,17 +44,18 @@ class SecurityProfile2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.securityProfileId = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.securityProfileId = registerOutput<String>('securityProfileId');
     this.threatPreventionProfile =
-        Output.createUnknown<ThreatPreventionProfileResponse>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<ThreatPreventionProfileResponse>(
+            'threatPreventionProfile');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

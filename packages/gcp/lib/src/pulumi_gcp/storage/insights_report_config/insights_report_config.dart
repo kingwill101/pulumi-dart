@@ -501,16 +501,20 @@ class InsightsReportConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.csvOptions = Output.createUnknown<InsightsReportConfigCsvOptions?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.forceDestroy = Output.createUnknown<bool?>();
+    this.csvOptions =
+        registerOutput<InsightsReportConfigCsvOptions?>('csvOptions');
+    this.displayName = registerOutput<String?>('displayName');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
     this.frequencyOptions =
-        Output.createUnknown<InsightsReportConfigFrequencyOptions?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.objectMetadataReportOptions = Output.createUnknown<
-        InsightsReportConfigObjectMetadataReportOptions?>();
-    this.parquetOptions = Output.createUnknown<Map<String, dynamic>?>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<InsightsReportConfigFrequencyOptions?>(
+            'frequencyOptions');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.objectMetadataReportOptions =
+        registerOutput<InsightsReportConfigObjectMetadataReportOptions?>(
+            'objectMetadataReportOptions');
+    this.parquetOptions =
+        registerOutput<Map<String, dynamic>?>('parquetOptions');
+    this.project = registerOutput<String>('project');
   }
 }

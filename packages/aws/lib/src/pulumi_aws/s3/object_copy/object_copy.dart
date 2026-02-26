@@ -457,59 +457,65 @@ class ObjectCopy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acl = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.bucket = Output.createUnknown<String>();
-    this.bucketKeyEnabled = Output.createUnknown<bool>();
-    this.cacheControl = Output.createUnknown<String>();
-    this.checksumAlgorithm = Output.createUnknown<String?>();
-    this.checksumCrc32 = Output.createUnknown<String>();
-    this.checksumCrc32c = Output.createUnknown<String>();
-    this.checksumCrc64nvme = Output.createUnknown<String>();
-    this.checksumSha1 = Output.createUnknown<String>();
-    this.checksumSha256 = Output.createUnknown<String>();
-    this.contentDisposition = Output.createUnknown<String>();
-    this.contentEncoding = Output.createUnknown<String>();
-    this.contentLanguage = Output.createUnknown<String>();
-    this.contentType = Output.createUnknown<String>();
-    this.copyIfMatch = Output.createUnknown<String?>();
-    this.copyIfModifiedSince = Output.createUnknown<String?>();
-    this.copyIfNoneMatch = Output.createUnknown<String?>();
-    this.copyIfUnmodifiedSince = Output.createUnknown<String?>();
-    this.customerAlgorithm = Output.createUnknown<String>();
-    this.customerKey = Output.createUnknown<String?>();
-    this.customerKeyMd5 = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.expectedBucketOwner = Output.createUnknown<String?>();
-    this.expectedSourceBucketOwner = Output.createUnknown<String?>();
-    this.expiration = Output.createUnknown<String>();
-    this.expires = Output.createUnknown<String?>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.grants = Output.createUnknown<List<ObjectCopyGrant>?>();
-    this.key = Output.createUnknown<String>();
-    this.kmsEncryptionContext = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.lastModified = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>>();
-    this.metadataDirective = Output.createUnknown<String?>();
-    this.objectLockLegalHoldStatus = Output.createUnknown<String>();
-    this.objectLockMode = Output.createUnknown<String>();
-    this.objectLockRetainUntilDate = Output.createUnknown<String>();
-    this.overrideProvider = Output.createUnknown<ObjectCopyOverrideProvider?>();
-    this.region = Output.createUnknown<String>();
-    this.requestCharged = Output.createUnknown<bool>();
-    this.requestPayer = Output.createUnknown<String?>();
-    this.serverSideEncryption = Output.createUnknown<String>();
-    this.source = Output.createUnknown<String>();
-    this.sourceCustomerAlgorithm = Output.createUnknown<String?>();
-    this.sourceCustomerKey = Output.createUnknown<String?>();
-    this.sourceCustomerKeyMd5 = Output.createUnknown<String?>();
-    this.sourceVersionId = Output.createUnknown<String>();
-    this.storageClass = Output.createUnknown<String>();
-    this.taggingDirective = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.versionId = Output.createUnknown<String>();
-    this.websiteRedirect = Output.createUnknown<String>();
+    this.acl = registerOutput<String>('acl');
+    this.arn = registerOutput<String>('arn');
+    this.bucket = registerOutput<String>('bucket');
+    this.bucketKeyEnabled = registerOutput<bool>('bucketKeyEnabled');
+    this.cacheControl = registerOutput<String>('cacheControl');
+    this.checksumAlgorithm = registerOutput<String?>('checksumAlgorithm');
+    this.checksumCrc32 = registerOutput<String>('checksumCrc32');
+    this.checksumCrc32c = registerOutput<String>('checksumCrc32c');
+    this.checksumCrc64nvme = registerOutput<String>('checksumCrc64nvme');
+    this.checksumSha1 = registerOutput<String>('checksumSha1');
+    this.checksumSha256 = registerOutput<String>('checksumSha256');
+    this.contentDisposition = registerOutput<String>('contentDisposition');
+    this.contentEncoding = registerOutput<String>('contentEncoding');
+    this.contentLanguage = registerOutput<String>('contentLanguage');
+    this.contentType = registerOutput<String>('contentType');
+    this.copyIfMatch = registerOutput<String?>('copyIfMatch');
+    this.copyIfModifiedSince = registerOutput<String?>('copyIfModifiedSince');
+    this.copyIfNoneMatch = registerOutput<String?>('copyIfNoneMatch');
+    this.copyIfUnmodifiedSince =
+        registerOutput<String?>('copyIfUnmodifiedSince');
+    this.customerAlgorithm = registerOutput<String>('customerAlgorithm');
+    this.customerKey = registerOutput<String?>('customerKey');
+    this.customerKeyMd5 = registerOutput<String>('customerKeyMd5');
+    this.etag = registerOutput<String>('etag');
+    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    this.expectedSourceBucketOwner =
+        registerOutput<String?>('expectedSourceBucketOwner');
+    this.expiration = registerOutput<String>('expiration');
+    this.expires = registerOutput<String?>('expires');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.grants = registerOutput<List<ObjectCopyGrant>?>('grants');
+    this.key = registerOutput<String>('key');
+    this.kmsEncryptionContext = registerOutput<String>('kmsEncryptionContext');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.lastModified = registerOutput<String>('lastModified');
+    this.metadata = registerOutput<Map<String, String>>('metadata');
+    this.metadataDirective = registerOutput<String?>('metadataDirective');
+    this.objectLockLegalHoldStatus =
+        registerOutput<String>('objectLockLegalHoldStatus');
+    this.objectLockMode = registerOutput<String>('objectLockMode');
+    this.objectLockRetainUntilDate =
+        registerOutput<String>('objectLockRetainUntilDate');
+    this.overrideProvider =
+        registerOutput<ObjectCopyOverrideProvider?>('overrideProvider');
+    this.region = registerOutput<String>('region');
+    this.requestCharged = registerOutput<bool>('requestCharged');
+    this.requestPayer = registerOutput<String?>('requestPayer');
+    this.serverSideEncryption = registerOutput<String>('serverSideEncryption');
+    this.source = registerOutput<String>('source');
+    this.sourceCustomerAlgorithm =
+        registerOutput<String?>('sourceCustomerAlgorithm');
+    this.sourceCustomerKey = registerOutput<String?>('sourceCustomerKey');
+    this.sourceCustomerKeyMd5 = registerOutput<String?>('sourceCustomerKeyMd5');
+    this.sourceVersionId = registerOutput<String>('sourceVersionId');
+    this.storageClass = registerOutput<String>('storageClass');
+    this.taggingDirective = registerOutput<String?>('taggingDirective');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.versionId = registerOutput<String>('versionId');
+    this.websiteRedirect = registerOutput<String>('websiteRedirect');
   }
 }

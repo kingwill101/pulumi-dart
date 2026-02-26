@@ -439,52 +439,58 @@ class Volume extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activeDirectory = Output.createUnknown<String>();
-    this.backupConfig = Output.createUnknown<VolumeBackupConfig?>();
-    this.blockDevices = Output.createUnknown<List<VolumeBlockDevice>?>();
-    this.cacheParameters = Output.createUnknown<VolumeCacheParameters?>();
-    this.capacityGib = Output.createUnknown<String>();
-    this.coldTierSizeGib = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.deletionPolicy = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.encryptionType = Output.createUnknown<String>();
-    this.exportPolicy = Output.createUnknown<VolumeExportPolicy?>();
-    this.hasReplication = Output.createUnknown<bool>();
-    this.hotTierSizeUsedGib = Output.createUnknown<String>();
+    this.activeDirectory = registerOutput<String>('activeDirectory');
+    this.backupConfig = registerOutput<VolumeBackupConfig?>('backupConfig');
+    this.blockDevices =
+        registerOutput<List<VolumeBlockDevice>?>('blockDevices');
+    this.cacheParameters =
+        registerOutput<VolumeCacheParameters?>('cacheParameters');
+    this.capacityGib = registerOutput<String>('capacityGib');
+    this.coldTierSizeGib = registerOutput<String>('coldTierSizeGib');
+    this.createTime = registerOutput<String>('createTime');
+    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.encryptionType = registerOutput<String>('encryptionType');
+    this.exportPolicy = registerOutput<VolumeExportPolicy?>('exportPolicy');
+    this.hasReplication = registerOutput<bool>('hasReplication');
+    this.hotTierSizeUsedGib = registerOutput<String>('hotTierSizeUsedGib');
     this.hybridReplicationParameters =
-        Output.createUnknown<VolumeHybridReplicationParameters?>();
-    this.kerberosEnabled = Output.createUnknown<bool?>();
-    this.kmsConfig = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.largeCapacity = Output.createUnknown<bool?>();
-    this.ldapEnabled = Output.createUnknown<bool>();
-    this.location = Output.createUnknown<String>();
-    this.mountOptions = Output.createUnknown<List<VolumeMountOption>>();
-    this.multipleEndpoints = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.protocols = Output.createUnknown<List<String>>();
-    this.psaRange = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.replicaZone = Output.createUnknown<String>();
-    this.restoreParameters = Output.createUnknown<VolumeRestoreParameters?>();
-    this.restrictedActions = Output.createUnknown<List<String>?>();
-    this.securityStyle = Output.createUnknown<String>();
-    this.serviceLevel = Output.createUnknown<String>();
-    this.shareName = Output.createUnknown<String?>();
-    this.smbSettings = Output.createUnknown<List<String>>();
-    this.snapshotDirectory = Output.createUnknown<bool?>();
-    this.snapshotPolicy = Output.createUnknown<VolumeSnapshotPolicy?>();
-    this.state = Output.createUnknown<String>();
-    this.stateDetails = Output.createUnknown<String>();
-    this.storagePool = Output.createUnknown<String>();
-    this.throughputMibps = Output.createUnknown<double>();
-    this.tieringPolicy = Output.createUnknown<VolumeTieringPolicy?>();
-    this.unixPermissions = Output.createUnknown<String>();
-    this.usedGib = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<VolumeHybridReplicationParameters?>(
+            'hybridReplicationParameters');
+    this.kerberosEnabled = registerOutput<bool?>('kerberosEnabled');
+    this.kmsConfig = registerOutput<String>('kmsConfig');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.largeCapacity = registerOutput<bool?>('largeCapacity');
+    this.ldapEnabled = registerOutput<bool>('ldapEnabled');
+    this.location = registerOutput<String>('location');
+    this.mountOptions = registerOutput<List<VolumeMountOption>>('mountOptions');
+    this.multipleEndpoints = registerOutput<bool?>('multipleEndpoints');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.project = registerOutput<String>('project');
+    this.protocols = registerOutput<List<String>>('protocols');
+    this.psaRange = registerOutput<String>('psaRange');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.replicaZone = registerOutput<String>('replicaZone');
+    this.restoreParameters =
+        registerOutput<VolumeRestoreParameters?>('restoreParameters');
+    this.restrictedActions = registerOutput<List<String>?>('restrictedActions');
+    this.securityStyle = registerOutput<String>('securityStyle');
+    this.serviceLevel = registerOutput<String>('serviceLevel');
+    this.shareName = registerOutput<String?>('shareName');
+    this.smbSettings = registerOutput<List<String>>('smbSettings');
+    this.snapshotDirectory = registerOutput<bool?>('snapshotDirectory');
+    this.snapshotPolicy =
+        registerOutput<VolumeSnapshotPolicy?>('snapshotPolicy');
+    this.state = registerOutput<String>('state');
+    this.stateDetails = registerOutput<String>('stateDetails');
+    this.storagePool = registerOutput<String>('storagePool');
+    this.throughputMibps = registerOutput<double>('throughputMibps');
+    this.tieringPolicy = registerOutput<VolumeTieringPolicy?>('tieringPolicy');
+    this.unixPermissions = registerOutput<String>('unixPermissions');
+    this.usedGib = registerOutput<String>('usedGib');
+    this.zone = registerOutput<String>('zone');
   }
 }

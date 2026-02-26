@@ -1302,20 +1302,21 @@ class Role extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.assumeRolePolicy = Output.createUnknown<String>();
-    this.createDate = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.forceDetachPolicies = Output.createUnknown<bool?>();
-    this.inlinePolicies = Output.createUnknown<List<RoleInlinePolicy>>();
-    this.managedPolicyArns = Output.createUnknown<List<String>>();
-    this.maxSessionDuration = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.path = Output.createUnknown<String?>();
-    this.permissionsBoundary = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.uniqueId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.assumeRolePolicy = registerOutput<String>('assumeRolePolicy');
+    this.createDate = registerOutput<String>('createDate');
+    this.description = registerOutput<String?>('description');
+    this.forceDetachPolicies = registerOutput<bool?>('forceDetachPolicies');
+    this.inlinePolicies =
+        registerOutput<List<RoleInlinePolicy>>('inlinePolicies');
+    this.managedPolicyArns = registerOutput<List<String>>('managedPolicyArns');
+    this.maxSessionDuration = registerOutput<int?>('maxSessionDuration');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.path = registerOutput<String?>('path');
+    this.permissionsBoundary = registerOutput<String?>('permissionsBoundary');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.uniqueId = registerOutput<String>('uniqueId');
   }
 }

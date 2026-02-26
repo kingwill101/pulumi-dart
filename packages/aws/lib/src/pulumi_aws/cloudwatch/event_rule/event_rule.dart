@@ -410,19 +410,19 @@ class EventRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.eventBusName = Output.createUnknown<String?>();
-    this.eventPattern = Output.createUnknown<String?>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.isEnabled = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String?>();
-    this.scheduleExpression = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.eventBusName = registerOutput<String?>('eventBusName');
+    this.eventPattern = registerOutput<String?>('eventPattern');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.isEnabled = registerOutput<bool?>('isEnabled');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String?>('roleArn');
+    this.scheduleExpression = registerOutput<String?>('scheduleExpression');
+    this.state = registerOutput<String?>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

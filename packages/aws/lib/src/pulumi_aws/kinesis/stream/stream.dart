@@ -230,18 +230,20 @@ class Stream extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.encryptionType = Output.createUnknown<String?>();
-    this.enforceConsumerDeletion = Output.createUnknown<bool?>();
-    this.kmsKeyId = Output.createUnknown<String?>();
-    this.maxRecordSizeInKib = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.retentionPeriod = Output.createUnknown<int?>();
-    this.shardCount = Output.createUnknown<int?>();
-    this.shardLevelMetrics = Output.createUnknown<List<String>?>();
-    this.streamModeDetails = Output.createUnknown<StreamStreamModeDetails>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.encryptionType = registerOutput<String?>('encryptionType');
+    this.enforceConsumerDeletion =
+        registerOutput<bool?>('enforceConsumerDeletion');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.maxRecordSizeInKib = registerOutput<int>('maxRecordSizeInKib');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.retentionPeriod = registerOutput<int?>('retentionPeriod');
+    this.shardCount = registerOutput<int?>('shardCount');
+    this.shardLevelMetrics = registerOutput<List<String>?>('shardLevelMetrics');
+    this.streamModeDetails =
+        registerOutput<StreamStreamModeDetails>('streamModeDetails');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

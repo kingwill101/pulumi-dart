@@ -35,13 +35,15 @@ class Replay4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.config = Output.createUnknown<
-        GoogleCloudPolicysimulatorV1betaReplayConfigResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.resultsSummary = Output.createUnknown<
-        GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponse>();
-    this.state = Output.createUnknown<String>();
+    this.config =
+        registerOutput<GoogleCloudPolicysimulatorV1betaReplayConfigResponse>(
+            'config');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.resultsSummary = registerOutput<
+            GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponse>(
+        'resultsSummary');
+    this.state = registerOutput<String>('state');
   }
 }

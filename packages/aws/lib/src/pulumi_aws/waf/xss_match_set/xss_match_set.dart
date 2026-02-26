@@ -205,9 +205,9 @@ class XssMatchSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
     this.xssMatchTuples =
-        Output.createUnknown<List<XssMatchSetXssMatchTuple>?>();
+        registerOutput<List<XssMatchSetXssMatchTuple>?>('xssMatchTuples');
   }
 }

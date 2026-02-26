@@ -1293,23 +1293,27 @@ class AiIndexEndpointDeployedIndex extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.automaticResources =
-        Output.createUnknown<AiIndexEndpointDeployedIndexAutomaticResources>();
-    this.createTime = Output.createUnknown<String>();
+        registerOutput<AiIndexEndpointDeployedIndexAutomaticResources>(
+            'automaticResources');
+    this.createTime = registerOutput<String>('createTime');
     this.dedicatedResources =
-        Output.createUnknown<AiIndexEndpointDeployedIndexDedicatedResources?>();
-    this.deployedIndexAuthConfig = Output.createUnknown<
-        AiIndexEndpointDeployedIndexDeployedIndexAuthConfig?>();
-    this.deployedIndexId = Output.createUnknown<String>();
-    this.deploymentGroup = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.enableAccessLogging = Output.createUnknown<bool?>();
-    this.index = Output.createUnknown<String>();
-    this.indexEndpoint = Output.createUnknown<String>();
-    this.indexSyncTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.privateEndpoints = Output.createUnknown<
-        List<AiIndexEndpointDeployedIndexPrivateEndpoint>>();
-    this.region = Output.createUnknown<String?>();
-    this.reservedIpRanges = Output.createUnknown<List<String>?>();
+        registerOutput<AiIndexEndpointDeployedIndexDedicatedResources?>(
+            'dedicatedResources');
+    this.deployedIndexAuthConfig =
+        registerOutput<AiIndexEndpointDeployedIndexDeployedIndexAuthConfig?>(
+            'deployedIndexAuthConfig');
+    this.deployedIndexId = registerOutput<String>('deployedIndexId');
+    this.deploymentGroup = registerOutput<String?>('deploymentGroup');
+    this.displayName = registerOutput<String?>('displayName');
+    this.enableAccessLogging = registerOutput<bool?>('enableAccessLogging');
+    this.index = registerOutput<String>('index');
+    this.indexEndpoint = registerOutput<String>('indexEndpoint');
+    this.indexSyncTime = registerOutput<String>('indexSyncTime');
+    this.name = registerOutput<String>('name');
+    this.privateEndpoints =
+        registerOutput<List<AiIndexEndpointDeployedIndexPrivateEndpoint>>(
+            'privateEndpoints');
+    this.region = registerOutput<String?>('region');
+    this.reservedIpRanges = registerOutput<List<String>?>('reservedIpRanges');
   }
 }

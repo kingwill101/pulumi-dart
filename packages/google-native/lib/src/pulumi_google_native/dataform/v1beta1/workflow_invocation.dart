@@ -40,15 +40,18 @@ class WorkflowInvocation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.compilationResult = Output.createUnknown<String>();
-    this.invocationConfig = Output.createUnknown<InvocationConfigResponse>();
-    this.invocationTiming = Output.createUnknown<IntervalResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.repositoryId = Output.createUnknown<String>();
-    this.resolvedCompilationResult = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.workflowConfig = Output.createUnknown<String>();
+    this.compilationResult = registerOutput<String>('compilationResult');
+    this.invocationConfig =
+        registerOutput<InvocationConfigResponse>('invocationConfig');
+    this.invocationTiming =
+        registerOutput<IntervalResponse>('invocationTiming');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.repositoryId = registerOutput<String>('repositoryId');
+    this.resolvedCompilationResult =
+        registerOutput<String>('resolvedCompilationResult');
+    this.state = registerOutput<String>('state');
+    this.workflowConfig = registerOutput<String>('workflowConfig');
   }
 }

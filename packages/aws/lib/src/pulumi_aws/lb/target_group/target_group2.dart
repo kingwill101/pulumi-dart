@@ -920,37 +920,42 @@ class TargetGroup2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.arnSuffix = Output.createUnknown<String>();
-    this.connectionTermination = Output.createUnknown<bool>();
-    this.deregistrationDelay = Output.createUnknown<int?>();
-    this.healthCheck = Output.createUnknown<TargetGroupHealthCheck2>();
-    this.ipAddressType = Output.createUnknown<String>();
-    this.lambdaMultiValueHeadersEnabled = Output.createUnknown<bool?>();
-    this.loadBalancerArns = Output.createUnknown<List<String>>();
-    this.loadBalancingAlgorithmType = Output.createUnknown<String>();
-    this.loadBalancingAnomalyMitigation = Output.createUnknown<String>();
-    this.loadBalancingCrossZoneEnabled = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int?>();
-    this.preserveClientIp = Output.createUnknown<String>();
-    this.protocol = Output.createUnknown<String?>();
-    this.protocolVersion = Output.createUnknown<String>();
-    this.proxyProtocolV2 = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.slowStart = Output.createUnknown<int?>();
-    this.stickiness = Output.createUnknown<TargetGroupStickiness2>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetControlPort = Output.createUnknown<int?>();
+    this.arn = registerOutput<String>('arn');
+    this.arnSuffix = registerOutput<String>('arnSuffix');
+    this.connectionTermination = registerOutput<bool>('connectionTermination');
+    this.deregistrationDelay = registerOutput<int?>('deregistrationDelay');
+    this.healthCheck = registerOutput<TargetGroupHealthCheck2>('healthCheck');
+    this.ipAddressType = registerOutput<String>('ipAddressType');
+    this.lambdaMultiValueHeadersEnabled =
+        registerOutput<bool?>('lambdaMultiValueHeadersEnabled');
+    this.loadBalancerArns = registerOutput<List<String>>('loadBalancerArns');
+    this.loadBalancingAlgorithmType =
+        registerOutput<String>('loadBalancingAlgorithmType');
+    this.loadBalancingAnomalyMitigation =
+        registerOutput<String>('loadBalancingAnomalyMitigation');
+    this.loadBalancingCrossZoneEnabled =
+        registerOutput<String>('loadBalancingCrossZoneEnabled');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.port = registerOutput<int?>('port');
+    this.preserveClientIp = registerOutput<String>('preserveClientIp');
+    this.protocol = registerOutput<String?>('protocol');
+    this.protocolVersion = registerOutput<String>('protocolVersion');
+    this.proxyProtocolV2 = registerOutput<bool?>('proxyProtocolV2');
+    this.region = registerOutput<String>('region');
+    this.slowStart = registerOutput<int?>('slowStart');
+    this.stickiness = registerOutput<TargetGroupStickiness2>('stickiness');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetControlPort = registerOutput<int?>('targetControlPort');
     this.targetFailovers =
-        Output.createUnknown<List<TargetGroupTargetFailover2>>();
+        registerOutput<List<TargetGroupTargetFailover2>>('targetFailovers');
     this.targetGroupHealth =
-        Output.createUnknown<TargetGroupTargetGroupHealth2>();
+        registerOutput<TargetGroupTargetGroupHealth2>('targetGroupHealth');
     this.targetHealthStates =
-        Output.createUnknown<List<TargetGroupTargetHealthState2>>();
-    this.targetType = Output.createUnknown<String?>();
-    this.vpcId = Output.createUnknown<String?>();
+        registerOutput<List<TargetGroupTargetHealthState2>>(
+            'targetHealthStates');
+    this.targetType = registerOutput<String?>('targetType');
+    this.vpcId = registerOutput<String?>('vpcId');
   }
 }

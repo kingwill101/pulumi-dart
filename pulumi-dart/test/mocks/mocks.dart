@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:pulumi/pulumi.dart';
 import 'package:mockito/annotations.dart';
-import 'package:pulumi/src/resource/component_resource.dart';
-import 'package:pulumi/src/resource/custom_resource.dart';
 
 @GenerateNiceMocks([
   MockSpec<Deployment>(),

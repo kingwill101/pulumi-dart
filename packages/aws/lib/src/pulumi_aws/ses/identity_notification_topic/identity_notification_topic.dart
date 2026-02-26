@@ -144,10 +144,11 @@ class IdentityNotificationTopic extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.identity = Output.createUnknown<String>();
-    this.includeOriginalHeaders = Output.createUnknown<bool?>();
-    this.notificationType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.topicArn = Output.createUnknown<String?>();
+    this.identity = registerOutput<String>('identity');
+    this.includeOriginalHeaders =
+        registerOutput<bool?>('includeOriginalHeaders');
+    this.notificationType = registerOutput<String>('notificationType');
+    this.region = registerOutput<String>('region');
+    this.topicArn = registerOutput<String?>('topicArn');
   }
 }

@@ -38,16 +38,17 @@ class Version10 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.flowId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.nluSettings = Output.createUnknown<
-        GoogleCloudDialogflowCxV3beta1NluSettingsResponse>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.agentId = registerOutput<String>('agentId');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.flowId = registerOutput<String>('flowId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.nluSettings =
+        registerOutput<GoogleCloudDialogflowCxV3beta1NluSettingsResponse>(
+            'nluSettings');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
   }
 }

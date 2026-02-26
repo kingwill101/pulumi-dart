@@ -167,13 +167,14 @@ class EventApiDestination extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.connectionArn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.httpMethod = Output.createUnknown<String>();
-    this.invocationEndpoint = Output.createUnknown<String>();
-    this.invocationRateLimitPerSecond = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.connectionArn = registerOutput<String>('connectionArn');
+    this.description = registerOutput<String?>('description');
+    this.httpMethod = registerOutput<String>('httpMethod');
+    this.invocationEndpoint = registerOutput<String>('invocationEndpoint');
+    this.invocationRateLimitPerSecond =
+        registerOutput<int?>('invocationRateLimitPerSecond');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -26,9 +26,9 @@ class PolicyIamPolicy2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bindings = Output.createUnknown<List<BindingResponse14>>();
-    this.etag = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.bindings = registerOutput<List<BindingResponse14>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

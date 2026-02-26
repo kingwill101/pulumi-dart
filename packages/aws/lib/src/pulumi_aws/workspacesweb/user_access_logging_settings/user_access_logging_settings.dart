@@ -312,11 +312,13 @@ class UserAccessLoggingSettings extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.associatedPortalArns = Output.createUnknown<List<String>>();
-    this.kinesisStreamArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.userAccessLoggingSettingsArn = Output.createUnknown<String>();
+    this.associatedPortalArns =
+        registerOutput<List<String>>('associatedPortalArns');
+    this.kinesisStreamArn = registerOutput<String>('kinesisStreamArn');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.userAccessLoggingSettingsArn =
+        registerOutput<String>('userAccessLoggingSettingsArn');
   }
 }

@@ -1,9 +1,12 @@
+// ignore_for_file: unused_field
+
 import 'dart:collection';
 import 'dart:async';
 
 import 'package:pulumi/src/constants.dart';
 import 'package:pulumi/src/deployment/deployment.dart';
 import 'package:pulumi/src/deployment/models.dart' as models;
+import 'package:pulumi/src/deserializer.dart';
 import 'package:pulumi/src/input.dart';
 import 'package:pulumi/src/output.dart';
 import 'package:pulumi/src/output_completion_source.dart';
@@ -36,6 +39,8 @@ abstract class Resource {
   List<ResourceTransform> get resourceTransforms => _resourceTransforms;
 
   late final Map<String, IOutputCompletionSource> completionSources;
+  Struct? _pendingResolvedOutputs;
+  Exception? _pendingOutputException;
 
   Resource(
     this._type,
@@ -127,13 +132,6 @@ abstract class Resource {
       options = options.merge(ResourceOptions(parent: parent));
     }
 
-    if (options.provider != null && options.providers.isNotEmpty) {
-      throw ResourceException(
-        "Do not supply both 'provider' and 'providers' options to a ComponentResource.",
-        options.parent,
-      );
-    }
-
     _providers = {};
 
     if (options.parent != null && options.parent is Resource) {
@@ -142,30 +140,43 @@ abstract class Resource {
       _providers = Map.from((options.parent as Resource)._providers);
     }
 
+    ProviderResource? effectiveProvider = options.provider;
+    final typeComponents = _type.split(':');
+    final resourcePackage = typeComponents.length == 3
+        ? typeComponents[0]
+        : null;
+
     if (custom) {
-      var provider = options.provider;
-      if (provider == null &&
+      if (effectiveProvider == null &&
           options.parent != null &&
           options.parent is Resource) {
-        _provider = (options.parent as Resource).getProvider(_type);
-      } else if (provider != null) {
-        var typeComponents = _type.split(':');
-        if (typeComponents.length == 3) {
-          var pkg = typeComponents[0];
-          _providers[pkg] = provider;
+        effectiveProvider = (options.parent as Resource).getProvider(_type);
+      }
+
+      if (effectiveProvider != null) {
+        if (resourcePackage != null &&
+            effectiveProvider.package != resourcePackage) {
+          effectiveProvider = null;
+        } else if (resourcePackage != null) {
+          _providers[resourcePackage] = effectiveProvider;
         }
       }
+
+      if (!identical(options.provider, effectiveProvider)) {
+        options = _copyResourceOptionsWithProvider(options, effectiveProvider);
+      }
     } else {
-      var providerList = options.provider != null
-          ? [options.provider!]
-          : options.providers;
+      final providerList = <ProviderResource>[
+        ...options.providers,
+        if (options.provider != null) options.provider!,
+      ];
       for (var provider in providerList) {
         _providers[provider.package] = provider;
       }
     }
 
     _protect = options.protect ?? false;
-    _provider = custom ? options.provider : null;
+    _provider = custom ? effectiveProvider : null;
     _version = options.version;
     _pluginDownloadURL = options.pluginDownloadURL;
 
@@ -197,6 +208,63 @@ abstract class Resource {
     if (!_urnCompleter.isCompleted) {
       _urnCompleter.complete(value);
     }
+  }
+
+  Output<T> registerOutput<T>(String propertyName) {
+    final source = OutputCompletionSource.create<T>(this);
+    completionSources[propertyName] = source;
+    if (_pendingOutputException != null) {
+      source.trySetException(_pendingOutputException!);
+    } else if (_pendingResolvedOutputs != null) {
+      _resolveCompletionSource(propertyName, source, _pendingResolvedOutputs!);
+    }
+    return source.output as Output<T>;
+  }
+
+  void resolveOutputs(Struct outputs) {
+    _pendingResolvedOutputs = outputs;
+    if (completionSources.isEmpty) {
+      return;
+    }
+
+    for (final entry in completionSources.entries) {
+      _resolveCompletionSource(entry.key, entry.value, outputs);
+    }
+  }
+
+  void failOutputs(Object error) {
+    final exception = error is Exception ? error : Exception(error.toString());
+    _pendingOutputException = exception;
+
+    if (completionSources.isEmpty) {
+      return;
+    }
+
+    for (final source in completionSources.values) {
+      source.trySetException(exception);
+    }
+  }
+
+  void _resolveCompletionSource(
+    String propertyName,
+    IOutputCompletionSource source,
+    Struct outputs,
+  ) {
+    final value = outputs.fields[propertyName];
+    if (value == null) {
+      source.trySetDefaultResult(true);
+      return;
+    }
+
+    final data = Deserializer.deserialize<Object?>(value);
+    source.setValue(
+      OutputData<Object?>(
+        value: data.value,
+        isKnown: data.isKnown,
+        isSecret: data.isSecret,
+        resources: {...data.resources, this},
+      ),
+    );
   }
 
   Future<Struct> serializeProperties(Map<String, dynamic> properties) async {
@@ -386,4 +454,31 @@ class ResourceException implements Exception {
   @override
   String toString() =>
       'ResourceException: $message${parent != null ? ' (Parent: ${parent!.getResourceName()})' : ''}';
+}
+
+ResourceOptions _copyResourceOptionsWithProvider(
+  ResourceOptions options,
+  ProviderResource? provider,
+) {
+  return ResourceOptions(
+    parent: options.parent,
+    dependsOn: options.dependsOn,
+    protect: options.protect,
+    provider: provider,
+    providers: options.providers,
+    aliases: options.aliases,
+    customTimeouts: options.customTimeouts,
+    deleteBeforeReplace: options.deleteBeforeReplace,
+    retainOnDelete: options.retainOnDelete,
+    deletedWith: options.deletedWith,
+    additionalSecretOutputs: options.additionalSecretOutputs,
+    ignoreChanges: options.ignoreChanges,
+    version: options.version,
+    pluginDownloadURL: options.pluginDownloadURL,
+    replacementTrigger: options.replacementTrigger,
+    replacementOptions: options.replacementOptions,
+    resourceTransformations: options.resourceTransformations,
+    resourceTransforms: options.resourceTransforms,
+    hooks: options.hooks,
+  );
 }

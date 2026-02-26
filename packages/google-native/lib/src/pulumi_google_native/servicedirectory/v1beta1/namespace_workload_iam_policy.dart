@@ -29,12 +29,12 @@ class NamespaceWorkloadIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bindings = Output.createUnknown<List<BindingResponse97>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.namespaceId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
-    this.workloadId = Output.createUnknown<String>();
+    this.bindings = registerOutput<List<BindingResponse97>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.namespaceId = registerOutput<String>('namespaceId');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
+    this.workloadId = registerOutput<String>('workloadId');
   }
 }

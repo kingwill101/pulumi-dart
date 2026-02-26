@@ -125,10 +125,11 @@ class MemberAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.delegatedAdminAccountId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.relationshipStatus = Output.createUnknown<String>();
-    this.updatedAt = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.delegatedAdminAccountId =
+        registerOutput<String>('delegatedAdminAccountId');
+    this.region = registerOutput<String>('region');
+    this.relationshipStatus = registerOutput<String>('relationshipStatus');
+    this.updatedAt = registerOutput<String>('updatedAt');
   }
 }

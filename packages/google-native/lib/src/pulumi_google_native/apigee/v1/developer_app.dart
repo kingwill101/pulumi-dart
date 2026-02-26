@@ -53,21 +53,23 @@ class DeveloperApp extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiProducts = Output.createUnknown<List<String>>();
-    this.appFamily = Output.createUnknown<String>();
-    this.appId = Output.createUnknown<String>();
+    this.apiProducts = registerOutput<List<String>>('apiProducts');
+    this.appFamily = registerOutput<String>('appFamily');
+    this.appId = registerOutput<String>('appId');
     this.attributes =
-        Output.createUnknown<List<GoogleCloudApigeeV1AttributeResponse>>();
-    this.callbackUrl = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
+        registerOutput<List<GoogleCloudApigeeV1AttributeResponse>>(
+            'attributes');
+    this.callbackUrl = registerOutput<String>('callbackUrl');
+    this.createdAt = registerOutput<String>('createdAt');
     this.credentials =
-        Output.createUnknown<List<GoogleCloudApigeeV1CredentialResponse>>();
-    this.developerId = Output.createUnknown<String>();
-    this.keyExpiresIn = Output.createUnknown<String>();
-    this.lastModifiedAt = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.scopes = Output.createUnknown<List<String>>();
-    this.status = Output.createUnknown<String>();
+        registerOutput<List<GoogleCloudApigeeV1CredentialResponse>>(
+            'credentials');
+    this.developerId = registerOutput<String>('developerId');
+    this.keyExpiresIn = registerOutput<String>('keyExpiresIn');
+    this.lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.scopes = registerOutput<List<String>>('scopes');
+    this.status = registerOutput<String>('status');
   }
 }

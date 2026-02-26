@@ -72,26 +72,26 @@ class WorkstationCluster2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.conditions = Output.createUnknown<List<StatusResponse35>>();
-    this.controlPlaneIp = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.degraded = Output.createUnknown<bool>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.domainConfig = Output.createUnknown<DomainConfigResponse>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.conditions = registerOutput<List<StatusResponse35>>('conditions');
+    this.controlPlaneIp = registerOutput<String>('controlPlaneIp');
+    this.createTime = registerOutput<String>('createTime');
+    this.degraded = registerOutput<bool>('degraded');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.domainConfig = registerOutput<DomainConfigResponse>('domainConfig');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
     this.privateClusterConfig =
-        Output.createUnknown<PrivateClusterConfigResponse6>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.subnetwork = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.workstationClusterId = Output.createUnknown<String>();
+        registerOutput<PrivateClusterConfigResponse6>('privateClusterConfig');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.subnetwork = registerOutput<String>('subnetwork');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.workstationClusterId = registerOutput<String>('workstationClusterId');
   }
 }

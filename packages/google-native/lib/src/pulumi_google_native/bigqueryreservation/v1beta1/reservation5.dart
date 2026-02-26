@@ -39,15 +39,15 @@ class Reservation5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.concurrency = Output.createUnknown<String>();
-    this.creationTime = Output.createUnknown<String>();
-    this.ignoreIdleSlots = Output.createUnknown<bool>();
-    this.location = Output.createUnknown<String>();
-    this.multiRegionAuxiliary = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reservationId = Output.createUnknown<String?>();
-    this.slotCapacity = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.concurrency = registerOutput<String>('concurrency');
+    this.creationTime = registerOutput<String>('creationTime');
+    this.ignoreIdleSlots = registerOutput<bool>('ignoreIdleSlots');
+    this.location = registerOutput<String>('location');
+    this.multiRegionAuxiliary = registerOutput<bool>('multiRegionAuxiliary');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.reservationId = registerOutput<String?>('reservationId');
+    this.slotCapacity = registerOutput<String>('slotCapacity');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

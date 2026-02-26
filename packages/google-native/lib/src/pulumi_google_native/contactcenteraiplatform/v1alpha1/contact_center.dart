@@ -67,23 +67,24 @@ class ContactCenter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.adminUser = Output.createUnknown<AdminUserResponse>();
-    this.ccaipManagedUsers = Output.createUnknown<bool>();
-    this.contactCenterId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.customerDomainPrefix = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.instanceConfig = Output.createUnknown<InstanceConfigResponse2>();
-    this.kmsKey = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.samlParams = Output.createUnknown<SAMLParamsResponse>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.uris = Output.createUnknown<URIsResponse>();
-    this.userEmail = Output.createUnknown<String>();
+    this.adminUser = registerOutput<AdminUserResponse>('adminUser');
+    this.ccaipManagedUsers = registerOutput<bool>('ccaipManagedUsers');
+    this.contactCenterId = registerOutput<String>('contactCenterId');
+    this.createTime = registerOutput<String>('createTime');
+    this.customerDomainPrefix = registerOutput<String>('customerDomainPrefix');
+    this.displayName = registerOutput<String>('displayName');
+    this.instanceConfig =
+        registerOutput<InstanceConfigResponse2>('instanceConfig');
+    this.kmsKey = registerOutput<String>('kmsKey');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.samlParams = registerOutput<SAMLParamsResponse>('samlParams');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.uris = registerOutput<URIsResponse>('uris');
+    this.userEmail = registerOutput<String>('userEmail');
   }
 }

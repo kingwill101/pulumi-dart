@@ -39,15 +39,17 @@ class Control2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.associatedServingConfigIds = Output.createUnknown<List<String>>();
-    this.catalogId = Output.createUnknown<String>();
-    this.controlId = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rule = Output.createUnknown<GoogleCloudRetailV2RuleResponse>();
-    this.searchSolutionUseCase = Output.createUnknown<List<String>>();
-    this.solutionTypes = Output.createUnknown<List<String>>();
+    this.associatedServingConfigIds =
+        registerOutput<List<String>>('associatedServingConfigIds');
+    this.catalogId = registerOutput<String>('catalogId');
+    this.controlId = registerOutput<String>('controlId');
+    this.displayName = registerOutput<String>('displayName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.rule = registerOutput<GoogleCloudRetailV2RuleResponse>('rule');
+    this.searchSolutionUseCase =
+        registerOutput<List<String>>('searchSolutionUseCase');
+    this.solutionTypes = registerOutput<List<String>>('solutionTypes');
   }
 }

@@ -238,17 +238,19 @@ class Capability extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.capabilityName = Output.createUnknown<String>();
-    this.clusterName = Output.createUnknown<String>();
-    this.configuration = Output.createUnknown<CapabilityConfiguration?>();
-    this.deletePropagationPolicy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<CapabilityTimeouts?>();
-    this.type = Output.createUnknown<String>();
-    this.version = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.capabilityName = registerOutput<String>('capabilityName');
+    this.clusterName = registerOutput<String>('clusterName');
+    this.configuration =
+        registerOutput<CapabilityConfiguration?>('configuration');
+    this.deletePropagationPolicy =
+        registerOutput<String>('deletePropagationPolicy');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<CapabilityTimeouts?>('timeouts');
+    this.type = registerOutput<String>('type');
+    this.version = registerOutput<String>('version');
   }
 }

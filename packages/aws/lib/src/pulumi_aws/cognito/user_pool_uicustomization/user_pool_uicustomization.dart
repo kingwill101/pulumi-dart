@@ -457,14 +457,14 @@ class UserPoolUICustomization extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clientId = Output.createUnknown<String?>();
-    this.creationDate = Output.createUnknown<String>();
-    this.css = Output.createUnknown<String?>();
-    this.cssVersion = Output.createUnknown<String>();
-    this.imageFile = Output.createUnknown<String?>();
-    this.imageUrl = Output.createUnknown<String>();
-    this.lastModifiedDate = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.userPoolId = Output.createUnknown<String>();
+    this.clientId = registerOutput<String?>('clientId');
+    this.creationDate = registerOutput<String>('creationDate');
+    this.css = registerOutput<String?>('css');
+    this.cssVersion = registerOutput<String>('cssVersion');
+    this.imageFile = registerOutput<String?>('imageFile');
+    this.imageUrl = registerOutput<String>('imageUrl');
+    this.lastModifiedDate = registerOutput<String>('lastModifiedDate');
+    this.region = registerOutput<String>('region');
+    this.userPoolId = registerOutput<String>('userPoolId');
   }
 }

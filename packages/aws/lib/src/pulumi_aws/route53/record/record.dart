@@ -1221,27 +1221,34 @@ class Record extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aliases = Output.createUnknown<List<RecordAlias>?>();
-    this.allowOverwrite = Output.createUnknown<bool>();
-    this.cidrRoutingPolicy = Output.createUnknown<RecordCidrRoutingPolicy?>();
+    this.aliases = registerOutput<List<RecordAlias>?>('aliases');
+    this.allowOverwrite = registerOutput<bool>('allowOverwrite');
+    this.cidrRoutingPolicy =
+        registerOutput<RecordCidrRoutingPolicy?>('cidrRoutingPolicy');
     this.failoverRoutingPolicies =
-        Output.createUnknown<List<RecordFailoverRoutingPolicy>?>();
-    this.fqdn = Output.createUnknown<String>();
+        registerOutput<List<RecordFailoverRoutingPolicy>?>(
+            'failoverRoutingPolicies');
+    this.fqdn = registerOutput<String>('fqdn');
     this.geolocationRoutingPolicies =
-        Output.createUnknown<List<RecordGeolocationRoutingPolicy>?>();
+        registerOutput<List<RecordGeolocationRoutingPolicy>?>(
+            'geolocationRoutingPolicies');
     this.geoproximityRoutingPolicy =
-        Output.createUnknown<RecordGeoproximityRoutingPolicy?>();
-    this.healthCheckId = Output.createUnknown<String?>();
+        registerOutput<RecordGeoproximityRoutingPolicy?>(
+            'geoproximityRoutingPolicy');
+    this.healthCheckId = registerOutput<String?>('healthCheckId');
     this.latencyRoutingPolicies =
-        Output.createUnknown<List<RecordLatencyRoutingPolicy>?>();
-    this.multivalueAnswerRoutingPolicy = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.records = Output.createUnknown<List<String>?>();
-    this.setIdentifier = Output.createUnknown<String?>();
-    this.ttl = Output.createUnknown<int?>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<List<RecordLatencyRoutingPolicy>?>(
+            'latencyRoutingPolicies');
+    this.multivalueAnswerRoutingPolicy =
+        registerOutput<bool?>('multivalueAnswerRoutingPolicy');
+    this.name = registerOutput<String>('name');
+    this.records = registerOutput<List<String>?>('records');
+    this.setIdentifier = registerOutput<String?>('setIdentifier');
+    this.ttl = registerOutput<int?>('ttl');
+    this.type = registerOutput<String>('type');
     this.weightedRoutingPolicies =
-        Output.createUnknown<List<RecordWeightedRoutingPolicy>?>();
-    this.zoneId = Output.createUnknown<String>();
+        registerOutput<List<RecordWeightedRoutingPolicy>?>(
+            'weightedRoutingPolicies');
+    this.zoneId = registerOutput<String>('zoneId');
   }
 }

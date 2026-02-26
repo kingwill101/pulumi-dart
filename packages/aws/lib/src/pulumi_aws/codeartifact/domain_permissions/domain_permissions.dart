@@ -303,11 +303,11 @@ class DomainPermissions extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.domain = Output.createUnknown<String>();
-    this.domainOwner = Output.createUnknown<String>();
-    this.policyDocument = Output.createUnknown<String>();
-    this.policyRevision = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
+    this.domain = registerOutput<String>('domain');
+    this.domainOwner = registerOutput<String>('domainOwner');
+    this.policyDocument = registerOutput<String>('policyDocument');
+    this.policyRevision = registerOutput<String>('policyRevision');
+    this.region = registerOutput<String>('region');
+    this.resourceArn = registerOutput<String>('resourceArn');
   }
 }

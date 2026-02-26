@@ -217,9 +217,9 @@ class Service6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.metadata = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.namespace = Output.createUnknown<String>();
-    this.serviceId = Output.createUnknown<String>();
+    this.metadata = registerOutput<Map<String, String>?>('metadata');
+    this.name = registerOutput<String>('name');
+    this.namespace = registerOutput<String>('namespace');
+    this.serviceId = registerOutput<String>('serviceId');
   }
 }

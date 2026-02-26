@@ -276,8 +276,8 @@ class NotificationChannel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.filters = Output.createUnknown<NotificationChannelFilters?>();
-    this.region = Output.createUnknown<String>();
-    this.sns = Output.createUnknown<NotificationChannelSns>();
+    this.filters = registerOutput<NotificationChannelFilters?>('filters');
+    this.region = registerOutput<String>('region');
+    this.sns = registerOutput<NotificationChannelSns>('sns');
   }
 }

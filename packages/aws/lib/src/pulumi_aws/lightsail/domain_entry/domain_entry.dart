@@ -175,11 +175,11 @@ class DomainEntry extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.domainName = Output.createUnknown<String>();
-    this.isAlias = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.target = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+    this.domainName = registerOutput<String>('domainName');
+    this.isAlias = registerOutput<bool?>('isAlias');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.target = registerOutput<String>('target');
+    this.type = registerOutput<String>('type');
   }
 }

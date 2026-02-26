@@ -130,8 +130,8 @@ class DedicatedIpAssignment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.destinationPoolName = Output.createUnknown<String>();
-    this.ip = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.destinationPoolName = registerOutput<String>('destinationPoolName');
+    this.ip = registerOutput<String>('ip');
+    this.region = registerOutput<String>('region');
   }
 }

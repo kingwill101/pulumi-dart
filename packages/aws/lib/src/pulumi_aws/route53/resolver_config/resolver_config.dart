@@ -169,9 +169,10 @@ class ResolverConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autodefinedReverseFlag = Output.createUnknown<String>();
-    this.ownerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceId = Output.createUnknown<String>();
+    this.autodefinedReverseFlag =
+        registerOutput<String>('autodefinedReverseFlag');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.region = registerOutput<String>('region');
+    this.resourceId = registerOutput<String>('resourceId');
   }
 }

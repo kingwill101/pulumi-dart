@@ -1803,23 +1803,24 @@ class Launch extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.executions = Output.createUnknown<List<LaunchExecution>>();
-    this.groups = Output.createUnknown<List<LaunchGroup>>();
-    this.lastUpdatedTime = Output.createUnknown<String>();
-    this.metricMonitors = Output.createUnknown<List<LaunchMetricMonitor>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.randomizationSalt = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.createdTime = registerOutput<String>('createdTime');
+    this.description = registerOutput<String?>('description');
+    this.executions = registerOutput<List<LaunchExecution>>('executions');
+    this.groups = registerOutput<List<LaunchGroup>>('groups');
+    this.lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    this.metricMonitors =
+        registerOutput<List<LaunchMetricMonitor>?>('metricMonitors');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.randomizationSalt = registerOutput<String?>('randomizationSalt');
+    this.region = registerOutput<String>('region');
     this.scheduledSplitsConfig =
-        Output.createUnknown<LaunchScheduledSplitsConfig?>();
-    this.status = Output.createUnknown<String>();
-    this.statusReason = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<LaunchScheduledSplitsConfig?>('scheduledSplitsConfig');
+    this.status = registerOutput<String>('status');
+    this.statusReason = registerOutput<String>('statusReason');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
   }
 }

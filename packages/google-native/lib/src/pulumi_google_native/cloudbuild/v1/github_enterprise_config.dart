@@ -49,18 +49,18 @@ class GithubEnterpriseConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.gheConfigId = Output.createUnknown<String?>();
-    this.hostUrl = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.peeredNetwork = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.projectId = Output.createUnknown<String?>();
-    this.secrets = Output.createUnknown<GitHubEnterpriseSecretsResponse>();
-    this.sslCa = Output.createUnknown<String>();
-    this.webhookKey = Output.createUnknown<String>();
+    this.appId = registerOutput<String>('appId');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.gheConfigId = registerOutput<String?>('gheConfigId');
+    this.hostUrl = registerOutput<String>('hostUrl');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.peeredNetwork = registerOutput<String>('peeredNetwork');
+    this.project = registerOutput<String>('project');
+    this.projectId = registerOutput<String?>('projectId');
+    this.secrets = registerOutput<GitHubEnterpriseSecretsResponse>('secrets');
+    this.sslCa = registerOutput<String>('sslCa');
+    this.webhookKey = registerOutput<String>('webhookKey');
   }
 }

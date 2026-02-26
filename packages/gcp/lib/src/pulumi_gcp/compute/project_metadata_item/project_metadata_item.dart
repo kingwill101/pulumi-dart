@@ -142,8 +142,8 @@ class ProjectMetadataItem extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.key = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.value = Output.createUnknown<String>();
+    this.key = registerOutput<String>('key');
+    this.project = registerOutput<String>('project');
+    this.value = registerOutput<String>('value');
   }
 }

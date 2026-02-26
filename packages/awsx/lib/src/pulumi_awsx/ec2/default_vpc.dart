@@ -17,8 +17,8 @@ class DefaultVpc extends ComponentResource {
           null,
           options ?? ComponentResourceOptions(),
         ) {
-    this.privateSubnetIds = Output.createUnknown<List<String>>();
-    this.publicSubnetIds = Output.createUnknown<List<String>>();
-    this.vpcId = Output.createUnknown<String>();
+    this.privateSubnetIds = registerOutput<List<String>>('privateSubnetIds');
+    this.publicSubnetIds = registerOutput<List<String>>('publicSubnetIds');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

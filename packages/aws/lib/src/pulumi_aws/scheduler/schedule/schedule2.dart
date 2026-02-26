@@ -416,21 +416,23 @@ class Schedule2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.actionAfterCompletion = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.endDate = Output.createUnknown<String?>();
+    this.actionAfterCompletion =
+        registerOutput<String>('actionAfterCompletion');
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.endDate = registerOutput<String?>('endDate');
     this.flexibleTimeWindow =
-        Output.createUnknown<ScheduleFlexibleTimeWindow>();
-    this.groupName = Output.createUnknown<String>();
-    this.kmsKeyArn = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.scheduleExpression = Output.createUnknown<String>();
-    this.scheduleExpressionTimezone = Output.createUnknown<String?>();
-    this.startDate = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String?>();
-    this.target = Output.createUnknown<ScheduleTarget>();
+        registerOutput<ScheduleFlexibleTimeWindow>('flexibleTimeWindow');
+    this.groupName = registerOutput<String>('groupName');
+    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.region = registerOutput<String>('region');
+    this.scheduleExpression = registerOutput<String>('scheduleExpression');
+    this.scheduleExpressionTimezone =
+        registerOutput<String?>('scheduleExpressionTimezone');
+    this.startDate = registerOutput<String?>('startDate');
+    this.state = registerOutput<String?>('state');
+    this.target = registerOutput<ScheduleTarget>('target');
   }
 }

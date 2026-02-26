@@ -274,10 +274,10 @@ class TransferAgentPool extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.bandwidthLimit =
-        Output.createUnknown<TransferAgentPoolBandwidthLimit?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<TransferAgentPoolBandwidthLimit?>('bandwidthLimit');
+    this.displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
   }
 }

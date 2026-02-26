@@ -141,15 +141,15 @@ class Namespace extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.awsAccountId = Output.createUnknown<String>();
-    this.capacityRegion = Output.createUnknown<String>();
-    this.creationStatus = Output.createUnknown<String>();
-    this.identityStore = Output.createUnknown<String>();
-    this.namespace = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<NamespaceTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.capacityRegion = registerOutput<String>('capacityRegion');
+    this.creationStatus = registerOutput<String>('creationStatus');
+    this.identityStore = registerOutput<String>('identityStore');
+    this.namespace = registerOutput<String>('namespace');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<NamespaceTimeouts?>('timeouts');
   }
 }

@@ -706,13 +706,14 @@ class HostedConfigurationVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.configurationProfileId = Output.createUnknown<String>();
-    this.content = Output.createUnknown<String>();
-    this.contentType = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.versionNumber = Output.createUnknown<int>();
+    this.applicationId = registerOutput<String>('applicationId');
+    this.arn = registerOutput<String>('arn');
+    this.configurationProfileId =
+        registerOutput<String>('configurationProfileId');
+    this.content = registerOutput<String>('content');
+    this.contentType = registerOutput<String>('contentType');
+    this.description = registerOutput<String?>('description');
+    this.region = registerOutput<String>('region');
+    this.versionNumber = registerOutput<int>('versionNumber');
   }
 }

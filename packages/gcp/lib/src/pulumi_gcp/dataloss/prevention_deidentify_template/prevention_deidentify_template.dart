@@ -967,14 +967,15 @@ class PreventionDeidentifyTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
     this.deidentifyConfig =
-        Output.createUnknown<PreventionDeidentifyTemplateDeidentifyConfig>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.templateId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<PreventionDeidentifyTemplateDeidentifyConfig>(
+            'deidentifyConfig');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.templateId = registerOutput<String>('templateId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

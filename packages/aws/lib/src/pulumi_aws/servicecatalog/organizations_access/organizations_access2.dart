@@ -107,6 +107,6 @@ class OrganizationsAccess2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.enabled = Output.createUnknown<bool>();
+    this.enabled = registerOutput<bool>('enabled');
   }
 }

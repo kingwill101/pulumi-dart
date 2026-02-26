@@ -167,15 +167,15 @@ class DeviceFleet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.deviceFleetName = Output.createUnknown<String>();
-    this.enableIotRoleAlias = Output.createUnknown<bool?>();
-    this.iotRoleAlias = Output.createUnknown<String>();
-    this.outputConfig = Output.createUnknown<DeviceFleetOutputConfig>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.deviceFleetName = registerOutput<String>('deviceFleetName');
+    this.enableIotRoleAlias = registerOutput<bool?>('enableIotRoleAlias');
+    this.iotRoleAlias = registerOutput<String>('iotRoleAlias');
+    this.outputConfig = registerOutput<DeviceFleetOutputConfig>('outputConfig');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

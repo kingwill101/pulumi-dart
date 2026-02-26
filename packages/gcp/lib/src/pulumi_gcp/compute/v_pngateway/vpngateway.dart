@@ -501,13 +501,13 @@ class VPNGateway extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.gatewayId = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.gatewayId = registerOutput<int>('gatewayId');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.selfLink = registerOutput<String>('selfLink');
   }
 }

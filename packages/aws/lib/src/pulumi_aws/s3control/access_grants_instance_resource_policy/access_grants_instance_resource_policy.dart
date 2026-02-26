@@ -239,8 +239,8 @@ class AccessGrantsInstanceResourcePolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
   }
 }

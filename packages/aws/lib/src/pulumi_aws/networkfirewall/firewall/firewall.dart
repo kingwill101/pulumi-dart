@@ -440,28 +440,36 @@ class Firewall extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZoneChangeProtection = Output.createUnknown<bool?>();
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZoneChangeProtection =
+        registerOutput<bool?>('availabilityZoneChangeProtection');
     this.availabilityZoneMappings =
-        Output.createUnknown<List<FirewallAvailabilityZoneMapping>>();
-    this.deleteProtection = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String?>();
-    this.enabledAnalysisTypes = Output.createUnknown<List<String>?>();
+        registerOutput<List<FirewallAvailabilityZoneMapping>>(
+            'availabilityZoneMappings');
+    this.deleteProtection = registerOutput<bool?>('deleteProtection');
+    this.description = registerOutput<String?>('description');
+    this.enabledAnalysisTypes =
+        registerOutput<List<String>?>('enabledAnalysisTypes');
     this.encryptionConfiguration =
-        Output.createUnknown<FirewallEncryptionConfiguration?>();
-    this.firewallPolicyArn = Output.createUnknown<String>();
-    this.firewallPolicyChangeProtection = Output.createUnknown<bool?>();
+        registerOutput<FirewallEncryptionConfiguration?>(
+            'encryptionConfiguration');
+    this.firewallPolicyArn = registerOutput<String>('firewallPolicyArn');
+    this.firewallPolicyChangeProtection =
+        registerOutput<bool?>('firewallPolicyChangeProtection');
     this.firewallStatuses =
-        Output.createUnknown<List<FirewallFirewallStatus>>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.subnetChangeProtection = Output.createUnknown<bool?>();
-    this.subnetMappings = Output.createUnknown<List<FirewallSubnetMapping>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.transitGatewayId = Output.createUnknown<String?>();
-    this.transitGatewayOwnerAccountId = Output.createUnknown<String>();
-    this.updateToken = Output.createUnknown<String>();
-    this.vpcId = Output.createUnknown<String?>();
+        registerOutput<List<FirewallFirewallStatus>>('firewallStatuses');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.subnetChangeProtection =
+        registerOutput<bool?>('subnetChangeProtection');
+    this.subnetMappings =
+        registerOutput<List<FirewallSubnetMapping>?>('subnetMappings');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.transitGatewayId = registerOutput<String?>('transitGatewayId');
+    this.transitGatewayOwnerAccountId =
+        registerOutput<String>('transitGatewayOwnerAccountId');
+    this.updateToken = registerOutput<String>('updateToken');
+    this.vpcId = registerOutput<String?>('vpcId');
   }
 }

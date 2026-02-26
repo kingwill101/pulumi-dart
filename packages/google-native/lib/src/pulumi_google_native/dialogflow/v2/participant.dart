@@ -34,13 +34,16 @@ class Participant extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.conversationId = Output.createUnknown<String>();
-    this.documentsMetadataFilters = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.obfuscatedExternalUserId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.sipRecordingMediaLabel = Output.createUnknown<String>();
+    this.conversationId = registerOutput<String>('conversationId');
+    this.documentsMetadataFilters =
+        registerOutput<Map<String, String>>('documentsMetadataFilters');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.obfuscatedExternalUserId =
+        registerOutput<String>('obfuscatedExternalUserId');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
+    this.sipRecordingMediaLabel =
+        registerOutput<String>('sipRecordingMediaLabel');
   }
 }

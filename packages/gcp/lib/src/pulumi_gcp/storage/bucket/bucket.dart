@@ -1388,38 +1388,44 @@ class Bucket extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoclass = Output.createUnknown<BucketAutoclass?>();
-    this.cors = Output.createUnknown<List<BucketCor>?>();
+    this.autoclass = registerOutput<BucketAutoclass?>('autoclass');
+    this.cors = registerOutput<List<BucketCor>?>('cors');
     this.customPlacementConfig =
-        Output.createUnknown<BucketCustomPlacementConfig?>();
-    this.defaultEventBasedHold = Output.createUnknown<bool?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enableObjectRetention = Output.createUnknown<bool?>();
-    this.encryption = Output.createUnknown<BucketEncryption?>();
-    this.forceDestroy = Output.createUnknown<bool?>();
+        registerOutput<BucketCustomPlacementConfig?>('customPlacementConfig');
+    this.defaultEventBasedHold = registerOutput<bool?>('defaultEventBasedHold');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableObjectRetention = registerOutput<bool?>('enableObjectRetention');
+    this.encryption = registerOutput<BucketEncryption?>('encryption');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
     this.hierarchicalNamespace =
-        Output.createUnknown<BucketHierarchicalNamespace?>();
-    this.ipFilter = Output.createUnknown<BucketIpFilter?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.lifecycleRules = Output.createUnknown<List<BucketLifecycleRule>?>();
-    this.location = Output.createUnknown<String>();
-    this.logging = Output.createUnknown<BucketLogging?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.projectNumber = Output.createUnknown<int>();
-    this.publicAccessPrevention = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.requesterPays = Output.createUnknown<bool?>();
-    this.retentionPolicy = Output.createUnknown<BucketRetentionPolicy?>();
-    this.rpo = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.softDeletePolicy = Output.createUnknown<BucketSoftDeletePolicy>();
-    this.storageClass = Output.createUnknown<String?>();
-    this.timeCreated = Output.createUnknown<String>();
-    this.uniformBucketLevelAccess = Output.createUnknown<bool>();
-    this.updated = Output.createUnknown<String>();
-    this.url = Output.createUnknown<String>();
-    this.versioning = Output.createUnknown<BucketVersioning>();
-    this.website = Output.createUnknown<BucketWebsite>();
+        registerOutput<BucketHierarchicalNamespace?>('hierarchicalNamespace');
+    this.ipFilter = registerOutput<BucketIpFilter?>('ipFilter');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.lifecycleRules =
+        registerOutput<List<BucketLifecycleRule>?>('lifecycleRules');
+    this.location = registerOutput<String>('location');
+    this.logging = registerOutput<BucketLogging?>('logging');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.projectNumber = registerOutput<int>('projectNumber');
+    this.publicAccessPrevention =
+        registerOutput<String>('publicAccessPrevention');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.requesterPays = registerOutput<bool?>('requesterPays');
+    this.retentionPolicy =
+        registerOutput<BucketRetentionPolicy?>('retentionPolicy');
+    this.rpo = registerOutput<String>('rpo');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.softDeletePolicy =
+        registerOutput<BucketSoftDeletePolicy>('softDeletePolicy');
+    this.storageClass = registerOutput<String?>('storageClass');
+    this.timeCreated = registerOutput<String>('timeCreated');
+    this.uniformBucketLevelAccess =
+        registerOutput<bool>('uniformBucketLevelAccess');
+    this.updated = registerOutput<String>('updated');
+    this.url = registerOutput<String>('url');
+    this.versioning = registerOutput<BucketVersioning>('versioning');
+    this.website = registerOutput<BucketWebsite>('website');
   }
 }

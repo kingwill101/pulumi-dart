@@ -130,8 +130,8 @@ class NetworkAclAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.networkAclId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.subnetId = Output.createUnknown<String>();
+    this.networkAclId = registerOutput<String>('networkAclId');
+    this.region = registerOutput<String>('region');
+    this.subnetId = registerOutput<String>('subnetId');
   }
 }

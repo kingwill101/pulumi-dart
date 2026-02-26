@@ -602,14 +602,14 @@ class Backup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.fileSystemId = Output.createUnknown<String?>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.ownerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
-    this.volumeId = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.fileSystemId = registerOutput<String?>('fileSystemId');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
+    this.volumeId = registerOutput<String?>('volumeId');
   }
 }

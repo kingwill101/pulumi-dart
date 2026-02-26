@@ -307,16 +307,17 @@ class FolderSink extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bigqueryOptions = Output.createUnknown<FolderSinkBigqueryOptions>();
-    this.description = Output.createUnknown<String?>();
-    this.destination = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.exclusions = Output.createUnknown<List<FolderSinkExclusion>?>();
-    this.filter = Output.createUnknown<String?>();
-    this.folder = Output.createUnknown<String>();
-    this.includeChildren = Output.createUnknown<bool?>();
-    this.interceptChildren = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.writerIdentity = Output.createUnknown<String>();
+    this.bigqueryOptions =
+        registerOutput<FolderSinkBigqueryOptions>('bigqueryOptions');
+    this.description = registerOutput<String?>('description');
+    this.destination = registerOutput<String>('destination');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.exclusions = registerOutput<List<FolderSinkExclusion>?>('exclusions');
+    this.filter = registerOutput<String?>('filter');
+    this.folder = registerOutput<String>('folder');
+    this.includeChildren = registerOutput<bool?>('includeChildren');
+    this.interceptChildren = registerOutput<bool?>('interceptChildren');
+    this.name = registerOutput<String>('name');
+    this.writerIdentity = registerOutput<String>('writerIdentity');
   }
 }

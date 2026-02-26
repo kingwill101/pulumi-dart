@@ -57,21 +57,22 @@ class PublicDelegatedPrefix3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.byoipApiVersion = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.ipCidrRange = Output.createUnknown<String>();
-    this.isLiveMigration = Output.createUnknown<bool>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parentPrefix = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.publicDelegatedSubPrefixs = Output.createUnknown<
-        List<PublicDelegatedPrefixPublicDelegatedSubPrefixResponse3>>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.byoipApiVersion = registerOutput<String>('byoipApiVersion');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.ipCidrRange = registerOutput<String>('ipCidrRange');
+    this.isLiveMigration = registerOutput<bool>('isLiveMigration');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.parentPrefix = registerOutput<String>('parentPrefix');
+    this.project = registerOutput<String>('project');
+    this.publicDelegatedSubPrefixs = registerOutput<
+            List<PublicDelegatedPrefixPublicDelegatedSubPrefixResponse3>>(
+        'publicDelegatedSubPrefixs');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.status = registerOutput<String>('status');
   }
 }

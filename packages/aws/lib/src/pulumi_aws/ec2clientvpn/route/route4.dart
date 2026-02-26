@@ -266,12 +266,12 @@ class Route4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clientVpnEndpointId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.destinationCidrBlock = Output.createUnknown<String>();
-    this.origin = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.targetVpcSubnetId = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+    this.clientVpnEndpointId = registerOutput<String>('clientVpnEndpointId');
+    this.description = registerOutput<String?>('description');
+    this.destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
+    this.origin = registerOutput<String>('origin');
+    this.region = registerOutput<String>('region');
+    this.targetVpcSubnetId = registerOutput<String>('targetVpcSubnetId');
+    this.type = registerOutput<String>('type');
   }
 }

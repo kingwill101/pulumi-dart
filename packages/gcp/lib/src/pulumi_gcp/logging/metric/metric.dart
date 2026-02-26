@@ -940,15 +940,17 @@ class Metric extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucketName = Output.createUnknown<String?>();
-    this.bucketOptions = Output.createUnknown<MetricBucketOptions?>();
-    this.description = Output.createUnknown<String?>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.filter = Output.createUnknown<String>();
-    this.labelExtractors = Output.createUnknown<Map<String, String>?>();
-    this.metricDescriptor = Output.createUnknown<MetricMetricDescriptor>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.valueExtractor = Output.createUnknown<String?>();
+    this.bucketName = registerOutput<String?>('bucketName');
+    this.bucketOptions = registerOutput<MetricBucketOptions?>('bucketOptions');
+    this.description = registerOutput<String?>('description');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.filter = registerOutput<String>('filter');
+    this.labelExtractors =
+        registerOutput<Map<String, String>?>('labelExtractors');
+    this.metricDescriptor =
+        registerOutput<MetricMetricDescriptor>('metricDescriptor');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.valueExtractor = registerOutput<String?>('valueExtractor');
   }
 }

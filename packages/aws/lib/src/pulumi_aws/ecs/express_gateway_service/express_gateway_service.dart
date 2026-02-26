@@ -210,29 +210,33 @@ class ExpressGatewayService extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cluster = Output.createUnknown<String>();
-    this.cpu = Output.createUnknown<String>();
-    this.currentDeployment = Output.createUnknown<String>();
-    this.executionRoleArn = Output.createUnknown<String>();
-    this.healthCheckPath = Output.createUnknown<String>();
-    this.infrastructureRoleArn = Output.createUnknown<String>();
+    this.cluster = registerOutput<String>('cluster');
+    this.cpu = registerOutput<String>('cpu');
+    this.currentDeployment = registerOutput<String>('currentDeployment');
+    this.executionRoleArn = registerOutput<String>('executionRoleArn');
+    this.healthCheckPath = registerOutput<String>('healthCheckPath');
+    this.infrastructureRoleArn =
+        registerOutput<String>('infrastructureRoleArn');
     this.ingressPaths =
-        Output.createUnknown<List<ExpressGatewayServiceIngressPath>>();
-    this.memory = Output.createUnknown<String>();
+        registerOutput<List<ExpressGatewayServiceIngressPath>>('ingressPaths');
+    this.memory = registerOutput<String>('memory');
     this.networkConfigurations =
-        Output.createUnknown<List<ExpressGatewayServiceNetworkConfiguration>>();
+        registerOutput<List<ExpressGatewayServiceNetworkConfiguration>>(
+            'networkConfigurations');
     this.primaryContainer =
-        Output.createUnknown<ExpressGatewayServicePrimaryContainer>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<ExpressGatewayServicePrimaryContainer>(
+            'primaryContainer');
+    this.region = registerOutput<String>('region');
     this.scalingTargets =
-        Output.createUnknown<List<ExpressGatewayServiceScalingTarget>>();
-    this.serviceArn = Output.createUnknown<String>();
-    this.serviceName = Output.createUnknown<String>();
-    this.serviceRevisionArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.taskRoleArn = Output.createUnknown<String?>();
-    this.timeouts = Output.createUnknown<ExpressGatewayServiceTimeouts?>();
-    this.waitForSteadyState = Output.createUnknown<bool>();
+        registerOutput<List<ExpressGatewayServiceScalingTarget>>(
+            'scalingTargets');
+    this.serviceArn = registerOutput<String>('serviceArn');
+    this.serviceName = registerOutput<String>('serviceName');
+    this.serviceRevisionArn = registerOutput<String>('serviceRevisionArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.taskRoleArn = registerOutput<String?>('taskRoleArn');
+    this.timeouts = registerOutput<ExpressGatewayServiceTimeouts?>('timeouts');
+    this.waitForSteadyState = registerOutput<bool>('waitForSteadyState');
   }
 }

@@ -326,9 +326,9 @@ class RolePolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.policy = registerOutput<String>('policy');
+    this.role = registerOutput<String>('role');
   }
 }

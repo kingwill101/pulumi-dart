@@ -643,21 +643,22 @@ class DbSystem extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.dbSystemId = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.entitlementId = Output.createUnknown<String>();
-    this.gcpOracleZone = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.ociUrl = Output.createUnknown<String>();
-    this.odbNetwork = Output.createUnknown<String?>();
-    this.odbSubnet = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.properties = Output.createUnknown<DbSystemProperties?>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+    this.createTime = registerOutput<String>('createTime');
+    this.dbSystemId = registerOutput<String>('dbSystemId');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.displayName = registerOutput<String>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.entitlementId = registerOutput<String>('entitlementId');
+    this.gcpOracleZone = registerOutput<String>('gcpOracleZone');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.ociUrl = registerOutput<String>('ociUrl');
+    this.odbNetwork = registerOutput<String?>('odbNetwork');
+    this.odbSubnet = registerOutput<String>('odbSubnet');
+    this.project = registerOutput<String>('project');
+    this.properties = registerOutput<DbSystemProperties?>('properties');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
   }
 }

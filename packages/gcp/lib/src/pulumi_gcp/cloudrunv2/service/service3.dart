@@ -4400,50 +4400,54 @@ class Service3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.binaryAuthorization =
-        Output.createUnknown<ServiceBinaryAuthorization?>();
-    this.buildConfig = Output.createUnknown<ServiceBuildConfig?>();
-    this.client = Output.createUnknown<String?>();
-    this.clientVersion = Output.createUnknown<String?>();
-    this.conditions = Output.createUnknown<List<ServiceCondition>>();
-    this.createTime = Output.createUnknown<String>();
-    this.creator = Output.createUnknown<String>();
-    this.customAudiences = Output.createUnknown<List<String>?>();
-    this.defaultUriDisabled = Output.createUnknown<bool?>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.generation = Output.createUnknown<String>();
-    this.iapEnabled = Output.createUnknown<bool?>();
-    this.ingress = Output.createUnknown<String>();
-    this.invokerIamDisabled = Output.createUnknown<bool?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.lastModifier = Output.createUnknown<String>();
-    this.latestCreatedRevision = Output.createUnknown<String>();
-    this.latestReadyRevision = Output.createUnknown<String>();
-    this.launchStage = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
+        registerOutput<ServiceBinaryAuthorization?>('binaryAuthorization');
+    this.buildConfig = registerOutput<ServiceBuildConfig?>('buildConfig');
+    this.client = registerOutput<String?>('client');
+    this.clientVersion = registerOutput<String?>('clientVersion');
+    this.conditions = registerOutput<List<ServiceCondition>>('conditions');
+    this.createTime = registerOutput<String>('createTime');
+    this.creator = registerOutput<String>('creator');
+    this.customAudiences = registerOutput<List<String>?>('customAudiences');
+    this.defaultUriDisabled = registerOutput<bool?>('defaultUriDisabled');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.description = registerOutput<String?>('description');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.etag = registerOutput<String>('etag');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.generation = registerOutput<String>('generation');
+    this.iapEnabled = registerOutput<bool?>('iapEnabled');
+    this.ingress = registerOutput<String>('ingress');
+    this.invokerIamDisabled = registerOutput<bool?>('invokerIamDisabled');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.lastModifier = registerOutput<String>('lastModifier');
+    this.latestCreatedRevision =
+        registerOutput<String>('latestCreatedRevision');
+    this.latestReadyRevision = registerOutput<String>('latestReadyRevision');
+    this.launchStage = registerOutput<String>('launchStage');
+    this.location = registerOutput<String>('location');
     this.multiRegionSettings =
-        Output.createUnknown<ServiceMultiRegionSettings?>();
-    this.name = Output.createUnknown<String>();
-    this.observedGeneration = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.scaling = Output.createUnknown<ServiceScaling>();
-    this.template = Output.createUnknown<ServiceTemplate2>();
+        registerOutput<ServiceMultiRegionSettings?>('multiRegionSettings');
+    this.name = registerOutput<String>('name');
+    this.observedGeneration = registerOutput<String>('observedGeneration');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.scaling = registerOutput<ServiceScaling>('scaling');
+    this.template = registerOutput<ServiceTemplate2>('template');
     this.terminalConditions =
-        Output.createUnknown<List<ServiceTerminalCondition>>();
-    this.trafficStatuses = Output.createUnknown<List<ServiceTrafficStatus>>();
-    this.traffics = Output.createUnknown<List<ServiceTraffic2>>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.uri = Output.createUnknown<String>();
-    this.urls = Output.createUnknown<List<String>>();
+        registerOutput<List<ServiceTerminalCondition>>('terminalConditions');
+    this.trafficStatuses =
+        registerOutput<List<ServiceTrafficStatus>>('trafficStatuses');
+    this.traffics = registerOutput<List<ServiceTraffic2>>('traffics');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.uri = registerOutput<String>('uri');
+    this.urls = registerOutput<List<String>>('urls');
   }
 }

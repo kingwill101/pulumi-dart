@@ -226,16 +226,18 @@ class ReportPlan extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.creationTime = Output.createUnknown<String>();
-    this.deploymentStatus = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.creationTime = registerOutput<String>('creationTime');
+    this.deploymentStatus = registerOutput<String>('deploymentStatus');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
     this.reportDeliveryChannel =
-        Output.createUnknown<ReportPlanReportDeliveryChannel>();
-    this.reportSetting = Output.createUnknown<ReportPlanReportSetting>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<ReportPlanReportDeliveryChannel>(
+            'reportDeliveryChannel');
+    this.reportSetting =
+        registerOutput<ReportPlanReportSetting>('reportSetting');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

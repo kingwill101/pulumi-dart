@@ -787,25 +787,27 @@ class Instance12 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessPoints = Output.createUnknown<List<String>>();
-    this.capacityGib = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.daosVersion = Output.createUnknown<String>();
-    this.deploymentType = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.directoryStripeLevel = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.effectiveReservedIpRange = Output.createUnknown<String>();
-    this.fileStripeLevel = Output.createUnknown<String?>();
-    this.instanceId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.reservedIpRange = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.accessPoints = registerOutput<List<String>>('accessPoints');
+    this.capacityGib = registerOutput<String>('capacityGib');
+    this.createTime = registerOutput<String>('createTime');
+    this.daosVersion = registerOutput<String>('daosVersion');
+    this.deploymentType = registerOutput<String?>('deploymentType');
+    this.description = registerOutput<String?>('description');
+    this.directoryStripeLevel = registerOutput<String?>('directoryStripeLevel');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveReservedIpRange =
+        registerOutput<String>('effectiveReservedIpRange');
+    this.fileStripeLevel = registerOutput<String?>('fileStripeLevel');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String?>('network');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.reservedIpRange = registerOutput<String?>('reservedIpRange');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -249,11 +249,11 @@ class UsagePlanKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.keyId = Output.createUnknown<String>();
-    this.keyType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.usagePlanId = Output.createUnknown<String>();
-    this.value = Output.createUnknown<String>();
+    this.keyId = registerOutput<String>('keyId');
+    this.keyType = registerOutput<String>('keyType');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.usagePlanId = registerOutput<String>('usagePlanId');
+    this.value = registerOutput<String>('value');
   }
 }

@@ -582,32 +582,38 @@ class FutureReservation extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.aggregateReservation =
-        Output.createUnknown<FutureReservationAggregateReservation?>();
-    this.autoCreatedReservationsDeleteTime = Output.createUnknown<String?>();
-    this.autoCreatedReservationsDuration = Output.createUnknown<
-        FutureReservationAutoCreatedReservationsDuration?>();
-    this.autoDeleteAutoCreatedReservations = Output.createUnknown<bool?>();
+        registerOutput<FutureReservationAggregateReservation?>(
+            'aggregateReservation');
+    this.autoCreatedReservationsDeleteTime =
+        registerOutput<String?>('autoCreatedReservationsDeleteTime');
+    this.autoCreatedReservationsDuration =
+        registerOutput<FutureReservationAutoCreatedReservationsDuration?>(
+            'autoCreatedReservationsDuration');
+    this.autoDeleteAutoCreatedReservations =
+        registerOutput<bool?>('autoDeleteAutoCreatedReservations');
     this.commitmentInfo =
-        Output.createUnknown<FutureReservationCommitmentInfo?>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.deploymentType = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String?>();
-    this.planningStatus = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reservationMode = Output.createUnknown<String?>();
-    this.reservationName = Output.createUnknown<String?>();
-    this.schedulingType = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
+        registerOutput<FutureReservationCommitmentInfo?>('commitmentInfo');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.deploymentType = registerOutput<String?>('deploymentType');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String?>('namePrefix');
+    this.planningStatus = registerOutput<String>('planningStatus');
+    this.project = registerOutput<String>('project');
+    this.reservationMode = registerOutput<String?>('reservationMode');
+    this.reservationName = registerOutput<String?>('reservationName');
+    this.schedulingType = registerOutput<String?>('schedulingType');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
     this.shareSettings =
-        Output.createUnknown<FutureReservationShareSettings?>();
-    this.specificReservationRequired = Output.createUnknown<bool?>();
+        registerOutput<FutureReservationShareSettings?>('shareSettings');
+    this.specificReservationRequired =
+        registerOutput<bool?>('specificReservationRequired');
     this.specificSkuProperties =
-        Output.createUnknown<FutureReservationSpecificSkuProperties?>();
-    this.statuses = Output.createUnknown<List<FutureReservationStatus>>();
-    this.timeWindow = Output.createUnknown<FutureReservationTimeWindow>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<FutureReservationSpecificSkuProperties?>(
+            'specificSkuProperties');
+    this.statuses = registerOutput<List<FutureReservationStatus>>('statuses');
+    this.timeWindow = registerOutput<FutureReservationTimeWindow>('timeWindow');
+    this.zone = registerOutput<String>('zone');
   }
 }

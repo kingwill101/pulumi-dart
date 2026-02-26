@@ -335,11 +335,13 @@ class Repository5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createIgnoreAlreadyExists = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pubsubConfigs = Output.createUnknown<List<RepositoryPubsubConfig>?>();
-    this.size = Output.createUnknown<int>();
-    this.url = Output.createUnknown<String>();
+    this.createIgnoreAlreadyExists =
+        registerOutput<bool?>('createIgnoreAlreadyExists');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pubsubConfigs =
+        registerOutput<List<RepositoryPubsubConfig>?>('pubsubConfigs');
+    this.size = registerOutput<int>('size');
+    this.url = registerOutput<String>('url');
   }
 }

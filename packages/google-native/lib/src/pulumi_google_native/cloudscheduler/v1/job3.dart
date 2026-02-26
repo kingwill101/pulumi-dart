@@ -63,21 +63,21 @@ class Job3 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.appEngineHttpTarget =
-        Output.createUnknown<AppEngineHttpTargetResponse>();
-    this.attemptDeadline = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.httpTarget = Output.createUnknown<HttpTargetResponse>();
-    this.lastAttemptTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pubsubTarget = Output.createUnknown<PubsubTargetResponse>();
-    this.retryConfig = Output.createUnknown<RetryConfigResponse>();
-    this.schedule = Output.createUnknown<String>();
-    this.scheduleTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.status = Output.createUnknown<StatusResponse5>();
-    this.timeZone = Output.createUnknown<String>();
-    this.userUpdateTime = Output.createUnknown<String>();
+        registerOutput<AppEngineHttpTargetResponse>('appEngineHttpTarget');
+    this.attemptDeadline = registerOutput<String>('attemptDeadline');
+    this.description = registerOutput<String>('description');
+    this.httpTarget = registerOutput<HttpTargetResponse>('httpTarget');
+    this.lastAttemptTime = registerOutput<String>('lastAttemptTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pubsubTarget = registerOutput<PubsubTargetResponse>('pubsubTarget');
+    this.retryConfig = registerOutput<RetryConfigResponse>('retryConfig');
+    this.schedule = registerOutput<String>('schedule');
+    this.scheduleTime = registerOutput<String>('scheduleTime');
+    this.state = registerOutput<String>('state');
+    this.status = registerOutput<StatusResponse5>('status');
+    this.timeZone = registerOutput<String>('timeZone');
+    this.userUpdateTime = registerOutput<String>('userUpdateTime');
   }
 }

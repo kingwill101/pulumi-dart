@@ -314,21 +314,25 @@ class InterceptEndpointGroup extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.associations =
-        Output.createUnknown<List<InterceptEndpointGroupAssociation>>();
-    this.connectedDeploymentGroups = Output.createUnknown<
-        List<InterceptEndpointGroupConnectedDeploymentGroup>>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.interceptDeploymentGroup = Output.createUnknown<String>();
-    this.interceptEndpointGroupId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<InterceptEndpointGroupAssociation>>('associations');
+    this.connectedDeploymentGroups =
+        registerOutput<List<InterceptEndpointGroupConnectedDeploymentGroup>>(
+            'connectedDeploymentGroups');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.interceptDeploymentGroup =
+        registerOutput<String>('interceptDeploymentGroup');
+    this.interceptEndpointGroupId =
+        registerOutput<String>('interceptEndpointGroupId');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

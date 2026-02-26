@@ -1123,24 +1123,26 @@ class MetricStream extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.creationDate = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.creationDate = registerOutput<String>('creationDate');
     this.excludeFilters =
-        Output.createUnknown<List<MetricStreamExcludeFilter>?>();
-    this.firehoseArn = Output.createUnknown<String>();
+        registerOutput<List<MetricStreamExcludeFilter>?>('excludeFilters');
+    this.firehoseArn = registerOutput<String>('firehoseArn');
     this.includeFilters =
-        Output.createUnknown<List<MetricStreamIncludeFilter>?>();
-    this.includeLinkedAccountsMetrics = Output.createUnknown<bool?>();
-    this.lastUpdateDate = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.outputFormat = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<List<MetricStreamIncludeFilter>?>('includeFilters');
+    this.includeLinkedAccountsMetrics =
+        registerOutput<bool?>('includeLinkedAccountsMetrics');
+    this.lastUpdateDate = registerOutput<String>('lastUpdateDate');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.outputFormat = registerOutput<String>('outputFormat');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.state = registerOutput<String>('state');
     this.statisticsConfigurations =
-        Output.createUnknown<List<MetricStreamStatisticsConfiguration>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<MetricStreamStatisticsConfiguration>?>(
+            'statisticsConfigurations');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

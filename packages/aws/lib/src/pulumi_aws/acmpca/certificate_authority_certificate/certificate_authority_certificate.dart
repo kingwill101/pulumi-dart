@@ -591,9 +591,10 @@ class CertificateAuthorityCertificate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificate = Output.createUnknown<String>();
-    this.certificateAuthorityArn = Output.createUnknown<String>();
-    this.certificateChain = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.certificate = registerOutput<String>('certificate');
+    this.certificateAuthorityArn =
+        registerOutput<String>('certificateAuthorityArn');
+    this.certificateChain = registerOutput<String?>('certificateChain');
+    this.region = registerOutput<String>('region');
   }
 }

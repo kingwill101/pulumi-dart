@@ -529,12 +529,12 @@ class Endpoint2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.address = Output.createUnknown<String?>();
-    this.endpointId = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String?>();
-    this.port = Output.createUnknown<int?>();
-    this.service = Output.createUnknown<String>();
+    this.address = registerOutput<String?>('address');
+    this.endpointId = registerOutput<String>('endpointId');
+    this.metadata = registerOutput<Map<String, String>?>('metadata');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String?>('network');
+    this.port = registerOutput<int?>('port');
+    this.service = registerOutput<String>('service');
   }
 }

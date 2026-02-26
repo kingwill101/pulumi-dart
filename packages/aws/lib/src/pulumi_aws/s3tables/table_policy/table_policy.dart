@@ -85,10 +85,10 @@ class TablePolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
-    this.namespace = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourcePolicy = Output.createUnknown<String>();
-    this.tableBucketArn = Output.createUnknown<String>();
+    this.name = registerOutput<String>('name');
+    this.namespace = registerOutput<String>('namespace');
+    this.region = registerOutput<String>('region');
+    this.resourcePolicy = registerOutput<String>('resourcePolicy');
+    this.tableBucketArn = registerOutput<String>('tableBucketArn');
   }
 }

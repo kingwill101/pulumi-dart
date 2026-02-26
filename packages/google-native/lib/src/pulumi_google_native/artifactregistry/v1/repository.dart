@@ -70,26 +70,31 @@ class Repository extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cleanupPolicies = Output.createUnknown<Map<String, String>>();
-    this.cleanupPolicyDryRun = Output.createUnknown<bool>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.dockerConfig = Output.createUnknown<DockerRepositoryConfigResponse>();
-    this.format = Output.createUnknown<String>();
-    this.kmsKeyName = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.mavenConfig = Output.createUnknown<MavenRepositoryConfigResponse>();
-    this.mode = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.cleanupPolicies =
+        registerOutput<Map<String, String>>('cleanupPolicies');
+    this.cleanupPolicyDryRun = registerOutput<bool>('cleanupPolicyDryRun');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.dockerConfig =
+        registerOutput<DockerRepositoryConfigResponse>('dockerConfig');
+    this.format = registerOutput<String>('format');
+    this.kmsKeyName = registerOutput<String>('kmsKeyName');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.mavenConfig =
+        registerOutput<MavenRepositoryConfigResponse>('mavenConfig');
+    this.mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.remoteRepositoryConfig =
-        Output.createUnknown<RemoteRepositoryConfigResponse>();
-    this.repositoryId = Output.createUnknown<String>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.sizeBytes = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<RemoteRepositoryConfigResponse>(
+            'remoteRepositoryConfig');
+    this.repositoryId = registerOutput<String>('repositoryId');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.sizeBytes = registerOutput<String>('sizeBytes');
+    this.updateTime = registerOutput<String>('updateTime');
     this.virtualRepositoryConfig =
-        Output.createUnknown<VirtualRepositoryConfigResponse>();
+        registerOutput<VirtualRepositoryConfigResponse>(
+            'virtualRepositoryConfig');
   }
 }

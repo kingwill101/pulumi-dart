@@ -87,31 +87,36 @@ class RegionCommitment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoRenew = Output.createUnknown<bool>();
-    this.category = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.endTimestamp = Output.createUnknown<String>();
-    this.existingReservations = Output.createUnknown<List<String>>();
-    this.kind = Output.createUnknown<String>();
+    this.autoRenew = registerOutput<bool>('autoRenew');
+    this.category = registerOutput<String>('category');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.endTimestamp = registerOutput<String>('endTimestamp');
+    this.existingReservations =
+        registerOutput<List<String>>('existingReservations');
+    this.kind = registerOutput<String>('kind');
     this.licenseResource =
-        Output.createUnknown<LicenseResourceCommitmentResponse>();
-    this.mergeSourceCommitments = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.plan = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.reservations = Output.createUnknown<List<ReservationResponse>>();
+        registerOutput<LicenseResourceCommitmentResponse>('licenseResource');
+    this.mergeSourceCommitments =
+        registerOutput<List<String>>('mergeSourceCommitments');
+    this.name = registerOutput<String>('name');
+    this.plan = registerOutput<String>('plan');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.reservations =
+        registerOutput<List<ReservationResponse>>('reservations');
     this.resourceStatus =
-        Output.createUnknown<CommitmentResourceStatusResponse>();
-    this.resources = Output.createUnknown<List<ResourceCommitmentResponse>>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
-    this.splitSourceCommitment = Output.createUnknown<String>();
-    this.startTimestamp = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.statusMessage = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<CommitmentResourceStatusResponse>('resourceStatus');
+    this.resources =
+        registerOutput<List<ResourceCommitmentResponse>>('resources');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    this.splitSourceCommitment =
+        registerOutput<String>('splitSourceCommitment');
+    this.startTimestamp = registerOutput<String>('startTimestamp');
+    this.status = registerOutput<String>('status');
+    this.statusMessage = registerOutput<String>('statusMessage');
+    this.type = registerOutput<String>('type');
   }
 }

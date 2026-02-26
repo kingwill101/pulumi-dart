@@ -144,11 +144,11 @@ class SecurityGroupVpcAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.securityGroupId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.securityGroupId = registerOutput<String>('securityGroupId');
+    this.state = registerOutput<String>('state');
     this.timeouts =
-        Output.createUnknown<SecurityGroupVpcAssociationTimeouts?>();
-    this.vpcId = Output.createUnknown<String>();
+        registerOutput<SecurityGroupVpcAssociationTimeouts?>('timeouts');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

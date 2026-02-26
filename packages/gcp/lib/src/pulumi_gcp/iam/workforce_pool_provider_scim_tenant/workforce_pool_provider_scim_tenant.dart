@@ -461,18 +461,18 @@ class WorkforcePoolProviderScimTenant extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.baseUri = Output.createUnknown<String>();
-    this.claimMapping = Output.createUnknown<Map<String, String>?>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.hardDelete = Output.createUnknown<bool?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.providerId = Output.createUnknown<String>();
-    this.purgeTime = Output.createUnknown<String>();
-    this.scimTenantId = Output.createUnknown<String>();
-    this.serviceAgent = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.workforcePoolId = Output.createUnknown<String>();
+    this.baseUri = registerOutput<String>('baseUri');
+    this.claimMapping = registerOutput<Map<String, String>?>('claimMapping');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.hardDelete = registerOutput<bool?>('hardDelete');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.providerId = registerOutput<String>('providerId');
+    this.purgeTime = registerOutput<String>('purgeTime');
+    this.scimTenantId = registerOutput<String>('scimTenantId');
+    this.serviceAgent = registerOutput<String>('serviceAgent');
+    this.state = registerOutput<String>('state');
+    this.workforcePoolId = registerOutput<String>('workforcePoolId');
   }
 }

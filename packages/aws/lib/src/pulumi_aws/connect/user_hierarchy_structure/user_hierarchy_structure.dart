@@ -356,8 +356,9 @@ class UserHierarchyStructure extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.hierarchyStructure =
-        Output.createUnknown<UserHierarchyStructureHierarchyStructure>();
-    this.instanceId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<UserHierarchyStructureHierarchyStructure>(
+            'hierarchyStructure');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.region = registerOutput<String>('region');
   }
 }

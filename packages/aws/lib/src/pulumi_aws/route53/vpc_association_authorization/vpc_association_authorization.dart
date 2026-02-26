@@ -286,8 +286,8 @@ class VpcAssociationAuthorization extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.vpcId = Output.createUnknown<String>();
-    this.vpcRegion = Output.createUnknown<String>();
-    this.zoneId = Output.createUnknown<String>();
+    this.vpcId = registerOutput<String>('vpcId');
+    this.vpcRegion = registerOutput<String>('vpcRegion');
+    this.zoneId = registerOutput<String>('zoneId');
   }
 }

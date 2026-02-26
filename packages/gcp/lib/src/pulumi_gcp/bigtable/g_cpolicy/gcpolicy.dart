@@ -879,15 +879,15 @@ class GCPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.columnFamily = Output.createUnknown<String>();
-    this.deletionPolicy = Output.createUnknown<String?>();
-    this.gcRules = Output.createUnknown<String?>();
-    this.ignoreWarnings = Output.createUnknown<bool?>();
-    this.instanceName = Output.createUnknown<String>();
-    this.maxAge = Output.createUnknown<GCPolicyMaxAge?>();
-    this.maxVersions = Output.createUnknown<List<GCPolicyMaxVersion>?>();
-    this.mode = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.table = Output.createUnknown<String>();
+    this.columnFamily = registerOutput<String>('columnFamily');
+    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
+    this.gcRules = registerOutput<String?>('gcRules');
+    this.ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
+    this.instanceName = registerOutput<String>('instanceName');
+    this.maxAge = registerOutput<GCPolicyMaxAge?>('maxAge');
+    this.maxVersions = registerOutput<List<GCPolicyMaxVersion>?>('maxVersions');
+    this.mode = registerOutput<String?>('mode');
+    this.project = registerOutput<String>('project');
+    this.table = registerOutput<String>('table');
   }
 }

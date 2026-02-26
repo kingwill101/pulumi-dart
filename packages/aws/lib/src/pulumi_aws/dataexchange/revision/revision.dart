@@ -129,12 +129,12 @@ class Revision extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.comment = Output.createUnknown<String?>();
-    this.dataSetId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.revisionId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.comment = registerOutput<String?>('comment');
+    this.dataSetId = registerOutput<String>('dataSetId');
+    this.region = registerOutput<String>('region');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

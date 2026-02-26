@@ -245,11 +245,13 @@ class PrefixListReference extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.blackhole = Output.createUnknown<bool?>();
-    this.prefixListId = Output.createUnknown<String>();
-    this.prefixListOwnerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.transitGatewayAttachmentId = Output.createUnknown<String?>();
-    this.transitGatewayRouteTableId = Output.createUnknown<String>();
+    this.blackhole = registerOutput<bool?>('blackhole');
+    this.prefixListId = registerOutput<String>('prefixListId');
+    this.prefixListOwnerId = registerOutput<String>('prefixListOwnerId');
+    this.region = registerOutput<String>('region');
+    this.transitGatewayAttachmentId =
+        registerOutput<String?>('transitGatewayAttachmentId');
+    this.transitGatewayRouteTableId =
+        registerOutput<String>('transitGatewayRouteTableId');
   }
 }

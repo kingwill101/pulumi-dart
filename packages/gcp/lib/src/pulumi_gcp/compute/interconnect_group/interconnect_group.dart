@@ -205,15 +205,16 @@ class InterconnectGroup extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.configureds =
-        Output.createUnknown<List<InterconnectGroupConfigured>>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.intent = Output.createUnknown<InterconnectGroupIntent>();
+        registerOutput<List<InterconnectGroupConfigured>>('configureds');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.intent = registerOutput<InterconnectGroupIntent>('intent');
     this.interconnects =
-        Output.createUnknown<List<InterconnectGroupInterconnect>?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<List<InterconnectGroupInterconnect>?>('interconnects');
+    this.name = registerOutput<String>('name');
     this.physicalStructures =
-        Output.createUnknown<List<InterconnectGroupPhysicalStructure>>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<List<InterconnectGroupPhysicalStructure>>(
+            'physicalStructures');
+    this.project = registerOutput<String>('project');
   }
 }

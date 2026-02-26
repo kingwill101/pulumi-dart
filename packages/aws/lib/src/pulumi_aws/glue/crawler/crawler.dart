@@ -1046,33 +1046,40 @@ class Crawler extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.catalogTargets = Output.createUnknown<List<CrawlerCatalogTarget>?>();
-    this.classifiers = Output.createUnknown<List<String>?>();
-    this.configuration = Output.createUnknown<String?>();
-    this.databaseName = Output.createUnknown<String>();
-    this.deltaTargets = Output.createUnknown<List<CrawlerDeltaTarget>?>();
-    this.description = Output.createUnknown<String?>();
-    this.dynamodbTargets = Output.createUnknown<List<CrawlerDynamodbTarget>?>();
-    this.hudiTargets = Output.createUnknown<List<CrawlerHudiTarget>?>();
-    this.icebergTargets = Output.createUnknown<List<CrawlerIcebergTarget>?>();
-    this.jdbcTargets = Output.createUnknown<List<CrawlerJdbcTarget>?>();
+    this.arn = registerOutput<String>('arn');
+    this.catalogTargets =
+        registerOutput<List<CrawlerCatalogTarget>?>('catalogTargets');
+    this.classifiers = registerOutput<List<String>?>('classifiers');
+    this.configuration = registerOutput<String?>('configuration');
+    this.databaseName = registerOutput<String>('databaseName');
+    this.deltaTargets =
+        registerOutput<List<CrawlerDeltaTarget>?>('deltaTargets');
+    this.description = registerOutput<String?>('description');
+    this.dynamodbTargets =
+        registerOutput<List<CrawlerDynamodbTarget>?>('dynamodbTargets');
+    this.hudiTargets = registerOutput<List<CrawlerHudiTarget>?>('hudiTargets');
+    this.icebergTargets =
+        registerOutput<List<CrawlerIcebergTarget>?>('icebergTargets');
+    this.jdbcTargets = registerOutput<List<CrawlerJdbcTarget>?>('jdbcTargets');
     this.lakeFormationConfiguration =
-        Output.createUnknown<CrawlerLakeFormationConfiguration?>();
+        registerOutput<CrawlerLakeFormationConfiguration?>(
+            'lakeFormationConfiguration');
     this.lineageConfiguration =
-        Output.createUnknown<CrawlerLineageConfiguration?>();
-    this.mongodbTargets = Output.createUnknown<List<CrawlerMongodbTarget>?>();
-    this.name = Output.createUnknown<String>();
-    this.recrawlPolicy = Output.createUnknown<CrawlerRecrawlPolicy?>();
-    this.region = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.s3Targets = Output.createUnknown<List<CrawlerS3Target>?>();
-    this.schedule = Output.createUnknown<String?>();
+        registerOutput<CrawlerLineageConfiguration?>('lineageConfiguration');
+    this.mongodbTargets =
+        registerOutput<List<CrawlerMongodbTarget>?>('mongodbTargets');
+    this.name = registerOutput<String>('name');
+    this.recrawlPolicy = registerOutput<CrawlerRecrawlPolicy?>('recrawlPolicy');
+    this.region = registerOutput<String>('region');
+    this.role = registerOutput<String>('role');
+    this.s3Targets = registerOutput<List<CrawlerS3Target>?>('s3Targets');
+    this.schedule = registerOutput<String?>('schedule');
     this.schemaChangePolicy =
-        Output.createUnknown<CrawlerSchemaChangePolicy?>();
-    this.securityConfiguration = Output.createUnknown<String?>();
-    this.tablePrefix = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<CrawlerSchemaChangePolicy?>('schemaChangePolicy');
+    this.securityConfiguration =
+        registerOutput<String?>('securityConfiguration');
+    this.tablePrefix = registerOutput<String?>('tablePrefix');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -57,19 +57,20 @@ class TransferJob extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTime = Output.createUnknown<String>();
-    this.deletionTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.eventStream = Output.createUnknown<EventStreamResponse>();
-    this.lastModificationTime = Output.createUnknown<String>();
-    this.latestOperationName = Output.createUnknown<String>();
-    this.loggingConfig = Output.createUnknown<LoggingConfigResponse5>();
-    this.name = Output.createUnknown<String>();
+    this.creationTime = registerOutput<String>('creationTime');
+    this.deletionTime = registerOutput<String>('deletionTime');
+    this.description = registerOutput<String>('description');
+    this.eventStream = registerOutput<EventStreamResponse>('eventStream');
+    this.lastModificationTime = registerOutput<String>('lastModificationTime');
+    this.latestOperationName = registerOutput<String>('latestOperationName');
+    this.loggingConfig =
+        registerOutput<LoggingConfigResponse5>('loggingConfig');
+    this.name = registerOutput<String>('name');
     this.notificationConfig =
-        Output.createUnknown<NotificationConfigResponse5>();
-    this.project = Output.createUnknown<String>();
-    this.schedule = Output.createUnknown<ScheduleResponse2>();
-    this.status = Output.createUnknown<String>();
-    this.transferSpec = Output.createUnknown<TransferSpecResponse>();
+        registerOutput<NotificationConfigResponse5>('notificationConfig');
+    this.project = registerOutput<String>('project');
+    this.schedule = registerOutput<ScheduleResponse2>('schedule');
+    this.status = registerOutput<String>('status');
+    this.transferSpec = registerOutput<TransferSpecResponse>('transferSpec');
   }
 }

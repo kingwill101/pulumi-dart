@@ -9281,21 +9281,25 @@ class URLMap extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTimestamp = Output.createUnknown<String>();
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.defaultCustomErrorResponsePolicy =
-        Output.createUnknown<URLMapDefaultCustomErrorResponsePolicy?>();
-    this.defaultRouteAction = Output.createUnknown<URLMapDefaultRouteAction?>();
-    this.defaultService = Output.createUnknown<String?>();
-    this.defaultUrlRedirect = Output.createUnknown<URLMapDefaultUrlRedirect?>();
-    this.description = Output.createUnknown<String?>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.headerAction = Output.createUnknown<URLMapHeaderAction?>();
-    this.hostRules = Output.createUnknown<List<URLMapHostRule>?>();
-    this.mapId = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.pathMatchers = Output.createUnknown<List<URLMapPathMatcher>?>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.tests = Output.createUnknown<List<URLMapTest>?>();
+        registerOutput<URLMapDefaultCustomErrorResponsePolicy?>(
+            'defaultCustomErrorResponsePolicy');
+    this.defaultRouteAction =
+        registerOutput<URLMapDefaultRouteAction?>('defaultRouteAction');
+    this.defaultService = registerOutput<String?>('defaultService');
+    this.defaultUrlRedirect =
+        registerOutput<URLMapDefaultUrlRedirect?>('defaultUrlRedirect');
+    this.description = registerOutput<String?>('description');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.headerAction = registerOutput<URLMapHeaderAction?>('headerAction');
+    this.hostRules = registerOutput<List<URLMapHostRule>?>('hostRules');
+    this.mapId = registerOutput<int>('mapId');
+    this.name = registerOutput<String>('name');
+    this.pathMatchers =
+        registerOutput<List<URLMapPathMatcher>?>('pathMatchers');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.tests = registerOutput<List<URLMapTest>?>('tests');
   }
 }

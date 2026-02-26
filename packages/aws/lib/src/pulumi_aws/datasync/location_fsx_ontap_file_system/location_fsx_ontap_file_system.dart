@@ -210,16 +210,18 @@ class LocationFsxOntapFileSystem extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.creationTime = Output.createUnknown<String>();
-    this.fsxFilesystemArn = Output.createUnknown<String>();
-    this.protocol = Output.createUnknown<LocationFsxOntapFileSystemProtocol>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupArns = Output.createUnknown<List<String>>();
-    this.storageVirtualMachineArn = Output.createUnknown<String>();
-    this.subdirectory = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.uri = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.creationTime = registerOutput<String>('creationTime');
+    this.fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
+    this.protocol =
+        registerOutput<LocationFsxOntapFileSystemProtocol>('protocol');
+    this.region = registerOutput<String>('region');
+    this.securityGroupArns = registerOutput<List<String>>('securityGroupArns');
+    this.storageVirtualMachineArn =
+        registerOutput<String>('storageVirtualMachineArn');
+    this.subdirectory = registerOutput<String>('subdirectory');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.uri = registerOutput<String>('uri');
   }
 }

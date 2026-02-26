@@ -549,15 +549,16 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.ancestorModule = Output.createUnknown<String>();
-    this.customConfig = Output.createUnknown<
-        ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.enablementState = Output.createUnknown<String?>();
-    this.lastEditor = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.organization = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.ancestorModule = registerOutput<String>('ancestorModule');
+    this.customConfig = registerOutput<
+            ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig?>(
+        'customConfig');
+    this.displayName = registerOutput<String?>('displayName');
+    this.enablementState = registerOutput<String?>('enablementState');
+    this.lastEditor = registerOutput<String>('lastEditor');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.organization = registerOutput<String>('organization');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

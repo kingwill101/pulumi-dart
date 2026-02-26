@@ -45,17 +45,19 @@ class ReleaseConfig extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.codeCompilationConfig =
-        Output.createUnknown<CodeCompilationConfigResponse>();
-    this.cronSchedule = Output.createUnknown<String>();
-    this.gitCommitish = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<CodeCompilationConfigResponse>('codeCompilationConfig');
+    this.cronSchedule = registerOutput<String>('cronSchedule');
+    this.gitCommitish = registerOutput<String>('gitCommitish');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.recentScheduledReleaseRecords =
-        Output.createUnknown<List<ScheduledReleaseRecordResponse>>();
-    this.releaseCompilationResult = Output.createUnknown<String>();
-    this.releaseConfigId = Output.createUnknown<String>();
-    this.repositoryId = Output.createUnknown<String>();
-    this.timeZone = Output.createUnknown<String>();
+        registerOutput<List<ScheduledReleaseRecordResponse>>(
+            'recentScheduledReleaseRecords');
+    this.releaseCompilationResult =
+        registerOutput<String>('releaseCompilationResult');
+    this.releaseConfigId = registerOutput<String>('releaseConfigId');
+    this.repositoryId = registerOutput<String>('repositoryId');
+    this.timeZone = registerOutput<String>('timeZone');
   }
 }

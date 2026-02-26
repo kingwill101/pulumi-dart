@@ -588,38 +588,47 @@ class MultitenantDistribution extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activeTrustedKeyGroups = Output.createUnknown<
-        List<MultitenantDistributionActiveTrustedKeyGroup>?>();
-    this.arn = Output.createUnknown<String>();
+    this.activeTrustedKeyGroups =
+        registerOutput<List<MultitenantDistributionActiveTrustedKeyGroup>?>(
+            'activeTrustedKeyGroups');
+    this.arn = registerOutput<String>('arn');
     this.cacheBehaviors =
-        Output.createUnknown<List<MultitenantDistributionCacheBehavior>?>();
-    this.callerReference = Output.createUnknown<String>();
-    this.comment = Output.createUnknown<String>();
-    this.connectionMode = Output.createUnknown<String>();
-    this.customErrorResponses = Output.createUnknown<
-        List<MultitenantDistributionCustomErrorResponse>?>();
+        registerOutput<List<MultitenantDistributionCacheBehavior>?>(
+            'cacheBehaviors');
+    this.callerReference = registerOutput<String>('callerReference');
+    this.comment = registerOutput<String>('comment');
+    this.connectionMode = registerOutput<String>('connectionMode');
+    this.customErrorResponses =
+        registerOutput<List<MultitenantDistributionCustomErrorResponse>?>(
+            'customErrorResponses');
     this.defaultCacheBehavior =
-        Output.createUnknown<MultitenantDistributionDefaultCacheBehavior>();
-    this.defaultRootObject = Output.createUnknown<String?>();
-    this.domainName = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool>();
-    this.etag = Output.createUnknown<String>();
-    this.httpVersion = Output.createUnknown<String>();
-    this.inProgressInvalidationBatches = Output.createUnknown<int>();
-    this.lastModifiedTime = Output.createUnknown<String>();
+        registerOutput<MultitenantDistributionDefaultCacheBehavior>(
+            'defaultCacheBehavior');
+    this.defaultRootObject = registerOutput<String?>('defaultRootObject');
+    this.domainName = registerOutput<String>('domainName');
+    this.enabled = registerOutput<bool>('enabled');
+    this.etag = registerOutput<String>('etag');
+    this.httpVersion = registerOutput<String>('httpVersion');
+    this.inProgressInvalidationBatches =
+        registerOutput<int>('inProgressInvalidationBatches');
+    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.originGroups =
-        Output.createUnknown<List<MultitenantDistributionOriginGroup>?>();
-    this.origins = Output.createUnknown<List<MultitenantDistributionOrigin>?>();
+        registerOutput<List<MultitenantDistributionOriginGroup>?>(
+            'originGroups');
+    this.origins =
+        registerOutput<List<MultitenantDistributionOrigin>?>('origins');
     this.restrictions =
-        Output.createUnknown<MultitenantDistributionRestrictions?>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<MultitenantDistributionRestrictions?>('restrictions');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.tenantConfig =
-        Output.createUnknown<MultitenantDistributionTenantConfig>();
-    this.timeouts = Output.createUnknown<MultitenantDistributionTimeouts?>();
+        registerOutput<MultitenantDistributionTenantConfig>('tenantConfig');
+    this.timeouts =
+        registerOutput<MultitenantDistributionTimeouts?>('timeouts');
     this.viewerCertificate =
-        Output.createUnknown<MultitenantDistributionViewerCertificate>();
-    this.webAclId = Output.createUnknown<String?>();
+        registerOutput<MultitenantDistributionViewerCertificate>(
+            'viewerCertificate');
+    this.webAclId = registerOutput<String?>('webAclId');
   }
 }

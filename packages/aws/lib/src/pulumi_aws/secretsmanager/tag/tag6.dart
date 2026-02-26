@@ -163,9 +163,9 @@ class Tag6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.key = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.secretId = Output.createUnknown<String>();
-    this.value = Output.createUnknown<String>();
+    this.key = registerOutput<String>('key');
+    this.region = registerOutput<String>('region');
+    this.secretId = registerOutput<String>('secretId');
+    this.value = registerOutput<String>('value');
   }
 }

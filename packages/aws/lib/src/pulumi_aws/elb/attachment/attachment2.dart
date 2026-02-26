@@ -131,8 +131,8 @@ class Attachment2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.elb = Output.createUnknown<String>();
-    this.instance = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.elb = registerOutput<String>('elb');
+    this.instance = registerOutput<String>('instance');
+    this.region = registerOutput<String>('region');
   }
 }

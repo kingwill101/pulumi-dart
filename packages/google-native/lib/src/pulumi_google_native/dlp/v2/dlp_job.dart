@@ -60,21 +60,25 @@ class DlpJob extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.actionDetails =
-        Output.createUnknown<List<GooglePrivacyDlpV2ActionDetailsResponse>>();
-    this.createTime = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
-    this.errors = Output.createUnknown<List<GooglePrivacyDlpV2ErrorResponse>>();
-    this.inspectDetails = Output.createUnknown<
-        GooglePrivacyDlpV2InspectDataSourceDetailsResponse>();
-    this.jobTriggerName = Output.createUnknown<String>();
-    this.lastModified = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.riskDetails = Output.createUnknown<
-        GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<List<GooglePrivacyDlpV2ActionDetailsResponse>>(
+            'actionDetails');
+    this.createTime = registerOutput<String>('createTime');
+    this.endTime = registerOutput<String>('endTime');
+    this.errors =
+        registerOutput<List<GooglePrivacyDlpV2ErrorResponse>>('errors');
+    this.inspectDetails =
+        registerOutput<GooglePrivacyDlpV2InspectDataSourceDetailsResponse>(
+            'inspectDetails');
+    this.jobTriggerName = registerOutput<String>('jobTriggerName');
+    this.lastModified = registerOutput<String>('lastModified');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.riskDetails =
+        registerOutput<GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse>(
+            'riskDetails');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String>('type');
   }
 }

@@ -97,33 +97,37 @@ class Node4 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.acceleratorConfig =
-        Output.createUnknown<AcceleratorConfigResponse10>();
-    this.acceleratorType = Output.createUnknown<String>();
-    this.apiVersion = Output.createUnknown<String>();
-    this.cidrBlock = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataDisks = Output.createUnknown<List<AttachedDiskResponse5>>();
-    this.description = Output.createUnknown<String>();
-    this.health = Output.createUnknown<String>();
-    this.healthDescription = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>>();
-    this.multisliceNode = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.networkConfig = Output.createUnknown<NetworkConfigResponse19>();
+        registerOutput<AcceleratorConfigResponse10>('acceleratorConfig');
+    this.acceleratorType = registerOutput<String>('acceleratorType');
+    this.apiVersion = registerOutput<String>('apiVersion');
+    this.cidrBlock = registerOutput<String>('cidrBlock');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataDisks = registerOutput<List<AttachedDiskResponse5>>('dataDisks');
+    this.description = registerOutput<String>('description');
+    this.health = registerOutput<String>('health');
+    this.healthDescription = registerOutput<String>('healthDescription');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<Map<String, String>>('metadata');
+    this.multisliceNode = registerOutput<bool>('multisliceNode');
+    this.name = registerOutput<String>('name');
+    this.networkConfig =
+        registerOutput<NetworkConfigResponse19>('networkConfig');
     this.networkEndpoints =
-        Output.createUnknown<List<NetworkEndpointResponse3>>();
-    this.nodeId = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.queuedResource = Output.createUnknown<String>();
-    this.runtimeVersion = Output.createUnknown<String>();
-    this.schedulingConfig = Output.createUnknown<SchedulingConfigResponse3>();
-    this.serviceAccount = Output.createUnknown<ServiceAccountResponse9>();
+        registerOutput<List<NetworkEndpointResponse3>>('networkEndpoints');
+    this.nodeId = registerOutput<String?>('nodeId');
+    this.project = registerOutput<String>('project');
+    this.queuedResource = registerOutput<String>('queuedResource');
+    this.runtimeVersion = registerOutput<String>('runtimeVersion');
+    this.schedulingConfig =
+        registerOutput<SchedulingConfigResponse3>('schedulingConfig');
+    this.serviceAccount =
+        registerOutput<ServiceAccountResponse9>('serviceAccount');
     this.shieldedInstanceConfig =
-        Output.createUnknown<ShieldedInstanceConfigResponse10>();
-    this.state = Output.createUnknown<String>();
-    this.symptoms = Output.createUnknown<List<SymptomResponse3>>();
-    this.tags = Output.createUnknown<List<String>>();
+        registerOutput<ShieldedInstanceConfigResponse10>(
+            'shieldedInstanceConfig');
+    this.state = registerOutput<String>('state');
+    this.symptoms = registerOutput<List<SymptomResponse3>>('symptoms');
+    this.tags = registerOutput<List<String>>('tags');
   }
 }

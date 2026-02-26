@@ -126,8 +126,8 @@ class SingleScramSecretAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusterArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.secretArn = Output.createUnknown<String>();
+    this.clusterArn = registerOutput<String>('clusterArn');
+    this.region = registerOutput<String>('region');
+    this.secretArn = registerOutput<String>('secretArn');
   }
 }

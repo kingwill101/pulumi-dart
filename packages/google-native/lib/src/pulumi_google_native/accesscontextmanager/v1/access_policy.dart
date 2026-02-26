@@ -29,10 +29,10 @@ class AccessPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.scopes = Output.createUnknown<List<String>>();
-    this.title = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.scopes = registerOutput<List<String>>('scopes');
+    this.title = registerOutput<String>('title');
   }
 }

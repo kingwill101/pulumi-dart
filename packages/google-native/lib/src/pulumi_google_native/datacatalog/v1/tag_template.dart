@@ -30,12 +30,12 @@ class TagTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String>();
-    this.fields = Output.createUnknown<Map<String, String>>();
-    this.isPubliclyReadable = Output.createUnknown<bool>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.tagTemplateId = Output.createUnknown<String>();
+    this.displayName = registerOutput<String>('displayName');
+    this.fields = registerOutput<Map<String, String>>('fields');
+    this.isPubliclyReadable = registerOutput<bool>('isPubliclyReadable');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.tagTemplateId = registerOutput<String>('tagTemplateId');
   }
 }

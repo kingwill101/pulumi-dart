@@ -1253,35 +1253,43 @@ class DeploymentGroup extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.alarmConfiguration =
-        Output.createUnknown<DeploymentGroupAlarmConfiguration?>();
-    this.appName = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
+        registerOutput<DeploymentGroupAlarmConfiguration?>(
+            'alarmConfiguration');
+    this.appName = registerOutput<String>('appName');
+    this.arn = registerOutput<String>('arn');
     this.autoRollbackConfiguration =
-        Output.createUnknown<DeploymentGroupAutoRollbackConfiguration?>();
-    this.autoscalingGroups = Output.createUnknown<List<String>?>();
+        registerOutput<DeploymentGroupAutoRollbackConfiguration?>(
+            'autoRollbackConfiguration');
+    this.autoscalingGroups = registerOutput<List<String>?>('autoscalingGroups');
     this.blueGreenDeploymentConfig =
-        Output.createUnknown<DeploymentGroupBlueGreenDeploymentConfig>();
-    this.computePlatform = Output.createUnknown<String>();
-    this.deploymentConfigName = Output.createUnknown<String?>();
-    this.deploymentGroupId = Output.createUnknown<String>();
-    this.deploymentGroupName = Output.createUnknown<String>();
+        registerOutput<DeploymentGroupBlueGreenDeploymentConfig>(
+            'blueGreenDeploymentConfig');
+    this.computePlatform = registerOutput<String>('computePlatform');
+    this.deploymentConfigName = registerOutput<String?>('deploymentConfigName');
+    this.deploymentGroupId = registerOutput<String>('deploymentGroupId');
+    this.deploymentGroupName = registerOutput<String>('deploymentGroupName');
     this.deploymentStyle =
-        Output.createUnknown<DeploymentGroupDeploymentStyle?>();
+        registerOutput<DeploymentGroupDeploymentStyle?>('deploymentStyle');
     this.ec2TagFilters =
-        Output.createUnknown<List<DeploymentGroupEc2TagFilter>?>();
-    this.ec2TagSets = Output.createUnknown<List<DeploymentGroupEc2TagSet>?>();
-    this.ecsService = Output.createUnknown<DeploymentGroupEcsService?>();
+        registerOutput<List<DeploymentGroupEc2TagFilter>?>('ec2TagFilters');
+    this.ec2TagSets =
+        registerOutput<List<DeploymentGroupEc2TagSet>?>('ec2TagSets');
+    this.ecsService = registerOutput<DeploymentGroupEcsService?>('ecsService');
     this.loadBalancerInfo =
-        Output.createUnknown<DeploymentGroupLoadBalancerInfo?>();
-    this.onPremisesInstanceTagFilters = Output.createUnknown<
-        List<DeploymentGroupOnPremisesInstanceTagFilter>?>();
-    this.outdatedInstancesStrategy = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.serviceRoleArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.terminationHookEnabled = Output.createUnknown<bool?>();
+        registerOutput<DeploymentGroupLoadBalancerInfo?>('loadBalancerInfo');
+    this.onPremisesInstanceTagFilters =
+        registerOutput<List<DeploymentGroupOnPremisesInstanceTagFilter>?>(
+            'onPremisesInstanceTagFilters');
+    this.outdatedInstancesStrategy =
+        registerOutput<String?>('outdatedInstancesStrategy');
+    this.region = registerOutput<String>('region');
+    this.serviceRoleArn = registerOutput<String>('serviceRoleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.terminationHookEnabled =
+        registerOutput<bool?>('terminationHookEnabled');
     this.triggerConfigurations =
-        Output.createUnknown<List<DeploymentGroupTriggerConfiguration>?>();
+        registerOutput<List<DeploymentGroupTriggerConfiguration>?>(
+            'triggerConfigurations');
   }
 }

@@ -61,19 +61,22 @@ class TestMatrix extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clientInfo = Output.createUnknown<ClientInfoResponse>();
-    this.environmentMatrix = Output.createUnknown<EnvironmentMatrixResponse>();
-    this.failFast = Output.createUnknown<bool>();
-    this.flakyTestAttempts = Output.createUnknown<int>();
-    this.invalidMatrixDetails = Output.createUnknown<String>();
-    this.outcomeSummary = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.resultStorage = Output.createUnknown<ResultStorageResponse>();
-    this.state = Output.createUnknown<String>();
-    this.testExecutions = Output.createUnknown<List<TestExecutionResponse>>();
-    this.testMatrixId = Output.createUnknown<String>();
-    this.testSpecification = Output.createUnknown<TestSpecificationResponse>();
-    this.timestamp = Output.createUnknown<String>();
+    this.clientInfo = registerOutput<ClientInfoResponse>('clientInfo');
+    this.environmentMatrix =
+        registerOutput<EnvironmentMatrixResponse>('environmentMatrix');
+    this.failFast = registerOutput<bool>('failFast');
+    this.flakyTestAttempts = registerOutput<int>('flakyTestAttempts');
+    this.invalidMatrixDetails = registerOutput<String>('invalidMatrixDetails');
+    this.outcomeSummary = registerOutput<String>('outcomeSummary');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.resultStorage = registerOutput<ResultStorageResponse>('resultStorage');
+    this.state = registerOutput<String>('state');
+    this.testExecutions =
+        registerOutput<List<TestExecutionResponse>>('testExecutions');
+    this.testMatrixId = registerOutput<String>('testMatrixId');
+    this.testSpecification =
+        registerOutput<TestSpecificationResponse>('testSpecification');
+    this.timestamp = registerOutput<String>('timestamp');
   }
 }

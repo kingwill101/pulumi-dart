@@ -21,8 +21,8 @@ class Trail extends ComponentResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? ComponentResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<dynamic>();
-    this.logGroup = Output.createUnknown<dynamic>();
-    this.trail = Output.createUnknown<dynamic>();
+    this.bucket = registerOutput<dynamic>('bucket');
+    this.logGroup = registerOutput<dynamic>('logGroup');
+    this.trail = registerOutput<dynamic>('trail');
   }
 }

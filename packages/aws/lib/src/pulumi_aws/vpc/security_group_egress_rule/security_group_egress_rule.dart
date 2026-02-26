@@ -197,19 +197,20 @@ class SecurityGroupEgressRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.cidrIpv4 = Output.createUnknown<String?>();
-    this.cidrIpv6 = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.fromPort = Output.createUnknown<int?>();
-    this.ipProtocol = Output.createUnknown<String>();
-    this.prefixListId = Output.createUnknown<String?>();
-    this.referencedSecurityGroupId = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupId = Output.createUnknown<String>();
-    this.securityGroupRuleId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.toPort = Output.createUnknown<int?>();
+    this.arn = registerOutput<String>('arn');
+    this.cidrIpv4 = registerOutput<String?>('cidrIpv4');
+    this.cidrIpv6 = registerOutput<String?>('cidrIpv6');
+    this.description = registerOutput<String?>('description');
+    this.fromPort = registerOutput<int?>('fromPort');
+    this.ipProtocol = registerOutput<String>('ipProtocol');
+    this.prefixListId = registerOutput<String?>('prefixListId');
+    this.referencedSecurityGroupId =
+        registerOutput<String?>('referencedSecurityGroupId');
+    this.region = registerOutput<String>('region');
+    this.securityGroupId = registerOutput<String>('securityGroupId');
+    this.securityGroupRuleId = registerOutput<String>('securityGroupRuleId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.toPort = registerOutput<int?>('toPort');
   }
 }

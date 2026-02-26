@@ -388,19 +388,22 @@ class Route extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiId = Output.createUnknown<String>();
-    this.apiKeyRequired = Output.createUnknown<bool?>();
-    this.authorizationScopes = Output.createUnknown<List<String>?>();
-    this.authorizationType = Output.createUnknown<String?>();
-    this.authorizerId = Output.createUnknown<String?>();
-    this.modelSelectionExpression = Output.createUnknown<String?>();
-    this.operationName = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.requestModels = Output.createUnknown<Map<String, String>?>();
+    this.apiId = registerOutput<String>('apiId');
+    this.apiKeyRequired = registerOutput<bool?>('apiKeyRequired');
+    this.authorizationScopes =
+        registerOutput<List<String>?>('authorizationScopes');
+    this.authorizationType = registerOutput<String?>('authorizationType');
+    this.authorizerId = registerOutput<String?>('authorizerId');
+    this.modelSelectionExpression =
+        registerOutput<String?>('modelSelectionExpression');
+    this.operationName = registerOutput<String?>('operationName');
+    this.region = registerOutput<String>('region');
+    this.requestModels = registerOutput<Map<String, String>?>('requestModels');
     this.requestParameters =
-        Output.createUnknown<List<RouteRequestParameter>?>();
-    this.routeKey = Output.createUnknown<String>();
-    this.routeResponseSelectionExpression = Output.createUnknown<String?>();
-    this.target = Output.createUnknown<String?>();
+        registerOutput<List<RouteRequestParameter>?>('requestParameters');
+    this.routeKey = registerOutput<String>('routeKey');
+    this.routeResponseSelectionExpression =
+        registerOutput<String?>('routeResponseSelectionExpression');
+    this.target = registerOutput<String?>('target');
   }
 }

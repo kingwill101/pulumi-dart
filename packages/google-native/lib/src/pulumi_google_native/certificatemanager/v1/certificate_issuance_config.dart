@@ -48,17 +48,20 @@ class CertificateIssuanceConfig extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.certificateAuthorityConfig =
-        Output.createUnknown<CertificateAuthorityConfigResponse>();
-    this.certificateIssuanceConfigId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.keyAlgorithm = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lifetime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rotationWindowPercentage = Output.createUnknown<int>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<CertificateAuthorityConfigResponse>(
+            'certificateAuthorityConfig');
+    this.certificateIssuanceConfigId =
+        registerOutput<String>('certificateIssuanceConfigId');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.keyAlgorithm = registerOutput<String>('keyAlgorithm');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lifetime = registerOutput<String>('lifetime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.rotationWindowPercentage =
+        registerOutput<int>('rotationWindowPercentage');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

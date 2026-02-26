@@ -152,10 +152,10 @@ class BaiduChannel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiKey = Output.createUnknown<String>();
-    this.applicationId = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.secretKey = Output.createUnknown<String>();
+    this.apiKey = registerOutput<String>('apiKey');
+    this.applicationId = registerOutput<String>('applicationId');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.region = registerOutput<String>('region');
+    this.secretKey = registerOutput<String>('secretKey');
   }
 }

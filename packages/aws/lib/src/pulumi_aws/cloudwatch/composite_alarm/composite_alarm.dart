@@ -216,18 +216,19 @@ class CompositeAlarm extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.actionsEnabled = Output.createUnknown<bool?>();
+    this.actionsEnabled = registerOutput<bool?>('actionsEnabled');
     this.actionsSuppressor =
-        Output.createUnknown<CompositeAlarmActionsSuppressor?>();
-    this.alarmActions = Output.createUnknown<List<String>?>();
-    this.alarmDescription = Output.createUnknown<String?>();
-    this.alarmName = Output.createUnknown<String>();
-    this.alarmRule = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.insufficientDataActions = Output.createUnknown<List<String>?>();
-    this.okActions = Output.createUnknown<List<String>?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<CompositeAlarmActionsSuppressor?>('actionsSuppressor');
+    this.alarmActions = registerOutput<List<String>?>('alarmActions');
+    this.alarmDescription = registerOutput<String?>('alarmDescription');
+    this.alarmName = registerOutput<String>('alarmName');
+    this.alarmRule = registerOutput<String>('alarmRule');
+    this.arn = registerOutput<String>('arn');
+    this.insufficientDataActions =
+        registerOutput<List<String>?>('insufficientDataActions');
+    this.okActions = registerOutput<List<String>?>('okActions');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

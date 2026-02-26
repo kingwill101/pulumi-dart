@@ -228,23 +228,23 @@ class TransitVirtualInterface extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.addressFamily = Output.createUnknown<String>();
-    this.amazonAddress = Output.createUnknown<String>();
-    this.amazonSideAsn = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.awsDevice = Output.createUnknown<String>();
-    this.bgpAsn = Output.createUnknown<int>();
-    this.bgpAuthKey = Output.createUnknown<String>();
-    this.connectionId = Output.createUnknown<String>();
-    this.customerAddress = Output.createUnknown<String>();
-    this.dxGatewayId = Output.createUnknown<String>();
-    this.jumboFrameCapable = Output.createUnknown<bool>();
-    this.mtu = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.sitelinkEnabled = Output.createUnknown<bool?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vlan = Output.createUnknown<int>();
+    this.addressFamily = registerOutput<String>('addressFamily');
+    this.amazonAddress = registerOutput<String>('amazonAddress');
+    this.amazonSideAsn = registerOutput<String>('amazonSideAsn');
+    this.arn = registerOutput<String>('arn');
+    this.awsDevice = registerOutput<String>('awsDevice');
+    this.bgpAsn = registerOutput<int>('bgpAsn');
+    this.bgpAuthKey = registerOutput<String>('bgpAuthKey');
+    this.connectionId = registerOutput<String>('connectionId');
+    this.customerAddress = registerOutput<String>('customerAddress');
+    this.dxGatewayId = registerOutput<String>('dxGatewayId');
+    this.jumboFrameCapable = registerOutput<bool>('jumboFrameCapable');
+    this.mtu = registerOutput<int?>('mtu');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.sitelinkEnabled = registerOutput<bool?>('sitelinkEnabled');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vlan = registerOutput<int>('vlan');
   }
 }

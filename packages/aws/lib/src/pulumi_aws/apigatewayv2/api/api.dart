@@ -293,25 +293,29 @@ class Api extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiEndpoint = Output.createUnknown<String>();
-    this.apiKeySelectionExpression = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.body = Output.createUnknown<String?>();
-    this.corsConfiguration = Output.createUnknown<ApiCorsConfiguration?>();
-    this.credentialsArn = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.disableExecuteApiEndpoint = Output.createUnknown<bool?>();
-    this.executionArn = Output.createUnknown<String>();
-    this.failOnWarnings = Output.createUnknown<bool?>();
-    this.ipAddressType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.protocolType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.routeKey = Output.createUnknown<String?>();
-    this.routeSelectionExpression = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.target = Output.createUnknown<String?>();
-    this.version = Output.createUnknown<String?>();
+    this.apiEndpoint = registerOutput<String>('apiEndpoint');
+    this.apiKeySelectionExpression =
+        registerOutput<String?>('apiKeySelectionExpression');
+    this.arn = registerOutput<String>('arn');
+    this.body = registerOutput<String?>('body');
+    this.corsConfiguration =
+        registerOutput<ApiCorsConfiguration?>('corsConfiguration');
+    this.credentialsArn = registerOutput<String?>('credentialsArn');
+    this.description = registerOutput<String?>('description');
+    this.disableExecuteApiEndpoint =
+        registerOutput<bool?>('disableExecuteApiEndpoint');
+    this.executionArn = registerOutput<String>('executionArn');
+    this.failOnWarnings = registerOutput<bool?>('failOnWarnings');
+    this.ipAddressType = registerOutput<String>('ipAddressType');
+    this.name = registerOutput<String>('name');
+    this.protocolType = registerOutput<String>('protocolType');
+    this.region = registerOutput<String>('region');
+    this.routeKey = registerOutput<String?>('routeKey');
+    this.routeSelectionExpression =
+        registerOutput<String?>('routeSelectionExpression');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.target = registerOutput<String?>('target');
+    this.version = registerOutput<String?>('version');
   }
 }

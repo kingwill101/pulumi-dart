@@ -2261,56 +2261,74 @@ class Listener3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alpnPolicy = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.certificateArn = Output.createUnknown<String?>();
-    this.defaultActions = Output.createUnknown<List<ListenerDefaultAction2>>();
-    this.loadBalancerArn = Output.createUnknown<String>();
+    this.alpnPolicy = registerOutput<String?>('alpnPolicy');
+    this.arn = registerOutput<String>('arn');
+    this.certificateArn = registerOutput<String?>('certificateArn');
+    this.defaultActions =
+        registerOutput<List<ListenerDefaultAction2>>('defaultActions');
+    this.loadBalancerArn = registerOutput<String>('loadBalancerArn');
     this.mutualAuthentication =
-        Output.createUnknown<ListenerMutualAuthentication2>();
-    this.port = Output.createUnknown<int?>();
-    this.protocol = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<ListenerMutualAuthentication2>('mutualAuthentication');
+    this.port = registerOutput<int?>('port');
+    this.protocol = registerOutput<String>('protocol');
+    this.region = registerOutput<String>('region');
     this.routingHttpRequestXAmznMtlsClientcertHeaderName =
-        Output.createUnknown<String>();
+        registerOutput<String>(
+            'routingHttpRequestXAmznMtlsClientcertHeaderName');
     this.routingHttpRequestXAmznMtlsClientcertIssuerHeaderName =
-        Output.createUnknown<String>();
+        registerOutput<String>(
+            'routingHttpRequestXAmznMtlsClientcertIssuerHeaderName');
     this.routingHttpRequestXAmznMtlsClientcertLeafHeaderName =
-        Output.createUnknown<String>();
+        registerOutput<String>(
+            'routingHttpRequestXAmznMtlsClientcertLeafHeaderName');
     this.routingHttpRequestXAmznMtlsClientcertSerialNumberHeaderName =
-        Output.createUnknown<String>();
+        registerOutput<String>(
+            'routingHttpRequestXAmznMtlsClientcertSerialNumberHeaderName');
     this.routingHttpRequestXAmznMtlsClientcertSubjectHeaderName =
-        Output.createUnknown<String>();
+        registerOutput<String>(
+            'routingHttpRequestXAmznMtlsClientcertSubjectHeaderName');
     this.routingHttpRequestXAmznMtlsClientcertValidityHeaderName =
-        Output.createUnknown<String>();
+        registerOutput<String>(
+            'routingHttpRequestXAmznMtlsClientcertValidityHeaderName');
     this.routingHttpRequestXAmznTlsCipherSuiteHeaderName =
-        Output.createUnknown<String>();
+        registerOutput<String>(
+            'routingHttpRequestXAmznTlsCipherSuiteHeaderName');
     this.routingHttpRequestXAmznTlsVersionHeaderName =
-        Output.createUnknown<String>();
+        registerOutput<String>('routingHttpRequestXAmznTlsVersionHeaderName');
     this.routingHttpResponseAccessControlAllowCredentialsHeaderValue =
-        Output.createUnknown<String>();
+        registerOutput<String>(
+            'routingHttpResponseAccessControlAllowCredentialsHeaderValue');
     this.routingHttpResponseAccessControlAllowHeadersHeaderValue =
-        Output.createUnknown<String>();
+        registerOutput<String>(
+            'routingHttpResponseAccessControlAllowHeadersHeaderValue');
     this.routingHttpResponseAccessControlAllowMethodsHeaderValue =
-        Output.createUnknown<String>();
+        registerOutput<String>(
+            'routingHttpResponseAccessControlAllowMethodsHeaderValue');
     this.routingHttpResponseAccessControlAllowOriginHeaderValue =
-        Output.createUnknown<String>();
+        registerOutput<String>(
+            'routingHttpResponseAccessControlAllowOriginHeaderValue');
     this.routingHttpResponseAccessControlExposeHeadersHeaderValue =
-        Output.createUnknown<String>();
+        registerOutput<String>(
+            'routingHttpResponseAccessControlExposeHeadersHeaderValue');
     this.routingHttpResponseAccessControlMaxAgeHeaderValue =
-        Output.createUnknown<String>();
+        registerOutput<String>(
+            'routingHttpResponseAccessControlMaxAgeHeaderValue');
     this.routingHttpResponseContentSecurityPolicyHeaderValue =
-        Output.createUnknown<String>();
-    this.routingHttpResponseServerEnabled = Output.createUnknown<bool>();
+        registerOutput<String>(
+            'routingHttpResponseContentSecurityPolicyHeaderValue');
+    this.routingHttpResponseServerEnabled =
+        registerOutput<bool>('routingHttpResponseServerEnabled');
     this.routingHttpResponseStrictTransportSecurityHeaderValue =
-        Output.createUnknown<String>();
+        registerOutput<String>(
+            'routingHttpResponseStrictTransportSecurityHeaderValue');
     this.routingHttpResponseXContentTypeOptionsHeaderValue =
-        Output.createUnknown<String>();
+        registerOutput<String>(
+            'routingHttpResponseXContentTypeOptionsHeaderValue');
     this.routingHttpResponseXFrameOptionsHeaderValue =
-        Output.createUnknown<String>();
-    this.sslPolicy = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tcpIdleTimeoutSeconds = Output.createUnknown<int>();
+        registerOutput<String>('routingHttpResponseXFrameOptionsHeaderValue');
+    this.sslPolicy = registerOutput<String>('sslPolicy');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tcpIdleTimeoutSeconds = registerOutput<int>('tcpIdleTimeoutSeconds');
   }
 }

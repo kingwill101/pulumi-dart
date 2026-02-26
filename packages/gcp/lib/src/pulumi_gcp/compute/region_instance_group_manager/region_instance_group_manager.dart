@@ -875,48 +875,61 @@ class RegionInstanceGroupManager extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.allInstancesConfig =
-        Output.createUnknown<RegionInstanceGroupManagerAllInstancesConfig?>();
+        registerOutput<RegionInstanceGroupManagerAllInstancesConfig?>(
+            'allInstancesConfig');
     this.autoHealingPolicies =
-        Output.createUnknown<RegionInstanceGroupManagerAutoHealingPolicies?>();
-    this.baseInstanceName = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.distributionPolicyTargetShape = Output.createUnknown<String>();
-    this.distributionPolicyZones = Output.createUnknown<List<String>>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.instanceFlexibilityPolicy = Output.createUnknown<
-        RegionInstanceGroupManagerInstanceFlexibilityPolicy?>();
-    this.instanceGroup = Output.createUnknown<String>();
-    this.instanceGroupManagerId = Output.createUnknown<int>();
-    this.instanceLifecyclePolicy = Output.createUnknown<
-        RegionInstanceGroupManagerInstanceLifecyclePolicy>();
-    this.listManagedInstancesResults = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<RegionInstanceGroupManagerAutoHealingPolicies?>(
+            'autoHealingPolicies');
+    this.baseInstanceName = registerOutput<String>('baseInstanceName');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.distributionPolicyTargetShape =
+        registerOutput<String>('distributionPolicyTargetShape');
+    this.distributionPolicyZones =
+        registerOutput<List<String>>('distributionPolicyZones');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.instanceFlexibilityPolicy =
+        registerOutput<RegionInstanceGroupManagerInstanceFlexibilityPolicy?>(
+            'instanceFlexibilityPolicy');
+    this.instanceGroup = registerOutput<String>('instanceGroup');
+    this.instanceGroupManagerId = registerOutput<int>('instanceGroupManagerId');
+    this.instanceLifecyclePolicy =
+        registerOutput<RegionInstanceGroupManagerInstanceLifecyclePolicy>(
+            'instanceLifecyclePolicy');
+    this.listManagedInstancesResults =
+        registerOutput<String?>('listManagedInstancesResults');
+    this.name = registerOutput<String>('name');
     this.namedPorts =
-        Output.createUnknown<List<RegionInstanceGroupManagerNamedPort>?>();
-    this.params = Output.createUnknown<RegionInstanceGroupManagerParams?>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<List<RegionInstanceGroupManagerNamedPort>?>(
+            'namedPorts');
+    this.params = registerOutput<RegionInstanceGroupManagerParams?>('params');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.selfLink = registerOutput<String>('selfLink');
     this.standbyPolicy =
-        Output.createUnknown<RegionInstanceGroupManagerStandbyPolicy>();
+        registerOutput<RegionInstanceGroupManagerStandbyPolicy>(
+            'standbyPolicy');
     this.statefulDisks =
-        Output.createUnknown<List<RegionInstanceGroupManagerStatefulDisk>?>();
-    this.statefulExternalIps = Output.createUnknown<
-        List<RegionInstanceGroupManagerStatefulExternalIp>?>();
-    this.statefulInternalIps = Output.createUnknown<
-        List<RegionInstanceGroupManagerStatefulInternalIp>?>();
+        registerOutput<List<RegionInstanceGroupManagerStatefulDisk>?>(
+            'statefulDisks');
+    this.statefulExternalIps =
+        registerOutput<List<RegionInstanceGroupManagerStatefulExternalIp>?>(
+            'statefulExternalIps');
+    this.statefulInternalIps =
+        registerOutput<List<RegionInstanceGroupManagerStatefulInternalIp>?>(
+            'statefulInternalIps');
     this.statuses =
-        Output.createUnknown<List<RegionInstanceGroupManagerStatus>>();
-    this.targetPools = Output.createUnknown<List<String>?>();
-    this.targetSize = Output.createUnknown<int>();
-    this.targetStoppedSize = Output.createUnknown<int>();
-    this.targetSuspendedSize = Output.createUnknown<int>();
+        registerOutput<List<RegionInstanceGroupManagerStatus>>('statuses');
+    this.targetPools = registerOutput<List<String>?>('targetPools');
+    this.targetSize = registerOutput<int>('targetSize');
+    this.targetStoppedSize = registerOutput<int>('targetStoppedSize');
+    this.targetSuspendedSize = registerOutput<int>('targetSuspendedSize');
     this.updatePolicy =
-        Output.createUnknown<RegionInstanceGroupManagerUpdatePolicy>();
+        registerOutput<RegionInstanceGroupManagerUpdatePolicy>('updatePolicy');
     this.versions =
-        Output.createUnknown<List<RegionInstanceGroupManagerVersion>>();
-    this.waitForInstances = Output.createUnknown<bool?>();
-    this.waitForInstancesStatus = Output.createUnknown<String?>();
+        registerOutput<List<RegionInstanceGroupManagerVersion>>('versions');
+    this.waitForInstances = registerOutput<bool?>('waitForInstances');
+    this.waitForInstancesStatus =
+        registerOutput<String?>('waitForInstancesStatus');
   }
 }

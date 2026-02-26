@@ -407,16 +407,16 @@ class CxEntityType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoExpansionMode = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.enableFuzzyExtraction = Output.createUnknown<bool?>();
-    this.entities = Output.createUnknown<List<CxEntityTypeEntity>>();
+    this.autoExpansionMode = registerOutput<String?>('autoExpansionMode');
+    this.displayName = registerOutput<String>('displayName');
+    this.enableFuzzyExtraction = registerOutput<bool?>('enableFuzzyExtraction');
+    this.entities = registerOutput<List<CxEntityTypeEntity>>('entities');
     this.excludedPhrases =
-        Output.createUnknown<List<CxEntityTypeExcludedPhrase>?>();
-    this.kind = Output.createUnknown<String>();
-    this.languageCode = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String?>();
-    this.redact = Output.createUnknown<bool?>();
+        registerOutput<List<CxEntityTypeExcludedPhrase>?>('excludedPhrases');
+    this.kind = registerOutput<String>('kind');
+    this.languageCode = registerOutput<String?>('languageCode');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String?>('parent');
+    this.redact = registerOutput<bool?>('redact');
   }
 }

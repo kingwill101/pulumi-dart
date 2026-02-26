@@ -162,28 +162,32 @@ class DefaultVpc extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.assignGeneratedIpv6CidrBlock = Output.createUnknown<bool?>();
-    this.cidrBlock = Output.createUnknown<String>();
-    this.defaultNetworkAclId = Output.createUnknown<String>();
-    this.defaultRouteTableId = Output.createUnknown<String>();
-    this.defaultSecurityGroupId = Output.createUnknown<String>();
-    this.dhcpOptionsId = Output.createUnknown<String>();
-    this.enableDnsHostnames = Output.createUnknown<bool?>();
-    this.enableDnsSupport = Output.createUnknown<bool?>();
-    this.enableNetworkAddressUsageMetrics = Output.createUnknown<bool>();
-    this.existingDefaultVpc = Output.createUnknown<bool>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.instanceTenancy = Output.createUnknown<String>();
-    this.ipv6AssociationId = Output.createUnknown<String>();
-    this.ipv6CidrBlock = Output.createUnknown<String>();
-    this.ipv6CidrBlockNetworkBorderGroup = Output.createUnknown<String>();
-    this.ipv6IpamPoolId = Output.createUnknown<String?>();
-    this.ipv6NetmaskLength = Output.createUnknown<int?>();
-    this.mainRouteTableId = Output.createUnknown<String>();
-    this.ownerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.assignGeneratedIpv6CidrBlock =
+        registerOutput<bool?>('assignGeneratedIpv6CidrBlock');
+    this.cidrBlock = registerOutput<String>('cidrBlock');
+    this.defaultNetworkAclId = registerOutput<String>('defaultNetworkAclId');
+    this.defaultRouteTableId = registerOutput<String>('defaultRouteTableId');
+    this.defaultSecurityGroupId =
+        registerOutput<String>('defaultSecurityGroupId');
+    this.dhcpOptionsId = registerOutput<String>('dhcpOptionsId');
+    this.enableDnsHostnames = registerOutput<bool?>('enableDnsHostnames');
+    this.enableDnsSupport = registerOutput<bool?>('enableDnsSupport');
+    this.enableNetworkAddressUsageMetrics =
+        registerOutput<bool>('enableNetworkAddressUsageMetrics');
+    this.existingDefaultVpc = registerOutput<bool>('existingDefaultVpc');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.instanceTenancy = registerOutput<String>('instanceTenancy');
+    this.ipv6AssociationId = registerOutput<String>('ipv6AssociationId');
+    this.ipv6CidrBlock = registerOutput<String>('ipv6CidrBlock');
+    this.ipv6CidrBlockNetworkBorderGroup =
+        registerOutput<String>('ipv6CidrBlockNetworkBorderGroup');
+    this.ipv6IpamPoolId = registerOutput<String?>('ipv6IpamPoolId');
+    this.ipv6NetmaskLength = registerOutput<int?>('ipv6NetmaskLength');
+    this.mainRouteTableId = registerOutput<String>('mainRouteTableId');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

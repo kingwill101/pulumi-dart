@@ -777,21 +777,23 @@ class Feature extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdTime = Output.createUnknown<String>();
-    this.defaultVariation = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.entityOverrides = Output.createUnknown<Map<String, String>?>();
-    this.evaluationRules = Output.createUnknown<List<FeatureEvaluationRule>>();
-    this.evaluationStrategy = Output.createUnknown<String>();
-    this.lastUpdatedTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.valueType = Output.createUnknown<String>();
-    this.variations = Output.createUnknown<List<FeatureVariation>>();
+    this.arn = registerOutput<String>('arn');
+    this.createdTime = registerOutput<String>('createdTime');
+    this.defaultVariation = registerOutput<String>('defaultVariation');
+    this.description = registerOutput<String?>('description');
+    this.entityOverrides =
+        registerOutput<Map<String, String>?>('entityOverrides');
+    this.evaluationRules =
+        registerOutput<List<FeatureEvaluationRule>>('evaluationRules');
+    this.evaluationStrategy = registerOutput<String>('evaluationStrategy');
+    this.lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.valueType = registerOutput<String>('valueType');
+    this.variations = registerOutput<List<FeatureVariation>>('variations');
   }
 }

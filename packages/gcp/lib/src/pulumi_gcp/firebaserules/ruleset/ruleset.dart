@@ -331,10 +331,10 @@ class Ruleset extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.metadatas = Output.createUnknown<List<RulesetMetadata>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.source = Output.createUnknown<RulesetSource>();
+    this.createTime = registerOutput<String>('createTime');
+    this.metadatas = registerOutput<List<RulesetMetadata>>('metadatas');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.source = registerOutput<RulesetSource>('source');
   }
 }

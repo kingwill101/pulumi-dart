@@ -780,17 +780,17 @@ class Posture extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.policySets = Output.createUnknown<List<PosturePolicySet>>();
-    this.postureId = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.revisionId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.policySets = registerOutput<List<PosturePolicySet>>('policySets');
+    this.postureId = registerOutput<String>('postureId');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

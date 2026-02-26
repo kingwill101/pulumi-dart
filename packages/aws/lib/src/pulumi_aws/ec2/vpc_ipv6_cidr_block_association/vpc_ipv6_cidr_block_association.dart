@@ -188,14 +188,15 @@ class VpcIpv6CidrBlockAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.assignGeneratedIpv6CidrBlock = Output.createUnknown<bool>();
-    this.ipSource = Output.createUnknown<String>();
-    this.ipv6AddressAttribute = Output.createUnknown<String>();
-    this.ipv6CidrBlock = Output.createUnknown<String>();
-    this.ipv6IpamPoolId = Output.createUnknown<String?>();
-    this.ipv6NetmaskLength = Output.createUnknown<int?>();
-    this.ipv6Pool = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.vpcId = Output.createUnknown<String>();
+    this.assignGeneratedIpv6CidrBlock =
+        registerOutput<bool>('assignGeneratedIpv6CidrBlock');
+    this.ipSource = registerOutput<String>('ipSource');
+    this.ipv6AddressAttribute = registerOutput<String>('ipv6AddressAttribute');
+    this.ipv6CidrBlock = registerOutput<String>('ipv6CidrBlock');
+    this.ipv6IpamPoolId = registerOutput<String?>('ipv6IpamPoolId');
+    this.ipv6NetmaskLength = registerOutput<int?>('ipv6NetmaskLength');
+    this.ipv6Pool = registerOutput<String>('ipv6Pool');
+    this.region = registerOutput<String>('region');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

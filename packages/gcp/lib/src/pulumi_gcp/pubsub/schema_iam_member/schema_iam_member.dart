@@ -916,11 +916,11 @@ class SchemaIamMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<SchemaIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.schema = Output.createUnknown<String>();
+    this.condition = registerOutput<SchemaIamMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.member = registerOutput<String>('member');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
+    this.schema = registerOutput<String>('schema');
   }
 }

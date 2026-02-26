@@ -333,28 +333,32 @@ class ContainerRecipe extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.components = Output.createUnknown<List<ContainerRecipeComponent>>();
-    this.containerType = Output.createUnknown<String>();
-    this.dateCreated = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.dockerfileTemplateData = Output.createUnknown<String>();
-    this.dockerfileTemplateUri = Output.createUnknown<String?>();
-    this.encrypted = Output.createUnknown<bool>();
+    this.arn = registerOutput<String>('arn');
+    this.components =
+        registerOutput<List<ContainerRecipeComponent>>('components');
+    this.containerType = registerOutput<String>('containerType');
+    this.dateCreated = registerOutput<String>('dateCreated');
+    this.description = registerOutput<String?>('description');
+    this.dockerfileTemplateData =
+        registerOutput<String>('dockerfileTemplateData');
+    this.dockerfileTemplateUri =
+        registerOutput<String?>('dockerfileTemplateUri');
+    this.encrypted = registerOutput<bool>('encrypted');
     this.instanceConfiguration =
-        Output.createUnknown<ContainerRecipeInstanceConfiguration?>();
-    this.kmsKeyId = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.owner = Output.createUnknown<String>();
-    this.parentImage = Output.createUnknown<String>();
-    this.platform = Output.createUnknown<String>();
-    this.platformOverride = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<ContainerRecipeInstanceConfiguration?>(
+            'instanceConfiguration');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    this.owner = registerOutput<String>('owner');
+    this.parentImage = registerOutput<String>('parentImage');
+    this.platform = registerOutput<String>('platform');
+    this.platformOverride = registerOutput<String?>('platformOverride');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.targetRepository =
-        Output.createUnknown<ContainerRecipeTargetRepository>();
-    this.version = Output.createUnknown<String>();
-    this.workingDirectory = Output.createUnknown<String?>();
+        registerOutput<ContainerRecipeTargetRepository>('targetRepository');
+    this.version = registerOutput<String>('version');
+    this.workingDirectory = registerOutput<String?>('workingDirectory');
   }
 }

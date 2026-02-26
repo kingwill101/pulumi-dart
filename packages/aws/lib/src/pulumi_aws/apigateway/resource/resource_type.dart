@@ -172,10 +172,10 @@ class ResourceType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.parentId = Output.createUnknown<String>();
-    this.path = Output.createUnknown<String>();
-    this.pathPart = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.restApi = Output.createUnknown<String>();
+    this.parentId = registerOutput<String>('parentId');
+    this.path = registerOutput<String>('path');
+    this.pathPart = registerOutput<String>('pathPart');
+    this.region = registerOutput<String>('region');
+    this.restApi = registerOutput<String>('restApi');
   }
 }

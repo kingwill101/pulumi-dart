@@ -46,16 +46,16 @@ class IosApp extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiKeyId = Output.createUnknown<String>();
-    this.appId = Output.createUnknown<String>();
-    this.appStoreId = Output.createUnknown<String>();
-    this.bundleId = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.teamId = Output.createUnknown<String>();
+    this.apiKeyId = registerOutput<String>('apiKeyId');
+    this.appId = registerOutput<String>('appId');
+    this.appStoreId = registerOutput<String>('appStoreId');
+    this.bundleId = registerOutput<String>('bundleId');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.teamId = registerOutput<String>('teamId');
   }
 }

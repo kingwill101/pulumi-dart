@@ -766,21 +766,21 @@ class ConnectPeer2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.bgpOptions = Output.createUnknown<ConnectPeerBgpOptions>();
+    this.arn = registerOutput<String>('arn');
+    this.bgpOptions = registerOutput<ConnectPeerBgpOptions>('bgpOptions');
     this.configurations =
-        Output.createUnknown<List<ConnectPeerConfiguration>>();
-    this.connectAttachmentId = Output.createUnknown<String>();
-    this.connectPeerId = Output.createUnknown<String>();
-    this.coreNetworkAddress = Output.createUnknown<String?>();
-    this.coreNetworkId = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.edgeLocation = Output.createUnknown<String>();
-    this.insideCidrBlocks = Output.createUnknown<List<String>?>();
-    this.peerAddress = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.subnetArn = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<ConnectPeerConfiguration>>('configurations');
+    this.connectAttachmentId = registerOutput<String>('connectAttachmentId');
+    this.connectPeerId = registerOutput<String>('connectPeerId');
+    this.coreNetworkAddress = registerOutput<String?>('coreNetworkAddress');
+    this.coreNetworkId = registerOutput<String>('coreNetworkId');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.edgeLocation = registerOutput<String>('edgeLocation');
+    this.insideCidrBlocks = registerOutput<List<String>?>('insideCidrBlocks');
+    this.peerAddress = registerOutput<String>('peerAddress');
+    this.state = registerOutput<String>('state');
+    this.subnetArn = registerOutput<String?>('subnetArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

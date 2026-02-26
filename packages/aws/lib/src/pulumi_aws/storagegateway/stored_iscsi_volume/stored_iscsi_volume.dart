@@ -322,26 +322,27 @@ class StoredIscsiVolume extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.chapEnabled = Output.createUnknown<bool>();
-    this.diskId = Output.createUnknown<String>();
-    this.gatewayArn = Output.createUnknown<String>();
-    this.kmsEncrypted = Output.createUnknown<bool?>();
-    this.kmsKey = Output.createUnknown<String?>();
-    this.lunNumber = Output.createUnknown<int>();
-    this.networkInterfaceId = Output.createUnknown<String>();
-    this.networkInterfacePort = Output.createUnknown<int>();
-    this.preserveExistingData = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.snapshotId = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetArn = Output.createUnknown<String>();
-    this.targetName = Output.createUnknown<String>();
-    this.volumeAttachmentStatus = Output.createUnknown<String>();
-    this.volumeId = Output.createUnknown<String>();
-    this.volumeSizeInBytes = Output.createUnknown<int>();
-    this.volumeStatus = Output.createUnknown<String>();
-    this.volumeType = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.chapEnabled = registerOutput<bool>('chapEnabled');
+    this.diskId = registerOutput<String>('diskId');
+    this.gatewayArn = registerOutput<String>('gatewayArn');
+    this.kmsEncrypted = registerOutput<bool?>('kmsEncrypted');
+    this.kmsKey = registerOutput<String?>('kmsKey');
+    this.lunNumber = registerOutput<int>('lunNumber');
+    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    this.networkInterfacePort = registerOutput<int>('networkInterfacePort');
+    this.preserveExistingData = registerOutput<bool>('preserveExistingData');
+    this.region = registerOutput<String>('region');
+    this.snapshotId = registerOutput<String?>('snapshotId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetArn = registerOutput<String>('targetArn');
+    this.targetName = registerOutput<String>('targetName');
+    this.volumeAttachmentStatus =
+        registerOutput<String>('volumeAttachmentStatus');
+    this.volumeId = registerOutput<String>('volumeId');
+    this.volumeSizeInBytes = registerOutput<int>('volumeSizeInBytes');
+    this.volumeStatus = registerOutput<String>('volumeStatus');
+    this.volumeType = registerOutput<String>('volumeType');
   }
 }

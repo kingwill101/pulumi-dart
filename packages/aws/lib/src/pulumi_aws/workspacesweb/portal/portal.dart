@@ -374,30 +374,32 @@ class Portal extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.additionalEncryptionContext =
-        Output.createUnknown<Map<String, String>?>();
-    this.authenticationType = Output.createUnknown<String>();
-    this.browserSettingsArn = Output.createUnknown<String>();
-    this.browserType = Output.createUnknown<String>();
-    this.creationDate = Output.createUnknown<String>();
-    this.customerManagedKey = Output.createUnknown<String?>();
-    this.dataProtectionSettingsArn = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.instanceType = Output.createUnknown<String>();
-    this.ipAccessSettingsArn = Output.createUnknown<String>();
-    this.maxConcurrentSessions = Output.createUnknown<int>();
-    this.networkSettingsArn = Output.createUnknown<String>();
-    this.portalArn = Output.createUnknown<String>();
-    this.portalEndpoint = Output.createUnknown<String>();
-    this.portalStatus = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.rendererType = Output.createUnknown<String>();
-    this.sessionLoggerArn = Output.createUnknown<String>();
-    this.statusReason = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<PortalTimeouts?>();
-    this.trustStoreArn = Output.createUnknown<String>();
-    this.userAccessLoggingSettingsArn = Output.createUnknown<String>();
-    this.userSettingsArn = Output.createUnknown<String>();
+        registerOutput<Map<String, String>?>('additionalEncryptionContext');
+    this.authenticationType = registerOutput<String>('authenticationType');
+    this.browserSettingsArn = registerOutput<String>('browserSettingsArn');
+    this.browserType = registerOutput<String>('browserType');
+    this.creationDate = registerOutput<String>('creationDate');
+    this.customerManagedKey = registerOutput<String?>('customerManagedKey');
+    this.dataProtectionSettingsArn =
+        registerOutput<String>('dataProtectionSettingsArn');
+    this.displayName = registerOutput<String>('displayName');
+    this.instanceType = registerOutput<String>('instanceType');
+    this.ipAccessSettingsArn = registerOutput<String>('ipAccessSettingsArn');
+    this.maxConcurrentSessions = registerOutput<int>('maxConcurrentSessions');
+    this.networkSettingsArn = registerOutput<String>('networkSettingsArn');
+    this.portalArn = registerOutput<String>('portalArn');
+    this.portalEndpoint = registerOutput<String>('portalEndpoint');
+    this.portalStatus = registerOutput<String>('portalStatus');
+    this.region = registerOutput<String>('region');
+    this.rendererType = registerOutput<String>('rendererType');
+    this.sessionLoggerArn = registerOutput<String>('sessionLoggerArn');
+    this.statusReason = registerOutput<String>('statusReason');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<PortalTimeouts?>('timeouts');
+    this.trustStoreArn = registerOutput<String>('trustStoreArn');
+    this.userAccessLoggingSettingsArn =
+        registerOutput<String>('userAccessLoggingSettingsArn');
+    this.userSettingsArn = registerOutput<String>('userSettingsArn');
   }
 }

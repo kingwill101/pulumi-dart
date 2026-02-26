@@ -514,20 +514,22 @@ class SecurityGateway extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.delegatingServiceAccount = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String?>();
-    this.externalIps = Output.createUnknown<List<String>>();
-    this.hubs = Output.createUnknown<List<SecurityGatewayHub>?>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.delegatingServiceAccount =
+        registerOutput<String>('delegatingServiceAccount');
+    this.displayName = registerOutput<String?>('displayName');
+    this.externalIps = registerOutput<List<String>>('externalIps');
+    this.hubs = registerOutput<List<SecurityGatewayHub>?>('hubs');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.proxyProtocolConfig =
-        Output.createUnknown<SecurityGatewayProxyProtocolConfig?>();
-    this.securityGatewayId = Output.createUnknown<String>();
+        registerOutput<SecurityGatewayProxyProtocolConfig?>(
+            'proxyProtocolConfig');
+    this.securityGatewayId = registerOutput<String>('securityGatewayId');
     this.serviceDiscovery =
-        Output.createUnknown<SecurityGatewayServiceDiscovery?>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<SecurityGatewayServiceDiscovery?>('serviceDiscovery');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

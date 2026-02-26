@@ -48,19 +48,21 @@ class Cluster11 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusterId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.management = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.nodeTypeConfigs = Output.createUnknown<Map<String, String>>();
-    this.privateCloudId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
+    this.clusterId = registerOutput<String>('clusterId');
+    this.createTime = registerOutput<String>('createTime');
+    this.location = registerOutput<String>('location');
+    this.management = registerOutput<bool>('management');
+    this.name = registerOutput<String>('name');
+    this.nodeTypeConfigs =
+        registerOutput<Map<String, String>>('nodeTypeConfigs');
+    this.privateCloudId = registerOutput<String>('privateCloudId');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.state = registerOutput<String>('state');
     this.stretchedClusterConfig =
-        Output.createUnknown<StretchedClusterConfigResponse>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<StretchedClusterConfigResponse>(
+            'stretchedClusterConfig');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

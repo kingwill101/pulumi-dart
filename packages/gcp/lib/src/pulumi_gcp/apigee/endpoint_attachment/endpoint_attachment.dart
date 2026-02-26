@@ -61,12 +61,12 @@ class EndpointAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.connectionState = Output.createUnknown<String>();
-    this.endpointAttachmentId = Output.createUnknown<String>();
-    this.host = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.serviceAttachment = Output.createUnknown<String>();
+    this.connectionState = registerOutput<String>('connectionState');
+    this.endpointAttachmentId = registerOutput<String>('endpointAttachmentId');
+    this.host = registerOutput<String>('host');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.orgId = registerOutput<String>('orgId');
+    this.serviceAttachment = registerOutput<String>('serviceAttachment');
   }
 }

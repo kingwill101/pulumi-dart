@@ -501,13 +501,13 @@ class ProtectionGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aggregation = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>?>();
-    this.pattern = Output.createUnknown<String>();
-    this.protectionGroupArn = Output.createUnknown<String>();
-    this.protectionGroupId = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.aggregation = registerOutput<String>('aggregation');
+    this.members = registerOutput<List<String>?>('members');
+    this.pattern = registerOutput<String>('pattern');
+    this.protectionGroupArn = registerOutput<String>('protectionGroupArn');
+    this.protectionGroupId = registerOutput<String>('protectionGroupId');
+    this.resourceType = registerOutput<String?>('resourceType');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

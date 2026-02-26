@@ -30,12 +30,12 @@ class Instance14 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.databaseId = Output.createUnknown<String?>();
-    this.databaseUrl = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+    this.databaseId = registerOutput<String?>('databaseId');
+    this.databaseUrl = registerOutput<String>('databaseUrl');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String>('type');
   }
 }

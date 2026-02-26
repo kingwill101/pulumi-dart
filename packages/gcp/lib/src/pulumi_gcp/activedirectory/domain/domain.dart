@@ -205,17 +205,19 @@ class Domain extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.admin = Output.createUnknown<String?>();
-    this.authorizedNetworks = Output.createUnknown<List<String>?>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.domainName = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.fqdn = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.locations = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.reservedIpRange = Output.createUnknown<String>();
+    this.admin = registerOutput<String?>('admin');
+    this.authorizedNetworks =
+        registerOutput<List<String>?>('authorizedNetworks');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.domainName = registerOutput<String>('domainName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.fqdn = registerOutput<String>('fqdn');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.locations = registerOutput<List<String>>('locations');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.reservedIpRange = registerOutput<String>('reservedIpRange');
   }
 }

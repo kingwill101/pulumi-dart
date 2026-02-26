@@ -810,20 +810,22 @@ class Resolver extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.cachingConfig = Output.createUnknown<ResolverCachingConfig?>();
-    this.code = Output.createUnknown<String?>();
-    this.dataSource = Output.createUnknown<String?>();
-    this.field = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String?>();
-    this.maxBatchSize = Output.createUnknown<int?>();
-    this.pipelineConfig = Output.createUnknown<ResolverPipelineConfig?>();
-    this.region = Output.createUnknown<String>();
-    this.requestTemplate = Output.createUnknown<String?>();
-    this.responseTemplate = Output.createUnknown<String?>();
-    this.runtime = Output.createUnknown<ResolverRuntime?>();
-    this.syncConfig = Output.createUnknown<ResolverSyncConfig?>();
-    this.type = Output.createUnknown<String>();
+    this.apiId = registerOutput<String>('apiId');
+    this.arn = registerOutput<String>('arn');
+    this.cachingConfig =
+        registerOutput<ResolverCachingConfig?>('cachingConfig');
+    this.code = registerOutput<String?>('code');
+    this.dataSource = registerOutput<String?>('dataSource');
+    this.field = registerOutput<String>('field');
+    this.kind = registerOutput<String?>('kind');
+    this.maxBatchSize = registerOutput<int?>('maxBatchSize');
+    this.pipelineConfig =
+        registerOutput<ResolverPipelineConfig?>('pipelineConfig');
+    this.region = registerOutput<String>('region');
+    this.requestTemplate = registerOutput<String?>('requestTemplate');
+    this.responseTemplate = registerOutput<String?>('responseTemplate');
+    this.runtime = registerOutput<ResolverRuntime?>('runtime');
+    this.syncConfig = registerOutput<ResolverSyncConfig?>('syncConfig');
+    this.type = registerOutput<String>('type');
   }
 }

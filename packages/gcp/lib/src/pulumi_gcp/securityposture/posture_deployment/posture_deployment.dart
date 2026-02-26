@@ -96,21 +96,22 @@ class PostureDeployment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.desiredPostureId = Output.createUnknown<String>();
-    this.desiredPostureRevisionId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.failureMessage = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.postureDeploymentId = Output.createUnknown<String>();
-    this.postureId = Output.createUnknown<String>();
-    this.postureRevisionId = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.targetResource = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.desiredPostureId = registerOutput<String>('desiredPostureId');
+    this.desiredPostureRevisionId =
+        registerOutput<String>('desiredPostureRevisionId');
+    this.etag = registerOutput<String>('etag');
+    this.failureMessage = registerOutput<String>('failureMessage');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.postureDeploymentId = registerOutput<String>('postureDeploymentId');
+    this.postureId = registerOutput<String>('postureId');
+    this.postureRevisionId = registerOutput<String>('postureRevisionId');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.state = registerOutput<String>('state');
+    this.targetResource = registerOutput<String>('targetResource');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

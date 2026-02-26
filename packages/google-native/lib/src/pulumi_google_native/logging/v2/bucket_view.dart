@@ -35,14 +35,14 @@ class BucketView extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucketId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.filter = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.viewId = Output.createUnknown<String>();
+    this.bucketId = registerOutput<String>('bucketId');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.filter = registerOutput<String>('filter');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.viewId = registerOutput<String>('viewId');
   }
 }

@@ -195,9 +195,9 @@ class Schema3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.definition = Output.createUnknown<SchemaDefinition>();
-    this.namespaces = Output.createUnknown<List<String>>();
-    this.policyStoreId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.definition = registerOutput<SchemaDefinition>('definition');
+    this.namespaces = registerOutput<List<String>>('namespaces');
+    this.policyStoreId = registerOutput<String>('policyStoreId');
+    this.region = registerOutput<String>('region');
   }
 }

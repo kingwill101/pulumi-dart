@@ -1796,12 +1796,12 @@ class CaPoolIamMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.caPool = Output.createUnknown<String>();
-    this.condition = Output.createUnknown<CaPoolIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.caPool = registerOutput<String>('caPool');
+    this.condition = registerOutput<CaPoolIamMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.member = registerOutput<String>('member');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
   }
 }

@@ -50,8 +50,8 @@ class EnvGroupAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.envgroupId = Output.createUnknown<String>();
-    this.environment = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.envgroupId = registerOutput<String>('envgroupId');
+    this.environment = registerOutput<String>('environment');
+    this.name = registerOutput<String>('name');
   }
 }

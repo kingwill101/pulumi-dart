@@ -133,10 +133,10 @@ class FastSnapshotRestore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.availabilityZone = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.snapshotId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<FastSnapshotRestoreTimeouts?>();
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.region = registerOutput<String>('region');
+    this.snapshotId = registerOutput<String>('snapshotId');
+    this.state = registerOutput<String>('state');
+    this.timeouts = registerOutput<FastSnapshotRestoreTimeouts?>('timeouts');
   }
 }

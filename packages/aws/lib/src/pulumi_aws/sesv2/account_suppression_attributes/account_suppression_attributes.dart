@@ -120,7 +120,7 @@ class AccountSuppressionAttributes extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.suppressedReasons = Output.createUnknown<List<String>>();
+    this.region = registerOutput<String>('region');
+    this.suppressedReasons = registerOutput<List<String>>('suppressedReasons');
   }
 }

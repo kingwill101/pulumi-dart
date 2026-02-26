@@ -163,15 +163,18 @@ class UserProfile2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.domainId = Output.createUnknown<String>();
-    this.homeEfsFileSystemUid = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.singleSignOnUserIdentifier = Output.createUnknown<String?>();
-    this.singleSignOnUserValue = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.userProfileName = Output.createUnknown<String>();
-    this.userSettings = Output.createUnknown<UserProfileUserSettings?>();
+    this.arn = registerOutput<String>('arn');
+    this.domainId = registerOutput<String>('domainId');
+    this.homeEfsFileSystemUid = registerOutput<String>('homeEfsFileSystemUid');
+    this.region = registerOutput<String>('region');
+    this.singleSignOnUserIdentifier =
+        registerOutput<String?>('singleSignOnUserIdentifier');
+    this.singleSignOnUserValue =
+        registerOutput<String?>('singleSignOnUserValue');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.userProfileName = registerOutput<String>('userProfileName');
+    this.userSettings =
+        registerOutput<UserProfileUserSettings?>('userSettings');
   }
 }

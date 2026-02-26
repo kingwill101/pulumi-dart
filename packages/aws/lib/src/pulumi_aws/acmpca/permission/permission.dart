@@ -219,11 +219,12 @@ class Permission extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.actions = Output.createUnknown<List<String>>();
-    this.certificateAuthorityArn = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
-    this.principal = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.sourceAccount = Output.createUnknown<String>();
+    this.actions = registerOutput<List<String>>('actions');
+    this.certificateAuthorityArn =
+        registerOutput<String>('certificateAuthorityArn');
+    this.policy = registerOutput<String>('policy');
+    this.principal = registerOutput<String>('principal');
+    this.region = registerOutput<String>('region');
+    this.sourceAccount = registerOutput<String>('sourceAccount');
   }
 }

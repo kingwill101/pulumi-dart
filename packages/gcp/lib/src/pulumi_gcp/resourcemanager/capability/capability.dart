@@ -252,8 +252,8 @@ class Capability extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.capabilityName = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.value = Output.createUnknown<bool>();
+    this.capabilityName = registerOutput<String>('capabilityName');
+    this.parent = registerOutput<String>('parent');
+    this.value = registerOutput<bool>('value');
   }
 }

@@ -450,19 +450,20 @@ class GatewaySecurityPolicyRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationMatcher = Output.createUnknown<String?>();
-    this.basicProfile = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.enabled = Output.createUnknown<bool>();
-    this.gatewaySecurityPolicy = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.priority = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.sessionMatcher = Output.createUnknown<String>();
-    this.tlsInspectionEnabled = Output.createUnknown<bool?>();
-    this.updateTime = Output.createUnknown<String>();
+    this.applicationMatcher = registerOutput<String?>('applicationMatcher');
+    this.basicProfile = registerOutput<String>('basicProfile');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.enabled = registerOutput<bool>('enabled');
+    this.gatewaySecurityPolicy =
+        registerOutput<String>('gatewaySecurityPolicy');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.priority = registerOutput<int>('priority');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.sessionMatcher = registerOutput<String>('sessionMatcher');
+    this.tlsInspectionEnabled = registerOutput<bool?>('tlsInspectionEnabled');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

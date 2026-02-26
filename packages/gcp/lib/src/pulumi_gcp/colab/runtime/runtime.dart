@@ -935,19 +935,20 @@ class Runtime extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoUpgrade = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String?>();
-    this.desiredState = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.expirationTime = Output.createUnknown<String>();
-    this.isUpgradable = Output.createUnknown<bool>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.autoUpgrade = registerOutput<bool?>('autoUpgrade');
+    this.description = registerOutput<String?>('description');
+    this.desiredState = registerOutput<String?>('desiredState');
+    this.displayName = registerOutput<String>('displayName');
+    this.expirationTime = registerOutput<String>('expirationTime');
+    this.isUpgradable = registerOutput<bool>('isUpgradable');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.notebookRuntimeTemplateRef =
-        Output.createUnknown<RuntimeNotebookRuntimeTemplateRef?>();
-    this.notebookRuntimeType = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.runtimeUser = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<RuntimeNotebookRuntimeTemplateRef?>(
+            'notebookRuntimeTemplateRef');
+    this.notebookRuntimeType = registerOutput<String>('notebookRuntimeType');
+    this.project = registerOutput<String>('project');
+    this.runtimeUser = registerOutput<String>('runtimeUser');
+    this.state = registerOutput<String>('state');
   }
 }

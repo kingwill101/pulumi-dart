@@ -45,19 +45,21 @@ class Document5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.branchId = Output.createUnknown<String>();
-    this.collectionId = Output.createUnknown<String>();
-    this.content = Output.createUnknown<
-        GoogleCloudDiscoveryengineV1betaDocumentContentResponse>();
-    this.dataStoreId = Output.createUnknown<String>();
-    this.derivedStructData = Output.createUnknown<Map<String, String>>();
-    this.documentId = Output.createUnknown<String>();
-    this.jsonData = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parentDocumentId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.schemaId = Output.createUnknown<String>();
-    this.structData = Output.createUnknown<Map<String, String>>();
+    this.branchId = registerOutput<String>('branchId');
+    this.collectionId = registerOutput<String>('collectionId');
+    this.content =
+        registerOutput<GoogleCloudDiscoveryengineV1betaDocumentContentResponse>(
+            'content');
+    this.dataStoreId = registerOutput<String>('dataStoreId');
+    this.derivedStructData =
+        registerOutput<Map<String, String>>('derivedStructData');
+    this.documentId = registerOutput<String>('documentId');
+    this.jsonData = registerOutput<String>('jsonData');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.parentDocumentId = registerOutput<String>('parentDocumentId');
+    this.project = registerOutput<String>('project');
+    this.schemaId = registerOutput<String>('schemaId');
+    this.structData = registerOutput<Map<String, String>>('structData');
   }
 }

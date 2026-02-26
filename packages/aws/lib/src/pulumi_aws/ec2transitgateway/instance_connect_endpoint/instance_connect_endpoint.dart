@@ -152,20 +152,22 @@ class InstanceConnectEndpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.dnsName = Output.createUnknown<String>();
-    this.fipsDnsName = Output.createUnknown<String>();
-    this.ipAddressType = Output.createUnknown<String>();
-    this.networkInterfaceIds = Output.createUnknown<List<String>>();
-    this.ownerId = Output.createUnknown<String>();
-    this.preserveClientIp = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupIds = Output.createUnknown<List<String>>();
-    this.subnetId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<InstanceConnectEndpointTimeouts?>();
-    this.vpcId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.fipsDnsName = registerOutput<String>('fipsDnsName');
+    this.ipAddressType = registerOutput<String>('ipAddressType');
+    this.networkInterfaceIds =
+        registerOutput<List<String>>('networkInterfaceIds');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.preserveClientIp = registerOutput<bool>('preserveClientIp');
+    this.region = registerOutput<String>('region');
+    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    this.subnetId = registerOutput<String>('subnetId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts =
+        registerOutput<InstanceConnectEndpointTimeouts?>('timeouts');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

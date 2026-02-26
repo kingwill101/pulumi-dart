@@ -48,17 +48,20 @@ class CustomConnectorVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authConfig = Output.createUnknown<AuthConfigResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.customConnectorId = Output.createUnknown<String>();
-    this.customConnectorVersionId = Output.createUnknown<String>();
-    this.destinationConfig = Output.createUnknown<DestinationConfigResponse>();
-    this.enableBackendDestinationConfig = Output.createUnknown<bool>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.specLocation = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.authConfig = registerOutput<AuthConfigResponse>('authConfig');
+    this.createTime = registerOutput<String>('createTime');
+    this.customConnectorId = registerOutput<String>('customConnectorId');
+    this.customConnectorVersionId =
+        registerOutput<String>('customConnectorVersionId');
+    this.destinationConfig =
+        registerOutput<DestinationConfigResponse>('destinationConfig');
+    this.enableBackendDestinationConfig =
+        registerOutput<bool>('enableBackendDestinationConfig');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.specLocation = registerOutput<String>('specLocation');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

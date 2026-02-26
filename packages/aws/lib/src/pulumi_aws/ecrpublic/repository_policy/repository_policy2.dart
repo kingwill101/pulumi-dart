@@ -339,9 +339,9 @@ class RepositoryPolicy2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.registryId = Output.createUnknown<String>();
-    this.repositoryName = Output.createUnknown<String>();
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
+    this.registryId = registerOutput<String>('registryId');
+    this.repositoryName = registerOutput<String>('repositoryName');
   }
 }

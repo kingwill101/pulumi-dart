@@ -296,11 +296,11 @@ class NotificationConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aggregationDuration = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.aggregationDuration = registerOutput<String>('aggregationDuration');
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

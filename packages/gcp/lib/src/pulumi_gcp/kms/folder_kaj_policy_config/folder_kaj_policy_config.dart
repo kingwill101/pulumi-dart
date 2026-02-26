@@ -447,8 +447,9 @@ class FolderKajPolicyConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.defaultKeyAccessJustificationPolicy = Output.createUnknown<
-        FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?>();
-    this.folder = Output.createUnknown<String>();
+    this.defaultKeyAccessJustificationPolicy = registerOutput<
+            FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?>(
+        'defaultKeyAccessJustificationPolicy');
+    this.folder = registerOutput<String>('folder');
   }
 }

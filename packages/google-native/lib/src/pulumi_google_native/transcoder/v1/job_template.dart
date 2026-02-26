@@ -28,11 +28,11 @@ class JobTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.config = Output.createUnknown<JobConfigResponse>();
-    this.jobTemplateId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.config = registerOutput<JobConfigResponse>('config');
+    this.jobTemplateId = registerOutput<String>('jobTemplateId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

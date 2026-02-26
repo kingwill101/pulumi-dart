@@ -271,9 +271,9 @@ class UserInGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.groupName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.userPoolId = Output.createUnknown<String>();
-    this.username = Output.createUnknown<String>();
+    this.groupName = registerOutput<String>('groupName');
+    this.region = registerOutput<String>('region');
+    this.userPoolId = registerOutput<String>('userPoolId');
+    this.username = registerOutput<String>('username');
   }
 }

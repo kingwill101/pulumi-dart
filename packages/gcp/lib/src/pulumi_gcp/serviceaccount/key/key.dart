@@ -574,16 +574,16 @@ class Key extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.keepers = Output.createUnknown<Map<String, String>?>();
-    this.keyAlgorithm = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.privateKey = Output.createUnknown<String>();
-    this.privateKeyType = Output.createUnknown<String?>();
-    this.publicKey = Output.createUnknown<String>();
-    this.publicKeyData = Output.createUnknown<String?>();
-    this.publicKeyType = Output.createUnknown<String?>();
-    this.serviceAccountId = Output.createUnknown<String>();
-    this.validAfter = Output.createUnknown<String>();
-    this.validBefore = Output.createUnknown<String>();
+    this.keepers = registerOutput<Map<String, String>?>('keepers');
+    this.keyAlgorithm = registerOutput<String?>('keyAlgorithm');
+    this.name = registerOutput<String>('name');
+    this.privateKey = registerOutput<String>('privateKey');
+    this.privateKeyType = registerOutput<String?>('privateKeyType');
+    this.publicKey = registerOutput<String>('publicKey');
+    this.publicKeyData = registerOutput<String?>('publicKeyData');
+    this.publicKeyType = registerOutput<String?>('publicKeyType');
+    this.serviceAccountId = registerOutput<String>('serviceAccountId');
+    this.validAfter = registerOutput<String>('validAfter');
+    this.validBefore = registerOutput<String>('validBefore');
   }
 }

@@ -1022,41 +1022,46 @@ class RegionDisk extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessMode = Output.createUnknown<String>();
-    this.asyncPrimaryDisk = Output.createUnknown<RegionDiskAsyncPrimaryDisk?>();
-    this.createSnapshotBeforeDestroy = Output.createUnknown<bool?>();
-    this.createSnapshotBeforeDestroyPrefix = Output.createUnknown<String?>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
+    this.accessMode = registerOutput<String>('accessMode');
+    this.asyncPrimaryDisk =
+        registerOutput<RegionDiskAsyncPrimaryDisk?>('asyncPrimaryDisk');
+    this.createSnapshotBeforeDestroy =
+        registerOutput<bool?>('createSnapshotBeforeDestroy');
+    this.createSnapshotBeforeDestroyPrefix =
+        registerOutput<String?>('createSnapshotBeforeDestroyPrefix');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
     this.diskEncryptionKey =
-        Output.createUnknown<RegionDiskDiskEncryptionKey?>();
-    this.diskId = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<RegionDiskDiskEncryptionKey?>('diskEncryptionKey');
+    this.diskId = registerOutput<String>('diskId');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.guestOsFeatures =
-        Output.createUnknown<List<RegionDiskGuestOsFeature>>();
-    this.interface = Output.createUnknown<String?>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.lastAttachTimestamp = Output.createUnknown<String>();
-    this.lastDetachTimestamp = Output.createUnknown<String>();
-    this.licenses = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.physicalBlockSizeBytes = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.provisionedIops = Output.createUnknown<int>();
-    this.provisionedThroughput = Output.createUnknown<int>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String>();
-    this.replicaZones = Output.createUnknown<List<String>>();
-    this.selfLink = Output.createUnknown<String>();
-    this.size = Output.createUnknown<int>();
-    this.snapshot = Output.createUnknown<String?>();
-    this.sourceDisk = Output.createUnknown<String?>();
-    this.sourceDiskId = Output.createUnknown<String>();
+        registerOutput<List<RegionDiskGuestOsFeature>>('guestOsFeatures');
+    this.interface = registerOutput<String?>('interface');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.lastAttachTimestamp = registerOutput<String>('lastAttachTimestamp');
+    this.lastDetachTimestamp = registerOutput<String>('lastDetachTimestamp');
+    this.licenses = registerOutput<List<String>>('licenses');
+    this.name = registerOutput<String>('name');
+    this.physicalBlockSizeBytes = registerOutput<int>('physicalBlockSizeBytes');
+    this.project = registerOutput<String>('project');
+    this.provisionedIops = registerOutput<int>('provisionedIops');
+    this.provisionedThroughput = registerOutput<int>('provisionedThroughput');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String>('region');
+    this.replicaZones = registerOutput<List<String>>('replicaZones');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.size = registerOutput<int>('size');
+    this.snapshot = registerOutput<String?>('snapshot');
+    this.sourceDisk = registerOutput<String?>('sourceDisk');
+    this.sourceDiskId = registerOutput<String>('sourceDiskId');
     this.sourceSnapshotEncryptionKey =
-        Output.createUnknown<RegionDiskSourceSnapshotEncryptionKey?>();
-    this.sourceSnapshotId = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String?>();
-    this.users = Output.createUnknown<List<String>>();
+        registerOutput<RegionDiskSourceSnapshotEncryptionKey?>(
+            'sourceSnapshotEncryptionKey');
+    this.sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
+    this.type = registerOutput<String?>('type');
+    this.users = registerOutput<List<String>>('users');
   }
 }

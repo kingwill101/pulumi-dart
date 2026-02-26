@@ -71,25 +71,26 @@ class Target2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.anthosCluster = Output.createUnknown<AnthosClusterResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.deployParameters = Output.createUnknown<Map<String, String>>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.anthosCluster = registerOutput<AnthosClusterResponse>('anthosCluster');
+    this.createTime = registerOutput<String>('createTime');
+    this.deployParameters =
+        registerOutput<Map<String, String>>('deployParameters');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
     this.executionConfigs =
-        Output.createUnknown<List<ExecutionConfigResponse>>();
-    this.gke = Output.createUnknown<GkeClusterResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.multiTarget = Output.createUnknown<MultiTargetResponse>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.requireApproval = Output.createUnknown<bool>();
-    this.run = Output.createUnknown<CloudRunLocationResponse>();
-    this.targetId = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<ExecutionConfigResponse>>('executionConfigs');
+    this.gke = registerOutput<GkeClusterResponse>('gke');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.multiTarget = registerOutput<MultiTargetResponse>('multiTarget');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.requireApproval = registerOutput<bool>('requireApproval');
+    this.run = registerOutput<CloudRunLocationResponse>('run');
+    this.targetId = registerOutput<String>('targetId');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

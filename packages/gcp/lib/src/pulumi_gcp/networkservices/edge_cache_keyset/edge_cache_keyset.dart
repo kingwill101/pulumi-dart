@@ -476,14 +476,17 @@ class EdgeCacheKeyset extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.publicKeys = Output.createUnknown<List<EdgeCacheKeysetPublicKey>?>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.publicKeys =
+        registerOutput<List<EdgeCacheKeysetPublicKey>?>('publicKeys');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.validationSharedKeys =
-        Output.createUnknown<List<EdgeCacheKeysetValidationSharedKey>?>();
+        registerOutput<List<EdgeCacheKeysetValidationSharedKey>?>(
+            'validationSharedKeys');
   }
 }

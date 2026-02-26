@@ -357,18 +357,19 @@ class ReferenceList extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.entries = Output.createUnknown<List<ReferenceListEntry>>();
-    this.instance = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.referenceListId = Output.createUnknown<String>();
-    this.revisionCreateTime = Output.createUnknown<String>();
-    this.ruleAssociationsCount = Output.createUnknown<int>();
-    this.rules = Output.createUnknown<List<String>>();
-    this.scopeInfos = Output.createUnknown<List<ReferenceListScopeInfo>?>();
-    this.syntaxType = Output.createUnknown<String>();
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.entries = registerOutput<List<ReferenceListEntry>>('entries');
+    this.instance = registerOutput<String>('instance');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.referenceListId = registerOutput<String>('referenceListId');
+    this.revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    this.ruleAssociationsCount = registerOutput<int>('ruleAssociationsCount');
+    this.rules = registerOutput<List<String>>('rules');
+    this.scopeInfos =
+        registerOutput<List<ReferenceListScopeInfo>?>('scopeInfos');
+    this.syntaxType = registerOutput<String>('syntaxType');
   }
 }

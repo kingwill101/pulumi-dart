@@ -584,34 +584,38 @@ class DataConnector extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.actionState = Output.createUnknown<String>();
-    this.autoRunDisabled = Output.createUnknown<bool?>();
-    this.blockingReasons = Output.createUnknown<List<String>>();
-    this.collectionDisplayName = Output.createUnknown<String>();
-    this.collectionId = Output.createUnknown<String>();
-    this.connectorModes = Output.createUnknown<List<String>?>();
-    this.connectorType = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataSource = Output.createUnknown<String>();
-    this.entities = Output.createUnknown<List<DataConnectorEntity>?>();
-    this.errors = Output.createUnknown<List<DataConnectorError>>();
-    this.incrementalRefreshInterval = Output.createUnknown<String?>();
-    this.incrementalSyncDisabled = Output.createUnknown<bool?>();
-    this.jsonParams = Output.createUnknown<String?>();
-    this.kmsKeyName = Output.createUnknown<String?>();
-    this.lastSyncTime = Output.createUnknown<String>();
-    this.latestPauseTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.params = Output.createUnknown<Map<String, String>?>();
-    this.privateConnectivityProjectId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.realtimeState = Output.createUnknown<String>();
-    this.refreshInterval = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.staticIpAddresses = Output.createUnknown<List<String>>();
-    this.staticIpEnabled = Output.createUnknown<bool?>();
-    this.syncMode = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
+    this.actionState = registerOutput<String>('actionState');
+    this.autoRunDisabled = registerOutput<bool?>('autoRunDisabled');
+    this.blockingReasons = registerOutput<List<String>>('blockingReasons');
+    this.collectionDisplayName =
+        registerOutput<String>('collectionDisplayName');
+    this.collectionId = registerOutput<String>('collectionId');
+    this.connectorModes = registerOutput<List<String>?>('connectorModes');
+    this.connectorType = registerOutput<String>('connectorType');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataSource = registerOutput<String>('dataSource');
+    this.entities = registerOutput<List<DataConnectorEntity>?>('entities');
+    this.errors = registerOutput<List<DataConnectorError>>('errors');
+    this.incrementalRefreshInterval =
+        registerOutput<String?>('incrementalRefreshInterval');
+    this.incrementalSyncDisabled =
+        registerOutput<bool?>('incrementalSyncDisabled');
+    this.jsonParams = registerOutput<String?>('jsonParams');
+    this.kmsKeyName = registerOutput<String?>('kmsKeyName');
+    this.lastSyncTime = registerOutput<String>('lastSyncTime');
+    this.latestPauseTime = registerOutput<String>('latestPauseTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.params = registerOutput<Map<String, String>?>('params');
+    this.privateConnectivityProjectId =
+        registerOutput<String>('privateConnectivityProjectId');
+    this.project = registerOutput<String>('project');
+    this.realtimeState = registerOutput<String>('realtimeState');
+    this.refreshInterval = registerOutput<String>('refreshInterval');
+    this.state = registerOutput<String>('state');
+    this.staticIpAddresses = registerOutput<List<String>>('staticIpAddresses');
+    this.staticIpEnabled = registerOutput<bool?>('staticIpEnabled');
+    this.syncMode = registerOutput<String?>('syncMode');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

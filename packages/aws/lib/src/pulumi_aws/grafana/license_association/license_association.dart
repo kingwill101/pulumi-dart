@@ -298,11 +298,11 @@ class LicenseAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.freeTrialExpiration = Output.createUnknown<String>();
-    this.grafanaToken = Output.createUnknown<String?>();
-    this.licenseExpiration = Output.createUnknown<String>();
-    this.licenseType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.workspaceId = Output.createUnknown<String>();
+    this.freeTrialExpiration = registerOutput<String>('freeTrialExpiration');
+    this.grafanaToken = registerOutput<String?>('grafanaToken');
+    this.licenseExpiration = registerOutput<String>('licenseExpiration');
+    this.licenseType = registerOutput<String>('licenseType');
+    this.region = registerOutput<String>('region');
+    this.workspaceId = registerOutput<String>('workspaceId');
   }
 }

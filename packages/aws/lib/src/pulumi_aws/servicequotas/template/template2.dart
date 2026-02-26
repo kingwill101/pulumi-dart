@@ -160,14 +160,14 @@ class Template2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.awsRegion = Output.createUnknown<String>();
-    this.globalQuota = Output.createUnknown<bool>();
-    this.quotaCode = Output.createUnknown<String>();
-    this.quotaName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.serviceCode = Output.createUnknown<String>();
-    this.serviceName = Output.createUnknown<String>();
-    this.unit = Output.createUnknown<String>();
-    this.value = Output.createUnknown<double>();
+    this.awsRegion = registerOutput<String>('awsRegion');
+    this.globalQuota = registerOutput<bool>('globalQuota');
+    this.quotaCode = registerOutput<String>('quotaCode');
+    this.quotaName = registerOutput<String>('quotaName');
+    this.region = registerOutput<String>('region');
+    this.serviceCode = registerOutput<String>('serviceCode');
+    this.serviceName = registerOutput<String>('serviceName');
+    this.unit = registerOutput<String>('unit');
+    this.value = registerOutput<double>('value');
   }
 }

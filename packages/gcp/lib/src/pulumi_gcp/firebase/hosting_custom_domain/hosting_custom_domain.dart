@@ -793,24 +793,25 @@ class HostingCustomDomain extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certPreference = Output.createUnknown<String>();
-    this.certs = Output.createUnknown<List<HostingCustomDomainCert>>();
-    this.createTime = Output.createUnknown<String>();
-    this.customDomain = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.hostState = Output.createUnknown<String>();
-    this.issues = Output.createUnknown<List<HostingCustomDomainIssue>>();
-    this.name = Output.createUnknown<String>();
-    this.ownershipState = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.redirectTarget = Output.createUnknown<String?>();
+    this.certPreference = registerOutput<String>('certPreference');
+    this.certs = registerOutput<List<HostingCustomDomainCert>>('certs');
+    this.createTime = registerOutput<String>('createTime');
+    this.customDomain = registerOutput<String>('customDomain');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.etag = registerOutput<String>('etag');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.hostState = registerOutput<String>('hostState');
+    this.issues = registerOutput<List<HostingCustomDomainIssue>>('issues');
+    this.name = registerOutput<String>('name');
+    this.ownershipState = registerOutput<String>('ownershipState');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.redirectTarget = registerOutput<String?>('redirectTarget');
     this.requiredDnsUpdates =
-        Output.createUnknown<List<HostingCustomDomainRequiredDnsUpdate>>();
-    this.siteId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.waitDnsVerification = Output.createUnknown<bool?>();
+        registerOutput<List<HostingCustomDomainRequiredDnsUpdate>>(
+            'requiredDnsUpdates');
+    this.siteId = registerOutput<String>('siteId');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.waitDnsVerification = registerOutput<bool?>('waitDnsVerification');
   }
 }

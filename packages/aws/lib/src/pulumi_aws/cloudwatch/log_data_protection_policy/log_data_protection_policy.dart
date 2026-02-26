@@ -368,8 +368,8 @@ class LogDataProtectionPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.logGroupName = Output.createUnknown<String>();
-    this.policyDocument = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.logGroupName = registerOutput<String>('logGroupName');
+    this.policyDocument = registerOutput<String>('policyDocument');
+    this.region = registerOutput<String>('region');
   }
 }

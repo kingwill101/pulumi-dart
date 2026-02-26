@@ -65,24 +65,25 @@ class BackupRun extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupKind = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
+    this.backupKind = registerOutput<String>('backupKind');
+    this.description = registerOutput<String>('description');
     this.diskEncryptionConfiguration =
-        Output.createUnknown<DiskEncryptionConfigurationResponse>();
+        registerOutput<DiskEncryptionConfigurationResponse>(
+            'diskEncryptionConfiguration');
     this.diskEncryptionStatus =
-        Output.createUnknown<DiskEncryptionStatusResponse>();
-    this.endTime = Output.createUnknown<String>();
-    this.enqueuedTime = Output.createUnknown<String>();
-    this.error = Output.createUnknown<OperationErrorResponse4>();
-    this.instance = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.timeZone = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.windowStartTime = Output.createUnknown<String>();
+        registerOutput<DiskEncryptionStatusResponse>('diskEncryptionStatus');
+    this.endTime = registerOutput<String>('endTime');
+    this.enqueuedTime = registerOutput<String>('enqueuedTime');
+    this.error = registerOutput<OperationErrorResponse4>('error');
+    this.instance = registerOutput<String>('instance');
+    this.kind = registerOutput<String>('kind');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.startTime = registerOutput<String>('startTime');
+    this.status = registerOutput<String>('status');
+    this.timeZone = registerOutput<String>('timeZone');
+    this.type = registerOutput<String>('type');
+    this.windowStartTime = registerOutput<String>('windowStartTime');
   }
 }

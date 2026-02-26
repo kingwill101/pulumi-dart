@@ -152,16 +152,16 @@ class Bucket extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.bundleId = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.forceDelete = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.supportCode = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.url = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.bundleId = registerOutput<String>('bundleId');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.forceDelete = registerOutput<bool?>('forceDelete');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.supportCode = registerOutput<String>('supportCode');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.url = registerOutput<String>('url');
   }
 }

@@ -381,8 +381,8 @@ class SessionLoggerAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.portalArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.sessionLoggerArn = Output.createUnknown<String>();
+    this.portalArn = registerOutput<String>('portalArn');
+    this.region = registerOutput<String>('region');
+    this.sessionLoggerArn = registerOutput<String>('sessionLoggerArn');
   }
 }

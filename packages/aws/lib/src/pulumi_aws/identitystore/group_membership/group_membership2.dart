@@ -261,10 +261,10 @@ class GroupMembership2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.groupId = Output.createUnknown<String>();
-    this.identityStoreId = Output.createUnknown<String>();
-    this.memberId = Output.createUnknown<String>();
-    this.membershipId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.groupId = registerOutput<String>('groupId');
+    this.identityStoreId = registerOutput<String>('identityStoreId');
+    this.memberId = registerOutput<String>('memberId');
+    this.membershipId = registerOutput<String>('membershipId');
+    this.region = registerOutput<String>('region');
   }
 }

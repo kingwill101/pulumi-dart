@@ -1870,37 +1870,44 @@ class Connection4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authConfig = Output.createUnknown<ConnectionAuthConfig?>();
+    this.authConfig = registerOutput<ConnectionAuthConfig?>('authConfig');
     this.configVariables =
-        Output.createUnknown<List<ConnectionConfigVariable>?>();
-    this.connectionRevision = Output.createUnknown<String>();
-    this.connectorVersion = Output.createUnknown<String>();
+        registerOutput<List<ConnectionConfigVariable>?>('configVariables');
+    this.connectionRevision = registerOutput<String>('connectionRevision');
+    this.connectorVersion = registerOutput<String>('connectorVersion');
     this.connectorVersionInfraConfigs =
-        Output.createUnknown<List<ConnectionConnectorVersionInfraConfig>>();
-    this.connectorVersionLaunchStage = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
+        registerOutput<List<ConnectionConnectorVersionInfraConfig>>(
+            'connectorVersionInfraConfigs');
+    this.connectorVersionLaunchStage =
+        registerOutput<String>('connectorVersionLaunchStage');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
     this.destinationConfigs =
-        Output.createUnknown<List<ConnectionDestinationConfig>?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.eventingConfig = Output.createUnknown<ConnectionEventingConfig?>();
-    this.eventingEnablementType = Output.createUnknown<String?>();
+        registerOutput<List<ConnectionDestinationConfig>?>(
+            'destinationConfigs');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.eventingConfig =
+        registerOutput<ConnectionEventingConfig?>('eventingConfig');
+    this.eventingEnablementType =
+        registerOutput<String?>('eventingEnablementType');
     this.eventingRuntimeDatas =
-        Output.createUnknown<List<ConnectionEventingRuntimeData>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.lockConfig = Output.createUnknown<ConnectionLockConfig?>();
-    this.logConfig = Output.createUnknown<ConnectionLogConfig?>();
-    this.name = Output.createUnknown<String>();
-    this.nodeConfig = Output.createUnknown<ConnectionNodeConfig>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.serviceDirectory = Output.createUnknown<String>();
-    this.sslConfig = Output.createUnknown<ConnectionSslConfig?>();
-    this.statuses = Output.createUnknown<List<ConnectionStatus>>();
-    this.subscriptionType = Output.createUnknown<String>();
-    this.suspended = Output.createUnknown<bool?>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<ConnectionEventingRuntimeData>>(
+            'eventingRuntimeDatas');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.lockConfig = registerOutput<ConnectionLockConfig?>('lockConfig');
+    this.logConfig = registerOutput<ConnectionLogConfig?>('logConfig');
+    this.name = registerOutput<String>('name');
+    this.nodeConfig = registerOutput<ConnectionNodeConfig>('nodeConfig');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.serviceDirectory = registerOutput<String>('serviceDirectory');
+    this.sslConfig = registerOutput<ConnectionSslConfig?>('sslConfig');
+    this.statuses = registerOutput<List<ConnectionStatus>>('statuses');
+    this.subscriptionType = registerOutput<String>('subscriptionType');
+    this.suspended = registerOutput<bool?>('suspended');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

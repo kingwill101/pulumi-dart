@@ -28,11 +28,11 @@ class Snapshot7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.expireTime = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.snapshotId = Output.createUnknown<String>();
-    this.topic = Output.createUnknown<String>();
+    this.expireTime = registerOutput<String>('expireTime');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.snapshotId = registerOutput<String>('snapshotId');
+    this.topic = registerOutput<String>('topic');
   }
 }

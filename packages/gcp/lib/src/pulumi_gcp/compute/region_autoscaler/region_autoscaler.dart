@@ -559,13 +559,13 @@ class RegionAutoscaler extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.autoscalingPolicy =
-        Output.createUnknown<RegionAutoscalerAutoscalingPolicy>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.target = Output.createUnknown<String>();
+        registerOutput<RegionAutoscalerAutoscalingPolicy>('autoscalingPolicy');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.target = registerOutput<String>('target');
   }
 }

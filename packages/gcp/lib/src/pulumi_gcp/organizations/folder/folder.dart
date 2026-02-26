@@ -76,15 +76,16 @@ class Folder extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.configuredCapabilities = Output.createUnknown<List<String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String>();
-    this.folderId = Output.createUnknown<String>();
-    this.lifecycleState = Output.createUnknown<String>();
-    this.managementProject = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
+    this.configuredCapabilities =
+        registerOutput<List<String>>('configuredCapabilities');
+    this.createTime = registerOutput<String>('createTime');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.displayName = registerOutput<String>('displayName');
+    this.folderId = registerOutput<String>('folderId');
+    this.lifecycleState = registerOutput<String>('lifecycleState');
+    this.managementProject = registerOutput<String>('managementProject');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.tags = registerOutput<Map<String, String>?>('tags');
   }
 }

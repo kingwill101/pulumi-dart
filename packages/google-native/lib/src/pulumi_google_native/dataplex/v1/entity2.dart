@@ -75,28 +75,29 @@ class Entity2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.access =
-        Output.createUnknown<GoogleCloudDataplexV1StorageAccessResponse>();
-    this.asset = Output.createUnknown<String>();
-    this.catalogEntry = Output.createUnknown<String>();
-    this.compatibility = Output.createUnknown<
-        GoogleCloudDataplexV1EntityCompatibilityStatusResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataPath = Output.createUnknown<String>();
-    this.dataPathPattern = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDataplexV1StorageAccessResponse>('access');
+    this.asset = registerOutput<String>('asset');
+    this.catalogEntry = registerOutput<String>('catalogEntry');
+    this.compatibility =
+        registerOutput<GoogleCloudDataplexV1EntityCompatibilityStatusResponse>(
+            'compatibility');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataPath = registerOutput<String>('dataPath');
+    this.dataPathPattern = registerOutput<String>('dataPathPattern');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
     this.format =
-        Output.createUnknown<GoogleCloudDataplexV1StorageFormatResponse>();
-    this.lakeId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.schema = Output.createUnknown<GoogleCloudDataplexV1SchemaResponse>();
-    this.system = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDataplexV1StorageFormatResponse>('format');
+    this.lakeId = registerOutput<String>('lakeId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.schema = registerOutput<GoogleCloudDataplexV1SchemaResponse>('schema');
+    this.system = registerOutput<String>('system');
+    this.type = registerOutput<String>('type');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.zone = registerOutput<String>('zone');
   }
 }

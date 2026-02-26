@@ -29,11 +29,11 @@ class Envgroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createdAt = Output.createUnknown<String>();
-    this.hostnames = Output.createUnknown<List<String>>();
-    this.lastModifiedAt = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.createdAt = registerOutput<String>('createdAt');
+    this.hostnames = registerOutput<List<String>>('hostnames');
+    this.lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.state = registerOutput<String>('state');
   }
 }

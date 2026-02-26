@@ -425,18 +425,18 @@ class VpcConnection2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.availabilityStatus = Output.createUnknown<String>();
-    this.awsAccountId = Output.createUnknown<String>();
-    this.dnsResolvers = Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.securityGroupIds = Output.createUnknown<List<String>>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<VpcConnectionTimeouts?>();
-    this.vpcConnectionId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.availabilityStatus = registerOutput<String>('availabilityStatus');
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.dnsResolvers = registerOutput<List<String>?>('dnsResolvers');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<VpcConnectionTimeouts?>('timeouts');
+    this.vpcConnectionId = registerOutput<String>('vpcConnectionId');
   }
 }

@@ -2006,42 +2006,49 @@ class Domain7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessPolicies = Output.createUnknown<String>();
-    this.advancedOptions = Output.createUnknown<Map<String, String>>();
+    this.accessPolicies = registerOutput<String>('accessPolicies');
+    this.advancedOptions =
+        registerOutput<Map<String, String>>('advancedOptions');
     this.advancedSecurityOptions =
-        Output.createUnknown<DomainAdvancedSecurityOptions2>();
-    this.aimlOptions = Output.createUnknown<DomainAimlOptions>();
-    this.arn = Output.createUnknown<String>();
-    this.autoTuneOptions = Output.createUnknown<DomainAutoTuneOptions2>();
-    this.clusterConfig = Output.createUnknown<DomainClusterConfig2>();
-    this.cognitoOptions = Output.createUnknown<DomainCognitoOptions2?>();
-    this.dashboardEndpoint = Output.createUnknown<String>();
-    this.dashboardEndpointV2 = Output.createUnknown<String>();
+        registerOutput<DomainAdvancedSecurityOptions2>(
+            'advancedSecurityOptions');
+    this.aimlOptions = registerOutput<DomainAimlOptions>('aimlOptions');
+    this.arn = registerOutput<String>('arn');
+    this.autoTuneOptions =
+        registerOutput<DomainAutoTuneOptions2>('autoTuneOptions');
+    this.clusterConfig = registerOutput<DomainClusterConfig2>('clusterConfig');
+    this.cognitoOptions =
+        registerOutput<DomainCognitoOptions2?>('cognitoOptions');
+    this.dashboardEndpoint = registerOutput<String>('dashboardEndpoint');
+    this.dashboardEndpointV2 = registerOutput<String>('dashboardEndpointV2');
     this.domainEndpointOptions =
-        Output.createUnknown<DomainDomainEndpointOptions2>();
-    this.domainEndpointV2HostedZoneId = Output.createUnknown<String>();
-    this.domainId = Output.createUnknown<String>();
-    this.domainName = Output.createUnknown<String>();
-    this.ebsOptions = Output.createUnknown<DomainEbsOptions2>();
-    this.encryptAtRest = Output.createUnknown<DomainEncryptAtRest2>();
-    this.endpoint = Output.createUnknown<String>();
-    this.endpointV2 = Output.createUnknown<String>();
-    this.engineVersion = Output.createUnknown<String>();
+        registerOutput<DomainDomainEndpointOptions2>('domainEndpointOptions');
+    this.domainEndpointV2HostedZoneId =
+        registerOutput<String>('domainEndpointV2HostedZoneId');
+    this.domainId = registerOutput<String>('domainId');
+    this.domainName = registerOutput<String>('domainName');
+    this.ebsOptions = registerOutput<DomainEbsOptions2>('ebsOptions');
+    this.encryptAtRest = registerOutput<DomainEncryptAtRest2>('encryptAtRest');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.endpointV2 = registerOutput<String>('endpointV2');
+    this.engineVersion = registerOutput<String>('engineVersion');
     this.identityCenterOptions =
-        Output.createUnknown<DomainIdentityCenterOptions?>();
-    this.ipAddressType = Output.createUnknown<String>();
+        registerOutput<DomainIdentityCenterOptions?>('identityCenterOptions');
+    this.ipAddressType = registerOutput<String>('ipAddressType');
     this.logPublishingOptions =
-        Output.createUnknown<List<DomainLogPublishingOption2>?>();
+        registerOutput<List<DomainLogPublishingOption2>?>(
+            'logPublishingOptions');
     this.nodeToNodeEncryption =
-        Output.createUnknown<DomainNodeToNodeEncryption2>();
+        registerOutput<DomainNodeToNodeEncryption2>('nodeToNodeEncryption');
     this.offPeakWindowOptions =
-        Output.createUnknown<DomainOffPeakWindowOptions>();
-    this.region = Output.createUnknown<String>();
-    this.snapshotOptions = Output.createUnknown<DomainSnapshotOptions2?>();
+        registerOutput<DomainOffPeakWindowOptions>('offPeakWindowOptions');
+    this.region = registerOutput<String>('region');
+    this.snapshotOptions =
+        registerOutput<DomainSnapshotOptions2?>('snapshotOptions');
     this.softwareUpdateOptions =
-        Output.createUnknown<DomainSoftwareUpdateOptions>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcOptions = Output.createUnknown<DomainVpcOptions2?>();
+        registerOutput<DomainSoftwareUpdateOptions>('softwareUpdateOptions');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcOptions = registerOutput<DomainVpcOptions2?>('vpcOptions');
   }
 }

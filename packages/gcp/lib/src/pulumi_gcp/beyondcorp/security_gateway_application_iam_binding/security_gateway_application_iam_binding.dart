@@ -1938,13 +1938,14 @@ class SecurityGatewayApplicationIamBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationId = Output.createUnknown<String>();
+    this.applicationId = registerOutput<String>('applicationId');
     this.condition =
-        Output.createUnknown<SecurityGatewayApplicationIamBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.securityGatewayId = Output.createUnknown<String>();
+        registerOutput<SecurityGatewayApplicationIamBindingCondition?>(
+            'condition');
+    this.etag = registerOutput<String>('etag');
+    this.members = registerOutput<List<String>>('members');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
+    this.securityGatewayId = registerOutput<String>('securityGatewayId');
   }
 }

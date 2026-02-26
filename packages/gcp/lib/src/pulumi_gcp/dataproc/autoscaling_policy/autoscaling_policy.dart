@@ -298,13 +298,15 @@ class AutoscalingPolicy extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.basicAlgorithm =
-        Output.createUnknown<AutoscalingPolicyBasicAlgorithm?>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.policyId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<AutoscalingPolicyBasicAlgorithm?>('basicAlgorithm');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.policyId = registerOutput<String>('policyId');
+    this.project = registerOutput<String>('project');
     this.secondaryWorkerConfig =
-        Output.createUnknown<AutoscalingPolicySecondaryWorkerConfig?>();
-    this.workerConfig = Output.createUnknown<AutoscalingPolicyWorkerConfig?>();
+        registerOutput<AutoscalingPolicySecondaryWorkerConfig?>(
+            'secondaryWorkerConfig');
+    this.workerConfig =
+        registerOutput<AutoscalingPolicyWorkerConfig?>('workerConfig');
   }
 }

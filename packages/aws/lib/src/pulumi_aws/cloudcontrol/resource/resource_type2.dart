@@ -185,12 +185,12 @@ class ResourceType2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.desiredState = Output.createUnknown<String>();
-    this.properties = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String?>();
-    this.schema = Output.createUnknown<String>();
-    this.typeName = Output.createUnknown<String>();
-    this.typeVersionId = Output.createUnknown<String?>();
+    this.desiredState = registerOutput<String>('desiredState');
+    this.properties = registerOutput<String>('properties');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String?>('roleArn');
+    this.schema = registerOutput<String>('schema');
+    this.typeName = registerOutput<String>('typeName');
+    this.typeVersionId = registerOutput<String?>('typeVersionId');
   }
 }

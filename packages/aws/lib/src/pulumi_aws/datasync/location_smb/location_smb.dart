@@ -185,17 +185,18 @@ class LocationSmb extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentArns = Output.createUnknown<List<String>>();
-    this.arn = Output.createUnknown<String>();
-    this.domain = Output.createUnknown<String>();
-    this.mountOptions = Output.createUnknown<LocationSmbMountOptions?>();
-    this.password = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.serverHostname = Output.createUnknown<String>();
-    this.subdirectory = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.uri = Output.createUnknown<String>();
-    this.user = Output.createUnknown<String>();
+    this.agentArns = registerOutput<List<String>>('agentArns');
+    this.arn = registerOutput<String>('arn');
+    this.domain = registerOutput<String>('domain');
+    this.mountOptions =
+        registerOutput<LocationSmbMountOptions?>('mountOptions');
+    this.password = registerOutput<String>('password');
+    this.region = registerOutput<String>('region');
+    this.serverHostname = registerOutput<String>('serverHostname');
+    this.subdirectory = registerOutput<String>('subdirectory');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.uri = registerOutput<String>('uri');
+    this.user = registerOutput<String>('user');
   }
 }

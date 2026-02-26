@@ -375,10 +375,10 @@ class Export extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.export = Output.createUnknown<ExportExport?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ExportTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.export = registerOutput<ExportExport?>('export');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ExportTimeouts?>('timeouts');
   }
 }

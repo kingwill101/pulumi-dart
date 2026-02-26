@@ -442,8 +442,9 @@ class ResourceDataSync extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.s3Destination = Output.createUnknown<ResourceDataSyncS3Destination>();
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.s3Destination =
+        registerOutput<ResourceDataSyncS3Destination>('s3Destination');
   }
 }

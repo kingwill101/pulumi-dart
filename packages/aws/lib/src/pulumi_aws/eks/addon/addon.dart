@@ -507,21 +507,25 @@ class Addon extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.addonName = Output.createUnknown<String>();
-    this.addonVersion = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.clusterName = Output.createUnknown<String>();
-    this.configurationValues = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.modifiedAt = Output.createUnknown<String>();
+    this.addonName = registerOutput<String>('addonName');
+    this.addonVersion = registerOutput<String>('addonVersion');
+    this.arn = registerOutput<String>('arn');
+    this.clusterName = registerOutput<String>('clusterName');
+    this.configurationValues = registerOutput<String>('configurationValues');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.modifiedAt = registerOutput<String>('modifiedAt');
     this.podIdentityAssociations =
-        Output.createUnknown<List<AddonPodIdentityAssociation>?>();
-    this.preserve = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.resolveConflictsOnCreate = Output.createUnknown<String?>();
-    this.resolveConflictsOnUpdate = Output.createUnknown<String?>();
-    this.serviceAccountRoleArn = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<AddonPodIdentityAssociation>?>(
+            'podIdentityAssociations');
+    this.preserve = registerOutput<bool?>('preserve');
+    this.region = registerOutput<String>('region');
+    this.resolveConflictsOnCreate =
+        registerOutput<String?>('resolveConflictsOnCreate');
+    this.resolveConflictsOnUpdate =
+        registerOutput<String?>('resolveConflictsOnUpdate');
+    this.serviceAccountRoleArn =
+        registerOutput<String?>('serviceAccountRoleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

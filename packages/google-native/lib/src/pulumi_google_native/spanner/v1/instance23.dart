@@ -55,20 +55,21 @@ class Instance23 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoscalingConfig = Output.createUnknown<AutoscalingConfigResponse3>();
-    this.config = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.endpointUris = Output.createUnknown<List<String>>();
+    this.autoscalingConfig =
+        registerOutput<AutoscalingConfigResponse3>('autoscalingConfig');
+    this.config = registerOutput<String>('config');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.endpointUris = registerOutput<List<String>>('endpointUris');
     this.freeInstanceMetadata =
-        Output.createUnknown<FreeInstanceMetadataResponse>();
-    this.instanceType = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.nodeCount = Output.createUnknown<int>();
-    this.processingUnits = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<FreeInstanceMetadataResponse>('freeInstanceMetadata');
+    this.instanceType = registerOutput<String>('instanceType');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.nodeCount = registerOutput<int>('nodeCount');
+    this.processingUnits = registerOutput<int>('processingUnits');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

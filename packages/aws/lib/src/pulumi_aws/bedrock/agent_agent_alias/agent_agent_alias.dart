@@ -549,16 +549,17 @@ class AgentAgentAlias extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentAliasArn = Output.createUnknown<String>();
-    this.agentAliasId = Output.createUnknown<String>();
-    this.agentAliasName = Output.createUnknown<String>();
-    this.agentId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.agentAliasArn = registerOutput<String>('agentAliasArn');
+    this.agentAliasId = registerOutput<String>('agentAliasId');
+    this.agentAliasName = registerOutput<String>('agentAliasName');
+    this.agentId = registerOutput<String>('agentId');
+    this.description = registerOutput<String?>('description');
+    this.region = registerOutput<String>('region');
     this.routingConfigurations =
-        Output.createUnknown<List<AgentAgentAliasRoutingConfiguration>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<AgentAgentAliasTimeouts?>();
+        registerOutput<List<AgentAgentAliasRoutingConfiguration>>(
+            'routingConfigurations');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<AgentAgentAliasTimeouts?>('timeouts');
   }
 }

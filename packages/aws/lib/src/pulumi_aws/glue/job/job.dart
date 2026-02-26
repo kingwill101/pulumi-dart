@@ -1477,31 +1477,36 @@ class Job extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.command = Output.createUnknown<JobCommand>();
-    this.connections = Output.createUnknown<List<String>?>();
-    this.defaultArguments = Output.createUnknown<Map<String, String>?>();
-    this.description = Output.createUnknown<String?>();
-    this.executionClass = Output.createUnknown<String?>();
-    this.executionProperty = Output.createUnknown<JobExecutionProperty>();
-    this.glueVersion = Output.createUnknown<String>();
-    this.jobMode = Output.createUnknown<String>();
-    this.jobRunQueuingEnabled = Output.createUnknown<bool?>();
-    this.maintenanceWindow = Output.createUnknown<String?>();
-    this.maxCapacity = Output.createUnknown<double>();
-    this.maxRetries = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.nonOverridableArguments = Output.createUnknown<Map<String, String>?>();
-    this.notificationProperty = Output.createUnknown<JobNotificationProperty>();
-    this.numberOfWorkers = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.securityConfiguration = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.command = registerOutput<JobCommand>('command');
+    this.connections = registerOutput<List<String>?>('connections');
+    this.defaultArguments =
+        registerOutput<Map<String, String>?>('defaultArguments');
+    this.description = registerOutput<String?>('description');
+    this.executionClass = registerOutput<String?>('executionClass');
+    this.executionProperty =
+        registerOutput<JobExecutionProperty>('executionProperty');
+    this.glueVersion = registerOutput<String>('glueVersion');
+    this.jobMode = registerOutput<String>('jobMode');
+    this.jobRunQueuingEnabled = registerOutput<bool?>('jobRunQueuingEnabled');
+    this.maintenanceWindow = registerOutput<String?>('maintenanceWindow');
+    this.maxCapacity = registerOutput<double>('maxCapacity');
+    this.maxRetries = registerOutput<int?>('maxRetries');
+    this.name = registerOutput<String>('name');
+    this.nonOverridableArguments =
+        registerOutput<Map<String, String>?>('nonOverridableArguments');
+    this.notificationProperty =
+        registerOutput<JobNotificationProperty>('notificationProperty');
+    this.numberOfWorkers = registerOutput<int>('numberOfWorkers');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.securityConfiguration =
+        registerOutput<String?>('securityConfiguration');
     this.sourceControlDetails =
-        Output.createUnknown<JobSourceControlDetails?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeout = Output.createUnknown<int>();
-    this.workerType = Output.createUnknown<String>();
+        registerOutput<JobSourceControlDetails?>('sourceControlDetails');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeout = registerOutput<int>('timeout');
+    this.workerType = registerOutput<String>('workerType');
   }
 }

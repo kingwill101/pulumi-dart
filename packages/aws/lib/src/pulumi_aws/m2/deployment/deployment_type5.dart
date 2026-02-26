@@ -150,13 +150,13 @@ class DeploymentType5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationId = Output.createUnknown<String>();
-    this.applicationVersion = Output.createUnknown<int>();
-    this.deploymentId = Output.createUnknown<String>();
-    this.environmentId = Output.createUnknown<String>();
-    this.forceStop = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.start = Output.createUnknown<bool>();
-    this.timeouts = Output.createUnknown<DeploymentTimeouts2?>();
+    this.applicationId = registerOutput<String>('applicationId');
+    this.applicationVersion = registerOutput<int>('applicationVersion');
+    this.deploymentId = registerOutput<String>('deploymentId');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.forceStop = registerOutput<bool?>('forceStop');
+    this.region = registerOutput<String>('region');
+    this.start = registerOutput<bool>('start');
+    this.timeouts = registerOutput<DeploymentTimeouts2?>('timeouts');
   }
 }

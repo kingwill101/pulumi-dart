@@ -267,12 +267,12 @@ class ObjectLambdaAccessPoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.alias = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.alias = registerOutput<String>('alias');
+    this.arn = registerOutput<String>('arn');
     this.configuration =
-        Output.createUnknown<ObjectLambdaAccessPointConfiguration>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<ObjectLambdaAccessPointConfiguration>('configuration');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

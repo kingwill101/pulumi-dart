@@ -34,11 +34,12 @@ class FirewallPolicyIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse22>>();
-    this.bindings = Output.createUnknown<List<BindingResponse32>>();
-    this.etag = Output.createUnknown<String>();
-    this.resource = Output.createUnknown<String>();
-    this.rules = Output.createUnknown<List<RuleResponse>>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse22>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse32>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.resource = registerOutput<String>('resource');
+    this.rules = registerOutput<List<RuleResponse>>('rules');
+    this.version = registerOutput<int>('version');
   }
 }

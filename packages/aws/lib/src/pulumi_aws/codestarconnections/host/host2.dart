@@ -154,12 +154,13 @@ class Host2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.providerEndpoint = Output.createUnknown<String>();
-    this.providerType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.vpcConfiguration = Output.createUnknown<HostVpcConfiguration2?>();
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    this.providerEndpoint = registerOutput<String>('providerEndpoint');
+    this.providerType = registerOutput<String>('providerType');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.vpcConfiguration =
+        registerOutput<HostVpcConfiguration2?>('vpcConfiguration');
   }
 }

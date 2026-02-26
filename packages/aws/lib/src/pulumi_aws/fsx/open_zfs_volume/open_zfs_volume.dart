@@ -170,23 +170,27 @@ class OpenZfsVolume extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.copyTagsToSnapshots = Output.createUnknown<bool?>();
-    this.dataCompressionType = Output.createUnknown<String?>();
-    this.deleteVolumeOptions = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.nfsExports = Output.createUnknown<OpenZfsVolumeNfsExports?>();
-    this.originSnapshot = Output.createUnknown<OpenZfsVolumeOriginSnapshot?>();
-    this.parentVolumeId = Output.createUnknown<String>();
-    this.readOnly = Output.createUnknown<bool>();
-    this.recordSizeKib = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
-    this.storageCapacityQuotaGib = Output.createUnknown<int>();
-    this.storageCapacityReservationGib = Output.createUnknown<int>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.copyTagsToSnapshots = registerOutput<bool?>('copyTagsToSnapshots');
+    this.dataCompressionType = registerOutput<String?>('dataCompressionType');
+    this.deleteVolumeOptions = registerOutput<String?>('deleteVolumeOptions');
+    this.name = registerOutput<String>('name');
+    this.nfsExports = registerOutput<OpenZfsVolumeNfsExports?>('nfsExports');
+    this.originSnapshot =
+        registerOutput<OpenZfsVolumeOriginSnapshot?>('originSnapshot');
+    this.parentVolumeId = registerOutput<String>('parentVolumeId');
+    this.readOnly = registerOutput<bool>('readOnly');
+    this.recordSizeKib = registerOutput<int?>('recordSizeKib');
+    this.region = registerOutput<String>('region');
+    this.storageCapacityQuotaGib =
+        registerOutput<int>('storageCapacityQuotaGib');
+    this.storageCapacityReservationGib =
+        registerOutput<int>('storageCapacityReservationGib');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.userAndGroupQuotas =
-        Output.createUnknown<List<OpenZfsVolumeUserAndGroupQuota>>();
-    this.volumeType = Output.createUnknown<String?>();
+        registerOutput<List<OpenZfsVolumeUserAndGroupQuota>>(
+            'userAndGroupQuotas');
+    this.volumeType = registerOutput<String?>('volumeType');
   }
 }

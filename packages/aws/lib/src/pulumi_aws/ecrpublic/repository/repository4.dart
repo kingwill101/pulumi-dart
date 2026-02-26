@@ -240,14 +240,14 @@ class Repository4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.catalogData = Output.createUnknown<RepositoryCatalogData?>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.registryId = Output.createUnknown<String>();
-    this.repositoryName = Output.createUnknown<String>();
-    this.repositoryUri = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.catalogData = registerOutput<RepositoryCatalogData?>('catalogData');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.region = registerOutput<String>('region');
+    this.registryId = registerOutput<String>('registryId');
+    this.repositoryName = registerOutput<String>('repositoryName');
+    this.repositoryUri = registerOutput<String>('repositoryUri');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

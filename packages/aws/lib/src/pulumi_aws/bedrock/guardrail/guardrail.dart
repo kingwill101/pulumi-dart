@@ -540,30 +540,35 @@ class Guardrail extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.blockedInputMessaging = Output.createUnknown<String>();
-    this.blockedOutputsMessaging = Output.createUnknown<String>();
+    this.blockedInputMessaging =
+        registerOutput<String>('blockedInputMessaging');
+    this.blockedOutputsMessaging =
+        registerOutput<String>('blockedOutputsMessaging');
     this.contentPolicyConfig =
-        Output.createUnknown<GuardrailContentPolicyConfig?>();
+        registerOutput<GuardrailContentPolicyConfig?>('contentPolicyConfig');
     this.contextualGroundingPolicyConfig =
-        Output.createUnknown<GuardrailContextualGroundingPolicyConfig?>();
-    this.createdAt = Output.createUnknown<String>();
+        registerOutput<GuardrailContextualGroundingPolicyConfig?>(
+            'contextualGroundingPolicyConfig');
+    this.createdAt = registerOutput<String>('createdAt');
     this.crossRegionConfig =
-        Output.createUnknown<GuardrailCrossRegionConfig?>();
-    this.description = Output.createUnknown<String>();
-    this.guardrailArn = Output.createUnknown<String>();
-    this.guardrailId = Output.createUnknown<String>();
-    this.kmsKeyArn = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<GuardrailCrossRegionConfig?>('crossRegionConfig');
+    this.description = registerOutput<String>('description');
+    this.guardrailArn = registerOutput<String>('guardrailArn');
+    this.guardrailId = registerOutput<String>('guardrailId');
+    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
     this.sensitiveInformationPolicyConfig =
-        Output.createUnknown<GuardrailSensitiveInformationPolicyConfig?>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<GuardrailTimeouts?>();
+        registerOutput<GuardrailSensitiveInformationPolicyConfig?>(
+            'sensitiveInformationPolicyConfig');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<GuardrailTimeouts?>('timeouts');
     this.topicPolicyConfig =
-        Output.createUnknown<GuardrailTopicPolicyConfig?>();
-    this.version = Output.createUnknown<String>();
-    this.wordPolicyConfig = Output.createUnknown<GuardrailWordPolicyConfig?>();
+        registerOutput<GuardrailTopicPolicyConfig?>('topicPolicyConfig');
+    this.version = registerOutput<String>('version');
+    this.wordPolicyConfig =
+        registerOutput<GuardrailWordPolicyConfig?>('wordPolicyConfig');
   }
 }

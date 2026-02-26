@@ -460,11 +460,11 @@ class PolicyTag extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.childPolicyTags = Output.createUnknown<List<String>>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parentPolicyTag = Output.createUnknown<String?>();
-    this.taxonomy = Output.createUnknown<String>();
+    this.childPolicyTags = registerOutput<List<String>>('childPolicyTags');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    this.parentPolicyTag = registerOutput<String?>('parentPolicyTag');
+    this.taxonomy = registerOutput<String>('taxonomy');
   }
 }

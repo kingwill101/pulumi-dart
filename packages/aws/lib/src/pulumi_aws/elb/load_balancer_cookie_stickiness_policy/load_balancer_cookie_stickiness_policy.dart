@@ -220,10 +220,11 @@ class LoadBalancerCookieStickinessPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cookieExpirationPeriod = Output.createUnknown<int?>();
-    this.lbPort = Output.createUnknown<int>();
-    this.loadBalancer = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.cookieExpirationPeriod =
+        registerOutput<int?>('cookieExpirationPeriod');
+    this.lbPort = registerOutput<int>('lbPort');
+    this.loadBalancer = registerOutput<String>('loadBalancer');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

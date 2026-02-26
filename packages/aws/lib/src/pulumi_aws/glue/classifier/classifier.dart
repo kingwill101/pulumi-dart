@@ -542,11 +542,15 @@ class Classifier extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.csvClassifier = Output.createUnknown<ClassifierCsvClassifier?>();
-    this.grokClassifier = Output.createUnknown<ClassifierGrokClassifier?>();
-    this.jsonClassifier = Output.createUnknown<ClassifierJsonClassifier?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.xmlClassifier = Output.createUnknown<ClassifierXmlClassifier?>();
+    this.csvClassifier =
+        registerOutput<ClassifierCsvClassifier?>('csvClassifier');
+    this.grokClassifier =
+        registerOutput<ClassifierGrokClassifier?>('grokClassifier');
+    this.jsonClassifier =
+        registerOutput<ClassifierJsonClassifier?>('jsonClassifier');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.xmlClassifier =
+        registerOutput<ClassifierXmlClassifier?>('xmlClassifier');
   }
 }

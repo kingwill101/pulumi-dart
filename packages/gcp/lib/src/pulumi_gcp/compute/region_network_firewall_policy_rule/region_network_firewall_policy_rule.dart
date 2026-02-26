@@ -1147,24 +1147,26 @@ class RegionNetworkFirewallPolicyRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.direction = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.enableLogging = Output.createUnknown<bool?>();
-    this.firewallPolicy = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.match = Output.createUnknown<RegionNetworkFirewallPolicyRuleMatch>();
-    this.priority = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.ruleName = Output.createUnknown<String?>();
-    this.ruleTupleCount = Output.createUnknown<int>();
-    this.securityProfileGroup = Output.createUnknown<String?>();
-    this.targetSecureTags = Output.createUnknown<
-        List<RegionNetworkFirewallPolicyRuleTargetSecureTag>?>();
-    this.targetServiceAccounts = Output.createUnknown<List<String>?>();
-    this.tlsInspect = Output.createUnknown<bool?>();
+    this.action = registerOutput<String>('action');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.direction = registerOutput<String>('direction');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.enableLogging = registerOutput<bool?>('enableLogging');
+    this.firewallPolicy = registerOutput<String>('firewallPolicy');
+    this.kind = registerOutput<String>('kind');
+    this.match = registerOutput<RegionNetworkFirewallPolicyRuleMatch>('match');
+    this.priority = registerOutput<int>('priority');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.ruleName = registerOutput<String?>('ruleName');
+    this.ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    this.securityProfileGroup = registerOutput<String?>('securityProfileGroup');
+    this.targetSecureTags =
+        registerOutput<List<RegionNetworkFirewallPolicyRuleTargetSecureTag>?>(
+            'targetSecureTags');
+    this.targetServiceAccounts =
+        registerOutput<List<String>?>('targetServiceAccounts');
+    this.tlsInspect = registerOutput<bool?>('tlsInspect');
   }
 }

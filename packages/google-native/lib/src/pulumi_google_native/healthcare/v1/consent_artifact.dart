@@ -44,17 +44,20 @@ class ConsentArtifact extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.consentContentScreenshots =
-        Output.createUnknown<List<ImageResponse>>();
-    this.consentContentVersion = Output.createUnknown<String>();
-    this.consentStoreId = Output.createUnknown<String>();
-    this.datasetId = Output.createUnknown<String>();
-    this.guardianSignature = Output.createUnknown<SignatureResponse3>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.userId = Output.createUnknown<String>();
-    this.userSignature = Output.createUnknown<SignatureResponse3>();
-    this.witnessSignature = Output.createUnknown<SignatureResponse3>();
+        registerOutput<List<ImageResponse>>('consentContentScreenshots');
+    this.consentContentVersion =
+        registerOutput<String>('consentContentVersion');
+    this.consentStoreId = registerOutput<String>('consentStoreId');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.guardianSignature =
+        registerOutput<SignatureResponse3>('guardianSignature');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<Map<String, String>>('metadata');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.userId = registerOutput<String>('userId');
+    this.userSignature = registerOutput<SignatureResponse3>('userSignature');
+    this.witnessSignature =
+        registerOutput<SignatureResponse3>('witnessSignature');
   }
 }

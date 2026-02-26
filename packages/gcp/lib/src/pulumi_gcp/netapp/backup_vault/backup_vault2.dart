@@ -220,21 +220,24 @@ class BackupVault2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupRegion = Output.createUnknown<String?>();
+    this.backupRegion = registerOutput<String?>('backupRegion');
     this.backupRetentionPolicy =
-        Output.createUnknown<BackupVaultBackupRetentionPolicy?>();
-    this.backupVaultType = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.destinationBackupVault = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.sourceBackupVault = Output.createUnknown<String>();
-    this.sourceRegion = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<BackupVaultBackupRetentionPolicy?>(
+            'backupRetentionPolicy');
+    this.backupVaultType = registerOutput<String>('backupVaultType');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.destinationBackupVault =
+        registerOutput<String>('destinationBackupVault');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.sourceBackupVault = registerOutput<String>('sourceBackupVault');
+    this.sourceRegion = registerOutput<String>('sourceRegion');
+    this.state = registerOutput<String>('state');
   }
 }

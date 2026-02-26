@@ -30,12 +30,12 @@ class Sharedflow extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.latestRevisionId = Output.createUnknown<String>();
+    this.action = registerOutput<String>('action');
+    this.latestRevisionId = registerOutput<String>('latestRevisionId');
     this.metaData =
-        Output.createUnknown<GoogleCloudApigeeV1EntityMetadataResponse>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.revision = Output.createUnknown<List<String>>();
+        registerOutput<GoogleCloudApigeeV1EntityMetadataResponse>('metaData');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.revision = registerOutput<List<String>>('revision');
   }
 }

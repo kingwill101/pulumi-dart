@@ -1726,8 +1726,8 @@ class IAMPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.folder = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.folder = registerOutput<String>('folder');
+    this.policyData = registerOutput<String>('policyData');
   }
 }

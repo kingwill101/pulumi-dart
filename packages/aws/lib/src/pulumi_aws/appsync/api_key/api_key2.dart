@@ -166,11 +166,11 @@ class ApiKey2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiId = Output.createUnknown<String>();
-    this.apiKeyId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.expires = Output.createUnknown<String?>();
-    this.key = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.apiId = registerOutput<String>('apiId');
+    this.apiKeyId = registerOutput<String>('apiKeyId');
+    this.description = registerOutput<String>('description');
+    this.expires = registerOutput<String?>('expires');
+    this.key = registerOutput<String>('key');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -454,27 +454,33 @@ class ConversationProfile extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.automatedAgentConfig =
-        Output.createUnknown<ConversationProfileAutomatedAgentConfig?>();
-    this.displayName = Output.createUnknown<String>();
+        registerOutput<ConversationProfileAutomatedAgentConfig?>(
+            'automatedAgentConfig');
+    this.displayName = registerOutput<String>('displayName');
     this.humanAgentAssistantConfig =
-        Output.createUnknown<ConversationProfileHumanAgentAssistantConfig?>();
+        registerOutput<ConversationProfileHumanAgentAssistantConfig?>(
+            'humanAgentAssistantConfig');
     this.humanAgentHandoffConfig =
-        Output.createUnknown<ConversationProfileHumanAgentHandoffConfig?>();
-    this.languageCode = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
+        registerOutput<ConversationProfileHumanAgentHandoffConfig?>(
+            'humanAgentHandoffConfig');
+    this.languageCode = registerOutput<String>('languageCode');
+    this.location = registerOutput<String>('location');
     this.loggingConfig =
-        Output.createUnknown<ConversationProfileLoggingConfig?>();
-    this.name = Output.createUnknown<String>();
-    this.newMessageEventNotificationConfig = Output.createUnknown<
-        ConversationProfileNewMessageEventNotificationConfig?>();
-    this.newRecognitionResultNotificationConfig = Output.createUnknown<
-        ConversationProfileNewRecognitionResultNotificationConfig?>();
+        registerOutput<ConversationProfileLoggingConfig?>('loggingConfig');
+    this.name = registerOutput<String>('name');
+    this.newMessageEventNotificationConfig =
+        registerOutput<ConversationProfileNewMessageEventNotificationConfig?>(
+            'newMessageEventNotificationConfig');
+    this.newRecognitionResultNotificationConfig = registerOutput<
+            ConversationProfileNewRecognitionResultNotificationConfig?>(
+        'newRecognitionResultNotificationConfig');
     this.notificationConfig =
-        Output.createUnknown<ConversationProfileNotificationConfig?>();
-    this.project = Output.createUnknown<String>();
-    this.securitySettings = Output.createUnknown<String?>();
-    this.sttConfig = Output.createUnknown<ConversationProfileSttConfig?>();
-    this.timeZone = Output.createUnknown<String?>();
-    this.ttsConfig = Output.createUnknown<ConversationProfileTtsConfig?>();
+        registerOutput<ConversationProfileNotificationConfig?>(
+            'notificationConfig');
+    this.project = registerOutput<String>('project');
+    this.securitySettings = registerOutput<String?>('securitySettings');
+    this.sttConfig = registerOutput<ConversationProfileSttConfig?>('sttConfig');
+    this.timeZone = registerOutput<String?>('timeZone');
+    this.ttsConfig = registerOutput<ConversationProfileTtsConfig?>('ttsConfig');
   }
 }

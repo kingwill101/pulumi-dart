@@ -61,24 +61,27 @@ class NodeGroup4 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.autoscalingPolicy =
-        Output.createUnknown<NodeGroupAutoscalingPolicyResponse3>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.initialNodeCount = Output.createUnknown<int>();
-    this.kind = Output.createUnknown<String>();
-    this.locationHint = Output.createUnknown<String>();
-    this.maintenancePolicy = Output.createUnknown<String>();
+        registerOutput<NodeGroupAutoscalingPolicyResponse3>(
+            'autoscalingPolicy');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.initialNodeCount = registerOutput<int>('initialNodeCount');
+    this.kind = registerOutput<String>('kind');
+    this.locationHint = registerOutput<String>('locationHint');
+    this.maintenancePolicy = registerOutput<String>('maintenancePolicy');
     this.maintenanceWindow =
-        Output.createUnknown<NodeGroupMaintenanceWindowResponse3>();
-    this.name = Output.createUnknown<String>();
-    this.nodeTemplate = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.shareSettings = Output.createUnknown<ShareSettingsResponse3>();
-    this.size = Output.createUnknown<int>();
-    this.status = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<NodeGroupMaintenanceWindowResponse3>(
+            'maintenanceWindow');
+    this.name = registerOutput<String>('name');
+    this.nodeTemplate = registerOutput<String>('nodeTemplate');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.shareSettings =
+        registerOutput<ShareSettingsResponse3>('shareSettings');
+    this.size = registerOutput<int>('size');
+    this.status = registerOutput<String>('status');
+    this.zone = registerOutput<String>('zone');
   }
 }

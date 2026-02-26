@@ -216,12 +216,12 @@ class TenantDefaultSupportedIdpConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clientId = Output.createUnknown<String>();
-    this.clientSecret = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.idpId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.tenant = Output.createUnknown<String>();
+    this.clientId = registerOutput<String>('clientId');
+    this.clientSecret = registerOutput<String>('clientSecret');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.idpId = registerOutput<String>('idpId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.tenant = registerOutput<String>('tenant');
   }
 }

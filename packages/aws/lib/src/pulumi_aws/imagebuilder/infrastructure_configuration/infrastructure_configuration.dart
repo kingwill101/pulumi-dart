@@ -306,26 +306,29 @@ class InfrastructureConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.dateCreated = Output.createUnknown<String>();
-    this.dateUpdated = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.instanceMetadataOptions = Output.createUnknown<
-        InfrastructureConfigurationInstanceMetadataOptions?>();
-    this.instanceProfileName = Output.createUnknown<String>();
-    this.instanceTypes = Output.createUnknown<List<String>?>();
-    this.keyPair = Output.createUnknown<String?>();
-    this.logging = Output.createUnknown<InfrastructureConfigurationLogging?>();
-    this.name = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.dateCreated = registerOutput<String>('dateCreated');
+    this.dateUpdated = registerOutput<String>('dateUpdated');
+    this.description = registerOutput<String?>('description');
+    this.instanceMetadataOptions =
+        registerOutput<InfrastructureConfigurationInstanceMetadataOptions?>(
+            'instanceMetadataOptions');
+    this.instanceProfileName = registerOutput<String>('instanceProfileName');
+    this.instanceTypes = registerOutput<List<String>?>('instanceTypes');
+    this.keyPair = registerOutput<String?>('keyPair');
+    this.logging =
+        registerOutput<InfrastructureConfigurationLogging?>('logging');
+    this.name = registerOutput<String>('name');
     this.placement =
-        Output.createUnknown<InfrastructureConfigurationPlacement?>();
-    this.region = Output.createUnknown<String>();
-    this.resourceTags = Output.createUnknown<Map<String, String>?>();
-    this.securityGroupIds = Output.createUnknown<List<String>?>();
-    this.snsTopicArn = Output.createUnknown<String?>();
-    this.subnetId = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.terminateInstanceOnFailure = Output.createUnknown<bool?>();
+        registerOutput<InfrastructureConfigurationPlacement?>('placement');
+    this.region = registerOutput<String>('region');
+    this.resourceTags = registerOutput<Map<String, String>?>('resourceTags');
+    this.securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    this.snsTopicArn = registerOutput<String?>('snsTopicArn');
+    this.subnetId = registerOutput<String?>('subnetId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.terminateInstanceOnFailure =
+        registerOutput<bool?>('terminateInstanceOnFailure');
   }
 }

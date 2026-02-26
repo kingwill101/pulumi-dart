@@ -327,17 +327,17 @@ class Schema2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.content = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.lastModified = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.registryName = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
-    this.version = Output.createUnknown<String>();
-    this.versionCreatedDate = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.content = registerOutput<String>('content');
+    this.description = registerOutput<String?>('description');
+    this.lastModified = registerOutput<String>('lastModified');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.registryName = registerOutput<String>('registryName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
+    this.version = registerOutput<String>('version');
+    this.versionCreatedDate = registerOutput<String>('versionCreatedDate');
   }
 }

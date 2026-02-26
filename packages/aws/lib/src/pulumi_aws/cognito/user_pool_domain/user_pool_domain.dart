@@ -403,16 +403,19 @@ class UserPoolDomain extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.awsAccountId = Output.createUnknown<String>();
-    this.certificateArn = Output.createUnknown<String?>();
-    this.cloudfrontDistribution = Output.createUnknown<String>();
-    this.cloudfrontDistributionArn = Output.createUnknown<String>();
-    this.cloudfrontDistributionZoneId = Output.createUnknown<String>();
-    this.domain = Output.createUnknown<String>();
-    this.managedLoginVersion = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.s3Bucket = Output.createUnknown<String>();
-    this.userPoolId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<String>();
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.certificateArn = registerOutput<String?>('certificateArn');
+    this.cloudfrontDistribution =
+        registerOutput<String>('cloudfrontDistribution');
+    this.cloudfrontDistributionArn =
+        registerOutput<String>('cloudfrontDistributionArn');
+    this.cloudfrontDistributionZoneId =
+        registerOutput<String>('cloudfrontDistributionZoneId');
+    this.domain = registerOutput<String>('domain');
+    this.managedLoginVersion = registerOutput<int>('managedLoginVersion');
+    this.region = registerOutput<String>('region');
+    this.s3Bucket = registerOutput<String>('s3Bucket');
+    this.userPoolId = registerOutput<String>('userPoolId');
+    this.version = registerOutput<String>('version');
   }
 }

@@ -564,8 +564,8 @@ class FindingAggregator extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.linkingMode = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.specifiedRegions = Output.createUnknown<List<String>?>();
+    this.linkingMode = registerOutput<String>('linkingMode');
+    this.region = registerOutput<String>('region');
+    this.specifiedRegions = registerOutput<List<String>?>('specifiedRegions');
   }
 }

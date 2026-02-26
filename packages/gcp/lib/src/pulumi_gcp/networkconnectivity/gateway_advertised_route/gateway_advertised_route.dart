@@ -482,20 +482,21 @@ class GatewayAdvertisedRoute extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.ipRange = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.priority = Output.createUnknown<int?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.recipient = Output.createUnknown<String?>();
-    this.spoke = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.uniqueId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.ipRange = registerOutput<String?>('ipRange');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.priority = registerOutput<int?>('priority');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.recipient = registerOutput<String?>('recipient');
+    this.spoke = registerOutput<String>('spoke');
+    this.state = registerOutput<String>('state');
+    this.uniqueId = registerOutput<String>('uniqueId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

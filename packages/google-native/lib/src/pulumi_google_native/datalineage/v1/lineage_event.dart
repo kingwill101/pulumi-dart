@@ -34,15 +34,16 @@ class LineageEvent extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.endTime = Output.createUnknown<String>();
-    this.links = Output.createUnknown<
-        List<GoogleCloudDatacatalogLineageV1EventLinkResponse>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.processId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.runId = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
+    this.endTime = registerOutput<String>('endTime');
+    this.links =
+        registerOutput<List<GoogleCloudDatacatalogLineageV1EventLinkResponse>>(
+            'links');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.processId = registerOutput<String>('processId');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.runId = registerOutput<String>('runId');
+    this.startTime = registerOutput<String>('startTime');
   }
 }

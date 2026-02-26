@@ -420,20 +420,22 @@ class Control extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.boostAction = Output.createUnknown<ControlBoostAction?>();
-    this.collectionId = Output.createUnknown<String?>();
-    this.conditions = Output.createUnknown<List<ControlCondition>?>();
-    this.controlId = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.engineId = Output.createUnknown<String>();
-    this.filterAction = Output.createUnknown<ControlFilterAction?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.promoteAction = Output.createUnknown<ControlPromoteAction?>();
-    this.redirectAction = Output.createUnknown<ControlRedirectAction?>();
-    this.solutionType = Output.createUnknown<String>();
-    this.synonymsAction = Output.createUnknown<ControlSynonymsAction?>();
-    this.useCases = Output.createUnknown<List<String>?>();
+    this.boostAction = registerOutput<ControlBoostAction?>('boostAction');
+    this.collectionId = registerOutput<String?>('collectionId');
+    this.conditions = registerOutput<List<ControlCondition>?>('conditions');
+    this.controlId = registerOutput<String>('controlId');
+    this.displayName = registerOutput<String>('displayName');
+    this.engineId = registerOutput<String>('engineId');
+    this.filterAction = registerOutput<ControlFilterAction?>('filterAction');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.promoteAction = registerOutput<ControlPromoteAction?>('promoteAction');
+    this.redirectAction =
+        registerOutput<ControlRedirectAction?>('redirectAction');
+    this.solutionType = registerOutput<String>('solutionType');
+    this.synonymsAction =
+        registerOutput<ControlSynonymsAction?>('synonymsAction');
+    this.useCases = registerOutput<List<String>?>('useCases');
   }
 }

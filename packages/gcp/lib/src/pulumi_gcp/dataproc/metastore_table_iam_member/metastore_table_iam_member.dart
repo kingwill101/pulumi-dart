@@ -1037,14 +1037,15 @@ class MetastoreTableIamMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<MetastoreTableIamMemberCondition?>();
-    this.databaseId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.serviceId = Output.createUnknown<String>();
-    this.table = Output.createUnknown<String>();
+    this.condition =
+        registerOutput<MetastoreTableIamMemberCondition?>('condition');
+    this.databaseId = registerOutput<String>('databaseId');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.member = registerOutput<String>('member');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
+    this.serviceId = registerOutput<String>('serviceId');
+    this.table = registerOutput<String>('table');
   }
 }

@@ -158,18 +158,19 @@ class Space extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.domainId = Output.createUnknown<String>();
-    this.homeEfsFileSystemUid = Output.createUnknown<String>();
-    this.ownershipSettings = Output.createUnknown<SpaceOwnershipSettings?>();
-    this.region = Output.createUnknown<String>();
-    this.spaceDisplayName = Output.createUnknown<String?>();
-    this.spaceName = Output.createUnknown<String>();
-    this.spaceSettings = Output.createUnknown<SpaceSpaceSettings?>();
+    this.arn = registerOutput<String>('arn');
+    this.domainId = registerOutput<String>('domainId');
+    this.homeEfsFileSystemUid = registerOutput<String>('homeEfsFileSystemUid');
+    this.ownershipSettings =
+        registerOutput<SpaceOwnershipSettings?>('ownershipSettings');
+    this.region = registerOutput<String>('region');
+    this.spaceDisplayName = registerOutput<String?>('spaceDisplayName');
+    this.spaceName = registerOutput<String>('spaceName');
+    this.spaceSettings = registerOutput<SpaceSpaceSettings?>('spaceSettings');
     this.spaceSharingSettings =
-        Output.createUnknown<SpaceSpaceSharingSettings?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.url = Output.createUnknown<String>();
+        registerOutput<SpaceSpaceSharingSettings?>('spaceSharingSettings');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.url = registerOutput<String>('url');
   }
 }

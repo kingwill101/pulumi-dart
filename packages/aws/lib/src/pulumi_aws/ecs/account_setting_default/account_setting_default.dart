@@ -229,9 +229,9 @@ class AccountSettingDefault extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
-    this.principalArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.value = Output.createUnknown<String>();
+    this.name = registerOutput<String>('name');
+    this.principalArn = registerOutput<String>('principalArn');
+    this.region = registerOutput<String>('region');
+    this.value = registerOutput<String>('value');
   }
 }

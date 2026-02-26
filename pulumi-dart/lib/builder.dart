@@ -9,13 +9,16 @@ import 'src/resource/resource_annotations.dart';
 class ResourceGenerator extends GeneratorForAnnotation<PulumiResource> {
   @override
   String generateForAnnotatedElement(
-      Element element, ConstantReader annotation, BuildStep buildStep) {
+    Element element,
+    ConstantReader annotation,
+    BuildStep buildStep,
+  ) {
     if (element is! ClassElement) {
       throw InvalidGenerationSourceError(
-          'PulumiResource annotation can only be applied to classes.');
+        'PulumiResource annotation can only be applied to classes.',
+      );
     }
 
-    final resourceType = annotation.read('type').stringValue;
     final className = element.name;
 
     return '''

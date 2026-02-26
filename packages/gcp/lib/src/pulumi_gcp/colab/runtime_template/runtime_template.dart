@@ -858,25 +858,30 @@ class RuntimeTemplate extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.dataPersistentDiskSpec =
-        Output.createUnknown<RuntimeTemplateDataPersistentDiskSpec>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<RuntimeTemplateDataPersistentDiskSpec>(
+            'dataPersistentDiskSpec');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.encryptionSpec =
-        Output.createUnknown<RuntimeTemplateEncryptionSpec?>();
-    this.eucConfig = Output.createUnknown<RuntimeTemplateEucConfig>();
+        registerOutput<RuntimeTemplateEncryptionSpec?>('encryptionSpec');
+    this.eucConfig = registerOutput<RuntimeTemplateEucConfig>('eucConfig');
     this.idleShutdownConfig =
-        Output.createUnknown<RuntimeTemplateIdleShutdownConfig>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.machineSpec = Output.createUnknown<RuntimeTemplateMachineSpec>();
-    this.name = Output.createUnknown<String>();
-    this.networkSpec = Output.createUnknown<RuntimeTemplateNetworkSpec>();
-    this.networkTags = Output.createUnknown<List<String>?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<RuntimeTemplateIdleShutdownConfig>('idleShutdownConfig');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.machineSpec =
+        registerOutput<RuntimeTemplateMachineSpec>('machineSpec');
+    this.name = registerOutput<String>('name');
+    this.networkSpec =
+        registerOutput<RuntimeTemplateNetworkSpec>('networkSpec');
+    this.networkTags = registerOutput<List<String>?>('networkTags');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.shieldedVmConfig =
-        Output.createUnknown<RuntimeTemplateShieldedVmConfig>();
-    this.softwareConfig = Output.createUnknown<RuntimeTemplateSoftwareConfig>();
+        registerOutput<RuntimeTemplateShieldedVmConfig>('shieldedVmConfig');
+    this.softwareConfig =
+        registerOutput<RuntimeTemplateSoftwareConfig>('softwareConfig');
   }
 }

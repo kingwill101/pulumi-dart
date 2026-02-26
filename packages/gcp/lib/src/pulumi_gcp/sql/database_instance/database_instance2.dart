@@ -2100,44 +2100,54 @@ class DatabaseInstance2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.availableMaintenanceVersions = Output.createUnknown<List<String>>();
-    this.backupdrBackup = Output.createUnknown<String?>();
-    this.clone = Output.createUnknown<DatabaseInstanceClone?>();
-    this.connectionName = Output.createUnknown<String>();
-    this.databaseVersion = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.dnsName = Output.createUnknown<String>();
-    this.dnsNames = Output.createUnknown<List<DatabaseInstanceDnsName>>();
-    this.encryptionKeyName = Output.createUnknown<String>();
-    this.finalBackupDescription = Output.createUnknown<String?>();
-    this.firstIpAddress = Output.createUnknown<String>();
-    this.instanceType = Output.createUnknown<String>();
-    this.ipAddresses = Output.createUnknown<List<DatabaseInstanceIpAddress>>();
-    this.maintenanceVersion = Output.createUnknown<String>();
-    this.masterInstanceName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.nodeCount = Output.createUnknown<int>();
+    this.availableMaintenanceVersions =
+        registerOutput<List<String>>('availableMaintenanceVersions');
+    this.backupdrBackup = registerOutput<String?>('backupdrBackup');
+    this.clone = registerOutput<DatabaseInstanceClone?>('clone');
+    this.connectionName = registerOutput<String>('connectionName');
+    this.databaseVersion = registerOutput<String>('databaseVersion');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.dnsNames = registerOutput<List<DatabaseInstanceDnsName>>('dnsNames');
+    this.encryptionKeyName = registerOutput<String>('encryptionKeyName');
+    this.finalBackupDescription =
+        registerOutput<String?>('finalBackupDescription');
+    this.firstIpAddress = registerOutput<String>('firstIpAddress');
+    this.instanceType = registerOutput<String>('instanceType');
+    this.ipAddresses =
+        registerOutput<List<DatabaseInstanceIpAddress>>('ipAddresses');
+    this.maintenanceVersion = registerOutput<String>('maintenanceVersion');
+    this.masterInstanceName = registerOutput<String>('masterInstanceName');
+    this.name = registerOutput<String>('name');
+    this.nodeCount = registerOutput<int>('nodeCount');
     this.pointInTimeRestoreContext =
-        Output.createUnknown<DatabaseInstancePointInTimeRestoreContext?>();
-    this.privateIpAddress = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pscServiceAttachmentLink = Output.createUnknown<String>();
-    this.publicIpAddress = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<DatabaseInstancePointInTimeRestoreContext?>(
+            'pointInTimeRestoreContext');
+    this.privateIpAddress = registerOutput<String>('privateIpAddress');
+    this.project = registerOutput<String>('project');
+    this.pscServiceAttachmentLink =
+        registerOutput<String>('pscServiceAttachmentLink');
+    this.publicIpAddress = registerOutput<String>('publicIpAddress');
+    this.region = registerOutput<String>('region');
     this.replicaConfiguration =
-        Output.createUnknown<DatabaseInstanceReplicaConfiguration>();
-    this.replicaNames = Output.createUnknown<List<String>>();
+        registerOutput<DatabaseInstanceReplicaConfiguration>(
+            'replicaConfiguration');
+    this.replicaNames = registerOutput<List<String>>('replicaNames');
     this.replicationCluster =
-        Output.createUnknown<DatabaseInstanceReplicationCluster>();
+        registerOutput<DatabaseInstanceReplicationCluster>(
+            'replicationCluster');
     this.restoreBackupContext =
-        Output.createUnknown<DatabaseInstanceRestoreBackupContext?>();
-    this.rootPassword = Output.createUnknown<String?>();
-    this.rootPasswordWo = Output.createUnknown<String?>();
-    this.rootPasswordWoVersion = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<DatabaseInstanceRestoreBackupContext?>(
+            'restoreBackupContext');
+    this.rootPassword = registerOutput<String?>('rootPassword');
+    this.rootPasswordWo = registerOutput<String?>('rootPasswordWo');
+    this.rootPasswordWoVersion =
+        registerOutput<String?>('rootPasswordWoVersion');
+    this.selfLink = registerOutput<String>('selfLink');
     this.serverCaCerts =
-        Output.createUnknown<List<DatabaseInstanceServerCaCert>>();
-    this.serviceAccountEmailAddress = Output.createUnknown<String>();
-    this.settings = Output.createUnknown<DatabaseInstanceSettings>();
+        registerOutput<List<DatabaseInstanceServerCaCert>>('serverCaCerts');
+    this.serviceAccountEmailAddress =
+        registerOutput<String>('serviceAccountEmailAddress');
+    this.settings = registerOutput<DatabaseInstanceSettings>('settings');
   }
 }

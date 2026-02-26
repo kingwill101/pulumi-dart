@@ -57,20 +57,20 @@ class Connection extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.applicationEndpoint =
-        Output.createUnknown<ApplicationEndpointResponse>();
-    this.connectionId = Output.createUnknown<String?>();
-    this.connectors = Output.createUnknown<List<String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.gateway = Output.createUnknown<GatewayResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<ApplicationEndpointResponse>('applicationEndpoint');
+    this.connectionId = registerOutput<String?>('connectionId');
+    this.connectors = registerOutput<List<String>>('connectors');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.gateway = registerOutput<GatewayResponse>('gateway');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String>('type');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

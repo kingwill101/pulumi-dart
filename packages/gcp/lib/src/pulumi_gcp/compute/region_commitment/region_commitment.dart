@@ -467,24 +467,25 @@ class RegionCommitment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoRenew = Output.createUnknown<bool>();
-    this.category = Output.createUnknown<String>();
-    this.commitmentId = Output.createUnknown<int>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.endTimestamp = Output.createUnknown<String>();
-    this.existingReservations = Output.createUnknown<String>();
+    this.autoRenew = registerOutput<bool>('autoRenew');
+    this.category = registerOutput<String>('category');
+    this.commitmentId = registerOutput<int>('commitmentId');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.endTimestamp = registerOutput<String>('endTimestamp');
+    this.existingReservations = registerOutput<String>('existingReservations');
     this.licenseResource =
-        Output.createUnknown<RegionCommitmentLicenseResource?>();
-    this.name = Output.createUnknown<String>();
-    this.plan = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resources = Output.createUnknown<List<RegionCommitmentResource>?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.startTimestamp = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.statusMessage = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<RegionCommitmentLicenseResource?>('licenseResource');
+    this.name = registerOutput<String>('name');
+    this.plan = registerOutput<String>('plan');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.resources =
+        registerOutput<List<RegionCommitmentResource>?>('resources');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.startTimestamp = registerOutput<String>('startTimestamp');
+    this.status = registerOutput<String>('status');
+    this.statusMessage = registerOutput<String>('statusMessage');
+    this.type = registerOutput<String>('type');
   }
 }

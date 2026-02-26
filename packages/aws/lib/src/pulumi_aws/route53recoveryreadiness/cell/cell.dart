@@ -128,11 +128,12 @@ class Cell extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.cellName = Output.createUnknown<String>();
-    this.cells = Output.createUnknown<List<String>?>();
-    this.parentReadinessScopes = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.cellName = registerOutput<String>('cellName');
+    this.cells = registerOutput<List<String>?>('cells');
+    this.parentReadinessScopes =
+        registerOutput<List<String>>('parentReadinessScopes');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

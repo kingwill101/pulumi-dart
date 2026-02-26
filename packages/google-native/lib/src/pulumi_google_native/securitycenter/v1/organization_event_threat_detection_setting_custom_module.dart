@@ -40,14 +40,14 @@ class OrganizationEventThreatDetectionSettingCustomModule
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.config = Output.createUnknown<Map<String, String>>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.enablementState = Output.createUnknown<String>();
-    this.lastEditor = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.config = registerOutput<Map<String, String>>('config');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.enablementState = registerOutput<String>('enablementState');
+    this.lastEditor = registerOutput<String>('lastEditor');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

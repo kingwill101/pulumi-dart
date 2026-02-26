@@ -200,9 +200,9 @@ class ServiceIdentity2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.email = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.service = Output.createUnknown<String>();
+    this.email = registerOutput<String>('email');
+    this.member = registerOutput<String>('member');
+    this.project = registerOutput<String>('project');
+    this.service = registerOutput<String>('service');
   }
 }

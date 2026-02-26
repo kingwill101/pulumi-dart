@@ -467,13 +467,14 @@ class DeliveryChannel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.s3BucketName = Output.createUnknown<String>();
-    this.s3KeyPrefix = Output.createUnknown<String?>();
-    this.s3KmsKeyArn = Output.createUnknown<String?>();
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.s3BucketName = registerOutput<String>('s3BucketName');
+    this.s3KeyPrefix = registerOutput<String?>('s3KeyPrefix');
+    this.s3KmsKeyArn = registerOutput<String?>('s3KmsKeyArn');
     this.snapshotDeliveryProperties =
-        Output.createUnknown<DeliveryChannelSnapshotDeliveryProperties?>();
-    this.snsTopicArn = Output.createUnknown<String?>();
+        registerOutput<DeliveryChannelSnapshotDeliveryProperties?>(
+            'snapshotDeliveryProperties');
+    this.snsTopicArn = registerOutput<String?>('snsTopicArn');
   }
 }

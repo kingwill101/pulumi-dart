@@ -200,10 +200,11 @@ class ClusterCapacityProviders extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.capacityProviders = Output.createUnknown<List<String>?>();
-    this.clusterName = Output.createUnknown<String>();
-    this.defaultCapacityProviderStrategies = Output.createUnknown<
-        List<ClusterCapacityProvidersDefaultCapacityProviderStrategy>?>();
-    this.region = Output.createUnknown<String>();
+    this.capacityProviders = registerOutput<List<String>?>('capacityProviders');
+    this.clusterName = registerOutput<String>('clusterName');
+    this.defaultCapacityProviderStrategies = registerOutput<
+            List<ClusterCapacityProvidersDefaultCapacityProviderStrategy>?>(
+        'defaultCapacityProviderStrategies');
+    this.region = registerOutput<String>('region');
   }
 }

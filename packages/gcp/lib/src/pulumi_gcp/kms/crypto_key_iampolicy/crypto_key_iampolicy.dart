@@ -913,8 +913,8 @@ class CryptoKeyIAMPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cryptoKeyId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
+    this.cryptoKeyId = registerOutput<String>('cryptoKeyId');
+    this.etag = registerOutput<String>('etag');
+    this.policyData = registerOutput<String>('policyData');
   }
 }

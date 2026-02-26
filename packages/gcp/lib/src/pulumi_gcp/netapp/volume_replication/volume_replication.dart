@@ -551,35 +551,41 @@ class VolumeReplication extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.deleteDestinationVolume = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String?>();
-    this.destinationVolume = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteDestinationVolume =
+        registerOutput<bool?>('deleteDestinationVolume');
+    this.description = registerOutput<String?>('description');
+    this.destinationVolume = registerOutput<String>('destinationVolume');
     this.destinationVolumeParameters =
-        Output.createUnknown<VolumeReplicationDestinationVolumeParameters?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.forceStopping = Output.createUnknown<bool?>();
-    this.healthy = Output.createUnknown<bool>();
+        registerOutput<VolumeReplicationDestinationVolumeParameters?>(
+            'destinationVolumeParameters');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.forceStopping = registerOutput<bool?>('forceStopping');
+    this.healthy = registerOutput<bool>('healthy');
     this.hybridPeeringDetails =
-        Output.createUnknown<List<VolumeReplicationHybridPeeringDetail>>();
-    this.hybridReplicationType = Output.createUnknown<String>();
-    this.hybridReplicationUserCommands = Output.createUnknown<
-        List<VolumeReplicationHybridReplicationUserCommand>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.mirrorState = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.replicationEnabled = Output.createUnknown<bool?>();
-    this.replicationSchedule = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.sourceVolume = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.stateDetails = Output.createUnknown<String>();
+        registerOutput<List<VolumeReplicationHybridPeeringDetail>>(
+            'hybridPeeringDetails');
+    this.hybridReplicationType =
+        registerOutput<String>('hybridReplicationType');
+    this.hybridReplicationUserCommands =
+        registerOutput<List<VolumeReplicationHybridReplicationUserCommand>>(
+            'hybridReplicationUserCommands');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.mirrorState = registerOutput<String>('mirrorState');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.replicationEnabled = registerOutput<bool?>('replicationEnabled');
+    this.replicationSchedule = registerOutput<String>('replicationSchedule');
+    this.role = registerOutput<String>('role');
+    this.sourceVolume = registerOutput<String>('sourceVolume');
+    this.state = registerOutput<String>('state');
+    this.stateDetails = registerOutput<String>('stateDetails');
     this.transferStats =
-        Output.createUnknown<List<VolumeReplicationTransferStat>>();
-    this.volumeName = Output.createUnknown<String>();
-    this.waitForMirror = Output.createUnknown<bool?>();
+        registerOutput<List<VolumeReplicationTransferStat>>('transferStats');
+    this.volumeName = registerOutput<String>('volumeName');
+    this.waitForMirror = registerOutput<bool?>('waitForMirror');
   }
 }

@@ -28,11 +28,13 @@ class NotebookRuntimeTemplateIamPolicy2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bindings = Output.createUnknown<List<GoogleIamV1BindingResponse2>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.notebookRuntimeTemplateId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.bindings =
+        registerOutput<List<GoogleIamV1BindingResponse2>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.notebookRuntimeTemplateId =
+        registerOutput<String>('notebookRuntimeTemplateId');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

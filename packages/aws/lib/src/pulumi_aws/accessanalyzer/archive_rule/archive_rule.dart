@@ -225,9 +225,9 @@ class ArchiveRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.analyzerName = Output.createUnknown<String>();
-    this.filters = Output.createUnknown<List<ArchiveRuleFilter>>();
-    this.region = Output.createUnknown<String>();
-    this.ruleName = Output.createUnknown<String>();
+    this.analyzerName = registerOutput<String>('analyzerName');
+    this.filters = registerOutput<List<ArchiveRuleFilter>>('filters');
+    this.region = registerOutput<String>('region');
+    this.ruleName = registerOutput<String>('ruleName');
   }
 }

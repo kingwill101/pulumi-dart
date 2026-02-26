@@ -276,15 +276,15 @@ class Statement extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusterIdentifier = Output.createUnknown<String?>();
-    this.database = Output.createUnknown<String>();
-    this.dbUser = Output.createUnknown<String?>();
-    this.parameters = Output.createUnknown<List<StatementParameter>?>();
-    this.region = Output.createUnknown<String>();
-    this.secretArn = Output.createUnknown<String?>();
-    this.sql = Output.createUnknown<String>();
-    this.statementName = Output.createUnknown<String?>();
-    this.withEvent = Output.createUnknown<bool?>();
-    this.workgroupName = Output.createUnknown<String?>();
+    this.clusterIdentifier = registerOutput<String?>('clusterIdentifier');
+    this.database = registerOutput<String>('database');
+    this.dbUser = registerOutput<String?>('dbUser');
+    this.parameters = registerOutput<List<StatementParameter>?>('parameters');
+    this.region = registerOutput<String>('region');
+    this.secretArn = registerOutput<String?>('secretArn');
+    this.sql = registerOutput<String>('sql');
+    this.statementName = registerOutput<String?>('statementName');
+    this.withEvent = registerOutput<bool?>('withEvent');
+    this.workgroupName = registerOutput<String?>('workgroupName');
   }
 }

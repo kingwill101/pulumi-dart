@@ -2090,17 +2090,17 @@ class CoreNetwork extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.basePolicyDocument = Output.createUnknown<String?>();
-    this.basePolicyRegions = Output.createUnknown<List<String>?>();
-    this.createBasePolicy = Output.createUnknown<bool?>();
-    this.createdAt = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.edges = Output.createUnknown<List<CoreNetworkEdge>>();
-    this.globalNetworkId = Output.createUnknown<String>();
-    this.segments = Output.createUnknown<List<CoreNetworkSegment>>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.basePolicyDocument = registerOutput<String?>('basePolicyDocument');
+    this.basePolicyRegions = registerOutput<List<String>?>('basePolicyRegions');
+    this.createBasePolicy = registerOutput<bool?>('createBasePolicy');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.description = registerOutput<String?>('description');
+    this.edges = registerOutput<List<CoreNetworkEdge>>('edges');
+    this.globalNetworkId = registerOutput<String>('globalNetworkId');
+    this.segments = registerOutput<List<CoreNetworkSegment>>('segments');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

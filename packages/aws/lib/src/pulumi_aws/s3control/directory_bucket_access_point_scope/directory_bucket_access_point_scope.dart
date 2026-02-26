@@ -305,9 +305,9 @@ class DirectoryBucketAccessPointScope extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.scope = Output.createUnknown<DirectoryBucketAccessPointScopeScope>();
+    this.accountId = registerOutput<String>('accountId');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.scope = registerOutput<DirectoryBucketAccessPointScopeScope>('scope');
   }
 }

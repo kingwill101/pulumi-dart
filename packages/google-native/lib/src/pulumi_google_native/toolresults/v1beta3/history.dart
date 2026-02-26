@@ -31,11 +31,11 @@ class History extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String>();
-    this.historyId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.testPlatform = Output.createUnknown<String>();
+    this.displayName = registerOutput<String>('displayName');
+    this.historyId = registerOutput<String>('historyId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.testPlatform = registerOutput<String>('testPlatform');
   }
 }

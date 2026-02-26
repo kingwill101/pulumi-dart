@@ -126,11 +126,13 @@ class HsmClientCertificate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.hsmClientCertificateIdentifier = Output.createUnknown<String>();
-    this.hsmClientCertificatePublicKey = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.hsmClientCertificateIdentifier =
+        registerOutput<String>('hsmClientCertificateIdentifier');
+    this.hsmClientCertificatePublicKey =
+        registerOutput<String>('hsmClientCertificatePublicKey');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

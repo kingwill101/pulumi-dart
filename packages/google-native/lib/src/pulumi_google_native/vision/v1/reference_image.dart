@@ -29,12 +29,13 @@ class ReferenceImage extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.boundingPolys = Output.createUnknown<List<BoundingPolyResponse2>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.productId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.referenceImageId = Output.createUnknown<String?>();
-    this.uri = Output.createUnknown<String>();
+    this.boundingPolys =
+        registerOutput<List<BoundingPolyResponse2>>('boundingPolys');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.productId = registerOutput<String>('productId');
+    this.project = registerOutput<String>('project');
+    this.referenceImageId = registerOutput<String?>('referenceImageId');
+    this.uri = registerOutput<String>('uri');
   }
 }

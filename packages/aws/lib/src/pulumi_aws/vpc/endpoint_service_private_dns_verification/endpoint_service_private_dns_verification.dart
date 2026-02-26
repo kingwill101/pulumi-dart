@@ -125,10 +125,11 @@ class EndpointServicePrivateDnsVerification extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.serviceId = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.serviceId = registerOutput<String>('serviceId');
     this.timeouts =
-        Output.createUnknown<EndpointServicePrivateDnsVerificationTimeouts?>();
-    this.waitForVerification = Output.createUnknown<bool?>();
+        registerOutput<EndpointServicePrivateDnsVerificationTimeouts?>(
+            'timeouts');
+    this.waitForVerification = registerOutput<bool?>('waitForVerification');
   }
 }

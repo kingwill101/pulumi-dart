@@ -56,14 +56,16 @@ class ListenerRule2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.actions = Output.createUnknown<List<ListenerRuleAction2>>();
-    this.arn = Output.createUnknown<String>();
-    this.conditions = Output.createUnknown<List<ListenerRuleCondition2>>();
-    this.listenerArn = Output.createUnknown<String>();
-    this.priority = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.transforms = Output.createUnknown<List<ListenerRuleTransform2>?>();
+    this.actions = registerOutput<List<ListenerRuleAction2>>('actions');
+    this.arn = registerOutput<String>('arn');
+    this.conditions =
+        registerOutput<List<ListenerRuleCondition2>>('conditions');
+    this.listenerArn = registerOutput<String>('listenerArn');
+    this.priority = registerOutput<int>('priority');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.transforms =
+        registerOutput<List<ListenerRuleTransform2>?>('transforms');
   }
 }

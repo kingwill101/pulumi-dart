@@ -890,25 +890,27 @@ class Workflow extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.callLogLevel = Output.createUnknown<String?>();
-    this.createTime = Output.createUnknown<String>();
-    this.cryptoKeyName = Output.createUnknown<String?>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.executionHistoryLevel = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String?>();
-    this.revisionId = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.sourceContents = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.updateTime = Output.createUnknown<String>();
-    this.userEnvVars = Output.createUnknown<Map<String, String>?>();
+    this.callLogLevel = registerOutput<String?>('callLogLevel');
+    this.createTime = registerOutput<String>('createTime');
+    this.cryptoKeyName = registerOutput<String?>('cryptoKeyName');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.description = registerOutput<String>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.executionHistoryLevel =
+        registerOutput<String?>('executionHistoryLevel');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String?>('region');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.sourceContents = registerOutput<String?>('sourceContents');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.userEnvVars = registerOutput<Map<String, String>?>('userEnvVars');
   }
 }

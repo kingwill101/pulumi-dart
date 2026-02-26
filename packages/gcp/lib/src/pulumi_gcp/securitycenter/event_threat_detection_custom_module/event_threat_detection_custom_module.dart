@@ -264,13 +264,13 @@ class EventThreatDetectionCustomModule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.config = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String?>();
-    this.enablementState = Output.createUnknown<String>();
-    this.lastEditor = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organization = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.config = registerOutput<String>('config');
+    this.displayName = registerOutput<String?>('displayName');
+    this.enablementState = registerOutput<String>('enablementState');
+    this.lastEditor = registerOutput<String>('lastEditor');
+    this.name = registerOutput<String>('name');
+    this.organization = registerOutput<String>('organization');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

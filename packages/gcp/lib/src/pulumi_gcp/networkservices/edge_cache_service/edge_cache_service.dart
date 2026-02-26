@@ -2708,21 +2708,23 @@ class EdgeCacheService extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.disableHttp2 = Output.createUnknown<bool?>();
-    this.disableQuic = Output.createUnknown<bool>();
-    this.edgeSecurityPolicy = Output.createUnknown<String?>();
-    this.edgeSslCertificates = Output.createUnknown<List<String>?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.ipv4Addresses = Output.createUnknown<List<String>>();
-    this.ipv6Addresses = Output.createUnknown<List<String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.logConfig = Output.createUnknown<EdgeCacheServiceLogConfig?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.requireTls = Output.createUnknown<bool>();
-    this.routing = Output.createUnknown<EdgeCacheServiceRouting>();
-    this.sslPolicy = Output.createUnknown<String?>();
+    this.description = registerOutput<String?>('description');
+    this.disableHttp2 = registerOutput<bool?>('disableHttp2');
+    this.disableQuic = registerOutput<bool>('disableQuic');
+    this.edgeSecurityPolicy = registerOutput<String?>('edgeSecurityPolicy');
+    this.edgeSslCertificates =
+        registerOutput<List<String>?>('edgeSslCertificates');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.ipv4Addresses = registerOutput<List<String>>('ipv4Addresses');
+    this.ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.logConfig = registerOutput<EdgeCacheServiceLogConfig?>('logConfig');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.requireTls = registerOutput<bool>('requireTls');
+    this.routing = registerOutput<EdgeCacheServiceRouting>('routing');
+    this.sslPolicy = registerOutput<String?>('sslPolicy');
   }
 }

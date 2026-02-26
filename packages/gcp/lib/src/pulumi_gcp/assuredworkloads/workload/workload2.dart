@@ -861,35 +861,44 @@ class Workload2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.billingAccount = Output.createUnknown<String?>();
-    this.complianceRegime = Output.createUnknown<String>();
+    this.billingAccount = registerOutput<String?>('billingAccount');
+    this.complianceRegime = registerOutput<String>('complianceRegime');
     this.complianceStatuses =
-        Output.createUnknown<List<WorkloadComplianceStatus>>();
-    this.compliantButDisallowedServices = Output.createUnknown<List<String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<WorkloadComplianceStatus>>('complianceStatuses');
+    this.compliantButDisallowedServices =
+        registerOutput<List<String>>('compliantButDisallowedServices');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.ekmProvisioningResponses =
-        Output.createUnknown<List<WorkloadEkmProvisioningResponse>>();
-    this.enableSovereignControls = Output.createUnknown<bool>();
-    this.kajEnrollmentState = Output.createUnknown<String>();
-    this.kmsSettings = Output.createUnknown<WorkloadKmsSettings?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organization = Output.createUnknown<String>();
-    this.partner = Output.createUnknown<String?>();
+        registerOutput<List<WorkloadEkmProvisioningResponse>>(
+            'ekmProvisioningResponses');
+    this.enableSovereignControls =
+        registerOutput<bool>('enableSovereignControls');
+    this.kajEnrollmentState = registerOutput<String>('kajEnrollmentState');
+    this.kmsSettings = registerOutput<WorkloadKmsSettings?>('kmsSettings');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.organization = registerOutput<String>('organization');
+    this.partner = registerOutput<String?>('partner');
     this.partnerPermissions =
-        Output.createUnknown<WorkloadPartnerPermissions?>();
-    this.partnerServicesBillingAccount = Output.createUnknown<String?>();
-    this.provisionedResourcesParent = Output.createUnknown<String?>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<WorkloadPartnerPermissions?>('partnerPermissions');
+    this.partnerServicesBillingAccount =
+        registerOutput<String?>('partnerServicesBillingAccount');
+    this.provisionedResourcesParent =
+        registerOutput<String?>('provisionedResourcesParent');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.resourceSettings =
-        Output.createUnknown<List<WorkloadResourceSetting>?>();
-    this.resources = Output.createUnknown<List<WorkloadResource>>();
+        registerOutput<List<WorkloadResourceSetting>?>('resourceSettings');
+    this.resources = registerOutput<List<WorkloadResource>>('resources');
     this.saaEnrollmentResponses =
-        Output.createUnknown<List<WorkloadSaaEnrollmentResponse>>();
-    this.violationNotificationsEnabled = Output.createUnknown<bool>();
-    this.workloadOptions = Output.createUnknown<WorkloadWorkloadOptions?>();
+        registerOutput<List<WorkloadSaaEnrollmentResponse>>(
+            'saaEnrollmentResponses');
+    this.violationNotificationsEnabled =
+        registerOutput<bool>('violationNotificationsEnabled');
+    this.workloadOptions =
+        registerOutput<WorkloadWorkloadOptions?>('workloadOptions');
   }
 }

@@ -513,9 +513,9 @@ class AppCheckServiceConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.enforcementMode = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.serviceId = Output.createUnknown<String>();
+    this.enforcementMode = registerOutput<String?>('enforcementMode');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.serviceId = registerOutput<String>('serviceId');
   }
 }

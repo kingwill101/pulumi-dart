@@ -324,13 +324,13 @@ class Topic extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cluster = Output.createUnknown<String>();
-    this.configs = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.partitionCount = Output.createUnknown<int?>();
-    this.project = Output.createUnknown<String>();
-    this.replicationFactor = Output.createUnknown<int>();
-    this.topicId = Output.createUnknown<String>();
+    this.cluster = registerOutput<String>('cluster');
+    this.configs = registerOutput<Map<String, String>?>('configs');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.partitionCount = registerOutput<int?>('partitionCount');
+    this.project = registerOutput<String>('project');
+    this.replicationFactor = registerOutput<int>('replicationFactor');
+    this.topicId = registerOutput<String>('topicId');
   }
 }

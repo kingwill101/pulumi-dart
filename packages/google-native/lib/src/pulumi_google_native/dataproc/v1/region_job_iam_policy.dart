@@ -28,11 +28,11 @@ class RegionJobIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bindings = Output.createUnknown<List<BindingResponse46>>();
-    this.etag = Output.createUnknown<String>();
-    this.jobId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.regionId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.bindings = registerOutput<List<BindingResponse46>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.jobId = registerOutput<String>('jobId');
+    this.project = registerOutput<String>('project');
+    this.regionId = registerOutput<String>('regionId');
+    this.version = registerOutput<int>('version');
   }
 }

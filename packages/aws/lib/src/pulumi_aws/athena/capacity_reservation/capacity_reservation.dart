@@ -149,14 +149,14 @@ class CapacityReservation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allocatedDpus = Output.createUnknown<int>();
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetDpus = Output.createUnknown<int>();
-    this.timeouts = Output.createUnknown<CapacityReservationTimeouts?>();
+    this.allocatedDpus = registerOutput<int>('allocatedDpus');
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetDpus = registerOutput<int>('targetDpus');
+    this.timeouts = registerOutput<CapacityReservationTimeouts?>('timeouts');
   }
 }

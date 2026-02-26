@@ -164,8 +164,9 @@ class BackupPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupPolicy = Output.createUnknown<BackupPolicyBackupPolicy>();
-    this.fileSystemId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.backupPolicy =
+        registerOutput<BackupPolicyBackupPolicy>('backupPolicy');
+    this.fileSystemId = registerOutput<String>('fileSystemId');
+    this.region = registerOutput<String>('region');
   }
 }

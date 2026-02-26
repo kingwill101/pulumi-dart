@@ -129,10 +129,11 @@ class InstanceMetadataDefaults extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.httpEndpoint = Output.createUnknown<String>();
-    this.httpPutResponseHopLimit = Output.createUnknown<int>();
-    this.httpTokens = Output.createUnknown<String>();
-    this.instanceMetadataTags = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.httpEndpoint = registerOutput<String>('httpEndpoint');
+    this.httpPutResponseHopLimit =
+        registerOutput<int>('httpPutResponseHopLimit');
+    this.httpTokens = registerOutput<String>('httpTokens');
+    this.instanceMetadataTags = registerOutput<String>('instanceMetadataTags');
+    this.region = registerOutput<String>('region');
   }
 }

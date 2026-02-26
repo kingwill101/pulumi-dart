@@ -546,11 +546,11 @@ class TargetGroupAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.availabilityZone = Output.createUnknown<String?>();
-    this.port = Output.createUnknown<int?>();
-    this.quicServerId = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.targetGroupArn = Output.createUnknown<String>();
-    this.targetId = Output.createUnknown<String>();
+    this.availabilityZone = registerOutput<String?>('availabilityZone');
+    this.port = registerOutput<int?>('port');
+    this.quicServerId = registerOutput<String?>('quicServerId');
+    this.region = registerOutput<String>('region');
+    this.targetGroupArn = registerOutput<String>('targetGroupArn');
+    this.targetId = registerOutput<String>('targetId');
   }
 }

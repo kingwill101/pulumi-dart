@@ -108,37 +108,41 @@ class Trigger2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.approvalConfig = Output.createUnknown<ApprovalConfigResponse>();
-    this.autodetect = Output.createUnknown<bool>();
+    this.approvalConfig =
+        registerOutput<ApprovalConfigResponse>('approvalConfig');
+    this.autodetect = registerOutput<bool>('autodetect');
     this.bitbucketServerTriggerConfig =
-        Output.createUnknown<BitbucketServerTriggerConfigResponse>();
-    this.build = Output.createUnknown<BuildResponse2>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool>();
-    this.eventType = Output.createUnknown<String>();
-    this.filename = Output.createUnknown<String>();
-    this.filter = Output.createUnknown<String>();
-    this.gitFileSource = Output.createUnknown<GitFileSourceResponse>();
-    this.github = Output.createUnknown<GitHubEventsConfigResponse>();
+        registerOutput<BitbucketServerTriggerConfigResponse>(
+            'bitbucketServerTriggerConfig');
+    this.build = registerOutput<BuildResponse2>('build');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.disabled = registerOutput<bool>('disabled');
+    this.eventType = registerOutput<String>('eventType');
+    this.filename = registerOutput<String>('filename');
+    this.filter = registerOutput<String>('filter');
+    this.gitFileSource = registerOutput<GitFileSourceResponse>('gitFileSource');
+    this.github = registerOutput<GitHubEventsConfigResponse>('github');
     this.gitlabEnterpriseEventsConfig =
-        Output.createUnknown<GitLabEventsConfigResponse>();
-    this.ignoredFiles = Output.createUnknown<List<String>>();
-    this.includeBuildLogs = Output.createUnknown<String>();
-    this.includedFiles = Output.createUnknown<List<String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.projectId = Output.createUnknown<String>();
-    this.pubsubConfig = Output.createUnknown<PubsubConfigResponse>();
+        registerOutput<GitLabEventsConfigResponse>(
+            'gitlabEnterpriseEventsConfig');
+    this.ignoredFiles = registerOutput<List<String>>('ignoredFiles');
+    this.includeBuildLogs = registerOutput<String>('includeBuildLogs');
+    this.includedFiles = registerOutput<List<String>>('includedFiles');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.projectId = registerOutput<String>('projectId');
+    this.pubsubConfig = registerOutput<PubsubConfigResponse>('pubsubConfig');
     this.repositoryEventConfig =
-        Output.createUnknown<RepositoryEventConfigResponse>();
-    this.resourceName = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.sourceToBuild = Output.createUnknown<GitRepoSourceResponse>();
-    this.substitutions = Output.createUnknown<Map<String, String>>();
-    this.tags = Output.createUnknown<List<String>>();
-    this.triggerTemplate = Output.createUnknown<RepoSourceResponse>();
-    this.webhookConfig = Output.createUnknown<WebhookConfigResponse>();
+        registerOutput<RepositoryEventConfigResponse>('repositoryEventConfig');
+    this.resourceName = registerOutput<String>('resourceName');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.sourceToBuild = registerOutput<GitRepoSourceResponse>('sourceToBuild');
+    this.substitutions = registerOutput<Map<String, String>>('substitutions');
+    this.tags = registerOutput<List<String>>('tags');
+    this.triggerTemplate =
+        registerOutput<RepoSourceResponse>('triggerTemplate');
+    this.webhookConfig = registerOutput<WebhookConfigResponse>('webhookConfig');
   }
 }

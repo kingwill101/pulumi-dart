@@ -315,13 +315,13 @@ class ManagementServer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.location = Output.createUnknown<String>();
+    this.location = registerOutput<String>('location');
     this.managementUris =
-        Output.createUnknown<List<ManagementServerManagementUri>>();
-    this.name = Output.createUnknown<String>();
-    this.networks = Output.createUnknown<List<ManagementServerNetwork>?>();
-    this.oauth2ClientId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String?>();
+        registerOutput<List<ManagementServerManagementUri>>('managementUris');
+    this.name = registerOutput<String>('name');
+    this.networks = registerOutput<List<ManagementServerNetwork>?>('networks');
+    this.oauth2ClientId = registerOutput<String>('oauth2ClientId');
+    this.project = registerOutput<String>('project');
+    this.type = registerOutput<String?>('type');
   }
 }

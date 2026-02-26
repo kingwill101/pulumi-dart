@@ -628,20 +628,24 @@ class StackSetInstance extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.callAs = Output.createUnknown<String?>();
+    this.accountId = registerOutput<String>('accountId');
+    this.callAs = registerOutput<String?>('callAs');
     this.deploymentTargets =
-        Output.createUnknown<StackSetInstanceDeploymentTargets?>();
+        registerOutput<StackSetInstanceDeploymentTargets?>('deploymentTargets');
     this.operationPreferences =
-        Output.createUnknown<StackSetInstanceOperationPreferences?>();
-    this.organizationalUnitId = Output.createUnknown<String>();
-    this.parameterOverrides = Output.createUnknown<Map<String, String>?>();
-    this.region = Output.createUnknown<String>();
-    this.retainStack = Output.createUnknown<bool?>();
-    this.stackId = Output.createUnknown<String>();
+        registerOutput<StackSetInstanceOperationPreferences?>(
+            'operationPreferences');
+    this.organizationalUnitId = registerOutput<String>('organizationalUnitId');
+    this.parameterOverrides =
+        registerOutput<Map<String, String>?>('parameterOverrides');
+    this.region = registerOutput<String>('region');
+    this.retainStack = registerOutput<bool?>('retainStack');
+    this.stackId = registerOutput<String>('stackId');
     this.stackInstanceSummaries =
-        Output.createUnknown<List<StackSetInstanceStackInstanceSummary>>();
-    this.stackSetInstanceRegion = Output.createUnknown<String>();
-    this.stackSetName = Output.createUnknown<String>();
+        registerOutput<List<StackSetInstanceStackInstanceSummary>>(
+            'stackInstanceSummaries');
+    this.stackSetInstanceRegion =
+        registerOutput<String>('stackSetInstanceRegion');
+    this.stackSetName = registerOutput<String>('stackSetName');
   }
 }

@@ -128,6 +128,6 @@ class SdkvoiceGlobalSettings extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.voiceConnector =
-        Output.createUnknown<SdkvoiceGlobalSettingsVoiceConnector>();
+        registerOutput<SdkvoiceGlobalSettingsVoiceConnector>('voiceConnector');
   }
 }

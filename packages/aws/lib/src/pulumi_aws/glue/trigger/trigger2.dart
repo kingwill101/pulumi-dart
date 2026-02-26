@@ -808,21 +808,22 @@ class Trigger2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.actions = Output.createUnknown<List<TriggerAction>>();
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.enabled = Output.createUnknown<bool?>();
+    this.actions = registerOutput<List<TriggerAction>>('actions');
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.enabled = registerOutput<bool?>('enabled');
     this.eventBatchingConditions =
-        Output.createUnknown<List<TriggerEventBatchingCondition>?>();
-    this.name = Output.createUnknown<String>();
-    this.predicate = Output.createUnknown<TriggerPredicate?>();
-    this.region = Output.createUnknown<String>();
-    this.schedule = Output.createUnknown<String?>();
-    this.startOnCreation = Output.createUnknown<bool?>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
-    this.workflowName = Output.createUnknown<String?>();
+        registerOutput<List<TriggerEventBatchingCondition>?>(
+            'eventBatchingConditions');
+    this.name = registerOutput<String>('name');
+    this.predicate = registerOutput<TriggerPredicate?>('predicate');
+    this.region = registerOutput<String>('region');
+    this.schedule = registerOutput<String?>('schedule');
+    this.startOnCreation = registerOutput<bool?>('startOnCreation');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
+    this.workflowName = registerOutput<String?>('workflowName');
   }
 }

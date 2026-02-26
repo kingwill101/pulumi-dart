@@ -598,25 +598,26 @@ class ContainerService extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.isDisabled = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.power = Output.createUnknown<String>();
-    this.powerId = Output.createUnknown<String>();
-    this.principalArn = Output.createUnknown<String>();
-    this.privateDomainName = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.isDisabled = registerOutput<bool?>('isDisabled');
+    this.name = registerOutput<String>('name');
+    this.power = registerOutput<String>('power');
+    this.powerId = registerOutput<String>('powerId');
+    this.principalArn = registerOutput<String>('principalArn');
+    this.privateDomainName = registerOutput<String>('privateDomainName');
     this.privateRegistryAccess =
-        Output.createUnknown<ContainerServicePrivateRegistryAccess>();
+        registerOutput<ContainerServicePrivateRegistryAccess>(
+            'privateRegistryAccess');
     this.publicDomainNames =
-        Output.createUnknown<ContainerServicePublicDomainNames?>();
-    this.region = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String>();
-    this.scale = Output.createUnknown<int>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.url = Output.createUnknown<String>();
+        registerOutput<ContainerServicePublicDomainNames?>('publicDomainNames');
+    this.region = registerOutput<String>('region');
+    this.resourceType = registerOutput<String>('resourceType');
+    this.scale = registerOutput<int>('scale');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.url = registerOutput<String>('url');
   }
 }

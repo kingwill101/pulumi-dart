@@ -58,20 +58,22 @@ class Evaluation2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.customRulesBucket = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.evaluationId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.resourceFilter = Output.createUnknown<ResourceFilterResponse2>();
-    this.resourceStatus = Output.createUnknown<ResourceStatusResponse5>();
-    this.ruleNames = Output.createUnknown<List<String>>();
-    this.ruleVersions = Output.createUnknown<List<String>>();
-    this.schedule = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.customRulesBucket = registerOutput<String>('customRulesBucket');
+    this.description = registerOutput<String>('description');
+    this.evaluationId = registerOutput<String>('evaluationId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.resourceFilter =
+        registerOutput<ResourceFilterResponse2>('resourceFilter');
+    this.resourceStatus =
+        registerOutput<ResourceStatusResponse5>('resourceStatus');
+    this.ruleNames = registerOutput<List<String>>('ruleNames');
+    this.ruleVersions = registerOutput<List<String>>('ruleVersions');
+    this.schedule = registerOutput<String>('schedule');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -67,24 +67,26 @@ class ManagementServer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.managementServerId = Output.createUnknown<String>();
-    this.managementUri = Output.createUnknown<ManagementURIResponse>();
-    this.name = Output.createUnknown<String>();
-    this.networks = Output.createUnknown<List<NetworkConfigResponse4>>();
-    this.oauth2ClientId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.managementServerId = registerOutput<String>('managementServerId');
+    this.managementUri = registerOutput<ManagementURIResponse>('managementUri');
+    this.name = registerOutput<String>('name');
+    this.networks = registerOutput<List<NetworkConfigResponse4>>('networks');
+    this.oauth2ClientId = registerOutput<String>('oauth2ClientId');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
     this.workforceIdentityBasedManagementUri =
-        Output.createUnknown<WorkforceIdentityBasedManagementURIResponse>();
+        registerOutput<WorkforceIdentityBasedManagementURIResponse>(
+            'workforceIdentityBasedManagementUri');
     this.workforceIdentityBasedOauth2ClientId =
-        Output.createUnknown<WorkforceIdentityBasedOAuth2ClientIDResponse>();
+        registerOutput<WorkforceIdentityBasedOAuth2ClientIDResponse>(
+            'workforceIdentityBasedOauth2ClientId');
   }
 }

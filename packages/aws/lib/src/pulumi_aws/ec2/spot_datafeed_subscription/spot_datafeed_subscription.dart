@@ -154,8 +154,8 @@ class SpotDatafeedSubscription extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.prefix = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.prefix = registerOutput<String?>('prefix');
+    this.region = registerOutput<String>('region');
   }
 }

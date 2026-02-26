@@ -84,31 +84,39 @@ class Agent2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.advancedSettings = Output.createUnknown<
-        GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse>();
-    this.answerFeedbackSettings = Output.createUnknown<
-        GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsResponse>();
-    this.avatarUri = Output.createUnknown<String>();
-    this.defaultLanguageCode = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.enableSpellCorrection = Output.createUnknown<bool>();
-    this.enableStackdriverLogging = Output.createUnknown<bool>();
-    this.genAppBuilderSettings = Output.createUnknown<
-        GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsResponse>();
-    this.gitIntegrationSettings = Output.createUnknown<
-        GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse>();
-    this.location = Output.createUnknown<String>();
-    this.locked = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.securitySettings = Output.createUnknown<String>();
-    this.speechToTextSettings = Output.createUnknown<
-        GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse>();
-    this.startFlow = Output.createUnknown<String>();
-    this.supportedLanguageCodes = Output.createUnknown<List<String>>();
-    this.textToSpeechSettings = Output.createUnknown<
-        GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse>();
-    this.timeZone = Output.createUnknown<String>();
+    this.advancedSettings =
+        registerOutput<GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse>(
+            'advancedSettings');
+    this.answerFeedbackSettings = registerOutput<
+            GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsResponse>(
+        'answerFeedbackSettings');
+    this.avatarUri = registerOutput<String>('avatarUri');
+    this.defaultLanguageCode = registerOutput<String>('defaultLanguageCode');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.enableSpellCorrection = registerOutput<bool>('enableSpellCorrection');
+    this.enableStackdriverLogging =
+        registerOutput<bool>('enableStackdriverLogging');
+    this.genAppBuilderSettings = registerOutput<
+            GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsResponse>(
+        'genAppBuilderSettings');
+    this.gitIntegrationSettings = registerOutput<
+            GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse>(
+        'gitIntegrationSettings');
+    this.location = registerOutput<String>('location');
+    this.locked = registerOutput<bool>('locked');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.securitySettings = registerOutput<String>('securitySettings');
+    this.speechToTextSettings = registerOutput<
+            GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse>(
+        'speechToTextSettings');
+    this.startFlow = registerOutput<String>('startFlow');
+    this.supportedLanguageCodes =
+        registerOutput<List<String>>('supportedLanguageCodes');
+    this.textToSpeechSettings = registerOutput<
+            GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse>(
+        'textToSpeechSettings');
+    this.timeZone = registerOutput<String>('timeZone');
   }
 }

@@ -1857,11 +1857,12 @@ class ManagedFolderIamMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.condition = Output.createUnknown<ManagedFolderIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.managedFolder = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.condition =
+        registerOutput<ManagedFolderIamMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.managedFolder = registerOutput<String>('managedFolder');
+    this.member = registerOutput<String>('member');
+    this.role = registerOutput<String>('role');
   }
 }

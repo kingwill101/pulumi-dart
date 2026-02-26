@@ -29,11 +29,11 @@ class DomainBackupIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupId = Output.createUnknown<String>();
-    this.bindings = Output.createUnknown<List<BindingResponse72>>();
-    this.domainId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.backupId = registerOutput<String>('backupId');
+    this.bindings = registerOutput<List<BindingResponse72>>('bindings');
+    this.domainId = registerOutput<String>('domainId');
+    this.etag = registerOutput<String>('etag');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

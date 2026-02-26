@@ -30,10 +30,11 @@ class FolderIamPolicy2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse20>>();
-    this.bindings = Output.createUnknown<List<BindingResponse27>>();
-    this.etag = Output.createUnknown<String>();
-    this.folderId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse20>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse27>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.folderId = registerOutput<String>('folderId');
+    this.version = registerOutput<int>('version');
   }
 }

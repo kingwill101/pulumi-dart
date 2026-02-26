@@ -248,14 +248,14 @@ class Multiplex extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZones = Output.createUnknown<List<String>>();
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZones = registerOutput<List<String>>('availabilityZones');
     this.multiplexSettings =
-        Output.createUnknown<MultiplexMultiplexSettings?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.startMultiplex = Output.createUnknown<bool?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<MultiplexMultiplexSettings?>('multiplexSettings');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.startMultiplex = registerOutput<bool?>('startMultiplex');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

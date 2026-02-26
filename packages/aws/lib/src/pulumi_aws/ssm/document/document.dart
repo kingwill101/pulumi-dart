@@ -612,30 +612,30 @@ class Document extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.attachmentsSources =
-        Output.createUnknown<List<DocumentAttachmentsSource>?>();
-    this.content = Output.createUnknown<String>();
-    this.createdDate = Output.createUnknown<String>();
-    this.defaultVersion = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.documentFormat = Output.createUnknown<String?>();
-    this.documentType = Output.createUnknown<String>();
-    this.documentVersion = Output.createUnknown<String>();
-    this.hash = Output.createUnknown<String>();
-    this.hashType = Output.createUnknown<String>();
-    this.latestVersion = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.owner = Output.createUnknown<String>();
-    this.parameters = Output.createUnknown<List<DocumentParameter>>();
-    this.permissions = Output.createUnknown<Map<String, String>?>();
-    this.platformTypes = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
-    this.schemaVersion = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetType = Output.createUnknown<String?>();
-    this.versionName = Output.createUnknown<String?>();
+        registerOutput<List<DocumentAttachmentsSource>?>('attachmentsSources');
+    this.content = registerOutput<String>('content');
+    this.createdDate = registerOutput<String>('createdDate');
+    this.defaultVersion = registerOutput<String>('defaultVersion');
+    this.description = registerOutput<String>('description');
+    this.documentFormat = registerOutput<String?>('documentFormat');
+    this.documentType = registerOutput<String>('documentType');
+    this.documentVersion = registerOutput<String>('documentVersion');
+    this.hash = registerOutput<String>('hash');
+    this.hashType = registerOutput<String>('hashType');
+    this.latestVersion = registerOutput<String>('latestVersion');
+    this.name = registerOutput<String>('name');
+    this.owner = registerOutput<String>('owner');
+    this.parameters = registerOutput<List<DocumentParameter>>('parameters');
+    this.permissions = registerOutput<Map<String, String>?>('permissions');
+    this.platformTypes = registerOutput<List<String>>('platformTypes');
+    this.region = registerOutput<String>('region');
+    this.schemaVersion = registerOutput<String>('schemaVersion');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetType = registerOutput<String?>('targetType');
+    this.versionName = registerOutput<String?>('versionName');
   }
 }

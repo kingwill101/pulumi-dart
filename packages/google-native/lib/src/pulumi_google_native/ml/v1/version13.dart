@@ -102,38 +102,41 @@ class Version13 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.acceleratorConfig =
-        Output.createUnknown<GoogleCloudMlV1AcceleratorConfigResponse>();
+        registerOutput<GoogleCloudMlV1AcceleratorConfigResponse>(
+            'acceleratorConfig');
     this.autoScaling =
-        Output.createUnknown<GoogleCloudMlV1AutoScalingResponse>();
+        registerOutput<GoogleCloudMlV1AutoScalingResponse>('autoScaling');
     this.container =
-        Output.createUnknown<GoogleCloudMlV1ContainerSpecResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.deploymentUri = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.errorMessage = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
+        registerOutput<GoogleCloudMlV1ContainerSpecResponse>('container');
+    this.createTime = registerOutput<String>('createTime');
+    this.deploymentUri = registerOutput<String>('deploymentUri');
+    this.description = registerOutput<String>('description');
+    this.errorMessage = registerOutput<String>('errorMessage');
+    this.etag = registerOutput<String>('etag');
     this.explanationConfig =
-        Output.createUnknown<GoogleCloudMlV1ExplanationConfigResponse>();
-    this.framework = Output.createUnknown<String>();
-    this.isDefault = Output.createUnknown<bool>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lastMigrationModelId = Output.createUnknown<String>();
-    this.lastMigrationTime = Output.createUnknown<String>();
-    this.lastUseTime = Output.createUnknown<String>();
-    this.machineType = Output.createUnknown<String>();
+        registerOutput<GoogleCloudMlV1ExplanationConfigResponse>(
+            'explanationConfig');
+    this.framework = registerOutput<String>('framework');
+    this.isDefault = registerOutput<bool>('isDefault');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lastMigrationModelId = registerOutput<String>('lastMigrationModelId');
+    this.lastMigrationTime = registerOutput<String>('lastMigrationTime');
+    this.lastUseTime = registerOutput<String>('lastUseTime');
+    this.machineType = registerOutput<String>('machineType');
     this.manualScaling =
-        Output.createUnknown<GoogleCloudMlV1ManualScalingResponse>();
-    this.modelId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.packageUris = Output.createUnknown<List<String>>();
-    this.predictionClass = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pythonVersion = Output.createUnknown<String>();
+        registerOutput<GoogleCloudMlV1ManualScalingResponse>('manualScaling');
+    this.modelId = registerOutput<String>('modelId');
+    this.name = registerOutput<String>('name');
+    this.packageUris = registerOutput<List<String>>('packageUris');
+    this.predictionClass = registerOutput<String>('predictionClass');
+    this.project = registerOutput<String>('project');
+    this.pythonVersion = registerOutput<String>('pythonVersion');
     this.requestLoggingConfig =
-        Output.createUnknown<GoogleCloudMlV1RequestLoggingConfigResponse>();
-    this.routes = Output.createUnknown<GoogleCloudMlV1RouteMapResponse>();
-    this.runtimeVersion = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<GoogleCloudMlV1RequestLoggingConfigResponse>(
+            'requestLoggingConfig');
+    this.routes = registerOutput<GoogleCloudMlV1RouteMapResponse>('routes');
+    this.runtimeVersion = registerOutput<String>('runtimeVersion');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.state = registerOutput<String>('state');
   }
 }

@@ -31,11 +31,11 @@ class Secret7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.replication = Output.createUnknown<ReplicationResponse2>();
-    this.secretId = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.replication = registerOutput<ReplicationResponse2>('replication');
+    this.secretId = registerOutput<String>('secretId');
   }
 }

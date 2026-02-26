@@ -247,11 +247,11 @@ class RuntimeManagementConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.functionArn = Output.createUnknown<String>();
-    this.functionName = Output.createUnknown<String>();
-    this.qualifier = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.runtimeVersionArn = Output.createUnknown<String?>();
-    this.updateRuntimeOn = Output.createUnknown<String?>();
+    this.functionArn = registerOutput<String>('functionArn');
+    this.functionName = registerOutput<String>('functionName');
+    this.qualifier = registerOutput<String?>('qualifier');
+    this.region = registerOutput<String>('region');
+    this.runtimeVersionArn = registerOutput<String?>('runtimeVersionArn');
+    this.updateRuntimeOn = registerOutput<String?>('updateRuntimeOn');
   }
 }

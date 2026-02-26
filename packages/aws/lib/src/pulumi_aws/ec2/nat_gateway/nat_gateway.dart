@@ -990,28 +990,34 @@ class NatGateway extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allocationId = Output.createUnknown<String?>();
-    this.associationId = Output.createUnknown<String>();
-    this.autoProvisionZones = Output.createUnknown<String>();
-    this.autoScalingIps = Output.createUnknown<String>();
-    this.availabilityMode = Output.createUnknown<String>();
+    this.allocationId = registerOutput<String?>('allocationId');
+    this.associationId = registerOutput<String>('associationId');
+    this.autoProvisionZones = registerOutput<String>('autoProvisionZones');
+    this.autoScalingIps = registerOutput<String>('autoScalingIps');
+    this.availabilityMode = registerOutput<String>('availabilityMode');
     this.availabilityZoneAddresses =
-        Output.createUnknown<List<NatGatewayAvailabilityZoneAddress>?>();
-    this.connectivityType = Output.createUnknown<String?>();
-    this.networkInterfaceId = Output.createUnknown<String>();
-    this.privateIp = Output.createUnknown<String>();
-    this.publicIp = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<NatGatewayAvailabilityZoneAddress>?>(
+            'availabilityZoneAddresses');
+    this.connectivityType = registerOutput<String?>('connectivityType');
+    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    this.privateIp = registerOutput<String>('privateIp');
+    this.publicIp = registerOutput<String>('publicIp');
+    this.region = registerOutput<String>('region');
     this.regionalNatGatewayAddresses =
-        Output.createUnknown<List<NatGatewayRegionalNatGatewayAddress>>();
-    this.regionalNatGatewayAutoMode = Output.createUnknown<String>();
-    this.routeTableId = Output.createUnknown<String>();
-    this.secondaryAllocationIds = Output.createUnknown<List<String>>();
-    this.secondaryPrivateIpAddressCount = Output.createUnknown<int>();
-    this.secondaryPrivateIpAddresses = Output.createUnknown<List<String>>();
-    this.subnetId = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcId = Output.createUnknown<String>();
+        registerOutput<List<NatGatewayRegionalNatGatewayAddress>>(
+            'regionalNatGatewayAddresses');
+    this.regionalNatGatewayAutoMode =
+        registerOutput<String>('regionalNatGatewayAutoMode');
+    this.routeTableId = registerOutput<String>('routeTableId');
+    this.secondaryAllocationIds =
+        registerOutput<List<String>>('secondaryAllocationIds');
+    this.secondaryPrivateIpAddressCount =
+        registerOutput<int>('secondaryPrivateIpAddressCount');
+    this.secondaryPrivateIpAddresses =
+        registerOutput<List<String>>('secondaryPrivateIpAddresses');
+    this.subnetId = registerOutput<String?>('subnetId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

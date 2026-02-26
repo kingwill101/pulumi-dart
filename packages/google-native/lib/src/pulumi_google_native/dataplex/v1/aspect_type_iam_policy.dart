@@ -33,13 +33,14 @@ class AspectTypeIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aspectTypeId = Output.createUnknown<String>();
+    this.aspectTypeId = registerOutput<String>('aspectTypeId');
     this.auditConfigs =
-        Output.createUnknown<List<GoogleIamV1AuditConfigResponse5>>();
-    this.bindings = Output.createUnknown<List<GoogleIamV1BindingResponse7>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+        registerOutput<List<GoogleIamV1AuditConfigResponse5>>('auditConfigs');
+    this.bindings =
+        registerOutput<List<GoogleIamV1BindingResponse7>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

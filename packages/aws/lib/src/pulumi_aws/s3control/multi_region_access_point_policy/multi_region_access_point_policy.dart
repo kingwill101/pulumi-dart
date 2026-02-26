@@ -321,10 +321,11 @@ class MultiRegionAccessPointPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.details = Output.createUnknown<MultiRegionAccessPointPolicyDetails>();
-    this.established = Output.createUnknown<String>();
-    this.proposed = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.details =
+        registerOutput<MultiRegionAccessPointPolicyDetails>('details');
+    this.established = registerOutput<String>('established');
+    this.proposed = registerOutput<String>('proposed');
+    this.region = registerOutput<String>('region');
   }
 }

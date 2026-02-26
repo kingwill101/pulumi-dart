@@ -1138,21 +1138,25 @@ class SecurityPolicy extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.adaptiveProtectionConfig =
-        Output.createUnknown<SecurityPolicyAdaptiveProtectionConfig?>();
+        registerOutput<SecurityPolicyAdaptiveProtectionConfig?>(
+            'adaptiveProtectionConfig');
     this.advancedOptionsConfig =
-        Output.createUnknown<SecurityPolicyAdvancedOptionsConfig>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<SecurityPolicyAdvancedOptionsConfig>(
+            'advancedOptionsConfig');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.recaptchaOptionsConfig =
-        Output.createUnknown<SecurityPolicyRecaptchaOptionsConfig?>();
-    this.rules = Output.createUnknown<List<SecurityPolicyRule>>();
-    this.selfLink = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<SecurityPolicyRecaptchaOptionsConfig?>(
+            'recaptchaOptionsConfig');
+    this.rules = registerOutput<List<SecurityPolicyRule>>('rules');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.type = registerOutput<String>('type');
   }
 }

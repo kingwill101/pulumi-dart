@@ -336,11 +336,11 @@ class MaterializedView extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.instance = Output.createUnknown<String?>();
-    this.materializedViewId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.query = Output.createUnknown<String>();
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.instance = registerOutput<String?>('instance');
+    this.materializedViewId = registerOutput<String>('materializedViewId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.query = registerOutput<String>('query');
   }
 }

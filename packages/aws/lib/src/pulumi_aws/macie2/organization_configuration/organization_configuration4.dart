@@ -106,7 +106,7 @@ class OrganizationConfiguration4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoEnable = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
+    this.autoEnable = registerOutput<bool>('autoEnable');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -480,15 +480,17 @@ class RepositoryReleaseConfig extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.codeCompilationConfig =
-        Output.createUnknown<RepositoryReleaseConfigCodeCompilationConfig?>();
-    this.cronSchedule = Output.createUnknown<String?>();
-    this.gitCommitish = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.recentScheduledReleaseRecords = Output.createUnknown<
-        List<RepositoryReleaseConfigRecentScheduledReleaseRecord>>();
-    this.region = Output.createUnknown<String?>();
-    this.repository = Output.createUnknown<String?>();
-    this.timeZone = Output.createUnknown<String?>();
+        registerOutput<RepositoryReleaseConfigCodeCompilationConfig?>(
+            'codeCompilationConfig');
+    this.cronSchedule = registerOutput<String?>('cronSchedule');
+    this.gitCommitish = registerOutput<String>('gitCommitish');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.recentScheduledReleaseRecords = registerOutput<
+            List<RepositoryReleaseConfigRecentScheduledReleaseRecord>>(
+        'recentScheduledReleaseRecords');
+    this.region = registerOutput<String?>('region');
+    this.repository = registerOutput<String?>('repository');
+    this.timeZone = registerOutput<String?>('timeZone');
   }
 }

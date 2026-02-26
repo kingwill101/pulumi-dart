@@ -549,12 +549,12 @@ class AccountAssignment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.instanceArn = Output.createUnknown<String>();
-    this.permissionSetArn = Output.createUnknown<String>();
-    this.principalId = Output.createUnknown<String>();
-    this.principalType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.targetId = Output.createUnknown<String>();
-    this.targetType = Output.createUnknown<String>();
+    this.instanceArn = registerOutput<String>('instanceArn');
+    this.permissionSetArn = registerOutput<String>('permissionSetArn');
+    this.principalId = registerOutput<String>('principalId');
+    this.principalType = registerOutput<String>('principalType');
+    this.region = registerOutput<String>('region');
+    this.targetId = registerOutput<String>('targetId');
+    this.targetType = registerOutput<String>('targetType');
   }
 }

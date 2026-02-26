@@ -1056,20 +1056,22 @@ class DeveloperApp extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiProducts = Output.createUnknown<List<String>?>();
-    this.appFamily = Output.createUnknown<String>();
-    this.appId = Output.createUnknown<String>();
-    this.attributes = Output.createUnknown<List<DeveloperAppAttribute>?>();
-    this.callbackUrl = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.credentials = Output.createUnknown<List<DeveloperAppCredential>>();
-    this.developerEmail = Output.createUnknown<String>();
-    this.developerId = Output.createUnknown<String>();
-    this.keyExpiresIn = Output.createUnknown<String?>();
-    this.lastModifiedAt = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.scopes = Output.createUnknown<List<String>?>();
-    this.status = Output.createUnknown<String>();
+    this.apiProducts = registerOutput<List<String>?>('apiProducts');
+    this.appFamily = registerOutput<String>('appFamily');
+    this.appId = registerOutput<String>('appId');
+    this.attributes =
+        registerOutput<List<DeveloperAppAttribute>?>('attributes');
+    this.callbackUrl = registerOutput<String>('callbackUrl');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.credentials =
+        registerOutput<List<DeveloperAppCredential>>('credentials');
+    this.developerEmail = registerOutput<String>('developerEmail');
+    this.developerId = registerOutput<String>('developerId');
+    this.keyExpiresIn = registerOutput<String?>('keyExpiresIn');
+    this.lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    this.orgId = registerOutput<String>('orgId');
+    this.scopes = registerOutput<List<String>?>('scopes');
+    this.status = registerOutput<String>('status');
   }
 }

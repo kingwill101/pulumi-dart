@@ -270,9 +270,9 @@ class SigningCertificate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificateBody = Output.createUnknown<String>();
-    this.certificateId = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String?>();
-    this.userName = Output.createUnknown<String>();
+    this.certificateBody = registerOutput<String>('certificateBody');
+    this.certificateId = registerOutput<String>('certificateId');
+    this.status = registerOutput<String?>('status');
+    this.userName = registerOutput<String>('userName');
   }
 }

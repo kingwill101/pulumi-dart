@@ -281,18 +281,21 @@ class ResolverEndpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.direction = Output.createUnknown<String>();
-    this.hostVpcId = Output.createUnknown<String>();
-    this.ipAddresses = Output.createUnknown<List<ResolverEndpointIpAddress>>();
-    this.name = Output.createUnknown<String>();
-    this.protocols = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
-    this.resolverEndpointType = Output.createUnknown<String>();
-    this.rniEnhancedMetricsEnabled = Output.createUnknown<bool>();
-    this.securityGroupIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetNameServerMetricsEnabled = Output.createUnknown<bool>();
+    this.arn = registerOutput<String>('arn');
+    this.direction = registerOutput<String>('direction');
+    this.hostVpcId = registerOutput<String>('hostVpcId');
+    this.ipAddresses =
+        registerOutput<List<ResolverEndpointIpAddress>>('ipAddresses');
+    this.name = registerOutput<String>('name');
+    this.protocols = registerOutput<List<String>>('protocols');
+    this.region = registerOutput<String>('region');
+    this.resolverEndpointType = registerOutput<String>('resolverEndpointType');
+    this.rniEnhancedMetricsEnabled =
+        registerOutput<bool>('rniEnhancedMetricsEnabled');
+    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetNameServerMetricsEnabled =
+        registerOutput<bool>('targetNameServerMetricsEnabled');
   }
 }

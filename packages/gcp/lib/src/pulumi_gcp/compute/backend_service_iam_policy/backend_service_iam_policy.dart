@@ -1839,9 +1839,9 @@ class BackendServiceIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    this.policyData = registerOutput<String>('policyData');
+    this.project = registerOutput<String>('project');
   }
 }

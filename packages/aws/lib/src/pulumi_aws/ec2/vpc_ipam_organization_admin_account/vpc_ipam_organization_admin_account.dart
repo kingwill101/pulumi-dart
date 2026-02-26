@@ -142,10 +142,11 @@ class VpcIpamOrganizationAdminAccount extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.delegatedAdminAccountId = Output.createUnknown<String>();
-    this.email = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.servicePrincipal = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.delegatedAdminAccountId =
+        registerOutput<String>('delegatedAdminAccountId');
+    this.email = registerOutput<String>('email');
+    this.name = registerOutput<String>('name');
+    this.servicePrincipal = registerOutput<String>('servicePrincipal');
   }
 }

@@ -70,24 +70,26 @@ class PolicyBasedRoute extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.filter = Output.createUnknown<FilterResponse4>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.filter = registerOutput<FilterResponse4>('filter');
     this.interconnectAttachment =
-        Output.createUnknown<InterconnectAttachmentResponse>();
-    this.kind = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.nextHopIlbIp = Output.createUnknown<String>();
-    this.nextHopOtherRoutes = Output.createUnknown<String>();
-    this.policyBasedRouteId = Output.createUnknown<String>();
-    this.priority = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.virtualMachine = Output.createUnknown<VirtualMachineResponse>();
-    this.warnings = Output.createUnknown<List<WarningsResponse>>();
+        registerOutput<InterconnectAttachmentResponse>(
+            'interconnectAttachment');
+    this.kind = registerOutput<String>('kind');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.nextHopIlbIp = registerOutput<String>('nextHopIlbIp');
+    this.nextHopOtherRoutes = registerOutput<String>('nextHopOtherRoutes');
+    this.policyBasedRouteId = registerOutput<String>('policyBasedRouteId');
+    this.priority = registerOutput<int>('priority');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.virtualMachine =
+        registerOutput<VirtualMachineResponse>('virtualMachine');
+    this.warnings = registerOutput<List<WarningsResponse>>('warnings');
   }
 }

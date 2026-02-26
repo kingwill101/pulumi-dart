@@ -1750,18 +1750,22 @@ class AiEndpointWithModelGardenDeployment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.deployConfig = Output.createUnknown<
-        AiEndpointWithModelGardenDeploymentDeployConfig?>();
-    this.deployedModelDisplayName = Output.createUnknown<String>();
-    this.deployedModelId = Output.createUnknown<String>();
-    this.endpoint = Output.createUnknown<String>();
-    this.endpointConfig = Output.createUnknown<
-        AiEndpointWithModelGardenDeploymentEndpointConfig?>();
-    this.huggingFaceModelId = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
+    this.deployConfig =
+        registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig?>(
+            'deployConfig');
+    this.deployedModelDisplayName =
+        registerOutput<String>('deployedModelDisplayName');
+    this.deployedModelId = registerOutput<String>('deployedModelId');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.endpointConfig =
+        registerOutput<AiEndpointWithModelGardenDeploymentEndpointConfig?>(
+            'endpointConfig');
+    this.huggingFaceModelId = registerOutput<String?>('huggingFaceModelId');
+    this.location = registerOutput<String>('location');
     this.modelConfig =
-        Output.createUnknown<AiEndpointWithModelGardenDeploymentModelConfig?>();
-    this.project = Output.createUnknown<String>();
-    this.publisherModelName = Output.createUnknown<String?>();
+        registerOutput<AiEndpointWithModelGardenDeploymentModelConfig?>(
+            'modelConfig');
+    this.project = registerOutput<String>('project');
+    this.publisherModelName = registerOutput<String?>('publisherModelName');
   }
 }

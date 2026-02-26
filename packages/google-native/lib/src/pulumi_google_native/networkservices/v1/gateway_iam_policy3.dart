@@ -32,12 +32,13 @@ class GatewayIamPolicy3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse58>>();
-    this.bindings = Output.createUnknown<List<BindingResponse82>>();
-    this.etag = Output.createUnknown<String>();
-    this.gatewayId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse58>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse82>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.gatewayId = registerOutput<String>('gatewayId');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

@@ -267,34 +267,42 @@ class ProvisionedProduct extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceptLanguage = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.cloudwatchDashboardNames = Output.createUnknown<List<String>>();
-    this.createdTime = Output.createUnknown<String>();
-    this.ignoreErrors = Output.createUnknown<bool?>();
-    this.lastProvisioningRecordId = Output.createUnknown<String>();
-    this.lastRecordId = Output.createUnknown<String>();
-    this.lastSuccessfulProvisioningRecordId = Output.createUnknown<String>();
-    this.launchRoleArn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.notificationArns = Output.createUnknown<List<String>?>();
-    this.outputs = Output.createUnknown<List<ProvisionedProductOutput>>();
-    this.pathId = Output.createUnknown<String>();
-    this.pathName = Output.createUnknown<String?>();
-    this.productId = Output.createUnknown<String>();
-    this.productName = Output.createUnknown<String?>();
-    this.provisioningArtifactId = Output.createUnknown<String>();
-    this.provisioningArtifactName = Output.createUnknown<String?>();
+    this.acceptLanguage = registerOutput<String?>('acceptLanguage');
+    this.arn = registerOutput<String>('arn');
+    this.cloudwatchDashboardNames =
+        registerOutput<List<String>>('cloudwatchDashboardNames');
+    this.createdTime = registerOutput<String>('createdTime');
+    this.ignoreErrors = registerOutput<bool?>('ignoreErrors');
+    this.lastProvisioningRecordId =
+        registerOutput<String>('lastProvisioningRecordId');
+    this.lastRecordId = registerOutput<String>('lastRecordId');
+    this.lastSuccessfulProvisioningRecordId =
+        registerOutput<String>('lastSuccessfulProvisioningRecordId');
+    this.launchRoleArn = registerOutput<String>('launchRoleArn');
+    this.name = registerOutput<String>('name');
+    this.notificationArns = registerOutput<List<String>?>('notificationArns');
+    this.outputs = registerOutput<List<ProvisionedProductOutput>>('outputs');
+    this.pathId = registerOutput<String>('pathId');
+    this.pathName = registerOutput<String?>('pathName');
+    this.productId = registerOutput<String>('productId');
+    this.productName = registerOutput<String?>('productName');
+    this.provisioningArtifactId =
+        registerOutput<String>('provisioningArtifactId');
+    this.provisioningArtifactName =
+        registerOutput<String?>('provisioningArtifactName');
     this.provisioningParameters =
-        Output.createUnknown<List<ProvisionedProductProvisioningParameter>?>();
-    this.region = Output.createUnknown<String>();
-    this.retainPhysicalResources = Output.createUnknown<bool?>();
-    this.stackSetProvisioningPreferences = Output.createUnknown<
-        ProvisionedProductStackSetProvisioningPreferences?>();
-    this.status = Output.createUnknown<String>();
-    this.statusMessage = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<List<ProvisionedProductProvisioningParameter>?>(
+            'provisioningParameters');
+    this.region = registerOutput<String>('region');
+    this.retainPhysicalResources =
+        registerOutput<bool?>('retainPhysicalResources');
+    this.stackSetProvisioningPreferences =
+        registerOutput<ProvisionedProductStackSetProvisioningPreferences?>(
+            'stackSetProvisioningPreferences');
+    this.status = registerOutput<String>('status');
+    this.statusMessage = registerOutput<String>('statusMessage');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
   }
 }

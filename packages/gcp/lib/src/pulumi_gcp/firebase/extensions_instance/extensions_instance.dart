@@ -401,20 +401,20 @@ class ExtensionsInstance extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.config = Output.createUnknown<ExtensionsInstanceConfig>();
-    this.createTime = Output.createUnknown<String>();
+    this.config = registerOutput<ExtensionsInstanceConfig>('config');
+    this.createTime = registerOutput<String>('createTime');
     this.errorStatuses =
-        Output.createUnknown<List<ExtensionsInstanceErrorStatus>>();
-    this.etag = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.lastOperationName = Output.createUnknown<String>();
-    this.lastOperationType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<List<ExtensionsInstanceErrorStatus>>('errorStatuses');
+    this.etag = registerOutput<String>('etag');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.lastOperationName = registerOutput<String>('lastOperationName');
+    this.lastOperationType = registerOutput<String>('lastOperationType');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.runtimeDatas =
-        Output.createUnknown<List<ExtensionsInstanceRuntimeData>>();
-    this.serviceAccountEmail = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<ExtensionsInstanceRuntimeData>>('runtimeDatas');
+    this.serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

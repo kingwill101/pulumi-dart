@@ -62,13 +62,13 @@ class Api2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.configBundle = Output.createUnknown<String>();
-    this.detectMd5hash = Output.createUnknown<String?>();
-    this.latestRevisionId = Output.createUnknown<String>();
-    this.md5hash = Output.createUnknown<String>();
-    this.metaDatas = Output.createUnknown<List<ApiMetaData>>();
-    this.name = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.revisions = Output.createUnknown<List<String>>();
+    this.configBundle = registerOutput<String>('configBundle');
+    this.detectMd5hash = registerOutput<String?>('detectMd5hash');
+    this.latestRevisionId = registerOutput<String>('latestRevisionId');
+    this.md5hash = registerOutput<String>('md5hash');
+    this.metaDatas = registerOutput<List<ApiMetaData>>('metaDatas');
+    this.name = registerOutput<String>('name');
+    this.orgId = registerOutput<String>('orgId');
+    this.revisions = registerOutput<List<String>>('revisions');
   }
 }

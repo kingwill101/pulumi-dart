@@ -293,15 +293,16 @@ class V2modelsBotLocale extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.botId = Output.createUnknown<String>();
-    this.botVersion = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.localeId = Output.createUnknown<String>();
-    this.nLuIntentConfidenceThreshold = Output.createUnknown<double>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<V2modelsBotLocaleTimeouts?>();
+    this.botId = registerOutput<String>('botId');
+    this.botVersion = registerOutput<String>('botVersion');
+    this.description = registerOutput<String?>('description');
+    this.localeId = registerOutput<String>('localeId');
+    this.nLuIntentConfidenceThreshold =
+        registerOutput<double>('nLuIntentConfidenceThreshold');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.timeouts = registerOutput<V2modelsBotLocaleTimeouts?>('timeouts');
     this.voiceSettings =
-        Output.createUnknown<V2modelsBotLocaleVoiceSettings?>();
+        registerOutput<V2modelsBotLocaleVoiceSettings?>('voiceSettings');
   }
 }

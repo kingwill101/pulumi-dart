@@ -449,20 +449,22 @@ class ResolverFirewallRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.blockOverrideDnsType = Output.createUnknown<String?>();
-    this.blockOverrideDomain = Output.createUnknown<String?>();
-    this.blockOverrideTtl = Output.createUnknown<int?>();
-    this.blockResponse = Output.createUnknown<String?>();
-    this.confidenceThreshold = Output.createUnknown<String?>();
-    this.dnsThreatProtection = Output.createUnknown<String?>();
-    this.firewallDomainListId = Output.createUnknown<String?>();
-    this.firewallDomainRedirectionAction = Output.createUnknown<String?>();
-    this.firewallRuleGroupId = Output.createUnknown<String>();
-    this.firewallThreatProtectionId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.priority = Output.createUnknown<int>();
-    this.qType = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.action = registerOutput<String>('action');
+    this.blockOverrideDnsType = registerOutput<String?>('blockOverrideDnsType');
+    this.blockOverrideDomain = registerOutput<String?>('blockOverrideDomain');
+    this.blockOverrideTtl = registerOutput<int?>('blockOverrideTtl');
+    this.blockResponse = registerOutput<String?>('blockResponse');
+    this.confidenceThreshold = registerOutput<String?>('confidenceThreshold');
+    this.dnsThreatProtection = registerOutput<String?>('dnsThreatProtection');
+    this.firewallDomainListId = registerOutput<String?>('firewallDomainListId');
+    this.firewallDomainRedirectionAction =
+        registerOutput<String?>('firewallDomainRedirectionAction');
+    this.firewallRuleGroupId = registerOutput<String>('firewallRuleGroupId');
+    this.firewallThreatProtectionId =
+        registerOutput<String>('firewallThreatProtectionId');
+    this.name = registerOutput<String>('name');
+    this.priority = registerOutput<int>('priority');
+    this.qType = registerOutput<String?>('qType');
+    this.region = registerOutput<String>('region');
   }
 }

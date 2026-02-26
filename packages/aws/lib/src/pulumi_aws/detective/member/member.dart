@@ -183,17 +183,18 @@ class Member extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.administratorId = Output.createUnknown<String>();
-    this.disableEmailNotification = Output.createUnknown<bool?>();
-    this.disabledReason = Output.createUnknown<String>();
-    this.emailAddress = Output.createUnknown<String>();
-    this.graphArn = Output.createUnknown<String>();
-    this.invitedTime = Output.createUnknown<String>();
-    this.message = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.updatedTime = Output.createUnknown<String>();
-    this.volumeUsageInBytes = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.administratorId = registerOutput<String>('administratorId');
+    this.disableEmailNotification =
+        registerOutput<bool?>('disableEmailNotification');
+    this.disabledReason = registerOutput<String>('disabledReason');
+    this.emailAddress = registerOutput<String>('emailAddress');
+    this.graphArn = registerOutput<String>('graphArn');
+    this.invitedTime = registerOutput<String>('invitedTime');
+    this.message = registerOutput<String?>('message');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.updatedTime = registerOutput<String>('updatedTime');
+    this.volumeUsageInBytes = registerOutput<String>('volumeUsageInBytes');
   }
 }

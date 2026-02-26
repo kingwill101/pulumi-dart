@@ -198,21 +198,21 @@ class NetworkProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.downlinkBandwidthBits = Output.createUnknown<int?>();
-    this.downlinkDelayMs = Output.createUnknown<int?>();
-    this.downlinkJitterMs = Output.createUnknown<int?>();
-    this.downlinkLossPercent = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.projectArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String?>();
-    this.uplinkBandwidthBits = Output.createUnknown<int?>();
-    this.uplinkDelayMs = Output.createUnknown<int?>();
-    this.uplinkJitterMs = Output.createUnknown<int?>();
-    this.uplinkLossPercent = Output.createUnknown<int?>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.downlinkBandwidthBits = registerOutput<int?>('downlinkBandwidthBits');
+    this.downlinkDelayMs = registerOutput<int?>('downlinkDelayMs');
+    this.downlinkJitterMs = registerOutput<int?>('downlinkJitterMs');
+    this.downlinkLossPercent = registerOutput<int?>('downlinkLossPercent');
+    this.name = registerOutput<String>('name');
+    this.projectArn = registerOutput<String>('projectArn');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String?>('type');
+    this.uplinkBandwidthBits = registerOutput<int?>('uplinkBandwidthBits');
+    this.uplinkDelayMs = registerOutput<int?>('uplinkDelayMs');
+    this.uplinkJitterMs = registerOutput<int?>('uplinkJitterMs');
+    this.uplinkLossPercent = registerOutput<int?>('uplinkLossPercent');
   }
 }

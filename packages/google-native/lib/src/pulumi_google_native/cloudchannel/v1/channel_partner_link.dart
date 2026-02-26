@@ -44,15 +44,17 @@ class ChannelPartnerLink extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
     this.channelPartnerCloudIdentityInfo =
-        Output.createUnknown<GoogleCloudChannelV1CloudIdentityInfoResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.inviteLinkUri = Output.createUnknown<String>();
-    this.linkState = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.publicId = Output.createUnknown<String>();
-    this.resellerCloudIdentityId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudChannelV1CloudIdentityInfoResponse>(
+            'channelPartnerCloudIdentityInfo');
+    this.createTime = registerOutput<String>('createTime');
+    this.inviteLinkUri = registerOutput<String>('inviteLinkUri');
+    this.linkState = registerOutput<String>('linkState');
+    this.name = registerOutput<String>('name');
+    this.publicId = registerOutput<String>('publicId');
+    this.resellerCloudIdentityId =
+        registerOutput<String>('resellerCloudIdentityId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

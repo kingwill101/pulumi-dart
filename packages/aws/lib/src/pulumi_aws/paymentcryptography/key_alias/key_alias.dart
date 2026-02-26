@@ -234,8 +234,8 @@ class KeyAlias extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aliasName = Output.createUnknown<String>();
-    this.keyArn = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.aliasName = registerOutput<String>('aliasName');
+    this.keyArn = registerOutput<String?>('keyArn');
+    this.region = registerOutput<String>('region');
   }
 }

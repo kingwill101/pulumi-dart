@@ -46,17 +46,17 @@ class Key2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.disabled = Output.createUnknown<bool>();
-    this.keyAlgorithm = Output.createUnknown<String>();
-    this.keyOrigin = Output.createUnknown<String>();
-    this.keyType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.privateKeyData = Output.createUnknown<String>();
-    this.privateKeyType = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.publicKeyData = Output.createUnknown<String>();
-    this.serviceAccountId = Output.createUnknown<String>();
-    this.validAfterTime = Output.createUnknown<String>();
-    this.validBeforeTime = Output.createUnknown<String>();
+    this.disabled = registerOutput<bool>('disabled');
+    this.keyAlgorithm = registerOutput<String>('keyAlgorithm');
+    this.keyOrigin = registerOutput<String>('keyOrigin');
+    this.keyType = registerOutput<String>('keyType');
+    this.name = registerOutput<String>('name');
+    this.privateKeyData = registerOutput<String>('privateKeyData');
+    this.privateKeyType = registerOutput<String>('privateKeyType');
+    this.project = registerOutput<String>('project');
+    this.publicKeyData = registerOutput<String>('publicKeyData');
+    this.serviceAccountId = registerOutput<String>('serviceAccountId');
+    this.validAfterTime = registerOutput<String>('validAfterTime');
+    this.validBeforeTime = registerOutput<String>('validBeforeTime');
   }
 }

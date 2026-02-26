@@ -100,36 +100,42 @@ class MigrationJob extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cmekKeyName = Output.createUnknown<String>();
+    this.cmekKeyName = registerOutput<String>('cmekKeyName');
     this.conversionWorkspace =
-        Output.createUnknown<ConversionWorkspaceInfoResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.destination = Output.createUnknown<String>();
-    this.destinationDatabase = Output.createUnknown<DatabaseTypeResponse>();
-    this.displayName = Output.createUnknown<String>();
-    this.dumpFlags = Output.createUnknown<DumpFlagsResponse>();
-    this.dumpPath = Output.createUnknown<String>();
-    this.duration = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
-    this.error = Output.createUnknown<StatusResponse15>();
-    this.filter = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.migrationJobId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.performanceConfig = Output.createUnknown<PerformanceConfigResponse>();
-    this.phase = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
+        registerOutput<ConversionWorkspaceInfoResponse>('conversionWorkspace');
+    this.createTime = registerOutput<String>('createTime');
+    this.destination = registerOutput<String>('destination');
+    this.destinationDatabase =
+        registerOutput<DatabaseTypeResponse>('destinationDatabase');
+    this.displayName = registerOutput<String>('displayName');
+    this.dumpFlags = registerOutput<DumpFlagsResponse>('dumpFlags');
+    this.dumpPath = registerOutput<String>('dumpPath');
+    this.duration = registerOutput<String>('duration');
+    this.endTime = registerOutput<String>('endTime');
+    this.error = registerOutput<StatusResponse15>('error');
+    this.filter = registerOutput<String>('filter');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.migrationJobId = registerOutput<String>('migrationJobId');
+    this.name = registerOutput<String>('name');
+    this.performanceConfig =
+        registerOutput<PerformanceConfigResponse>('performanceConfig');
+    this.phase = registerOutput<String>('phase');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
     this.reverseSshConnectivity =
-        Output.createUnknown<ReverseSshConnectivityResponse>();
-    this.source = Output.createUnknown<String>();
-    this.sourceDatabase = Output.createUnknown<DatabaseTypeResponse>();
-    this.state = Output.createUnknown<String>();
-    this.staticIpConnectivity = Output.createUnknown<Map<String, dynamic>>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<ReverseSshConnectivityResponse>(
+            'reverseSshConnectivity');
+    this.source = registerOutput<String>('source');
+    this.sourceDatabase =
+        registerOutput<DatabaseTypeResponse>('sourceDatabase');
+    this.state = registerOutput<String>('state');
+    this.staticIpConnectivity =
+        registerOutput<Map<String, dynamic>>('staticIpConnectivity');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
     this.vpcPeeringConnectivity =
-        Output.createUnknown<VpcPeeringConnectivityResponse>();
+        registerOutput<VpcPeeringConnectivityResponse>(
+            'vpcPeeringConnectivity');
   }
 }

@@ -30,14 +30,15 @@ class SessionEntityType4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentId = Output.createUnknown<String>();
-    this.entities = Output.createUnknown<
-        List<GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponse>>();
-    this.entityOverrideMode = Output.createUnknown<String>();
-    this.environmentId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.sessionId = Output.createUnknown<String>();
+    this.agentId = registerOutput<String>('agentId');
+    this.entities = registerOutput<
+            List<GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponse>>(
+        'entities');
+    this.entityOverrideMode = registerOutput<String>('entityOverrideMode');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.sessionId = registerOutput<String>('sessionId');
   }
 }

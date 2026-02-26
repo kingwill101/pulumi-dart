@@ -52,18 +52,21 @@ class WorkflowTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.dagTimeout = Output.createUnknown<String>();
-    this.encryptionConfig = Output.createUnknown<
-        GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse>();
-    this.jobs = Output.createUnknown<List<OrderedJobResponse>>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parameters = Output.createUnknown<List<TemplateParameterResponse>>();
-    this.placement = Output.createUnknown<WorkflowTemplatePlacementResponse>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.createTime = registerOutput<String>('createTime');
+    this.dagTimeout = registerOutput<String>('dagTimeout');
+    this.encryptionConfig = registerOutput<
+            GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse>(
+        'encryptionConfig');
+    this.jobs = registerOutput<List<OrderedJobResponse>>('jobs');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.parameters =
+        registerOutput<List<TemplateParameterResponse>>('parameters');
+    this.placement =
+        registerOutput<WorkflowTemplatePlacementResponse>('placement');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.version = registerOutput<int>('version');
   }
 }

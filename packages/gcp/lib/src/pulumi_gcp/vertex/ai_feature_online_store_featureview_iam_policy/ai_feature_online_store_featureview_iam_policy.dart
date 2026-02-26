@@ -940,11 +940,11 @@ class AiFeatureOnlineStoreFeatureviewIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.featureOnlineStore = Output.createUnknown<String>();
-    this.featureView = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.featureOnlineStore = registerOutput<String>('featureOnlineStore');
+    this.featureView = registerOutput<String>('featureView');
+    this.policyData = registerOutput<String>('policyData');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
   }
 }

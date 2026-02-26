@@ -631,20 +631,23 @@ class Plugin extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.actionsConfigs = Output.createUnknown<List<PluginActionsConfig>?>();
-    this.configTemplate = Output.createUnknown<PluginConfigTemplate>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.documentation = Output.createUnknown<PluginDocumentation?>();
-    this.hostingService = Output.createUnknown<PluginHostingService?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.ownershipType = Output.createUnknown<String>();
-    this.pluginCategory = Output.createUnknown<String?>();
-    this.pluginId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.actionsConfigs =
+        registerOutput<List<PluginActionsConfig>?>('actionsConfigs');
+    this.configTemplate =
+        registerOutput<PluginConfigTemplate>('configTemplate');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.documentation = registerOutput<PluginDocumentation?>('documentation');
+    this.hostingService =
+        registerOutput<PluginHostingService?>('hostingService');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.ownershipType = registerOutput<String>('ownershipType');
+    this.pluginCategory = registerOutput<String?>('pluginCategory');
+    this.pluginId = registerOutput<String>('pluginId');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

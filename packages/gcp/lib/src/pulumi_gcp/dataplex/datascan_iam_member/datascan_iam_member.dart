@@ -960,12 +960,12 @@ class DatascanIamMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<DatascanIamMemberCondition?>();
-    this.dataScanId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.condition = registerOutput<DatascanIamMemberCondition?>('condition');
+    this.dataScanId = registerOutput<String>('dataScanId');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.member = registerOutput<String>('member');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
   }
 }

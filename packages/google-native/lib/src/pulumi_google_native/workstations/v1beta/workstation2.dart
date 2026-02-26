@@ -62,24 +62,24 @@ class Workstation2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.env = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.host = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.workstationClusterId = Output.createUnknown<String>();
-    this.workstationConfigId = Output.createUnknown<String>();
-    this.workstationId = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.env = registerOutput<Map<String, String>>('env');
+    this.etag = registerOutput<String>('etag');
+    this.host = registerOutput<String>('host');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.workstationClusterId = registerOutput<String>('workstationClusterId');
+    this.workstationConfigId = registerOutput<String>('workstationConfigId');
+    this.workstationId = registerOutput<String>('workstationId');
   }
 }

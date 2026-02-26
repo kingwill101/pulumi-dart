@@ -276,18 +276,22 @@ class Group7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTime = Output.createUnknown<String>();
-    this.deletionTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.lastUpdatedTime = Output.createUnknown<String>();
-    this.owner = Output.createUnknown<String>();
-    this.policyDocument = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.sseConfiguration = Output.createUnknown<GroupSseConfiguration>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.verifiedaccessGroupArn = Output.createUnknown<String>();
-    this.verifiedaccessGroupId = Output.createUnknown<String>();
-    this.verifiedaccessInstanceId = Output.createUnknown<String>();
+    this.creationTime = registerOutput<String>('creationTime');
+    this.deletionTime = registerOutput<String>('deletionTime');
+    this.description = registerOutput<String>('description');
+    this.lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    this.owner = registerOutput<String>('owner');
+    this.policyDocument = registerOutput<String?>('policyDocument');
+    this.region = registerOutput<String>('region');
+    this.sseConfiguration =
+        registerOutput<GroupSseConfiguration>('sseConfiguration');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.verifiedaccessGroupArn =
+        registerOutput<String>('verifiedaccessGroupArn');
+    this.verifiedaccessGroupId =
+        registerOutput<String>('verifiedaccessGroupId');
+    this.verifiedaccessInstanceId =
+        registerOutput<String>('verifiedaccessInstanceId');
   }
 }

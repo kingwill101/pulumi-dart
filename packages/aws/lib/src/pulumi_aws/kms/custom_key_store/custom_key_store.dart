@@ -461,17 +461,20 @@ class CustomKeyStore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cloudHsmClusterId = Output.createUnknown<String?>();
-    this.customKeyStoreName = Output.createUnknown<String>();
-    this.customKeyStoreType = Output.createUnknown<String>();
-    this.keyStorePassword = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.trustAnchorCertificate = Output.createUnknown<String?>();
+    this.cloudHsmClusterId = registerOutput<String?>('cloudHsmClusterId');
+    this.customKeyStoreName = registerOutput<String>('customKeyStoreName');
+    this.customKeyStoreType = registerOutput<String>('customKeyStoreType');
+    this.keyStorePassword = registerOutput<String?>('keyStorePassword');
+    this.region = registerOutput<String>('region');
+    this.trustAnchorCertificate =
+        registerOutput<String?>('trustAnchorCertificate');
     this.xksProxyAuthenticationCredential =
-        Output.createUnknown<CustomKeyStoreXksProxyAuthenticationCredential?>();
-    this.xksProxyConnectivity = Output.createUnknown<String?>();
-    this.xksProxyUriEndpoint = Output.createUnknown<String?>();
-    this.xksProxyUriPath = Output.createUnknown<String?>();
-    this.xksProxyVpcEndpointServiceName = Output.createUnknown<String?>();
+        registerOutput<CustomKeyStoreXksProxyAuthenticationCredential?>(
+            'xksProxyAuthenticationCredential');
+    this.xksProxyConnectivity = registerOutput<String?>('xksProxyConnectivity');
+    this.xksProxyUriEndpoint = registerOutput<String?>('xksProxyUriEndpoint');
+    this.xksProxyUriPath = registerOutput<String?>('xksProxyUriPath');
+    this.xksProxyVpcEndpointServiceName =
+        registerOutput<String?>('xksProxyVpcEndpointServiceName');
   }
 }

@@ -278,15 +278,16 @@ class EventEndpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.endpointUrl = Output.createUnknown<String>();
-    this.eventBuses = Output.createUnknown<List<EventEndpointEventBus>>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.endpointUrl = registerOutput<String>('endpointUrl');
+    this.eventBuses = registerOutput<List<EventEndpointEventBus>>('eventBuses');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
     this.replicationConfig =
-        Output.createUnknown<EventEndpointReplicationConfig?>();
-    this.roleArn = Output.createUnknown<String?>();
-    this.routingConfig = Output.createUnknown<EventEndpointRoutingConfig>();
+        registerOutput<EventEndpointReplicationConfig?>('replicationConfig');
+    this.roleArn = registerOutput<String?>('roleArn');
+    this.routingConfig =
+        registerOutput<EventEndpointRoutingConfig>('routingConfig');
   }
 }

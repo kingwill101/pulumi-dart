@@ -40,15 +40,15 @@ class HcxActivationKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activationKey = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.hcxActivationKeyId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.privateCloudId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
+    this.activationKey = registerOutput<String>('activationKey');
+    this.createTime = registerOutput<String>('createTime');
+    this.hcxActivationKeyId = registerOutput<String>('hcxActivationKeyId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.privateCloudId = registerOutput<String>('privateCloudId');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
   }
 }

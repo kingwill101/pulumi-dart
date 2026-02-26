@@ -3684,50 +3684,61 @@ class Cluster6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authorizationMode = Output.createUnknown<String?>();
+    this.authorizationMode = registerOutput<String?>('authorizationMode');
     this.automatedBackupConfig =
-        Output.createUnknown<ClusterAutomatedBackupConfig?>();
-    this.availableMaintenanceVersions = Output.createUnknown<List<String>>();
-    this.backupCollection = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
+        registerOutput<ClusterAutomatedBackupConfig?>('automatedBackupConfig');
+    this.availableMaintenanceVersions =
+        registerOutput<List<String>>('availableMaintenanceVersions');
+    this.backupCollection = registerOutput<String>('backupCollection');
+    this.createTime = registerOutput<String>('createTime');
     this.crossClusterReplicationConfig =
-        Output.createUnknown<ClusterCrossClusterReplicationConfig>();
-    this.deletionProtectionEnabled = Output.createUnknown<bool?>();
+        registerOutput<ClusterCrossClusterReplicationConfig>(
+            'crossClusterReplicationConfig');
+    this.deletionProtectionEnabled =
+        registerOutput<bool?>('deletionProtectionEnabled');
     this.discoveryEndpoints =
-        Output.createUnknown<List<ClusterDiscoveryEndpoint>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.effectiveMaintenanceVersion = Output.createUnknown<String>();
-    this.gcsSource = Output.createUnknown<ClusterGcsSource?>();
-    this.kmsKey = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.maintenancePolicy = Output.createUnknown<ClusterMaintenancePolicy3?>();
+        registerOutput<List<ClusterDiscoveryEndpoint>>('discoveryEndpoints');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveMaintenanceVersion =
+        registerOutput<String>('effectiveMaintenanceVersion');
+    this.gcsSource = registerOutput<ClusterGcsSource?>('gcsSource');
+    this.kmsKey = registerOutput<String?>('kmsKey');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.maintenancePolicy =
+        registerOutput<ClusterMaintenancePolicy3?>('maintenancePolicy');
     this.maintenanceSchedules =
-        Output.createUnknown<List<ClusterMaintenanceSchedule>>();
-    this.maintenanceVersion = Output.createUnknown<String?>();
+        registerOutput<List<ClusterMaintenanceSchedule>>(
+            'maintenanceSchedules');
+    this.maintenanceVersion = registerOutput<String?>('maintenanceVersion');
     this.managedBackupSource =
-        Output.createUnknown<ClusterManagedBackupSource?>();
+        registerOutput<ClusterManagedBackupSource?>('managedBackupSource');
     this.managedServerCas =
-        Output.createUnknown<List<ClusterManagedServerCa>>();
-    this.name = Output.createUnknown<String>();
-    this.nodeType = Output.createUnknown<String>();
-    this.persistenceConfig = Output.createUnknown<ClusterPersistenceConfig>();
-    this.preciseSizeGb = Output.createUnknown<double>();
-    this.project = Output.createUnknown<String>();
-    this.pscConfigs = Output.createUnknown<List<ClusterPscConfig2>?>();
-    this.pscConnections = Output.createUnknown<List<ClusterPscConnection>>();
+        registerOutput<List<ClusterManagedServerCa>>('managedServerCas');
+    this.name = registerOutput<String>('name');
+    this.nodeType = registerOutput<String>('nodeType');
+    this.persistenceConfig =
+        registerOutput<ClusterPersistenceConfig>('persistenceConfig');
+    this.preciseSizeGb = registerOutput<double>('preciseSizeGb');
+    this.project = registerOutput<String>('project');
+    this.pscConfigs = registerOutput<List<ClusterPscConfig2>?>('pscConfigs');
+    this.pscConnections =
+        registerOutput<List<ClusterPscConnection>>('pscConnections');
     this.pscServiceAttachments =
-        Output.createUnknown<List<ClusterPscServiceAttachment>>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.redisConfigs = Output.createUnknown<Map<String, String>?>();
-    this.region = Output.createUnknown<String>();
-    this.replicaCount = Output.createUnknown<int?>();
-    this.shardCount = Output.createUnknown<int>();
-    this.sizeGb = Output.createUnknown<int>();
-    this.state = Output.createUnknown<String>();
-    this.stateInfos = Output.createUnknown<List<ClusterStateInfo>>();
-    this.transitEncryptionMode = Output.createUnknown<String?>();
-    this.uid = Output.createUnknown<String>();
+        registerOutput<List<ClusterPscServiceAttachment>>(
+            'pscServiceAttachments');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.redisConfigs = registerOutput<Map<String, String>?>('redisConfigs');
+    this.region = registerOutput<String>('region');
+    this.replicaCount = registerOutput<int?>('replicaCount');
+    this.shardCount = registerOutput<int>('shardCount');
+    this.sizeGb = registerOutput<int>('sizeGb');
+    this.state = registerOutput<String>('state');
+    this.stateInfos = registerOutput<List<ClusterStateInfo>>('stateInfos');
+    this.transitEncryptionMode =
+        registerOutput<String?>('transitEncryptionMode');
+    this.uid = registerOutput<String>('uid');
     this.zoneDistributionConfig =
-        Output.createUnknown<ClusterZoneDistributionConfig>();
+        registerOutput<ClusterZoneDistributionConfig>('zoneDistributionConfig');
   }
 }

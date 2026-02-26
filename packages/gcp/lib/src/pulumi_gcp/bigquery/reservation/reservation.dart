@@ -311,20 +311,22 @@ class Reservation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoscale = Output.createUnknown<ReservationAutoscale?>();
-    this.concurrency = Output.createUnknown<int?>();
-    this.edition = Output.createUnknown<String>();
-    this.ignoreIdleSlots = Output.createUnknown<bool?>();
-    this.location = Output.createUnknown<String?>();
-    this.maxSlots = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.originalPrimaryLocation = Output.createUnknown<String>();
-    this.primaryLocation = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.autoscale = registerOutput<ReservationAutoscale?>('autoscale');
+    this.concurrency = registerOutput<int?>('concurrency');
+    this.edition = registerOutput<String>('edition');
+    this.ignoreIdleSlots = registerOutput<bool?>('ignoreIdleSlots');
+    this.location = registerOutput<String?>('location');
+    this.maxSlots = registerOutput<int?>('maxSlots');
+    this.name = registerOutput<String>('name');
+    this.originalPrimaryLocation =
+        registerOutput<String>('originalPrimaryLocation');
+    this.primaryLocation = registerOutput<String>('primaryLocation');
+    this.project = registerOutput<String>('project');
     this.replicationStatuses =
-        Output.createUnknown<List<ReservationReplicationStatus>>();
-    this.scalingMode = Output.createUnknown<String?>();
-    this.secondaryLocation = Output.createUnknown<String?>();
-    this.slotCapacity = Output.createUnknown<int>();
+        registerOutput<List<ReservationReplicationStatus>>(
+            'replicationStatuses');
+    this.scalingMode = registerOutput<String?>('scalingMode');
+    this.secondaryLocation = registerOutput<String?>('secondaryLocation');
+    this.slotCapacity = registerOutput<int>('slotCapacity');
   }
 }

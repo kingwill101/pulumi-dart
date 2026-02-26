@@ -626,16 +626,17 @@ class GlossaryTerm extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createdAt = Output.createUnknown<String>();
-    this.createdBy = Output.createUnknown<String>();
-    this.domainIdentifier = Output.createUnknown<String?>();
-    this.glossaryIdentifier = Output.createUnknown<String>();
-    this.longDescription = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.shortDescription = Output.createUnknown<String?>();
-    this.status = Output.createUnknown<String?>();
-    this.termRelations = Output.createUnknown<GlossaryTermTermRelations?>();
-    this.timeouts = Output.createUnknown<GlossaryTermTimeouts?>();
+    this.createdAt = registerOutput<String>('createdAt');
+    this.createdBy = registerOutput<String>('createdBy');
+    this.domainIdentifier = registerOutput<String?>('domainIdentifier');
+    this.glossaryIdentifier = registerOutput<String>('glossaryIdentifier');
+    this.longDescription = registerOutput<String?>('longDescription');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.shortDescription = registerOutput<String?>('shortDescription');
+    this.status = registerOutput<String?>('status');
+    this.termRelations =
+        registerOutput<GlossaryTermTermRelations?>('termRelations');
+    this.timeouts = registerOutput<GlossaryTermTimeouts?>('timeouts');
   }
 }

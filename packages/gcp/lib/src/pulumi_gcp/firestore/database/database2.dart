@@ -1520,24 +1520,28 @@ class Database2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appEngineIntegrationMode = Output.createUnknown<String>();
-    this.cmekConfig = Output.createUnknown<DatabaseCmekConfig?>();
-    this.concurrencyMode = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.databaseEdition = Output.createUnknown<String>();
-    this.deleteProtectionState = Output.createUnknown<String>();
-    this.deletionPolicy = Output.createUnknown<String?>();
-    this.earliestVersionTime = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.keyPrefix = Output.createUnknown<String>();
-    this.locationId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.pointInTimeRecoveryEnablement = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.type = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.versionRetentionPeriod = Output.createUnknown<String>();
+    this.appEngineIntegrationMode =
+        registerOutput<String>('appEngineIntegrationMode');
+    this.cmekConfig = registerOutput<DatabaseCmekConfig?>('cmekConfig');
+    this.concurrencyMode = registerOutput<String>('concurrencyMode');
+    this.createTime = registerOutput<String>('createTime');
+    this.databaseEdition = registerOutput<String>('databaseEdition');
+    this.deleteProtectionState =
+        registerOutput<String>('deleteProtectionState');
+    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
+    this.earliestVersionTime = registerOutput<String>('earliestVersionTime');
+    this.etag = registerOutput<String>('etag');
+    this.keyPrefix = registerOutput<String>('keyPrefix');
+    this.locationId = registerOutput<String>('locationId');
+    this.name = registerOutput<String>('name');
+    this.pointInTimeRecoveryEnablement =
+        registerOutput<String?>('pointInTimeRecoveryEnablement');
+    this.project = registerOutput<String>('project');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.type = registerOutput<String>('type');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.versionRetentionPeriod =
+        registerOutput<String>('versionRetentionPeriod');
   }
 }

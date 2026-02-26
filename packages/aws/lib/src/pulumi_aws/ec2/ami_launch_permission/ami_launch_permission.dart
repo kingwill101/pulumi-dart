@@ -348,11 +348,12 @@ class AmiLaunchPermission extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String?>();
-    this.group = Output.createUnknown<String?>();
-    this.imageId = Output.createUnknown<String>();
-    this.organizationArn = Output.createUnknown<String?>();
-    this.organizationalUnitArn = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.accountId = registerOutput<String?>('accountId');
+    this.group = registerOutput<String?>('group');
+    this.imageId = registerOutput<String>('imageId');
+    this.organizationArn = registerOutput<String?>('organizationArn');
+    this.organizationalUnitArn =
+        registerOutput<String?>('organizationalUnitArn');
+    this.region = registerOutput<String>('region');
   }
 }

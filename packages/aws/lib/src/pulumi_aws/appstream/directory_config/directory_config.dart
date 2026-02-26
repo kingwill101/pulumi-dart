@@ -196,13 +196,15 @@ class DirectoryConfig extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.certificateBasedAuthProperties =
-        Output.createUnknown<DirectoryConfigCertificateBasedAuthProperties?>();
-    this.createdTime = Output.createUnknown<String>();
-    this.directoryName = Output.createUnknown<String>();
+        registerOutput<DirectoryConfigCertificateBasedAuthProperties?>(
+            'certificateBasedAuthProperties');
+    this.createdTime = registerOutput<String>('createdTime');
+    this.directoryName = registerOutput<String>('directoryName');
     this.organizationalUnitDistinguishedNames =
-        Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<String>>('organizationalUnitDistinguishedNames');
+    this.region = registerOutput<String>('region');
     this.serviceAccountCredentials =
-        Output.createUnknown<DirectoryConfigServiceAccountCredentials>();
+        registerOutput<DirectoryConfigServiceAccountCredentials>(
+            'serviceAccountCredentials');
   }
 }

@@ -203,12 +203,14 @@ class CustomRoutingEndpointGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.destinationConfigurations = Output.createUnknown<
-        List<CustomRoutingEndpointGroupDestinationConfiguration>>();
-    this.endpointConfigurations = Output.createUnknown<
-        List<CustomRoutingEndpointGroupEndpointConfiguration>?>();
-    this.endpointGroupRegion = Output.createUnknown<String>();
-    this.listenerArn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.destinationConfigurations = registerOutput<
+            List<CustomRoutingEndpointGroupDestinationConfiguration>>(
+        'destinationConfigurations');
+    this.endpointConfigurations =
+        registerOutput<List<CustomRoutingEndpointGroupEndpointConfiguration>?>(
+            'endpointConfigurations');
+    this.endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
+    this.listenerArn = registerOutput<String>('listenerArn');
   }
 }

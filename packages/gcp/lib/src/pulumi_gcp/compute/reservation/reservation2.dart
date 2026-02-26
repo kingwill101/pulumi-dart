@@ -1209,30 +1209,34 @@ class Reservation2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.blockNames = Output.createUnknown<List<String>>();
-    this.commitment = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
+    this.blockNames = registerOutput<List<String>>('blockNames');
+    this.commitment = registerOutput<String>('commitment');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.deleteAfterDuration =
-        Output.createUnknown<ReservationDeleteAfterDuration?>();
-    this.deleteAtTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.enableEmergentMaintenance = Output.createUnknown<bool?>();
-    this.kind = Output.createUnknown<String>();
-    this.linkedCommitments = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reservationBlockCount = Output.createUnknown<int>();
+        registerOutput<ReservationDeleteAfterDuration?>('deleteAfterDuration');
+    this.deleteAtTime = registerOutput<String>('deleteAtTime');
+    this.description = registerOutput<String?>('description');
+    this.enableEmergentMaintenance =
+        registerOutput<bool?>('enableEmergentMaintenance');
+    this.kind = registerOutput<String>('kind');
+    this.linkedCommitments = registerOutput<List<String>>('linkedCommitments');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.reservationBlockCount = registerOutput<int>('reservationBlockCount');
     this.reservationSharingPolicy =
-        Output.createUnknown<ReservationReservationSharingPolicy>();
+        registerOutput<ReservationReservationSharingPolicy>(
+            'reservationSharingPolicy');
     this.resourceStatuses =
-        Output.createUnknown<List<ReservationResourceStatus>>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.selfLink = Output.createUnknown<String>();
-    this.shareSettings = Output.createUnknown<ReservationShareSettings>();
+        registerOutput<List<ReservationResourceStatus>>('resourceStatuses');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.shareSettings =
+        registerOutput<ReservationShareSettings>('shareSettings');
     this.specificReservation =
-        Output.createUnknown<ReservationSpecificReservation>();
-    this.specificReservationRequired = Output.createUnknown<bool?>();
-    this.status = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<ReservationSpecificReservation>('specificReservation');
+    this.specificReservationRequired =
+        registerOutput<bool?>('specificReservationRequired');
+    this.status = registerOutput<String>('status');
+    this.zone = registerOutput<String>('zone');
   }
 }

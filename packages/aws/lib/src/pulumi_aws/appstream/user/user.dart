@@ -158,14 +158,14 @@ class User extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.authenticationType = Output.createUnknown<String>();
-    this.createdTime = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.firstName = Output.createUnknown<String?>();
-    this.lastName = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.sendEmailNotification = Output.createUnknown<bool?>();
-    this.userName = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.authenticationType = registerOutput<String>('authenticationType');
+    this.createdTime = registerOutput<String>('createdTime');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.firstName = registerOutput<String?>('firstName');
+    this.lastName = registerOutput<String?>('lastName');
+    this.region = registerOutput<String>('region');
+    this.sendEmailNotification = registerOutput<bool?>('sendEmailNotification');
+    this.userName = registerOutput<String>('userName');
   }
 }

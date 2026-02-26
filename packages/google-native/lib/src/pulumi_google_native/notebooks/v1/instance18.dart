@@ -142,50 +142,55 @@ class Instance18 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceleratorConfig = Output.createUnknown<AcceleratorConfigResponse8>();
-    this.bootDiskSizeGb = Output.createUnknown<String>();
-    this.bootDiskType = Output.createUnknown<String>();
-    this.canIpForward = Output.createUnknown<bool>();
-    this.containerImage = Output.createUnknown<ContainerImageResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.creator = Output.createUnknown<String>();
-    this.customGpuDriverPath = Output.createUnknown<String>();
-    this.dataDiskSizeGb = Output.createUnknown<String>();
-    this.dataDiskType = Output.createUnknown<String>();
-    this.diskEncryption = Output.createUnknown<String>();
-    this.disks = Output.createUnknown<List<DiskResponse4>>();
-    this.installGpuDriver = Output.createUnknown<bool>();
-    this.instanceId = Output.createUnknown<String>();
+    this.acceleratorConfig =
+        registerOutput<AcceleratorConfigResponse8>('acceleratorConfig');
+    this.bootDiskSizeGb = registerOutput<String>('bootDiskSizeGb');
+    this.bootDiskType = registerOutput<String>('bootDiskType');
+    this.canIpForward = registerOutput<bool>('canIpForward');
+    this.containerImage =
+        registerOutput<ContainerImageResponse>('containerImage');
+    this.createTime = registerOutput<String>('createTime');
+    this.creator = registerOutput<String>('creator');
+    this.customGpuDriverPath = registerOutput<String>('customGpuDriverPath');
+    this.dataDiskSizeGb = registerOutput<String>('dataDiskSizeGb');
+    this.dataDiskType = registerOutput<String>('dataDiskType');
+    this.diskEncryption = registerOutput<String>('diskEncryption');
+    this.disks = registerOutput<List<DiskResponse4>>('disks');
+    this.installGpuDriver = registerOutput<bool>('installGpuDriver');
+    this.instanceId = registerOutput<String>('instanceId');
     this.instanceMigrationEligibility =
-        Output.createUnknown<InstanceMigrationEligibilityResponse>();
-    this.instanceOwners = Output.createUnknown<List<String>>();
-    this.kmsKey = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.machineType = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>>();
-    this.migrated = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.nicType = Output.createUnknown<String>();
-    this.noProxyAccess = Output.createUnknown<bool>();
-    this.noPublicIp = Output.createUnknown<bool>();
-    this.noRemoveDataDisk = Output.createUnknown<bool>();
-    this.postStartupScript = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.proxyUri = Output.createUnknown<String>();
+        registerOutput<InstanceMigrationEligibilityResponse>(
+            'instanceMigrationEligibility');
+    this.instanceOwners = registerOutput<List<String>>('instanceOwners');
+    this.kmsKey = registerOutput<String>('kmsKey');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.machineType = registerOutput<String>('machineType');
+    this.metadata = registerOutput<Map<String, String>>('metadata');
+    this.migrated = registerOutput<bool>('migrated');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.nicType = registerOutput<String>('nicType');
+    this.noProxyAccess = registerOutput<bool>('noProxyAccess');
+    this.noPublicIp = registerOutput<bool>('noPublicIp');
+    this.noRemoveDataDisk = registerOutput<bool>('noRemoveDataDisk');
+    this.postStartupScript = registerOutput<String>('postStartupScript');
+    this.project = registerOutput<String>('project');
+    this.proxyUri = registerOutput<String>('proxyUri');
     this.reservationAffinity =
-        Output.createUnknown<ReservationAffinityResponse8>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.serviceAccountScopes = Output.createUnknown<List<String>>();
+        registerOutput<ReservationAffinityResponse8>('reservationAffinity');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.serviceAccountScopes =
+        registerOutput<List<String>>('serviceAccountScopes');
     this.shieldedInstanceConfig =
-        Output.createUnknown<ShieldedInstanceConfigResponse8>();
-    this.state = Output.createUnknown<String>();
-    this.subnet = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<List<String>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<ShieldedInstanceConfigResponse8>(
+            'shieldedInstanceConfig');
+    this.state = registerOutput<String>('state');
+    this.subnet = registerOutput<String>('subnet');
+    this.tags = registerOutput<List<String>>('tags');
+    this.updateTime = registerOutput<String>('updateTime');
     this.upgradeHistory =
-        Output.createUnknown<List<UpgradeHistoryEntryResponse>>();
-    this.vmImage = Output.createUnknown<VmImageResponse>();
+        registerOutput<List<UpgradeHistoryEntryResponse>>('upgradeHistory');
+    this.vmImage = registerOutput<VmImageResponse>('vmImage');
   }
 }

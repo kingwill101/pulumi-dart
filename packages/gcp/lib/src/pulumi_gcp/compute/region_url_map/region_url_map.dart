@@ -7341,22 +7341,24 @@ class RegionUrlMap extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTimestamp = Output.createUnknown<String>();
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.defaultRouteAction =
-        Output.createUnknown<RegionUrlMapDefaultRouteAction?>();
-    this.defaultService = Output.createUnknown<String?>();
+        registerOutput<RegionUrlMapDefaultRouteAction?>('defaultRouteAction');
+    this.defaultService = registerOutput<String?>('defaultService');
     this.defaultUrlRedirect =
-        Output.createUnknown<RegionUrlMapDefaultUrlRedirect?>();
-    this.description = Output.createUnknown<String?>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.headerAction = Output.createUnknown<RegionUrlMapHeaderAction?>();
-    this.hostRules = Output.createUnknown<List<RegionUrlMapHostRule>?>();
-    this.mapId = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.pathMatchers = Output.createUnknown<List<RegionUrlMapPathMatcher>?>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.tests = Output.createUnknown<List<RegionUrlMapTest>?>();
+        registerOutput<RegionUrlMapDefaultUrlRedirect?>('defaultUrlRedirect');
+    this.description = registerOutput<String?>('description');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.headerAction =
+        registerOutput<RegionUrlMapHeaderAction?>('headerAction');
+    this.hostRules = registerOutput<List<RegionUrlMapHostRule>?>('hostRules');
+    this.mapId = registerOutput<int>('mapId');
+    this.name = registerOutput<String>('name');
+    this.pathMatchers =
+        registerOutput<List<RegionUrlMapPathMatcher>?>('pathMatchers');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.tests = registerOutput<List<RegionUrlMapTest>?>('tests');
   }
 }

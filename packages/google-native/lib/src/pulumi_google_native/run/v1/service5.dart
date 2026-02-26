@@ -37,13 +37,13 @@ class Service5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiVersion = Output.createUnknown<String>();
-    this.dryRun = Output.createUnknown<String?>();
-    this.kind = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<ObjectMetaResponse>();
-    this.project = Output.createUnknown<String>();
-    this.spec = Output.createUnknown<ServiceSpecResponse>();
-    this.status = Output.createUnknown<ServiceStatusResponse>();
+    this.apiVersion = registerOutput<String>('apiVersion');
+    this.dryRun = registerOutput<String?>('dryRun');
+    this.kind = registerOutput<String>('kind');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<ObjectMetaResponse>('metadata');
+    this.project = registerOutput<String>('project');
+    this.spec = registerOutput<ServiceSpecResponse>('spec');
+    this.status = registerOutput<ServiceStatusResponse>('status');
   }
 }

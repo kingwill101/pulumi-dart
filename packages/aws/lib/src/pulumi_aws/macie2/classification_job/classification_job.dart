@@ -246,25 +246,27 @@ class ClassificationJob extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createdAt = Output.createUnknown<String>();
-    this.customDataIdentifierIds = Output.createUnknown<List<String>>();
-    this.description = Output.createUnknown<String>();
-    this.initialRun = Output.createUnknown<bool?>();
-    this.jobArn = Output.createUnknown<String>();
-    this.jobId = Output.createUnknown<String>();
-    this.jobStatus = Output.createUnknown<String>();
-    this.jobType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.createdAt = registerOutput<String>('createdAt');
+    this.customDataIdentifierIds =
+        registerOutput<List<String>>('customDataIdentifierIds');
+    this.description = registerOutput<String>('description');
+    this.initialRun = registerOutput<bool?>('initialRun');
+    this.jobArn = registerOutput<String>('jobArn');
+    this.jobId = registerOutput<String>('jobId');
+    this.jobStatus = registerOutput<String>('jobStatus');
+    this.jobType = registerOutput<String>('jobType');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.region = registerOutput<String>('region');
     this.s3JobDefinition =
-        Output.createUnknown<ClassificationJobS3JobDefinition>();
-    this.samplingPercentage = Output.createUnknown<int>();
+        registerOutput<ClassificationJobS3JobDefinition>('s3JobDefinition');
+    this.samplingPercentage = registerOutput<int>('samplingPercentage');
     this.scheduleFrequency =
-        Output.createUnknown<ClassificationJobScheduleFrequency>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<ClassificationJobScheduleFrequency>('scheduleFrequency');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.userPausedDetails =
-        Output.createUnknown<List<ClassificationJobUserPausedDetail>>();
+        registerOutput<List<ClassificationJobUserPausedDetail>>(
+            'userPausedDetails');
   }
 }

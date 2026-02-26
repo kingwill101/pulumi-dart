@@ -154,16 +154,17 @@ class Endpoint3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessType = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.cidrBlock = Output.createUnknown<String>();
-    this.creationTime = Output.createUnknown<String>();
-    this.customerOwnedIpv4Pool = Output.createUnknown<String?>();
+    this.accessType = registerOutput<String>('accessType');
+    this.arn = registerOutput<String>('arn');
+    this.cidrBlock = registerOutput<String>('cidrBlock');
+    this.creationTime = registerOutput<String>('creationTime');
+    this.customerOwnedIpv4Pool =
+        registerOutput<String?>('customerOwnedIpv4Pool');
     this.networkInterfaces =
-        Output.createUnknown<List<EndpointNetworkInterface>>();
-    this.outpostId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupId = Output.createUnknown<String>();
-    this.subnetId = Output.createUnknown<String>();
+        registerOutput<List<EndpointNetworkInterface>>('networkInterfaces');
+    this.outpostId = registerOutput<String>('outpostId');
+    this.region = registerOutput<String>('region');
+    this.securityGroupId = registerOutput<String>('securityGroupId');
+    this.subnetId = registerOutput<String>('subnetId');
   }
 }

@@ -162,14 +162,15 @@ class ProvisionedModelThroughput extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.commitmentDuration = Output.createUnknown<String?>();
-    this.modelArn = Output.createUnknown<String>();
-    this.modelUnits = Output.createUnknown<int>();
-    this.provisionedModelArn = Output.createUnknown<String>();
-    this.provisionedModelName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ProvisionedModelThroughputTimeouts?>();
+    this.commitmentDuration = registerOutput<String?>('commitmentDuration');
+    this.modelArn = registerOutput<String>('modelArn');
+    this.modelUnits = registerOutput<int>('modelUnits');
+    this.provisionedModelArn = registerOutput<String>('provisionedModelArn');
+    this.provisionedModelName = registerOutput<String>('provisionedModelName');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts =
+        registerOutput<ProvisionedModelThroughputTimeouts?>('timeouts');
   }
 }

@@ -259,9 +259,9 @@ class AgentcoreWorkloadIdentity extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.allowedResourceOauth2ReturnUrls =
-        Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.workloadIdentityArn = Output.createUnknown<String>();
+        registerOutput<List<String>?>('allowedResourceOauth2ReturnUrls');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.workloadIdentityArn = registerOutput<String>('workloadIdentityArn');
   }
 }

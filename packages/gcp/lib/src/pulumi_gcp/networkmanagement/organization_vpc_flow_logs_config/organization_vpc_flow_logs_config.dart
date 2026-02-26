@@ -211,22 +211,23 @@ class OrganizationVpcFlowLogsConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aggregationInterval = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.crossProjectMetadata = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.filterExpr = Output.createUnknown<String?>();
-    this.flowSampling = Output.createUnknown<double>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<String>();
-    this.metadataFields = Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
-    this.organization = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vpcFlowLogsConfigId = Output.createUnknown<String>();
+    this.aggregationInterval = registerOutput<String>('aggregationInterval');
+    this.createTime = registerOutput<String>('createTime');
+    this.crossProjectMetadata = registerOutput<String>('crossProjectMetadata');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.filterExpr = registerOutput<String?>('filterExpr');
+    this.flowSampling = registerOutput<double>('flowSampling');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<String>('metadata');
+    this.metadataFields = registerOutput<List<String>?>('metadataFields');
+    this.name = registerOutput<String>('name');
+    this.organization = registerOutput<String>('organization');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vpcFlowLogsConfigId = registerOutput<String>('vpcFlowLogsConfigId');
   }
 }

@@ -247,10 +247,11 @@ class InstanceAccessControlAttributes extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.attributes =
-        Output.createUnknown<List<InstanceAccessControlAttributesAttribute>>();
-    this.instanceArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.statusReason = Output.createUnknown<String>();
+        registerOutput<List<InstanceAccessControlAttributesAttribute>>(
+            'attributes');
+    this.instanceArn = registerOutput<String>('instanceArn');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.statusReason = registerOutput<String>('statusReason');
   }
 }

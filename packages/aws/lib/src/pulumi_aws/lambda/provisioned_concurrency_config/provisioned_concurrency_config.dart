@@ -246,10 +246,11 @@ class ProvisionedConcurrencyConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.functionName = Output.createUnknown<String>();
-    this.provisionedConcurrentExecutions = Output.createUnknown<int>();
-    this.qualifier = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.skipDestroy = Output.createUnknown<bool?>();
+    this.functionName = registerOutput<String>('functionName');
+    this.provisionedConcurrentExecutions =
+        registerOutput<int>('provisionedConcurrentExecutions');
+    this.qualifier = registerOutput<String>('qualifier');
+    this.region = registerOutput<String>('region');
+    this.skipDestroy = registerOutput<bool?>('skipDestroy');
   }
 }

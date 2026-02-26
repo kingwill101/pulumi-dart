@@ -161,12 +161,12 @@ class Configuration2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.kafkaVersions = Output.createUnknown<List<String>?>();
-    this.latestRevision = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.serverProperties = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.kafkaVersions = registerOutput<List<String>?>('kafkaVersions');
+    this.latestRevision = registerOutput<int>('latestRevision');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.serverProperties = registerOutput<String>('serverProperties');
   }
 }

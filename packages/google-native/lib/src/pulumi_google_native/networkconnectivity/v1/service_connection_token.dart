@@ -48,18 +48,19 @@ class ServiceConnectionToken extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.serviceConnectionTokenId = Output.createUnknown<String?>();
-    this.token = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.serviceConnectionTokenId =
+        registerOutput<String?>('serviceConnectionTokenId');
+    this.token = registerOutput<String>('token');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

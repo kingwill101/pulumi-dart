@@ -169,9 +169,9 @@ class ResolverFirewallConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.firewallFailOpen = Output.createUnknown<String>();
-    this.ownerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceId = Output.createUnknown<String>();
+    this.firewallFailOpen = registerOutput<String>('firewallFailOpen');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.region = registerOutput<String>('region');
+    this.resourceId = registerOutput<String>('resourceId');
   }
 }

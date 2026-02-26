@@ -651,15 +651,17 @@ class BackupSchedule2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.database = Output.createUnknown<String>();
+    this.database = registerOutput<String>('database');
     this.encryptionConfig =
-        Output.createUnknown<BackupScheduleEncryptionConfig>();
-    this.fullBackupSpec = Output.createUnknown<Map<String, dynamic>?>();
-    this.incrementalBackupSpec = Output.createUnknown<Map<String, dynamic>?>();
-    this.instance = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.retentionDuration = Output.createUnknown<String>();
-    this.spec = Output.createUnknown<BackupScheduleSpec?>();
+        registerOutput<BackupScheduleEncryptionConfig>('encryptionConfig');
+    this.fullBackupSpec =
+        registerOutput<Map<String, dynamic>?>('fullBackupSpec');
+    this.incrementalBackupSpec =
+        registerOutput<Map<String, dynamic>?>('incrementalBackupSpec');
+    this.instance = registerOutput<String>('instance');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.retentionDuration = registerOutput<String>('retentionDuration');
+    this.spec = registerOutput<BackupScheduleSpec?>('spec');
   }
 }

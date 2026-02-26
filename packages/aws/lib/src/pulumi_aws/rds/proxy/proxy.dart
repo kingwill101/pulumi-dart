@@ -653,22 +653,24 @@ class Proxy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.auths = Output.createUnknown<List<ProxyAuth>?>();
-    this.debugLogging = Output.createUnknown<bool?>();
-    this.defaultAuthScheme = Output.createUnknown<String>();
-    this.endpoint = Output.createUnknown<String>();
-    this.endpointNetworkType = Output.createUnknown<String>();
-    this.engineFamily = Output.createUnknown<String>();
-    this.idleClientTimeout = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requireTls = Output.createUnknown<bool?>();
-    this.roleArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetConnectionNetworkType = Output.createUnknown<String>();
-    this.vpcSecurityGroupIds = Output.createUnknown<List<String>>();
-    this.vpcSubnetIds = Output.createUnknown<List<String>>();
+    this.arn = registerOutput<String>('arn');
+    this.auths = registerOutput<List<ProxyAuth>?>('auths');
+    this.debugLogging = registerOutput<bool?>('debugLogging');
+    this.defaultAuthScheme = registerOutput<String>('defaultAuthScheme');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.endpointNetworkType = registerOutput<String>('endpointNetworkType');
+    this.engineFamily = registerOutput<String>('engineFamily');
+    this.idleClientTimeout = registerOutput<int>('idleClientTimeout');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.requireTls = registerOutput<bool?>('requireTls');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetConnectionNetworkType =
+        registerOutput<String>('targetConnectionNetworkType');
+    this.vpcSecurityGroupIds =
+        registerOutput<List<String>>('vpcSecurityGroupIds');
+    this.vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds');
   }
 }

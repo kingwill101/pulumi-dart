@@ -1072,115 +1072,152 @@ class Cluster2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.addonsConfig = Output.createUnknown<ClusterAddonsConfig>();
-    this.allowNetAdmin = Output.createUnknown<bool?>();
+    this.addonsConfig = registerOutput<ClusterAddonsConfig>('addonsConfig');
+    this.allowNetAdmin = registerOutput<bool?>('allowNetAdmin');
     this.anonymousAuthenticationConfig =
-        Output.createUnknown<ClusterAnonymousAuthenticationConfig>();
+        registerOutput<ClusterAnonymousAuthenticationConfig>(
+            'anonymousAuthenticationConfig');
     this.authenticatorGroupsConfig =
-        Output.createUnknown<ClusterAuthenticatorGroupsConfig>();
+        registerOutput<ClusterAuthenticatorGroupsConfig>(
+            'authenticatorGroupsConfig');
     this.binaryAuthorization =
-        Output.createUnknown<ClusterBinaryAuthorization?>();
-    this.clusterAutoscaling = Output.createUnknown<ClusterClusterAutoscaling>();
-    this.clusterIpv4Cidr = Output.createUnknown<String>();
-    this.clusterTelemetry = Output.createUnknown<ClusterClusterTelemetry>();
-    this.confidentialNodes = Output.createUnknown<ClusterConfidentialNodes>();
+        registerOutput<ClusterBinaryAuthorization?>('binaryAuthorization');
+    this.clusterAutoscaling =
+        registerOutput<ClusterClusterAutoscaling>('clusterAutoscaling');
+    this.clusterIpv4Cidr = registerOutput<String>('clusterIpv4Cidr');
+    this.clusterTelemetry =
+        registerOutput<ClusterClusterTelemetry>('clusterTelemetry');
+    this.confidentialNodes =
+        registerOutput<ClusterConfidentialNodes>('confidentialNodes');
     this.controlPlaneEndpointsConfig =
-        Output.createUnknown<ClusterControlPlaneEndpointsConfig>();
+        registerOutput<ClusterControlPlaneEndpointsConfig>(
+            'controlPlaneEndpointsConfig');
     this.costManagementConfig =
-        Output.createUnknown<ClusterCostManagementConfig>();
-    this.databaseEncryption = Output.createUnknown<ClusterDatabaseEncryption>();
-    this.datapathProvider = Output.createUnknown<String>();
-    this.defaultMaxPodsPerNode = Output.createUnknown<int>();
-    this.defaultSnatStatus = Output.createUnknown<ClusterDefaultSnatStatus>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String?>();
-    this.disableL4LbFirewallReconciliation = Output.createUnknown<bool?>();
-    this.dnsConfig = Output.createUnknown<ClusterDnsConfig?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enableAutopilot = Output.createUnknown<bool?>();
-    this.enableCiliumClusterwideNetworkPolicy = Output.createUnknown<bool?>();
-    this.enableFqdnNetworkPolicy = Output.createUnknown<bool?>();
-    this.enableIntranodeVisibility = Output.createUnknown<bool>();
-    this.enableK8sBetaApis = Output.createUnknown<ClusterEnableK8sBetaApis?>();
-    this.enableKubernetesAlpha = Output.createUnknown<bool?>();
-    this.enableL4IlbSubsetting = Output.createUnknown<bool>();
-    this.enableLegacyAbac = Output.createUnknown<bool?>();
-    this.enableMultiNetworking = Output.createUnknown<bool?>();
-    this.enableShieldedNodes = Output.createUnknown<bool?>();
-    this.enableTpu = Output.createUnknown<bool>();
-    this.endpoint = Output.createUnknown<String>();
-    this.enterpriseConfig = Output.createUnknown<ClusterEnterpriseConfig>();
-    this.fleet = Output.createUnknown<ClusterFleet?>();
-    this.gatewayApiConfig = Output.createUnknown<ClusterGatewayApiConfig>();
+        registerOutput<ClusterCostManagementConfig>('costManagementConfig');
+    this.databaseEncryption =
+        registerOutput<ClusterDatabaseEncryption>('databaseEncryption');
+    this.datapathProvider = registerOutput<String>('datapathProvider');
+    this.defaultMaxPodsPerNode = registerOutput<int>('defaultMaxPodsPerNode');
+    this.defaultSnatStatus =
+        registerOutput<ClusterDefaultSnatStatus>('defaultSnatStatus');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.description = registerOutput<String?>('description');
+    this.disableL4LbFirewallReconciliation =
+        registerOutput<bool?>('disableL4LbFirewallReconciliation');
+    this.dnsConfig = registerOutput<ClusterDnsConfig?>('dnsConfig');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableAutopilot = registerOutput<bool?>('enableAutopilot');
+    this.enableCiliumClusterwideNetworkPolicy =
+        registerOutput<bool?>('enableCiliumClusterwideNetworkPolicy');
+    this.enableFqdnNetworkPolicy =
+        registerOutput<bool?>('enableFqdnNetworkPolicy');
+    this.enableIntranodeVisibility =
+        registerOutput<bool>('enableIntranodeVisibility');
+    this.enableK8sBetaApis =
+        registerOutput<ClusterEnableK8sBetaApis?>('enableK8sBetaApis');
+    this.enableKubernetesAlpha = registerOutput<bool?>('enableKubernetesAlpha');
+    this.enableL4IlbSubsetting = registerOutput<bool>('enableL4IlbSubsetting');
+    this.enableLegacyAbac = registerOutput<bool?>('enableLegacyAbac');
+    this.enableMultiNetworking = registerOutput<bool?>('enableMultiNetworking');
+    this.enableShieldedNodes = registerOutput<bool?>('enableShieldedNodes');
+    this.enableTpu = registerOutput<bool>('enableTpu');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.enterpriseConfig =
+        registerOutput<ClusterEnterpriseConfig>('enterpriseConfig');
+    this.fleet = registerOutput<ClusterFleet?>('fleet');
+    this.gatewayApiConfig =
+        registerOutput<ClusterGatewayApiConfig>('gatewayApiConfig');
     this.gkeAutoUpgradeConfig =
-        Output.createUnknown<ClusterGkeAutoUpgradeConfig>();
+        registerOutput<ClusterGkeAutoUpgradeConfig>('gkeAutoUpgradeConfig');
     this.identityServiceConfig =
-        Output.createUnknown<ClusterIdentityServiceConfig>();
-    this.inTransitEncryptionConfig = Output.createUnknown<String?>();
-    this.initialNodeCount = Output.createUnknown<int?>();
-    this.ipAllocationPolicy = Output.createUnknown<ClusterIpAllocationPolicy>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.loggingConfig = Output.createUnknown<ClusterLoggingConfig>();
-    this.loggingService = Output.createUnknown<String>();
-    this.maintenancePolicy = Output.createUnknown<ClusterMaintenancePolicy?>();
+        registerOutput<ClusterIdentityServiceConfig>('identityServiceConfig');
+    this.inTransitEncryptionConfig =
+        registerOutput<String?>('inTransitEncryptionConfig');
+    this.initialNodeCount = registerOutput<int?>('initialNodeCount');
+    this.ipAllocationPolicy =
+        registerOutput<ClusterIpAllocationPolicy>('ipAllocationPolicy');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.location = registerOutput<String>('location');
+    this.loggingConfig = registerOutput<ClusterLoggingConfig>('loggingConfig');
+    this.loggingService = registerOutput<String>('loggingService');
+    this.maintenancePolicy =
+        registerOutput<ClusterMaintenancePolicy?>('maintenancePolicy');
     this.managedOpentelemetryConfig =
-        Output.createUnknown<ClusterManagedOpentelemetryConfig>();
-    this.masterAuth = Output.createUnknown<ClusterMasterAuth>();
+        registerOutput<ClusterManagedOpentelemetryConfig>(
+            'managedOpentelemetryConfig');
+    this.masterAuth = registerOutput<ClusterMasterAuth>('masterAuth');
     this.masterAuthorizedNetworksConfig =
-        Output.createUnknown<ClusterMasterAuthorizedNetworksConfig>();
-    this.masterVersion = Output.createUnknown<String>();
-    this.meshCertificates = Output.createUnknown<ClusterMeshCertificates>();
-    this.minMasterVersion = Output.createUnknown<String?>();
-    this.monitoringConfig = Output.createUnknown<ClusterMonitoringConfig>();
-    this.monitoringService = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String?>();
+        registerOutput<ClusterMasterAuthorizedNetworksConfig>(
+            'masterAuthorizedNetworksConfig');
+    this.masterVersion = registerOutput<String>('masterVersion');
+    this.meshCertificates =
+        registerOutput<ClusterMeshCertificates>('meshCertificates');
+    this.minMasterVersion = registerOutput<String?>('minMasterVersion');
+    this.monitoringConfig =
+        registerOutput<ClusterMonitoringConfig>('monitoringConfig');
+    this.monitoringService = registerOutput<String>('monitoringService');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String?>('network');
     this.networkPerformanceConfig =
-        Output.createUnknown<ClusterNetworkPerformanceConfig?>();
-    this.networkPolicy = Output.createUnknown<ClusterNetworkPolicy?>();
-    this.networkingMode = Output.createUnknown<String>();
-    this.nodeConfig = Output.createUnknown<ClusterNodeConfig>();
-    this.nodeLocations = Output.createUnknown<List<String>>();
-    this.nodePoolAutoConfig = Output.createUnknown<ClusterNodePoolAutoConfig>();
-    this.nodePoolDefaults = Output.createUnknown<ClusterNodePoolDefaults>();
-    this.nodePools = Output.createUnknown<List<ClusterNodePool>>();
-    this.nodeVersion = Output.createUnknown<String>();
-    this.notificationConfig = Output.createUnknown<ClusterNotificationConfig>();
-    this.operation = Output.createUnknown<String>();
-    this.podAutoscaling = Output.createUnknown<ClusterPodAutoscaling>();
+        registerOutput<ClusterNetworkPerformanceConfig?>(
+            'networkPerformanceConfig');
+    this.networkPolicy = registerOutput<ClusterNetworkPolicy?>('networkPolicy');
+    this.networkingMode = registerOutput<String>('networkingMode');
+    this.nodeConfig = registerOutput<ClusterNodeConfig>('nodeConfig');
+    this.nodeLocations = registerOutput<List<String>>('nodeLocations');
+    this.nodePoolAutoConfig =
+        registerOutput<ClusterNodePoolAutoConfig>('nodePoolAutoConfig');
+    this.nodePoolDefaults =
+        registerOutput<ClusterNodePoolDefaults>('nodePoolDefaults');
+    this.nodePools = registerOutput<List<ClusterNodePool>>('nodePools');
+    this.nodeVersion = registerOutput<String>('nodeVersion');
+    this.notificationConfig =
+        registerOutput<ClusterNotificationConfig>('notificationConfig');
+    this.operation = registerOutput<String>('operation');
+    this.podAutoscaling =
+        registerOutput<ClusterPodAutoscaling>('podAutoscaling');
     this.podSecurityPolicyConfig =
-        Output.createUnknown<ClusterPodSecurityPolicyConfig?>();
+        registerOutput<ClusterPodSecurityPolicyConfig?>(
+            'podSecurityPolicyConfig');
     this.privateClusterConfig =
-        Output.createUnknown<ClusterPrivateClusterConfig>();
-    this.privateIpv6GoogleAccess = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.protectConfig = Output.createUnknown<ClusterProtectConfig>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.rbacBindingConfig = Output.createUnknown<ClusterRbacBindingConfig>();
-    this.releaseChannel = Output.createUnknown<ClusterReleaseChannel>();
-    this.removeDefaultNodePool = Output.createUnknown<bool?>();
-    this.resourceLabels = Output.createUnknown<Map<String, String>?>();
+        registerOutput<ClusterPrivateClusterConfig>('privateClusterConfig');
+    this.privateIpv6GoogleAccess =
+        registerOutput<String>('privateIpv6GoogleAccess');
+    this.project = registerOutput<String>('project');
+    this.protectConfig = registerOutput<ClusterProtectConfig>('protectConfig');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.rbacBindingConfig =
+        registerOutput<ClusterRbacBindingConfig>('rbacBindingConfig');
+    this.releaseChannel =
+        registerOutput<ClusterReleaseChannel>('releaseChannel');
+    this.removeDefaultNodePool = registerOutput<bool?>('removeDefaultNodePool');
+    this.resourceLabels =
+        registerOutput<Map<String, String>?>('resourceLabels');
     this.resourceUsageExportConfig =
-        Output.createUnknown<ClusterResourceUsageExportConfig?>();
+        registerOutput<ClusterResourceUsageExportConfig?>(
+            'resourceUsageExportConfig');
     this.secretManagerConfig =
-        Output.createUnknown<ClusterSecretManagerConfig?>();
-    this.secretSyncConfig = Output.createUnknown<ClusterSecretSyncConfig?>();
+        registerOutput<ClusterSecretManagerConfig?>('secretManagerConfig');
+    this.secretSyncConfig =
+        registerOutput<ClusterSecretSyncConfig?>('secretSyncConfig');
     this.securityPostureConfig =
-        Output.createUnknown<ClusterSecurityPostureConfig>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<ClusterSecurityPostureConfig>('securityPostureConfig');
+    this.selfLink = registerOutput<String>('selfLink');
     this.serviceExternalIpsConfig =
-        Output.createUnknown<ClusterServiceExternalIpsConfig>();
-    this.servicesIpv4Cidr = Output.createUnknown<String>();
-    this.subnetwork = Output.createUnknown<String>();
-    this.tpuConfig = Output.createUnknown<ClusterTpuConfig>();
-    this.tpuIpv4CidrBlock = Output.createUnknown<String>();
+        registerOutput<ClusterServiceExternalIpsConfig>(
+            'serviceExternalIpsConfig');
+    this.servicesIpv4Cidr = registerOutput<String>('servicesIpv4Cidr');
+    this.subnetwork = registerOutput<String>('subnetwork');
+    this.tpuConfig = registerOutput<ClusterTpuConfig>('tpuConfig');
+    this.tpuIpv4CidrBlock = registerOutput<String>('tpuIpv4CidrBlock');
     this.userManagedKeysConfig =
-        Output.createUnknown<ClusterUserManagedKeysConfig?>();
+        registerOutput<ClusterUserManagedKeysConfig?>('userManagedKeysConfig');
     this.verticalPodAutoscaling =
-        Output.createUnknown<ClusterVerticalPodAutoscaling>();
-    this.workloadAltsConfig = Output.createUnknown<ClusterWorkloadAltsConfig>();
+        registerOutput<ClusterVerticalPodAutoscaling>('verticalPodAutoscaling');
+    this.workloadAltsConfig =
+        registerOutput<ClusterWorkloadAltsConfig>('workloadAltsConfig');
     this.workloadIdentityConfig =
-        Output.createUnknown<ClusterWorkloadIdentityConfig>();
+        registerOutput<ClusterWorkloadIdentityConfig>('workloadIdentityConfig');
   }
 }

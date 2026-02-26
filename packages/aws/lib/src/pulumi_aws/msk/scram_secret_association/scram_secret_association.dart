@@ -485,8 +485,8 @@ class ScramSecretAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusterArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.secretArnLists = Output.createUnknown<List<String>>();
+    this.clusterArn = registerOutput<String>('clusterArn');
+    this.region = registerOutput<String>('region');
+    this.secretArnLists = registerOutput<List<String>>('secretArnLists');
   }
 }

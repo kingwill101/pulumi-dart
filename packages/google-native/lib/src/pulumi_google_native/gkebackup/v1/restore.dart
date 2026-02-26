@@ -72,26 +72,26 @@ class Restore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backup = Output.createUnknown<String>();
-    this.cluster = Output.createUnknown<String>();
-    this.completeTime = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.resourcesExcludedCount = Output.createUnknown<int>();
-    this.resourcesFailedCount = Output.createUnknown<int>();
-    this.resourcesRestoredCount = Output.createUnknown<int>();
-    this.restoreConfig = Output.createUnknown<RestoreConfigResponse>();
-    this.restoreId = Output.createUnknown<String>();
-    this.restorePlanId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.stateReason = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.volumesRestoredCount = Output.createUnknown<int>();
+    this.backup = registerOutput<String>('backup');
+    this.cluster = registerOutput<String>('cluster');
+    this.completeTime = registerOutput<String>('completeTime');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.resourcesExcludedCount = registerOutput<int>('resourcesExcludedCount');
+    this.resourcesFailedCount = registerOutput<int>('resourcesFailedCount');
+    this.resourcesRestoredCount = registerOutput<int>('resourcesRestoredCount');
+    this.restoreConfig = registerOutput<RestoreConfigResponse>('restoreConfig');
+    this.restoreId = registerOutput<String>('restoreId');
+    this.restorePlanId = registerOutput<String>('restorePlanId');
+    this.state = registerOutput<String>('state');
+    this.stateReason = registerOutput<String>('stateReason');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.volumesRestoredCount = registerOutput<int>('volumesRestoredCount');
   }
 }

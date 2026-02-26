@@ -2356,30 +2356,34 @@ class MigrationJob extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.destination = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String?>();
-    this.dumpFlags = Output.createUnknown<MigrationJobDumpFlags?>();
-    this.dumpPath = Output.createUnknown<String?>();
-    this.dumpType = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.errors = Output.createUnknown<List<MigrationJobError>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String?>();
-    this.migrationJobId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.destination = registerOutput<String>('destination');
+    this.displayName = registerOutput<String?>('displayName');
+    this.dumpFlags = registerOutput<MigrationJobDumpFlags?>('dumpFlags');
+    this.dumpPath = registerOutput<String?>('dumpPath');
+    this.dumpType = registerOutput<String?>('dumpType');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.errors = registerOutput<List<MigrationJobError>>('errors');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String?>('location');
+    this.migrationJobId = registerOutput<String>('migrationJobId');
+    this.name = registerOutput<String>('name');
     this.performanceConfig =
-        Output.createUnknown<MigrationJobPerformanceConfig?>();
-    this.phase = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<MigrationJobPerformanceConfig?>('performanceConfig');
+    this.phase = registerOutput<String>('phase');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.reverseSshConnectivity =
-        Output.createUnknown<MigrationJobReverseSshConnectivity?>();
-    this.source = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.staticIpConnectivity = Output.createUnknown<Map<String, dynamic>?>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<MigrationJobReverseSshConnectivity?>(
+            'reverseSshConnectivity');
+    this.source = registerOutput<String>('source');
+    this.state = registerOutput<String>('state');
+    this.staticIpConnectivity =
+        registerOutput<Map<String, dynamic>?>('staticIpConnectivity');
+    this.type = registerOutput<String>('type');
     this.vpcPeeringConnectivity =
-        Output.createUnknown<MigrationJobVpcPeeringConnectivity?>();
+        registerOutput<MigrationJobVpcPeeringConnectivity?>(
+            'vpcPeeringConnectivity');
   }
 }

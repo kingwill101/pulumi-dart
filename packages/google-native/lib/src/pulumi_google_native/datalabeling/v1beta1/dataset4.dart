@@ -41,15 +41,16 @@ class Dataset4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.blockingResources = Output.createUnknown<List<String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataItemCount = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.inputConfigs = Output.createUnknown<
-        List<GoogleCloudDatalabelingV1beta1InputConfigResponse>>();
-    this.lastMigrateTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.blockingResources = registerOutput<List<String>>('blockingResources');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataItemCount = registerOutput<String>('dataItemCount');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.inputConfigs =
+        registerOutput<List<GoogleCloudDatalabelingV1beta1InputConfigResponse>>(
+            'inputConfigs');
+    this.lastMigrateTime = registerOutput<String>('lastMigrateTime');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

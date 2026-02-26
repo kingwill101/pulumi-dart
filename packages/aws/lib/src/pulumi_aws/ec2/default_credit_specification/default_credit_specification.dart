@@ -131,9 +131,10 @@ class DefaultCreditSpecification extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cpuCredits = Output.createUnknown<String>();
-    this.instanceFamily = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<DefaultCreditSpecificationTimeouts?>();
+    this.cpuCredits = registerOutput<String>('cpuCredits');
+    this.instanceFamily = registerOutput<String>('instanceFamily');
+    this.region = registerOutput<String>('region');
+    this.timeouts =
+        registerOutput<DefaultCreditSpecificationTimeouts?>('timeouts');
   }
 }

@@ -331,10 +331,10 @@ class IdentityPoolProviderPrincipalTag extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.identityPoolId = Output.createUnknown<String>();
-    this.identityProviderName = Output.createUnknown<String>();
-    this.principalTags = Output.createUnknown<Map<String, String>?>();
-    this.region = Output.createUnknown<String>();
-    this.useDefaults = Output.createUnknown<bool?>();
+    this.identityPoolId = registerOutput<String>('identityPoolId');
+    this.identityProviderName = registerOutput<String>('identityProviderName');
+    this.principalTags = registerOutput<Map<String, String>?>('principalTags');
+    this.region = registerOutput<String>('region');
+    this.useDefaults = registerOutput<bool?>('useDefaults');
   }
 }

@@ -485,13 +485,16 @@ class ReplicationSubnetGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.replicationSubnetGroupArn = Output.createUnknown<String>();
-    this.replicationSubnetGroupDescription = Output.createUnknown<String>();
-    this.replicationSubnetGroupId = Output.createUnknown<String>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcId = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.replicationSubnetGroupArn =
+        registerOutput<String>('replicationSubnetGroupArn');
+    this.replicationSubnetGroupDescription =
+        registerOutput<String>('replicationSubnetGroupDescription');
+    this.replicationSubnetGroupId =
+        registerOutput<String>('replicationSubnetGroupId');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

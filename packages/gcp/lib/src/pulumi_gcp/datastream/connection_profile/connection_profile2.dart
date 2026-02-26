@@ -2950,33 +2950,42 @@ class ConnectionProfile2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bigqueryProfile = Output.createUnknown<Map<String, dynamic>?>();
-    this.connectionProfileId = Output.createUnknown<String>();
-    this.createWithoutValidation = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.bigqueryProfile =
+        registerOutput<Map<String, dynamic>?>('bigqueryProfile');
+    this.connectionProfileId = registerOutput<String>('connectionProfileId');
+    this.createWithoutValidation =
+        registerOutput<bool?>('createWithoutValidation');
+    this.displayName = registerOutput<String>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.forwardSshConnectivity =
-        Output.createUnknown<ConnectionProfileForwardSshConnectivity?>();
-    this.gcsProfile = Output.createUnknown<ConnectionProfileGcsProfile?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
+        registerOutput<ConnectionProfileForwardSshConnectivity?>(
+            'forwardSshConnectivity');
+    this.gcsProfile =
+        registerOutput<ConnectionProfileGcsProfile?>('gcsProfile');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
     this.mongodbProfile =
-        Output.createUnknown<ConnectionProfileMongodbProfile?>();
-    this.mysqlProfile = Output.createUnknown<ConnectionProfileMysqlProfile?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<ConnectionProfileMongodbProfile?>('mongodbProfile');
+    this.mysqlProfile =
+        registerOutput<ConnectionProfileMysqlProfile?>('mysqlProfile');
+    this.name = registerOutput<String>('name');
     this.oracleProfile =
-        Output.createUnknown<ConnectionProfileOracleProfile?>();
+        registerOutput<ConnectionProfileOracleProfile?>('oracleProfile');
     this.postgresqlProfile =
-        Output.createUnknown<ConnectionProfilePostgresqlProfile?>();
+        registerOutput<ConnectionProfilePostgresqlProfile?>(
+            'postgresqlProfile');
     this.privateConnectivity =
-        Output.createUnknown<ConnectionProfilePrivateConnectivity?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<ConnectionProfilePrivateConnectivity?>(
+            'privateConnectivity');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.salesforceProfile =
-        Output.createUnknown<ConnectionProfileSalesforceProfile?>();
+        registerOutput<ConnectionProfileSalesforceProfile?>(
+            'salesforceProfile');
     this.spannerProfile =
-        Output.createUnknown<ConnectionProfileSpannerProfile?>();
+        registerOutput<ConnectionProfileSpannerProfile?>('spannerProfile');
     this.sqlServerProfile =
-        Output.createUnknown<ConnectionProfileSqlServerProfile?>();
+        registerOutput<ConnectionProfileSqlServerProfile?>('sqlServerProfile');
   }
 }

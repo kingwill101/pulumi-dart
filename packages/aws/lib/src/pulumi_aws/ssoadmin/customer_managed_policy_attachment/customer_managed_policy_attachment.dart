@@ -318,10 +318,11 @@ class CustomerManagedPolicyAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.customerManagedPolicyReference = Output.createUnknown<
-        CustomerManagedPolicyAttachmentCustomerManagedPolicyReference>();
-    this.instanceArn = Output.createUnknown<String>();
-    this.permissionSetArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.customerManagedPolicyReference = registerOutput<
+            CustomerManagedPolicyAttachmentCustomerManagedPolicyReference>(
+        'customerManagedPolicyReference');
+    this.instanceArn = registerOutput<String>('instanceArn');
+    this.permissionSetArn = registerOutput<String>('permissionSetArn');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -165,12 +165,12 @@ class BiReservation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.preferredTables =
-        Output.createUnknown<List<BiReservationPreferredTable>?>();
-    this.project = Output.createUnknown<String>();
-    this.size = Output.createUnknown<int?>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<BiReservationPreferredTable>?>('preferredTables');
+    this.project = registerOutput<String>('project');
+    this.size = registerOutput<int?>('size');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

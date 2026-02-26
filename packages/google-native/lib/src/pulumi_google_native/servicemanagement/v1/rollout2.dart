@@ -36,13 +36,15 @@ class Rollout2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.createdBy = Output.createUnknown<String>();
-    this.deleteServiceStrategy = Output.createUnknown<Map<String, dynamic>>();
-    this.rolloutId = Output.createUnknown<String>();
-    this.serviceName = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.createdBy = registerOutput<String>('createdBy');
+    this.deleteServiceStrategy =
+        registerOutput<Map<String, dynamic>>('deleteServiceStrategy');
+    this.rolloutId = registerOutput<String>('rolloutId');
+    this.serviceName = registerOutput<String>('serviceName');
+    this.status = registerOutput<String>('status');
     this.trafficPercentStrategy =
-        Output.createUnknown<TrafficPercentStrategyResponse>();
+        registerOutput<TrafficPercentStrategyResponse>(
+            'trafficPercentStrategy');
   }
 }

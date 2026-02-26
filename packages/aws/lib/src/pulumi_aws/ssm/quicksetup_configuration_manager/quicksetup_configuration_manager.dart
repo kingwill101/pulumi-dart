@@ -215,17 +215,19 @@ class QuicksetupConfigurationManager extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.configurationDefinition = Output.createUnknown<
-        QuicksetupConfigurationManagerConfigurationDefinition>();
-    this.description = Output.createUnknown<String>();
-    this.managerArn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.statusSummaries = Output.createUnknown<
-        List<QuicksetupConfigurationManagerStatusSummary>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.configurationDefinition =
+        registerOutput<QuicksetupConfigurationManagerConfigurationDefinition>(
+            'configurationDefinition');
+    this.description = registerOutput<String>('description');
+    this.managerArn = registerOutput<String>('managerArn');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.statusSummaries =
+        registerOutput<List<QuicksetupConfigurationManagerStatusSummary>>(
+            'statusSummaries');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.timeouts =
-        Output.createUnknown<QuicksetupConfigurationManagerTimeouts?>();
+        registerOutput<QuicksetupConfigurationManagerTimeouts?>('timeouts');
   }
 }

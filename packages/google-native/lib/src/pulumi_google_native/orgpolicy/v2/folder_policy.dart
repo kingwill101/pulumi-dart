@@ -30,13 +30,14 @@ class FolderPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alternate = Output.createUnknown<
-        GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>();
+    this.alternate =
+        registerOutput<GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>(
+            'alternate');
     this.dryRunSpec =
-        Output.createUnknown<GoogleCloudOrgpolicyV2PolicySpecResponse>();
-    this.folderId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>('dryRunSpec');
+    this.folderId = registerOutput<String>('folderId');
+    this.name = registerOutput<String>('name');
     this.spec =
-        Output.createUnknown<GoogleCloudOrgpolicyV2PolicySpecResponse>();
+        registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>('spec');
   }
 }

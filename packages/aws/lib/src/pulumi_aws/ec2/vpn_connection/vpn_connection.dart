@@ -955,93 +955,128 @@ class VpnConnection extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.coreNetworkArn = Output.createUnknown<String>();
-    this.coreNetworkAttachmentArn = Output.createUnknown<String>();
-    this.customerGatewayConfiguration = Output.createUnknown<String>();
-    this.customerGatewayId = Output.createUnknown<String>();
-    this.enableAcceleration = Output.createUnknown<bool>();
-    this.localIpv4NetworkCidr = Output.createUnknown<String>();
-    this.localIpv6NetworkCidr = Output.createUnknown<String>();
-    this.outsideIpAddressType = Output.createUnknown<String>();
-    this.presharedKeyArn = Output.createUnknown<String>();
-    this.presharedKeyStorage = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.remoteIpv4NetworkCidr = Output.createUnknown<String>();
-    this.remoteIpv6NetworkCidr = Output.createUnknown<String>();
-    this.routes = Output.createUnknown<List<VpnConnectionRoute>>();
-    this.staticRoutesOnly = Output.createUnknown<bool>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.transitGatewayAttachmentId = Output.createUnknown<String>();
-    this.transitGatewayId = Output.createUnknown<String?>();
-    this.transportTransitGatewayAttachmentId = Output.createUnknown<String?>();
-    this.tunnel1Address = Output.createUnknown<String>();
-    this.tunnel1BgpAsn = Output.createUnknown<String>();
-    this.tunnel1BgpHoldtime = Output.createUnknown<int>();
-    this.tunnel1CgwInsideAddress = Output.createUnknown<String>();
-    this.tunnel1DpdTimeoutAction = Output.createUnknown<String?>();
-    this.tunnel1DpdTimeoutSeconds = Output.createUnknown<int?>();
-    this.tunnel1EnableTunnelLifecycleControl = Output.createUnknown<bool?>();
-    this.tunnel1IkeVersions = Output.createUnknown<List<String>?>();
-    this.tunnel1InsideCidr = Output.createUnknown<String>();
-    this.tunnel1InsideIpv6Cidr = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.coreNetworkArn = registerOutput<String>('coreNetworkArn');
+    this.coreNetworkAttachmentArn =
+        registerOutput<String>('coreNetworkAttachmentArn');
+    this.customerGatewayConfiguration =
+        registerOutput<String>('customerGatewayConfiguration');
+    this.customerGatewayId = registerOutput<String>('customerGatewayId');
+    this.enableAcceleration = registerOutput<bool>('enableAcceleration');
+    this.localIpv4NetworkCidr = registerOutput<String>('localIpv4NetworkCidr');
+    this.localIpv6NetworkCidr = registerOutput<String>('localIpv6NetworkCidr');
+    this.outsideIpAddressType = registerOutput<String>('outsideIpAddressType');
+    this.presharedKeyArn = registerOutput<String>('presharedKeyArn');
+    this.presharedKeyStorage = registerOutput<String>('presharedKeyStorage');
+    this.region = registerOutput<String>('region');
+    this.remoteIpv4NetworkCidr =
+        registerOutput<String>('remoteIpv4NetworkCidr');
+    this.remoteIpv6NetworkCidr =
+        registerOutput<String>('remoteIpv6NetworkCidr');
+    this.routes = registerOutput<List<VpnConnectionRoute>>('routes');
+    this.staticRoutesOnly = registerOutput<bool>('staticRoutesOnly');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.transitGatewayAttachmentId =
+        registerOutput<String>('transitGatewayAttachmentId');
+    this.transitGatewayId = registerOutput<String?>('transitGatewayId');
+    this.transportTransitGatewayAttachmentId =
+        registerOutput<String?>('transportTransitGatewayAttachmentId');
+    this.tunnel1Address = registerOutput<String>('tunnel1Address');
+    this.tunnel1BgpAsn = registerOutput<String>('tunnel1BgpAsn');
+    this.tunnel1BgpHoldtime = registerOutput<int>('tunnel1BgpHoldtime');
+    this.tunnel1CgwInsideAddress =
+        registerOutput<String>('tunnel1CgwInsideAddress');
+    this.tunnel1DpdTimeoutAction =
+        registerOutput<String?>('tunnel1DpdTimeoutAction');
+    this.tunnel1DpdTimeoutSeconds =
+        registerOutput<int?>('tunnel1DpdTimeoutSeconds');
+    this.tunnel1EnableTunnelLifecycleControl =
+        registerOutput<bool?>('tunnel1EnableTunnelLifecycleControl');
+    this.tunnel1IkeVersions =
+        registerOutput<List<String>?>('tunnel1IkeVersions');
+    this.tunnel1InsideCidr = registerOutput<String>('tunnel1InsideCidr');
+    this.tunnel1InsideIpv6Cidr =
+        registerOutput<String>('tunnel1InsideIpv6Cidr');
     this.tunnel1LogOptions =
-        Output.createUnknown<VpnConnectionTunnel1LogOptions>();
-    this.tunnel1Phase1DhGroupNumbers = Output.createUnknown<List<int>?>();
+        registerOutput<VpnConnectionTunnel1LogOptions>('tunnel1LogOptions');
+    this.tunnel1Phase1DhGroupNumbers =
+        registerOutput<List<int>?>('tunnel1Phase1DhGroupNumbers');
     this.tunnel1Phase1EncryptionAlgorithms =
-        Output.createUnknown<List<String>?>();
+        registerOutput<List<String>?>('tunnel1Phase1EncryptionAlgorithms');
     this.tunnel1Phase1IntegrityAlgorithms =
-        Output.createUnknown<List<String>?>();
-    this.tunnel1Phase1LifetimeSeconds = Output.createUnknown<int?>();
-    this.tunnel1Phase2DhGroupNumbers = Output.createUnknown<List<int>?>();
+        registerOutput<List<String>?>('tunnel1Phase1IntegrityAlgorithms');
+    this.tunnel1Phase1LifetimeSeconds =
+        registerOutput<int?>('tunnel1Phase1LifetimeSeconds');
+    this.tunnel1Phase2DhGroupNumbers =
+        registerOutput<List<int>?>('tunnel1Phase2DhGroupNumbers');
     this.tunnel1Phase2EncryptionAlgorithms =
-        Output.createUnknown<List<String>?>();
+        registerOutput<List<String>?>('tunnel1Phase2EncryptionAlgorithms');
     this.tunnel1Phase2IntegrityAlgorithms =
-        Output.createUnknown<List<String>?>();
-    this.tunnel1Phase2LifetimeSeconds = Output.createUnknown<int?>();
-    this.tunnel1PresharedKey = Output.createUnknown<String>();
-    this.tunnel1RekeyFuzzPercentage = Output.createUnknown<int?>();
-    this.tunnel1RekeyMarginTimeSeconds = Output.createUnknown<int?>();
-    this.tunnel1ReplayWindowSize = Output.createUnknown<int?>();
-    this.tunnel1StartupAction = Output.createUnknown<String?>();
-    this.tunnel1VgwInsideAddress = Output.createUnknown<String>();
-    this.tunnel2Address = Output.createUnknown<String>();
-    this.tunnel2BgpAsn = Output.createUnknown<String>();
-    this.tunnel2BgpHoldtime = Output.createUnknown<int>();
-    this.tunnel2CgwInsideAddress = Output.createUnknown<String>();
-    this.tunnel2DpdTimeoutAction = Output.createUnknown<String?>();
-    this.tunnel2DpdTimeoutSeconds = Output.createUnknown<int?>();
-    this.tunnel2EnableTunnelLifecycleControl = Output.createUnknown<bool?>();
-    this.tunnel2IkeVersions = Output.createUnknown<List<String>?>();
-    this.tunnel2InsideCidr = Output.createUnknown<String>();
-    this.tunnel2InsideIpv6Cidr = Output.createUnknown<String>();
+        registerOutput<List<String>?>('tunnel1Phase2IntegrityAlgorithms');
+    this.tunnel1Phase2LifetimeSeconds =
+        registerOutput<int?>('tunnel1Phase2LifetimeSeconds');
+    this.tunnel1PresharedKey = registerOutput<String>('tunnel1PresharedKey');
+    this.tunnel1RekeyFuzzPercentage =
+        registerOutput<int?>('tunnel1RekeyFuzzPercentage');
+    this.tunnel1RekeyMarginTimeSeconds =
+        registerOutput<int?>('tunnel1RekeyMarginTimeSeconds');
+    this.tunnel1ReplayWindowSize =
+        registerOutput<int?>('tunnel1ReplayWindowSize');
+    this.tunnel1StartupAction = registerOutput<String?>('tunnel1StartupAction');
+    this.tunnel1VgwInsideAddress =
+        registerOutput<String>('tunnel1VgwInsideAddress');
+    this.tunnel2Address = registerOutput<String>('tunnel2Address');
+    this.tunnel2BgpAsn = registerOutput<String>('tunnel2BgpAsn');
+    this.tunnel2BgpHoldtime = registerOutput<int>('tunnel2BgpHoldtime');
+    this.tunnel2CgwInsideAddress =
+        registerOutput<String>('tunnel2CgwInsideAddress');
+    this.tunnel2DpdTimeoutAction =
+        registerOutput<String?>('tunnel2DpdTimeoutAction');
+    this.tunnel2DpdTimeoutSeconds =
+        registerOutput<int?>('tunnel2DpdTimeoutSeconds');
+    this.tunnel2EnableTunnelLifecycleControl =
+        registerOutput<bool?>('tunnel2EnableTunnelLifecycleControl');
+    this.tunnel2IkeVersions =
+        registerOutput<List<String>?>('tunnel2IkeVersions');
+    this.tunnel2InsideCidr = registerOutput<String>('tunnel2InsideCidr');
+    this.tunnel2InsideIpv6Cidr =
+        registerOutput<String>('tunnel2InsideIpv6Cidr');
     this.tunnel2LogOptions =
-        Output.createUnknown<VpnConnectionTunnel2LogOptions>();
-    this.tunnel2Phase1DhGroupNumbers = Output.createUnknown<List<int>?>();
+        registerOutput<VpnConnectionTunnel2LogOptions>('tunnel2LogOptions');
+    this.tunnel2Phase1DhGroupNumbers =
+        registerOutput<List<int>?>('tunnel2Phase1DhGroupNumbers');
     this.tunnel2Phase1EncryptionAlgorithms =
-        Output.createUnknown<List<String>?>();
+        registerOutput<List<String>?>('tunnel2Phase1EncryptionAlgorithms');
     this.tunnel2Phase1IntegrityAlgorithms =
-        Output.createUnknown<List<String>?>();
-    this.tunnel2Phase1LifetimeSeconds = Output.createUnknown<int?>();
-    this.tunnel2Phase2DhGroupNumbers = Output.createUnknown<List<int>?>();
+        registerOutput<List<String>?>('tunnel2Phase1IntegrityAlgorithms');
+    this.tunnel2Phase1LifetimeSeconds =
+        registerOutput<int?>('tunnel2Phase1LifetimeSeconds');
+    this.tunnel2Phase2DhGroupNumbers =
+        registerOutput<List<int>?>('tunnel2Phase2DhGroupNumbers');
     this.tunnel2Phase2EncryptionAlgorithms =
-        Output.createUnknown<List<String>?>();
+        registerOutput<List<String>?>('tunnel2Phase2EncryptionAlgorithms');
     this.tunnel2Phase2IntegrityAlgorithms =
-        Output.createUnknown<List<String>?>();
-    this.tunnel2Phase2LifetimeSeconds = Output.createUnknown<int?>();
-    this.tunnel2PresharedKey = Output.createUnknown<String>();
-    this.tunnel2RekeyFuzzPercentage = Output.createUnknown<int?>();
-    this.tunnel2RekeyMarginTimeSeconds = Output.createUnknown<int?>();
-    this.tunnel2ReplayWindowSize = Output.createUnknown<int?>();
-    this.tunnel2StartupAction = Output.createUnknown<String?>();
-    this.tunnel2VgwInsideAddress = Output.createUnknown<String>();
-    this.tunnelBandwidth = Output.createUnknown<String>();
-    this.tunnelInsideIpVersion = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<List<String>?>('tunnel2Phase2IntegrityAlgorithms');
+    this.tunnel2Phase2LifetimeSeconds =
+        registerOutput<int?>('tunnel2Phase2LifetimeSeconds');
+    this.tunnel2PresharedKey = registerOutput<String>('tunnel2PresharedKey');
+    this.tunnel2RekeyFuzzPercentage =
+        registerOutput<int?>('tunnel2RekeyFuzzPercentage');
+    this.tunnel2RekeyMarginTimeSeconds =
+        registerOutput<int?>('tunnel2RekeyMarginTimeSeconds');
+    this.tunnel2ReplayWindowSize =
+        registerOutput<int?>('tunnel2ReplayWindowSize');
+    this.tunnel2StartupAction = registerOutput<String?>('tunnel2StartupAction');
+    this.tunnel2VgwInsideAddress =
+        registerOutput<String>('tunnel2VgwInsideAddress');
+    this.tunnelBandwidth = registerOutput<String>('tunnelBandwidth');
+    this.tunnelInsideIpVersion =
+        registerOutput<String>('tunnelInsideIpVersion');
+    this.type = registerOutput<String>('type');
     this.vgwTelemetries =
-        Output.createUnknown<List<VpnConnectionVgwTelemetry>>();
-    this.vpnConcentratorId = Output.createUnknown<String?>();
-    this.vpnGatewayId = Output.createUnknown<String?>();
+        registerOutput<List<VpnConnectionVgwTelemetry>>('vgwTelemetries');
+    this.vpnConcentratorId = registerOutput<String?>('vpnConcentratorId');
+    this.vpnGatewayId = registerOutput<String?>('vpnGatewayId');
   }
 }

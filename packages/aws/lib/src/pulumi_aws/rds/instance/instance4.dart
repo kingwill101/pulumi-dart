@@ -1962,93 +1962,110 @@ class Instance4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.address = Output.createUnknown<String>();
-    this.allocatedStorage = Output.createUnknown<int>();
-    this.allowMajorVersionUpgrade = Output.createUnknown<bool?>();
-    this.applyImmediately = Output.createUnknown<bool?>();
-    this.arn = Output.createUnknown<String>();
-    this.autoMinorVersionUpgrade = Output.createUnknown<bool?>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.backupRetentionPeriod = Output.createUnknown<int>();
-    this.backupTarget = Output.createUnknown<String>();
-    this.backupWindow = Output.createUnknown<String>();
-    this.blueGreenUpdate = Output.createUnknown<InstanceBlueGreenUpdate?>();
-    this.caCertIdentifier = Output.createUnknown<String>();
-    this.characterSetName = Output.createUnknown<String>();
-    this.copyTagsToSnapshot = Output.createUnknown<bool?>();
-    this.customIamInstanceProfile = Output.createUnknown<String?>();
-    this.customerOwnedIpEnabled = Output.createUnknown<bool?>();
-    this.databaseInsightsMode = Output.createUnknown<String>();
-    this.dbName = Output.createUnknown<String>();
-    this.dbSubnetGroupName = Output.createUnknown<String>();
-    this.dedicatedLogVolume = Output.createUnknown<bool?>();
-    this.deleteAutomatedBackups = Output.createUnknown<bool?>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.domain = Output.createUnknown<String?>();
-    this.domainAuthSecretArn = Output.createUnknown<String?>();
-    this.domainDnsIps = Output.createUnknown<List<String>?>();
-    this.domainFqdn = Output.createUnknown<String>();
-    this.domainIamRoleName = Output.createUnknown<String?>();
-    this.domainOu = Output.createUnknown<String?>();
-    this.enabledCloudwatchLogsExports = Output.createUnknown<List<String>?>();
-    this.endpoint = Output.createUnknown<String>();
-    this.engine = Output.createUnknown<String>();
-    this.engineLifecycleSupport = Output.createUnknown<String>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.engineVersionActual = Output.createUnknown<String>();
-    this.finalSnapshotIdentifier = Output.createUnknown<String?>();
-    this.hostedZoneId = Output.createUnknown<String>();
-    this.iamDatabaseAuthenticationEnabled = Output.createUnknown<bool?>();
-    this.identifier = Output.createUnknown<String>();
-    this.identifierPrefix = Output.createUnknown<String>();
-    this.instanceClass = Output.createUnknown<String>();
-    this.iops = Output.createUnknown<int>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.latestRestorableTime = Output.createUnknown<String>();
-    this.licenseModel = Output.createUnknown<String>();
+    this.address = registerOutput<String>('address');
+    this.allocatedStorage = registerOutput<int>('allocatedStorage');
+    this.allowMajorVersionUpgrade =
+        registerOutput<bool?>('allowMajorVersionUpgrade');
+    this.applyImmediately = registerOutput<bool?>('applyImmediately');
+    this.arn = registerOutput<String>('arn');
+    this.autoMinorVersionUpgrade =
+        registerOutput<bool?>('autoMinorVersionUpgrade');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
+    this.backupTarget = registerOutput<String>('backupTarget');
+    this.backupWindow = registerOutput<String>('backupWindow');
+    this.blueGreenUpdate =
+        registerOutput<InstanceBlueGreenUpdate?>('blueGreenUpdate');
+    this.caCertIdentifier = registerOutput<String>('caCertIdentifier');
+    this.characterSetName = registerOutput<String>('characterSetName');
+    this.copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
+    this.customIamInstanceProfile =
+        registerOutput<String?>('customIamInstanceProfile');
+    this.customerOwnedIpEnabled =
+        registerOutput<bool?>('customerOwnedIpEnabled');
+    this.databaseInsightsMode = registerOutput<String>('databaseInsightsMode');
+    this.dbName = registerOutput<String>('dbName');
+    this.dbSubnetGroupName = registerOutput<String>('dbSubnetGroupName');
+    this.dedicatedLogVolume = registerOutput<bool?>('dedicatedLogVolume');
+    this.deleteAutomatedBackups =
+        registerOutput<bool?>('deleteAutomatedBackups');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.domain = registerOutput<String?>('domain');
+    this.domainAuthSecretArn = registerOutput<String?>('domainAuthSecretArn');
+    this.domainDnsIps = registerOutput<List<String>?>('domainDnsIps');
+    this.domainFqdn = registerOutput<String>('domainFqdn');
+    this.domainIamRoleName = registerOutput<String?>('domainIamRoleName');
+    this.domainOu = registerOutput<String?>('domainOu');
+    this.enabledCloudwatchLogsExports =
+        registerOutput<List<String>?>('enabledCloudwatchLogsExports');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.engine = registerOutput<String>('engine');
+    this.engineLifecycleSupport =
+        registerOutput<String>('engineLifecycleSupport');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.engineVersionActual = registerOutput<String>('engineVersionActual');
+    this.finalSnapshotIdentifier =
+        registerOutput<String?>('finalSnapshotIdentifier');
+    this.hostedZoneId = registerOutput<String>('hostedZoneId');
+    this.iamDatabaseAuthenticationEnabled =
+        registerOutput<bool?>('iamDatabaseAuthenticationEnabled');
+    this.identifier = registerOutput<String>('identifier');
+    this.identifierPrefix = registerOutput<String>('identifierPrefix');
+    this.instanceClass = registerOutput<String>('instanceClass');
+    this.iops = registerOutput<int>('iops');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.latestRestorableTime = registerOutput<String>('latestRestorableTime');
+    this.licenseModel = registerOutput<String>('licenseModel');
     this.listenerEndpoints =
-        Output.createUnknown<List<InstanceListenerEndpoint>>();
-    this.maintenanceWindow = Output.createUnknown<String>();
-    this.manageMasterUserPassword = Output.createUnknown<bool?>();
-    this.masterUserSecretKmsKeyId = Output.createUnknown<String>();
+        registerOutput<List<InstanceListenerEndpoint>>('listenerEndpoints');
+    this.maintenanceWindow = registerOutput<String>('maintenanceWindow');
+    this.manageMasterUserPassword =
+        registerOutput<bool?>('manageMasterUserPassword');
+    this.masterUserSecretKmsKeyId =
+        registerOutput<String>('masterUserSecretKmsKeyId');
     this.masterUserSecrets =
-        Output.createUnknown<List<InstanceMasterUserSecret>>();
-    this.maxAllocatedStorage = Output.createUnknown<int?>();
-    this.monitoringInterval = Output.createUnknown<int?>();
-    this.monitoringRoleArn = Output.createUnknown<String>();
-    this.multiAz = Output.createUnknown<bool>();
-    this.ncharCharacterSetName = Output.createUnknown<String>();
-    this.networkType = Output.createUnknown<String>();
-    this.optionGroupName = Output.createUnknown<String>();
-    this.parameterGroupName = Output.createUnknown<String>();
-    this.password = Output.createUnknown<String?>();
-    this.passwordWo = Output.createUnknown<String?>();
-    this.passwordWoVersion = Output.createUnknown<int?>();
-    this.performanceInsightsEnabled = Output.createUnknown<bool?>();
-    this.performanceInsightsKmsKeyId = Output.createUnknown<String>();
-    this.performanceInsightsRetentionPeriod = Output.createUnknown<int>();
-    this.port = Output.createUnknown<int>();
-    this.publiclyAccessible = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.replicaMode = Output.createUnknown<String>();
-    this.replicas = Output.createUnknown<List<String>>();
-    this.replicateSourceDb = Output.createUnknown<String?>();
-    this.resourceId = Output.createUnknown<String>();
+        registerOutput<List<InstanceMasterUserSecret>>('masterUserSecrets');
+    this.maxAllocatedStorage = registerOutput<int?>('maxAllocatedStorage');
+    this.monitoringInterval = registerOutput<int?>('monitoringInterval');
+    this.monitoringRoleArn = registerOutput<String>('monitoringRoleArn');
+    this.multiAz = registerOutput<bool>('multiAz');
+    this.ncharCharacterSetName =
+        registerOutput<String>('ncharCharacterSetName');
+    this.networkType = registerOutput<String>('networkType');
+    this.optionGroupName = registerOutput<String>('optionGroupName');
+    this.parameterGroupName = registerOutput<String>('parameterGroupName');
+    this.password = registerOutput<String?>('password');
+    this.passwordWo = registerOutput<String?>('passwordWo');
+    this.passwordWoVersion = registerOutput<int?>('passwordWoVersion');
+    this.performanceInsightsEnabled =
+        registerOutput<bool?>('performanceInsightsEnabled');
+    this.performanceInsightsKmsKeyId =
+        registerOutput<String>('performanceInsightsKmsKeyId');
+    this.performanceInsightsRetentionPeriod =
+        registerOutput<int>('performanceInsightsRetentionPeriod');
+    this.port = registerOutput<int>('port');
+    this.publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
+    this.region = registerOutput<String>('region');
+    this.replicaMode = registerOutput<String>('replicaMode');
+    this.replicas = registerOutput<List<String>>('replicas');
+    this.replicateSourceDb = registerOutput<String?>('replicateSourceDb');
+    this.resourceId = registerOutput<String>('resourceId');
     this.restoreToPointInTime =
-        Output.createUnknown<InstanceRestoreToPointInTime?>();
-    this.s3Import = Output.createUnknown<InstanceS3Import?>();
-    this.skipFinalSnapshot = Output.createUnknown<bool?>();
-    this.snapshotIdentifier = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.storageEncrypted = Output.createUnknown<bool?>();
-    this.storageThroughput = Output.createUnknown<int>();
-    this.storageType = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timezone = Output.createUnknown<String>();
-    this.upgradeRolloutOrder = Output.createUnknown<String>();
-    this.upgradeStorageConfig = Output.createUnknown<bool?>();
-    this.username = Output.createUnknown<String>();
-    this.vpcSecurityGroupIds = Output.createUnknown<List<String>>();
+        registerOutput<InstanceRestoreToPointInTime?>('restoreToPointInTime');
+    this.s3Import = registerOutput<InstanceS3Import?>('s3Import');
+    this.skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
+    this.snapshotIdentifier = registerOutput<String>('snapshotIdentifier');
+    this.status = registerOutput<String>('status');
+    this.storageEncrypted = registerOutput<bool?>('storageEncrypted');
+    this.storageThroughput = registerOutput<int>('storageThroughput');
+    this.storageType = registerOutput<String>('storageType');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timezone = registerOutput<String>('timezone');
+    this.upgradeRolloutOrder = registerOutput<String>('upgradeRolloutOrder');
+    this.upgradeStorageConfig = registerOutput<bool?>('upgradeStorageConfig');
+    this.username = registerOutput<String>('username');
+    this.vpcSecurityGroupIds =
+        registerOutput<List<String>>('vpcSecurityGroupIds');
   }
 }

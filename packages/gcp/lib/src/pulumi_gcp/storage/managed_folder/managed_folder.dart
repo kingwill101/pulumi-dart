@@ -216,12 +216,12 @@ class ManagedFolder extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.metageneration = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.createTime = registerOutput<String>('createTime');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.metageneration = registerOutput<String>('metageneration');
+    this.name = registerOutput<String>('name');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -243,12 +243,14 @@ class GenericService extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.basicService = Output.createUnknown<GenericServiceBasicService?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.serviceId = Output.createUnknown<String>();
-    this.telemetries = Output.createUnknown<List<GenericServiceTelemetry>>();
-    this.userLabels = Output.createUnknown<Map<String, String>?>();
+    this.basicService =
+        registerOutput<GenericServiceBasicService?>('basicService');
+    this.displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.serviceId = registerOutput<String>('serviceId');
+    this.telemetries =
+        registerOutput<List<GenericServiceTelemetry>>('telemetries');
+    this.userLabels = registerOutput<Map<String, String>?>('userLabels');
   }
 }

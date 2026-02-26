@@ -28,11 +28,11 @@ class Subscription5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.ackDeadlineSeconds = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pushConfig = Output.createUnknown<PushConfigResponse3>();
-    this.subscriptionId = Output.createUnknown<String>();
-    this.topic = Output.createUnknown<String>();
+    this.ackDeadlineSeconds = registerOutput<int>('ackDeadlineSeconds');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pushConfig = registerOutput<PushConfigResponse3>('pushConfig');
+    this.subscriptionId = registerOutput<String>('subscriptionId');
+    this.topic = registerOutput<String>('topic');
   }
 }

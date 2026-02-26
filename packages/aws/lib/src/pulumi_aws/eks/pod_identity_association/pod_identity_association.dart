@@ -346,17 +346,17 @@ class PodIdentityAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.associationArn = Output.createUnknown<String>();
-    this.associationId = Output.createUnknown<String>();
-    this.clusterName = Output.createUnknown<String>();
-    this.disableSessionTags = Output.createUnknown<bool>();
-    this.externalId = Output.createUnknown<String>();
-    this.namespace = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetRoleArn = Output.createUnknown<String?>();
+    this.associationArn = registerOutput<String>('associationArn');
+    this.associationId = registerOutput<String>('associationId');
+    this.clusterName = registerOutput<String>('clusterName');
+    this.disableSessionTags = registerOutput<bool>('disableSessionTags');
+    this.externalId = registerOutput<String>('externalId');
+    this.namespace = registerOutput<String>('namespace');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetRoleArn = registerOutput<String?>('targetRoleArn');
   }
 }

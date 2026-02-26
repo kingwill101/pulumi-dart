@@ -47,18 +47,18 @@ class LoggingServer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.hostname = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.loggingServerId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
-    this.privateCloudId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.protocol = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.sourceType = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.hostname = registerOutput<String>('hostname');
+    this.location = registerOutput<String>('location');
+    this.loggingServerId = registerOutput<String>('loggingServerId');
+    this.name = registerOutput<String>('name');
+    this.port = registerOutput<int>('port');
+    this.privateCloudId = registerOutput<String>('privateCloudId');
+    this.project = registerOutput<String>('project');
+    this.protocol = registerOutput<String>('protocol');
+    this.requestId = registerOutput<String?>('requestId');
+    this.sourceType = registerOutput<String>('sourceType');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

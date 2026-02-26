@@ -55,22 +55,24 @@ class TimeSeries2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.experimentId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1TensorboardTimeSeriesMetadataResponse>();
-    this.name = Output.createUnknown<String>();
-    this.pluginData = Output.createUnknown<String>();
-    this.pluginName = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.runId = Output.createUnknown<String>();
-    this.tensorboardId = Output.createUnknown<String>();
-    this.tensorboardTimeSeriesId = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
-    this.valueType = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.experimentId = registerOutput<String>('experimentId');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<
+            GoogleCloudAiplatformV1beta1TensorboardTimeSeriesMetadataResponse>(
+        'metadata');
+    this.name = registerOutput<String>('name');
+    this.pluginData = registerOutput<String>('pluginData');
+    this.pluginName = registerOutput<String>('pluginName');
+    this.project = registerOutput<String>('project');
+    this.runId = registerOutput<String>('runId');
+    this.tensorboardId = registerOutput<String>('tensorboardId');
+    this.tensorboardTimeSeriesId =
+        registerOutput<String?>('tensorboardTimeSeriesId');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.valueType = registerOutput<String>('valueType');
   }
 }

@@ -366,16 +366,16 @@ class ServerCertificate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.certificateBody = Output.createUnknown<String>();
-    this.certificateChain = Output.createUnknown<String?>();
-    this.expiration = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.path = Output.createUnknown<String?>();
-    this.privateKey = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.uploadDate = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.certificateBody = registerOutput<String>('certificateBody');
+    this.certificateChain = registerOutput<String?>('certificateChain');
+    this.expiration = registerOutput<String>('expiration');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.path = registerOutput<String?>('path');
+    this.privateKey = registerOutput<String>('privateKey');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.uploadDate = registerOutput<String>('uploadDate');
   }
 }

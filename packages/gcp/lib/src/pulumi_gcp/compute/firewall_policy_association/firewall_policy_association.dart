@@ -234,9 +234,9 @@ class FirewallPolicyAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attachmentTarget = Output.createUnknown<String>();
-    this.firewallPolicy = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.shortName = Output.createUnknown<String>();
+    this.attachmentTarget = registerOutput<String>('attachmentTarget');
+    this.firewallPolicy = registerOutput<String>('firewallPolicy');
+    this.name = registerOutput<String>('name');
+    this.shortName = registerOutput<String>('shortName');
   }
 }

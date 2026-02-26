@@ -237,16 +237,18 @@ class IngestionDestination extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appBundleArn = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
+    this.appBundleArn = registerOutput<String>('appBundleArn');
+    this.arn = registerOutput<String>('arn');
     this.destinationConfiguration =
-        Output.createUnknown<IngestionDestinationDestinationConfiguration>();
-    this.ingestionArn = Output.createUnknown<String>();
+        registerOutput<IngestionDestinationDestinationConfiguration>(
+            'destinationConfiguration');
+    this.ingestionArn = registerOutput<String>('ingestionArn');
     this.processingConfiguration =
-        Output.createUnknown<IngestionDestinationProcessingConfiguration>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<IngestionDestinationTimeouts?>();
+        registerOutput<IngestionDestinationProcessingConfiguration>(
+            'processingConfiguration');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<IngestionDestinationTimeouts?>('timeouts');
   }
 }

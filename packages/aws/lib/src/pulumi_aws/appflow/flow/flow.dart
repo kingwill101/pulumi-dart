@@ -832,20 +832,22 @@ class Flow extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
     this.destinationFlowConfigs =
-        Output.createUnknown<List<FlowDestinationFlowConfig>>();
-    this.flowStatus = Output.createUnknown<String>();
-    this.kmsArn = Output.createUnknown<String>();
+        registerOutput<List<FlowDestinationFlowConfig>>(
+            'destinationFlowConfigs');
+    this.flowStatus = registerOutput<String>('flowStatus');
+    this.kmsArn = registerOutput<String>('kmsArn');
     this.metadataCatalogConfig =
-        Output.createUnknown<FlowMetadataCatalogConfig>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.sourceFlowConfig = Output.createUnknown<FlowSourceFlowConfig>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tasks = Output.createUnknown<List<FlowTask>>();
-    this.triggerConfig = Output.createUnknown<FlowTriggerConfig>();
+        registerOutput<FlowMetadataCatalogConfig>('metadataCatalogConfig');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.sourceFlowConfig =
+        registerOutput<FlowSourceFlowConfig>('sourceFlowConfig');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tasks = registerOutput<List<FlowTask>>('tasks');
+    this.triggerConfig = registerOutput<FlowTriggerConfig>('triggerConfig');
   }
 }

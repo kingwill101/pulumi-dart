@@ -4213,52 +4213,63 @@ class RegionBackendService extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.affinityCookieTtlSec = Output.createUnknown<int?>();
-    this.backends = Output.createUnknown<List<RegionBackendServiceBackend>?>();
-    this.cdnPolicy = Output.createUnknown<RegionBackendServiceCdnPolicy>();
+    this.affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
+    this.backends =
+        registerOutput<List<RegionBackendServiceBackend>?>('backends');
+    this.cdnPolicy = registerOutput<RegionBackendServiceCdnPolicy>('cdnPolicy');
     this.circuitBreakers =
-        Output.createUnknown<RegionBackendServiceCircuitBreakers?>();
-    this.connectionDrainingTimeoutSec = Output.createUnknown<int?>();
+        registerOutput<RegionBackendServiceCircuitBreakers?>('circuitBreakers');
+    this.connectionDrainingTimeoutSec =
+        registerOutput<int?>('connectionDrainingTimeoutSec');
     this.connectionTrackingPolicy =
-        Output.createUnknown<RegionBackendServiceConnectionTrackingPolicy?>();
+        registerOutput<RegionBackendServiceConnectionTrackingPolicy?>(
+            'connectionTrackingPolicy');
     this.consistentHash =
-        Output.createUnknown<RegionBackendServiceConsistentHash?>();
-    this.creationTimestamp = Output.createUnknown<String>();
+        registerOutput<RegionBackendServiceConsistentHash?>('consistentHash');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.customMetrics =
-        Output.createUnknown<List<RegionBackendServiceCustomMetric>?>();
-    this.description = Output.createUnknown<String?>();
+        registerOutput<List<RegionBackendServiceCustomMetric>?>(
+            'customMetrics');
+    this.description = registerOutput<String?>('description');
     this.dynamicForwarding =
-        Output.createUnknown<RegionBackendServiceDynamicForwarding?>();
-    this.enableCdn = Output.createUnknown<bool?>();
+        registerOutput<RegionBackendServiceDynamicForwarding?>(
+            'dynamicForwarding');
+    this.enableCdn = registerOutput<bool?>('enableCdn');
     this.failoverPolicy =
-        Output.createUnknown<RegionBackendServiceFailoverPolicy?>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.generatedId = Output.createUnknown<int>();
-    this.haPolicy = Output.createUnknown<RegionBackendServiceHaPolicy?>();
-    this.healthChecks = Output.createUnknown<String?>();
-    this.iap = Output.createUnknown<RegionBackendServiceIap>();
-    this.ipAddressSelectionPolicy = Output.createUnknown<String?>();
-    this.loadBalancingScheme = Output.createUnknown<String?>();
-    this.localityLbPolicy = Output.createUnknown<String?>();
-    this.logConfig = Output.createUnknown<RegionBackendServiceLogConfig>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String?>();
-    this.networkPassThroughLbTrafficPolicy = Output.createUnknown<
-        RegionBackendServiceNetworkPassThroughLbTrafficPolicy?>();
+        registerOutput<RegionBackendServiceFailoverPolicy?>('failoverPolicy');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.generatedId = registerOutput<int>('generatedId');
+    this.haPolicy = registerOutput<RegionBackendServiceHaPolicy?>('haPolicy');
+    this.healthChecks = registerOutput<String?>('healthChecks');
+    this.iap = registerOutput<RegionBackendServiceIap>('iap');
+    this.ipAddressSelectionPolicy =
+        registerOutput<String?>('ipAddressSelectionPolicy');
+    this.loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
+    this.localityLbPolicy = registerOutput<String?>('localityLbPolicy');
+    this.logConfig = registerOutput<RegionBackendServiceLogConfig>('logConfig');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String?>('network');
+    this.networkPassThroughLbTrafficPolicy =
+        registerOutput<RegionBackendServiceNetworkPassThroughLbTrafficPolicy?>(
+            'networkPassThroughLbTrafficPolicy');
     this.outlierDetection =
-        Output.createUnknown<RegionBackendServiceOutlierDetection?>();
-    this.params = Output.createUnknown<RegionBackendServiceParams?>();
-    this.portName = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.protocol = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityPolicy = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.sessionAffinity = Output.createUnknown<String>();
-    this.strongSessionAffinityCookie = Output.createUnknown<
-        RegionBackendServiceStrongSessionAffinityCookie?>();
-    this.subsetting = Output.createUnknown<RegionBackendServiceSubsetting?>();
-    this.timeoutSec = Output.createUnknown<int>();
-    this.tlsSettings = Output.createUnknown<RegionBackendServiceTlsSettings?>();
+        registerOutput<RegionBackendServiceOutlierDetection?>(
+            'outlierDetection');
+    this.params = registerOutput<RegionBackendServiceParams?>('params');
+    this.portName = registerOutput<String>('portName');
+    this.project = registerOutput<String>('project');
+    this.protocol = registerOutput<String>('protocol');
+    this.region = registerOutput<String>('region');
+    this.securityPolicy = registerOutput<String?>('securityPolicy');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.sessionAffinity = registerOutput<String>('sessionAffinity');
+    this.strongSessionAffinityCookie =
+        registerOutput<RegionBackendServiceStrongSessionAffinityCookie?>(
+            'strongSessionAffinityCookie');
+    this.subsetting =
+        registerOutput<RegionBackendServiceSubsetting?>('subsetting');
+    this.timeoutSec = registerOutput<int>('timeoutSec');
+    this.tlsSettings =
+        registerOutput<RegionBackendServiceTlsSettings?>('tlsSettings');
   }
 }

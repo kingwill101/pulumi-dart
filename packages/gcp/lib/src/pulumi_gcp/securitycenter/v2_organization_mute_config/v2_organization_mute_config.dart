@@ -205,15 +205,15 @@ class V2OrganizationMuteConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.filter = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String?>();
-    this.mostRecentEditor = Output.createUnknown<String>();
-    this.muteConfigId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organization = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.filter = registerOutput<String>('filter');
+    this.location = registerOutput<String?>('location');
+    this.mostRecentEditor = registerOutput<String>('mostRecentEditor');
+    this.muteConfigId = registerOutput<String>('muteConfigId');
+    this.name = registerOutput<String>('name');
+    this.organization = registerOutput<String>('organization');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

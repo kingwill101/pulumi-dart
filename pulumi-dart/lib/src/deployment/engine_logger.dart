@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:pulumi/src/deployment/deployment.dart';
 
 import '../resource/resource.dart';

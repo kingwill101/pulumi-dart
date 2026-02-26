@@ -299,10 +299,10 @@ class UserWorkloadsSecret extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.data = Output.createUnknown<Map<String, String>?>();
-    this.environment = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.data = registerOutput<Map<String, String>?>('data');
+    this.environment = registerOutput<String>('environment');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
   }
 }

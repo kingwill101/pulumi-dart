@@ -89,25 +89,27 @@ class RestApi extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiKeySource = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.binaryMediaTypes = Output.createUnknown<List<String>>();
-    this.body = Output.createUnknown<String?>();
-    this.createdDate = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.disableExecuteApiEndpoint = Output.createUnknown<bool>();
+    this.apiKeySource = registerOutput<String>('apiKeySource');
+    this.arn = registerOutput<String>('arn');
+    this.binaryMediaTypes = registerOutput<List<String>>('binaryMediaTypes');
+    this.body = registerOutput<String?>('body');
+    this.createdDate = registerOutput<String>('createdDate');
+    this.description = registerOutput<String>('description');
+    this.disableExecuteApiEndpoint =
+        registerOutput<bool>('disableExecuteApiEndpoint');
     this.endpointConfiguration =
-        Output.createUnknown<RestApiEndpointConfiguration>();
-    this.executionArn = Output.createUnknown<String>();
-    this.failOnWarnings = Output.createUnknown<bool?>();
-    this.minimumCompressionSize = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parameters = Output.createUnknown<Map<String, String>?>();
-    this.policy = Output.createUnknown<String>();
-    this.putRestApiMode = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.rootResourceId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<RestApiEndpointConfiguration>('endpointConfiguration');
+    this.executionArn = registerOutput<String>('executionArn');
+    this.failOnWarnings = registerOutput<bool?>('failOnWarnings');
+    this.minimumCompressionSize =
+        registerOutput<String>('minimumCompressionSize');
+    this.name = registerOutput<String>('name');
+    this.parameters = registerOutput<Map<String, String>?>('parameters');
+    this.policy = registerOutput<String>('policy');
+    this.putRestApiMode = registerOutput<String?>('putRestApiMode');
+    this.region = registerOutput<String>('region');
+    this.rootResourceId = registerOutput<String>('rootResourceId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

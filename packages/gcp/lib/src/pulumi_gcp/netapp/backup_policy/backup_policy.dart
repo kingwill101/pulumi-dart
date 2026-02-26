@@ -240,19 +240,20 @@ class BackupPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.assignedVolumeCount = Output.createUnknown<int>();
-    this.createTime = Output.createUnknown<String>();
-    this.dailyBackupLimit = Output.createUnknown<int>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.monthlyBackupLimit = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.state = Output.createUnknown<String>();
-    this.weeklyBackupLimit = Output.createUnknown<int>();
+    this.assignedVolumeCount = registerOutput<int>('assignedVolumeCount');
+    this.createTime = registerOutput<String>('createTime');
+    this.dailyBackupLimit = registerOutput<int>('dailyBackupLimit');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.monthlyBackupLimit = registerOutput<int>('monthlyBackupLimit');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.state = registerOutput<String>('state');
+    this.weeklyBackupLimit = registerOutput<int>('weeklyBackupLimit');
   }
 }

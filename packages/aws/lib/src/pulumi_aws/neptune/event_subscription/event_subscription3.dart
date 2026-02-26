@@ -400,17 +400,17 @@ class EventSubscription3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.customerAwsId = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.eventCategories = Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.snsTopicArn = Output.createUnknown<String>();
-    this.sourceIds = Output.createUnknown<List<String>?>();
-    this.sourceType = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.customerAwsId = registerOutput<String>('customerAwsId');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.eventCategories = registerOutput<List<String>?>('eventCategories');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.region = registerOutput<String>('region');
+    this.snsTopicArn = registerOutput<String>('snsTopicArn');
+    this.sourceIds = registerOutput<List<String>?>('sourceIds');
+    this.sourceType = registerOutput<String?>('sourceType');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

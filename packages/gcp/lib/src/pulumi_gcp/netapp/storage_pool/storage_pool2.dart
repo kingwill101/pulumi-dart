@@ -480,34 +480,38 @@ class StoragePool2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activeDirectory = Output.createUnknown<String?>();
-    this.allowAutoTiering = Output.createUnknown<bool?>();
-    this.availableThroughputMibps = Output.createUnknown<double>();
-    this.capacityGib = Output.createUnknown<String>();
-    this.coldTierSizeUsedGib = Output.createUnknown<String>();
-    this.customPerformanceEnabled = Output.createUnknown<bool>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enableHotTierAutoResize = Output.createUnknown<bool?>();
-    this.encryptionType = Output.createUnknown<String>();
-    this.hotTierSizeGib = Output.createUnknown<String?>();
-    this.hotTierSizeUsedGib = Output.createUnknown<String>();
-    this.kmsConfig = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.ldapEnabled = Output.createUnknown<bool?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.qosType = Output.createUnknown<String>();
-    this.replicaZone = Output.createUnknown<String?>();
-    this.serviceLevel = Output.createUnknown<String>();
-    this.totalIops = Output.createUnknown<String>();
-    this.totalThroughputMibps = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.volumeCapacityGib = Output.createUnknown<String>();
-    this.volumeCount = Output.createUnknown<int>();
-    this.zone = Output.createUnknown<String>();
+    this.activeDirectory = registerOutput<String?>('activeDirectory');
+    this.allowAutoTiering = registerOutput<bool?>('allowAutoTiering');
+    this.availableThroughputMibps =
+        registerOutput<double>('availableThroughputMibps');
+    this.capacityGib = registerOutput<String>('capacityGib');
+    this.coldTierSizeUsedGib = registerOutput<String>('coldTierSizeUsedGib');
+    this.customPerformanceEnabled =
+        registerOutput<bool>('customPerformanceEnabled');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableHotTierAutoResize =
+        registerOutput<bool?>('enableHotTierAutoResize');
+    this.encryptionType = registerOutput<String>('encryptionType');
+    this.hotTierSizeGib = registerOutput<String?>('hotTierSizeGib');
+    this.hotTierSizeUsedGib = registerOutput<String>('hotTierSizeUsedGib');
+    this.kmsConfig = registerOutput<String?>('kmsConfig');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.ldapEnabled = registerOutput<bool?>('ldapEnabled');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.qosType = registerOutput<String>('qosType');
+    this.replicaZone = registerOutput<String?>('replicaZone');
+    this.serviceLevel = registerOutput<String>('serviceLevel');
+    this.totalIops = registerOutput<String>('totalIops');
+    this.totalThroughputMibps = registerOutput<String>('totalThroughputMibps');
+    this.type = registerOutput<String>('type');
+    this.volumeCapacityGib = registerOutput<String>('volumeCapacityGib');
+    this.volumeCount = registerOutput<int>('volumeCount');
+    this.zone = registerOutput<String>('zone');
   }
 }

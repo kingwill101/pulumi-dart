@@ -466,12 +466,13 @@ class VpcIpamPoolCidr extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cidr = Output.createUnknown<String>();
+    this.cidr = registerOutput<String>('cidr');
     this.cidrAuthorizationContext =
-        Output.createUnknown<VpcIpamPoolCidrCidrAuthorizationContext?>();
-    this.ipamPoolCidrId = Output.createUnknown<String>();
-    this.ipamPoolId = Output.createUnknown<String>();
-    this.netmaskLength = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<VpcIpamPoolCidrCidrAuthorizationContext?>(
+            'cidrAuthorizationContext');
+    this.ipamPoolCidrId = registerOutput<String>('ipamPoolCidrId');
+    this.ipamPoolId = registerOutput<String>('ipamPoolId');
+    this.netmaskLength = registerOutput<int>('netmaskLength');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -401,11 +401,11 @@ class SslNegotiationPolicy extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.attributes =
-        Output.createUnknown<List<SslNegotiationPolicyAttribute>?>();
-    this.lbPort = Output.createUnknown<int>();
-    this.loadBalancer = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.triggers = Output.createUnknown<Map<String, String>?>();
+        registerOutput<List<SslNegotiationPolicyAttribute>?>('attributes');
+    this.lbPort = registerOutput<int>('lbPort');
+    this.loadBalancer = registerOutput<String>('loadBalancer');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.triggers = registerOutput<Map<String, String>?>('triggers');
   }
 }

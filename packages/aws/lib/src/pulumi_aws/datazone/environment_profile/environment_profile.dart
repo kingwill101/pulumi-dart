@@ -759,18 +759,20 @@ class EnvironmentProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.awsAccountId = Output.createUnknown<String>();
-    this.awsAccountRegion = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.createdBy = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.domainIdentifier = Output.createUnknown<String>();
-    this.environmentBlueprintIdentifier = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.projectIdentifier = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.updatedAt = Output.createUnknown<String>();
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.awsAccountRegion = registerOutput<String>('awsAccountRegion');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.createdBy = registerOutput<String>('createdBy');
+    this.description = registerOutput<String>('description');
+    this.domainIdentifier = registerOutput<String>('domainIdentifier');
+    this.environmentBlueprintIdentifier =
+        registerOutput<String>('environmentBlueprintIdentifier');
+    this.name = registerOutput<String>('name');
+    this.projectIdentifier = registerOutput<String>('projectIdentifier');
+    this.region = registerOutput<String>('region');
+    this.updatedAt = registerOutput<String>('updatedAt');
     this.userParameters =
-        Output.createUnknown<List<EnvironmentProfileUserParameter>?>();
+        registerOutput<List<EnvironmentProfileUserParameter>?>(
+            'userParameters');
   }
 }

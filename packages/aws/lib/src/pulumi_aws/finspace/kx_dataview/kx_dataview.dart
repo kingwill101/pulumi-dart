@@ -243,23 +243,25 @@ class KxDataview extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.autoUpdate = Output.createUnknown<bool>();
-    this.availabilityZoneId = Output.createUnknown<String?>();
-    this.azMode = Output.createUnknown<String>();
-    this.changesetId = Output.createUnknown<String?>();
-    this.createdTimestamp = Output.createUnknown<String>();
-    this.databaseName = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.environmentId = Output.createUnknown<String>();
-    this.lastModifiedTimestamp = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.readWrite = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.autoUpdate = registerOutput<bool>('autoUpdate');
+    this.availabilityZoneId = registerOutput<String?>('availabilityZoneId');
+    this.azMode = registerOutput<String>('azMode');
+    this.changesetId = registerOutput<String?>('changesetId');
+    this.createdTimestamp = registerOutput<String>('createdTimestamp');
+    this.databaseName = registerOutput<String>('databaseName');
+    this.description = registerOutput<String?>('description');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.lastModifiedTimestamp =
+        registerOutput<String>('lastModifiedTimestamp');
+    this.name = registerOutput<String>('name');
+    this.readWrite = registerOutput<bool?>('readWrite');
+    this.region = registerOutput<String>('region');
     this.segmentConfigurations =
-        Output.createUnknown<List<KxDataviewSegmentConfiguration>?>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<KxDataviewSegmentConfiguration>?>(
+            'segmentConfigurations');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

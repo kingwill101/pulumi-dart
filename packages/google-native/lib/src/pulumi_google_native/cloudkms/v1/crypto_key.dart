@@ -59,22 +59,24 @@ class CryptoKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.cryptoKeyBackend = Output.createUnknown<String>();
-    this.cryptoKeyId = Output.createUnknown<String>();
-    this.destroyScheduledDuration = Output.createUnknown<String>();
-    this.importOnly = Output.createUnknown<bool>();
-    this.keyRingId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.nextRotationTime = Output.createUnknown<String>();
-    this.primary = Output.createUnknown<CryptoKeyVersionResponse>();
-    this.project = Output.createUnknown<String>();
-    this.purpose = Output.createUnknown<String>();
-    this.rotationPeriod = Output.createUnknown<String>();
-    this.skipInitialVersionCreation = Output.createUnknown<bool?>();
+    this.createTime = registerOutput<String>('createTime');
+    this.cryptoKeyBackend = registerOutput<String>('cryptoKeyBackend');
+    this.cryptoKeyId = registerOutput<String>('cryptoKeyId');
+    this.destroyScheduledDuration =
+        registerOutput<String>('destroyScheduledDuration');
+    this.importOnly = registerOutput<bool>('importOnly');
+    this.keyRingId = registerOutput<String>('keyRingId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.nextRotationTime = registerOutput<String>('nextRotationTime');
+    this.primary = registerOutput<CryptoKeyVersionResponse>('primary');
+    this.project = registerOutput<String>('project');
+    this.purpose = registerOutput<String>('purpose');
+    this.rotationPeriod = registerOutput<String>('rotationPeriod');
+    this.skipInitialVersionCreation =
+        registerOutput<bool?>('skipInitialVersionCreation');
     this.versionTemplate =
-        Output.createUnknown<CryptoKeyVersionTemplateResponse>();
+        registerOutput<CryptoKeyVersionTemplateResponse>('versionTemplate');
   }
 }

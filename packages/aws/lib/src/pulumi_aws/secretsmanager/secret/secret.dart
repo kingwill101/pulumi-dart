@@ -154,17 +154,18 @@ class Secret extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.forceOverwriteReplicaSecret = Output.createUnknown<bool?>();
-    this.kmsKeyId = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
-    this.recoveryWindowInDays = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
-    this.replicas = Output.createUnknown<List<SecretReplica>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.forceOverwriteReplicaSecret =
+        registerOutput<bool?>('forceOverwriteReplicaSecret');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.policy = registerOutput<String>('policy');
+    this.recoveryWindowInDays = registerOutput<int?>('recoveryWindowInDays');
+    this.region = registerOutput<String>('region');
+    this.replicas = registerOutput<List<SecretReplica>>('replicas');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

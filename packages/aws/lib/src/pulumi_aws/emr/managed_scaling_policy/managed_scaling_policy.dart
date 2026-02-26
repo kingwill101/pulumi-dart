@@ -245,11 +245,12 @@ class ManagedScalingPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusterId = Output.createUnknown<String>();
+    this.clusterId = registerOutput<String>('clusterId');
     this.computeLimits =
-        Output.createUnknown<List<ManagedScalingPolicyComputeLimit>>();
-    this.region = Output.createUnknown<String>();
-    this.scalingStrategy = Output.createUnknown<String?>();
-    this.utilizationPerformanceIndex = Output.createUnknown<int?>();
+        registerOutput<List<ManagedScalingPolicyComputeLimit>>('computeLimits');
+    this.region = registerOutput<String>('region');
+    this.scalingStrategy = registerOutput<String?>('scalingStrategy');
+    this.utilizationPerformanceIndex =
+        registerOutput<int?>('utilizationPerformanceIndex');
   }
 }

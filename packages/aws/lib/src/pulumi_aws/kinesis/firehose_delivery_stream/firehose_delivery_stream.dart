@@ -4732,37 +4732,49 @@ class FirehoseDeliveryStream extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.destination = Output.createUnknown<String>();
-    this.destinationId = Output.createUnknown<String>();
-    this.elasticsearchConfiguration = Output.createUnknown<
-        FirehoseDeliveryStreamElasticsearchConfiguration?>();
+    this.arn = registerOutput<String>('arn');
+    this.destination = registerOutput<String>('destination');
+    this.destinationId = registerOutput<String>('destinationId');
+    this.elasticsearchConfiguration =
+        registerOutput<FirehoseDeliveryStreamElasticsearchConfiguration?>(
+            'elasticsearchConfiguration');
     this.extendedS3Configuration =
-        Output.createUnknown<FirehoseDeliveryStreamExtendedS3Configuration?>();
-    this.httpEndpointConfiguration = Output.createUnknown<
-        FirehoseDeliveryStreamHttpEndpointConfiguration?>();
+        registerOutput<FirehoseDeliveryStreamExtendedS3Configuration?>(
+            'extendedS3Configuration');
+    this.httpEndpointConfiguration =
+        registerOutput<FirehoseDeliveryStreamHttpEndpointConfiguration?>(
+            'httpEndpointConfiguration');
     this.icebergConfiguration =
-        Output.createUnknown<FirehoseDeliveryStreamIcebergConfiguration?>();
-    this.kinesisSourceConfiguration = Output.createUnknown<
-        FirehoseDeliveryStreamKinesisSourceConfiguration?>();
+        registerOutput<FirehoseDeliveryStreamIcebergConfiguration?>(
+            'icebergConfiguration');
+    this.kinesisSourceConfiguration =
+        registerOutput<FirehoseDeliveryStreamKinesisSourceConfiguration?>(
+            'kinesisSourceConfiguration');
     this.mskSourceConfiguration =
-        Output.createUnknown<FirehoseDeliveryStreamMskSourceConfiguration?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<FirehoseDeliveryStreamMskSourceConfiguration?>(
+            'mskSourceConfiguration');
+    this.name = registerOutput<String>('name');
     this.opensearchConfiguration =
-        Output.createUnknown<FirehoseDeliveryStreamOpensearchConfiguration?>();
-    this.opensearchserverlessConfiguration = Output.createUnknown<
-        FirehoseDeliveryStreamOpensearchserverlessConfiguration?>();
+        registerOutput<FirehoseDeliveryStreamOpensearchConfiguration?>(
+            'opensearchConfiguration');
+    this.opensearchserverlessConfiguration = registerOutput<
+            FirehoseDeliveryStreamOpensearchserverlessConfiguration?>(
+        'opensearchserverlessConfiguration');
     this.redshiftConfiguration =
-        Output.createUnknown<FirehoseDeliveryStreamRedshiftConfiguration?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<FirehoseDeliveryStreamRedshiftConfiguration?>(
+            'redshiftConfiguration');
+    this.region = registerOutput<String>('region');
     this.serverSideEncryption =
-        Output.createUnknown<FirehoseDeliveryStreamServerSideEncryption?>();
+        registerOutput<FirehoseDeliveryStreamServerSideEncryption?>(
+            'serverSideEncryption');
     this.snowflakeConfiguration =
-        Output.createUnknown<FirehoseDeliveryStreamSnowflakeConfiguration?>();
+        registerOutput<FirehoseDeliveryStreamSnowflakeConfiguration?>(
+            'snowflakeConfiguration');
     this.splunkConfiguration =
-        Output.createUnknown<FirehoseDeliveryStreamSplunkConfiguration?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.versionId = Output.createUnknown<String>();
+        registerOutput<FirehoseDeliveryStreamSplunkConfiguration?>(
+            'splunkConfiguration');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.versionId = registerOutput<String>('versionId');
   }
 }

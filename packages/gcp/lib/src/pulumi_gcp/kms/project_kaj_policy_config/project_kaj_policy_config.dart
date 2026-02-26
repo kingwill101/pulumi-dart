@@ -351,8 +351,9 @@ class ProjectKajPolicyConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.defaultKeyAccessJustificationPolicy = Output.createUnknown<
-        ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy?>();
-    this.project = Output.createUnknown<String>();
+    this.defaultKeyAccessJustificationPolicy = registerOutput<
+            ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy?>(
+        'defaultKeyAccessJustificationPolicy');
+    this.project = registerOutput<String>('project');
   }
 }

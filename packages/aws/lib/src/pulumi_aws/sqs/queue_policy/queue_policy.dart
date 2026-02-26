@@ -574,8 +574,8 @@ class QueuePolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.policy = Output.createUnknown<String>();
-    this.queueUrl = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.policy = registerOutput<String>('policy');
+    this.queueUrl = registerOutput<String>('queueUrl');
+    this.region = registerOutput<String>('region');
   }
 }

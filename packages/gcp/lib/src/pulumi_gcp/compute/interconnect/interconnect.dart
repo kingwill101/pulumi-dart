@@ -370,42 +370,47 @@ class Interconnect extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aaiEnabled = Output.createUnknown<bool?>();
-    this.adminEnabled = Output.createUnknown<bool?>();
+    this.aaiEnabled = registerOutput<bool?>('aaiEnabled');
+    this.adminEnabled = registerOutput<bool?>('adminEnabled');
     this.applicationAwareInterconnect =
-        Output.createUnknown<InterconnectApplicationAwareInterconnect?>();
-    this.availableFeatures = Output.createUnknown<List<String>>();
-    this.circuitInfos = Output.createUnknown<List<InterconnectCircuitInfo>>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.customerName = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<InterconnectApplicationAwareInterconnect?>(
+            'applicationAwareInterconnect');
+    this.availableFeatures = registerOutput<List<String>>('availableFeatures');
+    this.circuitInfos =
+        registerOutput<List<InterconnectCircuitInfo>>('circuitInfos');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.customerName = registerOutput<String?>('customerName');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.expectedOutages =
-        Output.createUnknown<List<InterconnectExpectedOutage>>();
-    this.googleIpAddress = Output.createUnknown<String>();
-    this.googleReferenceId = Output.createUnknown<String>();
-    this.interconnectAttachments = Output.createUnknown<List<String>>();
-    this.interconnectGroups = Output.createUnknown<List<String>>();
-    this.interconnectType = Output.createUnknown<String>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.linkType = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.macsec = Output.createUnknown<InterconnectMacsec?>();
-    this.macsecEnabled = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.nocContactEmail = Output.createUnknown<String?>();
-    this.operationalStatus = Output.createUnknown<String>();
-    this.params = Output.createUnknown<InterconnectParams?>();
-    this.peerIpAddress = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.provisionedLinkCount = Output.createUnknown<int>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.remoteLocation = Output.createUnknown<String?>();
-    this.requestedFeatures = Output.createUnknown<List<String>?>();
-    this.requestedLinkCount = Output.createUnknown<int>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.wireGroups = Output.createUnknown<List<String>>();
+        registerOutput<List<InterconnectExpectedOutage>>('expectedOutages');
+    this.googleIpAddress = registerOutput<String>('googleIpAddress');
+    this.googleReferenceId = registerOutput<String>('googleReferenceId');
+    this.interconnectAttachments =
+        registerOutput<List<String>>('interconnectAttachments');
+    this.interconnectGroups =
+        registerOutput<List<String>>('interconnectGroups');
+    this.interconnectType = registerOutput<String>('interconnectType');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.linkType = registerOutput<String>('linkType');
+    this.location = registerOutput<String>('location');
+    this.macsec = registerOutput<InterconnectMacsec?>('macsec');
+    this.macsecEnabled = registerOutput<bool?>('macsecEnabled');
+    this.name = registerOutput<String>('name');
+    this.nocContactEmail = registerOutput<String?>('nocContactEmail');
+    this.operationalStatus = registerOutput<String>('operationalStatus');
+    this.params = registerOutput<InterconnectParams?>('params');
+    this.peerIpAddress = registerOutput<String>('peerIpAddress');
+    this.project = registerOutput<String>('project');
+    this.provisionedLinkCount = registerOutput<int>('provisionedLinkCount');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.remoteLocation = registerOutput<String?>('remoteLocation');
+    this.requestedFeatures = registerOutput<List<String>?>('requestedFeatures');
+    this.requestedLinkCount = registerOutput<int>('requestedLinkCount');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.state = registerOutput<String>('state');
+    this.wireGroups = registerOutput<List<String>>('wireGroups');
   }
 }

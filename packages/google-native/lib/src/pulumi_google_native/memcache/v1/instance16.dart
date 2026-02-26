@@ -82,30 +82,31 @@ class Instance16 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authorizedNetwork = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.discoveryEndpoint = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
+    this.authorizedNetwork = registerOutput<String>('authorizedNetwork');
+    this.createTime = registerOutput<String>('createTime');
+    this.discoveryEndpoint = registerOutput<String>('discoveryEndpoint');
+    this.displayName = registerOutput<String>('displayName');
+    this.instanceId = registerOutput<String>('instanceId');
     this.instanceMessages =
-        Output.createUnknown<List<InstanceMessageResponse>>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
+        registerOutput<List<InstanceMessageResponse>>('instanceMessages');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
     this.maintenancePolicy =
-        Output.createUnknown<GoogleCloudMemcacheV1MaintenancePolicyResponse>();
+        registerOutput<GoogleCloudMemcacheV1MaintenancePolicyResponse>(
+            'maintenancePolicy');
     this.maintenanceSchedule =
-        Output.createUnknown<MaintenanceScheduleResponse2>();
-    this.memcacheFullVersion = Output.createUnknown<String>();
-    this.memcacheNodes = Output.createUnknown<List<NodeResponse4>>();
-    this.memcacheVersion = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.nodeConfig = Output.createUnknown<NodeConfigResponse6>();
-    this.nodeCount = Output.createUnknown<int>();
-    this.parameters = Output.createUnknown<MemcacheParametersResponse>();
-    this.project = Output.createUnknown<String>();
-    this.reservedIpRangeId = Output.createUnknown<List<String>>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.zones = Output.createUnknown<List<String>>();
+        registerOutput<MaintenanceScheduleResponse2>('maintenanceSchedule');
+    this.memcacheFullVersion = registerOutput<String>('memcacheFullVersion');
+    this.memcacheNodes = registerOutput<List<NodeResponse4>>('memcacheNodes');
+    this.memcacheVersion = registerOutput<String>('memcacheVersion');
+    this.name = registerOutput<String>('name');
+    this.nodeConfig = registerOutput<NodeConfigResponse6>('nodeConfig');
+    this.nodeCount = registerOutput<int>('nodeCount');
+    this.parameters = registerOutput<MemcacheParametersResponse>('parameters');
+    this.project = registerOutput<String>('project');
+    this.reservedIpRangeId = registerOutput<List<String>>('reservedIpRangeId');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.zones = registerOutput<List<String>>('zones');
   }
 }

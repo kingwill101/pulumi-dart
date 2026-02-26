@@ -2103,17 +2103,18 @@ class Toolset extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.app = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.etag = Output.createUnknown<String>();
-    this.executionType = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.openApiToolset = Output.createUnknown<ToolsetOpenApiToolset?>();
-    this.project = Output.createUnknown<String>();
-    this.toolsetId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.app = registerOutput<String>('app');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.executionType = registerOutput<String?>('executionType');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.openApiToolset =
+        registerOutput<ToolsetOpenApiToolset?>('openApiToolset');
+    this.project = registerOutput<String>('project');
+    this.toolsetId = registerOutput<String>('toolsetId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

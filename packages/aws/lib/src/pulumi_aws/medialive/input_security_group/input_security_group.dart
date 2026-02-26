@@ -166,12 +166,12 @@ class InputSecurityGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.inputs = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.inputs = registerOutput<List<String>>('inputs');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.whitelistRules =
-        Output.createUnknown<List<InputSecurityGroupWhitelistRule>>();
+        registerOutput<List<InputSecurityGroupWhitelistRule>>('whitelistRules');
   }
 }

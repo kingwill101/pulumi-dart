@@ -245,9 +245,9 @@ class BucketLifecycleConfiguration2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.region = registerOutput<String>('region');
     this.rules =
-        Output.createUnknown<List<BucketLifecycleConfigurationRule2>>();
+        registerOutput<List<BucketLifecycleConfigurationRule2>>('rules');
   }
 }

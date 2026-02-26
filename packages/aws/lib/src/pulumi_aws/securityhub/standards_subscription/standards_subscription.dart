@@ -223,7 +223,7 @@ class StandardsSubscription extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.standardsArn = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.standardsArn = registerOutput<String>('standardsArn');
   }
 }

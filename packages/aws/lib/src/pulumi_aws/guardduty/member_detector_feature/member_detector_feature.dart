@@ -374,12 +374,13 @@ class MemberDetectorFeature extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.additionalConfigurations = Output.createUnknown<
-        List<MemberDetectorFeatureAdditionalConfiguration>?>();
-    this.detectorId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.additionalConfigurations =
+        registerOutput<List<MemberDetectorFeatureAdditionalConfiguration>?>(
+            'additionalConfigurations');
+    this.detectorId = registerOutput<String>('detectorId');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
   }
 }

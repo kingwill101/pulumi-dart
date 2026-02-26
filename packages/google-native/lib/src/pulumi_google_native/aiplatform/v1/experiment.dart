@@ -44,17 +44,18 @@ class Experiment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.source = Output.createUnknown<String>();
-    this.tensorboardExperimentId = Output.createUnknown<String>();
-    this.tensorboardId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.source = registerOutput<String>('source');
+    this.tensorboardExperimentId =
+        registerOutput<String>('tensorboardExperimentId');
+    this.tensorboardId = registerOutput<String>('tensorboardId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

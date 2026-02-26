@@ -569,32 +569,35 @@ class Certificate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.certificateAuthorityArn = Output.createUnknown<String?>();
-    this.certificateBody = Output.createUnknown<String?>();
-    this.certificateChain = Output.createUnknown<String?>();
-    this.domainName = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.certificateAuthorityArn =
+        registerOutput<String?>('certificateAuthorityArn');
+    this.certificateBody = registerOutput<String?>('certificateBody');
+    this.certificateChain = registerOutput<String?>('certificateChain');
+    this.domainName = registerOutput<String>('domainName');
     this.domainValidationOptions =
-        Output.createUnknown<List<CertificateDomainValidationOption>>();
-    this.earlyRenewalDuration = Output.createUnknown<String?>();
-    this.keyAlgorithm = Output.createUnknown<String>();
-    this.notAfter = Output.createUnknown<String>();
-    this.notBefore = Output.createUnknown<String>();
-    this.options = Output.createUnknown<CertificateOptions>();
-    this.pendingRenewal = Output.createUnknown<bool>();
-    this.privateKey = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.renewalEligibility = Output.createUnknown<String>();
+        registerOutput<List<CertificateDomainValidationOption>>(
+            'domainValidationOptions');
+    this.earlyRenewalDuration = registerOutput<String?>('earlyRenewalDuration');
+    this.keyAlgorithm = registerOutput<String>('keyAlgorithm');
+    this.notAfter = registerOutput<String>('notAfter');
+    this.notBefore = registerOutput<String>('notBefore');
+    this.options = registerOutput<CertificateOptions>('options');
+    this.pendingRenewal = registerOutput<bool>('pendingRenewal');
+    this.privateKey = registerOutput<String?>('privateKey');
+    this.region = registerOutput<String>('region');
+    this.renewalEligibility = registerOutput<String>('renewalEligibility');
     this.renewalSummaries =
-        Output.createUnknown<List<CertificateRenewalSummary>>();
-    this.status = Output.createUnknown<String>();
-    this.subjectAlternativeNames = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
-    this.validationEmails = Output.createUnknown<List<String>>();
-    this.validationMethod = Output.createUnknown<String>();
+        registerOutput<List<CertificateRenewalSummary>>('renewalSummaries');
+    this.status = registerOutput<String>('status');
+    this.subjectAlternativeNames =
+        registerOutput<List<String>>('subjectAlternativeNames');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
+    this.validationEmails = registerOutput<List<String>>('validationEmails');
+    this.validationMethod = registerOutput<String>('validationMethod');
     this.validationOptions =
-        Output.createUnknown<List<CertificateValidationOption>?>();
+        registerOutput<List<CertificateValidationOption>?>('validationOptions');
   }
 }

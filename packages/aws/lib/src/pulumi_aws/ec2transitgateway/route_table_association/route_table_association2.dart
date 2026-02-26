@@ -625,11 +625,14 @@ class RouteTableAssociation2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.replaceExistingAssociation = Output.createUnknown<bool?>();
-    this.resourceId = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String>();
-    this.transitGatewayAttachmentId = Output.createUnknown<String>();
-    this.transitGatewayRouteTableId = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.replaceExistingAssociation =
+        registerOutput<bool?>('replaceExistingAssociation');
+    this.resourceId = registerOutput<String>('resourceId');
+    this.resourceType = registerOutput<String>('resourceType');
+    this.transitGatewayAttachmentId =
+        registerOutput<String>('transitGatewayAttachmentId');
+    this.transitGatewayRouteTableId =
+        registerOutput<String>('transitGatewayRouteTableId');
   }
 }

@@ -1788,10 +1788,10 @@ class IAMBinding4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<IAMBindingCondition4?>();
-    this.etag = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.role = Output.createUnknown<String>();
-    this.serviceAccountId = Output.createUnknown<String>();
+    this.condition = registerOutput<IAMBindingCondition4?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.members = registerOutput<List<String>>('members');
+    this.role = registerOutput<String>('role');
+    this.serviceAccountId = registerOutput<String>('serviceAccountId');
   }
 }

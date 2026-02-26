@@ -462,8 +462,8 @@ class TagBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.tagValue = Output.createUnknown<String>();
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.tagValue = registerOutput<String>('tagValue');
   }
 }

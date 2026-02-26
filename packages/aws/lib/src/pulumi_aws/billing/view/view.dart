@@ -181,22 +181,23 @@ class View extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.billingViewType = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.billingViewType = registerOutput<String>('billingViewType');
+    this.createdAt = registerOutput<String>('createdAt');
     this.dataFilterExpression =
-        Output.createUnknown<ViewDataFilterExpression?>();
-    this.derivedViewCount = Output.createUnknown<int>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.ownerAccountId = Output.createUnknown<String>();
-    this.sourceAccountId = Output.createUnknown<String>();
-    this.sourceViewCount = Output.createUnknown<int>();
-    this.sourceViews = Output.createUnknown<List<String>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ViewTimeouts?>();
-    this.updatedAt = Output.createUnknown<String>();
-    this.viewDefinitionLastUpdatedAt = Output.createUnknown<String>();
+        registerOutput<ViewDataFilterExpression?>('dataFilterExpression');
+    this.derivedViewCount = registerOutput<int>('derivedViewCount');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.ownerAccountId = registerOutput<String>('ownerAccountId');
+    this.sourceAccountId = registerOutput<String>('sourceAccountId');
+    this.sourceViewCount = registerOutput<int>('sourceViewCount');
+    this.sourceViews = registerOutput<List<String>?>('sourceViews');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ViewTimeouts?>('timeouts');
+    this.updatedAt = registerOutput<String>('updatedAt');
+    this.viewDefinitionLastUpdatedAt =
+        registerOutput<String>('viewDefinitionLastUpdatedAt');
   }
 }

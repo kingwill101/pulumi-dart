@@ -35,14 +35,15 @@ class DefaultSupportedIdpConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appleSignInConfig = Output.createUnknown<
-        GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse>();
-    this.clientId = Output.createUnknown<String>();
-    this.clientSecret = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool>();
-    this.idpId = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.tenantId = Output.createUnknown<String>();
+    this.appleSignInConfig = registerOutput<
+            GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse>(
+        'appleSignInConfig');
+    this.clientId = registerOutput<String>('clientId');
+    this.clientSecret = registerOutput<String>('clientSecret');
+    this.enabled = registerOutput<bool>('enabled');
+    this.idpId = registerOutput<String?>('idpId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.tenantId = registerOutput<String>('tenantId');
   }
 }

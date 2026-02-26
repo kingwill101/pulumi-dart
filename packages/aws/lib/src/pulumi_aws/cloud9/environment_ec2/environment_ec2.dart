@@ -505,18 +505,19 @@ class EnvironmentEC2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.automaticStopTimeMinutes = Output.createUnknown<int?>();
-    this.connectionType = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.imageId = Output.createUnknown<String>();
-    this.instanceType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.ownerArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.subnetId = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.automaticStopTimeMinutes =
+        registerOutput<int?>('automaticStopTimeMinutes');
+    this.connectionType = registerOutput<String?>('connectionType');
+    this.description = registerOutput<String?>('description');
+    this.imageId = registerOutput<String>('imageId');
+    this.instanceType = registerOutput<String>('instanceType');
+    this.name = registerOutput<String>('name');
+    this.ownerArn = registerOutput<String>('ownerArn');
+    this.region = registerOutput<String>('region');
+    this.subnetId = registerOutput<String?>('subnetId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
   }
 }

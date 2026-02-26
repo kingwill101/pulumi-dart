@@ -1654,51 +1654,65 @@ class EventSourceMapping extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.amazonManagedKafkaEventSourceConfig = Output.createUnknown<
-        EventSourceMappingAmazonManagedKafkaEventSourceConfig>();
-    this.arn = Output.createUnknown<String>();
-    this.batchSize = Output.createUnknown<int?>();
-    this.bisectBatchOnFunctionError = Output.createUnknown<bool?>();
+    this.amazonManagedKafkaEventSourceConfig =
+        registerOutput<EventSourceMappingAmazonManagedKafkaEventSourceConfig>(
+            'amazonManagedKafkaEventSourceConfig');
+    this.arn = registerOutput<String>('arn');
+    this.batchSize = registerOutput<int?>('batchSize');
+    this.bisectBatchOnFunctionError =
+        registerOutput<bool?>('bisectBatchOnFunctionError');
     this.destinationConfig =
-        Output.createUnknown<EventSourceMappingDestinationConfig?>();
+        registerOutput<EventSourceMappingDestinationConfig?>(
+            'destinationConfig');
     this.documentDbEventSourceConfig =
-        Output.createUnknown<EventSourceMappingDocumentDbEventSourceConfig?>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.eventSourceArn = Output.createUnknown<String?>();
+        registerOutput<EventSourceMappingDocumentDbEventSourceConfig?>(
+            'documentDbEventSourceConfig');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.eventSourceArn = registerOutput<String?>('eventSourceArn');
     this.filterCriteria =
-        Output.createUnknown<EventSourceMappingFilterCriteria?>();
-    this.functionArn = Output.createUnknown<String>();
-    this.functionName = Output.createUnknown<String>();
-    this.functionResponseTypes = Output.createUnknown<List<String>?>();
-    this.kmsKeyArn = Output.createUnknown<String?>();
-    this.lastModified = Output.createUnknown<String>();
-    this.lastProcessingResult = Output.createUnknown<String>();
-    this.maximumBatchingWindowInSeconds = Output.createUnknown<int?>();
-    this.maximumRecordAgeInSeconds = Output.createUnknown<int>();
-    this.maximumRetryAttempts = Output.createUnknown<int>();
+        registerOutput<EventSourceMappingFilterCriteria?>('filterCriteria');
+    this.functionArn = registerOutput<String>('functionArn');
+    this.functionName = registerOutput<String>('functionName');
+    this.functionResponseTypes =
+        registerOutput<List<String>?>('functionResponseTypes');
+    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.lastModified = registerOutput<String>('lastModified');
+    this.lastProcessingResult = registerOutput<String>('lastProcessingResult');
+    this.maximumBatchingWindowInSeconds =
+        registerOutput<int?>('maximumBatchingWindowInSeconds');
+    this.maximumRecordAgeInSeconds =
+        registerOutput<int>('maximumRecordAgeInSeconds');
+    this.maximumRetryAttempts = registerOutput<int>('maximumRetryAttempts');
     this.metricsConfig =
-        Output.createUnknown<EventSourceMappingMetricsConfig?>();
-    this.parallelizationFactor = Output.createUnknown<int>();
+        registerOutput<EventSourceMappingMetricsConfig?>('metricsConfig');
+    this.parallelizationFactor = registerOutput<int>('parallelizationFactor');
     this.provisionedPollerConfig =
-        Output.createUnknown<EventSourceMappingProvisionedPollerConfig?>();
-    this.queues = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<EventSourceMappingProvisionedPollerConfig?>(
+            'provisionedPollerConfig');
+    this.queues = registerOutput<String?>('queues');
+    this.region = registerOutput<String>('region');
     this.scalingConfig =
-        Output.createUnknown<EventSourceMappingScalingConfig?>();
+        registerOutput<EventSourceMappingScalingConfig?>('scalingConfig');
     this.selfManagedEventSource =
-        Output.createUnknown<EventSourceMappingSelfManagedEventSource?>();
-    this.selfManagedKafkaEventSourceConfig = Output.createUnknown<
-        EventSourceMappingSelfManagedKafkaEventSourceConfig>();
-    this.sourceAccessConfigurations = Output.createUnknown<
-        List<EventSourceMappingSourceAccessConfiguration>?>();
-    this.startingPosition = Output.createUnknown<String?>();
-    this.startingPositionTimestamp = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.stateTransitionReason = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.topics = Output.createUnknown<List<String>?>();
-    this.tumblingWindowInSeconds = Output.createUnknown<int?>();
-    this.uuid = Output.createUnknown<String>();
+        registerOutput<EventSourceMappingSelfManagedEventSource?>(
+            'selfManagedEventSource');
+    this.selfManagedKafkaEventSourceConfig =
+        registerOutput<EventSourceMappingSelfManagedKafkaEventSourceConfig>(
+            'selfManagedKafkaEventSourceConfig');
+    this.sourceAccessConfigurations =
+        registerOutput<List<EventSourceMappingSourceAccessConfiguration>?>(
+            'sourceAccessConfigurations');
+    this.startingPosition = registerOutput<String?>('startingPosition');
+    this.startingPositionTimestamp =
+        registerOutput<String?>('startingPositionTimestamp');
+    this.state = registerOutput<String>('state');
+    this.stateTransitionReason =
+        registerOutput<String>('stateTransitionReason');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.topics = registerOutput<List<String>?>('topics');
+    this.tumblingWindowInSeconds =
+        registerOutput<int?>('tumblingWindowInSeconds');
+    this.uuid = registerOutput<String>('uuid');
   }
 }

@@ -163,12 +163,14 @@ class IpRestriction extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.awsAccountId = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool>();
-    this.ipRestrictionRuleMap = Output.createUnknown<Map<String, String>?>();
-    this.region = Output.createUnknown<String>();
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.enabled = registerOutput<bool>('enabled');
+    this.ipRestrictionRuleMap =
+        registerOutput<Map<String, String>?>('ipRestrictionRuleMap');
+    this.region = registerOutput<String>('region');
     this.vpcEndpointIdRestrictionRuleMap =
-        Output.createUnknown<Map<String, String>?>();
-    this.vpcIdRestrictionRuleMap = Output.createUnknown<Map<String, String>?>();
+        registerOutput<Map<String, String>?>('vpcEndpointIdRestrictionRuleMap');
+    this.vpcIdRestrictionRuleMap =
+        registerOutput<Map<String, String>?>('vpcIdRestrictionRuleMap');
   }
 }

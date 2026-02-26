@@ -49,18 +49,19 @@ class FirewallEndpointAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.firewallEndpoint = Output.createUnknown<String>();
-    this.firewallEndpointAssociationId = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.requestId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.tlsInspectionPolicy = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.firewallEndpoint = registerOutput<String>('firewallEndpoint');
+    this.firewallEndpointAssociationId =
+        registerOutput<String?>('firewallEndpointAssociationId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.requestId = registerOutput<String?>('requestId');
+    this.state = registerOutput<String>('state');
+    this.tlsInspectionPolicy = registerOutput<String>('tlsInspectionPolicy');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

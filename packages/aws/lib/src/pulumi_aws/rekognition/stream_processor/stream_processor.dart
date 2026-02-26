@@ -1418,23 +1418,26 @@ class StreamProcessor extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.dataSharingPreference =
-        Output.createUnknown<StreamProcessorDataSharingPreference?>();
-    this.input = Output.createUnknown<StreamProcessorInput>();
-    this.kmsKeyId = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<StreamProcessorDataSharingPreference?>(
+            'dataSharingPreference');
+    this.input = registerOutput<StreamProcessorInput>('input');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.name = registerOutput<String>('name');
     this.notificationChannel =
-        Output.createUnknown<StreamProcessorNotificationChannel?>();
-    this.output = Output.createUnknown<StreamProcessorOutput>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<StreamProcessorNotificationChannel?>(
+            'notificationChannel');
+    this.output = registerOutput<StreamProcessorOutput>('output');
+    this.region = registerOutput<String>('region');
     this.regionsOfInterests =
-        Output.createUnknown<List<StreamProcessorRegionsOfInterest>?>();
-    this.roleArn = Output.createUnknown<String>();
-    this.settings = Output.createUnknown<StreamProcessorSettings>();
-    this.streamProcessorArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<StreamProcessorTimeouts?>();
+        registerOutput<List<StreamProcessorRegionsOfInterest>?>(
+            'regionsOfInterests');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.settings = registerOutput<StreamProcessorSettings>('settings');
+    this.streamProcessorArn = registerOutput<String>('streamProcessorArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<StreamProcessorTimeouts?>('timeouts');
   }
 }

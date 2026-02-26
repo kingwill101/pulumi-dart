@@ -1049,27 +1049,31 @@ class StateMachine extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.creationDate = Output.createUnknown<String>();
-    this.definition = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.creationDate = registerOutput<String>('creationDate');
+    this.definition = registerOutput<String>('definition');
+    this.description = registerOutput<String>('description');
     this.encryptionConfiguration =
-        Output.createUnknown<StateMachineEncryptionConfiguration>();
+        registerOutput<StateMachineEncryptionConfiguration>(
+            'encryptionConfiguration');
     this.loggingConfiguration =
-        Output.createUnknown<StateMachineLoggingConfiguration>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.publish = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.revisionId = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.stateMachineVersionArn = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<StateMachineLoggingConfiguration>(
+            'loggingConfiguration');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.publish = registerOutput<bool?>('publish');
+    this.region = registerOutput<String>('region');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.stateMachineVersionArn =
+        registerOutput<String>('stateMachineVersionArn');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.tracingConfiguration =
-        Output.createUnknown<StateMachineTracingConfiguration>();
-    this.type = Output.createUnknown<String?>();
-    this.versionDescription = Output.createUnknown<String>();
+        registerOutput<StateMachineTracingConfiguration>(
+            'tracingConfiguration');
+    this.type = registerOutput<String?>('type');
+    this.versionDescription = registerOutput<String>('versionDescription');
   }
 }

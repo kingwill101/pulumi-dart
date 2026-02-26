@@ -272,10 +272,12 @@ class IndexingConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.thingGroupIndexingConfiguration = Output.createUnknown<
-        IndexingConfigurationThingGroupIndexingConfiguration>();
+    this.region = registerOutput<String>('region');
+    this.thingGroupIndexingConfiguration =
+        registerOutput<IndexingConfigurationThingGroupIndexingConfiguration>(
+            'thingGroupIndexingConfiguration');
     this.thingIndexingConfiguration =
-        Output.createUnknown<IndexingConfigurationThingIndexingConfiguration>();
+        registerOutput<IndexingConfigurationThingIndexingConfiguration>(
+            'thingIndexingConfiguration');
   }
 }

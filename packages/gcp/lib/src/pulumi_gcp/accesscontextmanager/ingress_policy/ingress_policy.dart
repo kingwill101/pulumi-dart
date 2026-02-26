@@ -39,8 +39,8 @@ class IngressPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessPolicyId = Output.createUnknown<String>();
-    this.ingressPolicyName = Output.createUnknown<String>();
-    this.resource = Output.createUnknown<String>();
+    this.accessPolicyId = registerOutput<String>('accessPolicyId');
+    this.ingressPolicyName = registerOutput<String>('ingressPolicyName');
+    this.resource = registerOutput<String>('resource');
   }
 }

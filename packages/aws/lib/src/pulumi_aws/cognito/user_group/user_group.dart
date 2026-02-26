@@ -383,11 +383,11 @@ class UserGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.precedence = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String?>();
-    this.userPoolId = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.precedence = registerOutput<int?>('precedence');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String?>('roleArn');
+    this.userPoolId = registerOutput<String>('userPoolId');
   }
 }

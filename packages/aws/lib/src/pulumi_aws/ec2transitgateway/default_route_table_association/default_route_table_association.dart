@@ -124,11 +124,13 @@ class DefaultRouteTableAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.originalDefaultRouteTableId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.originalDefaultRouteTableId =
+        registerOutput<String>('originalDefaultRouteTableId');
+    this.region = registerOutput<String>('region');
     this.timeouts =
-        Output.createUnknown<DefaultRouteTableAssociationTimeouts?>();
-    this.transitGatewayId = Output.createUnknown<String>();
-    this.transitGatewayRouteTableId = Output.createUnknown<String>();
+        registerOutput<DefaultRouteTableAssociationTimeouts?>('timeouts');
+    this.transitGatewayId = registerOutput<String>('transitGatewayId');
+    this.transitGatewayRouteTableId =
+        registerOutput<String>('transitGatewayRouteTableId');
   }
 }

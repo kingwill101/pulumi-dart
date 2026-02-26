@@ -60,22 +60,23 @@ class OsPolicyAssignment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.baseline = Output.createUnknown<bool>();
-    this.deleted = Output.createUnknown<bool>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
+    this.baseline = registerOutput<bool>('baseline');
+    this.deleted = registerOutput<bool>('deleted');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
     this.instanceFilter =
-        Output.createUnknown<OSPolicyAssignmentInstanceFilterResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.osPolicies = Output.createUnknown<List<OSPolicyResponse>>();
-    this.osPolicyAssignmentId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.revisionCreateTime = Output.createUnknown<String>();
-    this.revisionId = Output.createUnknown<String>();
-    this.rollout = Output.createUnknown<OSPolicyAssignmentRolloutResponse>();
-    this.rolloutState = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
+        registerOutput<OSPolicyAssignmentInstanceFilterResponse>(
+            'instanceFilter');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.osPolicies = registerOutput<List<OSPolicyResponse>>('osPolicies');
+    this.osPolicyAssignmentId = registerOutput<String>('osPolicyAssignmentId');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.rollout = registerOutput<OSPolicyAssignmentRolloutResponse>('rollout');
+    this.rolloutState = registerOutput<String>('rolloutState');
+    this.uid = registerOutput<String>('uid');
   }
 }

@@ -264,19 +264,22 @@ class Curation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.curationId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.endpoint = Output.createUnknown<CurationEndpoint>();
-    this.lastExecutionErrorCode = Output.createUnknown<String>();
-    this.lastExecutionErrorMessage = Output.createUnknown<String>();
-    this.lastExecutionState = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.curationId = registerOutput<String>('curationId');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.endpoint = registerOutput<CurationEndpoint>('endpoint');
+    this.lastExecutionErrorCode =
+        registerOutput<String>('lastExecutionErrorCode');
+    this.lastExecutionErrorMessage =
+        registerOutput<String>('lastExecutionErrorMessage');
+    this.lastExecutionState = registerOutput<String>('lastExecutionState');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.pluginInstanceActions =
-        Output.createUnknown<List<CurationPluginInstanceAction>>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<CurationPluginInstanceAction>>(
+            'pluginInstanceActions');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

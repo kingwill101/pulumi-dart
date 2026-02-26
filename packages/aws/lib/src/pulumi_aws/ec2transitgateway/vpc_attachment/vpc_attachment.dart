@@ -171,21 +171,22 @@ class VpcAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applianceModeSupport = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.dnsSupport = Output.createUnknown<String?>();
-    this.ipv6Support = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupReferencingSupport = Output.createUnknown<String>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.applianceModeSupport = registerOutput<String?>('applianceModeSupport');
+    this.arn = registerOutput<String>('arn');
+    this.dnsSupport = registerOutput<String?>('dnsSupport');
+    this.ipv6Support = registerOutput<String?>('ipv6Support');
+    this.region = registerOutput<String>('region');
+    this.securityGroupReferencingSupport =
+        registerOutput<String>('securityGroupReferencingSupport');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.transitGatewayDefaultRouteTableAssociation =
-        Output.createUnknown<bool>();
+        registerOutput<bool>('transitGatewayDefaultRouteTableAssociation');
     this.transitGatewayDefaultRouteTablePropagation =
-        Output.createUnknown<bool>();
-    this.transitGatewayId = Output.createUnknown<String>();
-    this.vpcId = Output.createUnknown<String>();
-    this.vpcOwnerId = Output.createUnknown<String>();
+        registerOutput<bool>('transitGatewayDefaultRouteTablePropagation');
+    this.transitGatewayId = registerOutput<String>('transitGatewayId');
+    this.vpcId = registerOutput<String>('vpcId');
+    this.vpcOwnerId = registerOutput<String>('vpcOwnerId');
   }
 }

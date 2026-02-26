@@ -66,23 +66,25 @@ class UptimeCheckConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.checkerType = Output.createUnknown<String>();
-    this.contentMatchers = Output.createUnknown<List<ContentMatcherResponse>>();
-    this.displayName = Output.createUnknown<String>();
-    this.httpCheck = Output.createUnknown<HttpCheckResponse>();
+    this.checkerType = registerOutput<String>('checkerType');
+    this.contentMatchers =
+        registerOutput<List<ContentMatcherResponse>>('contentMatchers');
+    this.displayName = registerOutput<String>('displayName');
+    this.httpCheck = registerOutput<HttpCheckResponse>('httpCheck');
     this.internalCheckers =
-        Output.createUnknown<List<InternalCheckerResponse>>();
-    this.isInternal = Output.createUnknown<bool>();
-    this.monitoredResource = Output.createUnknown<MonitoredResourceResponse2>();
-    this.name = Output.createUnknown<String>();
-    this.period = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.resourceGroup = Output.createUnknown<ResourceGroupResponse>();
-    this.selectedRegions = Output.createUnknown<List<String>>();
+        registerOutput<List<InternalCheckerResponse>>('internalCheckers');
+    this.isInternal = registerOutput<bool>('isInternal');
+    this.monitoredResource =
+        registerOutput<MonitoredResourceResponse2>('monitoredResource');
+    this.name = registerOutput<String>('name');
+    this.period = registerOutput<String>('period');
+    this.project = registerOutput<String>('project');
+    this.resourceGroup = registerOutput<ResourceGroupResponse>('resourceGroup');
+    this.selectedRegions = registerOutput<List<String>>('selectedRegions');
     this.syntheticMonitor =
-        Output.createUnknown<SyntheticMonitorTargetResponse>();
-    this.tcpCheck = Output.createUnknown<TcpCheckResponse>();
-    this.timeout = Output.createUnknown<String>();
-    this.userLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<SyntheticMonitorTargetResponse>('syntheticMonitor');
+    this.tcpCheck = registerOutput<TcpCheckResponse>('tcpCheck');
+    this.timeout = registerOutput<String>('timeout');
+    this.userLabels = registerOutput<Map<String, String>>('userLabels');
   }
 }

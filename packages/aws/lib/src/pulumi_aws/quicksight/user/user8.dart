@@ -390,16 +390,16 @@ class User8 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.awsAccountId = Output.createUnknown<String>();
-    this.email = Output.createUnknown<String>();
-    this.iamArn = Output.createUnknown<String?>();
-    this.identityType = Output.createUnknown<String>();
-    this.namespace = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.sessionName = Output.createUnknown<String?>();
-    this.userInvitationUrl = Output.createUnknown<String>();
-    this.userName = Output.createUnknown<String>();
-    this.userRole = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.email = registerOutput<String>('email');
+    this.iamArn = registerOutput<String?>('iamArn');
+    this.identityType = registerOutput<String>('identityType');
+    this.namespace = registerOutput<String?>('namespace');
+    this.region = registerOutput<String>('region');
+    this.sessionName = registerOutput<String?>('sessionName');
+    this.userInvitationUrl = registerOutput<String>('userInvitationUrl');
+    this.userName = registerOutput<String>('userName');
+    this.userRole = registerOutput<String>('userRole');
   }
 }

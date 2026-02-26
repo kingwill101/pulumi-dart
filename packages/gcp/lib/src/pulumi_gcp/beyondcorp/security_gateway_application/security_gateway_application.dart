@@ -1171,17 +1171,18 @@ class SecurityGatewayApplication extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String?>();
-    this.endpointMatchers = Output.createUnknown<
-        List<SecurityGatewayApplicationEndpointMatcher>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.schema = Output.createUnknown<String?>();
-    this.securityGatewayId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.applicationId = registerOutput<String>('applicationId');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String?>('displayName');
+    this.endpointMatchers =
+        registerOutput<List<SecurityGatewayApplicationEndpointMatcher>?>(
+            'endpointMatchers');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.schema = registerOutput<String?>('schema');
+    this.securityGatewayId = registerOutput<String>('securityGatewayId');
+    this.updateTime = registerOutput<String>('updateTime');
     this.upstreams =
-        Output.createUnknown<List<SecurityGatewayApplicationUpstream>?>();
+        registerOutput<List<SecurityGatewayApplicationUpstream>?>('upstreams');
   }
 }

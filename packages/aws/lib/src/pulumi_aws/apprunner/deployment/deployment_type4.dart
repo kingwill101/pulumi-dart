@@ -114,10 +114,10 @@ class DeploymentType4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.operationId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.serviceArn = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<DeploymentTimeouts?>();
+    this.operationId = registerOutput<String>('operationId');
+    this.region = registerOutput<String>('region');
+    this.serviceArn = registerOutput<String>('serviceArn');
+    this.status = registerOutput<String>('status');
+    this.timeouts = registerOutput<DeploymentTimeouts?>('timeouts');
   }
 }

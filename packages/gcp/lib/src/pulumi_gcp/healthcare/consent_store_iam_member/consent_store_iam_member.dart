@@ -916,11 +916,12 @@ class ConsentStoreIamMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<ConsentStoreIamMemberCondition?>();
-    this.consentStoreId = Output.createUnknown<String>();
-    this.dataset = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.condition =
+        registerOutput<ConsentStoreIamMemberCondition?>('condition');
+    this.consentStoreId = registerOutput<String>('consentStoreId');
+    this.dataset = registerOutput<String>('dataset');
+    this.etag = registerOutput<String>('etag');
+    this.member = registerOutput<String>('member');
+    this.role = registerOutput<String>('role');
   }
 }

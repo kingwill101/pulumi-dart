@@ -695,14 +695,15 @@ class Membership extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authority = Output.createUnknown<MembershipAuthority?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.endpoint = Output.createUnknown<MembershipEndpoint?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String?>();
-    this.membershipId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+    this.authority = registerOutput<MembershipAuthority?>('authority');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.endpoint = registerOutput<MembershipEndpoint?>('endpoint');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String?>('location');
+    this.membershipId = registerOutput<String>('membershipId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
   }
 }

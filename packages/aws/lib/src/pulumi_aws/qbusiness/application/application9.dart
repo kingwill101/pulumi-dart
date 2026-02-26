@@ -181,19 +181,23 @@ class Application9 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.attachmentsConfiguration =
-        Output.createUnknown<ApplicationAttachmentsConfiguration>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
+        registerOutput<ApplicationAttachmentsConfiguration>(
+            'attachmentsConfiguration');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
     this.encryptionConfiguration =
-        Output.createUnknown<ApplicationEncryptionConfiguration?>();
-    this.iamServiceRoleArn = Output.createUnknown<String>();
-    this.identityCenterApplicationArn = Output.createUnknown<String>();
-    this.identityCenterInstanceArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ApplicationTimeouts3?>();
+        registerOutput<ApplicationEncryptionConfiguration?>(
+            'encryptionConfiguration');
+    this.iamServiceRoleArn = registerOutput<String>('iamServiceRoleArn');
+    this.identityCenterApplicationArn =
+        registerOutput<String>('identityCenterApplicationArn');
+    this.identityCenterInstanceArn =
+        registerOutput<String>('identityCenterInstanceArn');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ApplicationTimeouts3?>('timeouts');
   }
 }

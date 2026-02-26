@@ -533,19 +533,22 @@ class Trust extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.conditionalForwarderIpAddrs = Output.createUnknown<List<String>?>();
-    this.createdDateTime = Output.createUnknown<String>();
-    this.deleteAssociatedConditionalForwarder = Output.createUnknown<bool>();
-    this.directoryId = Output.createUnknown<String>();
-    this.lastUpdatedDateTime = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.remoteDomainName = Output.createUnknown<String>();
-    this.selectiveAuth = Output.createUnknown<String>();
-    this.stateLastUpdatedDateTime = Output.createUnknown<String>();
-    this.trustDirection = Output.createUnknown<String>();
-    this.trustPassword = Output.createUnknown<String>();
-    this.trustState = Output.createUnknown<String>();
-    this.trustStateReason = Output.createUnknown<String>();
-    this.trustType = Output.createUnknown<String>();
+    this.conditionalForwarderIpAddrs =
+        registerOutput<List<String>?>('conditionalForwarderIpAddrs');
+    this.createdDateTime = registerOutput<String>('createdDateTime');
+    this.deleteAssociatedConditionalForwarder =
+        registerOutput<bool>('deleteAssociatedConditionalForwarder');
+    this.directoryId = registerOutput<String>('directoryId');
+    this.lastUpdatedDateTime = registerOutput<String>('lastUpdatedDateTime');
+    this.region = registerOutput<String>('region');
+    this.remoteDomainName = registerOutput<String>('remoteDomainName');
+    this.selectiveAuth = registerOutput<String>('selectiveAuth');
+    this.stateLastUpdatedDateTime =
+        registerOutput<String>('stateLastUpdatedDateTime');
+    this.trustDirection = registerOutput<String>('trustDirection');
+    this.trustPassword = registerOutput<String>('trustPassword');
+    this.trustState = registerOutput<String>('trustState');
+    this.trustStateReason = registerOutput<String>('trustStateReason');
+    this.trustType = registerOutput<String>('trustType');
   }
 }

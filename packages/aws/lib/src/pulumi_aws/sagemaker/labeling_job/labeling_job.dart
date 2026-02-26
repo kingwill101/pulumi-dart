@@ -346,24 +346,29 @@ class LabelingJob extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.failureReason = Output.createUnknown<String>();
-    this.humanTaskConfig = Output.createUnknown<LabelingJobHumanTaskConfig>();
-    this.inputConfig = Output.createUnknown<LabelingJobInputConfig>();
-    this.jobReferenceCode = Output.createUnknown<String>();
-    this.labelAttributeName = Output.createUnknown<String>();
-    this.labelCategoryConfigS3Uri = Output.createUnknown<String?>();
-    this.labelCounters = Output.createUnknown<List<LabelingJobLabelCounter>>();
+    this.failureReason = registerOutput<String>('failureReason');
+    this.humanTaskConfig =
+        registerOutput<LabelingJobHumanTaskConfig>('humanTaskConfig');
+    this.inputConfig = registerOutput<LabelingJobInputConfig>('inputConfig');
+    this.jobReferenceCode = registerOutput<String>('jobReferenceCode');
+    this.labelAttributeName = registerOutput<String>('labelAttributeName');
+    this.labelCategoryConfigS3Uri =
+        registerOutput<String?>('labelCategoryConfigS3Uri');
+    this.labelCounters =
+        registerOutput<List<LabelingJobLabelCounter>>('labelCounters');
     this.labelingJobAlgorithmsConfig =
-        Output.createUnknown<LabelingJobLabelingJobAlgorithmsConfig?>();
-    this.labelingJobArn = Output.createUnknown<String>();
-    this.labelingJobName = Output.createUnknown<String>();
-    this.labelingJobStatus = Output.createUnknown<String>();
-    this.outputConfig = Output.createUnknown<LabelingJobOutputConfig>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
+        registerOutput<LabelingJobLabelingJobAlgorithmsConfig?>(
+            'labelingJobAlgorithmsConfig');
+    this.labelingJobArn = registerOutput<String>('labelingJobArn');
+    this.labelingJobName = registerOutput<String>('labelingJobName');
+    this.labelingJobStatus = registerOutput<String>('labelingJobStatus');
+    this.outputConfig = registerOutput<LabelingJobOutputConfig>('outputConfig');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
     this.stoppingConditions =
-        Output.createUnknown<List<LabelingJobStoppingCondition>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<LabelingJobStoppingCondition>>(
+            'stoppingConditions');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

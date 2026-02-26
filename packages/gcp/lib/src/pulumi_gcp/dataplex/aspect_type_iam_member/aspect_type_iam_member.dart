@@ -959,12 +959,12 @@ class AspectTypeIamMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aspectTypeId = Output.createUnknown<String>();
-    this.condition = Output.createUnknown<AspectTypeIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.aspectTypeId = registerOutput<String>('aspectTypeId');
+    this.condition = registerOutput<AspectTypeIamMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.member = registerOutput<String>('member');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
   }
 }

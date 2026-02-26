@@ -607,47 +607,58 @@ class LoadBalancer3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessLogs = Output.createUnknown<LoadBalancerAccessLogs3?>();
-    this.arn = Output.createUnknown<String>();
-    this.arnSuffix = Output.createUnknown<String>();
-    this.clientKeepAlive = Output.createUnknown<int?>();
-    this.connectionLogs = Output.createUnknown<LoadBalancerConnectionLogs2?>();
-    this.customerOwnedIpv4Pool = Output.createUnknown<String?>();
-    this.desyncMitigationMode = Output.createUnknown<String?>();
-    this.dnsName = Output.createUnknown<String>();
-    this.dnsRecordClientRoutingPolicy = Output.createUnknown<String?>();
-    this.dropInvalidHeaderFields = Output.createUnknown<bool?>();
-    this.enableCrossZoneLoadBalancing = Output.createUnknown<bool?>();
-    this.enableDeletionProtection = Output.createUnknown<bool?>();
-    this.enableHttp2 = Output.createUnknown<bool?>();
-    this.enableTlsVersionAndCipherSuiteHeaders = Output.createUnknown<bool?>();
-    this.enableWafFailOpen = Output.createUnknown<bool?>();
-    this.enableXffClientPort = Output.createUnknown<bool?>();
-    this.enableZonalShift = Output.createUnknown<bool?>();
+    this.accessLogs = registerOutput<LoadBalancerAccessLogs3?>('accessLogs');
+    this.arn = registerOutput<String>('arn');
+    this.arnSuffix = registerOutput<String>('arnSuffix');
+    this.clientKeepAlive = registerOutput<int?>('clientKeepAlive');
+    this.connectionLogs =
+        registerOutput<LoadBalancerConnectionLogs2?>('connectionLogs');
+    this.customerOwnedIpv4Pool =
+        registerOutput<String?>('customerOwnedIpv4Pool');
+    this.desyncMitigationMode = registerOutput<String?>('desyncMitigationMode');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.dnsRecordClientRoutingPolicy =
+        registerOutput<String?>('dnsRecordClientRoutingPolicy');
+    this.dropInvalidHeaderFields =
+        registerOutput<bool?>('dropInvalidHeaderFields');
+    this.enableCrossZoneLoadBalancing =
+        registerOutput<bool?>('enableCrossZoneLoadBalancing');
+    this.enableDeletionProtection =
+        registerOutput<bool?>('enableDeletionProtection');
+    this.enableHttp2 = registerOutput<bool?>('enableHttp2');
+    this.enableTlsVersionAndCipherSuiteHeaders =
+        registerOutput<bool?>('enableTlsVersionAndCipherSuiteHeaders');
+    this.enableWafFailOpen = registerOutput<bool?>('enableWafFailOpen');
+    this.enableXffClientPort = registerOutput<bool?>('enableXffClientPort');
+    this.enableZonalShift = registerOutput<bool?>('enableZonalShift');
     this.enforceSecurityGroupInboundRulesOnPrivateLinkTraffic =
-        Output.createUnknown<String>();
+        registerOutput<String>(
+            'enforceSecurityGroupInboundRulesOnPrivateLinkTraffic');
     this.healthCheckLogs =
-        Output.createUnknown<LoadBalancerHealthCheckLogs2?>();
-    this.idleTimeout = Output.createUnknown<int?>();
-    this.internal = Output.createUnknown<bool>();
-    this.ipAddressType = Output.createUnknown<String>();
-    this.ipamPools = Output.createUnknown<LoadBalancerIpamPools2?>();
-    this.loadBalancerType = Output.createUnknown<String?>();
+        registerOutput<LoadBalancerHealthCheckLogs2?>('healthCheckLogs');
+    this.idleTimeout = registerOutput<int?>('idleTimeout');
+    this.internal = registerOutput<bool>('internal');
+    this.ipAddressType = registerOutput<String>('ipAddressType');
+    this.ipamPools = registerOutput<LoadBalancerIpamPools2?>('ipamPools');
+    this.loadBalancerType = registerOutput<String?>('loadBalancerType');
     this.minimumLoadBalancerCapacity =
-        Output.createUnknown<LoadBalancerMinimumLoadBalancerCapacity2?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.preserveHostHeader = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.secondaryIpsAutoAssignedPerSubnet = Output.createUnknown<int>();
-    this.securityGroups = Output.createUnknown<List<String>>();
+        registerOutput<LoadBalancerMinimumLoadBalancerCapacity2?>(
+            'minimumLoadBalancerCapacity');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.preserveHostHeader = registerOutput<bool?>('preserveHostHeader');
+    this.region = registerOutput<String>('region');
+    this.secondaryIpsAutoAssignedPerSubnet =
+        registerOutput<int>('secondaryIpsAutoAssignedPerSubnet');
+    this.securityGroups = registerOutput<List<String>>('securityGroups');
     this.subnetMappings =
-        Output.createUnknown<List<LoadBalancerSubnetMapping2>>();
-    this.subnets = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcId = Output.createUnknown<String>();
-    this.xffHeaderProcessingMode = Output.createUnknown<String?>();
-    this.zoneId = Output.createUnknown<String>();
+        registerOutput<List<LoadBalancerSubnetMapping2>>('subnetMappings');
+    this.subnets = registerOutput<List<String>>('subnets');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcId = registerOutput<String>('vpcId');
+    this.xffHeaderProcessingMode =
+        registerOutput<String?>('xffHeaderProcessingMode');
+    this.zoneId = registerOutput<String>('zoneId');
   }
 }

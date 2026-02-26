@@ -494,20 +494,22 @@ class TargetSite extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dataStoreId = Output.createUnknown<String>();
-    this.exactMatch = Output.createUnknown<bool?>();
-    this.failureReasons = Output.createUnknown<List<TargetSiteFailureReason>>();
-    this.generatedUriPattern = Output.createUnknown<String>();
-    this.indexingStatus = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.providedUriPattern = Output.createUnknown<String>();
-    this.rootDomainUri = Output.createUnknown<String>();
+    this.dataStoreId = registerOutput<String>('dataStoreId');
+    this.exactMatch = registerOutput<bool?>('exactMatch');
+    this.failureReasons =
+        registerOutput<List<TargetSiteFailureReason>>('failureReasons');
+    this.generatedUriPattern = registerOutput<String>('generatedUriPattern');
+    this.indexingStatus = registerOutput<String>('indexingStatus');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.providedUriPattern = registerOutput<String>('providedUriPattern');
+    this.rootDomainUri = registerOutput<String>('rootDomainUri');
     this.siteVerificationInfos =
-        Output.createUnknown<List<TargetSiteSiteVerificationInfo>>();
-    this.targetSiteId = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<TargetSiteSiteVerificationInfo>>(
+            'siteVerificationInfos');
+    this.targetSiteId = registerOutput<String>('targetSiteId');
+    this.type = registerOutput<String?>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -41,15 +41,16 @@ class DataSource extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.disableModifications = Output.createUnknown<bool>();
-    this.disableServing = Output.createUnknown<bool>();
-    this.displayName = Output.createUnknown<String>();
-    this.indexingServiceAccounts = Output.createUnknown<List<String>>();
+    this.disableModifications = registerOutput<bool>('disableModifications');
+    this.disableServing = registerOutput<bool>('disableServing');
+    this.displayName = registerOutput<String>('displayName');
+    this.indexingServiceAccounts =
+        registerOutput<List<String>>('indexingServiceAccounts');
     this.itemsVisibility =
-        Output.createUnknown<List<GSuitePrincipalResponse>>();
-    this.name = Output.createUnknown<String>();
-    this.operationIds = Output.createUnknown<List<String>>();
-    this.returnThumbnailUrls = Output.createUnknown<bool>();
-    this.shortName = Output.createUnknown<String>();
+        registerOutput<List<GSuitePrincipalResponse>>('itemsVisibility');
+    this.name = registerOutput<String>('name');
+    this.operationIds = registerOutput<List<String>>('operationIds');
+    this.returnThumbnailUrls = registerOutput<bool>('returnThumbnailUrls');
+    this.shortName = registerOutput<String>('shortName');
   }
 }

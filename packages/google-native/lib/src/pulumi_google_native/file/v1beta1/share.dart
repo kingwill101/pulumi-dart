@@ -48,19 +48,19 @@ class Share extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backup = Output.createUnknown<String>();
-    this.capacityGb = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.mountName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.backup = registerOutput<String>('backup');
+    this.capacityGb = registerOutput<String>('capacityGb');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.mountName = registerOutput<String>('mountName');
+    this.name = registerOutput<String>('name');
     this.nfsExportOptions =
-        Output.createUnknown<List<NfsExportOptionsResponse2>>();
-    this.project = Output.createUnknown<String>();
-    this.shareId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<List<NfsExportOptionsResponse2>>('nfsExportOptions');
+    this.project = registerOutput<String>('project');
+    this.shareId = registerOutput<String>('shareId');
+    this.state = registerOutput<String>('state');
   }
 }

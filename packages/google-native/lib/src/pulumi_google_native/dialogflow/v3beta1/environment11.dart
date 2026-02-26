@@ -47,18 +47,22 @@ class Environment11 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.testCasesConfig = Output.createUnknown<
-        GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponse>();
-    this.updateTime = Output.createUnknown<String>();
-    this.versionConfigs = Output.createUnknown<
-        List<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse>>();
-    this.webhookConfig = Output.createUnknown<
-        GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigResponse>();
+    this.agentId = registerOutput<String>('agentId');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.testCasesConfig = registerOutput<
+            GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponse>(
+        'testCasesConfig');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.versionConfigs = registerOutput<
+            List<
+                GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse>>(
+        'versionConfigs');
+    this.webhookConfig = registerOutput<
+            GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigResponse>(
+        'webhookConfig');
   }
 }

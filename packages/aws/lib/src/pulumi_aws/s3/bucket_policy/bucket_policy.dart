@@ -291,8 +291,8 @@ class BucketPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
   }
 }

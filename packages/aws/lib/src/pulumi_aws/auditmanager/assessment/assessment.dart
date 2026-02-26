@@ -274,18 +274,19 @@ class Assessment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.assessmentReportsDestination =
-        Output.createUnknown<AssessmentAssessmentReportsDestination?>();
-    this.description = Output.createUnknown<String?>();
-    this.frameworkId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roles = Output.createUnknown<List<AssessmentRole>>();
-    this.rolesAlls = Output.createUnknown<List<AssessmentRolesAll>>();
-    this.scope = Output.createUnknown<AssessmentScope?>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<AssessmentAssessmentReportsDestination?>(
+            'assessmentReportsDestination');
+    this.description = registerOutput<String?>('description');
+    this.frameworkId = registerOutput<String>('frameworkId');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.roles = registerOutput<List<AssessmentRole>>('roles');
+    this.rolesAlls = registerOutput<List<AssessmentRolesAll>>('rolesAlls');
+    this.scope = registerOutput<AssessmentScope?>('scope');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

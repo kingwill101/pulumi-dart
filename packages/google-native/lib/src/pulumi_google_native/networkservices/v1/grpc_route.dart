@@ -49,18 +49,18 @@ class GrpcRoute extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.gateways = Output.createUnknown<List<String>>();
-    this.grpcRouteId = Output.createUnknown<String>();
-    this.hostnames = Output.createUnknown<List<String>>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.meshes = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rules = Output.createUnknown<List<GrpcRouteRouteRuleResponse>>();
-    this.selfLink = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.gateways = registerOutput<List<String>>('gateways');
+    this.grpcRouteId = registerOutput<String>('grpcRouteId');
+    this.hostnames = registerOutput<List<String>>('hostnames');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.meshes = registerOutput<List<String>>('meshes');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.rules = registerOutput<List<GrpcRouteRouteRuleResponse>>('rules');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

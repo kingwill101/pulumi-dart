@@ -51,20 +51,23 @@ class CatalogItem extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.catalogId = Output.createUnknown<String>();
-    this.categoryHierarchies = Output.createUnknown<
-        List<
-            GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse>>();
-    this.description = Output.createUnknown<String>();
-    this.itemAttributes = Output.createUnknown<
-        GoogleCloudRecommendationengineV1beta1FeatureMapResponse>();
-    this.itemGroupId = Output.createUnknown<String>();
-    this.languageCode = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.productMetadata = Output.createUnknown<
-        GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse>();
-    this.project = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<List<String>>();
-    this.title = Output.createUnknown<String>();
+    this.catalogId = registerOutput<String>('catalogId');
+    this.categoryHierarchies = registerOutput<
+            List<
+                GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse>>(
+        'categoryHierarchies');
+    this.description = registerOutput<String>('description');
+    this.itemAttributes = registerOutput<
+            GoogleCloudRecommendationengineV1beta1FeatureMapResponse>(
+        'itemAttributes');
+    this.itemGroupId = registerOutput<String>('itemGroupId');
+    this.languageCode = registerOutput<String>('languageCode');
+    this.location = registerOutput<String>('location');
+    this.productMetadata = registerOutput<
+            GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse>(
+        'productMetadata');
+    this.project = registerOutput<String>('project');
+    this.tags = registerOutput<List<String>>('tags');
+    this.title = registerOutput<String>('title');
   }
 }

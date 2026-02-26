@@ -31,7 +31,6 @@ class ResourceModule {}
 
 class ResourcePackage {}
 
-
 class NodeEnvKeys {
   static const String project = 'PULUMI_NODEJS_PROJECT';
   static const String stack = 'PULUMI_NODEJS_STACK';
@@ -289,7 +288,10 @@ bool isConfigSecret(String k) {
     try {
       final envConfigSecretArray =
           jsonDecode(envConfigSecretKeys) as List<dynamic>;
-      return envConfigSecretArray.contains(k);
+      final cleanedSecretKeys = envConfigSecretArray
+          .map((key) => cleanKey(key.toString()))
+          .toSet();
+      return cleanedSecretKeys.contains(cleanKey(k));
     } catch (e) {
       print('Error decoding secret keys: $e');
     }
@@ -317,8 +319,9 @@ Map<String, String> parseConfig() {
 void persistConfig(Map<String, String> config, [List<String>? secretKeys]) {
   final store = getStore();
   final serializedConfig = jsonEncode(config);
-  final serializedSecretKeys =
-      secretKeys != null ? jsonEncode(secretKeys) : '[]';
+  final serializedSecretKeys = secretKeys != null
+      ? jsonEncode(secretKeys.map(cleanKey).toList(growable: false))
+      : '[]';
   store.config[configEnvKey] = serializedConfig;
   store.config[configSecretKeysEnvKey] = serializedSecretKeys;
 }

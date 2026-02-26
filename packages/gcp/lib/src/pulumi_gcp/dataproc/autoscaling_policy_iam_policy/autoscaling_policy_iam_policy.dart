@@ -943,10 +943,10 @@ class AutoscalingPolicyIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.policyId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.policyData = registerOutput<String>('policyData');
+    this.policyId = registerOutput<String>('policyId');
+    this.project = registerOutput<String>('project');
   }
 }

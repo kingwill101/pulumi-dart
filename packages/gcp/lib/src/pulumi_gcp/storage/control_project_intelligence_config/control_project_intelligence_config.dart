@@ -204,14 +204,16 @@ class ControlProjectIntelligenceConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.editionConfig = Output.createUnknown<String>();
-    this.effectiveIntelligenceConfigs = Output.createUnknown<
-        List<ControlProjectIntelligenceConfigEffectiveIntelligenceConfig>>();
+    this.editionConfig = registerOutput<String>('editionConfig');
+    this.effectiveIntelligenceConfigs = registerOutput<
+            List<ControlProjectIntelligenceConfigEffectiveIntelligenceConfig>>(
+        'effectiveIntelligenceConfigs');
     this.filter =
-        Output.createUnknown<ControlProjectIntelligenceConfigFilter?>();
-    this.name = Output.createUnknown<String>();
-    this.trialConfigs = Output.createUnknown<
-        List<ControlProjectIntelligenceConfigTrialConfig>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<ControlProjectIntelligenceConfigFilter?>('filter');
+    this.name = registerOutput<String>('name');
+    this.trialConfigs =
+        registerOutput<List<ControlProjectIntelligenceConfigTrialConfig>>(
+            'trialConfigs');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -31,10 +31,10 @@ class InboundSamlSsoProfile2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.customer = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.idpConfig = Output.createUnknown<SamlIdpConfigResponse2>();
-    this.name = Output.createUnknown<String>();
-    this.spConfig = Output.createUnknown<SamlSpConfigResponse2>();
+    this.customer = registerOutput<String>('customer');
+    this.displayName = registerOutput<String>('displayName');
+    this.idpConfig = registerOutput<SamlIdpConfigResponse2>('idpConfig');
+    this.name = registerOutput<String>('name');
+    this.spConfig = registerOutput<SamlSpConfigResponse2>('spConfig');
   }
 }

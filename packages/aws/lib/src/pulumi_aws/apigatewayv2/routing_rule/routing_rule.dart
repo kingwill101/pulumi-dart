@@ -285,12 +285,12 @@ class RoutingRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.actions = Output.createUnknown<List<RoutingRuleAction>>();
-    this.conditions = Output.createUnknown<List<RoutingRuleCondition>>();
-    this.domainName = Output.createUnknown<String>();
-    this.priority = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.routingRuleArn = Output.createUnknown<String>();
-    this.routingRuleId = Output.createUnknown<String>();
+    this.actions = registerOutput<List<RoutingRuleAction>>('actions');
+    this.conditions = registerOutput<List<RoutingRuleCondition>>('conditions');
+    this.domainName = registerOutput<String>('domainName');
+    this.priority = registerOutput<int>('priority');
+    this.region = registerOutput<String>('region');
+    this.routingRuleArn = registerOutput<String>('routingRuleArn');
+    this.routingRuleId = registerOutput<String>('routingRuleId');
   }
 }

@@ -728,26 +728,28 @@ class CustomDbEngineVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.createTime = registerOutput<String>('createTime');
     this.databaseInstallationFilesS3BucketName =
-        Output.createUnknown<String?>();
-    this.databaseInstallationFilesS3Prefix = Output.createUnknown<String?>();
-    this.dbParameterGroupFamily = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.engine = Output.createUnknown<String>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.filename = Output.createUnknown<String?>();
-    this.imageId = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.majorEngineVersion = Output.createUnknown<String>();
-    this.manifest = Output.createUnknown<String?>();
-    this.manifestComputed = Output.createUnknown<String>();
-    this.manifestHash = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.sourceImageId = Output.createUnknown<String?>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<String?>('databaseInstallationFilesS3BucketName');
+    this.databaseInstallationFilesS3Prefix =
+        registerOutput<String?>('databaseInstallationFilesS3Prefix');
+    this.dbParameterGroupFamily =
+        registerOutput<String>('dbParameterGroupFamily');
+    this.description = registerOutput<String?>('description');
+    this.engine = registerOutput<String>('engine');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.filename = registerOutput<String?>('filename');
+    this.imageId = registerOutput<String>('imageId');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.majorEngineVersion = registerOutput<String>('majorEngineVersion');
+    this.manifest = registerOutput<String?>('manifest');
+    this.manifestComputed = registerOutput<String>('manifestComputed');
+    this.manifestHash = registerOutput<String?>('manifestHash');
+    this.region = registerOutput<String>('region');
+    this.sourceImageId = registerOutput<String?>('sourceImageId');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

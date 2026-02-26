@@ -134,9 +134,9 @@ class MainRouteTableAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.originalRouteTableId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.routeTableId = Output.createUnknown<String>();
-    this.vpcId = Output.createUnknown<String>();
+    this.originalRouteTableId = registerOutput<String>('originalRouteTableId');
+    this.region = registerOutput<String>('region');
+    this.routeTableId = registerOutput<String>('routeTableId');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

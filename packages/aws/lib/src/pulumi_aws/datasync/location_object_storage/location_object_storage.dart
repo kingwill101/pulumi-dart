@@ -180,19 +180,19 @@ class LocationObjectStorage extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessKey = Output.createUnknown<String?>();
-    this.agentArns = Output.createUnknown<List<String>?>();
-    this.arn = Output.createUnknown<String>();
-    this.bucketName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.secretKey = Output.createUnknown<String?>();
-    this.serverCertificate = Output.createUnknown<String?>();
-    this.serverHostname = Output.createUnknown<String>();
-    this.serverPort = Output.createUnknown<int?>();
-    this.serverProtocol = Output.createUnknown<String?>();
-    this.subdirectory = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.uri = Output.createUnknown<String>();
+    this.accessKey = registerOutput<String?>('accessKey');
+    this.agentArns = registerOutput<List<String>?>('agentArns');
+    this.arn = registerOutput<String>('arn');
+    this.bucketName = registerOutput<String>('bucketName');
+    this.region = registerOutput<String>('region');
+    this.secretKey = registerOutput<String?>('secretKey');
+    this.serverCertificate = registerOutput<String?>('serverCertificate');
+    this.serverHostname = registerOutput<String>('serverHostname');
+    this.serverPort = registerOutput<int?>('serverPort');
+    this.serverProtocol = registerOutput<String?>('serverProtocol');
+    this.subdirectory = registerOutput<String>('subdirectory');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.uri = registerOutput<String>('uri');
   }
 }

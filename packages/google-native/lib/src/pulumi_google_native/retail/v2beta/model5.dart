@@ -69,26 +69,29 @@ class Model5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.catalogId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataState = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.dryRun = Output.createUnknown<bool?>();
-    this.filteringOption = Output.createUnknown<String>();
-    this.lastTuneTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.modelFeaturesConfig = Output.createUnknown<
-        GoogleCloudRetailV2betaModelModelFeaturesConfigResponse>();
-    this.name = Output.createUnknown<String>();
-    this.optimizationObjective = Output.createUnknown<String>();
-    this.periodicTuningState = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.servingConfigLists = Output.createUnknown<
-        List<GoogleCloudRetailV2betaModelServingConfigListResponse>>();
-    this.servingState = Output.createUnknown<String>();
-    this.trainingState = Output.createUnknown<String>();
-    this.tuningOperation = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.catalogId = registerOutput<String>('catalogId');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataState = registerOutput<String>('dataState');
+    this.displayName = registerOutput<String>('displayName');
+    this.dryRun = registerOutput<bool?>('dryRun');
+    this.filteringOption = registerOutput<String>('filteringOption');
+    this.lastTuneTime = registerOutput<String>('lastTuneTime');
+    this.location = registerOutput<String>('location');
+    this.modelFeaturesConfig =
+        registerOutput<GoogleCloudRetailV2betaModelModelFeaturesConfigResponse>(
+            'modelFeaturesConfig');
+    this.name = registerOutput<String>('name');
+    this.optimizationObjective =
+        registerOutput<String>('optimizationObjective');
+    this.periodicTuningState = registerOutput<String>('periodicTuningState');
+    this.project = registerOutput<String>('project');
+    this.servingConfigLists = registerOutput<
+            List<GoogleCloudRetailV2betaModelServingConfigListResponse>>(
+        'servingConfigLists');
+    this.servingState = registerOutput<String>('servingState');
+    this.trainingState = registerOutput<String>('trainingState');
+    this.tuningOperation = registerOutput<String>('tuningOperation');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

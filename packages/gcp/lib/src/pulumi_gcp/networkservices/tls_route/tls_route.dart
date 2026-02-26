@@ -1052,14 +1052,14 @@ class TlsRoute extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.gateways = Output.createUnknown<List<String>?>();
-    this.meshes = Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rules = Output.createUnknown<List<TlsRouteRule>>();
-    this.selfLink = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.gateways = registerOutput<List<String>?>('gateways');
+    this.meshes = registerOutput<List<String>?>('meshes');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.rules = registerOutput<List<TlsRouteRule>>('rules');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

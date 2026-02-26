@@ -362,13 +362,15 @@ class Policy2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.alternativeNameServerConfig =
-        Output.createUnknown<PolicyAlternativeNameServerConfig?>();
-    this.description = Output.createUnknown<String?>();
-    this.dns64Config = Output.createUnknown<PolicyDns64Config>();
-    this.enableInboundForwarding = Output.createUnknown<bool?>();
-    this.enableLogging = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.networks = Output.createUnknown<List<PolicyNetwork>?>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<PolicyAlternativeNameServerConfig?>(
+            'alternativeNameServerConfig');
+    this.description = registerOutput<String?>('description');
+    this.dns64Config = registerOutput<PolicyDns64Config>('dns64Config');
+    this.enableInboundForwarding =
+        registerOutput<bool?>('enableInboundForwarding');
+    this.enableLogging = registerOutput<bool?>('enableLogging');
+    this.name = registerOutput<String>('name');
+    this.networks = registerOutput<List<PolicyNetwork>?>('networks');
+    this.project = registerOutput<String>('project');
   }
 }

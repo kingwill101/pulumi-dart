@@ -556,36 +556,42 @@ class TopicRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.cloudwatchAlarms =
-        Output.createUnknown<List<TopicRuleCloudwatchAlarm>?>();
-    this.cloudwatchLogs = Output.createUnknown<List<TopicRuleCloudwatchLog>?>();
+        registerOutput<List<TopicRuleCloudwatchAlarm>?>('cloudwatchAlarms');
+    this.cloudwatchLogs =
+        registerOutput<List<TopicRuleCloudwatchLog>?>('cloudwatchLogs');
     this.cloudwatchMetrics =
-        Output.createUnknown<List<TopicRuleCloudwatchMetric>?>();
-    this.description = Output.createUnknown<String?>();
-    this.dynamodbs = Output.createUnknown<List<TopicRuleDynamodb>?>();
-    this.dynamodbv2s = Output.createUnknown<List<TopicRuleDynamodbv2>?>();
-    this.elasticsearch = Output.createUnknown<List<TopicRuleElasticsearch>?>();
-    this.enabled = Output.createUnknown<bool>();
-    this.errorAction = Output.createUnknown<TopicRuleErrorAction?>();
-    this.firehoses = Output.createUnknown<List<TopicRuleFirehose>?>();
-    this.https = Output.createUnknown<List<TopicRuleHttp>?>();
-    this.iotAnalytics = Output.createUnknown<List<TopicRuleIotAnalytic>?>();
-    this.iotEvents = Output.createUnknown<List<TopicRuleIotEvent>?>();
-    this.kafkas = Output.createUnknown<List<TopicRuleKafka>?>();
-    this.kineses = Output.createUnknown<List<TopicRuleKinesis>?>();
-    this.lambdas = Output.createUnknown<List<TopicRuleLambda>?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.republishes = Output.createUnknown<List<TopicRuleRepublish>?>();
-    this.s3 = Output.createUnknown<List<TopicRuleS3>?>();
-    this.sns = Output.createUnknown<List<TopicRuleSns>?>();
-    this.sql = Output.createUnknown<String>();
-    this.sqlVersion = Output.createUnknown<String>();
-    this.sqs = Output.createUnknown<List<TopicRuleSqs>?>();
-    this.stepFunctions = Output.createUnknown<List<TopicRuleStepFunction>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timestreams = Output.createUnknown<List<TopicRuleTimestream>?>();
+        registerOutput<List<TopicRuleCloudwatchMetric>?>('cloudwatchMetrics');
+    this.description = registerOutput<String?>('description');
+    this.dynamodbs = registerOutput<List<TopicRuleDynamodb>?>('dynamodbs');
+    this.dynamodbv2s =
+        registerOutput<List<TopicRuleDynamodbv2>?>('dynamodbv2s');
+    this.elasticsearch =
+        registerOutput<List<TopicRuleElasticsearch>?>('elasticsearch');
+    this.enabled = registerOutput<bool>('enabled');
+    this.errorAction = registerOutput<TopicRuleErrorAction?>('errorAction');
+    this.firehoses = registerOutput<List<TopicRuleFirehose>?>('firehoses');
+    this.https = registerOutput<List<TopicRuleHttp>?>('https');
+    this.iotAnalytics =
+        registerOutput<List<TopicRuleIotAnalytic>?>('iotAnalytics');
+    this.iotEvents = registerOutput<List<TopicRuleIotEvent>?>('iotEvents');
+    this.kafkas = registerOutput<List<TopicRuleKafka>?>('kafkas');
+    this.kineses = registerOutput<List<TopicRuleKinesis>?>('kineses');
+    this.lambdas = registerOutput<List<TopicRuleLambda>?>('lambdas');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.republishes = registerOutput<List<TopicRuleRepublish>?>('republishes');
+    this.s3 = registerOutput<List<TopicRuleS3>?>('s3');
+    this.sns = registerOutput<List<TopicRuleSns>?>('sns');
+    this.sql = registerOutput<String>('sql');
+    this.sqlVersion = registerOutput<String>('sqlVersion');
+    this.sqs = registerOutput<List<TopicRuleSqs>?>('sqs');
+    this.stepFunctions =
+        registerOutput<List<TopicRuleStepFunction>?>('stepFunctions');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timestreams =
+        registerOutput<List<TopicRuleTimestream>?>('timestreams');
   }
 }

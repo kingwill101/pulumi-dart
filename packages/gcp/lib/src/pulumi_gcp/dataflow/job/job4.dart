@@ -711,30 +711,34 @@ class Job4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.additionalExperiments = Output.createUnknown<List<String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enableStreamingEngine = Output.createUnknown<bool?>();
-    this.ipConfiguration = Output.createUnknown<String?>();
-    this.jobId = Output.createUnknown<String>();
-    this.kmsKeyName = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.machineType = Output.createUnknown<String?>();
-    this.maxWorkers = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String?>();
-    this.onDelete = Output.createUnknown<String?>();
-    this.parameters = Output.createUnknown<Map<String, String>?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String?>();
-    this.serviceAccountEmail = Output.createUnknown<String?>();
-    this.skipWaitOnJobTermination = Output.createUnknown<bool?>();
-    this.state = Output.createUnknown<String>();
-    this.subnetwork = Output.createUnknown<String?>();
-    this.tempGcsLocation = Output.createUnknown<String>();
-    this.templateGcsPath = Output.createUnknown<String>();
-    this.transformNameMapping = Output.createUnknown<Map<String, String>?>();
-    this.type = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String?>();
+    this.additionalExperiments =
+        registerOutput<List<String>>('additionalExperiments');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableStreamingEngine = registerOutput<bool?>('enableStreamingEngine');
+    this.ipConfiguration = registerOutput<String?>('ipConfiguration');
+    this.jobId = registerOutput<String>('jobId');
+    this.kmsKeyName = registerOutput<String?>('kmsKeyName');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.machineType = registerOutput<String?>('machineType');
+    this.maxWorkers = registerOutput<int?>('maxWorkers');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String?>('network');
+    this.onDelete = registerOutput<String?>('onDelete');
+    this.parameters = registerOutput<Map<String, String>?>('parameters');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String?>('region');
+    this.serviceAccountEmail = registerOutput<String?>('serviceAccountEmail');
+    this.skipWaitOnJobTermination =
+        registerOutput<bool?>('skipWaitOnJobTermination');
+    this.state = registerOutput<String>('state');
+    this.subnetwork = registerOutput<String?>('subnetwork');
+    this.tempGcsLocation = registerOutput<String>('tempGcsLocation');
+    this.templateGcsPath = registerOutput<String>('templateGcsPath');
+    this.transformNameMapping =
+        registerOutput<Map<String, String>?>('transformNameMapping');
+    this.type = registerOutput<String>('type');
+    this.zone = registerOutput<String?>('zone');
   }
 }

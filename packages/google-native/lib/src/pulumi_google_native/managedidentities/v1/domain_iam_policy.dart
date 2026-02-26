@@ -27,10 +27,10 @@ class DomainIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bindings = Output.createUnknown<List<BindingResponse72>>();
-    this.domainId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.bindings = registerOutput<List<BindingResponse72>>('bindings');
+    this.domainId = registerOutput<String>('domainId');
+    this.etag = registerOutput<String>('etag');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

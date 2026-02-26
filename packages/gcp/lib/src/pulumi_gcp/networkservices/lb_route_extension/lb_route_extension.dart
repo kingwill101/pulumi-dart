@@ -90,16 +90,17 @@ class LbRouteExtension extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.extensionChains =
-        Output.createUnknown<List<LbRouteExtensionExtensionChain>>();
-    this.forwardingRules = Output.createUnknown<List<String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.loadBalancingScheme = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<LbRouteExtensionExtensionChain>>('extensionChains');
+    this.forwardingRules = registerOutput<List<String>>('forwardingRules');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.loadBalancingScheme = registerOutput<String>('loadBalancingScheme');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
   }
 }

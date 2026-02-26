@@ -157,10 +157,10 @@ class OrganizationExclusion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.filter = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.filter = registerOutput<String>('filter');
+    this.name = registerOutput<String>('name');
+    this.orgId = registerOutput<String>('orgId');
   }
 }

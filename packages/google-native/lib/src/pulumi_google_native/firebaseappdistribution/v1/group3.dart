@@ -32,12 +32,12 @@ class Group3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String>();
-    this.groupId = Output.createUnknown<String?>();
-    this.inviteLinkCount = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.releaseCount = Output.createUnknown<int>();
-    this.testerCount = Output.createUnknown<int>();
+    this.displayName = registerOutput<String>('displayName');
+    this.groupId = registerOutput<String?>('groupId');
+    this.inviteLinkCount = registerOutput<int>('inviteLinkCount');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.releaseCount = registerOutput<int>('releaseCount');
+    this.testerCount = registerOutput<int>('testerCount');
   }
 }

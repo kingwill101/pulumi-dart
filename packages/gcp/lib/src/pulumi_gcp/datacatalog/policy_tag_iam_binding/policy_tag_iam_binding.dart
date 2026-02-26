@@ -873,10 +873,10 @@ class PolicyTagIamBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<PolicyTagIamBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.policyTag = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.condition = registerOutput<PolicyTagIamBindingCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.members = registerOutput<List<String>>('members');
+    this.policyTag = registerOutput<String>('policyTag');
+    this.role = registerOutput<String>('role');
   }
 }

@@ -552,29 +552,35 @@ class AgentAgent extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentArn = Output.createUnknown<String>();
-    this.agentCollaboration = Output.createUnknown<String>();
-    this.agentId = Output.createUnknown<String>();
-    this.agentName = Output.createUnknown<String>();
-    this.agentResourceRoleArn = Output.createUnknown<String>();
-    this.agentVersion = Output.createUnknown<String>();
-    this.customerEncryptionKeyArn = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.foundationModel = Output.createUnknown<String>();
+    this.agentArn = registerOutput<String>('agentArn');
+    this.agentCollaboration = registerOutput<String>('agentCollaboration');
+    this.agentId = registerOutput<String>('agentId');
+    this.agentName = registerOutput<String>('agentName');
+    this.agentResourceRoleArn = registerOutput<String>('agentResourceRoleArn');
+    this.agentVersion = registerOutput<String>('agentVersion');
+    this.customerEncryptionKeyArn =
+        registerOutput<String?>('customerEncryptionKeyArn');
+    this.description = registerOutput<String?>('description');
+    this.foundationModel = registerOutput<String>('foundationModel');
     this.guardrailConfigurations =
-        Output.createUnknown<List<AgentAgentGuardrailConfiguration>?>();
-    this.idleSessionTtlInSeconds = Output.createUnknown<int>();
-    this.instruction = Output.createUnknown<String>();
+        registerOutput<List<AgentAgentGuardrailConfiguration>?>(
+            'guardrailConfigurations');
+    this.idleSessionTtlInSeconds =
+        registerOutput<int>('idleSessionTtlInSeconds');
+    this.instruction = registerOutput<String>('instruction');
     this.memoryConfigurations =
-        Output.createUnknown<List<AgentAgentMemoryConfiguration>>();
-    this.prepareAgent = Output.createUnknown<bool>();
-    this.preparedAt = Output.createUnknown<String>();
+        registerOutput<List<AgentAgentMemoryConfiguration>>(
+            'memoryConfigurations');
+    this.prepareAgent = registerOutput<bool>('prepareAgent');
+    this.preparedAt = registerOutput<String>('preparedAt');
     this.promptOverrideConfigurations =
-        Output.createUnknown<List<AgentAgentPromptOverrideConfiguration>>();
-    this.region = Output.createUnknown<String>();
-    this.skipResourceInUseCheck = Output.createUnknown<bool>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<AgentAgentTimeouts?>();
+        registerOutput<List<AgentAgentPromptOverrideConfiguration>>(
+            'promptOverrideConfigurations');
+    this.region = registerOutput<String>('region');
+    this.skipResourceInUseCheck =
+        registerOutput<bool>('skipResourceInUseCheck');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<AgentAgentTimeouts?>('timeouts');
   }
 }

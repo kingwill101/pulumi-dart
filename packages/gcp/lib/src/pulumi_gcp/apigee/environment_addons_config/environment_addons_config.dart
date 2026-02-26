@@ -41,7 +41,7 @@ class EnvironmentAddonsConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.analyticsEnabled = Output.createUnknown<bool?>();
-    this.envId = Output.createUnknown<String>();
+    this.analyticsEnabled = registerOutput<bool?>('analyticsEnabled');
+    this.envId = registerOutput<String>('envId');
   }
 }

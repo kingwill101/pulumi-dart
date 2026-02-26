@@ -210,17 +210,17 @@ class CustomRoutingAccelerator extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.attributes =
-        Output.createUnknown<CustomRoutingAcceleratorAttributes?>();
-    this.dnsName = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.hostedZoneId = Output.createUnknown<String>();
-    this.ipAddressType = Output.createUnknown<String?>();
-    this.ipAddresses = Output.createUnknown<List<String>?>();
-    this.ipSets = Output.createUnknown<List<CustomRoutingAcceleratorIpSet>>();
-    this.name = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<CustomRoutingAcceleratorAttributes?>('attributes');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.hostedZoneId = registerOutput<String>('hostedZoneId');
+    this.ipAddressType = registerOutput<String?>('ipAddressType');
+    this.ipAddresses = registerOutput<List<String>?>('ipAddresses');
+    this.ipSets = registerOutput<List<CustomRoutingAcceleratorIpSet>>('ipSets');
+    this.name = registerOutput<String>('name');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

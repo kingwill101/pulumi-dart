@@ -120,7 +120,7 @@ class Subscription extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoRenew = Output.createUnknown<String>();
-    this.skipDestroy = Output.createUnknown<bool?>();
+    this.autoRenew = registerOutput<String>('autoRenew');
+    this.skipDestroy = registerOutput<bool?>('skipDestroy');
   }
 }

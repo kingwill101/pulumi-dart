@@ -60,23 +60,30 @@ class FhirStore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.complexDataTypeReferenceParsing = Output.createUnknown<String>();
-    this.datasetId = Output.createUnknown<String>();
-    this.defaultSearchHandlingStrict = Output.createUnknown<bool>();
-    this.disableReferentialIntegrity = Output.createUnknown<bool>();
-    this.disableResourceVersioning = Output.createUnknown<bool>();
-    this.enableUpdateCreate = Output.createUnknown<bool>();
-    this.fhirStoreId = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.complexDataTypeReferenceParsing =
+        registerOutput<String>('complexDataTypeReferenceParsing');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.defaultSearchHandlingStrict =
+        registerOutput<bool>('defaultSearchHandlingStrict');
+    this.disableReferentialIntegrity =
+        registerOutput<bool>('disableReferentialIntegrity');
+    this.disableResourceVersioning =
+        registerOutput<bool>('disableResourceVersioning');
+    this.enableUpdateCreate = registerOutput<bool>('enableUpdateCreate');
+    this.fhirStoreId = registerOutput<String?>('fhirStoreId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.notificationConfig =
-        Output.createUnknown<NotificationConfigResponse3>();
+        registerOutput<NotificationConfigResponse3>('notificationConfig');
     this.notificationConfigs =
-        Output.createUnknown<List<FhirNotificationConfigResponse>>();
-    this.project = Output.createUnknown<String>();
-    this.streamConfigs = Output.createUnknown<List<StreamConfigResponse>>();
-    this.validationConfig = Output.createUnknown<ValidationConfigResponse>();
-    this.version = Output.createUnknown<String>();
+        registerOutput<List<FhirNotificationConfigResponse>>(
+            'notificationConfigs');
+    this.project = registerOutput<String>('project');
+    this.streamConfigs =
+        registerOutput<List<StreamConfigResponse>>('streamConfigs');
+    this.validationConfig =
+        registerOutput<ValidationConfigResponse>('validationConfig');
+    this.version = registerOutput<String>('version');
   }
 }

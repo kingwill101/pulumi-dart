@@ -59,23 +59,27 @@ class Config2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiConfigId = Output.createUnknown<String>();
-    this.apiId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.gatewayServiceAccount = Output.createUnknown<String>();
-    this.grpcServices = Output.createUnknown<
-        List<ApigatewayApiConfigGrpcServiceDefinitionResponse>>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
+    this.apiConfigId = registerOutput<String>('apiConfigId');
+    this.apiId = registerOutput<String>('apiId');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.gatewayServiceAccount =
+        registerOutput<String>('gatewayServiceAccount');
+    this.grpcServices =
+        registerOutput<List<ApigatewayApiConfigGrpcServiceDefinitionResponse>>(
+            'grpcServices');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
     this.managedServiceConfigs =
-        Output.createUnknown<List<ApigatewayApiConfigFileResponse>>();
-    this.name = Output.createUnknown<String>();
-    this.openapiDocuments = Output.createUnknown<
-        List<ApigatewayApiConfigOpenApiDocumentResponse>>();
-    this.project = Output.createUnknown<String>();
-    this.serviceConfigId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<ApigatewayApiConfigFileResponse>>(
+            'managedServiceConfigs');
+    this.name = registerOutput<String>('name');
+    this.openapiDocuments =
+        registerOutput<List<ApigatewayApiConfigOpenApiDocumentResponse>>(
+            'openapiDocuments');
+    this.project = registerOutput<String>('project');
+    this.serviceConfigId = registerOutput<String>('serviceConfigId');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -238,18 +238,20 @@ class Pipeline5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.parallelismConfiguration =
-        Output.createUnknown<PipelineParallelismConfiguration?>();
-    this.pipelineDefinition = Output.createUnknown<String?>();
+        registerOutput<PipelineParallelismConfiguration?>(
+            'parallelismConfiguration');
+    this.pipelineDefinition = registerOutput<String?>('pipelineDefinition');
     this.pipelineDefinitionS3Location =
-        Output.createUnknown<PipelinePipelineDefinitionS3Location?>();
-    this.pipelineDescription = Output.createUnknown<String?>();
-    this.pipelineDisplayName = Output.createUnknown<String>();
-    this.pipelineName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<PipelinePipelineDefinitionS3Location?>(
+            'pipelineDefinitionS3Location');
+    this.pipelineDescription = registerOutput<String?>('pipelineDescription');
+    this.pipelineDisplayName = registerOutput<String>('pipelineDisplayName');
+    this.pipelineName = registerOutput<String>('pipelineName');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String?>('roleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

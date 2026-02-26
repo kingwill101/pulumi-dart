@@ -33,13 +33,13 @@ class ArchiveDeployment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createdAt = Output.createUnknown<String>();
-    this.environmentId = Output.createUnknown<String>();
-    this.gcsUri = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.operation = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.updatedAt = Output.createUnknown<String>();
+    this.createdAt = registerOutput<String>('createdAt');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.gcsUri = registerOutput<String>('gcsUri');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.operation = registerOutput<String>('operation');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.updatedAt = registerOutput<String>('updatedAt');
   }
 }

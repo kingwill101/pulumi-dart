@@ -137,9 +137,10 @@ class TransitGatewayConnectPeerAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.deviceId = Output.createUnknown<String>();
-    this.globalNetworkId = Output.createUnknown<String>();
-    this.linkId = Output.createUnknown<String?>();
-    this.transitGatewayConnectPeerArn = Output.createUnknown<String>();
+    this.deviceId = registerOutput<String>('deviceId');
+    this.globalNetworkId = registerOutput<String>('globalNetworkId');
+    this.linkId = registerOutput<String?>('linkId');
+    this.transitGatewayConnectPeerArn =
+        registerOutput<String>('transitGatewayConnectPeerArn');
   }
 }

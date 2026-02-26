@@ -60,21 +60,22 @@ class Trigger3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.channel = Output.createUnknown<String>();
-    this.conditions = Output.createUnknown<Map<String, String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.destination = Output.createUnknown<DestinationResponse2>();
-    this.etag = Output.createUnknown<String>();
-    this.eventDataContentType = Output.createUnknown<String>();
-    this.eventFilters = Output.createUnknown<List<EventFilterResponse4>>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.transport = Output.createUnknown<TransportResponse>();
-    this.triggerId = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.channel = registerOutput<String>('channel');
+    this.conditions = registerOutput<Map<String, String>>('conditions');
+    this.createTime = registerOutput<String>('createTime');
+    this.destination = registerOutput<DestinationResponse2>('destination');
+    this.etag = registerOutput<String>('etag');
+    this.eventDataContentType = registerOutput<String>('eventDataContentType');
+    this.eventFilters =
+        registerOutput<List<EventFilterResponse4>>('eventFilters');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.transport = registerOutput<TransportResponse>('transport');
+    this.triggerId = registerOutput<String>('triggerId');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -417,14 +417,15 @@ class EmailChannel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationId = Output.createUnknown<String>();
-    this.configurationSet = Output.createUnknown<String?>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.fromAddress = Output.createUnknown<String>();
-    this.identity = Output.createUnknown<String>();
-    this.messagesPerSecond = Output.createUnknown<int>();
-    this.orchestrationSendingRoleArn = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String?>();
+    this.applicationId = registerOutput<String>('applicationId');
+    this.configurationSet = registerOutput<String?>('configurationSet');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.fromAddress = registerOutput<String>('fromAddress');
+    this.identity = registerOutput<String>('identity');
+    this.messagesPerSecond = registerOutput<int>('messagesPerSecond');
+    this.orchestrationSendingRoleArn =
+        registerOutput<String?>('orchestrationSendingRoleArn');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String?>('roleArn');
   }
 }

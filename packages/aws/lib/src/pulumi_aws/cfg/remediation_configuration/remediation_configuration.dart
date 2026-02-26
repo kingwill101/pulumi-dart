@@ -369,19 +369,21 @@ class RemediationConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.automatic = Output.createUnknown<bool?>();
-    this.configRuleName = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.automatic = registerOutput<bool?>('automatic');
+    this.configRuleName = registerOutput<String>('configRuleName');
     this.executionControls =
-        Output.createUnknown<RemediationConfigurationExecutionControls?>();
-    this.maximumAutomaticAttempts = Output.createUnknown<int?>();
+        registerOutput<RemediationConfigurationExecutionControls?>(
+            'executionControls');
+    this.maximumAutomaticAttempts =
+        registerOutput<int?>('maximumAutomaticAttempts');
     this.parameters =
-        Output.createUnknown<List<RemediationConfigurationParameter>?>();
-    this.region = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String?>();
-    this.retryAttemptSeconds = Output.createUnknown<int?>();
-    this.targetId = Output.createUnknown<String>();
-    this.targetType = Output.createUnknown<String>();
-    this.targetVersion = Output.createUnknown<String?>();
+        registerOutput<List<RemediationConfigurationParameter>?>('parameters');
+    this.region = registerOutput<String>('region');
+    this.resourceType = registerOutput<String?>('resourceType');
+    this.retryAttemptSeconds = registerOutput<int?>('retryAttemptSeconds');
+    this.targetId = registerOutput<String>('targetId');
+    this.targetType = registerOutput<String>('targetType');
+    this.targetVersion = registerOutput<String?>('targetVersion');
   }
 }

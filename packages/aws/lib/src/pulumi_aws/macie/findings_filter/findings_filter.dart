@@ -239,16 +239,16 @@ class FindingsFilter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
+    this.action = registerOutput<String>('action');
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
     this.findingCriteria =
-        Output.createUnknown<FindingsFilterFindingCriteria>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.position = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<FindingsFilterFindingCriteria>('findingCriteria');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.position = registerOutput<int>('position');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

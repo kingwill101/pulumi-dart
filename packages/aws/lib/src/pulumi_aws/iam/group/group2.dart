@@ -131,9 +131,9 @@ class Group2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.path = Output.createUnknown<String?>();
-    this.uniqueId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    this.path = registerOutput<String?>('path');
+    this.uniqueId = registerOutput<String>('uniqueId');
   }
 }

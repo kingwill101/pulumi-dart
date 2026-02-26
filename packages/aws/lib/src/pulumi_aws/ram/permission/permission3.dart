@@ -235,16 +235,16 @@ class Permission3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.defaultVersion = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.policyTemplate = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<PermissionTimeouts?>();
-    this.version = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.defaultVersion = registerOutput<bool>('defaultVersion');
+    this.name = registerOutput<String>('name');
+    this.policyTemplate = registerOutput<String>('policyTemplate');
+    this.region = registerOutput<String>('region');
+    this.resourceType = registerOutput<String>('resourceType');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<PermissionTimeouts?>('timeouts');
+    this.version = registerOutput<String>('version');
   }
 }

@@ -329,11 +329,12 @@ class ClusterActivityStream extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.engineNativeAuditFieldsIncluded = Output.createUnknown<bool?>();
-    this.kinesisStreamName = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.mode = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
+    this.engineNativeAuditFieldsIncluded =
+        registerOutput<bool?>('engineNativeAuditFieldsIncluded');
+    this.kinesisStreamName = registerOutput<String>('kinesisStreamName');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.mode = registerOutput<String>('mode');
+    this.region = registerOutput<String>('region');
+    this.resourceArn = registerOutput<String>('resourceArn');
   }
 }

@@ -202,8 +202,8 @@ class Project extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.projectNumber = Output.createUnknown<String>();
+    this.displayName = registerOutput<String>('displayName');
+    this.project = registerOutput<String>('project');
+    this.projectNumber = registerOutput<String>('projectNumber');
   }
 }

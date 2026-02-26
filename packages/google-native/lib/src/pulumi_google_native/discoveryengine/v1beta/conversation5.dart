@@ -40,16 +40,17 @@ class Conversation5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.collectionId = Output.createUnknown<String>();
-    this.dataStoreId = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.messages = Output.createUnknown<
-        List<GoogleCloudDiscoveryengineV1betaConversationMessageResponse>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.userPseudoId = Output.createUnknown<String>();
+    this.collectionId = registerOutput<String>('collectionId');
+    this.dataStoreId = registerOutput<String>('dataStoreId');
+    this.endTime = registerOutput<String>('endTime');
+    this.location = registerOutput<String>('location');
+    this.messages = registerOutput<
+            List<GoogleCloudDiscoveryengineV1betaConversationMessageResponse>>(
+        'messages');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
+    this.userPseudoId = registerOutput<String>('userPseudoId');
   }
 }

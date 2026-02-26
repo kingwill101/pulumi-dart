@@ -350,13 +350,13 @@ class Vault2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessPolicy = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.notification = Output.createUnknown<VaultNotification?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.accessPolicy = registerOutput<String?>('accessPolicy');
+    this.arn = registerOutput<String>('arn');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.notification = registerOutput<VaultNotification?>('notification');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

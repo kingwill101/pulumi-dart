@@ -499,14 +499,14 @@ class WorkforcePoolProviderScimToken extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.providerId = Output.createUnknown<String>();
-    this.scimTenantId = Output.createUnknown<String>();
-    this.scimTokenId = Output.createUnknown<String>();
-    this.securityToken = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.workforcePoolId = Output.createUnknown<String>();
+    this.displayName = registerOutput<String?>('displayName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.providerId = registerOutput<String>('providerId');
+    this.scimTenantId = registerOutput<String>('scimTenantId');
+    this.scimTokenId = registerOutput<String>('scimTokenId');
+    this.securityToken = registerOutput<String>('securityToken');
+    this.state = registerOutput<String>('state');
+    this.workforcePoolId = registerOutput<String>('workforcePoolId');
   }
 }

@@ -164,12 +164,13 @@ class ProfilingGroup extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.agentOrchestrationConfig =
-        Output.createUnknown<ProfilingGroupAgentOrchestrationConfig>();
-    this.arn = Output.createUnknown<String>();
-    this.computePlatform = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<ProfilingGroupAgentOrchestrationConfig>(
+            'agentOrchestrationConfig');
+    this.arn = registerOutput<String>('arn');
+    this.computePlatform = registerOutput<String>('computePlatform');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

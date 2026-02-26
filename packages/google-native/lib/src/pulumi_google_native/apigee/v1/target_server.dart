@@ -37,14 +37,15 @@ class TargetServer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String>();
-    this.environmentId = Output.createUnknown<String>();
-    this.host = Output.createUnknown<String>();
-    this.isEnabled = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
-    this.protocol = Output.createUnknown<String>();
-    this.sSLInfo = Output.createUnknown<GoogleCloudApigeeV1TlsInfoResponse>();
+    this.description = registerOutput<String>('description');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.host = registerOutput<String>('host');
+    this.isEnabled = registerOutput<bool>('isEnabled');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.port = registerOutput<int>('port');
+    this.protocol = registerOutput<String>('protocol');
+    this.sSLInfo =
+        registerOutput<GoogleCloudApigeeV1TlsInfoResponse>('sSLInfo');
   }
 }

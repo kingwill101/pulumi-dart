@@ -1877,10 +1877,12 @@ class InstanceDesiredUserCreatedEndpoints extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.desiredUserCreatedEndpoints = Output.createUnknown<
-        List<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.desiredUserCreatedEndpoints = registerOutput<
+            List<
+                InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>?>(
+        'desiredUserCreatedEndpoints');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
   }
 }

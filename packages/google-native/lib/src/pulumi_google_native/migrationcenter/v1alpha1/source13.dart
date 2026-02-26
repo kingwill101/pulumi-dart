@@ -55,20 +55,20 @@ class Source13 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.errorFrameCount = Output.createUnknown<int>();
-    this.isManaged = Output.createUnknown<bool>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.pendingFrameCount = Output.createUnknown<int>();
-    this.priority = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.sourceId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.errorFrameCount = registerOutput<int>('errorFrameCount');
+    this.isManaged = registerOutput<bool>('isManaged');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.pendingFrameCount = registerOutput<int>('pendingFrameCount');
+    this.priority = registerOutput<int>('priority');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.sourceId = registerOutput<String>('sourceId');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

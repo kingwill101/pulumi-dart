@@ -226,16 +226,16 @@ class UserDefinedFunction extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.catalogId = Output.createUnknown<String?>();
-    this.className = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.databaseName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.ownerName = Output.createUnknown<String>();
-    this.ownerType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.catalogId = registerOutput<String?>('catalogId');
+    this.className = registerOutput<String>('className');
+    this.createTime = registerOutput<String>('createTime');
+    this.databaseName = registerOutput<String>('databaseName');
+    this.name = registerOutput<String>('name');
+    this.ownerName = registerOutput<String>('ownerName');
+    this.ownerType = registerOutput<String>('ownerType');
+    this.region = registerOutput<String>('region');
     this.resourceUris =
-        Output.createUnknown<List<UserDefinedFunctionResourceUri>?>();
+        registerOutput<List<UserDefinedFunctionResourceUri>?>('resourceUris');
   }
 }

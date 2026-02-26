@@ -319,11 +319,11 @@ class NamedQuery extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.database = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.query = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.workgroup = Output.createUnknown<String?>();
+    this.database = registerOutput<String>('database');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.query = registerOutput<String>('query');
+    this.region = registerOutput<String>('region');
+    this.workgroup = registerOutput<String?>('workgroup');
   }
 }

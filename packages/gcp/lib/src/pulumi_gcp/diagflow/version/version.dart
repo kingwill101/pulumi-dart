@@ -413,10 +413,10 @@ class Version extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String?>();
-    this.status = Output.createUnknown<String>();
-    this.versionNumber = Output.createUnknown<int>();
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String?>('parent');
+    this.status = registerOutput<String>('status');
+    this.versionNumber = registerOutput<int>('versionNumber');
   }
 }

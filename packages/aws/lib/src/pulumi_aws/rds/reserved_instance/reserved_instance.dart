@@ -238,25 +238,26 @@ class ReservedInstance extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.currencyCode = Output.createUnknown<String>();
-    this.dbInstanceClass = Output.createUnknown<String>();
-    this.duration = Output.createUnknown<int>();
-    this.fixedPrice = Output.createUnknown<double>();
-    this.instanceCount = Output.createUnknown<int?>();
-    this.leaseId = Output.createUnknown<String>();
-    this.multiAz = Output.createUnknown<bool>();
-    this.offeringId = Output.createUnknown<String>();
-    this.offeringType = Output.createUnknown<String>();
-    this.productDescription = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.currencyCode = registerOutput<String>('currencyCode');
+    this.dbInstanceClass = registerOutput<String>('dbInstanceClass');
+    this.duration = registerOutput<int>('duration');
+    this.fixedPrice = registerOutput<double>('fixedPrice');
+    this.instanceCount = registerOutput<int?>('instanceCount');
+    this.leaseId = registerOutput<String>('leaseId');
+    this.multiAz = registerOutput<bool>('multiAz');
+    this.offeringId = registerOutput<String>('offeringId');
+    this.offeringType = registerOutput<String>('offeringType');
+    this.productDescription = registerOutput<String>('productDescription');
     this.recurringCharges =
-        Output.createUnknown<List<ReservedInstanceRecurringCharge>>();
-    this.region = Output.createUnknown<String>();
-    this.reservationId = Output.createUnknown<String?>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.usagePrice = Output.createUnknown<double>();
+        registerOutput<List<ReservedInstanceRecurringCharge>>(
+            'recurringCharges');
+    this.region = registerOutput<String>('region');
+    this.reservationId = registerOutput<String?>('reservationId');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.usagePrice = registerOutput<double>('usagePrice');
   }
 }

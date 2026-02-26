@@ -342,12 +342,12 @@ class AnomalyMonitor extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.monitorDimension = Output.createUnknown<String?>();
-    this.monitorSpecification = Output.createUnknown<String?>();
-    this.monitorType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.monitorDimension = registerOutput<String?>('monitorDimension');
+    this.monitorSpecification = registerOutput<String?>('monitorSpecification');
+    this.monitorType = registerOutput<String>('monitorType');
+    this.name = registerOutput<String>('name');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

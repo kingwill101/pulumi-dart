@@ -445,10 +445,11 @@ class PermissionsBoundaryAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.instanceArn = Output.createUnknown<String>();
-    this.permissionSetArn = Output.createUnknown<String>();
-    this.permissionsBoundary = Output.createUnknown<
-        PermissionsBoundaryAttachmentPermissionsBoundary>();
-    this.region = Output.createUnknown<String>();
+    this.instanceArn = registerOutput<String>('instanceArn');
+    this.permissionSetArn = registerOutput<String>('permissionSetArn');
+    this.permissionsBoundary =
+        registerOutput<PermissionsBoundaryAttachmentPermissionsBoundary>(
+            'permissionsBoundary');
+    this.region = registerOutput<String>('region');
   }
 }

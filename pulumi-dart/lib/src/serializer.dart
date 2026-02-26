@@ -277,7 +277,7 @@ class Serializer {
     }
 
     var serializedValue = await serializeAsync(
-      ctx + "." + propName,
+      "$ctx.$propName",
       value,
       keepResources,
       keepOutputValues: false,

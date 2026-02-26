@@ -10,9 +10,11 @@ vars:
   LANGUAGE_HOST_DIR: "{{.ROOT_DIR}}/pulumi-language-dart"
   PULUMI_DART_PATH: "{{.ROOT_DIR}}/pulumi-dart"
   DEFAULT_PULUMI_CONFIG_PASSPHRASE: "banana"
+  SMOKE_STACK_PREFIX: "dev"
   PRESERVE_EXAMPLES: "true"
   FORMAT_GENERATED: "true"
   STRICT_FORMAT: "false"
+  COVERAGE_LCOV: ""
   DAY1_PROVIDERS: "gcp gcp-global-cloudrun google-native"
   ALL_PROVIDERS: "gcp gcp-global-cloudrun google-native aws awsx random"
 
@@ -21,6 +23,69 @@ tasks:
     desc: List available tasks
     cmds:
       - task --list
+
+  proto:generate:
+    desc: Regenerate pulumirpc Dart files from pulumi/proto (clones pulumi/ if missing)
+    cmds:
+      - make generate
+
+  test:mutation:dry:
+    desc: Dry-run mutation testing config for pulumi-dart (counts candidate mutants only)
+    cmds:
+      - |
+        set -eu
+        cd "{{.PULUMI_DART_PATH}}"
+        if ! dart run mutation_test --dry mutation-test.xml; then
+          echo "mutation_test dry run completed; non-zero exit is expected because no tests are executed in dry mode."
+        fi
+
+  test:mutation:dry:coverage:
+    desc: Dry-run mutation testing using lcov data to highlight uncovered mutants
+    cmds:
+      - task: test:coverage
+      - |
+        set -eu
+        cd "{{.PULUMI_DART_PATH}}"
+        if ! dart run mutation_test --dry --coverage coverage/lcov.info mutation-test.xml; then
+          echo "mutation_test dry run with coverage completed; non-zero exit is expected in dry mode."
+        fi
+
+  test:coverage:
+    desc: Generate lcov coverage report for pulumi-dart tests
+    cmds:
+      - |
+        set -eu
+        cd "{{.PULUMI_DART_PATH}}"
+        mkdir -p coverage
+        dart test --coverage-path=coverage/lcov.info --coverage-package='^pulumi$'
+        echo "Coverage report: {{.PULUMI_DART_PATH}}/coverage/lcov.info"
+
+  test:mutation:
+    desc: Run mutation testing for pulumi-dart core runtime surface
+    cmds:
+      - |
+        set -eu
+        cd "{{.PULUMI_DART_PATH}}"
+        INPUT_COVERAGE="{{.COVERAGE_LCOV}}"
+        DEFAULT_COVERAGE="{{.PULUMI_DART_PATH}}/coverage/lcov.info"
+        if [ -z "${INPUT_COVERAGE}" ] && [ -f "${DEFAULT_COVERAGE}" ]; then
+          INPUT_COVERAGE="${DEFAULT_COVERAGE}"
+        fi
+
+        if [ -n "${INPUT_COVERAGE}" ]; then
+          echo "Using coverage file: ${INPUT_COVERAGE}"
+          dart run mutation_test --coverage "${INPUT_COVERAGE}" mutation-test.xml
+        else
+          dart run mutation_test mutation-test.xml
+        fi
+
+  test:mutation:coverage:
+    desc: Generate coverage then run mutation testing using that lcov report
+    cmds:
+      - task: test:coverage
+      - task: test:mutation
+        vars:
+          COVERAGE_LCOV: "{{.PULUMI_DART_PATH}}/coverage/lcov.info"
 
   check-tools:
     desc: Verify required tooling for SDK generation
@@ -349,6 +414,17 @@ tasks:
       - task: generate:gcp
       - task: analyze:gcp
 
+  verify:matrix:
+    desc: Generate all providers, analyze random/aws/gcp, then run smoke previews for random/aws/gcp
+    cmds:
+      - task: generate:all
+      - |
+        set -eu
+        for provider in random aws gcp; do
+          task "analyze:${provider}"
+        done
+      - task: smoke:preview:matrix
+
   smoke:init:
     desc: Create/update a local Pulumi Dart smoke project using a generated provider SDK via path dependencies
     requires:
@@ -453,6 +529,14 @@ tasks:
           if [ -z "${PULUMI_CONFIG_PASSPHRASE:-}" ] && [ -z "${PULUMI_CONFIG_PASSPHRASE_FILE:-}" ]; then
             export PULUMI_CONFIG_PASSPHRASE="{{.DEFAULT_PULUMI_CONFIG_PASSPHRASE}}"
           fi && \
+          STACK_HASH="$(
+            if command -v shasum >/dev/null 2>&1; then
+              printf '%s' "${PULUMI_CONFIG_PASSPHRASE}" | shasum | awk '{print substr($1,1,8)}'
+            else
+              printf '%s' "${PULUMI_CONFIG_PASSPHRASE}" | sha1sum | awk '{print substr($1,1,8)}'
+            fi
+          )" && \
+          export SMOKE_STACK_NAME="{{.SMOKE_STACK_PREFIX}}-${STACK_HASH}" && \
           CMD='{{.CMD}}' && \
           sh -c "${CMD}"
         )
@@ -466,7 +550,7 @@ tasks:
       - task: smoke:exec
         vars:
           PACKAGE: "{{.PACKAGE}}"
-          CMD: "pulumi stack select dev --create --non-interactive >/dev/null"
+          CMD: "pulumi stack select ${SMOKE_STACK_NAME} --create --non-interactive >/dev/null"
 
   smoke:preview:
     desc: Run Pulumi preview for a local smoke project wired to generated provider SDK path dependencies
@@ -477,7 +561,7 @@ tasks:
       - task: smoke:exec
         vars:
           PACKAGE: "{{.PACKAGE}}"
-          CMD: "pulumi stack select dev --create --non-interactive >/dev/null && pulumi preview --non-interactive"
+          CMD: "pulumi stack select ${SMOKE_STACK_NAME} --create --non-interactive >/dev/null && pulumi preview --non-interactive"
 
   smoke:up:
     desc: Run Pulumi up for a local smoke project wired to generated provider SDK path dependencies
@@ -488,7 +572,16 @@ tasks:
       - task: smoke:exec
         vars:
           PACKAGE: "{{.PACKAGE}}"
-          CMD: "pulumi stack select dev --create --non-interactive >/dev/null && pulumi up --yes --non-interactive"
+          CMD: "pulumi stack select ${SMOKE_STACK_NAME} --create --non-interactive >/dev/null && pulumi up --yes --non-interactive"
+
+  smoke:preview:matrix:
+    desc: Run smoke preview for random/aws/gcp generated provider SDKs
+    cmds:
+      - |
+        set -eu
+        for provider in random aws gcp; do
+          task smoke:preview PACKAGE="${provider}"
+        done
 
   project:use-local-provider:
     desc: Wire an existing Pulumi Dart project to a locally generated provider SDK and local pulumi-dart

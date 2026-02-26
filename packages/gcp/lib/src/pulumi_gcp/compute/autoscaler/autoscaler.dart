@@ -1025,13 +1025,13 @@ class Autoscaler extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.autoscalingPolicy =
-        Output.createUnknown<AutoscalerAutoscalingPolicy>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.target = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<AutoscalerAutoscalingPolicy>('autoscalingPolicy');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.target = registerOutput<String>('target');
+    this.zone = registerOutput<String>('zone');
   }
 }

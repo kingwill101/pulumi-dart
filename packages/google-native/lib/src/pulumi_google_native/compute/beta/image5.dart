@@ -131,49 +131,55 @@ class Image5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.architecture = Output.createUnknown<String>();
-    this.archiveSizeBytes = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.deprecated = Output.createUnknown<DeprecationStatusResponse2>();
-    this.description = Output.createUnknown<String>();
-    this.diskSizeGb = Output.createUnknown<String>();
-    this.enableConfidentialCompute = Output.createUnknown<bool>();
-    this.family = Output.createUnknown<String>();
-    this.forceCreate = Output.createUnknown<bool?>();
+    this.architecture = registerOutput<String>('architecture');
+    this.archiveSizeBytes = registerOutput<String>('archiveSizeBytes');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.deprecated = registerOutput<DeprecationStatusResponse2>('deprecated');
+    this.description = registerOutput<String>('description');
+    this.diskSizeGb = registerOutput<String>('diskSizeGb');
+    this.enableConfidentialCompute =
+        registerOutput<bool>('enableConfidentialCompute');
+    this.family = registerOutput<String>('family');
+    this.forceCreate = registerOutput<bool?>('forceCreate');
     this.guestOsFeatures =
-        Output.createUnknown<List<GuestOsFeatureResponse2>>();
+        registerOutput<List<GuestOsFeatureResponse2>>('guestOsFeatures');
     this.imageEncryptionKey =
-        Output.createUnknown<CustomerEncryptionKeyResponse2>();
-    this.kind = Output.createUnknown<String>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.licenseCodes = Output.createUnknown<List<String>>();
-    this.licenses = Output.createUnknown<List<String>>();
-    this.locked = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rawDisk = Output.createUnknown<ImageRawDiskResponse2>();
-    this.requestId = Output.createUnknown<String?>();
-    this.rolloutOverride = Output.createUnknown<RolloutPolicyResponse2>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<CustomerEncryptionKeyResponse2>('imageEncryptionKey');
+    this.kind = registerOutput<String>('kind');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.licenseCodes = registerOutput<List<String>>('licenseCodes');
+    this.licenses = registerOutput<List<String>>('licenses');
+    this.locked = registerOutput<bool>('locked');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.rawDisk = registerOutput<ImageRawDiskResponse2>('rawDisk');
+    this.requestId = registerOutput<String?>('requestId');
+    this.rolloutOverride =
+        registerOutput<RolloutPolicyResponse2>('rolloutOverride');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.selfLink = registerOutput<String>('selfLink');
     this.shieldedInstanceInitialState =
-        Output.createUnknown<InitialStateConfigResponse2>();
-    this.sourceDisk = Output.createUnknown<String>();
+        registerOutput<InitialStateConfigResponse2>(
+            'shieldedInstanceInitialState');
+    this.sourceDisk = registerOutput<String>('sourceDisk');
     this.sourceDiskEncryptionKey =
-        Output.createUnknown<CustomerEncryptionKeyResponse2>();
-    this.sourceDiskId = Output.createUnknown<String>();
-    this.sourceImage = Output.createUnknown<String>();
+        registerOutput<CustomerEncryptionKeyResponse2>(
+            'sourceDiskEncryptionKey');
+    this.sourceDiskId = registerOutput<String>('sourceDiskId');
+    this.sourceImage = registerOutput<String>('sourceImage');
     this.sourceImageEncryptionKey =
-        Output.createUnknown<CustomerEncryptionKeyResponse2>();
-    this.sourceImageId = Output.createUnknown<String>();
-    this.sourceSnapshot = Output.createUnknown<String>();
+        registerOutput<CustomerEncryptionKeyResponse2>(
+            'sourceImageEncryptionKey');
+    this.sourceImageId = registerOutput<String>('sourceImageId');
+    this.sourceSnapshot = registerOutput<String>('sourceSnapshot');
     this.sourceSnapshotEncryptionKey =
-        Output.createUnknown<CustomerEncryptionKeyResponse2>();
-    this.sourceSnapshotId = Output.createUnknown<String>();
-    this.sourceType = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.storageLocations = Output.createUnknown<List<String>>();
-    this.userLicenses = Output.createUnknown<List<String>>();
+        registerOutput<CustomerEncryptionKeyResponse2>(
+            'sourceSnapshotEncryptionKey');
+    this.sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
+    this.sourceType = registerOutput<String>('sourceType');
+    this.status = registerOutput<String>('status');
+    this.storageLocations = registerOutput<List<String>>('storageLocations');
+    this.userLicenses = registerOutput<List<String>>('userLicenses');
   }
 }

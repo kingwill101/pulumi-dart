@@ -43,15 +43,16 @@ class Notification extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.customAttributes = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.eventTypes = Output.createUnknown<List<String>>();
-    this.kind = Output.createUnknown<String>();
-    this.objectNamePrefix = Output.createUnknown<String>();
-    this.payloadFormat = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.topic = Output.createUnknown<String>();
-    this.userProject = Output.createUnknown<String?>();
+    this.bucket = registerOutput<String>('bucket');
+    this.customAttributes =
+        registerOutput<Map<String, String>>('customAttributes');
+    this.etag = registerOutput<String>('etag');
+    this.eventTypes = registerOutput<List<String>>('eventTypes');
+    this.kind = registerOutput<String>('kind');
+    this.objectNamePrefix = registerOutput<String>('objectNamePrefix');
+    this.payloadFormat = registerOutput<String>('payloadFormat');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.topic = registerOutput<String>('topic');
+    this.userProject = registerOutput<String?>('userProject');
   }
 }

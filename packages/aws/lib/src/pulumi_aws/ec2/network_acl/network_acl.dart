@@ -275,14 +275,14 @@ class NetworkAcl extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.egress = Output.createUnknown<List<NetworkAclEgress>>();
-    this.ingress = Output.createUnknown<List<NetworkAclIngress>>();
-    this.ownerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.egress = registerOutput<List<NetworkAclEgress>>('egress');
+    this.ingress = registerOutput<List<NetworkAclIngress>>('ingress');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.region = registerOutput<String>('region');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

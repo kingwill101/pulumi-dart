@@ -1862,11 +1862,13 @@ class WebForwardingRuleServiceIamMember extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.condition =
-        Output.createUnknown<WebForwardingRuleServiceIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.forwardingRuleServiceName = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+        registerOutput<WebForwardingRuleServiceIamMemberCondition?>(
+            'condition');
+    this.etag = registerOutput<String>('etag');
+    this.forwardingRuleServiceName =
+        registerOutput<String>('forwardingRuleServiceName');
+    this.member = registerOutput<String>('member');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
   }
 }

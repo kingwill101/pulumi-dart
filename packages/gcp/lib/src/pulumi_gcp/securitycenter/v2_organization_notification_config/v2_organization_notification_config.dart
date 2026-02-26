@@ -225,14 +225,15 @@ class V2OrganizationNotificationConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.configId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.organization = Output.createUnknown<String>();
-    this.pubsubTopic = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
+    this.configId = registerOutput<String>('configId');
+    this.description = registerOutput<String?>('description');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.organization = registerOutput<String>('organization');
+    this.pubsubTopic = registerOutput<String>('pubsubTopic');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
     this.streamingConfig =
-        Output.createUnknown<V2OrganizationNotificationConfigStreamingConfig>();
+        registerOutput<V2OrganizationNotificationConfigStreamingConfig>(
+            'streamingConfig');
   }
 }

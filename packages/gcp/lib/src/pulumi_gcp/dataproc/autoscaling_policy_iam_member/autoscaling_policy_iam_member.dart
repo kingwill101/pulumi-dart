@@ -962,12 +962,12 @@ class AutoscalingPolicyIamMember extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.condition =
-        Output.createUnknown<AutoscalingPolicyIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.policyId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+        registerOutput<AutoscalingPolicyIamMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.member = registerOutput<String>('member');
+    this.policyId = registerOutput<String>('policyId');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
   }
 }

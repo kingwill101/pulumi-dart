@@ -804,14 +804,14 @@ class Document extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.collection = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.database = Output.createUnknown<String?>();
-    this.documentId = Output.createUnknown<String>();
-    this.fields = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.path = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.collection = registerOutput<String>('collection');
+    this.createTime = registerOutput<String>('createTime');
+    this.database = registerOutput<String?>('database');
+    this.documentId = registerOutput<String>('documentId');
+    this.fields = registerOutput<String>('fields');
+    this.name = registerOutput<String>('name');
+    this.path = registerOutput<String>('path');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

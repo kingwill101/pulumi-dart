@@ -321,15 +321,15 @@ class HoursOfOperation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.configs = Output.createUnknown<List<HoursOfOperationConfig>>();
-    this.description = Output.createUnknown<String?>();
-    this.hoursOfOperationId = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeZone = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.configs = registerOutput<List<HoursOfOperationConfig>>('configs');
+    this.description = registerOutput<String?>('description');
+    this.hoursOfOperationId = registerOutput<String>('hoursOfOperationId');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeZone = registerOutput<String>('timeZone');
   }
 }

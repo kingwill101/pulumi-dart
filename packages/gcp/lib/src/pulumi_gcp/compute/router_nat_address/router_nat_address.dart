@@ -77,11 +77,11 @@ class RouterNatAddress extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.drainNatIps = Output.createUnknown<List<String>?>();
-    this.natIps = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.router = Output.createUnknown<String>();
-    this.routerNat = Output.createUnknown<String>();
+    this.drainNatIps = registerOutput<List<String>?>('drainNatIps');
+    this.natIps = registerOutput<List<String>>('natIps');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.router = registerOutput<String>('router');
+    this.routerNat = registerOutput<String>('routerNat');
   }
 }

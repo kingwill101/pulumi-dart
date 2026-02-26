@@ -240,14 +240,16 @@ class ControlFolderIntelligenceConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.editionConfig = Output.createUnknown<String>();
-    this.effectiveIntelligenceConfigs = Output.createUnknown<
-        List<ControlFolderIntelligenceConfigEffectiveIntelligenceConfig>>();
+    this.editionConfig = registerOutput<String>('editionConfig');
+    this.effectiveIntelligenceConfigs = registerOutput<
+            List<ControlFolderIntelligenceConfigEffectiveIntelligenceConfig>>(
+        'effectiveIntelligenceConfigs');
     this.filter =
-        Output.createUnknown<ControlFolderIntelligenceConfigFilter?>();
-    this.name = Output.createUnknown<String>();
-    this.trialConfigs = Output.createUnknown<
-        List<ControlFolderIntelligenceConfigTrialConfig>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<ControlFolderIntelligenceConfigFilter?>('filter');
+    this.name = registerOutput<String>('name');
+    this.trialConfigs =
+        registerOutput<List<ControlFolderIntelligenceConfigTrialConfig>>(
+            'trialConfigs');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

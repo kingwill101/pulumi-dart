@@ -51,18 +51,20 @@ class InstanceConfig3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.baseConfig = Output.createUnknown<String>();
-    this.configType = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.freeInstanceAvailability = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.leaderOptions = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.optionalReplicas = Output.createUnknown<List<ReplicaInfoResponse>>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.replicas = Output.createUnknown<List<ReplicaInfoResponse>>();
-    this.state = Output.createUnknown<String>();
+    this.baseConfig = registerOutput<String>('baseConfig');
+    this.configType = registerOutput<String>('configType');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.freeInstanceAvailability =
+        registerOutput<String>('freeInstanceAvailability');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.leaderOptions = registerOutput<List<String>>('leaderOptions');
+    this.name = registerOutput<String>('name');
+    this.optionalReplicas =
+        registerOutput<List<ReplicaInfoResponse>>('optionalReplicas');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.replicas = registerOutput<List<ReplicaInfoResponse>>('replicas');
+    this.state = registerOutput<String>('state');
   }
 }

@@ -311,8 +311,8 @@ class LogSubscription extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.directoryId = Output.createUnknown<String>();
-    this.logGroupName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.directoryId = registerOutput<String>('directoryId');
+    this.logGroupName = registerOutput<String>('logGroupName');
+    this.region = registerOutput<String>('region');
   }
 }

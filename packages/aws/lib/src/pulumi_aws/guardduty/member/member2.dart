@@ -204,13 +204,14 @@ class Member2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.detectorId = Output.createUnknown<String>();
-    this.disableEmailNotification = Output.createUnknown<bool?>();
-    this.email = Output.createUnknown<String>();
-    this.invitationMessage = Output.createUnknown<String?>();
-    this.invite = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.relationshipStatus = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.detectorId = registerOutput<String>('detectorId');
+    this.disableEmailNotification =
+        registerOutput<bool?>('disableEmailNotification');
+    this.email = registerOutput<String>('email');
+    this.invitationMessage = registerOutput<String?>('invitationMessage');
+    this.invite = registerOutput<bool?>('invite');
+    this.region = registerOutput<String>('region');
+    this.relationshipStatus = registerOutput<String>('relationshipStatus');
   }
 }

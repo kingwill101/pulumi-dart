@@ -353,20 +353,21 @@ class GlobalAddress extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.address = Output.createUnknown<String>();
-    this.addressType = Output.createUnknown<String?>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.ipVersion = Output.createUnknown<String?>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String?>();
-    this.prefixLength = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.purpose = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
+    this.address = registerOutput<String>('address');
+    this.addressType = registerOutput<String?>('addressType');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.ipVersion = registerOutput<String?>('ipVersion');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String?>('network');
+    this.prefixLength = registerOutput<int>('prefixLength');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.purpose = registerOutput<String?>('purpose');
+    this.selfLink = registerOutput<String>('selfLink');
   }
 }

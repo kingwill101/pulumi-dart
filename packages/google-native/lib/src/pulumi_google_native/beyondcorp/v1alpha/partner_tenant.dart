@@ -41,15 +41,16 @@ class PartnerTenant extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.group = Output.createUnknown<
-        GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.partnerMetadata = Output.createUnknown<
-        GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse>();
-    this.requestId = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.group = registerOutput<
+        GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse>('group');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.partnerMetadata = registerOutput<
+            GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse>(
+        'partnerMetadata');
+    this.requestId = registerOutput<String?>('requestId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -259,12 +259,12 @@ class Fulfillment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.features = Output.createUnknown<List<FulfillmentFeature>?>();
+    this.displayName = registerOutput<String>('displayName');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.features = registerOutput<List<FulfillmentFeature>?>('features');
     this.genericWebService =
-        Output.createUnknown<FulfillmentGenericWebService?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<FulfillmentGenericWebService?>('genericWebService');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

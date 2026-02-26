@@ -876,33 +876,38 @@ class V2Vm extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceleratorConfig = Output.createUnknown<V2VmAcceleratorConfig>();
-    this.acceleratorType = Output.createUnknown<String>();
-    this.apiVersion = Output.createUnknown<String>();
-    this.cidrBlock = Output.createUnknown<String>();
-    this.dataDisks = Output.createUnknown<List<V2VmDataDisk>?>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.health = Output.createUnknown<String>();
-    this.healthDescription = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.metadata = Output.createUnknown<Map<String, String>?>();
-    this.multisliceNode = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.networkConfig = Output.createUnknown<V2VmNetworkConfig>();
-    this.networkConfigs = Output.createUnknown<List<V2VmNetworkConfig>?>();
-    this.networkEndpoints = Output.createUnknown<List<V2VmNetworkEndpoint>>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.queuedResource = Output.createUnknown<String>();
-    this.runtimeVersion = Output.createUnknown<String>();
-    this.schedulingConfig = Output.createUnknown<V2VmSchedulingConfig?>();
-    this.serviceAccount = Output.createUnknown<V2VmServiceAccount>();
+    this.acceleratorConfig =
+        registerOutput<V2VmAcceleratorConfig>('acceleratorConfig');
+    this.acceleratorType = registerOutput<String>('acceleratorType');
+    this.apiVersion = registerOutput<String>('apiVersion');
+    this.cidrBlock = registerOutput<String>('cidrBlock');
+    this.dataDisks = registerOutput<List<V2VmDataDisk>?>('dataDisks');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.health = registerOutput<String>('health');
+    this.healthDescription = registerOutput<String>('healthDescription');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.metadata = registerOutput<Map<String, String>?>('metadata');
+    this.multisliceNode = registerOutput<bool>('multisliceNode');
+    this.name = registerOutput<String>('name');
+    this.networkConfig = registerOutput<V2VmNetworkConfig>('networkConfig');
+    this.networkConfigs =
+        registerOutput<List<V2VmNetworkConfig>?>('networkConfigs');
+    this.networkEndpoints =
+        registerOutput<List<V2VmNetworkEndpoint>>('networkEndpoints');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.queuedResource = registerOutput<String>('queuedResource');
+    this.runtimeVersion = registerOutput<String>('runtimeVersion');
+    this.schedulingConfig =
+        registerOutput<V2VmSchedulingConfig?>('schedulingConfig');
+    this.serviceAccount = registerOutput<V2VmServiceAccount>('serviceAccount');
     this.shieldedInstanceConfig =
-        Output.createUnknown<V2VmShieldedInstanceConfig?>();
-    this.state = Output.createUnknown<String>();
-    this.symptoms = Output.createUnknown<List<V2VmSymptom>>();
-    this.tags = Output.createUnknown<List<String>?>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<V2VmShieldedInstanceConfig?>('shieldedInstanceConfig');
+    this.state = registerOutput<String>('state');
+    this.symptoms = registerOutput<List<V2VmSymptom>>('symptoms');
+    this.tags = registerOutput<List<String>?>('tags');
+    this.zone = registerOutput<String>('zone');
   }
 }

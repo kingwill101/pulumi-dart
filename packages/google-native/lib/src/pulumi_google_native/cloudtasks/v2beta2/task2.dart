@@ -45,16 +45,16 @@ class Task2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.appEngineHttpRequest =
-        Output.createUnknown<AppEngineHttpRequestResponse2>();
-    this.createTime = Output.createUnknown<String>();
-    this.httpRequest = Output.createUnknown<HttpRequestResponse2>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pullMessage = Output.createUnknown<PullMessageResponse>();
-    this.queueId = Output.createUnknown<String>();
-    this.scheduleTime = Output.createUnknown<String>();
-    this.status = Output.createUnknown<TaskStatusResponse>();
-    this.view = Output.createUnknown<String>();
+        registerOutput<AppEngineHttpRequestResponse2>('appEngineHttpRequest');
+    this.createTime = registerOutput<String>('createTime');
+    this.httpRequest = registerOutput<HttpRequestResponse2>('httpRequest');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pullMessage = registerOutput<PullMessageResponse>('pullMessage');
+    this.queueId = registerOutput<String>('queueId');
+    this.scheduleTime = registerOutput<String>('scheduleTime');
+    this.status = registerOutput<TaskStatusResponse>('status');
+    this.view = registerOutput<String>('view');
   }
 }

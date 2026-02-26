@@ -1295,21 +1295,24 @@ class SessionTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.creator = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.createTime = registerOutput<String>('createTime');
+    this.creator = registerOutput<String>('creator');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.environmentConfig =
-        Output.createUnknown<SessionTemplateEnvironmentConfig?>();
+        registerOutput<SessionTemplateEnvironmentConfig?>('environmentConfig');
     this.jupyterSession =
-        Output.createUnknown<SessionTemplateJupyterSession?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.runtimeConfig = Output.createUnknown<SessionTemplateRuntimeConfig?>();
-    this.sparkConnectSession = Output.createUnknown<Map<String, dynamic>?>();
-    this.updateTime = Output.createUnknown<String>();
-    this.uuid = Output.createUnknown<String>();
+        registerOutput<SessionTemplateJupyterSession?>('jupyterSession');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.runtimeConfig =
+        registerOutput<SessionTemplateRuntimeConfig?>('runtimeConfig');
+    this.sparkConnectSession =
+        registerOutput<Map<String, dynamic>?>('sparkConnectSession');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.uuid = registerOutput<String>('uuid');
   }
 }

@@ -553,25 +553,28 @@ class LayerVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.code = Output.createUnknown<dynamic>();
-    this.codeSha256 = Output.createUnknown<String>();
-    this.compatibleArchitectures = Output.createUnknown<List<String>?>();
-    this.compatibleRuntimes = Output.createUnknown<List<String>?>();
-    this.createdDate = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.layerArn = Output.createUnknown<String>();
-    this.layerName = Output.createUnknown<String>();
-    this.licenseInfo = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.s3Bucket = Output.createUnknown<String?>();
-    this.s3Key = Output.createUnknown<String?>();
-    this.s3ObjectVersion = Output.createUnknown<String?>();
-    this.signingJobArn = Output.createUnknown<String>();
-    this.signingProfileVersionArn = Output.createUnknown<String>();
-    this.skipDestroy = Output.createUnknown<bool?>();
-    this.sourceCodeHash = Output.createUnknown<String>();
-    this.sourceCodeSize = Output.createUnknown<int>();
-    this.version = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.code = registerOutput<dynamic>('code');
+    this.codeSha256 = registerOutput<String>('codeSha256');
+    this.compatibleArchitectures =
+        registerOutput<List<String>?>('compatibleArchitectures');
+    this.compatibleRuntimes =
+        registerOutput<List<String>?>('compatibleRuntimes');
+    this.createdDate = registerOutput<String>('createdDate');
+    this.description = registerOutput<String?>('description');
+    this.layerArn = registerOutput<String>('layerArn');
+    this.layerName = registerOutput<String>('layerName');
+    this.licenseInfo = registerOutput<String?>('licenseInfo');
+    this.region = registerOutput<String>('region');
+    this.s3Bucket = registerOutput<String?>('s3Bucket');
+    this.s3Key = registerOutput<String?>('s3Key');
+    this.s3ObjectVersion = registerOutput<String?>('s3ObjectVersion');
+    this.signingJobArn = registerOutput<String>('signingJobArn');
+    this.signingProfileVersionArn =
+        registerOutput<String>('signingProfileVersionArn');
+    this.skipDestroy = registerOutput<bool?>('skipDestroy');
+    this.sourceCodeHash = registerOutput<String>('sourceCodeHash');
+    this.sourceCodeSize = registerOutput<int>('sourceCodeSize');
+    this.version = registerOutput<String>('version');
   }
 }

@@ -221,22 +221,24 @@ class FeatureGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.eventTimeFeatureName = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.eventTimeFeatureName = registerOutput<String>('eventTimeFeatureName');
     this.featureDefinitions =
-        Output.createUnknown<List<FeatureGroupFeatureDefinition>>();
-    this.featureGroupName = Output.createUnknown<String>();
+        registerOutput<List<FeatureGroupFeatureDefinition>>(
+            'featureDefinitions');
+    this.featureGroupName = registerOutput<String>('featureGroupName');
     this.offlineStoreConfig =
-        Output.createUnknown<FeatureGroupOfflineStoreConfig?>();
+        registerOutput<FeatureGroupOfflineStoreConfig?>('offlineStoreConfig');
     this.onlineStoreConfig =
-        Output.createUnknown<FeatureGroupOnlineStoreConfig?>();
-    this.recordIdentifierFeatureName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<FeatureGroupOnlineStoreConfig?>('onlineStoreConfig');
+    this.recordIdentifierFeatureName =
+        registerOutput<String>('recordIdentifierFeatureName');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.throughputConfig =
-        Output.createUnknown<FeatureGroupThroughputConfig>();
+        registerOutput<FeatureGroupThroughputConfig>('throughputConfig');
   }
 }

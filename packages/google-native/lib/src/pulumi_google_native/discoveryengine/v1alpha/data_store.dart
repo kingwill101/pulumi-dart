@@ -44,17 +44,18 @@ class DataStore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.collectionId = Output.createUnknown<String>();
-    this.contentConfig = Output.createUnknown<String>();
-    this.createAdvancedSiteSearch = Output.createUnknown<bool?>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataStoreId = Output.createUnknown<String>();
-    this.defaultSchemaId = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.industryVertical = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.solutionTypes = Output.createUnknown<List<String>>();
+    this.collectionId = registerOutput<String>('collectionId');
+    this.contentConfig = registerOutput<String>('contentConfig');
+    this.createAdvancedSiteSearch =
+        registerOutput<bool?>('createAdvancedSiteSearch');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataStoreId = registerOutput<String>('dataStoreId');
+    this.defaultSchemaId = registerOutput<String>('defaultSchemaId');
+    this.displayName = registerOutput<String>('displayName');
+    this.industryVertical = registerOutput<String>('industryVertical');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.solutionTypes = registerOutput<List<String>>('solutionTypes');
   }
 }

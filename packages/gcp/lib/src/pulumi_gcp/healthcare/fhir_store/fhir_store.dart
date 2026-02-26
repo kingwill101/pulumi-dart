@@ -1555,26 +1555,36 @@ class FhirStore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.complexDataTypeReferenceParsing = Output.createUnknown<String>();
-    this.consentConfig = Output.createUnknown<FhirStoreConsentConfig?>();
-    this.dataset = Output.createUnknown<String>();
-    this.defaultSearchHandlingStrict = Output.createUnknown<bool?>();
-    this.disableReferentialIntegrity = Output.createUnknown<bool?>();
-    this.disableResourceVersioning = Output.createUnknown<bool?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enableHistoryImport = Output.createUnknown<bool?>();
-    this.enableHistoryModifications = Output.createUnknown<bool?>();
-    this.enableUpdateCreate = Output.createUnknown<bool?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
+    this.complexDataTypeReferenceParsing =
+        registerOutput<String>('complexDataTypeReferenceParsing');
+    this.consentConfig =
+        registerOutput<FhirStoreConsentConfig?>('consentConfig');
+    this.dataset = registerOutput<String>('dataset');
+    this.defaultSearchHandlingStrict =
+        registerOutput<bool?>('defaultSearchHandlingStrict');
+    this.disableReferentialIntegrity =
+        registerOutput<bool?>('disableReferentialIntegrity');
+    this.disableResourceVersioning =
+        registerOutput<bool?>('disableResourceVersioning');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableHistoryImport = registerOutput<bool?>('enableHistoryImport');
+    this.enableHistoryModifications =
+        registerOutput<bool?>('enableHistoryModifications');
+    this.enableUpdateCreate = registerOutput<bool?>('enableUpdateCreate');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
     this.notificationConfig =
-        Output.createUnknown<FhirStoreNotificationConfig?>();
+        registerOutput<FhirStoreNotificationConfig?>('notificationConfig');
     this.notificationConfigs =
-        Output.createUnknown<List<FhirStoreNotificationConfig>?>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.selfLink = Output.createUnknown<String>();
-    this.streamConfigs = Output.createUnknown<List<FhirStoreStreamConfig>?>();
-    this.validationConfig = Output.createUnknown<FhirStoreValidationConfig?>();
-    this.version = Output.createUnknown<String?>();
+        registerOutput<List<FhirStoreNotificationConfig>?>(
+            'notificationConfigs');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.streamConfigs =
+        registerOutput<List<FhirStoreStreamConfig>?>('streamConfigs');
+    this.validationConfig =
+        registerOutput<FhirStoreValidationConfig?>('validationConfig');
+    this.version = registerOutput<String?>('version');
   }
 }

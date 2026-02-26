@@ -271,16 +271,16 @@ class ApplicationVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.application = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.bucket = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.forceDelete = Output.createUnknown<bool?>();
-    this.key = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.process = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.application = registerOutput<String>('application');
+    this.arn = registerOutput<String>('arn');
+    this.bucket = registerOutput<String>('bucket');
+    this.description = registerOutput<String?>('description');
+    this.forceDelete = registerOutput<bool?>('forceDelete');
+    this.key = registerOutput<String>('key');
+    this.name = registerOutput<String>('name');
+    this.process = registerOutput<bool?>('process');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

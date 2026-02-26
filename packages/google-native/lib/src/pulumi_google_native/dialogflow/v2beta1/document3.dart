@@ -54,21 +54,23 @@ class Document3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.content = Output.createUnknown<String>();
-    this.contentUri = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.enableAutoReload = Output.createUnknown<bool>();
-    this.importGcsCustomMetadata = Output.createUnknown<bool?>();
-    this.knowledgeBaseId = Output.createUnknown<String>();
-    this.knowledgeTypes = Output.createUnknown<List<String>>();
-    this.latestReloadStatus = Output.createUnknown<
-        GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>>();
-    this.mimeType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rawContent = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.content = registerOutput<String>('content');
+    this.contentUri = registerOutput<String>('contentUri');
+    this.displayName = registerOutput<String>('displayName');
+    this.enableAutoReload = registerOutput<bool>('enableAutoReload');
+    this.importGcsCustomMetadata =
+        registerOutput<bool?>('importGcsCustomMetadata');
+    this.knowledgeBaseId = registerOutput<String>('knowledgeBaseId');
+    this.knowledgeTypes = registerOutput<List<String>>('knowledgeTypes');
+    this.latestReloadStatus = registerOutput<
+            GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse>(
+        'latestReloadStatus');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<Map<String, String>>('metadata');
+    this.mimeType = registerOutput<String>('mimeType');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.rawContent = registerOutput<String>('rawContent');
+    this.state = registerOutput<String>('state');
   }
 }

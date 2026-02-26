@@ -119,11 +119,11 @@ class ControlTowerControl extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.controlIdentifier = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.controlIdentifier = registerOutput<String>('controlIdentifier');
     this.parameters =
-        Output.createUnknown<List<ControlTowerControlParameter>?>();
-    this.region = Output.createUnknown<String>();
-    this.targetIdentifier = Output.createUnknown<String>();
+        registerOutput<List<ControlTowerControlParameter>?>('parameters');
+    this.region = registerOutput<String>('region');
+    this.targetIdentifier = registerOutput<String>('targetIdentifier');
   }
 }

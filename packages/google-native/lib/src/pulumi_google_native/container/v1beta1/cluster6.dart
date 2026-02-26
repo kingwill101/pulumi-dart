@@ -286,101 +286,123 @@ class Cluster6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.addonsConfig = Output.createUnknown<AddonsConfigResponse2>();
+    this.addonsConfig = registerOutput<AddonsConfigResponse2>('addonsConfig');
     this.authenticatorGroupsConfig =
-        Output.createUnknown<AuthenticatorGroupsConfigResponse2>();
-    this.autopilot = Output.createUnknown<AutopilotResponse2>();
-    this.autoscaling = Output.createUnknown<ClusterAutoscalingResponse2>();
+        registerOutput<AuthenticatorGroupsConfigResponse2>(
+            'authenticatorGroupsConfig');
+    this.autopilot = registerOutput<AutopilotResponse2>('autopilot');
+    this.autoscaling =
+        registerOutput<ClusterAutoscalingResponse2>('autoscaling');
     this.binaryAuthorization =
-        Output.createUnknown<BinaryAuthorizationResponse2>();
-    this.clusterIpv4Cidr = Output.createUnknown<String>();
-    this.clusterTelemetry = Output.createUnknown<ClusterTelemetryResponse>();
-    this.conditions = Output.createUnknown<List<StatusConditionResponse2>>();
-    this.confidentialNodes = Output.createUnknown<ConfidentialNodesResponse2>();
+        registerOutput<BinaryAuthorizationResponse2>('binaryAuthorization');
+    this.clusterIpv4Cidr = registerOutput<String>('clusterIpv4Cidr');
+    this.clusterTelemetry =
+        registerOutput<ClusterTelemetryResponse>('clusterTelemetry');
+    this.conditions =
+        registerOutput<List<StatusConditionResponse2>>('conditions');
+    this.confidentialNodes =
+        registerOutput<ConfidentialNodesResponse2>('confidentialNodes');
     this.costManagementConfig =
-        Output.createUnknown<CostManagementConfigResponse2>();
-    this.createTime = Output.createUnknown<String>();
-    this.currentMasterVersion = Output.createUnknown<String>();
-    this.currentNodeCount = Output.createUnknown<int>();
-    this.currentNodeVersion = Output.createUnknown<String>();
+        registerOutput<CostManagementConfigResponse2>('costManagementConfig');
+    this.createTime = registerOutput<String>('createTime');
+    this.currentMasterVersion = registerOutput<String>('currentMasterVersion');
+    this.currentNodeCount = registerOutput<int>('currentNodeCount');
+    this.currentNodeVersion = registerOutput<String>('currentNodeVersion');
     this.databaseEncryption =
-        Output.createUnknown<DatabaseEncryptionResponse2>();
+        registerOutput<DatabaseEncryptionResponse2>('databaseEncryption');
     this.defaultMaxPodsConstraint =
-        Output.createUnknown<MaxPodsConstraintResponse2>();
-    this.description = Output.createUnknown<String>();
-    this.enableK8sBetaApis = Output.createUnknown<K8sBetaAPIConfigResponse2>();
-    this.enableKubernetesAlpha = Output.createUnknown<bool>();
-    this.enableTpu = Output.createUnknown<bool>();
-    this.endpoint = Output.createUnknown<String>();
-    this.enterpriseConfig = Output.createUnknown<EnterpriseConfigResponse2>();
-    this.etag = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.fleet = Output.createUnknown<FleetResponse2>();
+        registerOutput<MaxPodsConstraintResponse2>('defaultMaxPodsConstraint');
+    this.description = registerOutput<String>('description');
+    this.enableK8sBetaApis =
+        registerOutput<K8sBetaAPIConfigResponse2>('enableK8sBetaApis');
+    this.enableKubernetesAlpha = registerOutput<bool>('enableKubernetesAlpha');
+    this.enableTpu = registerOutput<bool>('enableTpu');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.enterpriseConfig =
+        registerOutput<EnterpriseConfigResponse2>('enterpriseConfig');
+    this.etag = registerOutput<String>('etag');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.fleet = registerOutput<FleetResponse2>('fleet');
     this.identityServiceConfig =
-        Output.createUnknown<IdentityServiceConfigResponse2>();
-    this.initialClusterVersion = Output.createUnknown<String>();
-    this.initialNodeCount = Output.createUnknown<int>();
-    this.instanceGroupUrls = Output.createUnknown<List<String>>();
+        registerOutput<IdentityServiceConfigResponse2>('identityServiceConfig');
+    this.initialClusterVersion =
+        registerOutput<String>('initialClusterVersion');
+    this.initialNodeCount = registerOutput<int>('initialNodeCount');
+    this.instanceGroupUrls = registerOutput<List<String>>('instanceGroupUrls');
     this.ipAllocationPolicy =
-        Output.createUnknown<IPAllocationPolicyResponse4>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.legacyAbac = Output.createUnknown<LegacyAbacResponse2>();
-    this.location = Output.createUnknown<String>();
-    this.locations = Output.createUnknown<List<String>>();
-    this.loggingConfig = Output.createUnknown<LoggingConfigResponse2>();
-    this.loggingService = Output.createUnknown<String>();
-    this.maintenancePolicy = Output.createUnknown<MaintenancePolicyResponse2>();
-    this.master = Output.createUnknown<Map<String, dynamic>>();
-    this.masterAuth = Output.createUnknown<MasterAuthResponse2>();
+        registerOutput<IPAllocationPolicyResponse4>('ipAllocationPolicy');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.legacyAbac = registerOutput<LegacyAbacResponse2>('legacyAbac');
+    this.location = registerOutput<String>('location');
+    this.locations = registerOutput<List<String>>('locations');
+    this.loggingConfig =
+        registerOutput<LoggingConfigResponse2>('loggingConfig');
+    this.loggingService = registerOutput<String>('loggingService');
+    this.maintenancePolicy =
+        registerOutput<MaintenancePolicyResponse2>('maintenancePolicy');
+    this.master = registerOutput<Map<String, dynamic>>('master');
+    this.masterAuth = registerOutput<MasterAuthResponse2>('masterAuth');
     this.masterAuthorizedNetworksConfig =
-        Output.createUnknown<MasterAuthorizedNetworksConfigResponse4>();
-    this.masterIpv4CidrBlock = Output.createUnknown<String>();
-    this.meshCertificates = Output.createUnknown<MeshCertificatesResponse2>();
-    this.monitoringConfig = Output.createUnknown<MonitoringConfigResponse2>();
-    this.monitoringService = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.networkConfig = Output.createUnknown<NetworkConfigResponse10>();
-    this.networkPolicy = Output.createUnknown<NetworkPolicyResponse3>();
-    this.nodeConfig = Output.createUnknown<NodeConfigResponse5>();
-    this.nodeIpv4CidrSize = Output.createUnknown<int>();
+        registerOutput<MasterAuthorizedNetworksConfigResponse4>(
+            'masterAuthorizedNetworksConfig');
+    this.masterIpv4CidrBlock = registerOutput<String>('masterIpv4CidrBlock');
+    this.meshCertificates =
+        registerOutput<MeshCertificatesResponse2>('meshCertificates');
+    this.monitoringConfig =
+        registerOutput<MonitoringConfigResponse2>('monitoringConfig');
+    this.monitoringService = registerOutput<String>('monitoringService');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.networkConfig =
+        registerOutput<NetworkConfigResponse10>('networkConfig');
+    this.networkPolicy =
+        registerOutput<NetworkPolicyResponse3>('networkPolicy');
+    this.nodeConfig = registerOutput<NodeConfigResponse5>('nodeConfig');
+    this.nodeIpv4CidrSize = registerOutput<int>('nodeIpv4CidrSize');
     this.nodePoolAutoConfig =
-        Output.createUnknown<NodePoolAutoConfigResponse2>();
-    this.nodePoolDefaults = Output.createUnknown<NodePoolDefaultsResponse2>();
-    this.nodePools = Output.createUnknown<List<NodePoolResponse2>>();
+        registerOutput<NodePoolAutoConfigResponse2>('nodePoolAutoConfig');
+    this.nodePoolDefaults =
+        registerOutput<NodePoolDefaultsResponse2>('nodePoolDefaults');
+    this.nodePools = registerOutput<List<NodePoolResponse2>>('nodePools');
     this.notificationConfig =
-        Output.createUnknown<NotificationConfigResponse2>();
+        registerOutput<NotificationConfigResponse2>('notificationConfig');
     this.parentProductConfig =
-        Output.createUnknown<ParentProductConfigResponse2>();
+        registerOutput<ParentProductConfigResponse2>('parentProductConfig');
     this.podSecurityPolicyConfig =
-        Output.createUnknown<PodSecurityPolicyConfigResponse>();
-    this.privateCluster = Output.createUnknown<bool>();
+        registerOutput<PodSecurityPolicyConfigResponse>(
+            'podSecurityPolicyConfig');
+    this.privateCluster = registerOutput<bool>('privateCluster');
     this.privateClusterConfig =
-        Output.createUnknown<PrivateClusterConfigResponse4>();
-    this.project = Output.createUnknown<String>();
-    this.protectConfig = Output.createUnknown<ProtectConfigResponse>();
-    this.releaseChannel = Output.createUnknown<ReleaseChannelResponse2>();
-    this.resourceLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<PrivateClusterConfigResponse4>('privateClusterConfig');
+    this.project = registerOutput<String>('project');
+    this.protectConfig = registerOutput<ProtectConfigResponse>('protectConfig');
+    this.releaseChannel =
+        registerOutput<ReleaseChannelResponse2>('releaseChannel');
+    this.resourceLabels = registerOutput<Map<String, String>>('resourceLabels');
     this.resourceUsageExportConfig =
-        Output.createUnknown<ResourceUsageExportConfigResponse2>();
+        registerOutput<ResourceUsageExportConfigResponse2>(
+            'resourceUsageExportConfig');
     this.securityPostureConfig =
-        Output.createUnknown<SecurityPostureConfigResponse2>();
-    this.selfLink = Output.createUnknown<String>();
-    this.servicesIpv4Cidr = Output.createUnknown<String>();
-    this.shieldedNodes = Output.createUnknown<ShieldedNodesResponse2>();
-    this.status = Output.createUnknown<String>();
-    this.statusMessage = Output.createUnknown<String>();
-    this.subnetwork = Output.createUnknown<String>();
-    this.tpuConfig = Output.createUnknown<TpuConfigResponse>();
-    this.tpuIpv4CidrBlock = Output.createUnknown<String>();
+        registerOutput<SecurityPostureConfigResponse2>('securityPostureConfig');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.servicesIpv4Cidr = registerOutput<String>('servicesIpv4Cidr');
+    this.shieldedNodes =
+        registerOutput<ShieldedNodesResponse2>('shieldedNodes');
+    this.status = registerOutput<String>('status');
+    this.statusMessage = registerOutput<String>('statusMessage');
+    this.subnetwork = registerOutput<String>('subnetwork');
+    this.tpuConfig = registerOutput<TpuConfigResponse>('tpuConfig');
+    this.tpuIpv4CidrBlock = registerOutput<String>('tpuIpv4CidrBlock');
     this.verticalPodAutoscaling =
-        Output.createUnknown<VerticalPodAutoscalingResponse2>();
+        registerOutput<VerticalPodAutoscalingResponse2>(
+            'verticalPodAutoscaling');
     this.workloadAltsConfig =
-        Output.createUnknown<WorkloadALTSConfigResponse>();
+        registerOutput<WorkloadALTSConfigResponse>('workloadAltsConfig');
     this.workloadCertificates =
-        Output.createUnknown<WorkloadCertificatesResponse>();
+        registerOutput<WorkloadCertificatesResponse>('workloadCertificates');
     this.workloadIdentityConfig =
-        Output.createUnknown<WorkloadIdentityConfigResponse2>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<WorkloadIdentityConfigResponse2>(
+            'workloadIdentityConfig');
+    this.zone = registerOutput<String>('zone');
   }
 }

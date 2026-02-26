@@ -1324,24 +1324,26 @@ class Task extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.executionSpec = Output.createUnknown<TaskExecutionSpec>();
-    this.executionStatuses = Output.createUnknown<List<TaskExecutionStatus>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.lake = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.notebook = Output.createUnknown<TaskNotebook?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.spark = Output.createUnknown<TaskSpark?>();
-    this.state = Output.createUnknown<String>();
-    this.taskId = Output.createUnknown<String?>();
-    this.triggerSpec = Output.createUnknown<TaskTriggerSpec>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.executionSpec = registerOutput<TaskExecutionSpec>('executionSpec');
+    this.executionStatuses =
+        registerOutput<List<TaskExecutionStatus>>('executionStatuses');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.lake = registerOutput<String?>('lake');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.notebook = registerOutput<TaskNotebook?>('notebook');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.spark = registerOutput<TaskSpark?>('spark');
+    this.state = registerOutput<String>('state');
+    this.taskId = registerOutput<String?>('taskId');
+    this.triggerSpec = registerOutput<TaskTriggerSpec>('triggerSpec');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

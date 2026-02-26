@@ -207,13 +207,13 @@ class IAMCustomRole2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.deleted = Output.createUnknown<bool>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.permissions = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.roleId = Output.createUnknown<String>();
-    this.stage = Output.createUnknown<String?>();
-    this.title = Output.createUnknown<String>();
+    this.deleted = registerOutput<bool>('deleted');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.permissions = registerOutput<List<String>>('permissions');
+    this.project = registerOutput<String>('project');
+    this.roleId = registerOutput<String>('roleId');
+    this.stage = registerOutput<String?>('stage');
+    this.title = registerOutput<String>('title');
   }
 }

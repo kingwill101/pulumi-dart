@@ -148,10 +148,10 @@ class TargetAccountConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.experimentTemplateId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.description = registerOutput<String>('description');
+    this.experimentTemplateId = registerOutput<String>('experimentTemplateId');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
   }
 }

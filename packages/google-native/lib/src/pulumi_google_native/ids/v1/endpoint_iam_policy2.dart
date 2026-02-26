@@ -32,12 +32,13 @@ class EndpointIamPolicy2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse49>>();
-    this.bindings = Output.createUnknown<List<BindingResponse70>>();
-    this.endpointId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse49>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse70>>('bindings');
+    this.endpointId = registerOutput<String>('endpointId');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

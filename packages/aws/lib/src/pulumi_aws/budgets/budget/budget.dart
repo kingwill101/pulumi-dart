@@ -2480,24 +2480,28 @@ class Budget extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.autoAdjustData = Output.createUnknown<BudgetAutoAdjustData?>();
-    this.billingViewArn = Output.createUnknown<String?>();
-    this.budgetType = Output.createUnknown<String>();
-    this.costFilters = Output.createUnknown<List<BudgetCostFilter>>();
-    this.costTypes = Output.createUnknown<BudgetCostTypes>();
-    this.filterExpression = Output.createUnknown<BudgetFilterExpression?>();
-    this.limitAmount = Output.createUnknown<String>();
-    this.limitUnit = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.notifications = Output.createUnknown<List<BudgetNotification>?>();
-    this.plannedLimits = Output.createUnknown<List<BudgetPlannedLimit>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timePeriodEnd = Output.createUnknown<String?>();
-    this.timePeriodStart = Output.createUnknown<String>();
-    this.timeUnit = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.arn = registerOutput<String>('arn');
+    this.autoAdjustData =
+        registerOutput<BudgetAutoAdjustData?>('autoAdjustData');
+    this.billingViewArn = registerOutput<String?>('billingViewArn');
+    this.budgetType = registerOutput<String>('budgetType');
+    this.costFilters = registerOutput<List<BudgetCostFilter>>('costFilters');
+    this.costTypes = registerOutput<BudgetCostTypes>('costTypes');
+    this.filterExpression =
+        registerOutput<BudgetFilterExpression?>('filterExpression');
+    this.limitAmount = registerOutput<String>('limitAmount');
+    this.limitUnit = registerOutput<String>('limitUnit');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.notifications =
+        registerOutput<List<BudgetNotification>?>('notifications');
+    this.plannedLimits =
+        registerOutput<List<BudgetPlannedLimit>?>('plannedLimits');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timePeriodEnd = registerOutput<String?>('timePeriodEnd');
+    this.timePeriodStart = registerOutput<String>('timePeriodStart');
+    this.timeUnit = registerOutput<String>('timeUnit');
   }
 }

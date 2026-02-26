@@ -141,10 +141,10 @@ class AccountPublicAccessBlock extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.blockPublicAcls = Output.createUnknown<bool?>();
-    this.blockPublicPolicy = Output.createUnknown<bool?>();
-    this.ignorePublicAcls = Output.createUnknown<bool?>();
-    this.restrictPublicBuckets = Output.createUnknown<bool?>();
+    this.accountId = registerOutput<String>('accountId');
+    this.blockPublicAcls = registerOutput<bool?>('blockPublicAcls');
+    this.blockPublicPolicy = registerOutput<bool?>('blockPublicPolicy');
+    this.ignorePublicAcls = registerOutput<bool?>('ignorePublicAcls');
+    this.restrictPublicBuckets = registerOutput<bool?>('restrictPublicBuckets');
   }
 }

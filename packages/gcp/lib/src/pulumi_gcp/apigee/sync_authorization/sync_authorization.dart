@@ -391,8 +391,8 @@ class SyncAuthorization extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.identities = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.identities = registerOutput<List<String>>('identities');
+    this.name = registerOutput<String>('name');
   }
 }

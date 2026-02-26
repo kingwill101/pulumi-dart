@@ -132,6 +132,6 @@ class RegistryImage extends ComponentResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? ComponentResourceOptions(),
         ) {
-    this.image = Output.createUnknown<dynamic>();
+    this.image = registerOutput<dynamic>('image');
   }
 }

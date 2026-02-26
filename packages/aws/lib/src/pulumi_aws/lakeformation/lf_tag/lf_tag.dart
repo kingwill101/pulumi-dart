@@ -152,9 +152,9 @@ class LfTag extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.catalogId = Output.createUnknown<String>();
-    this.key = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.values = Output.createUnknown<List<String>>();
+    this.catalogId = registerOutput<String>('catalogId');
+    this.key = registerOutput<String>('key');
+    this.region = registerOutput<String>('region');
+    this.values = registerOutput<List<String>>('values');
   }
 }

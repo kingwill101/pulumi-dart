@@ -980,11 +980,11 @@ class RepositoryGroupIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.codeRepositoryIndex = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.repositoryGroupId = Output.createUnknown<String>();
+    this.codeRepositoryIndex = registerOutput<String>('codeRepositoryIndex');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.policyData = registerOutput<String>('policyData');
+    this.project = registerOutput<String>('project');
+    this.repositoryGroupId = registerOutput<String>('repositoryGroupId');
   }
 }

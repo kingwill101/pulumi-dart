@@ -33,12 +33,13 @@ class OrganizationPartnerTenantBrowserDlpRuleIamPolicy extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.auditConfigs =
-        Output.createUnknown<List<GoogleIamV1AuditConfigResponse2>>();
-    this.bindings = Output.createUnknown<List<GoogleIamV1BindingResponse4>>();
-    this.browserDlpRuleId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.partnerTenantId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+        registerOutput<List<GoogleIamV1AuditConfigResponse2>>('auditConfigs');
+    this.bindings =
+        registerOutput<List<GoogleIamV1BindingResponse4>>('bindings');
+    this.browserDlpRuleId = registerOutput<String>('browserDlpRuleId');
+    this.etag = registerOutput<String>('etag');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.partnerTenantId = registerOutput<String>('partnerTenantId');
+    this.version = registerOutput<int>('version');
   }
 }

@@ -333,12 +333,12 @@ class AppCheckDeviceCheckConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appId = Output.createUnknown<String>();
-    this.keyId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.privateKey = Output.createUnknown<String>();
-    this.privateKeySet = Output.createUnknown<bool>();
-    this.project = Output.createUnknown<String>();
-    this.tokenTtl = Output.createUnknown<String>();
+    this.appId = registerOutput<String>('appId');
+    this.keyId = registerOutput<String>('keyId');
+    this.name = registerOutput<String>('name');
+    this.privateKey = registerOutput<String>('privateKey');
+    this.privateKeySet = registerOutput<bool>('privateKeySet');
+    this.project = registerOutput<String>('project');
+    this.tokenTtl = registerOutput<String>('tokenTtl');
   }
 }

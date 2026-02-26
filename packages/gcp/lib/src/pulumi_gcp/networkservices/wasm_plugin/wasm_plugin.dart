@@ -543,18 +543,19 @@ class WasmPlugin extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String?>();
-    this.logConfig = Output.createUnknown<WasmPluginLogConfig?>();
-    this.mainVersionId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.updateTime = Output.createUnknown<String>();
-    this.usedBies = Output.createUnknown<List<WasmPluginUsedBy>>();
-    this.versions = Output.createUnknown<List<WasmPluginVersion>>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String?>('location');
+    this.logConfig = registerOutput<WasmPluginLogConfig?>('logConfig');
+    this.mainVersionId = registerOutput<String>('mainVersionId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.usedBies = registerOutput<List<WasmPluginUsedBy>>('usedBies');
+    this.versions = registerOutput<List<WasmPluginVersion>>('versions');
   }
 }

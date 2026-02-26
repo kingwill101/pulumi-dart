@@ -239,12 +239,12 @@ class MultiRegionAccessPoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.alias = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.details = Output.createUnknown<MultiRegionAccessPointDetails>();
-    this.domainName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.alias = registerOutput<String>('alias');
+    this.arn = registerOutput<String>('arn');
+    this.details = registerOutput<MultiRegionAccessPointDetails>('details');
+    this.domainName = registerOutput<String>('domainName');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
   }
 }

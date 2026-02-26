@@ -397,19 +397,21 @@ class Rule2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String>('description');
     this.excludeResourceTags =
-        Output.createUnknown<List<RuleExcludeResourceTag>?>();
-    this.lockConfiguration = Output.createUnknown<RuleLockConfiguration?>();
-    this.lockEndTime = Output.createUnknown<String>();
-    this.lockState = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceTags = Output.createUnknown<List<RuleResourceTag>?>();
-    this.resourceType = Output.createUnknown<String>();
-    this.retentionPeriod = Output.createUnknown<RuleRetentionPeriod>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<RuleExcludeResourceTag>?>('excludeResourceTags');
+    this.lockConfiguration =
+        registerOutput<RuleLockConfiguration?>('lockConfiguration');
+    this.lockEndTime = registerOutput<String>('lockEndTime');
+    this.lockState = registerOutput<String>('lockState');
+    this.region = registerOutput<String>('region');
+    this.resourceTags = registerOutput<List<RuleResourceTag>?>('resourceTags');
+    this.resourceType = registerOutput<String>('resourceType');
+    this.retentionPeriod =
+        registerOutput<RuleRetentionPeriod>('retentionPeriod');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

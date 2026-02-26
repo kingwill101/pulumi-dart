@@ -1090,24 +1090,27 @@ class CloudControl extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.categories = Output.createUnknown<List<String>?>();
-    this.cloudControlId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.findingCategory = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.majorRevisionId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organization = Output.createUnknown<String>();
+    this.categories = registerOutput<List<String>?>('categories');
+    this.cloudControlId = registerOutput<String>('cloudControlId');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.findingCategory = registerOutput<String?>('findingCategory');
+    this.location = registerOutput<String>('location');
+    this.majorRevisionId = registerOutput<String>('majorRevisionId');
+    this.name = registerOutput<String>('name');
+    this.organization = registerOutput<String>('organization');
     this.parameterSpecs =
-        Output.createUnknown<List<CloudControlParameterSpec>?>();
-    this.relatedFrameworks = Output.createUnknown<List<String>>();
-    this.remediationSteps = Output.createUnknown<String?>();
-    this.rules = Output.createUnknown<List<CloudControlRule>?>();
-    this.severity = Output.createUnknown<String?>();
-    this.supportedCloudProviders = Output.createUnknown<List<String>?>();
-    this.supportedEnforcementModes = Output.createUnknown<List<String>>();
-    this.supportedTargetResourceTypes = Output.createUnknown<List<String>>();
+        registerOutput<List<CloudControlParameterSpec>?>('parameterSpecs');
+    this.relatedFrameworks = registerOutput<List<String>>('relatedFrameworks');
+    this.remediationSteps = registerOutput<String?>('remediationSteps');
+    this.rules = registerOutput<List<CloudControlRule>?>('rules');
+    this.severity = registerOutput<String?>('severity');
+    this.supportedCloudProviders =
+        registerOutput<List<String>?>('supportedCloudProviders');
+    this.supportedEnforcementModes =
+        registerOutput<List<String>>('supportedEnforcementModes');
+    this.supportedTargetResourceTypes =
+        registerOutput<List<String>>('supportedTargetResourceTypes');
   }
 }

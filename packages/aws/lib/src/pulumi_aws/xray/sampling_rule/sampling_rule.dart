@@ -235,21 +235,21 @@ class SamplingRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.attributes = Output.createUnknown<Map<String, String>?>();
-    this.fixedRate = Output.createUnknown<double>();
-    this.host = Output.createUnknown<String>();
-    this.httpMethod = Output.createUnknown<String>();
-    this.priority = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.reservoirSize = Output.createUnknown<int>();
-    this.resourceArn = Output.createUnknown<String>();
-    this.ruleName = Output.createUnknown<String?>();
-    this.serviceName = Output.createUnknown<String>();
-    this.serviceType = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.urlPath = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.arn = registerOutput<String>('arn');
+    this.attributes = registerOutput<Map<String, String>?>('attributes');
+    this.fixedRate = registerOutput<double>('fixedRate');
+    this.host = registerOutput<String>('host');
+    this.httpMethod = registerOutput<String>('httpMethod');
+    this.priority = registerOutput<int>('priority');
+    this.region = registerOutput<String>('region');
+    this.reservoirSize = registerOutput<int>('reservoirSize');
+    this.resourceArn = registerOutput<String>('resourceArn');
+    this.ruleName = registerOutput<String?>('ruleName');
+    this.serviceName = registerOutput<String>('serviceName');
+    this.serviceType = registerOutput<String>('serviceType');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.urlPath = registerOutput<String>('urlPath');
+    this.version = registerOutput<int>('version');
   }
 }

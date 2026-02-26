@@ -56,21 +56,23 @@ class RegionAutoscaler2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoscalingPolicy = Output.createUnknown<AutoscalingPolicyResponse2>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.recommendedSize = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.scalingScheduleStatus = Output.createUnknown<Map<String, String>>();
-    this.selfLink = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.autoscalingPolicy =
+        registerOutput<AutoscalingPolicyResponse2>('autoscalingPolicy');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.recommendedSize = registerOutput<int>('recommendedSize');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.scalingScheduleStatus =
+        registerOutput<Map<String, String>>('scalingScheduleStatus');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.status = registerOutput<String>('status');
     this.statusDetails =
-        Output.createUnknown<List<AutoscalerStatusDetailsResponse2>>();
-    this.target = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<List<AutoscalerStatusDetailsResponse2>>('statusDetails');
+    this.target = registerOutput<String>('target');
+    this.zone = registerOutput<String>('zone');
   }
 }

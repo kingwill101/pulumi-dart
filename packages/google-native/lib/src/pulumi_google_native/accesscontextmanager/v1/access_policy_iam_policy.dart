@@ -31,10 +31,11 @@ class AccessPolicyIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessPolicyId = Output.createUnknown<String>();
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse>>();
-    this.bindings = Output.createUnknown<List<BindingResponse>>();
-    this.etag = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.accessPolicyId = registerOutput<String>('accessPolicyId');
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.version = registerOutput<int>('version');
   }
 }

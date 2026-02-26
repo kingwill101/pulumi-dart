@@ -820,8 +820,9 @@ class InstanceLoggingConfiguration extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.accessLogs =
-        Output.createUnknown<InstanceLoggingConfigurationAccessLogs>();
-    this.region = Output.createUnknown<String>();
-    this.verifiedaccessInstanceId = Output.createUnknown<String>();
+        registerOutput<InstanceLoggingConfigurationAccessLogs>('accessLogs');
+    this.region = registerOutput<String>('region');
+    this.verifiedaccessInstanceId =
+        registerOutput<String>('verifiedaccessInstanceId');
   }
 }

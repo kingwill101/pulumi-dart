@@ -135,10 +135,11 @@ class NatGatewayEipAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allocationId = Output.createUnknown<String>();
-    this.associationId = Output.createUnknown<String>();
-    this.natGatewayId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<NatGatewayEipAssociationTimeouts?>();
+    this.allocationId = registerOutput<String>('allocationId');
+    this.associationId = registerOutput<String>('associationId');
+    this.natGatewayId = registerOutput<String>('natGatewayId');
+    this.region = registerOutput<String>('region');
+    this.timeouts =
+        registerOutput<NatGatewayEipAssociationTimeouts?>('timeouts');
   }
 }

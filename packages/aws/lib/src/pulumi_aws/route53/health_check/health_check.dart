@@ -873,29 +873,31 @@ class HealthCheck extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.childHealthThreshold = Output.createUnknown<int?>();
-    this.childHealthchecks = Output.createUnknown<List<String>?>();
-    this.cloudwatchAlarmName = Output.createUnknown<String?>();
-    this.cloudwatchAlarmRegion = Output.createUnknown<String?>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.enableSni = Output.createUnknown<bool>();
-    this.failureThreshold = Output.createUnknown<int>();
-    this.fqdn = Output.createUnknown<String?>();
-    this.insufficientDataHealthStatus = Output.createUnknown<String?>();
-    this.invertHealthcheck = Output.createUnknown<bool?>();
-    this.ipAddress = Output.createUnknown<String?>();
-    this.measureLatency = Output.createUnknown<bool?>();
-    this.port = Output.createUnknown<int?>();
-    this.referenceName = Output.createUnknown<String?>();
-    this.regions = Output.createUnknown<List<String>>();
-    this.requestInterval = Output.createUnknown<int?>();
-    this.resourcePath = Output.createUnknown<String?>();
-    this.routingControlArn = Output.createUnknown<String?>();
-    this.searchString = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.triggers = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.childHealthThreshold = registerOutput<int?>('childHealthThreshold');
+    this.childHealthchecks = registerOutput<List<String>?>('childHealthchecks');
+    this.cloudwatchAlarmName = registerOutput<String?>('cloudwatchAlarmName');
+    this.cloudwatchAlarmRegion =
+        registerOutput<String?>('cloudwatchAlarmRegion');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.enableSni = registerOutput<bool>('enableSni');
+    this.failureThreshold = registerOutput<int>('failureThreshold');
+    this.fqdn = registerOutput<String?>('fqdn');
+    this.insufficientDataHealthStatus =
+        registerOutput<String?>('insufficientDataHealthStatus');
+    this.invertHealthcheck = registerOutput<bool?>('invertHealthcheck');
+    this.ipAddress = registerOutput<String?>('ipAddress');
+    this.measureLatency = registerOutput<bool?>('measureLatency');
+    this.port = registerOutput<int?>('port');
+    this.referenceName = registerOutput<String?>('referenceName');
+    this.regions = registerOutput<List<String>>('regions');
+    this.requestInterval = registerOutput<int?>('requestInterval');
+    this.resourcePath = registerOutput<String?>('resourcePath');
+    this.routingControlArn = registerOutput<String?>('routingControlArn');
+    this.searchString = registerOutput<String?>('searchString');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.triggers = registerOutput<Map<String, String>>('triggers');
+    this.type = registerOutput<String>('type');
   }
 }

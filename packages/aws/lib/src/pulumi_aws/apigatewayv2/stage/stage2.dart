@@ -180,22 +180,25 @@ class Stage2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessLogSettings = Output.createUnknown<StageAccessLogSettings2?>();
-    this.apiId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.autoDeploy = Output.createUnknown<bool?>();
-    this.clientCertificateId = Output.createUnknown<String?>();
+    this.accessLogSettings =
+        registerOutput<StageAccessLogSettings2?>('accessLogSettings');
+    this.apiId = registerOutput<String>('apiId');
+    this.arn = registerOutput<String>('arn');
+    this.autoDeploy = registerOutput<bool?>('autoDeploy');
+    this.clientCertificateId = registerOutput<String?>('clientCertificateId');
     this.defaultRouteSettings =
-        Output.createUnknown<StageDefaultRouteSettings?>();
-    this.deploymentId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.executionArn = Output.createUnknown<String>();
-    this.invokeUrl = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.routeSettings = Output.createUnknown<List<StageRouteSetting>?>();
-    this.stageVariables = Output.createUnknown<Map<String, String>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<StageDefaultRouteSettings?>('defaultRouteSettings');
+    this.deploymentId = registerOutput<String>('deploymentId');
+    this.description = registerOutput<String?>('description');
+    this.executionArn = registerOutput<String>('executionArn');
+    this.invokeUrl = registerOutput<String>('invokeUrl');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.routeSettings =
+        registerOutput<List<StageRouteSetting>?>('routeSettings');
+    this.stageVariables =
+        registerOutput<Map<String, String>?>('stageVariables');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

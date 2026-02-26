@@ -125,48 +125,58 @@ class BareMetalAdminCluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.bareMetalAdminClusterId = Output.createUnknown<String>();
-    this.bareMetalVersion = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.bareMetalAdminClusterId =
+        registerOutput<String>('bareMetalAdminClusterId');
+    this.bareMetalVersion = registerOutput<String>('bareMetalVersion');
     this.binaryAuthorization =
-        Output.createUnknown<BinaryAuthorizationResponse3>();
+        registerOutput<BinaryAuthorizationResponse3>('binaryAuthorization');
     this.clusterOperations =
-        Output.createUnknown<BareMetalAdminClusterOperationsConfigResponse>();
+        registerOutput<BareMetalAdminClusterOperationsConfigResponse>(
+            'clusterOperations');
     this.controlPlane =
-        Output.createUnknown<BareMetalAdminControlPlaneConfigResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.endpoint = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.fleet = Output.createUnknown<FleetResponse3>();
+        registerOutput<BareMetalAdminControlPlaneConfigResponse>(
+            'controlPlane');
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.description = registerOutput<String>('description');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.etag = registerOutput<String>('etag');
+    this.fleet = registerOutput<FleetResponse3>('fleet');
     this.loadBalancer =
-        Output.createUnknown<BareMetalAdminLoadBalancerConfigResponse>();
-    this.localName = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
+        registerOutput<BareMetalAdminLoadBalancerConfigResponse>(
+            'loadBalancer');
+    this.localName = registerOutput<String>('localName');
+    this.location = registerOutput<String>('location');
     this.maintenanceConfig =
-        Output.createUnknown<BareMetalAdminMaintenanceConfigResponse>();
+        registerOutput<BareMetalAdminMaintenanceConfigResponse>(
+            'maintenanceConfig');
     this.maintenanceStatus =
-        Output.createUnknown<BareMetalAdminMaintenanceStatusResponse>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<BareMetalAdminMaintenanceStatusResponse>(
+            'maintenanceStatus');
+    this.name = registerOutput<String>('name');
     this.networkConfig =
-        Output.createUnknown<BareMetalAdminNetworkConfigResponse>();
+        registerOutput<BareMetalAdminNetworkConfigResponse>('networkConfig');
     this.nodeAccessConfig =
-        Output.createUnknown<BareMetalAdminNodeAccessConfigResponse>();
+        registerOutput<BareMetalAdminNodeAccessConfigResponse>(
+            'nodeAccessConfig');
     this.nodeConfig =
-        Output.createUnknown<BareMetalAdminWorkloadNodeConfigResponse>();
+        registerOutput<BareMetalAdminWorkloadNodeConfigResponse>('nodeConfig');
     this.osEnvironmentConfig =
-        Output.createUnknown<BareMetalAdminOsEnvironmentConfigResponse>();
-    this.project = Output.createUnknown<String>();
-    this.proxy = Output.createUnknown<BareMetalAdminProxyConfigResponse>();
-    this.reconciling = Output.createUnknown<bool>();
+        registerOutput<BareMetalAdminOsEnvironmentConfigResponse>(
+            'osEnvironmentConfig');
+    this.project = registerOutput<String>('project');
+    this.proxy = registerOutput<BareMetalAdminProxyConfigResponse>('proxy');
+    this.reconciling = registerOutput<bool>('reconciling');
     this.securityConfig =
-        Output.createUnknown<BareMetalAdminSecurityConfigResponse>();
-    this.state = Output.createUnknown<String>();
-    this.status = Output.createUnknown<ResourceStatusResponse4>();
-    this.storage = Output.createUnknown<BareMetalAdminStorageConfigResponse>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.validationCheck = Output.createUnknown<ValidationCheckResponse>();
+        registerOutput<BareMetalAdminSecurityConfigResponse>('securityConfig');
+    this.state = registerOutput<String>('state');
+    this.status = registerOutput<ResourceStatusResponse4>('status');
+    this.storage =
+        registerOutput<BareMetalAdminStorageConfigResponse>('storage');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.validationCheck =
+        registerOutput<ValidationCheckResponse>('validationCheck');
   }
 }

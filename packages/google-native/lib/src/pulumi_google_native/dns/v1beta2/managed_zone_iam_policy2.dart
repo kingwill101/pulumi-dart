@@ -32,11 +32,12 @@ class ManagedZoneIamPolicy2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.auditConfigs =
-        Output.createUnknown<List<GoogleIamV1AuditConfigResponse7>>();
-    this.bindings = Output.createUnknown<List<GoogleIamV1BindingResponse9>>();
-    this.etag = Output.createUnknown<String>();
-    this.managedZone = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+        registerOutput<List<GoogleIamV1AuditConfigResponse7>>('auditConfigs');
+    this.bindings =
+        registerOutput<List<GoogleIamV1BindingResponse9>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.managedZone = registerOutput<String>('managedZone');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

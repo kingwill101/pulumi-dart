@@ -36,15 +36,16 @@ class UserDataMapping2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.archiveTime = Output.createUnknown<String>();
-    this.archived = Output.createUnknown<bool>();
-    this.consentStoreId = Output.createUnknown<String>();
-    this.dataId = Output.createUnknown<String>();
-    this.datasetId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.resourceAttributes = Output.createUnknown<List<AttributeResponse2>>();
-    this.userId = Output.createUnknown<String>();
+    this.archiveTime = registerOutput<String>('archiveTime');
+    this.archived = registerOutput<bool>('archived');
+    this.consentStoreId = registerOutput<String>('consentStoreId');
+    this.dataId = registerOutput<String>('dataId');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.resourceAttributes =
+        registerOutput<List<AttributeResponse2>>('resourceAttributes');
+    this.userId = registerOutput<String>('userId');
   }
 }

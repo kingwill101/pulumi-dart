@@ -33,13 +33,14 @@ class PrivateCloudHcxActivationKeyIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse69>>();
-    this.bindings = Output.createUnknown<List<BindingResponse101>>();
-    this.etag = Output.createUnknown<String>();
-    this.hcxActivationKeyId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.privateCloudId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse69>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse101>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.hcxActivationKeyId = registerOutput<String>('hcxActivationKeyId');
+    this.location = registerOutput<String>('location');
+    this.privateCloudId = registerOutput<String>('privateCloudId');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

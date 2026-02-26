@@ -29,13 +29,13 @@ class Context5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.environmentId = Output.createUnknown<String>();
-    this.lifespanCount = Output.createUnknown<int>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parameters = Output.createUnknown<Map<String, String>>();
-    this.project = Output.createUnknown<String>();
-    this.sessionId = Output.createUnknown<String>();
-    this.userId = Output.createUnknown<String>();
+    this.environmentId = registerOutput<String>('environmentId');
+    this.lifespanCount = registerOutput<int>('lifespanCount');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.parameters = registerOutput<Map<String, String>>('parameters');
+    this.project = registerOutput<String>('project');
+    this.sessionId = registerOutput<String>('sessionId');
+    this.userId = registerOutput<String>('userId');
   }
 }

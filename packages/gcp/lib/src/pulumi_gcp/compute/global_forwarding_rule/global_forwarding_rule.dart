@@ -3157,37 +3157,41 @@ class GlobalForwardingRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowPscGlobalAccess = Output.createUnknown<bool?>();
-    this.baseForwardingRule = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.allowPscGlobalAccess = registerOutput<bool?>('allowPscGlobalAccess');
+    this.baseForwardingRule = registerOutput<String>('baseForwardingRule');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.externalManagedBackendBucketMigrationState =
-        Output.createUnknown<String?>();
+        registerOutput<String?>('externalManagedBackendBucketMigrationState');
     this.externalManagedBackendBucketMigrationTestingPercentage =
-        Output.createUnknown<double?>();
-    this.forwardingRuleId = Output.createUnknown<int>();
-    this.ipAddress = Output.createUnknown<String>();
-    this.ipProtocol = Output.createUnknown<String>();
-    this.ipVersion = Output.createUnknown<String?>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.loadBalancingScheme = Output.createUnknown<String?>();
+        registerOutput<double?>(
+            'externalManagedBackendBucketMigrationTestingPercentage');
+    this.forwardingRuleId = registerOutput<int>('forwardingRuleId');
+    this.ipAddress = registerOutput<String>('ipAddress');
+    this.ipProtocol = registerOutput<String>('ipProtocol');
+    this.ipVersion = registerOutput<String?>('ipVersion');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
     this.metadataFilters =
-        Output.createUnknown<List<GlobalForwardingRuleMetadataFilter>?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.networkTier = Output.createUnknown<String>();
-    this.noAutomateDnsZone = Output.createUnknown<bool?>();
-    this.portRange = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.pscConnectionId = Output.createUnknown<String>();
-    this.pscConnectionStatus = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.selfLink = Output.createUnknown<String>();
-    this.serviceDirectoryRegistrations = Output.createUnknown<
-        GlobalForwardingRuleServiceDirectoryRegistrations>();
-    this.sourceIpRanges = Output.createUnknown<List<String>?>();
-    this.subnetwork = Output.createUnknown<String>();
-    this.target = Output.createUnknown<String>();
+        registerOutput<List<GlobalForwardingRuleMetadataFilter>?>(
+            'metadataFilters');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.networkTier = registerOutput<String>('networkTier');
+    this.noAutomateDnsZone = registerOutput<bool?>('noAutomateDnsZone');
+    this.portRange = registerOutput<String?>('portRange');
+    this.project = registerOutput<String>('project');
+    this.pscConnectionId = registerOutput<String>('pscConnectionId');
+    this.pscConnectionStatus = registerOutput<String>('pscConnectionStatus');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.serviceDirectoryRegistrations =
+        registerOutput<GlobalForwardingRuleServiceDirectoryRegistrations>(
+            'serviceDirectoryRegistrations');
+    this.sourceIpRanges = registerOutput<List<String>?>('sourceIpRanges');
+    this.subnetwork = registerOutput<String>('subnetwork');
+    this.target = registerOutput<String>('target');
   }
 }

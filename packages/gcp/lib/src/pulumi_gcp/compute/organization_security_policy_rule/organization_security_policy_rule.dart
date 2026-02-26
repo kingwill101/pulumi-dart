@@ -335,15 +335,16 @@ class OrganizationSecurityPolicyRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.direction = Output.createUnknown<String?>();
-    this.enableLogging = Output.createUnknown<bool?>();
-    this.match = Output.createUnknown<OrganizationSecurityPolicyRuleMatch>();
-    this.policyId = Output.createUnknown<String>();
-    this.preview = Output.createUnknown<bool?>();
-    this.priority = Output.createUnknown<int>();
-    this.targetResources = Output.createUnknown<List<String>?>();
-    this.targetServiceAccounts = Output.createUnknown<List<String>?>();
+    this.action = registerOutput<String>('action');
+    this.description = registerOutput<String?>('description');
+    this.direction = registerOutput<String?>('direction');
+    this.enableLogging = registerOutput<bool?>('enableLogging');
+    this.match = registerOutput<OrganizationSecurityPolicyRuleMatch>('match');
+    this.policyId = registerOutput<String>('policyId');
+    this.preview = registerOutput<bool?>('preview');
+    this.priority = registerOutput<int>('priority');
+    this.targetResources = registerOutput<List<String>?>('targetResources');
+    this.targetServiceAccounts =
+        registerOutput<List<String>?>('targetServiceAccounts');
   }
 }

@@ -65,21 +65,22 @@ class DeploymentType6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createPolicy = Output.createUnknown<String?>();
-    this.credential = Output.createUnknown<CredentialResponse>();
-    this.description = Output.createUnknown<String>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.insertTime = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<List<DeploymentLabelEntryResponse>>();
-    this.manifest = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.operation = Output.createUnknown<OperationResponse2>();
-    this.outputs = Output.createUnknown<List<DeploymentOutputEntryResponse>>();
-    this.preview = Output.createUnknown<bool?>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.target = Output.createUnknown<TargetConfigurationResponse>();
-    this.update = Output.createUnknown<DeploymentUpdateResponse>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createPolicy = registerOutput<String?>('createPolicy');
+    this.credential = registerOutput<CredentialResponse>('credential');
+    this.description = registerOutput<String>('description');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.insertTime = registerOutput<String>('insertTime');
+    this.labels = registerOutput<List<DeploymentLabelEntryResponse>>('labels');
+    this.manifest = registerOutput<String>('manifest');
+    this.name = registerOutput<String>('name');
+    this.operation = registerOutput<OperationResponse2>('operation');
+    this.outputs =
+        registerOutput<List<DeploymentOutputEntryResponse>>('outputs');
+    this.preview = registerOutput<bool?>('preview');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.target = registerOutput<TargetConfigurationResponse>('target');
+    this.update = registerOutput<DeploymentUpdateResponse>('update');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

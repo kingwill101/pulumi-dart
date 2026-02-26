@@ -337,45 +337,55 @@ class LustreFileSystem extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.autoImportPolicy = Output.createUnknown<String>();
-    this.automaticBackupRetentionDays = Output.createUnknown<int>();
-    this.backupId = Output.createUnknown<String?>();
-    this.copyTagsToBackups = Output.createUnknown<bool?>();
-    this.dailyAutomaticBackupStartTime = Output.createUnknown<String>();
-    this.dataCompressionType = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.autoImportPolicy = registerOutput<String>('autoImportPolicy');
+    this.automaticBackupRetentionDays =
+        registerOutput<int>('automaticBackupRetentionDays');
+    this.backupId = registerOutput<String?>('backupId');
+    this.copyTagsToBackups = registerOutput<bool?>('copyTagsToBackups');
+    this.dailyAutomaticBackupStartTime =
+        registerOutput<String>('dailyAutomaticBackupStartTime');
+    this.dataCompressionType = registerOutput<String?>('dataCompressionType');
     this.dataReadCacheConfiguration =
-        Output.createUnknown<LustreFileSystemDataReadCacheConfiguration?>();
-    this.deploymentType = Output.createUnknown<String?>();
-    this.dnsName = Output.createUnknown<String>();
-    this.driveCacheType = Output.createUnknown<String?>();
-    this.efaEnabled = Output.createUnknown<bool>();
-    this.exportPath = Output.createUnknown<String>();
-    this.fileSystemTypeVersion = Output.createUnknown<String>();
-    this.finalBackupTags = Output.createUnknown<Map<String, String>?>();
-    this.importPath = Output.createUnknown<String?>();
-    this.importedFileChunkSize = Output.createUnknown<int>();
-    this.kmsKeyId = Output.createUnknown<String>();
+        registerOutput<LustreFileSystemDataReadCacheConfiguration?>(
+            'dataReadCacheConfiguration');
+    this.deploymentType = registerOutput<String?>('deploymentType');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.driveCacheType = registerOutput<String?>('driveCacheType');
+    this.efaEnabled = registerOutput<bool>('efaEnabled');
+    this.exportPath = registerOutput<String>('exportPath');
+    this.fileSystemTypeVersion =
+        registerOutput<String>('fileSystemTypeVersion');
+    this.finalBackupTags =
+        registerOutput<Map<String, String>?>('finalBackupTags');
+    this.importPath = registerOutput<String?>('importPath');
+    this.importedFileChunkSize = registerOutput<int>('importedFileChunkSize');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
     this.logConfiguration =
-        Output.createUnknown<LustreFileSystemLogConfiguration>();
+        registerOutput<LustreFileSystemLogConfiguration>('logConfiguration');
     this.metadataConfiguration =
-        Output.createUnknown<LustreFileSystemMetadataConfiguration>();
-    this.mountName = Output.createUnknown<String>();
-    this.networkInterfaceIds = Output.createUnknown<List<String>>();
-    this.ownerId = Output.createUnknown<String>();
-    this.perUnitStorageThroughput = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<LustreFileSystemMetadataConfiguration>(
+            'metadataConfiguration');
+    this.mountName = registerOutput<String>('mountName');
+    this.networkInterfaceIds =
+        registerOutput<List<String>>('networkInterfaceIds');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.perUnitStorageThroughput =
+        registerOutput<int?>('perUnitStorageThroughput');
+    this.region = registerOutput<String>('region');
     this.rootSquashConfiguration =
-        Output.createUnknown<LustreFileSystemRootSquashConfiguration?>();
-    this.securityGroupIds = Output.createUnknown<List<String>?>();
-    this.skipFinalBackup = Output.createUnknown<bool?>();
-    this.storageCapacity = Output.createUnknown<int?>();
-    this.storageType = Output.createUnknown<String?>();
-    this.subnetIds = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.throughputCapacity = Output.createUnknown<int?>();
-    this.vpcId = Output.createUnknown<String>();
-    this.weeklyMaintenanceStartTime = Output.createUnknown<String>();
+        registerOutput<LustreFileSystemRootSquashConfiguration?>(
+            'rootSquashConfiguration');
+    this.securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    this.skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
+    this.storageCapacity = registerOutput<int?>('storageCapacity');
+    this.storageType = registerOutput<String?>('storageType');
+    this.subnetIds = registerOutput<String>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.throughputCapacity = registerOutput<int?>('throughputCapacity');
+    this.vpcId = registerOutput<String>('vpcId');
+    this.weeklyMaintenanceStartTime =
+        registerOutput<String>('weeklyMaintenanceStartTime');
   }
 }

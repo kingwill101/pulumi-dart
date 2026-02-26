@@ -171,10 +171,10 @@ class QueryDefinition extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.logGroupNames = Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
-    this.queryDefinitionId = Output.createUnknown<String>();
-    this.queryString = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.logGroupNames = registerOutput<List<String>?>('logGroupNames');
+    this.name = registerOutput<String>('name');
+    this.queryDefinitionId = registerOutput<String>('queryDefinitionId');
+    this.queryString = registerOutput<String>('queryString');
+    this.region = registerOutput<String>('region');
   }
 }

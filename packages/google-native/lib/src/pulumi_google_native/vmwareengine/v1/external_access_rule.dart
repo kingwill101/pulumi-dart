@@ -63,23 +63,25 @@ class ExternalAccessRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.destinationIpRanges = Output.createUnknown<List<IpRangeResponse>>();
-    this.destinationPorts = Output.createUnknown<List<String>>();
-    this.externalAccessRuleId = Output.createUnknown<String>();
-    this.ipProtocol = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.networkPolicyId = Output.createUnknown<String>();
-    this.priority = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.sourceIpRanges = Output.createUnknown<List<IpRangeResponse>>();
-    this.sourcePorts = Output.createUnknown<List<String>>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.action = registerOutput<String>('action');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.destinationIpRanges =
+        registerOutput<List<IpRangeResponse>>('destinationIpRanges');
+    this.destinationPorts = registerOutput<List<String>>('destinationPorts');
+    this.externalAccessRuleId = registerOutput<String>('externalAccessRuleId');
+    this.ipProtocol = registerOutput<String>('ipProtocol');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.networkPolicyId = registerOutput<String>('networkPolicyId');
+    this.priority = registerOutput<int>('priority');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.sourceIpRanges =
+        registerOutput<List<IpRangeResponse>>('sourceIpRanges');
+    this.sourcePorts = registerOutput<List<String>>('sourcePorts');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

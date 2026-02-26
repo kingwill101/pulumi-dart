@@ -434,17 +434,17 @@ class ResourceGateway extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.ipAddressType = Output.createUnknown<String>();
-    this.ipv4AddressesPerEni = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupIds = Output.createUnknown<List<String>>();
-    this.status = Output.createUnknown<String>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ResourceGatewayTimeouts?>();
-    this.vpcId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.ipAddressType = registerOutput<String>('ipAddressType');
+    this.ipv4AddressesPerEni = registerOutput<int>('ipv4AddressesPerEni');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    this.status = registerOutput<String>('status');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ResourceGatewayTimeouts?>('timeouts');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

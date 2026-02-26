@@ -34,13 +34,14 @@ class Product7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.productCategory = Output.createUnknown<String>();
-    this.productId = Output.createUnknown<String?>();
-    this.productLabels = Output.createUnknown<List<KeyValueResponse>>();
-    this.project = Output.createUnknown<String>();
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.productCategory = registerOutput<String>('productCategory');
+    this.productId = registerOutput<String?>('productId');
+    this.productLabels =
+        registerOutput<List<KeyValueResponse>>('productLabels');
+    this.project = registerOutput<String>('project');
   }
 }

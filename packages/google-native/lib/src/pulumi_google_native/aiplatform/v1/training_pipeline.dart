@@ -73,27 +73,30 @@ class TrainingPipeline extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
     this.encryptionSpec =
-        Output.createUnknown<GoogleCloudAiplatformV1EncryptionSpecResponse>();
-    this.endTime = Output.createUnknown<String>();
-    this.error = Output.createUnknown<GoogleRpcStatusResponse>();
+        registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>(
+            'encryptionSpec');
+    this.endTime = registerOutput<String>('endTime');
+    this.error = registerOutput<GoogleRpcStatusResponse>('error');
     this.inputDataConfig =
-        Output.createUnknown<GoogleCloudAiplatformV1InputDataConfigResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.modelId = Output.createUnknown<String>();
+        registerOutput<GoogleCloudAiplatformV1InputDataConfigResponse>(
+            'inputDataConfig');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.modelId = registerOutput<String>('modelId');
     this.modelToUpload =
-        Output.createUnknown<GoogleCloudAiplatformV1ModelResponse>();
-    this.name = Output.createUnknown<String>();
-    this.parentModel = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.trainingTaskDefinition = Output.createUnknown<String>();
-    this.trainingTaskInputs = Output.createUnknown<dynamic>();
-    this.trainingTaskMetadata = Output.createUnknown<dynamic>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudAiplatformV1ModelResponse>('modelToUpload');
+    this.name = registerOutput<String>('name');
+    this.parentModel = registerOutput<String>('parentModel');
+    this.project = registerOutput<String>('project');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
+    this.trainingTaskDefinition =
+        registerOutput<String>('trainingTaskDefinition');
+    this.trainingTaskInputs = registerOutput<dynamic>('trainingTaskInputs');
+    this.trainingTaskMetadata = registerOutput<dynamic>('trainingTaskMetadata');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

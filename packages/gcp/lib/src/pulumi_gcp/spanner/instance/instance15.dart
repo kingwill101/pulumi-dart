@@ -478,20 +478,23 @@ class Instance15 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoscalingConfig = Output.createUnknown<InstanceAutoscalingConfig?>();
-    this.config = Output.createUnknown<String>();
-    this.defaultBackupScheduleType = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.edition = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.instanceType = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.numNodes = Output.createUnknown<int>();
-    this.processingUnits = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.state = Output.createUnknown<String>();
+    this.autoscalingConfig =
+        registerOutput<InstanceAutoscalingConfig?>('autoscalingConfig');
+    this.config = registerOutput<String>('config');
+    this.defaultBackupScheduleType =
+        registerOutput<String>('defaultBackupScheduleType');
+    this.displayName = registerOutput<String>('displayName');
+    this.edition = registerOutput<String>('edition');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.instanceType = registerOutput<String>('instanceType');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.numNodes = registerOutput<int>('numNodes');
+    this.processingUnits = registerOutput<int>('processingUnits');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.state = registerOutput<String>('state');
   }
 }

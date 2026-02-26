@@ -1404,25 +1404,32 @@ class RestoreWorkload extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupId = Output.createUnknown<String>();
-    this.backupVaultId = Output.createUnknown<String>();
-    this.clearOverridesFieldMask = Output.createUnknown<String?>();
-    this.computeInstanceRestoreProperties = Output.createUnknown<
-        RestoreWorkloadComputeInstanceRestoreProperties?>();
-    this.computeInstanceTargetEnvironment = Output.createUnknown<
-        RestoreWorkloadComputeInstanceTargetEnvironment?>();
-    this.dataSourceId = Output.createUnknown<String>();
-    this.deleteRestoredInstance = Output.createUnknown<bool?>();
+    this.backupId = registerOutput<String>('backupId');
+    this.backupVaultId = registerOutput<String>('backupVaultId');
+    this.clearOverridesFieldMask =
+        registerOutput<String?>('clearOverridesFieldMask');
+    this.computeInstanceRestoreProperties =
+        registerOutput<RestoreWorkloadComputeInstanceRestoreProperties?>(
+            'computeInstanceRestoreProperties');
+    this.computeInstanceTargetEnvironment =
+        registerOutput<RestoreWorkloadComputeInstanceTargetEnvironment?>(
+            'computeInstanceTargetEnvironment');
+    this.dataSourceId = registerOutput<String>('dataSourceId');
+    this.deleteRestoredInstance =
+        registerOutput<bool?>('deleteRestoredInstance');
     this.diskRestoreProperties =
-        Output.createUnknown<RestoreWorkloadDiskRestoreProperties?>();
+        registerOutput<RestoreWorkloadDiskRestoreProperties?>(
+            'diskRestoreProperties');
     this.diskTargetEnvironment =
-        Output.createUnknown<RestoreWorkloadDiskTargetEnvironment?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<RestoreWorkloadDiskTargetEnvironment?>(
+            'diskTargetEnvironment');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.regionDiskTargetEnvironment =
-        Output.createUnknown<RestoreWorkloadRegionDiskTargetEnvironment?>();
-    this.requestId = Output.createUnknown<String?>();
+        registerOutput<RestoreWorkloadRegionDiskTargetEnvironment?>(
+            'regionDiskTargetEnvironment');
+    this.requestId = registerOutput<String?>('requestId');
     this.targetResources =
-        Output.createUnknown<List<RestoreWorkloadTargetResource>>();
+        registerOutput<List<RestoreWorkloadTargetResource>>('targetResources');
   }
 }

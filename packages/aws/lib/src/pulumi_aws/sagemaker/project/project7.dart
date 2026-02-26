@@ -158,14 +158,15 @@ class Project7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.projectDescription = Output.createUnknown<String?>();
-    this.projectId = Output.createUnknown<String>();
-    this.projectName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.projectDescription = registerOutput<String?>('projectDescription');
+    this.projectId = registerOutput<String>('projectId');
+    this.projectName = registerOutput<String>('projectName');
+    this.region = registerOutput<String>('region');
     this.serviceCatalogProvisioningDetails =
-        Output.createUnknown<ProjectServiceCatalogProvisioningDetails>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<ProjectServiceCatalogProvisioningDetails>(
+            'serviceCatalogProvisioningDetails');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

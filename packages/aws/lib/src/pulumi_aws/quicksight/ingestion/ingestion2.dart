@@ -148,12 +148,12 @@ class Ingestion2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.awsAccountId = Output.createUnknown<String>();
-    this.dataSetId = Output.createUnknown<String>();
-    this.ingestionId = Output.createUnknown<String>();
-    this.ingestionStatus = Output.createUnknown<String>();
-    this.ingestionType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.dataSetId = registerOutput<String>('dataSetId');
+    this.ingestionId = registerOutput<String>('ingestionId');
+    this.ingestionStatus = registerOutput<String>('ingestionStatus');
+    this.ingestionType = registerOutput<String>('ingestionType');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -147,14 +147,15 @@ class Hub extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.hubDescription = Output.createUnknown<String>();
-    this.hubDisplayName = Output.createUnknown<String?>();
-    this.hubName = Output.createUnknown<String>();
-    this.hubSearchKeywords = Output.createUnknown<List<String>?>();
-    this.region = Output.createUnknown<String>();
-    this.s3StorageConfig = Output.createUnknown<HubS3StorageConfig?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.hubDescription = registerOutput<String>('hubDescription');
+    this.hubDisplayName = registerOutput<String?>('hubDisplayName');
+    this.hubName = registerOutput<String>('hubName');
+    this.hubSearchKeywords = registerOutput<List<String>?>('hubSearchKeywords');
+    this.region = registerOutput<String>('region');
+    this.s3StorageConfig =
+        registerOutput<HubS3StorageConfig?>('s3StorageConfig');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

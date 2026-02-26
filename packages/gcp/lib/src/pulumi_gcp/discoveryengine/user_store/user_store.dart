@@ -334,12 +334,14 @@ class UserStore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.defaultLicenseConfig = Output.createUnknown<String?>();
-    this.enableExpiredLicenseAutoUpdate = Output.createUnknown<bool?>();
-    this.enableLicenseAutoRegister = Output.createUnknown<bool?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.userStoreId = Output.createUnknown<String?>();
+    this.defaultLicenseConfig = registerOutput<String?>('defaultLicenseConfig');
+    this.enableExpiredLicenseAutoUpdate =
+        registerOutput<bool?>('enableExpiredLicenseAutoUpdate');
+    this.enableLicenseAutoRegister =
+        registerOutput<bool?>('enableLicenseAutoRegister');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.userStoreId = registerOutput<String?>('userStoreId');
   }
 }

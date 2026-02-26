@@ -222,12 +222,12 @@ class RuleGroup3 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.activatedRules =
-        Output.createUnknown<List<RuleGroupActivatedRule2>?>();
-    this.arn = Output.createUnknown<String>();
-    this.metricName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<RuleGroupActivatedRule2>?>('activatedRules');
+    this.arn = registerOutput<String>('arn');
+    this.metricName = registerOutput<String>('metricName');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

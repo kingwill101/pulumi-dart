@@ -142,10 +142,10 @@ class SourceRepository extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.projectName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.spaceName = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.projectName = registerOutput<String>('projectName');
+    this.region = registerOutput<String>('region');
+    this.spaceName = registerOutput<String>('spaceName');
   }
 }

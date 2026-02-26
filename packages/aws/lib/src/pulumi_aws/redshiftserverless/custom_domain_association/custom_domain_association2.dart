@@ -220,10 +220,12 @@ class CustomDomainAssociation2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.customDomainCertificateArn = Output.createUnknown<String>();
-    this.customDomainCertificateExpiryTime = Output.createUnknown<String>();
-    this.customDomainName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.workgroupName = Output.createUnknown<String>();
+    this.customDomainCertificateArn =
+        registerOutput<String>('customDomainCertificateArn');
+    this.customDomainCertificateExpiryTime =
+        registerOutput<String>('customDomainCertificateExpiryTime');
+    this.customDomainName = registerOutput<String>('customDomainName');
+    this.region = registerOutput<String>('region');
+    this.workgroupName = registerOutput<String>('workgroupName');
   }
 }

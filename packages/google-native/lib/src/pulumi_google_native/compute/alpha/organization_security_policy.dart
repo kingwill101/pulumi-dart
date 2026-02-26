@@ -90,35 +90,41 @@ class OrganizationSecurityPolicy extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.adaptiveProtectionConfig =
-        Output.createUnknown<SecurityPolicyAdaptiveProtectionConfigResponse>();
+        registerOutput<SecurityPolicyAdaptiveProtectionConfigResponse>(
+            'adaptiveProtectionConfig');
     this.advancedOptionsConfig =
-        Output.createUnknown<SecurityPolicyAdvancedOptionsConfigResponse>();
+        registerOutput<SecurityPolicyAdvancedOptionsConfigResponse>(
+            'advancedOptionsConfig');
     this.associations =
-        Output.createUnknown<List<SecurityPolicyAssociationResponse>>();
+        registerOutput<List<SecurityPolicyAssociationResponse>>('associations');
     this.cloudArmorConfig =
-        Output.createUnknown<SecurityPolicyCloudArmorConfigResponse>();
-    this.creationTimestamp = Output.createUnknown<String>();
+        registerOutput<SecurityPolicyCloudArmorConfigResponse>(
+            'cloudArmorConfig');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.ddosProtectionConfig =
-        Output.createUnknown<SecurityPolicyDdosProtectionConfigResponse>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.parentId = Output.createUnknown<String?>();
+        registerOutput<SecurityPolicyDdosProtectionConfigResponse>(
+            'ddosProtectionConfig');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.kind = registerOutput<String>('kind');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.parentId = registerOutput<String?>('parentId');
     this.recaptchaOptionsConfig =
-        Output.createUnknown<SecurityPolicyRecaptchaOptionsConfigResponse>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.ruleTupleCount = Output.createUnknown<int>();
-    this.rules = Output.createUnknown<List<SecurityPolicyRuleResponse>>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<SecurityPolicyRecaptchaOptionsConfigResponse>(
+            'recaptchaOptionsConfig');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    this.rules = registerOutput<List<SecurityPolicyRuleResponse>>('rules');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    this.type = registerOutput<String>('type');
     this.userDefinedFields =
-        Output.createUnknown<List<SecurityPolicyUserDefinedFieldResponse>>();
+        registerOutput<List<SecurityPolicyUserDefinedFieldResponse>>(
+            'userDefinedFields');
   }
 }

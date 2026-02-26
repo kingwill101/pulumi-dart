@@ -173,8 +173,8 @@ class ListenerCertificate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificateArn = Output.createUnknown<String>();
-    this.listenerArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.certificateArn = registerOutput<String>('certificateArn');
+    this.listenerArn = registerOutput<String>('listenerArn');
+    this.region = registerOutput<String>('region');
   }
 }

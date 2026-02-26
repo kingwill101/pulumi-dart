@@ -133,23 +133,29 @@ class FrameworkDeployment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cloudControlDeploymentReferences = Output.createUnknown<
-        List<FrameworkDeploymentCloudControlDeploymentReference>>();
+    this.cloudControlDeploymentReferences = registerOutput<
+            List<FrameworkDeploymentCloudControlDeploymentReference>>(
+        'cloudControlDeploymentReferences');
     this.cloudControlMetadatas =
-        Output.createUnknown<List<FrameworkDeploymentCloudControlMetadata>>();
-    this.computedTargetResource = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.deploymentState = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.etag = Output.createUnknown<String>();
-    this.framework = Output.createUnknown<FrameworkDeploymentFramework>();
-    this.frameworkDeploymentId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organization = Output.createUnknown<String>();
+        registerOutput<List<FrameworkDeploymentCloudControlMetadata>>(
+            'cloudControlMetadatas');
+    this.computedTargetResource =
+        registerOutput<String>('computedTargetResource');
+    this.createTime = registerOutput<String>('createTime');
+    this.deploymentState = registerOutput<String>('deploymentState');
+    this.description = registerOutput<String?>('description');
+    this.etag = registerOutput<String>('etag');
+    this.framework = registerOutput<FrameworkDeploymentFramework>('framework');
+    this.frameworkDeploymentId =
+        registerOutput<String>('frameworkDeploymentId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.organization = registerOutput<String>('organization');
     this.targetResourceConfig =
-        Output.createUnknown<FrameworkDeploymentTargetResourceConfig>();
-    this.targetResourceDisplayName = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<FrameworkDeploymentTargetResourceConfig>(
+            'targetResourceConfig');
+    this.targetResourceDisplayName =
+        registerOutput<String>('targetResourceDisplayName');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

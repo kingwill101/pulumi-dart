@@ -53,20 +53,22 @@ class AppConnector extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appConnectorId = Output.createUnknown<String?>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.principalInfo = Output.createUnknown<
-        GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoResponse>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.resourceInfo = Output.createUnknown<
-        GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.appConnectorId = registerOutput<String?>('appConnectorId');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.principalInfo = registerOutput<
+            GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoResponse>(
+        'principalInfo');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.resourceInfo = registerOutput<
+            GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse>(
+        'resourceInfo');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

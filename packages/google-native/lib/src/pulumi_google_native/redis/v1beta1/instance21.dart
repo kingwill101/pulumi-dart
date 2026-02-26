@@ -128,44 +128,51 @@ class Instance21 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alternativeLocationId = Output.createUnknown<String>();
-    this.authEnabled = Output.createUnknown<bool>();
-    this.authorizedNetwork = Output.createUnknown<String>();
-    this.availableMaintenanceVersions = Output.createUnknown<List<String>>();
-    this.connectMode = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.currentLocationId = Output.createUnknown<String>();
-    this.customerManagedKey = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.host = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.maintenancePolicy = Output.createUnknown<MaintenancePolicyResponse4>();
+    this.alternativeLocationId =
+        registerOutput<String>('alternativeLocationId');
+    this.authEnabled = registerOutput<bool>('authEnabled');
+    this.authorizedNetwork = registerOutput<String>('authorizedNetwork');
+    this.availableMaintenanceVersions =
+        registerOutput<List<String>>('availableMaintenanceVersions');
+    this.connectMode = registerOutput<String>('connectMode');
+    this.createTime = registerOutput<String>('createTime');
+    this.currentLocationId = registerOutput<String>('currentLocationId');
+    this.customerManagedKey = registerOutput<String>('customerManagedKey');
+    this.displayName = registerOutput<String>('displayName');
+    this.host = registerOutput<String>('host');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.maintenancePolicy =
+        registerOutput<MaintenancePolicyResponse4>('maintenancePolicy');
     this.maintenanceSchedule =
-        Output.createUnknown<MaintenanceScheduleResponse5>();
-    this.maintenanceVersion = Output.createUnknown<String>();
-    this.memorySizeGb = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.nodes = Output.createUnknown<List<NodeInfoResponse2>>();
-    this.persistenceConfig = Output.createUnknown<PersistenceConfigResponse2>();
-    this.persistenceIamIdentity = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.readEndpoint = Output.createUnknown<String>();
-    this.readEndpointPort = Output.createUnknown<int>();
-    this.readReplicasMode = Output.createUnknown<String>();
-    this.redisConfigs = Output.createUnknown<Map<String, String>>();
-    this.redisVersion = Output.createUnknown<String>();
-    this.replicaCount = Output.createUnknown<int>();
-    this.reservedIpRange = Output.createUnknown<String>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.secondaryIpRange = Output.createUnknown<String>();
-    this.serverCaCerts = Output.createUnknown<List<TlsCertificateResponse2>>();
-    this.state = Output.createUnknown<String>();
-    this.statusMessage = Output.createUnknown<String>();
-    this.suspensionReasons = Output.createUnknown<List<String>>();
-    this.tier = Output.createUnknown<String>();
-    this.transitEncryptionMode = Output.createUnknown<String>();
+        registerOutput<MaintenanceScheduleResponse5>('maintenanceSchedule');
+    this.maintenanceVersion = registerOutput<String>('maintenanceVersion');
+    this.memorySizeGb = registerOutput<int>('memorySizeGb');
+    this.name = registerOutput<String>('name');
+    this.nodes = registerOutput<List<NodeInfoResponse2>>('nodes');
+    this.persistenceConfig =
+        registerOutput<PersistenceConfigResponse2>('persistenceConfig');
+    this.persistenceIamIdentity =
+        registerOutput<String>('persistenceIamIdentity');
+    this.port = registerOutput<int>('port');
+    this.project = registerOutput<String>('project');
+    this.readEndpoint = registerOutput<String>('readEndpoint');
+    this.readEndpointPort = registerOutput<int>('readEndpointPort');
+    this.readReplicasMode = registerOutput<String>('readReplicasMode');
+    this.redisConfigs = registerOutput<Map<String, String>>('redisConfigs');
+    this.redisVersion = registerOutput<String>('redisVersion');
+    this.replicaCount = registerOutput<int>('replicaCount');
+    this.reservedIpRange = registerOutput<String>('reservedIpRange');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.secondaryIpRange = registerOutput<String>('secondaryIpRange');
+    this.serverCaCerts =
+        registerOutput<List<TlsCertificateResponse2>>('serverCaCerts');
+    this.state = registerOutput<String>('state');
+    this.statusMessage = registerOutput<String>('statusMessage');
+    this.suspensionReasons = registerOutput<List<String>>('suspensionReasons');
+    this.tier = registerOutput<String>('tier');
+    this.transitEncryptionMode =
+        registerOutput<String>('transitEncryptionMode');
   }
 }

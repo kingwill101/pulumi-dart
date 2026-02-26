@@ -29,12 +29,12 @@ class RegistryGroupIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bindings = Output.createUnknown<List<BindingResponse22>>();
-    this.etag = Output.createUnknown<String>();
-    this.groupId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.registryId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.bindings = registerOutput<List<BindingResponse22>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.groupId = registerOutput<String>('groupId');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.registryId = registerOutput<String>('registryId');
+    this.version = registerOutput<int>('version');
   }
 }

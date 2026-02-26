@@ -79,16 +79,18 @@ class ServingConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.boostControlIds = Output.createUnknown<List<String>?>();
-    this.collectionId = Output.createUnknown<String?>();
-    this.engineId = Output.createUnknown<String>();
-    this.filterControlIds = Output.createUnknown<List<String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.promoteControlIds = Output.createUnknown<List<String>?>();
-    this.redirectControlIds = Output.createUnknown<List<String>?>();
-    this.servingConfigId = Output.createUnknown<String?>();
-    this.synonymsControlIds = Output.createUnknown<List<String>?>();
+    this.boostControlIds = registerOutput<List<String>?>('boostControlIds');
+    this.collectionId = registerOutput<String?>('collectionId');
+    this.engineId = registerOutput<String>('engineId');
+    this.filterControlIds = registerOutput<List<String>?>('filterControlIds');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.promoteControlIds = registerOutput<List<String>?>('promoteControlIds');
+    this.redirectControlIds =
+        registerOutput<List<String>?>('redirectControlIds');
+    this.servingConfigId = registerOutput<String?>('servingConfigId');
+    this.synonymsControlIds =
+        registerOutput<List<String>?>('synonymsControlIds');
   }
 }

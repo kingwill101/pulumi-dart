@@ -253,14 +253,15 @@ class TableReplica2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.deletionProtectionEnabled = Output.createUnknown<bool>();
-    this.globalTableArn = Output.createUnknown<String>();
-    this.kmsKeyArn = Output.createUnknown<String>();
-    this.pointInTimeRecovery = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.tableClassOverride = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.deletionProtectionEnabled =
+        registerOutput<bool>('deletionProtectionEnabled');
+    this.globalTableArn = registerOutput<String>('globalTableArn');
+    this.kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    this.pointInTimeRecovery = registerOutput<bool?>('pointInTimeRecovery');
+    this.region = registerOutput<String>('region');
+    this.tableClassOverride = registerOutput<String?>('tableClassOverride');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

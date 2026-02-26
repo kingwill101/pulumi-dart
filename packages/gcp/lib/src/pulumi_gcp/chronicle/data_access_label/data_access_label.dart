@@ -203,17 +203,17 @@ class DataAccessLabel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.author = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataAccessLabelId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.instance = Output.createUnknown<String>();
-    this.lastEditor = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.udmQuery = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.author = registerOutput<String>('author');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataAccessLabelId = registerOutput<String>('dataAccessLabelId');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.instance = registerOutput<String>('instance');
+    this.lastEditor = registerOutput<String>('lastEditor');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.udmQuery = registerOutput<String>('udmQuery');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

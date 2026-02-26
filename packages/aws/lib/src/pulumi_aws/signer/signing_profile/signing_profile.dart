@@ -238,23 +238,26 @@ class SigningProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.platformDisplayName = Output.createUnknown<String>();
-    this.platformId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.platformDisplayName = registerOutput<String>('platformDisplayName');
+    this.platformId = registerOutput<String>('platformId');
+    this.region = registerOutput<String>('region');
     this.revocationRecords =
-        Output.createUnknown<List<SigningProfileRevocationRecord>>();
+        registerOutput<List<SigningProfileRevocationRecord>>(
+            'revocationRecords');
     this.signatureValidityPeriod =
-        Output.createUnknown<SigningProfileSignatureValidityPeriod>();
+        registerOutput<SigningProfileSignatureValidityPeriod>(
+            'signatureValidityPeriod');
     this.signingMaterial =
-        Output.createUnknown<SigningProfileSigningMaterial>();
-    this.signingParameters = Output.createUnknown<Map<String, String>?>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.version = Output.createUnknown<String>();
-    this.versionArn = Output.createUnknown<String>();
+        registerOutput<SigningProfileSigningMaterial>('signingMaterial');
+    this.signingParameters =
+        registerOutput<Map<String, String>?>('signingParameters');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.version = registerOutput<String>('version');
+    this.versionArn = registerOutput<String>('versionArn');
   }
 }

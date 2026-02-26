@@ -418,25 +418,26 @@ class LocationHdfs extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentArns = Output.createUnknown<List<String>>();
-    this.arn = Output.createUnknown<String>();
-    this.authenticationType = Output.createUnknown<String?>();
-    this.blockSize = Output.createUnknown<int?>();
-    this.kerberosKeytab = Output.createUnknown<String?>();
-    this.kerberosKeytabBase64 = Output.createUnknown<String?>();
-    this.kerberosKrb5Conf = Output.createUnknown<String?>();
-    this.kerberosKrb5ConfBase64 = Output.createUnknown<String?>();
-    this.kerberosPrincipal = Output.createUnknown<String?>();
-    this.kmsKeyProviderUri = Output.createUnknown<String?>();
-    this.nameNodes = Output.createUnknown<List<LocationHdfsNameNode>>();
+    this.agentArns = registerOutput<List<String>>('agentArns');
+    this.arn = registerOutput<String>('arn');
+    this.authenticationType = registerOutput<String?>('authenticationType');
+    this.blockSize = registerOutput<int?>('blockSize');
+    this.kerberosKeytab = registerOutput<String?>('kerberosKeytab');
+    this.kerberosKeytabBase64 = registerOutput<String?>('kerberosKeytabBase64');
+    this.kerberosKrb5Conf = registerOutput<String?>('kerberosKrb5Conf');
+    this.kerberosKrb5ConfBase64 =
+        registerOutput<String?>('kerberosKrb5ConfBase64');
+    this.kerberosPrincipal = registerOutput<String?>('kerberosPrincipal');
+    this.kmsKeyProviderUri = registerOutput<String?>('kmsKeyProviderUri');
+    this.nameNodes = registerOutput<List<LocationHdfsNameNode>>('nameNodes');
     this.qopConfiguration =
-        Output.createUnknown<LocationHdfsQopConfiguration>();
-    this.region = Output.createUnknown<String>();
-    this.replicationFactor = Output.createUnknown<int?>();
-    this.simpleUser = Output.createUnknown<String?>();
-    this.subdirectory = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.uri = Output.createUnknown<String>();
+        registerOutput<LocationHdfsQopConfiguration>('qopConfiguration');
+    this.region = registerOutput<String>('region');
+    this.replicationFactor = registerOutput<int?>('replicationFactor');
+    this.simpleUser = registerOutput<String?>('simpleUser');
+    this.subdirectory = registerOutput<String?>('subdirectory');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.uri = registerOutput<String>('uri');
   }
 }

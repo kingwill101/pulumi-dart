@@ -403,16 +403,16 @@ class Agent extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activationKey = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.ipAddress = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.privateLinkEndpoint = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupArns = Output.createUnknown<List<String>?>();
-    this.subnetArns = Output.createUnknown<List<String>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcEndpointId = Output.createUnknown<String?>();
+    this.activationKey = registerOutput<String>('activationKey');
+    this.arn = registerOutput<String>('arn');
+    this.ipAddress = registerOutput<String>('ipAddress');
+    this.name = registerOutput<String>('name');
+    this.privateLinkEndpoint = registerOutput<String>('privateLinkEndpoint');
+    this.region = registerOutput<String>('region');
+    this.securityGroupArns = registerOutput<List<String>?>('securityGroupArns');
+    this.subnetArns = registerOutput<List<String>?>('subnetArns');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcEndpointId = registerOutput<String?>('vpcEndpointId');
   }
 }

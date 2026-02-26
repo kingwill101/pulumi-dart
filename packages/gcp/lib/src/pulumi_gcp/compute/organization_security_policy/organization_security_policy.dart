@@ -168,12 +168,12 @@ class OrganizationSecurityPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.policyId = Output.createUnknown<String>();
-    this.shortName = Output.createUnknown<String?>();
-    this.type = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.parent = registerOutput<String>('parent');
+    this.policyId = registerOutput<String>('policyId');
+    this.shortName = registerOutput<String?>('shortName');
+    this.type = registerOutput<String>('type');
   }
 }

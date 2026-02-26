@@ -479,20 +479,22 @@ class VpnConnection extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cluster = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.details = Output.createUnknown<List<VpnConnectionDetail>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enableHighAvailability = Output.createUnknown<bool>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.natGatewayIp = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.router = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vpc = Output.createUnknown<String?>();
-    this.vpcProject = Output.createUnknown<VpnConnectionVpcProject?>();
+    this.cluster = registerOutput<String>('cluster');
+    this.createTime = registerOutput<String>('createTime');
+    this.details = registerOutput<List<VpnConnectionDetail>>('details');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableHighAvailability =
+        registerOutput<bool>('enableHighAvailability');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.natGatewayIp = registerOutput<String?>('natGatewayIp');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.router = registerOutput<String?>('router');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vpc = registerOutput<String?>('vpc');
+    this.vpcProject = registerOutput<VpnConnectionVpcProject?>('vpcProject');
   }
 }

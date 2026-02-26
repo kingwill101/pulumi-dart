@@ -227,12 +227,12 @@ class EipAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allocationId = Output.createUnknown<String>();
-    this.allowReassociation = Output.createUnknown<bool?>();
-    this.instanceId = Output.createUnknown<String>();
-    this.networkInterfaceId = Output.createUnknown<String>();
-    this.privateIpAddress = Output.createUnknown<String>();
-    this.publicIp = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.allocationId = registerOutput<String>('allocationId');
+    this.allowReassociation = registerOutput<bool?>('allowReassociation');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    this.privateIpAddress = registerOutput<String>('privateIpAddress');
+    this.publicIp = registerOutput<String>('publicIp');
+    this.region = registerOutput<String>('region');
   }
 }

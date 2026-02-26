@@ -403,11 +403,12 @@ class AnalyticsConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.filter = Output.createUnknown<AnalyticsConfigurationFilter?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.filter = registerOutput<AnalyticsConfigurationFilter?>('filter');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
     this.storageClassAnalysis =
-        Output.createUnknown<AnalyticsConfigurationStorageClassAnalysis?>();
+        registerOutput<AnalyticsConfigurationStorageClassAnalysis?>(
+            'storageClassAnalysis');
   }
 }

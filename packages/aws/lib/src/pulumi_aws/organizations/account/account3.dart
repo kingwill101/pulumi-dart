@@ -287,20 +287,21 @@ class Account3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.closeOnDeletion = Output.createUnknown<bool?>();
-    this.createGovcloud = Output.createUnknown<bool?>();
-    this.email = Output.createUnknown<String>();
-    this.govcloudId = Output.createUnknown<String>();
-    this.iamUserAccessToBilling = Output.createUnknown<String?>();
-    this.joinedMethod = Output.createUnknown<String>();
-    this.joinedTimestamp = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parentId = Output.createUnknown<String>();
-    this.roleName = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.closeOnDeletion = registerOutput<bool?>('closeOnDeletion');
+    this.createGovcloud = registerOutput<bool?>('createGovcloud');
+    this.email = registerOutput<String>('email');
+    this.govcloudId = registerOutput<String>('govcloudId');
+    this.iamUserAccessToBilling =
+        registerOutput<String?>('iamUserAccessToBilling');
+    this.joinedMethod = registerOutput<String>('joinedMethod');
+    this.joinedTimestamp = registerOutput<String>('joinedTimestamp');
+    this.name = registerOutput<String>('name');
+    this.parentId = registerOutput<String>('parentId');
+    this.roleName = registerOutput<String?>('roleName');
+    this.state = registerOutput<String>('state');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

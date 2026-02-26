@@ -2173,20 +2173,24 @@ class Topic2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.ingestionDataSourceSettings =
-        Output.createUnknown<TopicIngestionDataSourceSettings?>();
-    this.kmsKeyName = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.messageRetentionDuration = Output.createUnknown<String?>();
+        registerOutput<TopicIngestionDataSourceSettings?>(
+            'ingestionDataSourceSettings');
+    this.kmsKeyName = registerOutput<String?>('kmsKeyName');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.messageRetentionDuration =
+        registerOutput<String?>('messageRetentionDuration');
     this.messageStoragePolicy =
-        Output.createUnknown<TopicMessageStoragePolicy>();
+        registerOutput<TopicMessageStoragePolicy>('messageStoragePolicy');
     this.messageTransforms =
-        Output.createUnknown<List<TopicMessageTransform>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.schemaSettings = Output.createUnknown<TopicSchemaSettings?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
+        registerOutput<List<TopicMessageTransform>?>('messageTransforms');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.schemaSettings =
+        registerOutput<TopicSchemaSettings?>('schemaSettings');
+    this.tags = registerOutput<Map<String, String>?>('tags');
   }
 }

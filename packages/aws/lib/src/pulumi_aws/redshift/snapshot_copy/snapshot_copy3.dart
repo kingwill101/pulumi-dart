@@ -139,11 +139,13 @@ class SnapshotCopy3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusterIdentifier = Output.createUnknown<String>();
-    this.destinationRegion = Output.createUnknown<String>();
-    this.manualSnapshotRetentionPeriod = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.retentionPeriod = Output.createUnknown<int>();
-    this.snapshotCopyGrantName = Output.createUnknown<String?>();
+    this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    this.destinationRegion = registerOutput<String>('destinationRegion');
+    this.manualSnapshotRetentionPeriod =
+        registerOutput<int>('manualSnapshotRetentionPeriod');
+    this.region = registerOutput<String>('region');
+    this.retentionPeriod = registerOutput<int>('retentionPeriod');
+    this.snapshotCopyGrantName =
+        registerOutput<String?>('snapshotCopyGrantName');
   }
 }

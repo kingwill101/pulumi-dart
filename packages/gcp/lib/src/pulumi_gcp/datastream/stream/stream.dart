@@ -9294,22 +9294,26 @@ class Stream extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backfillAll = Output.createUnknown<StreamBackfillAll?>();
-    this.backfillNone = Output.createUnknown<Map<String, dynamic>?>();
-    this.createWithoutValidation = Output.createUnknown<bool?>();
-    this.customerManagedEncryptionKey = Output.createUnknown<String?>();
-    this.desiredState = Output.createUnknown<String?>();
-    this.destinationConfig = Output.createUnknown<StreamDestinationConfig>();
-    this.displayName = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.ruleSets = Output.createUnknown<List<StreamRuleSet>?>();
-    this.sourceConfig = Output.createUnknown<StreamSourceConfig>();
-    this.state = Output.createUnknown<String>();
-    this.streamId = Output.createUnknown<String>();
+    this.backfillAll = registerOutput<StreamBackfillAll?>('backfillAll');
+    this.backfillNone = registerOutput<Map<String, dynamic>?>('backfillNone');
+    this.createWithoutValidation =
+        registerOutput<bool?>('createWithoutValidation');
+    this.customerManagedEncryptionKey =
+        registerOutput<String?>('customerManagedEncryptionKey');
+    this.desiredState = registerOutput<String?>('desiredState');
+    this.destinationConfig =
+        registerOutput<StreamDestinationConfig>('destinationConfig');
+    this.displayName = registerOutput<String>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.ruleSets = registerOutput<List<StreamRuleSet>?>('ruleSets');
+    this.sourceConfig = registerOutput<StreamSourceConfig>('sourceConfig');
+    this.state = registerOutput<String>('state');
+    this.streamId = registerOutput<String>('streamId');
   }
 }

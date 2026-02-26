@@ -132,10 +132,10 @@ class MetricsDestination extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appMonitorName = Output.createUnknown<String>();
-    this.destination = Output.createUnknown<String>();
-    this.destinationArn = Output.createUnknown<String?>();
-    this.iamRoleArn = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.appMonitorName = registerOutput<String>('appMonitorName');
+    this.destination = registerOutput<String>('destination');
+    this.destinationArn = registerOutput<String?>('destinationArn');
+    this.iamRoleArn = registerOutput<String?>('iamRoleArn');
+    this.region = registerOutput<String>('region');
   }
 }

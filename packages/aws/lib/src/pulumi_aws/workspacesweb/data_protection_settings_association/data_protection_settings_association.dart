@@ -170,8 +170,9 @@ class DataProtectionSettingsAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dataProtectionSettingsArn = Output.createUnknown<String>();
-    this.portalArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.dataProtectionSettingsArn =
+        registerOutput<String>('dataProtectionSettingsArn');
+    this.portalArn = registerOutput<String>('portalArn');
+    this.region = registerOutput<String>('region');
   }
 }

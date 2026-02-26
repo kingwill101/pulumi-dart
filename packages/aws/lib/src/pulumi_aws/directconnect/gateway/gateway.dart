@@ -147,11 +147,11 @@ class Gateway extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.amazonSideAsn = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.ownerAccountId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.amazonSideAsn = registerOutput<String>('amazonSideAsn');
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    this.ownerAccountId = registerOutput<String>('ownerAccountId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

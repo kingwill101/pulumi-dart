@@ -59,13 +59,14 @@ class ServicePerimeterDryRunEgressPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessPolicyId = Output.createUnknown<String>();
+    this.accessPolicyId = registerOutput<String>('accessPolicyId');
     this.egressFrom =
-        Output.createUnknown<ServicePerimeterDryRunEgressPolicyEgressFrom?>();
+        registerOutput<ServicePerimeterDryRunEgressPolicyEgressFrom?>(
+            'egressFrom');
     this.egressTo =
-        Output.createUnknown<ServicePerimeterDryRunEgressPolicyEgressTo?>();
-    this.etag = Output.createUnknown<String>();
-    this.perimeter = Output.createUnknown<String>();
-    this.title = Output.createUnknown<String?>();
+        registerOutput<ServicePerimeterDryRunEgressPolicyEgressTo?>('egressTo');
+    this.etag = registerOutput<String>('etag');
+    this.perimeter = registerOutput<String>('perimeter');
+    this.title = registerOutput<String?>('title');
   }
 }

@@ -4768,18 +4768,23 @@ class CxPage extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.advancedSettings = Output.createUnknown<CxPageAdvancedSettings?>();
-    this.displayName = Output.createUnknown<String>();
-    this.entryFulfillment = Output.createUnknown<CxPageEntryFulfillment?>();
-    this.eventHandlers = Output.createUnknown<List<CxPageEventHandler>?>();
-    this.form = Output.createUnknown<CxPageForm?>();
+    this.advancedSettings =
+        registerOutput<CxPageAdvancedSettings?>('advancedSettings');
+    this.displayName = registerOutput<String>('displayName');
+    this.entryFulfillment =
+        registerOutput<CxPageEntryFulfillment?>('entryFulfillment');
+    this.eventHandlers =
+        registerOutput<List<CxPageEventHandler>?>('eventHandlers');
+    this.form = registerOutput<CxPageForm?>('form');
     this.knowledgeConnectorSettings =
-        Output.createUnknown<CxPageKnowledgeConnectorSettings?>();
-    this.languageCode = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String?>();
-    this.transitionRouteGroups = Output.createUnknown<List<String>?>();
+        registerOutput<CxPageKnowledgeConnectorSettings?>(
+            'knowledgeConnectorSettings');
+    this.languageCode = registerOutput<String?>('languageCode');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String?>('parent');
+    this.transitionRouteGroups =
+        registerOutput<List<String>?>('transitionRouteGroups');
     this.transitionRoutes =
-        Output.createUnknown<List<CxPageTransitionRoute>?>();
+        registerOutput<List<CxPageTransitionRoute>?>('transitionRoutes');
   }
 }

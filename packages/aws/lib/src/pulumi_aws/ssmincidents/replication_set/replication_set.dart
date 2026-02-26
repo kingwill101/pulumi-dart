@@ -571,14 +571,14 @@ class ReplicationSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdBy = Output.createUnknown<String>();
-    this.deletionProtected = Output.createUnknown<bool>();
-    this.lastModifiedBy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<List<ReplicationSetRegion>>();
-    this.regions = Output.createUnknown<List<ReplicationSetRegion>>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.createdBy = registerOutput<String>('createdBy');
+    this.deletionProtected = registerOutput<bool>('deletionProtected');
+    this.lastModifiedBy = registerOutput<String>('lastModifiedBy');
+    this.region = registerOutput<List<ReplicationSetRegion>>('region');
+    this.regions = registerOutput<List<ReplicationSetRegion>>('regions');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

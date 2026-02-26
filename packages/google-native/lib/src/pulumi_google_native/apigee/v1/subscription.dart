@@ -36,13 +36,13 @@ class Subscription extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiproduct = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.developerId = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
-    this.lastModifiedAt = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
+    this.apiproduct = registerOutput<String>('apiproduct');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.developerId = registerOutput<String>('developerId');
+    this.endTime = registerOutput<String>('endTime');
+    this.lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.startTime = registerOutput<String>('startTime');
   }
 }

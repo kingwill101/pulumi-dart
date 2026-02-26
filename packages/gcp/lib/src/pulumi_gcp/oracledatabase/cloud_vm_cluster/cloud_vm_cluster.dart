@@ -1181,24 +1181,26 @@ class CloudVmCluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupOdbSubnet = Output.createUnknown<String>();
-    this.backupSubnetCidr = Output.createUnknown<String?>();
-    this.cidr = Output.createUnknown<String?>();
-    this.cloudVmClusterId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.exadataInfrastructure = Output.createUnknown<String>();
-    this.gcpOracleZone = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String?>();
-    this.odbNetwork = Output.createUnknown<String>();
-    this.odbSubnet = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.properties = Output.createUnknown<CloudVmClusterProperties?>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+    this.backupOdbSubnet = registerOutput<String>('backupOdbSubnet');
+    this.backupSubnetCidr = registerOutput<String?>('backupSubnetCidr');
+    this.cidr = registerOutput<String?>('cidr');
+    this.cloudVmClusterId = registerOutput<String>('cloudVmClusterId');
+    this.createTime = registerOutput<String>('createTime');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.displayName = registerOutput<String?>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.exadataInfrastructure =
+        registerOutput<String>('exadataInfrastructure');
+    this.gcpOracleZone = registerOutput<String>('gcpOracleZone');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String?>('network');
+    this.odbNetwork = registerOutput<String>('odbNetwork');
+    this.odbSubnet = registerOutput<String>('odbSubnet');
+    this.project = registerOutput<String>('project');
+    this.properties = registerOutput<CloudVmClusterProperties?>('properties');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
   }
 }

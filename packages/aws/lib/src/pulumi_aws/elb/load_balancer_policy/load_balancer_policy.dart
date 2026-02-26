@@ -598,11 +598,12 @@ class LoadBalancerPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.loadBalancerName = Output.createUnknown<String>();
+    this.loadBalancerName = registerOutput<String>('loadBalancerName');
     this.policyAttributes =
-        Output.createUnknown<List<LoadBalancerPolicyPolicyAttribute>>();
-    this.policyName = Output.createUnknown<String>();
-    this.policyTypeName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<LoadBalancerPolicyPolicyAttribute>>(
+            'policyAttributes');
+    this.policyName = registerOutput<String>('policyName');
+    this.policyTypeName = registerOutput<String>('policyTypeName');
+    this.region = registerOutput<String>('region');
   }
 }

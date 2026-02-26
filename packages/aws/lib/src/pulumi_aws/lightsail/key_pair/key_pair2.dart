@@ -362,17 +362,17 @@ class KeyPair2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.encryptedFingerprint = Output.createUnknown<String>();
-    this.encryptedPrivateKey = Output.createUnknown<String>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.pgpKey = Output.createUnknown<String?>();
-    this.privateKey = Output.createUnknown<String>();
-    this.publicKey = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.encryptedFingerprint = registerOutput<String>('encryptedFingerprint');
+    this.encryptedPrivateKey = registerOutput<String>('encryptedPrivateKey');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.pgpKey = registerOutput<String?>('pgpKey');
+    this.privateKey = registerOutput<String>('privateKey');
+    this.publicKey = registerOutput<String>('publicKey');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

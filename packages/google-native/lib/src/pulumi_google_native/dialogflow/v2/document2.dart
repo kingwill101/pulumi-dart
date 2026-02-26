@@ -48,19 +48,20 @@ class Document2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.contentUri = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.enableAutoReload = Output.createUnknown<bool>();
-    this.knowledgeBaseId = Output.createUnknown<String>();
-    this.knowledgeTypes = Output.createUnknown<List<String>>();
-    this.latestReloadStatus = Output.createUnknown<
-        GoogleCloudDialogflowV2DocumentReloadStatusResponse>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>>();
-    this.mimeType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rawContent = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.contentUri = registerOutput<String>('contentUri');
+    this.displayName = registerOutput<String>('displayName');
+    this.enableAutoReload = registerOutput<bool>('enableAutoReload');
+    this.knowledgeBaseId = registerOutput<String>('knowledgeBaseId');
+    this.knowledgeTypes = registerOutput<List<String>>('knowledgeTypes');
+    this.latestReloadStatus =
+        registerOutput<GoogleCloudDialogflowV2DocumentReloadStatusResponse>(
+            'latestReloadStatus');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<Map<String, String>>('metadata');
+    this.mimeType = registerOutput<String>('mimeType');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.rawContent = registerOutput<String>('rawContent');
+    this.state = registerOutput<String>('state');
   }
 }

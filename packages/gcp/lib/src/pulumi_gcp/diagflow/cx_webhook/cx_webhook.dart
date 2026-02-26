@@ -2045,17 +2045,19 @@ class CxWebhook extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.disabled = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String>();
-    this.enableSpellCorrection = Output.createUnknown<bool?>();
-    this.enableStackdriverLogging = Output.createUnknown<bool?>();
+    this.disabled = registerOutput<bool?>('disabled');
+    this.displayName = registerOutput<String>('displayName');
+    this.enableSpellCorrection = registerOutput<bool?>('enableSpellCorrection');
+    this.enableStackdriverLogging =
+        registerOutput<bool?>('enableStackdriverLogging');
     this.genericWebService =
-        Output.createUnknown<CxWebhookGenericWebService?>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String?>();
-    this.securitySettings = Output.createUnknown<String?>();
-    this.serviceDirectory = Output.createUnknown<CxWebhookServiceDirectory?>();
-    this.startFlow = Output.createUnknown<String>();
-    this.timeout = Output.createUnknown<String?>();
+        registerOutput<CxWebhookGenericWebService?>('genericWebService');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String?>('parent');
+    this.securitySettings = registerOutput<String?>('securitySettings');
+    this.serviceDirectory =
+        registerOutput<CxWebhookServiceDirectory?>('serviceDirectory');
+    this.startFlow = registerOutput<String>('startFlow');
+    this.timeout = registerOutput<String?>('timeout');
   }
 }

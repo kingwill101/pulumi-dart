@@ -30,10 +30,11 @@ class ProjectIamPolicy3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse21>>();
-    this.bindings = Output.createUnknown<List<BindingResponse28>>();
-    this.etag = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse21>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse28>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

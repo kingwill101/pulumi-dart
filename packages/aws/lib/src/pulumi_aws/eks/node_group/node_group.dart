@@ -813,30 +813,33 @@ class NodeGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.amiType = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.capacityType = Output.createUnknown<String>();
-    this.clusterName = Output.createUnknown<String>();
-    this.diskSize = Output.createUnknown<int>();
-    this.forceUpdateVersion = Output.createUnknown<bool?>();
-    this.instanceTypes = Output.createUnknown<List<String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.launchTemplate = Output.createUnknown<NodeGroupLaunchTemplate?>();
-    this.nodeGroupName = Output.createUnknown<String>();
-    this.nodeGroupNamePrefix = Output.createUnknown<String>();
-    this.nodeRepairConfig = Output.createUnknown<NodeGroupNodeRepairConfig>();
-    this.nodeRoleArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.releaseVersion = Output.createUnknown<String>();
-    this.remoteAccess = Output.createUnknown<NodeGroupRemoteAccess?>();
-    this.resources = Output.createUnknown<List<NodeGroupResource>>();
-    this.scalingConfig = Output.createUnknown<NodeGroupScalingConfig>();
-    this.status = Output.createUnknown<String>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.taints = Output.createUnknown<List<NodeGroupTaint>?>();
-    this.updateConfig = Output.createUnknown<NodeGroupUpdateConfig>();
-    this.version = Output.createUnknown<String>();
+    this.amiType = registerOutput<String>('amiType');
+    this.arn = registerOutput<String>('arn');
+    this.capacityType = registerOutput<String>('capacityType');
+    this.clusterName = registerOutput<String>('clusterName');
+    this.diskSize = registerOutput<int>('diskSize');
+    this.forceUpdateVersion = registerOutput<bool?>('forceUpdateVersion');
+    this.instanceTypes = registerOutput<List<String>>('instanceTypes');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.launchTemplate =
+        registerOutput<NodeGroupLaunchTemplate?>('launchTemplate');
+    this.nodeGroupName = registerOutput<String>('nodeGroupName');
+    this.nodeGroupNamePrefix = registerOutput<String>('nodeGroupNamePrefix');
+    this.nodeRepairConfig =
+        registerOutput<NodeGroupNodeRepairConfig>('nodeRepairConfig');
+    this.nodeRoleArn = registerOutput<String>('nodeRoleArn');
+    this.region = registerOutput<String>('region');
+    this.releaseVersion = registerOutput<String>('releaseVersion');
+    this.remoteAccess = registerOutput<NodeGroupRemoteAccess?>('remoteAccess');
+    this.resources = registerOutput<List<NodeGroupResource>>('resources');
+    this.scalingConfig =
+        registerOutput<NodeGroupScalingConfig>('scalingConfig');
+    this.status = registerOutput<String>('status');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.taints = registerOutput<List<NodeGroupTaint>?>('taints');
+    this.updateConfig = registerOutput<NodeGroupUpdateConfig>('updateConfig');
+    this.version = registerOutput<String>('version');
   }
 }

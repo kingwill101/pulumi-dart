@@ -347,27 +347,33 @@ class ReplicationConfigurationTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.associateDefaultSecurityGroup = Output.createUnknown<bool>();
-    this.autoReplicateNewDisks = Output.createUnknown<bool>();
-    this.bandwidthThrottling = Output.createUnknown<int>();
-    this.createPublicIp = Output.createUnknown<bool>();
-    this.dataPlaneRouting = Output.createUnknown<String>();
-    this.defaultLargeStagingDiskType = Output.createUnknown<String>();
-    this.ebsEncryption = Output.createUnknown<String>();
-    this.ebsEncryptionKeyArn = Output.createUnknown<String?>();
-    this.pitPolicies = Output.createUnknown<
-        List<ReplicationConfigurationTemplatePitPolicy>?>();
-    this.region = Output.createUnknown<String>();
-    this.replicationServerInstanceType = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.associateDefaultSecurityGroup =
+        registerOutput<bool>('associateDefaultSecurityGroup');
+    this.autoReplicateNewDisks = registerOutput<bool>('autoReplicateNewDisks');
+    this.bandwidthThrottling = registerOutput<int>('bandwidthThrottling');
+    this.createPublicIp = registerOutput<bool>('createPublicIp');
+    this.dataPlaneRouting = registerOutput<String>('dataPlaneRouting');
+    this.defaultLargeStagingDiskType =
+        registerOutput<String>('defaultLargeStagingDiskType');
+    this.ebsEncryption = registerOutput<String>('ebsEncryption');
+    this.ebsEncryptionKeyArn = registerOutput<String?>('ebsEncryptionKeyArn');
+    this.pitPolicies =
+        registerOutput<List<ReplicationConfigurationTemplatePitPolicy>?>(
+            'pitPolicies');
+    this.region = registerOutput<String>('region');
+    this.replicationServerInstanceType =
+        registerOutput<String>('replicationServerInstanceType');
     this.replicationServersSecurityGroupsIds =
-        Output.createUnknown<List<String>>();
-    this.stagingAreaSubnetId = Output.createUnknown<String>();
-    this.stagingAreaTags = Output.createUnknown<Map<String, String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<String>>('replicationServersSecurityGroupsIds');
+    this.stagingAreaSubnetId = registerOutput<String>('stagingAreaSubnetId');
+    this.stagingAreaTags =
+        registerOutput<Map<String, String>>('stagingAreaTags');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.timeouts =
-        Output.createUnknown<ReplicationConfigurationTemplateTimeouts?>();
-    this.useDedicatedReplicationServer = Output.createUnknown<bool>();
+        registerOutput<ReplicationConfigurationTemplateTimeouts?>('timeouts');
+    this.useDedicatedReplicationServer =
+        registerOutput<bool>('useDedicatedReplicationServer');
   }
 }

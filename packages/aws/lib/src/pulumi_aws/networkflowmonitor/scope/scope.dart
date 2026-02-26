@@ -227,12 +227,12 @@ class Scope extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.scopeArn = Output.createUnknown<String>();
-    this.scopeId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targets = Output.createUnknown<List<ScopeTarget>>();
-    this.timeouts = Output.createUnknown<ScopeTimeouts?>();
+    this.region = registerOutput<String>('region');
+    this.scopeArn = registerOutput<String>('scopeArn');
+    this.scopeId = registerOutput<String>('scopeId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targets = registerOutput<List<ScopeTarget>>('targets');
+    this.timeouts = registerOutput<ScopeTimeouts?>('timeouts');
   }
 }

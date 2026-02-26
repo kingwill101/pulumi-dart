@@ -1662,19 +1662,22 @@ class Policy2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alarmArns = Output.createUnknown<List<String>>();
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.policyType = Output.createUnknown<String?>();
+    this.alarmArns = registerOutput<List<String>>('alarmArns');
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    this.policyType = registerOutput<String?>('policyType');
     this.predictiveScalingPolicyConfiguration =
-        Output.createUnknown<PolicyPredictiveScalingPolicyConfiguration?>();
-    this.region = Output.createUnknown<String>();
-    this.resourceId = Output.createUnknown<String>();
-    this.scalableDimension = Output.createUnknown<String>();
-    this.serviceNamespace = Output.createUnknown<String>();
+        registerOutput<PolicyPredictiveScalingPolicyConfiguration?>(
+            'predictiveScalingPolicyConfiguration');
+    this.region = registerOutput<String>('region');
+    this.resourceId = registerOutput<String>('resourceId');
+    this.scalableDimension = registerOutput<String>('scalableDimension');
+    this.serviceNamespace = registerOutput<String>('serviceNamespace');
     this.stepScalingPolicyConfiguration =
-        Output.createUnknown<PolicyStepScalingPolicyConfiguration?>();
+        registerOutput<PolicyStepScalingPolicyConfiguration?>(
+            'stepScalingPolicyConfiguration');
     this.targetTrackingScalingPolicyConfiguration =
-        Output.createUnknown<PolicyTargetTrackingScalingPolicyConfiguration?>();
+        registerOutput<PolicyTargetTrackingScalingPolicyConfiguration?>(
+            'targetTrackingScalingPolicyConfiguration');
   }
 }

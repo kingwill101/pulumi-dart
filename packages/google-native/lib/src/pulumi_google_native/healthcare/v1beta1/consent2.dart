@@ -49,20 +49,21 @@ class Consent2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.consentArtifact = Output.createUnknown<String>();
-    this.consentStoreId = Output.createUnknown<String>();
-    this.datasetId = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.policies = Output.createUnknown<
-        List<GoogleCloudHealthcareV1beta1ConsentPolicyResponse>>();
-    this.project = Output.createUnknown<String>();
-    this.revisionCreateTime = Output.createUnknown<String>();
-    this.revisionId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.ttl = Output.createUnknown<String>();
-    this.userId = Output.createUnknown<String>();
+    this.consentArtifact = registerOutput<String>('consentArtifact');
+    this.consentStoreId = registerOutput<String>('consentStoreId');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<Map<String, String>>('metadata');
+    this.name = registerOutput<String>('name');
+    this.policies =
+        registerOutput<List<GoogleCloudHealthcareV1beta1ConsentPolicyResponse>>(
+            'policies');
+    this.project = registerOutput<String>('project');
+    this.revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.state = registerOutput<String>('state');
+    this.ttl = registerOutput<String>('ttl');
+    this.userId = registerOutput<String>('userId');
   }
 }

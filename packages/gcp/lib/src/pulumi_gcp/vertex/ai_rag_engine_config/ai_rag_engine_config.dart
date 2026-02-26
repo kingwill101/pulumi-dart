@@ -61,10 +61,11 @@ class AiRagEngineConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.ragManagedDbConfig =
-        Output.createUnknown<AiRagEngineConfigRagManagedDbConfig>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<AiRagEngineConfigRagManagedDbConfig>(
+            'ragManagedDbConfig');
+    this.region = registerOutput<String>('region');
   }
 }

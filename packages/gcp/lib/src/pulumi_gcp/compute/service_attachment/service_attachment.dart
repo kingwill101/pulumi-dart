@@ -3395,28 +3395,34 @@ class ServiceAttachment extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.connectedEndpoints =
-        Output.createUnknown<List<ServiceAttachmentConnectedEndpoint>>();
-    this.connectionPreference = Output.createUnknown<String>();
+        registerOutput<List<ServiceAttachmentConnectedEndpoint>>(
+            'connectedEndpoints');
+    this.connectionPreference = registerOutput<String>('connectionPreference');
     this.consumerAcceptLists =
-        Output.createUnknown<List<ServiceAttachmentConsumerAcceptList>?>();
-    this.consumerRejectLists = Output.createUnknown<List<String>?>();
-    this.description = Output.createUnknown<String?>();
-    this.domainNames = Output.createUnknown<List<String>?>();
-    this.enableProxyProtocol = Output.createUnknown<bool>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.natSubnets = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.propagatedConnectionLimit = Output.createUnknown<int>();
+        registerOutput<List<ServiceAttachmentConsumerAcceptList>?>(
+            'consumerAcceptLists');
+    this.consumerRejectLists =
+        registerOutput<List<String>?>('consumerRejectLists');
+    this.description = registerOutput<String?>('description');
+    this.domainNames = registerOutput<List<String>?>('domainNames');
+    this.enableProxyProtocol = registerOutput<bool>('enableProxyProtocol');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.name = registerOutput<String>('name');
+    this.natSubnets = registerOutput<List<String>>('natSubnets');
+    this.project = registerOutput<String>('project');
+    this.propagatedConnectionLimit =
+        registerOutput<int>('propagatedConnectionLimit');
     this.pscServiceAttachmentIds =
-        Output.createUnknown<List<ServiceAttachmentPscServiceAttachmentId>>();
-    this.reconcileConnections = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.sendPropagatedConnectionLimitIfZero = Output.createUnknown<bool?>();
-    this.showNatIps = Output.createUnknown<bool?>();
-    this.targetService = Output.createUnknown<String>();
+        registerOutput<List<ServiceAttachmentPscServiceAttachmentId>>(
+            'pscServiceAttachmentIds');
+    this.reconcileConnections = registerOutput<bool>('reconcileConnections');
+    this.region = registerOutput<String>('region');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.sendPropagatedConnectionLimitIfZero =
+        registerOutput<bool?>('sendPropagatedConnectionLimitIfZero');
+    this.showNatIps = registerOutput<bool?>('showNatIps');
+    this.targetService = registerOutput<String>('targetService');
     this.tunnelingConfig =
-        Output.createUnknown<ServiceAttachmentTunnelingConfig?>();
+        registerOutput<ServiceAttachmentTunnelingConfig?>('tunnelingConfig');
   }
 }

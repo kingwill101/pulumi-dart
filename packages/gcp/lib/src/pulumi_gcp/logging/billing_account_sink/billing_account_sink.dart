@@ -263,15 +263,15 @@ class BillingAccountSink extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.bigqueryOptions =
-        Output.createUnknown<BillingAccountSinkBigqueryOptions>();
-    this.billingAccount = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.destination = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool?>();
+        registerOutput<BillingAccountSinkBigqueryOptions>('bigqueryOptions');
+    this.billingAccount = registerOutput<String>('billingAccount');
+    this.description = registerOutput<String?>('description');
+    this.destination = registerOutput<String>('destination');
+    this.disabled = registerOutput<bool?>('disabled');
     this.exclusions =
-        Output.createUnknown<List<BillingAccountSinkExclusion>?>();
-    this.filter = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.writerIdentity = Output.createUnknown<String>();
+        registerOutput<List<BillingAccountSinkExclusion>?>('exclusions');
+    this.filter = registerOutput<String?>('filter');
+    this.name = registerOutput<String>('name');
+    this.writerIdentity = registerOutput<String>('writerIdentity');
   }
 }

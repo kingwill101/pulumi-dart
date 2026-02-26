@@ -1019,12 +1019,12 @@ class AssetIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.asset = Output.createUnknown<String>();
-    this.dataplexZone = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.lake = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.asset = registerOutput<String>('asset');
+    this.dataplexZone = registerOutput<String>('dataplexZone');
+    this.etag = registerOutput<String>('etag');
+    this.lake = registerOutput<String>('lake');
+    this.location = registerOutput<String>('location');
+    this.policyData = registerOutput<String>('policyData');
+    this.project = registerOutput<String>('project');
   }
 }

@@ -33,6 +33,9 @@ consumer code can import modules with explicit aliases.
 ```bash
 task smoke:init PACKAGE=gcp
 task smoke:preview PACKAGE=gcp
+
+# Full generator verification matrix (generate + analyze + smoke):
+task verify:matrix
 ```
 
 Run any custom command with the same local smoke env setup:
@@ -45,6 +48,10 @@ task smoke:up PACKAGE=gcp
 # Optional: override the default local passphrase for this run.
 task smoke:preview PACKAGE=gcp DEFAULT_PULUMI_CONFIG_PASSPHRASE=my-passphrase
 ```
+
+`smoke:*` tasks now derive a deterministic stack name from the active passphrase
+(`dev-<sha1_8>` by default), which avoids passphrase-mismatch failures
+when old local smoke stacks were encrypted with a different passphrase.
 
 This creates a project at `.gen/smoke/<provider>` wired to:
 
@@ -72,10 +79,27 @@ If you still run preview manually in a local smoke project, include:
 cd .gen/smoke/gcp
 export PATH="/abs/path/to/pulumi-dart/pulumi-language-dart:$PATH"
 export PULUMI_CONFIG_PASSPHRASE="pulumi-dart-smoke"
-pulumi stack select dev --create --non-interactive >/dev/null
+STACK_HASH="$(printf '%s' "${PULUMI_CONFIG_PASSPHRASE}" | sha1sum | awk '{print substr($1,1,8)}')"
+pulumi stack select "dev-${STACK_HASH}" --create --non-interactive >/dev/null
 pulumi preview --non-interactive
 ```
 
 ## More Details
 
 For full generator and package workflow details, see [`packages/README.md`](packages/README.md).
+
+## SDK Mutation Testing
+
+`pulumi-dart/` is configured for mutation testing with `mutation_test`.
+
+```bash
+task test:coverage
+task test:mutation:dry
+task test:mutation:dry:coverage
+task test:mutation
+task test:mutation:coverage
+```
+
+The mutation config is at `pulumi-dart/mutation-test.xml` and focuses on the
+runtime surface (`lib/src/deployment`, `lib/src/resource`, serialization,
+monitor/callback paths).

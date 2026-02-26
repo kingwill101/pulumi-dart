@@ -184,17 +184,19 @@ class Control extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.actionPlanInstructions = Output.createUnknown<String?>();
-    this.actionPlanTitle = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
+    this.actionPlanInstructions =
+        registerOutput<String?>('actionPlanInstructions');
+    this.actionPlanTitle = registerOutput<String?>('actionPlanTitle');
+    this.arn = registerOutput<String>('arn');
     this.controlMappingSources =
-        Output.createUnknown<List<ControlControlMappingSource>?>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.testingInformation = Output.createUnknown<String?>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<List<ControlControlMappingSource>?>(
+            'controlMappingSources');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.testingInformation = registerOutput<String?>('testingInformation');
+    this.type = registerOutput<String>('type');
   }
 }

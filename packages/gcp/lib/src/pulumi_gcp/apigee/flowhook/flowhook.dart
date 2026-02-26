@@ -56,11 +56,11 @@ class Flowhook extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.continueOnError = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String?>();
-    this.environment = Output.createUnknown<String>();
-    this.flowHookPoint = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.sharedflow = Output.createUnknown<String>();
+    this.continueOnError = registerOutput<bool?>('continueOnError');
+    this.description = registerOutput<String?>('description');
+    this.environment = registerOutput<String>('environment');
+    this.flowHookPoint = registerOutput<String>('flowHookPoint');
+    this.orgId = registerOutput<String>('orgId');
+    this.sharedflow = registerOutput<String>('sharedflow');
   }
 }

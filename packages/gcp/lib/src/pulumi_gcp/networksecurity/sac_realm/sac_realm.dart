@@ -332,16 +332,18 @@ class SacRealm extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.pairingKeys = Output.createUnknown<List<SacRealmPairingKey>>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.securityService = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.symantecOptions = Output.createUnknown<SacRealmSymantecOptions?>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.pairingKeys = registerOutput<List<SacRealmPairingKey>>('pairingKeys');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.securityService = registerOutput<String>('securityService');
+    this.state = registerOutput<String>('state');
+    this.symantecOptions =
+        registerOutput<SacRealmSymantecOptions?>('symantecOptions');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

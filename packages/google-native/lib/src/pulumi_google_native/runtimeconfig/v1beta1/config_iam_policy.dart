@@ -27,10 +27,10 @@ class ConfigIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bindings = Output.createUnknown<List<BindingResponse91>>();
-    this.configId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.bindings = registerOutput<List<BindingResponse91>>('bindings');
+    this.configId = registerOutput<String>('configId');
+    this.etag = registerOutput<String>('etag');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

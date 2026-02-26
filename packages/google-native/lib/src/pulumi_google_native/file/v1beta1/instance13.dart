@@ -82,29 +82,30 @@ class Instance13 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.capacityGb = Output.createUnknown<String>();
-    this.capacityStepSizeGb = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
+    this.capacityGb = registerOutput<String>('capacityGb');
+    this.capacityStepSizeGb = registerOutput<String>('capacityStepSizeGb');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
     this.directoryServices =
-        Output.createUnknown<DirectoryServicesConfigResponse>();
-    this.etag = Output.createUnknown<String>();
-    this.fileShares = Output.createUnknown<List<FileShareConfigResponse2>>();
-    this.instanceId = Output.createUnknown<String>();
-    this.kmsKeyName = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.maxCapacityGb = Output.createUnknown<String>();
-    this.maxShareCount = Output.createUnknown<String>();
-    this.multiShareEnabled = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.networks = Output.createUnknown<List<NetworkConfigResponse15>>();
-    this.project = Output.createUnknown<String>();
-    this.protocol = Output.createUnknown<String>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.statusMessage = Output.createUnknown<String>();
-    this.suspensionReasons = Output.createUnknown<List<String>>();
-    this.tier = Output.createUnknown<String>();
+        registerOutput<DirectoryServicesConfigResponse>('directoryServices');
+    this.etag = registerOutput<String>('etag');
+    this.fileShares =
+        registerOutput<List<FileShareConfigResponse2>>('fileShares');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.kmsKeyName = registerOutput<String>('kmsKeyName');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.maxCapacityGb = registerOutput<String>('maxCapacityGb');
+    this.maxShareCount = registerOutput<String>('maxShareCount');
+    this.multiShareEnabled = registerOutput<bool>('multiShareEnabled');
+    this.name = registerOutput<String>('name');
+    this.networks = registerOutput<List<NetworkConfigResponse15>>('networks');
+    this.project = registerOutput<String>('project');
+    this.protocol = registerOutput<String>('protocol');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.state = registerOutput<String>('state');
+    this.statusMessage = registerOutput<String>('statusMessage');
+    this.suspensionReasons = registerOutput<List<String>>('suspensionReasons');
+    this.tier = registerOutput<String>('tier');
   }
 }

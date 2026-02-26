@@ -245,11 +245,11 @@ class ServerlessLifecyclePolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
-    this.policyVersion = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.policy = registerOutput<String>('policy');
+    this.policyVersion = registerOutput<String>('policyVersion');
+    this.region = registerOutput<String>('region');
+    this.type = registerOutput<String>('type');
   }
 }

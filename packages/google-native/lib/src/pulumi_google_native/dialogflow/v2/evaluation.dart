@@ -41,16 +41,19 @@ class Evaluation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.conversationModelId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
+    this.conversationModelId = registerOutput<String>('conversationModelId');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
     this.evaluationConfig =
-        Output.createUnknown<GoogleCloudDialogflowV2EvaluationConfigResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rawHumanEvalTemplateCsv = Output.createUnknown<String>();
-    this.smartReplyMetrics = Output.createUnknown<
-        GoogleCloudDialogflowV2SmartReplyMetricsResponse>();
+        registerOutput<GoogleCloudDialogflowV2EvaluationConfigResponse>(
+            'evaluationConfig');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.rawHumanEvalTemplateCsv =
+        registerOutput<String>('rawHumanEvalTemplateCsv');
+    this.smartReplyMetrics =
+        registerOutput<GoogleCloudDialogflowV2SmartReplyMetricsResponse>(
+            'smartReplyMetrics');
   }
 }

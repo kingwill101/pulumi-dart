@@ -192,10 +192,10 @@ class PreviewFeature extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activationStatus = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.activationStatus = registerOutput<String>('activationStatus');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.rolloutOperation =
-        Output.createUnknown<PreviewFeatureRolloutOperation?>();
+        registerOutput<PreviewFeatureRolloutOperation?>('rolloutOperation');
   }
 }

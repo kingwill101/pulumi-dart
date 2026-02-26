@@ -43,16 +43,17 @@ class GitLabConfig extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.connectedRepositories =
-        Output.createUnknown<List<GitLabRepositoryIdResponse>>();
-    this.createTime = Output.createUnknown<String>();
+        registerOutput<List<GitLabRepositoryIdResponse>>(
+            'connectedRepositories');
+    this.createTime = registerOutput<String>('createTime');
     this.enterpriseConfig =
-        Output.createUnknown<GitLabEnterpriseConfigResponse>();
-    this.gitlabConfigId = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.secrets = Output.createUnknown<GitLabSecretsResponse>();
-    this.username = Output.createUnknown<String>();
-    this.webhookKey = Output.createUnknown<String>();
+        registerOutput<GitLabEnterpriseConfigResponse>('enterpriseConfig');
+    this.gitlabConfigId = registerOutput<String?>('gitlabConfigId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.secrets = registerOutput<GitLabSecretsResponse>('secrets');
+    this.username = registerOutput<String>('username');
+    this.webhookKey = registerOutput<String>('webhookKey');
   }
 }

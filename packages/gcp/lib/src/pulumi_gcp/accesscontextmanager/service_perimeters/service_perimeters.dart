@@ -432,8 +432,9 @@ class ServicePerimeters extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.parent = Output.createUnknown<String>();
+    this.parent = registerOutput<String>('parent');
     this.servicePerimeters =
-        Output.createUnknown<List<ServicePerimetersServicePerimeter>?>();
+        registerOutput<List<ServicePerimetersServicePerimeter>?>(
+            'servicePerimeters');
   }
 }

@@ -153,13 +153,13 @@ class AgentAgentKnowledgeBaseAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentId = Output.createUnknown<String>();
-    this.agentVersion = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.knowledgeBaseId = Output.createUnknown<String>();
-    this.knowledgeBaseState = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.agentId = registerOutput<String>('agentId');
+    this.agentVersion = registerOutput<String>('agentVersion');
+    this.description = registerOutput<String>('description');
+    this.knowledgeBaseId = registerOutput<String>('knowledgeBaseId');
+    this.knowledgeBaseState = registerOutput<String>('knowledgeBaseState');
+    this.region = registerOutput<String>('region');
     this.timeouts =
-        Output.createUnknown<AgentAgentKnowledgeBaseAssociationTimeouts?>();
+        registerOutput<AgentAgentKnowledgeBaseAssociationTimeouts?>('timeouts');
   }
 }

@@ -1947,18 +1947,20 @@ class PipelineJob extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.backfillPipelineJob =
-        Output.createUnknown<PipelineJobBackfillPipelineJob?>();
-    this.dataset = Output.createUnknown<String>();
-    this.disableLineage = Output.createUnknown<bool?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
+        registerOutput<PipelineJobBackfillPipelineJob?>('backfillPipelineJob');
+    this.dataset = registerOutput<String>('dataset');
+    this.disableLineage = registerOutput<bool?>('disableLineage');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
     this.mappingPipelineJob =
-        Output.createUnknown<PipelineJobMappingPipelineJob?>();
-    this.name = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<PipelineJobMappingPipelineJob?>('mappingPipelineJob');
+    this.name = registerOutput<String>('name');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.reconciliationPipelineJob =
-        Output.createUnknown<PipelineJobReconciliationPipelineJob?>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<PipelineJobReconciliationPipelineJob?>(
+            'reconciliationPipelineJob');
+    this.selfLink = registerOutput<String>('selfLink');
   }
 }

@@ -535,24 +535,26 @@ class PolicyBasedRoute extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.filter = Output.createUnknown<PolicyBasedRouteFilter>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.filter = registerOutput<PolicyBasedRouteFilter>('filter');
     this.interconnectAttachment =
-        Output.createUnknown<PolicyBasedRouteInterconnectAttachment?>();
-    this.kind = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.nextHopIlbIp = Output.createUnknown<String?>();
-    this.nextHopOtherRoutes = Output.createUnknown<String?>();
-    this.priority = Output.createUnknown<int?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<PolicyBasedRouteInterconnectAttachment?>(
+            'interconnectAttachment');
+    this.kind = registerOutput<String>('kind');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.nextHopIlbIp = registerOutput<String?>('nextHopIlbIp');
+    this.nextHopOtherRoutes = registerOutput<String?>('nextHopOtherRoutes');
+    this.priority = registerOutput<int?>('priority');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.updateTime = registerOutput<String>('updateTime');
     this.virtualMachine =
-        Output.createUnknown<PolicyBasedRouteVirtualMachine?>();
-    this.warnings = Output.createUnknown<List<PolicyBasedRouteWarning>>();
+        registerOutput<PolicyBasedRouteVirtualMachine?>('virtualMachine');
+    this.warnings = registerOutput<List<PolicyBasedRouteWarning>>('warnings');
   }
 }

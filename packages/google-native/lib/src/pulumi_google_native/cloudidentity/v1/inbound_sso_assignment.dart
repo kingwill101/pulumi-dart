@@ -40,13 +40,14 @@ class InboundSsoAssignment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.customer = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.rank = Output.createUnknown<int>();
-    this.samlSsoInfo = Output.createUnknown<SamlSsoInfoResponse>();
-    this.signInBehavior = Output.createUnknown<SignInBehaviorResponse>();
-    this.ssoMode = Output.createUnknown<String>();
-    this.targetGroup = Output.createUnknown<String>();
-    this.targetOrgUnit = Output.createUnknown<String>();
+    this.customer = registerOutput<String>('customer');
+    this.name = registerOutput<String>('name');
+    this.rank = registerOutput<int>('rank');
+    this.samlSsoInfo = registerOutput<SamlSsoInfoResponse>('samlSsoInfo');
+    this.signInBehavior =
+        registerOutput<SignInBehaviorResponse>('signInBehavior');
+    this.ssoMode = registerOutput<String>('ssoMode');
+    this.targetGroup = registerOutput<String>('targetGroup');
+    this.targetOrgUnit = registerOutput<String>('targetOrgUnit');
   }
 }

@@ -63,23 +63,24 @@ class Gateway5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.addresses = Output.createUnknown<List<String>>();
-    this.certificateUrls = Output.createUnknown<List<String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.gatewayId = Output.createUnknown<String>();
-    this.gatewaySecurityPolicy = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.ports = Output.createUnknown<List<int>>();
-    this.project = Output.createUnknown<String>();
-    this.scope = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.serverTlsPolicy = Output.createUnknown<String>();
-    this.subnetwork = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.addresses = registerOutput<List<String>>('addresses');
+    this.certificateUrls = registerOutput<List<String>>('certificateUrls');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.gatewayId = registerOutput<String>('gatewayId');
+    this.gatewaySecurityPolicy =
+        registerOutput<String>('gatewaySecurityPolicy');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.ports = registerOutput<List<int>>('ports');
+    this.project = registerOutput<String>('project');
+    this.scope = registerOutput<String>('scope');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.serverTlsPolicy = registerOutput<String>('serverTlsPolicy');
+    this.subnetwork = registerOutput<String>('subnetwork');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -2211,12 +2211,13 @@ class BucketNotification extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.eventbridge = Output.createUnknown<bool?>();
+    this.bucket = registerOutput<String>('bucket');
+    this.eventbridge = registerOutput<bool?>('eventbridge');
     this.lambdaFunctions =
-        Output.createUnknown<List<BucketNotificationLambdaFunction>?>();
-    this.queues = Output.createUnknown<List<BucketNotificationQueue>?>();
-    this.region = Output.createUnknown<String>();
-    this.topics = Output.createUnknown<List<BucketNotificationTopic>?>();
+        registerOutput<List<BucketNotificationLambdaFunction>?>(
+            'lambdaFunctions');
+    this.queues = registerOutput<List<BucketNotificationQueue>?>('queues');
+    this.region = registerOutput<String>('region');
+    this.topics = registerOutput<List<BucketNotificationTopic>?>('topics');
   }
 }

@@ -225,15 +225,17 @@ class TrustedTokenIssuer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.clientToken = Output.createUnknown<String?>();
-    this.instanceArn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.trustedTokenIssuerConfiguration = Output.createUnknown<
-        TrustedTokenIssuerTrustedTokenIssuerConfiguration>();
-    this.trustedTokenIssuerType = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.clientToken = registerOutput<String?>('clientToken');
+    this.instanceArn = registerOutput<String>('instanceArn');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.trustedTokenIssuerConfiguration =
+        registerOutput<TrustedTokenIssuerTrustedTokenIssuerConfiguration>(
+            'trustedTokenIssuerConfiguration');
+    this.trustedTokenIssuerType =
+        registerOutput<String>('trustedTokenIssuerType');
   }
 }

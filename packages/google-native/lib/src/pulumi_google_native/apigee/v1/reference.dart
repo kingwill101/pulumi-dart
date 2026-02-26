@@ -27,11 +27,11 @@ class Reference extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String>();
-    this.environmentId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.refers = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String>();
+    this.description = registerOutput<String>('description');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.refers = registerOutput<String>('refers');
+    this.resourceType = registerOutput<String>('resourceType');
   }
 }

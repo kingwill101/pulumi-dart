@@ -229,11 +229,12 @@ class Workspace extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dataset = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.settings = Output.createUnknown<WorkspaceSettings>();
+    this.dataset = registerOutput<String>('dataset');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.settings = registerOutput<WorkspaceSettings>('settings');
   }
 }

@@ -580,25 +580,27 @@ class Firewall extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allows = Output.createUnknown<List<FirewallAllow>?>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.denies = Output.createUnknown<List<FirewallDeny>?>();
-    this.description = Output.createUnknown<String?>();
-    this.destinationRanges = Output.createUnknown<List<String>>();
-    this.direction = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.enableLogging = Output.createUnknown<bool>();
-    this.logConfig = Output.createUnknown<FirewallLogConfig?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.params = Output.createUnknown<FirewallParams?>();
-    this.priority = Output.createUnknown<int?>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.sourceRanges = Output.createUnknown<List<String>?>();
-    this.sourceServiceAccounts = Output.createUnknown<List<String>?>();
-    this.sourceTags = Output.createUnknown<List<String>?>();
-    this.targetServiceAccounts = Output.createUnknown<List<String>?>();
-    this.targetTags = Output.createUnknown<List<String>?>();
+    this.allows = registerOutput<List<FirewallAllow>?>('allows');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.denies = registerOutput<List<FirewallDeny>?>('denies');
+    this.description = registerOutput<String?>('description');
+    this.destinationRanges = registerOutput<List<String>>('destinationRanges');
+    this.direction = registerOutput<String>('direction');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.enableLogging = registerOutput<bool>('enableLogging');
+    this.logConfig = registerOutput<FirewallLogConfig?>('logConfig');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.params = registerOutput<FirewallParams?>('params');
+    this.priority = registerOutput<int?>('priority');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.sourceRanges = registerOutput<List<String>?>('sourceRanges');
+    this.sourceServiceAccounts =
+        registerOutput<List<String>?>('sourceServiceAccounts');
+    this.sourceTags = registerOutput<List<String>?>('sourceTags');
+    this.targetServiceAccounts =
+        registerOutput<List<String>?>('targetServiceAccounts');
+    this.targetTags = registerOutput<List<String>?>('targetTags');
   }
 }

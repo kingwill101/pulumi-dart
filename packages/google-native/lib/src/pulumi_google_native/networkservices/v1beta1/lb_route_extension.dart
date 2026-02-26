@@ -46,17 +46,18 @@ class LbRouteExtension extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.extensionChains = Output.createUnknown<List<ExtensionChainResponse>>();
-    this.forwardingRules = Output.createUnknown<List<String>>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lbRouteExtensionId = Output.createUnknown<String>();
-    this.loadBalancingScheme = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.extensionChains =
+        registerOutput<List<ExtensionChainResponse>>('extensionChains');
+    this.forwardingRules = registerOutput<List<String>>('forwardingRules');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lbRouteExtensionId = registerOutput<String>('lbRouteExtensionId');
+    this.loadBalancingScheme = registerOutput<String>('loadBalancingScheme');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

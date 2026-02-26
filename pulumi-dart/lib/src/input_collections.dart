@@ -13,7 +13,7 @@ class InputList<T> extends ListBase<Input<T>> implements Input<List<T>> {
   @override
   Output<List<T>> toOutput() {
     if (_list.isEmpty) {
-      return Output.createUnknown<List<T>>();
+      return Output.create(<T>[]);
     }
     return Output.all(_list.map((input) => input.toOutput()));
   }
@@ -69,11 +69,16 @@ class InputMap<V> extends MapBase<String, Input<V>>
 
   @override
   Output<Map<String, V>> toOutput() {
-    return Output.all(_map.entries.map((entry) => entry.value
-            .toOutput()
-            .apply((value) => Output.create(MapEntry(entry.key, value)))))
-        .apply((entries) =>
-            Map<String, V>.fromEntries(entries.cast<MapEntry<String, V>>()));
+    return Output.all(
+      _map.entries.map(
+        (entry) => entry.value.toOutput().apply(
+          (value) => Output.create(MapEntry(entry.key, value)),
+        ),
+      ),
+    ).apply(
+      (entries) =>
+          Map<String, V>.fromEntries(entries.cast<MapEntry<String, V>>()),
+    );
   }
 
   @override

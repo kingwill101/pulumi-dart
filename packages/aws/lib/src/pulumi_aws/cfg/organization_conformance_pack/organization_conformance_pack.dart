@@ -611,15 +611,16 @@ class OrganizationConformancePack extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.deliveryS3Bucket = Output.createUnknown<String?>();
-    this.deliveryS3KeyPrefix = Output.createUnknown<String?>();
-    this.excludedAccounts = Output.createUnknown<List<String>?>();
-    this.inputParameters = Output.createUnknown<
-        List<OrganizationConformancePackInputParameter>?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.templateBody = Output.createUnknown<String?>();
-    this.templateS3Uri = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.deliveryS3Bucket = registerOutput<String?>('deliveryS3Bucket');
+    this.deliveryS3KeyPrefix = registerOutput<String?>('deliveryS3KeyPrefix');
+    this.excludedAccounts = registerOutput<List<String>?>('excludedAccounts');
+    this.inputParameters =
+        registerOutput<List<OrganizationConformancePackInputParameter>?>(
+            'inputParameters');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.templateBody = registerOutput<String?>('templateBody');
+    this.templateS3Uri = registerOutput<String?>('templateS3Uri');
   }
 }

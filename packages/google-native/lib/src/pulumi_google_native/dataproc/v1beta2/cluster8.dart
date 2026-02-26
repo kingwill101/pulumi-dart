@@ -43,15 +43,16 @@ class Cluster8 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusterName = Output.createUnknown<String>();
-    this.clusterUuid = Output.createUnknown<String>();
-    this.config = Output.createUnknown<ClusterConfigResponse3>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.metrics = Output.createUnknown<ClusterMetricsResponse2>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.status = Output.createUnknown<ClusterStatusResponse2>();
-    this.statusHistory = Output.createUnknown<List<ClusterStatusResponse2>>();
+    this.clusterName = registerOutput<String>('clusterName');
+    this.clusterUuid = registerOutput<String>('clusterUuid');
+    this.config = registerOutput<ClusterConfigResponse3>('config');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.metrics = registerOutput<ClusterMetricsResponse2>('metrics');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.status = registerOutput<ClusterStatusResponse2>('status');
+    this.statusHistory =
+        registerOutput<List<ClusterStatusResponse2>>('statusHistory');
   }
 }

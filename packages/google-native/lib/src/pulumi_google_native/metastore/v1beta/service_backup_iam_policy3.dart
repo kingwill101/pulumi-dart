@@ -33,13 +33,14 @@ class ServiceBackupIamPolicy3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse53>>();
-    this.backupId = Output.createUnknown<String>();
-    this.bindings = Output.createUnknown<List<BindingResponse77>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.serviceId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse53>>('auditConfigs');
+    this.backupId = registerOutput<String>('backupId');
+    this.bindings = registerOutput<List<BindingResponse77>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.serviceId = registerOutput<String>('serviceId');
+    this.version = registerOutput<int>('version');
   }
 }

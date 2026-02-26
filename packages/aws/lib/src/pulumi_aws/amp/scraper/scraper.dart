@@ -1155,16 +1155,17 @@ class Scraper extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alias = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.destination = Output.createUnknown<ScraperDestination>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.roleConfiguration = Output.createUnknown<ScraperRoleConfiguration?>();
-    this.scrapeConfiguration = Output.createUnknown<String>();
-    this.source = Output.createUnknown<ScraperSource?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ScraperTimeouts?>();
+    this.alias = registerOutput<String?>('alias');
+    this.arn = registerOutput<String>('arn');
+    this.destination = registerOutput<ScraperDestination>('destination');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.roleConfiguration =
+        registerOutput<ScraperRoleConfiguration?>('roleConfiguration');
+    this.scrapeConfiguration = registerOutput<String>('scrapeConfiguration');
+    this.source = registerOutput<ScraperSource?>('source');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ScraperTimeouts?>('timeouts');
   }
 }

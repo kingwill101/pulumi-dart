@@ -360,31 +360,39 @@ class OntapVolume extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.aggregateConfiguration =
-        Output.createUnknown<OntapVolumeAggregateConfiguration?>();
-    this.arn = Output.createUnknown<String>();
-    this.bypassSnaplockEnterpriseRetention = Output.createUnknown<bool?>();
-    this.copyTagsToBackups = Output.createUnknown<bool?>();
-    this.fileSystemId = Output.createUnknown<String>();
-    this.finalBackupTags = Output.createUnknown<Map<String, String>?>();
-    this.flexcacheEndpointType = Output.createUnknown<String>();
-    this.junctionPath = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.ontapVolumeType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityStyle = Output.createUnknown<String>();
-    this.sizeInBytes = Output.createUnknown<String>();
-    this.sizeInMegabytes = Output.createUnknown<int>();
-    this.skipFinalBackup = Output.createUnknown<bool?>();
+        registerOutput<OntapVolumeAggregateConfiguration?>(
+            'aggregateConfiguration');
+    this.arn = registerOutput<String>('arn');
+    this.bypassSnaplockEnterpriseRetention =
+        registerOutput<bool?>('bypassSnaplockEnterpriseRetention');
+    this.copyTagsToBackups = registerOutput<bool?>('copyTagsToBackups');
+    this.fileSystemId = registerOutput<String>('fileSystemId');
+    this.finalBackupTags =
+        registerOutput<Map<String, String>?>('finalBackupTags');
+    this.flexcacheEndpointType =
+        registerOutput<String>('flexcacheEndpointType');
+    this.junctionPath = registerOutput<String?>('junctionPath');
+    this.name = registerOutput<String>('name');
+    this.ontapVolumeType = registerOutput<String>('ontapVolumeType');
+    this.region = registerOutput<String>('region');
+    this.securityStyle = registerOutput<String>('securityStyle');
+    this.sizeInBytes = registerOutput<String>('sizeInBytes');
+    this.sizeInMegabytes = registerOutput<int>('sizeInMegabytes');
+    this.skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
     this.snaplockConfiguration =
-        Output.createUnknown<OntapVolumeSnaplockConfiguration?>();
-    this.snapshotPolicy = Output.createUnknown<String>();
-    this.storageEfficiencyEnabled = Output.createUnknown<bool?>();
-    this.storageVirtualMachineId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tieringPolicy = Output.createUnknown<OntapVolumeTieringPolicy?>();
-    this.uuid = Output.createUnknown<String>();
-    this.volumeStyle = Output.createUnknown<String>();
-    this.volumeType = Output.createUnknown<String?>();
+        registerOutput<OntapVolumeSnaplockConfiguration?>(
+            'snaplockConfiguration');
+    this.snapshotPolicy = registerOutput<String>('snapshotPolicy');
+    this.storageEfficiencyEnabled =
+        registerOutput<bool?>('storageEfficiencyEnabled');
+    this.storageVirtualMachineId =
+        registerOutput<String>('storageVirtualMachineId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tieringPolicy =
+        registerOutput<OntapVolumeTieringPolicy?>('tieringPolicy');
+    this.uuid = registerOutput<String>('uuid');
+    this.volumeStyle = registerOutput<String>('volumeStyle');
+    this.volumeType = registerOutput<String?>('volumeType');
   }
 }

@@ -1404,22 +1404,24 @@ class TopicSubscription extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.confirmationTimeoutInMinutes = Output.createUnknown<int?>();
-    this.confirmationWasAuthenticated = Output.createUnknown<bool>();
-    this.deliveryPolicy = Output.createUnknown<String?>();
-    this.endpoint = Output.createUnknown<String>();
-    this.endpointAutoConfirms = Output.createUnknown<bool?>();
-    this.filterPolicy = Output.createUnknown<String?>();
-    this.filterPolicyScope = Output.createUnknown<String>();
-    this.ownerId = Output.createUnknown<String>();
-    this.pendingConfirmation = Output.createUnknown<bool>();
-    this.protocol = Output.createUnknown<String>();
-    this.rawMessageDelivery = Output.createUnknown<bool?>();
-    this.redrivePolicy = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.replayPolicy = Output.createUnknown<String?>();
-    this.subscriptionRoleArn = Output.createUnknown<String?>();
-    this.topic = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.confirmationTimeoutInMinutes =
+        registerOutput<int?>('confirmationTimeoutInMinutes');
+    this.confirmationWasAuthenticated =
+        registerOutput<bool>('confirmationWasAuthenticated');
+    this.deliveryPolicy = registerOutput<String?>('deliveryPolicy');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.endpointAutoConfirms = registerOutput<bool?>('endpointAutoConfirms');
+    this.filterPolicy = registerOutput<String?>('filterPolicy');
+    this.filterPolicyScope = registerOutput<String>('filterPolicyScope');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.pendingConfirmation = registerOutput<bool>('pendingConfirmation');
+    this.protocol = registerOutput<String>('protocol');
+    this.rawMessageDelivery = registerOutput<bool?>('rawMessageDelivery');
+    this.redrivePolicy = registerOutput<String?>('redrivePolicy');
+    this.region = registerOutput<String>('region');
+    this.replayPolicy = registerOutput<String?>('replayPolicy');
+    this.subscriptionRoleArn = registerOutput<String?>('subscriptionRoleArn');
+    this.topic = registerOutput<String>('topic');
   }
 }

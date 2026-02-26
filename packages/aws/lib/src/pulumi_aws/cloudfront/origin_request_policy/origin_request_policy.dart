@@ -273,15 +273,16 @@ class OriginRequestPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.comment = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.comment = registerOutput<String?>('comment');
     this.cookiesConfig =
-        Output.createUnknown<OriginRequestPolicyCookiesConfig>();
-    this.etag = Output.createUnknown<String>();
+        registerOutput<OriginRequestPolicyCookiesConfig>('cookiesConfig');
+    this.etag = registerOutput<String>('etag');
     this.headersConfig =
-        Output.createUnknown<OriginRequestPolicyHeadersConfig>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<OriginRequestPolicyHeadersConfig>('headersConfig');
+    this.name = registerOutput<String>('name');
     this.queryStringsConfig =
-        Output.createUnknown<OriginRequestPolicyQueryStringsConfig>();
+        registerOutput<OriginRequestPolicyQueryStringsConfig>(
+            'queryStringsConfig');
   }
 }

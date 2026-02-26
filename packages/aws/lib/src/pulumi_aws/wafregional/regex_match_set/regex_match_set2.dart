@@ -226,9 +226,10 @@ class RegexMatchSet2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
+    this.name = registerOutput<String>('name');
     this.regexMatchTuples =
-        Output.createUnknown<List<RegexMatchSetRegexMatchTuple2>?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<RegexMatchSetRegexMatchTuple2>?>(
+            'regexMatchTuples');
+    this.region = registerOutput<String>('region');
   }
 }

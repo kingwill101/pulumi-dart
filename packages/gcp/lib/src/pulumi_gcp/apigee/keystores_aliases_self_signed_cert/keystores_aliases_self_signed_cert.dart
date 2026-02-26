@@ -787,19 +787,21 @@ class KeystoresAliasesSelfSignedCert extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alias = Output.createUnknown<String>();
-    this.certValidityInDays = Output.createUnknown<int?>();
+    this.alias = registerOutput<String>('alias');
+    this.certValidityInDays = registerOutput<int?>('certValidityInDays');
     this.certsInfos =
-        Output.createUnknown<List<KeystoresAliasesSelfSignedCertCertsInfo>>();
-    this.environment = Output.createUnknown<String>();
-    this.keySize = Output.createUnknown<String?>();
-    this.keystore = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.sigAlg = Output.createUnknown<String>();
+        registerOutput<List<KeystoresAliasesSelfSignedCertCertsInfo>>(
+            'certsInfos');
+    this.environment = registerOutput<String>('environment');
+    this.keySize = registerOutput<String?>('keySize');
+    this.keystore = registerOutput<String>('keystore');
+    this.orgId = registerOutput<String>('orgId');
+    this.sigAlg = registerOutput<String>('sigAlg');
     this.subject =
-        Output.createUnknown<KeystoresAliasesSelfSignedCertSubject>();
-    this.subjectAlternativeDnsNames = Output.createUnknown<
-        KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<KeystoresAliasesSelfSignedCertSubject>('subject');
+    this.subjectAlternativeDnsNames = registerOutput<
+            KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?>(
+        'subjectAlternativeDnsNames');
+    this.type = registerOutput<String>('type');
   }
 }

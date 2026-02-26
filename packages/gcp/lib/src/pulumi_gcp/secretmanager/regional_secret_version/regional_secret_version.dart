@@ -762,17 +762,18 @@ class RegionalSecretVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.customerManagedEncryptions = Output.createUnknown<
-        List<RegionalSecretVersionCustomerManagedEncryption>>();
-    this.deletionPolicy = Output.createUnknown<String?>();
-    this.destroyTime = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.isSecretDataBase64 = Output.createUnknown<bool?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.secret = Output.createUnknown<String>();
-    this.secretData = Output.createUnknown<String>();
-    this.version = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.customerManagedEncryptions =
+        registerOutput<List<RegionalSecretVersionCustomerManagedEncryption>>(
+            'customerManagedEncryptions');
+    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
+    this.destroyTime = registerOutput<String>('destroyTime');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.isSecretDataBase64 = registerOutput<bool?>('isSecretDataBase64');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.secret = registerOutput<String>('secret');
+    this.secretData = registerOutput<String>('secretData');
+    this.version = registerOutput<String>('version');
   }
 }

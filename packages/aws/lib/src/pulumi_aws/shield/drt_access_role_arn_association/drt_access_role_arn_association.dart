@@ -260,8 +260,8 @@ class DrtAccessRoleArnAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.roleArn = Output.createUnknown<String>();
+    this.roleArn = registerOutput<String>('roleArn');
     this.timeouts =
-        Output.createUnknown<DrtAccessRoleArnAssociationTimeouts?>();
+        registerOutput<DrtAccessRoleArnAssociationTimeouts?>('timeouts');
   }
 }

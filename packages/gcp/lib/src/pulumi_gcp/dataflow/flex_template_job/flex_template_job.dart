@@ -473,35 +473,40 @@ class FlexTemplateJob extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.additionalExperiments = Output.createUnknown<List<String>>();
-    this.additionalPipelineOptions = Output.createUnknown<List<String>?>();
-    this.autoscalingAlgorithm = Output.createUnknown<String>();
-    this.containerSpecGcsPath = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enableStreamingEngine = Output.createUnknown<bool?>();
-    this.ipConfiguration = Output.createUnknown<String?>();
-    this.jobId = Output.createUnknown<String>();
-    this.kmsKeyName = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.launcherMachineType = Output.createUnknown<String>();
-    this.machineType = Output.createUnknown<String>();
-    this.maxWorkers = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.numWorkers = Output.createUnknown<int>();
-    this.onDelete = Output.createUnknown<String?>();
-    this.parameters = Output.createUnknown<Map<String, String>?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String>();
-    this.sdkContainerImage = Output.createUnknown<String>();
-    this.serviceAccountEmail = Output.createUnknown<String>();
-    this.skipWaitOnJobTermination = Output.createUnknown<bool?>();
-    this.stagingLocation = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.subnetwork = Output.createUnknown<String>();
-    this.tempLocation = Output.createUnknown<String>();
-    this.transformNameMapping = Output.createUnknown<Map<String, String>?>();
-    this.type = Output.createUnknown<String>();
+    this.additionalExperiments =
+        registerOutput<List<String>>('additionalExperiments');
+    this.additionalPipelineOptions =
+        registerOutput<List<String>?>('additionalPipelineOptions');
+    this.autoscalingAlgorithm = registerOutput<String>('autoscalingAlgorithm');
+    this.containerSpecGcsPath = registerOutput<String>('containerSpecGcsPath');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableStreamingEngine = registerOutput<bool?>('enableStreamingEngine');
+    this.ipConfiguration = registerOutput<String?>('ipConfiguration');
+    this.jobId = registerOutput<String>('jobId');
+    this.kmsKeyName = registerOutput<String>('kmsKeyName');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.launcherMachineType = registerOutput<String>('launcherMachineType');
+    this.machineType = registerOutput<String>('machineType');
+    this.maxWorkers = registerOutput<int>('maxWorkers');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.numWorkers = registerOutput<int>('numWorkers');
+    this.onDelete = registerOutput<String?>('onDelete');
+    this.parameters = registerOutput<Map<String, String>?>('parameters');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String>('region');
+    this.sdkContainerImage = registerOutput<String>('sdkContainerImage');
+    this.serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
+    this.skipWaitOnJobTermination =
+        registerOutput<bool?>('skipWaitOnJobTermination');
+    this.stagingLocation = registerOutput<String>('stagingLocation');
+    this.state = registerOutput<String>('state');
+    this.subnetwork = registerOutput<String>('subnetwork');
+    this.tempLocation = registerOutput<String>('tempLocation');
+    this.transformNameMapping =
+        registerOutput<Map<String, String>?>('transformNameMapping');
+    this.type = registerOutput<String>('type');
   }
 }

@@ -534,20 +534,22 @@ class DataProduct extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessGroups = Output.createUnknown<List<DataProductAccessGroup>?>();
-    this.assetCount = Output.createUnknown<int>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataProductId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.ownerEmails = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.accessGroups =
+        registerOutput<List<DataProductAccessGroup>?>('accessGroups');
+    this.assetCount = registerOutput<int>('assetCount');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataProductId = registerOutput<String>('dataProductId');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.ownerEmails = registerOutput<List<String>>('ownerEmails');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

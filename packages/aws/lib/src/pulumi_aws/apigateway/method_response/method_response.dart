@@ -745,12 +745,14 @@ class MethodResponse extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.httpMethod = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceId = Output.createUnknown<String>();
-    this.responseModels = Output.createUnknown<Map<String, String>?>();
-    this.responseParameters = Output.createUnknown<Map<String, bool>?>();
-    this.restApi = Output.createUnknown<String>();
-    this.statusCode = Output.createUnknown<String>();
+    this.httpMethod = registerOutput<String>('httpMethod');
+    this.region = registerOutput<String>('region');
+    this.resourceId = registerOutput<String>('resourceId');
+    this.responseModels =
+        registerOutput<Map<String, String>?>('responseModels');
+    this.responseParameters =
+        registerOutput<Map<String, bool>?>('responseParameters');
+    this.restApi = registerOutput<String>('restApi');
+    this.statusCode = registerOutput<String>('statusCode');
   }
 }

@@ -1098,32 +1098,40 @@ class Server extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.certificate = Output.createUnknown<String?>();
-    this.directoryId = Output.createUnknown<String?>();
-    this.domain = Output.createUnknown<String?>();
-    this.endpoint = Output.createUnknown<String>();
-    this.endpointDetails = Output.createUnknown<ServerEndpointDetails?>();
-    this.endpointType = Output.createUnknown<String?>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.function = Output.createUnknown<String?>();
-    this.hostKey = Output.createUnknown<String?>();
-    this.hostKeyFingerprint = Output.createUnknown<String>();
-    this.identityProviderType = Output.createUnknown<String?>();
-    this.invocationRole = Output.createUnknown<String?>();
-    this.loggingRole = Output.createUnknown<String?>();
-    this.postAuthenticationLoginBanner = Output.createUnknown<String?>();
-    this.preAuthenticationLoginBanner = Output.createUnknown<String?>();
-    this.protocolDetails = Output.createUnknown<ServerProtocolDetails>();
-    this.protocols = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
-    this.s3StorageOptions = Output.createUnknown<ServerS3StorageOptions>();
-    this.securityPolicyName = Output.createUnknown<String?>();
-    this.sftpAuthenticationMethods = Output.createUnknown<String>();
-    this.structuredLogDestinations = Output.createUnknown<List<String>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.url = Output.createUnknown<String?>();
-    this.workflowDetails = Output.createUnknown<ServerWorkflowDetails?>();
+    this.arn = registerOutput<String>('arn');
+    this.certificate = registerOutput<String?>('certificate');
+    this.directoryId = registerOutput<String?>('directoryId');
+    this.domain = registerOutput<String?>('domain');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.endpointDetails =
+        registerOutput<ServerEndpointDetails?>('endpointDetails');
+    this.endpointType = registerOutput<String?>('endpointType');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.function = registerOutput<String?>('function');
+    this.hostKey = registerOutput<String?>('hostKey');
+    this.hostKeyFingerprint = registerOutput<String>('hostKeyFingerprint');
+    this.identityProviderType = registerOutput<String?>('identityProviderType');
+    this.invocationRole = registerOutput<String?>('invocationRole');
+    this.loggingRole = registerOutput<String?>('loggingRole');
+    this.postAuthenticationLoginBanner =
+        registerOutput<String?>('postAuthenticationLoginBanner');
+    this.preAuthenticationLoginBanner =
+        registerOutput<String?>('preAuthenticationLoginBanner');
+    this.protocolDetails =
+        registerOutput<ServerProtocolDetails>('protocolDetails');
+    this.protocols = registerOutput<List<String>>('protocols');
+    this.region = registerOutput<String>('region');
+    this.s3StorageOptions =
+        registerOutput<ServerS3StorageOptions>('s3StorageOptions');
+    this.securityPolicyName = registerOutput<String?>('securityPolicyName');
+    this.sftpAuthenticationMethods =
+        registerOutput<String>('sftpAuthenticationMethods');
+    this.structuredLogDestinations =
+        registerOutput<List<String>?>('structuredLogDestinations');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.url = registerOutput<String?>('url');
+    this.workflowDetails =
+        registerOutput<ServerWorkflowDetails?>('workflowDetails');
   }
 }

@@ -857,8 +857,8 @@ class TagKeyIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.tagKey = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.policyData = registerOutput<String>('policyData');
+    this.tagKey = registerOutput<String>('tagKey');
   }
 }

@@ -204,18 +204,18 @@ class PrimaryContact extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String?>();
-    this.addressLine1 = Output.createUnknown<String>();
-    this.addressLine2 = Output.createUnknown<String?>();
-    this.addressLine3 = Output.createUnknown<String?>();
-    this.city = Output.createUnknown<String>();
-    this.companyName = Output.createUnknown<String?>();
-    this.countryCode = Output.createUnknown<String>();
-    this.districtOrCounty = Output.createUnknown<String?>();
-    this.fullName = Output.createUnknown<String>();
-    this.phoneNumber = Output.createUnknown<String>();
-    this.postalCode = Output.createUnknown<String>();
-    this.stateOrRegion = Output.createUnknown<String?>();
-    this.websiteUrl = Output.createUnknown<String?>();
+    this.accountId = registerOutput<String?>('accountId');
+    this.addressLine1 = registerOutput<String>('addressLine1');
+    this.addressLine2 = registerOutput<String?>('addressLine2');
+    this.addressLine3 = registerOutput<String?>('addressLine3');
+    this.city = registerOutput<String>('city');
+    this.companyName = registerOutput<String?>('companyName');
+    this.countryCode = registerOutput<String>('countryCode');
+    this.districtOrCounty = registerOutput<String?>('districtOrCounty');
+    this.fullName = registerOutput<String>('fullName');
+    this.phoneNumber = registerOutput<String>('phoneNumber');
+    this.postalCode = registerOutput<String>('postalCode');
+    this.stateOrRegion = registerOutput<String?>('stateOrRegion');
+    this.websiteUrl = registerOutput<String?>('websiteUrl');
   }
 }

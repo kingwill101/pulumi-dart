@@ -200,17 +200,17 @@ class Vocabulary extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.content = Output.createUnknown<String>();
-    this.failureReason = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.languageCode = Output.createUnknown<String>();
-    this.lastModifiedTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vocabularyId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.content = registerOutput<String>('content');
+    this.failureReason = registerOutput<String>('failureReason');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.languageCode = registerOutput<String>('languageCode');
+    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vocabularyId = registerOutput<String>('vocabularyId');
   }
 }

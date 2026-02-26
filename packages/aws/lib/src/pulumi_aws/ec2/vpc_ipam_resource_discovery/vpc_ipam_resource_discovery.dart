@@ -206,17 +206,20 @@ class VpcIpamResourceDiscovery extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.ipamResourceDiscoveryRegion = Output.createUnknown<String>();
-    this.isDefault = Output.createUnknown<bool>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.ipamResourceDiscoveryRegion =
+        registerOutput<String>('ipamResourceDiscoveryRegion');
+    this.isDefault = registerOutput<bool>('isDefault');
     this.operatingRegions =
-        Output.createUnknown<List<VpcIpamResourceDiscoveryOperatingRegion>>();
-    this.organizationalUnitExclusions = Output.createUnknown<
-        List<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>?>();
-    this.ownerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<VpcIpamResourceDiscoveryOperatingRegion>>(
+            'operatingRegions');
+    this.organizationalUnitExclusions = registerOutput<
+            List<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>?>(
+        'organizationalUnitExclusions');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

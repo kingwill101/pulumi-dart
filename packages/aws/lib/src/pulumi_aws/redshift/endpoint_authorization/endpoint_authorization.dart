@@ -144,14 +144,14 @@ class EndpointAuthorization extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.account = Output.createUnknown<String>();
-    this.allowedAllVpcs = Output.createUnknown<bool>();
-    this.clusterIdentifier = Output.createUnknown<String>();
-    this.endpointCount = Output.createUnknown<int>();
-    this.forceDelete = Output.createUnknown<bool?>();
-    this.grantee = Output.createUnknown<String>();
-    this.grantor = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.vpcIds = Output.createUnknown<List<String>?>();
+    this.account = registerOutput<String>('account');
+    this.allowedAllVpcs = registerOutput<bool>('allowedAllVpcs');
+    this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    this.endpointCount = registerOutput<int>('endpointCount');
+    this.forceDelete = registerOutput<bool?>('forceDelete');
+    this.grantee = registerOutput<String>('grantee');
+    this.grantor = registerOutput<String>('grantor');
+    this.region = registerOutput<String>('region');
+    this.vpcIds = registerOutput<List<String>?>('vpcIds');
   }
 }

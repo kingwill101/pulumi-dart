@@ -60,23 +60,26 @@ class NasJob extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.enableRestrictedImageTraining = Output.createUnknown<bool>();
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.enableRestrictedImageTraining =
+        registerOutput<bool>('enableRestrictedImageTraining');
     this.encryptionSpec =
-        Output.createUnknown<GoogleCloudAiplatformV1EncryptionSpecResponse>();
-    this.endTime = Output.createUnknown<String>();
-    this.error = Output.createUnknown<GoogleRpcStatusResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>(
+            'encryptionSpec');
+    this.endTime = registerOutput<String>('endTime');
+    this.error = registerOutput<GoogleRpcStatusResponse>('error');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.nasJobOutput =
-        Output.createUnknown<GoogleCloudAiplatformV1NasJobOutputResponse>();
+        registerOutput<GoogleCloudAiplatformV1NasJobOutputResponse>(
+            'nasJobOutput');
     this.nasJobSpec =
-        Output.createUnknown<GoogleCloudAiplatformV1NasJobSpecResponse>();
-    this.project = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudAiplatformV1NasJobSpecResponse>('nasJobSpec');
+    this.project = registerOutput<String>('project');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

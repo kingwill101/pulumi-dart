@@ -135,9 +135,9 @@ class ThingGroupMembership extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.overrideDynamicGroup = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.thingGroupName = Output.createUnknown<String>();
-    this.thingName = Output.createUnknown<String>();
+    this.overrideDynamicGroup = registerOutput<bool?>('overrideDynamicGroup');
+    this.region = registerOutput<String>('region');
+    this.thingGroupName = registerOutput<String>('thingGroupName');
+    this.thingName = registerOutput<String>('thingName');
   }
 }

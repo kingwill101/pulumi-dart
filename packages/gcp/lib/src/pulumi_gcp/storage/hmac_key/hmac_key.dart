@@ -200,12 +200,12 @@ class HmacKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.secret = Output.createUnknown<String>();
-    this.serviceAccountEmail = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String?>();
-    this.timeCreated = Output.createUnknown<String>();
-    this.updated = Output.createUnknown<String>();
+    this.accessId = registerOutput<String>('accessId');
+    this.project = registerOutput<String>('project');
+    this.secret = registerOutput<String>('secret');
+    this.serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
+    this.state = registerOutput<String?>('state');
+    this.timeCreated = registerOutput<String>('timeCreated');
+    this.updated = registerOutput<String>('updated');
   }
 }

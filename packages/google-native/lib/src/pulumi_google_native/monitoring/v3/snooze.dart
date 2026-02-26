@@ -30,10 +30,10 @@ class Snooze extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.criteria = Output.createUnknown<CriteriaResponse>();
-    this.displayName = Output.createUnknown<String>();
-    this.interval = Output.createUnknown<TimeIntervalResponse>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.criteria = registerOutput<CriteriaResponse>('criteria');
+    this.displayName = registerOutput<String>('displayName');
+    this.interval = registerOutput<TimeIntervalResponse>('interval');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

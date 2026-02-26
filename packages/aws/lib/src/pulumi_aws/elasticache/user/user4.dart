@@ -449,16 +449,17 @@ class User4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessString = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.authenticationMode = Output.createUnknown<UserAuthenticationMode>();
-    this.engine = Output.createUnknown<String>();
-    this.noPasswordRequired = Output.createUnknown<bool?>();
-    this.passwords = Output.createUnknown<List<String>?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.userId = Output.createUnknown<String>();
-    this.userName = Output.createUnknown<String>();
+    this.accessString = registerOutput<String>('accessString');
+    this.arn = registerOutput<String>('arn');
+    this.authenticationMode =
+        registerOutput<UserAuthenticationMode>('authenticationMode');
+    this.engine = registerOutput<String>('engine');
+    this.noPasswordRequired = registerOutput<bool?>('noPasswordRequired');
+    this.passwords = registerOutput<List<String>?>('passwords');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.userId = registerOutput<String>('userId');
+    this.userName = registerOutput<String>('userName');
   }
 }

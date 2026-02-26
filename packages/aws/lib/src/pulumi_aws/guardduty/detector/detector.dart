@@ -250,13 +250,14 @@ class Detector extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.datasources = Output.createUnknown<DetectorDatasources>();
-    this.enable = Output.createUnknown<bool?>();
-    this.findingPublishingFrequency = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.accountId = registerOutput<String>('accountId');
+    this.arn = registerOutput<String>('arn');
+    this.datasources = registerOutput<DetectorDatasources>('datasources');
+    this.enable = registerOutput<bool?>('enable');
+    this.findingPublishingFrequency =
+        registerOutput<String>('findingPublishingFrequency');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -171,17 +171,17 @@ class LocationFsxWindows extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.creationTime = Output.createUnknown<String>();
-    this.domain = Output.createUnknown<String?>();
-    this.fsxFilesystemArn = Output.createUnknown<String>();
-    this.password = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupArns = Output.createUnknown<List<String>>();
-    this.subdirectory = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.uri = Output.createUnknown<String>();
-    this.user = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.creationTime = registerOutput<String>('creationTime');
+    this.domain = registerOutput<String?>('domain');
+    this.fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
+    this.password = registerOutput<String>('password');
+    this.region = registerOutput<String>('region');
+    this.securityGroupArns = registerOutput<List<String>>('securityGroupArns');
+    this.subdirectory = registerOutput<String>('subdirectory');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.uri = registerOutput<String>('uri');
+    this.user = registerOutput<String>('user');
   }
 }

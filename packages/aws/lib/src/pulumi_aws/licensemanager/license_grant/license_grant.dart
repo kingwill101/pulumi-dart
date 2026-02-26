@@ -200,15 +200,15 @@ class LicenseGrant extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowedOperations = Output.createUnknown<List<String>>();
-    this.arn = Output.createUnknown<String>();
-    this.homeRegion = Output.createUnknown<String>();
-    this.licenseArn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parentArn = Output.createUnknown<String>();
-    this.principal = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.version = Output.createUnknown<String>();
+    this.allowedOperations = registerOutput<List<String>>('allowedOperations');
+    this.arn = registerOutput<String>('arn');
+    this.homeRegion = registerOutput<String>('homeRegion');
+    this.licenseArn = registerOutput<String>('licenseArn');
+    this.name = registerOutput<String>('name');
+    this.parentArn = registerOutput<String>('parentArn');
+    this.principal = registerOutput<String>('principal');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.version = registerOutput<String>('version');
   }
 }

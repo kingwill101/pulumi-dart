@@ -204,9 +204,9 @@ class KeyGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.comment = Output.createUnknown<String?>();
-    this.etag = Output.createUnknown<String>();
-    this.items = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
+    this.comment = registerOutput<String?>('comment');
+    this.etag = registerOutput<String>('etag');
+    this.items = registerOutput<List<String>>('items');
+    this.name = registerOutput<String>('name');
   }
 }

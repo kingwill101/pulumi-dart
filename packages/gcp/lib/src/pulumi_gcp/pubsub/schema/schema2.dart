@@ -465,9 +465,9 @@ class Schema2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.definition = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String?>();
+    this.definition = registerOutput<String?>('definition');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.type = registerOutput<String?>('type');
   }
 }

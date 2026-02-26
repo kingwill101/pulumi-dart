@@ -308,11 +308,11 @@ class LiteSubscription extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.deliveryConfig =
-        Output.createUnknown<LiteSubscriptionDeliveryConfig?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String?>();
-    this.topic = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String?>();
+        registerOutput<LiteSubscriptionDeliveryConfig?>('deliveryConfig');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String?>('region');
+    this.topic = registerOutput<String>('topic');
+    this.zone = registerOutput<String?>('zone');
   }
 }

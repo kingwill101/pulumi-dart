@@ -33,12 +33,12 @@ class Site extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appId = Output.createUnknown<String>();
-    this.defaultUrl = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.siteId = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+    this.appId = registerOutput<String>('appId');
+    this.defaultUrl = registerOutput<String>('defaultUrl');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.siteId = registerOutput<String>('siteId');
+    this.type = registerOutput<String>('type');
   }
 }

@@ -1924,14 +1924,14 @@ class CxTool extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.connectorSpec = Output.createUnknown<CxToolConnectorSpec?>();
-    this.dataStoreSpec = Output.createUnknown<CxToolDataStoreSpec?>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.functionSpec = Output.createUnknown<CxToolFunctionSpec?>();
-    this.name = Output.createUnknown<String>();
-    this.openApiSpec = Output.createUnknown<CxToolOpenApiSpec?>();
-    this.parent = Output.createUnknown<String?>();
-    this.toolType = Output.createUnknown<String>();
+    this.connectorSpec = registerOutput<CxToolConnectorSpec?>('connectorSpec');
+    this.dataStoreSpec = registerOutput<CxToolDataStoreSpec?>('dataStoreSpec');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.functionSpec = registerOutput<CxToolFunctionSpec?>('functionSpec');
+    this.name = registerOutput<String>('name');
+    this.openApiSpec = registerOutput<CxToolOpenApiSpec?>('openApiSpec');
+    this.parent = registerOutput<String?>('parent');
+    this.toolType = registerOutput<String>('toolType');
   }
 }

@@ -226,8 +226,8 @@ class BrowserSettingsAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.browserSettingsArn = Output.createUnknown<String>();
-    this.portalArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.browserSettingsArn = registerOutput<String>('browserSettingsArn');
+    this.portalArn = registerOutput<String>('portalArn');
+    this.region = registerOutput<String>('region');
   }
 }

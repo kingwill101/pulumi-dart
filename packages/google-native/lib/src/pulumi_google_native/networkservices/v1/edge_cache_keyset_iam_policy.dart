@@ -32,12 +32,13 @@ class EdgeCacheKeysetIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse58>>();
-    this.bindings = Output.createUnknown<List<BindingResponse82>>();
-    this.edgeCacheKeysetId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse58>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse82>>('bindings');
+    this.edgeCacheKeysetId = registerOutput<String>('edgeCacheKeysetId');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

@@ -142,13 +142,14 @@ class CustomDomainAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificateValidationRecords = Output.createUnknown<
-        List<CustomDomainAssociationCertificateValidationRecord>>();
-    this.dnsTarget = Output.createUnknown<String>();
-    this.domainName = Output.createUnknown<String>();
-    this.enableWwwSubdomain = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.serviceArn = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.certificateValidationRecords = registerOutput<
+            List<CustomDomainAssociationCertificateValidationRecord>>(
+        'certificateValidationRecords');
+    this.dnsTarget = registerOutput<String>('dnsTarget');
+    this.domainName = registerOutput<String>('domainName');
+    this.enableWwwSubdomain = registerOutput<bool?>('enableWwwSubdomain');
+    this.region = registerOutput<String>('region');
+    this.serviceArn = registerOutput<String>('serviceArn');
+    this.status = registerOutput<String>('status');
   }
 }

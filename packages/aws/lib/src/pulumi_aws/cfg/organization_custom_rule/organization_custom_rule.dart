@@ -286,18 +286,20 @@ class OrganizationCustomRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.excludedAccounts = Output.createUnknown<List<String>?>();
-    this.inputParameters = Output.createUnknown<String?>();
-    this.lambdaFunctionArn = Output.createUnknown<String>();
-    this.maximumExecutionFrequency = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceIdScope = Output.createUnknown<String?>();
-    this.resourceTypesScopes = Output.createUnknown<List<String>?>();
-    this.tagKeyScope = Output.createUnknown<String?>();
-    this.tagValueScope = Output.createUnknown<String?>();
-    this.triggerTypes = Output.createUnknown<List<String>>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.excludedAccounts = registerOutput<List<String>?>('excludedAccounts');
+    this.inputParameters = registerOutput<String?>('inputParameters');
+    this.lambdaFunctionArn = registerOutput<String>('lambdaFunctionArn');
+    this.maximumExecutionFrequency =
+        registerOutput<String?>('maximumExecutionFrequency');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.resourceIdScope = registerOutput<String?>('resourceIdScope');
+    this.resourceTypesScopes =
+        registerOutput<List<String>?>('resourceTypesScopes');
+    this.tagKeyScope = registerOutput<String?>('tagKeyScope');
+    this.tagValueScope = registerOutput<String?>('tagValueScope');
+    this.triggerTypes = registerOutput<List<String>>('triggerTypes');
   }
 }

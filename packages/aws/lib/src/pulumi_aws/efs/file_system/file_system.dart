@@ -307,25 +307,27 @@ class FileSystem extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZoneId = Output.createUnknown<String>();
-    this.availabilityZoneName = Output.createUnknown<String>();
-    this.creationToken = Output.createUnknown<String>();
-    this.dnsName = Output.createUnknown<String>();
-    this.encrypted = Output.createUnknown<bool>();
-    this.kmsKeyId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZoneId = registerOutput<String>('availabilityZoneId');
+    this.availabilityZoneName = registerOutput<String>('availabilityZoneName');
+    this.creationToken = registerOutput<String>('creationToken');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.encrypted = registerOutput<bool>('encrypted');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
     this.lifecyclePolicies =
-        Output.createUnknown<List<FileSystemLifecyclePolicy>?>();
-    this.name = Output.createUnknown<String>();
-    this.numberOfMountTargets = Output.createUnknown<int>();
-    this.ownerId = Output.createUnknown<String>();
-    this.performanceMode = Output.createUnknown<String>();
-    this.protection = Output.createUnknown<FileSystemProtection>();
-    this.provisionedThroughputInMibps = Output.createUnknown<double?>();
-    this.region = Output.createUnknown<String>();
-    this.sizeInBytes = Output.createUnknown<List<FileSystemSizeInByte>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.throughputMode = Output.createUnknown<String?>();
+        registerOutput<List<FileSystemLifecyclePolicy>?>('lifecyclePolicies');
+    this.name = registerOutput<String>('name');
+    this.numberOfMountTargets = registerOutput<int>('numberOfMountTargets');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.performanceMode = registerOutput<String>('performanceMode');
+    this.protection = registerOutput<FileSystemProtection>('protection');
+    this.provisionedThroughputInMibps =
+        registerOutput<double?>('provisionedThroughputInMibps');
+    this.region = registerOutput<String>('region');
+    this.sizeInBytes =
+        registerOutput<List<FileSystemSizeInByte>>('sizeInBytes');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.throughputMode = registerOutput<String?>('throughputMode');
   }
 }

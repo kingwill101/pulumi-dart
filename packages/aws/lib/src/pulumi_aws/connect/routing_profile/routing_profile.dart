@@ -319,18 +319,20 @@ class RoutingProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.defaultOutboundQueueId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.defaultOutboundQueueId =
+        registerOutput<String>('defaultOutboundQueueId');
+    this.description = registerOutput<String>('description');
+    this.instanceId = registerOutput<String>('instanceId');
     this.mediaConcurrencies =
-        Output.createUnknown<List<RoutingProfileMediaConcurrency>>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<List<RoutingProfileMediaConcurrency>>(
+            'mediaConcurrencies');
+    this.name = registerOutput<String>('name');
     this.queueConfigs =
-        Output.createUnknown<List<RoutingProfileQueueConfig>?>();
-    this.region = Output.createUnknown<String>();
-    this.routingProfileId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<RoutingProfileQueueConfig>?>('queueConfigs');
+    this.region = registerOutput<String>('region');
+    this.routingProfileId = registerOutput<String>('routingProfileId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

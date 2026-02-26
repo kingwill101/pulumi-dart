@@ -1869,10 +1869,11 @@ class ClusterUserCreatedConnections extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusterEndpoints = Output.createUnknown<
-        List<ClusterUserCreatedConnectionsClusterEndpoint>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.clusterEndpoints =
+        registerOutput<List<ClusterUserCreatedConnectionsClusterEndpoint>?>(
+            'clusterEndpoints');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
   }
 }

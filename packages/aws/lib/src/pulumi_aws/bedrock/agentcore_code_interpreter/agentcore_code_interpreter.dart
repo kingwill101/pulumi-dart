@@ -417,16 +417,18 @@ class AgentcoreCodeInterpreter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.codeInterpreterArn = Output.createUnknown<String>();
-    this.codeInterpreterId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.executionRoleArn = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
+    this.codeInterpreterArn = registerOutput<String>('codeInterpreterArn');
+    this.codeInterpreterId = registerOutput<String>('codeInterpreterId');
+    this.description = registerOutput<String?>('description');
+    this.executionRoleArn = registerOutput<String?>('executionRoleArn');
+    this.name = registerOutput<String>('name');
     this.networkConfiguration =
-        Output.createUnknown<AgentcoreCodeInterpreterNetworkConfiguration>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<AgentcoreCodeInterpreterTimeouts?>();
+        registerOutput<AgentcoreCodeInterpreterNetworkConfiguration>(
+            'networkConfiguration');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts =
+        registerOutput<AgentcoreCodeInterpreterTimeouts?>('timeouts');
   }
 }

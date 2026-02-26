@@ -648,19 +648,20 @@ class VpcPeeringConnectionAccepter2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceptStatus = Output.createUnknown<String>();
+    this.acceptStatus = registerOutput<String>('acceptStatus');
     this.accepter =
-        Output.createUnknown<VpcPeeringConnectionAccepterAccepter>();
-    this.autoAccept = Output.createUnknown<bool?>();
-    this.peerOwnerId = Output.createUnknown<String>();
-    this.peerRegion = Output.createUnknown<String>();
-    this.peerVpcId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<VpcPeeringConnectionAccepterAccepter>('accepter');
+    this.autoAccept = registerOutput<bool?>('autoAccept');
+    this.peerOwnerId = registerOutput<String>('peerOwnerId');
+    this.peerRegion = registerOutput<String>('peerRegion');
+    this.peerVpcId = registerOutput<String>('peerVpcId');
+    this.region = registerOutput<String>('region');
     this.requester =
-        Output.createUnknown<VpcPeeringConnectionAccepterRequester>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcId = Output.createUnknown<String>();
-    this.vpcPeeringConnectionId = Output.createUnknown<String>();
+        registerOutput<VpcPeeringConnectionAccepterRequester>('requester');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcId = registerOutput<String>('vpcId');
+    this.vpcPeeringConnectionId =
+        registerOutput<String>('vpcPeeringConnectionId');
   }
 }

@@ -191,18 +191,21 @@ class VpcEndpointAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.firewallArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.firewallArn = registerOutput<String>('firewallArn');
+    this.region = registerOutput<String>('region');
     this.subnetMapping =
-        Output.createUnknown<VpcEndpointAssociationSubnetMapping>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<VpcEndpointAssociationTimeouts?>();
-    this.vpcEndpointAssociationArn = Output.createUnknown<String>();
-    this.vpcEndpointAssociationId = Output.createUnknown<String>();
-    this.vpcEndpointAssociationStatuses = Output.createUnknown<
-        List<VpcEndpointAssociationVpcEndpointAssociationStatus>>();
-    this.vpcId = Output.createUnknown<String>();
+        registerOutput<VpcEndpointAssociationSubnetMapping>('subnetMapping');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<VpcEndpointAssociationTimeouts?>('timeouts');
+    this.vpcEndpointAssociationArn =
+        registerOutput<String>('vpcEndpointAssociationArn');
+    this.vpcEndpointAssociationId =
+        registerOutput<String>('vpcEndpointAssociationId');
+    this.vpcEndpointAssociationStatuses = registerOutput<
+            List<VpcEndpointAssociationVpcEndpointAssociationStatus>>(
+        'vpcEndpointAssociationStatuses');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

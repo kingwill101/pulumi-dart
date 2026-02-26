@@ -750,16 +750,17 @@ class Target extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.maxCapacity = Output.createUnknown<int>();
-    this.minCapacity = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.resourceId = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.scalableDimension = Output.createUnknown<String>();
-    this.serviceNamespace = Output.createUnknown<String>();
-    this.suspendedState = Output.createUnknown<TargetSuspendedState>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.maxCapacity = registerOutput<int>('maxCapacity');
+    this.minCapacity = registerOutput<int>('minCapacity');
+    this.region = registerOutput<String>('region');
+    this.resourceId = registerOutput<String>('resourceId');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.scalableDimension = registerOutput<String>('scalableDimension');
+    this.serviceNamespace = registerOutput<String>('serviceNamespace');
+    this.suspendedState =
+        registerOutput<TargetSuspendedState>('suspendedState');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

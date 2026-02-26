@@ -30,10 +30,11 @@ class BillingAccountIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse9>>();
-    this.billingAccountId = Output.createUnknown<String>();
-    this.bindings = Output.createUnknown<List<BindingResponse15>>();
-    this.etag = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse9>>('auditConfigs');
+    this.billingAccountId = registerOutput<String>('billingAccountId');
+    this.bindings = registerOutput<List<BindingResponse15>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.version = registerOutput<int>('version');
   }
 }

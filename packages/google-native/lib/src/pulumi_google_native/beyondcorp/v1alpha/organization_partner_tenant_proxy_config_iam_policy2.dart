@@ -33,12 +33,13 @@ class OrganizationPartnerTenantProxyConfigIamPolicy2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.auditConfigs =
-        Output.createUnknown<List<GoogleIamV1AuditConfigResponse3>>();
-    this.bindings = Output.createUnknown<List<GoogleIamV1BindingResponse5>>();
-    this.etag = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.partnerTenantId = Output.createUnknown<String>();
-    this.proxyConfigId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+        registerOutput<List<GoogleIamV1AuditConfigResponse3>>('auditConfigs');
+    this.bindings =
+        registerOutput<List<GoogleIamV1BindingResponse5>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.partnerTenantId = registerOutput<String>('partnerTenantId');
+    this.proxyConfigId = registerOutput<String>('proxyConfigId');
+    this.version = registerOutput<int>('version');
   }
 }

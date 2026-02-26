@@ -1841,9 +1841,9 @@ class ImageIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.image = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.image = registerOutput<String>('image');
+    this.policyData = registerOutput<String>('policyData');
+    this.project = registerOutput<String>('project');
   }
 }

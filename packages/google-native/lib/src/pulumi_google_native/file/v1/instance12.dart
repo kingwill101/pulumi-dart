@@ -60,21 +60,22 @@ class Instance12 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.fileShares = Output.createUnknown<List<FileShareConfigResponse>>();
-    this.instanceId = Output.createUnknown<String>();
-    this.kmsKeyName = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.networks = Output.createUnknown<List<NetworkConfigResponse14>>();
-    this.project = Output.createUnknown<String>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.statusMessage = Output.createUnknown<String>();
-    this.suspensionReasons = Output.createUnknown<List<String>>();
-    this.tier = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.fileShares =
+        registerOutput<List<FileShareConfigResponse>>('fileShares');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.kmsKeyName = registerOutput<String>('kmsKeyName');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.networks = registerOutput<List<NetworkConfigResponse14>>('networks');
+    this.project = registerOutput<String>('project');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.state = registerOutput<String>('state');
+    this.statusMessage = registerOutput<String>('statusMessage');
+    this.suspensionReasons = registerOutput<List<String>>('suspensionReasons');
+    this.tier = registerOutput<String>('tier');
   }
 }

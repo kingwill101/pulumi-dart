@@ -144,9 +144,9 @@ class BucketRequestPaymentConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.expectedBucketOwner = Output.createUnknown<String?>();
-    this.payer = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    this.payer = registerOutput<String>('payer');
+    this.region = registerOutput<String>('region');
   }
 }

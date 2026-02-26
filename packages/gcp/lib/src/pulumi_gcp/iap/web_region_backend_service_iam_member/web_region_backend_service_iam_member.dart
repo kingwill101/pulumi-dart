@@ -1941,12 +1941,13 @@ class WebRegionBackendServiceIamMember extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.condition =
-        Output.createUnknown<WebRegionBackendServiceIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.webRegionBackendService = Output.createUnknown<String>();
+        registerOutput<WebRegionBackendServiceIamMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.member = registerOutput<String>('member');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.role = registerOutput<String>('role');
+    this.webRegionBackendService =
+        registerOutput<String>('webRegionBackendService');
   }
 }

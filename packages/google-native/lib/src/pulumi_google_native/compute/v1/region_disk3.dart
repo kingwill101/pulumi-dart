@@ -149,55 +149,63 @@ class RegionDisk3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.architecture = Output.createUnknown<String>();
+    this.architecture = registerOutput<String>('architecture');
     this.asyncPrimaryDisk =
-        Output.createUnknown<DiskAsyncReplicationResponse3>();
-    this.asyncSecondaryDisks = Output.createUnknown<Map<String, String>>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
+        registerOutput<DiskAsyncReplicationResponse3>('asyncPrimaryDisk');
+    this.asyncSecondaryDisks =
+        registerOutput<Map<String, String>>('asyncSecondaryDisks');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
     this.diskEncryptionKey =
-        Output.createUnknown<CustomerEncryptionKeyResponse3>();
+        registerOutput<CustomerEncryptionKeyResponse3>('diskEncryptionKey');
     this.guestOsFeatures =
-        Output.createUnknown<List<GuestOsFeatureResponse3>>();
-    this.kind = Output.createUnknown<String>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lastAttachTimestamp = Output.createUnknown<String>();
-    this.lastDetachTimestamp = Output.createUnknown<String>();
-    this.licenseCodes = Output.createUnknown<List<String>>();
-    this.licenses = Output.createUnknown<List<String>>();
-    this.locationHint = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.options = Output.createUnknown<String>();
-    this.params = Output.createUnknown<DiskParamsResponse3>();
-    this.physicalBlockSizeBytes = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.provisionedIops = Output.createUnknown<String>();
-    this.provisionedThroughput = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.replicaZones = Output.createUnknown<List<String>>();
-    this.requestId = Output.createUnknown<String?>();
-    this.resourcePolicies = Output.createUnknown<List<String>>();
-    this.resourceStatus = Output.createUnknown<DiskResourceStatusResponse3>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.selfLink = Output.createUnknown<String>();
-    this.sizeGb = Output.createUnknown<String>();
-    this.sourceConsistencyGroupPolicy = Output.createUnknown<String>();
-    this.sourceConsistencyGroupPolicyId = Output.createUnknown<String>();
-    this.sourceDisk = Output.createUnknown<String>();
-    this.sourceDiskId = Output.createUnknown<String>();
-    this.sourceImage = Output.createUnknown<String>();
+        registerOutput<List<GuestOsFeatureResponse3>>('guestOsFeatures');
+    this.kind = registerOutput<String>('kind');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lastAttachTimestamp = registerOutput<String>('lastAttachTimestamp');
+    this.lastDetachTimestamp = registerOutput<String>('lastDetachTimestamp');
+    this.licenseCodes = registerOutput<List<String>>('licenseCodes');
+    this.licenses = registerOutput<List<String>>('licenses');
+    this.locationHint = registerOutput<String>('locationHint');
+    this.name = registerOutput<String>('name');
+    this.options = registerOutput<String>('options');
+    this.params = registerOutput<DiskParamsResponse3>('params');
+    this.physicalBlockSizeBytes =
+        registerOutput<String>('physicalBlockSizeBytes');
+    this.project = registerOutput<String>('project');
+    this.provisionedIops = registerOutput<String>('provisionedIops');
+    this.provisionedThroughput =
+        registerOutput<String>('provisionedThroughput');
+    this.region = registerOutput<String>('region');
+    this.replicaZones = registerOutput<List<String>>('replicaZones');
+    this.requestId = registerOutput<String?>('requestId');
+    this.resourcePolicies = registerOutput<List<String>>('resourcePolicies');
+    this.resourceStatus =
+        registerOutput<DiskResourceStatusResponse3>('resourceStatus');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.sizeGb = registerOutput<String>('sizeGb');
+    this.sourceConsistencyGroupPolicy =
+        registerOutput<String>('sourceConsistencyGroupPolicy');
+    this.sourceConsistencyGroupPolicyId =
+        registerOutput<String>('sourceConsistencyGroupPolicyId');
+    this.sourceDisk = registerOutput<String>('sourceDisk');
+    this.sourceDiskId = registerOutput<String>('sourceDiskId');
+    this.sourceImage = registerOutput<String>('sourceImage');
     this.sourceImageEncryptionKey =
-        Output.createUnknown<CustomerEncryptionKeyResponse3>();
-    this.sourceImageId = Output.createUnknown<String>();
-    this.sourceSnapshot = Output.createUnknown<String>();
+        registerOutput<CustomerEncryptionKeyResponse3>(
+            'sourceImageEncryptionKey');
+    this.sourceImageId = registerOutput<String>('sourceImageId');
+    this.sourceSnapshot = registerOutput<String>('sourceSnapshot');
     this.sourceSnapshotEncryptionKey =
-        Output.createUnknown<CustomerEncryptionKeyResponse3>();
-    this.sourceSnapshotId = Output.createUnknown<String>();
-    this.sourceStorageObject = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.users = Output.createUnknown<List<String>>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<CustomerEncryptionKeyResponse3>(
+            'sourceSnapshotEncryptionKey');
+    this.sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
+    this.sourceStorageObject = registerOutput<String>('sourceStorageObject');
+    this.status = registerOutput<String>('status');
+    this.type = registerOutput<String>('type');
+    this.users = registerOutput<List<String>>('users');
+    this.zone = registerOutput<String>('zone');
   }
 }

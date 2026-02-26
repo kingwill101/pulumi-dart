@@ -140,8 +140,9 @@ class TargetGroupAttachment3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.target = Output.createUnknown<TargetGroupAttachmentTarget>();
-    this.targetGroupIdentifier = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.target = registerOutput<TargetGroupAttachmentTarget>('target');
+    this.targetGroupIdentifier =
+        registerOutput<String>('targetGroupIdentifier');
   }
 }

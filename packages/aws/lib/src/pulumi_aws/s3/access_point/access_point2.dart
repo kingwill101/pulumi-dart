@@ -549,23 +549,24 @@ class AccessPoint2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.alias = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.bucket = Output.createUnknown<String>();
-    this.bucketAccountId = Output.createUnknown<String>();
-    this.domainName = Output.createUnknown<String>();
-    this.endpoints = Output.createUnknown<Map<String, String>>();
-    this.hasPublicAccessPolicy = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.networkOrigin = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.alias = registerOutput<String>('alias');
+    this.arn = registerOutput<String>('arn');
+    this.bucket = registerOutput<String>('bucket');
+    this.bucketAccountId = registerOutput<String>('bucketAccountId');
+    this.domainName = registerOutput<String>('domainName');
+    this.endpoints = registerOutput<Map<String, String>>('endpoints');
+    this.hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');
+    this.name = registerOutput<String>('name');
+    this.networkOrigin = registerOutput<String>('networkOrigin');
+    this.policy = registerOutput<String>('policy');
     this.publicAccessBlockConfiguration =
-        Output.createUnknown<AccessPointPublicAccessBlockConfiguration?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<AccessPointPublicAccessBlockConfiguration?>(
+            'publicAccessBlockConfiguration');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.vpcConfiguration =
-        Output.createUnknown<AccessPointVpcConfiguration?>();
+        registerOutput<AccessPointVpcConfiguration?>('vpcConfiguration');
   }
 }

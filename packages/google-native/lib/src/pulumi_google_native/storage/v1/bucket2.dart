@@ -140,48 +140,50 @@ class Bucket2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acl = Output.createUnknown<List<BucketAccessControlResponse>>();
-    this.autoclass = Output.createUnknown<BucketAutoclassResponse>();
-    this.billing = Output.createUnknown<BucketBillingResponse>();
-    this.cors = Output.createUnknown<List<BucketCorsItemResponse>>();
+    this.acl = registerOutput<List<BucketAccessControlResponse>>('acl');
+    this.autoclass = registerOutput<BucketAutoclassResponse>('autoclass');
+    this.billing = registerOutput<BucketBillingResponse>('billing');
+    this.cors = registerOutput<List<BucketCorsItemResponse>>('cors');
     this.customPlacementConfig =
-        Output.createUnknown<BucketCustomPlacementConfigResponse>();
-    this.defaultEventBasedHold = Output.createUnknown<bool>();
+        registerOutput<BucketCustomPlacementConfigResponse>(
+            'customPlacementConfig');
+    this.defaultEventBasedHold = registerOutput<bool>('defaultEventBasedHold');
     this.defaultObjectAcl =
-        Output.createUnknown<List<ObjectAccessControlResponse>>();
-    this.enableObjectRetention = Output.createUnknown<bool?>();
-    this.encryption = Output.createUnknown<BucketEncryptionResponse>();
-    this.etag = Output.createUnknown<String>();
+        registerOutput<List<ObjectAccessControlResponse>>('defaultObjectAcl');
+    this.enableObjectRetention = registerOutput<bool?>('enableObjectRetention');
+    this.encryption = registerOutput<BucketEncryptionResponse>('encryption');
+    this.etag = registerOutput<String>('etag');
     this.iamConfiguration =
-        Output.createUnknown<BucketIamConfigurationResponse>();
-    this.kind = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lifecycle = Output.createUnknown<BucketLifecycleResponse>();
-    this.location = Output.createUnknown<String>();
-    this.locationType = Output.createUnknown<String>();
-    this.logging = Output.createUnknown<BucketLoggingResponse>();
-    this.metageneration = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<BucketIamConfigurationResponse>('iamConfiguration');
+    this.kind = registerOutput<String>('kind');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lifecycle = registerOutput<BucketLifecycleResponse>('lifecycle');
+    this.location = registerOutput<String>('location');
+    this.locationType = registerOutput<String>('locationType');
+    this.logging = registerOutput<BucketLoggingResponse>('logging');
+    this.metageneration = registerOutput<String>('metageneration');
+    this.name = registerOutput<String>('name');
     this.objectRetention =
-        Output.createUnknown<BucketObjectRetentionResponse>();
-    this.owner = Output.createUnknown<BucketOwnerResponse>();
-    this.predefinedAcl = Output.createUnknown<String?>();
-    this.predefinedDefaultObjectAcl = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.projectNumber = Output.createUnknown<String>();
-    this.projection = Output.createUnknown<String?>();
+        registerOutput<BucketObjectRetentionResponse>('objectRetention');
+    this.owner = registerOutput<BucketOwnerResponse>('owner');
+    this.predefinedAcl = registerOutput<String?>('predefinedAcl');
+    this.predefinedDefaultObjectAcl =
+        registerOutput<String?>('predefinedDefaultObjectAcl');
+    this.project = registerOutput<String>('project');
+    this.projectNumber = registerOutput<String>('projectNumber');
+    this.projection = registerOutput<String?>('projection');
     this.retentionPolicy =
-        Output.createUnknown<BucketRetentionPolicyResponse>();
-    this.rpo = Output.createUnknown<String>();
-    this.satisfiesPZS = Output.createUnknown<bool>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<BucketRetentionPolicyResponse>('retentionPolicy');
+    this.rpo = registerOutput<String>('rpo');
+    this.satisfiesPZS = registerOutput<bool>('satisfiesPZS');
+    this.selfLink = registerOutput<String>('selfLink');
     this.softDeletePolicy =
-        Output.createUnknown<BucketSoftDeletePolicyResponse>();
-    this.storageClass = Output.createUnknown<String>();
-    this.timeCreated = Output.createUnknown<String>();
-    this.updated = Output.createUnknown<String>();
-    this.userProject = Output.createUnknown<String?>();
-    this.versioning = Output.createUnknown<BucketVersioningResponse>();
-    this.website = Output.createUnknown<BucketWebsiteResponse>();
+        registerOutput<BucketSoftDeletePolicyResponse>('softDeletePolicy');
+    this.storageClass = registerOutput<String>('storageClass');
+    this.timeCreated = registerOutput<String>('timeCreated');
+    this.updated = registerOutput<String>('updated');
+    this.userProject = registerOutput<String?>('userProject');
+    this.versioning = registerOutput<BucketVersioningResponse>('versioning');
+    this.website = registerOutput<BucketWebsiteResponse>('website');
   }
 }

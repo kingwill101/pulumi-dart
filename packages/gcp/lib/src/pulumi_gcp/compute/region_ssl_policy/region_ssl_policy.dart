@@ -112,16 +112,16 @@ class RegionSslPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.customFeatures = Output.createUnknown<List<String>?>();
-    this.description = Output.createUnknown<String?>();
-    this.enabledFeatures = Output.createUnknown<List<String>>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.minTlsVersion = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.profile = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.customFeatures = registerOutput<List<String>?>('customFeatures');
+    this.description = registerOutput<String?>('description');
+    this.enabledFeatures = registerOutput<List<String>>('enabledFeatures');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.minTlsVersion = registerOutput<String?>('minTlsVersion');
+    this.name = registerOutput<String>('name');
+    this.profile = registerOutput<String?>('profile');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.selfLink = registerOutput<String>('selfLink');
   }
 }

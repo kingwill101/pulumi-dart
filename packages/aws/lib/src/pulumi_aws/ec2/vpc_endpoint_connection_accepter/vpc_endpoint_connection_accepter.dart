@@ -227,9 +227,9 @@ class VpcEndpointConnectionAccepter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.vpcEndpointId = Output.createUnknown<String>();
-    this.vpcEndpointServiceId = Output.createUnknown<String>();
-    this.vpcEndpointState = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.vpcEndpointId = registerOutput<String>('vpcEndpointId');
+    this.vpcEndpointServiceId = registerOutput<String>('vpcEndpointServiceId');
+    this.vpcEndpointState = registerOutput<String>('vpcEndpointState');
   }
 }

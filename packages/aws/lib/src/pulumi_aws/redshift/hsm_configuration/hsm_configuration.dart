@@ -171,15 +171,17 @@ class HsmConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.hsmConfigurationIdentifier = Output.createUnknown<String>();
-    this.hsmIpAddress = Output.createUnknown<String>();
-    this.hsmPartitionName = Output.createUnknown<String>();
-    this.hsmPartitionPassword = Output.createUnknown<String>();
-    this.hsmServerPublicCertificate = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String>('description');
+    this.hsmConfigurationIdentifier =
+        registerOutput<String>('hsmConfigurationIdentifier');
+    this.hsmIpAddress = registerOutput<String>('hsmIpAddress');
+    this.hsmPartitionName = registerOutput<String>('hsmPartitionName');
+    this.hsmPartitionPassword = registerOutput<String>('hsmPartitionPassword');
+    this.hsmServerPublicCertificate =
+        registerOutput<String>('hsmServerPublicCertificate');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

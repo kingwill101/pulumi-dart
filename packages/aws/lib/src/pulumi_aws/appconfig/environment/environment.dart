@@ -250,15 +250,15 @@ class Environment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.environmentId = Output.createUnknown<String>();
-    this.monitors = Output.createUnknown<List<EnvironmentMonitor>?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.applicationId = registerOutput<String>('applicationId');
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String>('description');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.monitors = registerOutput<List<EnvironmentMonitor>?>('monitors');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

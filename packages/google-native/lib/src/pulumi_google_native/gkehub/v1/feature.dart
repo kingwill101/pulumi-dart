@@ -66,23 +66,27 @@ class Feature extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.featureId = Output.createUnknown<String?>();
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.featureId = registerOutput<String?>('featureId');
     this.fleetDefaultMemberConfig =
-        Output.createUnknown<CommonFleetDefaultMemberConfigSpecResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.membershipSpecs = Output.createUnknown<Map<String, String>>();
-    this.membershipStates = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.resourceState = Output.createUnknown<FeatureResourceStateResponse>();
-    this.scopeSpecs = Output.createUnknown<Map<String, String>>();
-    this.scopeStates = Output.createUnknown<Map<String, String>>();
-    this.spec = Output.createUnknown<CommonFeatureSpecResponse>();
-    this.state = Output.createUnknown<CommonFeatureStateResponse>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<CommonFleetDefaultMemberConfigSpecResponse>(
+            'fleetDefaultMemberConfig');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.membershipSpecs =
+        registerOutput<Map<String, String>>('membershipSpecs');
+    this.membershipStates =
+        registerOutput<Map<String, String>>('membershipStates');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.resourceState =
+        registerOutput<FeatureResourceStateResponse>('resourceState');
+    this.scopeSpecs = registerOutput<Map<String, String>>('scopeSpecs');
+    this.scopeStates = registerOutput<Map<String, String>>('scopeStates');
+    this.spec = registerOutput<CommonFeatureSpecResponse>('spec');
+    this.state = registerOutput<CommonFeatureStateResponse>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -270,9 +270,9 @@ class ZoneAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.owningAccount = Output.createUnknown<String>();
-    this.vpcId = Output.createUnknown<String>();
-    this.vpcRegion = Output.createUnknown<String>();
-    this.zoneId = Output.createUnknown<String>();
+    this.owningAccount = registerOutput<String>('owningAccount');
+    this.vpcId = registerOutput<String>('vpcId');
+    this.vpcRegion = registerOutput<String>('vpcRegion');
+    this.zoneId = registerOutput<String>('zoneId');
   }
 }

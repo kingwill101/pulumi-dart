@@ -604,18 +604,19 @@ class SecurityGroupRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cidrBlocks = Output.createUnknown<List<String>?>();
-    this.description = Output.createUnknown<String?>();
-    this.fromPort = Output.createUnknown<int>();
-    this.ipv6CidrBlocks = Output.createUnknown<List<String>?>();
-    this.prefixListIds = Output.createUnknown<List<String>?>();
-    this.protocol = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupId = Output.createUnknown<String>();
-    this.securityGroupRuleId = Output.createUnknown<String>();
-    this.self = Output.createUnknown<bool?>();
-    this.sourceSecurityGroupId = Output.createUnknown<String>();
-    this.toPort = Output.createUnknown<int>();
-    this.type = Output.createUnknown<String>();
+    this.cidrBlocks = registerOutput<List<String>?>('cidrBlocks');
+    this.description = registerOutput<String?>('description');
+    this.fromPort = registerOutput<int>('fromPort');
+    this.ipv6CidrBlocks = registerOutput<List<String>?>('ipv6CidrBlocks');
+    this.prefixListIds = registerOutput<List<String>?>('prefixListIds');
+    this.protocol = registerOutput<String>('protocol');
+    this.region = registerOutput<String>('region');
+    this.securityGroupId = registerOutput<String>('securityGroupId');
+    this.securityGroupRuleId = registerOutput<String>('securityGroupRuleId');
+    this.self = registerOutput<bool?>('self');
+    this.sourceSecurityGroupId =
+        registerOutput<String>('sourceSecurityGroupId');
+    this.toPort = registerOutput<int>('toPort');
+    this.type = registerOutput<String>('type');
   }
 }

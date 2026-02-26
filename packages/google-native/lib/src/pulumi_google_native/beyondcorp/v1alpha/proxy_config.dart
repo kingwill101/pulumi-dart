@@ -52,19 +52,22 @@ class ProxyConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.encryptionInfo = Output.createUnknown<
-        GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.partnerTenantId = Output.createUnknown<String>();
-    this.proxyUri = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.routingInfo = Output.createUnknown<
-        GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse>();
-    this.transportInfo = Output.createUnknown<
-        GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.encryptionInfo = registerOutput<
+            GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse>(
+        'encryptionInfo');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.partnerTenantId = registerOutput<String>('partnerTenantId');
+    this.proxyUri = registerOutput<String>('proxyUri');
+    this.requestId = registerOutput<String?>('requestId');
+    this.routingInfo = registerOutput<
+            GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse>(
+        'routingInfo');
+    this.transportInfo = registerOutput<
+            GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse>(
+        'transportInfo');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

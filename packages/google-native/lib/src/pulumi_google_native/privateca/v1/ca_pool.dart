@@ -39,14 +39,16 @@ class CaPool extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.caPoolId = Output.createUnknown<String>();
-    this.issuancePolicy = Output.createUnknown<IssuancePolicyResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.publishingOptions = Output.createUnknown<PublishingOptionsResponse>();
-    this.requestId = Output.createUnknown<String?>();
-    this.tier = Output.createUnknown<String>();
+    this.caPoolId = registerOutput<String>('caPoolId');
+    this.issuancePolicy =
+        registerOutput<IssuancePolicyResponse>('issuancePolicy');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.publishingOptions =
+        registerOutput<PublishingOptionsResponse>('publishingOptions');
+    this.requestId = registerOutput<String?>('requestId');
+    this.tier = registerOutput<String>('tier');
   }
 }

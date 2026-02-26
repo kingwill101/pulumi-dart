@@ -91,32 +91,36 @@ class Release extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.abandoned = Output.createUnknown<bool>();
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.buildArtifacts = Output.createUnknown<List<BuildArtifactResponse>>();
-    this.condition = Output.createUnknown<ReleaseConditionResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.deliveryPipelineId = Output.createUnknown<String>();
+    this.abandoned = registerOutput<bool>('abandoned');
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.buildArtifacts =
+        registerOutput<List<BuildArtifactResponse>>('buildArtifacts');
+    this.condition = registerOutput<ReleaseConditionResponse>('condition');
+    this.createTime = registerOutput<String>('createTime');
+    this.deliveryPipelineId = registerOutput<String>('deliveryPipelineId');
     this.deliveryPipelineSnapshot =
-        Output.createUnknown<DeliveryPipelineResponse>();
-    this.deployParameters = Output.createUnknown<Map<String, String>>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.releaseId = Output.createUnknown<String>();
-    this.renderEndTime = Output.createUnknown<String>();
-    this.renderStartTime = Output.createUnknown<String>();
-    this.renderState = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.skaffoldConfigPath = Output.createUnknown<String>();
-    this.skaffoldConfigUri = Output.createUnknown<String>();
-    this.skaffoldVersion = Output.createUnknown<String>();
-    this.targetArtifacts = Output.createUnknown<Map<String, String>>();
-    this.targetRenders = Output.createUnknown<Map<String, String>>();
-    this.targetSnapshots = Output.createUnknown<List<TargetResponse>>();
-    this.uid = Output.createUnknown<String>();
+        registerOutput<DeliveryPipelineResponse>('deliveryPipelineSnapshot');
+    this.deployParameters =
+        registerOutput<Map<String, String>>('deployParameters');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.releaseId = registerOutput<String>('releaseId');
+    this.renderEndTime = registerOutput<String>('renderEndTime');
+    this.renderStartTime = registerOutput<String>('renderStartTime');
+    this.renderState = registerOutput<String>('renderState');
+    this.requestId = registerOutput<String?>('requestId');
+    this.skaffoldConfigPath = registerOutput<String>('skaffoldConfigPath');
+    this.skaffoldConfigUri = registerOutput<String>('skaffoldConfigUri');
+    this.skaffoldVersion = registerOutput<String>('skaffoldVersion');
+    this.targetArtifacts =
+        registerOutput<Map<String, String>>('targetArtifacts');
+    this.targetRenders = registerOutput<Map<String, String>>('targetRenders');
+    this.targetSnapshots =
+        registerOutput<List<TargetResponse>>('targetSnapshots');
+    this.uid = registerOutput<String>('uid');
   }
 }

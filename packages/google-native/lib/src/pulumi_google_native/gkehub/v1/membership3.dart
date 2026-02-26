@@ -65,22 +65,23 @@ class Membership3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authority = Output.createUnknown<AuthorityResponse2>();
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.endpoint = Output.createUnknown<MembershipEndpointResponse>();
-    this.externalId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lastConnectionTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.membershipId = Output.createUnknown<String>();
-    this.monitoringConfig = Output.createUnknown<MonitoringConfigResponse3>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<MembershipStateResponse>();
-    this.uniqueId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.authority = registerOutput<AuthorityResponse2>('authority');
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.description = registerOutput<String>('description');
+    this.endpoint = registerOutput<MembershipEndpointResponse>('endpoint');
+    this.externalId = registerOutput<String>('externalId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lastConnectionTime = registerOutput<String>('lastConnectionTime');
+    this.location = registerOutput<String>('location');
+    this.membershipId = registerOutput<String>('membershipId');
+    this.monitoringConfig =
+        registerOutput<MonitoringConfigResponse3>('monitoringConfig');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.state = registerOutput<MembershipStateResponse>('state');
+    this.uniqueId = registerOutput<String>('uniqueId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

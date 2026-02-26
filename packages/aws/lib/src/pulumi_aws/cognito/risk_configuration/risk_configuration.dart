@@ -171,14 +171,17 @@ class RiskConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountTakeoverRiskConfiguration = Output.createUnknown<
-        RiskConfigurationAccountTakeoverRiskConfiguration?>();
-    this.clientId = Output.createUnknown<String?>();
-    this.compromisedCredentialsRiskConfiguration = Output.createUnknown<
-        RiskConfigurationCompromisedCredentialsRiskConfiguration?>();
-    this.region = Output.createUnknown<String>();
+    this.accountTakeoverRiskConfiguration =
+        registerOutput<RiskConfigurationAccountTakeoverRiskConfiguration?>(
+            'accountTakeoverRiskConfiguration');
+    this.clientId = registerOutput<String?>('clientId');
+    this.compromisedCredentialsRiskConfiguration = registerOutput<
+            RiskConfigurationCompromisedCredentialsRiskConfiguration?>(
+        'compromisedCredentialsRiskConfiguration');
+    this.region = registerOutput<String>('region');
     this.riskExceptionConfiguration =
-        Output.createUnknown<RiskConfigurationRiskExceptionConfiguration?>();
-    this.userPoolId = Output.createUnknown<String>();
+        registerOutput<RiskConfigurationRiskExceptionConfiguration?>(
+            'riskExceptionConfiguration');
+    this.userPoolId = registerOutput<String>('userPoolId');
   }
 }

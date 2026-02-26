@@ -232,9 +232,10 @@ class KinesisStreamingDestination extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.approximateCreationDateTimePrecision = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.streamArn = Output.createUnknown<String>();
-    this.tableName = Output.createUnknown<String>();
+    this.approximateCreationDateTimePrecision =
+        registerOutput<String>('approximateCreationDateTimePrecision');
+    this.region = registerOutput<String>('region');
+    this.streamArn = registerOutput<String>('streamArn');
+    this.tableName = registerOutput<String>('tableName');
   }
 }

@@ -94,34 +94,37 @@ class Instance15 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.adminSettings = Output.createUnknown<AdminSettingsResponse>();
-    this.consumerNetwork = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.customDomain = Output.createUnknown<CustomDomainResponse>();
+    this.adminSettings = registerOutput<AdminSettingsResponse>('adminSettings');
+    this.consumerNetwork = registerOutput<String>('consumerNetwork');
+    this.createTime = registerOutput<String>('createTime');
+    this.customDomain = registerOutput<CustomDomainResponse>('customDomain');
     this.denyMaintenancePeriod =
-        Output.createUnknown<DenyMaintenancePeriodResponse>();
-    this.egressPublicIp = Output.createUnknown<String>();
-    this.encryptionConfig = Output.createUnknown<EncryptionConfigResponse10>();
-    this.ingressPrivateIp = Output.createUnknown<String>();
-    this.ingressPublicIp = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
+        registerOutput<DenyMaintenancePeriodResponse>('denyMaintenancePeriod');
+    this.egressPublicIp = registerOutput<String>('egressPublicIp');
+    this.encryptionConfig =
+        registerOutput<EncryptionConfigResponse10>('encryptionConfig');
+    this.ingressPrivateIp = registerOutput<String>('ingressPrivateIp');
+    this.ingressPublicIp = registerOutput<String>('ingressPublicIp');
+    this.instanceId = registerOutput<String>('instanceId');
     this.lastDenyMaintenancePeriod =
-        Output.createUnknown<DenyMaintenancePeriodResponse>();
-    this.location = Output.createUnknown<String>();
-    this.lookerUri = Output.createUnknown<String>();
-    this.lookerVersion = Output.createUnknown<String>();
+        registerOutput<DenyMaintenancePeriodResponse>(
+            'lastDenyMaintenancePeriod');
+    this.location = registerOutput<String>('location');
+    this.lookerUri = registerOutput<String>('lookerUri');
+    this.lookerVersion = registerOutput<String>('lookerVersion');
     this.maintenanceSchedule =
-        Output.createUnknown<MaintenanceScheduleResponse>();
-    this.maintenanceWindow = Output.createUnknown<MaintenanceWindowResponse5>();
-    this.name = Output.createUnknown<String>();
-    this.oauthConfig = Output.createUnknown<OAuthConfigResponse>();
-    this.platformEdition = Output.createUnknown<String>();
-    this.privateIpEnabled = Output.createUnknown<bool>();
-    this.project = Output.createUnknown<String>();
-    this.publicIpEnabled = Output.createUnknown<bool>();
-    this.reservedRange = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.userMetadata = Output.createUnknown<UserMetadataResponse>();
+        registerOutput<MaintenanceScheduleResponse>('maintenanceSchedule');
+    this.maintenanceWindow =
+        registerOutput<MaintenanceWindowResponse5>('maintenanceWindow');
+    this.name = registerOutput<String>('name');
+    this.oauthConfig = registerOutput<OAuthConfigResponse>('oauthConfig');
+    this.platformEdition = registerOutput<String>('platformEdition');
+    this.privateIpEnabled = registerOutput<bool>('privateIpEnabled');
+    this.project = registerOutput<String>('project');
+    this.publicIpEnabled = registerOutput<bool>('publicIpEnabled');
+    this.reservedRange = registerOutput<String>('reservedRange');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.userMetadata = registerOutput<UserMetadataResponse>('userMetadata');
   }
 }

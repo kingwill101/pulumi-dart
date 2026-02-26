@@ -390,10 +390,10 @@ class InstanceGroupNamedPort2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.group = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+    this.group = registerOutput<String>('group');
+    this.name = registerOutput<String>('name');
+    this.port = registerOutput<int>('port');
+    this.project = registerOutput<String>('project');
+    this.zone = registerOutput<String>('zone');
   }
 }

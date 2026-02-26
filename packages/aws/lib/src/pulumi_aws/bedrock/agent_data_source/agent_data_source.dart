@@ -453,18 +453,21 @@ class AgentDataSource extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dataDeletionPolicy = Output.createUnknown<String>();
+    this.dataDeletionPolicy = registerOutput<String>('dataDeletionPolicy');
     this.dataSourceConfiguration =
-        Output.createUnknown<AgentDataSourceDataSourceConfiguration>();
-    this.dataSourceId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.knowledgeBaseId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.serverSideEncryptionConfiguration = Output.createUnknown<
-        AgentDataSourceServerSideEncryptionConfiguration?>();
-    this.timeouts = Output.createUnknown<AgentDataSourceTimeouts?>();
+        registerOutput<AgentDataSourceDataSourceConfiguration>(
+            'dataSourceConfiguration');
+    this.dataSourceId = registerOutput<String>('dataSourceId');
+    this.description = registerOutput<String?>('description');
+    this.knowledgeBaseId = registerOutput<String>('knowledgeBaseId');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.serverSideEncryptionConfiguration =
+        registerOutput<AgentDataSourceServerSideEncryptionConfiguration?>(
+            'serverSideEncryptionConfiguration');
+    this.timeouts = registerOutput<AgentDataSourceTimeouts?>('timeouts');
     this.vectorIngestionConfiguration =
-        Output.createUnknown<AgentDataSourceVectorIngestionConfiguration?>();
+        registerOutput<AgentDataSourceVectorIngestionConfiguration?>(
+            'vectorIngestionConfiguration');
   }
 }

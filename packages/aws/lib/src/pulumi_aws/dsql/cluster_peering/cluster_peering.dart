@@ -264,10 +264,10 @@ class ClusterPeering extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusters = Output.createUnknown<List<String>>();
-    this.identifier = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<ClusterPeeringTimeouts?>();
-    this.witnessRegion = Output.createUnknown<String>();
+    this.clusters = registerOutput<List<String>>('clusters');
+    this.identifier = registerOutput<String>('identifier');
+    this.region = registerOutput<String>('region');
+    this.timeouts = registerOutput<ClusterPeeringTimeouts?>('timeouts');
+    this.witnessRegion = registerOutput<String>('witnessRegion');
   }
 }

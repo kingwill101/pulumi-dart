@@ -145,15 +145,15 @@ class VirtualMfaDevice extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.base32StringSeed = Output.createUnknown<String>();
-    this.enableDate = Output.createUnknown<String>();
-    this.path = Output.createUnknown<String?>();
-    this.qrCodePng = Output.createUnknown<String>();
-    this.serialNumber = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.userName = Output.createUnknown<String>();
-    this.virtualMfaDeviceName = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.base32StringSeed = registerOutput<String>('base32StringSeed');
+    this.enableDate = registerOutput<String>('enableDate');
+    this.path = registerOutput<String?>('path');
+    this.qrCodePng = registerOutput<String>('qrCodePng');
+    this.serialNumber = registerOutput<String>('serialNumber');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.userName = registerOutput<String>('userName');
+    this.virtualMfaDeviceName = registerOutput<String>('virtualMfaDeviceName');
   }
 }

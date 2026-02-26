@@ -253,13 +253,13 @@ class InstancePartition extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.config = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.instance = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.nodeCount = Output.createUnknown<int?>();
-    this.processingUnits = Output.createUnknown<int?>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.config = registerOutput<String>('config');
+    this.displayName = registerOutput<String>('displayName');
+    this.instance = registerOutput<String>('instance');
+    this.name = registerOutput<String>('name');
+    this.nodeCount = registerOutput<int?>('nodeCount');
+    this.processingUnits = registerOutput<int?>('processingUnits');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
   }
 }

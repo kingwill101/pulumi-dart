@@ -32,12 +32,13 @@ class TriggerIamPolicy2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse37>>();
-    this.bindings = Output.createUnknown<List<BindingResponse55>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.triggerId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse37>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse55>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.triggerId = registerOutput<String>('triggerId');
+    this.version = registerOutput<int>('version');
   }
 }

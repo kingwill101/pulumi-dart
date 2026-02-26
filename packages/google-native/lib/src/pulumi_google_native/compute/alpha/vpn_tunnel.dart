@@ -84,30 +84,33 @@ class VpnTunnel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.detailedStatus = Output.createUnknown<String>();
-    this.ikeVersion = Output.createUnknown<int>();
-    this.kind = Output.createUnknown<String>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.localTrafficSelector = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.peerExternalGateway = Output.createUnknown<String>();
-    this.peerExternalGatewayInterface = Output.createUnknown<int>();
-    this.peerGcpGateway = Output.createUnknown<String>();
-    this.peerIp = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.remoteTrafficSelector = Output.createUnknown<List<String>>();
-    this.requestId = Output.createUnknown<String?>();
-    this.router = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.sharedSecret = Output.createUnknown<String>();
-    this.sharedSecretHash = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.targetVpnGateway = Output.createUnknown<String>();
-    this.vpnGateway = Output.createUnknown<String>();
-    this.vpnGatewayInterface = Output.createUnknown<int>();
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.detailedStatus = registerOutput<String>('detailedStatus');
+    this.ikeVersion = registerOutput<int>('ikeVersion');
+    this.kind = registerOutput<String>('kind');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.localTrafficSelector =
+        registerOutput<List<String>>('localTrafficSelector');
+    this.name = registerOutput<String>('name');
+    this.peerExternalGateway = registerOutput<String>('peerExternalGateway');
+    this.peerExternalGatewayInterface =
+        registerOutput<int>('peerExternalGatewayInterface');
+    this.peerGcpGateway = registerOutput<String>('peerGcpGateway');
+    this.peerIp = registerOutput<String>('peerIp');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.remoteTrafficSelector =
+        registerOutput<List<String>>('remoteTrafficSelector');
+    this.requestId = registerOutput<String?>('requestId');
+    this.router = registerOutput<String>('router');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.sharedSecret = registerOutput<String>('sharedSecret');
+    this.sharedSecretHash = registerOutput<String>('sharedSecretHash');
+    this.status = registerOutput<String>('status');
+    this.targetVpnGateway = registerOutput<String>('targetVpnGateway');
+    this.vpnGateway = registerOutput<String>('vpnGateway');
+    this.vpnGatewayInterface = registerOutput<int>('vpnGatewayInterface');
   }
 }

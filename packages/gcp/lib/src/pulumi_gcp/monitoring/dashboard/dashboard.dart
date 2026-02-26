@@ -642,7 +642,7 @@ class Dashboard extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dashboardJson = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.dashboardJson = registerOutput<String>('dashboardJson');
+    this.project = registerOutput<String>('project');
   }
 }

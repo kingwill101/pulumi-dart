@@ -31,13 +31,13 @@ class Process extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attributes = Output.createUnknown<Map<String, String>>();
-    this.displayName = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.attributes = registerOutput<Map<String, String>>('attributes');
+    this.displayName = registerOutput<String>('displayName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.origin =
-        Output.createUnknown<GoogleCloudDatacatalogLineageV1OriginResponse>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
+        registerOutput<GoogleCloudDatacatalogLineageV1OriginResponse>('origin');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
   }
 }

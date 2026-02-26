@@ -96,34 +96,40 @@ class Service2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.artifactGcsUri = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.databaseType = Output.createUnknown<String>();
-    this.encryptionConfig = Output.createUnknown<EncryptionConfigResponse12>();
-    this.endpointUri = Output.createUnknown<String>();
+    this.artifactGcsUri = registerOutput<String>('artifactGcsUri');
+    this.createTime = registerOutput<String>('createTime');
+    this.databaseType = registerOutput<String>('databaseType');
+    this.encryptionConfig =
+        registerOutput<EncryptionConfigResponse12>('encryptionConfig');
+    this.endpointUri = registerOutput<String>('endpointUri');
     this.hiveMetastoreConfig =
-        Output.createUnknown<HiveMetastoreConfigResponse2>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.maintenanceWindow = Output.createUnknown<MaintenanceWindowResponse7>();
+        registerOutput<HiveMetastoreConfigResponse2>('hiveMetastoreConfig');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.maintenanceWindow =
+        registerOutput<MaintenanceWindowResponse7>('maintenanceWindow');
     this.metadataIntegration =
-        Output.createUnknown<MetadataIntegrationResponse2>();
+        registerOutput<MetadataIntegrationResponse2>('metadataIntegration');
     this.metadataManagementActivity =
-        Output.createUnknown<MetadataManagementActivityResponse2>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.networkConfig = Output.createUnknown<NetworkConfigResponse17>();
-    this.port = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.releaseChannel = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.scalingConfig = Output.createUnknown<ScalingConfigResponse2>();
-    this.serviceId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.stateMessage = Output.createUnknown<String>();
-    this.telemetryConfig = Output.createUnknown<TelemetryConfigResponse2>();
-    this.tier = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<MetadataManagementActivityResponse2>(
+            'metadataManagementActivity');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.networkConfig =
+        registerOutput<NetworkConfigResponse17>('networkConfig');
+    this.port = registerOutput<int>('port');
+    this.project = registerOutput<String>('project');
+    this.releaseChannel = registerOutput<String>('releaseChannel');
+    this.requestId = registerOutput<String?>('requestId');
+    this.scalingConfig =
+        registerOutput<ScalingConfigResponse2>('scalingConfig');
+    this.serviceId = registerOutput<String>('serviceId');
+    this.state = registerOutput<String>('state');
+    this.stateMessage = registerOutput<String>('stateMessage');
+    this.telemetryConfig =
+        registerOutput<TelemetryConfigResponse2>('telemetryConfig');
+    this.tier = registerOutput<String>('tier');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

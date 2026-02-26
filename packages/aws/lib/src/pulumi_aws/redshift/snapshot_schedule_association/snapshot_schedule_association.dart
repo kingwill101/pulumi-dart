@@ -220,8 +220,8 @@ class SnapshotScheduleAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusterIdentifier = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.scheduleIdentifier = Output.createUnknown<String>();
+    this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    this.region = registerOutput<String>('region');
+    this.scheduleIdentifier = registerOutput<String>('scheduleIdentifier');
   }
 }

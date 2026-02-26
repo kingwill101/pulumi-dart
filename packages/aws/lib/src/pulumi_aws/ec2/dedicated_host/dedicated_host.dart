@@ -177,17 +177,17 @@ class DedicatedHost extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.assetId = Output.createUnknown<String>();
-    this.autoPlacement = Output.createUnknown<String?>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.hostRecovery = Output.createUnknown<String?>();
-    this.instanceFamily = Output.createUnknown<String?>();
-    this.instanceType = Output.createUnknown<String?>();
-    this.outpostArn = Output.createUnknown<String?>();
-    this.ownerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.assetId = registerOutput<String>('assetId');
+    this.autoPlacement = registerOutput<String?>('autoPlacement');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.hostRecovery = registerOutput<String?>('hostRecovery');
+    this.instanceFamily = registerOutput<String?>('instanceFamily');
+    this.instanceType = registerOutput<String?>('instanceType');
+    this.outpostArn = registerOutput<String?>('outpostArn');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

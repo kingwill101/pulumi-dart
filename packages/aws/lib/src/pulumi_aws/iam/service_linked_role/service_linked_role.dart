@@ -145,15 +145,15 @@ class ServiceLinkedRole extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.awsServiceName = Output.createUnknown<String>();
-    this.createDate = Output.createUnknown<String>();
-    this.customSuffix = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.path = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.uniqueId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.awsServiceName = registerOutput<String>('awsServiceName');
+    this.createDate = registerOutput<String>('createDate');
+    this.customSuffix = registerOutput<String?>('customSuffix');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.path = registerOutput<String>('path');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.uniqueId = registerOutput<String>('uniqueId');
   }
 }

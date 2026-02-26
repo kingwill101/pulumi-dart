@@ -38,15 +38,16 @@ class ResourceRecordSet4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clientOperationId = Output.createUnknown<String?>();
-    this.kind = Output.createUnknown<String>();
-    this.managedZone = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.routingPolicy = Output.createUnknown<RRSetRoutingPolicyResponse2>();
-    this.rrdatas = Output.createUnknown<List<String>>();
-    this.signatureRrdatas = Output.createUnknown<List<String>>();
-    this.ttl = Output.createUnknown<int>();
-    this.type = Output.createUnknown<String>();
+    this.clientOperationId = registerOutput<String?>('clientOperationId');
+    this.kind = registerOutput<String>('kind');
+    this.managedZone = registerOutput<String>('managedZone');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.routingPolicy =
+        registerOutput<RRSetRoutingPolicyResponse2>('routingPolicy');
+    this.rrdatas = registerOutput<List<String>>('rrdatas');
+    this.signatureRrdatas = registerOutput<List<String>>('signatureRrdatas');
+    this.ttl = registerOutput<int>('ttl');
+    this.type = registerOutput<String>('type');
   }
 }

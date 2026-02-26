@@ -368,18 +368,24 @@ class RecommendationPreferences extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.enhancedInfrastructureMetrics = Output.createUnknown<String?>();
-    this.externalMetricsPreference = Output.createUnknown<
-        RecommendationPreferencesExternalMetricsPreference?>();
-    this.inferredWorkloadTypes = Output.createUnknown<String?>();
-    this.lookBackPeriod = Output.createUnknown<String>();
-    this.preferredResources = Output.createUnknown<
-        List<RecommendationPreferencesPreferredResource>?>();
-    this.region = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String>();
-    this.savingsEstimationMode = Output.createUnknown<String?>();
-    this.scope = Output.createUnknown<RecommendationPreferencesScope>();
-    this.utilizationPreferences = Output.createUnknown<
-        List<RecommendationPreferencesUtilizationPreference>?>();
+    this.enhancedInfrastructureMetrics =
+        registerOutput<String?>('enhancedInfrastructureMetrics');
+    this.externalMetricsPreference =
+        registerOutput<RecommendationPreferencesExternalMetricsPreference?>(
+            'externalMetricsPreference');
+    this.inferredWorkloadTypes =
+        registerOutput<String?>('inferredWorkloadTypes');
+    this.lookBackPeriod = registerOutput<String>('lookBackPeriod');
+    this.preferredResources =
+        registerOutput<List<RecommendationPreferencesPreferredResource>?>(
+            'preferredResources');
+    this.region = registerOutput<String>('region');
+    this.resourceType = registerOutput<String>('resourceType');
+    this.savingsEstimationMode =
+        registerOutput<String?>('savingsEstimationMode');
+    this.scope = registerOutput<RecommendationPreferencesScope>('scope');
+    this.utilizationPreferences =
+        registerOutput<List<RecommendationPreferencesUtilizationPreference>?>(
+            'utilizationPreferences');
   }
 }

@@ -197,11 +197,11 @@ class Webhook extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.branchName = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.url = Output.createUnknown<String>();
+    this.appId = registerOutput<String>('appId');
+    this.arn = registerOutput<String>('arn');
+    this.branchName = registerOutput<String>('branchName');
+    this.description = registerOutput<String?>('description');
+    this.region = registerOutput<String>('region');
+    this.url = registerOutput<String>('url');
   }
 }

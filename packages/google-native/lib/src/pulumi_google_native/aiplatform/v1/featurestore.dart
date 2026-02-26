@@ -51,19 +51,21 @@ class Featurestore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
     this.encryptionSpec =
-        Output.createUnknown<GoogleCloudAiplatformV1EncryptionSpecResponse>();
-    this.etag = Output.createUnknown<String>();
-    this.featurestoreId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.onlineServingConfig = Output.createUnknown<
-        GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse>();
-    this.onlineStorageTtlDays = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>(
+            'encryptionSpec');
+    this.etag = registerOutput<String>('etag');
+    this.featurestoreId = registerOutput<String>('featurestoreId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.onlineServingConfig = registerOutput<
+            GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse>(
+        'onlineServingConfig');
+    this.onlineStorageTtlDays = registerOutput<int>('onlineStorageTtlDays');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

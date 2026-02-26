@@ -121,7 +121,7 @@ class DefaultKmsKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.keyArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.keyArn = registerOutput<String>('keyArn');
+    this.region = registerOutput<String>('region');
   }
 }

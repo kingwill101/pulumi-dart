@@ -1859,14 +1859,15 @@ class LifecyclePolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.defaultPolicy = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String>();
-    this.executionRoleArn = Output.createUnknown<String>();
-    this.policyDetails = Output.createUnknown<LifecyclePolicyPolicyDetails>();
-    this.region = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.defaultPolicy = registerOutput<String?>('defaultPolicy');
+    this.description = registerOutput<String>('description');
+    this.executionRoleArn = registerOutput<String>('executionRoleArn');
+    this.policyDetails =
+        registerOutput<LifecyclePolicyPolicyDetails>('policyDetails');
+    this.region = registerOutput<String>('region');
+    this.state = registerOutput<String?>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

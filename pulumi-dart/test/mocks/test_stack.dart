@@ -1,25 +1,25 @@
 import 'package:pulumi/pulumi.dart';
-import 'package:pulumi/src/pulumirpc/google/protobuf/struct.pb.dart';
+import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 
 class TestStack extends Stack {
-  @override
-  final Map<String, dynamic> outputs;
-
-  TestStack(void Function() createResources)
-      : outputs = {} {
+  TestStack(void Function() createResources) {
+    outputs = {};
     createResources();
   }
 
-  TestStack.fromFuture(Future<void> Function() createResources)
-      : outputs = {} {
+  TestStack.fromFuture(Future<void> Function() createResources) {
+    outputs = {};
     createResources();
   }
 
-  TestStack.withOutputs(Map<String, dynamic> Function() createResources)
-      : outputs = createResources();
+  TestStack.withOutputs(Map<String, dynamic> Function() createResources) {
+    outputs = createResources();
+  }
 
-  TestStack.withFutureOutputs(Future<Map<String, dynamic>> Function() createResources)
-      : outputs = {} {
+  TestStack.withFutureOutputs(
+    Future<Map<String, dynamic>> Function() createResources,
+  ) {
+    outputs = {};
     createResources().then((value) => outputs.addAll(value));
   }
 

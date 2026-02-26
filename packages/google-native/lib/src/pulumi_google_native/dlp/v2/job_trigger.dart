@@ -48,19 +48,21 @@ class JobTrigger extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.errors = Output.createUnknown<List<GooglePrivacyDlpV2ErrorResponse>>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.errors =
+        registerOutput<List<GooglePrivacyDlpV2ErrorResponse>>('errors');
     this.inspectJob =
-        Output.createUnknown<GooglePrivacyDlpV2InspectJobConfigResponse>();
-    this.lastRunTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+        registerOutput<GooglePrivacyDlpV2InspectJobConfigResponse>(
+            'inspectJob');
+    this.lastRunTime = registerOutput<String>('lastRunTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.status = registerOutput<String>('status');
     this.triggers =
-        Output.createUnknown<List<GooglePrivacyDlpV2TriggerResponse>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<GooglePrivacyDlpV2TriggerResponse>>('triggers');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -44,17 +44,17 @@ class SfdcInstance extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authConfigId = Output.createUnknown<List<String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.productId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.serviceAuthority = Output.createUnknown<String>();
-    this.sfdcOrgId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.authConfigId = registerOutput<List<String>>('authConfigId');
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.productId = registerOutput<String>('productId');
+    this.project = registerOutput<String>('project');
+    this.serviceAuthority = registerOutput<String>('serviceAuthority');
+    this.sfdcOrgId = registerOutput<String>('sfdcOrgId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

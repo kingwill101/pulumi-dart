@@ -197,8 +197,8 @@ class IpAccessSettingsAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.ipAccessSettingsArn = Output.createUnknown<String>();
-    this.portalArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.ipAccessSettingsArn = registerOutput<String>('ipAccessSettingsArn');
+    this.portalArn = registerOutput<String>('portalArn');
+    this.region = registerOutput<String>('region');
   }
 }

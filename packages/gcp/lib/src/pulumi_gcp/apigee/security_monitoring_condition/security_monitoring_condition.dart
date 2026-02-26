@@ -504,15 +504,17 @@ class SecurityMonitoringCondition extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.conditionId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.includeAllResources = Output.createUnknown<Map<String, dynamic>?>();
-    this.name = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.profile = Output.createUnknown<String>();
-    this.scope = Output.createUnknown<String>();
-    this.totalDeployedResources = Output.createUnknown<int>();
-    this.totalMonitoredResources = Output.createUnknown<int>();
-    this.updateTime = Output.createUnknown<String>();
+    this.conditionId = registerOutput<String>('conditionId');
+    this.createTime = registerOutput<String>('createTime');
+    this.includeAllResources =
+        registerOutput<Map<String, dynamic>?>('includeAllResources');
+    this.name = registerOutput<String>('name');
+    this.orgId = registerOutput<String>('orgId');
+    this.profile = registerOutput<String>('profile');
+    this.scope = registerOutput<String>('scope');
+    this.totalDeployedResources = registerOutput<int>('totalDeployedResources');
+    this.totalMonitoredResources =
+        registerOutput<int>('totalMonitoredResources');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

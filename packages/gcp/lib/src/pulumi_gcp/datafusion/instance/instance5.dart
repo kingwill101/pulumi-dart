@@ -1581,38 +1581,45 @@ class Instance5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accelerators = Output.createUnknown<List<InstanceAccelerator>?>();
-    this.apiEndpoint = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.cryptoKeyConfig = Output.createUnknown<InstanceCryptoKeyConfig?>();
-    this.dataprocServiceAccount = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enableRbac = Output.createUnknown<bool?>();
-    this.enableStackdriverLogging = Output.createUnknown<bool?>();
-    this.enableStackdriverMonitoring = Output.createUnknown<bool?>();
+    this.accelerators =
+        registerOutput<List<InstanceAccelerator>?>('accelerators');
+    this.apiEndpoint = registerOutput<String>('apiEndpoint');
+    this.createTime = registerOutput<String>('createTime');
+    this.cryptoKeyConfig =
+        registerOutput<InstanceCryptoKeyConfig?>('cryptoKeyConfig');
+    this.dataprocServiceAccount =
+        registerOutput<String?>('dataprocServiceAccount');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableRbac = registerOutput<bool?>('enableRbac');
+    this.enableStackdriverLogging =
+        registerOutput<bool?>('enableStackdriverLogging');
+    this.enableStackdriverMonitoring =
+        registerOutput<bool?>('enableStackdriverMonitoring');
     this.eventPublishConfig =
-        Output.createUnknown<InstanceEventPublishConfig?>();
-    this.gcsBucket = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.networkConfig = Output.createUnknown<InstanceNetworkConfig2?>();
-    this.options = Output.createUnknown<Map<String, String>>();
-    this.p4ServiceAccount = Output.createUnknown<String>();
-    this.privateInstance = Output.createUnknown<bool?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.serviceEndpoint = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.stateMessage = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tenantProjectId = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.version = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<InstanceEventPublishConfig?>('eventPublishConfig');
+    this.gcsBucket = registerOutput<String>('gcsBucket');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.networkConfig =
+        registerOutput<InstanceNetworkConfig2?>('networkConfig');
+    this.options = registerOutput<Map<String, String>>('options');
+    this.p4ServiceAccount = registerOutput<String>('p4ServiceAccount');
+    this.privateInstance = registerOutput<bool?>('privateInstance');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String>('region');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.serviceEndpoint = registerOutput<String>('serviceEndpoint');
+    this.state = registerOutput<String>('state');
+    this.stateMessage = registerOutput<String>('stateMessage');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tenantProjectId = registerOutput<String>('tenantProjectId');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.version = registerOutput<String>('version');
+    this.zone = registerOutput<String>('zone');
   }
 }

@@ -125,10 +125,10 @@ class RecoveryGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.cells = Output.createUnknown<List<String>?>();
-    this.recoveryGroupName = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.cells = registerOutput<List<String>?>('cells');
+    this.recoveryGroupName = registerOutput<String>('recoveryGroupName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

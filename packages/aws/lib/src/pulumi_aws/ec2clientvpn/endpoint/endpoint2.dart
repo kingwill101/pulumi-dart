@@ -266,35 +266,40 @@ class Endpoint2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.authenticationOptions =
-        Output.createUnknown<List<EndpointAuthenticationOption>>();
-    this.clientCidrBlock = Output.createUnknown<String?>();
+        registerOutput<List<EndpointAuthenticationOption>>(
+            'authenticationOptions');
+    this.clientCidrBlock = registerOutput<String?>('clientCidrBlock');
     this.clientConnectOptions =
-        Output.createUnknown<EndpointClientConnectOptions>();
+        registerOutput<EndpointClientConnectOptions>('clientConnectOptions');
     this.clientLoginBannerOptions =
-        Output.createUnknown<EndpointClientLoginBannerOptions>();
+        registerOutput<EndpointClientLoginBannerOptions>(
+            'clientLoginBannerOptions');
     this.clientRouteEnforcementOptions =
-        Output.createUnknown<EndpointClientRouteEnforcementOptions>();
+        registerOutput<EndpointClientRouteEnforcementOptions>(
+            'clientRouteEnforcementOptions');
     this.connectionLogOptions =
-        Output.createUnknown<EndpointConnectionLogOptions>();
-    this.description = Output.createUnknown<String?>();
-    this.disconnectOnSessionTimeout = Output.createUnknown<bool>();
-    this.dnsName = Output.createUnknown<String>();
-    this.dnsServers = Output.createUnknown<List<String>?>();
-    this.endpointIpAddressType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupIds = Output.createUnknown<List<String>>();
-    this.selfServicePortal = Output.createUnknown<String?>();
-    this.selfServicePortalUrl = Output.createUnknown<String>();
-    this.serverCertificateArn = Output.createUnknown<String>();
-    this.sessionTimeoutHours = Output.createUnknown<int?>();
-    this.splitTunnel = Output.createUnknown<bool?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.trafficIpAddressType = Output.createUnknown<String>();
-    this.transportProtocol = Output.createUnknown<String?>();
-    this.vpcId = Output.createUnknown<String>();
-    this.vpnPort = Output.createUnknown<int?>();
+        registerOutput<EndpointConnectionLogOptions>('connectionLogOptions');
+    this.description = registerOutput<String?>('description');
+    this.disconnectOnSessionTimeout =
+        registerOutput<bool>('disconnectOnSessionTimeout');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.dnsServers = registerOutput<List<String>?>('dnsServers');
+    this.endpointIpAddressType =
+        registerOutput<String>('endpointIpAddressType');
+    this.region = registerOutput<String>('region');
+    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    this.selfServicePortal = registerOutput<String?>('selfServicePortal');
+    this.selfServicePortalUrl = registerOutput<String>('selfServicePortalUrl');
+    this.serverCertificateArn = registerOutput<String>('serverCertificateArn');
+    this.sessionTimeoutHours = registerOutput<int?>('sessionTimeoutHours');
+    this.splitTunnel = registerOutput<bool?>('splitTunnel');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.trafficIpAddressType = registerOutput<String>('trafficIpAddressType');
+    this.transportProtocol = registerOutput<String?>('transportProtocol');
+    this.vpcId = registerOutput<String>('vpcId');
+    this.vpnPort = registerOutput<int?>('vpnPort');
   }
 }

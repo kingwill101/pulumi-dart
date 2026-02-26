@@ -147,11 +147,11 @@ class OrganizationalUnit extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accounts = Output.createUnknown<List<OrganizationalUnitAccount>>();
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parentId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.accounts = registerOutput<List<OrganizationalUnitAccount>>('accounts');
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    this.parentId = registerOutput<String>('parentId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

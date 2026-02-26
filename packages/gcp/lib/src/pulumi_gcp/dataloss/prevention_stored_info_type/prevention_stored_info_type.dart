@@ -755,15 +755,16 @@ class PreventionStoredInfoType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
+    this.description = registerOutput<String?>('description');
     this.dictionary =
-        Output.createUnknown<PreventionStoredInfoTypeDictionary?>();
-    this.displayName = Output.createUnknown<String?>();
+        registerOutput<PreventionStoredInfoTypeDictionary?>('dictionary');
+    this.displayName = registerOutput<String?>('displayName');
     this.largeCustomDictionary =
-        Output.createUnknown<PreventionStoredInfoTypeLargeCustomDictionary?>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.regex = Output.createUnknown<PreventionStoredInfoTypeRegex?>();
-    this.storedInfoTypeId = Output.createUnknown<String>();
+        registerOutput<PreventionStoredInfoTypeLargeCustomDictionary?>(
+            'largeCustomDictionary');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.regex = registerOutput<PreventionStoredInfoTypeRegex?>('regex');
+    this.storedInfoTypeId = registerOutput<String>('storedInfoTypeId');
   }
 }

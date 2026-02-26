@@ -455,23 +455,26 @@ class Stack extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessEndpoints = Output.createUnknown<List<StackAccessEndpoint>>();
-    this.applicationSettings = Output.createUnknown<StackApplicationSettings>();
-    this.arn = Output.createUnknown<String>();
-    this.createdTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.embedHostDomains = Output.createUnknown<List<String>>();
-    this.feedbackUrl = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.redirectUrl = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.accessEndpoints =
+        registerOutput<List<StackAccessEndpoint>>('accessEndpoints');
+    this.applicationSettings =
+        registerOutput<StackApplicationSettings>('applicationSettings');
+    this.arn = registerOutput<String>('arn');
+    this.createdTime = registerOutput<String>('createdTime');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.embedHostDomains = registerOutput<List<String>>('embedHostDomains');
+    this.feedbackUrl = registerOutput<String>('feedbackUrl');
+    this.name = registerOutput<String>('name');
+    this.redirectUrl = registerOutput<String>('redirectUrl');
+    this.region = registerOutput<String>('region');
     this.storageConnectors =
-        Output.createUnknown<List<StackStorageConnector>>();
+        registerOutput<List<StackStorageConnector>>('storageConnectors');
     this.streamingExperienceSettings =
-        Output.createUnknown<StackStreamingExperienceSettings>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.userSettings = Output.createUnknown<List<StackUserSetting>>();
+        registerOutput<StackStreamingExperienceSettings>(
+            'streamingExperienceSettings');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.userSettings = registerOutput<List<StackUserSetting>>('userSettings');
   }
 }

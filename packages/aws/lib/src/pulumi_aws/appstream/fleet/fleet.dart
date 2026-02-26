@@ -292,28 +292,34 @@ class Fleet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.computeCapacity = Output.createUnknown<FleetComputeCapacity>();
-    this.createdTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.disconnectTimeoutInSeconds = Output.createUnknown<int>();
-    this.displayName = Output.createUnknown<String>();
-    this.domainJoinInfo = Output.createUnknown<FleetDomainJoinInfo>();
-    this.enableDefaultInternetAccess = Output.createUnknown<bool>();
-    this.fleetType = Output.createUnknown<String>();
-    this.iamRoleArn = Output.createUnknown<String>();
-    this.idleDisconnectTimeoutInSeconds = Output.createUnknown<int?>();
-    this.imageArn = Output.createUnknown<String>();
-    this.imageName = Output.createUnknown<String>();
-    this.instanceType = Output.createUnknown<String>();
-    this.maxSessionsPerInstance = Output.createUnknown<int?>();
-    this.maxUserDurationInSeconds = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.streamView = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcConfig = Output.createUnknown<FleetVpcConfig>();
+    this.arn = registerOutput<String>('arn');
+    this.computeCapacity =
+        registerOutput<FleetComputeCapacity>('computeCapacity');
+    this.createdTime = registerOutput<String>('createdTime');
+    this.description = registerOutput<String>('description');
+    this.disconnectTimeoutInSeconds =
+        registerOutput<int>('disconnectTimeoutInSeconds');
+    this.displayName = registerOutput<String>('displayName');
+    this.domainJoinInfo = registerOutput<FleetDomainJoinInfo>('domainJoinInfo');
+    this.enableDefaultInternetAccess =
+        registerOutput<bool>('enableDefaultInternetAccess');
+    this.fleetType = registerOutput<String>('fleetType');
+    this.iamRoleArn = registerOutput<String>('iamRoleArn');
+    this.idleDisconnectTimeoutInSeconds =
+        registerOutput<int?>('idleDisconnectTimeoutInSeconds');
+    this.imageArn = registerOutput<String>('imageArn');
+    this.imageName = registerOutput<String>('imageName');
+    this.instanceType = registerOutput<String>('instanceType');
+    this.maxSessionsPerInstance =
+        registerOutput<int?>('maxSessionsPerInstance');
+    this.maxUserDurationInSeconds =
+        registerOutput<int>('maxUserDurationInSeconds');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.state = registerOutput<String>('state');
+    this.streamView = registerOutput<String>('streamView');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcConfig = registerOutput<FleetVpcConfig>('vpcConfig');
   }
 }

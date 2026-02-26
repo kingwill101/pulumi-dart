@@ -80,30 +80,36 @@ class DataScan extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.data = Output.createUnknown<GoogleCloudDataplexV1DataSourceResponse>();
+    this.createTime = registerOutput<String>('createTime');
+    this.data = registerOutput<GoogleCloudDataplexV1DataSourceResponse>('data');
     this.dataProfileResult =
-        Output.createUnknown<GoogleCloudDataplexV1DataProfileResultResponse>();
+        registerOutput<GoogleCloudDataplexV1DataProfileResultResponse>(
+            'dataProfileResult');
     this.dataProfileSpec =
-        Output.createUnknown<GoogleCloudDataplexV1DataProfileSpecResponse>();
+        registerOutput<GoogleCloudDataplexV1DataProfileSpecResponse>(
+            'dataProfileSpec');
     this.dataQualityResult =
-        Output.createUnknown<GoogleCloudDataplexV1DataQualityResultResponse>();
+        registerOutput<GoogleCloudDataplexV1DataQualityResultResponse>(
+            'dataQualityResult');
     this.dataQualitySpec =
-        Output.createUnknown<GoogleCloudDataplexV1DataQualitySpecResponse>();
-    this.dataScanId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.executionSpec = Output.createUnknown<
-        GoogleCloudDataplexV1DataScanExecutionSpecResponse>();
-    this.executionStatus = Output.createUnknown<
-        GoogleCloudDataplexV1DataScanExecutionStatusResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDataplexV1DataQualitySpecResponse>(
+            'dataQualitySpec');
+    this.dataScanId = registerOutput<String>('dataScanId');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.executionSpec =
+        registerOutput<GoogleCloudDataplexV1DataScanExecutionSpecResponse>(
+            'executionSpec');
+    this.executionStatus =
+        registerOutput<GoogleCloudDataplexV1DataScanExecutionStatusResponse>(
+            'executionStatus');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String>('type');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

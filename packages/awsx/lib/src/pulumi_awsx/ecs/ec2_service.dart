@@ -20,7 +20,7 @@ class EC2Service extends ComponentResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? ComponentResourceOptions(),
         ) {
-    this.service = Output.createUnknown<dynamic>();
-    this.taskDefinition = Output.createUnknown<dynamic>();
+    this.service = registerOutput<dynamic>('service');
+    this.taskDefinition = registerOutput<dynamic>('taskDefinition');
   }
 }

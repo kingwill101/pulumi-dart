@@ -962,15 +962,16 @@ class Repository2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.createTime = Output.createUnknown<String>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parentConnection = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.remoteUri = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.createTime = registerOutput<String>('createTime');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.parentConnection = registerOutput<String>('parentConnection');
+    this.project = registerOutput<String>('project');
+    this.remoteUri = registerOutput<String>('remoteUri');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

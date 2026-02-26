@@ -2794,49 +2794,58 @@ class Distribution extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aliases = Output.createUnknown<List<String>?>();
-    this.anycastIpListId = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.callerReference = Output.createUnknown<String>();
-    this.comment = Output.createUnknown<String?>();
+    this.aliases = registerOutput<List<String>?>('aliases');
+    this.anycastIpListId = registerOutput<String?>('anycastIpListId');
+    this.arn = registerOutput<String>('arn');
+    this.callerReference = registerOutput<String>('callerReference');
+    this.comment = registerOutput<String?>('comment');
     this.connectionFunctionAssociation =
-        Output.createUnknown<DistributionConnectionFunctionAssociation?>();
-    this.continuousDeploymentPolicyId = Output.createUnknown<String>();
+        registerOutput<DistributionConnectionFunctionAssociation?>(
+            'connectionFunctionAssociation');
+    this.continuousDeploymentPolicyId =
+        registerOutput<String>('continuousDeploymentPolicyId');
     this.customErrorResponses =
-        Output.createUnknown<List<DistributionCustomErrorResponse>?>();
+        registerOutput<List<DistributionCustomErrorResponse>?>(
+            'customErrorResponses');
     this.defaultCacheBehavior =
-        Output.createUnknown<DistributionDefaultCacheBehavior>();
-    this.defaultRootObject = Output.createUnknown<String?>();
-    this.domainName = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool>();
-    this.etag = Output.createUnknown<String>();
-    this.hostedZoneId = Output.createUnknown<String>();
-    this.httpVersion = Output.createUnknown<String?>();
-    this.inProgressValidationBatches = Output.createUnknown<int>();
-    this.isIpv6Enabled = Output.createUnknown<bool?>();
-    this.lastModifiedTime = Output.createUnknown<String>();
-    this.loggingConfig = Output.createUnknown<DistributionLoggingConfig?>();
-    this.loggingV1Enabled = Output.createUnknown<bool>();
+        registerOutput<DistributionDefaultCacheBehavior>(
+            'defaultCacheBehavior');
+    this.defaultRootObject = registerOutput<String?>('defaultRootObject');
+    this.domainName = registerOutput<String>('domainName');
+    this.enabled = registerOutput<bool>('enabled');
+    this.etag = registerOutput<String>('etag');
+    this.hostedZoneId = registerOutput<String>('hostedZoneId');
+    this.httpVersion = registerOutput<String?>('httpVersion');
+    this.inProgressValidationBatches =
+        registerOutput<int>('inProgressValidationBatches');
+    this.isIpv6Enabled = registerOutput<bool?>('isIpv6Enabled');
+    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.loggingConfig =
+        registerOutput<DistributionLoggingConfig?>('loggingConfig');
+    this.loggingV1Enabled = registerOutput<bool>('loggingV1Enabled');
     this.orderedCacheBehaviors =
-        Output.createUnknown<List<DistributionOrderedCacheBehavior>?>();
-    this.originGroups = Output.createUnknown<List<DistributionOriginGroup>?>();
-    this.origins = Output.createUnknown<List<DistributionOrigin>>();
-    this.priceClass = Output.createUnknown<String?>();
-    this.restrictions = Output.createUnknown<DistributionRestrictions>();
-    this.retainOnDelete = Output.createUnknown<bool?>();
-    this.staging = Output.createUnknown<bool?>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<DistributionOrderedCacheBehavior>?>(
+            'orderedCacheBehaviors');
+    this.originGroups =
+        registerOutput<List<DistributionOriginGroup>?>('originGroups');
+    this.origins = registerOutput<List<DistributionOrigin>>('origins');
+    this.priceClass = registerOutput<String?>('priceClass');
+    this.restrictions =
+        registerOutput<DistributionRestrictions>('restrictions');
+    this.retainOnDelete = registerOutput<bool?>('retainOnDelete');
+    this.staging = registerOutput<bool?>('staging');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.trustedKeyGroups =
-        Output.createUnknown<List<DistributionTrustedKeyGroup>>();
+        registerOutput<List<DistributionTrustedKeyGroup>>('trustedKeyGroups');
     this.trustedSigners =
-        Output.createUnknown<List<DistributionTrustedSigner>>();
+        registerOutput<List<DistributionTrustedSigner>>('trustedSigners');
     this.viewerCertificate =
-        Output.createUnknown<DistributionViewerCertificate>();
+        registerOutput<DistributionViewerCertificate>('viewerCertificate');
     this.viewerMtlsConfig =
-        Output.createUnknown<DistributionViewerMtlsConfig?>();
-    this.waitForDeployment = Output.createUnknown<bool?>();
-    this.webAclId = Output.createUnknown<String?>();
+        registerOutput<DistributionViewerMtlsConfig?>('viewerMtlsConfig');
+    this.waitForDeployment = registerOutput<bool?>('waitForDeployment');
+    this.webAclId = registerOutput<String?>('webAclId');
   }
 }

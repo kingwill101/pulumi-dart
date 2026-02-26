@@ -34,13 +34,13 @@ class Variable extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.configId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.text = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.value = Output.createUnknown<String>();
+    this.configId = registerOutput<String>('configId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.state = registerOutput<String>('state');
+    this.text = registerOutput<String>('text');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.value = registerOutput<String>('value');
   }
 }

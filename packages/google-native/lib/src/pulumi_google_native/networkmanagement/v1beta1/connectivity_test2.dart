@@ -57,20 +57,21 @@ class ConnectivityTest2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.destination = Output.createUnknown<EndpointResponse2>();
-    this.displayName = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.probingDetails = Output.createUnknown<ProbingDetailsResponse2>();
-    this.project = Output.createUnknown<String>();
-    this.protocol = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.destination = registerOutput<EndpointResponse2>('destination');
+    this.displayName = registerOutput<String>('displayName');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.probingDetails =
+        registerOutput<ProbingDetailsResponse2>('probingDetails');
+    this.project = registerOutput<String>('project');
+    this.protocol = registerOutput<String>('protocol');
     this.reachabilityDetails =
-        Output.createUnknown<ReachabilityDetailsResponse2>();
-    this.relatedProjects = Output.createUnknown<List<String>>();
-    this.source = Output.createUnknown<EndpointResponse2>();
-    this.testId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<ReachabilityDetailsResponse2>('reachabilityDetails');
+    this.relatedProjects = registerOutput<List<String>>('relatedProjects');
+    this.source = registerOutput<EndpointResponse2>('source');
+    this.testId = registerOutput<String>('testId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

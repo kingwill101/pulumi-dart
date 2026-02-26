@@ -143,8 +143,9 @@ class RegexPatternSet2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
-    this.regexPatternStrings = Output.createUnknown<List<String>?>();
-    this.region = Output.createUnknown<String>();
+    this.name = registerOutput<String>('name');
+    this.regexPatternStrings =
+        registerOutput<List<String>?>('regexPatternStrings');
+    this.region = registerOutput<String>('region');
   }
 }

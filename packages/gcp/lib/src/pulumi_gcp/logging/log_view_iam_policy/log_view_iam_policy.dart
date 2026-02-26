@@ -1991,11 +1991,11 @@ class LogViewIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.policyData = registerOutput<String>('policyData');
   }
 }

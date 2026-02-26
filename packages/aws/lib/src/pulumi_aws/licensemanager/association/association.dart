@@ -270,8 +270,9 @@ class Association extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.licenseConfigurationArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
+    this.licenseConfigurationArn =
+        registerOutput<String>('licenseConfigurationArn');
+    this.region = registerOutput<String>('region');
+    this.resourceArn = registerOutput<String>('resourceArn');
   }
 }

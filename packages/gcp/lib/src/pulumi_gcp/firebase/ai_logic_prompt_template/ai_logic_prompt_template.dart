@@ -210,16 +210,16 @@ class AiLogicPromptTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.locked = Output.createUnknown<bool>();
-    this.model = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.stateChangeTime = Output.createUnknown<String>();
-    this.templateId = Output.createUnknown<String>();
-    this.templateString = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String?>('displayName');
+    this.location = registerOutput<String>('location');
+    this.locked = registerOutput<bool>('locked');
+    this.model = registerOutput<String>('model');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.stateChangeTime = registerOutput<String>('stateChangeTime');
+    this.templateId = registerOutput<String>('templateId');
+    this.templateString = registerOutput<String>('templateString');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

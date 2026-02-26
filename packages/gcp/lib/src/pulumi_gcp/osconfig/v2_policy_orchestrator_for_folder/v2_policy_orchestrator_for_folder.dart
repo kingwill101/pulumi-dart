@@ -885,24 +885,28 @@ class V2PolicyOrchestratorForFolder extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.folderId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.orchestratedResource = Output.createUnknown<
-        V2PolicyOrchestratorForFolderOrchestratedResource>();
-    this.orchestrationScope = Output.createUnknown<
-        V2PolicyOrchestratorForFolderOrchestrationScope?>();
-    this.orchestrationStates = Output.createUnknown<
-        List<V2PolicyOrchestratorForFolderOrchestrationState>>();
-    this.policyOrchestratorId = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
+    this.action = registerOutput<String>('action');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.etag = registerOutput<String>('etag');
+    this.folderId = registerOutput<String>('folderId');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.orchestratedResource =
+        registerOutput<V2PolicyOrchestratorForFolderOrchestratedResource>(
+            'orchestratedResource');
+    this.orchestrationScope =
+        registerOutput<V2PolicyOrchestratorForFolderOrchestrationScope?>(
+            'orchestrationScope');
+    this.orchestrationStates =
+        registerOutput<List<V2PolicyOrchestratorForFolderOrchestrationState>>(
+            'orchestrationStates');
+    this.policyOrchestratorId = registerOutput<String>('policyOrchestratorId');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.state = registerOutput<String?>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

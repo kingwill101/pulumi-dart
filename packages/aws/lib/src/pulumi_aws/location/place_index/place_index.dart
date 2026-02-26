@@ -150,16 +150,17 @@ class PlaceIndex extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.dataSource = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.dataSource = registerOutput<String>('dataSource');
     this.dataSourceConfiguration =
-        Output.createUnknown<PlaceIndexDataSourceConfiguration>();
-    this.description = Output.createUnknown<String?>();
-    this.indexArn = Output.createUnknown<String>();
-    this.indexName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<PlaceIndexDataSourceConfiguration>(
+            'dataSourceConfiguration');
+    this.description = registerOutput<String?>('description');
+    this.indexArn = registerOutput<String>('indexArn');
+    this.indexName = registerOutput<String>('indexName');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

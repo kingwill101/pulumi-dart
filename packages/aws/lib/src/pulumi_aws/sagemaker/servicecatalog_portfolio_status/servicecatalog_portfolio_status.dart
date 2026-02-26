@@ -116,7 +116,7 @@ class ServicecatalogPortfolioStatus extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
   }
 }

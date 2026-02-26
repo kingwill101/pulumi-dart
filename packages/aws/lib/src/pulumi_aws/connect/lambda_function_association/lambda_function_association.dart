@@ -127,8 +127,8 @@ class LambdaFunctionAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.functionArn = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.functionArn = registerOutput<String>('functionArn');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.region = registerOutput<String>('region');
   }
 }

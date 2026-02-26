@@ -345,20 +345,23 @@ class Repository3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.encryptionConfigurations =
-        Output.createUnknown<List<RepositoryEncryptionConfiguration>?>();
-    this.forceDelete = Output.createUnknown<bool?>();
+        registerOutput<List<RepositoryEncryptionConfiguration>?>(
+            'encryptionConfigurations');
+    this.forceDelete = registerOutput<bool?>('forceDelete');
     this.imageScanningConfiguration =
-        Output.createUnknown<RepositoryImageScanningConfiguration?>();
-    this.imageTagMutability = Output.createUnknown<String?>();
-    this.imageTagMutabilityExclusionFilters = Output.createUnknown<
-        List<RepositoryImageTagMutabilityExclusionFilter>?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.registryId = Output.createUnknown<String>();
-    this.repositoryUrl = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<RepositoryImageScanningConfiguration?>(
+            'imageScanningConfiguration');
+    this.imageTagMutability = registerOutput<String?>('imageTagMutability');
+    this.imageTagMutabilityExclusionFilters =
+        registerOutput<List<RepositoryImageTagMutabilityExclusionFilter>?>(
+            'imageTagMutabilityExclusionFilters');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.registryId = registerOutput<String>('registryId');
+    this.repositoryUrl = registerOutput<String>('repositoryUrl');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

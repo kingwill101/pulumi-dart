@@ -31,11 +31,12 @@ class DeploymentIamPolicy2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse31>>();
-    this.bindings = Output.createUnknown<List<BindingResponse49>>();
-    this.etag = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.resource = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse31>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse49>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.project = registerOutput<String>('project');
+    this.resource = registerOutput<String>('resource');
+    this.version = registerOutput<int>('version');
   }
 }

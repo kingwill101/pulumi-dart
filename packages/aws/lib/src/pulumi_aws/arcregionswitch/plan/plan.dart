@@ -1139,20 +1139,22 @@ class Plan extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.associatedAlarms = Output.createUnknown<List<PlanAssociatedAlarm>?>();
-    this.description = Output.createUnknown<String?>();
-    this.executionRole = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.primaryRegion = Output.createUnknown<String?>();
-    this.recoveryApproach = Output.createUnknown<String>();
-    this.recoveryTimeObjectiveMinutes = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
-    this.regions = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<PlanTimeouts?>();
-    this.triggers = Output.createUnknown<List<PlanTrigger>?>();
-    this.workflows = Output.createUnknown<List<PlanWorkflow>?>();
+    this.arn = registerOutput<String>('arn');
+    this.associatedAlarms =
+        registerOutput<List<PlanAssociatedAlarm>?>('associatedAlarms');
+    this.description = registerOutput<String?>('description');
+    this.executionRole = registerOutput<String>('executionRole');
+    this.name = registerOutput<String>('name');
+    this.primaryRegion = registerOutput<String?>('primaryRegion');
+    this.recoveryApproach = registerOutput<String>('recoveryApproach');
+    this.recoveryTimeObjectiveMinutes =
+        registerOutput<int?>('recoveryTimeObjectiveMinutes');
+    this.region = registerOutput<String>('region');
+    this.regions = registerOutput<List<String>>('regions');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<PlanTimeouts?>('timeouts');
+    this.triggers = registerOutput<List<PlanTrigger>?>('triggers');
+    this.workflows = registerOutput<List<PlanWorkflow>?>('workflows');
   }
 }

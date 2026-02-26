@@ -182,9 +182,10 @@ class DataCatalogEncryptionSettings extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.catalogId = Output.createUnknown<String>();
-    this.dataCatalogEncryptionSettings = Output.createUnknown<
-        DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>();
-    this.region = Output.createUnknown<String>();
+    this.catalogId = registerOutput<String>('catalogId');
+    this.dataCatalogEncryptionSettings = registerOutput<
+            DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>(
+        'dataCatalogEncryptionSettings');
+    this.region = registerOutput<String>('region');
   }
 }

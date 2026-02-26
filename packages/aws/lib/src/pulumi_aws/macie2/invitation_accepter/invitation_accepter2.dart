@@ -221,8 +221,9 @@ class InvitationAccepter2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.administratorAccountId = Output.createUnknown<String>();
-    this.invitationId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.administratorAccountId =
+        registerOutput<String>('administratorAccountId');
+    this.invitationId = registerOutput<String>('invitationId');
+    this.region = registerOutput<String>('region');
   }
 }

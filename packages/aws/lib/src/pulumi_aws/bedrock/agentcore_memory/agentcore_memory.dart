@@ -453,15 +453,16 @@ class AgentcoreMemory extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.encryptionKeyArn = Output.createUnknown<String?>();
-    this.eventExpiryDuration = Output.createUnknown<int>();
-    this.memoryExecutionRoleArn = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<AgentcoreMemoryTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.encryptionKeyArn = registerOutput<String?>('encryptionKeyArn');
+    this.eventExpiryDuration = registerOutput<int>('eventExpiryDuration');
+    this.memoryExecutionRoleArn =
+        registerOutput<String?>('memoryExecutionRoleArn');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<AgentcoreMemoryTimeouts?>('timeouts');
   }
 }

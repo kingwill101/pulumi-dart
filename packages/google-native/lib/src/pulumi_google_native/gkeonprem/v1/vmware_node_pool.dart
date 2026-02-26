@@ -65,24 +65,25 @@ class VmwareNodePool extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.config = Output.createUnknown<VmwareNodeConfigResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.config = registerOutput<VmwareNodeConfigResponse>('config');
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.nodePoolAutoscaling =
-        Output.createUnknown<VmwareNodePoolAutoscalingConfigResponse>();
-    this.onPremVersion = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.status = Output.createUnknown<ResourceStatusResponse4>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vmwareClusterId = Output.createUnknown<String>();
-    this.vmwareNodePoolId = Output.createUnknown<String?>();
+        registerOutput<VmwareNodePoolAutoscalingConfigResponse>(
+            'nodePoolAutoscaling');
+    this.onPremVersion = registerOutput<String>('onPremVersion');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.state = registerOutput<String>('state');
+    this.status = registerOutput<ResourceStatusResponse4>('status');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vmwareClusterId = registerOutput<String>('vmwareClusterId');
+    this.vmwareNodePoolId = registerOutput<String?>('vmwareNodePoolId');
   }
 }

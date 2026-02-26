@@ -1094,20 +1094,22 @@ class ExperimentTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.actions = Output.createUnknown<List<ExperimentTemplateAction>>();
-    this.description = Output.createUnknown<String>();
+    this.actions = registerOutput<List<ExperimentTemplateAction>>('actions');
+    this.description = registerOutput<String>('description');
     this.experimentOptions =
-        Output.createUnknown<ExperimentTemplateExperimentOptions>();
-    this.experimentReportConfiguration = Output.createUnknown<
-        ExperimentTemplateExperimentReportConfiguration?>();
+        registerOutput<ExperimentTemplateExperimentOptions>(
+            'experimentOptions');
+    this.experimentReportConfiguration =
+        registerOutput<ExperimentTemplateExperimentReportConfiguration?>(
+            'experimentReportConfiguration');
     this.logConfiguration =
-        Output.createUnknown<ExperimentTemplateLogConfiguration?>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
+        registerOutput<ExperimentTemplateLogConfiguration?>('logConfiguration');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
     this.stopConditions =
-        Output.createUnknown<List<ExperimentTemplateStopCondition>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targets = Output.createUnknown<List<ExperimentTemplateTarget>?>();
+        registerOutput<List<ExperimentTemplateStopCondition>>('stopConditions');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targets = registerOutput<List<ExperimentTemplateTarget>?>('targets');
   }
 }

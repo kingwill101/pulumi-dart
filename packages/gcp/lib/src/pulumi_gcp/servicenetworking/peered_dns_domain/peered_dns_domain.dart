@@ -169,11 +169,11 @@ class PeeredDnsDomain extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dnsSuffix = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.service = Output.createUnknown<String?>();
+    this.dnsSuffix = registerOutput<String>('dnsSuffix');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.parent = registerOutput<String>('parent');
+    this.project = registerOutput<String>('project');
+    this.service = registerOutput<String?>('service');
   }
 }

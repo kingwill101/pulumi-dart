@@ -40,15 +40,15 @@ class MetadataSchema2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.metadataSchemaId = Output.createUnknown<String?>();
-    this.metadataStoreId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.schema = Output.createUnknown<String>();
-    this.schemaType = Output.createUnknown<String>();
-    this.schemaVersion = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.location = registerOutput<String>('location');
+    this.metadataSchemaId = registerOutput<String?>('metadataSchemaId');
+    this.metadataStoreId = registerOutput<String>('metadataStoreId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.schema = registerOutput<String>('schema');
+    this.schemaType = registerOutput<String>('schemaType');
+    this.schemaVersion = registerOutput<String>('schemaVersion');
   }
 }

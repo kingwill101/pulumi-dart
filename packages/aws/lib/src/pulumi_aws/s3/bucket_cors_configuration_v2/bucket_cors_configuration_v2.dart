@@ -298,10 +298,10 @@ class BucketCorsConfigurationV2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
     this.corsRules =
-        Output.createUnknown<List<BucketCorsConfigurationV2CorsRule>>();
-    this.expectedBucketOwner = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<BucketCorsConfigurationV2CorsRule>>('corsRules');
+    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    this.region = registerOutput<String>('region');
   }
 }

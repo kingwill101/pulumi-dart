@@ -182,21 +182,24 @@ class DomainConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationProtocol = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.authenticationType = Output.createUnknown<String>();
+    this.applicationProtocol = registerOutput<String>('applicationProtocol');
+    this.arn = registerOutput<String>('arn');
+    this.authenticationType = registerOutput<String>('authenticationType');
     this.authorizerConfig =
-        Output.createUnknown<DomainConfigurationAuthorizerConfig?>();
-    this.domainName = Output.createUnknown<String>();
-    this.domainType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.serverCertificateArns = Output.createUnknown<List<String>?>();
-    this.serviceType = Output.createUnknown<String?>();
-    this.status = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tlsConfig = Output.createUnknown<DomainConfigurationTlsConfig>();
-    this.validationCertificateArn = Output.createUnknown<String?>();
+        registerOutput<DomainConfigurationAuthorizerConfig?>(
+            'authorizerConfig');
+    this.domainName = registerOutput<String>('domainName');
+    this.domainType = registerOutput<String>('domainType');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.serverCertificateArns =
+        registerOutput<List<String>?>('serverCertificateArns');
+    this.serviceType = registerOutput<String?>('serviceType');
+    this.status = registerOutput<String?>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tlsConfig = registerOutput<DomainConfigurationTlsConfig>('tlsConfig');
+    this.validationCertificateArn =
+        registerOutput<String?>('validationCertificateArn');
   }
 }

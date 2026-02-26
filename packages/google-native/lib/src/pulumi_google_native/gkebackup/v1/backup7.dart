@@ -105,36 +105,41 @@ class Backup7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allNamespaces = Output.createUnknown<bool>();
-    this.backupId = Output.createUnknown<String?>();
-    this.backupPlanId = Output.createUnknown<String>();
-    this.clusterMetadata = Output.createUnknown<ClusterMetadataResponse>();
-    this.completeTime = Output.createUnknown<String>();
-    this.configBackupSizeBytes = Output.createUnknown<String>();
-    this.containsSecrets = Output.createUnknown<bool>();
-    this.containsVolumeData = Output.createUnknown<bool>();
-    this.createTime = Output.createUnknown<String>();
-    this.deleteLockDays = Output.createUnknown<int>();
-    this.deleteLockExpireTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.encryptionKey = Output.createUnknown<EncryptionKeyResponse2>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.manual = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.podCount = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.resourceCount = Output.createUnknown<int>();
-    this.retainDays = Output.createUnknown<int>();
-    this.retainExpireTime = Output.createUnknown<String>();
-    this.selectedApplications = Output.createUnknown<NamespacedNamesResponse>();
-    this.selectedNamespaces = Output.createUnknown<NamespacesResponse>();
-    this.sizeBytes = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.stateReason = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.volumeCount = Output.createUnknown<int>();
+    this.allNamespaces = registerOutput<bool>('allNamespaces');
+    this.backupId = registerOutput<String?>('backupId');
+    this.backupPlanId = registerOutput<String>('backupPlanId');
+    this.clusterMetadata =
+        registerOutput<ClusterMetadataResponse>('clusterMetadata');
+    this.completeTime = registerOutput<String>('completeTime');
+    this.configBackupSizeBytes =
+        registerOutput<String>('configBackupSizeBytes');
+    this.containsSecrets = registerOutput<bool>('containsSecrets');
+    this.containsVolumeData = registerOutput<bool>('containsVolumeData');
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteLockDays = registerOutput<int>('deleteLockDays');
+    this.deleteLockExpireTime = registerOutput<String>('deleteLockExpireTime');
+    this.description = registerOutput<String>('description');
+    this.encryptionKey =
+        registerOutput<EncryptionKeyResponse2>('encryptionKey');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.manual = registerOutput<bool>('manual');
+    this.name = registerOutput<String>('name');
+    this.podCount = registerOutput<int>('podCount');
+    this.project = registerOutput<String>('project');
+    this.resourceCount = registerOutput<int>('resourceCount');
+    this.retainDays = registerOutput<int>('retainDays');
+    this.retainExpireTime = registerOutput<String>('retainExpireTime');
+    this.selectedApplications =
+        registerOutput<NamespacedNamesResponse>('selectedApplications');
+    this.selectedNamespaces =
+        registerOutput<NamespacesResponse>('selectedNamespaces');
+    this.sizeBytes = registerOutput<String>('sizeBytes');
+    this.state = registerOutput<String>('state');
+    this.stateReason = registerOutput<String>('stateReason');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.volumeCount = registerOutput<int>('volumeCount');
   }
 }

@@ -393,86 +393,104 @@ class SpotInstanceRequest extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.ami = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.associatePublicIpAddress = Output.createUnknown<bool>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.capacityReservationSpecification = Output.createUnknown<
-        SpotInstanceRequestCapacityReservationSpecification>();
-    this.cpuOptions = Output.createUnknown<SpotInstanceRequestCpuOptions>();
+    this.ami = registerOutput<String>('ami');
+    this.arn = registerOutput<String>('arn');
+    this.associatePublicIpAddress =
+        registerOutput<bool>('associatePublicIpAddress');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.capacityReservationSpecification =
+        registerOutput<SpotInstanceRequestCapacityReservationSpecification>(
+            'capacityReservationSpecification');
+    this.cpuOptions =
+        registerOutput<SpotInstanceRequestCpuOptions>('cpuOptions');
     this.creditSpecification =
-        Output.createUnknown<SpotInstanceRequestCreditSpecification?>();
-    this.disableApiStop = Output.createUnknown<bool>();
-    this.disableApiTermination = Output.createUnknown<bool>();
+        registerOutput<SpotInstanceRequestCreditSpecification?>(
+            'creditSpecification');
+    this.disableApiStop = registerOutput<bool>('disableApiStop');
+    this.disableApiTermination = registerOutput<bool>('disableApiTermination');
     this.ebsBlockDevices =
-        Output.createUnknown<List<SpotInstanceRequestEbsBlockDevice>>();
-    this.ebsOptimized = Output.createUnknown<bool>();
-    this.enablePrimaryIpv6 = Output.createUnknown<bool>();
+        registerOutput<List<SpotInstanceRequestEbsBlockDevice>>(
+            'ebsBlockDevices');
+    this.ebsOptimized = registerOutput<bool>('ebsOptimized');
+    this.enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
     this.enclaveOptions =
-        Output.createUnknown<SpotInstanceRequestEnclaveOptions>();
+        registerOutput<SpotInstanceRequestEnclaveOptions>('enclaveOptions');
     this.ephemeralBlockDevices =
-        Output.createUnknown<List<SpotInstanceRequestEphemeralBlockDevice>>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.getPasswordData = Output.createUnknown<bool?>();
-    this.hibernation = Output.createUnknown<bool?>();
-    this.hostId = Output.createUnknown<String>();
-    this.hostResourceGroupArn = Output.createUnknown<String>();
-    this.iamInstanceProfile = Output.createUnknown<String>();
-    this.instanceInitiatedShutdownBehavior = Output.createUnknown<String>();
-    this.instanceInterruptionBehavior = Output.createUnknown<String?>();
-    this.instanceState = Output.createUnknown<String>();
-    this.instanceType = Output.createUnknown<String>();
-    this.ipv6AddressCount = Output.createUnknown<int>();
-    this.ipv6Addresses = Output.createUnknown<List<String>>();
-    this.keyName = Output.createUnknown<String>();
-    this.launchGroup = Output.createUnknown<String?>();
+        registerOutput<List<SpotInstanceRequestEphemeralBlockDevice>>(
+            'ephemeralBlockDevices');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.getPasswordData = registerOutput<bool?>('getPasswordData');
+    this.hibernation = registerOutput<bool?>('hibernation');
+    this.hostId = registerOutput<String>('hostId');
+    this.hostResourceGroupArn = registerOutput<String>('hostResourceGroupArn');
+    this.iamInstanceProfile = registerOutput<String>('iamInstanceProfile');
+    this.instanceInitiatedShutdownBehavior =
+        registerOutput<String>('instanceInitiatedShutdownBehavior');
+    this.instanceInterruptionBehavior =
+        registerOutput<String?>('instanceInterruptionBehavior');
+    this.instanceState = registerOutput<String>('instanceState');
+    this.instanceType = registerOutput<String>('instanceType');
+    this.ipv6AddressCount = registerOutput<int>('ipv6AddressCount');
+    this.ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
+    this.keyName = registerOutput<String>('keyName');
+    this.launchGroup = registerOutput<String?>('launchGroup');
     this.launchTemplate =
-        Output.createUnknown<SpotInstanceRequestLaunchTemplate?>();
+        registerOutput<SpotInstanceRequestLaunchTemplate?>('launchTemplate');
     this.maintenanceOptions =
-        Output.createUnknown<SpotInstanceRequestMaintenanceOptions>();
+        registerOutput<SpotInstanceRequestMaintenanceOptions>(
+            'maintenanceOptions');
     this.metadataOptions =
-        Output.createUnknown<SpotInstanceRequestMetadataOptions>();
-    this.monitoring = Output.createUnknown<bool>();
+        registerOutput<SpotInstanceRequestMetadataOptions>('metadataOptions');
+    this.monitoring = registerOutput<bool>('monitoring');
     this.networkInterfaces =
-        Output.createUnknown<List<SpotInstanceRequestNetworkInterface>>();
-    this.outpostArn = Output.createUnknown<String>();
-    this.passwordData = Output.createUnknown<String>();
-    this.placementGroup = Output.createUnknown<String>();
-    this.placementGroupId = Output.createUnknown<String>();
-    this.placementPartitionNumber = Output.createUnknown<int>();
-    this.primaryNetworkInterfaceId = Output.createUnknown<String>();
-    this.primaryNetworkInterfaces = Output.createUnknown<
-        List<SpotInstanceRequestPrimaryNetworkInterface>>();
-    this.privateDns = Output.createUnknown<String>();
+        registerOutput<List<SpotInstanceRequestNetworkInterface>>(
+            'networkInterfaces');
+    this.outpostArn = registerOutput<String>('outpostArn');
+    this.passwordData = registerOutput<String>('passwordData');
+    this.placementGroup = registerOutput<String>('placementGroup');
+    this.placementGroupId = registerOutput<String>('placementGroupId');
+    this.placementPartitionNumber =
+        registerOutput<int>('placementPartitionNumber');
+    this.primaryNetworkInterfaceId =
+        registerOutput<String>('primaryNetworkInterfaceId');
+    this.primaryNetworkInterfaces =
+        registerOutput<List<SpotInstanceRequestPrimaryNetworkInterface>>(
+            'primaryNetworkInterfaces');
+    this.privateDns = registerOutput<String>('privateDns');
     this.privateDnsNameOptions =
-        Output.createUnknown<SpotInstanceRequestPrivateDnsNameOptions>();
-    this.privateIp = Output.createUnknown<String>();
-    this.publicDns = Output.createUnknown<String>();
-    this.publicIp = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<SpotInstanceRequestPrivateDnsNameOptions>(
+            'privateDnsNameOptions');
+    this.privateIp = registerOutput<String>('privateIp');
+    this.publicDns = registerOutput<String>('publicDns');
+    this.publicIp = registerOutput<String>('publicIp');
+    this.region = registerOutput<String>('region');
     this.rootBlockDevice =
-        Output.createUnknown<SpotInstanceRequestRootBlockDevice>();
-    this.secondaryNetworkInterfaces = Output.createUnknown<
-        List<SpotInstanceRequestSecondaryNetworkInterface>>();
-    this.secondaryPrivateIps = Output.createUnknown<List<String>>();
-    this.securityGroups = Output.createUnknown<List<String>>();
-    this.sourceDestCheck = Output.createUnknown<bool?>();
-    this.spotBidStatus = Output.createUnknown<String>();
-    this.spotInstanceId = Output.createUnknown<String>();
-    this.spotPrice = Output.createUnknown<String>();
-    this.spotRequestState = Output.createUnknown<String>();
-    this.spotType = Output.createUnknown<String?>();
-    this.subnetId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tenancy = Output.createUnknown<String>();
-    this.userData = Output.createUnknown<String?>();
-    this.userDataBase64 = Output.createUnknown<String>();
-    this.userDataReplaceOnChange = Output.createUnknown<bool?>();
-    this.validFrom = Output.createUnknown<String>();
-    this.validUntil = Output.createUnknown<String>();
-    this.volumeTags = Output.createUnknown<Map<String, String>?>();
-    this.vpcSecurityGroupIds = Output.createUnknown<List<String>>();
-    this.waitForFulfillment = Output.createUnknown<bool?>();
+        registerOutput<SpotInstanceRequestRootBlockDevice>('rootBlockDevice');
+    this.secondaryNetworkInterfaces =
+        registerOutput<List<SpotInstanceRequestSecondaryNetworkInterface>>(
+            'secondaryNetworkInterfaces');
+    this.secondaryPrivateIps =
+        registerOutput<List<String>>('secondaryPrivateIps');
+    this.securityGroups = registerOutput<List<String>>('securityGroups');
+    this.sourceDestCheck = registerOutput<bool?>('sourceDestCheck');
+    this.spotBidStatus = registerOutput<String>('spotBidStatus');
+    this.spotInstanceId = registerOutput<String>('spotInstanceId');
+    this.spotPrice = registerOutput<String>('spotPrice');
+    this.spotRequestState = registerOutput<String>('spotRequestState');
+    this.spotType = registerOutput<String?>('spotType');
+    this.subnetId = registerOutput<String>('subnetId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tenancy = registerOutput<String>('tenancy');
+    this.userData = registerOutput<String?>('userData');
+    this.userDataBase64 = registerOutput<String>('userDataBase64');
+    this.userDataReplaceOnChange =
+        registerOutput<bool?>('userDataReplaceOnChange');
+    this.validFrom = registerOutput<String>('validFrom');
+    this.validUntil = registerOutput<String>('validUntil');
+    this.volumeTags = registerOutput<Map<String, String>?>('volumeTags');
+    this.vpcSecurityGroupIds =
+        registerOutput<List<String>>('vpcSecurityGroupIds');
+    this.waitForFulfillment = registerOutput<bool?>('waitForFulfillment');
   }
 }

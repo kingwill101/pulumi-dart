@@ -673,14 +673,17 @@ class AccessApprovalSettings extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activeKeyVersion = Output.createUnknown<String?>();
-    this.ancestorHasActiveKeyVersion = Output.createUnknown<bool>();
-    this.enrolledAncestor = Output.createUnknown<bool>();
+    this.activeKeyVersion = registerOutput<String?>('activeKeyVersion');
+    this.ancestorHasActiveKeyVersion =
+        registerOutput<bool>('ancestorHasActiveKeyVersion');
+    this.enrolledAncestor = registerOutput<bool>('enrolledAncestor');
     this.enrolledServices =
-        Output.createUnknown<List<AccessApprovalSettingsEnrolledService>>();
-    this.folderId = Output.createUnknown<String>();
-    this.invalidKeyVersion = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.notificationEmails = Output.createUnknown<List<String>>();
+        registerOutput<List<AccessApprovalSettingsEnrolledService>>(
+            'enrolledServices');
+    this.folderId = registerOutput<String>('folderId');
+    this.invalidKeyVersion = registerOutput<bool>('invalidKeyVersion');
+    this.name = registerOutput<String>('name');
+    this.notificationEmails =
+        registerOutput<List<String>>('notificationEmails');
   }
 }

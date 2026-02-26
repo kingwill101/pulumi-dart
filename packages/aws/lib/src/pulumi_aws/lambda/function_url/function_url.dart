@@ -365,14 +365,14 @@ class FunctionUrl extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authorizationType = Output.createUnknown<String>();
-    this.cors = Output.createUnknown<FunctionUrlCors?>();
-    this.functionArn = Output.createUnknown<String>();
-    this.functionName = Output.createUnknown<String>();
-    this.functionUrl = Output.createUnknown<String>();
-    this.invokeMode = Output.createUnknown<String?>();
-    this.qualifier = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.urlId = Output.createUnknown<String>();
+    this.authorizationType = registerOutput<String>('authorizationType');
+    this.cors = registerOutput<FunctionUrlCors?>('cors');
+    this.functionArn = registerOutput<String>('functionArn');
+    this.functionName = registerOutput<String>('functionName');
+    this.functionUrl = registerOutput<String>('functionUrl');
+    this.invokeMode = registerOutput<String?>('invokeMode');
+    this.qualifier = registerOutput<String?>('qualifier');
+    this.region = registerOutput<String>('region');
+    this.urlId = registerOutput<String>('urlId');
   }
 }

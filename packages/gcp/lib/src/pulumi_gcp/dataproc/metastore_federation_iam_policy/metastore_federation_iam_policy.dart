@@ -942,10 +942,10 @@ class MetastoreFederationIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.federationId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.federationId = registerOutput<String>('federationId');
+    this.location = registerOutput<String>('location');
+    this.policyData = registerOutput<String>('policyData');
+    this.project = registerOutput<String>('project');
   }
 }

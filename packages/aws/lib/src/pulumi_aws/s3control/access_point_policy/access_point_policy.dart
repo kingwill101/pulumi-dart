@@ -307,9 +307,9 @@ class AccessPointPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessPointArn = Output.createUnknown<String>();
-    this.hasPublicAccessPolicy = Output.createUnknown<bool>();
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.accessPointArn = registerOutput<String>('accessPointArn');
+    this.hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
   }
 }

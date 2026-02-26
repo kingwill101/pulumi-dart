@@ -1081,17 +1081,20 @@ class Hl7Store extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dataset = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
+    this.dataset = registerOutput<String>('dataset');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
     this.notificationConfig =
-        Output.createUnknown<Hl7StoreNotificationConfig?>();
+        registerOutput<Hl7StoreNotificationConfig?>('notificationConfig');
     this.notificationConfigs =
-        Output.createUnknown<List<Hl7StoreNotificationConfigs>?>();
-    this.parserConfig = Output.createUnknown<Hl7StoreParserConfig>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.rejectDuplicateMessage = Output.createUnknown<bool?>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<List<Hl7StoreNotificationConfigs>?>(
+            'notificationConfigs');
+    this.parserConfig = registerOutput<Hl7StoreParserConfig>('parserConfig');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.rejectDuplicateMessage =
+        registerOutput<bool?>('rejectDuplicateMessage');
+    this.selfLink = registerOutput<String>('selfLink');
   }
 }

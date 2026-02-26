@@ -458,28 +458,31 @@ class LoadBalancer2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessLogs = Output.createUnknown<LoadBalancerAccessLogs2?>();
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZones = Output.createUnknown<List<String>>();
-    this.connectionDraining = Output.createUnknown<bool?>();
-    this.connectionDrainingTimeout = Output.createUnknown<int?>();
-    this.crossZoneLoadBalancing = Output.createUnknown<bool?>();
-    this.desyncMitigationMode = Output.createUnknown<String?>();
-    this.dnsName = Output.createUnknown<String>();
-    this.healthCheck = Output.createUnknown<LoadBalancerHealthCheck>();
-    this.idleTimeout = Output.createUnknown<int?>();
-    this.instances = Output.createUnknown<List<String>>();
-    this.internal = Output.createUnknown<bool>();
-    this.listeners = Output.createUnknown<List<LoadBalancerListener>>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroups = Output.createUnknown<List<String>>();
-    this.sourceSecurityGroup = Output.createUnknown<String>();
-    this.sourceSecurityGroupId = Output.createUnknown<String>();
-    this.subnets = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.zoneId = Output.createUnknown<String>();
+    this.accessLogs = registerOutput<LoadBalancerAccessLogs2?>('accessLogs');
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZones = registerOutput<List<String>>('availabilityZones');
+    this.connectionDraining = registerOutput<bool?>('connectionDraining');
+    this.connectionDrainingTimeout =
+        registerOutput<int?>('connectionDrainingTimeout');
+    this.crossZoneLoadBalancing =
+        registerOutput<bool?>('crossZoneLoadBalancing');
+    this.desyncMitigationMode = registerOutput<String?>('desyncMitigationMode');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.healthCheck = registerOutput<LoadBalancerHealthCheck>('healthCheck');
+    this.idleTimeout = registerOutput<int?>('idleTimeout');
+    this.instances = registerOutput<List<String>>('instances');
+    this.internal = registerOutput<bool>('internal');
+    this.listeners = registerOutput<List<LoadBalancerListener>>('listeners');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.region = registerOutput<String>('region');
+    this.securityGroups = registerOutput<List<String>>('securityGroups');
+    this.sourceSecurityGroup = registerOutput<String>('sourceSecurityGroup');
+    this.sourceSecurityGroupId =
+        registerOutput<String>('sourceSecurityGroupId');
+    this.subnets = registerOutput<List<String>>('subnets');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.zoneId = registerOutput<String>('zoneId');
   }
 }

@@ -172,11 +172,12 @@ class SecretRotation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.rotateImmediately = Output.createUnknown<bool?>();
-    this.rotationEnabled = Output.createUnknown<bool>();
-    this.rotationLambdaArn = Output.createUnknown<String?>();
-    this.rotationRules = Output.createUnknown<SecretRotationRotationRules>();
-    this.secretId = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.rotateImmediately = registerOutput<bool?>('rotateImmediately');
+    this.rotationEnabled = registerOutput<bool>('rotationEnabled');
+    this.rotationLambdaArn = registerOutput<String?>('rotationLambdaArn');
+    this.rotationRules =
+        registerOutput<SecretRotationRotationRules>('rotationRules');
+    this.secretId = registerOutput<String>('secretId');
   }
 }

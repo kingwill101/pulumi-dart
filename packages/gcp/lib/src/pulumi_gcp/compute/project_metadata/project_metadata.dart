@@ -282,7 +282,7 @@ class ProjectMetadata extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.metadata = Output.createUnknown<Map<String, String>>();
-    this.project = Output.createUnknown<String>();
+    this.metadata = registerOutput<Map<String, String>>('metadata');
+    this.project = registerOutput<String>('project');
   }
 }

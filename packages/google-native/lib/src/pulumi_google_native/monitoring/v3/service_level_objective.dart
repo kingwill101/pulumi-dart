@@ -42,17 +42,18 @@ class ServiceLevelObjective extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.calendarPeriod = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.goal = Output.createUnknown<double>();
-    this.name = Output.createUnknown<String>();
-    this.rollingPeriod = Output.createUnknown<String>();
-    this.serviceId = Output.createUnknown<String>();
+    this.calendarPeriod = registerOutput<String>('calendarPeriod');
+    this.displayName = registerOutput<String>('displayName');
+    this.goal = registerOutput<double>('goal');
+    this.name = registerOutput<String>('name');
+    this.rollingPeriod = registerOutput<String>('rollingPeriod');
+    this.serviceId = registerOutput<String>('serviceId');
     this.serviceLevelIndicator =
-        Output.createUnknown<ServiceLevelIndicatorResponse>();
-    this.serviceLevelObjectiveId = Output.createUnknown<String?>();
-    this.userLabels = Output.createUnknown<Map<String, String>>();
-    this.v3Id = Output.createUnknown<String>();
-    this.v3Id1 = Output.createUnknown<String>();
+        registerOutput<ServiceLevelIndicatorResponse>('serviceLevelIndicator');
+    this.serviceLevelObjectiveId =
+        registerOutput<String?>('serviceLevelObjectiveId');
+    this.userLabels = registerOutput<Map<String, String>>('userLabels');
+    this.v3Id = registerOutput<String>('v3Id');
+    this.v3Id1 = registerOutput<String>('v3Id1');
   }
 }

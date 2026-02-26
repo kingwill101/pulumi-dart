@@ -145,52 +145,61 @@ class Instance25 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.availableMaintenanceVersions = Output.createUnknown<List<String>>();
-    this.backendType = Output.createUnknown<String>();
-    this.connectionName = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.currentDiskSize = Output.createUnknown<String>();
-    this.databaseInstalledVersion = Output.createUnknown<String>();
-    this.databaseVersion = Output.createUnknown<String>();
+    this.availableMaintenanceVersions =
+        registerOutput<List<String>>('availableMaintenanceVersions');
+    this.backendType = registerOutput<String>('backendType');
+    this.connectionName = registerOutput<String>('connectionName');
+    this.createTime = registerOutput<String>('createTime');
+    this.currentDiskSize = registerOutput<String>('currentDiskSize');
+    this.databaseInstalledVersion =
+        registerOutput<String>('databaseInstalledVersion');
+    this.databaseVersion = registerOutput<String>('databaseVersion');
     this.diskEncryptionConfiguration =
-        Output.createUnknown<DiskEncryptionConfigurationResponse2>();
+        registerOutput<DiskEncryptionConfigurationResponse2>(
+            'diskEncryptionConfiguration');
     this.diskEncryptionStatus =
-        Output.createUnknown<DiskEncryptionStatusResponse2>();
-    this.dnsName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
+        registerOutput<DiskEncryptionStatusResponse2>('diskEncryptionStatus');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.etag = registerOutput<String>('etag');
     this.failoverReplica =
-        Output.createUnknown<InstanceFailoverReplicaResponse2>();
-    this.gceZone = Output.createUnknown<String>();
-    this.instanceType = Output.createUnknown<String>();
-    this.ipAddresses = Output.createUnknown<List<IpMappingResponse2>>();
-    this.ipv6Address = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.maintenanceVersion = Output.createUnknown<String>();
-    this.masterInstanceName = Output.createUnknown<String>();
-    this.maxDiskSize = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<InstanceFailoverReplicaResponse2>('failoverReplica');
+    this.gceZone = registerOutput<String>('gceZone');
+    this.instanceType = registerOutput<String>('instanceType');
+    this.ipAddresses = registerOutput<List<IpMappingResponse2>>('ipAddresses');
+    this.ipv6Address = registerOutput<String>('ipv6Address');
+    this.kind = registerOutput<String>('kind');
+    this.maintenanceVersion = registerOutput<String>('maintenanceVersion');
+    this.masterInstanceName = registerOutput<String>('masterInstanceName');
+    this.maxDiskSize = registerOutput<String>('maxDiskSize');
+    this.name = registerOutput<String>('name');
     this.onPremisesConfiguration =
-        Output.createUnknown<OnPremisesConfigurationResponse2>();
-    this.outOfDiskReport = Output.createUnknown<SqlOutOfDiskReportResponse2>();
-    this.primaryDnsName = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pscServiceAttachmentLink = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<OnPremisesConfigurationResponse2>(
+            'onPremisesConfiguration');
+    this.outOfDiskReport =
+        registerOutput<SqlOutOfDiskReportResponse2>('outOfDiskReport');
+    this.primaryDnsName = registerOutput<String>('primaryDnsName');
+    this.project = registerOutput<String>('project');
+    this.pscServiceAttachmentLink =
+        registerOutput<String>('pscServiceAttachmentLink');
+    this.region = registerOutput<String>('region');
     this.replicaConfiguration =
-        Output.createUnknown<ReplicaConfigurationResponse2>();
-    this.replicaNames = Output.createUnknown<List<String>>();
-    this.rootPassword = Output.createUnknown<String>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
+        registerOutput<ReplicaConfigurationResponse2>('replicaConfiguration');
+    this.replicaNames = registerOutput<List<String>>('replicaNames');
+    this.rootPassword = registerOutput<String>('rootPassword');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     this.scheduledMaintenance =
-        Output.createUnknown<SqlScheduledMaintenanceResponse2>();
-    this.secondaryGceZone = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.serverCaCert = Output.createUnknown<SslCertResponse2>();
-    this.serviceAccountEmailAddress = Output.createUnknown<String>();
-    this.settings = Output.createUnknown<SettingsResponse2>();
-    this.sqlNetworkArchitecture = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.suspensionReason = Output.createUnknown<List<String>>();
-    this.writeEndpoint = Output.createUnknown<String>();
+        registerOutput<SqlScheduledMaintenanceResponse2>(
+            'scheduledMaintenance');
+    this.secondaryGceZone = registerOutput<String>('secondaryGceZone');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.serverCaCert = registerOutput<SslCertResponse2>('serverCaCert');
+    this.serviceAccountEmailAddress =
+        registerOutput<String>('serviceAccountEmailAddress');
+    this.settings = registerOutput<SettingsResponse2>('settings');
+    this.sqlNetworkArchitecture =
+        registerOutput<String>('sqlNetworkArchitecture');
+    this.state = registerOutput<String>('state');
+    this.suspensionReason = registerOutput<List<String>>('suspensionReason');
+    this.writeEndpoint = registerOutput<String>('writeEndpoint');
   }
 }

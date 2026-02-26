@@ -524,21 +524,22 @@ class BranchRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowStaleReviews = Output.createUnknown<bool?>();
-    this.branchRuleId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.includePattern = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.minimumApprovalsCount = Output.createUnknown<int?>();
-    this.minimumReviewsCount = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.repositoryId = Output.createUnknown<String>();
-    this.requireCommentsResolved = Output.createUnknown<bool?>();
-    this.requireLinearHistory = Output.createUnknown<bool?>();
-    this.requirePullRequest = Output.createUnknown<bool?>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.allowStaleReviews = registerOutput<bool?>('allowStaleReviews');
+    this.branchRuleId = registerOutput<String>('branchRuleId');
+    this.createTime = registerOutput<String>('createTime');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.includePattern = registerOutput<String>('includePattern');
+    this.location = registerOutput<String>('location');
+    this.minimumApprovalsCount = registerOutput<int?>('minimumApprovalsCount');
+    this.minimumReviewsCount = registerOutput<int?>('minimumReviewsCount');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.repositoryId = registerOutput<String>('repositoryId');
+    this.requireCommentsResolved =
+        registerOutput<bool?>('requireCommentsResolved');
+    this.requireLinearHistory = registerOutput<bool?>('requireLinearHistory');
+    this.requirePullRequest = registerOutput<bool?>('requirePullRequest');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

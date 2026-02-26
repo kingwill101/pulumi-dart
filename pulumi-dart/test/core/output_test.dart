@@ -1,38 +1,7 @@
 import 'package:test/test.dart';
 import 'package:pulumi/src/output.dart';
 import 'package:pulumi/src/input.dart';
-import 'package:pulumi/src/resource/resource.dart';
-
-Output<T> createOutput<T>(T value, bool isKnown, [bool isSecret = false]) {
-  return Output<T>(
-    Future.value(
-      OutputData<T>(
-        value: isKnown ? value : null,
-        isKnown: isKnown,
-        isSecret: isSecret,
-        resources: {},
-      ),
-    ),
-  );
-}
-
-Output<T> createOutputWithResources<T>(
-  Iterable<Resource> resources,
-  T value,
-  bool isKnown, [
-  bool isSecret = false,
-]) {
-  return Output<T>(
-    Future.value(
-      OutputData<T>(
-        value: isKnown ? value : null,
-        isKnown: isKnown,
-        isSecret: isSecret,
-        resources: resources.toSet(),
-      ),
-    ),
-  );
-}
+import '../test_utils/output_test_utils.dart';
 
 void main() {
   group('output tests', () {

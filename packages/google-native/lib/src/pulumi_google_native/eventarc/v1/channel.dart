@@ -45,17 +45,17 @@ class Channel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activationToken = Output.createUnknown<String>();
-    this.channelId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.cryptoKeyName = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.provider = Output.createUnknown<String>();
-    this.pubsubTopic = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.activationToken = registerOutput<String>('activationToken');
+    this.channelId = registerOutput<String>('channelId');
+    this.createTime = registerOutput<String>('createTime');
+    this.cryptoKeyName = registerOutput<String>('cryptoKeyName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.provider = registerOutput<String>('provider');
+    this.pubsubTopic = registerOutput<String>('pubsubTopic');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

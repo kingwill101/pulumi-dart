@@ -185,18 +185,21 @@ class EndpointGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.endpointConfigurations =
-        Output.createUnknown<List<EndpointGroupEndpointConfiguration>?>();
-    this.endpointGroupRegion = Output.createUnknown<String>();
-    this.healthCheckIntervalSeconds = Output.createUnknown<int?>();
-    this.healthCheckPath = Output.createUnknown<String>();
-    this.healthCheckPort = Output.createUnknown<int>();
-    this.healthCheckProtocol = Output.createUnknown<String?>();
-    this.listenerArn = Output.createUnknown<String>();
+        registerOutput<List<EndpointGroupEndpointConfiguration>?>(
+            'endpointConfigurations');
+    this.endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
+    this.healthCheckIntervalSeconds =
+        registerOutput<int?>('healthCheckIntervalSeconds');
+    this.healthCheckPath = registerOutput<String>('healthCheckPath');
+    this.healthCheckPort = registerOutput<int>('healthCheckPort');
+    this.healthCheckProtocol = registerOutput<String?>('healthCheckProtocol');
+    this.listenerArn = registerOutput<String>('listenerArn');
     this.portOverrides =
-        Output.createUnknown<List<EndpointGroupPortOverride>?>();
-    this.thresholdCount = Output.createUnknown<int?>();
-    this.trafficDialPercentage = Output.createUnknown<double?>();
+        registerOutput<List<EndpointGroupPortOverride>?>('portOverrides');
+    this.thresholdCount = registerOutput<int?>('thresholdCount');
+    this.trafficDialPercentage =
+        registerOutput<double?>('trafficDialPercentage');
   }
 }

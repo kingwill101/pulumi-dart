@@ -454,23 +454,26 @@ class User2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attributes = Output.createUnknown<Map<String, String>?>();
-    this.clientMetadata = Output.createUnknown<Map<String, String>?>();
-    this.creationDate = Output.createUnknown<String>();
-    this.desiredDeliveryMediums = Output.createUnknown<List<String>?>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.forceAliasCreation = Output.createUnknown<bool?>();
-    this.lastModifiedDate = Output.createUnknown<String>();
-    this.messageAction = Output.createUnknown<String?>();
-    this.mfaSettingLists = Output.createUnknown<List<String>>();
-    this.password = Output.createUnknown<String?>();
-    this.preferredMfaSetting = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.sub = Output.createUnknown<String>();
-    this.temporaryPassword = Output.createUnknown<String?>();
-    this.userPoolId = Output.createUnknown<String>();
-    this.username = Output.createUnknown<String>();
-    this.validationData = Output.createUnknown<Map<String, String>?>();
+    this.attributes = registerOutput<Map<String, String>?>('attributes');
+    this.clientMetadata =
+        registerOutput<Map<String, String>?>('clientMetadata');
+    this.creationDate = registerOutput<String>('creationDate');
+    this.desiredDeliveryMediums =
+        registerOutput<List<String>?>('desiredDeliveryMediums');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.forceAliasCreation = registerOutput<bool?>('forceAliasCreation');
+    this.lastModifiedDate = registerOutput<String>('lastModifiedDate');
+    this.messageAction = registerOutput<String?>('messageAction');
+    this.mfaSettingLists = registerOutput<List<String>>('mfaSettingLists');
+    this.password = registerOutput<String?>('password');
+    this.preferredMfaSetting = registerOutput<String>('preferredMfaSetting');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.sub = registerOutput<String>('sub');
+    this.temporaryPassword = registerOutput<String?>('temporaryPassword');
+    this.userPoolId = registerOutput<String>('userPoolId');
+    this.username = registerOutput<String>('username');
+    this.validationData =
+        registerOutput<Map<String, String>?>('validationData');
   }
 }

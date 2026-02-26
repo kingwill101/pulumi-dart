@@ -534,14 +534,15 @@ class MachineImage extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.guestFlush = Output.createUnknown<bool?>();
+    this.description = registerOutput<String?>('description');
+    this.guestFlush = registerOutput<bool?>('guestFlush');
     this.machineImageEncryptionKey =
-        Output.createUnknown<MachineImageMachineImageEncryptionKey?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.sourceInstance = Output.createUnknown<String>();
-    this.storageLocations = Output.createUnknown<List<String>>();
+        registerOutput<MachineImageMachineImageEncryptionKey?>(
+            'machineImageEncryptionKey');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.sourceInstance = registerOutput<String>('sourceInstance');
+    this.storageLocations = registerOutput<List<String>>('storageLocations');
   }
 }

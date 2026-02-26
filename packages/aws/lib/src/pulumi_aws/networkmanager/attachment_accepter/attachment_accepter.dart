@@ -530,16 +530,17 @@ class AttachmentAccepter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attachmentId = Output.createUnknown<String>();
-    this.attachmentPolicyRuleNumber = Output.createUnknown<int>();
-    this.attachmentType = Output.createUnknown<String>();
-    this.coreNetworkArn = Output.createUnknown<String>();
-    this.coreNetworkId = Output.createUnknown<String>();
-    this.edgeLocation = Output.createUnknown<String>();
-    this.edgeLocations = Output.createUnknown<List<String>>();
-    this.ownerAccountId = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
-    this.segmentName = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.attachmentId = registerOutput<String>('attachmentId');
+    this.attachmentPolicyRuleNumber =
+        registerOutput<int>('attachmentPolicyRuleNumber');
+    this.attachmentType = registerOutput<String>('attachmentType');
+    this.coreNetworkArn = registerOutput<String>('coreNetworkArn');
+    this.coreNetworkId = registerOutput<String>('coreNetworkId');
+    this.edgeLocation = registerOutput<String>('edgeLocation');
+    this.edgeLocations = registerOutput<List<String>>('edgeLocations');
+    this.ownerAccountId = registerOutput<String>('ownerAccountId');
+    this.resourceArn = registerOutput<String>('resourceArn');
+    this.segmentName = registerOutput<String>('segmentName');
+    this.state = registerOutput<String>('state');
   }
 }

@@ -960,12 +960,12 @@ class Datapolicyv2DataPolicyIamMember extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.condition =
-        Output.createUnknown<Datapolicyv2DataPolicyIamMemberCondition?>();
-    this.dataPolicyId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+        registerOutput<Datapolicyv2DataPolicyIamMemberCondition?>('condition');
+    this.dataPolicyId = registerOutput<String>('dataPolicyId');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.member = registerOutput<String>('member');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
   }
 }

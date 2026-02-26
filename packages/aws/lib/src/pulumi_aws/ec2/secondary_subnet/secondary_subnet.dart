@@ -477,20 +477,21 @@ class SecondarySubnet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.availabilityZoneId = Output.createUnknown<String>();
-    this.ipv4CidrBlock = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.availabilityZoneId = registerOutput<String>('availabilityZoneId');
+    this.ipv4CidrBlock = registerOutput<String>('ipv4CidrBlock');
     this.ipv4CidrBlockAssociations =
-        Output.createUnknown<List<SecondarySubnetIpv4CidrBlockAssociation>>();
-    this.ownerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.secondaryNetworkId = Output.createUnknown<String>();
-    this.secondaryNetworkType = Output.createUnknown<String>();
-    this.secondarySubnetId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<SecondarySubnetTimeouts?>();
+        registerOutput<List<SecondarySubnetIpv4CidrBlockAssociation>>(
+            'ipv4CidrBlockAssociations');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.region = registerOutput<String>('region');
+    this.secondaryNetworkId = registerOutput<String>('secondaryNetworkId');
+    this.secondaryNetworkType = registerOutput<String>('secondaryNetworkType');
+    this.secondarySubnetId = registerOutput<String>('secondarySubnetId');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<SecondarySubnetTimeouts?>('timeouts');
   }
 }

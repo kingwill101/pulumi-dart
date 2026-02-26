@@ -312,11 +312,11 @@ class AccessPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.scopes = Output.createUnknown<String?>();
-    this.title = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.scopes = registerOutput<String?>('scopes');
+    this.title = registerOutput<String>('title');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

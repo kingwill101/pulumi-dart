@@ -183,9 +183,9 @@ class InstanceSettings extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.fingerprint = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<InstanceSettingsMetadata?>();
-    this.project = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.metadata = registerOutput<InstanceSettingsMetadata?>('metadata');
+    this.project = registerOutput<String>('project');
+    this.zone = registerOutput<String>('zone');
   }
 }

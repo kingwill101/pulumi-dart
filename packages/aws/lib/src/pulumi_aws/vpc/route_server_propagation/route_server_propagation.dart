@@ -132,9 +132,9 @@ class RouteServerPropagation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.routeServerId = Output.createUnknown<String>();
-    this.routeTableId = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<RouteServerPropagationTimeouts?>();
+    this.region = registerOutput<String>('region');
+    this.routeServerId = registerOutput<String>('routeServerId');
+    this.routeTableId = registerOutput<String>('routeTableId');
+    this.timeouts = registerOutput<RouteServerPropagationTimeouts?>('timeouts');
   }
 }

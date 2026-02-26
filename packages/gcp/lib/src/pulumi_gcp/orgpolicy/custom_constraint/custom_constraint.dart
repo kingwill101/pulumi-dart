@@ -434,14 +434,14 @@ class CustomConstraint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.actionType = Output.createUnknown<String>();
-    this.condition = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.methodTypes = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.resourceTypes = Output.createUnknown<List<String>>();
-    this.updateTime = Output.createUnknown<String>();
+    this.actionType = registerOutput<String>('actionType');
+    this.condition = registerOutput<String>('condition');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.methodTypes = registerOutput<List<String>>('methodTypes');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.resourceTypes = registerOutput<List<String>>('resourceTypes');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

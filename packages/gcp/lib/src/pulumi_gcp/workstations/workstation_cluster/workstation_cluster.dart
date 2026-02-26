@@ -1210,27 +1210,32 @@ class WorkstationCluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.conditions = Output.createUnknown<List<WorkstationClusterCondition>>();
-    this.controlPlaneIp = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.degraded = Output.createUnknown<bool>();
-    this.displayName = Output.createUnknown<String?>();
-    this.domainConfig = Output.createUnknown<WorkstationClusterDomainConfig?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.conditions =
+        registerOutput<List<WorkstationClusterCondition>>('conditions');
+    this.controlPlaneIp = registerOutput<String>('controlPlaneIp');
+    this.createTime = registerOutput<String>('createTime');
+    this.degraded = registerOutput<bool>('degraded');
+    this.displayName = registerOutput<String?>('displayName');
+    this.domainConfig =
+        registerOutput<WorkstationClusterDomainConfig?>('domainConfig');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
     this.privateClusterConfig =
-        Output.createUnknown<WorkstationClusterPrivateClusterConfig?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.subnetwork = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.uid = Output.createUnknown<String>();
-    this.workstationClusterId = Output.createUnknown<String>();
+        registerOutput<WorkstationClusterPrivateClusterConfig?>(
+            'privateClusterConfig');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.subnetwork = registerOutput<String>('subnetwork');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.uid = registerOutput<String>('uid');
+    this.workstationClusterId = registerOutput<String>('workstationClusterId');
   }
 }

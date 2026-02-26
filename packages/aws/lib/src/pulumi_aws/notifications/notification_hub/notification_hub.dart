@@ -115,7 +115,8 @@ class NotificationHub extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.notificationHubRegion = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<NotificationHubTimeouts?>();
+    this.notificationHubRegion =
+        registerOutput<String>('notificationHubRegion');
+    this.timeouts = registerOutput<NotificationHubTimeouts?>('timeouts');
   }
 }

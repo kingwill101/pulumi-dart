@@ -356,15 +356,16 @@ class ConfigurationSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.deliveryOptions =
-        Output.createUnknown<ConfigurationSetDeliveryOptions?>();
-    this.lastFreshStart = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.reputationMetricsEnabled = Output.createUnknown<bool?>();
-    this.sendingEnabled = Output.createUnknown<bool?>();
+        registerOutput<ConfigurationSetDeliveryOptions?>('deliveryOptions');
+    this.lastFreshStart = registerOutput<String>('lastFreshStart');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.reputationMetricsEnabled =
+        registerOutput<bool?>('reputationMetricsEnabled');
+    this.sendingEnabled = registerOutput<bool?>('sendingEnabled');
     this.trackingOptions =
-        Output.createUnknown<ConfigurationSetTrackingOptions?>();
+        registerOutput<ConfigurationSetTrackingOptions?>('trackingOptions');
   }
 }

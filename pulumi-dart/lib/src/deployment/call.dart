@@ -39,7 +39,7 @@ mixin CallMixin {
     }
 
     final provider =
-        options?.provider ?? (self != null ? self.getProvider(token) : null);
+        options?.provider ?? (self?.getProvider(token));
     final urn = await provider?.urn.getValue() ?? '';
     final serializedArgs = await StructConverter.toStruct(requestArgs);
     final request = pb.ResourceCallRequest()

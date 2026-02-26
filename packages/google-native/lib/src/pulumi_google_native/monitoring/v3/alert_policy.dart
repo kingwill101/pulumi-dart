@@ -58,19 +58,22 @@ class AlertPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alertStrategy = Output.createUnknown<AlertStrategyResponse>();
-    this.combiner = Output.createUnknown<String>();
-    this.conditions = Output.createUnknown<List<ConditionResponse8>>();
-    this.creationRecord = Output.createUnknown<MutationRecordResponse>();
-    this.displayName = Output.createUnknown<String>();
-    this.documentation = Output.createUnknown<DocumentationResponse>();
-    this.enabled = Output.createUnknown<bool>();
-    this.mutationRecord = Output.createUnknown<MutationRecordResponse>();
-    this.name = Output.createUnknown<String>();
-    this.notificationChannels = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.severity = Output.createUnknown<String>();
-    this.userLabels = Output.createUnknown<Map<String, String>>();
-    this.validity = Output.createUnknown<StatusResponse22>();
+    this.alertStrategy = registerOutput<AlertStrategyResponse>('alertStrategy');
+    this.combiner = registerOutput<String>('combiner');
+    this.conditions = registerOutput<List<ConditionResponse8>>('conditions');
+    this.creationRecord =
+        registerOutput<MutationRecordResponse>('creationRecord');
+    this.displayName = registerOutput<String>('displayName');
+    this.documentation = registerOutput<DocumentationResponse>('documentation');
+    this.enabled = registerOutput<bool>('enabled');
+    this.mutationRecord =
+        registerOutput<MutationRecordResponse>('mutationRecord');
+    this.name = registerOutput<String>('name');
+    this.notificationChannels =
+        registerOutput<List<String>>('notificationChannels');
+    this.project = registerOutput<String>('project');
+    this.severity = registerOutput<String>('severity');
+    this.userLabels = registerOutput<Map<String, String>>('userLabels');
+    this.validity = registerOutput<StatusResponse22>('validity');
   }
 }

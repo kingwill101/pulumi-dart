@@ -646,21 +646,24 @@ class Intent extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.defaultResponsePlatforms = Output.createUnknown<List<String>?>();
-    this.displayName = Output.createUnknown<String>();
-    this.events = Output.createUnknown<List<String>?>();
+    this.action = registerOutput<String>('action');
+    this.defaultResponsePlatforms =
+        registerOutput<List<String>?>('defaultResponsePlatforms');
+    this.displayName = registerOutput<String>('displayName');
+    this.events = registerOutput<List<String>?>('events');
     this.followupIntentInfos =
-        Output.createUnknown<List<IntentFollowupIntentInfo>>();
-    this.inputContextNames = Output.createUnknown<List<String>?>();
-    this.isFallback = Output.createUnknown<bool>();
-    this.mlDisabled = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.parentFollowupIntentName = Output.createUnknown<String>();
-    this.priority = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.resetContexts = Output.createUnknown<bool>();
-    this.rootFollowupIntentName = Output.createUnknown<String>();
-    this.webhookState = Output.createUnknown<String>();
+        registerOutput<List<IntentFollowupIntentInfo>>('followupIntentInfos');
+    this.inputContextNames = registerOutput<List<String>?>('inputContextNames');
+    this.isFallback = registerOutput<bool>('isFallback');
+    this.mlDisabled = registerOutput<bool>('mlDisabled');
+    this.name = registerOutput<String>('name');
+    this.parentFollowupIntentName =
+        registerOutput<String>('parentFollowupIntentName');
+    this.priority = registerOutput<int>('priority');
+    this.project = registerOutput<String>('project');
+    this.resetContexts = registerOutput<bool>('resetContexts');
+    this.rootFollowupIntentName =
+        registerOutput<String>('rootFollowupIntentName');
+    this.webhookState = registerOutput<String>('webhookState');
   }
 }

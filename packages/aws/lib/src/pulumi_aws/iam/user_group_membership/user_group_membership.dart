@@ -269,7 +269,7 @@ class UserGroupMembership extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.groups = Output.createUnknown<List<String>>();
-    this.user = Output.createUnknown<String>();
+    this.groups = registerOutput<List<String>>('groups');
+    this.user = registerOutput<String>('user');
   }
 }

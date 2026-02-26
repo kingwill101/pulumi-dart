@@ -166,14 +166,14 @@ class VpcConnection extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.authentication = Output.createUnknown<String>();
-    this.clientSubnets = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroups = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetClusterArn = Output.createUnknown<String>();
-    this.vpcId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.authentication = registerOutput<String>('authentication');
+    this.clientSubnets = registerOutput<List<String>>('clientSubnets');
+    this.region = registerOutput<String>('region');
+    this.securityGroups = registerOutput<List<String>>('securityGroups');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetClusterArn = registerOutput<String>('targetClusterArn');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

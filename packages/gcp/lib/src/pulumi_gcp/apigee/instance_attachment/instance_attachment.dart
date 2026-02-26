@@ -50,8 +50,8 @@ class InstanceAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.environment = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.environment = registerOutput<String>('environment');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
   }
 }

@@ -115,10 +115,12 @@ class Account4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.autoEnableControls = Output.createUnknown<bool?>();
-    this.controlFindingGenerator = Output.createUnknown<String>();
-    this.enableDefaultStandards = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.autoEnableControls = registerOutput<bool?>('autoEnableControls');
+    this.controlFindingGenerator =
+        registerOutput<String>('controlFindingGenerator');
+    this.enableDefaultStandards =
+        registerOutput<bool?>('enableDefaultStandards');
+    this.region = registerOutput<String>('region');
   }
 }

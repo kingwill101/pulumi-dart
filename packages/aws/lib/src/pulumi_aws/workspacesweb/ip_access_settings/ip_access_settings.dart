@@ -551,15 +551,16 @@ class IpAccessSettings extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.additionalEncryptionContext =
-        Output.createUnknown<Map<String, String>?>();
-    this.associatedPortalArns = Output.createUnknown<List<String>>();
-    this.customerManagedKey = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.ipAccessSettingsArn = Output.createUnknown<String>();
-    this.ipRules = Output.createUnknown<List<IpAccessSettingsIpRule>>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<Map<String, String>?>('additionalEncryptionContext');
+    this.associatedPortalArns =
+        registerOutput<List<String>>('associatedPortalArns');
+    this.customerManagedKey = registerOutput<String?>('customerManagedKey');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.ipAccessSettingsArn = registerOutput<String>('ipAccessSettingsArn');
+    this.ipRules = registerOutput<List<IpAccessSettingsIpRule>>('ipRules');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -219,19 +219,19 @@ class AppAuthorization extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.app = Output.createUnknown<String>();
-    this.appBundleArn = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.authType = Output.createUnknown<String>();
-    this.authUrl = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.credential = Output.createUnknown<AppAuthorizationCredential>();
-    this.persona = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tenants = Output.createUnknown<List<AppAuthorizationTenant>>();
-    this.timeouts = Output.createUnknown<AppAuthorizationTimeouts?>();
-    this.updatedAt = Output.createUnknown<String>();
+    this.app = registerOutput<String>('app');
+    this.appBundleArn = registerOutput<String>('appBundleArn');
+    this.arn = registerOutput<String>('arn');
+    this.authType = registerOutput<String>('authType');
+    this.authUrl = registerOutput<String>('authUrl');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.credential = registerOutput<AppAuthorizationCredential>('credential');
+    this.persona = registerOutput<String>('persona');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tenants = registerOutput<List<AppAuthorizationTenant>>('tenants');
+    this.timeouts = registerOutput<AppAuthorizationTimeouts?>('timeouts');
+    this.updatedAt = registerOutput<String>('updatedAt');
   }
 }

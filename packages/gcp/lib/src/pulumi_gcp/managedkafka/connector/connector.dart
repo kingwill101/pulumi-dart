@@ -690,14 +690,14 @@ class Connector extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.configs = Output.createUnknown<Map<String, String>?>();
-    this.connectCluster = Output.createUnknown<String>();
-    this.connectorId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.configs = registerOutput<Map<String, String>?>('configs');
+    this.connectCluster = registerOutput<String>('connectCluster');
+    this.connectorId = registerOutput<String>('connectorId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
     this.taskRestartPolicy =
-        Output.createUnknown<ConnectorTaskRestartPolicy?>();
+        registerOutput<ConnectorTaskRestartPolicy?>('taskRestartPolicy');
   }
 }

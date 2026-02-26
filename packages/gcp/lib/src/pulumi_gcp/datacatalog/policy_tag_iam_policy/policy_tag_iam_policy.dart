@@ -855,8 +855,8 @@ class PolicyTagIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.policyTag = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.policyData = registerOutput<String>('policyData');
+    this.policyTag = registerOutput<String>('policyTag');
   }
 }

@@ -191,9 +191,9 @@ class RandomPet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.keepers = Output.createUnknown<Map<String, String>?>();
-    this.length = Output.createUnknown<int>();
-    this.prefix = Output.createUnknown<String?>();
-    this.separator = Output.createUnknown<String>();
+    this.keepers = registerOutput<Map<String, String>?>('keepers');
+    this.length = registerOutput<int>('length');
+    this.prefix = registerOutput<String?>('prefix');
+    this.separator = registerOutput<String>('separator');
   }
 }

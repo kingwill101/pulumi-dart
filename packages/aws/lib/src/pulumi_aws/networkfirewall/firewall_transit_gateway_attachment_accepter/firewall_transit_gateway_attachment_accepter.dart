@@ -125,9 +125,11 @@ class FirewallTransitGatewayAttachmentAccepter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<
-        FirewallTransitGatewayAttachmentAccepterTimeouts?>();
-    this.transitGatewayAttachmentId = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.timeouts =
+        registerOutput<FirewallTransitGatewayAttachmentAccepterTimeouts?>(
+            'timeouts');
+    this.transitGatewayAttachmentId =
+        registerOutput<String>('transitGatewayAttachmentId');
   }
 }

@@ -268,10 +268,11 @@ class OrganizationConfiguration2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoEnableOrganizationMembers = Output.createUnknown<String>();
+    this.autoEnableOrganizationMembers =
+        registerOutput<String>('autoEnableOrganizationMembers');
     this.datasources =
-        Output.createUnknown<OrganizationConfigurationDatasources>();
-    this.detectorId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<OrganizationConfigurationDatasources>('datasources');
+    this.detectorId = registerOutput<String>('detectorId');
+    this.region = registerOutput<String>('region');
   }
 }

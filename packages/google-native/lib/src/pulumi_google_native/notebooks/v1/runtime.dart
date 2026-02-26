@@ -64,22 +64,26 @@ class Runtime extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessConfig = Output.createUnknown<RuntimeAccessConfigResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.healthState = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.metrics = Output.createUnknown<RuntimeMetricsResponse>();
-    this.migrated = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.runtimeId = Output.createUnknown<String>();
+    this.accessConfig =
+        registerOutput<RuntimeAccessConfigResponse>('accessConfig');
+    this.createTime = registerOutput<String>('createTime');
+    this.healthState = registerOutput<String>('healthState');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.metrics = registerOutput<RuntimeMetricsResponse>('metrics');
+    this.migrated = registerOutput<bool>('migrated');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.runtimeId = registerOutput<String>('runtimeId');
     this.runtimeMigrationEligibility =
-        Output.createUnknown<RuntimeMigrationEligibilityResponse>();
-    this.softwareConfig = Output.createUnknown<RuntimeSoftwareConfigResponse>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.virtualMachine = Output.createUnknown<VirtualMachineResponse2>();
+        registerOutput<RuntimeMigrationEligibilityResponse>(
+            'runtimeMigrationEligibility');
+    this.softwareConfig =
+        registerOutput<RuntimeSoftwareConfigResponse>('softwareConfig');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.virtualMachine =
+        registerOutput<VirtualMachineResponse2>('virtualMachine');
   }
 }

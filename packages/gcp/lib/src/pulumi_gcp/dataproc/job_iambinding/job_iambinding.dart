@@ -865,12 +865,12 @@ class JobIAMBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<JobIAMBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.jobId = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.condition = registerOutput<JobIAMBindingCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.jobId = registerOutput<String>('jobId');
+    this.members = registerOutput<List<String>>('members');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.role = registerOutput<String>('role');
   }
 }

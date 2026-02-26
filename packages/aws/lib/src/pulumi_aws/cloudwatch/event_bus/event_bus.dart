@@ -1803,15 +1803,16 @@ class EventBus extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.deadLetterConfig = Output.createUnknown<EventBusDeadLetterConfig?>();
-    this.description = Output.createUnknown<String?>();
-    this.eventSourceName = Output.createUnknown<String?>();
-    this.kmsKeyIdentifier = Output.createUnknown<String?>();
-    this.logConfig = Output.createUnknown<EventBusLogConfig?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.deadLetterConfig =
+        registerOutput<EventBusDeadLetterConfig?>('deadLetterConfig');
+    this.description = registerOutput<String?>('description');
+    this.eventSourceName = registerOutput<String?>('eventSourceName');
+    this.kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
+    this.logConfig = registerOutput<EventBusLogConfig?>('logConfig');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

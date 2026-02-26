@@ -54,18 +54,18 @@ class Queue2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.appEngineHttpTarget =
-        Output.createUnknown<AppEngineHttpTargetResponse3>();
-    this.httpTarget = Output.createUnknown<HttpTargetResponse4>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pullTarget = Output.createUnknown<Map<String, dynamic>>();
-    this.purgeTime = Output.createUnknown<String>();
-    this.rateLimits = Output.createUnknown<RateLimitsResponse2>();
-    this.retryConfig = Output.createUnknown<RetryConfigResponse4>();
-    this.state = Output.createUnknown<String>();
-    this.stats = Output.createUnknown<QueueStatsResponse>();
-    this.taskTtl = Output.createUnknown<String>();
-    this.tombstoneTtl = Output.createUnknown<String>();
+        registerOutput<AppEngineHttpTargetResponse3>('appEngineHttpTarget');
+    this.httpTarget = registerOutput<HttpTargetResponse4>('httpTarget');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pullTarget = registerOutput<Map<String, dynamic>>('pullTarget');
+    this.purgeTime = registerOutput<String>('purgeTime');
+    this.rateLimits = registerOutput<RateLimitsResponse2>('rateLimits');
+    this.retryConfig = registerOutput<RetryConfigResponse4>('retryConfig');
+    this.state = registerOutput<String>('state');
+    this.stats = registerOutput<QueueStatsResponse>('stats');
+    this.taskTtl = registerOutput<String>('taskTtl');
+    this.tombstoneTtl = registerOutput<String>('tombstoneTtl');
   }
 }

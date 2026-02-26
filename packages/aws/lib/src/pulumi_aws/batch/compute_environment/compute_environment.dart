@@ -1161,22 +1161,23 @@ class ComputeEnvironment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.computeResources =
-        Output.createUnknown<ComputeEnvironmentComputeResources>();
-    this.ecsClusterArn = Output.createUnknown<String>();
+        registerOutput<ComputeEnvironmentComputeResources>('computeResources');
+    this.ecsClusterArn = registerOutput<String>('ecsClusterArn');
     this.eksConfiguration =
-        Output.createUnknown<ComputeEnvironmentEksConfiguration?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.serviceRole = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String?>();
-    this.status = Output.createUnknown<String>();
-    this.statusReason = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
-    this.updatePolicy = Output.createUnknown<ComputeEnvironmentUpdatePolicy>();
+        registerOutput<ComputeEnvironmentEksConfiguration?>('eksConfiguration');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.region = registerOutput<String>('region');
+    this.serviceRole = registerOutput<String>('serviceRole');
+    this.state = registerOutput<String?>('state');
+    this.status = registerOutput<String>('status');
+    this.statusReason = registerOutput<String>('statusReason');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
+    this.updatePolicy =
+        registerOutput<ComputeEnvironmentUpdatePolicy>('updatePolicy');
   }
 }

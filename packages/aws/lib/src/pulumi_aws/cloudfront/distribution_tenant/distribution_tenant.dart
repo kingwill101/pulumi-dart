@@ -467,23 +467,24 @@ class DistributionTenant extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.connectionGroupId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.connectionGroupId = registerOutput<String>('connectionGroupId');
     this.customizations =
-        Output.createUnknown<DistributionTenantCustomizations?>();
-    this.distributionId = Output.createUnknown<String>();
-    this.domains = Output.createUnknown<List<DistributionTenantDomain>?>();
-    this.enabled = Output.createUnknown<bool>();
-    this.etag = Output.createUnknown<String>();
+        registerOutput<DistributionTenantCustomizations?>('customizations');
+    this.distributionId = registerOutput<String>('distributionId');
+    this.domains = registerOutput<List<DistributionTenantDomain>?>('domains');
+    this.enabled = registerOutput<bool>('enabled');
+    this.etag = registerOutput<String>('etag');
     this.managedCertificateRequest =
-        Output.createUnknown<DistributionTenantManagedCertificateRequest?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<DistributionTenantManagedCertificateRequest?>(
+            'managedCertificateRequest');
+    this.name = registerOutput<String>('name');
     this.parameters =
-        Output.createUnknown<List<DistributionTenantParameter>?>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<DistributionTenantTimeouts?>();
-    this.waitForDeployment = Output.createUnknown<bool>();
+        registerOutput<List<DistributionTenantParameter>?>('parameters');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<DistributionTenantTimeouts?>('timeouts');
+    this.waitForDeployment = registerOutput<bool>('waitForDeployment');
   }
 }

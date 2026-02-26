@@ -337,18 +337,23 @@ class IdentityPool extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowClassicFlow = Output.createUnknown<bool?>();
-    this.allowUnauthenticatedIdentities = Output.createUnknown<bool?>();
-    this.arn = Output.createUnknown<String>();
+    this.allowClassicFlow = registerOutput<bool?>('allowClassicFlow');
+    this.allowUnauthenticatedIdentities =
+        registerOutput<bool?>('allowUnauthenticatedIdentities');
+    this.arn = registerOutput<String>('arn');
     this.cognitoIdentityProviders =
-        Output.createUnknown<List<IdentityPoolCognitoIdentityProvider>?>();
-    this.developerProviderName = Output.createUnknown<String?>();
-    this.identityPoolName = Output.createUnknown<String>();
-    this.openidConnectProviderArns = Output.createUnknown<List<String>?>();
-    this.region = Output.createUnknown<String>();
-    this.samlProviderArns = Output.createUnknown<List<String>?>();
-    this.supportedLoginProviders = Output.createUnknown<Map<String, String>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<IdentityPoolCognitoIdentityProvider>?>(
+            'cognitoIdentityProviders');
+    this.developerProviderName =
+        registerOutput<String?>('developerProviderName');
+    this.identityPoolName = registerOutput<String>('identityPoolName');
+    this.openidConnectProviderArns =
+        registerOutput<List<String>?>('openidConnectProviderArns');
+    this.region = registerOutput<String>('region');
+    this.samlProviderArns = registerOutput<List<String>?>('samlProviderArns');
+    this.supportedLoginProviders =
+        registerOutput<Map<String, String>?>('supportedLoginProviders');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

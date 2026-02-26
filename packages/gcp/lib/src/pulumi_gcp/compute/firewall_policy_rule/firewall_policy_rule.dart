@@ -1420,22 +1420,24 @@ class FirewallPolicyRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.direction = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.enableLogging = Output.createUnknown<bool?>();
-    this.firewallPolicy = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.match = Output.createUnknown<FirewallPolicyRuleMatch>();
-    this.priority = Output.createUnknown<int>();
-    this.ruleTupleCount = Output.createUnknown<int>();
-    this.securityProfileGroup = Output.createUnknown<String?>();
-    this.targetResources = Output.createUnknown<List<String>?>();
+    this.action = registerOutput<String>('action');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.direction = registerOutput<String>('direction');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.enableLogging = registerOutput<bool?>('enableLogging');
+    this.firewallPolicy = registerOutput<String>('firewallPolicy');
+    this.kind = registerOutput<String>('kind');
+    this.match = registerOutput<FirewallPolicyRuleMatch>('match');
+    this.priority = registerOutput<int>('priority');
+    this.ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    this.securityProfileGroup = registerOutput<String?>('securityProfileGroup');
+    this.targetResources = registerOutput<List<String>?>('targetResources');
     this.targetSecureTags =
-        Output.createUnknown<List<FirewallPolicyRuleTargetSecureTag>?>();
-    this.targetServiceAccounts = Output.createUnknown<List<String>?>();
-    this.tlsInspect = Output.createUnknown<bool?>();
+        registerOutput<List<FirewallPolicyRuleTargetSecureTag>?>(
+            'targetSecureTags');
+    this.targetServiceAccounts =
+        registerOutput<List<String>?>('targetServiceAccounts');
+    this.tlsInspect = registerOutput<bool?>('tlsInspect');
   }
 }

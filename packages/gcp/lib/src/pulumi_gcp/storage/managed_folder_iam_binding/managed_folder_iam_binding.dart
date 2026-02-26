@@ -1857,11 +1857,12 @@ class ManagedFolderIamBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.condition = Output.createUnknown<ManagedFolderIamBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.managedFolder = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.role = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.condition =
+        registerOutput<ManagedFolderIamBindingCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.managedFolder = registerOutput<String>('managedFolder');
+    this.members = registerOutput<List<String>>('members');
+    this.role = registerOutput<String>('role');
   }
 }

@@ -28,11 +28,11 @@ class InstanceDatabaseIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bindings = Output.createUnknown<List<BindingResponse100>>();
-    this.databaseId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.bindings = registerOutput<List<BindingResponse100>>('bindings');
+    this.databaseId = registerOutput<String>('databaseId');
+    this.etag = registerOutput<String>('etag');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

@@ -1105,31 +1105,36 @@ class DbInstance extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allocatedStorage = Output.createUnknown<int>();
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.bucket = Output.createUnknown<String>();
-    this.dbInstanceType = Output.createUnknown<String>();
-    this.dbParameterGroupIdentifier = Output.createUnknown<String?>();
-    this.dbStorageType = Output.createUnknown<String>();
-    this.deploymentType = Output.createUnknown<String>();
-    this.endpoint = Output.createUnknown<String>();
-    this.influxAuthParametersSecretArn = Output.createUnknown<String>();
+    this.allocatedStorage = registerOutput<int>('allocatedStorage');
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.bucket = registerOutput<String>('bucket');
+    this.dbInstanceType = registerOutput<String>('dbInstanceType');
+    this.dbParameterGroupIdentifier =
+        registerOutput<String?>('dbParameterGroupIdentifier');
+    this.dbStorageType = registerOutput<String>('dbStorageType');
+    this.deploymentType = registerOutput<String>('deploymentType');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.influxAuthParametersSecretArn =
+        registerOutput<String>('influxAuthParametersSecretArn');
     this.logDeliveryConfiguration =
-        Output.createUnknown<DbInstanceLogDeliveryConfiguration?>();
-    this.name = Output.createUnknown<String>();
-    this.networkType = Output.createUnknown<String>();
-    this.organization = Output.createUnknown<String>();
-    this.password = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
-    this.publiclyAccessible = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.secondaryAvailabilityZone = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<DbInstanceTimeouts?>();
-    this.username = Output.createUnknown<String>();
-    this.vpcSecurityGroupIds = Output.createUnknown<List<String>>();
-    this.vpcSubnetIds = Output.createUnknown<List<String>>();
+        registerOutput<DbInstanceLogDeliveryConfiguration?>(
+            'logDeliveryConfiguration');
+    this.name = registerOutput<String>('name');
+    this.networkType = registerOutput<String>('networkType');
+    this.organization = registerOutput<String>('organization');
+    this.password = registerOutput<String>('password');
+    this.port = registerOutput<int>('port');
+    this.publiclyAccessible = registerOutput<bool>('publiclyAccessible');
+    this.region = registerOutput<String>('region');
+    this.secondaryAvailabilityZone =
+        registerOutput<String>('secondaryAvailabilityZone');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<DbInstanceTimeouts?>('timeouts');
+    this.username = registerOutput<String>('username');
+    this.vpcSecurityGroupIds =
+        registerOutput<List<String>>('vpcSecurityGroupIds');
+    this.vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds');
   }
 }

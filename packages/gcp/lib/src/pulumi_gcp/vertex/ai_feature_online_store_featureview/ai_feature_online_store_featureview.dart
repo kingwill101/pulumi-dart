@@ -2899,21 +2899,26 @@ class AiFeatureOnlineStoreFeatureview extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.bigQuerySource =
-        Output.createUnknown<AiFeatureOnlineStoreFeatureviewBigQuerySource?>();
-    this.createTime = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.featureOnlineStore = Output.createUnknown<String>();
-    this.featureRegistrySource = Output.createUnknown<
-        AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<AiFeatureOnlineStoreFeatureviewBigQuerySource?>(
+            'bigQuerySource');
+    this.createTime = registerOutput<String>('createTime');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.featureOnlineStore = registerOutput<String>('featureOnlineStore');
+    this.featureRegistrySource =
+        registerOutput<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?>(
+            'featureRegistrySource');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String>('region');
     this.syncConfig =
-        Output.createUnknown<AiFeatureOnlineStoreFeatureviewSyncConfig?>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vectorSearchConfig = Output.createUnknown<
-        AiFeatureOnlineStoreFeatureviewVectorSearchConfig?>();
+        registerOutput<AiFeatureOnlineStoreFeatureviewSyncConfig?>(
+            'syncConfig');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vectorSearchConfig =
+        registerOutput<AiFeatureOnlineStoreFeatureviewVectorSearchConfig?>(
+            'vectorSearchConfig');
   }
 }

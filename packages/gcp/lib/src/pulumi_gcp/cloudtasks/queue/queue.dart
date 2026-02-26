@@ -1067,16 +1067,18 @@ class Queue extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.appEngineRoutingOverride =
-        Output.createUnknown<QueueAppEngineRoutingOverride?>();
-    this.desiredState = Output.createUnknown<String?>();
-    this.httpTarget = Output.createUnknown<QueueHttpTarget?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rateLimits = Output.createUnknown<QueueRateLimits>();
-    this.retryConfig = Output.createUnknown<QueueRetryConfig>();
+        registerOutput<QueueAppEngineRoutingOverride?>(
+            'appEngineRoutingOverride');
+    this.desiredState = registerOutput<String?>('desiredState');
+    this.httpTarget = registerOutput<QueueHttpTarget?>('httpTarget');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.rateLimits = registerOutput<QueueRateLimits>('rateLimits');
+    this.retryConfig = registerOutput<QueueRetryConfig>('retryConfig');
     this.stackdriverLoggingConfig =
-        Output.createUnknown<QueueStackdriverLoggingConfig?>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<QueueStackdriverLoggingConfig?>(
+            'stackdriverLoggingConfig');
+    this.state = registerOutput<String>('state');
   }
 }

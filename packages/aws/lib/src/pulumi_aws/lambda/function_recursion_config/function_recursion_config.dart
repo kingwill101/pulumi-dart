@@ -382,8 +382,8 @@ class FunctionRecursionConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.functionName = Output.createUnknown<String>();
-    this.recursiveLoop = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.functionName = registerOutput<String>('functionName');
+    this.recursiveLoop = registerOutput<String>('recursiveLoop');
+    this.region = registerOutput<String>('region');
   }
 }

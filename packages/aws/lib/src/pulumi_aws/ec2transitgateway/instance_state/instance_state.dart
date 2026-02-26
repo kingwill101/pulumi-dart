@@ -291,9 +291,9 @@ class InstanceState extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.force = Output.createUnknown<bool?>();
-    this.instanceId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.force = registerOutput<bool?>('force');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.region = registerOutput<String>('region');
+    this.state = registerOutput<String>('state');
   }
 }

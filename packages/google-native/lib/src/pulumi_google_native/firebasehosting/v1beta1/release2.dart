@@ -43,15 +43,15 @@ class Release2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.channelId = Output.createUnknown<String>();
-    this.message = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.releaseTime = Output.createUnknown<String>();
-    this.releaseUser = Output.createUnknown<ActingUserResponse>();
-    this.siteId = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.version = Output.createUnknown<VersionResponse6>();
-    this.versionName = Output.createUnknown<String?>();
+    this.channelId = registerOutput<String>('channelId');
+    this.message = registerOutput<String>('message');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.releaseTime = registerOutput<String>('releaseTime');
+    this.releaseUser = registerOutput<ActingUserResponse>('releaseUser');
+    this.siteId = registerOutput<String>('siteId');
+    this.type = registerOutput<String>('type');
+    this.version = registerOutput<VersionResponse6>('version');
+    this.versionName = registerOutput<String?>('versionName');
   }
 }

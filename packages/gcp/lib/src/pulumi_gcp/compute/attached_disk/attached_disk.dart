@@ -286,12 +286,12 @@ class AttachedDisk extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.deviceName = Output.createUnknown<String>();
-    this.disk = Output.createUnknown<String>();
-    this.instance = Output.createUnknown<String>();
-    this.interface = Output.createUnknown<String?>();
-    this.mode = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+    this.deviceName = registerOutput<String>('deviceName');
+    this.disk = registerOutput<String>('disk');
+    this.instance = registerOutput<String>('instance');
+    this.interface = registerOutput<String?>('interface');
+    this.mode = registerOutput<String?>('mode');
+    this.project = registerOutput<String>('project');
+    this.zone = registerOutput<String>('zone');
   }
 }

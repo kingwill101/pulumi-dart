@@ -415,13 +415,14 @@ class GcpUserAccessBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessLevels = Output.createUnknown<String?>();
-    this.groupKey = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
+    this.accessLevels = registerOutput<String?>('accessLevels');
+    this.groupKey = registerOutput<String>('groupKey');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
     this.scopedAccessSettings =
-        Output.createUnknown<List<GcpUserAccessBindingScopedAccessSetting>?>();
+        registerOutput<List<GcpUserAccessBindingScopedAccessSetting>?>(
+            'scopedAccessSettings');
     this.sessionSettings =
-        Output.createUnknown<GcpUserAccessBindingSessionSettings?>();
+        registerOutput<GcpUserAccessBindingSessionSettings?>('sessionSettings');
   }
 }

@@ -976,12 +976,13 @@ class RepositoryIamBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<RepositoryIamBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.repository = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.condition =
+        registerOutput<RepositoryIamBindingCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.members = registerOutput<List<String>>('members');
+    this.project = registerOutput<String>('project');
+    this.repository = registerOutput<String>('repository');
+    this.role = registerOutput<String>('role');
   }
 }

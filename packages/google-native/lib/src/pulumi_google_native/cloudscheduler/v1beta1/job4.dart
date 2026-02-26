@@ -66,22 +66,22 @@ class Job4 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.appEngineHttpTarget =
-        Output.createUnknown<AppEngineHttpTargetResponse2>();
-    this.attemptDeadline = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.httpTarget = Output.createUnknown<HttpTargetResponse2>();
-    this.lastAttemptTime = Output.createUnknown<String>();
-    this.legacyAppEngineCron = Output.createUnknown<bool>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pubsubTarget = Output.createUnknown<PubsubTargetResponse2>();
-    this.retryConfig = Output.createUnknown<RetryConfigResponse2>();
-    this.schedule = Output.createUnknown<String>();
-    this.scheduleTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.status = Output.createUnknown<StatusResponse6>();
-    this.timeZone = Output.createUnknown<String>();
-    this.userUpdateTime = Output.createUnknown<String>();
+        registerOutput<AppEngineHttpTargetResponse2>('appEngineHttpTarget');
+    this.attemptDeadline = registerOutput<String>('attemptDeadline');
+    this.description = registerOutput<String>('description');
+    this.httpTarget = registerOutput<HttpTargetResponse2>('httpTarget');
+    this.lastAttemptTime = registerOutput<String>('lastAttemptTime');
+    this.legacyAppEngineCron = registerOutput<bool>('legacyAppEngineCron');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pubsubTarget = registerOutput<PubsubTargetResponse2>('pubsubTarget');
+    this.retryConfig = registerOutput<RetryConfigResponse2>('retryConfig');
+    this.schedule = registerOutput<String>('schedule');
+    this.scheduleTime = registerOutput<String>('scheduleTime');
+    this.state = registerOutput<String>('state');
+    this.status = registerOutput<StatusResponse6>('status');
+    this.timeZone = registerOutput<String>('timeZone');
+    this.userUpdateTime = registerOutput<String>('userUpdateTime');
   }
 }

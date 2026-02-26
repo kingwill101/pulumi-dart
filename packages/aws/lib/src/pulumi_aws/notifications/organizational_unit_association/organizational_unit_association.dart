@@ -437,7 +437,8 @@ class OrganizationalUnitAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.notificationConfigurationArn = Output.createUnknown<String>();
-    this.organizationalUnitId = Output.createUnknown<String>();
+    this.notificationConfigurationArn =
+        registerOutput<String>('notificationConfigurationArn');
+    this.organizationalUnitId = registerOutput<String>('organizationalUnitId');
   }
 }

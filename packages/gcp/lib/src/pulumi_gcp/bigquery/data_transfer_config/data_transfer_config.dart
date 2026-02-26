@@ -1001,25 +1001,27 @@ class DataTransferConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dataRefreshWindowDays = Output.createUnknown<int?>();
-    this.dataSourceId = Output.createUnknown<String>();
-    this.destinationDatasetId = Output.createUnknown<String?>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String>();
+    this.dataRefreshWindowDays = registerOutput<int?>('dataRefreshWindowDays');
+    this.dataSourceId = registerOutput<String>('dataSourceId');
+    this.destinationDatasetId = registerOutput<String?>('destinationDatasetId');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.displayName = registerOutput<String>('displayName');
     this.emailPreferences =
-        Output.createUnknown<DataTransferConfigEmailPreferences?>();
+        registerOutput<DataTransferConfigEmailPreferences?>('emailPreferences');
     this.encryptionConfiguration =
-        Output.createUnknown<DataTransferConfigEncryptionConfiguration?>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.notificationPubsubTopic = Output.createUnknown<String?>();
-    this.params = Output.createUnknown<Map<String, String>>();
-    this.project = Output.createUnknown<String>();
-    this.schedule = Output.createUnknown<String?>();
+        registerOutput<DataTransferConfigEncryptionConfiguration?>(
+            'encryptionConfiguration');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.notificationPubsubTopic =
+        registerOutput<String?>('notificationPubsubTopic');
+    this.params = registerOutput<Map<String, String>>('params');
+    this.project = registerOutput<String>('project');
+    this.schedule = registerOutput<String?>('schedule');
     this.scheduleOptions =
-        Output.createUnknown<DataTransferConfigScheduleOptions?>();
+        registerOutput<DataTransferConfigScheduleOptions?>('scheduleOptions');
     this.sensitiveParams =
-        Output.createUnknown<DataTransferConfigSensitiveParams?>();
-    this.serviceAccountName = Output.createUnknown<String?>();
+        registerOutput<DataTransferConfigSensitiveParams?>('sensitiveParams');
+    this.serviceAccountName = registerOutput<String?>('serviceAccountName');
   }
 }

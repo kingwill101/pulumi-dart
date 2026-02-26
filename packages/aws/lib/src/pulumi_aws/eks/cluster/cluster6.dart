@@ -2071,39 +2071,46 @@ class Cluster6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessConfig = Output.createUnknown<ClusterAccessConfig>();
-    this.arn = Output.createUnknown<String>();
-    this.bootstrapSelfManagedAddons = Output.createUnknown<bool?>();
+    this.accessConfig = registerOutput<ClusterAccessConfig>('accessConfig');
+    this.arn = registerOutput<String>('arn');
+    this.bootstrapSelfManagedAddons =
+        registerOutput<bool?>('bootstrapSelfManagedAddons');
     this.certificateAuthority =
-        Output.createUnknown<ClusterCertificateAuthority>();
-    this.clusterId = Output.createUnknown<String>();
-    this.computeConfig = Output.createUnknown<ClusterComputeConfig>();
+        registerOutput<ClusterCertificateAuthority>('certificateAuthority');
+    this.clusterId = registerOutput<String>('clusterId');
+    this.computeConfig = registerOutput<ClusterComputeConfig>('computeConfig');
     this.controlPlaneScalingConfig =
-        Output.createUnknown<ClusterControlPlaneScalingConfig>();
-    this.createdAt = Output.createUnknown<String>();
-    this.defaultAddonsToRemoves = Output.createUnknown<List<String>?>();
-    this.deletionProtection = Output.createUnknown<bool>();
-    this.enabledClusterLogTypes = Output.createUnknown<List<String>?>();
-    this.encryptionConfig = Output.createUnknown<ClusterEncryptionConfig?>();
-    this.endpoint = Output.createUnknown<String>();
-    this.forceUpdateVersion = Output.createUnknown<bool?>();
-    this.identities = Output.createUnknown<List<ClusterIdentity>>();
+        registerOutput<ClusterControlPlaneScalingConfig>(
+            'controlPlaneScalingConfig');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.defaultAddonsToRemoves =
+        registerOutput<List<String>?>('defaultAddonsToRemoves');
+    this.deletionProtection = registerOutput<bool>('deletionProtection');
+    this.enabledClusterLogTypes =
+        registerOutput<List<String>?>('enabledClusterLogTypes');
+    this.encryptionConfig =
+        registerOutput<ClusterEncryptionConfig?>('encryptionConfig');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.forceUpdateVersion = registerOutput<bool?>('forceUpdateVersion');
+    this.identities = registerOutput<List<ClusterIdentity>>('identities');
     this.kubernetesNetworkConfig =
-        Output.createUnknown<ClusterKubernetesNetworkConfig>();
-    this.name = Output.createUnknown<String>();
-    this.outpostConfig = Output.createUnknown<ClusterOutpostConfig?>();
-    this.platformVersion = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<ClusterKubernetesNetworkConfig>(
+            'kubernetesNetworkConfig');
+    this.name = registerOutput<String>('name');
+    this.outpostConfig = registerOutput<ClusterOutpostConfig?>('outpostConfig');
+    this.platformVersion = registerOutput<String>('platformVersion');
+    this.region = registerOutput<String>('region');
     this.remoteNetworkConfig =
-        Output.createUnknown<ClusterRemoteNetworkConfig?>();
-    this.roleArn = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.storageConfig = Output.createUnknown<ClusterStorageConfig>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.upgradePolicy = Output.createUnknown<ClusterUpgradePolicy>();
-    this.version = Output.createUnknown<String>();
-    this.vpcConfig = Output.createUnknown<ClusterVpcConfig>();
-    this.zonalShiftConfig = Output.createUnknown<ClusterZonalShiftConfig?>();
+        registerOutput<ClusterRemoteNetworkConfig?>('remoteNetworkConfig');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.status = registerOutput<String>('status');
+    this.storageConfig = registerOutput<ClusterStorageConfig>('storageConfig');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.upgradePolicy = registerOutput<ClusterUpgradePolicy>('upgradePolicy');
+    this.version = registerOutput<String>('version');
+    this.vpcConfig = registerOutput<ClusterVpcConfig>('vpcConfig');
+    this.zonalShiftConfig =
+        registerOutput<ClusterZonalShiftConfig?>('zonalShiftConfig');
   }
 }

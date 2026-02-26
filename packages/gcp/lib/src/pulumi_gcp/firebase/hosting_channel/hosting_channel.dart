@@ -363,14 +363,15 @@ class HostingChannel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.channelId = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.expireTime = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.retainedReleaseCount = Output.createUnknown<int>();
-    this.siteId = Output.createUnknown<String>();
-    this.ttl = Output.createUnknown<String?>();
+    this.channelId = registerOutput<String>('channelId');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.retainedReleaseCount = registerOutput<int>('retainedReleaseCount');
+    this.siteId = registerOutput<String>('siteId');
+    this.ttl = registerOutput<String?>('ttl');
   }
 }

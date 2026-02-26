@@ -54,8 +54,8 @@ class ProviderResource extends CustomResource {
 
   static String _nameFromUrn(String urn) {
     final parts = urn.split("::");
-    if (parts.length > 4) {
-      return parts[4];
+    if (parts.length >= 4) {
+      return parts.last;
     }
     return "provider";
   }

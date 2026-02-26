@@ -188,7 +188,8 @@ class EventConfigurations extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.eventConfigurations = Output.createUnknown<Map<String, bool>>();
-    this.region = Output.createUnknown<String>();
+    this.eventConfigurations =
+        registerOutput<Map<String, bool>>('eventConfigurations');
+    this.region = registerOutput<String>('region');
   }
 }

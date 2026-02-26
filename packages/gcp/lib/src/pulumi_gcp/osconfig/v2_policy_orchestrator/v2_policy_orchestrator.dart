@@ -446,23 +446,27 @@ class V2PolicyOrchestrator extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
+    this.action = registerOutput<String>('action');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
     this.orchestratedResource =
-        Output.createUnknown<V2PolicyOrchestratorOrchestratedResource>();
+        registerOutput<V2PolicyOrchestratorOrchestratedResource>(
+            'orchestratedResource');
     this.orchestrationScope =
-        Output.createUnknown<V2PolicyOrchestratorOrchestrationScope?>();
+        registerOutput<V2PolicyOrchestratorOrchestrationScope?>(
+            'orchestrationScope');
     this.orchestrationStates =
-        Output.createUnknown<List<V2PolicyOrchestratorOrchestrationState>>();
-    this.policyOrchestratorId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<V2PolicyOrchestratorOrchestrationState>>(
+            'orchestrationStates');
+    this.policyOrchestratorId = registerOutput<String>('policyOrchestratorId');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.state = registerOutput<String?>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

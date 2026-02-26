@@ -894,9 +894,9 @@ class AiFeatureStoreEntityTypeIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.entitytype = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.featurestore = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
+    this.entitytype = registerOutput<String>('entitytype');
+    this.etag = registerOutput<String>('etag');
+    this.featurestore = registerOutput<String>('featurestore');
+    this.policyData = registerOutput<String>('policyData');
   }
 }

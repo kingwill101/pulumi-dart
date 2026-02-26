@@ -64,24 +64,26 @@ class ServiceConnectionMap extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.consumerPscConfigs =
-        Output.createUnknown<List<ConsumerPscConfigResponse>>();
+        registerOutput<List<ConsumerPscConfigResponse>>('consumerPscConfigs');
     this.consumerPscConnections =
-        Output.createUnknown<List<ConsumerPscConnectionResponse>>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.infrastructure = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<List<ConsumerPscConnectionResponse>>(
+            'consumerPscConnections');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.infrastructure = registerOutput<String>('infrastructure');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.producerPscConfigs =
-        Output.createUnknown<List<ProducerPscConfigResponse>>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.serviceClass = Output.createUnknown<String>();
-    this.serviceClassUri = Output.createUnknown<String>();
-    this.serviceConnectionMapId = Output.createUnknown<String?>();
-    this.token = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<ProducerPscConfigResponse>>('producerPscConfigs');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.serviceClass = registerOutput<String>('serviceClass');
+    this.serviceClassUri = registerOutput<String>('serviceClassUri');
+    this.serviceConnectionMapId =
+        registerOutput<String?>('serviceConnectionMapId');
+    this.token = registerOutput<String>('token');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

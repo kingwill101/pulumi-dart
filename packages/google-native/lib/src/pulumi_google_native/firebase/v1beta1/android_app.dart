@@ -46,16 +46,16 @@ class AndroidApp extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiKeyId = Output.createUnknown<String>();
-    this.appId = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.packageName = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.sha1Hashes = Output.createUnknown<List<String>>();
-    this.sha256Hashes = Output.createUnknown<List<String>>();
-    this.state = Output.createUnknown<String>();
+    this.apiKeyId = registerOutput<String>('apiKeyId');
+    this.appId = registerOutput<String>('appId');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.name = registerOutput<String>('name');
+    this.packageName = registerOutput<String>('packageName');
+    this.project = registerOutput<String>('project');
+    this.sha1Hashes = registerOutput<List<String>>('sha1Hashes');
+    this.sha256Hashes = registerOutput<List<String>>('sha256Hashes');
+    this.state = registerOutput<String>('state');
   }
 }

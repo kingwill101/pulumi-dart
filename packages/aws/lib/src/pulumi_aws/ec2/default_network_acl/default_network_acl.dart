@@ -658,15 +658,15 @@ class DefaultNetworkAcl extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.defaultNetworkAclId = Output.createUnknown<String>();
-    this.egress = Output.createUnknown<List<DefaultNetworkAclEgress>?>();
-    this.ingress = Output.createUnknown<List<DefaultNetworkAclIngress>?>();
-    this.ownerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.subnetIds = Output.createUnknown<List<String>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.defaultNetworkAclId = registerOutput<String>('defaultNetworkAclId');
+    this.egress = registerOutput<List<DefaultNetworkAclEgress>?>('egress');
+    this.ingress = registerOutput<List<DefaultNetworkAclIngress>?>('ingress');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.region = registerOutput<String>('region');
+    this.subnetIds = registerOutput<List<String>?>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

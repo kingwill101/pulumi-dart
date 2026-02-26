@@ -261,11 +261,12 @@ class EventRule2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.eventPattern = Output.createUnknown<String?>();
-    this.eventType = Output.createUnknown<String>();
-    this.notificationConfigurationArn = Output.createUnknown<String>();
-    this.regions = Output.createUnknown<List<String>>();
-    this.source = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.eventPattern = registerOutput<String?>('eventPattern');
+    this.eventType = registerOutput<String>('eventType');
+    this.notificationConfigurationArn =
+        registerOutput<String>('notificationConfigurationArn');
+    this.regions = registerOutput<List<String>>('regions');
+    this.source = registerOutput<String>('source');
   }
 }

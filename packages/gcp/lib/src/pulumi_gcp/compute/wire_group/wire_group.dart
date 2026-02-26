@@ -528,17 +528,18 @@ class WireGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.adminEnabled = Output.createUnknown<bool?>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.crossSiteNetwork = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.endpoints = Output.createUnknown<List<WireGroupEndpoint>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.topologies = Output.createUnknown<List<WireGroupTopology>>();
+    this.adminEnabled = registerOutput<bool?>('adminEnabled');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.crossSiteNetwork = registerOutput<String>('crossSiteNetwork');
+    this.description = registerOutput<String?>('description');
+    this.endpoints = registerOutput<List<WireGroupEndpoint>?>('endpoints');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.topologies = registerOutput<List<WireGroupTopology>>('topologies');
     this.wireGroupProperties =
-        Output.createUnknown<WireGroupWireGroupProperties?>();
-    this.wireProperties = Output.createUnknown<WireGroupWireProperties?>();
-    this.wires = Output.createUnknown<List<WireGroupWire>>();
+        registerOutput<WireGroupWireGroupProperties?>('wireGroupProperties');
+    this.wireProperties =
+        registerOutput<WireGroupWireProperties?>('wireProperties');
+    this.wires = registerOutput<List<WireGroupWire>>('wires');
   }
 }

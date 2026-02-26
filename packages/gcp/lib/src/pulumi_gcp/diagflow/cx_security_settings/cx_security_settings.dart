@@ -641,19 +641,21 @@ class CxSecuritySettings extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.audioExportSettings =
-        Output.createUnknown<CxSecuritySettingsAudioExportSettings?>();
-    this.deidentifyTemplate = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
+        registerOutput<CxSecuritySettingsAudioExportSettings?>(
+            'audioExportSettings');
+    this.deidentifyTemplate = registerOutput<String?>('deidentifyTemplate');
+    this.displayName = registerOutput<String>('displayName');
     this.insightsExportSettings =
-        Output.createUnknown<CxSecuritySettingsInsightsExportSettings?>();
-    this.inspectTemplate = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.purgeDataTypes = Output.createUnknown<List<String>?>();
-    this.redactionScope = Output.createUnknown<String?>();
-    this.redactionStrategy = Output.createUnknown<String?>();
-    this.retentionStrategy = Output.createUnknown<String?>();
-    this.retentionWindowDays = Output.createUnknown<int?>();
+        registerOutput<CxSecuritySettingsInsightsExportSettings?>(
+            'insightsExportSettings');
+    this.inspectTemplate = registerOutput<String?>('inspectTemplate');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.purgeDataTypes = registerOutput<List<String>?>('purgeDataTypes');
+    this.redactionScope = registerOutput<String?>('redactionScope');
+    this.redactionStrategy = registerOutput<String?>('redactionStrategy');
+    this.retentionStrategy = registerOutput<String?>('retentionStrategy');
+    this.retentionWindowDays = registerOutput<int?>('retentionWindowDays');
   }
 }

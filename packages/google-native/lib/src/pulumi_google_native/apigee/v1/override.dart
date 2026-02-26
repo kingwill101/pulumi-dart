@@ -26,11 +26,12 @@ class Override extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiProxy = Output.createUnknown<String>();
-    this.environmentId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
+    this.apiProxy = registerOutput<String>('apiProxy');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
     this.samplingConfig =
-        Output.createUnknown<GoogleCloudApigeeV1TraceSamplingConfigResponse>();
+        registerOutput<GoogleCloudApigeeV1TraceSamplingConfigResponse>(
+            'samplingConfig');
   }
 }

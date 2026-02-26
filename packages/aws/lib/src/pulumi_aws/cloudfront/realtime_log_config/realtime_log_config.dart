@@ -476,10 +476,10 @@ class RealtimeLogConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.endpoint = Output.createUnknown<RealtimeLogConfigEndpoint>();
-    this.fields = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.samplingRate = Output.createUnknown<int>();
+    this.arn = registerOutput<String>('arn');
+    this.endpoint = registerOutput<RealtimeLogConfigEndpoint>('endpoint');
+    this.fields = registerOutput<List<String>>('fields');
+    this.name = registerOutput<String>('name');
+    this.samplingRate = registerOutput<int>('samplingRate');
   }
 }

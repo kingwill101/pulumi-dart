@@ -156,52 +156,58 @@ class Version5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiConfig = Output.createUnknown<ApiConfigHandlerResponse>();
-    this.appEngineApis = Output.createUnknown<bool>();
-    this.appId = Output.createUnknown<String>();
-    this.automaticScaling = Output.createUnknown<AutomaticScalingResponse>();
-    this.basicScaling = Output.createUnknown<BasicScalingResponse>();
-    this.betaSettings = Output.createUnknown<Map<String, String>>();
-    this.buildEnvVariables = Output.createUnknown<Map<String, String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.createdBy = Output.createUnknown<String>();
-    this.defaultExpiration = Output.createUnknown<String>();
-    this.deployment = Output.createUnknown<DeploymentResponse>();
-    this.diskUsageBytes = Output.createUnknown<String>();
+    this.apiConfig = registerOutput<ApiConfigHandlerResponse>('apiConfig');
+    this.appEngineApis = registerOutput<bool>('appEngineApis');
+    this.appId = registerOutput<String>('appId');
+    this.automaticScaling =
+        registerOutput<AutomaticScalingResponse>('automaticScaling');
+    this.basicScaling = registerOutput<BasicScalingResponse>('basicScaling');
+    this.betaSettings = registerOutput<Map<String, String>>('betaSettings');
+    this.buildEnvVariables =
+        registerOutput<Map<String, String>>('buildEnvVariables');
+    this.createTime = registerOutput<String>('createTime');
+    this.createdBy = registerOutput<String>('createdBy');
+    this.defaultExpiration = registerOutput<String>('defaultExpiration');
+    this.deployment = registerOutput<DeploymentResponse>('deployment');
+    this.diskUsageBytes = registerOutput<String>('diskUsageBytes');
     this.endpointsApiService =
-        Output.createUnknown<EndpointsApiServiceResponse>();
-    this.entrypoint = Output.createUnknown<EntrypointResponse>();
-    this.env = Output.createUnknown<String>();
-    this.envVariables = Output.createUnknown<Map<String, String>>();
-    this.errorHandlers = Output.createUnknown<List<ErrorHandlerResponse>>();
+        registerOutput<EndpointsApiServiceResponse>('endpointsApiService');
+    this.entrypoint = registerOutput<EntrypointResponse>('entrypoint');
+    this.env = registerOutput<String>('env');
+    this.envVariables = registerOutput<Map<String, String>>('envVariables');
+    this.errorHandlers =
+        registerOutput<List<ErrorHandlerResponse>>('errorHandlers');
     this.flexibleRuntimeSettings =
-        Output.createUnknown<FlexibleRuntimeSettingsResponse>();
+        registerOutput<FlexibleRuntimeSettingsResponse>(
+            'flexibleRuntimeSettings');
     this.generatedCustomerMetadata =
-        Output.createUnknown<Map<String, String>>();
-    this.handlers = Output.createUnknown<List<UrlMapResponse>>();
-    this.healthCheck = Output.createUnknown<HealthCheckResponse>();
-    this.inboundServices = Output.createUnknown<List<String>>();
-    this.instanceClass = Output.createUnknown<String>();
-    this.libraries = Output.createUnknown<List<LibraryResponse>>();
-    this.livenessCheck = Output.createUnknown<LivenessCheckResponse>();
-    this.manualScaling = Output.createUnknown<ManualScalingResponse>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<NetworkResponse>();
-    this.nobuildFilesRegex = Output.createUnknown<String>();
-    this.readinessCheck = Output.createUnknown<ReadinessCheckResponse>();
-    this.resources = Output.createUnknown<ResourcesResponse>();
-    this.runtime = Output.createUnknown<String>();
-    this.runtimeApiVersion = Output.createUnknown<String>();
-    this.runtimeChannel = Output.createUnknown<String>();
-    this.runtimeMainExecutablePath = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.serviceId = Output.createUnknown<String>();
-    this.servingStatus = Output.createUnknown<String>();
-    this.threadsafe = Output.createUnknown<bool>();
-    this.versionUrl = Output.createUnknown<String>();
-    this.vm = Output.createUnknown<bool>();
+        registerOutput<Map<String, String>>('generatedCustomerMetadata');
+    this.handlers = registerOutput<List<UrlMapResponse>>('handlers');
+    this.healthCheck = registerOutput<HealthCheckResponse>('healthCheck');
+    this.inboundServices = registerOutput<List<String>>('inboundServices');
+    this.instanceClass = registerOutput<String>('instanceClass');
+    this.libraries = registerOutput<List<LibraryResponse>>('libraries');
+    this.livenessCheck = registerOutput<LivenessCheckResponse>('livenessCheck');
+    this.manualScaling = registerOutput<ManualScalingResponse>('manualScaling');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<NetworkResponse>('network');
+    this.nobuildFilesRegex = registerOutput<String>('nobuildFilesRegex');
+    this.readinessCheck =
+        registerOutput<ReadinessCheckResponse>('readinessCheck');
+    this.resources = registerOutput<ResourcesResponse>('resources');
+    this.runtime = registerOutput<String>('runtime');
+    this.runtimeApiVersion = registerOutput<String>('runtimeApiVersion');
+    this.runtimeChannel = registerOutput<String>('runtimeChannel');
+    this.runtimeMainExecutablePath =
+        registerOutput<String>('runtimeMainExecutablePath');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.serviceId = registerOutput<String>('serviceId');
+    this.servingStatus = registerOutput<String>('servingStatus');
+    this.threadsafe = registerOutput<bool>('threadsafe');
+    this.versionUrl = registerOutput<String>('versionUrl');
+    this.vm = registerOutput<bool>('vm');
     this.vpcAccessConnector =
-        Output.createUnknown<VpcAccessConnectorResponse>();
-    this.zones = Output.createUnknown<List<String>>();
+        registerOutput<VpcAccessConnectorResponse>('vpcAccessConnector');
+    this.zones = registerOutput<List<String>>('zones');
   }
 }

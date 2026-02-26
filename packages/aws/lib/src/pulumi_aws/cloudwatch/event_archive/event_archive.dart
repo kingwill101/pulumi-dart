@@ -818,13 +818,13 @@ class EventArchive extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.eventPattern = Output.createUnknown<String?>();
-    this.eventSourceArn = Output.createUnknown<String>();
-    this.kmsKeyIdentifier = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.retentionDays = Output.createUnknown<int?>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.eventPattern = registerOutput<String?>('eventPattern');
+    this.eventSourceArn = registerOutput<String>('eventSourceArn');
+    this.kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.retentionDays = registerOutput<int?>('retentionDays');
   }
 }

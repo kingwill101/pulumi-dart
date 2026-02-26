@@ -312,10 +312,10 @@ class RoleAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.groupIds = Output.createUnknown<List<String>?>();
-    this.region = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.userIds = Output.createUnknown<List<String>?>();
-    this.workspaceId = Output.createUnknown<String>();
+    this.groupIds = registerOutput<List<String>?>('groupIds');
+    this.region = registerOutput<String>('region');
+    this.role = registerOutput<String>('role');
+    this.userIds = registerOutput<List<String>?>('userIds');
+    this.workspaceId = registerOutput<String>('workspaceId');
   }
 }

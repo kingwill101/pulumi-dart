@@ -219,15 +219,16 @@ class ApnsVoipChannel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationId = Output.createUnknown<String>();
-    this.bundleId = Output.createUnknown<String?>();
-    this.certificate = Output.createUnknown<String?>();
-    this.defaultAuthenticationMethod = Output.createUnknown<String?>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.privateKey = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.teamId = Output.createUnknown<String?>();
-    this.tokenKey = Output.createUnknown<String?>();
-    this.tokenKeyId = Output.createUnknown<String?>();
+    this.applicationId = registerOutput<String>('applicationId');
+    this.bundleId = registerOutput<String?>('bundleId');
+    this.certificate = registerOutput<String?>('certificate');
+    this.defaultAuthenticationMethod =
+        registerOutput<String?>('defaultAuthenticationMethod');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.privateKey = registerOutput<String?>('privateKey');
+    this.region = registerOutput<String>('region');
+    this.teamId = registerOutput<String?>('teamId');
+    this.tokenKey = registerOutput<String?>('tokenKey');
+    this.tokenKeyId = registerOutput<String?>('tokenKeyId');
   }
 }

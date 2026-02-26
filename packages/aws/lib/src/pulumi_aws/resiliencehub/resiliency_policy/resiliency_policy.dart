@@ -281,16 +281,17 @@ class ResiliencyPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.dataLocationConstraint = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.estimatedCostTier = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<ResiliencyPolicyPolicy?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tier = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<ResiliencyPolicyTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.dataLocationConstraint =
+        registerOutput<String>('dataLocationConstraint');
+    this.description = registerOutput<String?>('description');
+    this.estimatedCostTier = registerOutput<String>('estimatedCostTier');
+    this.name = registerOutput<String>('name');
+    this.policy = registerOutput<ResiliencyPolicyPolicy?>('policy');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tier = registerOutput<String>('tier');
+    this.timeouts = registerOutput<ResiliencyPolicyTimeouts?>('timeouts');
   }
 }

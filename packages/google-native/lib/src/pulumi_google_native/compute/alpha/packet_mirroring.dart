@@ -60,21 +60,24 @@ class PacketMirroring extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.collectorIlb =
-        Output.createUnknown<PacketMirroringForwardingRuleInfoResponse>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.enable = Output.createUnknown<String>();
-    this.filter = Output.createUnknown<PacketMirroringFilterResponse>();
-    this.kind = Output.createUnknown<String>();
+        registerOutput<PacketMirroringForwardingRuleInfoResponse>(
+            'collectorIlb');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.enable = registerOutput<String>('enable');
+    this.filter = registerOutput<PacketMirroringFilterResponse>('filter');
+    this.kind = registerOutput<String>('kind');
     this.mirroredResources =
-        Output.createUnknown<PacketMirroringMirroredResourceInfoResponse>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<PacketMirroringNetworkInfoResponse>();
-    this.priority = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
+        registerOutput<PacketMirroringMirroredResourceInfoResponse>(
+            'mirroredResources');
+    this.name = registerOutput<String>('name');
+    this.network =
+        registerOutput<PacketMirroringNetworkInfoResponse>('network');
+    this.priority = registerOutput<int>('priority');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
   }
 }

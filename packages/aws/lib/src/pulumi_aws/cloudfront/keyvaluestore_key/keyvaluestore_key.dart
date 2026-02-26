@@ -184,9 +184,9 @@ class KeyvaluestoreKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.key = Output.createUnknown<String>();
-    this.keyValueStoreArn = Output.createUnknown<String>();
-    this.totalSizeInBytes = Output.createUnknown<int>();
-    this.value = Output.createUnknown<String>();
+    this.key = registerOutput<String>('key');
+    this.keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
+    this.totalSizeInBytes = registerOutput<int>('totalSizeInBytes');
+    this.value = registerOutput<String>('value');
   }
 }

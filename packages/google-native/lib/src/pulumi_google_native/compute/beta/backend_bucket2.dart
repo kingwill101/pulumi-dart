@@ -51,18 +51,20 @@ class BackendBucket2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucketName = Output.createUnknown<String>();
-    this.cdnPolicy = Output.createUnknown<BackendBucketCdnPolicyResponse2>();
-    this.compressionMode = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.customResponseHeaders = Output.createUnknown<List<String>>();
-    this.description = Output.createUnknown<String>();
-    this.edgeSecurityPolicy = Output.createUnknown<String>();
-    this.enableCdn = Output.createUnknown<bool>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
+    this.bucketName = registerOutput<String>('bucketName');
+    this.cdnPolicy =
+        registerOutput<BackendBucketCdnPolicyResponse2>('cdnPolicy');
+    this.compressionMode = registerOutput<String>('compressionMode');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.customResponseHeaders =
+        registerOutput<List<String>>('customResponseHeaders');
+    this.description = registerOutput<String>('description');
+    this.edgeSecurityPolicy = registerOutput<String>('edgeSecurityPolicy');
+    this.enableCdn = registerOutput<bool>('enableCdn');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
   }
 }

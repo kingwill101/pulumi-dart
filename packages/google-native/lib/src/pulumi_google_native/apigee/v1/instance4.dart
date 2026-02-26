@@ -59,21 +59,23 @@ class Instance4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.consumerAcceptList = Output.createUnknown<List<String>>();
-    this.createdAt = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.diskEncryptionKeyName = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.host = Output.createUnknown<String>();
-    this.ipRange = Output.createUnknown<String>();
-    this.lastModifiedAt = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.peeringCidrRange = Output.createUnknown<String>();
-    this.port = Output.createUnknown<String>();
-    this.runtimeVersion = Output.createUnknown<String>();
-    this.serviceAttachment = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.consumerAcceptList =
+        registerOutput<List<String>>('consumerAcceptList');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.description = registerOutput<String>('description');
+    this.diskEncryptionKeyName =
+        registerOutput<String>('diskEncryptionKeyName');
+    this.displayName = registerOutput<String>('displayName');
+    this.host = registerOutput<String>('host');
+    this.ipRange = registerOutput<String>('ipRange');
+    this.lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.peeringCidrRange = registerOutput<String>('peeringCidrRange');
+    this.port = registerOutput<String>('port');
+    this.runtimeVersion = registerOutput<String>('runtimeVersion');
+    this.serviceAttachment = registerOutput<String>('serviceAttachment');
+    this.state = registerOutput<String>('state');
   }
 }

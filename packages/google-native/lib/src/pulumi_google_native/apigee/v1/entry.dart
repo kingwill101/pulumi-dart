@@ -23,10 +23,10 @@ class Entry extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiId = Output.createUnknown<String>();
-    this.keyvaluemapId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.value = Output.createUnknown<String>();
+    this.apiId = registerOutput<String>('apiId');
+    this.keyvaluemapId = registerOutput<String>('keyvaluemapId');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.value = registerOutput<String>('value');
   }
 }

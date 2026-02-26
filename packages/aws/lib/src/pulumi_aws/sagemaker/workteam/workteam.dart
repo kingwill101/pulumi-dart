@@ -357,19 +357,21 @@ class Workteam extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String>('description');
     this.memberDefinitions =
-        Output.createUnknown<List<WorkteamMemberDefinition>>();
+        registerOutput<List<WorkteamMemberDefinition>>('memberDefinitions');
     this.notificationConfiguration =
-        Output.createUnknown<WorkteamNotificationConfiguration?>();
-    this.region = Output.createUnknown<String>();
-    this.subdomain = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<WorkteamNotificationConfiguration?>(
+            'notificationConfiguration');
+    this.region = registerOutput<String>('region');
+    this.subdomain = registerOutput<String>('subdomain');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.workerAccessConfiguration =
-        Output.createUnknown<WorkteamWorkerAccessConfiguration>();
-    this.workforceName = Output.createUnknown<String?>();
-    this.workteamName = Output.createUnknown<String>();
+        registerOutput<WorkteamWorkerAccessConfiguration>(
+            'workerAccessConfiguration');
+    this.workforceName = registerOutput<String?>('workforceName');
+    this.workteamName = registerOutput<String>('workteamName');
   }
 }

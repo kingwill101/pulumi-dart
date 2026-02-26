@@ -72,12 +72,12 @@ class RoleAlias extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alias = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.credentialDuration = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.alias = registerOutput<String>('alias');
+    this.arn = registerOutput<String>('arn');
+    this.credentialDuration = registerOutput<int?>('credentialDuration');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -164,8 +164,8 @@ class InternetGatewayAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.internetGatewayId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.vpcId = Output.createUnknown<String>();
+    this.internetGatewayId = registerOutput<String>('internetGatewayId');
+    this.region = registerOutput<String>('region');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

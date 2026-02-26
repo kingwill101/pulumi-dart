@@ -694,16 +694,18 @@ class RepositoryWorkflowConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cronSchedule = Output.createUnknown<String?>();
+    this.cronSchedule = registerOutput<String?>('cronSchedule');
     this.invocationConfig =
-        Output.createUnknown<RepositoryWorkflowConfigInvocationConfig?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.recentScheduledExecutionRecords = Output.createUnknown<
-        List<RepositoryWorkflowConfigRecentScheduledExecutionRecord>>();
-    this.region = Output.createUnknown<String?>();
-    this.releaseConfig = Output.createUnknown<String>();
-    this.repository = Output.createUnknown<String?>();
-    this.timeZone = Output.createUnknown<String?>();
+        registerOutput<RepositoryWorkflowConfigInvocationConfig?>(
+            'invocationConfig');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.recentScheduledExecutionRecords = registerOutput<
+            List<RepositoryWorkflowConfigRecentScheduledExecutionRecord>>(
+        'recentScheduledExecutionRecords');
+    this.region = registerOutput<String?>('region');
+    this.releaseConfig = registerOutput<String>('releaseConfig');
+    this.repository = registerOutput<String?>('repository');
+    this.timeZone = registerOutput<String?>('timeZone');
   }
 }

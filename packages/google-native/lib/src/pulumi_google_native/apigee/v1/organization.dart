@@ -104,35 +104,39 @@ class Organization extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.addonsConfig =
-        Output.createUnknown<GoogleCloudApigeeV1AddonsConfigResponse>();
-    this.analyticsRegion = Output.createUnknown<String>();
-    this.apiConsumerDataEncryptionKeyName = Output.createUnknown<String>();
-    this.apiConsumerDataLocation = Output.createUnknown<String>();
-    this.apigeeProjectId = Output.createUnknown<String>();
-    this.attributes = Output.createUnknown<List<String>>();
-    this.authorizedNetwork = Output.createUnknown<String>();
-    this.billingType = Output.createUnknown<String>();
-    this.caCertificate = Output.createUnknown<String>();
-    this.controlPlaneEncryptionKeyName = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.customerName = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.disableVpcPeering = Output.createUnknown<bool>();
-    this.displayName = Output.createUnknown<String>();
-    this.environments = Output.createUnknown<List<String>>();
-    this.expiresAt = Output.createUnknown<String>();
-    this.lastModifiedAt = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.portalDisabled = Output.createUnknown<bool>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<GoogleCloudApigeeV1AddonsConfigResponse>('addonsConfig');
+    this.analyticsRegion = registerOutput<String>('analyticsRegion');
+    this.apiConsumerDataEncryptionKeyName =
+        registerOutput<String>('apiConsumerDataEncryptionKeyName');
+    this.apiConsumerDataLocation =
+        registerOutput<String>('apiConsumerDataLocation');
+    this.apigeeProjectId = registerOutput<String>('apigeeProjectId');
+    this.attributes = registerOutput<List<String>>('attributes');
+    this.authorizedNetwork = registerOutput<String>('authorizedNetwork');
+    this.billingType = registerOutput<String>('billingType');
+    this.caCertificate = registerOutput<String>('caCertificate');
+    this.controlPlaneEncryptionKeyName =
+        registerOutput<String>('controlPlaneEncryptionKeyName');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.customerName = registerOutput<String>('customerName');
+    this.description = registerOutput<String>('description');
+    this.disableVpcPeering = registerOutput<bool>('disableVpcPeering');
+    this.displayName = registerOutput<String>('displayName');
+    this.environments = registerOutput<List<String>>('environments');
+    this.expiresAt = registerOutput<String>('expiresAt');
+    this.lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.portalDisabled = registerOutput<bool>('portalDisabled');
+    this.project = registerOutput<String>('project');
     this.properties =
-        Output.createUnknown<GoogleCloudApigeeV1PropertiesResponse>();
-    this.runtimeDatabaseEncryptionKeyName = Output.createUnknown<String>();
-    this.runtimeType_ = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.subscriptionPlan = Output.createUnknown<String>();
-    this.subscriptionType = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<GoogleCloudApigeeV1PropertiesResponse>('properties');
+    this.runtimeDatabaseEncryptionKeyName =
+        registerOutput<String>('runtimeDatabaseEncryptionKeyName');
+    this.runtimeType_ = registerOutput<String>('runtimeType');
+    this.state = registerOutput<String>('state');
+    this.subscriptionPlan = registerOutput<String>('subscriptionPlan');
+    this.subscriptionType = registerOutput<String>('subscriptionType');
+    this.type = registerOutput<String>('type');
   }
 }

@@ -2210,27 +2210,28 @@ class Routine extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arguments = Output.createUnknown<List<RoutineArgument>?>();
-    this.creationTime = Output.createUnknown<int>();
-    this.dataGovernanceType = Output.createUnknown<String?>();
-    this.datasetId = Output.createUnknown<String>();
-    this.definitionBody = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.determinismLevel = Output.createUnknown<String?>();
+    this.arguments = registerOutput<List<RoutineArgument>?>('arguments');
+    this.creationTime = registerOutput<int>('creationTime');
+    this.dataGovernanceType = registerOutput<String?>('dataGovernanceType');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.definitionBody = registerOutput<String>('definitionBody');
+    this.description = registerOutput<String?>('description');
+    this.determinismLevel = registerOutput<String?>('determinismLevel');
     this.externalRuntimeOptions =
-        Output.createUnknown<RoutineExternalRuntimeOptions?>();
-    this.importedLibraries = Output.createUnknown<List<String>?>();
-    this.language = Output.createUnknown<String?>();
-    this.lastModifiedTime = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.pythonOptions = Output.createUnknown<RoutinePythonOptions?>();
+        registerOutput<RoutineExternalRuntimeOptions?>(
+            'externalRuntimeOptions');
+    this.importedLibraries = registerOutput<List<String>?>('importedLibraries');
+    this.language = registerOutput<String?>('language');
+    this.lastModifiedTime = registerOutput<int>('lastModifiedTime');
+    this.project = registerOutput<String>('project');
+    this.pythonOptions = registerOutput<RoutinePythonOptions?>('pythonOptions');
     this.remoteFunctionOptions =
-        Output.createUnknown<RoutineRemoteFunctionOptions?>();
-    this.returnTableType = Output.createUnknown<String?>();
-    this.returnType = Output.createUnknown<String?>();
-    this.routineId = Output.createUnknown<String>();
-    this.routineType = Output.createUnknown<String>();
-    this.securityMode = Output.createUnknown<String?>();
-    this.sparkOptions = Output.createUnknown<RoutineSparkOptions?>();
+        registerOutput<RoutineRemoteFunctionOptions?>('remoteFunctionOptions');
+    this.returnTableType = registerOutput<String?>('returnTableType');
+    this.returnType = registerOutput<String?>('returnType');
+    this.routineId = registerOutput<String>('routineId');
+    this.routineType = registerOutput<String>('routineType');
+    this.securityMode = registerOutput<String?>('securityMode');
+    this.sparkOptions = registerOutput<RoutineSparkOptions?>('sparkOptions');
   }
 }

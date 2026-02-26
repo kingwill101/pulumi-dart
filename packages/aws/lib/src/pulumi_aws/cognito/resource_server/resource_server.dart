@@ -322,11 +322,11 @@ class ResourceServer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.identifier = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.scopeIdentifiers = Output.createUnknown<List<String>>();
-    this.scopes = Output.createUnknown<List<ResourceServerScope>?>();
-    this.userPoolId = Output.createUnknown<String>();
+    this.identifier = registerOutput<String>('identifier');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.scopeIdentifiers = registerOutput<List<String>>('scopeIdentifiers');
+    this.scopes = registerOutput<List<ResourceServerScope>?>('scopes');
+    this.userPoolId = registerOutput<String>('userPoolId');
   }
 }

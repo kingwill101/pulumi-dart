@@ -2689,26 +2689,29 @@ class AwsNodePool extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.autoscaling = Output.createUnknown<AwsNodePoolAutoscaling>();
-    this.cluster = Output.createUnknown<String>();
-    this.config = Output.createUnknown<AwsNodePoolConfig>();
-    this.createTime = Output.createUnknown<String>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.kubeletConfig = Output.createUnknown<AwsNodePoolKubeletConfig>();
-    this.location = Output.createUnknown<String>();
-    this.management = Output.createUnknown<AwsNodePoolManagement>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.autoscaling = registerOutput<AwsNodePoolAutoscaling>('autoscaling');
+    this.cluster = registerOutput<String>('cluster');
+    this.config = registerOutput<AwsNodePoolConfig>('config');
+    this.createTime = registerOutput<String>('createTime');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.etag = registerOutput<String>('etag');
+    this.kubeletConfig =
+        registerOutput<AwsNodePoolKubeletConfig>('kubeletConfig');
+    this.location = registerOutput<String>('location');
+    this.management = registerOutput<AwsNodePoolManagement>('management');
     this.maxPodsConstraint =
-        Output.createUnknown<AwsNodePoolMaxPodsConstraint>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.subnetId = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateSettings = Output.createUnknown<AwsNodePoolUpdateSettings>();
-    this.updateTime = Output.createUnknown<String>();
-    this.version = Output.createUnknown<String>();
+        registerOutput<AwsNodePoolMaxPodsConstraint>('maxPodsConstraint');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.state = registerOutput<String>('state');
+    this.subnetId = registerOutput<String>('subnetId');
+    this.uid = registerOutput<String>('uid');
+    this.updateSettings =
+        registerOutput<AwsNodePoolUpdateSettings>('updateSettings');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.version = registerOutput<String>('version');
   }
 }

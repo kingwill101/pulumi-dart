@@ -1781,10 +1781,10 @@ class BucketIAMMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.condition = Output.createUnknown<BucketIAMMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.condition = registerOutput<BucketIAMMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.member = registerOutput<String>('member');
+    this.role = registerOutput<String>('role');
   }
 }

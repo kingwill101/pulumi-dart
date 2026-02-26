@@ -68,25 +68,30 @@ class Endpoint4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.deployedModels = Output.createUnknown<
-        List<GoogleCloudAiplatformV1DeployedModelResponse>>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.enablePrivateServiceConnect = Output.createUnknown<bool>();
+    this.createTime = registerOutput<String>('createTime');
+    this.deployedModels =
+        registerOutput<List<GoogleCloudAiplatformV1DeployedModelResponse>>(
+            'deployedModels');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.enablePrivateServiceConnect =
+        registerOutput<bool>('enablePrivateServiceConnect');
     this.encryptionSpec =
-        Output.createUnknown<GoogleCloudAiplatformV1EncryptionSpecResponse>();
-    this.endpointId = Output.createUnknown<String?>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.modelDeploymentMonitoringJob = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.predictRequestResponseLoggingConfig = Output.createUnknown<
-        GoogleCloudAiplatformV1PredictRequestResponseLoggingConfigResponse>();
-    this.project = Output.createUnknown<String>();
-    this.trafficSplit = Output.createUnknown<Map<String, String>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>(
+            'encryptionSpec');
+    this.endpointId = registerOutput<String?>('endpointId');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.modelDeploymentMonitoringJob =
+        registerOutput<String>('modelDeploymentMonitoringJob');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.predictRequestResponseLoggingConfig = registerOutput<
+            GoogleCloudAiplatformV1PredictRequestResponseLoggingConfigResponse>(
+        'predictRequestResponseLoggingConfig');
+    this.project = registerOutput<String>('project');
+    this.trafficSplit = registerOutput<Map<String, String>>('trafficSplit');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

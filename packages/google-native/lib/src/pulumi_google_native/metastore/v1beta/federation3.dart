@@ -51,19 +51,20 @@ class Federation3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backendMetastores = Output.createUnknown<Map<String, String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.endpointUri = Output.createUnknown<String>();
-    this.federationId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.stateMessage = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.version = Output.createUnknown<String>();
+    this.backendMetastores =
+        registerOutput<Map<String, String>>('backendMetastores');
+    this.createTime = registerOutput<String>('createTime');
+    this.endpointUri = registerOutput<String>('endpointUri');
+    this.federationId = registerOutput<String>('federationId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.state = registerOutput<String>('state');
+    this.stateMessage = registerOutput<String>('stateMessage');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.version = registerOutput<String>('version');
   }
 }

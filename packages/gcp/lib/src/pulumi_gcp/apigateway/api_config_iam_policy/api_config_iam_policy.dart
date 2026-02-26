@@ -902,10 +902,10 @@ class ApiConfigIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.api = Output.createUnknown<String>();
-    this.apiConfig = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.api = registerOutput<String>('api');
+    this.apiConfig = registerOutput<String>('apiConfig');
+    this.etag = registerOutput<String>('etag');
+    this.policyData = registerOutput<String>('policyData');
+    this.project = registerOutput<String>('project');
   }
 }

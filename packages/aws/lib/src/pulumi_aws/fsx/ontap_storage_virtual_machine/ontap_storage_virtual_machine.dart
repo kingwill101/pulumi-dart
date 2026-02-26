@@ -417,19 +417,21 @@ class OntapStorageVirtualMachine extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activeDirectoryConfiguration = Output.createUnknown<
-        OntapStorageVirtualMachineActiveDirectoryConfiguration?>();
-    this.arn = Output.createUnknown<String>();
+    this.activeDirectoryConfiguration =
+        registerOutput<OntapStorageVirtualMachineActiveDirectoryConfiguration?>(
+            'activeDirectoryConfiguration');
+    this.arn = registerOutput<String>('arn');
     this.endpoints =
-        Output.createUnknown<List<OntapStorageVirtualMachineEndpoint>>();
-    this.fileSystemId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.rootVolumeSecurityStyle = Output.createUnknown<String?>();
-    this.subtype = Output.createUnknown<String>();
-    this.svmAdminPassword = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.uuid = Output.createUnknown<String>();
+        registerOutput<List<OntapStorageVirtualMachineEndpoint>>('endpoints');
+    this.fileSystemId = registerOutput<String>('fileSystemId');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.rootVolumeSecurityStyle =
+        registerOutput<String?>('rootVolumeSecurityStyle');
+    this.subtype = registerOutput<String>('subtype');
+    this.svmAdminPassword = registerOutput<String?>('svmAdminPassword');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.uuid = registerOutput<String>('uuid');
   }
 }

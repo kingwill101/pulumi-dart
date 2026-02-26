@@ -453,14 +453,16 @@ class Table3 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.automatedBackupPolicy =
-        Output.createUnknown<TableAutomatedBackupPolicy>();
-    this.changeStreamRetention = Output.createUnknown<String>();
-    this.columnFamilies = Output.createUnknown<List<TableColumnFamily>?>();
-    this.deletionProtection = Output.createUnknown<String>();
-    this.instanceName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rowKeySchema = Output.createUnknown<String?>();
-    this.splitKeys = Output.createUnknown<List<String>?>();
+        registerOutput<TableAutomatedBackupPolicy>('automatedBackupPolicy');
+    this.changeStreamRetention =
+        registerOutput<String>('changeStreamRetention');
+    this.columnFamilies =
+        registerOutput<List<TableColumnFamily>?>('columnFamilies');
+    this.deletionProtection = registerOutput<String>('deletionProtection');
+    this.instanceName = registerOutput<String>('instanceName');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.rowKeySchema = registerOutput<String?>('rowKeySchema');
+    this.splitKeys = registerOutput<List<String>?>('splitKeys');
   }
 }

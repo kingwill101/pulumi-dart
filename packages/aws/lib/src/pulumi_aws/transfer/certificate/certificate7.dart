@@ -57,17 +57,17 @@ class Certificate7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activeDate = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.certificate = Output.createUnknown<String>();
-    this.certificateChain = Output.createUnknown<String?>();
-    this.certificateId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.inactiveDate = Output.createUnknown<String>();
-    this.privateKey = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.usage = Output.createUnknown<String>();
+    this.activeDate = registerOutput<String>('activeDate');
+    this.arn = registerOutput<String>('arn');
+    this.certificate = registerOutput<String>('certificate');
+    this.certificateChain = registerOutput<String?>('certificateChain');
+    this.certificateId = registerOutput<String>('certificateId');
+    this.description = registerOutput<String?>('description');
+    this.inactiveDate = registerOutput<String>('inactiveDate');
+    this.privateKey = registerOutput<String?>('privateKey');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.usage = registerOutput<String>('usage');
   }
 }

@@ -704,19 +704,22 @@ class NodeTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accelerators = Output.createUnknown<List<NodeTemplateAccelerator>?>();
-    this.cpuOvercommitType = Output.createUnknown<String?>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.disks = Output.createUnknown<List<NodeTemplateDisk>?>();
-    this.name = Output.createUnknown<String>();
-    this.nodeAffinityLabels = Output.createUnknown<Map<String, String>?>();
-    this.nodeType = Output.createUnknown<String?>();
+    this.accelerators =
+        registerOutput<List<NodeTemplateAccelerator>?>('accelerators');
+    this.cpuOvercommitType = registerOutput<String?>('cpuOvercommitType');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.disks = registerOutput<List<NodeTemplateDisk>?>('disks');
+    this.name = registerOutput<String>('name');
+    this.nodeAffinityLabels =
+        registerOutput<Map<String, String>?>('nodeAffinityLabels');
+    this.nodeType = registerOutput<String?>('nodeType');
     this.nodeTypeFlexibility =
-        Output.createUnknown<NodeTemplateNodeTypeFlexibility?>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.serverBinding = Output.createUnknown<NodeTemplateServerBinding>();
+        registerOutput<NodeTemplateNodeTypeFlexibility?>('nodeTypeFlexibility');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.serverBinding =
+        registerOutput<NodeTemplateServerBinding>('serverBinding');
   }
 }

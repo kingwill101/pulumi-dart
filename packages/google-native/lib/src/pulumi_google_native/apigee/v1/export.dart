@@ -44,16 +44,16 @@ class Export extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.created = Output.createUnknown<String>();
-    this.datastoreName = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.environmentId = Output.createUnknown<String>();
-    this.error = Output.createUnknown<String>();
-    this.executionTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.self = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updated = Output.createUnknown<String>();
+    this.created = registerOutput<String>('created');
+    this.datastoreName = registerOutput<String>('datastoreName');
+    this.description = registerOutput<String>('description');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.error = registerOutput<String>('error');
+    this.executionTime = registerOutput<String>('executionTime');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.self = registerOutput<String>('self');
+    this.state = registerOutput<String>('state');
+    this.updated = registerOutput<String>('updated');
   }
 }

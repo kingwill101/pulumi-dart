@@ -270,11 +270,11 @@ class Logging extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucketName = Output.createUnknown<String?>();
-    this.clusterIdentifier = Output.createUnknown<String>();
-    this.logDestinationType = Output.createUnknown<String?>();
-    this.logExports = Output.createUnknown<List<String>?>();
-    this.region = Output.createUnknown<String>();
-    this.s3KeyPrefix = Output.createUnknown<String?>();
+    this.bucketName = registerOutput<String?>('bucketName');
+    this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    this.logDestinationType = registerOutput<String?>('logDestinationType');
+    this.logExports = registerOutput<List<String>?>('logExports');
+    this.region = registerOutput<String>('region');
+    this.s3KeyPrefix = registerOutput<String?>('s3KeyPrefix');
   }
 }

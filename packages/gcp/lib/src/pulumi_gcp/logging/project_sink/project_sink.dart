@@ -75,16 +75,17 @@ class ProjectSink extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bigqueryOptions = Output.createUnknown<ProjectSinkBigqueryOptions>();
-    this.customWriterIdentity = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.destination = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.exclusions = Output.createUnknown<List<ProjectSinkExclusion>?>();
-    this.filter = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.uniqueWriterIdentity = Output.createUnknown<bool?>();
-    this.writerIdentity = Output.createUnknown<String>();
+    this.bigqueryOptions =
+        registerOutput<ProjectSinkBigqueryOptions>('bigqueryOptions');
+    this.customWriterIdentity = registerOutput<String?>('customWriterIdentity');
+    this.description = registerOutput<String?>('description');
+    this.destination = registerOutput<String>('destination');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.exclusions = registerOutput<List<ProjectSinkExclusion>?>('exclusions');
+    this.filter = registerOutput<String?>('filter');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.uniqueWriterIdentity = registerOutput<bool?>('uniqueWriterIdentity');
+    this.writerIdentity = registerOutput<String>('writerIdentity');
   }
 }

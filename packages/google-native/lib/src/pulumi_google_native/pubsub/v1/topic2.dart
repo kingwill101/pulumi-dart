@@ -38,15 +38,17 @@ class Topic2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.kmsKeyName = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.messageRetentionDuration = Output.createUnknown<String>();
+    this.kmsKeyName = registerOutput<String>('kmsKeyName');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.messageRetentionDuration =
+        registerOutput<String>('messageRetentionDuration');
     this.messageStoragePolicy =
-        Output.createUnknown<MessageStoragePolicyResponse>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.schemaSettings = Output.createUnknown<SchemaSettingsResponse>();
-    this.topicId = Output.createUnknown<String>();
+        registerOutput<MessageStoragePolicyResponse>('messageStoragePolicy');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.schemaSettings =
+        registerOutput<SchemaSettingsResponse>('schemaSettings');
+    this.topicId = registerOutput<String>('topicId');
   }
 }

@@ -32,12 +32,12 @@ class Policy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String>();
-    this.gkePolicy = Output.createUnknown<GkePolicyResponse>();
-    this.name = Output.createUnknown<String>();
-    this.platformId = Output.createUnknown<String>();
-    this.policyId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.description = registerOutput<String>('description');
+    this.gkePolicy = registerOutput<GkePolicyResponse>('gkePolicy');
+    this.name = registerOutput<String>('name');
+    this.platformId = registerOutput<String>('platformId');
+    this.policyId = registerOutput<String>('policyId');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

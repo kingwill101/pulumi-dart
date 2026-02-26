@@ -40,14 +40,16 @@ class Model2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.defaultVersion =
-        Output.createUnknown<GoogleCloudMlV1VersionResponse>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.onlinePredictionConsoleLogging = Output.createUnknown<bool>();
-    this.onlinePredictionLogging = Output.createUnknown<bool>();
-    this.project = Output.createUnknown<String>();
-    this.regions = Output.createUnknown<List<String>>();
+        registerOutput<GoogleCloudMlV1VersionResponse>('defaultVersion');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.onlinePredictionConsoleLogging =
+        registerOutput<bool>('onlinePredictionConsoleLogging');
+    this.onlinePredictionLogging =
+        registerOutput<bool>('onlinePredictionLogging');
+    this.project = registerOutput<String>('project');
+    this.regions = registerOutput<List<String>>('regions');
   }
 }

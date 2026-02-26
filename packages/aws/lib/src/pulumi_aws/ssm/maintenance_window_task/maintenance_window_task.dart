@@ -997,21 +997,23 @@ class MaintenanceWindowTask extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.cutoffBehavior = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.maxConcurrency = Output.createUnknown<String>();
-    this.maxErrors = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.priority = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
-    this.serviceRoleArn = Output.createUnknown<String>();
-    this.targets = Output.createUnknown<List<MaintenanceWindowTaskTarget>?>();
-    this.taskArn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.cutoffBehavior = registerOutput<String?>('cutoffBehavior');
+    this.description = registerOutput<String?>('description');
+    this.maxConcurrency = registerOutput<String>('maxConcurrency');
+    this.maxErrors = registerOutput<String>('maxErrors');
+    this.name = registerOutput<String>('name');
+    this.priority = registerOutput<int?>('priority');
+    this.region = registerOutput<String>('region');
+    this.serviceRoleArn = registerOutput<String>('serviceRoleArn');
+    this.targets =
+        registerOutput<List<MaintenanceWindowTaskTarget>?>('targets');
+    this.taskArn = registerOutput<String>('taskArn');
     this.taskInvocationParameters =
-        Output.createUnknown<MaintenanceWindowTaskTaskInvocationParameters?>();
-    this.taskType = Output.createUnknown<String>();
-    this.windowId = Output.createUnknown<String>();
-    this.windowTaskId = Output.createUnknown<String>();
+        registerOutput<MaintenanceWindowTaskTaskInvocationParameters?>(
+            'taskInvocationParameters');
+    this.taskType = registerOutput<String>('taskType');
+    this.windowId = registerOutput<String>('windowId');
+    this.windowTaskId = registerOutput<String>('windowTaskId');
   }
 }

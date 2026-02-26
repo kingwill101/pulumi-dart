@@ -814,11 +814,12 @@ class ConfigurationPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.configurationPolicy =
-        Output.createUnknown<ConfigurationPolicyConfigurationPolicy>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<ConfigurationPolicyConfigurationPolicy>(
+            'configurationPolicy');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

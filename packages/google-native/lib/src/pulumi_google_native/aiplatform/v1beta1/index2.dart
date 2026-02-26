@@ -60,23 +60,26 @@ class Index2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.deployedIndexes = Output.createUnknown<
-        List<GoogleCloudAiplatformV1beta1DeployedIndexRefResponse>>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.encryptionSpec = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1EncryptionSpecResponse>();
-    this.etag = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.deployedIndexes = registerOutput<
+            List<GoogleCloudAiplatformV1beta1DeployedIndexRefResponse>>(
+        'deployedIndexes');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.encryptionSpec =
+        registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>(
+            'encryptionSpec');
+    this.etag = registerOutput<String>('etag');
     this.indexStats =
-        Output.createUnknown<GoogleCloudAiplatformV1beta1IndexStatsResponse>();
-    this.indexUpdateMethod = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<dynamic>();
-    this.metadataSchemaUri = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudAiplatformV1beta1IndexStatsResponse>(
+            'indexStats');
+    this.indexUpdateMethod = registerOutput<String>('indexUpdateMethod');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<dynamic>('metadata');
+    this.metadataSchemaUri = registerOutput<String>('metadataSchemaUri');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

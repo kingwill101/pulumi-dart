@@ -89,28 +89,31 @@ class Job7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.done = Output.createUnknown<bool>();
-    this.driverControlFilesUri = Output.createUnknown<String>();
-    this.driverOutputResourceUri = Output.createUnknown<String>();
-    this.hadoopJob = Output.createUnknown<HadoopJobResponse2>();
-    this.hiveJob = Output.createUnknown<HiveJobResponse2>();
-    this.jobUuid = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.pigJob = Output.createUnknown<PigJobResponse2>();
-    this.placement = Output.createUnknown<JobPlacementResponse2>();
-    this.prestoJob = Output.createUnknown<PrestoJobResponse2>();
-    this.project = Output.createUnknown<String>();
-    this.pysparkJob = Output.createUnknown<PySparkJobResponse2>();
-    this.reference = Output.createUnknown<JobReferenceResponse3>();
-    this.region = Output.createUnknown<String>();
-    this.scheduling = Output.createUnknown<JobSchedulingResponse2>();
-    this.sparkJob = Output.createUnknown<SparkJobResponse2>();
-    this.sparkRJob = Output.createUnknown<SparkRJobResponse2>();
-    this.sparkSqlJob = Output.createUnknown<SparkSqlJobResponse2>();
-    this.status = Output.createUnknown<JobStatusResponse4>();
-    this.statusHistory = Output.createUnknown<List<JobStatusResponse4>>();
-    this.submittedBy = Output.createUnknown<String>();
+    this.done = registerOutput<bool>('done');
+    this.driverControlFilesUri =
+        registerOutput<String>('driverControlFilesUri');
+    this.driverOutputResourceUri =
+        registerOutput<String>('driverOutputResourceUri');
+    this.hadoopJob = registerOutput<HadoopJobResponse2>('hadoopJob');
+    this.hiveJob = registerOutput<HiveJobResponse2>('hiveJob');
+    this.jobUuid = registerOutput<String>('jobUuid');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.pigJob = registerOutput<PigJobResponse2>('pigJob');
+    this.placement = registerOutput<JobPlacementResponse2>('placement');
+    this.prestoJob = registerOutput<PrestoJobResponse2>('prestoJob');
+    this.project = registerOutput<String>('project');
+    this.pysparkJob = registerOutput<PySparkJobResponse2>('pysparkJob');
+    this.reference = registerOutput<JobReferenceResponse3>('reference');
+    this.region = registerOutput<String>('region');
+    this.scheduling = registerOutput<JobSchedulingResponse2>('scheduling');
+    this.sparkJob = registerOutput<SparkJobResponse2>('sparkJob');
+    this.sparkRJob = registerOutput<SparkRJobResponse2>('sparkRJob');
+    this.sparkSqlJob = registerOutput<SparkSqlJobResponse2>('sparkSqlJob');
+    this.status = registerOutput<JobStatusResponse4>('status');
+    this.statusHistory =
+        registerOutput<List<JobStatusResponse4>>('statusHistory');
+    this.submittedBy = registerOutput<String>('submittedBy');
     this.yarnApplications =
-        Output.createUnknown<List<YarnApplicationResponse2>>();
+        registerOutput<List<YarnApplicationResponse2>>('yarnApplications');
   }
 }

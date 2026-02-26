@@ -138,9 +138,10 @@ class SecurityGroupAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.replaceDefaultAssociation = Output.createUnknown<bool?>();
-    this.securityGroupId = Output.createUnknown<String>();
-    this.vpcEndpointId = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.replaceDefaultAssociation =
+        registerOutput<bool?>('replaceDefaultAssociation');
+    this.securityGroupId = registerOutput<String>('securityGroupId');
+    this.vpcEndpointId = registerOutput<String>('vpcEndpointId');
   }
 }

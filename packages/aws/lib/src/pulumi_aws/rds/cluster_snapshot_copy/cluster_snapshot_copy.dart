@@ -266,25 +266,27 @@ class ClusterSnapshotCopy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allocatedStorage = Output.createUnknown<int>();
-    this.copyTags = Output.createUnknown<bool?>();
-    this.dbClusterSnapshotArn = Output.createUnknown<String>();
-    this.destinationRegion = Output.createUnknown<String?>();
-    this.engine = Output.createUnknown<String>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String?>();
-    this.licenseModel = Output.createUnknown<String>();
-    this.presignedUrl = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.sharedAccounts = Output.createUnknown<List<String>?>();
-    this.snapshotType = Output.createUnknown<String>();
-    this.sourceDbClusterSnapshotIdentifier = Output.createUnknown<String>();
-    this.storageEncrypted = Output.createUnknown<bool>();
-    this.storageType = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetDbClusterSnapshotIdentifier = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<ClusterSnapshotCopyTimeouts?>();
-    this.vpcId = Output.createUnknown<String>();
+    this.allocatedStorage = registerOutput<int>('allocatedStorage');
+    this.copyTags = registerOutput<bool?>('copyTags');
+    this.dbClusterSnapshotArn = registerOutput<String>('dbClusterSnapshotArn');
+    this.destinationRegion = registerOutput<String?>('destinationRegion');
+    this.engine = registerOutput<String>('engine');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.licenseModel = registerOutput<String>('licenseModel');
+    this.presignedUrl = registerOutput<String?>('presignedUrl');
+    this.region = registerOutput<String>('region');
+    this.sharedAccounts = registerOutput<List<String>?>('sharedAccounts');
+    this.snapshotType = registerOutput<String>('snapshotType');
+    this.sourceDbClusterSnapshotIdentifier =
+        registerOutput<String>('sourceDbClusterSnapshotIdentifier');
+    this.storageEncrypted = registerOutput<bool>('storageEncrypted');
+    this.storageType = registerOutput<String>('storageType');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetDbClusterSnapshotIdentifier =
+        registerOutput<String>('targetDbClusterSnapshotIdentifier');
+    this.timeouts = registerOutput<ClusterSnapshotCopyTimeouts?>('timeouts');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

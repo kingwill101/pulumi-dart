@@ -176,7 +176,7 @@ class DocumentAiProcessorDefaultVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.processor = Output.createUnknown<String>();
-    this.version = Output.createUnknown<String>();
+    this.processor = registerOutput<String>('processor');
+    this.version = registerOutput<String>('version');
   }
 }

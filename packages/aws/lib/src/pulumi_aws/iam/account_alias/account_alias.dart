@@ -113,6 +113,6 @@ class AccountAlias extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountAlias = Output.createUnknown<String>();
+    this.accountAlias = registerOutput<String>('accountAlias');
   }
 }

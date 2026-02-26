@@ -555,15 +555,15 @@ class VpcIpamPoolCidrAllocation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cidr = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.disallowedCidrs = Output.createUnknown<List<String>?>();
-    this.ipamPoolAllocationId = Output.createUnknown<String>();
-    this.ipamPoolId = Output.createUnknown<String>();
-    this.netmaskLength = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.resourceId = Output.createUnknown<String>();
-    this.resourceOwner = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String>();
+    this.cidr = registerOutput<String>('cidr');
+    this.description = registerOutput<String?>('description');
+    this.disallowedCidrs = registerOutput<List<String>?>('disallowedCidrs');
+    this.ipamPoolAllocationId = registerOutput<String>('ipamPoolAllocationId');
+    this.ipamPoolId = registerOutput<String>('ipamPoolId');
+    this.netmaskLength = registerOutput<int>('netmaskLength');
+    this.region = registerOutput<String>('region');
+    this.resourceId = registerOutput<String>('resourceId');
+    this.resourceOwner = registerOutput<String>('resourceOwner');
+    this.resourceType = registerOutput<String>('resourceType');
   }
 }

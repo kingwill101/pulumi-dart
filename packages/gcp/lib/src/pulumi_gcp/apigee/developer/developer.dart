@@ -874,15 +874,15 @@ class Developer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attributes = Output.createUnknown<List<DeveloperAttribute>?>();
-    this.createdAt = Output.createUnknown<String>();
-    this.email = Output.createUnknown<String>();
-    this.firstName = Output.createUnknown<String>();
-    this.lastModifiedAt = Output.createUnknown<String>();
-    this.lastName = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.organizatioName = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.userName = Output.createUnknown<String>();
+    this.attributes = registerOutput<List<DeveloperAttribute>?>('attributes');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.email = registerOutput<String>('email');
+    this.firstName = registerOutput<String>('firstName');
+    this.lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.lastName = registerOutput<String>('lastName');
+    this.orgId = registerOutput<String>('orgId');
+    this.organizatioName = registerOutput<String>('organizatioName');
+    this.status = registerOutput<String>('status');
+    this.userName = registerOutput<String>('userName');
   }
 }

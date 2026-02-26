@@ -180,14 +180,14 @@ class ResolverFirewallRuleGroupAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.firewallRuleGroupId = Output.createUnknown<String>();
-    this.mutationProtection = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.priority = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.firewallRuleGroupId = registerOutput<String>('firewallRuleGroupId');
+    this.mutationProtection = registerOutput<String>('mutationProtection');
+    this.name = registerOutput<String>('name');
+    this.priority = registerOutput<int>('priority');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

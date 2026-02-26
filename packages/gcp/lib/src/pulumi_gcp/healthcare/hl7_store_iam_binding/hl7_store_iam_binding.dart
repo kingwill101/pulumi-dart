@@ -682,10 +682,10 @@ class Hl7StoreIamBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<Hl7StoreIamBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.hl7V2StoreId = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.role = Output.createUnknown<String>();
+    this.condition = registerOutput<Hl7StoreIamBindingCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
+    this.members = registerOutput<List<String>>('members');
+    this.role = registerOutput<String>('role');
   }
 }

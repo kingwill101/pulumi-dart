@@ -154,14 +154,14 @@ class Connection6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.connectedDeviceId = Output.createUnknown<String>();
-    this.connectedLinkId = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.deviceId = Output.createUnknown<String>();
-    this.globalNetworkId = Output.createUnknown<String>();
-    this.linkId = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.connectedDeviceId = registerOutput<String>('connectedDeviceId');
+    this.connectedLinkId = registerOutput<String?>('connectedLinkId');
+    this.description = registerOutput<String?>('description');
+    this.deviceId = registerOutput<String>('deviceId');
+    this.globalNetworkId = registerOutput<String>('globalNetworkId');
+    this.linkId = registerOutput<String?>('linkId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

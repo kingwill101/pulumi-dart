@@ -589,9 +589,10 @@ class Settings extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessSettings = Output.createUnknown<SettingsAccessSettings?>();
+    this.accessSettings =
+        registerOutput<SettingsAccessSettings?>('accessSettings');
     this.applicationSettings =
-        Output.createUnknown<SettingsApplicationSettings?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<SettingsApplicationSettings?>('applicationSettings');
+    this.name = registerOutput<String>('name');
   }
 }

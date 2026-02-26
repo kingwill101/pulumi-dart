@@ -31,13 +31,13 @@ class Snapshot extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.storageVolume = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.volumeId = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.storageVolume = registerOutput<String>('storageVolume');
+    this.type = registerOutput<String>('type');
+    this.volumeId = registerOutput<String>('volumeId');
   }
 }

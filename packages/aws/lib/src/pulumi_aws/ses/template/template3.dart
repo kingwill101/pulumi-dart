@@ -153,11 +153,11 @@ class Template3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.html = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.subject = Output.createUnknown<String?>();
-    this.text = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.html = registerOutput<String?>('html');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.subject = registerOutput<String?>('subject');
+    this.text = registerOutput<String?>('text');
   }
 }

@@ -393,8 +393,8 @@ class ConfigurationPolicyAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.policyId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.targetId = Output.createUnknown<String>();
+    this.policyId = registerOutput<String>('policyId');
+    this.region = registerOutput<String>('region');
+    this.targetId = registerOutput<String>('targetId');
   }
 }

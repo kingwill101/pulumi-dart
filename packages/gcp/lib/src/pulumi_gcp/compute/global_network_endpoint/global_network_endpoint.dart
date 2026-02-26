@@ -206,10 +206,11 @@ class GlobalNetworkEndpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.fqdn = Output.createUnknown<String?>();
-    this.globalNetworkEndpointGroup = Output.createUnknown<String>();
-    this.ipAddress = Output.createUnknown<String?>();
-    this.port = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
+    this.fqdn = registerOutput<String?>('fqdn');
+    this.globalNetworkEndpointGroup =
+        registerOutput<String>('globalNetworkEndpointGroup');
+    this.ipAddress = registerOutput<String?>('ipAddress');
+    this.port = registerOutput<int>('port');
+    this.project = registerOutput<String>('project');
   }
 }

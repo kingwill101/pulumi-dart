@@ -213,18 +213,19 @@ class InferenceProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.modelSource = Output.createUnknown<InferenceProfileModelSource?>();
-    this.models = Output.createUnknown<List<InferenceProfileModel>>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<InferenceProfileTimeouts?>();
-    this.type = Output.createUnknown<String>();
-    this.updatedAt = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.description = registerOutput<String?>('description');
+    this.modelSource =
+        registerOutput<InferenceProfileModelSource?>('modelSource');
+    this.models = registerOutput<List<InferenceProfileModel>>('models');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<InferenceProfileTimeouts?>('timeouts');
+    this.type = registerOutput<String>('type');
+    this.updatedAt = registerOutput<String>('updatedAt');
   }
 }

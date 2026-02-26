@@ -785,17 +785,17 @@ class User2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.deletionPolicy = Output.createUnknown<String?>();
-    this.host = Output.createUnknown<String>();
-    this.instance = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.password = Output.createUnknown<String?>();
-    this.passwordPolicy = Output.createUnknown<UserPasswordPolicy?>();
-    this.passwordWo = Output.createUnknown<String?>();
-    this.passwordWoVersion = Output.createUnknown<int?>();
-    this.project = Output.createUnknown<String>();
+    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
+    this.host = registerOutput<String>('host');
+    this.instance = registerOutput<String>('instance');
+    this.name = registerOutput<String>('name');
+    this.password = registerOutput<String?>('password');
+    this.passwordPolicy = registerOutput<UserPasswordPolicy?>('passwordPolicy');
+    this.passwordWo = registerOutput<String?>('passwordWo');
+    this.passwordWoVersion = registerOutput<int?>('passwordWoVersion');
+    this.project = registerOutput<String>('project');
     this.sqlServerUserDetails =
-        Output.createUnknown<List<UserSqlServerUserDetail>>();
-    this.type = Output.createUnknown<String?>();
+        registerOutput<List<UserSqlServerUserDetail>>('sqlServerUserDetails');
+    this.type = registerOutput<String?>('type');
   }
 }

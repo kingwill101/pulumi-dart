@@ -158,11 +158,11 @@ class SourceIamBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<SourceIamBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.organization = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.source = Output.createUnknown<String>();
+    this.condition = registerOutput<SourceIamBindingCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.members = registerOutput<List<String>>('members');
+    this.organization = registerOutput<String>('organization');
+    this.role = registerOutput<String>('role');
+    this.source = registerOutput<String>('source');
   }
 }

@@ -2011,13 +2011,13 @@ class LogViewIamBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.condition = Output.createUnknown<LogViewIamBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.condition = registerOutput<LogViewIamBindingCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.members = registerOutput<List<String>>('members');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.role = registerOutput<String>('role');
   }
 }

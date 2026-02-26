@@ -221,8 +221,8 @@ class AppregistryAttributeGroupAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationId = Output.createUnknown<String>();
-    this.attributeGroupId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.applicationId = registerOutput<String>('applicationId');
+    this.attributeGroupId = registerOutput<String>('attributeGroupId');
+    this.region = registerOutput<String>('region');
   }
 }

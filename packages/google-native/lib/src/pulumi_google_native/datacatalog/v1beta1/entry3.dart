@@ -74,29 +74,34 @@ class Entry3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bigqueryDateShardedSpec = Output.createUnknown<
-        GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse>();
-    this.bigqueryTableSpec = Output.createUnknown<
-        GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.entryGroupId = Output.createUnknown<String>();
-    this.entryId = Output.createUnknown<String>();
-    this.gcsFilesetSpec = Output.createUnknown<
-        GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse>();
-    this.integratedSystem = Output.createUnknown<String>();
-    this.linkedResource = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.bigqueryDateShardedSpec = registerOutput<
+            GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse>(
+        'bigqueryDateShardedSpec');
+    this.bigqueryTableSpec =
+        registerOutput<GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse>(
+            'bigqueryTableSpec');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.entryGroupId = registerOutput<String>('entryGroupId');
+    this.entryId = registerOutput<String>('entryId');
+    this.gcsFilesetSpec =
+        registerOutput<GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse>(
+            'gcsFilesetSpec');
+    this.integratedSystem = registerOutput<String>('integratedSystem');
+    this.linkedResource = registerOutput<String>('linkedResource');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.schema =
-        Output.createUnknown<GoogleCloudDatacatalogV1beta1SchemaResponse>();
-    this.sourceSystemTimestamps = Output.createUnknown<
-        GoogleCloudDatacatalogV1beta1SystemTimestampsResponse>();
-    this.type = Output.createUnknown<String>();
-    this.usageSignal = Output.createUnknown<
-        GoogleCloudDatacatalogV1beta1UsageSignalResponse>();
-    this.userSpecifiedSystem = Output.createUnknown<String>();
-    this.userSpecifiedType = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDatacatalogV1beta1SchemaResponse>('schema');
+    this.sourceSystemTimestamps =
+        registerOutput<GoogleCloudDatacatalogV1beta1SystemTimestampsResponse>(
+            'sourceSystemTimestamps');
+    this.type = registerOutput<String>('type');
+    this.usageSignal =
+        registerOutput<GoogleCloudDatacatalogV1beta1UsageSignalResponse>(
+            'usageSignal');
+    this.userSpecifiedSystem = registerOutput<String>('userSpecifiedSystem');
+    this.userSpecifiedType = registerOutput<String>('userSpecifiedType');
   }
 }

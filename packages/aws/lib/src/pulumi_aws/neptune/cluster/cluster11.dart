@@ -274,44 +274,58 @@ class Cluster11 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowMajorVersionUpgrade = Output.createUnknown<bool>();
-    this.applyImmediately = Output.createUnknown<bool>();
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZones = Output.createUnknown<List<String>>();
-    this.backupRetentionPeriod = Output.createUnknown<int?>();
-    this.clusterIdentifier = Output.createUnknown<String>();
-    this.clusterIdentifierPrefix = Output.createUnknown<String>();
-    this.clusterMembers = Output.createUnknown<List<String>>();
-    this.clusterResourceId = Output.createUnknown<String>();
-    this.copyTagsToSnapshot = Output.createUnknown<bool?>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.enableCloudwatchLogsExports = Output.createUnknown<List<String>?>();
-    this.endpoint = Output.createUnknown<String>();
-    this.engine = Output.createUnknown<String?>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.finalSnapshotIdentifier = Output.createUnknown<String?>();
-    this.globalClusterIdentifier = Output.createUnknown<String?>();
-    this.hostedZoneId = Output.createUnknown<String>();
-    this.iamDatabaseAuthenticationEnabled = Output.createUnknown<bool?>();
-    this.iamRoles = Output.createUnknown<List<String>?>();
-    this.kmsKeyArn = Output.createUnknown<String>();
-    this.neptuneClusterParameterGroupName = Output.createUnknown<String>();
-    this.neptuneInstanceParameterGroupName = Output.createUnknown<String?>();
-    this.neptuneSubnetGroupName = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int?>();
-    this.preferredBackupWindow = Output.createUnknown<String>();
-    this.preferredMaintenanceWindow = Output.createUnknown<String>();
-    this.readerEndpoint = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.replicationSourceIdentifier = Output.createUnknown<String?>();
+    this.allowMajorVersionUpgrade =
+        registerOutput<bool>('allowMajorVersionUpgrade');
+    this.applyImmediately = registerOutput<bool>('applyImmediately');
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZones = registerOutput<List<String>>('availabilityZones');
+    this.backupRetentionPeriod = registerOutput<int?>('backupRetentionPeriod');
+    this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    this.clusterIdentifierPrefix =
+        registerOutput<String>('clusterIdentifierPrefix');
+    this.clusterMembers = registerOutput<List<String>>('clusterMembers');
+    this.clusterResourceId = registerOutput<String>('clusterResourceId');
+    this.copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.enableCloudwatchLogsExports =
+        registerOutput<List<String>?>('enableCloudwatchLogsExports');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.engine = registerOutput<String?>('engine');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.finalSnapshotIdentifier =
+        registerOutput<String?>('finalSnapshotIdentifier');
+    this.globalClusterIdentifier =
+        registerOutput<String?>('globalClusterIdentifier');
+    this.hostedZoneId = registerOutput<String>('hostedZoneId');
+    this.iamDatabaseAuthenticationEnabled =
+        registerOutput<bool?>('iamDatabaseAuthenticationEnabled');
+    this.iamRoles = registerOutput<List<String>?>('iamRoles');
+    this.kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    this.neptuneClusterParameterGroupName =
+        registerOutput<String>('neptuneClusterParameterGroupName');
+    this.neptuneInstanceParameterGroupName =
+        registerOutput<String?>('neptuneInstanceParameterGroupName');
+    this.neptuneSubnetGroupName =
+        registerOutput<String>('neptuneSubnetGroupName');
+    this.port = registerOutput<int?>('port');
+    this.preferredBackupWindow =
+        registerOutput<String>('preferredBackupWindow');
+    this.preferredMaintenanceWindow =
+        registerOutput<String>('preferredMaintenanceWindow');
+    this.readerEndpoint = registerOutput<String>('readerEndpoint');
+    this.region = registerOutput<String>('region');
+    this.replicationSourceIdentifier =
+        registerOutput<String?>('replicationSourceIdentifier');
     this.serverlessV2ScalingConfiguration =
-        Output.createUnknown<ClusterServerlessV2ScalingConfiguration2?>();
-    this.skipFinalSnapshot = Output.createUnknown<bool?>();
-    this.snapshotIdentifier = Output.createUnknown<String?>();
-    this.storageEncrypted = Output.createUnknown<bool?>();
-    this.storageType = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcSecurityGroupIds = Output.createUnknown<List<String>>();
+        registerOutput<ClusterServerlessV2ScalingConfiguration2?>(
+            'serverlessV2ScalingConfiguration');
+    this.skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
+    this.snapshotIdentifier = registerOutput<String?>('snapshotIdentifier');
+    this.storageEncrypted = registerOutput<bool?>('storageEncrypted');
+    this.storageType = registerOutput<String>('storageType');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcSecurityGroupIds =
+        registerOutput<List<String>>('vpcSecurityGroupIds');
   }
 }

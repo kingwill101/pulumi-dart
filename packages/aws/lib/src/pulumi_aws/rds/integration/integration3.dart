@@ -657,16 +657,16 @@ class Integration3 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.additionalEncryptionContext =
-        Output.createUnknown<Map<String, String>?>();
-    this.arn = Output.createUnknown<String>();
-    this.dataFilter = Output.createUnknown<String>();
-    this.integrationName = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.sourceArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetArn = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<IntegrationTimeouts?>();
+        registerOutput<Map<String, String>?>('additionalEncryptionContext');
+    this.arn = registerOutput<String>('arn');
+    this.dataFilter = registerOutput<String>('dataFilter');
+    this.integrationName = registerOutput<String>('integrationName');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.region = registerOutput<String>('region');
+    this.sourceArn = registerOutput<String>('sourceArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetArn = registerOutput<String>('targetArn');
+    this.timeouts = registerOutput<IntegrationTimeouts?>('timeouts');
   }
 }

@@ -2115,22 +2115,23 @@ class Tool extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.app = Output.createUnknown<String>();
-    this.clientFunction = Output.createUnknown<ToolClientFunction?>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataStoreTool = Output.createUnknown<ToolDataStoreTool?>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.executionType = Output.createUnknown<String?>();
-    this.generatedSummary = Output.createUnknown<String>();
-    this.googleSearchTool = Output.createUnknown<ToolGoogleSearchTool?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.openApiTools = Output.createUnknown<List<ToolOpenApiTool>>();
-    this.project = Output.createUnknown<String>();
-    this.pythonFunction = Output.createUnknown<ToolPythonFunction?>();
-    this.systemTools = Output.createUnknown<List<ToolSystemTool>>();
-    this.toolId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.app = registerOutput<String>('app');
+    this.clientFunction = registerOutput<ToolClientFunction?>('clientFunction');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataStoreTool = registerOutput<ToolDataStoreTool?>('dataStoreTool');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.executionType = registerOutput<String?>('executionType');
+    this.generatedSummary = registerOutput<String>('generatedSummary');
+    this.googleSearchTool =
+        registerOutput<ToolGoogleSearchTool?>('googleSearchTool');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.openApiTools = registerOutput<List<ToolOpenApiTool>>('openApiTools');
+    this.project = registerOutput<String>('project');
+    this.pythonFunction = registerOutput<ToolPythonFunction?>('pythonFunction');
+    this.systemTools = registerOutput<List<ToolSystemTool>>('systemTools');
+    this.toolId = registerOutput<String>('toolId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

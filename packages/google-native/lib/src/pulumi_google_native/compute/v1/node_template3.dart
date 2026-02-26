@@ -63,23 +63,26 @@ class NodeTemplate3 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.accelerators =
-        Output.createUnknown<List<AcceleratorConfigResponse3>>();
-    this.cpuOvercommitType = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.disks = Output.createUnknown<List<LocalDiskResponse3>>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.nodeAffinityLabels = Output.createUnknown<Map<String, String>>();
-    this.nodeType = Output.createUnknown<String>();
+        registerOutput<List<AcceleratorConfigResponse3>>('accelerators');
+    this.cpuOvercommitType = registerOutput<String>('cpuOvercommitType');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.disks = registerOutput<List<LocalDiskResponse3>>('disks');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.nodeAffinityLabels =
+        registerOutput<Map<String, String>>('nodeAffinityLabels');
+    this.nodeType = registerOutput<String>('nodeType');
     this.nodeTypeFlexibility =
-        Output.createUnknown<NodeTemplateNodeTypeFlexibilityResponse3>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.serverBinding = Output.createUnknown<ServerBindingResponse3>();
-    this.status = Output.createUnknown<String>();
-    this.statusMessage = Output.createUnknown<String>();
+        registerOutput<NodeTemplateNodeTypeFlexibilityResponse3>(
+            'nodeTypeFlexibility');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.serverBinding =
+        registerOutput<ServerBindingResponse3>('serverBinding');
+    this.status = registerOutput<String>('status');
+    this.statusMessage = registerOutput<String>('statusMessage');
   }
 }

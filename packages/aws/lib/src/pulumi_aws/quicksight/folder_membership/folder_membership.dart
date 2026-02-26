@@ -142,10 +142,10 @@ class FolderMembership extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.awsAccountId = Output.createUnknown<String>();
-    this.folderId = Output.createUnknown<String>();
-    this.memberId = Output.createUnknown<String>();
-    this.memberType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.folderId = registerOutput<String>('folderId');
+    this.memberId = registerOutput<String>('memberId');
+    this.memberType = registerOutput<String>('memberType');
+    this.region = registerOutput<String>('region');
   }
 }

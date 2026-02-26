@@ -135,14 +135,14 @@ class GeofenceCollection extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.collectionArn = Output.createUnknown<String>();
-    this.collectionName = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.kmsKeyId = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.updateTime = Output.createUnknown<String>();
+    this.collectionArn = registerOutput<String>('collectionArn');
+    this.collectionName = registerOutput<String>('collectionName');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

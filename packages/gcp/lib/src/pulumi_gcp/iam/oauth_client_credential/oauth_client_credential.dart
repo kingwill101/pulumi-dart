@@ -277,13 +277,14 @@ class OauthClientCredential extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clientSecret = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.oauthClientCredentialId = Output.createUnknown<String>();
-    this.oauthclient = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.clientSecret = registerOutput<String>('clientSecret');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.displayName = registerOutput<String?>('displayName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.oauthClientCredentialId =
+        registerOutput<String>('oauthClientCredentialId');
+    this.oauthclient = registerOutput<String>('oauthclient');
+    this.project = registerOutput<String>('project');
   }
 }

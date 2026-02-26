@@ -2113,48 +2113,55 @@ class Cluster8 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.additionalInfo = Output.createUnknown<String?>();
-    this.applications = Output.createUnknown<List<String>?>();
-    this.arn = Output.createUnknown<String>();
+    this.additionalInfo = registerOutput<String?>('additionalInfo');
+    this.applications = registerOutput<List<String>?>('applications');
+    this.arn = registerOutput<String>('arn');
     this.autoTerminationPolicy =
-        Output.createUnknown<ClusterAutoTerminationPolicy?>();
-    this.autoscalingRole = Output.createUnknown<String?>();
+        registerOutput<ClusterAutoTerminationPolicy?>('autoTerminationPolicy');
+    this.autoscalingRole = registerOutput<String?>('autoscalingRole');
     this.bootstrapActions =
-        Output.createUnknown<List<ClusterBootstrapAction>?>();
-    this.clusterState = Output.createUnknown<String>();
-    this.configurations = Output.createUnknown<String?>();
-    this.configurationsJson = Output.createUnknown<String?>();
-    this.coreInstanceFleet = Output.createUnknown<ClusterCoreInstanceFleet>();
-    this.coreInstanceGroup = Output.createUnknown<ClusterCoreInstanceGroup>();
-    this.customAmiId = Output.createUnknown<String?>();
-    this.ebsRootVolumeSize = Output.createUnknown<int?>();
-    this.ec2Attributes = Output.createUnknown<ClusterEc2Attributes?>();
-    this.keepJobFlowAliveWhenNoSteps = Output.createUnknown<bool>();
+        registerOutput<List<ClusterBootstrapAction>?>('bootstrapActions');
+    this.clusterState = registerOutput<String>('clusterState');
+    this.configurations = registerOutput<String?>('configurations');
+    this.configurationsJson = registerOutput<String?>('configurationsJson');
+    this.coreInstanceFleet =
+        registerOutput<ClusterCoreInstanceFleet>('coreInstanceFleet');
+    this.coreInstanceGroup =
+        registerOutput<ClusterCoreInstanceGroup>('coreInstanceGroup');
+    this.customAmiId = registerOutput<String?>('customAmiId');
+    this.ebsRootVolumeSize = registerOutput<int?>('ebsRootVolumeSize');
+    this.ec2Attributes = registerOutput<ClusterEc2Attributes?>('ec2Attributes');
+    this.keepJobFlowAliveWhenNoSteps =
+        registerOutput<bool>('keepJobFlowAliveWhenNoSteps');
     this.kerberosAttributes =
-        Output.createUnknown<ClusterKerberosAttributes?>();
-    this.listStepsStates = Output.createUnknown<List<String>?>();
-    this.logEncryptionKmsKeyId = Output.createUnknown<String?>();
-    this.logUri = Output.createUnknown<String?>();
+        registerOutput<ClusterKerberosAttributes?>('kerberosAttributes');
+    this.listStepsStates = registerOutput<List<String>?>('listStepsStates');
+    this.logEncryptionKmsKeyId =
+        registerOutput<String?>('logEncryptionKmsKeyId');
+    this.logUri = registerOutput<String?>('logUri');
     this.masterInstanceFleet =
-        Output.createUnknown<ClusterMasterInstanceFleet>();
+        registerOutput<ClusterMasterInstanceFleet>('masterInstanceFleet');
     this.masterInstanceGroup =
-        Output.createUnknown<ClusterMasterInstanceGroup>();
-    this.masterPublicDns = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.osReleaseLabel = Output.createUnknown<String?>();
+        registerOutput<ClusterMasterInstanceGroup>('masterInstanceGroup');
+    this.masterPublicDns = registerOutput<String>('masterPublicDns');
+    this.name = registerOutput<String>('name');
+    this.osReleaseLabel = registerOutput<String?>('osReleaseLabel');
     this.placementGroupConfigs =
-        Output.createUnknown<List<ClusterPlacementGroupConfig>?>();
-    this.region = Output.createUnknown<String>();
-    this.releaseLabel = Output.createUnknown<String>();
-    this.scaleDownBehavior = Output.createUnknown<String>();
-    this.securityConfiguration = Output.createUnknown<String?>();
-    this.serviceRole = Output.createUnknown<String>();
-    this.stepConcurrencyLevel = Output.createUnknown<int?>();
-    this.steps = Output.createUnknown<List<ClusterStep>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.terminationProtection = Output.createUnknown<bool>();
-    this.unhealthyNodeReplacement = Output.createUnknown<bool?>();
-    this.visibleToAllUsers = Output.createUnknown<bool?>();
+        registerOutput<List<ClusterPlacementGroupConfig>?>(
+            'placementGroupConfigs');
+    this.region = registerOutput<String>('region');
+    this.releaseLabel = registerOutput<String>('releaseLabel');
+    this.scaleDownBehavior = registerOutput<String>('scaleDownBehavior');
+    this.securityConfiguration =
+        registerOutput<String?>('securityConfiguration');
+    this.serviceRole = registerOutput<String>('serviceRole');
+    this.stepConcurrencyLevel = registerOutput<int?>('stepConcurrencyLevel');
+    this.steps = registerOutput<List<ClusterStep>>('steps');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.terminationProtection = registerOutput<bool>('terminationProtection');
+    this.unhealthyNodeReplacement =
+        registerOutput<bool?>('unhealthyNodeReplacement');
+    this.visibleToAllUsers = registerOutput<bool?>('visibleToAllUsers');
   }
 }

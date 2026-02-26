@@ -509,8 +509,8 @@ class BotAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.instanceId = Output.createUnknown<String>();
-    this.lexBot = Output.createUnknown<BotAssociationLexBot>();
-    this.region = Output.createUnknown<String>();
+    this.instanceId = registerOutput<String>('instanceId');
+    this.lexBot = registerOutput<BotAssociationLexBot>('lexBot');
+    this.region = registerOutput<String>('region');
   }
 }

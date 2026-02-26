@@ -1452,20 +1452,22 @@ class AgentKnowledgeBase extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.failureReasons = Output.createUnknown<List<String>>();
+    this.arn = registerOutput<String>('arn');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.description = registerOutput<String?>('description');
+    this.failureReasons = registerOutput<List<String>>('failureReasons');
     this.knowledgeBaseConfiguration =
-        Output.createUnknown<AgentKnowledgeBaseKnowledgeBaseConfiguration>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
+        registerOutput<AgentKnowledgeBaseKnowledgeBaseConfiguration>(
+            'knowledgeBaseConfiguration');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
     this.storageConfiguration =
-        Output.createUnknown<AgentKnowledgeBaseStorageConfiguration?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<AgentKnowledgeBaseTimeouts?>();
-    this.updatedAt = Output.createUnknown<String>();
+        registerOutput<AgentKnowledgeBaseStorageConfiguration?>(
+            'storageConfiguration');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<AgentKnowledgeBaseTimeouts?>('timeouts');
+    this.updatedAt = registerOutput<String>('updatedAt');
   }
 }

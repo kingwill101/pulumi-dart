@@ -364,11 +364,11 @@ class ResponsePolicyRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.behavior = Output.createUnknown<String?>();
-    this.dnsName = Output.createUnknown<String>();
-    this.localData = Output.createUnknown<ResponsePolicyRuleLocalData?>();
-    this.project = Output.createUnknown<String>();
-    this.responsePolicy = Output.createUnknown<String>();
-    this.ruleName = Output.createUnknown<String>();
+    this.behavior = registerOutput<String?>('behavior');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.localData = registerOutput<ResponsePolicyRuleLocalData?>('localData');
+    this.project = registerOutput<String>('project');
+    this.responsePolicy = registerOutput<String>('responsePolicy');
+    this.ruleName = registerOutput<String>('ruleName');
   }
 }

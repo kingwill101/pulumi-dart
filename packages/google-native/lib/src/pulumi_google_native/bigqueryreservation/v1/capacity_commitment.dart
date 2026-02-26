@@ -56,20 +56,21 @@ class CapacityCommitment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.capacityCommitmentId = Output.createUnknown<String?>();
-    this.commitmentEndTime = Output.createUnknown<String>();
-    this.commitmentStartTime = Output.createUnknown<String>();
-    this.edition = Output.createUnknown<String>();
-    this.enforceSingleAdminProjectPerOrg = Output.createUnknown<bool?>();
-    this.failureStatus = Output.createUnknown<StatusResponse>();
-    this.isFlatRate = Output.createUnknown<bool>();
-    this.location = Output.createUnknown<String>();
-    this.multiRegionAuxiliary = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.plan = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.renewalPlan = Output.createUnknown<String>();
-    this.slotCount = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.capacityCommitmentId = registerOutput<String?>('capacityCommitmentId');
+    this.commitmentEndTime = registerOutput<String>('commitmentEndTime');
+    this.commitmentStartTime = registerOutput<String>('commitmentStartTime');
+    this.edition = registerOutput<String>('edition');
+    this.enforceSingleAdminProjectPerOrg =
+        registerOutput<bool?>('enforceSingleAdminProjectPerOrg');
+    this.failureStatus = registerOutput<StatusResponse>('failureStatus');
+    this.isFlatRate = registerOutput<bool>('isFlatRate');
+    this.location = registerOutput<String>('location');
+    this.multiRegionAuxiliary = registerOutput<bool>('multiRegionAuxiliary');
+    this.name = registerOutput<String>('name');
+    this.plan = registerOutput<String>('plan');
+    this.project = registerOutput<String>('project');
+    this.renewalPlan = registerOutput<String>('renewalPlan');
+    this.slotCount = registerOutput<String>('slotCount');
+    this.state = registerOutput<String>('state');
   }
 }

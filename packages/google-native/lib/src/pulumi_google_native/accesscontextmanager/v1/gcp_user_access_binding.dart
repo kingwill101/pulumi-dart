@@ -26,10 +26,11 @@ class GcpUserAccessBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessLevels = Output.createUnknown<List<String>>();
-    this.dryRunAccessLevels = Output.createUnknown<List<String>>();
-    this.groupKey = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
+    this.accessLevels = registerOutput<List<String>>('accessLevels');
+    this.dryRunAccessLevels =
+        registerOutput<List<String>>('dryRunAccessLevels');
+    this.groupKey = registerOutput<String>('groupKey');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
   }
 }

@@ -420,21 +420,22 @@ class NodePool2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cluster = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
+    this.cluster = registerOutput<String>('cluster');
+    this.createTime = registerOutput<String>('createTime');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
     this.localDiskEncryption =
-        Output.createUnknown<NodePoolLocalDiskEncryption?>();
-    this.location = Output.createUnknown<String>();
-    this.machineFilter = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.nodeConfig = Output.createUnknown<NodePoolNodeConfig2>();
-    this.nodeCount = Output.createUnknown<int>();
-    this.nodeLocation = Output.createUnknown<String>();
-    this.nodeVersion = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<NodePoolLocalDiskEncryption?>('localDiskEncryption');
+    this.location = registerOutput<String>('location');
+    this.machineFilter = registerOutput<String>('machineFilter');
+    this.name = registerOutput<String>('name');
+    this.nodeConfig = registerOutput<NodePoolNodeConfig2>('nodeConfig');
+    this.nodeCount = registerOutput<int>('nodeCount');
+    this.nodeLocation = registerOutput<String>('nodeLocation');
+    this.nodeVersion = registerOutput<String>('nodeVersion');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

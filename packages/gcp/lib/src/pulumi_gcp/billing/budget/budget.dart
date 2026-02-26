@@ -1712,13 +1712,15 @@ class Budget extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allUpdatesRule = Output.createUnknown<BudgetAllUpdatesRule?>();
-    this.amount = Output.createUnknown<BudgetAmount>();
-    this.billingAccount = Output.createUnknown<String>();
-    this.budgetFilter = Output.createUnknown<BudgetBudgetFilter>();
-    this.displayName = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.ownershipScope = Output.createUnknown<String?>();
-    this.thresholdRules = Output.createUnknown<List<BudgetThresholdRule>?>();
+    this.allUpdatesRule =
+        registerOutput<BudgetAllUpdatesRule?>('allUpdatesRule');
+    this.amount = registerOutput<BudgetAmount>('amount');
+    this.billingAccount = registerOutput<String>('billingAccount');
+    this.budgetFilter = registerOutput<BudgetBudgetFilter>('budgetFilter');
+    this.displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    this.ownershipScope = registerOutput<String?>('ownershipScope');
+    this.thresholdRules =
+        registerOutput<List<BudgetThresholdRule>?>('thresholdRules');
   }
 }

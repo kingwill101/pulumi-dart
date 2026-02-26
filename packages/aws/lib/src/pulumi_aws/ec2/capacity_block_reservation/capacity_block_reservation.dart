@@ -236,24 +236,26 @@ class CapacityBlockReservation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.capacityBlockOfferingId = Output.createUnknown<String>();
-    this.createdDate = Output.createUnknown<String>();
-    this.ebsOptimized = Output.createUnknown<bool>();
-    this.endDate = Output.createUnknown<String>();
-    this.endDateType = Output.createUnknown<String>();
-    this.instanceCount = Output.createUnknown<int>();
-    this.instancePlatform = Output.createUnknown<String>();
-    this.instanceType = Output.createUnknown<String>();
-    this.outpostArn = Output.createUnknown<String>();
-    this.placementGroupArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.reservationType = Output.createUnknown<String>();
-    this.startDate = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tenancy = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<CapacityBlockReservationTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.capacityBlockOfferingId =
+        registerOutput<String>('capacityBlockOfferingId');
+    this.createdDate = registerOutput<String>('createdDate');
+    this.ebsOptimized = registerOutput<bool>('ebsOptimized');
+    this.endDate = registerOutput<String>('endDate');
+    this.endDateType = registerOutput<String>('endDateType');
+    this.instanceCount = registerOutput<int>('instanceCount');
+    this.instancePlatform = registerOutput<String>('instancePlatform');
+    this.instanceType = registerOutput<String>('instanceType');
+    this.outpostArn = registerOutput<String>('outpostArn');
+    this.placementGroupArn = registerOutput<String>('placementGroupArn');
+    this.region = registerOutput<String>('region');
+    this.reservationType = registerOutput<String>('reservationType');
+    this.startDate = registerOutput<String>('startDate');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tenancy = registerOutput<String>('tenancy');
+    this.timeouts =
+        registerOutput<CapacityBlockReservationTimeouts?>('timeouts');
   }
 }

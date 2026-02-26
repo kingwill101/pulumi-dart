@@ -47,18 +47,18 @@ class Table extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.catalogId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.databaseId = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.hiveOptions = Output.createUnknown<HiveTableOptionsResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.tableId = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.catalogId = registerOutput<String>('catalogId');
+    this.createTime = registerOutput<String>('createTime');
+    this.databaseId = registerOutput<String>('databaseId');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.etag = registerOutput<String>('etag');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.hiveOptions = registerOutput<HiveTableOptionsResponse>('hiveOptions');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.tableId = registerOutput<String>('tableId');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

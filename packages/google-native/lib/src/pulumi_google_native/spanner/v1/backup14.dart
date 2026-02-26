@@ -61,22 +61,27 @@ class Backup14 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.database = Output.createUnknown<String>();
-    this.databaseDialect = Output.createUnknown<String>();
-    this.encryptionConfigEncryptionType = Output.createUnknown<String>();
-    this.encryptionConfigKmsKeyName = Output.createUnknown<String?>();
-    this.encryptionInfo = Output.createUnknown<EncryptionInfoResponse5>();
-    this.expireTime = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.maxExpireTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.referencingBackups = Output.createUnknown<List<String>>();
-    this.referencingDatabases = Output.createUnknown<List<String>>();
-    this.sizeBytes = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.versionTime = Output.createUnknown<String>();
+    this.backupId = registerOutput<String>('backupId');
+    this.createTime = registerOutput<String>('createTime');
+    this.database = registerOutput<String>('database');
+    this.databaseDialect = registerOutput<String>('databaseDialect');
+    this.encryptionConfigEncryptionType =
+        registerOutput<String>('encryptionConfigEncryptionType');
+    this.encryptionConfigKmsKeyName =
+        registerOutput<String?>('encryptionConfigKmsKeyName');
+    this.encryptionInfo =
+        registerOutput<EncryptionInfoResponse5>('encryptionInfo');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.maxExpireTime = registerOutput<String>('maxExpireTime');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.referencingBackups =
+        registerOutput<List<String>>('referencingBackups');
+    this.referencingDatabases =
+        registerOutput<List<String>>('referencingDatabases');
+    this.sizeBytes = registerOutput<String>('sizeBytes');
+    this.state = registerOutput<String>('state');
+    this.versionTime = registerOutput<String>('versionTime');
   }
 }

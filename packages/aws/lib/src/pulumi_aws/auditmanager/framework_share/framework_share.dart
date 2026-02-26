@@ -145,11 +145,11 @@ class FrameworkShare extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.comment = Output.createUnknown<String?>();
-    this.destinationAccount = Output.createUnknown<String>();
-    this.destinationRegion = Output.createUnknown<String>();
-    this.frameworkId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.comment = registerOutput<String?>('comment');
+    this.destinationAccount = registerOutput<String>('destinationAccount');
+    this.destinationRegion = registerOutput<String>('destinationRegion');
+    this.frameworkId = registerOutput<String>('frameworkId');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
   }
 }

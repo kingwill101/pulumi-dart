@@ -1941,26 +1941,29 @@ class Pipeline2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.createTime = Output.createUnknown<String>();
-    this.cryptoKeyName = Output.createUnknown<String?>();
-    this.destinations = Output.createUnknown<List<PipelineDestination>>();
-    this.displayName = Output.createUnknown<String?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.createTime = registerOutput<String>('createTime');
+    this.cryptoKeyName = registerOutput<String?>('cryptoKeyName');
+    this.destinations =
+        registerOutput<List<PipelineDestination>>('destinations');
+    this.displayName = registerOutput<String?>('displayName');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.etag = registerOutput<String>('etag');
     this.inputPayloadFormat =
-        Output.createUnknown<PipelineInputPayloadFormat?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.loggingConfig = Output.createUnknown<PipelineLoggingConfig>();
-    this.mediations = Output.createUnknown<List<PipelineMediation>?>();
-    this.name = Output.createUnknown<String>();
-    this.pipelineId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.retryPolicy = Output.createUnknown<PipelineRetryPolicy>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<PipelineInputPayloadFormat?>('inputPayloadFormat');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.loggingConfig = registerOutput<PipelineLoggingConfig>('loggingConfig');
+    this.mediations = registerOutput<List<PipelineMediation>?>('mediations');
+    this.name = registerOutput<String>('name');
+    this.pipelineId = registerOutput<String>('pipelineId');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.retryPolicy = registerOutput<PipelineRetryPolicy>('retryPolicy');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -464,12 +464,15 @@ class WebAclLoggingConfiguration3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.logDestinationConfigs = Output.createUnknown<List<String>>();
+    this.logDestinationConfigs =
+        registerOutput<List<String>>('logDestinationConfigs');
     this.loggingFilter =
-        Output.createUnknown<WebAclLoggingConfigurationLoggingFilter?>();
+        registerOutput<WebAclLoggingConfigurationLoggingFilter?>(
+            'loggingFilter');
     this.redactedFields =
-        Output.createUnknown<List<WebAclLoggingConfigurationRedactedField>?>();
-    this.region = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
+        registerOutput<List<WebAclLoggingConfigurationRedactedField>?>(
+            'redactedFields');
+    this.region = registerOutput<String>('region');
+    this.resourceArn = registerOutput<String>('resourceArn');
   }
 }

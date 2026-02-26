@@ -288,10 +288,10 @@ class VpcIpamPreviewNextCidr extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cidr = Output.createUnknown<String>();
-    this.disallowedCidrs = Output.createUnknown<List<String>?>();
-    this.ipamPoolId = Output.createUnknown<String>();
-    this.netmaskLength = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
+    this.cidr = registerOutput<String>('cidr');
+    this.disallowedCidrs = registerOutput<List<String>?>('disallowedCidrs');
+    this.ipamPoolId = registerOutput<String>('ipamPoolId');
+    this.netmaskLength = registerOutput<int?>('netmaskLength');
+    this.region = registerOutput<String>('region');
   }
 }

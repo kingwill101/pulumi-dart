@@ -201,8 +201,8 @@ class InviteAccepter2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.invitationId = Output.createUnknown<String>();
-    this.masterId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.invitationId = registerOutput<String>('invitationId');
+    this.masterId = registerOutput<String>('masterId');
+    this.region = registerOutput<String>('region');
   }
 }

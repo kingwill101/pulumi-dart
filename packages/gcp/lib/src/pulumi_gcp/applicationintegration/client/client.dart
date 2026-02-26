@@ -463,10 +463,12 @@ class Client extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cloudKmsConfig = Output.createUnknown<ClientCloudKmsConfig?>();
-    this.createSampleIntegrations = Output.createUnknown<bool?>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.runAsServiceAccount = Output.createUnknown<String?>();
+    this.cloudKmsConfig =
+        registerOutput<ClientCloudKmsConfig?>('cloudKmsConfig');
+    this.createSampleIntegrations =
+        registerOutput<bool?>('createSampleIntegrations');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.runAsServiceAccount = registerOutput<String?>('runAsServiceAccount');
   }
 }

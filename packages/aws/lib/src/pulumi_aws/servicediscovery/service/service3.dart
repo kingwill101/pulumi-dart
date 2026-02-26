@@ -500,18 +500,20 @@ class Service3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.dnsConfig = Output.createUnknown<ServiceDnsConfig?>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.healthCheckConfig = Output.createUnknown<ServiceHealthCheckConfig?>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.dnsConfig = registerOutput<ServiceDnsConfig?>('dnsConfig');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.healthCheckConfig =
+        registerOutput<ServiceHealthCheckConfig?>('healthCheckConfig');
     this.healthCheckCustomConfig =
-        Output.createUnknown<ServiceHealthCheckCustomConfig?>();
-    this.name = Output.createUnknown<String>();
-    this.namespaceId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<ServiceHealthCheckCustomConfig?>(
+            'healthCheckCustomConfig');
+    this.name = registerOutput<String>('name');
+    this.namespaceId = registerOutput<String>('namespaceId');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
   }
 }

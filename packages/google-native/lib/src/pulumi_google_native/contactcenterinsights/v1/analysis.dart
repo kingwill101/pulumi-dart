@@ -35,15 +35,17 @@ class Analysis extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.analysisResult = Output.createUnknown<
-        GoogleCloudContactcenterinsightsV1AnalysisResultResponse>();
-    this.annotatorSelector = Output.createUnknown<
-        GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse>();
-    this.conversationId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestTime = Output.createUnknown<String>();
+    this.analysisResult = registerOutput<
+            GoogleCloudContactcenterinsightsV1AnalysisResultResponse>(
+        'analysisResult');
+    this.annotatorSelector = registerOutput<
+            GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse>(
+        'annotatorSelector');
+    this.conversationId = registerOutput<String>('conversationId');
+    this.createTime = registerOutput<String>('createTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestTime = registerOutput<String>('requestTime');
   }
 }

@@ -53,21 +53,21 @@ class Environment4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiProxyType = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.deploymentType = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.forwardProxyUri = Output.createUnknown<String>();
-    this.hasAttachedFlowHooks = Output.createUnknown<bool>();
-    this.lastModifiedAt = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.apiProxyType = registerOutput<String>('apiProxyType');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.deploymentType = registerOutput<String>('deploymentType');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.forwardProxyUri = registerOutput<String>('forwardProxyUri');
+    this.hasAttachedFlowHooks = registerOutput<bool>('hasAttachedFlowHooks');
+    this.lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
     this.nodeConfig =
-        Output.createUnknown<GoogleCloudApigeeV1NodeConfigResponse>();
-    this.organizationId = Output.createUnknown<String>();
+        registerOutput<GoogleCloudApigeeV1NodeConfigResponse>('nodeConfig');
+    this.organizationId = registerOutput<String>('organizationId');
     this.properties =
-        Output.createUnknown<GoogleCloudApigeeV1PropertiesResponse>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<GoogleCloudApigeeV1PropertiesResponse>('properties');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String>('type');
   }
 }

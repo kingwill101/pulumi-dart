@@ -449,11 +449,12 @@ class Dataset2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.encryptionSpec = Output.createUnknown<DatasetEncryptionSpec>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.timeZone = Output.createUnknown<String>();
+    this.encryptionSpec =
+        registerOutput<DatasetEncryptionSpec>('encryptionSpec');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.timeZone = registerOutput<String>('timeZone');
   }
 }

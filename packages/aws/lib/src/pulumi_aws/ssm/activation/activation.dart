@@ -339,16 +339,16 @@ class Activation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activationCode = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.expirationDate = Output.createUnknown<String>();
-    this.expired = Output.createUnknown<bool>();
-    this.iamRole = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.registrationCount = Output.createUnknown<int>();
-    this.registrationLimit = Output.createUnknown<int?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.activationCode = registerOutput<String>('activationCode');
+    this.description = registerOutput<String?>('description');
+    this.expirationDate = registerOutput<String>('expirationDate');
+    this.expired = registerOutput<bool>('expired');
+    this.iamRole = registerOutput<String>('iamRole');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.registrationCount = registerOutput<int>('registrationCount');
+    this.registrationLimit = registerOutput<int?>('registrationLimit');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

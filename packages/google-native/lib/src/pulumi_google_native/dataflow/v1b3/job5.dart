@@ -99,35 +99,39 @@ class Job5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clientRequestId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.createdFromSnapshotId = Output.createUnknown<String>();
-    this.currentState = Output.createUnknown<String>();
-    this.currentStateTime = Output.createUnknown<String>();
-    this.environment = Output.createUnknown<EnvironmentResponse3>();
-    this.executionInfo = Output.createUnknown<JobExecutionInfoResponse>();
-    this.jobMetadata = Output.createUnknown<JobMetadataResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.clientRequestId = registerOutput<String>('clientRequestId');
+    this.createTime = registerOutput<String>('createTime');
+    this.createdFromSnapshotId =
+        registerOutput<String>('createdFromSnapshotId');
+    this.currentState = registerOutput<String>('currentState');
+    this.currentStateTime = registerOutput<String>('currentStateTime');
+    this.environment = registerOutput<EnvironmentResponse3>('environment');
+    this.executionInfo =
+        registerOutput<JobExecutionInfoResponse>('executionInfo');
+    this.jobMetadata = registerOutput<JobMetadataResponse>('jobMetadata');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.pipelineDescription =
-        Output.createUnknown<PipelineDescriptionResponse>();
-    this.project = Output.createUnknown<String>();
-    this.replaceJobId = Output.createUnknown<String>();
-    this.replacedByJobId = Output.createUnknown<String>();
-    this.requestedState = Output.createUnknown<String>();
+        registerOutput<PipelineDescriptionResponse>('pipelineDescription');
+    this.project = registerOutput<String>('project');
+    this.replaceJobId = registerOutput<String>('replaceJobId');
+    this.replacedByJobId = registerOutput<String>('replacedByJobId');
+    this.requestedState = registerOutput<String>('requestedState');
     this.runtimeUpdatableParams =
-        Output.createUnknown<RuntimeUpdatableParamsResponse>();
-    this.satisfiesPzi = Output.createUnknown<bool>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
+        registerOutput<RuntimeUpdatableParamsResponse>(
+            'runtimeUpdatableParams');
+    this.satisfiesPzi = registerOutput<bool>('satisfiesPzi');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     this.stageStates =
-        Output.createUnknown<List<ExecutionStageStateResponse>>();
-    this.startTime = Output.createUnknown<String>();
-    this.steps = Output.createUnknown<List<StepResponse>>();
-    this.stepsLocation = Output.createUnknown<String>();
-    this.tempFiles = Output.createUnknown<List<String>>();
-    this.transformNameMapping = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
-    this.view = Output.createUnknown<String?>();
+        registerOutput<List<ExecutionStageStateResponse>>('stageStates');
+    this.startTime = registerOutput<String>('startTime');
+    this.steps = registerOutput<List<StepResponse>>('steps');
+    this.stepsLocation = registerOutput<String>('stepsLocation');
+    this.tempFiles = registerOutput<List<String>>('tempFiles');
+    this.transformNameMapping =
+        registerOutput<Map<String, String>>('transformNameMapping');
+    this.type = registerOutput<String>('type');
+    this.view = registerOutput<String?>('view');
   }
 }

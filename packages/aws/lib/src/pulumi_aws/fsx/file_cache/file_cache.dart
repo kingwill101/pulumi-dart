@@ -353,26 +353,31 @@ class FileCache extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.copyTagsToDataRepositoryAssociations = Output.createUnknown<bool?>();
-    this.dataRepositoryAssociationIds = Output.createUnknown<List<String>>();
+    this.arn = registerOutput<String>('arn');
+    this.copyTagsToDataRepositoryAssociations =
+        registerOutput<bool?>('copyTagsToDataRepositoryAssociations');
+    this.dataRepositoryAssociationIds =
+        registerOutput<List<String>>('dataRepositoryAssociationIds');
     this.dataRepositoryAssociations =
-        Output.createUnknown<List<FileCacheDataRepositoryAssociation>?>();
-    this.dnsName = Output.createUnknown<String>();
-    this.fileCacheId = Output.createUnknown<String>();
-    this.fileCacheType = Output.createUnknown<String>();
-    this.fileCacheTypeVersion = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String>();
+        registerOutput<List<FileCacheDataRepositoryAssociation>?>(
+            'dataRepositoryAssociations');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.fileCacheId = registerOutput<String>('fileCacheId');
+    this.fileCacheType = registerOutput<String>('fileCacheType');
+    this.fileCacheTypeVersion = registerOutput<String>('fileCacheTypeVersion');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
     this.lustreConfigurations =
-        Output.createUnknown<List<FileCacheLustreConfiguration>?>();
-    this.networkInterfaceIds = Output.createUnknown<List<String>>();
-    this.ownerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupIds = Output.createUnknown<List<String>?>();
-    this.storageCapacity = Output.createUnknown<int>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcId = Output.createUnknown<String>();
+        registerOutput<List<FileCacheLustreConfiguration>?>(
+            'lustreConfigurations');
+    this.networkInterfaceIds =
+        registerOutput<List<String>>('networkInterfaceIds');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.region = registerOutput<String>('region');
+    this.securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    this.storageCapacity = registerOutput<int>('storageCapacity');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

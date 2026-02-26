@@ -902,19 +902,22 @@ class DataSource3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.awsAccountId = Output.createUnknown<String>();
-    this.credentials = Output.createUnknown<DataSourceCredentials?>();
-    this.dataSourceId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parameters = Output.createUnknown<DataSourceParameters>();
-    this.permissions = Output.createUnknown<List<DataSourcePermission>?>();
-    this.region = Output.createUnknown<String>();
-    this.sslProperties = Output.createUnknown<DataSourceSslProperties>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.credentials = registerOutput<DataSourceCredentials?>('credentials');
+    this.dataSourceId = registerOutput<String>('dataSourceId');
+    this.name = registerOutput<String>('name');
+    this.parameters = registerOutput<DataSourceParameters>('parameters');
+    this.permissions =
+        registerOutput<List<DataSourcePermission>?>('permissions');
+    this.region = registerOutput<String>('region');
+    this.sslProperties =
+        registerOutput<DataSourceSslProperties>('sslProperties');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
     this.vpcConnectionProperties =
-        Output.createUnknown<DataSourceVpcConnectionProperties?>();
+        registerOutput<DataSourceVpcConnectionProperties?>(
+            'vpcConnectionProperties');
   }
 }

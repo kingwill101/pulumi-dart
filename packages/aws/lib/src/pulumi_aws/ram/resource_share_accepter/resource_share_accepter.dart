@@ -241,14 +241,14 @@ class ResourceShareAccepter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.invitationArn = Output.createUnknown<String>();
-    this.receiverAccountId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resources = Output.createUnknown<List<String>>();
-    this.senderAccountId = Output.createUnknown<String>();
-    this.shareArn = Output.createUnknown<String>();
-    this.shareId = Output.createUnknown<String>();
-    this.shareName = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.invitationArn = registerOutput<String>('invitationArn');
+    this.receiverAccountId = registerOutput<String>('receiverAccountId');
+    this.region = registerOutput<String>('region');
+    this.resources = registerOutput<List<String>>('resources');
+    this.senderAccountId = registerOutput<String>('senderAccountId');
+    this.shareArn = registerOutput<String>('shareArn');
+    this.shareId = registerOutput<String>('shareId');
+    this.shareName = registerOutput<String>('shareName');
+    this.status = registerOutput<String>('status');
   }
 }

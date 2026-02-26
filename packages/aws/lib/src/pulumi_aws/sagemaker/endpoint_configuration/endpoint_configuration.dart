@@ -214,21 +214,25 @@ class EndpointConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.asyncInferenceConfig =
-        Output.createUnknown<EndpointConfigurationAsyncInferenceConfig?>();
+        registerOutput<EndpointConfigurationAsyncInferenceConfig?>(
+            'asyncInferenceConfig');
     this.dataCaptureConfig =
-        Output.createUnknown<EndpointConfigurationDataCaptureConfig?>();
-    this.executionRoleArn = Output.createUnknown<String?>();
-    this.kmsKeyArn = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
+        registerOutput<EndpointConfigurationDataCaptureConfig?>(
+            'dataCaptureConfig');
+    this.executionRoleArn = registerOutput<String?>('executionRoleArn');
+    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
     this.productionVariants =
-        Output.createUnknown<List<EndpointConfigurationProductionVariant>>();
-    this.region = Output.createUnknown<String>();
-    this.shadowProductionVariants = Output.createUnknown<
-        List<EndpointConfigurationShadowProductionVariant>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<EndpointConfigurationProductionVariant>>(
+            'productionVariants');
+    this.region = registerOutput<String>('region');
+    this.shadowProductionVariants =
+        registerOutput<List<EndpointConfigurationShadowProductionVariant>?>(
+            'shadowProductionVariants');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

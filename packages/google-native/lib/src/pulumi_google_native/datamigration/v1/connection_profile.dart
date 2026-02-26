@@ -69,24 +69,25 @@ class ConnectionProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alloydb = Output.createUnknown<AlloyDbConnectionProfileResponse>();
-    this.cloudsql = Output.createUnknown<CloudSqlConnectionProfileResponse>();
-    this.connectionProfileId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.error = Output.createUnknown<StatusResponse15>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.mysql = Output.createUnknown<MySqlConnectionProfileResponse>();
-    this.name = Output.createUnknown<String>();
-    this.oracle = Output.createUnknown<OracleConnectionProfileResponse>();
+    this.alloydb = registerOutput<AlloyDbConnectionProfileResponse>('alloydb');
+    this.cloudsql =
+        registerOutput<CloudSqlConnectionProfileResponse>('cloudsql');
+    this.connectionProfileId = registerOutput<String>('connectionProfileId');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.error = registerOutput<StatusResponse15>('error');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.mysql = registerOutput<MySqlConnectionProfileResponse>('mysql');
+    this.name = registerOutput<String>('name');
+    this.oracle = registerOutput<OracleConnectionProfileResponse>('oracle');
     this.postgresql =
-        Output.createUnknown<PostgreSqlConnectionProfileResponse>();
-    this.project = Output.createUnknown<String>();
-    this.provider = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.skipValidation = Output.createUnknown<bool?>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<PostgreSqlConnectionProfileResponse>('postgresql');
+    this.project = registerOutput<String>('project');
+    this.provider = registerOutput<String>('provider');
+    this.requestId = registerOutput<String?>('requestId');
+    this.skipValidation = registerOutput<bool?>('skipValidation');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

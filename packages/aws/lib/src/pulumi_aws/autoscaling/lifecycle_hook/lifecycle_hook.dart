@@ -309,14 +309,15 @@ class LifecycleHook extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoscalingGroupName = Output.createUnknown<String>();
-    this.defaultResult = Output.createUnknown<String>();
-    this.heartbeatTimeout = Output.createUnknown<int?>();
-    this.lifecycleTransition = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.notificationMetadata = Output.createUnknown<String?>();
-    this.notificationTargetArn = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String?>();
+    this.autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
+    this.defaultResult = registerOutput<String>('defaultResult');
+    this.heartbeatTimeout = registerOutput<int?>('heartbeatTimeout');
+    this.lifecycleTransition = registerOutput<String>('lifecycleTransition');
+    this.name = registerOutput<String>('name');
+    this.notificationMetadata = registerOutput<String?>('notificationMetadata');
+    this.notificationTargetArn =
+        registerOutput<String?>('notificationTargetArn');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String?>('roleArn');
   }
 }

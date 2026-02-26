@@ -198,8 +198,10 @@ class InstanceTrustProviderAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.verifiedaccessInstanceId = Output.createUnknown<String>();
-    this.verifiedaccessTrustProviderId = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.verifiedaccessInstanceId =
+        registerOutput<String>('verifiedaccessInstanceId');
+    this.verifiedaccessTrustProviderId =
+        registerOutput<String>('verifiedaccessTrustProviderId');
   }
 }

@@ -2399,40 +2399,45 @@ class MetastoreService extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.artifactGcsUri = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.databaseType = Output.createUnknown<String?>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.artifactGcsUri = registerOutput<String>('artifactGcsUri');
+    this.createTime = registerOutput<String>('createTime');
+    this.databaseType = registerOutput<String?>('databaseType');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.encryptionConfig =
-        Output.createUnknown<MetastoreServiceEncryptionConfig?>();
-    this.endpointUri = Output.createUnknown<String>();
+        registerOutput<MetastoreServiceEncryptionConfig?>('encryptionConfig');
+    this.endpointUri = registerOutput<String>('endpointUri');
     this.hiveMetastoreConfig =
-        Output.createUnknown<MetastoreServiceHiveMetastoreConfig?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String?>();
+        registerOutput<MetastoreServiceHiveMetastoreConfig?>(
+            'hiveMetastoreConfig');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String?>('location');
     this.maintenanceWindow =
-        Output.createUnknown<MetastoreServiceMaintenanceWindow?>();
+        registerOutput<MetastoreServiceMaintenanceWindow?>('maintenanceWindow');
     this.metadataIntegration =
-        Output.createUnknown<MetastoreServiceMetadataIntegration?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.networkConfig = Output.createUnknown<MetastoreServiceNetworkConfig?>();
-    this.port = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.releaseChannel = Output.createUnknown<String?>();
-    this.scalingConfig = Output.createUnknown<MetastoreServiceScalingConfig?>();
+        registerOutput<MetastoreServiceMetadataIntegration?>(
+            'metadataIntegration');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.networkConfig =
+        registerOutput<MetastoreServiceNetworkConfig?>('networkConfig');
+    this.port = registerOutput<int>('port');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.releaseChannel = registerOutput<String?>('releaseChannel');
+    this.scalingConfig =
+        registerOutput<MetastoreServiceScalingConfig?>('scalingConfig');
     this.scheduledBackup =
-        Output.createUnknown<MetastoreServiceScheduledBackup?>();
-    this.serviceId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.stateMessage = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
+        registerOutput<MetastoreServiceScheduledBackup?>('scheduledBackup');
+    this.serviceId = registerOutput<String>('serviceId');
+    this.state = registerOutput<String>('state');
+    this.stateMessage = registerOutput<String>('stateMessage');
+    this.tags = registerOutput<Map<String, String>?>('tags');
     this.telemetryConfig =
-        Output.createUnknown<MetastoreServiceTelemetryConfig>();
-    this.tier = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<MetastoreServiceTelemetryConfig>('telemetryConfig');
+    this.tier = registerOutput<String>('tier');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

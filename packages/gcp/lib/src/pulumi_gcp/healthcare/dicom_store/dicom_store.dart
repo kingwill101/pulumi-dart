@@ -611,14 +611,16 @@ class DicomStore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dataset = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
+    this.dataset = registerOutput<String>('dataset');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
     this.notificationConfig =
-        Output.createUnknown<DicomStoreNotificationConfig?>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.selfLink = Output.createUnknown<String>();
-    this.streamConfigs = Output.createUnknown<List<DicomStoreStreamConfig>?>();
+        registerOutput<DicomStoreNotificationConfig?>('notificationConfig');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.streamConfigs =
+        registerOutput<List<DicomStoreStreamConfig>?>('streamConfigs');
   }
 }

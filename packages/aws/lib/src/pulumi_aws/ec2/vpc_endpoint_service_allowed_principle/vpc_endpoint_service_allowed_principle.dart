@@ -146,8 +146,8 @@ class VpcEndpointServiceAllowedPrinciple extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.principalArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.vpcEndpointServiceId = Output.createUnknown<String>();
+    this.principalArn = registerOutput<String>('principalArn');
+    this.region = registerOutput<String>('region');
+    this.vpcEndpointServiceId = registerOutput<String>('vpcEndpointServiceId');
   }
 }

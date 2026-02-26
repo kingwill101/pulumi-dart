@@ -1228,23 +1228,28 @@ class GlobalCluster3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.databaseName = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.endpoint = Output.createUnknown<String>();
-    this.engine = Output.createUnknown<String>();
-    this.engineLifecycleSupport = Output.createUnknown<String>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.engineVersionActual = Output.createUnknown<String>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.globalClusterIdentifier = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.databaseName = registerOutput<String>('databaseName');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.engine = registerOutput<String>('engine');
+    this.engineLifecycleSupport =
+        registerOutput<String>('engineLifecycleSupport');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.engineVersionActual = registerOutput<String>('engineVersionActual');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.globalClusterIdentifier =
+        registerOutput<String>('globalClusterIdentifier');
     this.globalClusterMembers =
-        Output.createUnknown<List<GlobalClusterGlobalClusterMember3>>();
-    this.globalClusterResourceId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.sourceDbClusterIdentifier = Output.createUnknown<String>();
-    this.storageEncrypted = Output.createUnknown<bool>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<GlobalClusterGlobalClusterMember3>>(
+            'globalClusterMembers');
+    this.globalClusterResourceId =
+        registerOutput<String>('globalClusterResourceId');
+    this.region = registerOutput<String>('region');
+    this.sourceDbClusterIdentifier =
+        registerOutput<String>('sourceDbClusterIdentifier');
+    this.storageEncrypted = registerOutput<bool>('storageEncrypted');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

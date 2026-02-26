@@ -70,27 +70,32 @@ class SecurityPolicy3 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.adaptiveProtectionConfig =
-        Output.createUnknown<SecurityPolicyAdaptiveProtectionConfigResponse3>();
+        registerOutput<SecurityPolicyAdaptiveProtectionConfigResponse3>(
+            'adaptiveProtectionConfig');
     this.advancedOptionsConfig =
-        Output.createUnknown<SecurityPolicyAdvancedOptionsConfigResponse3>();
-    this.creationTimestamp = Output.createUnknown<String>();
+        registerOutput<SecurityPolicyAdvancedOptionsConfigResponse3>(
+            'advancedOptionsConfig');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.ddosProtectionConfig =
-        Output.createUnknown<SecurityPolicyDdosProtectionConfigResponse3>();
-    this.description = Output.createUnknown<String>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<SecurityPolicyDdosProtectionConfigResponse3>(
+            'ddosProtectionConfig');
+    this.description = registerOutput<String>('description');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.kind = registerOutput<String>('kind');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.recaptchaOptionsConfig =
-        Output.createUnknown<SecurityPolicyRecaptchaOptionsConfigResponse3>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.rules = Output.createUnknown<List<SecurityPolicyRuleResponse3>>();
-    this.selfLink = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<SecurityPolicyRecaptchaOptionsConfigResponse3>(
+            'recaptchaOptionsConfig');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.rules = registerOutput<List<SecurityPolicyRuleResponse3>>('rules');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.type = registerOutput<String>('type');
     this.userDefinedFields =
-        Output.createUnknown<List<SecurityPolicyUserDefinedFieldResponse3>>();
+        registerOutput<List<SecurityPolicyUserDefinedFieldResponse3>>(
+            'userDefinedFields');
   }
 }

@@ -769,26 +769,30 @@ class Service extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.autoScalingConfigurationArn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.autoScalingConfigurationArn =
+        registerOutput<String>('autoScalingConfigurationArn');
     this.encryptionConfiguration =
-        Output.createUnknown<ServiceEncryptionConfiguration?>();
+        registerOutput<ServiceEncryptionConfiguration?>(
+            'encryptionConfiguration');
     this.healthCheckConfiguration =
-        Output.createUnknown<ServiceHealthCheckConfiguration>();
+        registerOutput<ServiceHealthCheckConfiguration>(
+            'healthCheckConfiguration');
     this.instanceConfiguration =
-        Output.createUnknown<ServiceInstanceConfiguration>();
+        registerOutput<ServiceInstanceConfiguration>('instanceConfiguration');
     this.networkConfiguration =
-        Output.createUnknown<ServiceNetworkConfiguration>();
+        registerOutput<ServiceNetworkConfiguration>('networkConfiguration');
     this.observabilityConfiguration =
-        Output.createUnknown<ServiceObservabilityConfiguration?>();
-    this.region = Output.createUnknown<String>();
-    this.serviceId = Output.createUnknown<String>();
-    this.serviceName = Output.createUnknown<String>();
-    this.serviceUrl = Output.createUnknown<String>();
+        registerOutput<ServiceObservabilityConfiguration?>(
+            'observabilityConfiguration');
+    this.region = registerOutput<String>('region');
+    this.serviceId = registerOutput<String>('serviceId');
+    this.serviceName = registerOutput<String>('serviceName');
+    this.serviceUrl = registerOutput<String>('serviceUrl');
     this.sourceConfiguration =
-        Output.createUnknown<ServiceSourceConfiguration>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<ServiceSourceConfiguration>('sourceConfiguration');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

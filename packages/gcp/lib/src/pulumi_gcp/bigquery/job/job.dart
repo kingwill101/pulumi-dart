@@ -2827,20 +2827,21 @@ class Job extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.copy = Output.createUnknown<JobCopy?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.extract = Output.createUnknown<JobExtract?>();
-    this.jobId = Output.createUnknown<String>();
-    this.jobTimeoutMs = Output.createUnknown<String?>();
-    this.jobType = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.load = Output.createUnknown<JobLoad?>();
-    this.location = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.query = Output.createUnknown<JobQuery?>();
-    this.reservation = Output.createUnknown<String?>();
-    this.statuses = Output.createUnknown<List<JobStatus>>();
-    this.userEmail = Output.createUnknown<String>();
+    this.copy = registerOutput<JobCopy?>('copy');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.extract = registerOutput<JobExtract?>('extract');
+    this.jobId = registerOutput<String>('jobId');
+    this.jobTimeoutMs = registerOutput<String?>('jobTimeoutMs');
+    this.jobType = registerOutput<String>('jobType');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.load = registerOutput<JobLoad?>('load');
+    this.location = registerOutput<String?>('location');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.query = registerOutput<JobQuery?>('query');
+    this.reservation = registerOutput<String?>('reservation');
+    this.statuses = registerOutput<List<JobStatus>>('statuses');
+    this.userEmail = registerOutput<String>('userEmail');
   }
 }

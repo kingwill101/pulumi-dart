@@ -823,10 +823,10 @@ class ResourceShareAssociationsExclusive extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.principals = Output.createUnknown<List<String>?>();
-    this.region = Output.createUnknown<String>();
-    this.resourceArns = Output.createUnknown<List<String>?>();
-    this.resourceShareArn = Output.createUnknown<String>();
-    this.sources = Output.createUnknown<List<String>?>();
+    this.principals = registerOutput<List<String>?>('principals');
+    this.region = registerOutput<String>('region');
+    this.resourceArns = registerOutput<List<String>?>('resourceArns');
+    this.resourceShareArn = registerOutput<String>('resourceShareArn');
+    this.sources = registerOutput<List<String>?>('sources');
   }
 }

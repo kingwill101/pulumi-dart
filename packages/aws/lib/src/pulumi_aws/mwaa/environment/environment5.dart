@@ -798,43 +798,51 @@ class Environment5 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.airflowConfigurationOptions =
-        Output.createUnknown<Map<String, String>?>();
-    this.airflowVersion = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.dagS3Path = Output.createUnknown<String>();
-    this.databaseVpcEndpointService = Output.createUnknown<String>();
-    this.endpointManagement = Output.createUnknown<String>();
-    this.environmentClass = Output.createUnknown<String>();
-    this.executionRoleArn = Output.createUnknown<String>();
-    this.kmsKey = Output.createUnknown<String?>();
-    this.lastUpdateds = Output.createUnknown<List<EnvironmentLastUpdated>>();
+        registerOutput<Map<String, String>?>('airflowConfigurationOptions');
+    this.airflowVersion = registerOutput<String>('airflowVersion');
+    this.arn = registerOutput<String>('arn');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.dagS3Path = registerOutput<String>('dagS3Path');
+    this.databaseVpcEndpointService =
+        registerOutput<String>('databaseVpcEndpointService');
+    this.endpointManagement = registerOutput<String>('endpointManagement');
+    this.environmentClass = registerOutput<String>('environmentClass');
+    this.executionRoleArn = registerOutput<String>('executionRoleArn');
+    this.kmsKey = registerOutput<String?>('kmsKey');
+    this.lastUpdateds =
+        registerOutput<List<EnvironmentLastUpdated>>('lastUpdateds');
     this.loggingConfiguration =
-        Output.createUnknown<EnvironmentLoggingConfiguration>();
-    this.maxWebservers = Output.createUnknown<int>();
-    this.maxWorkers = Output.createUnknown<int>();
-    this.minWebservers = Output.createUnknown<int>();
-    this.minWorkers = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<EnvironmentLoggingConfiguration>('loggingConfiguration');
+    this.maxWebservers = registerOutput<int>('maxWebservers');
+    this.maxWorkers = registerOutput<int>('maxWorkers');
+    this.minWebservers = registerOutput<int>('minWebservers');
+    this.minWorkers = registerOutput<int>('minWorkers');
+    this.name = registerOutput<String>('name');
     this.networkConfiguration =
-        Output.createUnknown<EnvironmentNetworkConfiguration>();
-    this.pluginsS3ObjectVersion = Output.createUnknown<String>();
-    this.pluginsS3Path = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.requirementsS3ObjectVersion = Output.createUnknown<String>();
-    this.requirementsS3Path = Output.createUnknown<String?>();
-    this.schedulers = Output.createUnknown<int>();
-    this.serviceRoleArn = Output.createUnknown<String>();
-    this.sourceBucketArn = Output.createUnknown<String>();
-    this.startupScriptS3ObjectVersion = Output.createUnknown<String>();
-    this.startupScriptS3Path = Output.createUnknown<String?>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.webserverAccessMode = Output.createUnknown<String>();
-    this.webserverUrl = Output.createUnknown<String>();
-    this.webserverVpcEndpointService = Output.createUnknown<String>();
-    this.weeklyMaintenanceWindowStart = Output.createUnknown<String>();
-    this.workerReplacementStrategy = Output.createUnknown<String>();
+        registerOutput<EnvironmentNetworkConfiguration>('networkConfiguration');
+    this.pluginsS3ObjectVersion =
+        registerOutput<String>('pluginsS3ObjectVersion');
+    this.pluginsS3Path = registerOutput<String?>('pluginsS3Path');
+    this.region = registerOutput<String>('region');
+    this.requirementsS3ObjectVersion =
+        registerOutput<String>('requirementsS3ObjectVersion');
+    this.requirementsS3Path = registerOutput<String?>('requirementsS3Path');
+    this.schedulers = registerOutput<int>('schedulers');
+    this.serviceRoleArn = registerOutput<String>('serviceRoleArn');
+    this.sourceBucketArn = registerOutput<String>('sourceBucketArn');
+    this.startupScriptS3ObjectVersion =
+        registerOutput<String>('startupScriptS3ObjectVersion');
+    this.startupScriptS3Path = registerOutput<String?>('startupScriptS3Path');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.webserverAccessMode = registerOutput<String>('webserverAccessMode');
+    this.webserverUrl = registerOutput<String>('webserverUrl');
+    this.webserverVpcEndpointService =
+        registerOutput<String>('webserverVpcEndpointService');
+    this.weeklyMaintenanceWindowStart =
+        registerOutput<String>('weeklyMaintenanceWindowStart');
+    this.workerReplacementStrategy =
+        registerOutput<String>('workerReplacementStrategy');
   }
 }

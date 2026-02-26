@@ -879,19 +879,21 @@ class SecurityPolicyRule2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.headerAction = Output.createUnknown<SecurityPolicyRuleHeaderAction?>();
-    this.match = Output.createUnknown<SecurityPolicyRuleMatch?>();
+    this.action = registerOutput<String>('action');
+    this.description = registerOutput<String?>('description');
+    this.headerAction =
+        registerOutput<SecurityPolicyRuleHeaderAction?>('headerAction');
+    this.match = registerOutput<SecurityPolicyRuleMatch?>('match');
     this.preconfiguredWafConfig =
-        Output.createUnknown<SecurityPolicyRulePreconfiguredWafConfig?>();
-    this.preview = Output.createUnknown<bool?>();
-    this.priority = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<SecurityPolicyRulePreconfiguredWafConfig?>(
+            'preconfiguredWafConfig');
+    this.preview = registerOutput<bool?>('preview');
+    this.priority = registerOutput<int>('priority');
+    this.project = registerOutput<String>('project');
     this.rateLimitOptions =
-        Output.createUnknown<SecurityPolicyRuleRateLimitOptions?>();
+        registerOutput<SecurityPolicyRuleRateLimitOptions?>('rateLimitOptions');
     this.redirectOptions =
-        Output.createUnknown<SecurityPolicyRuleRedirectOptions?>();
-    this.securityPolicy = Output.createUnknown<String>();
+        registerOutput<SecurityPolicyRuleRedirectOptions?>('redirectOptions');
+    this.securityPolicy = registerOutput<String>('securityPolicy');
   }
 }

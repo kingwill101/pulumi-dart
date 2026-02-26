@@ -74,26 +74,26 @@ class GlobalAddress2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.address = Output.createUnknown<String>();
-    this.addressType = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.ipVersion = Output.createUnknown<String>();
-    this.ipv6EndpointType = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.networkTier = Output.createUnknown<String>();
-    this.prefixLength = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.purpose = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.subnetwork = Output.createUnknown<String>();
-    this.users = Output.createUnknown<List<String>>();
+    this.address = registerOutput<String>('address');
+    this.addressType = registerOutput<String>('addressType');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.ipVersion = registerOutput<String>('ipVersion');
+    this.ipv6EndpointType = registerOutput<String>('ipv6EndpointType');
+    this.kind = registerOutput<String>('kind');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.networkTier = registerOutput<String>('networkTier');
+    this.prefixLength = registerOutput<int>('prefixLength');
+    this.project = registerOutput<String>('project');
+    this.purpose = registerOutput<String>('purpose');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.status = registerOutput<String>('status');
+    this.subnetwork = registerOutput<String>('subnetwork');
+    this.users = registerOutput<List<String>>('users');
   }
 }

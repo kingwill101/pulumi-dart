@@ -321,14 +321,16 @@ class CxGenerator extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String>();
-    this.languageCode = Output.createUnknown<String?>();
+    this.displayName = registerOutput<String>('displayName');
+    this.languageCode = registerOutput<String?>('languageCode');
     this.llmModelSettings =
-        Output.createUnknown<CxGeneratorLlmModelSettings?>();
-    this.modelParameter = Output.createUnknown<CxGeneratorModelParameter?>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String?>();
-    this.placeholders = Output.createUnknown<List<CxGeneratorPlaceholder>?>();
-    this.promptText = Output.createUnknown<CxGeneratorPromptText>();
+        registerOutput<CxGeneratorLlmModelSettings?>('llmModelSettings');
+    this.modelParameter =
+        registerOutput<CxGeneratorModelParameter?>('modelParameter');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String?>('parent');
+    this.placeholders =
+        registerOutput<List<CxGeneratorPlaceholder>?>('placeholders');
+    this.promptText = registerOutput<CxGeneratorPromptText>('promptText');
   }
 }

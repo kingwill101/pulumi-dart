@@ -162,13 +162,17 @@ class ModelCardExportJob extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.exportArtifacts =
-        Output.createUnknown<List<ModelCardExportJobExportArtifact>>();
-    this.modelCardExportJobArn = Output.createUnknown<String>();
-    this.modelCardExportJobName = Output.createUnknown<String>();
-    this.modelCardName = Output.createUnknown<String>();
-    this.modelCardVersion = Output.createUnknown<int>();
-    this.outputConfig = Output.createUnknown<ModelCardExportJobOutputConfig>();
-    this.region = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<ModelCardExportJobTimeouts?>();
+        registerOutput<List<ModelCardExportJobExportArtifact>>(
+            'exportArtifacts');
+    this.modelCardExportJobArn =
+        registerOutput<String>('modelCardExportJobArn');
+    this.modelCardExportJobName =
+        registerOutput<String>('modelCardExportJobName');
+    this.modelCardName = registerOutput<String>('modelCardName');
+    this.modelCardVersion = registerOutput<int>('modelCardVersion');
+    this.outputConfig =
+        registerOutput<ModelCardExportJobOutputConfig>('outputConfig');
+    this.region = registerOutput<String>('region');
+    this.timeouts = registerOutput<ModelCardExportJobTimeouts?>('timeouts');
   }
 }

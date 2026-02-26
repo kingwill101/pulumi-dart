@@ -382,10 +382,10 @@ class VaultLock extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.completeLock = Output.createUnknown<bool>();
-    this.ignoreDeletionError = Output.createUnknown<bool?>();
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.vaultName = Output.createUnknown<String>();
+    this.completeLock = registerOutput<bool>('completeLock');
+    this.ignoreDeletionError = registerOutput<bool?>('ignoreDeletionError');
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
+    this.vaultName = registerOutput<String>('vaultName');
   }
 }

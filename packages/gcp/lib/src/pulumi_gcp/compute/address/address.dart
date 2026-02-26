@@ -940,26 +940,27 @@ class Address extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.address = Output.createUnknown<String>();
-    this.addressType = Output.createUnknown<String?>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.ipCollection = Output.createUnknown<String?>();
-    this.ipVersion = Output.createUnknown<String?>();
-    this.ipv6EndpointType = Output.createUnknown<String?>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String?>();
-    this.networkTier = Output.createUnknown<String>();
-    this.prefixLength = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.purpose = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.subnetwork = Output.createUnknown<String>();
-    this.users = Output.createUnknown<List<String>>();
+    this.address = registerOutput<String>('address');
+    this.addressType = registerOutput<String?>('addressType');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.ipCollection = registerOutput<String?>('ipCollection');
+    this.ipVersion = registerOutput<String?>('ipVersion');
+    this.ipv6EndpointType = registerOutput<String?>('ipv6EndpointType');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String?>('network');
+    this.networkTier = registerOutput<String>('networkTier');
+    this.prefixLength = registerOutput<int>('prefixLength');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.purpose = registerOutput<String>('purpose');
+    this.region = registerOutput<String>('region');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.subnetwork = registerOutput<String>('subnetwork');
+    this.users = registerOutput<List<String>>('users');
   }
 }

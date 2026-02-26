@@ -117,8 +117,8 @@ class EmailIdentity extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.email = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.email = registerOutput<String>('email');
+    this.region = registerOutput<String>('region');
   }
 }

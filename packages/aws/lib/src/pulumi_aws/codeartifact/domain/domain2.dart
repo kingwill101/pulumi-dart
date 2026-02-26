@@ -148,16 +148,16 @@ class Domain2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.assetSizeBytes = Output.createUnknown<String>();
-    this.createdTime = Output.createUnknown<String>();
-    this.domain = Output.createUnknown<String>();
-    this.encryptionKey = Output.createUnknown<String>();
-    this.owner = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.repositoryCount = Output.createUnknown<int>();
-    this.s3BucketArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.assetSizeBytes = registerOutput<String>('assetSizeBytes');
+    this.createdTime = registerOutput<String>('createdTime');
+    this.domain = registerOutput<String>('domain');
+    this.encryptionKey = registerOutput<String>('encryptionKey');
+    this.owner = registerOutput<String>('owner');
+    this.region = registerOutput<String>('region');
+    this.repositoryCount = registerOutput<int>('repositoryCount');
+    this.s3BucketArn = registerOutput<String>('s3BucketArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

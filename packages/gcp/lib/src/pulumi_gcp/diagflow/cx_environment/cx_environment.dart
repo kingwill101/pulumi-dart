@@ -345,12 +345,12 @@ class CxEnvironment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String?>('parent');
+    this.updateTime = registerOutput<String>('updateTime');
     this.versionConfigs =
-        Output.createUnknown<List<CxEnvironmentVersionConfig>>();
+        registerOutput<List<CxEnvironmentVersionConfig>>('versionConfigs');
   }
 }

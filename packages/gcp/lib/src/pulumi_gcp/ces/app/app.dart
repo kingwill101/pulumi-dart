@@ -2388,35 +2388,41 @@ class App extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appId = Output.createUnknown<String>();
+    this.appId = registerOutput<String>('appId');
     this.audioProcessingConfig =
-        Output.createUnknown<AppAudioProcessingConfig?>();
+        registerOutput<AppAudioProcessingConfig?>('audioProcessingConfig');
     this.clientCertificateSettings =
-        Output.createUnknown<AppClientCertificateSettings?>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataStoreSettings = Output.createUnknown<AppDataStoreSettings?>();
+        registerOutput<AppClientCertificateSettings?>(
+            'clientCertificateSettings');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataStoreSettings =
+        registerOutput<AppDataStoreSettings?>('dataStoreSettings');
     this.defaultChannelProfile =
-        Output.createUnknown<AppDefaultChannelProfile?>();
-    this.deploymentCount = Output.createUnknown<int>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
+        registerOutput<AppDefaultChannelProfile?>('defaultChannelProfile');
+    this.deploymentCount = registerOutput<int>('deploymentCount');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
     this.evaluationMetricsThresholds =
-        Output.createUnknown<AppEvaluationMetricsThresholds?>();
-    this.globalInstruction = Output.createUnknown<String?>();
-    this.guardrails = Output.createUnknown<List<String>?>();
-    this.languageSettings = Output.createUnknown<AppLanguageSettings?>();
-    this.location = Output.createUnknown<String>();
-    this.loggingSettings = Output.createUnknown<AppLoggingSettings?>();
-    this.metadata = Output.createUnknown<Map<String, String>?>();
-    this.modelSettings = Output.createUnknown<AppModelSettings?>();
-    this.name = Output.createUnknown<String>();
-    this.pinned = Output.createUnknown<bool?>();
-    this.project = Output.createUnknown<String>();
-    this.rootAgent = Output.createUnknown<String?>();
-    this.timeZoneSettings = Output.createUnknown<AppTimeZoneSettings?>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<AppEvaluationMetricsThresholds?>(
+            'evaluationMetricsThresholds');
+    this.globalInstruction = registerOutput<String?>('globalInstruction');
+    this.guardrails = registerOutput<List<String>?>('guardrails');
+    this.languageSettings =
+        registerOutput<AppLanguageSettings?>('languageSettings');
+    this.location = registerOutput<String>('location');
+    this.loggingSettings =
+        registerOutput<AppLoggingSettings?>('loggingSettings');
+    this.metadata = registerOutput<Map<String, String>?>('metadata');
+    this.modelSettings = registerOutput<AppModelSettings?>('modelSettings');
+    this.name = registerOutput<String>('name');
+    this.pinned = registerOutput<bool?>('pinned');
+    this.project = registerOutput<String>('project');
+    this.rootAgent = registerOutput<String?>('rootAgent');
+    this.timeZoneSettings =
+        registerOutput<AppTimeZoneSettings?>('timeZoneSettings');
+    this.updateTime = registerOutput<String>('updateTime');
     this.variableDeclarations =
-        Output.createUnknown<List<AppVariableDeclaration>?>();
+        registerOutput<List<AppVariableDeclaration>?>('variableDeclarations');
   }
 }

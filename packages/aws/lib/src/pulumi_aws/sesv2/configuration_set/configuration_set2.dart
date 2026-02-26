@@ -274,21 +274,22 @@ class ConfigurationSet2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.configurationSetName = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.configurationSetName = registerOutput<String>('configurationSetName');
     this.deliveryOptions =
-        Output.createUnknown<ConfigurationSetDeliveryOptions2?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<ConfigurationSetDeliveryOptions2?>('deliveryOptions');
+    this.region = registerOutput<String>('region');
     this.reputationOptions =
-        Output.createUnknown<ConfigurationSetReputationOptions>();
+        registerOutput<ConfigurationSetReputationOptions>('reputationOptions');
     this.sendingOptions =
-        Output.createUnknown<ConfigurationSetSendingOptions>();
+        registerOutput<ConfigurationSetSendingOptions>('sendingOptions');
     this.suppressionOptions =
-        Output.createUnknown<ConfigurationSetSuppressionOptions?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<ConfigurationSetSuppressionOptions?>(
+            'suppressionOptions');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.trackingOptions =
-        Output.createUnknown<ConfigurationSetTrackingOptions2?>();
-    this.vdmOptions = Output.createUnknown<ConfigurationSetVdmOptions?>();
+        registerOutput<ConfigurationSetTrackingOptions2?>('trackingOptions');
+    this.vdmOptions = registerOutput<ConfigurationSetVdmOptions?>('vdmOptions');
   }
 }

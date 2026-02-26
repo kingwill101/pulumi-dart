@@ -225,22 +225,24 @@ class ReservedCacheNode extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.cacheNodeCount = Output.createUnknown<int>();
-    this.cacheNodeType = Output.createUnknown<String>();
-    this.duration = Output.createUnknown<String>();
-    this.fixedPrice = Output.createUnknown<double>();
-    this.offeringType = Output.createUnknown<String>();
-    this.productDescription = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.cacheNodeCount = registerOutput<int>('cacheNodeCount');
+    this.cacheNodeType = registerOutput<String>('cacheNodeType');
+    this.duration = registerOutput<String>('duration');
+    this.fixedPrice = registerOutput<double>('fixedPrice');
+    this.offeringType = registerOutput<String>('offeringType');
+    this.productDescription = registerOutput<String>('productDescription');
     this.recurringCharges =
-        Output.createUnknown<List<ReservedCacheNodeRecurringCharge>>();
-    this.region = Output.createUnknown<String>();
-    this.reservedCacheNodesOfferingId = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ReservedCacheNodeTimeouts?>();
-    this.usagePrice = Output.createUnknown<double>();
+        registerOutput<List<ReservedCacheNodeRecurringCharge>>(
+            'recurringCharges');
+    this.region = registerOutput<String>('region');
+    this.reservedCacheNodesOfferingId =
+        registerOutput<String>('reservedCacheNodesOfferingId');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ReservedCacheNodeTimeouts?>('timeouts');
+    this.usagePrice = registerOutput<double>('usagePrice');
   }
 }

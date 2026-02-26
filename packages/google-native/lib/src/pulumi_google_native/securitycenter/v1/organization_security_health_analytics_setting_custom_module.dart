@@ -39,14 +39,15 @@ class OrganizationSecurityHealthAnalyticsSettingCustomModule
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.ancestorModule = Output.createUnknown<String>();
+    this.ancestorModule = registerOutput<String>('ancestorModule');
     this.customConfig =
-        Output.createUnknown<GoogleCloudSecuritycenterV1CustomConfigResponse>();
-    this.displayName = Output.createUnknown<String>();
-    this.enablementState = Output.createUnknown<String>();
-    this.lastEditor = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudSecuritycenterV1CustomConfigResponse>(
+            'customConfig');
+    this.displayName = registerOutput<String>('displayName');
+    this.enablementState = registerOutput<String>('enablementState');
+    this.lastEditor = registerOutput<String>('lastEditor');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

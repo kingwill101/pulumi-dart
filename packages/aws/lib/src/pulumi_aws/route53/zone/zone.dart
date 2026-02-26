@@ -544,17 +544,18 @@ class Zone extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.comment = Output.createUnknown<String>();
-    this.delegationSetId = Output.createUnknown<String?>();
-    this.enableAcceleratedRecovery = Output.createUnknown<bool>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.nameServers = Output.createUnknown<List<String>>();
-    this.primaryNameServer = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcs = Output.createUnknown<List<ZoneVpc>?>();
-    this.zoneId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.comment = registerOutput<String>('comment');
+    this.delegationSetId = registerOutput<String?>('delegationSetId');
+    this.enableAcceleratedRecovery =
+        registerOutput<bool>('enableAcceleratedRecovery');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.name = registerOutput<String>('name');
+    this.nameServers = registerOutput<List<String>>('nameServers');
+    this.primaryNameServer = registerOutput<String>('primaryNameServer');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcs = registerOutput<List<ZoneVpc>?>('vpcs');
+    this.zoneId = registerOutput<String>('zoneId');
   }
 }

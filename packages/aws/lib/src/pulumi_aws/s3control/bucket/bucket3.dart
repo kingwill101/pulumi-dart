@@ -150,13 +150,14 @@ class Bucket3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.bucket = Output.createUnknown<String>();
-    this.creationDate = Output.createUnknown<String>();
-    this.outpostId = Output.createUnknown<String>();
-    this.publicAccessBlockEnabled = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.bucket = registerOutput<String>('bucket');
+    this.creationDate = registerOutput<String>('creationDate');
+    this.outpostId = registerOutput<String>('outpostId');
+    this.publicAccessBlockEnabled =
+        registerOutput<bool>('publicAccessBlockEnabled');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

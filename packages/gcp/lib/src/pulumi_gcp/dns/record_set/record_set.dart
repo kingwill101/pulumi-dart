@@ -1952,12 +1952,13 @@ class RecordSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.managedZone = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.routingPolicy = Output.createUnknown<RecordSetRoutingPolicy?>();
-    this.rrdatas = Output.createUnknown<List<String>?>();
-    this.ttl = Output.createUnknown<int?>();
-    this.type = Output.createUnknown<String>();
+    this.managedZone = registerOutput<String>('managedZone');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.routingPolicy =
+        registerOutput<RecordSetRoutingPolicy?>('routingPolicy');
+    this.rrdatas = registerOutput<List<String>?>('rrdatas');
+    this.ttl = registerOutput<int?>('ttl');
+    this.type = registerOutput<String>('type');
   }
 }

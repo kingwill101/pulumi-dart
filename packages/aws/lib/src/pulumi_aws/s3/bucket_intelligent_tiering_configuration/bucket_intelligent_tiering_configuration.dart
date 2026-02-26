@@ -421,13 +421,14 @@ class BucketIntelligentTieringConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
     this.filter =
-        Output.createUnknown<BucketIntelligentTieringConfigurationFilter?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String?>();
-    this.tierings = Output.createUnknown<
-        List<BucketIntelligentTieringConfigurationTiering>>();
+        registerOutput<BucketIntelligentTieringConfigurationFilter?>('filter');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String?>('status');
+    this.tierings =
+        registerOutput<List<BucketIntelligentTieringConfigurationTiering>>(
+            'tierings');
   }
 }

@@ -151,14 +151,16 @@ class EndpointAccess extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.address = Output.createUnknown<String>();
-    this.clusterIdentifier = Output.createUnknown<String>();
-    this.endpointName = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.resourceOwner = Output.createUnknown<String>();
-    this.subnetGroupName = Output.createUnknown<String>();
-    this.vpcEndpoints = Output.createUnknown<List<EndpointAccessVpcEndpoint>>();
-    this.vpcSecurityGroupIds = Output.createUnknown<List<String>>();
+    this.address = registerOutput<String>('address');
+    this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    this.endpointName = registerOutput<String>('endpointName');
+    this.port = registerOutput<int>('port');
+    this.region = registerOutput<String>('region');
+    this.resourceOwner = registerOutput<String>('resourceOwner');
+    this.subnetGroupName = registerOutput<String>('subnetGroupName');
+    this.vpcEndpoints =
+        registerOutput<List<EndpointAccessVpcEndpoint>>('vpcEndpoints');
+    this.vpcSecurityGroupIds =
+        registerOutput<List<String>>('vpcSecurityGroupIds');
   }
 }

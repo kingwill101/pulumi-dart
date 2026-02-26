@@ -28,11 +28,11 @@ class PerfSampleSeries extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.basicPerfSampleSeries =
-        Output.createUnknown<BasicPerfSampleSeriesResponse>();
-    this.executionId = Output.createUnknown<String>();
-    this.historyId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.sampleSeriesId = Output.createUnknown<String>();
-    this.stepId = Output.createUnknown<String>();
+        registerOutput<BasicPerfSampleSeriesResponse>('basicPerfSampleSeries');
+    this.executionId = registerOutput<String>('executionId');
+    this.historyId = registerOutput<String>('historyId');
+    this.project = registerOutput<String>('project');
+    this.sampleSeriesId = registerOutput<String>('sampleSeriesId');
+    this.stepId = registerOutput<String>('stepId');
   }
 }

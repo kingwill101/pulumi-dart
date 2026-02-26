@@ -49,19 +49,22 @@ class EntityType7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentId = Output.createUnknown<String>();
-    this.autoExpansionMode = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.enableFuzzyExtraction = Output.createUnknown<bool>();
-    this.entities = Output.createUnknown<
-        List<GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponse>>();
-    this.excludedPhrases = Output.createUnknown<
-        List<GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse>>();
-    this.kind = Output.createUnknown<String>();
-    this.languageCode = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.redact = Output.createUnknown<bool>();
+    this.agentId = registerOutput<String>('agentId');
+    this.autoExpansionMode = registerOutput<String>('autoExpansionMode');
+    this.displayName = registerOutput<String>('displayName');
+    this.enableFuzzyExtraction = registerOutput<bool>('enableFuzzyExtraction');
+    this.entities = registerOutput<
+            List<GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponse>>(
+        'entities');
+    this.excludedPhrases = registerOutput<
+            List<
+                GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse>>(
+        'excludedPhrases');
+    this.kind = registerOutput<String>('kind');
+    this.languageCode = registerOutput<String?>('languageCode');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.redact = registerOutput<bool>('redact');
   }
 }

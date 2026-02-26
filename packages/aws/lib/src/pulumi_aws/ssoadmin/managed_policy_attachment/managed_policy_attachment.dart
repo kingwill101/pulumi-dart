@@ -466,10 +466,10 @@ class ManagedPolicyAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.instanceArn = Output.createUnknown<String>();
-    this.managedPolicyArn = Output.createUnknown<String>();
-    this.managedPolicyName = Output.createUnknown<String>();
-    this.permissionSetArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.instanceArn = registerOutput<String>('instanceArn');
+    this.managedPolicyArn = registerOutput<String>('managedPolicyArn');
+    this.managedPolicyName = registerOutput<String>('managedPolicyName');
+    this.permissionSetArn = registerOutput<String>('permissionSetArn');
+    this.region = registerOutput<String>('region');
   }
 }

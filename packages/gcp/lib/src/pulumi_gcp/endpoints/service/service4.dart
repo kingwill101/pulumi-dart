@@ -259,14 +259,14 @@ class Service4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apis = Output.createUnknown<List<ServiceApi>>();
-    this.configId = Output.createUnknown<String>();
-    this.dnsAddress = Output.createUnknown<String>();
-    this.endpoints = Output.createUnknown<List<ServiceEndpoint>>();
-    this.grpcConfig = Output.createUnknown<String?>();
-    this.openapiConfig = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.protocOutputBase64 = Output.createUnknown<String?>();
-    this.serviceName = Output.createUnknown<String>();
+    this.apis = registerOutput<List<ServiceApi>>('apis');
+    this.configId = registerOutput<String>('configId');
+    this.dnsAddress = registerOutput<String>('dnsAddress');
+    this.endpoints = registerOutput<List<ServiceEndpoint>>('endpoints');
+    this.grpcConfig = registerOutput<String?>('grpcConfig');
+    this.openapiConfig = registerOutput<String?>('openapiConfig');
+    this.project = registerOutput<String>('project');
+    this.protocOutputBase64 = registerOutput<String?>('protocOutputBase64');
+    this.serviceName = registerOutput<String>('serviceName');
   }
 }

@@ -243,10 +243,10 @@ class Brand extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationTitle = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.orgInternalOnly = Output.createUnknown<bool>();
-    this.project = Output.createUnknown<String>();
-    this.supportEmail = Output.createUnknown<String>();
+    this.applicationTitle = registerOutput<String>('applicationTitle');
+    this.name = registerOutput<String>('name');
+    this.orgInternalOnly = registerOutput<bool>('orgInternalOnly');
+    this.project = registerOutput<String>('project');
+    this.supportEmail = registerOutput<String>('supportEmail');
   }
 }

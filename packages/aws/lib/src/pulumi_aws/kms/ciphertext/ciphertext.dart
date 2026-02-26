@@ -188,12 +188,12 @@ class Ciphertext extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.ciphertextBlob = Output.createUnknown<String>();
-    this.context = Output.createUnknown<Map<String, String>?>();
-    this.keyId = Output.createUnknown<String>();
-    this.plaintext = Output.createUnknown<String?>();
-    this.plaintextWo = Output.createUnknown<String?>();
-    this.plaintextWoVersion = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.ciphertextBlob = registerOutput<String>('ciphertextBlob');
+    this.context = registerOutput<Map<String, String>?>('context');
+    this.keyId = registerOutput<String>('keyId');
+    this.plaintext = registerOutput<String?>('plaintext');
+    this.plaintextWo = registerOutput<String?>('plaintextWo');
+    this.plaintextWoVersion = registerOutput<String?>('plaintextWoVersion');
+    this.region = registerOutput<String>('region');
   }
 }

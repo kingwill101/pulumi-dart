@@ -158,7 +158,8 @@ class ManagedNotificationAdditionalChannelAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.channelArn = Output.createUnknown<String>();
-    this.managedNotificationArn = Output.createUnknown<String>();
+    this.channelArn = registerOutput<String>('channelArn');
+    this.managedNotificationArn =
+        registerOutput<String>('managedNotificationArn');
   }
 }

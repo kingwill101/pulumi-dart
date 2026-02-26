@@ -44,16 +44,16 @@ class Subscription2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoRenewEnabled = Output.createUnknown<bool>();
-    this.createTime = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.seatCount = Output.createUnknown<String>();
-    this.sku = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+    this.autoRenewEnabled = registerOutput<bool>('autoRenewEnabled');
+    this.createTime = registerOutput<String>('createTime');
+    this.endTime = registerOutput<String>('endTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.seatCount = registerOutput<String>('seatCount');
+    this.sku = registerOutput<String>('sku');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String>('type');
   }
 }

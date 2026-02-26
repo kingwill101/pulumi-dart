@@ -36,13 +36,15 @@ class GameServerDeploymentIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse38>>();
-    this.bindings = Output.createUnknown<List<BindingResponse56>>();
-    this.etag = Output.createUnknown<String>();
-    this.gameServerDeploymentId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rules = Output.createUnknown<List<RuleResponse4>>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse38>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse56>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.gameServerDeploymentId =
+        registerOutput<String>('gameServerDeploymentId');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.rules = registerOutput<List<RuleResponse4>>('rules');
+    this.version = registerOutput<int>('version');
   }
 }

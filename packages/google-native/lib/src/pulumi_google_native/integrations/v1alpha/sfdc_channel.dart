@@ -45,18 +45,18 @@ class SfdcChannel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.channelTopic = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.isActive = Output.createUnknown<bool>();
-    this.lastReplayId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.productId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.sfdcInstanceId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.channelTopic = registerOutput<String>('channelTopic');
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.isActive = registerOutput<bool>('isActive');
+    this.lastReplayId = registerOutput<String>('lastReplayId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.productId = registerOutput<String>('productId');
+    this.project = registerOutput<String>('project');
+    this.sfdcInstanceId = registerOutput<String>('sfdcInstanceId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

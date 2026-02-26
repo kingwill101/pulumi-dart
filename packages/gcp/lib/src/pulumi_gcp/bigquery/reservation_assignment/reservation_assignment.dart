@@ -222,12 +222,12 @@ class ReservationAssignment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.assignee = Output.createUnknown<String>();
-    this.jobType = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reservation = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.assignee = registerOutput<String>('assignee');
+    this.jobType = registerOutput<String>('jobType');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.reservation = registerOutput<String>('reservation');
+    this.state = registerOutput<String>('state');
   }
 }

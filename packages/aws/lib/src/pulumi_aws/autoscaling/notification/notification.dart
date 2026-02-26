@@ -248,9 +248,10 @@ class Notification extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.groupNames = Output.createUnknown<List<String>>();
-    this.notifications = Output.createUnknown<List<NotificationType>>();
-    this.region = Output.createUnknown<String>();
-    this.topicArn = Output.createUnknown<String>();
+    this.groupNames = registerOutput<List<String>>('groupNames');
+    this.notifications =
+        registerOutput<List<NotificationType>>('notifications');
+    this.region = registerOutput<String>('region');
+    this.topicArn = registerOutput<String>('topicArn');
   }
 }

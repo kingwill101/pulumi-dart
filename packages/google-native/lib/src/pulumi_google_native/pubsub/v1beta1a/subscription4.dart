@@ -26,9 +26,9 @@ class Subscription4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.ackDeadlineSeconds = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.pushConfig = Output.createUnknown<PushConfigResponse2>();
-    this.topic = Output.createUnknown<String>();
+    this.ackDeadlineSeconds = registerOutput<int>('ackDeadlineSeconds');
+    this.name = registerOutput<String>('name');
+    this.pushConfig = registerOutput<PushConfigResponse2>('pushConfig');
+    this.topic = registerOutput<String>('topic');
   }
 }

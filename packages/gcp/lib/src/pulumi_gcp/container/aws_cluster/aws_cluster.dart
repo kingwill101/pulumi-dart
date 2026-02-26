@@ -1741,28 +1741,32 @@ class AwsCluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.authorization = Output.createUnknown<AwsClusterAuthorization>();
-    this.awsRegion = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.authorization =
+        registerOutput<AwsClusterAuthorization>('authorization');
+    this.awsRegion = registerOutput<String>('awsRegion');
     this.binaryAuthorization =
-        Output.createUnknown<AwsClusterBinaryAuthorization>();
-    this.controlPlane = Output.createUnknown<AwsClusterControlPlane>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.endpoint = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.fleet = Output.createUnknown<AwsClusterFleet>();
-    this.location = Output.createUnknown<String>();
-    this.loggingConfig = Output.createUnknown<AwsClusterLoggingConfig>();
-    this.name = Output.createUnknown<String>();
-    this.networking = Output.createUnknown<AwsClusterNetworking>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<AwsClusterBinaryAuthorization>('binaryAuthorization');
+    this.controlPlane = registerOutput<AwsClusterControlPlane>('controlPlane');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.etag = registerOutput<String>('etag');
+    this.fleet = registerOutput<AwsClusterFleet>('fleet');
+    this.location = registerOutput<String>('location');
+    this.loggingConfig =
+        registerOutput<AwsClusterLoggingConfig>('loggingConfig');
+    this.name = registerOutput<String>('name');
+    this.networking = registerOutput<AwsClusterNetworking>('networking');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
     this.workloadIdentityConfigs =
-        Output.createUnknown<List<AwsClusterWorkloadIdentityConfig>>();
+        registerOutput<List<AwsClusterWorkloadIdentityConfig>>(
+            'workloadIdentityConfigs');
   }
 }

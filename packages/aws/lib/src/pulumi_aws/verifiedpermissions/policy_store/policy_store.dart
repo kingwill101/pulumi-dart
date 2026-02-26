@@ -148,14 +148,14 @@ class PolicyStore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.policyStoreId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.deletionProtection = registerOutput<String>('deletionProtection');
+    this.description = registerOutput<String?>('description');
+    this.policyStoreId = registerOutput<String>('policyStoreId');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.validationSettings =
-        Output.createUnknown<PolicyStoreValidationSettings>();
+        registerOutput<PolicyStoreValidationSettings>('validationSettings');
   }
 }

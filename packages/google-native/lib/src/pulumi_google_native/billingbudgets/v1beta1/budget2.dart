@@ -45,18 +45,22 @@ class Budget2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allUpdatesRule = Output.createUnknown<
-        GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse>();
-    this.amount = Output.createUnknown<
-        GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse>();
-    this.billingAccountId = Output.createUnknown<String>();
+    this.allUpdatesRule =
+        registerOutput<GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse>(
+            'allUpdatesRule');
+    this.amount =
+        registerOutput<GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse>(
+            'amount');
+    this.billingAccountId = registerOutput<String>('billingAccountId');
     this.budgetFilter =
-        Output.createUnknown<GoogleCloudBillingBudgetsV1beta1FilterResponse>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.ownershipScope = Output.createUnknown<String>();
-    this.thresholdRules = Output.createUnknown<
-        List<GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse>>();
+        registerOutput<GoogleCloudBillingBudgetsV1beta1FilterResponse>(
+            'budgetFilter');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    this.ownershipScope = registerOutput<String>('ownershipScope');
+    this.thresholdRules = registerOutput<
+            List<GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse>>(
+        'thresholdRules');
   }
 }

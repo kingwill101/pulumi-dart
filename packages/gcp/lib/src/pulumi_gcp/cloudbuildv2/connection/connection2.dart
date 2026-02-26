@@ -1045,25 +1045,28 @@ class Connection2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.bitbucketCloudConfig =
-        Output.createUnknown<ConnectionBitbucketCloudConfig?>();
+        registerOutput<ConnectionBitbucketCloudConfig?>('bitbucketCloudConfig');
     this.bitbucketDataCenterConfig =
-        Output.createUnknown<ConnectionBitbucketDataCenterConfig?>();
-    this.createTime = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.githubConfig = Output.createUnknown<ConnectionGithubConfig?>();
+        registerOutput<ConnectionBitbucketDataCenterConfig?>(
+            'bitbucketDataCenterConfig');
+    this.createTime = registerOutput<String>('createTime');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.etag = registerOutput<String>('etag');
+    this.githubConfig = registerOutput<ConnectionGithubConfig?>('githubConfig');
     this.githubEnterpriseConfig =
-        Output.createUnknown<ConnectionGithubEnterpriseConfig?>();
-    this.gitlabConfig = Output.createUnknown<ConnectionGitlabConfig?>();
+        registerOutput<ConnectionGithubEnterpriseConfig?>(
+            'githubEnterpriseConfig');
+    this.gitlabConfig = registerOutput<ConnectionGitlabConfig?>('gitlabConfig');
     this.installationStates =
-        Output.createUnknown<List<ConnectionInstallationState>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<ConnectionInstallationState>>('installationStates');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

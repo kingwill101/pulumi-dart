@@ -521,26 +521,27 @@ class CatalogTable extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.catalogId = Output.createUnknown<String>();
-    this.databaseName = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.catalogId = registerOutput<String>('catalogId');
+    this.databaseName = registerOutput<String>('databaseName');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
     this.openTableFormatInput =
-        Output.createUnknown<CatalogTableOpenTableFormatInput?>();
-    this.owner = Output.createUnknown<String?>();
-    this.parameters = Output.createUnknown<Map<String, String>?>();
+        registerOutput<CatalogTableOpenTableFormatInput?>(
+            'openTableFormatInput');
+    this.owner = registerOutput<String?>('owner');
+    this.parameters = registerOutput<Map<String, String>?>('parameters');
     this.partitionIndices =
-        Output.createUnknown<List<CatalogTablePartitionIndex>>();
+        registerOutput<List<CatalogTablePartitionIndex>>('partitionIndices');
     this.partitionKeys =
-        Output.createUnknown<List<CatalogTablePartitionKey>?>();
-    this.region = Output.createUnknown<String>();
-    this.retention = Output.createUnknown<int?>();
+        registerOutput<List<CatalogTablePartitionKey>?>('partitionKeys');
+    this.region = registerOutput<String>('region');
+    this.retention = registerOutput<int?>('retention');
     this.storageDescriptor =
-        Output.createUnknown<CatalogTableStorageDescriptor?>();
-    this.tableType = Output.createUnknown<String?>();
-    this.targetTable = Output.createUnknown<CatalogTableTargetTable?>();
-    this.viewExpandedText = Output.createUnknown<String?>();
-    this.viewOriginalText = Output.createUnknown<String?>();
+        registerOutput<CatalogTableStorageDescriptor?>('storageDescriptor');
+    this.tableType = registerOutput<String?>('tableType');
+    this.targetTable = registerOutput<CatalogTableTargetTable?>('targetTable');
+    this.viewExpandedText = registerOutput<String?>('viewExpandedText');
+    this.viewOriginalText = registerOutput<String?>('viewOriginalText');
   }
 }

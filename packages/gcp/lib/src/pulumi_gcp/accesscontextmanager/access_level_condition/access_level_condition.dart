@@ -513,16 +513,18 @@ class AccessLevelCondition extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessLevel = Output.createUnknown<String>();
-    this.accessPolicyId = Output.createUnknown<String>();
+    this.accessLevel = registerOutput<String>('accessLevel');
+    this.accessPolicyId = registerOutput<String>('accessPolicyId');
     this.devicePolicy =
-        Output.createUnknown<AccessLevelConditionDevicePolicy?>();
-    this.ipSubnetworks = Output.createUnknown<List<String>?>();
-    this.members = Output.createUnknown<List<String>?>();
-    this.negate = Output.createUnknown<bool?>();
-    this.regions = Output.createUnknown<List<String>?>();
-    this.requiredAccessLevels = Output.createUnknown<List<String>?>();
+        registerOutput<AccessLevelConditionDevicePolicy?>('devicePolicy');
+    this.ipSubnetworks = registerOutput<List<String>?>('ipSubnetworks');
+    this.members = registerOutput<List<String>?>('members');
+    this.negate = registerOutput<bool?>('negate');
+    this.regions = registerOutput<List<String>?>('regions');
+    this.requiredAccessLevels =
+        registerOutput<List<String>?>('requiredAccessLevels');
     this.vpcNetworkSources =
-        Output.createUnknown<List<AccessLevelConditionVpcNetworkSource>?>();
+        registerOutput<List<AccessLevelConditionVpcNetworkSource>?>(
+            'vpcNetworkSources');
   }
 }

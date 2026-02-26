@@ -958,12 +958,12 @@ class FunctionIamMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cloudFunction = Output.createUnknown<String>();
-    this.condition = Output.createUnknown<FunctionIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.cloudFunction = registerOutput<String>('cloudFunction');
+    this.condition = registerOutput<FunctionIamMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.member = registerOutput<String>('member');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.role = registerOutput<String>('role');
   }
 }

@@ -678,12 +678,12 @@ class HostingRelease extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.channelId = Output.createUnknown<String?>();
-    this.message = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.releaseId = Output.createUnknown<String>();
-    this.siteId = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.versionName = Output.createUnknown<String?>();
+    this.channelId = registerOutput<String?>('channelId');
+    this.message = registerOutput<String?>('message');
+    this.name = registerOutput<String>('name');
+    this.releaseId = registerOutput<String>('releaseId');
+    this.siteId = registerOutput<String>('siteId');
+    this.type = registerOutput<String>('type');
+    this.versionName = registerOutput<String?>('versionName');
   }
 }

@@ -735,14 +735,14 @@ class Invocation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.functionName = Output.createUnknown<String>();
-    this.input = Output.createUnknown<String>();
-    this.lifecycleScope = Output.createUnknown<String?>();
-    this.qualifier = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.result = Output.createUnknown<String>();
-    this.tenantId = Output.createUnknown<String?>();
-    this.terraformKey = Output.createUnknown<String?>();
-    this.triggers = Output.createUnknown<Map<String, String>?>();
+    this.functionName = registerOutput<String>('functionName');
+    this.input = registerOutput<String>('input');
+    this.lifecycleScope = registerOutput<String?>('lifecycleScope');
+    this.qualifier = registerOutput<String?>('qualifier');
+    this.region = registerOutput<String>('region');
+    this.result = registerOutput<String>('result');
+    this.tenantId = registerOutput<String?>('tenantId');
+    this.terraformKey = registerOutput<String?>('terraformKey');
+    this.triggers = registerOutput<Map<String, String>?>('triggers');
   }
 }

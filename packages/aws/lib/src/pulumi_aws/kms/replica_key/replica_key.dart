@@ -355,19 +355,20 @@ class ReplicaKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.bypassPolicyLockoutSafetyCheck = Output.createUnknown<bool?>();
-    this.deletionWindowInDays = Output.createUnknown<int?>();
-    this.description = Output.createUnknown<String?>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.keyId = Output.createUnknown<String>();
-    this.keyRotationEnabled = Output.createUnknown<bool>();
-    this.keySpec = Output.createUnknown<String>();
-    this.keyUsage = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
-    this.primaryKeyArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.bypassPolicyLockoutSafetyCheck =
+        registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
+    this.deletionWindowInDays = registerOutput<int?>('deletionWindowInDays');
+    this.description = registerOutput<String?>('description');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.keyId = registerOutput<String>('keyId');
+    this.keyRotationEnabled = registerOutput<bool>('keyRotationEnabled');
+    this.keySpec = registerOutput<String>('keySpec');
+    this.keyUsage = registerOutput<String>('keyUsage');
+    this.policy = registerOutput<String>('policy');
+    this.primaryKeyArn = registerOutput<String>('primaryKeyArn');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

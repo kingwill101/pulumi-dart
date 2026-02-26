@@ -287,20 +287,21 @@ class CatalogDatabase extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.catalogId = Output.createUnknown<String>();
-    this.createTableDefaultPermissions = Output.createUnknown<
-        List<CatalogDatabaseCreateTableDefaultPermission>>();
-    this.description = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.catalogId = registerOutput<String>('catalogId');
+    this.createTableDefaultPermissions =
+        registerOutput<List<CatalogDatabaseCreateTableDefaultPermission>>(
+            'createTableDefaultPermissions');
+    this.description = registerOutput<String?>('description');
     this.federatedDatabase =
-        Output.createUnknown<CatalogDatabaseFederatedDatabase?>();
-    this.locationUri = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parameters = Output.createUnknown<Map<String, String>?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<CatalogDatabaseFederatedDatabase?>('federatedDatabase');
+    this.locationUri = registerOutput<String>('locationUri');
+    this.name = registerOutput<String>('name');
+    this.parameters = registerOutput<Map<String, String>?>('parameters');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.targetDatabase =
-        Output.createUnknown<CatalogDatabaseTargetDatabase?>();
+        registerOutput<CatalogDatabaseTargetDatabase?>('targetDatabase');
   }
 }

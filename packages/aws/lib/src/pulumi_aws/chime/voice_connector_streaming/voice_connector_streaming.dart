@@ -637,12 +637,14 @@ class VoiceConnectorStreaming extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dataRetention = Output.createUnknown<int>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.mediaInsightsConfiguration = Output.createUnknown<
-        VoiceConnectorStreamingMediaInsightsConfiguration?>();
-    this.region = Output.createUnknown<String>();
-    this.streamingNotificationTargets = Output.createUnknown<List<String>?>();
-    this.voiceConnectorId = Output.createUnknown<String>();
+    this.dataRetention = registerOutput<int>('dataRetention');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.mediaInsightsConfiguration =
+        registerOutput<VoiceConnectorStreamingMediaInsightsConfiguration?>(
+            'mediaInsightsConfiguration');
+    this.region = registerOutput<String>('region');
+    this.streamingNotificationTargets =
+        registerOutput<List<String>?>('streamingNotificationTargets');
+    this.voiceConnectorId = registerOutput<String>('voiceConnectorId');
   }
 }

@@ -178,18 +178,20 @@ class ProvisioningArtifact extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceptLanguage = Output.createUnknown<String?>();
-    this.active = Output.createUnknown<bool?>();
-    this.createdTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.disableTemplateValidation = Output.createUnknown<bool?>();
-    this.guidance = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.productId = Output.createUnknown<String>();
-    this.provisioningArtifactId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.templatePhysicalId = Output.createUnknown<String?>();
-    this.templateUrl = Output.createUnknown<String?>();
-    this.type = Output.createUnknown<String?>();
+    this.acceptLanguage = registerOutput<String?>('acceptLanguage');
+    this.active = registerOutput<bool?>('active');
+    this.createdTime = registerOutput<String>('createdTime');
+    this.description = registerOutput<String>('description');
+    this.disableTemplateValidation =
+        registerOutput<bool?>('disableTemplateValidation');
+    this.guidance = registerOutput<String?>('guidance');
+    this.name = registerOutput<String>('name');
+    this.productId = registerOutput<String>('productId');
+    this.provisioningArtifactId =
+        registerOutput<String>('provisioningArtifactId');
+    this.region = registerOutput<String>('region');
+    this.templatePhysicalId = registerOutput<String?>('templatePhysicalId');
+    this.templateUrl = registerOutput<String?>('templateUrl');
+    this.type = registerOutput<String?>('type');
   }
 }

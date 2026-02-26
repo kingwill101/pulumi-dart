@@ -69,26 +69,30 @@ class FutureReservation2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoCreatedReservationsDeleteTime = Output.createUnknown<String>();
+    this.autoCreatedReservationsDeleteTime =
+        registerOutput<String>('autoCreatedReservationsDeleteTime');
     this.autoCreatedReservationsDuration =
-        Output.createUnknown<DurationResponse2>();
-    this.autoDeleteAutoCreatedReservations = Output.createUnknown<bool>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.planningStatus = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
-    this.shareSettings = Output.createUnknown<ShareSettingsResponse2>();
+        registerOutput<DurationResponse2>('autoCreatedReservationsDuration');
+    this.autoDeleteAutoCreatedReservations =
+        registerOutput<bool>('autoDeleteAutoCreatedReservations');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.planningStatus = registerOutput<String>('planningStatus');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    this.shareSettings =
+        registerOutput<ShareSettingsResponse2>('shareSettings');
     this.specificSkuProperties =
-        Output.createUnknown<FutureReservationSpecificSKUPropertiesResponse2>();
-    this.status = Output.createUnknown<FutureReservationStatusResponse2>();
+        registerOutput<FutureReservationSpecificSKUPropertiesResponse2>(
+            'specificSkuProperties');
+    this.status = registerOutput<FutureReservationStatusResponse2>('status');
     this.timeWindow =
-        Output.createUnknown<FutureReservationTimeWindowResponse2>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<FutureReservationTimeWindowResponse2>('timeWindow');
+    this.zone = registerOutput<String>('zone');
   }
 }

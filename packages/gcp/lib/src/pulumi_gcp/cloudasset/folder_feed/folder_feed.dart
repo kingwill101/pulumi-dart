@@ -433,15 +433,16 @@ class FolderFeed extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.assetNames = Output.createUnknown<List<String>?>();
-    this.assetTypes = Output.createUnknown<List<String>?>();
-    this.billingProject = Output.createUnknown<String>();
-    this.condition = Output.createUnknown<FolderFeedCondition?>();
-    this.contentType = Output.createUnknown<String?>();
-    this.feedId = Output.createUnknown<String>();
-    this.feedOutputConfig = Output.createUnknown<FolderFeedFeedOutputConfig>();
-    this.folder = Output.createUnknown<String>();
-    this.folderId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.assetNames = registerOutput<List<String>?>('assetNames');
+    this.assetTypes = registerOutput<List<String>?>('assetTypes');
+    this.billingProject = registerOutput<String>('billingProject');
+    this.condition = registerOutput<FolderFeedCondition?>('condition');
+    this.contentType = registerOutput<String?>('contentType');
+    this.feedId = registerOutput<String>('feedId');
+    this.feedOutputConfig =
+        registerOutput<FolderFeedFeedOutputConfig>('feedOutputConfig');
+    this.folder = registerOutput<String>('folder');
+    this.folderId = registerOutput<String>('folderId');
+    this.name = registerOutput<String>('name');
   }
 }

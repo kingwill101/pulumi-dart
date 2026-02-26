@@ -213,12 +213,13 @@ class BucketMetadataConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.expectedBucketOwner = Output.createUnknown<String?>();
-    this.metadataConfiguration = Output.createUnknown<
-        BucketMetadataConfigurationMetadataConfiguration>();
-    this.region = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    this.metadataConfiguration =
+        registerOutput<BucketMetadataConfigurationMetadataConfiguration>(
+            'metadataConfiguration');
+    this.region = registerOutput<String>('region');
     this.timeouts =
-        Output.createUnknown<BucketMetadataConfigurationTimeouts?>();
+        registerOutput<BucketMetadataConfigurationTimeouts?>('timeouts');
   }
 }

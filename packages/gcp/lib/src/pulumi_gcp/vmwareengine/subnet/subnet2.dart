@@ -341,19 +341,19 @@ class Subnet2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
     this.dhcpAddressRanges =
-        Output.createUnknown<List<SubnetDhcpAddressRange>>();
-    this.gatewayId = Output.createUnknown<String>();
-    this.gatewayIp = Output.createUnknown<String>();
-    this.ipCidrRange = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.standardConfig = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vlanId = Output.createUnknown<int>();
+        registerOutput<List<SubnetDhcpAddressRange>>('dhcpAddressRanges');
+    this.gatewayId = registerOutput<String>('gatewayId');
+    this.gatewayIp = registerOutput<String>('gatewayIp');
+    this.ipCidrRange = registerOutput<String>('ipCidrRange');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.standardConfig = registerOutput<bool>('standardConfig');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String>('type');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vlanId = registerOutput<int>('vlanId');
   }
 }

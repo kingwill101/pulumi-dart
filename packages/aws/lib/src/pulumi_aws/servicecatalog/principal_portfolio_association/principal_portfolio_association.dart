@@ -136,10 +136,10 @@ class PrincipalPortfolioAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceptLanguage = Output.createUnknown<String?>();
-    this.portfolioId = Output.createUnknown<String>();
-    this.principalArn = Output.createUnknown<String>();
-    this.principalType = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.acceptLanguage = registerOutput<String?>('acceptLanguage');
+    this.portfolioId = registerOutput<String>('portfolioId');
+    this.principalArn = registerOutput<String>('principalArn');
+    this.principalType = registerOutput<String?>('principalType');
+    this.region = registerOutput<String>('region');
   }
 }

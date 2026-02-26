@@ -77,29 +77,36 @@ class TemplatesVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.databasePersistencePolicy = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.errorCatcherConfigs = Output.createUnknown<
-        List<GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse>>();
-    this.integrationtemplateId = Output.createUnknown<String>();
-    this.lastModifierEmail = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parentIntegrationVersionId = Output.createUnknown<String>();
-    this.productId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.snapshotNumber = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.taskConfigs = Output.createUnknown<
-        List<EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse>>();
+    this.createTime = registerOutput<String>('createTime');
+    this.databasePersistencePolicy =
+        registerOutput<String>('databasePersistencePolicy');
+    this.description = registerOutput<String>('description');
+    this.errorCatcherConfigs = registerOutput<
+            List<GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse>>(
+        'errorCatcherConfigs');
+    this.integrationtemplateId =
+        registerOutput<String>('integrationtemplateId');
+    this.lastModifierEmail = registerOutput<String>('lastModifierEmail');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.parentIntegrationVersionId =
+        registerOutput<String>('parentIntegrationVersionId');
+    this.productId = registerOutput<String>('productId');
+    this.project = registerOutput<String>('project');
+    this.snapshotNumber = registerOutput<String>('snapshotNumber');
+    this.status = registerOutput<String>('status');
+    this.taskConfigs = registerOutput<
+            List<EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse>>(
+        'taskConfigs');
     this.teardown =
-        Output.createUnknown<EnterpriseCrmEventbusProtoTeardownResponse>();
-    this.templateParameters = Output.createUnknown<
-        EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse>();
-    this.triggerConfigs = Output.createUnknown<
-        List<EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse>>();
-    this.updateTime = Output.createUnknown<String>();
-    this.userLabel = Output.createUnknown<String>();
+        registerOutput<EnterpriseCrmEventbusProtoTeardownResponse>('teardown');
+    this.templateParameters = registerOutput<
+            EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse>(
+        'templateParameters');
+    this.triggerConfigs = registerOutput<
+            List<EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse>>(
+        'triggerConfigs');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.userLabel = registerOutput<String>('userLabel');
   }
 }

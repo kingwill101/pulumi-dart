@@ -29,13 +29,14 @@ class Policy4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alternate = Output.createUnknown<
-        GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>();
+    this.alternate =
+        registerOutput<GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>(
+            'alternate');
     this.dryRunSpec =
-        Output.createUnknown<GoogleCloudOrgpolicyV2PolicySpecResponse>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>('dryRunSpec');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.spec =
-        Output.createUnknown<GoogleCloudOrgpolicyV2PolicySpecResponse>();
+        registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>('spec');
   }
 }

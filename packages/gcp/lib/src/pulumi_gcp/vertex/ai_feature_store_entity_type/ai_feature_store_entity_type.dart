@@ -669,18 +669,20 @@ class AiFeatureStoreEntityType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.featurestore = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.etag = registerOutput<String>('etag');
+    this.featurestore = registerOutput<String>('featurestore');
+    this.labels = registerOutput<Map<String, String>?>('labels');
     this.monitoringConfig =
-        Output.createUnknown<AiFeatureStoreEntityTypeMonitoringConfig?>();
-    this.name = Output.createUnknown<String>();
-    this.offlineStorageTtlDays = Output.createUnknown<int?>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<AiFeatureStoreEntityTypeMonitoringConfig?>(
+            'monitoringConfig');
+    this.name = registerOutput<String>('name');
+    this.offlineStorageTtlDays = registerOutput<int?>('offlineStorageTtlDays');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String>('region');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

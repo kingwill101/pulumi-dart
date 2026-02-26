@@ -30,11 +30,11 @@ class Repo extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.mirrorConfig = Output.createUnknown<MirrorConfigResponse>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pubsubConfigs = Output.createUnknown<Map<String, String>>();
-    this.size = Output.createUnknown<String>();
-    this.url = Output.createUnknown<String>();
+    this.mirrorConfig = registerOutput<MirrorConfigResponse>('mirrorConfig');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pubsubConfigs = registerOutput<Map<String, String>>('pubsubConfigs');
+    this.size = registerOutput<String>('size');
+    this.url = registerOutput<String>('url');
   }
 }

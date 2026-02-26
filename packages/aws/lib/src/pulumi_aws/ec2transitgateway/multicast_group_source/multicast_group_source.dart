@@ -128,9 +128,10 @@ class MulticastGroupSource extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.groupIpAddress = Output.createUnknown<String>();
-    this.networkInterfaceId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.transitGatewayMulticastDomainId = Output.createUnknown<String>();
+    this.groupIpAddress = registerOutput<String>('groupIpAddress');
+    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    this.region = registerOutput<String>('region');
+    this.transitGatewayMulticastDomainId =
+        registerOutput<String>('transitGatewayMulticastDomainId');
   }
 }

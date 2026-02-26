@@ -263,35 +263,40 @@ class Bucket2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accelerationStatus = Output.createUnknown<String>();
-    this.acl = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.bucket = Output.createUnknown<String>();
-    this.bucketDomainName = Output.createUnknown<String>();
-    this.bucketPrefix = Output.createUnknown<String>();
-    this.bucketRegion = Output.createUnknown<String>();
-    this.bucketRegionalDomainName = Output.createUnknown<String>();
-    this.corsRules = Output.createUnknown<List<BucketCorsRule>>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.grants = Output.createUnknown<List<BucketGrant>>();
-    this.hostedZoneId = Output.createUnknown<String>();
-    this.lifecycleRules = Output.createUnknown<List<BucketLifecycleRule>>();
-    this.logging = Output.createUnknown<BucketLogging>();
+    this.accelerationStatus = registerOutput<String>('accelerationStatus');
+    this.acl = registerOutput<String>('acl');
+    this.arn = registerOutput<String>('arn');
+    this.bucket = registerOutput<String>('bucket');
+    this.bucketDomainName = registerOutput<String>('bucketDomainName');
+    this.bucketPrefix = registerOutput<String>('bucketPrefix');
+    this.bucketRegion = registerOutput<String>('bucketRegion');
+    this.bucketRegionalDomainName =
+        registerOutput<String>('bucketRegionalDomainName');
+    this.corsRules = registerOutput<List<BucketCorsRule>>('corsRules');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.grants = registerOutput<List<BucketGrant>>('grants');
+    this.hostedZoneId = registerOutput<String>('hostedZoneId');
+    this.lifecycleRules =
+        registerOutput<List<BucketLifecycleRule>>('lifecycleRules');
+    this.logging = registerOutput<BucketLogging>('logging');
     this.objectLockConfiguration =
-        Output.createUnknown<BucketObjectLockConfiguration>();
-    this.objectLockEnabled = Output.createUnknown<bool>();
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<BucketObjectLockConfiguration>(
+            'objectLockConfiguration');
+    this.objectLockEnabled = registerOutput<bool>('objectLockEnabled');
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
     this.replicationConfiguration =
-        Output.createUnknown<BucketReplicationConfiguration>();
-    this.requestPayer = Output.createUnknown<String>();
+        registerOutput<BucketReplicationConfiguration>(
+            'replicationConfiguration');
+    this.requestPayer = registerOutput<String>('requestPayer');
     this.serverSideEncryptionConfiguration =
-        Output.createUnknown<BucketServerSideEncryptionConfiguration>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.versioning = Output.createUnknown<BucketVersioning>();
-    this.website = Output.createUnknown<BucketWebsite>();
-    this.websiteDomain = Output.createUnknown<String>();
-    this.websiteEndpoint = Output.createUnknown<String>();
+        registerOutput<BucketServerSideEncryptionConfiguration>(
+            'serverSideEncryptionConfiguration');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.versioning = registerOutput<BucketVersioning>('versioning');
+    this.website = registerOutput<BucketWebsite>('website');
+    this.websiteDomain = registerOutput<String>('websiteDomain');
+    this.websiteEndpoint = registerOutput<String>('websiteEndpoint');
   }
 }

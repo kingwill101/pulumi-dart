@@ -473,21 +473,21 @@ class Faq extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.errorMessage = Output.createUnknown<String>();
-    this.faqId = Output.createUnknown<String>();
-    this.fileFormat = Output.createUnknown<String?>();
-    this.indexId = Output.createUnknown<String>();
-    this.languageCode = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.s3Path = Output.createUnknown<FaqS3Path>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.updatedAt = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.description = registerOutput<String?>('description');
+    this.errorMessage = registerOutput<String>('errorMessage');
+    this.faqId = registerOutput<String>('faqId');
+    this.fileFormat = registerOutput<String?>('fileFormat');
+    this.indexId = registerOutput<String>('indexId');
+    this.languageCode = registerOutput<String>('languageCode');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.s3Path = registerOutput<FaqS3Path>('s3Path');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.updatedAt = registerOutput<String>('updatedAt');
   }
 }

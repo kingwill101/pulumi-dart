@@ -373,26 +373,29 @@ class NotebookInstance extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.additionalCodeRepositories = Output.createUnknown<List<String>?>();
-    this.arn = Output.createUnknown<String>();
-    this.defaultCodeRepository = Output.createUnknown<String?>();
-    this.directInternetAccess = Output.createUnknown<String?>();
-    this.instanceMetadataServiceConfiguration = Output.createUnknown<
-        NotebookInstanceInstanceMetadataServiceConfiguration?>();
-    this.instanceType = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String?>();
-    this.lifecycleConfigName = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.networkInterfaceId = Output.createUnknown<String>();
-    this.platformIdentifier = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.rootAccess = Output.createUnknown<String?>();
-    this.securityGroups = Output.createUnknown<List<String>>();
-    this.subnetId = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.url = Output.createUnknown<String>();
-    this.volumeSize = Output.createUnknown<int?>();
+    this.additionalCodeRepositories =
+        registerOutput<List<String>?>('additionalCodeRepositories');
+    this.arn = registerOutput<String>('arn');
+    this.defaultCodeRepository =
+        registerOutput<String?>('defaultCodeRepository');
+    this.directInternetAccess = registerOutput<String?>('directInternetAccess');
+    this.instanceMetadataServiceConfiguration =
+        registerOutput<NotebookInstanceInstanceMetadataServiceConfiguration?>(
+            'instanceMetadataServiceConfiguration');
+    this.instanceType = registerOutput<String>('instanceType');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.lifecycleConfigName = registerOutput<String?>('lifecycleConfigName');
+    this.name = registerOutput<String>('name');
+    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    this.platformIdentifier = registerOutput<String>('platformIdentifier');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.rootAccess = registerOutput<String?>('rootAccess');
+    this.securityGroups = registerOutput<List<String>>('securityGroups');
+    this.subnetId = registerOutput<String?>('subnetId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.url = registerOutput<String>('url');
+    this.volumeSize = registerOutput<int?>('volumeSize');
   }
 }

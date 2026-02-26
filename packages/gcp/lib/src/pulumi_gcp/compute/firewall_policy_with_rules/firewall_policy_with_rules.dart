@@ -1156,17 +1156,18 @@ class FirewallPolicyWithRules extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.policyId = Output.createUnknown<String>();
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.parent = registerOutput<String>('parent');
+    this.policyId = registerOutput<String>('policyId');
     this.predefinedRules =
-        Output.createUnknown<List<FirewallPolicyWithRulesPredefinedRule>>();
-    this.ruleTupleCount = Output.createUnknown<int>();
-    this.rules = Output.createUnknown<List<FirewallPolicyWithRulesRule>>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
-    this.shortName = Output.createUnknown<String>();
+        registerOutput<List<FirewallPolicyWithRulesPredefinedRule>>(
+            'predefinedRules');
+    this.ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    this.rules = registerOutput<List<FirewallPolicyWithRulesRule>>('rules');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    this.shortName = registerOutput<String>('shortName');
   }
 }

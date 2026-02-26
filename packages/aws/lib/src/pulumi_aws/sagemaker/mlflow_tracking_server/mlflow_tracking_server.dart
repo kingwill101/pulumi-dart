@@ -161,17 +161,19 @@ class MlflowTrackingServer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.artifactStoreUri = Output.createUnknown<String>();
-    this.automaticModelRegistration = Output.createUnknown<bool?>();
-    this.mlflowVersion = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.trackingServerName = Output.createUnknown<String>();
-    this.trackingServerSize = Output.createUnknown<String?>();
-    this.trackingServerUrl = Output.createUnknown<String>();
-    this.weeklyMaintenanceWindowStart = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.artifactStoreUri = registerOutput<String>('artifactStoreUri');
+    this.automaticModelRegistration =
+        registerOutput<bool?>('automaticModelRegistration');
+    this.mlflowVersion = registerOutput<String>('mlflowVersion');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.trackingServerName = registerOutput<String>('trackingServerName');
+    this.trackingServerSize = registerOutput<String?>('trackingServerSize');
+    this.trackingServerUrl = registerOutput<String>('trackingServerUrl');
+    this.weeklyMaintenanceWindowStart =
+        registerOutput<String>('weeklyMaintenanceWindowStart');
   }
 }

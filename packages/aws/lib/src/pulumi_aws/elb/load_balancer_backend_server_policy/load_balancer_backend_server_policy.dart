@@ -392,9 +392,9 @@ class LoadBalancerBackendServerPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.instancePort = Output.createUnknown<int>();
-    this.loadBalancerName = Output.createUnknown<String>();
-    this.policyNames = Output.createUnknown<List<String>?>();
-    this.region = Output.createUnknown<String>();
+    this.instancePort = registerOutput<int>('instancePort');
+    this.loadBalancerName = registerOutput<String>('loadBalancerName');
+    this.policyNames = registerOutput<List<String>?>('policyNames');
+    this.region = registerOutput<String>('region');
   }
 }

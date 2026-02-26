@@ -176,19 +176,21 @@ class DxGatewayAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.attachmentPolicyRuleNumber = Output.createUnknown<int>();
-    this.attachmentType = Output.createUnknown<String>();
-    this.coreNetworkArn = Output.createUnknown<String>();
-    this.coreNetworkId = Output.createUnknown<String>();
-    this.directConnectGatewayArn = Output.createUnknown<String>();
-    this.edgeLocations = Output.createUnknown<List<String>>();
-    this.ownerAccountId = Output.createUnknown<String>();
-    this.routingPolicyLabel = Output.createUnknown<String?>();
-    this.segmentName = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<DxGatewayAttachmentTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.attachmentPolicyRuleNumber =
+        registerOutput<int>('attachmentPolicyRuleNumber');
+    this.attachmentType = registerOutput<String>('attachmentType');
+    this.coreNetworkArn = registerOutput<String>('coreNetworkArn');
+    this.coreNetworkId = registerOutput<String>('coreNetworkId');
+    this.directConnectGatewayArn =
+        registerOutput<String>('directConnectGatewayArn');
+    this.edgeLocations = registerOutput<List<String>>('edgeLocations');
+    this.ownerAccountId = registerOutput<String>('ownerAccountId');
+    this.routingPolicyLabel = registerOutput<String?>('routingPolicyLabel');
+    this.segmentName = registerOutput<String>('segmentName');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<DxGatewayAttachmentTimeouts?>('timeouts');
   }
 }

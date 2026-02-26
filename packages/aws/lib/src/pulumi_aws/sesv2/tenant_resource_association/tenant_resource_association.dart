@@ -130,8 +130,8 @@ class TenantResourceAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
-    this.tenantName = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.resourceArn = registerOutput<String>('resourceArn');
+    this.tenantName = registerOutput<String>('tenantName');
   }
 }

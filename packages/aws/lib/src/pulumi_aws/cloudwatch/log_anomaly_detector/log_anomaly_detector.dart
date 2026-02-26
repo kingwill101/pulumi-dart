@@ -218,16 +218,16 @@ class LogAnomalyDetector extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.anomalyVisibilityTime = Output.createUnknown<int>();
-    this.arn = Output.createUnknown<String>();
-    this.detectorName = Output.createUnknown<String?>();
-    this.enabled = Output.createUnknown<bool>();
-    this.evaluationFrequency = Output.createUnknown<String?>();
-    this.filterPattern = Output.createUnknown<String?>();
-    this.kmsKeyId = Output.createUnknown<String?>();
-    this.logGroupArnLists = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.anomalyVisibilityTime = registerOutput<int>('anomalyVisibilityTime');
+    this.arn = registerOutput<String>('arn');
+    this.detectorName = registerOutput<String?>('detectorName');
+    this.enabled = registerOutput<bool>('enabled');
+    this.evaluationFrequency = registerOutput<String?>('evaluationFrequency');
+    this.filterPattern = registerOutput<String?>('filterPattern');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.logGroupArnLists = registerOutput<List<String>>('logGroupArnLists');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -430,13 +430,15 @@ class ReplicationConfiguration2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTime = Output.createUnknown<String>();
+    this.creationTime = registerOutput<String>('creationTime');
     this.destination =
-        Output.createUnknown<ReplicationConfigurationDestination>();
-    this.originalSourceFileSystemArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.sourceFileSystemArn = Output.createUnknown<String>();
-    this.sourceFileSystemId = Output.createUnknown<String>();
-    this.sourceFileSystemRegion = Output.createUnknown<String>();
+        registerOutput<ReplicationConfigurationDestination>('destination');
+    this.originalSourceFileSystemArn =
+        registerOutput<String>('originalSourceFileSystemArn');
+    this.region = registerOutput<String>('region');
+    this.sourceFileSystemArn = registerOutput<String>('sourceFileSystemArn');
+    this.sourceFileSystemId = registerOutput<String>('sourceFileSystemId');
+    this.sourceFileSystemRegion =
+        registerOutput<String>('sourceFileSystemRegion');
   }
 }

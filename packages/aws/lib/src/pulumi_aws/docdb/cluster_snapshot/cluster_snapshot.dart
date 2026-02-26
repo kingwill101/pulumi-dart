@@ -155,19 +155,21 @@ class ClusterSnapshot extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.availabilityZones = Output.createUnknown<List<String>>();
-    this.dbClusterIdentifier = Output.createUnknown<String>();
-    this.dbClusterSnapshotArn = Output.createUnknown<String>();
-    this.dbClusterSnapshotIdentifier = Output.createUnknown<String>();
-    this.engine = Output.createUnknown<String>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.snapshotType = Output.createUnknown<String>();
-    this.sourceDbClusterSnapshotArn = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.storageEncrypted = Output.createUnknown<bool>();
-    this.vpcId = Output.createUnknown<String>();
+    this.availabilityZones = registerOutput<List<String>>('availabilityZones');
+    this.dbClusterIdentifier = registerOutput<String>('dbClusterIdentifier');
+    this.dbClusterSnapshotArn = registerOutput<String>('dbClusterSnapshotArn');
+    this.dbClusterSnapshotIdentifier =
+        registerOutput<String>('dbClusterSnapshotIdentifier');
+    this.engine = registerOutput<String>('engine');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.port = registerOutput<int>('port');
+    this.region = registerOutput<String>('region');
+    this.snapshotType = registerOutput<String>('snapshotType');
+    this.sourceDbClusterSnapshotArn =
+        registerOutput<String>('sourceDbClusterSnapshotArn');
+    this.status = registerOutput<String>('status');
+    this.storageEncrypted = registerOutput<bool>('storageEncrypted');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

@@ -330,15 +330,17 @@ class Settings2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
     this.emailNotificationSettings =
-        Output.createUnknown<SettingsEmailNotificationSettings?>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
+        registerOutput<SettingsEmailNotificationSettings?>(
+            'emailNotificationSettings');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
     this.serviceAccountApproverSettings =
-        Output.createUnknown<SettingsServiceAccountApproverSettings?>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<SettingsServiceAccountApproverSettings?>(
+            'serviceAccountApproverSettings');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

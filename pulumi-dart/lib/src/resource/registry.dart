@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'package:pulumi/pulumi.dart';
-import 'package:pulumi/src/resource/dependency_resource.dart';
-import 'package:pulumi/src/resource/resource_options.dart';
-import 'package:pulumi/src/serializer.dart';
 import 'package:pulumi/src/deserializer.dart';
+import 'package:pulumi/src/settings.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 
 import '../pulumirpc/pulumi/resource.pbgrpc.dart';
@@ -33,17 +31,10 @@ class ResourceRegistry {
     Map<String, Input<dynamic>> inputs,
     ResourceOptions options,
   ) async {
-    final monitor = getMonitor();
+    final monitor = Runtime().getMonitor();
     if (monitor == null) {
       throw Exception("Resource monitor is not available");
     }
-
-    final serializer = Serializer();
-    final serializedInputs = await serializer.serializeAsync(
-      'resource',
-      inputs,
-      true,
-    );
 
     final request = RegisterResourceRequest()
       ..type = type
@@ -54,7 +45,9 @@ class ResourceRegistry {
 
     try {
       final response = await monitor.registerResource(request);
-      final deserializedOutputs = Deserializer.deserialize(response.object);
+      final deserializedOutputs = Deserializer.deserialize(
+        Value()..structValue = response.object,
+      );
       return RegisterResourceResult(
         urn: response.urn,
         id: response.id,

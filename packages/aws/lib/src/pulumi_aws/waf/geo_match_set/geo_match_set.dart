@@ -180,9 +180,10 @@ class GeoMatchSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.geoMatchConstraints =
-        Output.createUnknown<List<GeoMatchSetGeoMatchConstraint>?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<List<GeoMatchSetGeoMatchConstraint>?>(
+            'geoMatchConstraints');
+    this.name = registerOutput<String>('name');
   }
 }

@@ -193,16 +193,16 @@ class Stream2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.exclusiveEndTime = Output.createUnknown<String?>();
-    this.inclusiveStartTime = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.exclusiveEndTime = registerOutput<String?>('exclusiveEndTime');
+    this.inclusiveStartTime = registerOutput<String>('inclusiveStartTime');
     this.kinesisConfiguration =
-        Output.createUnknown<StreamKinesisConfiguration>();
-    this.ledgerName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.streamName = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<StreamKinesisConfiguration>('kinesisConfiguration');
+    this.ledgerName = registerOutput<String>('ledgerName');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.streamName = registerOutput<String>('streamName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

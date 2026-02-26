@@ -146,16 +146,17 @@ class Room extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.loggingConfigurationIdentifiers =
-        Output.createUnknown<List<String>?>();
-    this.maximumMessageLength = Output.createUnknown<int>();
-    this.maximumMessageRatePerSecond = Output.createUnknown<int>();
+        registerOutput<List<String>?>('loggingConfigurationIdentifiers');
+    this.maximumMessageLength = registerOutput<int>('maximumMessageLength');
+    this.maximumMessageRatePerSecond =
+        registerOutput<int>('maximumMessageRatePerSecond');
     this.messageReviewHandler =
-        Output.createUnknown<RoomMessageReviewHandler?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<RoomMessageReviewHandler?>('messageReviewHandler');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

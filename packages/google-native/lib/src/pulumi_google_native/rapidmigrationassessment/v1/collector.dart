@@ -68,24 +68,24 @@ class Collector extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.clientVersion = Output.createUnknown<String>();
-    this.collectionDays = Output.createUnknown<int>();
-    this.collectorId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.eulaUri = Output.createUnknown<String>();
-    this.expectedAssetCount = Output.createUnknown<String>();
-    this.guestOsScan = Output.createUnknown<GuestOsScanResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vsphereScan = Output.createUnknown<VSphereScanResponse>();
+    this.bucket = registerOutput<String>('bucket');
+    this.clientVersion = registerOutput<String>('clientVersion');
+    this.collectionDays = registerOutput<int>('collectionDays');
+    this.collectorId = registerOutput<String>('collectorId');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.eulaUri = registerOutput<String>('eulaUri');
+    this.expectedAssetCount = registerOutput<String>('expectedAssetCount');
+    this.guestOsScan = registerOutput<GuestOsScanResponse>('guestOsScan');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vsphereScan = registerOutput<VSphereScanResponse>('vsphereScan');
   }
 }

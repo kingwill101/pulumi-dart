@@ -28,12 +28,13 @@ class Index5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.collectionId = Output.createUnknown<String>();
-    this.databaseId = Output.createUnknown<String>();
-    this.fields = Output.createUnknown<
-        List<GoogleFirestoreAdminV1beta1IndexFieldResponse>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.collectionId = registerOutput<String>('collectionId');
+    this.databaseId = registerOutput<String>('databaseId');
+    this.fields =
+        registerOutput<List<GoogleFirestoreAdminV1beta1IndexFieldResponse>>(
+            'fields');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
   }
 }

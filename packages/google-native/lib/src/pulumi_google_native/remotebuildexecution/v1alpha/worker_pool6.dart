@@ -39,15 +39,17 @@ class WorkerPool6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoscale = Output.createUnknown<
-        GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse>();
-    this.channel = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.workerConfig = Output.createUnknown<
-        GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse>();
-    this.workerCount = Output.createUnknown<String>();
+    this.autoscale = registerOutput<
+            GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse>(
+        'autoscale');
+    this.channel = registerOutput<String>('channel');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.workerConfig = registerOutput<
+            GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse>(
+        'workerConfig');
+    this.workerCount = registerOutput<String>('workerCount');
   }
 }

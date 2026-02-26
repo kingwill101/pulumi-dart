@@ -196,16 +196,18 @@ class DeploymentStrategy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.deploymentDurationInMinutes = Output.createUnknown<int>();
-    this.description = Output.createUnknown<String?>();
-    this.finalBakeTimeInMinutes = Output.createUnknown<int?>();
-    this.growthFactor = Output.createUnknown<double>();
-    this.growthType = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.replicateTo = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.deploymentDurationInMinutes =
+        registerOutput<int>('deploymentDurationInMinutes');
+    this.description = registerOutput<String?>('description');
+    this.finalBakeTimeInMinutes =
+        registerOutput<int?>('finalBakeTimeInMinutes');
+    this.growthFactor = registerOutput<double>('growthFactor');
+    this.growthType = registerOutput<String?>('growthType');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.replicateTo = registerOutput<String>('replicateTo');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

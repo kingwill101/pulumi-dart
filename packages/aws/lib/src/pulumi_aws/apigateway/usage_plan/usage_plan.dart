@@ -54,15 +54,17 @@ class UsagePlan extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiStages = Output.createUnknown<List<UsagePlanApiStage>?>();
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.productCode = Output.createUnknown<String?>();
-    this.quotaSettings = Output.createUnknown<UsagePlanQuotaSettings?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.throttleSettings = Output.createUnknown<UsagePlanThrottleSettings?>();
+    this.apiStages = registerOutput<List<UsagePlanApiStage>?>('apiStages');
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.productCode = registerOutput<String?>('productCode');
+    this.quotaSettings =
+        registerOutput<UsagePlanQuotaSettings?>('quotaSettings');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.throttleSettings =
+        registerOutput<UsagePlanThrottleSettings?>('throttleSettings');
   }
 }

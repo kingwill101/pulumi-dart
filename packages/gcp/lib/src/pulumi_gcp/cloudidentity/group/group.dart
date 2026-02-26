@@ -234,15 +234,15 @@ class Group extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.additionalGroupKeys =
-        Output.createUnknown<List<GroupAdditionalGroupKey>>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.groupKey = Output.createUnknown<GroupGroupKey>();
-    this.initialGroupConfig = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<GroupAdditionalGroupKey>>('additionalGroupKeys');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.groupKey = registerOutput<GroupGroupKey>('groupKey');
+    this.initialGroupConfig = registerOutput<String?>('initialGroupConfig');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

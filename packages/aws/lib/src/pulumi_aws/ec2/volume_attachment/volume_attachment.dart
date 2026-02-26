@@ -248,12 +248,13 @@ class VolumeAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.deviceName = Output.createUnknown<String>();
-    this.forceDetach = Output.createUnknown<bool?>();
-    this.instanceId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.skipDestroy = Output.createUnknown<bool?>();
-    this.stopInstanceBeforeDetaching = Output.createUnknown<bool?>();
-    this.volumeId = Output.createUnknown<String>();
+    this.deviceName = registerOutput<String>('deviceName');
+    this.forceDetach = registerOutput<bool?>('forceDetach');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.region = registerOutput<String>('region');
+    this.skipDestroy = registerOutput<bool?>('skipDestroy');
+    this.stopInstanceBeforeDetaching =
+        registerOutput<bool?>('stopInstanceBeforeDetaching');
+    this.volumeId = registerOutput<String>('volumeId');
   }
 }

@@ -183,14 +183,14 @@ class Upload extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.category = Output.createUnknown<String>();
-    this.contentType = Output.createUnknown<String?>();
-    this.metadata = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.projectArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.url = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.category = registerOutput<String>('category');
+    this.contentType = registerOutput<String?>('contentType');
+    this.metadata = registerOutput<String>('metadata');
+    this.name = registerOutput<String>('name');
+    this.projectArn = registerOutput<String>('projectArn');
+    this.region = registerOutput<String>('region');
+    this.type = registerOutput<String>('type');
+    this.url = registerOutput<String>('url');
   }
 }

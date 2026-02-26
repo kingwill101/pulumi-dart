@@ -266,18 +266,20 @@ class AccessGrant extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessGrantArn = Output.createUnknown<String>();
-    this.accessGrantId = Output.createUnknown<String>();
+    this.accessGrantArn = registerOutput<String>('accessGrantArn');
+    this.accessGrantId = registerOutput<String>('accessGrantId');
     this.accessGrantsLocationConfiguration =
-        Output.createUnknown<AccessGrantAccessGrantsLocationConfiguration?>();
-    this.accessGrantsLocationId = Output.createUnknown<String>();
-    this.accountId = Output.createUnknown<String>();
-    this.grantScope = Output.createUnknown<String>();
-    this.grantee = Output.createUnknown<AccessGrantGrantee>();
-    this.permission = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.s3PrefixType = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<AccessGrantAccessGrantsLocationConfiguration?>(
+            'accessGrantsLocationConfiguration');
+    this.accessGrantsLocationId =
+        registerOutput<String>('accessGrantsLocationId');
+    this.accountId = registerOutput<String>('accountId');
+    this.grantScope = registerOutput<String>('grantScope');
+    this.grantee = registerOutput<AccessGrantGrantee>('grantee');
+    this.permission = registerOutput<String>('permission');
+    this.region = registerOutput<String>('region');
+    this.s3PrefixType = registerOutput<String?>('s3PrefixType');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

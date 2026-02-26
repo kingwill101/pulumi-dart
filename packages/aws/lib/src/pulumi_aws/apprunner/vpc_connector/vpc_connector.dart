@@ -191,14 +191,14 @@ class VpcConnector extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroups = Output.createUnknown<List<String>>();
-    this.status = Output.createUnknown<String>();
-    this.subnets = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcConnectorName = Output.createUnknown<String>();
-    this.vpcConnectorRevision = Output.createUnknown<int>();
+    this.arn = registerOutput<String>('arn');
+    this.region = registerOutput<String>('region');
+    this.securityGroups = registerOutput<List<String>>('securityGroups');
+    this.status = registerOutput<String>('status');
+    this.subnets = registerOutput<List<String>>('subnets');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcConnectorName = registerOutput<String>('vpcConnectorName');
+    this.vpcConnectorRevision = registerOutput<int>('vpcConnectorRevision');
   }
 }

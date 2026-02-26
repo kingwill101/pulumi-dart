@@ -152,9 +152,9 @@ class LogStream extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.logGroupName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.logGroupName = registerOutput<String>('logGroupName');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

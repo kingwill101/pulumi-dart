@@ -360,13 +360,14 @@ class IdentityProvider2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.identityProviderArn = Output.createUnknown<String>();
-    this.identityProviderDetails = Output.createUnknown<Map<String, String>>();
-    this.identityProviderName = Output.createUnknown<String>();
-    this.identityProviderType = Output.createUnknown<String>();
-    this.portalArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.identityProviderArn = registerOutput<String>('identityProviderArn');
+    this.identityProviderDetails =
+        registerOutput<Map<String, String>>('identityProviderDetails');
+    this.identityProviderName = registerOutput<String>('identityProviderName');
+    this.identityProviderType = registerOutput<String>('identityProviderType');
+    this.portalArn = registerOutput<String>('portalArn');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

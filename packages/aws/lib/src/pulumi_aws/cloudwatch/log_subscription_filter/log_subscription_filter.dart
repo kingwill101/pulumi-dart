@@ -169,14 +169,15 @@ class LogSubscriptionFilter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applyOnTransformedLogs = Output.createUnknown<bool>();
-    this.destinationArn = Output.createUnknown<String>();
-    this.distribution = Output.createUnknown<String?>();
-    this.emitSystemFields = Output.createUnknown<List<String>?>();
-    this.filterPattern = Output.createUnknown<String>();
-    this.logGroup = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
+    this.applyOnTransformedLogs =
+        registerOutput<bool>('applyOnTransformedLogs');
+    this.destinationArn = registerOutput<String>('destinationArn');
+    this.distribution = registerOutput<String?>('distribution');
+    this.emitSystemFields = registerOutput<List<String>?>('emitSystemFields');
+    this.filterPattern = registerOutput<String>('filterPattern');
+    this.logGroup = registerOutput<String>('logGroup');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
   }
 }

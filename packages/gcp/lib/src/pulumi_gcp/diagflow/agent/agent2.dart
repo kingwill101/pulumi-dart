@@ -437,18 +437,20 @@ class Agent2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiVersion = Output.createUnknown<String>();
-    this.avatarUri = Output.createUnknown<String?>();
-    this.avatarUriBackend = Output.createUnknown<String>();
-    this.classificationThreshold = Output.createUnknown<double?>();
-    this.defaultLanguageCode = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.enableLogging = Output.createUnknown<bool?>();
-    this.matchMode = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.supportedLanguageCodes = Output.createUnknown<List<String>?>();
-    this.tier = Output.createUnknown<String?>();
-    this.timeZone = Output.createUnknown<String>();
+    this.apiVersion = registerOutput<String>('apiVersion');
+    this.avatarUri = registerOutput<String?>('avatarUri');
+    this.avatarUriBackend = registerOutput<String>('avatarUriBackend');
+    this.classificationThreshold =
+        registerOutput<double?>('classificationThreshold');
+    this.defaultLanguageCode = registerOutput<String>('defaultLanguageCode');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.enableLogging = registerOutput<bool?>('enableLogging');
+    this.matchMode = registerOutput<String>('matchMode');
+    this.project = registerOutput<String>('project');
+    this.supportedLanguageCodes =
+        registerOutput<List<String>?>('supportedLanguageCodes');
+    this.tier = registerOutput<String?>('tier');
+    this.timeZone = registerOutput<String>('timeZone');
   }
 }

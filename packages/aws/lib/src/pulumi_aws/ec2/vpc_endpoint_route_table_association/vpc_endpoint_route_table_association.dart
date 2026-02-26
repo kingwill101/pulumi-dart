@@ -126,8 +126,8 @@ class VpcEndpointRouteTableAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.routeTableId = Output.createUnknown<String>();
-    this.vpcEndpointId = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.routeTableId = registerOutput<String>('routeTableId');
+    this.vpcEndpointId = registerOutput<String>('vpcEndpointId');
   }
 }

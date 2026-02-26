@@ -1813,19 +1813,24 @@ class ResourcePolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
+    this.description = registerOutput<String?>('description');
     this.diskConsistencyGroupPolicy =
-        Output.createUnknown<ResourcePolicyDiskConsistencyGroupPolicy?>();
+        registerOutput<ResourcePolicyDiskConsistencyGroupPolicy?>(
+            'diskConsistencyGroupPolicy');
     this.groupPlacementPolicy =
-        Output.createUnknown<ResourcePolicyGroupPlacementPolicy?>();
+        registerOutput<ResourcePolicyGroupPlacementPolicy?>(
+            'groupPlacementPolicy');
     this.instanceSchedulePolicy =
-        Output.createUnknown<ResourcePolicyInstanceSchedulePolicy?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<ResourcePolicyInstanceSchedulePolicy?>(
+            'instanceSchedulePolicy');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.selfLink = registerOutput<String>('selfLink');
     this.snapshotSchedulePolicy =
-        Output.createUnknown<ResourcePolicySnapshotSchedulePolicy?>();
-    this.workloadPolicy = Output.createUnknown<ResourcePolicyWorkloadPolicy?>();
+        registerOutput<ResourcePolicySnapshotSchedulePolicy?>(
+            'snapshotSchedulePolicy');
+    this.workloadPolicy =
+        registerOutput<ResourcePolicyWorkloadPolicy?>('workloadPolicy');
   }
 }

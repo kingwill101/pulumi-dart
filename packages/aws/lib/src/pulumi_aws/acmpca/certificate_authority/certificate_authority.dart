@@ -758,24 +758,29 @@ class CertificateAuthority extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.certificate = Output.createUnknown<String>();
-    this.certificateAuthorityConfiguration = Output.createUnknown<
-        CertificateAuthorityCertificateAuthorityConfiguration>();
-    this.certificateChain = Output.createUnknown<String>();
-    this.certificateSigningRequest = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.keyStorageSecurityStandard = Output.createUnknown<String>();
-    this.notAfter = Output.createUnknown<String>();
-    this.notBefore = Output.createUnknown<String>();
-    this.permanentDeletionTimeInDays = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.certificate = registerOutput<String>('certificate');
+    this.certificateAuthorityConfiguration =
+        registerOutput<CertificateAuthorityCertificateAuthorityConfiguration>(
+            'certificateAuthorityConfiguration');
+    this.certificateChain = registerOutput<String>('certificateChain');
+    this.certificateSigningRequest =
+        registerOutput<String>('certificateSigningRequest');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.keyStorageSecurityStandard =
+        registerOutput<String>('keyStorageSecurityStandard');
+    this.notAfter = registerOutput<String>('notAfter');
+    this.notBefore = registerOutput<String>('notBefore');
+    this.permanentDeletionTimeInDays =
+        registerOutput<int?>('permanentDeletionTimeInDays');
+    this.region = registerOutput<String>('region');
     this.revocationConfiguration =
-        Output.createUnknown<CertificateAuthorityRevocationConfiguration?>();
-    this.serial = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String?>();
-    this.usageMode = Output.createUnknown<String>();
+        registerOutput<CertificateAuthorityRevocationConfiguration?>(
+            'revocationConfiguration');
+    this.serial = registerOutput<String>('serial');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String?>('type');
+    this.usageMode = registerOutput<String>('usageMode');
   }
 }

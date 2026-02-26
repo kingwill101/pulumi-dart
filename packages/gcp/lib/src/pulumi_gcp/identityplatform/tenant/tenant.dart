@@ -171,12 +171,12 @@ class Tenant extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowPasswordSignup = Output.createUnknown<bool?>();
-    this.client = Output.createUnknown<TenantClient?>();
-    this.disableAuth = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String>();
-    this.enableEmailLinkSignin = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.allowPasswordSignup = registerOutput<bool?>('allowPasswordSignup');
+    this.client = registerOutput<TenantClient?>('client');
+    this.disableAuth = registerOutput<bool?>('disableAuth');
+    this.displayName = registerOutput<String>('displayName');
+    this.enableEmailLinkSignin = registerOutput<bool?>('enableEmailLinkSignin');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

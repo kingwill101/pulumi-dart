@@ -132,8 +132,8 @@ class VpcDhcpOptionsAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dhcpOptionsId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.vpcId = Output.createUnknown<String>();
+    this.dhcpOptionsId = registerOutput<String>('dhcpOptionsId');
+    this.region = registerOutput<String>('region');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

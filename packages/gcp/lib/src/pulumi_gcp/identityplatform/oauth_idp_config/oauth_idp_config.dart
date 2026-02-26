@@ -221,13 +221,14 @@ class OauthIdpConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clientId = Output.createUnknown<String>();
-    this.clientSecret = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.issuer = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.responseType = Output.createUnknown<OauthIdpConfigResponseType?>();
+    this.clientId = registerOutput<String>('clientId');
+    this.clientSecret = registerOutput<String?>('clientSecret');
+    this.displayName = registerOutput<String?>('displayName');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.issuer = registerOutput<String>('issuer');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.responseType =
+        registerOutput<OauthIdpConfigResponseType?>('responseType');
   }
 }

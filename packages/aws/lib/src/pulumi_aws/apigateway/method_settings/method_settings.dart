@@ -568,10 +568,10 @@ class MethodSettings extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.methodPath = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.restApi = Output.createUnknown<String>();
-    this.settings = Output.createUnknown<MethodSettingsSettings>();
-    this.stageName = Output.createUnknown<String>();
+    this.methodPath = registerOutput<String>('methodPath');
+    this.region = registerOutput<String>('region');
+    this.restApi = registerOutput<String>('restApi');
+    this.settings = registerOutput<MethodSettingsSettings>('settings');
+    this.stageName = registerOutput<String>('stageName');
   }
 }

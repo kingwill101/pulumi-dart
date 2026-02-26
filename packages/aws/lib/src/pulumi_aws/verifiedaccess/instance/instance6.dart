@@ -331,16 +331,18 @@ class Instance6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cidrEndpointsCustomSubdomain = Output.createUnknown<String?>();
-    this.creationTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.fipsEnabled = Output.createUnknown<bool?>();
-    this.lastUpdatedTime = Output.createUnknown<String>();
-    this.nameServers = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.cidrEndpointsCustomSubdomain =
+        registerOutput<String?>('cidrEndpointsCustomSubdomain');
+    this.creationTime = registerOutput<String>('creationTime');
+    this.description = registerOutput<String?>('description');
+    this.fipsEnabled = registerOutput<bool?>('fipsEnabled');
+    this.lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    this.nameServers = registerOutput<List<String>>('nameServers');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.verifiedAccessTrustProviders =
-        Output.createUnknown<List<InstanceVerifiedAccessTrustProvider>>();
+        registerOutput<List<InstanceVerifiedAccessTrustProvider>>(
+            'verifiedAccessTrustProviders');
   }
 }

@@ -153,13 +153,13 @@ class Profile3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.as2Id = Output.createUnknown<String>();
-    this.certificateIds = Output.createUnknown<List<String>?>();
-    this.profileId = Output.createUnknown<String>();
-    this.profileType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.as2Id = registerOutput<String>('as2Id');
+    this.certificateIds = registerOutput<List<String>?>('certificateIds');
+    this.profileId = registerOutput<String>('profileId');
+    this.profileType = registerOutput<String>('profileType');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

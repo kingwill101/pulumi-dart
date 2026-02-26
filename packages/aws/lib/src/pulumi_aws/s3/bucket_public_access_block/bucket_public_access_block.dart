@@ -189,12 +189,12 @@ class BucketPublicAccessBlock extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.blockPublicAcls = Output.createUnknown<bool?>();
-    this.blockPublicPolicy = Output.createUnknown<bool?>();
-    this.bucket = Output.createUnknown<String>();
-    this.ignorePublicAcls = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.restrictPublicBuckets = Output.createUnknown<bool?>();
-    this.skipDestroy = Output.createUnknown<bool?>();
+    this.blockPublicAcls = registerOutput<bool?>('blockPublicAcls');
+    this.blockPublicPolicy = registerOutput<bool?>('blockPublicPolicy');
+    this.bucket = registerOutput<String>('bucket');
+    this.ignorePublicAcls = registerOutput<bool?>('ignorePublicAcls');
+    this.region = registerOutput<String>('region');
+    this.restrictPublicBuckets = registerOutput<bool?>('restrictPublicBuckets');
+    this.skipDestroy = registerOutput<bool?>('skipDestroy');
   }
 }

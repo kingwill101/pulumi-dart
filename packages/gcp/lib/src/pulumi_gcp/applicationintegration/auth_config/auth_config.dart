@@ -307,27 +307,28 @@ class AuthConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificateId = Output.createUnknown<String>();
+    this.certificateId = registerOutput<String>('certificateId');
     this.clientCertificate =
-        Output.createUnknown<AuthConfigClientCertificate?>();
-    this.createTime = Output.createUnknown<String>();
-    this.creatorEmail = Output.createUnknown<String>();
-    this.credentialType = Output.createUnknown<String>();
+        registerOutput<AuthConfigClientCertificate?>('clientCertificate');
+    this.createTime = registerOutput<String>('createTime');
+    this.creatorEmail = registerOutput<String>('creatorEmail');
+    this.credentialType = registerOutput<String>('credentialType');
     this.decryptedCredential =
-        Output.createUnknown<AuthConfigDecryptedCredential?>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.encryptedCredential = Output.createUnknown<String>();
-    this.expiryNotificationDurations = Output.createUnknown<List<String>?>();
-    this.lastModifierEmail = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.overrideValidTime = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.reason = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.validTime = Output.createUnknown<String>();
-    this.visibility = Output.createUnknown<String?>();
+        registerOutput<AuthConfigDecryptedCredential?>('decryptedCredential');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.encryptedCredential = registerOutput<String>('encryptedCredential');
+    this.expiryNotificationDurations =
+        registerOutput<List<String>?>('expiryNotificationDurations');
+    this.lastModifierEmail = registerOutput<String>('lastModifierEmail');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.overrideValidTime = registerOutput<String?>('overrideValidTime');
+    this.project = registerOutput<String>('project');
+    this.reason = registerOutput<String>('reason');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.validTime = registerOutput<String>('validTime');
+    this.visibility = registerOutput<String?>('visibility');
   }
 }

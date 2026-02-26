@@ -624,10 +624,11 @@ class DelegationSignerRecord extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dnssecKeyId = Output.createUnknown<String>();
-    this.domainName = Output.createUnknown<String>();
+    this.dnssecKeyId = registerOutput<String>('dnssecKeyId');
+    this.domainName = registerOutput<String>('domainName');
     this.signingAttributes =
-        Output.createUnknown<DelegationSignerRecordSigningAttributes?>();
-    this.timeouts = Output.createUnknown<DelegationSignerRecordTimeouts?>();
+        registerOutput<DelegationSignerRecordSigningAttributes?>(
+            'signingAttributes');
+    this.timeouts = registerOutput<DelegationSignerRecordTimeouts?>('timeouts');
   }
 }

@@ -889,30 +889,36 @@ class AzureCluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.authorization = Output.createUnknown<AzureClusterAuthorization>();
-    this.azureRegion = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.authorization =
+        registerOutput<AzureClusterAuthorization>('authorization');
+    this.azureRegion = registerOutput<String>('azureRegion');
     this.azureServicesAuthentication =
-        Output.createUnknown<AzureClusterAzureServicesAuthentication?>();
-    this.client = Output.createUnknown<String?>();
-    this.controlPlane = Output.createUnknown<AzureClusterControlPlane>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.endpoint = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.fleet = Output.createUnknown<AzureClusterFleet>();
-    this.location = Output.createUnknown<String>();
-    this.loggingConfig = Output.createUnknown<AzureClusterLoggingConfig>();
-    this.name = Output.createUnknown<String>();
-    this.networking = Output.createUnknown<AzureClusterNetworking>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.resourceGroupId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<AzureClusterAzureServicesAuthentication?>(
+            'azureServicesAuthentication');
+    this.client = registerOutput<String?>('client');
+    this.controlPlane =
+        registerOutput<AzureClusterControlPlane>('controlPlane');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.etag = registerOutput<String>('etag');
+    this.fleet = registerOutput<AzureClusterFleet>('fleet');
+    this.location = registerOutput<String>('location');
+    this.loggingConfig =
+        registerOutput<AzureClusterLoggingConfig>('loggingConfig');
+    this.name = registerOutput<String>('name');
+    this.networking = registerOutput<AzureClusterNetworking>('networking');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.resourceGroupId = registerOutput<String>('resourceGroupId');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
     this.workloadIdentityConfigs =
-        Output.createUnknown<List<AzureClusterWorkloadIdentityConfig>>();
+        registerOutput<List<AzureClusterWorkloadIdentityConfig>>(
+            'workloadIdentityConfigs');
   }
 }

@@ -52,19 +52,21 @@ class ConversionWorkspace extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.conversionWorkspaceId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.destination = Output.createUnknown<DatabaseEngineInfoResponse>();
-    this.displayName = Output.createUnknown<String>();
-    this.globalSettings = Output.createUnknown<Map<String, String>>();
-    this.hasUncommittedChanges = Output.createUnknown<bool>();
-    this.latestCommitId = Output.createUnknown<String>();
-    this.latestCommitTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.source = Output.createUnknown<DatabaseEngineInfoResponse>();
-    this.updateTime = Output.createUnknown<String>();
+    this.conversionWorkspaceId =
+        registerOutput<String>('conversionWorkspaceId');
+    this.createTime = registerOutput<String>('createTime');
+    this.destination =
+        registerOutput<DatabaseEngineInfoResponse>('destination');
+    this.displayName = registerOutput<String>('displayName');
+    this.globalSettings = registerOutput<Map<String, String>>('globalSettings');
+    this.hasUncommittedChanges = registerOutput<bool>('hasUncommittedChanges');
+    this.latestCommitId = registerOutput<String>('latestCommitId');
+    this.latestCommitTime = registerOutput<String>('latestCommitTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.source = registerOutput<DatabaseEngineInfoResponse>('source');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

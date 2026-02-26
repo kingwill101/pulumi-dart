@@ -1921,15 +1921,17 @@ class AgentcoreGatewayTarget extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.credentialProviderConfiguration = Output.createUnknown<
-        AgentcoreGatewayTargetCredentialProviderConfiguration?>();
-    this.description = Output.createUnknown<String?>();
-    this.gatewayIdentifier = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.credentialProviderConfiguration =
+        registerOutput<AgentcoreGatewayTargetCredentialProviderConfiguration?>(
+            'credentialProviderConfiguration');
+    this.description = registerOutput<String?>('description');
+    this.gatewayIdentifier = registerOutput<String>('gatewayIdentifier');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
     this.targetConfiguration =
-        Output.createUnknown<AgentcoreGatewayTargetTargetConfiguration>();
-    this.targetId = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<AgentcoreGatewayTargetTimeouts?>();
+        registerOutput<AgentcoreGatewayTargetTargetConfiguration>(
+            'targetConfiguration');
+    this.targetId = registerOutput<String>('targetId');
+    this.timeouts = registerOutput<AgentcoreGatewayTargetTimeouts?>('timeouts');
   }
 }

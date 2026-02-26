@@ -598,13 +598,16 @@ class Policy extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.admissionWhitelistPatterns =
-        Output.createUnknown<List<PolicyAdmissionWhitelistPattern>?>();
+        registerOutput<List<PolicyAdmissionWhitelistPattern>?>(
+            'admissionWhitelistPatterns');
     this.clusterAdmissionRules =
-        Output.createUnknown<List<PolicyClusterAdmissionRule>?>();
+        registerOutput<List<PolicyClusterAdmissionRule>?>(
+            'clusterAdmissionRules');
     this.defaultAdmissionRule =
-        Output.createUnknown<PolicyDefaultAdmissionRule>();
-    this.description = Output.createUnknown<String?>();
-    this.globalPolicyEvaluationMode = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<PolicyDefaultAdmissionRule>('defaultAdmissionRule');
+    this.description = registerOutput<String?>('description');
+    this.globalPolicyEvaluationMode =
+        registerOutput<String>('globalPolicyEvaluationMode');
+    this.project = registerOutput<String>('project');
   }
 }

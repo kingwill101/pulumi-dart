@@ -211,11 +211,11 @@ class Model extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.contentType = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.restApi = Output.createUnknown<String>();
-    this.schema = Output.createUnknown<String?>();
+    this.contentType = registerOutput<String>('contentType');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.restApi = registerOutput<String>('restApi');
+    this.schema = registerOutput<String?>('schema');
   }
 }

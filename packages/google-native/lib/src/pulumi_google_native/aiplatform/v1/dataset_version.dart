@@ -32,13 +32,13 @@ class DatasetVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bigQueryDatasetName = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.datasetId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.bigQueryDatasetName = registerOutput<String>('bigQueryDatasetName');
+    this.createTime = registerOutput<String>('createTime');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

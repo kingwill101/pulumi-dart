@@ -40,14 +40,14 @@ class ObjectIamPolicy extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.bindings =
-        Output.createUnknown<List<ObjectIamPolicyBindingsItemResponse>>();
-    this.bucket = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.generation = Output.createUnknown<String?>();
-    this.kind = Output.createUnknown<String>();
-    this.object = Output.createUnknown<String>();
-    this.resourceId = Output.createUnknown<String>();
-    this.userProject = Output.createUnknown<String?>();
-    this.version = Output.createUnknown<int>();
+        registerOutput<List<ObjectIamPolicyBindingsItemResponse>>('bindings');
+    this.bucket = registerOutput<String>('bucket');
+    this.etag = registerOutput<String>('etag');
+    this.generation = registerOutput<String?>('generation');
+    this.kind = registerOutput<String>('kind');
+    this.object = registerOutput<String>('object');
+    this.resourceId = registerOutput<String>('resourceId');
+    this.userProject = registerOutput<String?>('userProject');
+    this.version = registerOutput<int>('version');
   }
 }

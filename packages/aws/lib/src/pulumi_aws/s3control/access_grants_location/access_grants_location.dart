@@ -176,13 +176,15 @@ class AccessGrantsLocation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessGrantsLocationArn = Output.createUnknown<String>();
-    this.accessGrantsLocationId = Output.createUnknown<String>();
-    this.accountId = Output.createUnknown<String>();
-    this.iamRoleArn = Output.createUnknown<String>();
-    this.locationScope = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.accessGrantsLocationArn =
+        registerOutput<String>('accessGrantsLocationArn');
+    this.accessGrantsLocationId =
+        registerOutput<String>('accessGrantsLocationId');
+    this.accountId = registerOutput<String>('accountId');
+    this.iamRoleArn = registerOutput<String>('iamRoleArn');
+    this.locationScope = registerOutput<String>('locationScope');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

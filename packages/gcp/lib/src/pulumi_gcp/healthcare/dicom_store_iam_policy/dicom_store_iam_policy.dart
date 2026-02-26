@@ -668,8 +668,8 @@ class DicomStoreIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dicomStoreId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
+    this.dicomStoreId = registerOutput<String>('dicomStoreId');
+    this.etag = registerOutput<String>('etag');
+    this.policyData = registerOutput<String>('policyData');
   }
 }

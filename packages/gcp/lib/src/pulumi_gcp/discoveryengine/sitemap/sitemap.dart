@@ -236,12 +236,12 @@ class Sitemap extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.dataStoreId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.sitemapId = Output.createUnknown<String>();
-    this.uri = Output.createUnknown<String?>();
+    this.createTime = registerOutput<String>('createTime');
+    this.dataStoreId = registerOutput<String>('dataStoreId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.sitemapId = registerOutput<String>('sitemapId');
+    this.uri = registerOutput<String?>('uri');
   }
 }

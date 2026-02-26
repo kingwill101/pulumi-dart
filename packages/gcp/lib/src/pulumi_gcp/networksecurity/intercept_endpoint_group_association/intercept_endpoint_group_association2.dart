@@ -391,22 +391,27 @@ class InterceptEndpointGroupAssociation2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.interceptEndpointGroup = Output.createUnknown<String>();
-    this.interceptEndpointGroupAssociationId = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.interceptEndpointGroup =
+        registerOutput<String>('interceptEndpointGroup');
+    this.interceptEndpointGroupAssociationId =
+        registerOutput<String?>('interceptEndpointGroupAssociationId');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
     this.locations =
-        Output.createUnknown<List<InterceptEndpointGroupAssociationLocation>>();
-    this.locationsDetails = Output.createUnknown<
-        List<InterceptEndpointGroupAssociationLocationsDetail>>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<InterceptEndpointGroupAssociationLocation>>(
+            'locations');
+    this.locationsDetails =
+        registerOutput<List<InterceptEndpointGroupAssociationLocationsDetail>>(
+            'locationsDetails');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

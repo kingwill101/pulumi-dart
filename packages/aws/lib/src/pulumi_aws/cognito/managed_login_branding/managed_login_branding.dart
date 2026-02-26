@@ -336,13 +336,15 @@ class ManagedLoginBranding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.assets = Output.createUnknown<List<ManagedLoginBrandingAsset>?>();
-    this.clientId = Output.createUnknown<String>();
-    this.managedLoginBrandingId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.settings = Output.createUnknown<String?>();
-    this.settingsAll = Output.createUnknown<String>();
-    this.useCognitoProvidedValues = Output.createUnknown<bool>();
-    this.userPoolId = Output.createUnknown<String>();
+    this.assets = registerOutput<List<ManagedLoginBrandingAsset>?>('assets');
+    this.clientId = registerOutput<String>('clientId');
+    this.managedLoginBrandingId =
+        registerOutput<String>('managedLoginBrandingId');
+    this.region = registerOutput<String>('region');
+    this.settings = registerOutput<String?>('settings');
+    this.settingsAll = registerOutput<String>('settingsAll');
+    this.useCognitoProvidedValues =
+        registerOutput<bool>('useCognitoProvidedValues');
+    this.userPoolId = registerOutput<String>('userPoolId');
   }
 }

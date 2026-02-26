@@ -43,15 +43,15 @@ class Table3 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.changeStreamConfig =
-        Output.createUnknown<ChangeStreamConfigResponse>();
-    this.clusterStates = Output.createUnknown<Map<String, String>>();
-    this.columnFamilies = Output.createUnknown<Map<String, String>>();
-    this.deletionProtection = Output.createUnknown<bool>();
-    this.granularity = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.restoreInfo = Output.createUnknown<RestoreInfoResponse>();
-    this.stats = Output.createUnknown<TableStatsResponse>();
+        registerOutput<ChangeStreamConfigResponse>('changeStreamConfig');
+    this.clusterStates = registerOutput<Map<String, String>>('clusterStates');
+    this.columnFamilies = registerOutput<Map<String, String>>('columnFamilies');
+    this.deletionProtection = registerOutput<bool>('deletionProtection');
+    this.granularity = registerOutput<String>('granularity');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.restoreInfo = registerOutput<RestoreInfoResponse>('restoreInfo');
+    this.stats = registerOutput<TableStatsResponse>('stats');
   }
 }

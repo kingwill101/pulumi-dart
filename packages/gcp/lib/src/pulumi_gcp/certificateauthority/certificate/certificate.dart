@@ -3565,26 +3565,30 @@ class Certificate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificateAuthority = Output.createUnknown<String?>();
+    this.certificateAuthority = registerOutput<String?>('certificateAuthority');
     this.certificateDescriptions =
-        Output.createUnknown<List<CertificateCertificateDescription>>();
-    this.certificateTemplate = Output.createUnknown<String?>();
-    this.config = Output.createUnknown<CertificateConfig?>();
-    this.createTime = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.issuerCertificateAuthority = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.lifetime = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.pemCertificate = Output.createUnknown<String>();
-    this.pemCertificateChains = Output.createUnknown<List<String>>();
-    this.pemCsr = Output.createUnknown<String?>();
-    this.pool = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<CertificateCertificateDescription>>(
+            'certificateDescriptions');
+    this.certificateTemplate = registerOutput<String?>('certificateTemplate');
+    this.config = registerOutput<CertificateConfig?>('config');
+    this.createTime = registerOutput<String>('createTime');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.issuerCertificateAuthority =
+        registerOutput<String>('issuerCertificateAuthority');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.lifetime = registerOutput<String?>('lifetime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.pemCertificate = registerOutput<String>('pemCertificate');
+    this.pemCertificateChains =
+        registerOutput<List<String>>('pemCertificateChains');
+    this.pemCsr = registerOutput<String?>('pemCsr');
+    this.pool = registerOutput<String>('pool');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.revocationDetails =
-        Output.createUnknown<List<CertificateRevocationDetail>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<CertificateRevocationDetail>>('revocationDetails');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

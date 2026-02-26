@@ -29,10 +29,10 @@ class Ruleset extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<MetadataResponse7>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.source = Output.createUnknown<SourceResponse9>();
+    this.createTime = registerOutput<String>('createTime');
+    this.metadata = registerOutput<MetadataResponse7>('metadata');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.source = registerOutput<SourceResponse9>('source');
   }
 }

@@ -290,24 +290,29 @@ class VpcEndpointService extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceptanceRequired = Output.createUnknown<bool>();
-    this.allowedPrincipals = Output.createUnknown<List<String>>();
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZones = Output.createUnknown<List<String>>();
-    this.baseEndpointDnsNames = Output.createUnknown<List<String>>();
-    this.gatewayLoadBalancerArns = Output.createUnknown<List<String>?>();
-    this.managesVpcEndpoints = Output.createUnknown<bool>();
-    this.networkLoadBalancerArns = Output.createUnknown<List<String>?>();
-    this.privateDnsName = Output.createUnknown<String>();
-    this.privateDnsNameConfigurations = Output.createUnknown<
-        List<VpcEndpointServicePrivateDnsNameConfiguration>>();
-    this.region = Output.createUnknown<String>();
-    this.serviceName = Output.createUnknown<String>();
-    this.serviceType = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.supportedIpAddressTypes = Output.createUnknown<List<String>>();
-    this.supportedRegions = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.acceptanceRequired = registerOutput<bool>('acceptanceRequired');
+    this.allowedPrincipals = registerOutput<List<String>>('allowedPrincipals');
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZones = registerOutput<List<String>>('availabilityZones');
+    this.baseEndpointDnsNames =
+        registerOutput<List<String>>('baseEndpointDnsNames');
+    this.gatewayLoadBalancerArns =
+        registerOutput<List<String>?>('gatewayLoadBalancerArns');
+    this.managesVpcEndpoints = registerOutput<bool>('managesVpcEndpoints');
+    this.networkLoadBalancerArns =
+        registerOutput<List<String>?>('networkLoadBalancerArns');
+    this.privateDnsName = registerOutput<String>('privateDnsName');
+    this.privateDnsNameConfigurations =
+        registerOutput<List<VpcEndpointServicePrivateDnsNameConfiguration>>(
+            'privateDnsNameConfigurations');
+    this.region = registerOutput<String>('region');
+    this.serviceName = registerOutput<String>('serviceName');
+    this.serviceType = registerOutput<String>('serviceType');
+    this.state = registerOutput<String>('state');
+    this.supportedIpAddressTypes =
+        registerOutput<List<String>>('supportedIpAddressTypes');
+    this.supportedRegions = registerOutput<List<String>>('supportedRegions');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

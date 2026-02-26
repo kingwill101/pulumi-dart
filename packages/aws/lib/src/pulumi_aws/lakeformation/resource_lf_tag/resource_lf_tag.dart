@@ -175,13 +175,13 @@ class ResourceLfTag extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.catalogId = Output.createUnknown<String?>();
-    this.database = Output.createUnknown<ResourceLfTagDatabase?>();
-    this.lfTag = Output.createUnknown<ResourceLfTagLfTag>();
-    this.region = Output.createUnknown<String>();
-    this.table = Output.createUnknown<ResourceLfTagTable?>();
+    this.catalogId = registerOutput<String?>('catalogId');
+    this.database = registerOutput<ResourceLfTagDatabase?>('database');
+    this.lfTag = registerOutput<ResourceLfTagLfTag>('lfTag');
+    this.region = registerOutput<String>('region');
+    this.table = registerOutput<ResourceLfTagTable?>('table');
     this.tableWithColumns =
-        Output.createUnknown<ResourceLfTagTableWithColumns?>();
-    this.timeouts = Output.createUnknown<ResourceLfTagTimeouts?>();
+        registerOutput<ResourceLfTagTableWithColumns?>('tableWithColumns');
+    this.timeouts = registerOutput<ResourceLfTagTimeouts?>('timeouts');
   }
 }

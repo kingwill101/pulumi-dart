@@ -236,17 +236,18 @@ class Cluster extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.clusterCertificates =
-        Output.createUnknown<List<ClusterClusterCertificate>>();
-    this.clusterId = Output.createUnknown<String>();
-    this.clusterState = Output.createUnknown<String>();
-    this.hsmType = Output.createUnknown<String>();
-    this.mode = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupId = Output.createUnknown<String>();
-    this.sourceBackupIdentifier = Output.createUnknown<String?>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcId = Output.createUnknown<String>();
+        registerOutput<List<ClusterClusterCertificate>>('clusterCertificates');
+    this.clusterId = registerOutput<String>('clusterId');
+    this.clusterState = registerOutput<String>('clusterState');
+    this.hsmType = registerOutput<String>('hsmType');
+    this.mode = registerOutput<String>('mode');
+    this.region = registerOutput<String>('region');
+    this.securityGroupId = registerOutput<String>('securityGroupId');
+    this.sourceBackupIdentifier =
+        registerOutput<String?>('sourceBackupIdentifier');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

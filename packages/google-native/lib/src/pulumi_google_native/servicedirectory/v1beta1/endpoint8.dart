@@ -44,18 +44,18 @@ class Endpoint8 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.address = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.endpointId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.namespaceId = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.serviceId = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.address = registerOutput<String>('address');
+    this.createTime = registerOutput<String>('createTime');
+    this.endpointId = registerOutput<String>('endpointId');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<Map<String, String>>('metadata');
+    this.name = registerOutput<String>('name');
+    this.namespaceId = registerOutput<String>('namespaceId');
+    this.network = registerOutput<String>('network');
+    this.port = registerOutput<int>('port');
+    this.project = registerOutput<String>('project');
+    this.serviceId = registerOutput<String>('serviceId');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

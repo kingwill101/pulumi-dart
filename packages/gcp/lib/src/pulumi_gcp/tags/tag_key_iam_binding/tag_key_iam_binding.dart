@@ -875,10 +875,10 @@ class TagKeyIamBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<TagKeyIamBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.role = Output.createUnknown<String>();
-    this.tagKey = Output.createUnknown<String>();
+    this.condition = registerOutput<TagKeyIamBindingCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.members = registerOutput<List<String>>('members');
+    this.role = registerOutput<String>('role');
+    this.tagKey = registerOutput<String>('tagKey');
   }
 }

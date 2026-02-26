@@ -445,13 +445,15 @@ class CustomerManagedPolicyAttachmentsExclusive extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.customerManagedPolicyReferences = Output.createUnknown<
-        List<
-            CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>?>();
-    this.instanceArn = Output.createUnknown<String>();
-    this.permissionSetArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<
-        CustomerManagedPolicyAttachmentsExclusiveTimeouts?>();
+    this.customerManagedPolicyReferences = registerOutput<
+            List<
+                CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>?>(
+        'customerManagedPolicyReferences');
+    this.instanceArn = registerOutput<String>('instanceArn');
+    this.permissionSetArn = registerOutput<String>('permissionSetArn');
+    this.region = registerOutput<String>('region');
+    this.timeouts =
+        registerOutput<CustomerManagedPolicyAttachmentsExclusiveTimeouts?>(
+            'timeouts');
   }
 }

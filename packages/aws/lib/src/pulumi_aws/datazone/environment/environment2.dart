@@ -273,25 +273,26 @@ class Environment2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountIdentifier = Output.createUnknown<String>();
-    this.accountRegion = Output.createUnknown<String>();
-    this.blueprintIdentifier = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.createdBy = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.domainIdentifier = Output.createUnknown<String>();
-    this.glossaryTerms = Output.createUnknown<List<String>?>();
+    this.accountIdentifier = registerOutput<String>('accountIdentifier');
+    this.accountRegion = registerOutput<String>('accountRegion');
+    this.blueprintIdentifier = registerOutput<String>('blueprintIdentifier');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.createdBy = registerOutput<String>('createdBy');
+    this.description = registerOutput<String?>('description');
+    this.domainIdentifier = registerOutput<String>('domainIdentifier');
+    this.glossaryTerms = registerOutput<List<String>?>('glossaryTerms');
     this.lastDeployments =
-        Output.createUnknown<List<EnvironmentLastDeployment>>();
-    this.name = Output.createUnknown<String>();
-    this.profileIdentifier = Output.createUnknown<String>();
-    this.projectIdentifier = Output.createUnknown<String>();
-    this.providerEnvironment = Output.createUnknown<String>();
+        registerOutput<List<EnvironmentLastDeployment>>('lastDeployments');
+    this.name = registerOutput<String>('name');
+    this.profileIdentifier = registerOutput<String>('profileIdentifier');
+    this.projectIdentifier = registerOutput<String>('projectIdentifier');
+    this.providerEnvironment = registerOutput<String>('providerEnvironment');
     this.provisionedResources =
-        Output.createUnknown<List<EnvironmentProvisionedResource>>();
-    this.region = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<EnvironmentTimeouts?>();
+        registerOutput<List<EnvironmentProvisionedResource>>(
+            'provisionedResources');
+    this.region = registerOutput<String>('region');
+    this.timeouts = registerOutput<EnvironmentTimeouts?>('timeouts');
     this.userParameters =
-        Output.createUnknown<List<EnvironmentUserParameter>?>();
+        registerOutput<List<EnvironmentUserParameter>?>('userParameters');
   }
 }

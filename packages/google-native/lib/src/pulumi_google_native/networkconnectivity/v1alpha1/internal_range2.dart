@@ -60,22 +60,22 @@ class InternalRange2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.internalRangeId = Output.createUnknown<String?>();
-    this.ipCidrRange = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.overlaps = Output.createUnknown<List<String>>();
-    this.peering = Output.createUnknown<String>();
-    this.prefixLength = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.targetCidrRange = Output.createUnknown<List<String>>();
-    this.updateTime = Output.createUnknown<String>();
-    this.usage = Output.createUnknown<String>();
-    this.users = Output.createUnknown<List<String>>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.internalRangeId = registerOutput<String?>('internalRangeId');
+    this.ipCidrRange = registerOutput<String>('ipCidrRange');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.overlaps = registerOutput<List<String>>('overlaps');
+    this.peering = registerOutput<String>('peering');
+    this.prefixLength = registerOutput<int>('prefixLength');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.targetCidrRange = registerOutput<List<String>>('targetCidrRange');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.usage = registerOutput<String>('usage');
+    this.users = registerOutput<List<String>>('users');
   }
 }

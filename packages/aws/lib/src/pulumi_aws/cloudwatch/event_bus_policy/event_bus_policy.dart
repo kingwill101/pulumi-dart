@@ -893,8 +893,8 @@ class EventBusPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.eventBusName = Output.createUnknown<String?>();
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.eventBusName = registerOutput<String?>('eventBusName');
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
   }
 }

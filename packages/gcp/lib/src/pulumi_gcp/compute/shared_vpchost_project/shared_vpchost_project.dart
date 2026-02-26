@@ -201,6 +201,6 @@ class SharedVPCHostProject extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.project = Output.createUnknown<String>();
+    this.project = registerOutput<String>('project');
   }
 }

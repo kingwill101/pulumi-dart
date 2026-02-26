@@ -262,24 +262,26 @@ class Stage extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessLogSettings = Output.createUnknown<StageAccessLogSettings?>();
-    this.arn = Output.createUnknown<String>();
-    this.cacheClusterEnabled = Output.createUnknown<bool?>();
-    this.cacheClusterSize = Output.createUnknown<String?>();
-    this.canarySettings = Output.createUnknown<StageCanarySettings?>();
-    this.clientCertificateId = Output.createUnknown<String?>();
-    this.deployment = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.documentationVersion = Output.createUnknown<String?>();
-    this.executionArn = Output.createUnknown<String>();
-    this.invokeUrl = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.restApi = Output.createUnknown<String>();
-    this.stageName = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.variables = Output.createUnknown<Map<String, String>?>();
-    this.webAclArn = Output.createUnknown<String>();
-    this.xrayTracingEnabled = Output.createUnknown<bool?>();
+    this.accessLogSettings =
+        registerOutput<StageAccessLogSettings?>('accessLogSettings');
+    this.arn = registerOutput<String>('arn');
+    this.cacheClusterEnabled = registerOutput<bool?>('cacheClusterEnabled');
+    this.cacheClusterSize = registerOutput<String?>('cacheClusterSize');
+    this.canarySettings =
+        registerOutput<StageCanarySettings?>('canarySettings');
+    this.clientCertificateId = registerOutput<String?>('clientCertificateId');
+    this.deployment = registerOutput<String>('deployment');
+    this.description = registerOutput<String?>('description');
+    this.documentationVersion = registerOutput<String?>('documentationVersion');
+    this.executionArn = registerOutput<String>('executionArn');
+    this.invokeUrl = registerOutput<String>('invokeUrl');
+    this.region = registerOutput<String>('region');
+    this.restApi = registerOutput<String>('restApi');
+    this.stageName = registerOutput<String>('stageName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.variables = registerOutput<Map<String, String>?>('variables');
+    this.webAclArn = registerOutput<String>('webAclArn');
+    this.xrayTracingEnabled = registerOutput<bool?>('xrayTracingEnabled');
   }
 }

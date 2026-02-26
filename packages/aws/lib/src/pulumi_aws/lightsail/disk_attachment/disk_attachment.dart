@@ -282,9 +282,9 @@ class DiskAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.diskName = Output.createUnknown<String>();
-    this.diskPath = Output.createUnknown<String>();
-    this.instanceName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.diskName = registerOutput<String>('diskName');
+    this.diskPath = registerOutput<String>('diskPath');
+    this.instanceName = registerOutput<String>('instanceName');
+    this.region = registerOutput<String>('region');
   }
 }

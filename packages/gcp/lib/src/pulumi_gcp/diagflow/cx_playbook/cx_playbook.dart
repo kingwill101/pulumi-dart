@@ -1060,18 +1060,20 @@ class CxPlaybook extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.goal = Output.createUnknown<String>();
-    this.instruction = Output.createUnknown<CxPlaybookInstruction?>();
-    this.llmModelSettings = Output.createUnknown<CxPlaybookLlmModelSettings?>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String?>();
-    this.playbookType = Output.createUnknown<String?>();
-    this.referencedFlows = Output.createUnknown<List<String>>();
-    this.referencedPlaybooks = Output.createUnknown<List<String>>();
-    this.referencedTools = Output.createUnknown<List<String>?>();
-    this.tokenCount = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.goal = registerOutput<String>('goal');
+    this.instruction = registerOutput<CxPlaybookInstruction?>('instruction');
+    this.llmModelSettings =
+        registerOutput<CxPlaybookLlmModelSettings?>('llmModelSettings');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String?>('parent');
+    this.playbookType = registerOutput<String?>('playbookType');
+    this.referencedFlows = registerOutput<List<String>>('referencedFlows');
+    this.referencedPlaybooks =
+        registerOutput<List<String>>('referencedPlaybooks');
+    this.referencedTools = registerOutput<List<String>?>('referencedTools');
+    this.tokenCount = registerOutput<String>('tokenCount');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -78,29 +78,35 @@ class ServiceAttachment2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.connectedEndpoints = Output.createUnknown<
-        List<ServiceAttachmentConnectedEndpointResponse2>>();
-    this.connectionPreference = Output.createUnknown<String>();
-    this.consumerAcceptLists = Output.createUnknown<
-        List<ServiceAttachmentConsumerProjectLimitResponse2>>();
-    this.consumerRejectLists = Output.createUnknown<List<String>>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.domainNames = Output.createUnknown<List<String>>();
-    this.enableProxyProtocol = Output.createUnknown<bool>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.natSubnets = Output.createUnknown<List<String>>();
-    this.producerForwardingRule = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pscServiceAttachmentId = Output.createUnknown<Uint128Response2>();
-    this.reconcileConnections = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.targetService = Output.createUnknown<String>();
+    this.connectedEndpoints =
+        registerOutput<List<ServiceAttachmentConnectedEndpointResponse2>>(
+            'connectedEndpoints');
+    this.connectionPreference = registerOutput<String>('connectionPreference');
+    this.consumerAcceptLists =
+        registerOutput<List<ServiceAttachmentConsumerProjectLimitResponse2>>(
+            'consumerAcceptLists');
+    this.consumerRejectLists =
+        registerOutput<List<String>>('consumerRejectLists');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.domainNames = registerOutput<List<String>>('domainNames');
+    this.enableProxyProtocol = registerOutput<bool>('enableProxyProtocol');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.natSubnets = registerOutput<List<String>>('natSubnets');
+    this.producerForwardingRule =
+        registerOutput<String>('producerForwardingRule');
+    this.project = registerOutput<String>('project');
+    this.pscServiceAttachmentId =
+        registerOutput<Uint128Response2>('pscServiceAttachmentId');
+    this.reconcileConnections = registerOutput<bool>('reconcileConnections');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.targetService = registerOutput<String>('targetService');
     this.tunnelingConfig =
-        Output.createUnknown<ServiceAttachmentTunnelingConfigResponse2>();
+        registerOutput<ServiceAttachmentTunnelingConfigResponse2>(
+            'tunnelingConfig');
   }
 }

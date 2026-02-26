@@ -884,18 +884,19 @@ class Router extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bgp = Output.createUnknown<RouterBgp?>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.encryptedInterconnectRouter = Output.createUnknown<bool?>();
+    this.bgp = registerOutput<RouterBgp?>('bgp');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.encryptedInterconnectRouter =
+        registerOutput<bool?>('encryptedInterconnectRouter');
     this.md5AuthenticationKeys =
-        Output.createUnknown<RouterMd5AuthenticationKeys?>();
-    this.name = Output.createUnknown<String>();
-    this.nccGateway = Output.createUnknown<String?>();
-    this.network = Output.createUnknown<String?>();
-    this.params = Output.createUnknown<RouterParams?>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<RouterMd5AuthenticationKeys?>('md5AuthenticationKeys');
+    this.name = registerOutput<String>('name');
+    this.nccGateway = registerOutput<String?>('nccGateway');
+    this.network = registerOutput<String?>('network');
+    this.params = registerOutput<RouterParams?>('params');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.selfLink = registerOutput<String>('selfLink');
   }
 }

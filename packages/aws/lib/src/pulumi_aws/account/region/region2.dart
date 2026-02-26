@@ -129,9 +129,9 @@ class Region2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String?>();
-    this.enabled = Output.createUnknown<bool>();
-    this.optStatus = Output.createUnknown<String>();
-    this.regionName = Output.createUnknown<String>();
+    this.accountId = registerOutput<String?>('accountId');
+    this.enabled = registerOutput<bool>('enabled');
+    this.optStatus = registerOutput<String>('optStatus');
+    this.regionName = registerOutput<String>('regionName');
   }
 }

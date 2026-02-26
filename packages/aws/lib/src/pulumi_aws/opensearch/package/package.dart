@@ -263,13 +263,14 @@ class Package extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.availablePackageVersion = Output.createUnknown<String>();
-    this.engineVersion = Output.createUnknown<String?>();
-    this.packageDescription = Output.createUnknown<String?>();
-    this.packageId = Output.createUnknown<String>();
-    this.packageName = Output.createUnknown<String>();
-    this.packageSource = Output.createUnknown<PackagePackageSource>();
-    this.packageType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.availablePackageVersion =
+        registerOutput<String>('availablePackageVersion');
+    this.engineVersion = registerOutput<String?>('engineVersion');
+    this.packageDescription = registerOutput<String?>('packageDescription');
+    this.packageId = registerOutput<String>('packageId');
+    this.packageName = registerOutput<String>('packageName');
+    this.packageSource = registerOutput<PackagePackageSource>('packageSource');
+    this.packageType = registerOutput<String>('packageType');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -226,9 +226,9 @@ class RegexMatchSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
     this.regexMatchTuples =
-        Output.createUnknown<List<RegexMatchSetRegexMatchTuple>?>();
+        registerOutput<List<RegexMatchSetRegexMatchTuple>?>('regexMatchTuples');
   }
 }

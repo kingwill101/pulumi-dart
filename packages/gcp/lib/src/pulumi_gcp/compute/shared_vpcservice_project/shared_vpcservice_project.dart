@@ -140,8 +140,8 @@ class SharedVPCServiceProject extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.deletionPolicy = Output.createUnknown<String?>();
-    this.hostProject = Output.createUnknown<String>();
-    this.serviceProject = Output.createUnknown<String>();
+    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
+    this.hostProject = registerOutput<String>('hostProject');
+    this.serviceProject = registerOutput<String>('serviceProject');
   }
 }

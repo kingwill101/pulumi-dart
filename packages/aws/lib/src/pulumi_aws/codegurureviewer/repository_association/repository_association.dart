@@ -236,21 +236,23 @@ class RepositoryAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.associationId = Output.createUnknown<String>();
-    this.connectionArn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.associationId = registerOutput<String>('associationId');
+    this.connectionArn = registerOutput<String>('connectionArn');
     this.kmsKeyDetails =
-        Output.createUnknown<RepositoryAssociationKmsKeyDetails?>();
-    this.name = Output.createUnknown<String>();
-    this.owner = Output.createUnknown<String>();
-    this.providerType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.repository = Output.createUnknown<RepositoryAssociationRepository>();
+        registerOutput<RepositoryAssociationKmsKeyDetails?>('kmsKeyDetails');
+    this.name = registerOutput<String>('name');
+    this.owner = registerOutput<String>('owner');
+    this.providerType = registerOutput<String>('providerType');
+    this.region = registerOutput<String>('region');
+    this.repository =
+        registerOutput<RepositoryAssociationRepository>('repository');
     this.s3RepositoryDetails =
-        Output.createUnknown<List<RepositoryAssociationS3RepositoryDetail>>();
-    this.state = Output.createUnknown<String>();
-    this.stateReason = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<RepositoryAssociationS3RepositoryDetail>>(
+            's3RepositoryDetails');
+    this.state = registerOutput<String>('state');
+    this.stateReason = registerOutput<String>('stateReason');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

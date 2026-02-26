@@ -999,13 +999,13 @@ class WorkstationConfigIamMember extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.condition =
-        Output.createUnknown<WorkstationConfigIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.workstationClusterId = Output.createUnknown<String>();
-    this.workstationConfigId = Output.createUnknown<String>();
+        registerOutput<WorkstationConfigIamMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.member = registerOutput<String>('member');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
+    this.workstationClusterId = registerOutput<String>('workstationClusterId');
+    this.workstationConfigId = registerOutput<String>('workstationConfigId');
   }
 }

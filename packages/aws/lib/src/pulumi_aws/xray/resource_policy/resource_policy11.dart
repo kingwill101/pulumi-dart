@@ -145,11 +145,12 @@ class ResourcePolicy11 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bypassPolicyLockoutCheck = Output.createUnknown<bool?>();
-    this.lastUpdatedTime = Output.createUnknown<String>();
-    this.policyDocument = Output.createUnknown<String>();
-    this.policyName = Output.createUnknown<String>();
-    this.policyRevisionId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.bypassPolicyLockoutCheck =
+        registerOutput<bool?>('bypassPolicyLockoutCheck');
+    this.lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    this.policyDocument = registerOutput<String>('policyDocument');
+    this.policyName = registerOutput<String>('policyName');
+    this.policyRevisionId = registerOutput<String>('policyRevisionId');
+    this.region = registerOutput<String>('region');
   }
 }

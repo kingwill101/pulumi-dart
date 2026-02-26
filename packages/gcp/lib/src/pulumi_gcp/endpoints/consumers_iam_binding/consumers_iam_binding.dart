@@ -102,11 +102,11 @@ class ConsumersIamBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<ConsumersIamBindingCondition?>();
-    this.consumerProject = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.role = Output.createUnknown<String>();
-    this.serviceName = Output.createUnknown<String>();
+    this.condition = registerOutput<ConsumersIamBindingCondition?>('condition');
+    this.consumerProject = registerOutput<String>('consumerProject');
+    this.etag = registerOutput<String>('etag');
+    this.members = registerOutput<List<String>>('members');
+    this.role = registerOutput<String>('role');
+    this.serviceName = registerOutput<String>('serviceName');
   }
 }

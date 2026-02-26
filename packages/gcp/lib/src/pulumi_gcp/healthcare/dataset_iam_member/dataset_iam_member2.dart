@@ -677,10 +677,10 @@ class DatasetIamMember2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<DatasetIamMemberCondition2?>();
-    this.datasetId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.condition = registerOutput<DatasetIamMemberCondition2?>('condition');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.etag = registerOutput<String>('etag');
+    this.member = registerOutput<String>('member');
+    this.role = registerOutput<String>('role');
   }
 }

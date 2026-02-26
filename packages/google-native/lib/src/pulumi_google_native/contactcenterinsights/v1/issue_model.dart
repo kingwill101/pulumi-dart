@@ -51,19 +51,21 @@ class IssueModel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.inputDataConfig = Output.createUnknown<
-        GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse>();
-    this.issueCount = Output.createUnknown<String>();
-    this.languageCode = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.modelType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.trainingStats = Output.createUnknown<
-        GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.inputDataConfig = registerOutput<
+            GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse>(
+        'inputDataConfig');
+    this.issueCount = registerOutput<String>('issueCount');
+    this.languageCode = registerOutput<String>('languageCode');
+    this.location = registerOutput<String>('location');
+    this.modelType = registerOutput<String>('modelType');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.trainingStats = registerOutput<
+            GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse>(
+        'trainingStats');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

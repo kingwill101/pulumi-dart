@@ -191,11 +191,12 @@ class DocumentAiWarehouseLocation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessControlMode = Output.createUnknown<String>();
-    this.databaseType = Output.createUnknown<String>();
-    this.documentCreatorDefaultRole = Output.createUnknown<String?>();
-    this.kmsKey = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.projectNumber = Output.createUnknown<String>();
+    this.accessControlMode = registerOutput<String>('accessControlMode');
+    this.databaseType = registerOutput<String>('databaseType');
+    this.documentCreatorDefaultRole =
+        registerOutput<String?>('documentCreatorDefaultRole');
+    this.kmsKey = registerOutput<String?>('kmsKey');
+    this.location = registerOutput<String>('location');
+    this.projectNumber = registerOutput<String>('projectNumber');
   }
 }

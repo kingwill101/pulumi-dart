@@ -67,27 +67,32 @@ class Task4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
     this.executionSpec =
-        Output.createUnknown<GoogleCloudDataplexV1TaskExecutionSpecResponse>();
-    this.executionStatus = Output.createUnknown<
-        GoogleCloudDataplexV1TaskExecutionStatusResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lakeId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.notebook = Output.createUnknown<
-        GoogleCloudDataplexV1TaskNotebookTaskConfigResponse>();
-    this.project = Output.createUnknown<String>();
-    this.spark = Output.createUnknown<
-        GoogleCloudDataplexV1TaskSparkTaskConfigResponse>();
-    this.state = Output.createUnknown<String>();
-    this.taskId = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDataplexV1TaskExecutionSpecResponse>(
+            'executionSpec');
+    this.executionStatus =
+        registerOutput<GoogleCloudDataplexV1TaskExecutionStatusResponse>(
+            'executionStatus');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lakeId = registerOutput<String>('lakeId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.notebook =
+        registerOutput<GoogleCloudDataplexV1TaskNotebookTaskConfigResponse>(
+            'notebook');
+    this.project = registerOutput<String>('project');
+    this.spark =
+        registerOutput<GoogleCloudDataplexV1TaskSparkTaskConfigResponse>(
+            'spark');
+    this.state = registerOutput<String>('state');
+    this.taskId = registerOutput<String>('taskId');
     this.triggerSpec =
-        Output.createUnknown<GoogleCloudDataplexV1TaskTriggerSpecResponse>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDataplexV1TaskTriggerSpecResponse>(
+            'triggerSpec');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

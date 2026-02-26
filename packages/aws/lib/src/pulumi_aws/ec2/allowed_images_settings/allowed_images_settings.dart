@@ -291,8 +291,9 @@ class AllowedImagesSettings extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.imageCriterions =
-        Output.createUnknown<List<AllowedImagesSettingsImageCriterion>?>();
-    this.region = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<List<AllowedImagesSettingsImageCriterion>?>(
+            'imageCriterions');
+    this.region = registerOutput<String>('region');
+    this.state = registerOutput<String>('state');
   }
 }

@@ -263,14 +263,14 @@ class AnywhereCache extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.admissionPolicy = Output.createUnknown<String?>();
-    this.anywhereCacheId = Output.createUnknown<String>();
-    this.bucket = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.pendingUpdate = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.ttl = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+    this.admissionPolicy = registerOutput<String?>('admissionPolicy');
+    this.anywhereCacheId = registerOutput<String>('anywhereCacheId');
+    this.bucket = registerOutput<String>('bucket');
+    this.createTime = registerOutput<String>('createTime');
+    this.pendingUpdate = registerOutput<bool>('pendingUpdate');
+    this.state = registerOutput<String>('state');
+    this.ttl = registerOutput<String?>('ttl');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.zone = registerOutput<String>('zone');
   }
 }

@@ -237,9 +237,9 @@ class RouteTableAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.gatewayId = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.routeTableId = Output.createUnknown<String>();
-    this.subnetId = Output.createUnknown<String?>();
+    this.gatewayId = registerOutput<String?>('gatewayId');
+    this.region = registerOutput<String>('region');
+    this.routeTableId = registerOutput<String>('routeTableId');
+    this.subnetId = registerOutput<String?>('subnetId');
   }
 }

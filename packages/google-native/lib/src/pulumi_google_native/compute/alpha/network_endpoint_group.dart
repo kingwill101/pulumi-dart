@@ -90,35 +90,40 @@ class NetworkEndpointGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
     this.appEngine =
-        Output.createUnknown<NetworkEndpointGroupAppEngineResponse>();
-    this.clientPortMappingMode = Output.createUnknown<String>();
+        registerOutput<NetworkEndpointGroupAppEngineResponse>('appEngine');
+    this.clientPortMappingMode =
+        registerOutput<String>('clientPortMappingMode');
     this.cloudFunction =
-        Output.createUnknown<NetworkEndpointGroupCloudFunctionResponse>();
+        registerOutput<NetworkEndpointGroupCloudFunctionResponse>(
+            'cloudFunction');
     this.cloudRun =
-        Output.createUnknown<NetworkEndpointGroupCloudRunResponse>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.defaultPort = Output.createUnknown<int>();
-    this.description = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.loadBalancer = Output.createUnknown<
-        NetworkEndpointGroupLbNetworkEndpointGroupResponse>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.networkEndpointType = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pscData = Output.createUnknown<NetworkEndpointGroupPscDataResponse>();
-    this.pscTargetService = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
-    this.serverlessDeployment = Output.createUnknown<
-        NetworkEndpointGroupServerlessDeploymentResponse>();
-    this.size = Output.createUnknown<int>();
-    this.subnetwork = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<NetworkEndpointGroupCloudRunResponse>('cloudRun');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.defaultPort = registerOutput<int>('defaultPort');
+    this.description = registerOutput<String>('description');
+    this.kind = registerOutput<String>('kind');
+    this.loadBalancer =
+        registerOutput<NetworkEndpointGroupLbNetworkEndpointGroupResponse>(
+            'loadBalancer');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.networkEndpointType = registerOutput<String>('networkEndpointType');
+    this.project = registerOutput<String>('project');
+    this.pscData =
+        registerOutput<NetworkEndpointGroupPscDataResponse>('pscData');
+    this.pscTargetService = registerOutput<String>('pscTargetService');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    this.serverlessDeployment =
+        registerOutput<NetworkEndpointGroupServerlessDeploymentResponse>(
+            'serverlessDeployment');
+    this.size = registerOutput<int>('size');
+    this.subnetwork = registerOutput<String>('subnetwork');
+    this.type = registerOutput<String>('type');
+    this.zone = registerOutput<String>('zone');
   }
 }

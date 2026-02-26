@@ -1859,11 +1859,12 @@ class MachineImageIamBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<MachineImageIamBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.machineImage = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.condition =
+        registerOutput<MachineImageIamBindingCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.machineImage = registerOutput<String>('machineImage');
+    this.members = registerOutput<List<String>>('members');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
   }
 }

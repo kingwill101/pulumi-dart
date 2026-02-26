@@ -470,30 +470,32 @@ class Environment3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allSettings = Output.createUnknown<List<EnvironmentAllSetting>>();
-    this.application = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.autoscalingGroups = Output.createUnknown<List<String>>();
-    this.cname = Output.createUnknown<String>();
-    this.cnamePrefix = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.endpointUrl = Output.createUnknown<String>();
-    this.instances = Output.createUnknown<List<String>>();
-    this.launchConfigurations = Output.createUnknown<List<String>>();
-    this.loadBalancers = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.platformArn = Output.createUnknown<String>();
-    this.pollInterval = Output.createUnknown<String?>();
-    this.queues = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
-    this.settings = Output.createUnknown<List<EnvironmentSetting>?>();
-    this.solutionStackName = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.templateName = Output.createUnknown<String?>();
-    this.tier = Output.createUnknown<String?>();
-    this.triggers = Output.createUnknown<List<String>>();
-    this.version = Output.createUnknown<String>();
-    this.waitForReadyTimeout = Output.createUnknown<String?>();
+    this.allSettings =
+        registerOutput<List<EnvironmentAllSetting>>('allSettings');
+    this.application = registerOutput<String>('application');
+    this.arn = registerOutput<String>('arn');
+    this.autoscalingGroups = registerOutput<List<String>>('autoscalingGroups');
+    this.cname = registerOutput<String>('cname');
+    this.cnamePrefix = registerOutput<String>('cnamePrefix');
+    this.description = registerOutput<String?>('description');
+    this.endpointUrl = registerOutput<String>('endpointUrl');
+    this.instances = registerOutput<List<String>>('instances');
+    this.launchConfigurations =
+        registerOutput<List<String>>('launchConfigurations');
+    this.loadBalancers = registerOutput<List<String>>('loadBalancers');
+    this.name = registerOutput<String>('name');
+    this.platformArn = registerOutput<String>('platformArn');
+    this.pollInterval = registerOutput<String?>('pollInterval');
+    this.queues = registerOutput<List<String>>('queues');
+    this.region = registerOutput<String>('region');
+    this.settings = registerOutput<List<EnvironmentSetting>?>('settings');
+    this.solutionStackName = registerOutput<String>('solutionStackName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.templateName = registerOutput<String?>('templateName');
+    this.tier = registerOutput<String?>('tier');
+    this.triggers = registerOutput<List<String>>('triggers');
+    this.version = registerOutput<String>('version');
+    this.waitForReadyTimeout = registerOutput<String?>('waitForReadyTimeout');
   }
 }

@@ -208,15 +208,17 @@ class S3AccessPointAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
+    this.name = registerOutput<String>('name');
     this.openzfsConfiguration =
-        Output.createUnknown<S3AccessPointAttachmentOpenzfsConfiguration>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<S3AccessPointAttachmentOpenzfsConfiguration>(
+            'openzfsConfiguration');
+    this.region = registerOutput<String>('region');
     this.s3AccessPoint =
-        Output.createUnknown<S3AccessPointAttachmentS3AccessPoint?>();
-    this.s3AccessPointAlias = Output.createUnknown<String>();
-    this.s3AccessPointArn = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<S3AccessPointAttachmentTimeouts?>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<S3AccessPointAttachmentS3AccessPoint?>('s3AccessPoint');
+    this.s3AccessPointAlias = registerOutput<String>('s3AccessPointAlias');
+    this.s3AccessPointArn = registerOutput<String>('s3AccessPointArn');
+    this.timeouts =
+        registerOutput<S3AccessPointAttachmentTimeouts?>('timeouts');
+    this.type = registerOutput<String>('type');
   }
 }

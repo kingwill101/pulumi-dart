@@ -267,9 +267,9 @@ class DomainIdentity extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.domain = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.verificationToken = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.domain = registerOutput<String>('domain');
+    this.region = registerOutput<String>('region');
+    this.verificationToken = registerOutput<String>('verificationToken');
   }
 }

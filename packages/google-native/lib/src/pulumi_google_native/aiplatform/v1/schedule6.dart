@@ -73,27 +73,30 @@ class Schedule6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowQueueing = Output.createUnknown<bool>();
-    this.catchUp = Output.createUnknown<bool>();
-    this.createPipelineJobRequest = Output.createUnknown<
-        GoogleCloudAiplatformV1CreatePipelineJobRequestResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.cron = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
-    this.lastPauseTime = Output.createUnknown<String>();
-    this.lastResumeTime = Output.createUnknown<String>();
-    this.lastScheduledRunResponse = Output.createUnknown<
-        GoogleCloudAiplatformV1ScheduleRunResponseResponse>();
-    this.location = Output.createUnknown<String>();
-    this.maxConcurrentRunCount = Output.createUnknown<String>();
-    this.maxRunCount = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.nextRunTime = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.startedRunCount = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.allowQueueing = registerOutput<bool>('allowQueueing');
+    this.catchUp = registerOutput<bool>('catchUp');
+    this.createPipelineJobRequest =
+        registerOutput<GoogleCloudAiplatformV1CreatePipelineJobRequestResponse>(
+            'createPipelineJobRequest');
+    this.createTime = registerOutput<String>('createTime');
+    this.cron = registerOutput<String>('cron');
+    this.displayName = registerOutput<String>('displayName');
+    this.endTime = registerOutput<String>('endTime');
+    this.lastPauseTime = registerOutput<String>('lastPauseTime');
+    this.lastResumeTime = registerOutput<String>('lastResumeTime');
+    this.lastScheduledRunResponse =
+        registerOutput<GoogleCloudAiplatformV1ScheduleRunResponseResponse>(
+            'lastScheduledRunResponse');
+    this.location = registerOutput<String>('location');
+    this.maxConcurrentRunCount =
+        registerOutput<String>('maxConcurrentRunCount');
+    this.maxRunCount = registerOutput<String>('maxRunCount');
+    this.name = registerOutput<String>('name');
+    this.nextRunTime = registerOutput<String>('nextRunTime');
+    this.project = registerOutput<String>('project');
+    this.startTime = registerOutput<String>('startTime');
+    this.startedRunCount = registerOutput<String>('startedRunCount');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

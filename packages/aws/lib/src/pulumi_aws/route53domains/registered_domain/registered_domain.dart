@@ -256,31 +256,34 @@ class RegisteredDomain extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.abuseContactEmail = Output.createUnknown<String>();
-    this.abuseContactPhone = Output.createUnknown<String>();
-    this.adminContact = Output.createUnknown<RegisteredDomainAdminContact>();
-    this.adminPrivacy = Output.createUnknown<bool?>();
-    this.autoRenew = Output.createUnknown<bool?>();
+    this.abuseContactEmail = registerOutput<String>('abuseContactEmail');
+    this.abuseContactPhone = registerOutput<String>('abuseContactPhone');
+    this.adminContact =
+        registerOutput<RegisteredDomainAdminContact>('adminContact');
+    this.adminPrivacy = registerOutput<bool?>('adminPrivacy');
+    this.autoRenew = registerOutput<bool?>('autoRenew');
     this.billingContact =
-        Output.createUnknown<RegisteredDomainBillingContact>();
-    this.billingPrivacy = Output.createUnknown<bool?>();
-    this.creationDate = Output.createUnknown<String>();
-    this.domainName = Output.createUnknown<String>();
-    this.expirationDate = Output.createUnknown<String>();
-    this.nameServers = Output.createUnknown<List<RegisteredDomainNameServer>>();
+        registerOutput<RegisteredDomainBillingContact>('billingContact');
+    this.billingPrivacy = registerOutput<bool?>('billingPrivacy');
+    this.creationDate = registerOutput<String>('creationDate');
+    this.domainName = registerOutput<String>('domainName');
+    this.expirationDate = registerOutput<String>('expirationDate');
+    this.nameServers =
+        registerOutput<List<RegisteredDomainNameServer>>('nameServers');
     this.registrantContact =
-        Output.createUnknown<RegisteredDomainRegistrantContact>();
-    this.registrantPrivacy = Output.createUnknown<bool?>();
-    this.registrarName = Output.createUnknown<String>();
-    this.registrarUrl = Output.createUnknown<String>();
-    this.reseller = Output.createUnknown<String>();
-    this.statusLists = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.techContact = Output.createUnknown<RegisteredDomainTechContact>();
-    this.techPrivacy = Output.createUnknown<bool?>();
-    this.transferLock = Output.createUnknown<bool?>();
-    this.updatedDate = Output.createUnknown<String>();
-    this.whoisServer = Output.createUnknown<String>();
+        registerOutput<RegisteredDomainRegistrantContact>('registrantContact');
+    this.registrantPrivacy = registerOutput<bool?>('registrantPrivacy');
+    this.registrarName = registerOutput<String>('registrarName');
+    this.registrarUrl = registerOutput<String>('registrarUrl');
+    this.reseller = registerOutput<String>('reseller');
+    this.statusLists = registerOutput<List<String>>('statusLists');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.techContact =
+        registerOutput<RegisteredDomainTechContact>('techContact');
+    this.techPrivacy = registerOutput<bool?>('techPrivacy');
+    this.transferLock = registerOutput<bool?>('transferLock');
+    this.updatedDate = registerOutput<String>('updatedDate');
+    this.whoisServer = registerOutput<String>('whoisServer');
   }
 }

@@ -236,16 +236,17 @@ class Policy5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.attachmentCount = Output.createUnknown<int>();
-    this.delayAfterPolicyCreationInMs = Output.createUnknown<int?>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.path = Output.createUnknown<String?>();
-    this.policy = Output.createUnknown<String>();
-    this.policyId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.attachmentCount = registerOutput<int>('attachmentCount');
+    this.delayAfterPolicyCreationInMs =
+        registerOutput<int?>('delayAfterPolicyCreationInMs');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.path = registerOutput<String?>('path');
+    this.policy = registerOutput<String>('policy');
+    this.policyId = registerOutput<String>('policyId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

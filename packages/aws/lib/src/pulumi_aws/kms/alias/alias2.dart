@@ -164,11 +164,11 @@ class Alias2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.targetKeyArn = Output.createUnknown<String>();
-    this.targetKeyId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.region = registerOutput<String>('region');
+    this.targetKeyArn = registerOutput<String>('targetKeyArn');
+    this.targetKeyId = registerOutput<String>('targetKeyId');
   }
 }

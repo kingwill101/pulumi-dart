@@ -180,11 +180,11 @@ class SharedDirectoryAccepter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.method = Output.createUnknown<String>();
-    this.notes = Output.createUnknown<String>();
-    this.ownerAccountId = Output.createUnknown<String>();
-    this.ownerDirectoryId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.sharedDirectoryId = Output.createUnknown<String>();
+    this.method = registerOutput<String>('method');
+    this.notes = registerOutput<String>('notes');
+    this.ownerAccountId = registerOutput<String>('ownerAccountId');
+    this.ownerDirectoryId = registerOutput<String>('ownerDirectoryId');
+    this.region = registerOutput<String>('region');
+    this.sharedDirectoryId = registerOutput<String>('sharedDirectoryId');
   }
 }

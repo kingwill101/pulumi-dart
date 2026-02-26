@@ -180,14 +180,15 @@ class ClusterSnapshot4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.clusterIdentifier = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.manualSnapshotRetentionPeriod = Output.createUnknown<int?>();
-    this.ownerAccount = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.snapshotIdentifier = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.manualSnapshotRetentionPeriod =
+        registerOutput<int?>('manualSnapshotRetentionPeriod');
+    this.ownerAccount = registerOutput<String>('ownerAccount');
+    this.region = registerOutput<String>('region');
+    this.snapshotIdentifier = registerOutput<String>('snapshotIdentifier');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

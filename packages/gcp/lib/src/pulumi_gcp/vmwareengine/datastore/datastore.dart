@@ -646,15 +646,15 @@ class Datastore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusters = Output.createUnknown<List<String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.nfsDatastore = Output.createUnknown<DatastoreNfsDatastore>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.clusters = registerOutput<List<String>>('clusters');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.nfsDatastore = registerOutput<DatastoreNfsDatastore>('nfsDatastore');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

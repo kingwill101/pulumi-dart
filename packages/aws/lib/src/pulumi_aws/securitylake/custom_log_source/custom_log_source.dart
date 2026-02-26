@@ -233,13 +233,15 @@ class CustomLogSource extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attributes = Output.createUnknown<List<CustomLogSourceAttribute>>();
-    this.configuration = Output.createUnknown<CustomLogSourceConfiguration>();
-    this.eventClasses = Output.createUnknown<List<String>?>();
+    this.attributes =
+        registerOutput<List<CustomLogSourceAttribute>>('attributes');
+    this.configuration =
+        registerOutput<CustomLogSourceConfiguration>('configuration');
+    this.eventClasses = registerOutput<List<String>?>('eventClasses');
     this.providerDetails =
-        Output.createUnknown<List<CustomLogSourceProviderDetail>>();
-    this.region = Output.createUnknown<String>();
-    this.sourceName = Output.createUnknown<String>();
-    this.sourceVersion = Output.createUnknown<String>();
+        registerOutput<List<CustomLogSourceProviderDetail>>('providerDetails');
+    this.region = registerOutput<String>('region');
+    this.sourceName = registerOutput<String>('sourceName');
+    this.sourceVersion = registerOutput<String>('sourceVersion');
   }
 }

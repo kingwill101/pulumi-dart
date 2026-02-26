@@ -502,11 +502,11 @@ class AuthorizedView extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.deletionProtection = Output.createUnknown<String>();
-    this.instanceName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.subsetView = Output.createUnknown<AuthorizedViewSubsetView?>();
-    this.tableName = Output.createUnknown<String>();
+    this.deletionProtection = registerOutput<String>('deletionProtection');
+    this.instanceName = registerOutput<String>('instanceName');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.subsetView = registerOutput<AuthorizedViewSubsetView?>('subsetView');
+    this.tableName = registerOutput<String>('tableName');
   }
 }

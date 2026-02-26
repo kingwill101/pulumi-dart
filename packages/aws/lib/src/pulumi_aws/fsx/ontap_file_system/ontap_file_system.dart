@@ -711,32 +711,39 @@ class OntapFileSystem extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.automaticBackupRetentionDays = Output.createUnknown<int?>();
-    this.dailyAutomaticBackupStartTime = Output.createUnknown<String>();
-    this.deploymentType = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.automaticBackupRetentionDays =
+        registerOutput<int?>('automaticBackupRetentionDays');
+    this.dailyAutomaticBackupStartTime =
+        registerOutput<String>('dailyAutomaticBackupStartTime');
+    this.deploymentType = registerOutput<String>('deploymentType');
     this.diskIopsConfiguration =
-        Output.createUnknown<OntapFileSystemDiskIopsConfiguration>();
-    this.dnsName = Output.createUnknown<String>();
-    this.endpointIpAddressRange = Output.createUnknown<String>();
-    this.endpoints = Output.createUnknown<List<OntapFileSystemEndpoint>>();
-    this.fsxAdminPassword = Output.createUnknown<String?>();
-    this.haPairs = Output.createUnknown<int>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.networkInterfaceIds = Output.createUnknown<List<String>>();
-    this.ownerId = Output.createUnknown<String>();
-    this.preferredSubnetId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.routeTableIds = Output.createUnknown<List<String>>();
-    this.securityGroupIds = Output.createUnknown<List<String>?>();
-    this.storageCapacity = Output.createUnknown<int>();
-    this.storageType = Output.createUnknown<String?>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.throughputCapacity = Output.createUnknown<int>();
-    this.throughputCapacityPerHaPair = Output.createUnknown<int>();
-    this.vpcId = Output.createUnknown<String>();
-    this.weeklyMaintenanceStartTime = Output.createUnknown<String>();
+        registerOutput<OntapFileSystemDiskIopsConfiguration>(
+            'diskIopsConfiguration');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.endpointIpAddressRange =
+        registerOutput<String>('endpointIpAddressRange');
+    this.endpoints = registerOutput<List<OntapFileSystemEndpoint>>('endpoints');
+    this.fsxAdminPassword = registerOutput<String?>('fsxAdminPassword');
+    this.haPairs = registerOutput<int>('haPairs');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.networkInterfaceIds =
+        registerOutput<List<String>>('networkInterfaceIds');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.preferredSubnetId = registerOutput<String>('preferredSubnetId');
+    this.region = registerOutput<String>('region');
+    this.routeTableIds = registerOutput<List<String>>('routeTableIds');
+    this.securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    this.storageCapacity = registerOutput<int>('storageCapacity');
+    this.storageType = registerOutput<String?>('storageType');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.throughputCapacity = registerOutput<int>('throughputCapacity');
+    this.throughputCapacityPerHaPair =
+        registerOutput<int>('throughputCapacityPerHaPair');
+    this.vpcId = registerOutput<String>('vpcId');
+    this.weeklyMaintenanceStartTime =
+        registerOutput<String>('weeklyMaintenanceStartTime');
   }
 }

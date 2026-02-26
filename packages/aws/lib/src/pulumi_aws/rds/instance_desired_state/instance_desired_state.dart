@@ -132,9 +132,9 @@ class InstanceDesiredState extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.identifier = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<InstanceDesiredStateTimeouts?>();
+    this.identifier = registerOutput<String>('identifier');
+    this.region = registerOutput<String>('region');
+    this.state = registerOutput<String>('state');
+    this.timeouts = registerOutput<InstanceDesiredStateTimeouts?>('timeouts');
   }
 }

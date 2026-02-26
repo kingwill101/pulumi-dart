@@ -1007,42 +1007,49 @@ class Cluster7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applyImmediately = Output.createUnknown<bool>();
-    this.arn = Output.createUnknown<String>();
-    this.autoMinorVersionUpgrade = Output.createUnknown<String?>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.azMode = Output.createUnknown<String>();
-    this.cacheNodes = Output.createUnknown<List<ClusterCacheNode>>();
-    this.clusterAddress = Output.createUnknown<String>();
-    this.clusterId = Output.createUnknown<String>();
-    this.configurationEndpoint = Output.createUnknown<String>();
-    this.engine = Output.createUnknown<String>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.engineVersionActual = Output.createUnknown<String>();
-    this.finalSnapshotIdentifier = Output.createUnknown<String?>();
-    this.ipDiscovery = Output.createUnknown<String>();
+    this.applyImmediately = registerOutput<bool>('applyImmediately');
+    this.arn = registerOutput<String>('arn');
+    this.autoMinorVersionUpgrade =
+        registerOutput<String?>('autoMinorVersionUpgrade');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.azMode = registerOutput<String>('azMode');
+    this.cacheNodes = registerOutput<List<ClusterCacheNode>>('cacheNodes');
+    this.clusterAddress = registerOutput<String>('clusterAddress');
+    this.clusterId = registerOutput<String>('clusterId');
+    this.configurationEndpoint =
+        registerOutput<String>('configurationEndpoint');
+    this.engine = registerOutput<String>('engine');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.engineVersionActual = registerOutput<String>('engineVersionActual');
+    this.finalSnapshotIdentifier =
+        registerOutput<String?>('finalSnapshotIdentifier');
+    this.ipDiscovery = registerOutput<String>('ipDiscovery');
     this.logDeliveryConfigurations =
-        Output.createUnknown<List<ClusterLogDeliveryConfiguration>?>();
-    this.maintenanceWindow = Output.createUnknown<String>();
-    this.networkType = Output.createUnknown<String>();
-    this.nodeType = Output.createUnknown<String>();
-    this.notificationTopicArn = Output.createUnknown<String?>();
-    this.numCacheNodes = Output.createUnknown<int>();
-    this.outpostMode = Output.createUnknown<String?>();
-    this.parameterGroupName = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
-    this.preferredAvailabilityZones = Output.createUnknown<List<String>?>();
-    this.preferredOutpostArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.replicationGroupId = Output.createUnknown<String>();
-    this.securityGroupIds = Output.createUnknown<List<String>>();
-    this.snapshotArns = Output.createUnknown<String?>();
-    this.snapshotName = Output.createUnknown<String?>();
-    this.snapshotRetentionLimit = Output.createUnknown<int?>();
-    this.snapshotWindow = Output.createUnknown<String>();
-    this.subnetGroupName = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.transitEncryptionEnabled = Output.createUnknown<bool>();
+        registerOutput<List<ClusterLogDeliveryConfiguration>?>(
+            'logDeliveryConfigurations');
+    this.maintenanceWindow = registerOutput<String>('maintenanceWindow');
+    this.networkType = registerOutput<String>('networkType');
+    this.nodeType = registerOutput<String>('nodeType');
+    this.notificationTopicArn = registerOutput<String?>('notificationTopicArn');
+    this.numCacheNodes = registerOutput<int>('numCacheNodes');
+    this.outpostMode = registerOutput<String?>('outpostMode');
+    this.parameterGroupName = registerOutput<String>('parameterGroupName');
+    this.port = registerOutput<int>('port');
+    this.preferredAvailabilityZones =
+        registerOutput<List<String>?>('preferredAvailabilityZones');
+    this.preferredOutpostArn = registerOutput<String>('preferredOutpostArn');
+    this.region = registerOutput<String>('region');
+    this.replicationGroupId = registerOutput<String>('replicationGroupId');
+    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    this.snapshotArns = registerOutput<String?>('snapshotArns');
+    this.snapshotName = registerOutput<String?>('snapshotName');
+    this.snapshotRetentionLimit =
+        registerOutput<int?>('snapshotRetentionLimit');
+    this.snapshotWindow = registerOutput<String>('snapshotWindow');
+    this.subnetGroupName = registerOutput<String>('subnetGroupName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.transitEncryptionEnabled =
+        registerOutput<bool>('transitEncryptionEnabled');
   }
 }

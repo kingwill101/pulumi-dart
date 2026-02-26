@@ -276,14 +276,14 @@ class CrossAccountAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdTime = Output.createUnknown<String>();
-    this.lastModifiedTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.principals = Output.createUnknown<List<String>?>();
+    this.arn = registerOutput<String>('arn');
+    this.createdTime = registerOutput<String>('createdTime');
+    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.name = registerOutput<String>('name');
+    this.principals = registerOutput<List<String>?>('principals');
     this.resources =
-        Output.createUnknown<List<CrossAccountAttachmentResource>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<CrossAccountAttachmentResource>?>('resources');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

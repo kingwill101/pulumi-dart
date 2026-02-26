@@ -2588,13 +2588,14 @@ class Service2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autogenerateRevisionName = Output.createUnknown<bool?>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<ServiceMetadata>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.statuses = Output.createUnknown<List<ServiceStatus>>();
-    this.template = Output.createUnknown<ServiceTemplate?>();
-    this.traffics = Output.createUnknown<List<ServiceTraffic>>();
+    this.autogenerateRevisionName =
+        registerOutput<bool?>('autogenerateRevisionName');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<ServiceMetadata>('metadata');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.statuses = registerOutput<List<ServiceStatus>>('statuses');
+    this.template = registerOutput<ServiceTemplate?>('template');
+    this.traffics = registerOutput<List<ServiceTraffic>>('traffics');
   }
 }

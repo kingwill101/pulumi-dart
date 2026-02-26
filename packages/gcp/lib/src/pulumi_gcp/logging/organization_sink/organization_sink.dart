@@ -267,16 +267,17 @@ class OrganizationSink extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.bigqueryOptions =
-        Output.createUnknown<OrganizationSinkBigqueryOptions>();
-    this.description = Output.createUnknown<String?>();
-    this.destination = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.exclusions = Output.createUnknown<List<OrganizationSinkExclusion>?>();
-    this.filter = Output.createUnknown<String?>();
-    this.includeChildren = Output.createUnknown<bool?>();
-    this.interceptChildren = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.writerIdentity = Output.createUnknown<String>();
+        registerOutput<OrganizationSinkBigqueryOptions>('bigqueryOptions');
+    this.description = registerOutput<String?>('description');
+    this.destination = registerOutput<String>('destination');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.exclusions =
+        registerOutput<List<OrganizationSinkExclusion>?>('exclusions');
+    this.filter = registerOutput<String?>('filter');
+    this.includeChildren = registerOutput<bool?>('includeChildren');
+    this.interceptChildren = registerOutput<bool?>('interceptChildren');
+    this.name = registerOutput<String>('name');
+    this.orgId = registerOutput<String>('orgId');
+    this.writerIdentity = registerOutput<String>('writerIdentity');
   }
 }

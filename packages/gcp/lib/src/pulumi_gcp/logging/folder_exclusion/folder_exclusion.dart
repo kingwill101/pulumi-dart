@@ -191,10 +191,10 @@ class FolderExclusion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.filter = Output.createUnknown<String>();
-    this.folder = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.filter = registerOutput<String>('filter');
+    this.folder = registerOutput<String>('folder');
+    this.name = registerOutput<String>('name');
   }
 }

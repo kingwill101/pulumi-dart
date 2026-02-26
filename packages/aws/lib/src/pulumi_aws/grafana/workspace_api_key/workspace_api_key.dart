@@ -141,11 +141,11 @@ class WorkspaceApiKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.key = Output.createUnknown<String>();
-    this.keyName = Output.createUnknown<String>();
-    this.keyRole = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.secondsToLive = Output.createUnknown<int>();
-    this.workspaceId = Output.createUnknown<String>();
+    this.key = registerOutput<String>('key');
+    this.keyName = registerOutput<String>('keyName');
+    this.keyRole = registerOutput<String>('keyRole');
+    this.region = registerOutput<String>('region');
+    this.secondsToLive = registerOutput<int>('secondsToLive');
+    this.workspaceId = registerOutput<String>('workspaceId');
   }
 }

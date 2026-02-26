@@ -938,14 +938,15 @@ class Cluster5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.configuration = Output.createUnknown<ClusterConfiguration?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.configuration = registerOutput<ClusterConfiguration?>('configuration');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
     this.serviceConnectDefaults =
-        Output.createUnknown<ClusterServiceConnectDefaults?>();
-    this.settings = Output.createUnknown<List<ClusterSetting>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<ClusterServiceConnectDefaults?>(
+            'serviceConnectDefaults');
+    this.settings = registerOutput<List<ClusterSetting>>('settings');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

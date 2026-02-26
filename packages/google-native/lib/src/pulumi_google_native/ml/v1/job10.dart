@@ -60,23 +60,25 @@ class Job10 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
-    this.errorMessage = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.jobId = Output.createUnknown<String>();
-    this.jobPosition = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
+    this.createTime = registerOutput<String>('createTime');
+    this.endTime = registerOutput<String>('endTime');
+    this.errorMessage = registerOutput<String>('errorMessage');
+    this.etag = registerOutput<String>('etag');
+    this.jobId = registerOutput<String>('jobId');
+    this.jobPosition = registerOutput<String>('jobPosition');
+    this.labels = registerOutput<Map<String, String>>('labels');
     this.predictionInput =
-        Output.createUnknown<GoogleCloudMlV1PredictionInputResponse>();
+        registerOutput<GoogleCloudMlV1PredictionInputResponse>(
+            'predictionInput');
     this.predictionOutput =
-        Output.createUnknown<GoogleCloudMlV1PredictionOutputResponse>();
-    this.project = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<GoogleCloudMlV1PredictionOutputResponse>(
+            'predictionOutput');
+    this.project = registerOutput<String>('project');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
     this.trainingInput =
-        Output.createUnknown<GoogleCloudMlV1TrainingInputResponse>();
+        registerOutput<GoogleCloudMlV1TrainingInputResponse>('trainingInput');
     this.trainingOutput =
-        Output.createUnknown<GoogleCloudMlV1TrainingOutputResponse>();
+        registerOutput<GoogleCloudMlV1TrainingOutputResponse>('trainingOutput');
   }
 }

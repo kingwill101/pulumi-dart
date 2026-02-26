@@ -203,9 +203,9 @@ class ApplicationAccessScope extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationArn = Output.createUnknown<String>();
-    this.authorizedTargets = Output.createUnknown<List<String>?>();
-    this.region = Output.createUnknown<String>();
-    this.scope = Output.createUnknown<String>();
+    this.applicationArn = registerOutput<String>('applicationArn');
+    this.authorizedTargets = registerOutput<List<String>?>('authorizedTargets');
+    this.region = registerOutput<String>('region');
+    this.scope = registerOutput<String>('scope');
   }
 }

@@ -51,11 +51,11 @@ class DeploymentType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createdDate = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.restApi = Output.createUnknown<String>();
-    this.triggers = Output.createUnknown<Map<String, String>?>();
-    this.variables = Output.createUnknown<Map<String, String>?>();
+    this.createdDate = registerOutput<String>('createdDate');
+    this.description = registerOutput<String?>('description');
+    this.region = registerOutput<String>('region');
+    this.restApi = registerOutput<String>('restApi');
+    this.triggers = registerOutput<Map<String, String>?>('triggers');
+    this.variables = registerOutput<Map<String, String>?>('variables');
   }
 }

@@ -148,12 +148,12 @@ class Thing extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.attributes = Output.createUnknown<Map<String, String>?>();
-    this.defaultClientId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.thingTypeName = Output.createUnknown<String?>();
-    this.version = Output.createUnknown<int>();
+    this.arn = registerOutput<String>('arn');
+    this.attributes = registerOutput<Map<String, String>?>('attributes');
+    this.defaultClientId = registerOutput<String>('defaultClientId');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.thingTypeName = registerOutput<String?>('thingTypeName');
+    this.version = registerOutput<int>('version');
   }
 }

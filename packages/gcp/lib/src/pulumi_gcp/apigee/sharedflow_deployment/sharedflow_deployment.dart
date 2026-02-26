@@ -56,10 +56,10 @@ class SharedflowDeployment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.environment = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.revision = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String?>();
-    this.sharedflowId = Output.createUnknown<String>();
+    this.environment = registerOutput<String>('environment');
+    this.orgId = registerOutput<String>('orgId');
+    this.revision = registerOutput<String>('revision');
+    this.serviceAccount = registerOutput<String?>('serviceAccount');
+    this.sharedflowId = registerOutput<String>('sharedflowId');
   }
 }

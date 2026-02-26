@@ -32,12 +32,12 @@ class DataCollector extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createdAt = Output.createUnknown<String>();
-    this.dataCollectorId = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String>();
-    this.lastModifiedAt = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+    this.createdAt = registerOutput<String>('createdAt');
+    this.dataCollectorId = registerOutput<String?>('dataCollectorId');
+    this.description = registerOutput<String>('description');
+    this.lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.type = registerOutput<String>('type');
   }
 }

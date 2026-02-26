@@ -84,9 +84,9 @@ class ConsumersIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.consumerProject = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.serviceName = Output.createUnknown<String>();
+    this.consumerProject = registerOutput<String>('consumerProject');
+    this.etag = registerOutput<String>('etag');
+    this.policyData = registerOutput<String>('policyData');
+    this.serviceName = registerOutput<String>('serviceName');
   }
 }

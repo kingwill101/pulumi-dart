@@ -177,13 +177,14 @@ class IamPolicyAssignment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.assignmentId = Output.createUnknown<String>();
-    this.assignmentName = Output.createUnknown<String>();
-    this.assignmentStatus = Output.createUnknown<String>();
-    this.awsAccountId = Output.createUnknown<String>();
-    this.identities = Output.createUnknown<IamPolicyAssignmentIdentities?>();
-    this.namespace = Output.createUnknown<String>();
-    this.policyArn = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.assignmentId = registerOutput<String>('assignmentId');
+    this.assignmentName = registerOutput<String>('assignmentName');
+    this.assignmentStatus = registerOutput<String>('assignmentStatus');
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.identities =
+        registerOutput<IamPolicyAssignmentIdentities?>('identities');
+    this.namespace = registerOutput<String>('namespace');
+    this.policyArn = registerOutput<String?>('policyArn');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -70,26 +70,29 @@ class StoragePool extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.capacityProvisioningType = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.performanceProvisioningType = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.provisionedIops = Output.createUnknown<String>();
-    this.provisionedThroughput = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
+    this.capacityProvisioningType =
+        registerOutput<String>('capacityProvisioningType');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.kind = registerOutput<String>('kind');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.performanceProvisioningType =
+        registerOutput<String>('performanceProvisioningType');
+    this.project = registerOutput<String>('project');
+    this.provisionedIops = registerOutput<String>('provisionedIops');
+    this.provisionedThroughput =
+        registerOutput<String>('provisionedThroughput');
+    this.requestId = registerOutput<String?>('requestId');
     this.resourceStatus =
-        Output.createUnknown<StoragePoolResourceStatusResponse>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
-    this.sizeGb = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.status = Output.createUnknown<StoragePoolResourceStatusResponse>();
-    this.storagePoolType = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<StoragePoolResourceStatusResponse>('resourceStatus');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    this.sizeGb = registerOutput<String>('sizeGb');
+    this.state = registerOutput<String>('state');
+    this.status = registerOutput<StoragePoolResourceStatusResponse>('status');
+    this.storagePoolType = registerOutput<String>('storagePoolType');
+    this.zone = registerOutput<String>('zone');
   }
 }

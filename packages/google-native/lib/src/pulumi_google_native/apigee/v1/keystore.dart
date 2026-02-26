@@ -21,9 +21,9 @@ class Keystore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aliases = Output.createUnknown<List<String>>();
-    this.environmentId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
+    this.aliases = registerOutput<List<String>>('aliases');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
   }
 }

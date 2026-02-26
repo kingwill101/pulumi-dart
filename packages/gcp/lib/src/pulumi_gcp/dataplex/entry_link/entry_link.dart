@@ -869,15 +869,15 @@ class EntryLink extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.entryGroupId = Output.createUnknown<String>();
-    this.entryLinkId = Output.createUnknown<String>();
-    this.entryLinkType = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.entryGroupId = registerOutput<String>('entryGroupId');
+    this.entryLinkId = registerOutput<String>('entryLinkId');
+    this.entryLinkType = registerOutput<String>('entryLinkType');
     this.entryReferences =
-        Output.createUnknown<List<EntryLinkEntryReference>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<EntryLinkEntryReference>>('entryReferences');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -922,43 +922,50 @@ class FlexibleAppVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiConfig = Output.createUnknown<FlexibleAppVersionApiConfig?>();
+    this.apiConfig = registerOutput<FlexibleAppVersionApiConfig?>('apiConfig');
     this.automaticScaling =
-        Output.createUnknown<FlexibleAppVersionAutomaticScaling?>();
-    this.betaSettings = Output.createUnknown<Map<String, String>?>();
-    this.defaultExpiration = Output.createUnknown<String?>();
-    this.deleteServiceOnDestroy = Output.createUnknown<bool?>();
-    this.deployment = Output.createUnknown<FlexibleAppVersionDeployment?>();
+        registerOutput<FlexibleAppVersionAutomaticScaling?>('automaticScaling');
+    this.betaSettings = registerOutput<Map<String, String>?>('betaSettings');
+    this.defaultExpiration = registerOutput<String?>('defaultExpiration');
+    this.deleteServiceOnDestroy =
+        registerOutput<bool?>('deleteServiceOnDestroy');
+    this.deployment =
+        registerOutput<FlexibleAppVersionDeployment?>('deployment');
     this.endpointsApiService =
-        Output.createUnknown<FlexibleAppVersionEndpointsApiService?>();
-    this.entrypoint = Output.createUnknown<FlexibleAppVersionEntrypoint?>();
-    this.envVariables = Output.createUnknown<Map<String, String>?>();
+        registerOutput<FlexibleAppVersionEndpointsApiService?>(
+            'endpointsApiService');
+    this.entrypoint =
+        registerOutput<FlexibleAppVersionEntrypoint?>('entrypoint');
+    this.envVariables = registerOutput<Map<String, String>?>('envVariables');
     this.flexibleRuntimeSettings =
-        Output.createUnknown<FlexibleAppVersionFlexibleRuntimeSettings?>();
-    this.handlers = Output.createUnknown<List<FlexibleAppVersionHandler>>();
-    this.inboundServices = Output.createUnknown<List<String>?>();
-    this.instanceClass = Output.createUnknown<String?>();
+        registerOutput<FlexibleAppVersionFlexibleRuntimeSettings?>(
+            'flexibleRuntimeSettings');
+    this.handlers = registerOutput<List<FlexibleAppVersionHandler>>('handlers');
+    this.inboundServices = registerOutput<List<String>?>('inboundServices');
+    this.instanceClass = registerOutput<String?>('instanceClass');
     this.livenessCheck =
-        Output.createUnknown<FlexibleAppVersionLivenessCheck>();
+        registerOutput<FlexibleAppVersionLivenessCheck>('livenessCheck');
     this.manualScaling =
-        Output.createUnknown<FlexibleAppVersionManualScaling?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<FlexibleAppVersionNetwork?>();
-    this.nobuildFilesRegex = Output.createUnknown<String?>();
-    this.noopOnDestroy = Output.createUnknown<bool?>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<FlexibleAppVersionManualScaling?>('manualScaling');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<FlexibleAppVersionNetwork?>('network');
+    this.nobuildFilesRegex = registerOutput<String?>('nobuildFilesRegex');
+    this.noopOnDestroy = registerOutput<bool?>('noopOnDestroy');
+    this.project = registerOutput<String>('project');
     this.readinessCheck =
-        Output.createUnknown<FlexibleAppVersionReadinessCheck>();
-    this.resources = Output.createUnknown<FlexibleAppVersionResources?>();
-    this.runtime = Output.createUnknown<String>();
-    this.runtimeApiVersion = Output.createUnknown<String>();
-    this.runtimeChannel = Output.createUnknown<String?>();
-    this.runtimeMainExecutablePath = Output.createUnknown<String?>();
-    this.service = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.servingStatus = Output.createUnknown<String?>();
-    this.versionId = Output.createUnknown<String?>();
+        registerOutput<FlexibleAppVersionReadinessCheck>('readinessCheck');
+    this.resources = registerOutput<FlexibleAppVersionResources?>('resources');
+    this.runtime = registerOutput<String>('runtime');
+    this.runtimeApiVersion = registerOutput<String>('runtimeApiVersion');
+    this.runtimeChannel = registerOutput<String?>('runtimeChannel');
+    this.runtimeMainExecutablePath =
+        registerOutput<String?>('runtimeMainExecutablePath');
+    this.service = registerOutput<String>('service');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.servingStatus = registerOutput<String?>('servingStatus');
+    this.versionId = registerOutput<String?>('versionId');
     this.vpcAccessConnector =
-        Output.createUnknown<FlexibleAppVersionVpcAccessConnector?>();
+        registerOutput<FlexibleAppVersionVpcAccessConnector?>(
+            'vpcAccessConnector');
   }
 }

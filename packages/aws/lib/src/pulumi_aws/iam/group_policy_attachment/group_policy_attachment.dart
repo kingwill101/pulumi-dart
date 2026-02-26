@@ -186,7 +186,7 @@ class GroupPolicyAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.group = Output.createUnknown<String>();
-    this.policyArn = Output.createUnknown<String>();
+    this.group = registerOutput<String>('group');
+    this.policyArn = registerOutput<String>('policyArn');
   }
 }

@@ -246,23 +246,26 @@ class Membership extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.collaborationArn = Output.createUnknown<String>();
-    this.collaborationCreatorAccountId = Output.createUnknown<String>();
-    this.collaborationCreatorDisplayName = Output.createUnknown<String>();
-    this.collaborationId = Output.createUnknown<String>();
-    this.collaborationName = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.collaborationArn = registerOutput<String>('collaborationArn');
+    this.collaborationCreatorAccountId =
+        registerOutput<String>('collaborationCreatorAccountId');
+    this.collaborationCreatorDisplayName =
+        registerOutput<String>('collaborationCreatorDisplayName');
+    this.collaborationId = registerOutput<String>('collaborationId');
+    this.collaborationName = registerOutput<String>('collaborationName');
+    this.createTime = registerOutput<String>('createTime');
     this.defaultResultConfiguration =
-        Output.createUnknown<MembershipDefaultResultConfiguration?>();
-    this.memberAbilities = Output.createUnknown<List<String>>();
+        registerOutput<MembershipDefaultResultConfiguration?>(
+            'defaultResultConfiguration');
+    this.memberAbilities = registerOutput<List<String>>('memberAbilities');
     this.paymentConfiguration =
-        Output.createUnknown<MembershipPaymentConfiguration?>();
-    this.queryLogStatus = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<MembershipPaymentConfiguration?>('paymentConfiguration');
+    this.queryLogStatus = registerOutput<String>('queryLogStatus');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

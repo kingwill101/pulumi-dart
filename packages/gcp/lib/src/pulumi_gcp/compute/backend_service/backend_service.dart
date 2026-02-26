@@ -4058,57 +4058,67 @@ class BackendService extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.affinityCookieTtlSec = Output.createUnknown<int?>();
-    this.backends = Output.createUnknown<List<BackendServiceBackend>?>();
-    this.cdnPolicy = Output.createUnknown<BackendServiceCdnPolicy>();
+    this.affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
+    this.backends = registerOutput<List<BackendServiceBackend>?>('backends');
+    this.cdnPolicy = registerOutput<BackendServiceCdnPolicy>('cdnPolicy');
     this.circuitBreakers =
-        Output.createUnknown<BackendServiceCircuitBreakers?>();
-    this.compressionMode = Output.createUnknown<String?>();
-    this.connectionDrainingTimeoutSec = Output.createUnknown<int?>();
-    this.consistentHash = Output.createUnknown<BackendServiceConsistentHash?>();
-    this.creationTimestamp = Output.createUnknown<String>();
+        registerOutput<BackendServiceCircuitBreakers?>('circuitBreakers');
+    this.compressionMode = registerOutput<String?>('compressionMode');
+    this.connectionDrainingTimeoutSec =
+        registerOutput<int?>('connectionDrainingTimeoutSec');
+    this.consistentHash =
+        registerOutput<BackendServiceConsistentHash?>('consistentHash');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.customMetrics =
-        Output.createUnknown<List<BackendServiceCustomMetric>?>();
-    this.customRequestHeaders = Output.createUnknown<List<String>?>();
-    this.customResponseHeaders = Output.createUnknown<List<String>?>();
-    this.description = Output.createUnknown<String?>();
+        registerOutput<List<BackendServiceCustomMetric>?>('customMetrics');
+    this.customRequestHeaders =
+        registerOutput<List<String>?>('customRequestHeaders');
+    this.customResponseHeaders =
+        registerOutput<List<String>?>('customResponseHeaders');
+    this.description = registerOutput<String?>('description');
     this.dynamicForwarding =
-        Output.createUnknown<BackendServiceDynamicForwarding?>();
-    this.edgeSecurityPolicy = Output.createUnknown<String?>();
-    this.enableCdn = Output.createUnknown<bool?>();
-    this.externalManagedMigrationState = Output.createUnknown<String?>();
+        registerOutput<BackendServiceDynamicForwarding?>('dynamicForwarding');
+    this.edgeSecurityPolicy = registerOutput<String?>('edgeSecurityPolicy');
+    this.enableCdn = registerOutput<bool?>('enableCdn');
+    this.externalManagedMigrationState =
+        registerOutput<String?>('externalManagedMigrationState');
     this.externalManagedMigrationTestingPercentage =
-        Output.createUnknown<double?>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.generatedId = Output.createUnknown<int>();
-    this.healthChecks = Output.createUnknown<String?>();
-    this.iap = Output.createUnknown<BackendServiceIap>();
-    this.ipAddressSelectionPolicy = Output.createUnknown<String?>();
-    this.loadBalancingScheme = Output.createUnknown<String?>();
+        registerOutput<double?>('externalManagedMigrationTestingPercentage');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.generatedId = registerOutput<int>('generatedId');
+    this.healthChecks = registerOutput<String?>('healthChecks');
+    this.iap = registerOutput<BackendServiceIap>('iap');
+    this.ipAddressSelectionPolicy =
+        registerOutput<String?>('ipAddressSelectionPolicy');
+    this.loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
     this.localityLbPolicies =
-        Output.createUnknown<List<BackendServiceLocalityLbPolicy>?>();
-    this.localityLbPolicy = Output.createUnknown<String?>();
-    this.logConfig = Output.createUnknown<BackendServiceLogConfig>();
+        registerOutput<List<BackendServiceLocalityLbPolicy>?>(
+            'localityLbPolicies');
+    this.localityLbPolicy = registerOutput<String?>('localityLbPolicy');
+    this.logConfig = registerOutput<BackendServiceLogConfig>('logConfig');
     this.maxStreamDuration =
-        Output.createUnknown<BackendServiceMaxStreamDuration?>();
-    this.name = Output.createUnknown<String>();
-    this.networkPassThroughLbTrafficPolicy = Output.createUnknown<
-        BackendServiceNetworkPassThroughLbTrafficPolicy?>();
+        registerOutput<BackendServiceMaxStreamDuration?>('maxStreamDuration');
+    this.name = registerOutput<String>('name');
+    this.networkPassThroughLbTrafficPolicy =
+        registerOutput<BackendServiceNetworkPassThroughLbTrafficPolicy?>(
+            'networkPassThroughLbTrafficPolicy');
     this.outlierDetection =
-        Output.createUnknown<BackendServiceOutlierDetection?>();
-    this.params = Output.createUnknown<BackendServiceParams?>();
-    this.portName = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.protocol = Output.createUnknown<String>();
-    this.securityPolicy = Output.createUnknown<String?>();
+        registerOutput<BackendServiceOutlierDetection?>('outlierDetection');
+    this.params = registerOutput<BackendServiceParams?>('params');
+    this.portName = registerOutput<String>('portName');
+    this.project = registerOutput<String>('project');
+    this.protocol = registerOutput<String>('protocol');
+    this.securityPolicy = registerOutput<String?>('securityPolicy');
     this.securitySettings =
-        Output.createUnknown<BackendServiceSecuritySettings?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.serviceLbPolicy = Output.createUnknown<String?>();
-    this.sessionAffinity = Output.createUnknown<String>();
+        registerOutput<BackendServiceSecuritySettings?>('securitySettings');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.serviceLbPolicy = registerOutput<String?>('serviceLbPolicy');
+    this.sessionAffinity = registerOutput<String>('sessionAffinity');
     this.strongSessionAffinityCookie =
-        Output.createUnknown<BackendServiceStrongSessionAffinityCookie?>();
-    this.timeoutSec = Output.createUnknown<int>();
-    this.tlsSettings = Output.createUnknown<BackendServiceTlsSettings?>();
+        registerOutput<BackendServiceStrongSessionAffinityCookie?>(
+            'strongSessionAffinityCookie');
+    this.timeoutSec = registerOutput<int>('timeoutSec');
+    this.tlsSettings =
+        registerOutput<BackendServiceTlsSettings?>('tlsSettings');
   }
 }

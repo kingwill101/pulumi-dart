@@ -185,66 +185,79 @@ class RegionDisk extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessMode = Output.createUnknown<String>();
-    this.architecture = Output.createUnknown<String>();
+    this.accessMode = registerOutput<String>('accessMode');
+    this.architecture = registerOutput<String>('architecture');
     this.asyncPrimaryDisk =
-        Output.createUnknown<DiskAsyncReplicationResponse>();
-    this.asyncSecondaryDisks = Output.createUnknown<Map<String, String>>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
+        registerOutput<DiskAsyncReplicationResponse>('asyncPrimaryDisk');
+    this.asyncSecondaryDisks =
+        registerOutput<Map<String, String>>('asyncSecondaryDisks');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
     this.diskEncryptionKey =
-        Output.createUnknown<CustomerEncryptionKeyResponse>();
-    this.enableConfidentialCompute = Output.createUnknown<bool>();
-    this.eraseWindowsVssSignature = Output.createUnknown<bool>();
-    this.guestOsFeatures = Output.createUnknown<List<GuestOsFeatureResponse>>();
-    this.interface = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lastAttachTimestamp = Output.createUnknown<String>();
-    this.lastDetachTimestamp = Output.createUnknown<String>();
-    this.licenseCodes = Output.createUnknown<List<String>>();
-    this.licenses = Output.createUnknown<List<String>>();
-    this.locationHint = Output.createUnknown<String>();
-    this.locked = Output.createUnknown<bool>();
-    this.multiWriter = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.options = Output.createUnknown<String>();
-    this.params = Output.createUnknown<DiskParamsResponse>();
-    this.physicalBlockSizeBytes = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.provisionedIops = Output.createUnknown<String>();
-    this.provisionedThroughput = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.replicaZones = Output.createUnknown<List<String>>();
-    this.requestId = Output.createUnknown<String?>();
-    this.resourcePolicies = Output.createUnknown<List<String>>();
-    this.resourceStatus = Output.createUnknown<DiskResourceStatusResponse>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
-    this.sizeGb = Output.createUnknown<String>();
-    this.sourceConsistencyGroupPolicy = Output.createUnknown<String>();
-    this.sourceConsistencyGroupPolicyId = Output.createUnknown<String>();
-    this.sourceDisk = Output.createUnknown<String>();
-    this.sourceDiskId = Output.createUnknown<String>();
-    this.sourceImage = Output.createUnknown<String>();
+        registerOutput<CustomerEncryptionKeyResponse>('diskEncryptionKey');
+    this.enableConfidentialCompute =
+        registerOutput<bool>('enableConfidentialCompute');
+    this.eraseWindowsVssSignature =
+        registerOutput<bool>('eraseWindowsVssSignature');
+    this.guestOsFeatures =
+        registerOutput<List<GuestOsFeatureResponse>>('guestOsFeatures');
+    this.interface = registerOutput<String>('interface');
+    this.kind = registerOutput<String>('kind');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lastAttachTimestamp = registerOutput<String>('lastAttachTimestamp');
+    this.lastDetachTimestamp = registerOutput<String>('lastDetachTimestamp');
+    this.licenseCodes = registerOutput<List<String>>('licenseCodes');
+    this.licenses = registerOutput<List<String>>('licenses');
+    this.locationHint = registerOutput<String>('locationHint');
+    this.locked = registerOutput<bool>('locked');
+    this.multiWriter = registerOutput<bool>('multiWriter');
+    this.name = registerOutput<String>('name');
+    this.options = registerOutput<String>('options');
+    this.params = registerOutput<DiskParamsResponse>('params');
+    this.physicalBlockSizeBytes =
+        registerOutput<String>('physicalBlockSizeBytes');
+    this.project = registerOutput<String>('project');
+    this.provisionedIops = registerOutput<String>('provisionedIops');
+    this.provisionedThroughput =
+        registerOutput<String>('provisionedThroughput');
+    this.region = registerOutput<String>('region');
+    this.replicaZones = registerOutput<List<String>>('replicaZones');
+    this.requestId = registerOutput<String?>('requestId');
+    this.resourcePolicies = registerOutput<List<String>>('resourcePolicies');
+    this.resourceStatus =
+        registerOutput<DiskResourceStatusResponse>('resourceStatus');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    this.sizeGb = registerOutput<String>('sizeGb');
+    this.sourceConsistencyGroupPolicy =
+        registerOutput<String>('sourceConsistencyGroupPolicy');
+    this.sourceConsistencyGroupPolicyId =
+        registerOutput<String>('sourceConsistencyGroupPolicyId');
+    this.sourceDisk = registerOutput<String>('sourceDisk');
+    this.sourceDiskId = registerOutput<String>('sourceDiskId');
+    this.sourceImage = registerOutput<String>('sourceImage');
     this.sourceImageEncryptionKey =
-        Output.createUnknown<CustomerEncryptionKeyResponse>();
-    this.sourceImageId = Output.createUnknown<String>();
-    this.sourceInstantSnapshot = Output.createUnknown<String>();
-    this.sourceInstantSnapshotId = Output.createUnknown<String>();
-    this.sourceSnapshot = Output.createUnknown<String>();
+        registerOutput<CustomerEncryptionKeyResponse>(
+            'sourceImageEncryptionKey');
+    this.sourceImageId = registerOutput<String>('sourceImageId');
+    this.sourceInstantSnapshot =
+        registerOutput<String>('sourceInstantSnapshot');
+    this.sourceInstantSnapshotId =
+        registerOutput<String>('sourceInstantSnapshotId');
+    this.sourceSnapshot = registerOutput<String>('sourceSnapshot');
     this.sourceSnapshotEncryptionKey =
-        Output.createUnknown<CustomerEncryptionKeyResponse>();
-    this.sourceSnapshotId = Output.createUnknown<String>();
-    this.sourceStorageObject = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.storagePool = Output.createUnknown<String>();
-    this.storageType = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.userLicenses = Output.createUnknown<List<String>>();
-    this.users = Output.createUnknown<List<String>>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<CustomerEncryptionKeyResponse>(
+            'sourceSnapshotEncryptionKey');
+    this.sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
+    this.sourceStorageObject = registerOutput<String>('sourceStorageObject');
+    this.status = registerOutput<String>('status');
+    this.storagePool = registerOutput<String>('storagePool');
+    this.storageType = registerOutput<String>('storageType');
+    this.type = registerOutput<String>('type');
+    this.userLicenses = registerOutput<List<String>>('userLicenses');
+    this.users = registerOutput<List<String>>('users');
+    this.zone = registerOutput<String>('zone');
   }
 }

@@ -928,10 +928,10 @@ class CryptoKeyIAMMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<CryptoKeyIAMMemberCondition?>();
-    this.cryptoKeyId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.condition = registerOutput<CryptoKeyIAMMemberCondition?>('condition');
+    this.cryptoKeyId = registerOutput<String>('cryptoKeyId');
+    this.etag = registerOutput<String>('etag');
+    this.member = registerOutput<String>('member');
+    this.role = registerOutput<String>('role');
   }
 }

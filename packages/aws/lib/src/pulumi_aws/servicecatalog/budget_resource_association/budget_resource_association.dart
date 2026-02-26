@@ -130,8 +130,8 @@ class BudgetResourceAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.budgetName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceId = Output.createUnknown<String>();
+    this.budgetName = registerOutput<String>('budgetName');
+    this.region = registerOutput<String>('region');
+    this.resourceId = registerOutput<String>('resourceId');
   }
 }

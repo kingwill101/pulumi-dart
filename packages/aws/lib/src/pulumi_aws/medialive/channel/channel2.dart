@@ -580,24 +580,27 @@ class Channel2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.cdiInputSpecification =
-        Output.createUnknown<ChannelCdiInputSpecification?>();
-    this.channelClass = Output.createUnknown<String>();
-    this.channelId = Output.createUnknown<String>();
-    this.destinations = Output.createUnknown<List<ChannelDestination>>();
-    this.encoderSettings = Output.createUnknown<ChannelEncoderSettings>();
+        registerOutput<ChannelCdiInputSpecification?>('cdiInputSpecification');
+    this.channelClass = registerOutput<String>('channelClass');
+    this.channelId = registerOutput<String>('channelId');
+    this.destinations =
+        registerOutput<List<ChannelDestination>>('destinations');
+    this.encoderSettings =
+        registerOutput<ChannelEncoderSettings>('encoderSettings');
     this.inputAttachments =
-        Output.createUnknown<List<ChannelInputAttachment>>();
-    this.inputSpecification = Output.createUnknown<ChannelInputSpecification>();
-    this.logLevel = Output.createUnknown<String>();
-    this.maintenance = Output.createUnknown<ChannelMaintenance>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String?>();
-    this.startChannel = Output.createUnknown<bool?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpc = Output.createUnknown<ChannelVpc?>();
+        registerOutput<List<ChannelInputAttachment>>('inputAttachments');
+    this.inputSpecification =
+        registerOutput<ChannelInputSpecification>('inputSpecification');
+    this.logLevel = registerOutput<String>('logLevel');
+    this.maintenance = registerOutput<ChannelMaintenance>('maintenance');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String?>('roleArn');
+    this.startChannel = registerOutput<bool?>('startChannel');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpc = registerOutput<ChannelVpc?>('vpc');
   }
 }

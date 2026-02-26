@@ -141,10 +141,10 @@ class ApiMapping extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiId = Output.createUnknown<String>();
-    this.apiMappingKey = Output.createUnknown<String?>();
-    this.domainName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.stage = Output.createUnknown<String>();
+    this.apiId = registerOutput<String>('apiId');
+    this.apiMappingKey = registerOutput<String?>('apiMappingKey');
+    this.domainName = registerOutput<String>('domainName');
+    this.region = registerOutput<String>('region');
+    this.stage = registerOutput<String>('stage');
   }
 }

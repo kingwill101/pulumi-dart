@@ -304,12 +304,13 @@ class TenantInboundSamlConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.idpConfig = Output.createUnknown<TenantInboundSamlConfigIdpConfig>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.spConfig = Output.createUnknown<TenantInboundSamlConfigSpConfig>();
-    this.tenant = Output.createUnknown<String>();
+    this.displayName = registerOutput<String>('displayName');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.idpConfig =
+        registerOutput<TenantInboundSamlConfigIdpConfig>('idpConfig');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.spConfig = registerOutput<TenantInboundSamlConfigSpConfig>('spConfig');
+    this.tenant = registerOutput<String>('tenant');
   }
 }

@@ -44,17 +44,17 @@ class Backup11 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.restoringServices = Output.createUnknown<List<String>>();
-    this.serviceId = Output.createUnknown<String>();
-    this.serviceRevision = Output.createUnknown<ServiceResponse>();
-    this.state = Output.createUnknown<String>();
+    this.backupId = registerOutput<String>('backupId');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.endTime = registerOutput<String>('endTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.restoringServices = registerOutput<List<String>>('restoringServices');
+    this.serviceId = registerOutput<String>('serviceId');
+    this.serviceRevision = registerOutput<ServiceResponse>('serviceRevision');
+    this.state = registerOutput<String>('state');
   }
 }

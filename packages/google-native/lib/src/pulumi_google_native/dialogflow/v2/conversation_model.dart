@@ -45,18 +45,21 @@ class ConversationModel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.articleSuggestionModelMetadata = Output.createUnknown<
-        GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.datasets = Output.createUnknown<
-        List<GoogleCloudDialogflowV2InputDatasetResponse>>();
-    this.displayName = Output.createUnknown<String>();
-    this.languageCode = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.smartReplyModelMetadata = Output.createUnknown<
-        GoogleCloudDialogflowV2SmartReplyModelMetadataResponse>();
-    this.state = Output.createUnknown<String>();
+    this.articleSuggestionModelMetadata = registerOutput<
+            GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponse>(
+        'articleSuggestionModelMetadata');
+    this.createTime = registerOutput<String>('createTime');
+    this.datasets =
+        registerOutput<List<GoogleCloudDialogflowV2InputDatasetResponse>>(
+            'datasets');
+    this.displayName = registerOutput<String>('displayName');
+    this.languageCode = registerOutput<String>('languageCode');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.smartReplyModelMetadata =
+        registerOutput<GoogleCloudDialogflowV2SmartReplyModelMetadataResponse>(
+            'smartReplyModelMetadata');
+    this.state = registerOutput<String>('state');
   }
 }

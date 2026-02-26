@@ -54,21 +54,24 @@ class FeatureView extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bigQuerySource = Output.createUnknown<
-        GoogleCloudAiplatformV1FeatureViewBigQuerySourceResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.featureOnlineStoreId = Output.createUnknown<String>();
-    this.featureRegistrySource = Output.createUnknown<
-        GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse>();
-    this.featureViewId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.runSyncImmediately = Output.createUnknown<bool?>();
-    this.syncConfig = Output.createUnknown<
-        GoogleCloudAiplatformV1FeatureViewSyncConfigResponse>();
-    this.updateTime = Output.createUnknown<String>();
+    this.bigQuerySource = registerOutput<
+            GoogleCloudAiplatformV1FeatureViewBigQuerySourceResponse>(
+        'bigQuerySource');
+    this.createTime = registerOutput<String>('createTime');
+    this.etag = registerOutput<String>('etag');
+    this.featureOnlineStoreId = registerOutput<String>('featureOnlineStoreId');
+    this.featureRegistrySource = registerOutput<
+            GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse>(
+        'featureRegistrySource');
+    this.featureViewId = registerOutput<String>('featureViewId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.runSyncImmediately = registerOutput<bool?>('runSyncImmediately');
+    this.syncConfig =
+        registerOutput<GoogleCloudAiplatformV1FeatureViewSyncConfigResponse>(
+            'syncConfig');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

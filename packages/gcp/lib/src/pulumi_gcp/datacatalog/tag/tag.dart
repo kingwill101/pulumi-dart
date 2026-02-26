@@ -1839,11 +1839,11 @@ class Tag extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.column = Output.createUnknown<String?>();
-    this.fields = Output.createUnknown<List<TagField>>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String?>();
-    this.template = Output.createUnknown<String>();
-    this.templateDisplayname = Output.createUnknown<String>();
+    this.column = registerOutput<String?>('column');
+    this.fields = registerOutput<List<TagField>>('fields');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String?>('parent');
+    this.template = registerOutput<String>('template');
+    this.templateDisplayname = registerOutput<String>('templateDisplayname');
   }
 }

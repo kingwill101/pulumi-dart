@@ -169,10 +169,12 @@ class AccountVdmAttributes extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.dashboardAttributes =
-        Output.createUnknown<AccountVdmAttributesDashboardAttributes>();
+        registerOutput<AccountVdmAttributesDashboardAttributes>(
+            'dashboardAttributes');
     this.guardianAttributes =
-        Output.createUnknown<AccountVdmAttributesGuardianAttributes>();
-    this.region = Output.createUnknown<String>();
-    this.vdmEnabled = Output.createUnknown<String>();
+        registerOutput<AccountVdmAttributesGuardianAttributes>(
+            'guardianAttributes');
+    this.region = registerOutput<String>('region');
+    this.vdmEnabled = registerOutput<String>('vdmEnabled');
   }
 }

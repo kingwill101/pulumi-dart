@@ -4053,16 +4053,18 @@ class PreventionJobTrigger extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.inspectJob = Output.createUnknown<PreventionJobTriggerInspectJob?>();
-    this.lastRunTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String?>();
-    this.triggerId = Output.createUnknown<String>();
-    this.triggers = Output.createUnknown<List<PreventionJobTriggerTrigger>>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.inspectJob =
+        registerOutput<PreventionJobTriggerInspectJob?>('inspectJob');
+    this.lastRunTime = registerOutput<String>('lastRunTime');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.status = registerOutput<String?>('status');
+    this.triggerId = registerOutput<String>('triggerId');
+    this.triggers =
+        registerOutput<List<PreventionJobTriggerTrigger>>('triggers');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

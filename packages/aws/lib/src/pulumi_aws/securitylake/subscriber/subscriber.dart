@@ -476,22 +476,23 @@ class Subscriber extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessType = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceShareArn = Output.createUnknown<String>();
-    this.resourceShareName = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.s3BucketArn = Output.createUnknown<String>();
-    this.sources = Output.createUnknown<List<SubscriberSource>>();
-    this.subscriberDescription = Output.createUnknown<String?>();
-    this.subscriberEndpoint = Output.createUnknown<String>();
+    this.accessType = registerOutput<String>('accessType');
+    this.arn = registerOutput<String>('arn');
+    this.region = registerOutput<String>('region');
+    this.resourceShareArn = registerOutput<String>('resourceShareArn');
+    this.resourceShareName = registerOutput<String>('resourceShareName');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.s3BucketArn = registerOutput<String>('s3BucketArn');
+    this.sources = registerOutput<List<SubscriberSource>>('sources');
+    this.subscriberDescription =
+        registerOutput<String?>('subscriberDescription');
+    this.subscriberEndpoint = registerOutput<String>('subscriberEndpoint');
     this.subscriberIdentity =
-        Output.createUnknown<SubscriberSubscriberIdentity>();
-    this.subscriberName = Output.createUnknown<String?>();
-    this.subscriberStatus = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<SubscriberTimeouts?>();
+        registerOutput<SubscriberSubscriberIdentity>('subscriberIdentity');
+    this.subscriberName = registerOutput<String?>('subscriberName');
+    this.subscriberStatus = registerOutput<String>('subscriberStatus');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<SubscriberTimeouts?>('timeouts');
   }
 }

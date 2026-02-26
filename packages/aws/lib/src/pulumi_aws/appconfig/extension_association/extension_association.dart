@@ -412,11 +412,11 @@ class ExtensionAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.extensionArn = Output.createUnknown<String>();
-    this.extensionVersion = Output.createUnknown<int>();
-    this.parameters = Output.createUnknown<Map<String, String>?>();
-    this.region = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.extensionArn = registerOutput<String>('extensionArn');
+    this.extensionVersion = registerOutput<int>('extensionVersion');
+    this.parameters = registerOutput<Map<String, String>?>('parameters');
+    this.region = registerOutput<String>('region');
+    this.resourceArn = registerOutput<String>('resourceArn');
   }
 }

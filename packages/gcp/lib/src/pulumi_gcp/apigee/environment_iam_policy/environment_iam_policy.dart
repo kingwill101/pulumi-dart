@@ -898,9 +898,9 @@ class EnvironmentIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.envId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
+    this.envId = registerOutput<String>('envId');
+    this.etag = registerOutput<String>('etag');
+    this.orgId = registerOutput<String>('orgId');
+    this.policyData = registerOutput<String>('policyData');
   }
 }

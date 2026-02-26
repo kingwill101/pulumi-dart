@@ -215,17 +215,17 @@ class HttpsHealthCheck extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.checkIntervalSec = Output.createUnknown<int?>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.healthyThreshold = Output.createUnknown<int?>();
-    this.host = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int?>();
-    this.project = Output.createUnknown<String>();
-    this.requestPath = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.timeoutSec = Output.createUnknown<int?>();
-    this.unhealthyThreshold = Output.createUnknown<int?>();
+    this.checkIntervalSec = registerOutput<int?>('checkIntervalSec');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.healthyThreshold = registerOutput<int?>('healthyThreshold');
+    this.host = registerOutput<String?>('host');
+    this.name = registerOutput<String>('name');
+    this.port = registerOutput<int?>('port');
+    this.project = registerOutput<String>('project');
+    this.requestPath = registerOutput<String?>('requestPath');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.timeoutSec = registerOutput<int?>('timeoutSec');
+    this.unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
   }
 }

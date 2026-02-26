@@ -38,16 +38,19 @@ class AttributeDefinition extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowedValues = Output.createUnknown<List<String>>();
-    this.attributeDefinitionId = Output.createUnknown<String>();
-    this.category = Output.createUnknown<String>();
-    this.consentDefaultValues = Output.createUnknown<List<String>>();
-    this.consentStoreId = Output.createUnknown<String>();
-    this.dataMappingDefaultValue = Output.createUnknown<String>();
-    this.datasetId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.allowedValues = registerOutput<List<String>>('allowedValues');
+    this.attributeDefinitionId =
+        registerOutput<String>('attributeDefinitionId');
+    this.category = registerOutput<String>('category');
+    this.consentDefaultValues =
+        registerOutput<List<String>>('consentDefaultValues');
+    this.consentStoreId = registerOutput<String>('consentStoreId');
+    this.dataMappingDefaultValue =
+        registerOutput<String>('dataMappingDefaultValue');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.description = registerOutput<String>('description');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

@@ -152,16 +152,17 @@ class DefaultVpcDhcpOptions extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.domainName = Output.createUnknown<String>();
-    this.domainNameServers = Output.createUnknown<String>();
-    this.ipv6AddressPreferredLeaseTime = Output.createUnknown<String>();
-    this.netbiosNameServers = Output.createUnknown<String>();
-    this.netbiosNodeType = Output.createUnknown<String>();
-    this.ntpServers = Output.createUnknown<String>();
-    this.ownerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.domainName = registerOutput<String>('domainName');
+    this.domainNameServers = registerOutput<String>('domainNameServers');
+    this.ipv6AddressPreferredLeaseTime =
+        registerOutput<String>('ipv6AddressPreferredLeaseTime');
+    this.netbiosNameServers = registerOutput<String>('netbiosNameServers');
+    this.netbiosNodeType = registerOutput<String>('netbiosNodeType');
+    this.ntpServers = registerOutput<String>('ntpServers');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -332,16 +332,17 @@ class BillingAccountBucketConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.billingAccount = Output.createUnknown<String>();
-    this.bucketId = Output.createUnknown<String>();
+    this.billingAccount = registerOutput<String>('billingAccount');
+    this.bucketId = registerOutput<String>('bucketId');
     this.cmekSettings =
-        Output.createUnknown<BillingAccountBucketConfigCmekSettings?>();
-    this.description = Output.createUnknown<String>();
+        registerOutput<BillingAccountBucketConfigCmekSettings?>('cmekSettings');
+    this.description = registerOutput<String>('description');
     this.indexConfigs =
-        Output.createUnknown<List<BillingAccountBucketConfigIndexConfig>>();
-    this.lifecycleState = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.retentionDays = Output.createUnknown<int?>();
+        registerOutput<List<BillingAccountBucketConfigIndexConfig>>(
+            'indexConfigs');
+    this.lifecycleState = registerOutput<String>('lifecycleState');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.retentionDays = registerOutput<int?>('retentionDays');
   }
 }

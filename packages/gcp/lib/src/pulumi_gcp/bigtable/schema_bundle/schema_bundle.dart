@@ -353,13 +353,13 @@ class SchemaBundle extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.ignoreWarnings = Output.createUnknown<bool?>();
-    this.instance = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.protoSchema = Output.createUnknown<SchemaBundleProtoSchema>();
-    this.schemaBundleId = Output.createUnknown<String>();
-    this.table = Output.createUnknown<String?>();
+    this.etag = registerOutput<String>('etag');
+    this.ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
+    this.instance = registerOutput<String?>('instance');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.protoSchema = registerOutput<SchemaBundleProtoSchema>('protoSchema');
+    this.schemaBundleId = registerOutput<String>('schemaBundleId');
+    this.table = registerOutput<String?>('table');
   }
 }

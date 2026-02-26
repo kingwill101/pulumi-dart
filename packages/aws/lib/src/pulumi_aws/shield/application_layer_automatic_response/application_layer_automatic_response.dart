@@ -193,9 +193,9 @@ class ApplicationLayerAutomaticResponse extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
+    this.action = registerOutput<String>('action');
+    this.resourceArn = registerOutput<String>('resourceArn');
     this.timeouts =
-        Output.createUnknown<ApplicationLayerAutomaticResponseTimeouts?>();
+        registerOutput<ApplicationLayerAutomaticResponseTimeouts?>('timeouts');
   }
 }

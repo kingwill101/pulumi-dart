@@ -50,19 +50,19 @@ class EventSubscription extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.connectionId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
+    this.connectionId = registerOutput<String>('connectionId');
+    this.createTime = registerOutput<String>('createTime');
     this.destinations =
-        Output.createUnknown<EventSubscriptionDestinationResponse>();
-    this.eventSubscriptionId = Output.createUnknown<String>();
-    this.eventTypeId = Output.createUnknown<String>();
-    this.jms = Output.createUnknown<JMSResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.status = Output.createUnknown<EventSubscriptionStatusResponse>();
-    this.subscriber = Output.createUnknown<String>();
-    this.subscriberLink = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<EventSubscriptionDestinationResponse>('destinations');
+    this.eventSubscriptionId = registerOutput<String>('eventSubscriptionId');
+    this.eventTypeId = registerOutput<String>('eventTypeId');
+    this.jms = registerOutput<JMSResponse>('jms');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.status = registerOutput<EventSubscriptionStatusResponse>('status');
+    this.subscriber = registerOutput<String>('subscriber');
+    this.subscriberLink = registerOutput<String>('subscriberLink');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

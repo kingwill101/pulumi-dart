@@ -69,16 +69,16 @@ class ProxyTarget extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dbClusterIdentifier = Output.createUnknown<String?>();
-    this.dbInstanceIdentifier = Output.createUnknown<String?>();
-    this.dbProxyName = Output.createUnknown<String>();
-    this.endpoint = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
-    this.rdsResourceId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.targetArn = Output.createUnknown<String>();
-    this.targetGroupName = Output.createUnknown<String>();
-    this.trackedClusterId = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+    this.dbClusterIdentifier = registerOutput<String?>('dbClusterIdentifier');
+    this.dbInstanceIdentifier = registerOutput<String?>('dbInstanceIdentifier');
+    this.dbProxyName = registerOutput<String>('dbProxyName');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.port = registerOutput<int>('port');
+    this.rdsResourceId = registerOutput<String>('rdsResourceId');
+    this.region = registerOutput<String>('region');
+    this.targetArn = registerOutput<String>('targetArn');
+    this.targetGroupName = registerOutput<String>('targetGroupName');
+    this.trackedClusterId = registerOutput<String>('trackedClusterId');
+    this.type = registerOutput<String>('type');
   }
 }

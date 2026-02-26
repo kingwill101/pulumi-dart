@@ -757,20 +757,23 @@ class TransferJob extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTime = Output.createUnknown<String>();
-    this.deletionTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.eventStream = Output.createUnknown<TransferJobEventStream?>();
-    this.lastModificationTime = Output.createUnknown<String>();
-    this.loggingConfig = Output.createUnknown<TransferJobLoggingConfig?>();
-    this.name = Output.createUnknown<String>();
+    this.creationTime = registerOutput<String>('creationTime');
+    this.deletionTime = registerOutput<String>('deletionTime');
+    this.description = registerOutput<String>('description');
+    this.eventStream = registerOutput<TransferJobEventStream?>('eventStream');
+    this.lastModificationTime = registerOutput<String>('lastModificationTime');
+    this.loggingConfig =
+        registerOutput<TransferJobLoggingConfig?>('loggingConfig');
+    this.name = registerOutput<String>('name');
     this.notificationConfig =
-        Output.createUnknown<TransferJobNotificationConfig?>();
-    this.project = Output.createUnknown<String>();
-    this.replicationSpec = Output.createUnknown<TransferJobReplicationSpec?>();
-    this.schedule = Output.createUnknown<TransferJobSchedule?>();
-    this.serviceAccount = Output.createUnknown<String?>();
-    this.status = Output.createUnknown<String?>();
-    this.transferSpec = Output.createUnknown<TransferJobTransferSpec?>();
+        registerOutput<TransferJobNotificationConfig?>('notificationConfig');
+    this.project = registerOutput<String>('project');
+    this.replicationSpec =
+        registerOutput<TransferJobReplicationSpec?>('replicationSpec');
+    this.schedule = registerOutput<TransferJobSchedule?>('schedule');
+    this.serviceAccount = registerOutput<String?>('serviceAccount');
+    this.status = registerOutput<String?>('status');
+    this.transferSpec =
+        registerOutput<TransferJobTransferSpec?>('transferSpec');
   }
 }

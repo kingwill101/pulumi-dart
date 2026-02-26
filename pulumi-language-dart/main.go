@@ -3453,14 +3453,6 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 		b.WriteString("import 'dart:convert';\n\n")
 	}
 
-	hasResourceOutputs := false
-	for _, token := range resourceTokens {
-		if len(spec.Resources[token].OutputProperties) > 0 {
-			hasResourceOutputs = true
-			break
-		}
-	}
-
 	if usesDeploymentModels {
 		b.WriteString("import 'package:pulumi/src/deployment/models.dart' as deployment_models;\n\n")
 	}
@@ -3546,14 +3538,6 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 	if needsEncodeMapHelper {
 		b.WriteString(`Map<String, U> _encodeMapValues<T, U>(Map<String, T> value, U Function(T value) encoder) {
   return value.map((key, item) => MapEntry(key, encoder(item)));
-}
-
-`)
-	}
-
-	if hasResourceOutputs {
-		b.WriteString(`Output<T> _unknownOutput<T>() {
-  return Output.createUnknown<T>();
 }
 
 `)
@@ -3711,9 +3695,10 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 				for _, property := range resource.OutputProperties {
 					fmt.Fprintf(
 						&b,
-						"    this.%s = _unknownOutput<%s>();\n",
+						"    this.%s = registerOutput<%s>('%s');\n",
 						property.FieldName,
 						resourceOutputValueType(property),
+						property.Name,
 					)
 				}
 				b.WriteString("  }\n}\n\n")
@@ -3760,9 +3745,10 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 		for _, property := range resource.OutputProperties {
 			fmt.Fprintf(
 				&b,
-				"    this.%s = _unknownOutput<%s>();\n",
+				"    this.%s = registerOutput<%s>('%s');\n",
 				property.FieldName,
 				resourceOutputValueType(property),
+				property.Name,
 			)
 		}
 		b.WriteString("  }\n}\n\n")
@@ -4051,9 +4037,10 @@ func generatedResourceFile(
 			for _, property := range resource.OutputProperties {
 				fmt.Fprintf(
 					&b,
-					"    this.%s = Output.createUnknown<%s>();\n",
+					"    this.%s = registerOutput<%s>('%s');\n",
 					property.FieldName,
 					resourceOutputValueType(property),
+					property.Name,
 				)
 			}
 			b.WriteString("  }\n}\n")
@@ -4106,9 +4093,10 @@ func generatedResourceFile(
 	for _, property := range resource.OutputProperties {
 		fmt.Fprintf(
 			&b,
-			"    this.%s = Output.createUnknown<%s>();\n",
+			"    this.%s = registerOutput<%s>('%s');\n",
 			property.FieldName,
 			resourceOutputValueType(property),
+			property.Name,
 		)
 	}
 	b.WriteString("  }\n}\n")

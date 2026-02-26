@@ -56,24 +56,27 @@ class ResourcePolicy3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
     this.diskConsistencyGroupPolicy =
-        Output.createUnknown<Map<String, dynamic>>();
+        registerOutput<Map<String, dynamic>>('diskConsistencyGroupPolicy');
     this.groupPlacementPolicy =
-        Output.createUnknown<ResourcePolicyGroupPlacementPolicyResponse3>();
+        registerOutput<ResourcePolicyGroupPlacementPolicyResponse3>(
+            'groupPlacementPolicy');
     this.instanceSchedulePolicy =
-        Output.createUnknown<ResourcePolicyInstanceSchedulePolicyResponse3>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
+        registerOutput<ResourcePolicyInstanceSchedulePolicyResponse3>(
+            'instanceSchedulePolicy');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
     this.resourceStatus =
-        Output.createUnknown<ResourcePolicyResourceStatusResponse3>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<ResourcePolicyResourceStatusResponse3>('resourceStatus');
+    this.selfLink = registerOutput<String>('selfLink');
     this.snapshotSchedulePolicy =
-        Output.createUnknown<ResourcePolicySnapshotSchedulePolicyResponse3>();
-    this.status = Output.createUnknown<String>();
+        registerOutput<ResourcePolicySnapshotSchedulePolicyResponse3>(
+            'snapshotSchedulePolicy');
+    this.status = registerOutput<String>('status');
   }
 }

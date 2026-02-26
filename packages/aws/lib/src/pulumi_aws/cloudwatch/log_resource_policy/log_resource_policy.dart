@@ -450,8 +450,8 @@ class LogResourcePolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.policyDocument = Output.createUnknown<String>();
-    this.policyName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.policyDocument = registerOutput<String>('policyDocument');
+    this.policyName = registerOutput<String>('policyName');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -1441,25 +1441,30 @@ class SecurityProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
     this.customInterceptProfile =
-        Output.createUnknown<SecurityProfileCustomInterceptProfile?>();
+        registerOutput<SecurityProfileCustomInterceptProfile?>(
+            'customInterceptProfile');
     this.customMirroringProfile =
-        Output.createUnknown<SecurityProfileCustomMirroringProfile?>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String?>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<SecurityProfileCustomMirroringProfile?>(
+            'customMirroringProfile');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String?>('parent');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.selfLink = registerOutput<String>('selfLink');
     this.threatPreventionProfile =
-        Output.createUnknown<SecurityProfileThreatPreventionProfile?>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<SecurityProfileThreatPreventionProfile?>(
+            'threatPreventionProfile');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
     this.urlFilteringProfile =
-        Output.createUnknown<SecurityProfileUrlFilteringProfile?>();
+        registerOutput<SecurityProfileUrlFilteringProfile?>(
+            'urlFilteringProfile');
   }
 }

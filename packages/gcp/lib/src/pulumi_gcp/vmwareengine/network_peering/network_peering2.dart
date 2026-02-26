@@ -489,21 +489,24 @@ class NetworkPeering2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.exportCustomRoutes = Output.createUnknown<bool?>();
-    this.exportCustomRoutesWithPublicIp = Output.createUnknown<bool?>();
-    this.importCustomRoutes = Output.createUnknown<bool?>();
-    this.importCustomRoutesWithPublicIp = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.peerNetwork = Output.createUnknown<String>();
-    this.peerNetworkType = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.stateDetails = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vmwareEngineNetwork = Output.createUnknown<String>();
-    this.vmwareEngineNetworkCanonical = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.exportCustomRoutes = registerOutput<bool?>('exportCustomRoutes');
+    this.exportCustomRoutesWithPublicIp =
+        registerOutput<bool?>('exportCustomRoutesWithPublicIp');
+    this.importCustomRoutes = registerOutput<bool?>('importCustomRoutes');
+    this.importCustomRoutesWithPublicIp =
+        registerOutput<bool?>('importCustomRoutesWithPublicIp');
+    this.name = registerOutput<String>('name');
+    this.peerNetwork = registerOutput<String>('peerNetwork');
+    this.peerNetworkType = registerOutput<String>('peerNetworkType');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.stateDetails = registerOutput<String>('stateDetails');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vmwareEngineNetwork = registerOutput<String>('vmwareEngineNetwork');
+    this.vmwareEngineNetworkCanonical =
+        registerOutput<String>('vmwareEngineNetworkCanonical');
   }
 }

@@ -181,8 +181,8 @@ class DelegationSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.nameServers = Output.createUnknown<List<String>>();
-    this.referenceName = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.nameServers = registerOutput<List<String>>('nameServers');
+    this.referenceName = registerOutput<String?>('referenceName');
   }
 }

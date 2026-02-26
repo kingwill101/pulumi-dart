@@ -55,23 +55,29 @@ class Flow extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.advancedSettings = Output.createUnknown<
-        GoogleCloudDialogflowCxV3AdvancedSettingsResponse>();
-    this.agentId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.eventHandlers = Output.createUnknown<
-        List<GoogleCloudDialogflowCxV3EventHandlerResponse>>();
-    this.knowledgeConnectorSettings = Output.createUnknown<
-        GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse>();
-    this.languageCode = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.advancedSettings =
+        registerOutput<GoogleCloudDialogflowCxV3AdvancedSettingsResponse>(
+            'advancedSettings');
+    this.agentId = registerOutput<String>('agentId');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.eventHandlers =
+        registerOutput<List<GoogleCloudDialogflowCxV3EventHandlerResponse>>(
+            'eventHandlers');
+    this.knowledgeConnectorSettings = registerOutput<
+            GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse>(
+        'knowledgeConnectorSettings');
+    this.languageCode = registerOutput<String?>('languageCode');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.nluSettings =
-        Output.createUnknown<GoogleCloudDialogflowCxV3NluSettingsResponse>();
-    this.project = Output.createUnknown<String>();
-    this.transitionRouteGroups = Output.createUnknown<List<String>>();
-    this.transitionRoutes = Output.createUnknown<
-        List<GoogleCloudDialogflowCxV3TransitionRouteResponse>>();
+        registerOutput<GoogleCloudDialogflowCxV3NluSettingsResponse>(
+            'nluSettings');
+    this.project = registerOutput<String>('project');
+    this.transitionRouteGroups =
+        registerOutput<List<String>>('transitionRouteGroups');
+    this.transitionRoutes =
+        registerOutput<List<GoogleCloudDialogflowCxV3TransitionRouteResponse>>(
+            'transitionRoutes');
   }
 }

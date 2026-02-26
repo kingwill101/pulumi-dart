@@ -848,14 +848,15 @@ class RegionNetworkEndpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clientDestinationPort = Output.createUnknown<int?>();
-    this.fqdn = Output.createUnknown<String?>();
-    this.instance = Output.createUnknown<String?>();
-    this.ipAddress = Output.createUnknown<String?>();
-    this.networkEndpointId = Output.createUnknown<int>();
-    this.port = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.regionNetworkEndpointGroup = Output.createUnknown<String>();
+    this.clientDestinationPort = registerOutput<int?>('clientDestinationPort');
+    this.fqdn = registerOutput<String?>('fqdn');
+    this.instance = registerOutput<String?>('instance');
+    this.ipAddress = registerOutput<String?>('ipAddress');
+    this.networkEndpointId = registerOutput<int>('networkEndpointId');
+    this.port = registerOutput<int>('port');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.regionNetworkEndpointGroup =
+        registerOutput<String>('regionNetworkEndpointGroup');
   }
 }

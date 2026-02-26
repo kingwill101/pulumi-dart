@@ -150,11 +150,13 @@ class RouteResponse extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiId = Output.createUnknown<String>();
-    this.modelSelectionExpression = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.responseModels = Output.createUnknown<Map<String, String>?>();
-    this.routeId = Output.createUnknown<String>();
-    this.routeResponseKey = Output.createUnknown<String>();
+    this.apiId = registerOutput<String>('apiId');
+    this.modelSelectionExpression =
+        registerOutput<String?>('modelSelectionExpression');
+    this.region = registerOutput<String>('region');
+    this.responseModels =
+        registerOutput<Map<String, String>?>('responseModels');
+    this.routeId = registerOutput<String>('routeId');
+    this.routeResponseKey = registerOutput<String>('routeResponseKey');
   }
 }

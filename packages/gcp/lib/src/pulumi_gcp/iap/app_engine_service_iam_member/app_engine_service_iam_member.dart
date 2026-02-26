@@ -1938,13 +1938,13 @@ class AppEngineServiceIamMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appId = Output.createUnknown<String>();
+    this.appId = registerOutput<String>('appId');
     this.condition =
-        Output.createUnknown<AppEngineServiceIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.service = Output.createUnknown<String>();
+        registerOutput<AppEngineServiceIamMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.member = registerOutput<String>('member');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
+    this.service = registerOutput<String>('service');
   }
 }

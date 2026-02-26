@@ -163,11 +163,11 @@ class Namespace3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createdAt = Output.createUnknown<String>();
-    this.createdBy = Output.createUnknown<String>();
-    this.namespace = Output.createUnknown<String>();
-    this.ownerAccountId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tableBucketArn = Output.createUnknown<String>();
+    this.createdAt = registerOutput<String>('createdAt');
+    this.createdBy = registerOutput<String>('createdBy');
+    this.namespace = registerOutput<String>('namespace');
+    this.ownerAccountId = registerOutput<String>('ownerAccountId');
+    this.region = registerOutput<String>('region');
+    this.tableBucketArn = registerOutput<String>('tableBucketArn');
   }
 }

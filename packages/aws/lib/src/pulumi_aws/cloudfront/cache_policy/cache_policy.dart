@@ -306,14 +306,15 @@ class CachePolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.comment = Output.createUnknown<String?>();
-    this.defaultTtl = Output.createUnknown<int?>();
-    this.etag = Output.createUnknown<String>();
-    this.maxTtl = Output.createUnknown<int?>();
-    this.minTtl = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.parametersInCacheKeyAndForwardedToOrigin = Output.createUnknown<
-        CachePolicyParametersInCacheKeyAndForwardedToOrigin>();
+    this.arn = registerOutput<String>('arn');
+    this.comment = registerOutput<String?>('comment');
+    this.defaultTtl = registerOutput<int?>('defaultTtl');
+    this.etag = registerOutput<String>('etag');
+    this.maxTtl = registerOutput<int?>('maxTtl');
+    this.minTtl = registerOutput<int?>('minTtl');
+    this.name = registerOutput<String>('name');
+    this.parametersInCacheKeyAndForwardedToOrigin =
+        registerOutput<CachePolicyParametersInCacheKeyAndForwardedToOrigin>(
+            'parametersInCacheKeyAndForwardedToOrigin');
   }
 }

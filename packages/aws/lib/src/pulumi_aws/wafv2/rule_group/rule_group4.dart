@@ -2069,20 +2069,22 @@ class RuleGroup4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.capacity = Output.createUnknown<int>();
+    this.arn = registerOutput<String>('arn');
+    this.capacity = registerOutput<int>('capacity');
     this.customResponseBodies =
-        Output.createUnknown<List<RuleGroupCustomResponseBody>?>();
-    this.description = Output.createUnknown<String?>();
-    this.lockToken = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.rules = Output.createUnknown<List<RuleGroupRule>?>();
-    this.rulesJson = Output.createUnknown<String?>();
-    this.scope = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.visibilityConfig = Output.createUnknown<RuleGroupVisibilityConfig>();
+        registerOutput<List<RuleGroupCustomResponseBody>?>(
+            'customResponseBodies');
+    this.description = registerOutput<String?>('description');
+    this.lockToken = registerOutput<String>('lockToken');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.region = registerOutput<String>('region');
+    this.rules = registerOutput<List<RuleGroupRule>?>('rules');
+    this.rulesJson = registerOutput<String?>('rulesJson');
+    this.scope = registerOutput<String>('scope');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.visibilityConfig =
+        registerOutput<RuleGroupVisibilityConfig>('visibilityConfig');
   }
 }

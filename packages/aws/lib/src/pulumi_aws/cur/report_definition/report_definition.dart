@@ -238,19 +238,21 @@ class ReportDefinition extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.additionalArtifacts = Output.createUnknown<List<String>?>();
-    this.additionalSchemaElements = Output.createUnknown<List<String>>();
-    this.arn = Output.createUnknown<String>();
-    this.compression = Output.createUnknown<String>();
-    this.format = Output.createUnknown<String>();
-    this.refreshClosedReports = Output.createUnknown<bool?>();
-    this.reportName = Output.createUnknown<String>();
-    this.reportVersioning = Output.createUnknown<String?>();
-    this.s3Bucket = Output.createUnknown<String>();
-    this.s3Prefix = Output.createUnknown<String>();
-    this.s3Region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeUnit = Output.createUnknown<String>();
+    this.additionalArtifacts =
+        registerOutput<List<String>?>('additionalArtifacts');
+    this.additionalSchemaElements =
+        registerOutput<List<String>>('additionalSchemaElements');
+    this.arn = registerOutput<String>('arn');
+    this.compression = registerOutput<String>('compression');
+    this.format = registerOutput<String>('format');
+    this.refreshClosedReports = registerOutput<bool?>('refreshClosedReports');
+    this.reportName = registerOutput<String>('reportName');
+    this.reportVersioning = registerOutput<String?>('reportVersioning');
+    this.s3Bucket = registerOutput<String>('s3Bucket');
+    this.s3Prefix = registerOutput<String>('s3Prefix');
+    this.s3Region = registerOutput<String>('s3Region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeUnit = registerOutput<String>('timeUnit');
   }
 }

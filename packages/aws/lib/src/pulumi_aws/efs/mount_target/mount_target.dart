@@ -224,19 +224,19 @@ class MountTarget extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.availabilityZoneId = Output.createUnknown<String>();
-    this.availabilityZoneName = Output.createUnknown<String>();
-    this.dnsName = Output.createUnknown<String>();
-    this.fileSystemArn = Output.createUnknown<String>();
-    this.fileSystemId = Output.createUnknown<String>();
-    this.ipAddress = Output.createUnknown<String>();
-    this.ipAddressType = Output.createUnknown<String>();
-    this.ipv6Address = Output.createUnknown<String>();
-    this.mountTargetDnsName = Output.createUnknown<String>();
-    this.networkInterfaceId = Output.createUnknown<String>();
-    this.ownerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroups = Output.createUnknown<List<String>>();
-    this.subnetId = Output.createUnknown<String>();
+    this.availabilityZoneId = registerOutput<String>('availabilityZoneId');
+    this.availabilityZoneName = registerOutput<String>('availabilityZoneName');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.fileSystemArn = registerOutput<String>('fileSystemArn');
+    this.fileSystemId = registerOutput<String>('fileSystemId');
+    this.ipAddress = registerOutput<String>('ipAddress');
+    this.ipAddressType = registerOutput<String>('ipAddressType');
+    this.ipv6Address = registerOutput<String>('ipv6Address');
+    this.mountTargetDnsName = registerOutput<String>('mountTargetDnsName');
+    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.region = registerOutput<String>('region');
+    this.securityGroups = registerOutput<List<String>>('securityGroups');
+    this.subnetId = registerOutput<String>('subnetId');
   }
 }

@@ -329,18 +329,18 @@ class Application7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.currentVersion = Output.createUnknown<int>();
-    this.definition = Output.createUnknown<ApplicationDefinition>();
-    this.description = Output.createUnknown<String?>();
-    this.engineType = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ApplicationTimeouts?>();
+    this.applicationId = registerOutput<String>('applicationId');
+    this.arn = registerOutput<String>('arn');
+    this.currentVersion = registerOutput<int>('currentVersion');
+    this.definition = registerOutput<ApplicationDefinition>('definition');
+    this.description = registerOutput<String?>('description');
+    this.engineType = registerOutput<String>('engineType');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String?>('roleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ApplicationTimeouts?>('timeouts');
   }
 }

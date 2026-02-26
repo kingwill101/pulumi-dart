@@ -145,11 +145,11 @@ class TemplateAlias extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aliasName = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.awsAccountId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.templateId = Output.createUnknown<String>();
-    this.templateVersionNumber = Output.createUnknown<int>();
+    this.aliasName = registerOutput<String>('aliasName');
+    this.arn = registerOutput<String>('arn');
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.region = registerOutput<String>('region');
+    this.templateId = registerOutput<String>('templateId');
+    this.templateVersionNumber = registerOutput<int>('templateVersionNumber');
   }
 }

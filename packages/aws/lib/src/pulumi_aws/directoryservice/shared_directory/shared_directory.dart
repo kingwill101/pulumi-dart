@@ -205,11 +205,11 @@ class SharedDirectory extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.directoryId = Output.createUnknown<String>();
-    this.method = Output.createUnknown<String?>();
-    this.notes = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.sharedDirectoryId = Output.createUnknown<String>();
-    this.target = Output.createUnknown<SharedDirectoryTarget>();
+    this.directoryId = registerOutput<String>('directoryId');
+    this.method = registerOutput<String?>('method');
+    this.notes = registerOutput<String?>('notes');
+    this.region = registerOutput<String>('region');
+    this.sharedDirectoryId = registerOutput<String>('sharedDirectoryId');
+    this.target = registerOutput<SharedDirectoryTarget>('target');
   }
 }

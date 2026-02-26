@@ -46,15 +46,16 @@ class Job2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.configuration = Output.createUnknown<JobConfigurationResponse>();
-    this.etag = Output.createUnknown<String>();
-    this.jobCreationReason = Output.createUnknown<dynamic>();
-    this.jobReference = Output.createUnknown<JobReferenceResponse>();
-    this.kind = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.statistics = Output.createUnknown<JobStatisticsResponse>();
-    this.status = Output.createUnknown<JobStatusResponse2>();
-    this.userEmail = Output.createUnknown<String>();
+    this.configuration =
+        registerOutput<JobConfigurationResponse>('configuration');
+    this.etag = registerOutput<String>('etag');
+    this.jobCreationReason = registerOutput<dynamic>('jobCreationReason');
+    this.jobReference = registerOutput<JobReferenceResponse>('jobReference');
+    this.kind = registerOutput<String>('kind');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.statistics = registerOutput<JobStatisticsResponse>('statistics');
+    this.status = registerOutput<JobStatusResponse2>('status');
+    this.userEmail = registerOutput<String>('userEmail');
   }
 }

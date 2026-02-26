@@ -109,18 +109,20 @@ class AuthzPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.customProvider = Output.createUnknown<AuthzPolicyCustomProvider?>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.httpRules = Output.createUnknown<List<AuthzPolicyHttpRule>?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.target = Output.createUnknown<AuthzPolicyTarget>();
-    this.updateTime = Output.createUnknown<String>();
+    this.action = registerOutput<String>('action');
+    this.createTime = registerOutput<String>('createTime');
+    this.customProvider =
+        registerOutput<AuthzPolicyCustomProvider?>('customProvider');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.httpRules = registerOutput<List<AuthzPolicyHttpRule>?>('httpRules');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.target = registerOutput<AuthzPolicyTarget>('target');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

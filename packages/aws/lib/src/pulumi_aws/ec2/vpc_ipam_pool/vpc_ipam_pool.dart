@@ -832,27 +832,32 @@ class VpcIpamPool extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.addressFamily = Output.createUnknown<String>();
-    this.allocationDefaultNetmaskLength = Output.createUnknown<int?>();
-    this.allocationMaxNetmaskLength = Output.createUnknown<int?>();
-    this.allocationMinNetmaskLength = Output.createUnknown<int?>();
-    this.allocationResourceTags = Output.createUnknown<Map<String, String>?>();
-    this.arn = Output.createUnknown<String>();
-    this.autoImport = Output.createUnknown<bool?>();
-    this.awsService = Output.createUnknown<String?>();
-    this.cascade = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String?>();
-    this.ipamScopeId = Output.createUnknown<String>();
-    this.ipamScopeType = Output.createUnknown<String>();
-    this.locale = Output.createUnknown<String?>();
-    this.poolDepth = Output.createUnknown<int>();
-    this.publicIpSource = Output.createUnknown<String?>();
-    this.publiclyAdvertisable = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.sourceIpamPoolId = Output.createUnknown<String?>();
-    this.sourceResource = Output.createUnknown<VpcIpamPoolSourceResource?>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.addressFamily = registerOutput<String>('addressFamily');
+    this.allocationDefaultNetmaskLength =
+        registerOutput<int?>('allocationDefaultNetmaskLength');
+    this.allocationMaxNetmaskLength =
+        registerOutput<int?>('allocationMaxNetmaskLength');
+    this.allocationMinNetmaskLength =
+        registerOutput<int?>('allocationMinNetmaskLength');
+    this.allocationResourceTags =
+        registerOutput<Map<String, String>?>('allocationResourceTags');
+    this.arn = registerOutput<String>('arn');
+    this.autoImport = registerOutput<bool?>('autoImport');
+    this.awsService = registerOutput<String?>('awsService');
+    this.cascade = registerOutput<bool?>('cascade');
+    this.description = registerOutput<String?>('description');
+    this.ipamScopeId = registerOutput<String>('ipamScopeId');
+    this.ipamScopeType = registerOutput<String>('ipamScopeType');
+    this.locale = registerOutput<String?>('locale');
+    this.poolDepth = registerOutput<int>('poolDepth');
+    this.publicIpSource = registerOutput<String?>('publicIpSource');
+    this.publiclyAdvertisable = registerOutput<bool?>('publiclyAdvertisable');
+    this.region = registerOutput<String>('region');
+    this.sourceIpamPoolId = registerOutput<String?>('sourceIpamPoolId');
+    this.sourceResource =
+        registerOutput<VpcIpamPoolSourceResource?>('sourceResource');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -3497,19 +3497,23 @@ class CxFlow extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.advancedSettings = Output.createUnknown<CxFlowAdvancedSettings?>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.eventHandlers = Output.createUnknown<List<CxFlowEventHandler>>();
-    this.isDefaultStartFlow = Output.createUnknown<bool?>();
+    this.advancedSettings =
+        registerOutput<CxFlowAdvancedSettings?>('advancedSettings');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.eventHandlers =
+        registerOutput<List<CxFlowEventHandler>>('eventHandlers');
+    this.isDefaultStartFlow = registerOutput<bool?>('isDefaultStartFlow');
     this.knowledgeConnectorSettings =
-        Output.createUnknown<CxFlowKnowledgeConnectorSettings?>();
-    this.languageCode = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.nluSettings = Output.createUnknown<CxFlowNluSettings?>();
-    this.parent = Output.createUnknown<String?>();
-    this.transitionRouteGroups = Output.createUnknown<List<String>?>();
+        registerOutput<CxFlowKnowledgeConnectorSettings?>(
+            'knowledgeConnectorSettings');
+    this.languageCode = registerOutput<String?>('languageCode');
+    this.name = registerOutput<String>('name');
+    this.nluSettings = registerOutput<CxFlowNluSettings?>('nluSettings');
+    this.parent = registerOutput<String?>('parent');
+    this.transitionRouteGroups =
+        registerOutput<List<String>?>('transitionRouteGroups');
     this.transitionRoutes =
-        Output.createUnknown<List<CxFlowTransitionRoute>?>();
+        registerOutput<List<CxFlowTransitionRoute>?>('transitionRoutes');
   }
 }

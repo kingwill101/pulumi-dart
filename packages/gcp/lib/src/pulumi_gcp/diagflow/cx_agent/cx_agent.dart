@@ -913,39 +913,48 @@ class CxAgent extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.advancedSettings = Output.createUnknown<CxAgentAdvancedSettings>();
+    this.advancedSettings =
+        registerOutput<CxAgentAdvancedSettings>('advancedSettings');
     this.answerFeedbackSettings =
-        Output.createUnknown<CxAgentAnswerFeedbackSettings?>();
-    this.avatarUri = Output.createUnknown<String?>();
+        registerOutput<CxAgentAnswerFeedbackSettings?>(
+            'answerFeedbackSettings');
+    this.avatarUri = registerOutput<String?>('avatarUri');
     this.clientCertificateSettings =
-        Output.createUnknown<CxAgentClientCertificateSettings?>();
-    this.defaultLanguageCode = Output.createUnknown<String>();
-    this.deleteChatEngineOnDestroy = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.enableMultiLanguageTraining = Output.createUnknown<bool?>();
-    this.enableSpellCorrection = Output.createUnknown<bool?>();
-    this.enableStackdriverLogging = Output.createUnknown<bool?>();
+        registerOutput<CxAgentClientCertificateSettings?>(
+            'clientCertificateSettings');
+    this.defaultLanguageCode = registerOutput<String>('defaultLanguageCode');
+    this.deleteChatEngineOnDestroy =
+        registerOutput<bool?>('deleteChatEngineOnDestroy');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.enableMultiLanguageTraining =
+        registerOutput<bool?>('enableMultiLanguageTraining');
+    this.enableSpellCorrection = registerOutput<bool?>('enableSpellCorrection');
+    this.enableStackdriverLogging =
+        registerOutput<bool?>('enableStackdriverLogging');
     this.genAppBuilderSettings =
-        Output.createUnknown<CxAgentGenAppBuilderSettings>();
+        registerOutput<CxAgentGenAppBuilderSettings>('genAppBuilderSettings');
     this.gitIntegrationSettings =
-        Output.createUnknown<CxAgentGitIntegrationSettings?>();
-    this.location = Output.createUnknown<String>();
-    this.locked = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<CxAgentGitIntegrationSettings?>(
+            'gitIntegrationSettings');
+    this.location = registerOutput<String>('location');
+    this.locked = registerOutput<bool?>('locked');
+    this.name = registerOutput<String>('name');
     this.personalizationSettings =
-        Output.createUnknown<CxAgentPersonalizationSettings?>();
-    this.project = Output.createUnknown<String>();
-    this.satisfiesPzi = Output.createUnknown<bool>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.securitySettings = Output.createUnknown<String?>();
+        registerOutput<CxAgentPersonalizationSettings?>(
+            'personalizationSettings');
+    this.project = registerOutput<String>('project');
+    this.satisfiesPzi = registerOutput<bool>('satisfiesPzi');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.securitySettings = registerOutput<String?>('securitySettings');
     this.speechToTextSettings =
-        Output.createUnknown<CxAgentSpeechToTextSettings?>();
-    this.startFlow = Output.createUnknown<String>();
-    this.startPlaybook = Output.createUnknown<String?>();
-    this.supportedLanguageCodes = Output.createUnknown<List<String>?>();
+        registerOutput<CxAgentSpeechToTextSettings?>('speechToTextSettings');
+    this.startFlow = registerOutput<String>('startFlow');
+    this.startPlaybook = registerOutput<String?>('startPlaybook');
+    this.supportedLanguageCodes =
+        registerOutput<List<String>?>('supportedLanguageCodes');
     this.textToSpeechSettings =
-        Output.createUnknown<CxAgentTextToSpeechSettings?>();
-    this.timeZone = Output.createUnknown<String>();
+        registerOutput<CxAgentTextToSpeechSettings?>('textToSpeechSettings');
+    this.timeZone = registerOutput<String>('timeZone');
   }
 }

@@ -679,24 +679,29 @@ class UserSettings extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.additionalEncryptionContext =
-        Output.createUnknown<Map<String, String>?>();
-    this.associatedPortalArns = Output.createUnknown<List<String>>();
+        registerOutput<Map<String, String>?>('additionalEncryptionContext');
+    this.associatedPortalArns =
+        registerOutput<List<String>>('associatedPortalArns');
     this.cookieSynchronizationConfiguration =
-        Output.createUnknown<UserSettingsCookieSynchronizationConfiguration?>();
-    this.copyAllowed = Output.createUnknown<String>();
-    this.customerManagedKey = Output.createUnknown<String?>();
-    this.deepLinkAllowed = Output.createUnknown<String>();
-    this.disconnectTimeoutInMinutes = Output.createUnknown<int?>();
-    this.downloadAllowed = Output.createUnknown<String>();
-    this.idleDisconnectTimeoutInMinutes = Output.createUnknown<int?>();
-    this.pasteAllowed = Output.createUnknown<String>();
-    this.printAllowed = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<UserSettingsCookieSynchronizationConfiguration?>(
+            'cookieSynchronizationConfiguration');
+    this.copyAllowed = registerOutput<String>('copyAllowed');
+    this.customerManagedKey = registerOutput<String?>('customerManagedKey');
+    this.deepLinkAllowed = registerOutput<String>('deepLinkAllowed');
+    this.disconnectTimeoutInMinutes =
+        registerOutput<int?>('disconnectTimeoutInMinutes');
+    this.downloadAllowed = registerOutput<String>('downloadAllowed');
+    this.idleDisconnectTimeoutInMinutes =
+        registerOutput<int?>('idleDisconnectTimeoutInMinutes');
+    this.pasteAllowed = registerOutput<String>('pasteAllowed');
+    this.printAllowed = registerOutput<String>('printAllowed');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.toolbarConfiguration =
-        Output.createUnknown<UserSettingsToolbarConfiguration?>();
-    this.uploadAllowed = Output.createUnknown<String>();
-    this.userSettingsArn = Output.createUnknown<String>();
+        registerOutput<UserSettingsToolbarConfiguration?>(
+            'toolbarConfiguration');
+    this.uploadAllowed = registerOutput<String>('uploadAllowed');
+    this.userSettingsArn = registerOutput<String>('userSettingsArn');
   }
 }

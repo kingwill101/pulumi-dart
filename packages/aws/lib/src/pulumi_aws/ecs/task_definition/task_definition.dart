@@ -1712,33 +1712,35 @@ class TaskDefinition extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.arnWithoutRevision = Output.createUnknown<String>();
-    this.containerDefinitions = Output.createUnknown<String>();
-    this.cpu = Output.createUnknown<String?>();
-    this.enableFaultInjection = Output.createUnknown<bool>();
+    this.arn = registerOutput<String>('arn');
+    this.arnWithoutRevision = registerOutput<String>('arnWithoutRevision');
+    this.containerDefinitions = registerOutput<String>('containerDefinitions');
+    this.cpu = registerOutput<String?>('cpu');
+    this.enableFaultInjection = registerOutput<bool>('enableFaultInjection');
     this.ephemeralStorage =
-        Output.createUnknown<TaskDefinitionEphemeralStorage?>();
-    this.executionRoleArn = Output.createUnknown<String?>();
-    this.family = Output.createUnknown<String>();
-    this.ipcMode = Output.createUnknown<String?>();
-    this.memory = Output.createUnknown<String?>();
-    this.networkMode = Output.createUnknown<String>();
-    this.pidMode = Output.createUnknown<String?>();
+        registerOutput<TaskDefinitionEphemeralStorage?>('ephemeralStorage');
+    this.executionRoleArn = registerOutput<String?>('executionRoleArn');
+    this.family = registerOutput<String>('family');
+    this.ipcMode = registerOutput<String?>('ipcMode');
+    this.memory = registerOutput<String?>('memory');
+    this.networkMode = registerOutput<String>('networkMode');
+    this.pidMode = registerOutput<String?>('pidMode');
     this.placementConstraints =
-        Output.createUnknown<List<TaskDefinitionPlacementConstraint>?>();
+        registerOutput<List<TaskDefinitionPlacementConstraint>?>(
+            'placementConstraints');
     this.proxyConfiguration =
-        Output.createUnknown<TaskDefinitionProxyConfiguration?>();
-    this.region = Output.createUnknown<String>();
-    this.requiresCompatibilities = Output.createUnknown<List<String>?>();
-    this.revision = Output.createUnknown<int>();
+        registerOutput<TaskDefinitionProxyConfiguration?>('proxyConfiguration');
+    this.region = registerOutput<String>('region');
+    this.requiresCompatibilities =
+        registerOutput<List<String>?>('requiresCompatibilities');
+    this.revision = registerOutput<int>('revision');
     this.runtimePlatform =
-        Output.createUnknown<TaskDefinitionRuntimePlatform?>();
-    this.skipDestroy = Output.createUnknown<bool?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.taskRoleArn = Output.createUnknown<String?>();
-    this.trackLatest = Output.createUnknown<bool?>();
-    this.volumes = Output.createUnknown<List<TaskDefinitionVolume>?>();
+        registerOutput<TaskDefinitionRuntimePlatform?>('runtimePlatform');
+    this.skipDestroy = registerOutput<bool?>('skipDestroy');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.taskRoleArn = registerOutput<String?>('taskRoleArn');
+    this.trackLatest = registerOutput<bool?>('trackLatest');
+    this.volumes = registerOutput<List<TaskDefinitionVolume>?>('volumes');
   }
 }

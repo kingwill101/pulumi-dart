@@ -698,23 +698,23 @@ class MLTransform extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.glueVersion = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.glueVersion = registerOutput<String>('glueVersion');
     this.inputRecordTables =
-        Output.createUnknown<List<MLTransformInputRecordTable>>();
-    this.labelCount = Output.createUnknown<int>();
-    this.maxCapacity = Output.createUnknown<double>();
-    this.maxRetries = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.numberOfWorkers = Output.createUnknown<int?>();
-    this.parameters = Output.createUnknown<MLTransformParameters>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.schemas = Output.createUnknown<List<MLTransformSchema>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeout = Output.createUnknown<int?>();
-    this.workerType = Output.createUnknown<String?>();
+        registerOutput<List<MLTransformInputRecordTable>>('inputRecordTables');
+    this.labelCount = registerOutput<int>('labelCount');
+    this.maxCapacity = registerOutput<double>('maxCapacity');
+    this.maxRetries = registerOutput<int?>('maxRetries');
+    this.name = registerOutput<String>('name');
+    this.numberOfWorkers = registerOutput<int?>('numberOfWorkers');
+    this.parameters = registerOutput<MLTransformParameters>('parameters');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.schemas = registerOutput<List<MLTransformSchema>>('schemas');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeout = registerOutput<int?>('timeout');
+    this.workerType = registerOutput<String?>('workerType');
   }
 }

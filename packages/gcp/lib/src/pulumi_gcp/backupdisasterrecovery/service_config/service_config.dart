@@ -131,8 +131,8 @@ class ServiceConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String>();
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.resourceType = registerOutput<String>('resourceType');
   }
 }

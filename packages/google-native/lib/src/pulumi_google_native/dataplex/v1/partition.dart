@@ -29,13 +29,13 @@ class Partition extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.entityId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.lakeId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.values = Output.createUnknown<List<String>>();
-    this.zone = Output.createUnknown<String>();
+    this.entityId = registerOutput<String>('entityId');
+    this.etag = registerOutput<String>('etag');
+    this.lakeId = registerOutput<String>('lakeId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.values = registerOutput<List<String>>('values');
+    this.zone = registerOutput<String>('zone');
   }
 }

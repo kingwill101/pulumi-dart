@@ -287,16 +287,17 @@ class RouteServer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.amazonSideAsn = Output.createUnknown<int>();
-    this.arn = Output.createUnknown<String>();
-    this.persistRoutes = Output.createUnknown<String>();
-    this.persistRoutesDuration = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
-    this.routeServerId = Output.createUnknown<String>();
-    this.snsNotificationsEnabled = Output.createUnknown<bool>();
-    this.snsTopicArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<RouteServerTimeouts?>();
+    this.amazonSideAsn = registerOutput<int>('amazonSideAsn');
+    this.arn = registerOutput<String>('arn');
+    this.persistRoutes = registerOutput<String>('persistRoutes');
+    this.persistRoutesDuration = registerOutput<int?>('persistRoutesDuration');
+    this.region = registerOutput<String>('region');
+    this.routeServerId = registerOutput<String>('routeServerId');
+    this.snsNotificationsEnabled =
+        registerOutput<bool>('snsNotificationsEnabled');
+    this.snsTopicArn = registerOutput<String>('snsTopicArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<RouteServerTimeouts?>('timeouts');
   }
 }

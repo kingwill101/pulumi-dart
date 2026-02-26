@@ -59,21 +59,21 @@ class Version11 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.config = Output.createUnknown<ServingConfigResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.createUser = Output.createUnknown<ActingUserResponse>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.deleteUser = Output.createUnknown<ActingUserResponse>();
-    this.fileCount = Output.createUnknown<String>();
-    this.finalizeTime = Output.createUnknown<String>();
-    this.finalizeUser = Output.createUnknown<ActingUserResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.siteId = Output.createUnknown<String>();
-    this.sizeBytes = Output.createUnknown<String?>();
-    this.status = Output.createUnknown<String>();
-    this.versionBytes = Output.createUnknown<String>();
-    this.versionId = Output.createUnknown<String?>();
+    this.config = registerOutput<ServingConfigResponse>('config');
+    this.createTime = registerOutput<String>('createTime');
+    this.createUser = registerOutput<ActingUserResponse>('createUser');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.deleteUser = registerOutput<ActingUserResponse>('deleteUser');
+    this.fileCount = registerOutput<String>('fileCount');
+    this.finalizeTime = registerOutput<String>('finalizeTime');
+    this.finalizeUser = registerOutput<ActingUserResponse>('finalizeUser');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.siteId = registerOutput<String>('siteId');
+    this.sizeBytes = registerOutput<String?>('sizeBytes');
+    this.status = registerOutput<String>('status');
+    this.versionBytes = registerOutput<String>('versionBytes');
+    this.versionId = registerOutput<String?>('versionId');
   }
 }

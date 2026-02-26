@@ -575,13 +575,13 @@ class Policy3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.booleanPolicy = Output.createUnknown<PolicyBooleanPolicy?>();
-    this.constraint = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.listPolicy = Output.createUnknown<PolicyListPolicy?>();
-    this.orgId = Output.createUnknown<String>();
-    this.restorePolicy = Output.createUnknown<PolicyRestorePolicy?>();
-    this.updateTime = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.booleanPolicy = registerOutput<PolicyBooleanPolicy?>('booleanPolicy');
+    this.constraint = registerOutput<String>('constraint');
+    this.etag = registerOutput<String>('etag');
+    this.listPolicy = registerOutput<PolicyListPolicy?>('listPolicy');
+    this.orgId = registerOutput<String>('orgId');
+    this.restorePolicy = registerOutput<PolicyRestorePolicy?>('restorePolicy');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.version = registerOutput<int>('version');
   }
 }

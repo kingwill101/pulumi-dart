@@ -196,11 +196,13 @@ class Response extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.responseParameters = Output.createUnknown<Map<String, String>?>();
-    this.responseTemplates = Output.createUnknown<Map<String, String>?>();
-    this.responseType = Output.createUnknown<String>();
-    this.restApiId = Output.createUnknown<String>();
-    this.statusCode = Output.createUnknown<String?>();
+    this.region = registerOutput<String>('region');
+    this.responseParameters =
+        registerOutput<Map<String, String>?>('responseParameters');
+    this.responseTemplates =
+        registerOutput<Map<String, String>?>('responseTemplates');
+    this.responseType = registerOutput<String>('responseType');
+    this.restApiId = registerOutput<String>('restApiId');
+    this.statusCode = registerOutput<String?>('statusCode');
   }
 }

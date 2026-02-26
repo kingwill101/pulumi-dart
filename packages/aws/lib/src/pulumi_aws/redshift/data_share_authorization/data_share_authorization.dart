@@ -139,11 +139,11 @@ class DataShareAuthorization extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowWrites = Output.createUnknown<bool?>();
-    this.consumerIdentifier = Output.createUnknown<String>();
-    this.dataShareArn = Output.createUnknown<String>();
-    this.managedBy = Output.createUnknown<String>();
-    this.producerArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.allowWrites = registerOutput<bool?>('allowWrites');
+    this.consumerIdentifier = registerOutput<String>('consumerIdentifier');
+    this.dataShareArn = registerOutput<String>('dataShareArn');
+    this.managedBy = registerOutput<String>('managedBy');
+    this.producerArn = registerOutput<String>('producerArn');
+    this.region = registerOutput<String>('region');
   }
 }

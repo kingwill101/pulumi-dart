@@ -31,12 +31,12 @@ class Resourcefile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.contentType = Output.createUnknown<String>();
-    this.data = Output.createUnknown<String>();
-    this.environmentId = Output.createUnknown<String>();
-    this.extensions = Output.createUnknown<List<Map<String, String>>>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+    this.contentType = registerOutput<String>('contentType');
+    this.data = registerOutput<String>('data');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.extensions = registerOutput<List<Map<String, String>>>('extensions');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.type = registerOutput<String>('type');
   }
 }

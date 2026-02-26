@@ -78,28 +78,32 @@ class RatePlan extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiproduct = Output.createUnknown<String>();
-    this.apiproductId = Output.createUnknown<String>();
-    this.billingPeriod = Output.createUnknown<String>();
+    this.apiproduct = registerOutput<String>('apiproduct');
+    this.apiproductId = registerOutput<String>('apiproductId');
+    this.billingPeriod = registerOutput<String>('billingPeriod');
     this.consumptionPricingRates =
-        Output.createUnknown<List<GoogleCloudApigeeV1RateRangeResponse>>();
-    this.consumptionPricingType = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.currencyCode = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
-    this.fixedFeeFrequency = Output.createUnknown<int>();
-    this.fixedRecurringFee = Output.createUnknown<GoogleTypeMoneyResponse3>();
-    this.lastModifiedAt = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.paymentFundingModel = Output.createUnknown<String>();
-    this.revenueShareRates = Output.createUnknown<
-        List<GoogleCloudApigeeV1RevenueShareRangeResponse>>();
-    this.revenueShareType = Output.createUnknown<String>();
-    this.setupFee = Output.createUnknown<GoogleTypeMoneyResponse3>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<List<GoogleCloudApigeeV1RateRangeResponse>>(
+            'consumptionPricingRates');
+    this.consumptionPricingType =
+        registerOutput<String>('consumptionPricingType');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.currencyCode = registerOutput<String>('currencyCode');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.endTime = registerOutput<String>('endTime');
+    this.fixedFeeFrequency = registerOutput<int>('fixedFeeFrequency');
+    this.fixedRecurringFee =
+        registerOutput<GoogleTypeMoneyResponse3>('fixedRecurringFee');
+    this.lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.paymentFundingModel = registerOutput<String>('paymentFundingModel');
+    this.revenueShareRates =
+        registerOutput<List<GoogleCloudApigeeV1RevenueShareRangeResponse>>(
+            'revenueShareRates');
+    this.revenueShareType = registerOutput<String>('revenueShareType');
+    this.setupFee = registerOutput<GoogleTypeMoneyResponse3>('setupFee');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
   }
 }

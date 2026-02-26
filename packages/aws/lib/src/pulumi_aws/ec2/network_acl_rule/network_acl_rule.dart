@@ -238,17 +238,17 @@ class NetworkAclRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cidrBlock = Output.createUnknown<String?>();
-    this.egress = Output.createUnknown<bool?>();
-    this.fromPort = Output.createUnknown<int?>();
-    this.icmpCode = Output.createUnknown<int?>();
-    this.icmpType = Output.createUnknown<int?>();
-    this.ipv6CidrBlock = Output.createUnknown<String?>();
-    this.networkAclId = Output.createUnknown<String>();
-    this.protocol = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.ruleAction = Output.createUnknown<String>();
-    this.ruleNumber = Output.createUnknown<int>();
-    this.toPort = Output.createUnknown<int?>();
+    this.cidrBlock = registerOutput<String?>('cidrBlock');
+    this.egress = registerOutput<bool?>('egress');
+    this.fromPort = registerOutput<int?>('fromPort');
+    this.icmpCode = registerOutput<int?>('icmpCode');
+    this.icmpType = registerOutput<int?>('icmpType');
+    this.ipv6CidrBlock = registerOutput<String?>('ipv6CidrBlock');
+    this.networkAclId = registerOutput<String>('networkAclId');
+    this.protocol = registerOutput<String>('protocol');
+    this.region = registerOutput<String>('region');
+    this.ruleAction = registerOutput<String>('ruleAction');
+    this.ruleNumber = registerOutput<int>('ruleNumber');
+    this.toPort = registerOutput<int?>('toPort');
   }
 }

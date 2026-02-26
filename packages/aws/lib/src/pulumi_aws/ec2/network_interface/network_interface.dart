@@ -265,33 +265,35 @@ class NetworkInterface extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.attachments = Output.createUnknown<List<NetworkInterfaceAttachment>>();
-    this.description = Output.createUnknown<String?>();
-    this.enablePrimaryIpv6 = Output.createUnknown<bool>();
-    this.interfaceType = Output.createUnknown<String>();
-    this.ipv4PrefixCount = Output.createUnknown<int>();
-    this.ipv4Prefixes = Output.createUnknown<List<String>>();
-    this.ipv6AddressCount = Output.createUnknown<int>();
-    this.ipv6AddressListEnabled = Output.createUnknown<bool?>();
-    this.ipv6AddressLists = Output.createUnknown<List<String>>();
-    this.ipv6Addresses = Output.createUnknown<List<String>>();
-    this.ipv6PrefixCount = Output.createUnknown<int>();
-    this.ipv6Prefixes = Output.createUnknown<List<String>>();
-    this.macAddress = Output.createUnknown<String>();
-    this.outpostArn = Output.createUnknown<String>();
-    this.ownerId = Output.createUnknown<String>();
-    this.privateDnsName = Output.createUnknown<String>();
-    this.privateIp = Output.createUnknown<String>();
-    this.privateIpListEnabled = Output.createUnknown<bool?>();
-    this.privateIpLists = Output.createUnknown<List<String>>();
-    this.privateIps = Output.createUnknown<List<String>>();
-    this.privateIpsCount = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroups = Output.createUnknown<List<String>>();
-    this.sourceDestCheck = Output.createUnknown<bool?>();
-    this.subnetId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.attachments =
+        registerOutput<List<NetworkInterfaceAttachment>>('attachments');
+    this.description = registerOutput<String?>('description');
+    this.enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
+    this.interfaceType = registerOutput<String>('interfaceType');
+    this.ipv4PrefixCount = registerOutput<int>('ipv4PrefixCount');
+    this.ipv4Prefixes = registerOutput<List<String>>('ipv4Prefixes');
+    this.ipv6AddressCount = registerOutput<int>('ipv6AddressCount');
+    this.ipv6AddressListEnabled =
+        registerOutput<bool?>('ipv6AddressListEnabled');
+    this.ipv6AddressLists = registerOutput<List<String>>('ipv6AddressLists');
+    this.ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
+    this.ipv6PrefixCount = registerOutput<int>('ipv6PrefixCount');
+    this.ipv6Prefixes = registerOutput<List<String>>('ipv6Prefixes');
+    this.macAddress = registerOutput<String>('macAddress');
+    this.outpostArn = registerOutput<String>('outpostArn');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.privateDnsName = registerOutput<String>('privateDnsName');
+    this.privateIp = registerOutput<String>('privateIp');
+    this.privateIpListEnabled = registerOutput<bool?>('privateIpListEnabled');
+    this.privateIpLists = registerOutput<List<String>>('privateIpLists');
+    this.privateIps = registerOutput<List<String>>('privateIps');
+    this.privateIpsCount = registerOutput<int>('privateIpsCount');
+    this.region = registerOutput<String>('region');
+    this.securityGroups = registerOutput<List<String>>('securityGroups');
+    this.sourceDestCheck = registerOutput<bool?>('sourceDestCheck');
+    this.subnetId = registerOutput<String>('subnetId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -1862,11 +1862,11 @@ class InstanceTemplateIamMember extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.condition =
-        Output.createUnknown<InstanceTemplateIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+        registerOutput<InstanceTemplateIamMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.member = registerOutput<String>('member');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
   }
 }

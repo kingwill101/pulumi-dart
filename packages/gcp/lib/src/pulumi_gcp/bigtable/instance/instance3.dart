@@ -458,15 +458,16 @@ class Instance3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusters = Output.createUnknown<List<InstanceCluster>>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.instanceType = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+    this.clusters = registerOutput<List<InstanceCluster>>('clusters');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.displayName = registerOutput<String>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.instanceType = registerOutput<String?>('instanceType');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
   }
 }

@@ -47,19 +47,19 @@ class VersionArtifact extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.apiId = Output.createUnknown<String>();
-    this.artifactId = Output.createUnknown<String>();
-    this.contents = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.hash = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.mimeType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.sizeBytes = Output.createUnknown<int>();
-    this.updateTime = Output.createUnknown<String>();
-    this.versionId = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.apiId = registerOutput<String>('apiId');
+    this.artifactId = registerOutput<String>('artifactId');
+    this.contents = registerOutput<String>('contents');
+    this.createTime = registerOutput<String>('createTime');
+    this.hash = registerOutput<String>('hash');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.mimeType = registerOutput<String>('mimeType');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.sizeBytes = registerOutput<int>('sizeBytes');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.versionId = registerOutput<String>('versionId');
   }
 }

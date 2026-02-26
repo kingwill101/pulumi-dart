@@ -240,18 +240,19 @@ class OdbSubnet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cidrRange = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.odbSubnetId = Output.createUnknown<String>();
-    this.odbnetwork = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.purpose = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.cidrRange = registerOutput<String>('cidrRange');
+    this.createTime = registerOutput<String>('createTime');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.odbSubnetId = registerOutput<String>('odbSubnetId');
+    this.odbnetwork = registerOutput<String>('odbnetwork');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.purpose = registerOutput<String>('purpose');
+    this.state = registerOutput<String>('state');
   }
 }

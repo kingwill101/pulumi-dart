@@ -30,12 +30,12 @@ class GlossaryEntry extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String>();
-    this.glossaryId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.termsPair = Output.createUnknown<GlossaryTermsPairResponse>();
-    this.termsSet = Output.createUnknown<GlossaryTermsSetResponse>();
+    this.description = registerOutput<String>('description');
+    this.glossaryId = registerOutput<String>('glossaryId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.termsPair = registerOutput<GlossaryTermsPairResponse>('termsPair');
+    this.termsSet = registerOutput<GlossaryTermsSetResponse>('termsSet');
   }
 }

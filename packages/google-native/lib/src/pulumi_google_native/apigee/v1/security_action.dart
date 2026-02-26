@@ -57,22 +57,23 @@ class SecurityAction extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allow = Output.createUnknown<Map<String, dynamic>>();
-    this.conditionConfig = Output.createUnknown<
-        GoogleCloudApigeeV1SecurityActionConditionConfigResponse>();
-    this.createTime = Output.createUnknown<String>();
+    this.allow = registerOutput<Map<String, dynamic>>('allow');
+    this.conditionConfig = registerOutput<
+            GoogleCloudApigeeV1SecurityActionConditionConfigResponse>(
+        'conditionConfig');
+    this.createTime = registerOutput<String>('createTime');
     this.deny =
-        Output.createUnknown<GoogleCloudApigeeV1SecurityActionDenyResponse>();
-    this.description = Output.createUnknown<String>();
-    this.environmentId = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudApigeeV1SecurityActionDenyResponse>('deny');
+    this.description = registerOutput<String>('description');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.expireTime = registerOutput<String>('expireTime');
     this.flag =
-        Output.createUnknown<GoogleCloudApigeeV1SecurityActionFlagResponse>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.securityActionId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.ttl = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudApigeeV1SecurityActionFlagResponse>('flag');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.securityActionId = registerOutput<String>('securityActionId');
+    this.state = registerOutput<String>('state');
+    this.ttl = registerOutput<String>('ttl');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

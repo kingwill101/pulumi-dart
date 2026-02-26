@@ -517,15 +517,16 @@ class ConnectorProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.connectionMode = Output.createUnknown<String>();
-    this.connectorLabel = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.connectionMode = registerOutput<String>('connectionMode');
+    this.connectorLabel = registerOutput<String?>('connectorLabel');
     this.connectorProfileConfig =
-        Output.createUnknown<ConnectorProfileConnectorProfileConfig>();
-    this.connectorType = Output.createUnknown<String>();
-    this.credentialsArn = Output.createUnknown<String>();
-    this.kmsArn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<ConnectorProfileConnectorProfileConfig>(
+            'connectorProfileConfig');
+    this.connectorType = registerOutput<String>('connectorType');
+    this.credentialsArn = registerOutput<String>('credentialsArn');
+    this.kmsArn = registerOutput<String>('kmsArn');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

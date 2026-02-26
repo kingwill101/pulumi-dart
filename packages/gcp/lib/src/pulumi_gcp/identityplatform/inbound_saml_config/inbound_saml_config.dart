@@ -272,11 +272,11 @@ class InboundSamlConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.idpConfig = Output.createUnknown<InboundSamlConfigIdpConfig>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.spConfig = Output.createUnknown<InboundSamlConfigSpConfig>();
+    this.displayName = registerOutput<String>('displayName');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.idpConfig = registerOutput<InboundSamlConfigIdpConfig>('idpConfig');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.spConfig = registerOutput<InboundSamlConfigSpConfig>('spConfig');
   }
 }

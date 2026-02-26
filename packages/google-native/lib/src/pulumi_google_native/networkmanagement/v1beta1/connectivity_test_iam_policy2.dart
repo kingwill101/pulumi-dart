@@ -31,11 +31,12 @@ class ConnectivityTestIamPolicy2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse57>>();
-    this.bindings = Output.createUnknown<List<BindingResponse81>>();
-    this.connectivityTestId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse57>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse81>>('bindings');
+    this.connectivityTestId = registerOutput<String>('connectivityTestId');
+    this.etag = registerOutput<String>('etag');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

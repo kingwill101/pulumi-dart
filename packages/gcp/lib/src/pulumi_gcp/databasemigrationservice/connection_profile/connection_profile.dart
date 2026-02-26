@@ -3336,22 +3336,24 @@ class ConnectionProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alloydb = Output.createUnknown<ConnectionProfileAlloydb?>();
-    this.cloudsql = Output.createUnknown<ConnectionProfileCloudsql?>();
-    this.connectionProfileId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.dbprovider = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.errors = Output.createUnknown<List<ConnectionProfileError>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String?>();
-    this.mysql = Output.createUnknown<ConnectionProfileMysql?>();
-    this.name = Output.createUnknown<String>();
-    this.oracle = Output.createUnknown<ConnectionProfileOracle?>();
-    this.postgresql = Output.createUnknown<ConnectionProfilePostgresql?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.state = Output.createUnknown<String>();
+    this.alloydb = registerOutput<ConnectionProfileAlloydb?>('alloydb');
+    this.cloudsql = registerOutput<ConnectionProfileCloudsql?>('cloudsql');
+    this.connectionProfileId = registerOutput<String>('connectionProfileId');
+    this.createTime = registerOutput<String>('createTime');
+    this.dbprovider = registerOutput<String>('dbprovider');
+    this.displayName = registerOutput<String?>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.errors = registerOutput<List<ConnectionProfileError>>('errors');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String?>('location');
+    this.mysql = registerOutput<ConnectionProfileMysql?>('mysql');
+    this.name = registerOutput<String>('name');
+    this.oracle = registerOutput<ConnectionProfileOracle?>('oracle');
+    this.postgresql =
+        registerOutput<ConnectionProfilePostgresql?>('postgresql');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.state = registerOutput<String>('state');
   }
 }

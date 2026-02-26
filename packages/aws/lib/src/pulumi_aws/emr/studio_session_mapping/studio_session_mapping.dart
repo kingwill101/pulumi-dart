@@ -147,11 +147,11 @@ class StudioSessionMapping extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.identityId = Output.createUnknown<String>();
-    this.identityName = Output.createUnknown<String>();
-    this.identityType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.sessionPolicyArn = Output.createUnknown<String>();
-    this.studioId = Output.createUnknown<String>();
+    this.identityId = registerOutput<String>('identityId');
+    this.identityName = registerOutput<String>('identityName');
+    this.identityType = registerOutput<String>('identityType');
+    this.region = registerOutput<String>('region');
+    this.sessionPolicyArn = registerOutput<String>('sessionPolicyArn');
+    this.studioId = registerOutput<String>('studioId');
   }
 }

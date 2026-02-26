@@ -508,11 +508,11 @@ class RefreshSchedule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.awsAccountId = Output.createUnknown<String>();
-    this.dataSetId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.schedule = Output.createUnknown<RefreshScheduleSchedule>();
-    this.scheduleId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.dataSetId = registerOutput<String>('dataSetId');
+    this.region = registerOutput<String>('region');
+    this.schedule = registerOutput<RefreshScheduleSchedule>('schedule');
+    this.scheduleId = registerOutput<String>('scheduleId');
   }
 }

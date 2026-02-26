@@ -51,20 +51,24 @@ class WorkforcePoolProvider extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attributeCondition = Output.createUnknown<String>();
-    this.attributeMapping = Output.createUnknown<Map<String, String>>();
-    this.description = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool>();
-    this.displayName = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.oidc = Output.createUnknown<
-        GoogleIamAdminV1WorkforcePoolProviderOidcResponse>();
-    this.saml = Output.createUnknown<
-        GoogleIamAdminV1WorkforcePoolProviderSamlResponse>();
-    this.state = Output.createUnknown<String>();
-    this.workforcePoolId = Output.createUnknown<String>();
-    this.workforcePoolProviderId = Output.createUnknown<String>();
+    this.attributeCondition = registerOutput<String>('attributeCondition');
+    this.attributeMapping =
+        registerOutput<Map<String, String>>('attributeMapping');
+    this.description = registerOutput<String>('description');
+    this.disabled = registerOutput<bool>('disabled');
+    this.displayName = registerOutput<String>('displayName');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.oidc =
+        registerOutput<GoogleIamAdminV1WorkforcePoolProviderOidcResponse>(
+            'oidc');
+    this.saml =
+        registerOutput<GoogleIamAdminV1WorkforcePoolProviderSamlResponse>(
+            'saml');
+    this.state = registerOutput<String>('state');
+    this.workforcePoolId = registerOutput<String>('workforcePoolId');
+    this.workforcePoolProviderId =
+        registerOutput<String>('workforcePoolProviderId');
   }
 }

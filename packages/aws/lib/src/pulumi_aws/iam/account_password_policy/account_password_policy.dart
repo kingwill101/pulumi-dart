@@ -175,15 +175,19 @@ class AccountPasswordPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowUsersToChangePassword = Output.createUnknown<bool?>();
-    this.expirePasswords = Output.createUnknown<bool>();
-    this.hardExpiry = Output.createUnknown<bool>();
-    this.maxPasswordAge = Output.createUnknown<int>();
-    this.minimumPasswordLength = Output.createUnknown<int?>();
-    this.passwordReusePrevention = Output.createUnknown<int>();
-    this.requireLowercaseCharacters = Output.createUnknown<bool>();
-    this.requireNumbers = Output.createUnknown<bool>();
-    this.requireSymbols = Output.createUnknown<bool>();
-    this.requireUppercaseCharacters = Output.createUnknown<bool>();
+    this.allowUsersToChangePassword =
+        registerOutput<bool?>('allowUsersToChangePassword');
+    this.expirePasswords = registerOutput<bool>('expirePasswords');
+    this.hardExpiry = registerOutput<bool>('hardExpiry');
+    this.maxPasswordAge = registerOutput<int>('maxPasswordAge');
+    this.minimumPasswordLength = registerOutput<int?>('minimumPasswordLength');
+    this.passwordReusePrevention =
+        registerOutput<int>('passwordReusePrevention');
+    this.requireLowercaseCharacters =
+        registerOutput<bool>('requireLowercaseCharacters');
+    this.requireNumbers = registerOutput<bool>('requireNumbers');
+    this.requireSymbols = registerOutput<bool>('requireSymbols');
+    this.requireUppercaseCharacters =
+        registerOutput<bool>('requireUppercaseCharacters');
   }
 }

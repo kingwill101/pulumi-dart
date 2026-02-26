@@ -196,10 +196,10 @@ class EnvironmentMembership extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.environmentId = Output.createUnknown<String>();
-    this.permissions = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.userArn = Output.createUnknown<String>();
-    this.userId = Output.createUnknown<String>();
+    this.environmentId = registerOutput<String>('environmentId');
+    this.permissions = registerOutput<String>('permissions');
+    this.region = registerOutput<String>('region');
+    this.userArn = registerOutput<String>('userArn');
+    this.userId = registerOutput<String>('userId');
   }
 }

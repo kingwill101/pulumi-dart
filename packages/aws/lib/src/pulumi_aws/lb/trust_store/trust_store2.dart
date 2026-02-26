@@ -243,15 +243,18 @@ class TrustStore2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.arnSuffix = Output.createUnknown<String>();
-    this.caCertificatesBundleS3Bucket = Output.createUnknown<String>();
-    this.caCertificatesBundleS3Key = Output.createUnknown<String>();
-    this.caCertificatesBundleS3ObjectVersion = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.arnSuffix = registerOutput<String>('arnSuffix');
+    this.caCertificatesBundleS3Bucket =
+        registerOutput<String>('caCertificatesBundleS3Bucket');
+    this.caCertificatesBundleS3Key =
+        registerOutput<String>('caCertificatesBundleS3Key');
+    this.caCertificatesBundleS3ObjectVersion =
+        registerOutput<String?>('caCertificatesBundleS3ObjectVersion');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

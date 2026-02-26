@@ -322,15 +322,20 @@ class RestoreTestingSelection extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.iamRoleArn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.protectedResourceArns = Output.createUnknown<List<String>>();
-    this.protectedResourceConditions = Output.createUnknown<
-        RestoreTestingSelectionProtectedResourceConditions?>();
-    this.protectedResourceType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.restoreMetadataOverrides = Output.createUnknown<Map<String, String>>();
-    this.restoreTestingPlanName = Output.createUnknown<String>();
-    this.validationWindowHours = Output.createUnknown<int>();
+    this.iamRoleArn = registerOutput<String>('iamRoleArn');
+    this.name = registerOutput<String>('name');
+    this.protectedResourceArns =
+        registerOutput<List<String>>('protectedResourceArns');
+    this.protectedResourceConditions =
+        registerOutput<RestoreTestingSelectionProtectedResourceConditions?>(
+            'protectedResourceConditions');
+    this.protectedResourceType =
+        registerOutput<String>('protectedResourceType');
+    this.region = registerOutput<String>('region');
+    this.restoreMetadataOverrides =
+        registerOutput<Map<String, String>>('restoreMetadataOverrides');
+    this.restoreTestingPlanName =
+        registerOutput<String>('restoreTestingPlanName');
+    this.validationWindowHours = registerOutput<int>('validationWindowHours');
   }
 }

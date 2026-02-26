@@ -235,7 +235,7 @@ class GroupPoliciesExclusive extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.groupName = Output.createUnknown<String>();
-    this.policyNames = Output.createUnknown<List<String>>();
+    this.groupName = registerOutput<String>('groupName');
+    this.policyNames = registerOutput<List<String>>('policyNames');
   }
 }

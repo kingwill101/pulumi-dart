@@ -35,15 +35,16 @@ class LakeAssetIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.assetId = Output.createUnknown<String>();
+    this.assetId = registerOutput<String>('assetId');
     this.auditConfigs =
-        Output.createUnknown<List<GoogleIamV1AuditConfigResponse5>>();
-    this.bindings = Output.createUnknown<List<GoogleIamV1BindingResponse7>>();
-    this.etag = Output.createUnknown<String>();
-    this.lakeId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<List<GoogleIamV1AuditConfigResponse5>>('auditConfigs');
+    this.bindings =
+        registerOutput<List<GoogleIamV1BindingResponse7>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.lakeId = registerOutput<String>('lakeId');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
+    this.zone = registerOutput<String>('zone');
   }
 }

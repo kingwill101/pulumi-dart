@@ -4530,29 +4530,33 @@ class Repository extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.cleanupPolicies =
-        Output.createUnknown<List<RepositoryCleanupPolicy>?>();
-    this.cleanupPolicyDryRun = Output.createUnknown<bool?>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.dockerConfig = Output.createUnknown<RepositoryDockerConfig?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.format = Output.createUnknown<String>();
-    this.kmsKeyName = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.mavenConfig = Output.createUnknown<RepositoryMavenConfig?>();
-    this.mode = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.registryUri = Output.createUnknown<String>();
+        registerOutput<List<RepositoryCleanupPolicy>?>('cleanupPolicies');
+    this.cleanupPolicyDryRun = registerOutput<bool?>('cleanupPolicyDryRun');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.dockerConfig = registerOutput<RepositoryDockerConfig?>('dockerConfig');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.format = registerOutput<String>('format');
+    this.kmsKeyName = registerOutput<String?>('kmsKeyName');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.mavenConfig = registerOutput<RepositoryMavenConfig?>('mavenConfig');
+    this.mode = registerOutput<String?>('mode');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.registryUri = registerOutput<String>('registryUri');
     this.remoteRepositoryConfig =
-        Output.createUnknown<RepositoryRemoteRepositoryConfig?>();
-    this.repositoryId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<RepositoryRemoteRepositoryConfig?>(
+            'remoteRepositoryConfig');
+    this.repositoryId = registerOutput<String>('repositoryId');
+    this.updateTime = registerOutput<String>('updateTime');
     this.virtualRepositoryConfig =
-        Output.createUnknown<RepositoryVirtualRepositoryConfig?>();
+        registerOutput<RepositoryVirtualRepositoryConfig?>(
+            'virtualRepositoryConfig');
     this.vulnerabilityScanningConfig =
-        Output.createUnknown<RepositoryVulnerabilityScanningConfig>();
+        registerOutput<RepositoryVulnerabilityScanningConfig>(
+            'vulnerabilityScanningConfig');
   }
 }

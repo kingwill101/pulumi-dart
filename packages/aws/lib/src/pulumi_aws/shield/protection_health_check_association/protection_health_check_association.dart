@@ -341,7 +341,7 @@ class ProtectionHealthCheckAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.healthCheckArn = Output.createUnknown<String>();
-    this.shieldProtectionId = Output.createUnknown<String>();
+    this.healthCheckArn = registerOutput<String>('healthCheckArn');
+    this.shieldProtectionId = registerOutput<String>('shieldProtectionId');
   }
 }

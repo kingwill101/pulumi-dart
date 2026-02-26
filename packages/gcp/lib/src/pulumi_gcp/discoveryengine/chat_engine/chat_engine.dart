@@ -700,19 +700,21 @@ class ChatEngine extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.chatEngineConfig = Output.createUnknown<ChatEngineChatEngineConfig>();
+    this.chatEngineConfig =
+        registerOutput<ChatEngineChatEngineConfig>('chatEngineConfig');
     this.chatEngineMetadatas =
-        Output.createUnknown<List<ChatEngineChatEngineMetadata>>();
-    this.collectionId = Output.createUnknown<String>();
-    this.commonConfig = Output.createUnknown<ChatEngineCommonConfig?>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataStoreIds = Output.createUnknown<List<String>>();
-    this.displayName = Output.createUnknown<String>();
-    this.engineId = Output.createUnknown<String>();
-    this.industryVertical = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<ChatEngineChatEngineMetadata>>(
+            'chatEngineMetadatas');
+    this.collectionId = registerOutput<String>('collectionId');
+    this.commonConfig = registerOutput<ChatEngineCommonConfig?>('commonConfig');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataStoreIds = registerOutput<List<String>>('dataStoreIds');
+    this.displayName = registerOutput<String>('displayName');
+    this.engineId = registerOutput<String>('engineId');
+    this.industryVertical = registerOutput<String?>('industryVertical');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

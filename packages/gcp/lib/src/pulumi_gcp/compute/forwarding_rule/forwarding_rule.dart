@@ -5934,42 +5934,44 @@ class ForwardingRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allPorts = Output.createUnknown<bool?>();
-    this.allowGlobalAccess = Output.createUnknown<bool?>();
-    this.allowPscGlobalAccess = Output.createUnknown<bool?>();
-    this.backendService = Output.createUnknown<String?>();
-    this.baseForwardingRule = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.forwardingRuleId = Output.createUnknown<int>();
-    this.ipAddress = Output.createUnknown<String>();
-    this.ipCollection = Output.createUnknown<String?>();
-    this.ipProtocol = Output.createUnknown<String>();
-    this.ipVersion = Output.createUnknown<String>();
-    this.isMirroringCollector = Output.createUnknown<bool?>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.loadBalancingScheme = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.networkTier = Output.createUnknown<String>();
-    this.noAutomateDnsZone = Output.createUnknown<bool?>();
-    this.portRange = Output.createUnknown<String>();
-    this.ports = Output.createUnknown<List<String>?>();
-    this.project = Output.createUnknown<String>();
-    this.pscConnectionId = Output.createUnknown<String>();
-    this.pscConnectionStatus = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.recreateClosedPsc = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
+    this.allPorts = registerOutput<bool?>('allPorts');
+    this.allowGlobalAccess = registerOutput<bool?>('allowGlobalAccess');
+    this.allowPscGlobalAccess = registerOutput<bool?>('allowPscGlobalAccess');
+    this.backendService = registerOutput<String?>('backendService');
+    this.baseForwardingRule = registerOutput<String>('baseForwardingRule');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.forwardingRuleId = registerOutput<int>('forwardingRuleId');
+    this.ipAddress = registerOutput<String>('ipAddress');
+    this.ipCollection = registerOutput<String?>('ipCollection');
+    this.ipProtocol = registerOutput<String>('ipProtocol');
+    this.ipVersion = registerOutput<String>('ipVersion');
+    this.isMirroringCollector = registerOutput<bool?>('isMirroringCollector');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.networkTier = registerOutput<String>('networkTier');
+    this.noAutomateDnsZone = registerOutput<bool?>('noAutomateDnsZone');
+    this.portRange = registerOutput<String>('portRange');
+    this.ports = registerOutput<List<String>?>('ports');
+    this.project = registerOutput<String>('project');
+    this.pscConnectionId = registerOutput<String>('pscConnectionId');
+    this.pscConnectionStatus = registerOutput<String>('pscConnectionStatus');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.recreateClosedPsc = registerOutput<bool?>('recreateClosedPsc');
+    this.region = registerOutput<String>('region');
+    this.selfLink = registerOutput<String>('selfLink');
     this.serviceDirectoryRegistrations =
-        Output.createUnknown<ForwardingRuleServiceDirectoryRegistrations>();
-    this.serviceLabel = Output.createUnknown<String?>();
-    this.serviceName = Output.createUnknown<String>();
-    this.sourceIpRanges = Output.createUnknown<List<String>?>();
-    this.subnetwork = Output.createUnknown<String>();
-    this.target = Output.createUnknown<String?>();
+        registerOutput<ForwardingRuleServiceDirectoryRegistrations>(
+            'serviceDirectoryRegistrations');
+    this.serviceLabel = registerOutput<String?>('serviceLabel');
+    this.serviceName = registerOutput<String>('serviceName');
+    this.sourceIpRanges = registerOutput<List<String>?>('sourceIpRanges');
+    this.subnetwork = registerOutput<String>('subnetwork');
+    this.target = registerOutput<String?>('target');
   }
 }

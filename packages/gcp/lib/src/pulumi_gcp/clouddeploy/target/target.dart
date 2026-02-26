@@ -805,29 +805,33 @@ class Target extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.anthosCluster = Output.createUnknown<TargetAnthosCluster?>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.anthosCluster = registerOutput<TargetAnthosCluster?>('anthosCluster');
     this.associatedEntities =
-        Output.createUnknown<List<TargetAssociatedEntity>?>();
-    this.createTime = Output.createUnknown<String>();
-    this.customTarget = Output.createUnknown<TargetCustomTarget?>();
-    this.deployParameters = Output.createUnknown<Map<String, String>?>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.executionConfigs = Output.createUnknown<List<TargetExecutionConfig>>();
-    this.gke = Output.createUnknown<TargetGke?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.multiTarget = Output.createUnknown<TargetMultiTarget?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.requireApproval = Output.createUnknown<bool?>();
-    this.run = Output.createUnknown<TargetRun?>();
-    this.targetId = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<TargetAssociatedEntity>?>('associatedEntities');
+    this.createTime = registerOutput<String>('createTime');
+    this.customTarget = registerOutput<TargetCustomTarget?>('customTarget');
+    this.deployParameters =
+        registerOutput<Map<String, String>?>('deployParameters');
+    this.description = registerOutput<String?>('description');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.etag = registerOutput<String>('etag');
+    this.executionConfigs =
+        registerOutput<List<TargetExecutionConfig>>('executionConfigs');
+    this.gke = registerOutput<TargetGke?>('gke');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.multiTarget = registerOutput<TargetMultiTarget?>('multiTarget');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.requireApproval = registerOutput<bool?>('requireApproval');
+    this.run = registerOutput<TargetRun?>('run');
+    this.targetId = registerOutput<String>('targetId');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

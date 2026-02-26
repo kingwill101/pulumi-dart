@@ -75,24 +75,25 @@ class Service4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appEngine = Output.createUnknown<AppEngineResponse>();
-    this.basicService = Output.createUnknown<BasicServiceResponse>();
-    this.cloudEndpoints = Output.createUnknown<CloudEndpointsResponse>();
-    this.cloudRun = Output.createUnknown<CloudRunResponse2>();
-    this.clusterIstio = Output.createUnknown<ClusterIstioResponse>();
-    this.custom = Output.createUnknown<Map<String, dynamic>>();
-    this.displayName = Output.createUnknown<String>();
-    this.gkeNamespace = Output.createUnknown<GkeNamespaceResponse>();
-    this.gkeService = Output.createUnknown<GkeServiceResponse>();
-    this.gkeWorkload = Output.createUnknown<GkeWorkloadResponse>();
+    this.appEngine = registerOutput<AppEngineResponse>('appEngine');
+    this.basicService = registerOutput<BasicServiceResponse>('basicService');
+    this.cloudEndpoints =
+        registerOutput<CloudEndpointsResponse>('cloudEndpoints');
+    this.cloudRun = registerOutput<CloudRunResponse2>('cloudRun');
+    this.clusterIstio = registerOutput<ClusterIstioResponse>('clusterIstio');
+    this.custom = registerOutput<Map<String, dynamic>>('custom');
+    this.displayName = registerOutput<String>('displayName');
+    this.gkeNamespace = registerOutput<GkeNamespaceResponse>('gkeNamespace');
+    this.gkeService = registerOutput<GkeServiceResponse>('gkeService');
+    this.gkeWorkload = registerOutput<GkeWorkloadResponse>('gkeWorkload');
     this.istioCanonicalService =
-        Output.createUnknown<IstioCanonicalServiceResponse>();
-    this.meshIstio = Output.createUnknown<MeshIstioResponse>();
-    this.name = Output.createUnknown<String>();
-    this.serviceId = Output.createUnknown<String?>();
-    this.telemetry = Output.createUnknown<TelemetryResponse>();
-    this.userLabels = Output.createUnknown<Map<String, String>>();
-    this.v3Id = Output.createUnknown<String>();
-    this.v3Id1 = Output.createUnknown<String>();
+        registerOutput<IstioCanonicalServiceResponse>('istioCanonicalService');
+    this.meshIstio = registerOutput<MeshIstioResponse>('meshIstio');
+    this.name = registerOutput<String>('name');
+    this.serviceId = registerOutput<String?>('serviceId');
+    this.telemetry = registerOutput<TelemetryResponse>('telemetry');
+    this.userLabels = registerOutput<Map<String, String>>('userLabels');
+    this.v3Id = registerOutput<String>('v3Id');
+    this.v3Id1 = registerOutput<String>('v3Id1');
   }
 }

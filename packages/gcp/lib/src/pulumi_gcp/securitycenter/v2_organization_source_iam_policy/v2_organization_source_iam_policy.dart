@@ -860,9 +860,9 @@ class V2OrganizationSourceIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.organization = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.source = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.organization = registerOutput<String>('organization');
+    this.policyData = registerOutput<String>('policyData');
+    this.source = registerOutput<String>('source');
   }
 }

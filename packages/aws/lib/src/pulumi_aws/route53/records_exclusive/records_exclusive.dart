@@ -337,8 +337,9 @@ class RecordsExclusive extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.resourceRecordSets =
-        Output.createUnknown<List<RecordsExclusiveResourceRecordSet>?>();
-    this.timeouts = Output.createUnknown<RecordsExclusiveTimeouts?>();
-    this.zoneId = Output.createUnknown<String>();
+        registerOutput<List<RecordsExclusiveResourceRecordSet>?>(
+            'resourceRecordSets');
+    this.timeouts = registerOutput<RecordsExclusiveTimeouts?>('timeouts');
+    this.zoneId = registerOutput<String>('zoneId');
   }
 }

@@ -333,40 +333,49 @@ class OpenZfsFileSystem extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.automaticBackupRetentionDays = Output.createUnknown<int?>();
-    this.backupId = Output.createUnknown<String?>();
-    this.copyTagsToBackups = Output.createUnknown<bool?>();
-    this.copyTagsToVolumes = Output.createUnknown<bool?>();
-    this.dailyAutomaticBackupStartTime = Output.createUnknown<String>();
-    this.deleteOptions = Output.createUnknown<List<String>?>();
-    this.deploymentType = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.automaticBackupRetentionDays =
+        registerOutput<int?>('automaticBackupRetentionDays');
+    this.backupId = registerOutput<String?>('backupId');
+    this.copyTagsToBackups = registerOutput<bool?>('copyTagsToBackups');
+    this.copyTagsToVolumes = registerOutput<bool?>('copyTagsToVolumes');
+    this.dailyAutomaticBackupStartTime =
+        registerOutput<String>('dailyAutomaticBackupStartTime');
+    this.deleteOptions = registerOutput<List<String>?>('deleteOptions');
+    this.deploymentType = registerOutput<String>('deploymentType');
     this.diskIopsConfiguration =
-        Output.createUnknown<OpenZfsFileSystemDiskIopsConfiguration>();
-    this.dnsName = Output.createUnknown<String>();
-    this.endpointIpAddress = Output.createUnknown<String>();
-    this.endpointIpAddressRange = Output.createUnknown<String>();
-    this.finalBackupTags = Output.createUnknown<Map<String, String>?>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.networkInterfaceIds = Output.createUnknown<List<String>>();
-    this.ownerId = Output.createUnknown<String>();
-    this.preferredSubnetId = Output.createUnknown<String?>();
+        registerOutput<OpenZfsFileSystemDiskIopsConfiguration>(
+            'diskIopsConfiguration');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.endpointIpAddress = registerOutput<String>('endpointIpAddress');
+    this.endpointIpAddressRange =
+        registerOutput<String>('endpointIpAddressRange');
+    this.finalBackupTags =
+        registerOutput<Map<String, String>?>('finalBackupTags');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.networkInterfaceIds =
+        registerOutput<List<String>>('networkInterfaceIds');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.preferredSubnetId = registerOutput<String?>('preferredSubnetId');
     this.readCacheConfiguration =
-        Output.createUnknown<OpenZfsFileSystemReadCacheConfiguration?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<OpenZfsFileSystemReadCacheConfiguration?>(
+            'readCacheConfiguration');
+    this.region = registerOutput<String>('region');
     this.rootVolumeConfiguration =
-        Output.createUnknown<OpenZfsFileSystemRootVolumeConfiguration>();
-    this.rootVolumeId = Output.createUnknown<String>();
-    this.routeTableIds = Output.createUnknown<List<String>>();
-    this.securityGroupIds = Output.createUnknown<List<String>?>();
-    this.skipFinalBackup = Output.createUnknown<bool?>();
-    this.storageCapacity = Output.createUnknown<int?>();
-    this.storageType = Output.createUnknown<String?>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.throughputCapacity = Output.createUnknown<int>();
-    this.vpcId = Output.createUnknown<String>();
-    this.weeklyMaintenanceStartTime = Output.createUnknown<String>();
+        registerOutput<OpenZfsFileSystemRootVolumeConfiguration>(
+            'rootVolumeConfiguration');
+    this.rootVolumeId = registerOutput<String>('rootVolumeId');
+    this.routeTableIds = registerOutput<List<String>>('routeTableIds');
+    this.securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    this.skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
+    this.storageCapacity = registerOutput<int?>('storageCapacity');
+    this.storageType = registerOutput<String?>('storageType');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.throughputCapacity = registerOutput<int>('throughputCapacity');
+    this.vpcId = registerOutput<String>('vpcId');
+    this.weeklyMaintenanceStartTime =
+        registerOutput<String>('weeklyMaintenanceStartTime');
   }
 }

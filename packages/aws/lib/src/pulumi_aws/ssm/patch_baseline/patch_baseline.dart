@@ -1213,24 +1213,27 @@ class PatchBaseline extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.approvalRules =
-        Output.createUnknown<List<PatchBaselineApprovalRule>?>();
-    this.approvedPatches = Output.createUnknown<List<String>?>();
-    this.approvedPatchesComplianceLevel = Output.createUnknown<String?>();
-    this.approvedPatchesEnableNonSecurity = Output.createUnknown<bool?>();
-    this.arn = Output.createUnknown<String>();
+        registerOutput<List<PatchBaselineApprovalRule>?>('approvalRules');
+    this.approvedPatches = registerOutput<List<String>?>('approvedPatches');
+    this.approvedPatchesComplianceLevel =
+        registerOutput<String?>('approvedPatchesComplianceLevel');
+    this.approvedPatchesEnableNonSecurity =
+        registerOutput<bool?>('approvedPatchesEnableNonSecurity');
+    this.arn = registerOutput<String>('arn');
     this.availableSecurityUpdatesComplianceStatus =
-        Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
+        registerOutput<String>('availableSecurityUpdatesComplianceStatus');
+    this.description = registerOutput<String?>('description');
     this.globalFilters =
-        Output.createUnknown<List<PatchBaselineGlobalFilter>?>();
-    this.json = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.operatingSystem = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.rejectedPatches = Output.createUnknown<List<String>?>();
-    this.rejectedPatchesAction = Output.createUnknown<String>();
-    this.sources = Output.createUnknown<List<PatchBaselineSource>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<PatchBaselineGlobalFilter>?>('globalFilters');
+    this.json = registerOutput<String>('json');
+    this.name = registerOutput<String>('name');
+    this.operatingSystem = registerOutput<String?>('operatingSystem');
+    this.region = registerOutput<String>('region');
+    this.rejectedPatches = registerOutput<List<String>?>('rejectedPatches');
+    this.rejectedPatchesAction =
+        registerOutput<String>('rejectedPatchesAction');
+    this.sources = registerOutput<List<PatchBaselineSource>?>('sources');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

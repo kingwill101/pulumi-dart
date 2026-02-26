@@ -615,13 +615,15 @@ class ContinuousDeploymentPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool>();
-    this.etag = Output.createUnknown<String>();
-    this.lastModifiedTime = Output.createUnknown<String>();
-    this.stagingDistributionDnsNames = Output.createUnknown<
-        ContinuousDeploymentPolicyStagingDistributionDnsNames>();
+    this.arn = registerOutput<String>('arn');
+    this.enabled = registerOutput<bool>('enabled');
+    this.etag = registerOutput<String>('etag');
+    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.stagingDistributionDnsNames =
+        registerOutput<ContinuousDeploymentPolicyStagingDistributionDnsNames>(
+            'stagingDistributionDnsNames');
     this.trafficConfig =
-        Output.createUnknown<ContinuousDeploymentPolicyTrafficConfig?>();
+        registerOutput<ContinuousDeploymentPolicyTrafficConfig?>(
+            'trafficConfig');
   }
 }

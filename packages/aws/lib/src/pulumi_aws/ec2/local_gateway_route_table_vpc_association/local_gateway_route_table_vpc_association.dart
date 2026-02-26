@@ -188,11 +188,12 @@ class LocalGatewayRouteTableVpcAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.localGatewayId = Output.createUnknown<String>();
-    this.localGatewayRouteTableId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcId = Output.createUnknown<String>();
+    this.localGatewayId = registerOutput<String>('localGatewayId');
+    this.localGatewayRouteTableId =
+        registerOutput<String>('localGatewayRouteTableId');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

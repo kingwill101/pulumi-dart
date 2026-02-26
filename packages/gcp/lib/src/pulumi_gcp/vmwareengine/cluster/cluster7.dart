@@ -785,14 +785,15 @@ class Cluster7 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.autoscalingSettings =
-        Output.createUnknown<ClusterAutoscalingSettings?>();
-    this.createTime = Output.createUnknown<String>();
-    this.management = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.nodeTypeConfigs = Output.createUnknown<List<ClusterNodeTypeConfig>?>();
-    this.parent = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<ClusterAutoscalingSettings?>('autoscalingSettings');
+    this.createTime = registerOutput<String>('createTime');
+    this.management = registerOutput<bool>('management');
+    this.name = registerOutput<String>('name');
+    this.nodeTypeConfigs =
+        registerOutput<List<ClusterNodeTypeConfig>?>('nodeTypeConfigs');
+    this.parent = registerOutput<String>('parent');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

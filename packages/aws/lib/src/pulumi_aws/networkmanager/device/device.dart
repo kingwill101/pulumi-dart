@@ -159,17 +159,17 @@ class Device extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.awsLocation = Output.createUnknown<DeviceAwsLocation?>();
-    this.description = Output.createUnknown<String?>();
-    this.globalNetworkId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<DeviceLocation?>();
-    this.model = Output.createUnknown<String?>();
-    this.serialNumber = Output.createUnknown<String?>();
-    this.siteId = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String?>();
-    this.vendor = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.awsLocation = registerOutput<DeviceAwsLocation?>('awsLocation');
+    this.description = registerOutput<String?>('description');
+    this.globalNetworkId = registerOutput<String>('globalNetworkId');
+    this.location = registerOutput<DeviceLocation?>('location');
+    this.model = registerOutput<String?>('model');
+    this.serialNumber = registerOutput<String?>('serialNumber');
+    this.siteId = registerOutput<String?>('siteId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String?>('type');
+    this.vendor = registerOutput<String?>('vendor');
   }
 }

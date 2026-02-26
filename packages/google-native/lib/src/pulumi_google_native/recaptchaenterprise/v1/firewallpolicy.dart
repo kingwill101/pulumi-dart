@@ -31,12 +31,13 @@ class Firewallpolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.actions = Output.createUnknown<
-        List<GoogleCloudRecaptchaenterpriseV1FirewallActionResponse>>();
-    this.condition = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.path = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.actions = registerOutput<
+            List<GoogleCloudRecaptchaenterpriseV1FirewallActionResponse>>(
+        'actions');
+    this.condition = registerOutput<String>('condition');
+    this.description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    this.path = registerOutput<String>('path');
+    this.project = registerOutput<String>('project');
   }
 }

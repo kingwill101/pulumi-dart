@@ -696,15 +696,16 @@ class Datapolicyv2DataPolicy extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.dataMaskingPolicy =
-        Output.createUnknown<Datapolicyv2DataPolicyDataMaskingPolicy?>();
-    this.dataPolicyId = Output.createUnknown<String>();
-    this.dataPolicyType = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.grantees = Output.createUnknown<List<String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.policyTag = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<String>();
+        registerOutput<Datapolicyv2DataPolicyDataMaskingPolicy?>(
+            'dataMaskingPolicy');
+    this.dataPolicyId = registerOutput<String>('dataPolicyId');
+    this.dataPolicyType = registerOutput<String>('dataPolicyType');
+    this.etag = registerOutput<String>('etag');
+    this.grantees = registerOutput<List<String>>('grantees');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.policyTag = registerOutput<String>('policyTag');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<String>('version');
   }
 }

@@ -116,12 +116,14 @@ class SmsPreferences extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.defaultSenderId = Output.createUnknown<String?>();
-    this.defaultSmsType = Output.createUnknown<String?>();
-    this.deliveryStatusIamRoleArn = Output.createUnknown<String?>();
-    this.deliveryStatusSuccessSamplingRate = Output.createUnknown<String?>();
-    this.monthlySpendLimit = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.usageReportS3Bucket = Output.createUnknown<String?>();
+    this.defaultSenderId = registerOutput<String?>('defaultSenderId');
+    this.defaultSmsType = registerOutput<String?>('defaultSmsType');
+    this.deliveryStatusIamRoleArn =
+        registerOutput<String?>('deliveryStatusIamRoleArn');
+    this.deliveryStatusSuccessSamplingRate =
+        registerOutput<String?>('deliveryStatusSuccessSamplingRate');
+    this.monthlySpendLimit = registerOutput<int>('monthlySpendLimit');
+    this.region = registerOutput<String>('region');
+    this.usageReportS3Bucket = registerOutput<String?>('usageReportS3Bucket');
   }
 }

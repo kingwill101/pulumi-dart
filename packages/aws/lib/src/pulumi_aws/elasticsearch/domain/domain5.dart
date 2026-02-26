@@ -1349,31 +1349,37 @@ class Domain5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessPolicies = Output.createUnknown<String>();
-    this.advancedOptions = Output.createUnknown<Map<String, String>>();
+    this.accessPolicies = registerOutput<String>('accessPolicies');
+    this.advancedOptions =
+        registerOutput<Map<String, String>>('advancedOptions');
     this.advancedSecurityOptions =
-        Output.createUnknown<DomainAdvancedSecurityOptions>();
-    this.arn = Output.createUnknown<String>();
-    this.autoTuneOptions = Output.createUnknown<DomainAutoTuneOptions>();
-    this.clusterConfig = Output.createUnknown<DomainClusterConfig>();
-    this.cognitoOptions = Output.createUnknown<DomainCognitoOptions?>();
+        registerOutput<DomainAdvancedSecurityOptions>(
+            'advancedSecurityOptions');
+    this.arn = registerOutput<String>('arn');
+    this.autoTuneOptions =
+        registerOutput<DomainAutoTuneOptions>('autoTuneOptions');
+    this.clusterConfig = registerOutput<DomainClusterConfig>('clusterConfig');
+    this.cognitoOptions =
+        registerOutput<DomainCognitoOptions?>('cognitoOptions');
     this.domainEndpointOptions =
-        Output.createUnknown<DomainDomainEndpointOptions>();
-    this.domainId = Output.createUnknown<String>();
-    this.domainName = Output.createUnknown<String>();
-    this.ebsOptions = Output.createUnknown<DomainEbsOptions>();
-    this.elasticsearchVersion = Output.createUnknown<String?>();
-    this.encryptAtRest = Output.createUnknown<DomainEncryptAtRest>();
-    this.endpoint = Output.createUnknown<String>();
-    this.kibanaEndpoint = Output.createUnknown<String>();
+        registerOutput<DomainDomainEndpointOptions>('domainEndpointOptions');
+    this.domainId = registerOutput<String>('domainId');
+    this.domainName = registerOutput<String>('domainName');
+    this.ebsOptions = registerOutput<DomainEbsOptions>('ebsOptions');
+    this.elasticsearchVersion = registerOutput<String?>('elasticsearchVersion');
+    this.encryptAtRest = registerOutput<DomainEncryptAtRest>('encryptAtRest');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.kibanaEndpoint = registerOutput<String>('kibanaEndpoint');
     this.logPublishingOptions =
-        Output.createUnknown<List<DomainLogPublishingOption>?>();
+        registerOutput<List<DomainLogPublishingOption>?>(
+            'logPublishingOptions');
     this.nodeToNodeEncryption =
-        Output.createUnknown<DomainNodeToNodeEncryption>();
-    this.region = Output.createUnknown<String>();
-    this.snapshotOptions = Output.createUnknown<DomainSnapshotOptions?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcOptions = Output.createUnknown<DomainVpcOptions?>();
+        registerOutput<DomainNodeToNodeEncryption>('nodeToNodeEncryption');
+    this.region = registerOutput<String>('region');
+    this.snapshotOptions =
+        registerOutput<DomainSnapshotOptions?>('snapshotOptions');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcOptions = registerOutput<DomainVpcOptions?>('vpcOptions');
   }
 }

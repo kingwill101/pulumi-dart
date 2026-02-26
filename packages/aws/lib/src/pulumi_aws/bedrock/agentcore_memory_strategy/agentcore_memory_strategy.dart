@@ -972,15 +972,17 @@ class AgentcoreMemoryStrategy extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.configuration =
-        Output.createUnknown<AgentcoreMemoryStrategyConfiguration?>();
-    this.description = Output.createUnknown<String?>();
-    this.memoryExecutionRoleArn = Output.createUnknown<String?>();
-    this.memoryId = Output.createUnknown<String>();
-    this.memoryStrategyId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namespaces = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<AgentcoreMemoryStrategyTimeouts?>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<AgentcoreMemoryStrategyConfiguration?>('configuration');
+    this.description = registerOutput<String?>('description');
+    this.memoryExecutionRoleArn =
+        registerOutput<String?>('memoryExecutionRoleArn');
+    this.memoryId = registerOutput<String>('memoryId');
+    this.memoryStrategyId = registerOutput<String>('memoryStrategyId');
+    this.name = registerOutput<String>('name');
+    this.namespaces = registerOutput<List<String>>('namespaces');
+    this.region = registerOutput<String>('region');
+    this.timeouts =
+        registerOutput<AgentcoreMemoryStrategyTimeouts?>('timeouts');
+    this.type = registerOutput<String>('type');
   }
 }

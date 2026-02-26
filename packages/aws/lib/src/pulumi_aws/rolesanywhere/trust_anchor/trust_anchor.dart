@@ -392,13 +392,14 @@ class TrustAnchor extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.enabled = registerOutput<bool>('enabled');
+    this.name = registerOutput<String>('name');
     this.notificationSettings =
-        Output.createUnknown<List<TrustAnchorNotificationSetting>>();
-    this.source = Output.createUnknown<TrustAnchorSource>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<TrustAnchorNotificationSetting>>(
+            'notificationSettings');
+    this.source = registerOutput<TrustAnchorSource>('source');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -375,15 +375,15 @@ class NotificationRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.detailType = Output.createUnknown<String>();
-    this.eventTypeIds = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resource = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targets = Output.createUnknown<List<NotificationRuleTarget>?>();
+    this.arn = registerOutput<String>('arn');
+    this.detailType = registerOutput<String>('detailType');
+    this.eventTypeIds = registerOutput<List<String>>('eventTypeIds');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.resource = registerOutput<String>('resource');
+    this.status = registerOutput<String?>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targets = registerOutput<List<NotificationRuleTarget>?>('targets');
   }
 }

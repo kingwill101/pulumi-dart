@@ -475,21 +475,23 @@ class EndpointPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authorizationPolicy = Output.createUnknown<String?>();
-    this.clientTlsPolicy = Output.createUnknown<String?>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.authorizationPolicy = registerOutput<String?>('authorizationPolicy');
+    this.clientTlsPolicy = registerOutput<String?>('clientTlsPolicy');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.endpointMatcher =
-        Output.createUnknown<EndpointPolicyEndpointMatcher>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.serverTlsPolicy = Output.createUnknown<String?>();
+        registerOutput<EndpointPolicyEndpointMatcher>('endpointMatcher');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.serverTlsPolicy = registerOutput<String?>('serverTlsPolicy');
     this.trafficPortSelector =
-        Output.createUnknown<EndpointPolicyTrafficPortSelector?>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<EndpointPolicyTrafficPortSelector?>(
+            'trafficPortSelector');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

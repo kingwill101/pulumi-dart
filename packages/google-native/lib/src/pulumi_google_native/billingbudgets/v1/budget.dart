@@ -44,17 +44,21 @@ class Budget extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.amount =
-        Output.createUnknown<GoogleCloudBillingBudgetsV1BudgetAmountResponse>();
-    this.billingAccountId = Output.createUnknown<String>();
+        registerOutput<GoogleCloudBillingBudgetsV1BudgetAmountResponse>(
+            'amount');
+    this.billingAccountId = registerOutput<String>('billingAccountId');
     this.budgetFilter =
-        Output.createUnknown<GoogleCloudBillingBudgetsV1FilterResponse>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.notificationsRule = Output.createUnknown<
-        GoogleCloudBillingBudgetsV1NotificationsRuleResponse>();
-    this.ownershipScope = Output.createUnknown<String>();
-    this.thresholdRules = Output.createUnknown<
-        List<GoogleCloudBillingBudgetsV1ThresholdRuleResponse>>();
+        registerOutput<GoogleCloudBillingBudgetsV1FilterResponse>(
+            'budgetFilter');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    this.notificationsRule =
+        registerOutput<GoogleCloudBillingBudgetsV1NotificationsRuleResponse>(
+            'notificationsRule');
+    this.ownershipScope = registerOutput<String>('ownershipScope');
+    this.thresholdRules =
+        registerOutput<List<GoogleCloudBillingBudgetsV1ThresholdRuleResponse>>(
+            'thresholdRules');
   }
 }

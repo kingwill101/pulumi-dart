@@ -59,22 +59,25 @@ class SecurityProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.environments = Output.createUnknown<
-        List<GoogleCloudApigeeV1SecurityProfileEnvironmentResponse>>();
-    this.maxScore = Output.createUnknown<int>();
-    this.minScore = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.environments = registerOutput<
+            List<GoogleCloudApigeeV1SecurityProfileEnvironmentResponse>>(
+        'environments');
+    this.maxScore = registerOutput<int>('maxScore');
+    this.minScore = registerOutput<int>('minScore');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
     this.profileConfig =
-        Output.createUnknown<GoogleCloudApigeeV1ProfileConfigResponse>();
-    this.revisionCreateTime = Output.createUnknown<String>();
-    this.revisionId = Output.createUnknown<String>();
-    this.revisionPublishTime = Output.createUnknown<String>();
-    this.revisionUpdateTime = Output.createUnknown<String>();
-    this.scoringConfigs = Output.createUnknown<
-        List<GoogleCloudApigeeV1SecurityProfileScoringConfigResponse>>();
-    this.securityProfileId = Output.createUnknown<String>();
+        registerOutput<GoogleCloudApigeeV1ProfileConfigResponse>(
+            'profileConfig');
+    this.revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.revisionPublishTime = registerOutput<String>('revisionPublishTime');
+    this.revisionUpdateTime = registerOutput<String>('revisionUpdateTime');
+    this.scoringConfigs = registerOutput<
+            List<GoogleCloudApigeeV1SecurityProfileScoringConfigResponse>>(
+        'scoringConfigs');
+    this.securityProfileId = registerOutput<String>('securityProfileId');
   }
 }

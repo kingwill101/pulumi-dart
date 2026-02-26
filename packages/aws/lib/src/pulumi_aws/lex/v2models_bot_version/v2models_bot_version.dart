@@ -161,12 +161,13 @@ class V2modelsBotVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.botId = Output.createUnknown<String>();
-    this.botVersion = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.localeSpecification = Output.createUnknown<
-        Map<String, V2modelsBotVersionLocaleSpecification>>();
-    this.region = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<V2modelsBotVersionTimeouts?>();
+    this.botId = registerOutput<String>('botId');
+    this.botVersion = registerOutput<String>('botVersion');
+    this.description = registerOutput<String?>('description');
+    this.localeSpecification =
+        registerOutput<Map<String, V2modelsBotVersionLocaleSpecification>>(
+            'localeSpecification');
+    this.region = registerOutput<String>('region');
+    this.timeouts = registerOutput<V2modelsBotVersionTimeouts?>('timeouts');
   }
 }

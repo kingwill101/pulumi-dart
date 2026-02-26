@@ -170,18 +170,18 @@ class LinkAggregationGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.connectionId = Output.createUnknown<String?>();
-    this.connectionsBandwidth = Output.createUnknown<String>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.hasLogicalRedundancy = Output.createUnknown<String>();
-    this.jumboFrameCapable = Output.createUnknown<bool>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.ownerAccountId = Output.createUnknown<String>();
-    this.providerName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.connectionId = registerOutput<String?>('connectionId');
+    this.connectionsBandwidth = registerOutput<String>('connectionsBandwidth');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.hasLogicalRedundancy = registerOutput<String>('hasLogicalRedundancy');
+    this.jumboFrameCapable = registerOutput<bool>('jumboFrameCapable');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.ownerAccountId = registerOutput<String>('ownerAccountId');
+    this.providerName = registerOutput<String>('providerName');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

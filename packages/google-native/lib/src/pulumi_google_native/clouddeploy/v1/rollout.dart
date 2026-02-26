@@ -96,34 +96,35 @@ class Rollout extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.approvalState = Output.createUnknown<String>();
-    this.approveTime = Output.createUnknown<String>();
-    this.controllerRollout = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.deliveryPipelineId = Output.createUnknown<String>();
-    this.deployEndTime = Output.createUnknown<String>();
-    this.deployFailureCause = Output.createUnknown<String>();
-    this.deployStartTime = Output.createUnknown<String>();
-    this.deployingBuild = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.enqueueTime = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.failureReason = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<MetadataResponse>();
-    this.name = Output.createUnknown<String>();
-    this.phases = Output.createUnknown<List<PhaseResponse>>();
-    this.project = Output.createUnknown<String>();
-    this.releaseId = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.rollbackOfRollout = Output.createUnknown<String>();
-    this.rolledBackByRollouts = Output.createUnknown<List<String>>();
-    this.rolloutId = Output.createUnknown<String>();
-    this.startingPhaseId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.targetId = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.approvalState = registerOutput<String>('approvalState');
+    this.approveTime = registerOutput<String>('approveTime');
+    this.controllerRollout = registerOutput<String>('controllerRollout');
+    this.createTime = registerOutput<String>('createTime');
+    this.deliveryPipelineId = registerOutput<String>('deliveryPipelineId');
+    this.deployEndTime = registerOutput<String>('deployEndTime');
+    this.deployFailureCause = registerOutput<String>('deployFailureCause');
+    this.deployStartTime = registerOutput<String>('deployStartTime');
+    this.deployingBuild = registerOutput<String>('deployingBuild');
+    this.description = registerOutput<String>('description');
+    this.enqueueTime = registerOutput<String>('enqueueTime');
+    this.etag = registerOutput<String>('etag');
+    this.failureReason = registerOutput<String>('failureReason');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<MetadataResponse>('metadata');
+    this.name = registerOutput<String>('name');
+    this.phases = registerOutput<List<PhaseResponse>>('phases');
+    this.project = registerOutput<String>('project');
+    this.releaseId = registerOutput<String>('releaseId');
+    this.requestId = registerOutput<String?>('requestId');
+    this.rollbackOfRollout = registerOutput<String>('rollbackOfRollout');
+    this.rolledBackByRollouts =
+        registerOutput<List<String>>('rolledBackByRollouts');
+    this.rolloutId = registerOutput<String>('rolloutId');
+    this.startingPhaseId = registerOutput<String?>('startingPhaseId');
+    this.state = registerOutput<String>('state');
+    this.targetId = registerOutput<String>('targetId');
+    this.uid = registerOutput<String>('uid');
   }
 }

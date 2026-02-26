@@ -219,23 +219,24 @@ class Product extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceptLanguage = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.createdTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.distributor = Output.createUnknown<String>();
-    this.hasDefaultPath = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.owner = Output.createUnknown<String>();
+    this.acceptLanguage = registerOutput<String?>('acceptLanguage');
+    this.arn = registerOutput<String>('arn');
+    this.createdTime = registerOutput<String>('createdTime');
+    this.description = registerOutput<String>('description');
+    this.distributor = registerOutput<String>('distributor');
+    this.hasDefaultPath = registerOutput<bool>('hasDefaultPath');
+    this.name = registerOutput<String>('name');
+    this.owner = registerOutput<String>('owner');
     this.provisioningArtifactParameters =
-        Output.createUnknown<ProductProvisioningArtifactParameters>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.supportDescription = Output.createUnknown<String>();
-    this.supportEmail = Output.createUnknown<String>();
-    this.supportUrl = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<ProductProvisioningArtifactParameters>(
+            'provisioningArtifactParameters');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.supportDescription = registerOutput<String>('supportDescription');
+    this.supportEmail = registerOutput<String>('supportEmail');
+    this.supportUrl = registerOutput<String>('supportUrl');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
   }
 }

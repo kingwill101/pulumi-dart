@@ -281,20 +281,20 @@ class ImageVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aliases = Output.createUnknown<List<String>?>();
-    this.arn = Output.createUnknown<String>();
-    this.baseImage = Output.createUnknown<String>();
-    this.containerImage = Output.createUnknown<String>();
-    this.horovod = Output.createUnknown<bool?>();
-    this.imageArn = Output.createUnknown<String>();
-    this.imageName = Output.createUnknown<String>();
-    this.jobType = Output.createUnknown<String?>();
-    this.mlFramework = Output.createUnknown<String?>();
-    this.processor = Output.createUnknown<String?>();
-    this.programmingLang = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.releaseNotes = Output.createUnknown<String?>();
-    this.vendorGuidance = Output.createUnknown<String?>();
-    this.version = Output.createUnknown<int>();
+    this.aliases = registerOutput<List<String>?>('aliases');
+    this.arn = registerOutput<String>('arn');
+    this.baseImage = registerOutput<String>('baseImage');
+    this.containerImage = registerOutput<String>('containerImage');
+    this.horovod = registerOutput<bool?>('horovod');
+    this.imageArn = registerOutput<String>('imageArn');
+    this.imageName = registerOutput<String>('imageName');
+    this.jobType = registerOutput<String?>('jobType');
+    this.mlFramework = registerOutput<String?>('mlFramework');
+    this.processor = registerOutput<String?>('processor');
+    this.programmingLang = registerOutput<String?>('programmingLang');
+    this.region = registerOutput<String>('region');
+    this.releaseNotes = registerOutput<String?>('releaseNotes');
+    this.vendorGuidance = registerOutput<String?>('vendorGuidance');
+    this.version = registerOutput<int>('version');
   }
 }

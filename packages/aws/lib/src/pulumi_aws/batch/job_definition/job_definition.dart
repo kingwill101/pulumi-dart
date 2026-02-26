@@ -1906,24 +1906,28 @@ class JobDefinition extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.arnPrefix = Output.createUnknown<String>();
-    this.containerProperties = Output.createUnknown<String?>();
-    this.deregisterOnNewRevision = Output.createUnknown<bool?>();
-    this.ecsProperties = Output.createUnknown<String?>();
-    this.eksProperties = Output.createUnknown<JobDefinitionEksProperties?>();
-    this.name = Output.createUnknown<String>();
-    this.nodeProperties = Output.createUnknown<String?>();
-    this.parameters = Output.createUnknown<Map<String, String>?>();
-    this.platformCapabilities = Output.createUnknown<List<String>?>();
-    this.propagateTags = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.retryStrategy = Output.createUnknown<JobDefinitionRetryStrategy?>();
-    this.revision = Output.createUnknown<int>();
-    this.schedulingPriority = Output.createUnknown<int?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeout = Output.createUnknown<JobDefinitionTimeout?>();
-    this.type = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.arnPrefix = registerOutput<String>('arnPrefix');
+    this.containerProperties = registerOutput<String?>('containerProperties');
+    this.deregisterOnNewRevision =
+        registerOutput<bool?>('deregisterOnNewRevision');
+    this.ecsProperties = registerOutput<String?>('ecsProperties');
+    this.eksProperties =
+        registerOutput<JobDefinitionEksProperties?>('eksProperties');
+    this.name = registerOutput<String>('name');
+    this.nodeProperties = registerOutput<String?>('nodeProperties');
+    this.parameters = registerOutput<Map<String, String>?>('parameters');
+    this.platformCapabilities =
+        registerOutput<List<String>?>('platformCapabilities');
+    this.propagateTags = registerOutput<bool?>('propagateTags');
+    this.region = registerOutput<String>('region');
+    this.retryStrategy =
+        registerOutput<JobDefinitionRetryStrategy?>('retryStrategy');
+    this.revision = registerOutput<int>('revision');
+    this.schedulingPriority = registerOutput<int?>('schedulingPriority');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeout = registerOutput<JobDefinitionTimeout?>('timeout');
+    this.type = registerOutput<String>('type');
   }
 }

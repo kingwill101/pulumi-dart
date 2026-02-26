@@ -67,23 +67,24 @@ class BackupPlan extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupConfig = Output.createUnknown<BackupConfigResponse>();
-    this.backupPlanId = Output.createUnknown<String>();
-    this.backupSchedule = Output.createUnknown<ScheduleResponse>();
-    this.cluster = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.deactivated = Output.createUnknown<bool>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.protectedPodCount = Output.createUnknown<int>();
-    this.retentionPolicy = Output.createUnknown<RetentionPolicyResponse>();
-    this.state = Output.createUnknown<String>();
-    this.stateReason = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.backupConfig = registerOutput<BackupConfigResponse>('backupConfig');
+    this.backupPlanId = registerOutput<String>('backupPlanId');
+    this.backupSchedule = registerOutput<ScheduleResponse>('backupSchedule');
+    this.cluster = registerOutput<String>('cluster');
+    this.createTime = registerOutput<String>('createTime');
+    this.deactivated = registerOutput<bool>('deactivated');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.protectedPodCount = registerOutput<int>('protectedPodCount');
+    this.retentionPolicy =
+        registerOutput<RetentionPolicyResponse>('retentionPolicy');
+    this.state = registerOutput<String>('state');
+    this.stateReason = registerOutput<String>('stateReason');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

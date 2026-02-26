@@ -124,43 +124,49 @@ class VmwareCluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.adminClusterMembership = Output.createUnknown<String>();
-    this.adminClusterName = Output.createUnknown<String>();
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.antiAffinityGroups = Output.createUnknown<VmwareAAGConfigResponse>();
-    this.authorization = Output.createUnknown<AuthorizationResponse>();
+    this.adminClusterMembership =
+        registerOutput<String>('adminClusterMembership');
+    this.adminClusterName = registerOutput<String>('adminClusterName');
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.antiAffinityGroups =
+        registerOutput<VmwareAAGConfigResponse>('antiAffinityGroups');
+    this.authorization = registerOutput<AuthorizationResponse>('authorization');
     this.autoRepairConfig =
-        Output.createUnknown<VmwareAutoRepairConfigResponse>();
+        registerOutput<VmwareAutoRepairConfigResponse>('autoRepairConfig');
     this.controlPlaneNode =
-        Output.createUnknown<VmwareControlPlaneNodeConfigResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataplaneV2 = Output.createUnknown<VmwareDataplaneV2ConfigResponse>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.disableBundledIngress = Output.createUnknown<bool>();
-    this.enableControlPlaneV2 = Output.createUnknown<bool>();
-    this.endpoint = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.fleet = Output.createUnknown<FleetResponse3>();
+        registerOutput<VmwareControlPlaneNodeConfigResponse>(
+            'controlPlaneNode');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataplaneV2 =
+        registerOutput<VmwareDataplaneV2ConfigResponse>('dataplaneV2');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.description = registerOutput<String>('description');
+    this.disableBundledIngress = registerOutput<bool>('disableBundledIngress');
+    this.enableControlPlaneV2 = registerOutput<bool>('enableControlPlaneV2');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.etag = registerOutput<String>('etag');
+    this.fleet = registerOutput<FleetResponse3>('fleet');
     this.loadBalancer =
-        Output.createUnknown<VmwareLoadBalancerConfigResponse>();
-    this.localName = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.networkConfig = Output.createUnknown<VmwareNetworkConfigResponse>();
-    this.onPremVersion = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.status = Output.createUnknown<ResourceStatusResponse4>();
-    this.storage = Output.createUnknown<VmwareStorageConfigResponse>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<VmwareLoadBalancerConfigResponse>('loadBalancer');
+    this.localName = registerOutput<String>('localName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.networkConfig =
+        registerOutput<VmwareNetworkConfigResponse>('networkConfig');
+    this.onPremVersion = registerOutput<String>('onPremVersion');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.state = registerOutput<String>('state');
+    this.status = registerOutput<ResourceStatusResponse4>('status');
+    this.storage = registerOutput<VmwareStorageConfigResponse>('storage');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
     this.upgradePolicy =
-        Output.createUnknown<VmwareClusterUpgradePolicyResponse>();
-    this.validationCheck = Output.createUnknown<ValidationCheckResponse>();
-    this.vcenter = Output.createUnknown<VmwareVCenterConfigResponse>();
-    this.vmTrackingEnabled = Output.createUnknown<bool>();
-    this.vmwareClusterId = Output.createUnknown<String?>();
+        registerOutput<VmwareClusterUpgradePolicyResponse>('upgradePolicy');
+    this.validationCheck =
+        registerOutput<ValidationCheckResponse>('validationCheck');
+    this.vcenter = registerOutput<VmwareVCenterConfigResponse>('vcenter');
+    this.vmTrackingEnabled = registerOutput<bool>('vmTrackingEnabled');
+    this.vmwareClusterId = registerOutput<String?>('vmwareClusterId');
   }
 }

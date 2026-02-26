@@ -200,9 +200,9 @@ class ThingPrincipalAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.principal = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.thing = Output.createUnknown<String>();
-    this.thingPrincipalType = Output.createUnknown<String>();
+    this.principal = registerOutput<String>('principal');
+    this.region = registerOutput<String>('region');
+    this.thing = registerOutput<String>('thing');
+    this.thingPrincipalType = registerOutput<String>('thingPrincipalType');
   }
 }

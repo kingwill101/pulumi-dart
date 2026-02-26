@@ -330,28 +330,30 @@ class SavingsPlan extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.commitment = Output.createUnknown<String>();
-    this.currency = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.ec2InstanceFamily = Output.createUnknown<String>();
-    this.end = Output.createUnknown<String>();
-    this.offeringId = Output.createUnknown<String>();
-    this.paymentOption = Output.createUnknown<String>();
-    this.productTypes = Output.createUnknown<List<String>>();
-    this.purchaseTime = Output.createUnknown<String?>();
-    this.recurringPaymentAmount = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.returnableUntil = Output.createUnknown<String>();
-    this.savingsPlanArn = Output.createUnknown<String>();
-    this.savingsPlanId = Output.createUnknown<String>();
-    this.savingsPlanOfferingId = Output.createUnknown<String>();
-    this.savingsPlanType = Output.createUnknown<String>();
-    this.start = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.termDurationInSeconds = Output.createUnknown<int>();
-    this.timeouts = Output.createUnknown<SavingsPlanTimeouts?>();
-    this.upfrontPaymentAmount = Output.createUnknown<String?>();
+    this.commitment = registerOutput<String>('commitment');
+    this.currency = registerOutput<String>('currency');
+    this.description = registerOutput<String>('description');
+    this.ec2InstanceFamily = registerOutput<String>('ec2InstanceFamily');
+    this.end = registerOutput<String>('end');
+    this.offeringId = registerOutput<String>('offeringId');
+    this.paymentOption = registerOutput<String>('paymentOption');
+    this.productTypes = registerOutput<List<String>>('productTypes');
+    this.purchaseTime = registerOutput<String?>('purchaseTime');
+    this.recurringPaymentAmount =
+        registerOutput<String>('recurringPaymentAmount');
+    this.region = registerOutput<String>('region');
+    this.returnableUntil = registerOutput<String>('returnableUntil');
+    this.savingsPlanArn = registerOutput<String>('savingsPlanArn');
+    this.savingsPlanId = registerOutput<String>('savingsPlanId');
+    this.savingsPlanOfferingId =
+        registerOutput<String>('savingsPlanOfferingId');
+    this.savingsPlanType = registerOutput<String>('savingsPlanType');
+    this.start = registerOutput<String>('start');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.termDurationInSeconds = registerOutput<int>('termDurationInSeconds');
+    this.timeouts = registerOutput<SavingsPlanTimeouts?>('timeouts');
+    this.upfrontPaymentAmount = registerOutput<String?>('upfrontPaymentAmount');
   }
 }

@@ -166,8 +166,8 @@ class BucketOwnershipControls extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.rule = Output.createUnknown<BucketOwnershipControlsRule>();
+    this.bucket = registerOutput<String>('bucket');
+    this.region = registerOutput<String>('region');
+    this.rule = registerOutput<BucketOwnershipControlsRule>('rule');
   }
 }

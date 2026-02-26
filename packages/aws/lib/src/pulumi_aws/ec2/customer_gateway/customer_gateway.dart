@@ -170,15 +170,15 @@ class CustomerGateway extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.bgpAsn = Output.createUnknown<String?>();
-    this.bgpAsnExtended = Output.createUnknown<String?>();
-    this.certificateArn = Output.createUnknown<String?>();
-    this.deviceName = Output.createUnknown<String?>();
-    this.ipAddress = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.bgpAsn = registerOutput<String?>('bgpAsn');
+    this.bgpAsnExtended = registerOutput<String?>('bgpAsnExtended');
+    this.certificateArn = registerOutput<String?>('certificateArn');
+    this.deviceName = registerOutput<String?>('deviceName');
+    this.ipAddress = registerOutput<String?>('ipAddress');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
   }
 }

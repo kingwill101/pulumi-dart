@@ -57,21 +57,24 @@ class FeatureOnlineStore2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bigtable = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.dedicatedServingEndpoint = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse>();
-    this.embeddingManagement = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse>();
-    this.etag = Output.createUnknown<String>();
-    this.featureOnlineStoreId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.optimized = Output.createUnknown<Map<String, dynamic>>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.bigtable = registerOutput<
+            GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponse>(
+        'bigtable');
+    this.createTime = registerOutput<String>('createTime');
+    this.dedicatedServingEndpoint = registerOutput<
+            GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse>(
+        'dedicatedServingEndpoint');
+    this.embeddingManagement = registerOutput<
+            GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse>(
+        'embeddingManagement');
+    this.etag = registerOutput<String>('etag');
+    this.featureOnlineStoreId = registerOutput<String>('featureOnlineStoreId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.optimized = registerOutput<Map<String, dynamic>>('optimized');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

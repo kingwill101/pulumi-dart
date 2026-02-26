@@ -846,27 +846,29 @@ class Eip extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.address = Output.createUnknown<String?>();
-    this.allocationId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.associateWithPrivateIp = Output.createUnknown<String?>();
-    this.associationId = Output.createUnknown<String>();
-    this.carrierIp = Output.createUnknown<String>();
-    this.customerOwnedIp = Output.createUnknown<String>();
-    this.customerOwnedIpv4Pool = Output.createUnknown<String?>();
-    this.domain = Output.createUnknown<String>();
-    this.instance = Output.createUnknown<String>();
-    this.ipamPoolId = Output.createUnknown<String>();
-    this.networkBorderGroup = Output.createUnknown<String>();
-    this.networkInterface = Output.createUnknown<String>();
-    this.privateDns = Output.createUnknown<String>();
-    this.privateIp = Output.createUnknown<String>();
-    this.ptrRecord = Output.createUnknown<String>();
-    this.publicDns = Output.createUnknown<String>();
-    this.publicIp = Output.createUnknown<String>();
-    this.publicIpv4Pool = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.address = registerOutput<String?>('address');
+    this.allocationId = registerOutput<String>('allocationId');
+    this.arn = registerOutput<String>('arn');
+    this.associateWithPrivateIp =
+        registerOutput<String?>('associateWithPrivateIp');
+    this.associationId = registerOutput<String>('associationId');
+    this.carrierIp = registerOutput<String>('carrierIp');
+    this.customerOwnedIp = registerOutput<String>('customerOwnedIp');
+    this.customerOwnedIpv4Pool =
+        registerOutput<String?>('customerOwnedIpv4Pool');
+    this.domain = registerOutput<String>('domain');
+    this.instance = registerOutput<String>('instance');
+    this.ipamPoolId = registerOutput<String>('ipamPoolId');
+    this.networkBorderGroup = registerOutput<String>('networkBorderGroup');
+    this.networkInterface = registerOutput<String>('networkInterface');
+    this.privateDns = registerOutput<String>('privateDns');
+    this.privateIp = registerOutput<String>('privateIp');
+    this.ptrRecord = registerOutput<String>('ptrRecord');
+    this.publicDns = registerOutput<String>('publicDns');
+    this.publicIp = registerOutput<String>('publicIp');
+    this.publicIpv4Pool = registerOutput<String>('publicIpv4Pool');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

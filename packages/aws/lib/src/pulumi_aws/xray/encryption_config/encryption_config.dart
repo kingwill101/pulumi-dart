@@ -387,8 +387,8 @@ class EncryptionConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.keyId = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+    this.keyId = registerOutput<String?>('keyId');
+    this.region = registerOutput<String>('region');
+    this.type = registerOutput<String>('type');
   }
 }

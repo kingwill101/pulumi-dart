@@ -955,32 +955,40 @@ class Application5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.architecture = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
+    this.architecture = registerOutput<String?>('architecture');
+    this.arn = registerOutput<String>('arn');
     this.autoStartConfiguration =
-        Output.createUnknown<ApplicationAutoStartConfiguration>();
+        registerOutput<ApplicationAutoStartConfiguration>(
+            'autoStartConfiguration');
     this.autoStopConfiguration =
-        Output.createUnknown<ApplicationAutoStopConfiguration>();
+        registerOutput<ApplicationAutoStopConfiguration>(
+            'autoStopConfiguration');
     this.imageConfiguration =
-        Output.createUnknown<ApplicationImageConfiguration>();
+        registerOutput<ApplicationImageConfiguration>('imageConfiguration');
     this.initialCapacities =
-        Output.createUnknown<List<ApplicationInitialCapacity>?>();
+        registerOutput<List<ApplicationInitialCapacity>?>('initialCapacities');
     this.interactiveConfiguration =
-        Output.createUnknown<ApplicationInteractiveConfiguration>();
-    this.maximumCapacity = Output.createUnknown<ApplicationMaximumCapacity>();
+        registerOutput<ApplicationInteractiveConfiguration>(
+            'interactiveConfiguration');
+    this.maximumCapacity =
+        registerOutput<ApplicationMaximumCapacity>('maximumCapacity');
     this.monitoringConfiguration =
-        Output.createUnknown<ApplicationMonitoringConfiguration?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<ApplicationMonitoringConfiguration?>(
+            'monitoringConfiguration');
+    this.name = registerOutput<String>('name');
     this.networkConfiguration =
-        Output.createUnknown<ApplicationNetworkConfiguration?>();
-    this.region = Output.createUnknown<String>();
-    this.releaseLabel = Output.createUnknown<String>();
+        registerOutput<ApplicationNetworkConfiguration?>(
+            'networkConfiguration');
+    this.region = registerOutput<String>('region');
+    this.releaseLabel = registerOutput<String>('releaseLabel');
     this.runtimeConfigurations =
-        Output.createUnknown<List<ApplicationRuntimeConfiguration>?>();
+        registerOutput<List<ApplicationRuntimeConfiguration>?>(
+            'runtimeConfigurations');
     this.schedulerConfiguration =
-        Output.createUnknown<ApplicationSchedulerConfiguration?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<ApplicationSchedulerConfiguration?>(
+            'schedulerConfiguration');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
   }
 }

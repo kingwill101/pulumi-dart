@@ -233,18 +233,19 @@ class SQuotaPreference extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.contactEmail = Output.createUnknown<String?>();
-    this.createTime = Output.createUnknown<String>();
-    this.dimensions = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.ignoreSafetyChecks = Output.createUnknown<String?>();
-    this.justification = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.quotaConfig = Output.createUnknown<SQuotaPreferenceQuotaConfig>();
-    this.quotaId = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.service = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.contactEmail = registerOutput<String?>('contactEmail');
+    this.createTime = registerOutput<String>('createTime');
+    this.dimensions = registerOutput<Map<String, String>>('dimensions');
+    this.etag = registerOutput<String>('etag');
+    this.ignoreSafetyChecks = registerOutput<String?>('ignoreSafetyChecks');
+    this.justification = registerOutput<String?>('justification');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.quotaConfig =
+        registerOutput<SQuotaPreferenceQuotaConfig>('quotaConfig');
+    this.quotaId = registerOutput<String>('quotaId');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.service = registerOutput<String>('service');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

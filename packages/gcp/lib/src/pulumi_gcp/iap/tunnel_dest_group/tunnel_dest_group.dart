@@ -204,11 +204,11 @@ class TunnelDestGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cidrs = Output.createUnknown<List<String>?>();
-    this.fqdns = Output.createUnknown<List<String>?>();
-    this.groupName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.cidrs = registerOutput<List<String>?>('cidrs');
+    this.fqdns = registerOutput<List<String>?>('fqdns');
+    this.groupName = registerOutput<String>('groupName');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
   }
 }

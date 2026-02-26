@@ -214,12 +214,12 @@ class Type extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.definition = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.format = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.apiId = registerOutput<String>('apiId');
+    this.arn = registerOutput<String>('arn');
+    this.definition = registerOutput<String>('definition');
+    this.description = registerOutput<String>('description');
+    this.format = registerOutput<String>('format');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

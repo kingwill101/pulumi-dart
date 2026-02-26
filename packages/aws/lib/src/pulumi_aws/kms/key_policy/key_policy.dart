@@ -246,9 +246,10 @@ class KeyPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bypassPolicyLockoutSafetyCheck = Output.createUnknown<bool?>();
-    this.keyId = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.bypassPolicyLockoutSafetyCheck =
+        registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
+    this.keyId = registerOutput<String>('keyId');
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
   }
 }

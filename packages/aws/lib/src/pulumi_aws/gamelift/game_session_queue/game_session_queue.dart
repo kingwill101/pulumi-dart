@@ -230,16 +230,17 @@ class GameSessionQueue extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.customEventData = Output.createUnknown<String?>();
-    this.destinations = Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
-    this.notificationTarget = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.customEventData = registerOutput<String?>('customEventData');
+    this.destinations = registerOutput<List<String>?>('destinations');
+    this.name = registerOutput<String>('name');
+    this.notificationTarget = registerOutput<String?>('notificationTarget');
     this.playerLatencyPolicies =
-        Output.createUnknown<List<GameSessionQueuePlayerLatencyPolicy>?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeoutInSeconds = Output.createUnknown<int?>();
+        registerOutput<List<GameSessionQueuePlayerLatencyPolicy>?>(
+            'playerLatencyPolicies');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
   }
 }

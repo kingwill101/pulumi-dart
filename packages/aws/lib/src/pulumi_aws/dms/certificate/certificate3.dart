@@ -160,12 +160,12 @@ class Certificate3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificateArn = Output.createUnknown<String>();
-    this.certificateId = Output.createUnknown<String>();
-    this.certificatePem = Output.createUnknown<String?>();
-    this.certificateWallet = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.certificateArn = registerOutput<String>('certificateArn');
+    this.certificateId = registerOutput<String>('certificateId');
+    this.certificatePem = registerOutput<String?>('certificatePem');
+    this.certificateWallet = registerOutput<String?>('certificateWallet');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

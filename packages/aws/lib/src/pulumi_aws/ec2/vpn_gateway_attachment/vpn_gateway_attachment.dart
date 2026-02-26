@@ -188,8 +188,8 @@ class VpnGatewayAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.vpcId = Output.createUnknown<String>();
-    this.vpnGatewayId = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.vpcId = registerOutput<String>('vpcId');
+    this.vpnGatewayId = registerOutput<String>('vpnGatewayId');
   }
 }

@@ -1865,8 +1865,8 @@ class CoreNetworkPolicyAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.coreNetworkId = Output.createUnknown<String>();
-    this.policyDocument = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.coreNetworkId = registerOutput<String>('coreNetworkId');
+    this.policyDocument = registerOutput<String>('policyDocument');
+    this.state = registerOutput<String>('state');
   }
 }

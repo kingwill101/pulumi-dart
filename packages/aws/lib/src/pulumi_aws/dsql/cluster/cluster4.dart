@@ -168,19 +168,21 @@ class Cluster4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.deletionProtectionEnabled = Output.createUnknown<bool>();
+    this.arn = registerOutput<String>('arn');
+    this.deletionProtectionEnabled =
+        registerOutput<bool>('deletionProtectionEnabled');
     this.encryptionDetails =
-        Output.createUnknown<List<ClusterEncryptionDetail>>();
-    this.forceDestroy = Output.createUnknown<bool>();
-    this.identifier = Output.createUnknown<String>();
-    this.kmsEncryptionKey = Output.createUnknown<String>();
+        registerOutput<List<ClusterEncryptionDetail>>('encryptionDetails');
+    this.forceDestroy = registerOutput<bool>('forceDestroy');
+    this.identifier = registerOutput<String>('identifier');
+    this.kmsEncryptionKey = registerOutput<String>('kmsEncryptionKey');
     this.multiRegionProperties =
-        Output.createUnknown<ClusterMultiRegionProperties?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ClusterTimeouts?>();
-    this.vpcEndpointServiceName = Output.createUnknown<String>();
+        registerOutput<ClusterMultiRegionProperties?>('multiRegionProperties');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ClusterTimeouts?>('timeouts');
+    this.vpcEndpointServiceName =
+        registerOutput<String>('vpcEndpointServiceName');
   }
 }

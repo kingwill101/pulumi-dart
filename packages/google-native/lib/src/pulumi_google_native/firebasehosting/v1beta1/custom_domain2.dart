@@ -70,24 +70,25 @@ class CustomDomain2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.cert = Output.createUnknown<CertificateResponse2>();
-    this.certPreference = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.customDomainId = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.hostState = Output.createUnknown<String>();
-    this.issues = Output.createUnknown<List<StatusResponse17>>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.ownershipState = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.redirectTarget = Output.createUnknown<String>();
-    this.requiredDnsUpdates = Output.createUnknown<DnsUpdatesResponse>();
-    this.siteId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.cert = registerOutput<CertificateResponse2>('cert');
+    this.certPreference = registerOutput<String>('certPreference');
+    this.createTime = registerOutput<String>('createTime');
+    this.customDomainId = registerOutput<String>('customDomainId');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.etag = registerOutput<String>('etag');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.hostState = registerOutput<String>('hostState');
+    this.issues = registerOutput<List<StatusResponse17>>('issues');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.ownershipState = registerOutput<String>('ownershipState');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.redirectTarget = registerOutput<String>('redirectTarget');
+    this.requiredDnsUpdates =
+        registerOutput<DnsUpdatesResponse>('requiredDnsUpdates');
+    this.siteId = registerOutput<String>('siteId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

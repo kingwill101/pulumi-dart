@@ -47,16 +47,17 @@ class ScanConfig2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authentication = Output.createUnknown<AuthenticationResponse3>();
-    this.blacklistPatterns = Output.createUnknown<List<String>>();
-    this.displayName = Output.createUnknown<String>();
-    this.latestRun = Output.createUnknown<ScanRunResponse>();
-    this.maxQps = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.schedule = Output.createUnknown<ScheduleResponse4>();
-    this.startingUrls = Output.createUnknown<List<String>>();
-    this.targetPlatforms = Output.createUnknown<List<String>>();
-    this.userAgent = Output.createUnknown<String>();
+    this.authentication =
+        registerOutput<AuthenticationResponse3>('authentication');
+    this.blacklistPatterns = registerOutput<List<String>>('blacklistPatterns');
+    this.displayName = registerOutput<String>('displayName');
+    this.latestRun = registerOutput<ScanRunResponse>('latestRun');
+    this.maxQps = registerOutput<int>('maxQps');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.schedule = registerOutput<ScheduleResponse4>('schedule');
+    this.startingUrls = registerOutput<List<String>>('startingUrls');
+    this.targetPlatforms = registerOutput<List<String>>('targetPlatforms');
+    this.userAgent = registerOutput<String>('userAgent');
   }
 }

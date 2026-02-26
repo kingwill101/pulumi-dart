@@ -877,17 +877,19 @@ class Rule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.evaluationModes = Output.createUnknown<List<RuleEvaluationMode>>();
-    this.inputParameters = Output.createUnknown<String?>();
-    this.maximumExecutionFrequency = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.ruleId = Output.createUnknown<String>();
-    this.scope = Output.createUnknown<RuleScope?>();
-    this.source = Output.createUnknown<RuleSource>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.evaluationModes =
+        registerOutput<List<RuleEvaluationMode>>('evaluationModes');
+    this.inputParameters = registerOutput<String?>('inputParameters');
+    this.maximumExecutionFrequency =
+        registerOutput<String?>('maximumExecutionFrequency');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.ruleId = registerOutput<String>('ruleId');
+    this.scope = registerOutput<RuleScope?>('scope');
+    this.source = registerOutput<RuleSource>('source');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

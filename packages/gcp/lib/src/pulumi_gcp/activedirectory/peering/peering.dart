@@ -384,15 +384,16 @@ class Peering extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authorizedNetwork = Output.createUnknown<String>();
-    this.domainResource = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.peeringId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.status = Output.createUnknown<String?>();
-    this.statusMessage = Output.createUnknown<String?>();
+    this.authorizedNetwork = registerOutput<String>('authorizedNetwork');
+    this.domainResource = registerOutput<String>('domainResource');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.peeringId = registerOutput<String>('peeringId');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.status = registerOutput<String?>('status');
+    this.statusMessage = registerOutput<String?>('statusMessage');
   }
 }

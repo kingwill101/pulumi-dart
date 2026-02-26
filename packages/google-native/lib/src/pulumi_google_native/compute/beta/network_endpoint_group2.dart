@@ -81,32 +81,36 @@ class NetworkEndpointGroup2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
     this.appEngine =
-        Output.createUnknown<NetworkEndpointGroupAppEngineResponse2>();
+        registerOutput<NetworkEndpointGroupAppEngineResponse2>('appEngine');
     this.cloudFunction =
-        Output.createUnknown<NetworkEndpointGroupCloudFunctionResponse2>();
+        registerOutput<NetworkEndpointGroupCloudFunctionResponse2>(
+            'cloudFunction');
     this.cloudRun =
-        Output.createUnknown<NetworkEndpointGroupCloudRunResponse2>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.defaultPort = Output.createUnknown<int>();
-    this.description = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.loadBalancer = Output.createUnknown<
-        NetworkEndpointGroupLbNetworkEndpointGroupResponse2>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.networkEndpointType = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pscData = Output.createUnknown<NetworkEndpointGroupPscDataResponse2>();
-    this.pscTargetService = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.serverlessDeployment = Output.createUnknown<
-        NetworkEndpointGroupServerlessDeploymentResponse2>();
-    this.size = Output.createUnknown<int>();
-    this.subnetwork = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<NetworkEndpointGroupCloudRunResponse2>('cloudRun');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.defaultPort = registerOutput<int>('defaultPort');
+    this.description = registerOutput<String>('description');
+    this.kind = registerOutput<String>('kind');
+    this.loadBalancer =
+        registerOutput<NetworkEndpointGroupLbNetworkEndpointGroupResponse2>(
+            'loadBalancer');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.networkEndpointType = registerOutput<String>('networkEndpointType');
+    this.project = registerOutput<String>('project');
+    this.pscData =
+        registerOutput<NetworkEndpointGroupPscDataResponse2>('pscData');
+    this.pscTargetService = registerOutput<String>('pscTargetService');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.serverlessDeployment =
+        registerOutput<NetworkEndpointGroupServerlessDeploymentResponse2>(
+            'serverlessDeployment');
+    this.size = registerOutput<int>('size');
+    this.subnetwork = registerOutput<String>('subnetwork');
+    this.zone = registerOutput<String>('zone');
   }
 }

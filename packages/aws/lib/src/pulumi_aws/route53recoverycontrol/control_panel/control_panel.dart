@@ -143,13 +143,13 @@ class ControlPanel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.clusterArn = Output.createUnknown<String>();
-    this.defaultControlPanel = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.routingControlCount = Output.createUnknown<int>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.clusterArn = registerOutput<String>('clusterArn');
+    this.defaultControlPanel = registerOutput<bool>('defaultControlPanel');
+    this.name = registerOutput<String>('name');
+    this.routingControlCount = registerOutput<int>('routingControlCount');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -229,9 +229,9 @@ class Attachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoscalingGroupName = Output.createUnknown<String>();
-    this.elb = Output.createUnknown<String?>();
-    this.lbTargetGroupArn = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
+    this.elb = registerOutput<String?>('elb');
+    this.lbTargetGroupArn = registerOutput<String?>('lbTargetGroupArn');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -169,10 +169,10 @@ class TableReplication extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.rule = Output.createUnknown<TableReplicationRule?>();
-    this.tableArn = Output.createUnknown<String>();
-    this.versionToken = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.role = registerOutput<String>('role');
+    this.rule = registerOutput<TableReplicationRule?>('rule');
+    this.tableArn = registerOutput<String>('tableArn');
+    this.versionToken = registerOutput<String>('versionToken');
   }
 }

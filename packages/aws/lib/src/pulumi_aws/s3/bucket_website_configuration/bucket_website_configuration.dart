@@ -451,19 +451,23 @@ class BucketWebsiteConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
     this.errorDocument =
-        Output.createUnknown<BucketWebsiteConfigurationErrorDocument?>();
-    this.expectedBucketOwner = Output.createUnknown<String?>();
+        registerOutput<BucketWebsiteConfigurationErrorDocument?>(
+            'errorDocument');
+    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     this.indexDocument =
-        Output.createUnknown<BucketWebsiteConfigurationIndexDocument?>();
-    this.redirectAllRequestsTo = Output.createUnknown<
-        BucketWebsiteConfigurationRedirectAllRequestsTo?>();
-    this.region = Output.createUnknown<String>();
-    this.routingRuleDetails = Output.createUnknown<String>();
+        registerOutput<BucketWebsiteConfigurationIndexDocument?>(
+            'indexDocument');
+    this.redirectAllRequestsTo =
+        registerOutput<BucketWebsiteConfigurationRedirectAllRequestsTo?>(
+            'redirectAllRequestsTo');
+    this.region = registerOutput<String>('region');
+    this.routingRuleDetails = registerOutput<String>('routingRuleDetails');
     this.routingRules =
-        Output.createUnknown<List<BucketWebsiteConfigurationRoutingRule>>();
-    this.websiteDomain = Output.createUnknown<String>();
-    this.websiteEndpoint = Output.createUnknown<String>();
+        registerOutput<List<BucketWebsiteConfigurationRoutingRule>>(
+            'routingRules');
+    this.websiteDomain = registerOutput<String>('websiteDomain');
+    this.websiteEndpoint = registerOutput<String>('websiteEndpoint');
   }
 }

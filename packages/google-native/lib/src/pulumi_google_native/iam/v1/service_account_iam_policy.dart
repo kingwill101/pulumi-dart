@@ -31,11 +31,12 @@ class ServiceAccountIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse48>>();
-    this.bindings = Output.createUnknown<List<BindingResponse67>>();
-    this.etag = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.serviceAccountId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse48>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse67>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.project = registerOutput<String>('project');
+    this.serviceAccountId = registerOutput<String>('serviceAccountId');
+    this.version = registerOutput<int>('version');
   }
 }

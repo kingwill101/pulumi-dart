@@ -297,16 +297,17 @@ class Profile2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceptRoleSessionName = Output.createUnknown<bool?>();
-    this.arn = Output.createUnknown<String>();
-    this.durationSeconds = Output.createUnknown<int>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.managedPolicyArns = Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
-    this.requireInstanceProperties = Output.createUnknown<bool?>();
-    this.roleArns = Output.createUnknown<List<String>?>();
-    this.sessionPolicy = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.acceptRoleSessionName = registerOutput<bool?>('acceptRoleSessionName');
+    this.arn = registerOutput<String>('arn');
+    this.durationSeconds = registerOutput<int>('durationSeconds');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.managedPolicyArns = registerOutput<List<String>?>('managedPolicyArns');
+    this.name = registerOutput<String>('name');
+    this.requireInstanceProperties =
+        registerOutput<bool?>('requireInstanceProperties');
+    this.roleArns = registerOutput<List<String>?>('roleArns');
+    this.sessionPolicy = registerOutput<String?>('sessionPolicy');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

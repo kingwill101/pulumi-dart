@@ -26,11 +26,12 @@ class SynonymSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.context = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.synonyms = Output.createUnknown<
-        List<GoogleCloudContentwarehouseV1SynonymSetSynonymResponse>>();
+    this.context = registerOutput<String>('context');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.synonyms = registerOutput<
+            List<GoogleCloudContentwarehouseV1SynonymSetSynonymResponse>>(
+        'synonyms');
   }
 }

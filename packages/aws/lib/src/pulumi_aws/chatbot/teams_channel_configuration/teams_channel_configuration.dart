@@ -204,21 +204,24 @@ class TeamsChannelConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.channelId = Output.createUnknown<String>();
-    this.channelName = Output.createUnknown<String>();
-    this.chatConfigurationArn = Output.createUnknown<String>();
-    this.configurationName = Output.createUnknown<String>();
-    this.guardrailPolicyArns = Output.createUnknown<List<String>>();
-    this.iamRoleArn = Output.createUnknown<String>();
-    this.loggingLevel = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.snsTopicArns = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.teamId = Output.createUnknown<String>();
-    this.teamName = Output.createUnknown<String>();
-    this.tenantId = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<TeamsChannelConfigurationTimeouts?>();
-    this.userAuthorizationRequired = Output.createUnknown<bool>();
+    this.channelId = registerOutput<String>('channelId');
+    this.channelName = registerOutput<String>('channelName');
+    this.chatConfigurationArn = registerOutput<String>('chatConfigurationArn');
+    this.configurationName = registerOutput<String>('configurationName');
+    this.guardrailPolicyArns =
+        registerOutput<List<String>>('guardrailPolicyArns');
+    this.iamRoleArn = registerOutput<String>('iamRoleArn');
+    this.loggingLevel = registerOutput<String>('loggingLevel');
+    this.region = registerOutput<String>('region');
+    this.snsTopicArns = registerOutput<List<String>>('snsTopicArns');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.teamId = registerOutput<String>('teamId');
+    this.teamName = registerOutput<String>('teamName');
+    this.tenantId = registerOutput<String>('tenantId');
+    this.timeouts =
+        registerOutput<TeamsChannelConfigurationTimeouts?>('timeouts');
+    this.userAuthorizationRequired =
+        registerOutput<bool>('userAuthorizationRequired');
   }
 }

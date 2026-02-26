@@ -1879,12 +1879,13 @@ class PreventionInspectTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
     this.inspectConfig =
-        Output.createUnknown<PreventionInspectTemplateInspectConfig?>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.templateId = Output.createUnknown<String>();
+        registerOutput<PreventionInspectTemplateInspectConfig?>(
+            'inspectConfig');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.templateId = registerOutput<String>('templateId');
   }
 }

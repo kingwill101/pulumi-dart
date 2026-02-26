@@ -1008,30 +1008,35 @@ class Branch extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.associatedResources = Output.createUnknown<List<String>>();
-    this.backendEnvironmentArn = Output.createUnknown<String?>();
-    this.basicAuthCredentials = Output.createUnknown<String?>();
-    this.branchName = Output.createUnknown<String>();
-    this.customDomains = Output.createUnknown<List<String>>();
-    this.description = Output.createUnknown<String?>();
-    this.destinationBranch = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.enableAutoBuild = Output.createUnknown<bool?>();
-    this.enableBasicAuth = Output.createUnknown<bool?>();
-    this.enableNotification = Output.createUnknown<bool?>();
-    this.enablePerformanceMode = Output.createUnknown<bool?>();
-    this.enablePullRequestPreview = Output.createUnknown<bool?>();
-    this.enableSkewProtection = Output.createUnknown<bool?>();
-    this.environmentVariables = Output.createUnknown<Map<String, String>?>();
-    this.framework = Output.createUnknown<String?>();
-    this.pullRequestEnvironmentName = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.sourceBranch = Output.createUnknown<String>();
-    this.stage = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.ttl = Output.createUnknown<String?>();
+    this.appId = registerOutput<String>('appId');
+    this.arn = registerOutput<String>('arn');
+    this.associatedResources =
+        registerOutput<List<String>>('associatedResources');
+    this.backendEnvironmentArn =
+        registerOutput<String?>('backendEnvironmentArn');
+    this.basicAuthCredentials = registerOutput<String?>('basicAuthCredentials');
+    this.branchName = registerOutput<String>('branchName');
+    this.customDomains = registerOutput<List<String>>('customDomains');
+    this.description = registerOutput<String?>('description');
+    this.destinationBranch = registerOutput<String>('destinationBranch');
+    this.displayName = registerOutput<String>('displayName');
+    this.enableAutoBuild = registerOutput<bool?>('enableAutoBuild');
+    this.enableBasicAuth = registerOutput<bool?>('enableBasicAuth');
+    this.enableNotification = registerOutput<bool?>('enableNotification');
+    this.enablePerformanceMode = registerOutput<bool?>('enablePerformanceMode');
+    this.enablePullRequestPreview =
+        registerOutput<bool?>('enablePullRequestPreview');
+    this.enableSkewProtection = registerOutput<bool?>('enableSkewProtection');
+    this.environmentVariables =
+        registerOutput<Map<String, String>?>('environmentVariables');
+    this.framework = registerOutput<String?>('framework');
+    this.pullRequestEnvironmentName =
+        registerOutput<String?>('pullRequestEnvironmentName');
+    this.region = registerOutput<String>('region');
+    this.sourceBranch = registerOutput<String>('sourceBranch');
+    this.stage = registerOutput<String?>('stage');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.ttl = registerOutput<String?>('ttl');
   }
 }

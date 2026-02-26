@@ -57,20 +57,23 @@ class PacketMirroring3 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.collectorIlb =
-        Output.createUnknown<PacketMirroringForwardingRuleInfoResponse3>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.enable = Output.createUnknown<String>();
-    this.filter = Output.createUnknown<PacketMirroringFilterResponse3>();
-    this.kind = Output.createUnknown<String>();
+        registerOutput<PacketMirroringForwardingRuleInfoResponse3>(
+            'collectorIlb');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.enable = registerOutput<String>('enable');
+    this.filter = registerOutput<PacketMirroringFilterResponse3>('filter');
+    this.kind = registerOutput<String>('kind');
     this.mirroredResources =
-        Output.createUnknown<PacketMirroringMirroredResourceInfoResponse3>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<PacketMirroringNetworkInfoResponse3>();
-    this.priority = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<PacketMirroringMirroredResourceInfoResponse3>(
+            'mirroredResources');
+    this.name = registerOutput<String>('name');
+    this.network =
+        registerOutput<PacketMirroringNetworkInfoResponse3>('network');
+    this.priority = registerOutput<int>('priority');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
   }
 }

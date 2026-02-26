@@ -833,34 +833,41 @@ class Database2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applyImmediately = Output.createUnknown<bool>();
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.backupRetentionEnabled = Output.createUnknown<bool?>();
-    this.blueprintId = Output.createUnknown<String>();
-    this.bundleId = Output.createUnknown<String>();
-    this.caCertificateIdentifier = Output.createUnknown<String>();
-    this.cpuCount = Output.createUnknown<int>();
-    this.createdAt = Output.createUnknown<String>();
-    this.diskSize = Output.createUnknown<double>();
-    this.engine = Output.createUnknown<String>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.finalSnapshotName = Output.createUnknown<String?>();
-    this.masterDatabaseName = Output.createUnknown<String>();
-    this.masterEndpointAddress = Output.createUnknown<String>();
-    this.masterEndpointPort = Output.createUnknown<int>();
-    this.masterPassword = Output.createUnknown<String>();
-    this.masterUsername = Output.createUnknown<String>();
-    this.preferredBackupWindow = Output.createUnknown<String>();
-    this.preferredMaintenanceWindow = Output.createUnknown<String>();
-    this.publiclyAccessible = Output.createUnknown<bool?>();
-    this.ramSize = Output.createUnknown<double>();
-    this.region = Output.createUnknown<String>();
-    this.relationalDatabaseName = Output.createUnknown<String>();
-    this.secondaryAvailabilityZone = Output.createUnknown<String>();
-    this.skipFinalSnapshot = Output.createUnknown<bool?>();
-    this.supportCode = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.applyImmediately = registerOutput<bool>('applyImmediately');
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.backupRetentionEnabled =
+        registerOutput<bool?>('backupRetentionEnabled');
+    this.blueprintId = registerOutput<String>('blueprintId');
+    this.bundleId = registerOutput<String>('bundleId');
+    this.caCertificateIdentifier =
+        registerOutput<String>('caCertificateIdentifier');
+    this.cpuCount = registerOutput<int>('cpuCount');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.diskSize = registerOutput<double>('diskSize');
+    this.engine = registerOutput<String>('engine');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.finalSnapshotName = registerOutput<String?>('finalSnapshotName');
+    this.masterDatabaseName = registerOutput<String>('masterDatabaseName');
+    this.masterEndpointAddress =
+        registerOutput<String>('masterEndpointAddress');
+    this.masterEndpointPort = registerOutput<int>('masterEndpointPort');
+    this.masterPassword = registerOutput<String>('masterPassword');
+    this.masterUsername = registerOutput<String>('masterUsername');
+    this.preferredBackupWindow =
+        registerOutput<String>('preferredBackupWindow');
+    this.preferredMaintenanceWindow =
+        registerOutput<String>('preferredMaintenanceWindow');
+    this.publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
+    this.ramSize = registerOutput<double>('ramSize');
+    this.region = registerOutput<String>('region');
+    this.relationalDatabaseName =
+        registerOutput<String>('relationalDatabaseName');
+    this.secondaryAvailabilityZone =
+        registerOutput<String>('secondaryAvailabilityZone');
+    this.skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
+    this.supportCode = registerOutput<String>('supportCode');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

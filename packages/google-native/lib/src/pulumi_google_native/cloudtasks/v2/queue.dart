@@ -45,16 +45,17 @@ class Queue extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.appEngineRoutingOverride =
-        Output.createUnknown<AppEngineRoutingResponse3>();
-    this.httpTarget = Output.createUnknown<HttpTargetResponse3>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.purgeTime = Output.createUnknown<String>();
-    this.rateLimits = Output.createUnknown<RateLimitsResponse>();
-    this.retryConfig = Output.createUnknown<RetryConfigResponse3>();
+        registerOutput<AppEngineRoutingResponse3>('appEngineRoutingOverride');
+    this.httpTarget = registerOutput<HttpTargetResponse3>('httpTarget');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.purgeTime = registerOutput<String>('purgeTime');
+    this.rateLimits = registerOutput<RateLimitsResponse>('rateLimits');
+    this.retryConfig = registerOutput<RetryConfigResponse3>('retryConfig');
     this.stackdriverLoggingConfig =
-        Output.createUnknown<StackdriverLoggingConfigResponse>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<StackdriverLoggingConfigResponse>(
+            'stackdriverLoggingConfig');
+    this.state = registerOutput<String>('state');
   }
 }

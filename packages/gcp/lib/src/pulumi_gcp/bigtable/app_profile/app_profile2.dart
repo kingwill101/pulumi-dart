@@ -1049,20 +1049,24 @@ class AppProfile2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appProfileId = Output.createUnknown<String>();
+    this.appProfileId = registerOutput<String>('appProfileId');
     this.dataBoostIsolationReadOnly =
-        Output.createUnknown<AppProfileDataBoostIsolationReadOnly2?>();
-    this.description = Output.createUnknown<String?>();
-    this.ignoreWarnings = Output.createUnknown<bool?>();
-    this.instance = Output.createUnknown<String?>();
-    this.multiClusterRoutingClusterIds = Output.createUnknown<List<String>?>();
-    this.multiClusterRoutingUseAny = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rowAffinity = Output.createUnknown<bool?>();
+        registerOutput<AppProfileDataBoostIsolationReadOnly2?>(
+            'dataBoostIsolationReadOnly');
+    this.description = registerOutput<String?>('description');
+    this.ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
+    this.instance = registerOutput<String?>('instance');
+    this.multiClusterRoutingClusterIds =
+        registerOutput<List<String>?>('multiClusterRoutingClusterIds');
+    this.multiClusterRoutingUseAny =
+        registerOutput<bool?>('multiClusterRoutingUseAny');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.rowAffinity = registerOutput<bool?>('rowAffinity');
     this.singleClusterRouting =
-        Output.createUnknown<AppProfileSingleClusterRouting2?>();
+        registerOutput<AppProfileSingleClusterRouting2?>(
+            'singleClusterRouting');
     this.standardIsolation =
-        Output.createUnknown<AppProfileStandardIsolation2>();
+        registerOutput<AppProfileStandardIsolation2>('standardIsolation');
   }
 }

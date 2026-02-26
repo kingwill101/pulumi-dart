@@ -337,22 +337,26 @@ class MulticastDomainActivation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.adminNetwork = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.disablePlacementPolicy = Output.createUnknown<bool>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.multicastDomain = Output.createUnknown<String>();
-    this.multicastDomainActivationId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.states = Output.createUnknown<List<MulticastDomainActivationState>>();
+    this.adminNetwork = registerOutput<String>('adminNetwork');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.disablePlacementPolicy =
+        registerOutput<bool>('disablePlacementPolicy');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.multicastDomain = registerOutput<String>('multicastDomain');
+    this.multicastDomainActivationId =
+        registerOutput<String>('multicastDomainActivationId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.states =
+        registerOutput<List<MulticastDomainActivationState>>('states');
     this.trafficSpec =
-        Output.createUnknown<MulticastDomainActivationTrafficSpec?>();
-    this.uniqueId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<MulticastDomainActivationTrafficSpec?>('trafficSpec');
+    this.uniqueId = registerOutput<String>('uniqueId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -1406,32 +1406,35 @@ class VpcEndpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.autoAccept = Output.createUnknown<bool?>();
-    this.cidrBlocks = Output.createUnknown<List<String>>();
-    this.dnsEntries = Output.createUnknown<List<VpcEndpointDnsEntry>>();
-    this.dnsOptions = Output.createUnknown<VpcEndpointDnsOptions>();
-    this.ipAddressType = Output.createUnknown<String>();
-    this.networkInterfaceIds = Output.createUnknown<List<String>>();
-    this.ownerId = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
-    this.prefixListId = Output.createUnknown<String>();
-    this.privateDnsEnabled = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.requesterManaged = Output.createUnknown<bool>();
-    this.resourceConfigurationArn = Output.createUnknown<String?>();
-    this.routeTableIds = Output.createUnknown<List<String>>();
-    this.securityGroupIds = Output.createUnknown<List<String>>();
-    this.serviceName = Output.createUnknown<String?>();
-    this.serviceNetworkArn = Output.createUnknown<String?>();
-    this.serviceRegion = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.autoAccept = registerOutput<bool?>('autoAccept');
+    this.cidrBlocks = registerOutput<List<String>>('cidrBlocks');
+    this.dnsEntries = registerOutput<List<VpcEndpointDnsEntry>>('dnsEntries');
+    this.dnsOptions = registerOutput<VpcEndpointDnsOptions>('dnsOptions');
+    this.ipAddressType = registerOutput<String>('ipAddressType');
+    this.networkInterfaceIds =
+        registerOutput<List<String>>('networkInterfaceIds');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.policy = registerOutput<String>('policy');
+    this.prefixListId = registerOutput<String>('prefixListId');
+    this.privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
+    this.region = registerOutput<String>('region');
+    this.requesterManaged = registerOutput<bool>('requesterManaged');
+    this.resourceConfigurationArn =
+        registerOutput<String?>('resourceConfigurationArn');
+    this.routeTableIds = registerOutput<List<String>>('routeTableIds');
+    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    this.serviceName = registerOutput<String?>('serviceName');
+    this.serviceNetworkArn = registerOutput<String?>('serviceNetworkArn');
+    this.serviceRegion = registerOutput<String>('serviceRegion');
+    this.state = registerOutput<String>('state');
     this.subnetConfigurations =
-        Output.createUnknown<List<VpcEndpointSubnetConfiguration>>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcEndpointType = Output.createUnknown<String?>();
-    this.vpcId = Output.createUnknown<String>();
+        registerOutput<List<VpcEndpointSubnetConfiguration>>(
+            'subnetConfigurations');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcEndpointType = registerOutput<String?>('vpcEndpointType');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

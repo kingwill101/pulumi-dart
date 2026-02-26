@@ -173,8 +173,8 @@ class CidrLocation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cidrBlocks = Output.createUnknown<List<String>>();
-    this.cidrCollectionId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.cidrBlocks = registerOutput<List<String>>('cidrBlocks');
+    this.cidrCollectionId = registerOutput<String>('cidrCollectionId');
+    this.name = registerOutput<String>('name');
   }
 }

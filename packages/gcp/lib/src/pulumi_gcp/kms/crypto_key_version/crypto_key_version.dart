@@ -228,15 +228,16 @@ class CryptoKeyVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.algorithm = Output.createUnknown<String>();
+    this.algorithm = registerOutput<String>('algorithm');
     this.attestations =
-        Output.createUnknown<List<CryptoKeyVersionAttestation>>();
-    this.cryptoKey = Output.createUnknown<String>();
+        registerOutput<List<CryptoKeyVersionAttestation>>('attestations');
+    this.cryptoKey = registerOutput<String>('cryptoKey');
     this.externalProtectionLevelOptions =
-        Output.createUnknown<CryptoKeyVersionExternalProtectionLevelOptions?>();
-    this.generateTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.protectionLevel = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<CryptoKeyVersionExternalProtectionLevelOptions?>(
+            'externalProtectionLevelOptions');
+    this.generateTime = registerOutput<String>('generateTime');
+    this.name = registerOutput<String>('name');
+    this.protectionLevel = registerOutput<String>('protectionLevel');
+    this.state = registerOutput<String>('state');
   }
 }

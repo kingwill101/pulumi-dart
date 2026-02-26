@@ -1072,17 +1072,18 @@ class GuestPolicies extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.assignment = Output.createUnknown<GuestPoliciesAssignment>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.etag = Output.createUnknown<String>();
-    this.guestPolicyId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.assignment = registerOutput<GuestPoliciesAssignment>('assignment');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.etag = registerOutput<String>('etag');
+    this.guestPolicyId = registerOutput<String>('guestPolicyId');
+    this.name = registerOutput<String>('name');
     this.packageRepositories =
-        Output.createUnknown<List<GuestPoliciesPackageRepository>?>();
-    this.packages = Output.createUnknown<List<GuestPoliciesPackage>?>();
-    this.project = Output.createUnknown<String>();
-    this.recipes = Output.createUnknown<List<GuestPoliciesRecipe>?>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<GuestPoliciesPackageRepository>?>(
+            'packageRepositories');
+    this.packages = registerOutput<List<GuestPoliciesPackage>?>('packages');
+    this.project = registerOutput<String>('project');
+    this.recipes = registerOutput<List<GuestPoliciesRecipe>?>('recipes');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

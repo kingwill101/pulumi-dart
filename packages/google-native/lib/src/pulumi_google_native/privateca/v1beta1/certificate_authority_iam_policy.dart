@@ -32,12 +32,14 @@ class CertificateAuthorityIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse61>>();
-    this.bindings = Output.createUnknown<List<BindingResponse87>>();
-    this.certificateAuthorityId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse61>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse87>>('bindings');
+    this.certificateAuthorityId =
+        registerOutput<String>('certificateAuthorityId');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

@@ -94,36 +94,41 @@ class MappingRule extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.conditionalColumnSetValue =
-        Output.createUnknown<ConditionalColumnSetValueResponse>();
-    this.conversionWorkspaceId = Output.createUnknown<String>();
+        registerOutput<ConditionalColumnSetValueResponse>(
+            'conditionalColumnSetValue');
+    this.conversionWorkspaceId =
+        registerOutput<String>('conversionWorkspaceId');
     this.convertRowidColumn =
-        Output.createUnknown<ConvertRowIdToColumnResponse>();
-    this.displayName = Output.createUnknown<String>();
-    this.entityMove = Output.createUnknown<EntityMoveResponse>();
-    this.filter = Output.createUnknown<MappingRuleFilterResponse>();
+        registerOutput<ConvertRowIdToColumnResponse>('convertRowidColumn');
+    this.displayName = registerOutput<String>('displayName');
+    this.entityMove = registerOutput<EntityMoveResponse>('entityMove');
+    this.filter = registerOutput<MappingRuleFilterResponse>('filter');
     this.filterTableColumns =
-        Output.createUnknown<FilterTableColumnsResponse>();
-    this.location = Output.createUnknown<String>();
-    this.mappingRuleId = Output.createUnknown<String>();
+        registerOutput<FilterTableColumnsResponse>('filterTableColumns');
+    this.location = registerOutput<String>('location');
+    this.mappingRuleId = registerOutput<String>('mappingRuleId');
     this.multiColumnDataTypeChange =
-        Output.createUnknown<MultiColumnDatatypeChangeResponse>();
-    this.multiEntityRename = Output.createUnknown<MultiEntityRenameResponse>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.revisionCreateTime = Output.createUnknown<String>();
-    this.revisionId = Output.createUnknown<String>();
-    this.ruleOrder = Output.createUnknown<String>();
-    this.ruleScope = Output.createUnknown<String>();
+        registerOutput<MultiColumnDatatypeChangeResponse>(
+            'multiColumnDataTypeChange');
+    this.multiEntityRename =
+        registerOutput<MultiEntityRenameResponse>('multiEntityRename');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.ruleOrder = registerOutput<String>('ruleOrder');
+    this.ruleScope = registerOutput<String>('ruleScope');
     this.setTablePrimaryKey =
-        Output.createUnknown<SetTablePrimaryKeyResponse>();
+        registerOutput<SetTablePrimaryKeyResponse>('setTablePrimaryKey');
     this.singleColumnChange =
-        Output.createUnknown<SingleColumnChangeResponse>();
+        registerOutput<SingleColumnChangeResponse>('singleColumnChange');
     this.singleEntityRename =
-        Output.createUnknown<SingleEntityRenameResponse>();
+        registerOutput<SingleEntityRenameResponse>('singleEntityRename');
     this.singlePackageChange =
-        Output.createUnknown<SinglePackageChangeResponse>();
-    this.sourceSqlChange = Output.createUnknown<SourceSqlChangeResponse>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<SinglePackageChangeResponse>('singlePackageChange');
+    this.sourceSqlChange =
+        registerOutput<SourceSqlChangeResponse>('sourceSqlChange');
+    this.state = registerOutput<String>('state');
   }
 }

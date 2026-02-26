@@ -268,16 +268,18 @@ class NetworkPeering extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.exportCustomRoutes = Output.createUnknown<bool?>();
-    this.exportSubnetRoutesWithPublicIp = Output.createUnknown<bool?>();
-    this.importCustomRoutes = Output.createUnknown<bool?>();
-    this.importSubnetRoutesWithPublicIp = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.peerNetwork = Output.createUnknown<String>();
-    this.stackType = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.stateDetails = Output.createUnknown<String>();
-    this.updateStrategy = Output.createUnknown<String?>();
+    this.exportCustomRoutes = registerOutput<bool?>('exportCustomRoutes');
+    this.exportSubnetRoutesWithPublicIp =
+        registerOutput<bool?>('exportSubnetRoutesWithPublicIp');
+    this.importCustomRoutes = registerOutput<bool?>('importCustomRoutes');
+    this.importSubnetRoutesWithPublicIp =
+        registerOutput<bool?>('importSubnetRoutesWithPublicIp');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.peerNetwork = registerOutput<String>('peerNetwork');
+    this.stackType = registerOutput<String?>('stackType');
+    this.state = registerOutput<String>('state');
+    this.stateDetails = registerOutput<String>('stateDetails');
+    this.updateStrategy = registerOutput<String?>('updateStrategy');
   }
 }

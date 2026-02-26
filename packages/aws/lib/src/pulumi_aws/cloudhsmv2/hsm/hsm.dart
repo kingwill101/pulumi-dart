@@ -173,13 +173,13 @@ class Hsm extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.availabilityZone = Output.createUnknown<String>();
-    this.clusterId = Output.createUnknown<String>();
-    this.hsmEniId = Output.createUnknown<String>();
-    this.hsmId = Output.createUnknown<String>();
-    this.hsmState = Output.createUnknown<String>();
-    this.ipAddress = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.subnetId = Output.createUnknown<String>();
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.clusterId = registerOutput<String>('clusterId');
+    this.hsmEniId = registerOutput<String>('hsmEniId');
+    this.hsmId = registerOutput<String>('hsmId');
+    this.hsmState = registerOutput<String>('hsmState');
+    this.ipAddress = registerOutput<String>('ipAddress');
+    this.region = registerOutput<String>('region');
+    this.subnetId = registerOutput<String>('subnetId');
   }
 }

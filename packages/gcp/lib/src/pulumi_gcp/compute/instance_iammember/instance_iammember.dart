@@ -1940,12 +1940,12 @@ class InstanceIAMMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<InstanceIAMMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.instanceName = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+    this.condition = registerOutput<InstanceIAMMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.instanceName = registerOutput<String>('instanceName');
+    this.member = registerOutput<String>('member');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
+    this.zone = registerOutput<String>('zone');
   }
 }

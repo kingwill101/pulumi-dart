@@ -422,9 +422,9 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 	assert.Contains(t, content, "late final Output<String> arn;")
 	assert.Contains(t, content, "late final Output<int?> size;")
 	assert.Contains(t, content, "late final Output<String?> label;")
-	assert.Contains(t, content, "arn = Output.createUnknown<String>();")
-	assert.Contains(t, content, "size = Output.createUnknown<int?>();")
-	assert.Contains(t, content, "label = Output.createUnknown<String?>();")
+	assert.Contains(t, content, "arn = registerOutput<String>('arn');")
+	assert.Contains(t, content, "size = registerOutput<int?>('size');")
+	assert.Contains(t, content, "label = registerOutput<String?>('label');")
 
 	assert.Contains(t, content, "class GetWidgetArgs")
 	assert.Contains(t, content, "final Input<String> id;")
@@ -582,6 +582,49 @@ func TestGeneratePackageUsesVersionSuffixEnv(t *testing.T) {
 	require.NoError(t, err)
 	pubspec := string(pubspecData)
 	assert.Contains(t, pubspec, "version: 1.2.3-dev.7")
+}
+
+func TestGeneratePackageUsesDefaultVersionWhenSchemaVersionMissing(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "version: 0.0.1")
+}
+
+func TestGeneratePackageNormalizesLeadingVInSchemaVersion(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "v1.2.3"
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "version: 1.2.3")
 }
 
 func TestGeneratePackageWritesExtraFiles(t *testing.T) {
@@ -1146,7 +1189,7 @@ func TestGeneratePackageHandlesResourceOutputNameCollision(t *testing.T) {
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
 	assert.Contains(t, content, "late final Output<String?> name;")
-	assert.Contains(t, content, "this.name = Output.createUnknown<String?>();")
+	assert.Contains(t, content, "this.name = registerOutput<String?>('name');")
 }
 
 func TestGeneratePackageGoldenSnapshot(t *testing.T) {

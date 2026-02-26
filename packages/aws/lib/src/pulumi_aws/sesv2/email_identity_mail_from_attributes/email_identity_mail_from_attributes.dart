@@ -165,9 +165,9 @@ class EmailIdentityMailFromAttributes extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.behaviorOnMxFailure = Output.createUnknown<String?>();
-    this.emailIdentity = Output.createUnknown<String>();
-    this.mailFromDomain = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.behaviorOnMxFailure = registerOutput<String?>('behaviorOnMxFailure');
+    this.emailIdentity = registerOutput<String>('emailIdentity');
+    this.mailFromDomain = registerOutput<String?>('mailFromDomain');
+    this.region = registerOutput<String>('region');
   }
 }

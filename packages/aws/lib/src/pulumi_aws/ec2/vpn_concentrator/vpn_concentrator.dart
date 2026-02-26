@@ -200,12 +200,13 @@ class VpnConcentrator extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.transitGatewayAttachmentId = Output.createUnknown<String>();
-    this.transitGatewayId = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.vpnConcentratorId = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.transitGatewayAttachmentId =
+        registerOutput<String>('transitGatewayAttachmentId');
+    this.transitGatewayId = registerOutput<String>('transitGatewayId');
+    this.type = registerOutput<String>('type');
+    this.vpnConcentratorId = registerOutput<String>('vpnConcentratorId');
   }
 }

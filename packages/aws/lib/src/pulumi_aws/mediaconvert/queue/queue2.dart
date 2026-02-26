@@ -139,16 +139,16 @@ class Queue2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.concurrentJobs = Output.createUnknown<int>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.pricingPlan = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.concurrentJobs = registerOutput<int>('concurrentJobs');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.pricingPlan = registerOutput<String?>('pricingPlan');
+    this.region = registerOutput<String>('region');
     this.reservationPlanSettings =
-        Output.createUnknown<QueueReservationPlanSettings>();
-    this.status = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<QueueReservationPlanSettings>('reservationPlanSettings');
+    this.status = registerOutput<String?>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

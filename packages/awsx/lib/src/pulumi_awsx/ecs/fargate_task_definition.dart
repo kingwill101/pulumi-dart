@@ -30,10 +30,11 @@ class FargateTaskDefinition extends ComponentResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? ComponentResourceOptions(),
         ) {
-    this.executionRole = Output.createUnknown<dynamic>();
-    this.loadBalancers = Output.createUnknown<List<Map<String, dynamic>>>();
-    this.logGroup = Output.createUnknown<dynamic>();
-    this.taskDefinition = Output.createUnknown<dynamic>();
-    this.taskRole = Output.createUnknown<dynamic>();
+    this.executionRole = registerOutput<dynamic>('executionRole');
+    this.loadBalancers =
+        registerOutput<List<Map<String, dynamic>>>('loadBalancers');
+    this.logGroup = registerOutput<dynamic>('logGroup');
+    this.taskDefinition = registerOutput<dynamic>('taskDefinition');
+    this.taskRole = registerOutput<dynamic>('taskRole');
   }
 }

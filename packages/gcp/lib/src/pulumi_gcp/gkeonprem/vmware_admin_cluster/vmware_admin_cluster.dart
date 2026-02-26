@@ -1631,43 +1631,48 @@ class VmwareAdminCluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.addonNode = Output.createUnknown<VmwareAdminClusterAddonNode>();
-    this.annotations = Output.createUnknown<Map<String, String>>();
+    this.addonNode = registerOutput<VmwareAdminClusterAddonNode>('addonNode');
+    this.annotations = registerOutput<Map<String, String>>('annotations');
     this.antiAffinityGroups =
-        Output.createUnknown<VmwareAdminClusterAntiAffinityGroups>();
+        registerOutput<VmwareAdminClusterAntiAffinityGroups>(
+            'antiAffinityGroups');
     this.authorization =
-        Output.createUnknown<VmwareAdminClusterAuthorization?>();
+        registerOutput<VmwareAdminClusterAuthorization?>('authorization');
     this.autoRepairConfig =
-        Output.createUnknown<VmwareAdminClusterAutoRepairConfig>();
-    this.bootstrapClusterMembership = Output.createUnknown<String>();
+        registerOutput<VmwareAdminClusterAutoRepairConfig>('autoRepairConfig');
+    this.bootstrapClusterMembership =
+        registerOutput<String>('bootstrapClusterMembership');
     this.controlPlaneNode =
-        Output.createUnknown<VmwareAdminClusterControlPlaneNode?>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.enableAdvancedCluster = Output.createUnknown<bool>();
-    this.endpoint = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.fleets = Output.createUnknown<List<VmwareAdminClusterFleet>>();
-    this.imageType = Output.createUnknown<String>();
-    this.loadBalancer = Output.createUnknown<VmwareAdminClusterLoadBalancer?>();
-    this.localName = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<VmwareAdminClusterControlPlaneNode?>('controlPlaneNode');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.enableAdvancedCluster = registerOutput<bool>('enableAdvancedCluster');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.etag = registerOutput<String>('etag');
+    this.fleets = registerOutput<List<VmwareAdminClusterFleet>>('fleets');
+    this.imageType = registerOutput<String>('imageType');
+    this.loadBalancer =
+        registerOutput<VmwareAdminClusterLoadBalancer?>('loadBalancer');
+    this.localName = registerOutput<String>('localName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.networkConfig =
-        Output.createUnknown<VmwareAdminClusterNetworkConfig>();
-    this.onPremVersion = Output.createUnknown<String?>();
+        registerOutput<VmwareAdminClusterNetworkConfig>('networkConfig');
+    this.onPremVersion = registerOutput<String?>('onPremVersion');
     this.platformConfig =
-        Output.createUnknown<VmwareAdminClusterPlatformConfig?>();
+        registerOutput<VmwareAdminClusterPlatformConfig?>('platformConfig');
     this.privateRegistryConfig =
-        Output.createUnknown<VmwareAdminClusterPrivateRegistryConfig?>();
-    this.project = Output.createUnknown<String>();
-    this.proxy = Output.createUnknown<VmwareAdminClusterProxy?>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.statuses = Output.createUnknown<List<VmwareAdminClusterStatus>>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vcenter = Output.createUnknown<VmwareAdminClusterVcenter?>();
+        registerOutput<VmwareAdminClusterPrivateRegistryConfig?>(
+            'privateRegistryConfig');
+    this.project = registerOutput<String>('project');
+    this.proxy = registerOutput<VmwareAdminClusterProxy?>('proxy');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.state = registerOutput<String>('state');
+    this.statuses = registerOutput<List<VmwareAdminClusterStatus>>('statuses');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vcenter = registerOutput<VmwareAdminClusterVcenter?>('vcenter');
   }
 }

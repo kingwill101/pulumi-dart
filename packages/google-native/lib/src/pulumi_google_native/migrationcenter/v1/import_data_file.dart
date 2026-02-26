@@ -42,16 +42,17 @@ class ImportDataFile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.format = Output.createUnknown<String>();
-    this.importDataFileId = Output.createUnknown<String>();
-    this.importJobId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.uploadFileInfo = Output.createUnknown<UploadFileInfoResponse>();
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.format = registerOutput<String>('format');
+    this.importDataFileId = registerOutput<String>('importDataFileId');
+    this.importJobId = registerOutput<String>('importJobId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.state = registerOutput<String>('state');
+    this.uploadFileInfo =
+        registerOutput<UploadFileInfoResponse>('uploadFileInfo');
   }
 }

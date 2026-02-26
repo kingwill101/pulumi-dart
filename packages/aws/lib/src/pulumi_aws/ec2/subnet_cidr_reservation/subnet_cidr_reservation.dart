@@ -141,11 +141,11 @@ class SubnetCidrReservation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cidrBlock = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.ownerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.reservationType = Output.createUnknown<String>();
-    this.subnetId = Output.createUnknown<String>();
+    this.cidrBlock = registerOutput<String>('cidrBlock');
+    this.description = registerOutput<String?>('description');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.region = registerOutput<String>('region');
+    this.reservationType = registerOutput<String>('reservationType');
+    this.subnetId = registerOutput<String>('subnetId');
   }
 }

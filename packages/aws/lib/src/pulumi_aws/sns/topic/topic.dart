@@ -619,38 +619,54 @@ class Topic extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationFailureFeedbackRoleArn = Output.createUnknown<String?>();
-    this.applicationSuccessFeedbackRoleArn = Output.createUnknown<String?>();
-    this.applicationSuccessFeedbackSampleRate = Output.createUnknown<int?>();
-    this.archivePolicy = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.beginningArchiveTime = Output.createUnknown<String>();
-    this.contentBasedDeduplication = Output.createUnknown<bool?>();
-    this.deliveryPolicy = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.fifoThroughputScope = Output.createUnknown<String>();
-    this.fifoTopic = Output.createUnknown<bool?>();
-    this.firehoseFailureFeedbackRoleArn = Output.createUnknown<String?>();
-    this.firehoseSuccessFeedbackRoleArn = Output.createUnknown<String?>();
-    this.firehoseSuccessFeedbackSampleRate = Output.createUnknown<int?>();
-    this.httpFailureFeedbackRoleArn = Output.createUnknown<String?>();
-    this.httpSuccessFeedbackRoleArn = Output.createUnknown<String?>();
-    this.httpSuccessFeedbackSampleRate = Output.createUnknown<int?>();
-    this.kmsMasterKeyId = Output.createUnknown<String?>();
-    this.lambdaFailureFeedbackRoleArn = Output.createUnknown<String?>();
-    this.lambdaSuccessFeedbackRoleArn = Output.createUnknown<String?>();
-    this.lambdaSuccessFeedbackSampleRate = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.owner = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.signatureVersion = Output.createUnknown<int>();
-    this.sqsFailureFeedbackRoleArn = Output.createUnknown<String?>();
-    this.sqsSuccessFeedbackRoleArn = Output.createUnknown<String?>();
-    this.sqsSuccessFeedbackSampleRate = Output.createUnknown<int?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tracingConfig = Output.createUnknown<String>();
+    this.applicationFailureFeedbackRoleArn =
+        registerOutput<String?>('applicationFailureFeedbackRoleArn');
+    this.applicationSuccessFeedbackRoleArn =
+        registerOutput<String?>('applicationSuccessFeedbackRoleArn');
+    this.applicationSuccessFeedbackSampleRate =
+        registerOutput<int?>('applicationSuccessFeedbackSampleRate');
+    this.archivePolicy = registerOutput<String?>('archivePolicy');
+    this.arn = registerOutput<String>('arn');
+    this.beginningArchiveTime = registerOutput<String>('beginningArchiveTime');
+    this.contentBasedDeduplication =
+        registerOutput<bool?>('contentBasedDeduplication');
+    this.deliveryPolicy = registerOutput<String?>('deliveryPolicy');
+    this.displayName = registerOutput<String?>('displayName');
+    this.fifoThroughputScope = registerOutput<String>('fifoThroughputScope');
+    this.fifoTopic = registerOutput<bool?>('fifoTopic');
+    this.firehoseFailureFeedbackRoleArn =
+        registerOutput<String?>('firehoseFailureFeedbackRoleArn');
+    this.firehoseSuccessFeedbackRoleArn =
+        registerOutput<String?>('firehoseSuccessFeedbackRoleArn');
+    this.firehoseSuccessFeedbackSampleRate =
+        registerOutput<int?>('firehoseSuccessFeedbackSampleRate');
+    this.httpFailureFeedbackRoleArn =
+        registerOutput<String?>('httpFailureFeedbackRoleArn');
+    this.httpSuccessFeedbackRoleArn =
+        registerOutput<String?>('httpSuccessFeedbackRoleArn');
+    this.httpSuccessFeedbackSampleRate =
+        registerOutput<int?>('httpSuccessFeedbackSampleRate');
+    this.kmsMasterKeyId = registerOutput<String?>('kmsMasterKeyId');
+    this.lambdaFailureFeedbackRoleArn =
+        registerOutput<String?>('lambdaFailureFeedbackRoleArn');
+    this.lambdaSuccessFeedbackRoleArn =
+        registerOutput<String?>('lambdaSuccessFeedbackRoleArn');
+    this.lambdaSuccessFeedbackSampleRate =
+        registerOutput<int?>('lambdaSuccessFeedbackSampleRate');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.owner = registerOutput<String>('owner');
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
+    this.signatureVersion = registerOutput<int>('signatureVersion');
+    this.sqsFailureFeedbackRoleArn =
+        registerOutput<String?>('sqsFailureFeedbackRoleArn');
+    this.sqsSuccessFeedbackRoleArn =
+        registerOutput<String?>('sqsSuccessFeedbackRoleArn');
+    this.sqsSuccessFeedbackSampleRate =
+        registerOutput<int?>('sqsSuccessFeedbackSampleRate');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tracingConfig = registerOutput<String>('tracingConfig');
   }
 }

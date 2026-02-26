@@ -287,11 +287,11 @@ class AppCheckRecaptchaV3Config extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.siteSecret = Output.createUnknown<String>();
-    this.siteSecretSet = Output.createUnknown<bool>();
-    this.tokenTtl = Output.createUnknown<String>();
+    this.appId = registerOutput<String>('appId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.siteSecret = registerOutput<String>('siteSecret');
+    this.siteSecretSet = registerOutput<bool>('siteSecretSet');
+    this.tokenTtl = registerOutput<String>('tokenTtl');
   }
 }

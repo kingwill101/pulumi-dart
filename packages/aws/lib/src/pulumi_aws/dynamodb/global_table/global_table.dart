@@ -371,9 +371,9 @@ class GlobalTable extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.replicas = Output.createUnknown<List<GlobalTableReplica>>();
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.replicas = registerOutput<List<GlobalTableReplica>>('replicas');
   }
 }

@@ -264,23 +264,24 @@ class InputType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.attachedChannels = Output.createUnknown<List<String>>();
-    this.destinations = Output.createUnknown<List<InputDestination>?>();
-    this.inputClass = Output.createUnknown<String>();
-    this.inputDevices = Output.createUnknown<List<InputInputDevice>>();
-    this.inputPartnerIds = Output.createUnknown<List<String>>();
-    this.inputSecurityGroups = Output.createUnknown<List<String>?>();
-    this.inputSourceType = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.attachedChannels = registerOutput<List<String>>('attachedChannels');
+    this.destinations = registerOutput<List<InputDestination>?>('destinations');
+    this.inputClass = registerOutput<String>('inputClass');
+    this.inputDevices = registerOutput<List<InputInputDevice>>('inputDevices');
+    this.inputPartnerIds = registerOutput<List<String>>('inputPartnerIds');
+    this.inputSecurityGroups =
+        registerOutput<List<String>?>('inputSecurityGroups');
+    this.inputSourceType = registerOutput<String>('inputSourceType');
     this.mediaConnectFlows =
-        Output.createUnknown<List<InputMediaConnectFlow>>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.sources = Output.createUnknown<List<InputSource>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
-    this.vpc = Output.createUnknown<InputVpc?>();
+        registerOutput<List<InputMediaConnectFlow>>('mediaConnectFlows');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.sources = registerOutput<List<InputSource>>('sources');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
+    this.vpc = registerOutput<InputVpc?>('vpc');
   }
 }

@@ -56,20 +56,21 @@ class DeliveryPipeline extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.condition = Output.createUnknown<PipelineConditionResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.deliveryPipelineId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.serialPipeline = Output.createUnknown<SerialPipelineResponse>();
-    this.suspended = Output.createUnknown<bool>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.condition = registerOutput<PipelineConditionResponse>('condition');
+    this.createTime = registerOutput<String>('createTime');
+    this.deliveryPipelineId = registerOutput<String>('deliveryPipelineId');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.serialPipeline =
+        registerOutput<SerialPipelineResponse>('serialPipeline');
+    this.suspended = registerOutput<bool>('suspended');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

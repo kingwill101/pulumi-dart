@@ -51,18 +51,21 @@ class BlockchainNode extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.blockchainNodeId = Output.createUnknown<String>();
-    this.blockchainType = Output.createUnknown<String>();
-    this.connectionInfo = Output.createUnknown<ConnectionInfoResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.ethereumDetails = Output.createUnknown<EthereumDetailsResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.privateServiceConnectEnabled = Output.createUnknown<bool>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.blockchainNodeId = registerOutput<String>('blockchainNodeId');
+    this.blockchainType = registerOutput<String>('blockchainType');
+    this.connectionInfo =
+        registerOutput<ConnectionInfoResponse>('connectionInfo');
+    this.createTime = registerOutput<String>('createTime');
+    this.ethereumDetails =
+        registerOutput<EthereumDetailsResponse>('ethereumDetails');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.privateServiceConnectEnabled =
+        registerOutput<bool>('privateServiceConnectEnabled');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

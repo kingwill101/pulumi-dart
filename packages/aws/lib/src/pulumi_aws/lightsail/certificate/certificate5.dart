@@ -160,15 +160,17 @@ class Certificate5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.domainName = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.domainName = registerOutput<String>('domainName');
     this.domainValidationOptions =
-        Output.createUnknown<List<CertificateDomainValidationOption2>>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.subjectAlternativeNames = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<CertificateDomainValidationOption2>>(
+            'domainValidationOptions');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.subjectAlternativeNames =
+        registerOutput<List<String>>('subjectAlternativeNames');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

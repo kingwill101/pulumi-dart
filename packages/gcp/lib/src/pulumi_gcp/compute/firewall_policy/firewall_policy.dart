@@ -177,15 +177,15 @@ class FirewallPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.firewallPolicyId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.ruleTupleCount = Output.createUnknown<int>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
-    this.shortName = Output.createUnknown<String>();
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.firewallPolicyId = registerOutput<String>('firewallPolicyId');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    this.shortName = registerOutput<String>('shortName');
   }
 }

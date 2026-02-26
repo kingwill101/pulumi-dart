@@ -140,8 +140,9 @@ class AgentcoreTokenVaultCmk extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.kmsConfiguration =
-        Output.createUnknown<AgentcoreTokenVaultCmkKmsConfiguration>();
-    this.region = Output.createUnknown<String>();
-    this.tokenVaultId = Output.createUnknown<String>();
+        registerOutput<AgentcoreTokenVaultCmkKmsConfiguration>(
+            'kmsConfiguration');
+    this.region = registerOutput<String>('region');
+    this.tokenVaultId = registerOutput<String>('tokenVaultId');
   }
 }

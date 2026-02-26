@@ -215,10 +215,10 @@ class BucketAccessControl extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.domain = Output.createUnknown<String>();
-    this.email = Output.createUnknown<String>();
-    this.entity = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String?>();
+    this.bucket = registerOutput<String>('bucket');
+    this.domain = registerOutput<String>('domain');
+    this.email = registerOutput<String>('email');
+    this.entity = registerOutput<String>('entity');
+    this.role = registerOutput<String?>('role');
   }
 }

@@ -227,14 +227,15 @@ class ApprovalRuleTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.approvalRuleTemplateId = Output.createUnknown<String>();
-    this.content = Output.createUnknown<String>();
-    this.creationDate = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.lastModifiedDate = Output.createUnknown<String>();
-    this.lastModifiedUser = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.ruleContentSha256 = Output.createUnknown<String>();
+    this.approvalRuleTemplateId =
+        registerOutput<String>('approvalRuleTemplateId');
+    this.content = registerOutput<String>('content');
+    this.creationDate = registerOutput<String>('creationDate');
+    this.description = registerOutput<String?>('description');
+    this.lastModifiedDate = registerOutput<String>('lastModifiedDate');
+    this.lastModifiedUser = registerOutput<String>('lastModifiedUser');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.ruleContentSha256 = registerOutput<String>('ruleContentSha256');
   }
 }

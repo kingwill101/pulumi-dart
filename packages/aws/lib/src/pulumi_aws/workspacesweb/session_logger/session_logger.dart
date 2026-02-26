@@ -1106,16 +1106,17 @@ class SessionLogger extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.additionalEncryptionContext =
-        Output.createUnknown<Map<String, String>?>();
-    this.associatedPortalArns = Output.createUnknown<List<String>>();
-    this.customerManagedKey = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.eventFilter = Output.createUnknown<SessionLoggerEventFilter>();
+        registerOutput<Map<String, String>?>('additionalEncryptionContext');
+    this.associatedPortalArns =
+        registerOutput<List<String>>('associatedPortalArns');
+    this.customerManagedKey = registerOutput<String?>('customerManagedKey');
+    this.displayName = registerOutput<String?>('displayName');
+    this.eventFilter = registerOutput<SessionLoggerEventFilter>('eventFilter');
     this.logConfiguration =
-        Output.createUnknown<SessionLoggerLogConfiguration>();
-    this.region = Output.createUnknown<String>();
-    this.sessionLoggerArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<SessionLoggerLogConfiguration>('logConfiguration');
+    this.region = registerOutput<String>('region');
+    this.sessionLoggerArn = registerOutput<String>('sessionLoggerArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -74,26 +74,32 @@ class Reservation7 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.aggregateReservation =
-        Output.createUnknown<AllocationAggregateReservationResponse2>();
-    this.commitment = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.deleteAfterDuration = Output.createUnknown<DurationResponse2>();
-    this.deleteAtTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.resourcePolicies = Output.createUnknown<Map<String, String>>();
+        registerOutput<AllocationAggregateReservationResponse2>(
+            'aggregateReservation');
+    this.commitment = registerOutput<String>('commitment');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.deleteAfterDuration =
+        registerOutput<DurationResponse2>('deleteAfterDuration');
+    this.deleteAtTime = registerOutput<String>('deleteAtTime');
+    this.description = registerOutput<String>('description');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.resourcePolicies =
+        registerOutput<Map<String, String>>('resourcePolicies');
     this.resourceStatus =
-        Output.createUnknown<AllocationResourceStatusResponse2>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.selfLink = Output.createUnknown<String>();
-    this.shareSettings = Output.createUnknown<ShareSettingsResponse2>();
+        registerOutput<AllocationResourceStatusResponse2>('resourceStatus');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.shareSettings =
+        registerOutput<ShareSettingsResponse2>('shareSettings');
     this.specificReservation =
-        Output.createUnknown<AllocationSpecificSKUReservationResponse2>();
-    this.specificReservationRequired = Output.createUnknown<bool>();
-    this.status = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<AllocationSpecificSKUReservationResponse2>(
+            'specificReservation');
+    this.specificReservationRequired =
+        registerOutput<bool>('specificReservationRequired');
+    this.status = registerOutput<String>('status');
+    this.zone = registerOutput<String>('zone');
   }
 }

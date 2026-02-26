@@ -180,10 +180,10 @@ class RandomShuffle extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.inputs = Output.createUnknown<List<String>>();
-    this.keepers = Output.createUnknown<Map<String, String>?>();
-    this.resultCount = Output.createUnknown<int?>();
-    this.results = Output.createUnknown<List<String>>();
-    this.seed = Output.createUnknown<String?>();
+    this.inputs = registerOutput<List<String>>('inputs');
+    this.keepers = registerOutput<Map<String, String>?>('keepers');
+    this.resultCount = registerOutput<int?>('resultCount');
+    this.results = registerOutput<List<String>>('results');
+    this.seed = registerOutput<String?>('seed');
   }
 }

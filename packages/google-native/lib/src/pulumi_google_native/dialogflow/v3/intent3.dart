@@ -48,19 +48,21 @@ class Intent3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.isFallback = Output.createUnknown<bool>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.languageCode = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parameters = Output.createUnknown<
-        List<GoogleCloudDialogflowCxV3IntentParameterResponse>>();
-    this.priority = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.trainingPhrases = Output.createUnknown<
-        List<GoogleCloudDialogflowCxV3IntentTrainingPhraseResponse>>();
+    this.agentId = registerOutput<String>('agentId');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.isFallback = registerOutput<bool>('isFallback');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.languageCode = registerOutput<String?>('languageCode');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.parameters =
+        registerOutput<List<GoogleCloudDialogflowCxV3IntentParameterResponse>>(
+            'parameters');
+    this.priority = registerOutput<int>('priority');
+    this.project = registerOutput<String>('project');
+    this.trainingPhrases = registerOutput<
+            List<GoogleCloudDialogflowCxV3IntentTrainingPhraseResponse>>(
+        'trainingPhrases');
   }
 }

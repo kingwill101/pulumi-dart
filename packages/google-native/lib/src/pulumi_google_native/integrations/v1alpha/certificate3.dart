@@ -46,18 +46,19 @@ class Certificate3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificateStatus = Output.createUnknown<String>();
-    this.credentialId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.productId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rawCertificate = Output.createUnknown<
-        GoogleCloudIntegrationsV1alphaClientCertificateResponse>();
-    this.requestorId = Output.createUnknown<String>();
-    this.validEndTime = Output.createUnknown<String>();
-    this.validStartTime = Output.createUnknown<String>();
+    this.certificateStatus = registerOutput<String>('certificateStatus');
+    this.credentialId = registerOutput<String>('credentialId');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.productId = registerOutput<String>('productId');
+    this.project = registerOutput<String>('project');
+    this.rawCertificate =
+        registerOutput<GoogleCloudIntegrationsV1alphaClientCertificateResponse>(
+            'rawCertificate');
+    this.requestorId = registerOutput<String>('requestorId');
+    this.validEndTime = registerOutput<String>('validEndTime');
+    this.validStartTime = registerOutput<String>('validStartTime');
   }
 }

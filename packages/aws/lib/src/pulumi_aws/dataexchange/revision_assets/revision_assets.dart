@@ -207,17 +207,17 @@ class RevisionAssets extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.assets = Output.createUnknown<List<RevisionAssetsAsset>?>();
-    this.comment = Output.createUnknown<String?>();
-    this.createdAt = Output.createUnknown<String>();
-    this.dataSetId = Output.createUnknown<String>();
-    this.finalized = Output.createUnknown<bool>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<RevisionAssetsTimeouts?>();
-    this.updatedAt = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.assets = registerOutput<List<RevisionAssetsAsset>?>('assets');
+    this.comment = registerOutput<String?>('comment');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.dataSetId = registerOutput<String>('dataSetId');
+    this.finalized = registerOutput<bool>('finalized');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<RevisionAssetsTimeouts?>('timeouts');
+    this.updatedAt = registerOutput<String>('updatedAt');
   }
 }

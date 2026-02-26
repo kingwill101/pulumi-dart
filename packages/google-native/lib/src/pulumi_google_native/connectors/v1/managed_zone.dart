@@ -42,15 +42,15 @@ class ManagedZone extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.dns = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.managedZoneId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.targetProject = Output.createUnknown<String>();
-    this.targetVpc = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.dns = registerOutput<String>('dns');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.managedZoneId = registerOutput<String>('managedZoneId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.targetProject = registerOutput<String>('targetProject');
+    this.targetVpc = registerOutput<String>('targetVpc');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

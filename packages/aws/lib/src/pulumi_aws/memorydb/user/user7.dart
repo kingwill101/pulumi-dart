@@ -208,13 +208,14 @@ class User7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessString = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.authenticationMode = Output.createUnknown<UserAuthenticationMode2>();
-    this.minimumEngineVersion = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.userName = Output.createUnknown<String>();
+    this.accessString = registerOutput<String>('accessString');
+    this.arn = registerOutput<String>('arn');
+    this.authenticationMode =
+        registerOutput<UserAuthenticationMode2>('authenticationMode');
+    this.minimumEngineVersion = registerOutput<String>('minimumEngineVersion');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.userName = registerOutput<String>('userName');
   }
 }

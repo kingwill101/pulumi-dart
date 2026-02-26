@@ -194,47 +194,60 @@ class RegionInstanceTemplate extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.advancedMachineFeatures =
-        Output.createUnknown<RegionInstanceTemplateAdvancedMachineFeatures?>();
-    this.canIpForward = Output.createUnknown<bool?>();
-    this.confidentialInstanceConfig = Output.createUnknown<
-        RegionInstanceTemplateConfidentialInstanceConfig>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.disks = Output.createUnknown<List<RegionInstanceTemplateDisk>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enableDisplay = Output.createUnknown<bool?>();
+        registerOutput<RegionInstanceTemplateAdvancedMachineFeatures?>(
+            'advancedMachineFeatures');
+    this.canIpForward = registerOutput<bool?>('canIpForward');
+    this.confidentialInstanceConfig =
+        registerOutput<RegionInstanceTemplateConfidentialInstanceConfig>(
+            'confidentialInstanceConfig');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.disks = registerOutput<List<RegionInstanceTemplateDisk>>('disks');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableDisplay = registerOutput<bool?>('enableDisplay');
     this.guestAccelerators =
-        Output.createUnknown<List<RegionInstanceTemplateGuestAccelerator>?>();
-    this.instanceDescription = Output.createUnknown<String?>();
-    this.keyRevocationActionType = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.machineType = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>?>();
-    this.metadataFingerprint = Output.createUnknown<String>();
-    this.metadataStartupScript = Output.createUnknown<String?>();
-    this.minCpuPlatform = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
+        registerOutput<List<RegionInstanceTemplateGuestAccelerator>?>(
+            'guestAccelerators');
+    this.instanceDescription = registerOutput<String?>('instanceDescription');
+    this.keyRevocationActionType =
+        registerOutput<String?>('keyRevocationActionType');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.machineType = registerOutput<String>('machineType');
+    this.metadata = registerOutput<Map<String, String>?>('metadata');
+    this.metadataFingerprint = registerOutput<String>('metadataFingerprint');
+    this.metadataStartupScript =
+        registerOutput<String?>('metadataStartupScript');
+    this.minCpuPlatform = registerOutput<String?>('minCpuPlatform');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
     this.networkInterfaces =
-        Output.createUnknown<List<RegionInstanceTemplateNetworkInterface>?>();
+        registerOutput<List<RegionInstanceTemplateNetworkInterface>?>(
+            'networkInterfaces');
     this.networkPerformanceConfig =
-        Output.createUnknown<RegionInstanceTemplateNetworkPerformanceConfig?>();
-    this.numericId = Output.createUnknown<String>();
-    this.partnerMetadata = Output.createUnknown<Map<String, String>?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<RegionInstanceTemplateNetworkPerformanceConfig?>(
+            'networkPerformanceConfig');
+    this.numericId = registerOutput<String>('numericId');
+    this.partnerMetadata =
+        registerOutput<Map<String, String>?>('partnerMetadata');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String>('region');
     this.reservationAffinity =
-        Output.createUnknown<RegionInstanceTemplateReservationAffinity?>();
-    this.resourceManagerTags = Output.createUnknown<Map<String, String>?>();
-    this.resourcePolicies = Output.createUnknown<String?>();
-    this.scheduling = Output.createUnknown<RegionInstanceTemplateScheduling>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<RegionInstanceTemplateReservationAffinity?>(
+            'reservationAffinity');
+    this.resourceManagerTags =
+        registerOutput<Map<String, String>?>('resourceManagerTags');
+    this.resourcePolicies = registerOutput<String?>('resourcePolicies');
+    this.scheduling =
+        registerOutput<RegionInstanceTemplateScheduling>('scheduling');
+    this.selfLink = registerOutput<String>('selfLink');
     this.serviceAccount =
-        Output.createUnknown<RegionInstanceTemplateServiceAccount?>();
+        registerOutput<RegionInstanceTemplateServiceAccount?>('serviceAccount');
     this.shieldedInstanceConfig =
-        Output.createUnknown<RegionInstanceTemplateShieldedInstanceConfig>();
-    this.tags = Output.createUnknown<List<String>?>();
-    this.tagsFingerprint = Output.createUnknown<String>();
+        registerOutput<RegionInstanceTemplateShieldedInstanceConfig>(
+            'shieldedInstanceConfig');
+    this.tags = registerOutput<List<String>?>('tags');
+    this.tagsFingerprint = registerOutput<String>('tagsFingerprint');
   }
 }

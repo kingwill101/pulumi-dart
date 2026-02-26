@@ -308,15 +308,19 @@ class EngineModel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.defaultVersion = Output.createUnknown<EngineModelDefaultVersion?>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.onlinePredictionConsoleLogging = Output.createUnknown<bool?>();
-    this.onlinePredictionLogging = Output.createUnknown<bool?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.regions = Output.createUnknown<String?>();
+    this.defaultVersion =
+        registerOutput<EngineModelDefaultVersion?>('defaultVersion');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.onlinePredictionConsoleLogging =
+        registerOutput<bool?>('onlinePredictionConsoleLogging');
+    this.onlinePredictionLogging =
+        registerOutput<bool?>('onlinePredictionLogging');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.regions = registerOutput<String?>('regions');
   }
 }

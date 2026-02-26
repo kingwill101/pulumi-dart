@@ -235,7 +235,7 @@ class UserPolicyAttachmentsExclusive extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.policyArns = Output.createUnknown<List<String>>();
-    this.userName = Output.createUnknown<String>();
+    this.policyArns = registerOutput<List<String>>('policyArns');
+    this.userName = registerOutput<String>('userName');
   }
 }

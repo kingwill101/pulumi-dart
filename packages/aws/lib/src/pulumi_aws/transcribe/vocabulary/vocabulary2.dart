@@ -286,14 +286,14 @@ class Vocabulary2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.downloadUri = Output.createUnknown<String>();
-    this.languageCode = Output.createUnknown<String>();
-    this.phrases = Output.createUnknown<List<String>?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vocabularyFileUri = Output.createUnknown<String>();
-    this.vocabularyName = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.downloadUri = registerOutput<String>('downloadUri');
+    this.languageCode = registerOutput<String>('languageCode');
+    this.phrases = registerOutput<List<String>?>('phrases');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vocabularyFileUri = registerOutput<String>('vocabularyFileUri');
+    this.vocabularyName = registerOutput<String>('vocabularyName');
   }
 }

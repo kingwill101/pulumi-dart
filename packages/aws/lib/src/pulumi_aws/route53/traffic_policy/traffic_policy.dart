@@ -210,11 +210,11 @@ class TrafficPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.comment = Output.createUnknown<String?>();
-    this.document = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.arn = registerOutput<String>('arn');
+    this.comment = registerOutput<String?>('comment');
+    this.document = registerOutput<String>('document');
+    this.name = registerOutput<String>('name');
+    this.type = registerOutput<String>('type');
+    this.version = registerOutput<int>('version');
   }
 }

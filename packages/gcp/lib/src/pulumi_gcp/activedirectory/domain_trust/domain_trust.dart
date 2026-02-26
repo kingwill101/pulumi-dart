@@ -210,13 +210,15 @@ class DomainTrust extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.domain = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.selectiveAuthentication = Output.createUnknown<bool?>();
-    this.targetDnsIpAddresses = Output.createUnknown<List<String>>();
-    this.targetDomainName = Output.createUnknown<String>();
-    this.trustDirection = Output.createUnknown<String>();
-    this.trustHandshakeSecret = Output.createUnknown<String>();
-    this.trustType = Output.createUnknown<String>();
+    this.domain = registerOutput<String>('domain');
+    this.project = registerOutput<String>('project');
+    this.selectiveAuthentication =
+        registerOutput<bool?>('selectiveAuthentication');
+    this.targetDnsIpAddresses =
+        registerOutput<List<String>>('targetDnsIpAddresses');
+    this.targetDomainName = registerOutput<String>('targetDomainName');
+    this.trustDirection = registerOutput<String>('trustDirection');
+    this.trustHandshakeSecret = registerOutput<String>('trustHandshakeSecret');
+    this.trustType = registerOutput<String>('trustType');
   }
 }

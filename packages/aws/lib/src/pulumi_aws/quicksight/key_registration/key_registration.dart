@@ -166,9 +166,10 @@ class KeyRegistration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.awsAccountId = Output.createUnknown<String>();
+    this.awsAccountId = registerOutput<String>('awsAccountId');
     this.keyRegistrations =
-        Output.createUnknown<List<KeyRegistrationKeyRegistration>>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<KeyRegistrationKeyRegistration>>(
+            'keyRegistrations');
+    this.region = registerOutput<String>('region');
   }
 }

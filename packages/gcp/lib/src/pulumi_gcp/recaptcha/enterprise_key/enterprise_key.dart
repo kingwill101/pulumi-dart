@@ -1064,17 +1064,19 @@ class EnterpriseKey extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.androidSettings =
-        Output.createUnknown<EnterpriseKeyAndroidSettings?>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.iosSettings = Output.createUnknown<EnterpriseKeyIosSettings?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.testingOptions = Output.createUnknown<EnterpriseKeyTestingOptions?>();
-    this.wafSettings = Output.createUnknown<EnterpriseKeyWafSettings?>();
-    this.webSettings = Output.createUnknown<EnterpriseKeyWebSettings?>();
+        registerOutput<EnterpriseKeyAndroidSettings?>('androidSettings');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.iosSettings = registerOutput<EnterpriseKeyIosSettings?>('iosSettings');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.testingOptions =
+        registerOutput<EnterpriseKeyTestingOptions?>('testingOptions');
+    this.wafSettings = registerOutput<EnterpriseKeyWafSettings?>('wafSettings');
+    this.webSettings = registerOutput<EnterpriseKeyWebSettings?>('webSettings');
   }
 }

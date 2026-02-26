@@ -379,13 +379,14 @@ class StorageLensConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.configId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.storageLensConfiguration = Output.createUnknown<
-        StorageLensConfigurationStorageLensConfiguration>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.accountId = registerOutput<String>('accountId');
+    this.arn = registerOutput<String>('arn');
+    this.configId = registerOutput<String>('configId');
+    this.region = registerOutput<String>('region');
+    this.storageLensConfiguration =
+        registerOutput<StorageLensConfigurationStorageLensConfiguration>(
+            'storageLensConfiguration');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

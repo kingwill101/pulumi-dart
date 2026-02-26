@@ -248,8 +248,8 @@ class VpnConnectionRoute2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.destinationCidrBlock = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.vpnConnectionId = Output.createUnknown<String>();
+    this.destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
+    this.region = registerOutput<String>('region');
+    this.vpnConnectionId = registerOutput<String>('vpnConnectionId');
   }
 }

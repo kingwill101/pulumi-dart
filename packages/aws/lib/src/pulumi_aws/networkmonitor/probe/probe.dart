@@ -210,18 +210,18 @@ class Probe extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.addressFamily = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.destination = Output.createUnknown<String>();
-    this.destinationPort = Output.createUnknown<int?>();
-    this.monitorName = Output.createUnknown<String>();
-    this.packetSize = Output.createUnknown<int>();
-    this.probeId = Output.createUnknown<String>();
-    this.protocol = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.sourceArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcId = Output.createUnknown<String>();
+    this.addressFamily = registerOutput<String>('addressFamily');
+    this.arn = registerOutput<String>('arn');
+    this.destination = registerOutput<String>('destination');
+    this.destinationPort = registerOutput<int?>('destinationPort');
+    this.monitorName = registerOutput<String>('monitorName');
+    this.packetSize = registerOutput<int>('packetSize');
+    this.probeId = registerOutput<String>('probeId');
+    this.protocol = registerOutput<String>('protocol');
+    this.region = registerOutput<String>('region');
+    this.sourceArn = registerOutput<String>('sourceArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

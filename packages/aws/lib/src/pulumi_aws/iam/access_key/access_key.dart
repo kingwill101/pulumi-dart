@@ -424,14 +424,15 @@ class AccessKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createDate = Output.createUnknown<String>();
-    this.encryptedSecret = Output.createUnknown<String>();
-    this.encryptedSesSmtpPasswordV4 = Output.createUnknown<String>();
-    this.keyFingerprint = Output.createUnknown<String>();
-    this.pgpKey = Output.createUnknown<String?>();
-    this.secret = Output.createUnknown<String>();
-    this.sesSmtpPasswordV4 = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String?>();
-    this.user = Output.createUnknown<String>();
+    this.createDate = registerOutput<String>('createDate');
+    this.encryptedSecret = registerOutput<String>('encryptedSecret');
+    this.encryptedSesSmtpPasswordV4 =
+        registerOutput<String>('encryptedSesSmtpPasswordV4');
+    this.keyFingerprint = registerOutput<String>('keyFingerprint');
+    this.pgpKey = registerOutput<String?>('pgpKey');
+    this.secret = registerOutput<String>('secret');
+    this.sesSmtpPasswordV4 = registerOutput<String>('sesSmtpPasswordV4');
+    this.status = registerOutput<String?>('status');
+    this.user = registerOutput<String>('user');
   }
 }

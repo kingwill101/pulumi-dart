@@ -45,17 +45,17 @@ class Dataset7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.exampleCount = Output.createUnknown<int>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.sourceLanguageCode = Output.createUnknown<String>();
-    this.targetLanguageCode = Output.createUnknown<String>();
-    this.testExampleCount = Output.createUnknown<int>();
-    this.trainExampleCount = Output.createUnknown<int>();
-    this.updateTime = Output.createUnknown<String>();
-    this.validateExampleCount = Output.createUnknown<int>();
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.exampleCount = registerOutput<int>('exampleCount');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.sourceLanguageCode = registerOutput<String>('sourceLanguageCode');
+    this.targetLanguageCode = registerOutput<String>('targetLanguageCode');
+    this.testExampleCount = registerOutput<int>('testExampleCount');
+    this.trainExampleCount = registerOutput<int>('trainExampleCount');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.validateExampleCount = registerOutput<int>('validateExampleCount');
   }
 }

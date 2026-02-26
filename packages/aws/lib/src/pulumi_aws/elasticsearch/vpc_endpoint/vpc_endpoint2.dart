@@ -185,9 +185,9 @@ class VpcEndpoint2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.domainArn = Output.createUnknown<String>();
-    this.endpoint = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.vpcOptions = Output.createUnknown<VpcEndpointVpcOptions>();
+    this.domainArn = registerOutput<String>('domainArn');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.region = registerOutput<String>('region');
+    this.vpcOptions = registerOutput<VpcEndpointVpcOptions>('vpcOptions');
   }
 }

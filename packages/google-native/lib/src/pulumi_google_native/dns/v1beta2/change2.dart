@@ -38,14 +38,16 @@ class Change2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.additions = Output.createUnknown<List<ResourceRecordSetResponse2>>();
-    this.clientOperationId = Output.createUnknown<String?>();
-    this.deletions = Output.createUnknown<List<ResourceRecordSetResponse2>>();
-    this.isServing = Output.createUnknown<bool>();
-    this.kind = Output.createUnknown<String>();
-    this.managedZone = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.additions =
+        registerOutput<List<ResourceRecordSetResponse2>>('additions');
+    this.clientOperationId = registerOutput<String?>('clientOperationId');
+    this.deletions =
+        registerOutput<List<ResourceRecordSetResponse2>>('deletions');
+    this.isServing = registerOutput<bool>('isServing');
+    this.kind = registerOutput<String>('kind');
+    this.managedZone = registerOutput<String>('managedZone');
+    this.project = registerOutput<String>('project');
+    this.startTime = registerOutput<String>('startTime');
+    this.status = registerOutput<String>('status');
   }
 }

@@ -303,29 +303,32 @@ class LaunchConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.associatePublicIpAddress = Output.createUnknown<bool?>();
+    this.arn = registerOutput<String>('arn');
+    this.associatePublicIpAddress =
+        registerOutput<bool?>('associatePublicIpAddress');
     this.ebsBlockDevices =
-        Output.createUnknown<List<LaunchConfigurationEbsBlockDevice>>();
-    this.ebsOptimized = Output.createUnknown<bool>();
-    this.enableMonitoring = Output.createUnknown<bool?>();
+        registerOutput<List<LaunchConfigurationEbsBlockDevice>>(
+            'ebsBlockDevices');
+    this.ebsOptimized = registerOutput<bool>('ebsOptimized');
+    this.enableMonitoring = registerOutput<bool?>('enableMonitoring');
     this.ephemeralBlockDevices =
-        Output.createUnknown<List<LaunchConfigurationEphemeralBlockDevice>?>();
-    this.iamInstanceProfile = Output.createUnknown<String?>();
-    this.imageId = Output.createUnknown<String>();
-    this.instanceType = Output.createUnknown<String>();
-    this.keyName = Output.createUnknown<String>();
+        registerOutput<List<LaunchConfigurationEphemeralBlockDevice>?>(
+            'ephemeralBlockDevices');
+    this.iamInstanceProfile = registerOutput<String?>('iamInstanceProfile');
+    this.imageId = registerOutput<String>('imageId');
+    this.instanceType = registerOutput<String>('instanceType');
+    this.keyName = registerOutput<String>('keyName');
     this.metadataOptions =
-        Output.createUnknown<LaunchConfigurationMetadataOptions>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.placementTenancy = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<LaunchConfigurationMetadataOptions>('metadataOptions');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.placementTenancy = registerOutput<String?>('placementTenancy');
+    this.region = registerOutput<String>('region');
     this.rootBlockDevice =
-        Output.createUnknown<LaunchConfigurationRootBlockDevice>();
-    this.securityGroups = Output.createUnknown<List<String>?>();
-    this.spotPrice = Output.createUnknown<String?>();
-    this.userData = Output.createUnknown<String?>();
-    this.userDataBase64 = Output.createUnknown<String?>();
+        registerOutput<LaunchConfigurationRootBlockDevice>('rootBlockDevice');
+    this.securityGroups = registerOutput<List<String>?>('securityGroups');
+    this.spotPrice = registerOutput<String?>('spotPrice');
+    this.userData = registerOutput<String?>('userData');
+    this.userDataBase64 = registerOutput<String?>('userDataBase64');
   }
 }

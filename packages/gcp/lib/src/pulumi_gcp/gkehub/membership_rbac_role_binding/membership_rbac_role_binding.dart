@@ -389,17 +389,19 @@ class MembershipRbacRoleBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.membershipId = Output.createUnknown<String>();
-    this.membershipRbacRoleBindingId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<MembershipRbacRoleBindingRole>();
-    this.states = Output.createUnknown<List<MembershipRbacRoleBindingState>>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.user = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.location = registerOutput<String>('location');
+    this.membershipId = registerOutput<String>('membershipId');
+    this.membershipRbacRoleBindingId =
+        registerOutput<String>('membershipRbacRoleBindingId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<MembershipRbacRoleBindingRole>('role');
+    this.states =
+        registerOutput<List<MembershipRbacRoleBindingState>>('states');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.user = registerOutput<String>('user');
   }
 }

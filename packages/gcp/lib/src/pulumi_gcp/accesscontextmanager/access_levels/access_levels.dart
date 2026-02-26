@@ -428,7 +428,8 @@ class AccessLevels extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessLevels = Output.createUnknown<List<AccessLevelsAccessLevel>?>();
-    this.parent = Output.createUnknown<String>();
+    this.accessLevels =
+        registerOutput<List<AccessLevelsAccessLevel>?>('accessLevels');
+    this.parent = registerOutput<String>('parent');
   }
 }

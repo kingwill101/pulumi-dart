@@ -31,11 +31,11 @@ class ServicePerimeter2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessPolicyId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.perimeterType = Output.createUnknown<String>();
-    this.status = Output.createUnknown<ServicePerimeterConfigResponse2>();
-    this.title = Output.createUnknown<String>();
+    this.accessPolicyId = registerOutput<String>('accessPolicyId');
+    this.description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    this.perimeterType = registerOutput<String>('perimeterType');
+    this.status = registerOutput<ServicePerimeterConfigResponse2>('status');
+    this.title = registerOutput<String>('title');
   }
 }

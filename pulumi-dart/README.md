@@ -1,39 +1,71 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# pulumi (Dart SDK)
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages). 
+Core Pulumi runtime SDK for Dart.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages). 
--->
+## Development
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Install dependencies:
 
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
+```bash
+dart pub get
 ```
 
-## Additional information
+Run tests:
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+```bash
+dart test
+```
+
+Generate lcov coverage:
+
+```bash
+dart test --coverage-path=coverage/lcov.info --coverage-package='^pulumi$'
+```
+
+Coverage artifact policy:
+
+- canonical local/CI lcov path: `pulumi-dart/coverage/lcov.info`
+- regenerate with `task test:coverage` from repo root
+- use `task test:mutation:dry:coverage` to prioritize weakly tested runtime surface
+
+Run static analysis:
+
+```bash
+dart analyze
+```
+
+## Mutation Testing
+
+This package is configured to use [`mutation_test`](https://pub.dev/packages/mutation_test).
+
+Config file:
+
+- `mutation-test.xml`
+
+Dry run (counts mutants without running tests):
+
+```bash
+dart run mutation_test --dry mutation-test.xml
+```
+
+Full run:
+
+```bash
+dart run mutation_test mutation-test.xml
+```
+
+At repository root, you can also use Taskfile helpers:
+
+```bash
+task test:coverage
+task test:mutation:dry
+task test:mutation:dry:coverage
+task test:mutation
+task test:mutation:coverage
+```
+
+Optional coverage-guided run (faster mutation pass):
+
+```bash
+task test:mutation COVERAGE_LCOV=/abs/path/to/lcov.info
+```

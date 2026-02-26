@@ -120,34 +120,38 @@ class Config5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apis = Output.createUnknown<List<ApiResponse>>();
-    this.authentication = Output.createUnknown<AuthenticationResponse>();
-    this.backend = Output.createUnknown<BackendResponse4>();
-    this.billing = Output.createUnknown<BillingResponse>();
-    this.configVersion = Output.createUnknown<int>();
-    this.context = Output.createUnknown<ContextResponse>();
-    this.control = Output.createUnknown<ControlResponse>();
-    this.customError = Output.createUnknown<CustomErrorResponse>();
-    this.documentation = Output.createUnknown<DocumentationResponse2>();
-    this.endpoints = Output.createUnknown<List<EndpointResponse5>>();
-    this.enums = Output.createUnknown<List<EnumResponse>>();
-    this.http = Output.createUnknown<HttpResponse>();
-    this.logging = Output.createUnknown<LoggingResponse>();
-    this.logs = Output.createUnknown<List<LogDescriptorResponse>>();
-    this.metrics = Output.createUnknown<List<MetricDescriptorResponse2>>();
+    this.apis = registerOutput<List<ApiResponse>>('apis');
+    this.authentication =
+        registerOutput<AuthenticationResponse>('authentication');
+    this.backend = registerOutput<BackendResponse4>('backend');
+    this.billing = registerOutput<BillingResponse>('billing');
+    this.configVersion = registerOutput<int>('configVersion');
+    this.context = registerOutput<ContextResponse>('context');
+    this.control = registerOutput<ControlResponse>('control');
+    this.customError = registerOutput<CustomErrorResponse>('customError');
+    this.documentation =
+        registerOutput<DocumentationResponse2>('documentation');
+    this.endpoints = registerOutput<List<EndpointResponse5>>('endpoints');
+    this.enums = registerOutput<List<EnumResponse>>('enums');
+    this.http = registerOutput<HttpResponse>('http');
+    this.logging = registerOutput<LoggingResponse>('logging');
+    this.logs = registerOutput<List<LogDescriptorResponse>>('logs');
+    this.metrics = registerOutput<List<MetricDescriptorResponse2>>('metrics');
     this.monitoredResources =
-        Output.createUnknown<List<MonitoredResourceDescriptorResponse>>();
-    this.monitoring = Output.createUnknown<MonitoringResponse>();
-    this.name = Output.createUnknown<String>();
-    this.producerProjectId = Output.createUnknown<String>();
-    this.publishing = Output.createUnknown<PublishingResponse>();
-    this.quota = Output.createUnknown<QuotaResponse>();
-    this.serviceName = Output.createUnknown<String>();
-    this.sourceInfo = Output.createUnknown<SourceInfoResponse>();
-    this.systemParameters = Output.createUnknown<SystemParametersResponse>();
-    this.systemTypes = Output.createUnknown<List<TypeResponse3>>();
-    this.title = Output.createUnknown<String>();
-    this.types = Output.createUnknown<List<TypeResponse3>>();
-    this.usage = Output.createUnknown<UsageResponse>();
+        registerOutput<List<MonitoredResourceDescriptorResponse>>(
+            'monitoredResources');
+    this.monitoring = registerOutput<MonitoringResponse>('monitoring');
+    this.name = registerOutput<String>('name');
+    this.producerProjectId = registerOutput<String>('producerProjectId');
+    this.publishing = registerOutput<PublishingResponse>('publishing');
+    this.quota = registerOutput<QuotaResponse>('quota');
+    this.serviceName = registerOutput<String>('serviceName');
+    this.sourceInfo = registerOutput<SourceInfoResponse>('sourceInfo');
+    this.systemParameters =
+        registerOutput<SystemParametersResponse>('systemParameters');
+    this.systemTypes = registerOutput<List<TypeResponse3>>('systemTypes');
+    this.title = registerOutput<String>('title');
+    this.types = registerOutput<List<TypeResponse3>>('types');
+    this.usage = registerOutput<UsageResponse>('usage');
   }
 }

@@ -114,41 +114,48 @@ class MigratingVm2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.awsSourceVmDetails =
-        Output.createUnknown<AwsSourceVmDetailsResponse2>();
+        registerOutput<AwsSourceVmDetailsResponse2>('awsSourceVmDetails');
     this.azureSourceVmDetails =
-        Output.createUnknown<AzureSourceVmDetailsResponse2>();
+        registerOutput<AzureSourceVmDetailsResponse2>('azureSourceVmDetails');
     this.computeEngineDisksTargetDefaults =
-        Output.createUnknown<ComputeEngineDisksTargetDefaultsResponse2>();
+        registerOutput<ComputeEngineDisksTargetDefaultsResponse2>(
+            'computeEngineDisksTargetDefaults');
     this.computeEngineTargetDefaults =
-        Output.createUnknown<ComputeEngineTargetDefaultsResponse2>();
+        registerOutput<ComputeEngineTargetDefaultsResponse2>(
+            'computeEngineTargetDefaults');
     this.computeEngineVmDefaults =
-        Output.createUnknown<TargetVMDetailsResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.currentSyncInfo = Output.createUnknown<ReplicationCycleResponse2>();
-    this.cutoverForecast = Output.createUnknown<CutoverForecastResponse2>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.error = Output.createUnknown<StatusResponse31>();
-    this.group = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
+        registerOutput<TargetVMDetailsResponse>('computeEngineVmDefaults');
+    this.createTime = registerOutput<String>('createTime');
+    this.currentSyncInfo =
+        registerOutput<ReplicationCycleResponse2>('currentSyncInfo');
+    this.cutoverForecast =
+        registerOutput<CutoverForecastResponse2>('cutoverForecast');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.error = registerOutput<StatusResponse31>('error');
+    this.group = registerOutput<String>('group');
+    this.labels = registerOutput<Map<String, String>>('labels');
     this.lastReplicationCycle =
-        Output.createUnknown<ReplicationCycleResponse2>();
-    this.lastSync = Output.createUnknown<ReplicationSyncResponse2>();
-    this.location = Output.createUnknown<String>();
-    this.migratingVmId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<SchedulePolicyResponse2>();
-    this.project = Output.createUnknown<String>();
-    this.recentCloneJobs = Output.createUnknown<List<CloneJobResponse2>>();
-    this.recentCutoverJobs = Output.createUnknown<List<CutoverJobResponse2>>();
-    this.requestId = Output.createUnknown<String?>();
-    this.sourceId = Output.createUnknown<String>();
-    this.sourceVmId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.stateTime = Output.createUnknown<String>();
-    this.targetDefaults = Output.createUnknown<TargetVMDetailsResponse>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<ReplicationCycleResponse2>('lastReplicationCycle');
+    this.lastSync = registerOutput<ReplicationSyncResponse2>('lastSync');
+    this.location = registerOutput<String>('location');
+    this.migratingVmId = registerOutput<String>('migratingVmId');
+    this.name = registerOutput<String>('name');
+    this.policy = registerOutput<SchedulePolicyResponse2>('policy');
+    this.project = registerOutput<String>('project');
+    this.recentCloneJobs =
+        registerOutput<List<CloneJobResponse2>>('recentCloneJobs');
+    this.recentCutoverJobs =
+        registerOutput<List<CutoverJobResponse2>>('recentCutoverJobs');
+    this.requestId = registerOutput<String?>('requestId');
+    this.sourceId = registerOutput<String>('sourceId');
+    this.sourceVmId = registerOutput<String>('sourceVmId');
+    this.state = registerOutput<String>('state');
+    this.stateTime = registerOutput<String>('stateTime');
+    this.targetDefaults =
+        registerOutput<TargetVMDetailsResponse>('targetDefaults');
+    this.updateTime = registerOutput<String>('updateTime');
     this.vmwareSourceVmDetails =
-        Output.createUnknown<VmwareSourceVmDetailsResponse2>();
+        registerOutput<VmwareSourceVmDetailsResponse2>('vmwareSourceVmDetails');
   }
 }

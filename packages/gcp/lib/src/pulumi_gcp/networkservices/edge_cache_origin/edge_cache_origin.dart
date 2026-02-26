@@ -867,24 +867,28 @@ class EdgeCacheOrigin extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.awsV4Authentication =
-        Output.createUnknown<EdgeCacheOriginAwsV4Authentication?>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.failoverOrigin = Output.createUnknown<String?>();
-    this.flexShielding = Output.createUnknown<EdgeCacheOriginFlexShielding?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.maxAttempts = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.originAddress = Output.createUnknown<String>();
+        registerOutput<EdgeCacheOriginAwsV4Authentication?>(
+            'awsV4Authentication');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.failoverOrigin = registerOutput<String?>('failoverOrigin');
+    this.flexShielding =
+        registerOutput<EdgeCacheOriginFlexShielding?>('flexShielding');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.maxAttempts = registerOutput<int?>('maxAttempts');
+    this.name = registerOutput<String>('name');
+    this.originAddress = registerOutput<String>('originAddress');
     this.originOverrideAction =
-        Output.createUnknown<EdgeCacheOriginOriginOverrideAction?>();
+        registerOutput<EdgeCacheOriginOriginOverrideAction?>(
+            'originOverrideAction');
     this.originRedirect =
-        Output.createUnknown<EdgeCacheOriginOriginRedirect?>();
-    this.port = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.protocol = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.retryConditions = Output.createUnknown<List<String>>();
-    this.timeout = Output.createUnknown<EdgeCacheOriginTimeout?>();
+        registerOutput<EdgeCacheOriginOriginRedirect?>('originRedirect');
+    this.port = registerOutput<int>('port');
+    this.project = registerOutput<String>('project');
+    this.protocol = registerOutput<String>('protocol');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.retryConditions = registerOutput<List<String>>('retryConditions');
+    this.timeout = registerOutput<EdgeCacheOriginTimeout?>('timeout');
   }
 }

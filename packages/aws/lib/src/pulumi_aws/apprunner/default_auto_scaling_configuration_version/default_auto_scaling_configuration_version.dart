@@ -162,7 +162,8 @@ class DefaultAutoScalingConfigurationVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoScalingConfigurationArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.autoScalingConfigurationArn =
+        registerOutput<String>('autoScalingConfigurationArn');
+    this.region = registerOutput<String>('region');
   }
 }

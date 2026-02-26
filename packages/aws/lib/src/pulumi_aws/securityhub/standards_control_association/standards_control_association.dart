@@ -380,10 +380,10 @@ class StandardsControlAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.associationStatus = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityControlId = Output.createUnknown<String>();
-    this.standardsArn = Output.createUnknown<String>();
-    this.updatedReason = Output.createUnknown<String?>();
+    this.associationStatus = registerOutput<String>('associationStatus');
+    this.region = registerOutput<String>('region');
+    this.securityControlId = registerOutput<String>('securityControlId');
+    this.standardsArn = registerOutput<String>('standardsArn');
+    this.updatedReason = registerOutput<String?>('updatedReason');
   }
 }

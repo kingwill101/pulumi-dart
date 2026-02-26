@@ -496,7 +496,7 @@ class EnvironmentKeyvaluemaps extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.envId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.envId = registerOutput<String>('envId');
+    this.name = registerOutput<String>('name');
   }
 }

@@ -849,11 +849,11 @@ class InstanceIamBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<InstanceIamBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.instance = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.condition = registerOutput<InstanceIamBindingCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.instance = registerOutput<String>('instance');
+    this.members = registerOutput<List<String>>('members');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
   }
 }

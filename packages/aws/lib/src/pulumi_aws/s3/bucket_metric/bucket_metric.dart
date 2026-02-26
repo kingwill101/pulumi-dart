@@ -513,9 +513,9 @@ class BucketMetric extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.filter = Output.createUnknown<BucketMetricFilter?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.filter = registerOutput<BucketMetricFilter?>('filter');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

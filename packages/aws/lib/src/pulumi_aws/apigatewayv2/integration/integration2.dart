@@ -769,27 +769,32 @@ class Integration2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiId = Output.createUnknown<String>();
-    this.connectionId = Output.createUnknown<String?>();
-    this.connectionType = Output.createUnknown<String?>();
-    this.contentHandlingStrategy = Output.createUnknown<String?>();
-    this.credentialsArn = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.integrationMethod = Output.createUnknown<String?>();
+    this.apiId = registerOutput<String>('apiId');
+    this.connectionId = registerOutput<String?>('connectionId');
+    this.connectionType = registerOutput<String?>('connectionType');
+    this.contentHandlingStrategy =
+        registerOutput<String?>('contentHandlingStrategy');
+    this.credentialsArn = registerOutput<String?>('credentialsArn');
+    this.description = registerOutput<String?>('description');
+    this.integrationMethod = registerOutput<String?>('integrationMethod');
     this.integrationResponseSelectionExpression =
-        Output.createUnknown<String>();
-    this.integrationSubtype = Output.createUnknown<String?>();
-    this.integrationType = Output.createUnknown<String>();
-    this.integrationUri = Output.createUnknown<String?>();
-    this.passthroughBehavior = Output.createUnknown<String?>();
-    this.payloadFormatVersion = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.requestParameters = Output.createUnknown<Map<String, String>?>();
-    this.requestTemplates = Output.createUnknown<Map<String, String>?>();
+        registerOutput<String>('integrationResponseSelectionExpression');
+    this.integrationSubtype = registerOutput<String?>('integrationSubtype');
+    this.integrationType = registerOutput<String>('integrationType');
+    this.integrationUri = registerOutput<String?>('integrationUri');
+    this.passthroughBehavior = registerOutput<String?>('passthroughBehavior');
+    this.payloadFormatVersion = registerOutput<String?>('payloadFormatVersion');
+    this.region = registerOutput<String>('region');
+    this.requestParameters =
+        registerOutput<Map<String, String>?>('requestParameters');
+    this.requestTemplates =
+        registerOutput<Map<String, String>?>('requestTemplates');
     this.responseParameters =
-        Output.createUnknown<List<IntegrationResponseParameter>?>();
-    this.templateSelectionExpression = Output.createUnknown<String?>();
-    this.timeoutMilliseconds = Output.createUnknown<int>();
-    this.tlsConfig = Output.createUnknown<IntegrationTlsConfig2?>();
+        registerOutput<List<IntegrationResponseParameter>?>(
+            'responseParameters');
+    this.templateSelectionExpression =
+        registerOutput<String?>('templateSelectionExpression');
+    this.timeoutMilliseconds = registerOutput<int>('timeoutMilliseconds');
+    this.tlsConfig = registerOutput<IntegrationTlsConfig2?>('tlsConfig');
   }
 }

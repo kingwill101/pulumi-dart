@@ -184,12 +184,12 @@ class DomainMapping extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.domainName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.overrideStrategy = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
+    this.domainName = registerOutput<String>('domainName');
+    this.name = registerOutput<String>('name');
+    this.overrideStrategy = registerOutput<String?>('overrideStrategy');
+    this.project = registerOutput<String>('project');
     this.resourceRecords =
-        Output.createUnknown<List<DomainMappingResourceRecord>>();
-    this.sslSettings = Output.createUnknown<DomainMappingSslSettings>();
+        registerOutput<List<DomainMappingResourceRecord>>('resourceRecords');
+    this.sslSettings = registerOutput<DomainMappingSslSettings>('sslSettings');
   }
 }

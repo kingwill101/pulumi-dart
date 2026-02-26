@@ -288,10 +288,11 @@ class KeyvaluestoreKeysExclusive extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.keyValueStoreArn = Output.createUnknown<String>();
-    this.maxBatchSize = Output.createUnknown<int>();
-    this.resourceKeyValuePairs = Output.createUnknown<
-        List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>?>();
-    this.totalSizeInBytes = Output.createUnknown<int>();
+    this.keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
+    this.maxBatchSize = registerOutput<int>('maxBatchSize');
+    this.resourceKeyValuePairs =
+        registerOutput<List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>?>(
+            'resourceKeyValuePairs');
+    this.totalSizeInBytes = registerOutput<int>('totalSizeInBytes');
   }
 }

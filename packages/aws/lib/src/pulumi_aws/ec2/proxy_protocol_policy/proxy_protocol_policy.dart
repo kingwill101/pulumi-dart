@@ -258,8 +258,8 @@ class ProxyProtocolPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.instancePorts = Output.createUnknown<List<String>>();
-    this.loadBalancer = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.instancePorts = registerOutput<List<String>>('instancePorts');
+    this.loadBalancer = registerOutput<String>('loadBalancer');
+    this.region = registerOutput<String>('region');
   }
 }

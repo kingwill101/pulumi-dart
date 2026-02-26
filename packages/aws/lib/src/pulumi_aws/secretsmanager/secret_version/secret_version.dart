@@ -407,15 +407,15 @@ class SecretVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.hasSecretStringWo = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.secretBinary = Output.createUnknown<String?>();
-    this.secretId = Output.createUnknown<String>();
-    this.secretString = Output.createUnknown<String?>();
-    this.secretStringWo = Output.createUnknown<String?>();
-    this.secretStringWoVersion = Output.createUnknown<int?>();
-    this.versionId = Output.createUnknown<String>();
-    this.versionStages = Output.createUnknown<List<String>>();
+    this.arn = registerOutput<String>('arn');
+    this.hasSecretStringWo = registerOutput<bool>('hasSecretStringWo');
+    this.region = registerOutput<String>('region');
+    this.secretBinary = registerOutput<String?>('secretBinary');
+    this.secretId = registerOutput<String>('secretId');
+    this.secretString = registerOutput<String?>('secretString');
+    this.secretStringWo = registerOutput<String?>('secretStringWo');
+    this.secretStringWoVersion = registerOutput<int?>('secretStringWoVersion');
+    this.versionId = registerOutput<String>('versionId');
+    this.versionStages = registerOutput<List<String>>('versionStages');
   }
 }

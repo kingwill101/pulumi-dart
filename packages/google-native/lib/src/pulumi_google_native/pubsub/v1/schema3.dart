@@ -32,12 +32,12 @@ class Schema3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.definition = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.revisionCreateTime = Output.createUnknown<String>();
-    this.revisionId = Output.createUnknown<String>();
-    this.schemaId = Output.createUnknown<String?>();
-    this.type = Output.createUnknown<String>();
+    this.definition = registerOutput<String>('definition');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.schemaId = registerOutput<String?>('schemaId');
+    this.type = registerOutput<String>('type');
   }
 }

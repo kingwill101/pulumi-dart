@@ -489,25 +489,25 @@ class Instance3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.addOn = Output.createUnknown<InstanceAddOn?>();
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.blueprintId = Output.createUnknown<String>();
-    this.bundleId = Output.createUnknown<String>();
-    this.cpuCount = Output.createUnknown<int>();
-    this.createdAt = Output.createUnknown<String>();
-    this.ipAddressType = Output.createUnknown<String?>();
-    this.ipv6Addresses = Output.createUnknown<List<String>>();
-    this.isStaticIp = Output.createUnknown<bool>();
-    this.keyPairName = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.privateIpAddress = Output.createUnknown<String>();
-    this.publicIpAddress = Output.createUnknown<String>();
-    this.ramSize = Output.createUnknown<double>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.userData = Output.createUnknown<String?>();
-    this.username = Output.createUnknown<String>();
+    this.addOn = registerOutput<InstanceAddOn?>('addOn');
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.blueprintId = registerOutput<String>('blueprintId');
+    this.bundleId = registerOutput<String>('bundleId');
+    this.cpuCount = registerOutput<int>('cpuCount');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.ipAddressType = registerOutput<String?>('ipAddressType');
+    this.ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
+    this.isStaticIp = registerOutput<bool>('isStaticIp');
+    this.keyPairName = registerOutput<String?>('keyPairName');
+    this.name = registerOutput<String>('name');
+    this.privateIpAddress = registerOutput<String>('privateIpAddress');
+    this.publicIpAddress = registerOutput<String>('publicIpAddress');
+    this.ramSize = registerOutput<double>('ramSize');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.userData = registerOutput<String?>('userData');
+    this.username = registerOutput<String>('username');
   }
 }

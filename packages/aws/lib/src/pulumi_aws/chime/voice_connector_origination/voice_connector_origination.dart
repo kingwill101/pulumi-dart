@@ -257,9 +257,10 @@ class VoiceConnectorOrigination extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.disabled = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.routes = Output.createUnknown<List<VoiceConnectorOriginationRoute>>();
-    this.voiceConnectorId = Output.createUnknown<String>();
+    this.disabled = registerOutput<bool?>('disabled');
+    this.region = registerOutput<String>('region');
+    this.routes =
+        registerOutput<List<VoiceConnectorOriginationRoute>>('routes');
+    this.voiceConnectorId = registerOutput<String>('voiceConnectorId');
   }
 }

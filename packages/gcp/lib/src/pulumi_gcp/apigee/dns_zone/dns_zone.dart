@@ -283,11 +283,11 @@ class DnsZone extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String>();
-    this.dnsZoneId = Output.createUnknown<String>();
-    this.domain = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.peeringConfig = Output.createUnknown<DnsZonePeeringConfig>();
+    this.description = registerOutput<String>('description');
+    this.dnsZoneId = registerOutput<String>('dnsZoneId');
+    this.domain = registerOutput<String>('domain');
+    this.name = registerOutput<String>('name');
+    this.orgId = registerOutput<String>('orgId');
+    this.peeringConfig = registerOutput<DnsZonePeeringConfig>('peeringConfig');
   }
 }

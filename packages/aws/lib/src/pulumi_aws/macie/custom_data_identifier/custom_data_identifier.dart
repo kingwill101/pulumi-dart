@@ -221,17 +221,17 @@ class CustomDataIdentifier extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.ignoreWords = Output.createUnknown<List<String>?>();
-    this.keywords = Output.createUnknown<List<String>?>();
-    this.maximumMatchDistance = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.regex = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.description = registerOutput<String?>('description');
+    this.ignoreWords = registerOutput<List<String>?>('ignoreWords');
+    this.keywords = registerOutput<List<String>?>('keywords');
+    this.maximumMatchDistance = registerOutput<int>('maximumMatchDistance');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.regex = registerOutput<String?>('regex');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

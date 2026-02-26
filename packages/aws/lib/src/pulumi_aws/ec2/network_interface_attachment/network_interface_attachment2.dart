@@ -144,12 +144,12 @@ class NetworkInterfaceAttachment2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attachmentId = Output.createUnknown<String>();
-    this.deviceIndex = Output.createUnknown<int>();
-    this.instanceId = Output.createUnknown<String>();
-    this.networkCardIndex = Output.createUnknown<int>();
-    this.networkInterfaceId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.attachmentId = registerOutput<String>('attachmentId');
+    this.deviceIndex = registerOutput<int>('deviceIndex');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.networkCardIndex = registerOutput<int>('networkCardIndex');
+    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
   }
 }

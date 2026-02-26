@@ -113,35 +113,36 @@ class Build3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.approval = Output.createUnknown<BuildApprovalResponse>();
-    this.artifacts = Output.createUnknown<ArtifactsResponse>();
-    this.availableSecrets = Output.createUnknown<SecretsResponse>();
-    this.buildTriggerId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.failureInfo = Output.createUnknown<FailureInfoResponse>();
-    this.finishTime = Output.createUnknown<String>();
-    this.images = Output.createUnknown<List<String>>();
-    this.location = Output.createUnknown<String>();
-    this.logUrl = Output.createUnknown<String>();
-    this.logsBucket = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.options = Output.createUnknown<BuildOptionsResponse>();
-    this.project = Output.createUnknown<String>();
-    this.projectId = Output.createUnknown<String>();
-    this.queueTtl = Output.createUnknown<String>();
-    this.results = Output.createUnknown<ResultsResponse>();
-    this.secrets = Output.createUnknown<List<SecretResponse>>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.source = Output.createUnknown<SourceResponse>();
-    this.sourceProvenance = Output.createUnknown<SourceProvenanceResponse>();
-    this.startTime = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.statusDetail = Output.createUnknown<String>();
-    this.steps = Output.createUnknown<List<BuildStepResponse>>();
-    this.substitutions = Output.createUnknown<Map<String, String>>();
-    this.tags = Output.createUnknown<List<String>>();
-    this.timeout = Output.createUnknown<String>();
-    this.timing = Output.createUnknown<Map<String, String>>();
-    this.warnings = Output.createUnknown<List<WarningResponse>>();
+    this.approval = registerOutput<BuildApprovalResponse>('approval');
+    this.artifacts = registerOutput<ArtifactsResponse>('artifacts');
+    this.availableSecrets = registerOutput<SecretsResponse>('availableSecrets');
+    this.buildTriggerId = registerOutput<String>('buildTriggerId');
+    this.createTime = registerOutput<String>('createTime');
+    this.failureInfo = registerOutput<FailureInfoResponse>('failureInfo');
+    this.finishTime = registerOutput<String>('finishTime');
+    this.images = registerOutput<List<String>>('images');
+    this.location = registerOutput<String>('location');
+    this.logUrl = registerOutput<String>('logUrl');
+    this.logsBucket = registerOutput<String>('logsBucket');
+    this.name = registerOutput<String>('name');
+    this.options = registerOutput<BuildOptionsResponse>('options');
+    this.project = registerOutput<String>('project');
+    this.projectId = registerOutput<String>('projectId');
+    this.queueTtl = registerOutput<String>('queueTtl');
+    this.results = registerOutput<ResultsResponse>('results');
+    this.secrets = registerOutput<List<SecretResponse>>('secrets');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.source = registerOutput<SourceResponse>('source');
+    this.sourceProvenance =
+        registerOutput<SourceProvenanceResponse>('sourceProvenance');
+    this.startTime = registerOutput<String>('startTime');
+    this.status = registerOutput<String>('status');
+    this.statusDetail = registerOutput<String>('statusDetail');
+    this.steps = registerOutput<List<BuildStepResponse>>('steps');
+    this.substitutions = registerOutput<Map<String, String>>('substitutions');
+    this.tags = registerOutput<List<String>>('tags');
+    this.timeout = registerOutput<String>('timeout');
+    this.timing = registerOutput<Map<String, String>>('timing');
+    this.warnings = registerOutput<List<WarningResponse>>('warnings');
   }
 }

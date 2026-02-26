@@ -451,19 +451,20 @@ class CaCertificate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.active = Output.createUnknown<bool>();
-    this.allowAutoRegistration = Output.createUnknown<bool>();
-    this.arn = Output.createUnknown<String>();
-    this.caCertificatePem = Output.createUnknown<String>();
-    this.certificateMode = Output.createUnknown<String?>();
-    this.customerVersion = Output.createUnknown<int>();
-    this.generationId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.active = registerOutput<bool>('active');
+    this.allowAutoRegistration = registerOutput<bool>('allowAutoRegistration');
+    this.arn = registerOutput<String>('arn');
+    this.caCertificatePem = registerOutput<String>('caCertificatePem');
+    this.certificateMode = registerOutput<String?>('certificateMode');
+    this.customerVersion = registerOutput<int>('customerVersion');
+    this.generationId = registerOutput<String>('generationId');
+    this.region = registerOutput<String>('region');
     this.registrationConfig =
-        Output.createUnknown<CaCertificateRegistrationConfig?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.validities = Output.createUnknown<List<CaCertificateValidity>>();
-    this.verificationCertificatePem = Output.createUnknown<String?>();
+        registerOutput<CaCertificateRegistrationConfig?>('registrationConfig');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.validities = registerOutput<List<CaCertificateValidity>>('validities');
+    this.verificationCertificatePem =
+        registerOutput<String?>('verificationCertificatePem');
   }
 }

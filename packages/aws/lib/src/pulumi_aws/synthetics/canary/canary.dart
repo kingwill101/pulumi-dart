@@ -244,30 +244,33 @@ class Canary extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.artifactConfig = Output.createUnknown<CanaryArtifactConfig?>();
-    this.artifactS3Location = Output.createUnknown<String>();
-    this.deleteLambda = Output.createUnknown<bool?>();
-    this.engineArn = Output.createUnknown<String>();
-    this.executionRoleArn = Output.createUnknown<String>();
-    this.failureRetentionPeriod = Output.createUnknown<int?>();
-    this.handler = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.runConfig = Output.createUnknown<CanaryRunConfig>();
-    this.runtimeVersion = Output.createUnknown<String>();
-    this.s3Bucket = Output.createUnknown<String?>();
-    this.s3Key = Output.createUnknown<String?>();
-    this.s3Version = Output.createUnknown<String?>();
-    this.schedule = Output.createUnknown<CanarySchedule>();
-    this.sourceLocationArn = Output.createUnknown<String>();
-    this.startCanary = Output.createUnknown<bool?>();
-    this.status = Output.createUnknown<String>();
-    this.successRetentionPeriod = Output.createUnknown<int?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timelines = Output.createUnknown<List<CanaryTimeline>>();
-    this.vpcConfig = Output.createUnknown<CanaryVpcConfig?>();
-    this.zipFile = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.artifactConfig =
+        registerOutput<CanaryArtifactConfig?>('artifactConfig');
+    this.artifactS3Location = registerOutput<String>('artifactS3Location');
+    this.deleteLambda = registerOutput<bool?>('deleteLambda');
+    this.engineArn = registerOutput<String>('engineArn');
+    this.executionRoleArn = registerOutput<String>('executionRoleArn');
+    this.failureRetentionPeriod =
+        registerOutput<int?>('failureRetentionPeriod');
+    this.handler = registerOutput<String>('handler');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.runConfig = registerOutput<CanaryRunConfig>('runConfig');
+    this.runtimeVersion = registerOutput<String>('runtimeVersion');
+    this.s3Bucket = registerOutput<String?>('s3Bucket');
+    this.s3Key = registerOutput<String?>('s3Key');
+    this.s3Version = registerOutput<String?>('s3Version');
+    this.schedule = registerOutput<CanarySchedule>('schedule');
+    this.sourceLocationArn = registerOutput<String>('sourceLocationArn');
+    this.startCanary = registerOutput<bool?>('startCanary');
+    this.status = registerOutput<String>('status');
+    this.successRetentionPeriod =
+        registerOutput<int?>('successRetentionPeriod');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timelines = registerOutput<List<CanaryTimeline>>('timelines');
+    this.vpcConfig = registerOutput<CanaryVpcConfig?>('vpcConfig');
+    this.zipFile = registerOutput<String?>('zipFile');
   }
 }

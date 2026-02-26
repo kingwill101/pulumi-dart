@@ -1029,8 +1029,9 @@ class LogDeliveryConfiguration extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.logConfigurations =
-        Output.createUnknown<List<LogDeliveryConfigurationLogConfiguration>>();
-    this.region = Output.createUnknown<String>();
-    this.userPoolId = Output.createUnknown<String>();
+        registerOutput<List<LogDeliveryConfigurationLogConfiguration>>(
+            'logConfigurations');
+    this.region = registerOutput<String>('region');
+    this.userPoolId = registerOutput<String>('userPoolId');
   }
 }

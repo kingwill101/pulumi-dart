@@ -57,19 +57,19 @@ class DeploymentType7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createPolicy = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.insertTime = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<List<DeploymentLabelEntryResponse2>>();
-    this.manifest = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.operation = Output.createUnknown<OperationResponse3>();
-    this.preview = Output.createUnknown<bool?>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.target = Output.createUnknown<TargetConfigurationResponse2>();
-    this.update = Output.createUnknown<DeploymentUpdateResponse2>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createPolicy = registerOutput<String?>('createPolicy');
+    this.description = registerOutput<String>('description');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.insertTime = registerOutput<String>('insertTime');
+    this.labels = registerOutput<List<DeploymentLabelEntryResponse2>>('labels');
+    this.manifest = registerOutput<String>('manifest');
+    this.name = registerOutput<String>('name');
+    this.operation = registerOutput<OperationResponse3>('operation');
+    this.preview = registerOutput<bool?>('preview');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.target = registerOutput<TargetConfigurationResponse2>('target');
+    this.update = registerOutput<DeploymentUpdateResponse2>('update');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

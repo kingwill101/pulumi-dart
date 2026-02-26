@@ -254,11 +254,11 @@ class BucketObjectLockConfigurationV2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.expectedBucketOwner = Output.createUnknown<String?>();
-    this.objectLockEnabled = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.rule = Output.createUnknown<BucketObjectLockConfigurationV2Rule?>();
-    this.token = Output.createUnknown<String?>();
+    this.bucket = registerOutput<String>('bucket');
+    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    this.objectLockEnabled = registerOutput<String?>('objectLockEnabled');
+    this.region = registerOutput<String>('region');
+    this.rule = registerOutput<BucketObjectLockConfigurationV2Rule?>('rule');
+    this.token = registerOutput<String?>('token');
   }
 }

@@ -1058,33 +1058,35 @@ class BucketObject extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acl = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.bucket = Output.createUnknown<String>();
-    this.bucketKeyEnabled = Output.createUnknown<bool>();
-    this.cacheControl = Output.createUnknown<String?>();
-    this.content = Output.createUnknown<String?>();
-    this.contentBase64 = Output.createUnknown<String?>();
-    this.contentDisposition = Output.createUnknown<String?>();
-    this.contentEncoding = Output.createUnknown<String?>();
-    this.contentLanguage = Output.createUnknown<String?>();
-    this.contentType = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.key = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>?>();
-    this.objectLockLegalHoldStatus = Output.createUnknown<String?>();
-    this.objectLockMode = Output.createUnknown<String?>();
-    this.objectLockRetainUntilDate = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.serverSideEncryption = Output.createUnknown<String>();
-    this.source = Output.createUnknown<dynamic>();
-    this.sourceHash = Output.createUnknown<String?>();
-    this.storageClass = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.versionId = Output.createUnknown<String>();
-    this.websiteRedirect = Output.createUnknown<String?>();
+    this.acl = registerOutput<String?>('acl');
+    this.arn = registerOutput<String>('arn');
+    this.bucket = registerOutput<String>('bucket');
+    this.bucketKeyEnabled = registerOutput<bool>('bucketKeyEnabled');
+    this.cacheControl = registerOutput<String?>('cacheControl');
+    this.content = registerOutput<String?>('content');
+    this.contentBase64 = registerOutput<String?>('contentBase64');
+    this.contentDisposition = registerOutput<String?>('contentDisposition');
+    this.contentEncoding = registerOutput<String?>('contentEncoding');
+    this.contentLanguage = registerOutput<String?>('contentLanguage');
+    this.contentType = registerOutput<String>('contentType');
+    this.etag = registerOutput<String>('etag');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.key = registerOutput<String>('key');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.metadata = registerOutput<Map<String, String>?>('metadata');
+    this.objectLockLegalHoldStatus =
+        registerOutput<String?>('objectLockLegalHoldStatus');
+    this.objectLockMode = registerOutput<String?>('objectLockMode');
+    this.objectLockRetainUntilDate =
+        registerOutput<String?>('objectLockRetainUntilDate');
+    this.region = registerOutput<String>('region');
+    this.serverSideEncryption = registerOutput<String>('serverSideEncryption');
+    this.source = registerOutput<dynamic>('source');
+    this.sourceHash = registerOutput<String?>('sourceHash');
+    this.storageClass = registerOutput<String>('storageClass');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.versionId = registerOutput<String>('versionId');
+    this.websiteRedirect = registerOutput<String?>('websiteRedirect');
   }
 }

@@ -204,17 +204,18 @@ class CapacityCommitment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.capacityCommitmentId = Output.createUnknown<String?>();
-    this.commitmentEndTime = Output.createUnknown<String>();
-    this.commitmentStartTime = Output.createUnknown<String>();
-    this.edition = Output.createUnknown<String?>();
-    this.enforceSingleAdminProjectPerOrg = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.plan = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.renewalPlan = Output.createUnknown<String?>();
-    this.slotCount = Output.createUnknown<int>();
-    this.state = Output.createUnknown<String>();
+    this.capacityCommitmentId = registerOutput<String?>('capacityCommitmentId');
+    this.commitmentEndTime = registerOutput<String>('commitmentEndTime');
+    this.commitmentStartTime = registerOutput<String>('commitmentStartTime');
+    this.edition = registerOutput<String?>('edition');
+    this.enforceSingleAdminProjectPerOrg =
+        registerOutput<String?>('enforceSingleAdminProjectPerOrg');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.plan = registerOutput<String>('plan');
+    this.project = registerOutput<String>('project');
+    this.renewalPlan = registerOutput<String?>('renewalPlan');
+    this.slotCount = registerOutput<int>('slotCount');
+    this.state = registerOutput<String>('state');
   }
 }

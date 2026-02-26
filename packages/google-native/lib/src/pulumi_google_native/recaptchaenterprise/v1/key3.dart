@@ -51,20 +51,25 @@ class Key3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.androidSettings = Output.createUnknown<
-        GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.iosSettings = Output.createUnknown<
-        GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.testingOptions = Output.createUnknown<
-        GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse>();
-    this.wafSettings = Output.createUnknown<
-        GoogleCloudRecaptchaenterpriseV1WafSettingsResponse>();
-    this.webSettings = Output.createUnknown<
-        GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse>();
+    this.androidSettings = registerOutput<
+            GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse>(
+        'androidSettings');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.iosSettings =
+        registerOutput<GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse>(
+            'iosSettings');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.testingOptions =
+        registerOutput<GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse>(
+            'testingOptions');
+    this.wafSettings =
+        registerOutput<GoogleCloudRecaptchaenterpriseV1WafSettingsResponse>(
+            'wafSettings');
+    this.webSettings =
+        registerOutput<GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse>(
+            'webSettings');
   }
 }

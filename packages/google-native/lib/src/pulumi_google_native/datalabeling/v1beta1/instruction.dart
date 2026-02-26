@@ -46,17 +46,19 @@ class Instruction extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.blockingResources = Output.createUnknown<List<String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.csvInstruction = Output.createUnknown<
-        GoogleCloudDatalabelingV1beta1CsvInstructionResponse>();
-    this.dataType = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.pdfInstruction = Output.createUnknown<
-        GoogleCloudDatalabelingV1beta1PdfInstructionResponse>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.blockingResources = registerOutput<List<String>>('blockingResources');
+    this.createTime = registerOutput<String>('createTime');
+    this.csvInstruction =
+        registerOutput<GoogleCloudDatalabelingV1beta1CsvInstructionResponse>(
+            'csvInstruction');
+    this.dataType = registerOutput<String>('dataType');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    this.pdfInstruction =
+        registerOutput<GoogleCloudDatalabelingV1beta1PdfInstructionResponse>(
+            'pdfInstruction');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

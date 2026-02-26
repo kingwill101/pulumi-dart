@@ -512,21 +512,22 @@ class Subnet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.ipv4Cidrs = Output.createUnknown<List<String>?>();
-    this.ipv6Cidrs = Output.createUnknown<List<String>?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.state = Output.createUnknown<String>();
-    this.subnetId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vlanId = Output.createUnknown<int>();
-    this.zone = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.ipv4Cidrs = registerOutput<List<String>?>('ipv4Cidrs');
+    this.ipv6Cidrs = registerOutput<List<String>?>('ipv6Cidrs');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.state = registerOutput<String>('state');
+    this.subnetId = registerOutput<String>('subnetId');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vlanId = registerOutput<int>('vlanId');
+    this.zone = registerOutput<String>('zone');
   }
 }

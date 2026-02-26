@@ -563,10 +563,11 @@ class ResponsePolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.gkeClusters = Output.createUnknown<List<ResponsePolicyGkeCluster>?>();
-    this.networks = Output.createUnknown<List<ResponsePolicyNetwork>?>();
-    this.project = Output.createUnknown<String>();
-    this.responsePolicyName = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.gkeClusters =
+        registerOutput<List<ResponsePolicyGkeCluster>?>('gkeClusters');
+    this.networks = registerOutput<List<ResponsePolicyNetwork>?>('networks');
+    this.project = registerOutput<String>('project');
+    this.responsePolicyName = registerOutput<String>('responsePolicyName');
   }
 }

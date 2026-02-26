@@ -85,32 +85,43 @@ class Tenant extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowPasswordSignup = Output.createUnknown<bool>();
-    this.autodeleteAnonymousUsers = Output.createUnknown<bool>();
-    this.client = Output.createUnknown<
-        GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigResponse>();
-    this.disableAuth = Output.createUnknown<bool>();
-    this.displayName = Output.createUnknown<String>();
-    this.emailPrivacyConfig = Output.createUnknown<
-        GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponse>();
-    this.enableAnonymousUser = Output.createUnknown<bool>();
-    this.enableEmailLinkSignin = Output.createUnknown<bool>();
-    this.hashConfig = Output.createUnknown<
-        GoogleCloudIdentitytoolkitAdminV2HashConfigResponse>();
-    this.inheritance = Output.createUnknown<
-        GoogleCloudIdentitytoolkitAdminV2InheritanceResponse>();
-    this.mfaConfig = Output.createUnknown<
-        GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse>();
-    this.monitoring = Output.createUnknown<
-        GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse>();
-    this.name = Output.createUnknown<String>();
-    this.passwordPolicyConfig = Output.createUnknown<
-        GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse>();
-    this.project = Output.createUnknown<String>();
-    this.recaptchaConfig = Output.createUnknown<
-        GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse>();
-    this.smsRegionConfig = Output.createUnknown<
-        GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse>();
-    this.testPhoneNumbers = Output.createUnknown<Map<String, String>>();
+    this.allowPasswordSignup = registerOutput<bool>('allowPasswordSignup');
+    this.autodeleteAnonymousUsers =
+        registerOutput<bool>('autodeleteAnonymousUsers');
+    this.client = registerOutput<
+            GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigResponse>(
+        'client');
+    this.disableAuth = registerOutput<bool>('disableAuth');
+    this.displayName = registerOutput<String>('displayName');
+    this.emailPrivacyConfig = registerOutput<
+            GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponse>(
+        'emailPrivacyConfig');
+    this.enableAnonymousUser = registerOutput<bool>('enableAnonymousUser');
+    this.enableEmailLinkSignin = registerOutput<bool>('enableEmailLinkSignin');
+    this.hashConfig =
+        registerOutput<GoogleCloudIdentitytoolkitAdminV2HashConfigResponse>(
+            'hashConfig');
+    this.inheritance =
+        registerOutput<GoogleCloudIdentitytoolkitAdminV2InheritanceResponse>(
+            'inheritance');
+    this.mfaConfig = registerOutput<
+            GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse>(
+        'mfaConfig');
+    this.monitoring = registerOutput<
+            GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse>(
+        'monitoring');
+    this.name = registerOutput<String>('name');
+    this.passwordPolicyConfig = registerOutput<
+            GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse>(
+        'passwordPolicyConfig');
+    this.project = registerOutput<String>('project');
+    this.recaptchaConfig = registerOutput<
+            GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse>(
+        'recaptchaConfig');
+    this.smsRegionConfig = registerOutput<
+            GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse>(
+        'smsRegionConfig');
+    this.testPhoneNumbers =
+        registerOutput<Map<String, String>>('testPhoneNumbers');
   }
 }

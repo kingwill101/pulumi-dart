@@ -53,19 +53,19 @@ class Task extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.appEngineHttpRequest =
-        Output.createUnknown<AppEngineHttpRequestResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.dispatchCount = Output.createUnknown<int>();
-    this.dispatchDeadline = Output.createUnknown<String>();
-    this.firstAttempt = Output.createUnknown<AttemptResponse>();
-    this.httpRequest = Output.createUnknown<HttpRequestResponse>();
-    this.lastAttempt = Output.createUnknown<AttemptResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.queueId = Output.createUnknown<String>();
-    this.responseCount = Output.createUnknown<int>();
-    this.scheduleTime = Output.createUnknown<String>();
-    this.view = Output.createUnknown<String>();
+        registerOutput<AppEngineHttpRequestResponse>('appEngineHttpRequest');
+    this.createTime = registerOutput<String>('createTime');
+    this.dispatchCount = registerOutput<int>('dispatchCount');
+    this.dispatchDeadline = registerOutput<String>('dispatchDeadline');
+    this.firstAttempt = registerOutput<AttemptResponse>('firstAttempt');
+    this.httpRequest = registerOutput<HttpRequestResponse>('httpRequest');
+    this.lastAttempt = registerOutput<AttemptResponse>('lastAttempt');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.queueId = registerOutput<String>('queueId');
+    this.responseCount = registerOutput<int>('responseCount');
+    this.scheduleTime = registerOutput<String>('scheduleTime');
+    this.view = registerOutput<String>('view');
   }
 }

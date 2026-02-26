@@ -280,8 +280,9 @@ class DomainSamlOptions extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.domainName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.samlOptions = Output.createUnknown<DomainSamlOptionsSamlOptions?>();
+    this.domainName = registerOutput<String>('domainName');
+    this.region = registerOutput<String>('region');
+    this.samlOptions =
+        registerOutput<DomainSamlOptionsSamlOptions?>('samlOptions');
   }
 }

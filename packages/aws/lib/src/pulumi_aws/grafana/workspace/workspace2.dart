@@ -490,27 +490,32 @@ class Workspace2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountAccessType = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.authenticationProviders = Output.createUnknown<List<String>>();
-    this.configuration = Output.createUnknown<String>();
-    this.dataSources = Output.createUnknown<List<String>?>();
-    this.description = Output.createUnknown<String?>();
-    this.endpoint = Output.createUnknown<String>();
-    this.grafanaVersion = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.accountAccessType = registerOutput<String>('accountAccessType');
+    this.arn = registerOutput<String>('arn');
+    this.authenticationProviders =
+        registerOutput<List<String>>('authenticationProviders');
+    this.configuration = registerOutput<String>('configuration');
+    this.dataSources = registerOutput<List<String>?>('dataSources');
+    this.description = registerOutput<String?>('description');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.grafanaVersion = registerOutput<String>('grafanaVersion');
+    this.name = registerOutput<String>('name');
     this.networkAccessControl =
-        Output.createUnknown<WorkspaceNetworkAccessControl?>();
-    this.notificationDestinations = Output.createUnknown<List<String>?>();
-    this.organizationRoleName = Output.createUnknown<String?>();
-    this.organizationalUnits = Output.createUnknown<List<String>?>();
-    this.permissionType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String?>();
-    this.samlConfigurationStatus = Output.createUnknown<String>();
-    this.stackSetName = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcConfiguration = Output.createUnknown<WorkspaceVpcConfiguration?>();
+        registerOutput<WorkspaceNetworkAccessControl?>('networkAccessControl');
+    this.notificationDestinations =
+        registerOutput<List<String>?>('notificationDestinations');
+    this.organizationRoleName = registerOutput<String?>('organizationRoleName');
+    this.organizationalUnits =
+        registerOutput<List<String>?>('organizationalUnits');
+    this.permissionType = registerOutput<String>('permissionType');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String?>('roleArn');
+    this.samlConfigurationStatus =
+        registerOutput<String>('samlConfigurationStatus');
+    this.stackSetName = registerOutput<String?>('stackSetName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcConfiguration =
+        registerOutput<WorkspaceVpcConfiguration?>('vpcConfiguration');
   }
 }

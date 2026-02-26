@@ -164,23 +164,30 @@ class TransitGateway extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.amazonSideAsn = Output.createUnknown<int?>();
-    this.arn = Output.createUnknown<String>();
-    this.associationDefaultRouteTableId = Output.createUnknown<String>();
-    this.autoAcceptSharedAttachments = Output.createUnknown<String?>();
-    this.defaultRouteTableAssociation = Output.createUnknown<String?>();
-    this.defaultRouteTablePropagation = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.dnsSupport = Output.createUnknown<String?>();
-    this.encryptionSupport = Output.createUnknown<String>();
-    this.multicastSupport = Output.createUnknown<String?>();
-    this.ownerId = Output.createUnknown<String>();
-    this.propagationDefaultRouteTableId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupReferencingSupport = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.transitGatewayCidrBlocks = Output.createUnknown<List<String>?>();
-    this.vpnEcmpSupport = Output.createUnknown<String?>();
+    this.amazonSideAsn = registerOutput<int?>('amazonSideAsn');
+    this.arn = registerOutput<String>('arn');
+    this.associationDefaultRouteTableId =
+        registerOutput<String>('associationDefaultRouteTableId');
+    this.autoAcceptSharedAttachments =
+        registerOutput<String?>('autoAcceptSharedAttachments');
+    this.defaultRouteTableAssociation =
+        registerOutput<String?>('defaultRouteTableAssociation');
+    this.defaultRouteTablePropagation =
+        registerOutput<String?>('defaultRouteTablePropagation');
+    this.description = registerOutput<String?>('description');
+    this.dnsSupport = registerOutput<String?>('dnsSupport');
+    this.encryptionSupport = registerOutput<String>('encryptionSupport');
+    this.multicastSupport = registerOutput<String?>('multicastSupport');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.propagationDefaultRouteTableId =
+        registerOutput<String>('propagationDefaultRouteTableId');
+    this.region = registerOutput<String>('region');
+    this.securityGroupReferencingSupport =
+        registerOutput<String?>('securityGroupReferencingSupport');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.transitGatewayCidrBlocks =
+        registerOutput<List<String>?>('transitGatewayCidrBlocks');
+    this.vpnEcmpSupport = registerOutput<String?>('vpnEcmpSupport');
   }
 }

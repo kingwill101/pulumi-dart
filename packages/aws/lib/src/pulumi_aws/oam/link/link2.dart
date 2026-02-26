@@ -552,16 +552,17 @@ class Link2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.label = Output.createUnknown<String>();
-    this.labelTemplate = Output.createUnknown<String>();
-    this.linkConfiguration = Output.createUnknown<LinkLinkConfiguration?>();
-    this.linkId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceTypes = Output.createUnknown<List<String>>();
-    this.sinkArn = Output.createUnknown<String>();
-    this.sinkIdentifier = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.label = registerOutput<String>('label');
+    this.labelTemplate = registerOutput<String>('labelTemplate');
+    this.linkConfiguration =
+        registerOutput<LinkLinkConfiguration?>('linkConfiguration');
+    this.linkId = registerOutput<String>('linkId');
+    this.region = registerOutput<String>('region');
+    this.resourceTypes = registerOutput<List<String>>('resourceTypes');
+    this.sinkArn = registerOutput<String>('sinkArn');
+    this.sinkIdentifier = registerOutput<String>('sinkIdentifier');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

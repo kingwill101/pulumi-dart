@@ -913,11 +913,12 @@ class AiFeatureStoreEntityTypeIamMember extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.condition =
-        Output.createUnknown<AiFeatureStoreEntityTypeIamMemberCondition?>();
-    this.entitytype = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.featurestore = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+        registerOutput<AiFeatureStoreEntityTypeIamMemberCondition?>(
+            'condition');
+    this.entitytype = registerOutput<String>('entitytype');
+    this.etag = registerOutput<String>('etag');
+    this.featurestore = registerOutput<String>('featurestore');
+    this.member = registerOutput<String>('member');
+    this.role = registerOutput<String>('role');
   }
 }

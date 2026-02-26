@@ -1,17 +1,12 @@
+// ignore_for_file: unused_field
+
 import 'dart:async';
 import 'dart:collection';
 
 import 'package:pulumi/pulumi.dart';
-import 'package:pulumi/src/engine.dart';
-import 'package:pulumi/src/resource/resource.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/engine.pbgrpc.dart' as pb;
 
-enum LogSeverity {
-  debug,
-  info,
-  warning,
-  error,
-}
+enum LogSeverity { debug, info, warning, error }
 
 class EngineLogger {
   final Deployment _deployment;
@@ -24,41 +19,84 @@ class EngineLogger {
 
   bool get loggedErrors => _errorCount > 0;
 
-  Future<void> debug(String message,
-      {Resource? resource, int? streamId, bool? ephemeral}) {
+  Future<void> debug(
+    String message, {
+    Resource? resource,
+    int? streamId,
+    bool? ephemeral,
+  }) {
     return _enqueueLog(
-        LogSeverity.debug, message, resource, streamId, ephemeral);
+      LogSeverity.debug,
+      message,
+      resource,
+      streamId,
+      ephemeral,
+    );
   }
 
-  Future<void> info(String message,
-      {Resource? resource, int? streamId, bool? ephemeral}) {
+  Future<void> info(
+    String message, {
+    Resource? resource,
+    int? streamId,
+    bool? ephemeral,
+  }) {
     return _enqueueLog(
-        LogSeverity.info, message, resource, streamId, ephemeral);
+      LogSeverity.info,
+      message,
+      resource,
+      streamId,
+      ephemeral,
+    );
   }
 
-  Future<void> warn(String message,
-      {Resource? resource, int? streamId, bool? ephemeral}) {
+  Future<void> warn(
+    String message, {
+    Resource? resource,
+    int? streamId,
+    bool? ephemeral,
+  }) {
     return _enqueueLog(
-        LogSeverity.warning, message, resource, streamId, ephemeral);
+      LogSeverity.warning,
+      message,
+      resource,
+      streamId,
+      ephemeral,
+    );
   }
 
-  Future<void> error(String message,
-      {Resource? resource, int? streamId, bool? ephemeral}) {
+  Future<void> error(
+    String message, {
+    Resource? resource,
+    int? streamId,
+    bool? ephemeral,
+  }) {
     return _enqueueLog(
-        LogSeverity.error, message, resource, streamId, ephemeral);
+      LogSeverity.error,
+      message,
+      resource,
+      streamId,
+      ephemeral,
+    );
   }
 
-  Future<void> _enqueueLog(LogSeverity severity, String message,
-      Resource? resource, int? streamId, bool? ephemeral) {
+  Future<void> _enqueueLog(
+    LogSeverity severity,
+    String message,
+    Resource? resource,
+    int? streamId,
+    bool? ephemeral,
+  ) {
     final completer = Completer<void>();
-    _logQueue.add(_LogOperation(
-      severity: severity,
-      message: message,
-      resource: resource,
-      streamId: streamId,
-      ephemeral: ephemeral,
-      completer: completer,
-    ));
+    _logQueue.add(
+      _LogOperation(
+        severity: severity,
+        message: message,
+        resource: resource,
+        streamId: streamId,
+        ephemeral: ephemeral,
+        completer: completer,
+      ),
+    );
     _processQueue();
     return completer.future;
   }
@@ -89,18 +127,25 @@ class EngineLogger {
     process();
   }
 
-  Future<void> _logAsync(LogSeverity severity, String message,
-      Resource? resource, int? streamId, bool? ephemeral) async {
+  Future<void> _logAsync(
+    LogSeverity severity,
+    String message,
+    Resource? resource,
+    int? streamId,
+    bool? ephemeral,
+  ) async {
     try {
       final urn = await _tryGetResourceUrnAsync(resource);
 
-      await _engine.log(LogRequest(
-        severity: severity,
-        message: message,
-        urn: urn,
-        streamId: streamId ?? 0,
-        ephemeral: ephemeral ?? false,
-      ));
+      await _engine.log(
+        LogRequest(
+          severity: severity,
+          message: message,
+          urn: urn,
+          streamId: streamId ?? 0,
+          ephemeral: ephemeral ?? false,
+        ),
+      );
 
       if (severity == LogSeverity.error) {
         _errorCount++;
@@ -176,10 +221,11 @@ class LogRequest {
   // Convert to gRPC LogRequest
   pb.LogRequest toGrpc() {
     return pb.LogRequest(
-        severity: pb.LogSeverity.valueOf(severity.index),
-        message: message,
-        urn: urn,
-        streamId: streamId,
-        ephemeral: ephemeral);
+      severity: pb.LogSeverity.valueOf(severity.index),
+      message: message,
+      urn: urn,
+      streamId: streamId,
+      ephemeral: ephemeral,
+    );
   }
 }

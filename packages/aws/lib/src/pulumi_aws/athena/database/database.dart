@@ -270,16 +270,18 @@ class Database extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aclConfiguration = Output.createUnknown<DatabaseAclConfiguration?>();
-    this.bucket = Output.createUnknown<String?>();
-    this.comment = Output.createUnknown<String?>();
+    this.aclConfiguration =
+        registerOutput<DatabaseAclConfiguration?>('aclConfiguration');
+    this.bucket = registerOutput<String?>('bucket');
+    this.comment = registerOutput<String?>('comment');
     this.encryptionConfiguration =
-        Output.createUnknown<DatabaseEncryptionConfiguration?>();
-    this.expectedBucketOwner = Output.createUnknown<String?>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.properties = Output.createUnknown<Map<String, String>?>();
-    this.region = Output.createUnknown<String>();
-    this.workgroup = Output.createUnknown<String?>();
+        registerOutput<DatabaseEncryptionConfiguration?>(
+            'encryptionConfiguration');
+    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.name = registerOutput<String>('name');
+    this.properties = registerOutput<Map<String, String>?>('properties');
+    this.region = registerOutput<String>('region');
+    this.workgroup = registerOutput<String?>('workgroup');
   }
 }

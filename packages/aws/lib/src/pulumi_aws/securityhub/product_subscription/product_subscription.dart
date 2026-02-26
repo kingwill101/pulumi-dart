@@ -205,8 +205,8 @@ class ProductSubscription extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.productArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.productArn = registerOutput<String>('productArn');
+    this.region = registerOutput<String>('region');
   }
 }

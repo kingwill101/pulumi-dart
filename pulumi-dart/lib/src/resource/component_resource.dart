@@ -2,7 +2,6 @@ import '../deployment/deployment.dart';
 import '../input.dart';
 import '../output.dart';
 import 'resource.dart';
-import 'resource_hooks.dart';
 import 'resource_options.dart';
 import 'resource_transformation.dart';
 
@@ -68,10 +67,9 @@ class ComponentResourceOptions extends ResourceOptions {
     super.additionalSecretOutputs,
     super.ignoreChanges,
     List<ResourceTransform>? resourceTransforms,
-    ResourceHookBinding? hooks,
+    super.hooks,
   }) : super(
          resourceTransformations: resourceTransformations ?? [],
          resourceTransforms: resourceTransforms ?? [],
-         hooks: hooks,
        );
 }

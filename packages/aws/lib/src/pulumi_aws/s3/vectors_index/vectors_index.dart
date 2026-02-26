@@ -178,19 +178,21 @@ class VectorsIndex extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTime = Output.createUnknown<String>();
-    this.dataType = Output.createUnknown<String>();
-    this.dimension = Output.createUnknown<int>();
-    this.distanceMetric = Output.createUnknown<String>();
+    this.creationTime = registerOutput<String>('creationTime');
+    this.dataType = registerOutput<String>('dataType');
+    this.dimension = registerOutput<int>('dimension');
+    this.distanceMetric = registerOutput<String>('distanceMetric');
     this.encryptionConfigurations =
-        Output.createUnknown<List<VectorsIndexEncryptionConfiguration>>();
-    this.indexArn = Output.createUnknown<String>();
-    this.indexName = Output.createUnknown<String>();
+        registerOutput<List<VectorsIndexEncryptionConfiguration>>(
+            'encryptionConfigurations');
+    this.indexArn = registerOutput<String>('indexArn');
+    this.indexName = registerOutput<String>('indexName');
     this.metadataConfiguration =
-        Output.createUnknown<VectorsIndexMetadataConfiguration?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vectorBucketName = Output.createUnknown<String>();
+        registerOutput<VectorsIndexMetadataConfiguration?>(
+            'metadataConfiguration');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vectorBucketName = registerOutput<String>('vectorBucketName');
   }
 }

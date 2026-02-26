@@ -66,25 +66,30 @@ class Entitlement extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
     this.associationInfo =
-        Output.createUnknown<GoogleCloudChannelV1AssociationInfoResponse>();
-    this.billingAccount = Output.createUnknown<String>();
+        registerOutput<GoogleCloudChannelV1AssociationInfoResponse>(
+            'associationInfo');
+    this.billingAccount = registerOutput<String>('billingAccount');
     this.commitmentSettings =
-        Output.createUnknown<GoogleCloudChannelV1CommitmentSettingsResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.customerId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.offer = Output.createUnknown<String>();
+        registerOutput<GoogleCloudChannelV1CommitmentSettingsResponse>(
+            'commitmentSettings');
+    this.createTime = registerOutput<String>('createTime');
+    this.customerId = registerOutput<String>('customerId');
+    this.name = registerOutput<String>('name');
+    this.offer = registerOutput<String>('offer');
     this.parameters =
-        Output.createUnknown<List<GoogleCloudChannelV1ParameterResponse>>();
+        registerOutput<List<GoogleCloudChannelV1ParameterResponse>>(
+            'parameters');
     this.provisionedService =
-        Output.createUnknown<GoogleCloudChannelV1ProvisionedServiceResponse>();
-    this.provisioningState = Output.createUnknown<String>();
-    this.purchaseOrderId = Output.createUnknown<String>();
-    this.suspensionReasons = Output.createUnknown<List<String>>();
+        registerOutput<GoogleCloudChannelV1ProvisionedServiceResponse>(
+            'provisionedService');
+    this.provisioningState = registerOutput<String>('provisioningState');
+    this.purchaseOrderId = registerOutput<String>('purchaseOrderId');
+    this.suspensionReasons = registerOutput<List<String>>('suspensionReasons');
     this.trialSettings =
-        Output.createUnknown<GoogleCloudChannelV1TrialSettingsResponse>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudChannelV1TrialSettingsResponse>(
+            'trialSettings');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

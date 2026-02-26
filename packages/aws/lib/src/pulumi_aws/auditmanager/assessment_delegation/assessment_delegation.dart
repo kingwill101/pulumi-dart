@@ -157,13 +157,13 @@ class AssessmentDelegation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.assessmentId = Output.createUnknown<String>();
-    this.comment = Output.createUnknown<String?>();
-    this.controlSetId = Output.createUnknown<String>();
-    this.delegationId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.roleType = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.assessmentId = registerOutput<String>('assessmentId');
+    this.comment = registerOutput<String?>('comment');
+    this.controlSetId = registerOutput<String>('controlSetId');
+    this.delegationId = registerOutput<String>('delegationId');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.roleType = registerOutput<String>('roleType');
+    this.status = registerOutput<String>('status');
   }
 }

@@ -46,17 +46,19 @@ class Processor2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.defaultProcessorVersion = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.kmsKeyName = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.processEndpoint = Output.createUnknown<String>();
-    this.processorVersionAliases = Output.createUnknown<
-        List<GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse>>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.defaultProcessorVersion =
+        registerOutput<String>('defaultProcessorVersion');
+    this.displayName = registerOutput<String>('displayName');
+    this.kmsKeyName = registerOutput<String>('kmsKeyName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.processEndpoint = registerOutput<String>('processEndpoint');
+    this.processorVersionAliases = registerOutput<
+            List<GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse>>(
+        'processorVersionAliases');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String>('type');
   }
 }

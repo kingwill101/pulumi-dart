@@ -49,18 +49,20 @@ class Schedule8 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.cronSchedule = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.executionTemplate = Output.createUnknown<ExecutionTemplateResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.recentExecutions = Output.createUnknown<List<ExecutionResponse>>();
-    this.scheduleId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.timeZone = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.cronSchedule = registerOutput<String>('cronSchedule');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.executionTemplate =
+        registerOutput<ExecutionTemplateResponse>('executionTemplate');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.recentExecutions =
+        registerOutput<List<ExecutionResponse>>('recentExecutions');
+    this.scheduleId = registerOutput<String>('scheduleId');
+    this.state = registerOutput<String>('state');
+    this.timeZone = registerOutput<String>('timeZone');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

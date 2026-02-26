@@ -30,11 +30,12 @@ class AgentPool extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentPoolId = Output.createUnknown<String>();
-    this.bandwidthLimit = Output.createUnknown<BandwidthLimitResponse>();
-    this.displayName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.agentPoolId = registerOutput<String>('agentPoolId');
+    this.bandwidthLimit =
+        registerOutput<BandwidthLimitResponse>('bandwidthLimit');
+    this.displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
   }
 }

@@ -221,11 +221,13 @@ class NetworkInterfacePermission extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.awsAccountId = Output.createUnknown<String>();
-    this.networkInterfaceId = Output.createUnknown<String>();
-    this.networkInterfacePermissionId = Output.createUnknown<String>();
-    this.permission = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<NetworkInterfacePermissionTimeouts?>();
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    this.networkInterfacePermissionId =
+        registerOutput<String>('networkInterfacePermissionId');
+    this.permission = registerOutput<String>('permission');
+    this.region = registerOutput<String>('region');
+    this.timeouts =
+        registerOutput<NetworkInterfacePermissionTimeouts?>('timeouts');
   }
 }

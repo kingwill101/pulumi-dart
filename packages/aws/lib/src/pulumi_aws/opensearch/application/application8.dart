@@ -1214,17 +1214,19 @@ class Application8 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appConfigs = Output.createUnknown<List<ApplicationAppConfig>?>();
-    this.arn = Output.createUnknown<String>();
-    this.dataSources = Output.createUnknown<List<ApplicationDataSource>?>();
-    this.endpoint = Output.createUnknown<String>();
+    this.appConfigs = registerOutput<List<ApplicationAppConfig>?>('appConfigs');
+    this.arn = registerOutput<String>('arn');
+    this.dataSources =
+        registerOutput<List<ApplicationDataSource>?>('dataSources');
+    this.endpoint = registerOutput<String>('endpoint');
     this.iamIdentityCenterOptions =
-        Output.createUnknown<ApplicationIamIdentityCenterOptions?>();
-    this.kmsKeyArn = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ApplicationTimeouts2?>();
+        registerOutput<ApplicationIamIdentityCenterOptions?>(
+            'iamIdentityCenterOptions');
+    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ApplicationTimeouts2?>('timeouts');
   }
 }

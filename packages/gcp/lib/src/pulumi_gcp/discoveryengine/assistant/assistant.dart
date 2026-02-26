@@ -436,16 +436,18 @@ class Assistant extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.assistantId = Output.createUnknown<String>();
-    this.collectionId = Output.createUnknown<String>();
-    this.customerPolicy = Output.createUnknown<AssistantCustomerPolicy?>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.engineId = Output.createUnknown<String>();
-    this.generationConfig = Output.createUnknown<AssistantGenerationConfig?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.webGroundingType = Output.createUnknown<String?>();
+    this.assistantId = registerOutput<String>('assistantId');
+    this.collectionId = registerOutput<String>('collectionId');
+    this.customerPolicy =
+        registerOutput<AssistantCustomerPolicy?>('customerPolicy');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.engineId = registerOutput<String>('engineId');
+    this.generationConfig =
+        registerOutput<AssistantGenerationConfig?>('generationConfig');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.webGroundingType = registerOutput<String?>('webGroundingType');
   }
 }

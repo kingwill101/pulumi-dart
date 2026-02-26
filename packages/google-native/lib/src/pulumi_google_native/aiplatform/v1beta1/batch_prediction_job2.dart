@@ -140,53 +140,67 @@ class BatchPredictionJob2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.completionStats = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1CompletionStatsResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.dedicatedResources = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1BatchDedicatedResourcesResponse>();
-    this.disableContainerLogging = Output.createUnknown<bool>();
-    this.displayName = Output.createUnknown<String>();
-    this.encryptionSpec = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1EncryptionSpecResponse>();
-    this.endTime = Output.createUnknown<String>();
-    this.error = Output.createUnknown<GoogleRpcStatusResponse2>();
-    this.explanationSpec = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1ExplanationSpecResponse>();
-    this.generateExplanation = Output.createUnknown<bool>();
-    this.inputConfig = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigResponse>();
-    this.instanceConfig = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.manualBatchTuningParameters = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1ManualBatchTuningParametersResponse>();
-    this.model = Output.createUnknown<String>();
-    this.modelMonitoringConfig = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1ModelMonitoringConfigResponse>();
-    this.modelMonitoringStatsAnomalies = Output.createUnknown<
-        List<
-            GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponse>>();
+    this.completionStats =
+        registerOutput<GoogleCloudAiplatformV1beta1CompletionStatsResponse>(
+            'completionStats');
+    this.createTime = registerOutput<String>('createTime');
+    this.dedicatedResources = registerOutput<
+            GoogleCloudAiplatformV1beta1BatchDedicatedResourcesResponse>(
+        'dedicatedResources');
+    this.disableContainerLogging =
+        registerOutput<bool>('disableContainerLogging');
+    this.displayName = registerOutput<String>('displayName');
+    this.encryptionSpec =
+        registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>(
+            'encryptionSpec');
+    this.endTime = registerOutput<String>('endTime');
+    this.error = registerOutput<GoogleRpcStatusResponse2>('error');
+    this.explanationSpec =
+        registerOutput<GoogleCloudAiplatformV1beta1ExplanationSpecResponse>(
+            'explanationSpec');
+    this.generateExplanation = registerOutput<bool>('generateExplanation');
+    this.inputConfig = registerOutput<
+            GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigResponse>(
+        'inputConfig');
+    this.instanceConfig = registerOutput<
+            GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigResponse>(
+        'instanceConfig');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.manualBatchTuningParameters = registerOutput<
+            GoogleCloudAiplatformV1beta1ManualBatchTuningParametersResponse>(
+        'manualBatchTuningParameters');
+    this.model = registerOutput<String>('model');
+    this.modelMonitoringConfig = registerOutput<
+            GoogleCloudAiplatformV1beta1ModelMonitoringConfigResponse>(
+        'modelMonitoringConfig');
+    this.modelMonitoringStatsAnomalies = registerOutput<
+            List<
+                GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponse>>(
+        'modelMonitoringStatsAnomalies');
     this.modelMonitoringStatus =
-        Output.createUnknown<GoogleRpcStatusResponse2>();
-    this.modelParameters = Output.createUnknown<dynamic>();
-    this.modelVersionId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.outputConfig = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigResponse>();
-    this.outputInfo = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1BatchPredictionJobOutputInfoResponse>();
+        registerOutput<GoogleRpcStatusResponse2>('modelMonitoringStatus');
+    this.modelParameters = registerOutput<dynamic>('modelParameters');
+    this.modelVersionId = registerOutput<String>('modelVersionId');
+    this.name = registerOutput<String>('name');
+    this.outputConfig = registerOutput<
+            GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigResponse>(
+        'outputConfig');
+    this.outputInfo = registerOutput<
+            GoogleCloudAiplatformV1beta1BatchPredictionJobOutputInfoResponse>(
+        'outputInfo');
     this.partialFailures =
-        Output.createUnknown<List<GoogleRpcStatusResponse2>>();
-    this.project = Output.createUnknown<String>();
-    this.resourcesConsumed = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1ResourcesConsumedResponse>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.unmanagedContainerModel = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1UnmanagedContainerModelResponse>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<GoogleRpcStatusResponse2>>('partialFailures');
+    this.project = registerOutput<String>('project');
+    this.resourcesConsumed =
+        registerOutput<GoogleCloudAiplatformV1beta1ResourcesConsumedResponse>(
+            'resourcesConsumed');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
+    this.unmanagedContainerModel = registerOutput<
+            GoogleCloudAiplatformV1beta1UnmanagedContainerModelResponse>(
+        'unmanagedContainerModel');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

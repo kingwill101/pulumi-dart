@@ -97,22 +97,24 @@ class PreventionDiscoveryConfig extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.actions =
-        Output.createUnknown<List<PreventionDiscoveryConfigAction>?>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String?>();
-    this.errors = Output.createUnknown<List<PreventionDiscoveryConfigError>>();
-    this.inspectTemplates = Output.createUnknown<List<String>?>();
-    this.lastRunTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<List<PreventionDiscoveryConfigAction>?>('actions');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String?>('displayName');
+    this.errors =
+        registerOutput<List<PreventionDiscoveryConfigError>>('errors');
+    this.inspectTemplates = registerOutput<List<String>?>('inspectTemplates');
+    this.lastRunTime = registerOutput<String>('lastRunTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.orgConfig =
-        Output.createUnknown<PreventionDiscoveryConfigOrgConfig?>();
-    this.otherCloudStartingLocation = Output.createUnknown<
-        PreventionDiscoveryConfigOtherCloudStartingLocation?>();
-    this.parent = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String?>();
+        registerOutput<PreventionDiscoveryConfigOrgConfig?>('orgConfig');
+    this.otherCloudStartingLocation =
+        registerOutput<PreventionDiscoveryConfigOtherCloudStartingLocation?>(
+            'otherCloudStartingLocation');
+    this.parent = registerOutput<String>('parent');
+    this.status = registerOutput<String?>('status');
     this.targets =
-        Output.createUnknown<List<PreventionDiscoveryConfigTarget>?>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<PreventionDiscoveryConfigTarget>?>('targets');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

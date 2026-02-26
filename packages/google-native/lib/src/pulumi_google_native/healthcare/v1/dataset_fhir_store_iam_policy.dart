@@ -33,13 +33,14 @@ class DatasetFhirStoreIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse46>>();
-    this.bindings = Output.createUnknown<List<BindingResponse65>>();
-    this.datasetId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.fhirStoreId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse46>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse65>>('bindings');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.etag = registerOutput<String>('etag');
+    this.fhirStoreId = registerOutput<String>('fhirStoreId');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

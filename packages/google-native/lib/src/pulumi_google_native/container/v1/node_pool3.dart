@@ -90,31 +90,38 @@ class NodePool3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoscaling = Output.createUnknown<NodePoolAutoscalingResponse>();
+    this.autoscaling =
+        registerOutput<NodePoolAutoscalingResponse>('autoscaling');
     this.bestEffortProvisioning =
-        Output.createUnknown<BestEffortProvisioningResponse>();
-    this.clusterId = Output.createUnknown<String>();
-    this.conditions = Output.createUnknown<List<StatusConditionResponse>>();
-    this.config = Output.createUnknown<NodeConfigResponse4>();
-    this.etag = Output.createUnknown<String>();
-    this.initialNodeCount = Output.createUnknown<int>();
-    this.instanceGroupUrls = Output.createUnknown<List<String>>();
-    this.location = Output.createUnknown<String>();
-    this.locations = Output.createUnknown<List<String>>();
-    this.management = Output.createUnknown<NodeManagementResponse>();
-    this.maxPodsConstraint = Output.createUnknown<MaxPodsConstraintResponse>();
-    this.name = Output.createUnknown<String>();
-    this.networkConfig = Output.createUnknown<NodeNetworkConfigResponse>();
-    this.placementPolicy = Output.createUnknown<PlacementPolicyResponse2>();
-    this.podIpv4CidrSize = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<BestEffortProvisioningResponse>(
+            'bestEffortProvisioning');
+    this.clusterId = registerOutput<String>('clusterId');
+    this.conditions =
+        registerOutput<List<StatusConditionResponse>>('conditions');
+    this.config = registerOutput<NodeConfigResponse4>('config');
+    this.etag = registerOutput<String>('etag');
+    this.initialNodeCount = registerOutput<int>('initialNodeCount');
+    this.instanceGroupUrls = registerOutput<List<String>>('instanceGroupUrls');
+    this.location = registerOutput<String>('location');
+    this.locations = registerOutput<List<String>>('locations');
+    this.management = registerOutput<NodeManagementResponse>('management');
+    this.maxPodsConstraint =
+        registerOutput<MaxPodsConstraintResponse>('maxPodsConstraint');
+    this.name = registerOutput<String>('name');
+    this.networkConfig =
+        registerOutput<NodeNetworkConfigResponse>('networkConfig');
+    this.placementPolicy =
+        registerOutput<PlacementPolicyResponse2>('placementPolicy');
+    this.podIpv4CidrSize = registerOutput<int>('podIpv4CidrSize');
+    this.project = registerOutput<String>('project');
     this.queuedProvisioning =
-        Output.createUnknown<QueuedProvisioningResponse>();
-    this.selfLink = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.statusMessage = Output.createUnknown<String>();
-    this.updateInfo = Output.createUnknown<UpdateInfoResponse>();
-    this.upgradeSettings = Output.createUnknown<UpgradeSettingsResponse>();
-    this.version = Output.createUnknown<String>();
+        registerOutput<QueuedProvisioningResponse>('queuedProvisioning');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.status = registerOutput<String>('status');
+    this.statusMessage = registerOutput<String>('statusMessage');
+    this.updateInfo = registerOutput<UpdateInfoResponse>('updateInfo');
+    this.upgradeSettings =
+        registerOutput<UpgradeSettingsResponse>('upgradeSettings');
+    this.version = registerOutput<String>('version');
   }
 }

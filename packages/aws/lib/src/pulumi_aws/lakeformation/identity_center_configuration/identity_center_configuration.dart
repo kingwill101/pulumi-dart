@@ -156,10 +156,10 @@ class IdentityCenterConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationArn = Output.createUnknown<String>();
-    this.catalogId = Output.createUnknown<String>();
-    this.instanceArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceShare = Output.createUnknown<String>();
+    this.applicationArn = registerOutput<String>('applicationArn');
+    this.catalogId = registerOutput<String>('catalogId');
+    this.instanceArn = registerOutput<String>('instanceArn');
+    this.region = registerOutput<String>('region');
+    this.resourceShare = registerOutput<String>('resourceShare');
   }
 }

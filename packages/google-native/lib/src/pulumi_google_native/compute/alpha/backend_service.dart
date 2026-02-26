@@ -159,56 +159,68 @@ class BackendService extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.affinityCookieTtlSec = Output.createUnknown<int>();
-    this.backends = Output.createUnknown<List<BackendResponse>>();
-    this.cdnPolicy = Output.createUnknown<BackendServiceCdnPolicyResponse>();
-    this.circuitBreakers = Output.createUnknown<CircuitBreakersResponse>();
-    this.compressionMode = Output.createUnknown<String>();
+    this.affinityCookieTtlSec = registerOutput<int>('affinityCookieTtlSec');
+    this.backends = registerOutput<List<BackendResponse>>('backends');
+    this.cdnPolicy =
+        registerOutput<BackendServiceCdnPolicyResponse>('cdnPolicy');
+    this.circuitBreakers =
+        registerOutput<CircuitBreakersResponse>('circuitBreakers');
+    this.compressionMode = registerOutput<String>('compressionMode');
     this.connectionDraining =
-        Output.createUnknown<ConnectionDrainingResponse>();
+        registerOutput<ConnectionDrainingResponse>('connectionDraining');
     this.connectionTrackingPolicy =
-        Output.createUnknown<BackendServiceConnectionTrackingPolicyResponse>();
+        registerOutput<BackendServiceConnectionTrackingPolicyResponse>(
+            'connectionTrackingPolicy');
     this.consistentHash =
-        Output.createUnknown<ConsistentHashLoadBalancerSettingsResponse>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.customRequestHeaders = Output.createUnknown<List<String>>();
-    this.customResponseHeaders = Output.createUnknown<List<String>>();
-    this.description = Output.createUnknown<String>();
-    this.edgeSecurityPolicy = Output.createUnknown<String>();
-    this.enableCDN = Output.createUnknown<bool>();
+        registerOutput<ConsistentHashLoadBalancerSettingsResponse>(
+            'consistentHash');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.customRequestHeaders =
+        registerOutput<List<String>>('customRequestHeaders');
+    this.customResponseHeaders =
+        registerOutput<List<String>>('customResponseHeaders');
+    this.description = registerOutput<String>('description');
+    this.edgeSecurityPolicy = registerOutput<String>('edgeSecurityPolicy');
+    this.enableCDN = registerOutput<bool>('enableCDN');
     this.failoverPolicy =
-        Output.createUnknown<BackendServiceFailoverPolicyResponse>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.healthChecks = Output.createUnknown<List<String>>();
-    this.iap = Output.createUnknown<BackendServiceIAPResponse>();
-    this.ipAddressSelectionPolicy = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.loadBalancingScheme = Output.createUnknown<String>();
-    this.localityLbPolicies = Output.createUnknown<
-        List<BackendServiceLocalityLoadBalancingPolicyConfigResponse>>();
-    this.localityLbPolicy = Output.createUnknown<String>();
-    this.logConfig = Output.createUnknown<BackendServiceLogConfigResponse>();
-    this.maxStreamDuration = Output.createUnknown<DurationResponse>();
-    this.metadatas = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.outlierDetection = Output.createUnknown<OutlierDetectionResponse>();
-    this.port = Output.createUnknown<int>();
-    this.portName = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.protocol = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.securityPolicy = Output.createUnknown<String>();
-    this.securitySettings = Output.createUnknown<SecuritySettingsResponse>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
-    this.serviceBindings = Output.createUnknown<List<String>>();
-    this.serviceLbPolicy = Output.createUnknown<String>();
-    this.sessionAffinity = Output.createUnknown<String>();
-    this.subsetting = Output.createUnknown<SubsettingResponse>();
-    this.timeoutSec = Output.createUnknown<int>();
-    this.usedBy = Output.createUnknown<List<BackendServiceUsedByResponse>>();
-    this.vpcNetworkScope = Output.createUnknown<String>();
+        registerOutput<BackendServiceFailoverPolicyResponse>('failoverPolicy');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.healthChecks = registerOutput<List<String>>('healthChecks');
+    this.iap = registerOutput<BackendServiceIAPResponse>('iap');
+    this.ipAddressSelectionPolicy =
+        registerOutput<String>('ipAddressSelectionPolicy');
+    this.kind = registerOutput<String>('kind');
+    this.loadBalancingScheme = registerOutput<String>('loadBalancingScheme');
+    this.localityLbPolicies = registerOutput<
+            List<BackendServiceLocalityLoadBalancingPolicyConfigResponse>>(
+        'localityLbPolicies');
+    this.localityLbPolicy = registerOutput<String>('localityLbPolicy');
+    this.logConfig =
+        registerOutput<BackendServiceLogConfigResponse>('logConfig');
+    this.maxStreamDuration =
+        registerOutput<DurationResponse>('maxStreamDuration');
+    this.metadatas = registerOutput<Map<String, String>>('metadatas');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.outlierDetection =
+        registerOutput<OutlierDetectionResponse>('outlierDetection');
+    this.port = registerOutput<int>('port');
+    this.portName = registerOutput<String>('portName');
+    this.project = registerOutput<String>('project');
+    this.protocol = registerOutput<String>('protocol');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.securityPolicy = registerOutput<String>('securityPolicy');
+    this.securitySettings =
+        registerOutput<SecuritySettingsResponse>('securitySettings');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    this.serviceBindings = registerOutput<List<String>>('serviceBindings');
+    this.serviceLbPolicy = registerOutput<String>('serviceLbPolicy');
+    this.sessionAffinity = registerOutput<String>('sessionAffinity');
+    this.subsetting = registerOutput<SubsettingResponse>('subsetting');
+    this.timeoutSec = registerOutput<int>('timeoutSec');
+    this.usedBy = registerOutput<List<BackendServiceUsedByResponse>>('usedBy');
+    this.vpcNetworkScope = registerOutput<String>('vpcNetworkScope');
   }
 }

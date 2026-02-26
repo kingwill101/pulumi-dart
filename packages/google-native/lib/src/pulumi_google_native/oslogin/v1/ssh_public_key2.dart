@@ -27,10 +27,10 @@ class SshPublicKey2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.expirationTimeUsec = Output.createUnknown<String>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.key = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.userId = Output.createUnknown<String>();
+    this.expirationTimeUsec = registerOutput<String>('expirationTimeUsec');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.key = registerOutput<String>('key');
+    this.name = registerOutput<String>('name');
+    this.userId = registerOutput<String>('userId');
   }
 }

@@ -128,8 +128,8 @@ class AvailabilityZoneGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.groupName = Output.createUnknown<String>();
-    this.optInStatus = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.groupName = registerOutput<String>('groupName');
+    this.optInStatus = registerOutput<String>('optInStatus');
+    this.region = registerOutput<String>('region');
   }
 }

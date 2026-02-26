@@ -820,51 +820,62 @@ class Disk extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessMode = Output.createUnknown<String>();
-    this.architecture = Output.createUnknown<String?>();
-    this.asyncPrimaryDisk = Output.createUnknown<DiskAsyncPrimaryDisk?>();
-    this.createSnapshotBeforeDestroy = Output.createUnknown<bool?>();
-    this.createSnapshotBeforeDestroyPrefix = Output.createUnknown<String?>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.diskEncryptionKey = Output.createUnknown<DiskDiskEncryptionKey?>();
-    this.diskId = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enableConfidentialCompute = Output.createUnknown<bool>();
-    this.guestOsFeatures = Output.createUnknown<List<DiskGuestOsFeature>>();
-    this.image = Output.createUnknown<String?>();
-    this.interface = Output.createUnknown<String?>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.lastAttachTimestamp = Output.createUnknown<String>();
-    this.lastDetachTimestamp = Output.createUnknown<String>();
-    this.licenses = Output.createUnknown<List<String>>();
-    this.multiWriter = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.params = Output.createUnknown<DiskParams?>();
-    this.physicalBlockSizeBytes = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.provisionedIops = Output.createUnknown<int>();
-    this.provisionedThroughput = Output.createUnknown<int>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.resourcePolicies = Output.createUnknown<List<String>>();
-    this.selfLink = Output.createUnknown<String>();
-    this.size = Output.createUnknown<int>();
-    this.snapshot = Output.createUnknown<String?>();
-    this.sourceDisk = Output.createUnknown<String?>();
-    this.sourceDiskId = Output.createUnknown<String>();
+    this.accessMode = registerOutput<String>('accessMode');
+    this.architecture = registerOutput<String?>('architecture');
+    this.asyncPrimaryDisk =
+        registerOutput<DiskAsyncPrimaryDisk?>('asyncPrimaryDisk');
+    this.createSnapshotBeforeDestroy =
+        registerOutput<bool?>('createSnapshotBeforeDestroy');
+    this.createSnapshotBeforeDestroyPrefix =
+        registerOutput<String?>('createSnapshotBeforeDestroyPrefix');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.diskEncryptionKey =
+        registerOutput<DiskDiskEncryptionKey?>('diskEncryptionKey');
+    this.diskId = registerOutput<String>('diskId');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableConfidentialCompute =
+        registerOutput<bool>('enableConfidentialCompute');
+    this.guestOsFeatures =
+        registerOutput<List<DiskGuestOsFeature>>('guestOsFeatures');
+    this.image = registerOutput<String?>('image');
+    this.interface = registerOutput<String?>('interface');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.lastAttachTimestamp = registerOutput<String>('lastAttachTimestamp');
+    this.lastDetachTimestamp = registerOutput<String>('lastDetachTimestamp');
+    this.licenses = registerOutput<List<String>>('licenses');
+    this.multiWriter = registerOutput<bool?>('multiWriter');
+    this.name = registerOutput<String>('name');
+    this.params = registerOutput<DiskParams?>('params');
+    this.physicalBlockSizeBytes = registerOutput<int>('physicalBlockSizeBytes');
+    this.project = registerOutput<String>('project');
+    this.provisionedIops = registerOutput<int>('provisionedIops');
+    this.provisionedThroughput = registerOutput<int>('provisionedThroughput');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.resourcePolicies = registerOutput<List<String>>('resourcePolicies');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.size = registerOutput<int>('size');
+    this.snapshot = registerOutput<String?>('snapshot');
+    this.sourceDisk = registerOutput<String?>('sourceDisk');
+    this.sourceDiskId = registerOutput<String>('sourceDiskId');
     this.sourceImageEncryptionKey =
-        Output.createUnknown<DiskSourceImageEncryptionKey?>();
-    this.sourceImageId = Output.createUnknown<String>();
-    this.sourceInstantSnapshot = Output.createUnknown<String?>();
-    this.sourceInstantSnapshotId = Output.createUnknown<String>();
+        registerOutput<DiskSourceImageEncryptionKey?>(
+            'sourceImageEncryptionKey');
+    this.sourceImageId = registerOutput<String>('sourceImageId');
+    this.sourceInstantSnapshot =
+        registerOutput<String?>('sourceInstantSnapshot');
+    this.sourceInstantSnapshotId =
+        registerOutput<String>('sourceInstantSnapshotId');
     this.sourceSnapshotEncryptionKey =
-        Output.createUnknown<DiskSourceSnapshotEncryptionKey?>();
-    this.sourceSnapshotId = Output.createUnknown<String>();
-    this.sourceStorageObject = Output.createUnknown<String?>();
-    this.storagePool = Output.createUnknown<String?>();
-    this.type = Output.createUnknown<String?>();
-    this.users = Output.createUnknown<List<String>>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<DiskSourceSnapshotEncryptionKey?>(
+            'sourceSnapshotEncryptionKey');
+    this.sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
+    this.sourceStorageObject = registerOutput<String?>('sourceStorageObject');
+    this.storagePool = registerOutput<String?>('storagePool');
+    this.type = registerOutput<String?>('type');
+    this.users = registerOutput<List<String>>('users');
+    this.zone = registerOutput<String>('zone');
   }
 }

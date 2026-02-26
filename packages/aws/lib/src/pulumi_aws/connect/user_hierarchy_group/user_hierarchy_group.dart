@@ -334,16 +334,16 @@ class UserHierarchyGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.hierarchyGroupId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.hierarchyGroupId = registerOutput<String>('hierarchyGroupId');
     this.hierarchyPaths =
-        Output.createUnknown<List<UserHierarchyGroupHierarchyPath>>();
-    this.instanceId = Output.createUnknown<String>();
-    this.levelId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parentGroupId = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<UserHierarchyGroupHierarchyPath>>('hierarchyPaths');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.levelId = registerOutput<String>('levelId');
+    this.name = registerOutput<String>('name');
+    this.parentGroupId = registerOutput<String?>('parentGroupId');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

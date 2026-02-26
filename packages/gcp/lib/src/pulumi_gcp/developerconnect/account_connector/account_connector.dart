@@ -968,19 +968,22 @@ class AccountConnector extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountConnectorId = Output.createUnknown<String>();
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.createTime = Output.createUnknown<String>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.oauthStartUri = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.accountConnectorId = registerOutput<String>('accountConnectorId');
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.createTime = registerOutput<String>('createTime');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.oauthStartUri = registerOutput<String>('oauthStartUri');
+    this.project = registerOutput<String>('project');
     this.providerOauthConfig =
-        Output.createUnknown<AccountConnectorProviderOauthConfig?>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<AccountConnectorProviderOauthConfig?>(
+            'providerOauthConfig');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -412,16 +412,19 @@ class AppImageConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appImageConfigName = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
+    this.appImageConfigName = registerOutput<String>('appImageConfigName');
+    this.arn = registerOutput<String>('arn');
     this.codeEditorAppImageConfig =
-        Output.createUnknown<AppImageConfigCodeEditorAppImageConfig?>();
+        registerOutput<AppImageConfigCodeEditorAppImageConfig?>(
+            'codeEditorAppImageConfig');
     this.jupyterLabImageConfig =
-        Output.createUnknown<AppImageConfigJupyterLabImageConfig?>();
+        registerOutput<AppImageConfigJupyterLabImageConfig?>(
+            'jupyterLabImageConfig');
     this.kernelGatewayImageConfig =
-        Output.createUnknown<AppImageConfigKernelGatewayImageConfig?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<AppImageConfigKernelGatewayImageConfig?>(
+            'kernelGatewayImageConfig');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

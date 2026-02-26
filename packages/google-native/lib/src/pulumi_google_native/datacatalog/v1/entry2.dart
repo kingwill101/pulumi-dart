@@ -137,57 +137,74 @@ class Entry2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bigqueryDateShardedSpec = Output.createUnknown<
-        GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse>();
-    this.bigqueryTableSpec = Output.createUnknown<
-        GoogleCloudDatacatalogV1BigQueryTableSpecResponse>();
+    this.bigqueryDateShardedSpec =
+        registerOutput<GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse>(
+            'bigqueryDateShardedSpec');
+    this.bigqueryTableSpec =
+        registerOutput<GoogleCloudDatacatalogV1BigQueryTableSpecResponse>(
+            'bigqueryTableSpec');
     this.businessContext =
-        Output.createUnknown<GoogleCloudDatacatalogV1BusinessContextResponse>();
-    this.cloudBigtableSystemSpec = Output.createUnknown<
-        GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse>();
+        registerOutput<GoogleCloudDatacatalogV1BusinessContextResponse>(
+            'businessContext');
+    this.cloudBigtableSystemSpec =
+        registerOutput<GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse>(
+            'cloudBigtableSystemSpec');
     this.dataSource =
-        Output.createUnknown<GoogleCloudDatacatalogV1DataSourceResponse>();
-    this.dataSourceConnectionSpec = Output.createUnknown<
-        GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse>();
-    this.databaseTableSpec = Output.createUnknown<
-        GoogleCloudDatacatalogV1DatabaseTableSpecResponse>();
+        registerOutput<GoogleCloudDatacatalogV1DataSourceResponse>(
+            'dataSource');
+    this.dataSourceConnectionSpec = registerOutput<
+            GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse>(
+        'dataSourceConnectionSpec');
+    this.databaseTableSpec =
+        registerOutput<GoogleCloudDatacatalogV1DatabaseTableSpecResponse>(
+            'databaseTableSpec');
     this.datasetSpec =
-        Output.createUnknown<GoogleCloudDatacatalogV1DatasetSpecResponse>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.entryGroupId = Output.createUnknown<String>();
-    this.entryId = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDatacatalogV1DatasetSpecResponse>(
+            'datasetSpec');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.entryGroupId = registerOutput<String>('entryGroupId');
+    this.entryId = registerOutput<String>('entryId');
     this.filesetSpec =
-        Output.createUnknown<GoogleCloudDatacatalogV1FilesetSpecResponse>();
-    this.fullyQualifiedName = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDatacatalogV1FilesetSpecResponse>(
+            'filesetSpec');
+    this.fullyQualifiedName = registerOutput<String>('fullyQualifiedName');
     this.gcsFilesetSpec =
-        Output.createUnknown<GoogleCloudDatacatalogV1GcsFilesetSpecResponse>();
-    this.integratedSystem = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.linkedResource = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.lookerSystemSpec = Output.createUnknown<
-        GoogleCloudDatacatalogV1LookerSystemSpecResponse>();
+        registerOutput<GoogleCloudDatacatalogV1GcsFilesetSpecResponse>(
+            'gcsFilesetSpec');
+    this.integratedSystem = registerOutput<String>('integratedSystem');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.linkedResource = registerOutput<String>('linkedResource');
+    this.location = registerOutput<String>('location');
+    this.lookerSystemSpec =
+        registerOutput<GoogleCloudDatacatalogV1LookerSystemSpecResponse>(
+            'lookerSystemSpec');
     this.modelSpec =
-        Output.createUnknown<GoogleCloudDatacatalogV1ModelSpecResponse>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDatacatalogV1ModelSpecResponse>('modelSpec');
+    this.name = registerOutput<String>('name');
     this.personalDetails =
-        Output.createUnknown<GoogleCloudDatacatalogV1PersonalDetailsResponse>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDatacatalogV1PersonalDetailsResponse>(
+            'personalDetails');
+    this.project = registerOutput<String>('project');
     this.routineSpec =
-        Output.createUnknown<GoogleCloudDatacatalogV1RoutineSpecResponse>();
+        registerOutput<GoogleCloudDatacatalogV1RoutineSpecResponse>(
+            'routineSpec');
     this.schema =
-        Output.createUnknown<GoogleCloudDatacatalogV1SchemaResponse>();
+        registerOutput<GoogleCloudDatacatalogV1SchemaResponse>('schema');
     this.serviceSpec =
-        Output.createUnknown<GoogleCloudDatacatalogV1ServiceSpecResponse>();
-    this.sourceSystemTimestamps = Output.createUnknown<
-        GoogleCloudDatacatalogV1SystemTimestampsResponse>();
-    this.sqlDatabaseSystemSpec = Output.createUnknown<
-        GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDatacatalogV1ServiceSpecResponse>(
+            'serviceSpec');
+    this.sourceSystemTimestamps =
+        registerOutput<GoogleCloudDatacatalogV1SystemTimestampsResponse>(
+            'sourceSystemTimestamps');
+    this.sqlDatabaseSystemSpec =
+        registerOutput<GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse>(
+            'sqlDatabaseSystemSpec');
+    this.type = registerOutput<String>('type');
     this.usageSignal =
-        Output.createUnknown<GoogleCloudDatacatalogV1UsageSignalResponse>();
-    this.userSpecifiedSystem = Output.createUnknown<String>();
-    this.userSpecifiedType = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDatacatalogV1UsageSignalResponse>(
+            'usageSignal');
+    this.userSpecifiedSystem = registerOutput<String>('userSpecifiedSystem');
+    this.userSpecifiedType = registerOutput<String>('userSpecifiedType');
   }
 }

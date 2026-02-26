@@ -739,15 +739,18 @@ class AgentAgentCollaborator extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.agentDescriptor =
-        Output.createUnknown<AgentAgentCollaboratorAgentDescriptor>();
-    this.agentId = Output.createUnknown<String>();
-    this.agentVersion = Output.createUnknown<String>();
-    this.collaborationInstruction = Output.createUnknown<String>();
-    this.collaboratorId = Output.createUnknown<String>();
-    this.collaboratorName = Output.createUnknown<String>();
-    this.prepareAgent = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.relayConversationHistory = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<AgentAgentCollaboratorTimeouts?>();
+        registerOutput<AgentAgentCollaboratorAgentDescriptor>(
+            'agentDescriptor');
+    this.agentId = registerOutput<String>('agentId');
+    this.agentVersion = registerOutput<String>('agentVersion');
+    this.collaborationInstruction =
+        registerOutput<String>('collaborationInstruction');
+    this.collaboratorId = registerOutput<String>('collaboratorId');
+    this.collaboratorName = registerOutput<String>('collaboratorName');
+    this.prepareAgent = registerOutput<bool>('prepareAgent');
+    this.region = registerOutput<String>('region');
+    this.relayConversationHistory =
+        registerOutput<String>('relayConversationHistory');
+    this.timeouts = registerOutput<AgentAgentCollaboratorTimeouts?>('timeouts');
   }
 }

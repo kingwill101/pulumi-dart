@@ -365,17 +365,19 @@ class DataRepositoryAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.associationId = Output.createUnknown<String>();
-    this.batchImportMetaDataOnCreate = Output.createUnknown<bool?>();
-    this.dataRepositoryPath = Output.createUnknown<String>();
-    this.deleteDataInFilesystem = Output.createUnknown<bool?>();
-    this.fileSystemId = Output.createUnknown<String>();
-    this.fileSystemPath = Output.createUnknown<String>();
-    this.importedFileChunkSize = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.s3 = Output.createUnknown<DataRepositoryAssociationS3>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.associationId = registerOutput<String>('associationId');
+    this.batchImportMetaDataOnCreate =
+        registerOutput<bool?>('batchImportMetaDataOnCreate');
+    this.dataRepositoryPath = registerOutput<String>('dataRepositoryPath');
+    this.deleteDataInFilesystem =
+        registerOutput<bool?>('deleteDataInFilesystem');
+    this.fileSystemId = registerOutput<String>('fileSystemId');
+    this.fileSystemPath = registerOutput<String>('fileSystemPath');
+    this.importedFileChunkSize = registerOutput<int>('importedFileChunkSize');
+    this.region = registerOutput<String>('region');
+    this.s3 = registerOutput<DataRepositoryAssociationS3>('s3');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

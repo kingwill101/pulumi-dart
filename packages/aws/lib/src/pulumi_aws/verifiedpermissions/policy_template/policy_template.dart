@@ -139,11 +139,11 @@ class PolicyTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createdDate = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.policyStoreId = Output.createUnknown<String>();
-    this.policyTemplateId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.statement = Output.createUnknown<String>();
+    this.createdDate = registerOutput<String>('createdDate');
+    this.description = registerOutput<String?>('description');
+    this.policyStoreId = registerOutput<String>('policyStoreId');
+    this.policyTemplateId = registerOutput<String>('policyTemplateId');
+    this.region = registerOutput<String>('region');
+    this.statement = registerOutput<String>('statement');
   }
 }

@@ -456,8 +456,8 @@ class NetworkInterfaceSecurityGroupAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.networkInterfaceId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupId = Output.createUnknown<String>();
+    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    this.region = registerOutput<String>('region');
+    this.securityGroupId = registerOutput<String>('securityGroupId');
   }
 }

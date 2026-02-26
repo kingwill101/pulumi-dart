@@ -359,16 +359,21 @@ class InstanceFleet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusterId = Output.createUnknown<String>();
+    this.clusterId = registerOutput<String>('clusterId');
     this.instanceTypeConfigs =
-        Output.createUnknown<List<InstanceFleetInstanceTypeConfig>?>();
+        registerOutput<List<InstanceFleetInstanceTypeConfig>?>(
+            'instanceTypeConfigs');
     this.launchSpecifications =
-        Output.createUnknown<InstanceFleetLaunchSpecifications?>();
-    this.name = Output.createUnknown<String>();
-    this.provisionedOnDemandCapacity = Output.createUnknown<int>();
-    this.provisionedSpotCapacity = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.targetOnDemandCapacity = Output.createUnknown<int?>();
-    this.targetSpotCapacity = Output.createUnknown<int?>();
+        registerOutput<InstanceFleetLaunchSpecifications?>(
+            'launchSpecifications');
+    this.name = registerOutput<String>('name');
+    this.provisionedOnDemandCapacity =
+        registerOutput<int>('provisionedOnDemandCapacity');
+    this.provisionedSpotCapacity =
+        registerOutput<int>('provisionedSpotCapacity');
+    this.region = registerOutput<String>('region');
+    this.targetOnDemandCapacity =
+        registerOutput<int?>('targetOnDemandCapacity');
+    this.targetSpotCapacity = registerOutput<int?>('targetSpotCapacity');
   }
 }

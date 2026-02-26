@@ -449,24 +449,27 @@ class Job5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.driverControlsFilesUri = Output.createUnknown<String>();
-    this.driverOutputResourceUri = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.forceDelete = Output.createUnknown<bool?>();
-    this.hadoopConfig = Output.createUnknown<JobHadoopConfig?>();
-    this.hiveConfig = Output.createUnknown<JobHiveConfig?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.pigConfig = Output.createUnknown<JobPigConfig?>();
-    this.placement = Output.createUnknown<JobPlacement>();
-    this.prestoConfig = Output.createUnknown<JobPrestoConfig?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.pysparkConfig = Output.createUnknown<JobPysparkConfig?>();
-    this.reference = Output.createUnknown<JobReference>();
-    this.region = Output.createUnknown<String?>();
-    this.scheduling = Output.createUnknown<JobScheduling?>();
-    this.sparkConfig = Output.createUnknown<JobSparkConfig?>();
-    this.sparksqlConfig = Output.createUnknown<JobSparksqlConfig?>();
-    this.statuses = Output.createUnknown<List<JobStatus2>>();
+    this.driverControlsFilesUri =
+        registerOutput<String>('driverControlsFilesUri');
+    this.driverOutputResourceUri =
+        registerOutput<String>('driverOutputResourceUri');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.forceDelete = registerOutput<bool?>('forceDelete');
+    this.hadoopConfig = registerOutput<JobHadoopConfig?>('hadoopConfig');
+    this.hiveConfig = registerOutput<JobHiveConfig?>('hiveConfig');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.pigConfig = registerOutput<JobPigConfig?>('pigConfig');
+    this.placement = registerOutput<JobPlacement>('placement');
+    this.prestoConfig = registerOutput<JobPrestoConfig?>('prestoConfig');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.pysparkConfig = registerOutput<JobPysparkConfig?>('pysparkConfig');
+    this.reference = registerOutput<JobReference>('reference');
+    this.region = registerOutput<String?>('region');
+    this.scheduling = registerOutput<JobScheduling?>('scheduling');
+    this.sparkConfig = registerOutput<JobSparkConfig?>('sparkConfig');
+    this.sparksqlConfig = registerOutput<JobSparksqlConfig?>('sparksqlConfig');
+    this.statuses = registerOutput<List<JobStatus2>>('statuses');
   }
 }

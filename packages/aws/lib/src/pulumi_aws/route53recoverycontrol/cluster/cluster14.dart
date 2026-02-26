@@ -132,13 +132,13 @@ class Cluster14 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.clusterEndpoints =
-        Output.createUnknown<List<ClusterClusterEndpoint2>>();
-    this.name = Output.createUnknown<String>();
-    this.networkType = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<ClusterClusterEndpoint2>>('clusterEndpoints');
+    this.name = registerOutput<String>('name');
+    this.networkType = registerOutput<String>('networkType');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

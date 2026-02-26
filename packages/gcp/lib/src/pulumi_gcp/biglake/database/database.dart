@@ -345,13 +345,13 @@ class Database extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.catalog = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.hiveOptions = Output.createUnknown<DatabaseHiveOptions>();
-    this.name = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.catalog = registerOutput<String>('catalog');
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.hiveOptions = registerOutput<DatabaseHiveOptions>('hiveOptions');
+    this.name = registerOutput<String>('name');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

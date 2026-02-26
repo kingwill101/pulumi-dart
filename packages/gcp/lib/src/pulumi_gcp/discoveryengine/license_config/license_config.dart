@@ -263,16 +263,16 @@ class LicenseConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoRenew = Output.createUnknown<bool?>();
-    this.endDate = Output.createUnknown<LicenseConfigEndDate?>();
-    this.freeTrial = Output.createUnknown<bool?>();
-    this.licenseConfigId = Output.createUnknown<String>();
-    this.licenseCount = Output.createUnknown<int>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.startDate = Output.createUnknown<LicenseConfigStartDate>();
-    this.subscriptionTerm = Output.createUnknown<String>();
-    this.subscriptionTier = Output.createUnknown<String>();
+    this.autoRenew = registerOutput<bool?>('autoRenew');
+    this.endDate = registerOutput<LicenseConfigEndDate?>('endDate');
+    this.freeTrial = registerOutput<bool?>('freeTrial');
+    this.licenseConfigId = registerOutput<String>('licenseConfigId');
+    this.licenseCount = registerOutput<int>('licenseCount');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.startDate = registerOutput<LicenseConfigStartDate>('startDate');
+    this.subscriptionTerm = registerOutput<String>('subscriptionTerm');
+    this.subscriptionTier = registerOutput<String>('subscriptionTier');
   }
 }

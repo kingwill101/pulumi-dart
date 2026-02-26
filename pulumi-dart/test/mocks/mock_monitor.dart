@@ -1,8 +1,8 @@
 import 'package:pulumi/pulumi.dart' show DeploymentImpl, Stack;
 import 'package:pulumi/src/monitor.dart' as mon;
 import 'package:pulumi/src/output.dart';
-import 'package:pulumi/src/pulumirpc/google/protobuf/empty.pb.dart';
-import 'package:pulumi/src/pulumirpc/google/protobuf/struct.pb.dart';
+import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
+import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/provider.pb.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart';
 import 'package:pulumi/src/resource/resource.dart';
@@ -17,6 +17,10 @@ class MockMonitor implements mon.Monitor {
   MockMonitor(this._mocks);
 
   @override
+  ResourceMonitorClient get client =>
+      throw UnimplementedError('MockMonitor.client is not implemented');
+
+  @override
   Future<InvokeResponse> invoke(ResourceInvokeRequest request) async {
     final args = _toDartMap(request.args);
 
@@ -27,14 +31,13 @@ class MockMonitor implements mon.Monitor {
         throw Exception("Unknown resource $urn");
       }
       return InvokeResponse(
-          return_1: await _serializeAsync(registeredResource));
+        return_1: await _serializeAsync(registeredResource),
+      );
     }
 
-    final result = await _mocks.call(MockCallArgs(
-      token: request.tok,
-      args: args,
-      provider: request.provider,
-    ));
+    final result = await _mocks.call(
+      MockCallArgs(token: request.tok, args: args, provider: request.provider),
+    );
     return InvokeResponse(return_1: await _serializeAsync(result));
   }
 
@@ -42,37 +45,40 @@ class MockMonitor implements mon.Monitor {
   Future<CallResponse> call(ResourceCallRequest request) async {
     final args = _toDartMap(request.args);
 
-    final result = await _mocks.call(MockCallArgs(
-      token: request.tok,
-      args: args,
-      provider: request.provider,
-    ));
+    final result = await _mocks.call(
+      MockCallArgs(token: request.tok, args: args, provider: request.provider),
+    );
     return CallResponse(return_1: await _serializeAsync(result));
   }
 
   @override
   Future<RegisterPackageResponse> registerPackage(
-      RegisterPackageRequest request) async {
+    RegisterPackageRequest request,
+  ) async {
     return RegisterPackageResponse(ref: "${request.name}-${request.version}");
   }
 
   @override
   Future<ReadResourceResponse> readResource(
-      Resource resource, ReadResourceRequest request) async {
-    final (id, state) = await _mocks.newResource(MockResourceArgs(
-      type: request.type,
-      name: request.name,
-      inputs: _toDartMap(request.properties),
-      provider: request.provider,
-      id: request.id,
-    ));
+    Resource resource,
+    ReadResourceRequest request,
+  ) async {
+    final (id, state) = await _mocks.newResource(
+      MockResourceArgs(
+        type: request.type,
+        name: request.name,
+        inputs: _toDartMap(request.properties),
+        provider: request.provider,
+        id: request.id,
+      ),
+    );
 
     final urn = _newUrn(request.parent, request.type, request.name);
     final serializedState = await _serializeToDartMap(state);
 
     _registeredResources[urn] = {
       "urn": urn,
-      if (id != null) "id": id,
+      "id": ?id,
       "state": serializedState,
     };
 
@@ -86,7 +92,9 @@ class MockMonitor implements mon.Monitor {
 
   @override
   Future<RegisterResourceResponse> registerResource(
-      Resource resource, RegisterResourceRequest request) async {
+    Resource resource,
+    RegisterResourceRequest request,
+  ) async {
     resources.add(resource);
 
     if (request.type == Stack.rootPulumiStackTypeName) {
@@ -96,13 +104,15 @@ class MockMonitor implements mon.Monitor {
       );
     }
 
-    final (id, state) = await _mocks.newResource(MockResourceArgs(
-      type: request.type,
-      name: request.name,
-      inputs: _toDartMap(request.object),
-      provider: request.provider,
-      id: request.importId,
-    ));
+    final (id, state) = await _mocks.newResource(
+      MockResourceArgs(
+        type: request.type,
+        name: request.name,
+        inputs: _toDartMap(request.object),
+        provider: request.provider,
+        id: request.importId,
+      ),
+    );
 
     final urn = _newUrn(request.parent, request.type, request.name);
     final serializedState = await _serializeToDartMap(state);
@@ -131,7 +141,7 @@ class MockMonitor implements mon.Monitor {
 
   Map<String, dynamic> _toDartMap(Struct struct) {
     final result = <String, dynamic>{};
-    for (final entry in struct.fields.entries) {
+    for (final _ in struct.fields.entries) {
       //FIXME we dont have the concept of a deserializer yet
       // final data = Deserializer.deserialize(entry.value);
       // if (data.isKnown && data.value != null) {
@@ -147,7 +157,8 @@ class MockMonitor implements mon.Monitor {
     }
     // Implement serialization logic here
     throw UnimplementedError(
-        "Serialization not implemented for ${o.runtimeType}");
+      "Serialization not implemented for ${o.runtimeType}",
+    );
   }
 
   Future<Struct> _serializeAsync(dynamic o) async {
@@ -162,16 +173,18 @@ class MockMonitor implements mon.Monitor {
 
   @override
   Future<mon.SupportsFeatureResponse> supportsFeature(
-      mon.SupportsFeatureRequest request) {
+    mon.SupportsFeatureRequest request,
+  ) {
     final hasSupport = request.id != "outputValues";
     return Future.value(mon.SupportsFeatureResponse(hasSupport));
   }
 
   @override
   Future<Empty> registerResourceOutputs(
-      RegisterResourceOutputsRequest request) async {
+    RegisterResourceOutputsRequest request,
+  ) async {
     final outputs = <String, Output<dynamic>>{};
-    for (final entry in request.outputs.fields.entries) {
+    for (final _ in request.outputs.fields.entries) {
       //FIXME
       // final data = Deserializer.deserialize(entry.value);
       // outputs[entry.key] = Output.create(data);

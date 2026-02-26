@@ -237,14 +237,15 @@ class Plan2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.advancedBackupSettings =
-        Output.createUnknown<List<PlanAdvancedBackupSetting>?>();
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.rules = Output.createUnknown<List<PlanRule>>();
-    this.scanSettings = Output.createUnknown<List<PlanScanSetting>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.version = Output.createUnknown<String>();
+        registerOutput<List<PlanAdvancedBackupSetting>?>(
+            'advancedBackupSettings');
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.rules = registerOutput<List<PlanRule>>('rules');
+    this.scanSettings = registerOutput<List<PlanScanSetting>?>('scanSettings');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.version = registerOutput<String>('version');
   }
 }

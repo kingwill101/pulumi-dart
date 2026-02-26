@@ -64,25 +64,31 @@ class RegionHealthCheck3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.checkIntervalSec = Output.createUnknown<int>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.grpcHealthCheck = Output.createUnknown<GRPCHealthCheckResponse3>();
-    this.healthyThreshold = Output.createUnknown<int>();
-    this.http2HealthCheck = Output.createUnknown<HTTP2HealthCheckResponse3>();
-    this.httpHealthCheck = Output.createUnknown<HTTPHealthCheckResponse3>();
-    this.httpsHealthCheck = Output.createUnknown<HTTPSHealthCheckResponse3>();
-    this.kind = Output.createUnknown<String>();
-    this.logConfig = Output.createUnknown<HealthCheckLogConfigResponse3>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.sslHealthCheck = Output.createUnknown<SSLHealthCheckResponse3>();
-    this.tcpHealthCheck = Output.createUnknown<TCPHealthCheckResponse3>();
-    this.timeoutSec = Output.createUnknown<int>();
-    this.type = Output.createUnknown<String>();
-    this.unhealthyThreshold = Output.createUnknown<int>();
+    this.checkIntervalSec = registerOutput<int>('checkIntervalSec');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.grpcHealthCheck =
+        registerOutput<GRPCHealthCheckResponse3>('grpcHealthCheck');
+    this.healthyThreshold = registerOutput<int>('healthyThreshold');
+    this.http2HealthCheck =
+        registerOutput<HTTP2HealthCheckResponse3>('http2HealthCheck');
+    this.httpHealthCheck =
+        registerOutput<HTTPHealthCheckResponse3>('httpHealthCheck');
+    this.httpsHealthCheck =
+        registerOutput<HTTPSHealthCheckResponse3>('httpsHealthCheck');
+    this.kind = registerOutput<String>('kind');
+    this.logConfig = registerOutput<HealthCheckLogConfigResponse3>('logConfig');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.sslHealthCheck =
+        registerOutput<SSLHealthCheckResponse3>('sslHealthCheck');
+    this.tcpHealthCheck =
+        registerOutput<TCPHealthCheckResponse3>('tcpHealthCheck');
+    this.timeoutSec = registerOutput<int>('timeoutSec');
+    this.type = registerOutput<String>('type');
+    this.unhealthyThreshold = registerOutput<int>('unhealthyThreshold');
   }
 }

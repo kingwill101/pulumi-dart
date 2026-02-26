@@ -272,18 +272,19 @@ class CmekConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cmekConfigId = Output.createUnknown<String>();
-    this.isDefault = Output.createUnknown<bool>();
-    this.kmsKey = Output.createUnknown<String>();
-    this.kmsKeyVersion = Output.createUnknown<String>();
-    this.lastRotationTimestampMicros = Output.createUnknown<int>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.notebooklmState = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.setDefault = Output.createUnknown<bool?>();
+    this.cmekConfigId = registerOutput<String>('cmekConfigId');
+    this.isDefault = registerOutput<bool>('isDefault');
+    this.kmsKey = registerOutput<String>('kmsKey');
+    this.kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
+    this.lastRotationTimestampMicros =
+        registerOutput<int>('lastRotationTimestampMicros');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.notebooklmState = registerOutput<String>('notebooklmState');
+    this.project = registerOutput<String>('project');
+    this.setDefault = registerOutput<bool?>('setDefault');
     this.singleRegionKeys =
-        Output.createUnknown<List<CmekConfigSingleRegionKey>?>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<List<CmekConfigSingleRegionKey>?>('singleRegionKeys');
+    this.state = registerOutput<String>('state');
   }
 }

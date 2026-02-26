@@ -54,10 +54,10 @@ class EnvReferences extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.envId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.refers = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.envId = registerOutput<String>('envId');
+    this.name = registerOutput<String>('name');
+    this.refers = registerOutput<String>('refers');
+    this.resourceType = registerOutput<String>('resourceType');
   }
 }

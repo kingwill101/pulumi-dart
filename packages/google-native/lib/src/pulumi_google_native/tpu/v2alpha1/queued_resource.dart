@@ -53,18 +53,19 @@ class QueuedResource extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bestEffort = Output.createUnknown<Map<String, dynamic>>();
-    this.createTime = Output.createUnknown<String>();
-    this.guaranteed = Output.createUnknown<GuaranteedResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.queuedResourceId = Output.createUnknown<String?>();
-    this.queueingPolicy = Output.createUnknown<QueueingPolicyResponse>();
-    this.requestId = Output.createUnknown<String?>();
-    this.reservationName = Output.createUnknown<String>();
-    this.spot = Output.createUnknown<Map<String, dynamic>>();
-    this.state = Output.createUnknown<QueuedResourceStateResponse>();
-    this.tpu = Output.createUnknown<TpuResponse>();
+    this.bestEffort = registerOutput<Map<String, dynamic>>('bestEffort');
+    this.createTime = registerOutput<String>('createTime');
+    this.guaranteed = registerOutput<GuaranteedResponse>('guaranteed');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.queuedResourceId = registerOutput<String?>('queuedResourceId');
+    this.queueingPolicy =
+        registerOutput<QueueingPolicyResponse>('queueingPolicy');
+    this.requestId = registerOutput<String?>('requestId');
+    this.reservationName = registerOutput<String>('reservationName');
+    this.spot = registerOutput<Map<String, dynamic>>('spot');
+    this.state = registerOutput<QueuedResourceStateResponse>('state');
+    this.tpu = registerOutput<TpuResponse>('tpu');
   }
 }

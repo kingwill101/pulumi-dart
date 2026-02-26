@@ -41,16 +41,16 @@ class DebugSession extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiId = Output.createUnknown<String>();
-    this.count = Output.createUnknown<int>();
-    this.createTime = Output.createUnknown<String>();
-    this.environmentId = Output.createUnknown<String>();
-    this.filter = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.revisionId = Output.createUnknown<String>();
-    this.timeout = Output.createUnknown<String>();
-    this.tracesize = Output.createUnknown<int>();
-    this.validity = Output.createUnknown<int>();
+    this.apiId = registerOutput<String>('apiId');
+    this.count = registerOutput<int>('count');
+    this.createTime = registerOutput<String>('createTime');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.filter = registerOutput<String>('filter');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.timeout = registerOutput<String>('timeout');
+    this.tracesize = registerOutput<int>('tracesize');
+    this.validity = registerOutput<int>('validity');
   }
 }

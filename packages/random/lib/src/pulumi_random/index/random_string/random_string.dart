@@ -176,18 +176,18 @@ class RandomString extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.keepers = Output.createUnknown<Map<String, String>?>();
-    this.length = Output.createUnknown<int>();
-    this.lower = Output.createUnknown<bool>();
-    this.minLower = Output.createUnknown<int>();
-    this.minNumeric = Output.createUnknown<int>();
-    this.minSpecial = Output.createUnknown<int>();
-    this.minUpper = Output.createUnknown<int>();
-    this.number = Output.createUnknown<bool>();
-    this.numeric = Output.createUnknown<bool>();
-    this.overrideSpecial = Output.createUnknown<String?>();
-    this.result = Output.createUnknown<String>();
-    this.special = Output.createUnknown<bool>();
-    this.upper = Output.createUnknown<bool>();
+    this.keepers = registerOutput<Map<String, String>?>('keepers');
+    this.length = registerOutput<int>('length');
+    this.lower = registerOutput<bool>('lower');
+    this.minLower = registerOutput<int>('minLower');
+    this.minNumeric = registerOutput<int>('minNumeric');
+    this.minSpecial = registerOutput<int>('minSpecial');
+    this.minUpper = registerOutput<int>('minUpper');
+    this.number = registerOutput<bool>('number');
+    this.numeric = registerOutput<bool>('numeric');
+    this.overrideSpecial = registerOutput<String?>('overrideSpecial');
+    this.result = registerOutput<String>('result');
+    this.special = registerOutput<bool>('special');
+    this.upper = registerOutput<bool>('upper');
   }
 }

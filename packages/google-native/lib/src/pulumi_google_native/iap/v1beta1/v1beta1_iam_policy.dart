@@ -26,9 +26,9 @@ class V1beta1IamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bindings = Output.createUnknown<List<BindingResponse69>>();
-    this.etag = Output.createUnknown<String>();
-    this.v1beta1Id = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.bindings = registerOutput<List<BindingResponse69>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.v1beta1Id = registerOutput<String>('v1beta1Id');
+    this.version = registerOutput<int>('version');
   }
 }

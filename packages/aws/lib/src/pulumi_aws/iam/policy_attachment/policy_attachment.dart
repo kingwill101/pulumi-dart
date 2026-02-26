@@ -441,10 +441,10 @@ class PolicyAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.groups = Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
-    this.policyArn = Output.createUnknown<String>();
-    this.roles = Output.createUnknown<List<String>?>();
-    this.users = Output.createUnknown<List<String>?>();
+    this.groups = registerOutput<List<String>?>('groups');
+    this.name = registerOutput<String>('name');
+    this.policyArn = registerOutput<String>('policyArn');
+    this.roles = registerOutput<List<String>?>('roles');
+    this.users = registerOutput<List<String>?>('users');
   }
 }

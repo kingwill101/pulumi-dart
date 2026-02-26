@@ -284,8 +284,8 @@ class UserGroupAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.userGroupId = Output.createUnknown<String>();
-    this.userId = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.userGroupId = registerOutput<String>('userGroupId');
+    this.userId = registerOutput<String>('userId');
   }
 }

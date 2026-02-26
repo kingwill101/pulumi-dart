@@ -102,6 +102,6 @@ class OutboundWebIdentityFederation extends CustomResource {
           Input.mapToInputs(args ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.issuerIdentifier = Output.createUnknown<String>();
+    this.issuerIdentifier = registerOutput<String>('issuerIdentifier');
   }
 }

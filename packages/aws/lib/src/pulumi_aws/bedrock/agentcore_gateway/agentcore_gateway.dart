@@ -881,26 +881,30 @@ class AgentcoreGateway extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.authorizerConfiguration =
-        Output.createUnknown<AgentcoreGatewayAuthorizerConfiguration?>();
-    this.authorizerType = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.exceptionLevel = Output.createUnknown<String?>();
-    this.gatewayArn = Output.createUnknown<String>();
-    this.gatewayId = Output.createUnknown<String>();
-    this.gatewayUrl = Output.createUnknown<String>();
+        registerOutput<AgentcoreGatewayAuthorizerConfiguration?>(
+            'authorizerConfiguration');
+    this.authorizerType = registerOutput<String>('authorizerType');
+    this.description = registerOutput<String?>('description');
+    this.exceptionLevel = registerOutput<String?>('exceptionLevel');
+    this.gatewayArn = registerOutput<String>('gatewayArn');
+    this.gatewayId = registerOutput<String>('gatewayId');
+    this.gatewayUrl = registerOutput<String>('gatewayUrl');
     this.interceptorConfigurations =
-        Output.createUnknown<List<AgentcoreGatewayInterceptorConfiguration>?>();
-    this.kmsKeyArn = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<List<AgentcoreGatewayInterceptorConfiguration>?>(
+            'interceptorConfigurations');
+    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.name = registerOutput<String>('name');
     this.protocolConfiguration =
-        Output.createUnknown<AgentcoreGatewayProtocolConfiguration?>();
-    this.protocolType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<AgentcoreGatewayTimeouts?>();
+        registerOutput<AgentcoreGatewayProtocolConfiguration?>(
+            'protocolConfiguration');
+    this.protocolType = registerOutput<String>('protocolType');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<AgentcoreGatewayTimeouts?>('timeouts');
     this.workloadIdentityDetails =
-        Output.createUnknown<List<AgentcoreGatewayWorkloadIdentityDetail>>();
+        registerOutput<List<AgentcoreGatewayWorkloadIdentityDetail>>(
+            'workloadIdentityDetails');
   }
 }

@@ -202,10 +202,11 @@ class AccountRegistration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.delegatedAdminAccount = Output.createUnknown<String?>();
-    this.deregisterOnDestroy = Output.createUnknown<bool?>();
-    this.kmsKey = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.delegatedAdminAccount =
+        registerOutput<String?>('delegatedAdminAccount');
+    this.deregisterOnDestroy = registerOutput<bool?>('deregisterOnDestroy');
+    this.kmsKey = registerOutput<String?>('kmsKey');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
   }
 }

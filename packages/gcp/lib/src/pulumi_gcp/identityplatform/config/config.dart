@@ -598,17 +598,20 @@ class Config extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authorizedDomains = Output.createUnknown<List<String>>();
-    this.autodeleteAnonymousUsers = Output.createUnknown<bool?>();
-    this.blockingFunctions = Output.createUnknown<ConfigBlockingFunctions?>();
-    this.client = Output.createUnknown<ConfigClient>();
-    this.mfa = Output.createUnknown<ConfigMfa>();
-    this.monitoring = Output.createUnknown<ConfigMonitoring>();
-    this.multiTenant = Output.createUnknown<ConfigMultiTenant?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.quota = Output.createUnknown<ConfigQuota?>();
-    this.signIn = Output.createUnknown<ConfigSignIn>();
-    this.smsRegionConfig = Output.createUnknown<ConfigSmsRegionConfig>();
+    this.authorizedDomains = registerOutput<List<String>>('authorizedDomains');
+    this.autodeleteAnonymousUsers =
+        registerOutput<bool?>('autodeleteAnonymousUsers');
+    this.blockingFunctions =
+        registerOutput<ConfigBlockingFunctions?>('blockingFunctions');
+    this.client = registerOutput<ConfigClient>('client');
+    this.mfa = registerOutput<ConfigMfa>('mfa');
+    this.monitoring = registerOutput<ConfigMonitoring>('monitoring');
+    this.multiTenant = registerOutput<ConfigMultiTenant?>('multiTenant');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.quota = registerOutput<ConfigQuota?>('quota');
+    this.signIn = registerOutput<ConfigSignIn>('signIn');
+    this.smsRegionConfig =
+        registerOutput<ConfigSmsRegionConfig>('smsRegionConfig');
   }
 }

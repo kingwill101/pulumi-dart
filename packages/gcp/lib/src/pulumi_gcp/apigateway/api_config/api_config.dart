@@ -103,21 +103,25 @@ class ApiConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.api = Output.createUnknown<String>();
-    this.apiConfigId = Output.createUnknown<String>();
-    this.apiConfigIdPrefix = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.gatewayConfig = Output.createUnknown<ApiConfigGatewayConfig?>();
-    this.grpcServices = Output.createUnknown<List<ApiConfigGrpcService>?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
+    this.api = registerOutput<String>('api');
+    this.apiConfigId = registerOutput<String>('apiConfigId');
+    this.apiConfigIdPrefix = registerOutput<String>('apiConfigIdPrefix');
+    this.displayName = registerOutput<String>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.gatewayConfig =
+        registerOutput<ApiConfigGatewayConfig?>('gatewayConfig');
+    this.grpcServices =
+        registerOutput<List<ApiConfigGrpcService>?>('grpcServices');
+    this.labels = registerOutput<Map<String, String>?>('labels');
     this.managedServiceConfigs =
-        Output.createUnknown<List<ApiConfigManagedServiceConfig>?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<List<ApiConfigManagedServiceConfig>?>(
+            'managedServiceConfigs');
+    this.name = registerOutput<String>('name');
     this.openapiDocuments =
-        Output.createUnknown<List<ApiConfigOpenapiDocument>?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.serviceConfigId = Output.createUnknown<String>();
+        registerOutput<List<ApiConfigOpenapiDocument>?>('openapiDocuments');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.serviceConfigId = registerOutput<String>('serviceConfigId');
   }
 }

@@ -2189,45 +2189,54 @@ class BareMetalCluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.adminClusterMembership = Output.createUnknown<String>();
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.bareMetalVersion = Output.createUnknown<String>();
+    this.adminClusterMembership =
+        registerOutput<String>('adminClusterMembership');
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.bareMetalVersion = registerOutput<String>('bareMetalVersion');
     this.binaryAuthorization =
-        Output.createUnknown<BareMetalClusterBinaryAuthorization?>();
+        registerOutput<BareMetalClusterBinaryAuthorization?>(
+            'binaryAuthorization');
     this.clusterOperations =
-        Output.createUnknown<BareMetalClusterClusterOperations?>();
-    this.controlPlane = Output.createUnknown<BareMetalClusterControlPlane>();
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.endpoint = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.fleets = Output.createUnknown<List<BareMetalClusterFleet>>();
-    this.loadBalancer = Output.createUnknown<BareMetalClusterLoadBalancer>();
-    this.localName = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
+        registerOutput<BareMetalClusterClusterOperations?>('clusterOperations');
+    this.controlPlane =
+        registerOutput<BareMetalClusterControlPlane>('controlPlane');
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.etag = registerOutput<String>('etag');
+    this.fleets = registerOutput<List<BareMetalClusterFleet>>('fleets');
+    this.loadBalancer =
+        registerOutput<BareMetalClusterLoadBalancer>('loadBalancer');
+    this.localName = registerOutput<String>('localName');
+    this.location = registerOutput<String>('location');
     this.maintenanceConfig =
-        Output.createUnknown<BareMetalClusterMaintenanceConfig?>();
-    this.name = Output.createUnknown<String>();
-    this.networkConfig = Output.createUnknown<BareMetalClusterNetworkConfig>();
+        registerOutput<BareMetalClusterMaintenanceConfig?>('maintenanceConfig');
+    this.name = registerOutput<String>('name');
+    this.networkConfig =
+        registerOutput<BareMetalClusterNetworkConfig>('networkConfig');
     this.nodeAccessConfig =
-        Output.createUnknown<BareMetalClusterNodeAccessConfig?>();
-    this.nodeConfig = Output.createUnknown<BareMetalClusterNodeConfig?>();
+        registerOutput<BareMetalClusterNodeAccessConfig?>('nodeAccessConfig');
+    this.nodeConfig = registerOutput<BareMetalClusterNodeConfig?>('nodeConfig');
     this.osEnvironmentConfig =
-        Output.createUnknown<BareMetalClusterOsEnvironmentConfig?>();
-    this.project = Output.createUnknown<String>();
-    this.proxy = Output.createUnknown<BareMetalClusterProxy?>();
-    this.reconciling = Output.createUnknown<bool>();
+        registerOutput<BareMetalClusterOsEnvironmentConfig?>(
+            'osEnvironmentConfig');
+    this.project = registerOutput<String>('project');
+    this.proxy = registerOutput<BareMetalClusterProxy?>('proxy');
+    this.reconciling = registerOutput<bool>('reconciling');
     this.securityConfig =
-        Output.createUnknown<BareMetalClusterSecurityConfig?>();
-    this.state = Output.createUnknown<String>();
-    this.statuses = Output.createUnknown<List<BareMetalClusterStatus>>();
-    this.storage = Output.createUnknown<BareMetalClusterStorage>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.upgradePolicy = Output.createUnknown<BareMetalClusterUpgradePolicy?>();
+        registerOutput<BareMetalClusterSecurityConfig?>('securityConfig');
+    this.state = registerOutput<String>('state');
+    this.statuses = registerOutput<List<BareMetalClusterStatus>>('statuses');
+    this.storage = registerOutput<BareMetalClusterStorage>('storage');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.upgradePolicy =
+        registerOutput<BareMetalClusterUpgradePolicy?>('upgradePolicy');
     this.validationChecks =
-        Output.createUnknown<List<BareMetalClusterValidationCheck>>();
+        registerOutput<List<BareMetalClusterValidationCheck>>(
+            'validationChecks');
   }
 }

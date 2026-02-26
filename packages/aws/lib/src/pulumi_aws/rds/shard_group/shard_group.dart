@@ -270,18 +270,20 @@ class ShardGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.computeRedundancy = Output.createUnknown<int>();
-    this.dbClusterIdentifier = Output.createUnknown<String>();
-    this.dbShardGroupIdentifier = Output.createUnknown<String>();
-    this.dbShardGroupResourceId = Output.createUnknown<String>();
-    this.endpoint = Output.createUnknown<String>();
-    this.maxAcu = Output.createUnknown<double>();
-    this.minAcu = Output.createUnknown<double>();
-    this.publiclyAccessible = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ShardGroupTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.computeRedundancy = registerOutput<int>('computeRedundancy');
+    this.dbClusterIdentifier = registerOutput<String>('dbClusterIdentifier');
+    this.dbShardGroupIdentifier =
+        registerOutput<String>('dbShardGroupIdentifier');
+    this.dbShardGroupResourceId =
+        registerOutput<String>('dbShardGroupResourceId');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.maxAcu = registerOutput<double>('maxAcu');
+    this.minAcu = registerOutput<double>('minAcu');
+    this.publiclyAccessible = registerOutput<bool>('publiclyAccessible');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ShardGroupTimeouts?>('timeouts');
   }
 }

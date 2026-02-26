@@ -246,10 +246,10 @@ class Listener2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceleratorArn = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.clientAffinity = Output.createUnknown<String?>();
-    this.portRanges = Output.createUnknown<List<ListenerPortRange>>();
-    this.protocol = Output.createUnknown<String>();
+    this.acceleratorArn = registerOutput<String>('acceleratorArn');
+    this.arn = registerOutput<String>('arn');
+    this.clientAffinity = registerOutput<String?>('clientAffinity');
+    this.portRanges = registerOutput<List<ListenerPortRange>>('portRanges');
+    this.protocol = registerOutput<String>('protocol');
   }
 }

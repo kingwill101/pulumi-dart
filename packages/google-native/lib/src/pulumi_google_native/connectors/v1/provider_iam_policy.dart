@@ -32,12 +32,13 @@ class ProviderIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse25>>();
-    this.bindings = Output.createUnknown<List<BindingResponse35>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.providerId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse25>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse35>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.providerId = registerOutput<String>('providerId');
+    this.version = registerOutput<int>('version');
   }
 }

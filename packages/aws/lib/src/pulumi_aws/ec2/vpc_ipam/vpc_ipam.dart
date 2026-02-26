@@ -322,21 +322,24 @@ class VpcIpam extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.cascade = Output.createUnknown<bool?>();
-    this.defaultResourceDiscoveryAssociationId = Output.createUnknown<String>();
-    this.defaultResourceDiscoveryId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.enablePrivateGua = Output.createUnknown<bool?>();
-    this.meteredAccount = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.cascade = registerOutput<bool?>('cascade');
+    this.defaultResourceDiscoveryAssociationId =
+        registerOutput<String>('defaultResourceDiscoveryAssociationId');
+    this.defaultResourceDiscoveryId =
+        registerOutput<String>('defaultResourceDiscoveryId');
+    this.description = registerOutput<String?>('description');
+    this.enablePrivateGua = registerOutput<bool?>('enablePrivateGua');
+    this.meteredAccount = registerOutput<String>('meteredAccount');
     this.operatingRegions =
-        Output.createUnknown<List<VpcIpamOperatingRegion>>();
-    this.privateDefaultScopeId = Output.createUnknown<String>();
-    this.publicDefaultScopeId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.scopeCount = Output.createUnknown<int>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tier = Output.createUnknown<String?>();
+        registerOutput<List<VpcIpamOperatingRegion>>('operatingRegions');
+    this.privateDefaultScopeId =
+        registerOutput<String>('privateDefaultScopeId');
+    this.publicDefaultScopeId = registerOutput<String>('publicDefaultScopeId');
+    this.region = registerOutput<String>('region');
+    this.scopeCount = registerOutput<int>('scopeCount');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tier = registerOutput<String?>('tier');
   }
 }

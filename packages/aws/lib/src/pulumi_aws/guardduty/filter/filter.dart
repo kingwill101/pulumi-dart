@@ -306,15 +306,16 @@ class Filter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.detectorId = Output.createUnknown<String>();
-    this.findingCriteria = Output.createUnknown<FilterFindingCriteria>();
-    this.name = Output.createUnknown<String>();
-    this.rank = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.action = registerOutput<String>('action');
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.detectorId = registerOutput<String>('detectorId');
+    this.findingCriteria =
+        registerOutput<FilterFindingCriteria>('findingCriteria');
+    this.name = registerOutput<String>('name');
+    this.rank = registerOutput<int>('rank');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

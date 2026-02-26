@@ -204,24 +204,29 @@ class NetworkInsightsAnalysis extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.alternatePathHints =
-        Output.createUnknown<List<NetworkInsightsAnalysisAlternatePathHint>>();
-    this.arn = Output.createUnknown<String>();
+        registerOutput<List<NetworkInsightsAnalysisAlternatePathHint>>(
+            'alternatePathHints');
+    this.arn = registerOutput<String>('arn');
     this.explanations =
-        Output.createUnknown<List<NetworkInsightsAnalysisExplanation>>();
-    this.filterInArns = Output.createUnknown<List<String>?>();
-    this.forwardPathComponents = Output.createUnknown<
-        List<NetworkInsightsAnalysisForwardPathComponent>>();
-    this.networkInsightsPathId = Output.createUnknown<String>();
-    this.pathFound = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.returnPathComponents = Output.createUnknown<
-        List<NetworkInsightsAnalysisReturnPathComponent>>();
-    this.startDate = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.statusMessage = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.waitForCompletion = Output.createUnknown<bool?>();
-    this.warningMessage = Output.createUnknown<String>();
+        registerOutput<List<NetworkInsightsAnalysisExplanation>>(
+            'explanations');
+    this.filterInArns = registerOutput<List<String>?>('filterInArns');
+    this.forwardPathComponents =
+        registerOutput<List<NetworkInsightsAnalysisForwardPathComponent>>(
+            'forwardPathComponents');
+    this.networkInsightsPathId =
+        registerOutput<String>('networkInsightsPathId');
+    this.pathFound = registerOutput<bool>('pathFound');
+    this.region = registerOutput<String>('region');
+    this.returnPathComponents =
+        registerOutput<List<NetworkInsightsAnalysisReturnPathComponent>>(
+            'returnPathComponents');
+    this.startDate = registerOutput<String>('startDate');
+    this.status = registerOutput<String>('status');
+    this.statusMessage = registerOutput<String>('statusMessage');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.waitForCompletion = registerOutput<bool?>('waitForCompletion');
+    this.warningMessage = registerOutput<String>('warningMessage');
   }
 }

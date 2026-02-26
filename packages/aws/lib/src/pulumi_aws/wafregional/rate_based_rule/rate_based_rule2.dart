@@ -266,14 +266,15 @@ class RateBasedRule2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.metricName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.predicates = Output.createUnknown<List<RateBasedRulePredicate2>?>();
-    this.rateKey = Output.createUnknown<String>();
-    this.rateLimit = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.metricName = registerOutput<String>('metricName');
+    this.name = registerOutput<String>('name');
+    this.predicates =
+        registerOutput<List<RateBasedRulePredicate2>?>('predicates');
+    this.rateKey = registerOutput<String>('rateKey');
+    this.rateLimit = registerOutput<int>('rateLimit');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

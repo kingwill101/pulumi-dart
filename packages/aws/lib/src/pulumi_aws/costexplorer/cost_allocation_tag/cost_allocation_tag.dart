@@ -126,8 +126,8 @@ class CostAllocationTag extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.status = Output.createUnknown<String>();
-    this.tagKey = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+    this.status = registerOutput<String>('status');
+    this.tagKey = registerOutput<String>('tagKey');
+    this.type = registerOutput<String>('type');
   }
 }

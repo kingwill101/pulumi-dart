@@ -152,12 +152,12 @@ class Tenant extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.sendingStatus = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tenantArn = Output.createUnknown<String>();
-    this.tenantId = Output.createUnknown<String>();
-    this.tenantName = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.sendingStatus = registerOutput<String>('sendingStatus');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tenantArn = registerOutput<String>('tenantArn');
+    this.tenantId = registerOutput<String>('tenantId');
+    this.tenantName = registerOutput<String>('tenantName');
   }
 }

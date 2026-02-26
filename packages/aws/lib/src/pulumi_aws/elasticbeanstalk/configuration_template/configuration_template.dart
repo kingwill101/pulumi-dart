@@ -184,12 +184,13 @@ class ConfigurationTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.application = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.environmentId = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.settings = Output.createUnknown<List<ConfigurationTemplateSetting>>();
-    this.solutionStackName = Output.createUnknown<String?>();
+    this.application = registerOutput<String>('application');
+    this.description = registerOutput<String?>('description');
+    this.environmentId = registerOutput<String?>('environmentId');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.settings =
+        registerOutput<List<ConfigurationTemplateSetting>>('settings');
+    this.solutionStackName = registerOutput<String?>('solutionStackName');
   }
 }

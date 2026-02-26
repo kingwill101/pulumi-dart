@@ -164,11 +164,11 @@ class AlternativeContact extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String?>();
-    this.alternateContactType = Output.createUnknown<String>();
-    this.emailAddress = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.phoneNumber = Output.createUnknown<String>();
-    this.title = Output.createUnknown<String>();
+    this.accountId = registerOutput<String?>('accountId');
+    this.alternateContactType = registerOutput<String>('alternateContactType');
+    this.emailAddress = registerOutput<String>('emailAddress');
+    this.name = registerOutput<String>('name');
+    this.phoneNumber = registerOutput<String>('phoneNumber');
+    this.title = registerOutput<String>('title');
   }
 }

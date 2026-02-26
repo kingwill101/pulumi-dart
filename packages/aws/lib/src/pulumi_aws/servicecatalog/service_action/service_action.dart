@@ -156,10 +156,10 @@ class ServiceAction extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceptLanguage = Output.createUnknown<String?>();
-    this.definition = Output.createUnknown<ServiceActionDefinition>();
-    this.description = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.acceptLanguage = registerOutput<String?>('acceptLanguage');
+    this.definition = registerOutput<ServiceActionDefinition>('definition');
+    this.description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -704,28 +704,33 @@ class DataExchangeSubscription extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTime = Output.createUnknown<String>();
-    this.dataExchange = Output.createUnknown<String>();
-    this.dataExchangeId = Output.createUnknown<String>();
-    this.dataExchangeLocation = Output.createUnknown<String>();
-    this.dataExchangeProject = Output.createUnknown<String>();
+    this.creationTime = registerOutput<String>('creationTime');
+    this.dataExchange = registerOutput<String>('dataExchange');
+    this.dataExchangeId = registerOutput<String>('dataExchangeId');
+    this.dataExchangeLocation = registerOutput<String>('dataExchangeLocation');
+    this.dataExchangeProject = registerOutput<String>('dataExchangeProject');
     this.destinationDataset =
-        Output.createUnknown<DataExchangeSubscriptionDestinationDataset?>();
-    this.lastModifyTime = Output.createUnknown<String>();
+        registerOutput<DataExchangeSubscriptionDestinationDataset?>(
+            'destinationDataset');
+    this.lastModifyTime = registerOutput<String>('lastModifyTime');
     this.linkedDatasetMaps =
-        Output.createUnknown<List<DataExchangeSubscriptionLinkedDatasetMap>>();
+        registerOutput<List<DataExchangeSubscriptionLinkedDatasetMap>>(
+            'linkedDatasetMaps');
     this.linkedResources =
-        Output.createUnknown<List<DataExchangeSubscriptionLinkedResource>>();
-    this.location = Output.createUnknown<String>();
-    this.logLinkedDatasetQueryUserEmail = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.organizationDisplayName = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.refreshPolicy = Output.createUnknown<String?>();
-    this.resourceType = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.subscriberContact = Output.createUnknown<String?>();
-    this.subscriptionId = Output.createUnknown<String>();
+        registerOutput<List<DataExchangeSubscriptionLinkedResource>>(
+            'linkedResources');
+    this.location = registerOutput<String>('location');
+    this.logLinkedDatasetQueryUserEmail =
+        registerOutput<bool>('logLinkedDatasetQueryUserEmail');
+    this.name = registerOutput<String>('name');
+    this.organizationDisplayName =
+        registerOutput<String>('organizationDisplayName');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.project = registerOutput<String>('project');
+    this.refreshPolicy = registerOutput<String?>('refreshPolicy');
+    this.resourceType = registerOutput<String>('resourceType');
+    this.state = registerOutput<String>('state');
+    this.subscriberContact = registerOutput<String?>('subscriberContact');
+    this.subscriptionId = registerOutput<String>('subscriptionId');
   }
 }

@@ -788,10 +788,10 @@ class KeyHandle extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.kmsKey = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.resourceTypeSelector = Output.createUnknown<String>();
+    this.kmsKey = registerOutput<String>('kmsKey');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.resourceTypeSelector = registerOutput<String>('resourceTypeSelector');
   }
 }

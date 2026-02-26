@@ -197,10 +197,10 @@ class UserStackAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authenticationType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.sendEmailNotification = Output.createUnknown<bool?>();
-    this.stackName = Output.createUnknown<String>();
-    this.userName = Output.createUnknown<String>();
+    this.authenticationType = registerOutput<String>('authenticationType');
+    this.region = registerOutput<String>('region');
+    this.sendEmailNotification = registerOutput<bool?>('sendEmailNotification');
+    this.stackName = registerOutput<String>('stackName');
+    this.userName = registerOutput<String>('userName');
   }
 }

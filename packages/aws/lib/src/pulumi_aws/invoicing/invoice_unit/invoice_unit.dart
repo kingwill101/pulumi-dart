@@ -204,16 +204,17 @@ class InvoiceUnit extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.invoiceReceiver = Output.createUnknown<String>();
-    this.lastModified = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.rules = Output.createUnknown<List<InvoiceUnitRule>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.taxInheritanceDisabled = Output.createUnknown<bool>();
-    this.timeouts = Output.createUnknown<InvoiceUnitTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.invoiceReceiver = registerOutput<String>('invoiceReceiver');
+    this.lastModified = registerOutput<String>('lastModified');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.rules = registerOutput<List<InvoiceUnitRule>?>('rules');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.taxInheritanceDisabled =
+        registerOutput<bool>('taxInheritanceDisabled');
+    this.timeouts = registerOutput<InvoiceUnitTimeouts?>('timeouts');
   }
 }

@@ -692,8 +692,8 @@ class DataCellsFilter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.tableData = Output.createUnknown<DataCellsFilterTableData>();
-    this.timeouts = Output.createUnknown<DataCellsFilterTimeouts?>();
+    this.region = registerOutput<String>('region');
+    this.tableData = registerOutput<DataCellsFilterTableData>('tableData');
+    this.timeouts = registerOutput<DataCellsFilterTimeouts?>('timeouts');
   }
 }

@@ -204,16 +204,19 @@ class DataSharingWithGoogleSetting extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.dataSharingWithGoogleSettingId = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enableDataSharing = Output.createUnknown<bool?>();
-    this.enablePreviewDataSharing = Output.createUnknown<bool?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.dataSharingWithGoogleSettingId =
+        registerOutput<String>('dataSharingWithGoogleSettingId');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableDataSharing = registerOutput<bool?>('enableDataSharing');
+    this.enablePreviewDataSharing =
+        registerOutput<bool?>('enablePreviewDataSharing');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

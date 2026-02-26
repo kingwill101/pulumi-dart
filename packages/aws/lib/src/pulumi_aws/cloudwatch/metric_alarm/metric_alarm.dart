@@ -1463,30 +1463,33 @@ class MetricAlarm extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.actionsEnabled = Output.createUnknown<bool?>();
-    this.alarmActions = Output.createUnknown<List<String>?>();
-    this.alarmDescription = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.comparisonOperator = Output.createUnknown<String>();
-    this.datapointsToAlarm = Output.createUnknown<int?>();
-    this.dimensions = Output.createUnknown<Map<String, String>?>();
-    this.evaluateLowSampleCountPercentiles = Output.createUnknown<String>();
-    this.evaluationPeriods = Output.createUnknown<int>();
-    this.extendedStatistic = Output.createUnknown<String?>();
-    this.insufficientDataActions = Output.createUnknown<List<String>?>();
-    this.metricName = Output.createUnknown<String?>();
-    this.metricQueries = Output.createUnknown<List<MetricAlarmMetricQuery>?>();
-    this.name = Output.createUnknown<String>();
-    this.namespace = Output.createUnknown<String?>();
-    this.okActions = Output.createUnknown<List<String>?>();
-    this.period = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
-    this.statistic = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.threshold = Output.createUnknown<double?>();
-    this.thresholdMetricId = Output.createUnknown<String?>();
-    this.treatMissingData = Output.createUnknown<String?>();
-    this.unit = Output.createUnknown<String?>();
+    this.actionsEnabled = registerOutput<bool?>('actionsEnabled');
+    this.alarmActions = registerOutput<List<String>?>('alarmActions');
+    this.alarmDescription = registerOutput<String?>('alarmDescription');
+    this.arn = registerOutput<String>('arn');
+    this.comparisonOperator = registerOutput<String>('comparisonOperator');
+    this.datapointsToAlarm = registerOutput<int?>('datapointsToAlarm');
+    this.dimensions = registerOutput<Map<String, String>?>('dimensions');
+    this.evaluateLowSampleCountPercentiles =
+        registerOutput<String>('evaluateLowSampleCountPercentiles');
+    this.evaluationPeriods = registerOutput<int>('evaluationPeriods');
+    this.extendedStatistic = registerOutput<String?>('extendedStatistic');
+    this.insufficientDataActions =
+        registerOutput<List<String>?>('insufficientDataActions');
+    this.metricName = registerOutput<String?>('metricName');
+    this.metricQueries =
+        registerOutput<List<MetricAlarmMetricQuery>?>('metricQueries');
+    this.name = registerOutput<String>('name');
+    this.namespace = registerOutput<String?>('namespace');
+    this.okActions = registerOutput<List<String>?>('okActions');
+    this.period = registerOutput<int?>('period');
+    this.region = registerOutput<String>('region');
+    this.statistic = registerOutput<String?>('statistic');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.threshold = registerOutput<double?>('threshold');
+    this.thresholdMetricId = registerOutput<String?>('thresholdMetricId');
+    this.treatMissingData = registerOutput<String?>('treatMissingData');
+    this.unit = registerOutput<String?>('unit');
   }
 }

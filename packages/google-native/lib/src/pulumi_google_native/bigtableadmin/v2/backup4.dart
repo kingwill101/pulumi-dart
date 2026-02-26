@@ -48,18 +48,19 @@ class Backup4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupId = Output.createUnknown<String>();
-    this.clusterId = Output.createUnknown<String>();
-    this.encryptionInfo = Output.createUnknown<EncryptionInfoResponse4>();
-    this.endTime = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.sizeBytes = Output.createUnknown<String>();
-    this.sourceBackup = Output.createUnknown<String>();
-    this.sourceTable = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.backupId = registerOutput<String>('backupId');
+    this.clusterId = registerOutput<String>('clusterId');
+    this.encryptionInfo =
+        registerOutput<EncryptionInfoResponse4>('encryptionInfo');
+    this.endTime = registerOutput<String>('endTime');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.sizeBytes = registerOutput<String>('sizeBytes');
+    this.sourceBackup = registerOutput<String>('sourceBackup');
+    this.sourceTable = registerOutput<String>('sourceTable');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
   }
 }

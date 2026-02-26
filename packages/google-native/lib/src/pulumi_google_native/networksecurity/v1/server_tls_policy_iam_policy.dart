@@ -33,12 +33,13 @@ class ServerTlsPolicyIamPolicy extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.auditConfigs =
-        Output.createUnknown<List<GoogleIamV1AuditConfigResponse10>>();
-    this.bindings = Output.createUnknown<List<GoogleIamV1BindingResponse12>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.serverTlsPolicyId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+        registerOutput<List<GoogleIamV1AuditConfigResponse10>>('auditConfigs');
+    this.bindings =
+        registerOutput<List<GoogleIamV1BindingResponse12>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.serverTlsPolicyId = registerOutput<String>('serverTlsPolicyId');
+    this.version = registerOutput<int>('version');
   }
 }

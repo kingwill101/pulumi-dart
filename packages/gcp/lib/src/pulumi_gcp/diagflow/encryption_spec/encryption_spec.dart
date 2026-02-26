@@ -610,8 +610,9 @@ class EncryptionSpec extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.encryptionSpec = Output.createUnknown<EncryptionSpecEncryptionSpec>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.encryptionSpec =
+        registerOutput<EncryptionSpecEncryptionSpec>('encryptionSpec');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
   }
 }

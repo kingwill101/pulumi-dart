@@ -316,9 +316,10 @@ class FileSystemPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bypassPolicyLockoutSafetyCheck = Output.createUnknown<bool?>();
-    this.fileSystemId = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.bypassPolicyLockoutSafetyCheck =
+        registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
+    this.fileSystemId = registerOutput<String>('fileSystemId');
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
   }
 }

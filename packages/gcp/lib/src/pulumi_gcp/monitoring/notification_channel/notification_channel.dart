@@ -354,17 +354,17 @@ class NotificationChannel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.forceDelete = Output.createUnknown<bool?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.forceDelete = registerOutput<bool?>('forceDelete');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.sensitiveLabels =
-        Output.createUnknown<NotificationChannelSensitiveLabels?>();
-    this.type = Output.createUnknown<String>();
-    this.userLabels = Output.createUnknown<Map<String, String>?>();
-    this.verificationStatus = Output.createUnknown<String>();
+        registerOutput<NotificationChannelSensitiveLabels?>('sensitiveLabels');
+    this.type = registerOutput<String>('type');
+    this.userLabels = registerOutput<Map<String, String>?>('userLabels');
+    this.verificationStatus = registerOutput<String>('verificationStatus');
   }
 }

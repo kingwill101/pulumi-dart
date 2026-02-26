@@ -352,11 +352,12 @@ class HostProjectRegistration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.gcpProject = Output.createUnknown<String>();
-    this.hostProjectRegistrationId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.gcpProject = registerOutput<String>('gcpProject');
+    this.hostProjectRegistrationId =
+        registerOutput<String>('hostProjectRegistrationId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

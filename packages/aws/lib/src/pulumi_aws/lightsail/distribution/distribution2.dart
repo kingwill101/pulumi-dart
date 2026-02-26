@@ -1042,29 +1042,32 @@ class Distribution2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alternativeDomainNames = Output.createUnknown<List<String>>();
-    this.arn = Output.createUnknown<String>();
-    this.bundleId = Output.createUnknown<String>();
+    this.alternativeDomainNames =
+        registerOutput<List<String>>('alternativeDomainNames');
+    this.arn = registerOutput<String>('arn');
+    this.bundleId = registerOutput<String>('bundleId');
     this.cacheBehaviorSettings =
-        Output.createUnknown<DistributionCacheBehaviorSettings?>();
+        registerOutput<DistributionCacheBehaviorSettings?>(
+            'cacheBehaviorSettings');
     this.cacheBehaviors =
-        Output.createUnknown<List<DistributionCacheBehavior>?>();
-    this.certificateName = Output.createUnknown<String?>();
-    this.createdAt = Output.createUnknown<String>();
+        registerOutput<List<DistributionCacheBehavior>?>('cacheBehaviors');
+    this.certificateName = registerOutput<String?>('certificateName');
+    this.createdAt = registerOutput<String>('createdAt');
     this.defaultCacheBehavior =
-        Output.createUnknown<DistributionDefaultCacheBehavior2>();
-    this.domainName = Output.createUnknown<String>();
-    this.ipAddressType = Output.createUnknown<String?>();
-    this.isEnabled = Output.createUnknown<bool?>();
-    this.locations = Output.createUnknown<List<DistributionLocation>>();
-    this.name = Output.createUnknown<String>();
-    this.origin = Output.createUnknown<DistributionOrigin2>();
-    this.originPublicDns = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.supportCode = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<DistributionDefaultCacheBehavior2>(
+            'defaultCacheBehavior');
+    this.domainName = registerOutput<String>('domainName');
+    this.ipAddressType = registerOutput<String?>('ipAddressType');
+    this.isEnabled = registerOutput<bool?>('isEnabled');
+    this.locations = registerOutput<List<DistributionLocation>>('locations');
+    this.name = registerOutput<String>('name');
+    this.origin = registerOutput<DistributionOrigin2>('origin');
+    this.originPublicDns = registerOutput<String>('originPublicDns');
+    this.region = registerOutput<String>('region');
+    this.resourceType = registerOutput<String>('resourceType');
+    this.status = registerOutput<String>('status');
+    this.supportCode = registerOutput<String>('supportCode');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

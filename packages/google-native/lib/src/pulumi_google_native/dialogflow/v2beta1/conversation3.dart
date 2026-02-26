@@ -44,16 +44,17 @@ class Conversation3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.conversationId = Output.createUnknown<String?>();
-    this.conversationProfile = Output.createUnknown<String>();
-    this.conversationStage = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
-    this.lifecycleState = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.phoneNumber = Output.createUnknown<
-        GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse>();
-    this.project = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
+    this.conversationId = registerOutput<String?>('conversationId');
+    this.conversationProfile = registerOutput<String>('conversationProfile');
+    this.conversationStage = registerOutput<String>('conversationStage');
+    this.endTime = registerOutput<String>('endTime');
+    this.lifecycleState = registerOutput<String>('lifecycleState');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.phoneNumber = registerOutput<
+            GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse>(
+        'phoneNumber');
+    this.project = registerOutput<String>('project');
+    this.startTime = registerOutput<String>('startTime');
   }
 }

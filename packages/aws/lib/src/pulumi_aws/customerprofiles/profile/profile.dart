@@ -208,28 +208,32 @@ class Profile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountNumber = Output.createUnknown<String?>();
-    this.additionalInformation = Output.createUnknown<String?>();
-    this.address = Output.createUnknown<ProfileAddress?>();
-    this.attributes = Output.createUnknown<Map<String, String>?>();
-    this.billingAddress = Output.createUnknown<ProfileBillingAddress?>();
-    this.birthDate = Output.createUnknown<String?>();
-    this.businessEmailAddress = Output.createUnknown<String?>();
-    this.businessName = Output.createUnknown<String?>();
-    this.businessPhoneNumber = Output.createUnknown<String?>();
-    this.domainName = Output.createUnknown<String>();
-    this.emailAddress = Output.createUnknown<String?>();
-    this.firstName = Output.createUnknown<String?>();
-    this.genderString = Output.createUnknown<String?>();
-    this.homePhoneNumber = Output.createUnknown<String?>();
-    this.lastName = Output.createUnknown<String?>();
-    this.mailingAddress = Output.createUnknown<ProfileMailingAddress?>();
-    this.middleName = Output.createUnknown<String?>();
-    this.mobilePhoneNumber = Output.createUnknown<String?>();
-    this.partyTypeString = Output.createUnknown<String?>();
-    this.personalEmailAddress = Output.createUnknown<String?>();
-    this.phoneNumber = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.shippingAddress = Output.createUnknown<ProfileShippingAddress?>();
+    this.accountNumber = registerOutput<String?>('accountNumber');
+    this.additionalInformation =
+        registerOutput<String?>('additionalInformation');
+    this.address = registerOutput<ProfileAddress?>('address');
+    this.attributes = registerOutput<Map<String, String>?>('attributes');
+    this.billingAddress =
+        registerOutput<ProfileBillingAddress?>('billingAddress');
+    this.birthDate = registerOutput<String?>('birthDate');
+    this.businessEmailAddress = registerOutput<String?>('businessEmailAddress');
+    this.businessName = registerOutput<String?>('businessName');
+    this.businessPhoneNumber = registerOutput<String?>('businessPhoneNumber');
+    this.domainName = registerOutput<String>('domainName');
+    this.emailAddress = registerOutput<String?>('emailAddress');
+    this.firstName = registerOutput<String?>('firstName');
+    this.genderString = registerOutput<String?>('genderString');
+    this.homePhoneNumber = registerOutput<String?>('homePhoneNumber');
+    this.lastName = registerOutput<String?>('lastName');
+    this.mailingAddress =
+        registerOutput<ProfileMailingAddress?>('mailingAddress');
+    this.middleName = registerOutput<String?>('middleName');
+    this.mobilePhoneNumber = registerOutput<String?>('mobilePhoneNumber');
+    this.partyTypeString = registerOutput<String?>('partyTypeString');
+    this.personalEmailAddress = registerOutput<String?>('personalEmailAddress');
+    this.phoneNumber = registerOutput<String?>('phoneNumber');
+    this.region = registerOutput<String>('region');
+    this.shippingAddress =
+        registerOutput<ProfileShippingAddress?>('shippingAddress');
   }
 }

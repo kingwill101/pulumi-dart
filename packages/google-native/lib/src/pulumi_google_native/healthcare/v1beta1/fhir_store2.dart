@@ -68,25 +68,32 @@ class FhirStore2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.complexDataTypeReferenceParsing = Output.createUnknown<String>();
-    this.consentConfig = Output.createUnknown<ConsentConfigResponse>();
-    this.datasetId = Output.createUnknown<String>();
-    this.defaultSearchHandlingStrict = Output.createUnknown<bool>();
-    this.disableReferentialIntegrity = Output.createUnknown<bool>();
-    this.disableResourceVersioning = Output.createUnknown<bool>();
-    this.enableUpdateCreate = Output.createUnknown<bool>();
-    this.fhirStoreId = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.complexDataTypeReferenceParsing =
+        registerOutput<String>('complexDataTypeReferenceParsing');
+    this.consentConfig = registerOutput<ConsentConfigResponse>('consentConfig');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.defaultSearchHandlingStrict =
+        registerOutput<bool>('defaultSearchHandlingStrict');
+    this.disableReferentialIntegrity =
+        registerOutput<bool>('disableReferentialIntegrity');
+    this.disableResourceVersioning =
+        registerOutput<bool>('disableResourceVersioning');
+    this.enableUpdateCreate = registerOutput<bool>('enableUpdateCreate');
+    this.fhirStoreId = registerOutput<String?>('fhirStoreId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.notificationConfig =
-        Output.createUnknown<NotificationConfigResponse4>();
+        registerOutput<NotificationConfigResponse4>('notificationConfig');
     this.notificationConfigs =
-        Output.createUnknown<List<FhirNotificationConfigResponse2>>();
-    this.project = Output.createUnknown<String>();
-    this.searchConfig = Output.createUnknown<SearchConfigResponse>();
-    this.streamConfigs = Output.createUnknown<List<StreamConfigResponse2>>();
-    this.validationConfig = Output.createUnknown<ValidationConfigResponse2>();
-    this.version = Output.createUnknown<String>();
+        registerOutput<List<FhirNotificationConfigResponse2>>(
+            'notificationConfigs');
+    this.project = registerOutput<String>('project');
+    this.searchConfig = registerOutput<SearchConfigResponse>('searchConfig');
+    this.streamConfigs =
+        registerOutput<List<StreamConfigResponse2>>('streamConfigs');
+    this.validationConfig =
+        registerOutput<ValidationConfigResponse2>('validationConfig');
+    this.version = registerOutput<String>('version');
   }
 }

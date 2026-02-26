@@ -771,20 +771,22 @@ class Entry extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.bigqueryDateShardedSpecs =
-        Output.createUnknown<List<EntryBigqueryDateShardedSpec>>();
+        registerOutput<List<EntryBigqueryDateShardedSpec>>(
+            'bigqueryDateShardedSpecs');
     this.bigqueryTableSpecs =
-        Output.createUnknown<List<EntryBigqueryTableSpec>>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.entryGroup = Output.createUnknown<String>();
-    this.entryId = Output.createUnknown<String>();
-    this.gcsFilesetSpec = Output.createUnknown<EntryGcsFilesetSpec?>();
-    this.integratedSystem = Output.createUnknown<String>();
-    this.linkedResource = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.schema = Output.createUnknown<String?>();
-    this.type = Output.createUnknown<String?>();
-    this.userSpecifiedSystem = Output.createUnknown<String?>();
-    this.userSpecifiedType = Output.createUnknown<String?>();
+        registerOutput<List<EntryBigqueryTableSpec>>('bigqueryTableSpecs');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.entryGroup = registerOutput<String>('entryGroup');
+    this.entryId = registerOutput<String>('entryId');
+    this.gcsFilesetSpec =
+        registerOutput<EntryGcsFilesetSpec?>('gcsFilesetSpec');
+    this.integratedSystem = registerOutput<String>('integratedSystem');
+    this.linkedResource = registerOutput<String>('linkedResource');
+    this.name = registerOutput<String>('name');
+    this.schema = registerOutput<String?>('schema');
+    this.type = registerOutput<String?>('type');
+    this.userSpecifiedSystem = registerOutput<String?>('userSpecifiedSystem');
+    this.userSpecifiedType = registerOutput<String?>('userSpecifiedType');
   }
 }

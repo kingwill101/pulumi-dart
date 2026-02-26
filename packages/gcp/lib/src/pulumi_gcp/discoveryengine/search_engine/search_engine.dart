@@ -514,21 +514,22 @@ class SearchEngine extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appType = Output.createUnknown<String?>();
-    this.collectionId = Output.createUnknown<String>();
-    this.commonConfig = Output.createUnknown<SearchEngineCommonConfig?>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataStoreIds = Output.createUnknown<List<String>>();
-    this.displayName = Output.createUnknown<String>();
-    this.engineId = Output.createUnknown<String>();
-    this.features = Output.createUnknown<Map<String, String>?>();
-    this.industryVertical = Output.createUnknown<String?>();
-    this.kmsKeyName = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.appType = registerOutput<String?>('appType');
+    this.collectionId = registerOutput<String>('collectionId');
+    this.commonConfig =
+        registerOutput<SearchEngineCommonConfig?>('commonConfig');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataStoreIds = registerOutput<List<String>>('dataStoreIds');
+    this.displayName = registerOutput<String>('displayName');
+    this.engineId = registerOutput<String>('engineId');
+    this.features = registerOutput<Map<String, String>?>('features');
+    this.industryVertical = registerOutput<String?>('industryVertical');
+    this.kmsKeyName = registerOutput<String?>('kmsKeyName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.searchEngineConfig =
-        Output.createUnknown<SearchEngineSearchEngineConfig>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<SearchEngineSearchEngineConfig>('searchEngineConfig');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

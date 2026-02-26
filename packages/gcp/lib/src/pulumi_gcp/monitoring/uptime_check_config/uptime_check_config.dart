@@ -1782,25 +1782,27 @@ class UptimeCheckConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.checkerType = Output.createUnknown<String>();
+    this.checkerType = registerOutput<String>('checkerType');
     this.contentMatchers =
-        Output.createUnknown<List<UptimeCheckConfigContentMatcher>?>();
-    this.displayName = Output.createUnknown<String>();
-    this.httpCheck = Output.createUnknown<UptimeCheckConfigHttpCheck?>();
-    this.logCheckFailures = Output.createUnknown<bool?>();
+        registerOutput<List<UptimeCheckConfigContentMatcher>?>(
+            'contentMatchers');
+    this.displayName = registerOutput<String>('displayName');
+    this.httpCheck = registerOutput<UptimeCheckConfigHttpCheck?>('httpCheck');
+    this.logCheckFailures = registerOutput<bool?>('logCheckFailures');
     this.monitoredResource =
-        Output.createUnknown<UptimeCheckConfigMonitoredResource?>();
-    this.name = Output.createUnknown<String>();
-    this.period = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<UptimeCheckConfigMonitoredResource?>(
+            'monitoredResource');
+    this.name = registerOutput<String>('name');
+    this.period = registerOutput<String?>('period');
+    this.project = registerOutput<String>('project');
     this.resourceGroup =
-        Output.createUnknown<UptimeCheckConfigResourceGroup?>();
-    this.selectedRegions = Output.createUnknown<List<String>?>();
+        registerOutput<UptimeCheckConfigResourceGroup?>('resourceGroup');
+    this.selectedRegions = registerOutput<List<String>?>('selectedRegions');
     this.syntheticMonitor =
-        Output.createUnknown<UptimeCheckConfigSyntheticMonitor?>();
-    this.tcpCheck = Output.createUnknown<UptimeCheckConfigTcpCheck?>();
-    this.timeout = Output.createUnknown<String>();
-    this.uptimeCheckId = Output.createUnknown<String>();
-    this.userLabels = Output.createUnknown<Map<String, String>?>();
+        registerOutput<UptimeCheckConfigSyntheticMonitor?>('syntheticMonitor');
+    this.tcpCheck = registerOutput<UptimeCheckConfigTcpCheck?>('tcpCheck');
+    this.timeout = registerOutput<String>('timeout');
+    this.uptimeCheckId = registerOutput<String>('uptimeCheckId');
+    this.userLabels = registerOutput<Map<String, String>?>('userLabels');
   }
 }

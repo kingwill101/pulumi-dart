@@ -32,12 +32,13 @@ class ServiceClassIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse54>>();
-    this.bindings = Output.createUnknown<List<BindingResponse78>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.serviceClassId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse54>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse78>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.serviceClassId = registerOutput<String>('serviceClassId');
+    this.version = registerOutput<int>('version');
   }
 }

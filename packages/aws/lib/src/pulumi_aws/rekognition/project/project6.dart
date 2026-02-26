@@ -246,13 +246,13 @@ class Project6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.autoUpdate = Output.createUnknown<String>();
-    this.feature = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ProjectTimeouts2?>();
+    this.arn = registerOutput<String>('arn');
+    this.autoUpdate = registerOutput<String>('autoUpdate');
+    this.feature = registerOutput<String?>('feature');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ProjectTimeouts2?>('timeouts');
   }
 }

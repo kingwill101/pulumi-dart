@@ -1355,52 +1355,65 @@ class Service2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alarms = Output.createUnknown<ServiceAlarms?>();
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZoneRebalancing = Output.createUnknown<String>();
+    this.alarms = registerOutput<ServiceAlarms?>('alarms');
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZoneRebalancing =
+        registerOutput<String>('availabilityZoneRebalancing');
     this.capacityProviderStrategies =
-        Output.createUnknown<List<ServiceCapacityProviderStrategy>?>();
-    this.cluster = Output.createUnknown<String>();
+        registerOutput<List<ServiceCapacityProviderStrategy>?>(
+            'capacityProviderStrategies');
+    this.cluster = registerOutput<String>('cluster');
     this.deploymentCircuitBreaker =
-        Output.createUnknown<ServiceDeploymentCircuitBreaker?>();
+        registerOutput<ServiceDeploymentCircuitBreaker?>(
+            'deploymentCircuitBreaker');
     this.deploymentConfiguration =
-        Output.createUnknown<ServiceDeploymentConfiguration>();
+        registerOutput<ServiceDeploymentConfiguration>(
+            'deploymentConfiguration');
     this.deploymentController =
-        Output.createUnknown<ServiceDeploymentController?>();
-    this.deploymentMaximumPercent = Output.createUnknown<int?>();
-    this.deploymentMinimumHealthyPercent = Output.createUnknown<int?>();
-    this.desiredCount = Output.createUnknown<int?>();
-    this.enableEcsManagedTags = Output.createUnknown<bool?>();
-    this.enableExecuteCommand = Output.createUnknown<bool?>();
-    this.forceDelete = Output.createUnknown<bool?>();
-    this.forceNewDeployment = Output.createUnknown<bool?>();
-    this.healthCheckGracePeriodSeconds = Output.createUnknown<int?>();
-    this.iamRole = Output.createUnknown<String>();
-    this.launchType = Output.createUnknown<String>();
-    this.loadBalancers = Output.createUnknown<List<ServiceLoadBalancer>?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<ServiceDeploymentController?>('deploymentController');
+    this.deploymentMaximumPercent =
+        registerOutput<int?>('deploymentMaximumPercent');
+    this.deploymentMinimumHealthyPercent =
+        registerOutput<int?>('deploymentMinimumHealthyPercent');
+    this.desiredCount = registerOutput<int?>('desiredCount');
+    this.enableEcsManagedTags = registerOutput<bool?>('enableEcsManagedTags');
+    this.enableExecuteCommand = registerOutput<bool?>('enableExecuteCommand');
+    this.forceDelete = registerOutput<bool?>('forceDelete');
+    this.forceNewDeployment = registerOutput<bool?>('forceNewDeployment');
+    this.healthCheckGracePeriodSeconds =
+        registerOutput<int?>('healthCheckGracePeriodSeconds');
+    this.iamRole = registerOutput<String>('iamRole');
+    this.launchType = registerOutput<String>('launchType');
+    this.loadBalancers =
+        registerOutput<List<ServiceLoadBalancer>?>('loadBalancers');
+    this.name = registerOutput<String>('name');
     this.networkConfiguration =
-        Output.createUnknown<ServiceNetworkConfiguration2?>();
+        registerOutput<ServiceNetworkConfiguration2?>('networkConfiguration');
     this.orderedPlacementStrategies =
-        Output.createUnknown<List<ServiceOrderedPlacementStrategy>?>();
+        registerOutput<List<ServiceOrderedPlacementStrategy>?>(
+            'orderedPlacementStrategies');
     this.placementConstraints =
-        Output.createUnknown<List<ServicePlacementConstraint>?>();
-    this.platformVersion = Output.createUnknown<String>();
-    this.propagateTags = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.schedulingStrategy = Output.createUnknown<String?>();
+        registerOutput<List<ServicePlacementConstraint>?>(
+            'placementConstraints');
+    this.platformVersion = registerOutput<String>('platformVersion');
+    this.propagateTags = registerOutput<String?>('propagateTags');
+    this.region = registerOutput<String>('region');
+    this.schedulingStrategy = registerOutput<String?>('schedulingStrategy');
     this.serviceConnectConfiguration =
-        Output.createUnknown<ServiceServiceConnectConfiguration?>();
-    this.serviceRegistries = Output.createUnknown<ServiceServiceRegistries?>();
-    this.sigintRollback = Output.createUnknown<bool?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.taskDefinition = Output.createUnknown<String?>();
-    this.triggers = Output.createUnknown<Map<String, String>>();
+        registerOutput<ServiceServiceConnectConfiguration?>(
+            'serviceConnectConfiguration');
+    this.serviceRegistries =
+        registerOutput<ServiceServiceRegistries?>('serviceRegistries');
+    this.sigintRollback = registerOutput<bool?>('sigintRollback');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.taskDefinition = registerOutput<String?>('taskDefinition');
+    this.triggers = registerOutput<Map<String, String>>('triggers');
     this.volumeConfiguration =
-        Output.createUnknown<ServiceVolumeConfiguration?>();
+        registerOutput<ServiceVolumeConfiguration?>('volumeConfiguration');
     this.vpcLatticeConfigurations =
-        Output.createUnknown<List<ServiceVpcLatticeConfiguration>?>();
-    this.waitForSteadyState = Output.createUnknown<bool?>();
+        registerOutput<List<ServiceVpcLatticeConfiguration>?>(
+            'vpcLatticeConfigurations');
+    this.waitForSteadyState = registerOutput<bool?>('waitForSteadyState');
   }
 }

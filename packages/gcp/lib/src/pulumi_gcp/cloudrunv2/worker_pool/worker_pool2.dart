@@ -3471,42 +3471,47 @@ class WorkerPool2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.binaryAuthorization =
-        Output.createUnknown<WorkerPoolBinaryAuthorization?>();
-    this.client = Output.createUnknown<String?>();
-    this.clientVersion = Output.createUnknown<String?>();
-    this.conditions = Output.createUnknown<List<WorkerPoolCondition>>();
-    this.createTime = Output.createUnknown<String>();
-    this.creator = Output.createUnknown<String>();
-    this.customAudiences = Output.createUnknown<List<String>?>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.generation = Output.createUnknown<String>();
+        registerOutput<WorkerPoolBinaryAuthorization?>('binaryAuthorization');
+    this.client = registerOutput<String?>('client');
+    this.clientVersion = registerOutput<String?>('clientVersion');
+    this.conditions = registerOutput<List<WorkerPoolCondition>>('conditions');
+    this.createTime = registerOutput<String>('createTime');
+    this.creator = registerOutput<String>('creator');
+    this.customAudiences = registerOutput<List<String>?>('customAudiences');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.description = registerOutput<String?>('description');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.etag = registerOutput<String>('etag');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.generation = registerOutput<String>('generation');
     this.instanceSplitStatuses =
-        Output.createUnknown<List<WorkerPoolInstanceSplitStatus>>();
-    this.instanceSplits = Output.createUnknown<List<WorkerPoolInstanceSplit>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.lastModifier = Output.createUnknown<String>();
-    this.latestCreatedRevision = Output.createUnknown<String>();
-    this.latestReadyRevision = Output.createUnknown<String>();
-    this.launchStage = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.observedGeneration = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.scaling = Output.createUnknown<WorkerPoolScaling>();
-    this.template = Output.createUnknown<WorkerPoolTemplate>();
+        registerOutput<List<WorkerPoolInstanceSplitStatus>>(
+            'instanceSplitStatuses');
+    this.instanceSplits =
+        registerOutput<List<WorkerPoolInstanceSplit>>('instanceSplits');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.lastModifier = registerOutput<String>('lastModifier');
+    this.latestCreatedRevision =
+        registerOutput<String>('latestCreatedRevision');
+    this.latestReadyRevision = registerOutput<String>('latestReadyRevision');
+    this.launchStage = registerOutput<String>('launchStage');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.observedGeneration = registerOutput<String>('observedGeneration');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.scaling = registerOutput<WorkerPoolScaling>('scaling');
+    this.template = registerOutput<WorkerPoolTemplate>('template');
     this.terminalConditions =
-        Output.createUnknown<List<WorkerPoolTerminalCondition>>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<WorkerPoolTerminalCondition>>('terminalConditions');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

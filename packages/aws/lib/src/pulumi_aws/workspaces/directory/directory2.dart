@@ -1305,34 +1305,43 @@ class Directory2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.activeDirectoryConfig =
-        Output.createUnknown<DirectoryActiveDirectoryConfig?>();
-    this.alias = Output.createUnknown<String>();
+        registerOutput<DirectoryActiveDirectoryConfig?>(
+            'activeDirectoryConfig');
+    this.alias = registerOutput<String>('alias');
     this.certificateBasedAuthProperties =
-        Output.createUnknown<DirectoryCertificateBasedAuthProperties>();
-    this.customerUserName = Output.createUnknown<String>();
-    this.directoryId = Output.createUnknown<String>();
-    this.directoryName = Output.createUnknown<String>();
-    this.directoryType = Output.createUnknown<String>();
-    this.dnsIpAddresses = Output.createUnknown<List<String>>();
-    this.iamRoleId = Output.createUnknown<String>();
-    this.ipGroupIds = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
-    this.registrationCode = Output.createUnknown<String>();
-    this.samlProperties = Output.createUnknown<DirectorySamlProperties>();
+        registerOutput<DirectoryCertificateBasedAuthProperties>(
+            'certificateBasedAuthProperties');
+    this.customerUserName = registerOutput<String>('customerUserName');
+    this.directoryId = registerOutput<String>('directoryId');
+    this.directoryName = registerOutput<String>('directoryName');
+    this.directoryType = registerOutput<String>('directoryType');
+    this.dnsIpAddresses = registerOutput<List<String>>('dnsIpAddresses');
+    this.iamRoleId = registerOutput<String>('iamRoleId');
+    this.ipGroupIds = registerOutput<List<String>>('ipGroupIds');
+    this.region = registerOutput<String>('region');
+    this.registrationCode = registerOutput<String>('registrationCode');
+    this.samlProperties =
+        registerOutput<DirectorySamlProperties>('samlProperties');
     this.selfServicePermissions =
-        Output.createUnknown<DirectorySelfServicePermissions>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tenancy = Output.createUnknown<String>();
-    this.userIdentityType = Output.createUnknown<String>();
+        registerOutput<DirectorySelfServicePermissions>(
+            'selfServicePermissions');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tenancy = registerOutput<String>('tenancy');
+    this.userIdentityType = registerOutput<String>('userIdentityType');
     this.workspaceAccessProperties =
-        Output.createUnknown<DirectoryWorkspaceAccessProperties>();
+        registerOutput<DirectoryWorkspaceAccessProperties>(
+            'workspaceAccessProperties');
     this.workspaceCreationProperties =
-        Output.createUnknown<DirectoryWorkspaceCreationProperties>();
-    this.workspaceDirectoryDescription = Output.createUnknown<String?>();
-    this.workspaceDirectoryName = Output.createUnknown<String?>();
-    this.workspaceSecurityGroupId = Output.createUnknown<String>();
-    this.workspaceType = Output.createUnknown<String?>();
+        registerOutput<DirectoryWorkspaceCreationProperties>(
+            'workspaceCreationProperties');
+    this.workspaceDirectoryDescription =
+        registerOutput<String?>('workspaceDirectoryDescription');
+    this.workspaceDirectoryName =
+        registerOutput<String?>('workspaceDirectoryName');
+    this.workspaceSecurityGroupId =
+        registerOutput<String>('workspaceSecurityGroupId');
+    this.workspaceType = registerOutput<String?>('workspaceType');
   }
 }

@@ -119,46 +119,49 @@ class Service6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
     this.binaryAuthorization =
-        Output.createUnknown<GoogleCloudRunV2BinaryAuthorizationResponse>();
-    this.client = Output.createUnknown<String>();
-    this.clientVersion = Output.createUnknown<String>();
+        registerOutput<GoogleCloudRunV2BinaryAuthorizationResponse>(
+            'binaryAuthorization');
+    this.client = registerOutput<String>('client');
+    this.clientVersion = registerOutput<String>('clientVersion');
     this.conditions =
-        Output.createUnknown<List<GoogleCloudRunV2ConditionResponse>>();
-    this.createTime = Output.createUnknown<String>();
-    this.creator = Output.createUnknown<String>();
-    this.customAudiences = Output.createUnknown<List<String>>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.generation = Output.createUnknown<String>();
-    this.ingress = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lastModifier = Output.createUnknown<String>();
-    this.latestCreatedRevision = Output.createUnknown<String>();
-    this.latestReadyRevision = Output.createUnknown<String>();
-    this.launchStage = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.observedGeneration = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
+        registerOutput<List<GoogleCloudRunV2ConditionResponse>>('conditions');
+    this.createTime = registerOutput<String>('createTime');
+    this.creator = registerOutput<String>('creator');
+    this.customAudiences = registerOutput<List<String>>('customAudiences');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.generation = registerOutput<String>('generation');
+    this.ingress = registerOutput<String>('ingress');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lastModifier = registerOutput<String>('lastModifier');
+    this.latestCreatedRevision =
+        registerOutput<String>('latestCreatedRevision');
+    this.latestReadyRevision = registerOutput<String>('latestReadyRevision');
+    this.launchStage = registerOutput<String>('launchStage');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.observedGeneration = registerOutput<String>('observedGeneration');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     this.scaling =
-        Output.createUnknown<GoogleCloudRunV2ServiceScalingResponse>();
-    this.serviceId = Output.createUnknown<String>();
+        registerOutput<GoogleCloudRunV2ServiceScalingResponse>('scaling');
+    this.serviceId = registerOutput<String>('serviceId');
     this.template =
-        Output.createUnknown<GoogleCloudRunV2RevisionTemplateResponse>();
+        registerOutput<GoogleCloudRunV2RevisionTemplateResponse>('template');
     this.terminalCondition =
-        Output.createUnknown<GoogleCloudRunV2ConditionResponse>();
+        registerOutput<GoogleCloudRunV2ConditionResponse>('terminalCondition');
     this.traffic =
-        Output.createUnknown<List<GoogleCloudRunV2TrafficTargetResponse>>();
-    this.trafficStatuses = Output.createUnknown<
-        List<GoogleCloudRunV2TrafficTargetStatusResponse>>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.uri = Output.createUnknown<String>();
+        registerOutput<List<GoogleCloudRunV2TrafficTargetResponse>>('traffic');
+    this.trafficStatuses =
+        registerOutput<List<GoogleCloudRunV2TrafficTargetStatusResponse>>(
+            'trafficStatuses');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.uri = registerOutput<String>('uri');
   }
 }

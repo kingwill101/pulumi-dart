@@ -762,14 +762,14 @@ class CodeSigningConfig extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.allowedPublishers =
-        Output.createUnknown<CodeSigningConfigAllowedPublishers>();
-    this.arn = Output.createUnknown<String>();
-    this.configId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.lastModified = Output.createUnknown<String>();
-    this.policies = Output.createUnknown<CodeSigningConfigPolicies>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<CodeSigningConfigAllowedPublishers>('allowedPublishers');
+    this.arn = registerOutput<String>('arn');
+    this.configId = registerOutput<String>('configId');
+    this.description = registerOutput<String?>('description');
+    this.lastModified = registerOutput<String>('lastModified');
+    this.policies = registerOutput<CodeSigningConfigPolicies>('policies');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

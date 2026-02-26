@@ -62,22 +62,22 @@ class Job12 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.batchModePriority = Output.createUnknown<int>();
-    this.config = Output.createUnknown<JobConfigResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
-    this.error = Output.createUnknown<StatusResponse28>();
-    this.inputUri = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.mode = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.optimization = Output.createUnknown<String>();
-    this.outputUri = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.templateId = Output.createUnknown<String>();
-    this.ttlAfterCompletionDays = Output.createUnknown<int>();
+    this.batchModePriority = registerOutput<int>('batchModePriority');
+    this.config = registerOutput<JobConfigResponse>('config');
+    this.createTime = registerOutput<String>('createTime');
+    this.endTime = registerOutput<String>('endTime');
+    this.error = registerOutput<StatusResponse28>('error');
+    this.inputUri = registerOutput<String>('inputUri');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    this.optimization = registerOutput<String>('optimization');
+    this.outputUri = registerOutput<String>('outputUri');
+    this.project = registerOutput<String>('project');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
+    this.templateId = registerOutput<String>('templateId');
+    this.ttlAfterCompletionDays = registerOutput<int>('ttlAfterCompletionDays');
   }
 }

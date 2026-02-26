@@ -245,21 +245,24 @@ class MultiRegionCluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.engine = Output.createUnknown<String>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.multiRegionClusterName = Output.createUnknown<String>();
-    this.multiRegionClusterNameSuffix = Output.createUnknown<String>();
-    this.multiRegionParameterGroupName = Output.createUnknown<String>();
-    this.nodeType = Output.createUnknown<String>();
-    this.numShards = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<MultiRegionClusterTimeouts?>();
-    this.tlsEnabled = Output.createUnknown<bool>();
-    this.updateStrategy = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.engine = registerOutput<String>('engine');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.multiRegionClusterName =
+        registerOutput<String>('multiRegionClusterName');
+    this.multiRegionClusterNameSuffix =
+        registerOutput<String>('multiRegionClusterNameSuffix');
+    this.multiRegionParameterGroupName =
+        registerOutput<String>('multiRegionParameterGroupName');
+    this.nodeType = registerOutput<String>('nodeType');
+    this.numShards = registerOutput<int>('numShards');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<MultiRegionClusterTimeouts?>('timeouts');
+    this.tlsEnabled = registerOutput<bool>('tlsEnabled');
+    this.updateStrategy = registerOutput<String?>('updateStrategy');
   }
 }

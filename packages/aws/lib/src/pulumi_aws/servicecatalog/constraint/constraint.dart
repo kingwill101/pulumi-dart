@@ -190,14 +190,14 @@ class Constraint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceptLanguage = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String>();
-    this.owner = Output.createUnknown<String>();
-    this.parameters = Output.createUnknown<String>();
-    this.portfolioId = Output.createUnknown<String>();
-    this.productId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+    this.acceptLanguage = registerOutput<String?>('acceptLanguage');
+    this.description = registerOutput<String>('description');
+    this.owner = registerOutput<String>('owner');
+    this.parameters = registerOutput<String>('parameters');
+    this.portfolioId = registerOutput<String>('portfolioId');
+    this.productId = registerOutput<String>('productId');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.type = registerOutput<String>('type');
   }
 }

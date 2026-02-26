@@ -212,12 +212,12 @@ class VoiceConnectorTermination extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.callingRegions = Output.createUnknown<List<String>>();
-    this.cidrAllowLists = Output.createUnknown<List<String>>();
-    this.cpsLimit = Output.createUnknown<int?>();
-    this.defaultPhoneNumber = Output.createUnknown<String?>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.voiceConnectorId = Output.createUnknown<String>();
+    this.callingRegions = registerOutput<List<String>>('callingRegions');
+    this.cidrAllowLists = registerOutput<List<String>>('cidrAllowLists');
+    this.cpsLimit = registerOutput<int?>('cpsLimit');
+    this.defaultPhoneNumber = registerOutput<String?>('defaultPhoneNumber');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.region = registerOutput<String>('region');
+    this.voiceConnectorId = registerOutput<String>('voiceConnectorId');
   }
 }

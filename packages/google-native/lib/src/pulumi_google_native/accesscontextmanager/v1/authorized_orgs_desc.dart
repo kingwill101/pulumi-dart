@@ -30,11 +30,12 @@ class AuthorizedOrgsDesc extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessPolicyId = Output.createUnknown<String>();
-    this.assetType = Output.createUnknown<String>();
-    this.authorizationDirection = Output.createUnknown<String>();
-    this.authorizationType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.orgs = Output.createUnknown<List<String>>();
+    this.accessPolicyId = registerOutput<String>('accessPolicyId');
+    this.assetType = registerOutput<String>('assetType');
+    this.authorizationDirection =
+        registerOutput<String>('authorizationDirection');
+    this.authorizationType = registerOutput<String>('authorizationType');
+    this.name = registerOutput<String>('name');
+    this.orgs = registerOutput<List<String>>('orgs');
   }
 }

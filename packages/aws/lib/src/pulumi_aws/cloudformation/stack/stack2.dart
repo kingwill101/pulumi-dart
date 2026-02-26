@@ -335,21 +335,21 @@ class Stack2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.capabilities = Output.createUnknown<List<String>?>();
-    this.disableRollback = Output.createUnknown<bool?>();
-    this.iamRoleArn = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.notificationArns = Output.createUnknown<List<String>?>();
-    this.onFailure = Output.createUnknown<String?>();
-    this.outputs = Output.createUnknown<Map<String, String>>();
-    this.parameters = Output.createUnknown<Map<String, String>>();
-    this.policyBody = Output.createUnknown<String>();
-    this.policyUrl = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.templateBody = Output.createUnknown<String>();
-    this.templateUrl = Output.createUnknown<String?>();
-    this.timeoutInMinutes = Output.createUnknown<int?>();
+    this.capabilities = registerOutput<List<String>?>('capabilities');
+    this.disableRollback = registerOutput<bool?>('disableRollback');
+    this.iamRoleArn = registerOutput<String?>('iamRoleArn');
+    this.name = registerOutput<String>('name');
+    this.notificationArns = registerOutput<List<String>?>('notificationArns');
+    this.onFailure = registerOutput<String?>('onFailure');
+    this.outputs = registerOutput<Map<String, String>>('outputs');
+    this.parameters = registerOutput<Map<String, String>>('parameters');
+    this.policyBody = registerOutput<String>('policyBody');
+    this.policyUrl = registerOutput<String?>('policyUrl');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.templateBody = registerOutput<String>('templateBody');
+    this.templateUrl = registerOutput<String?>('templateUrl');
+    this.timeoutInMinutes = registerOutput<int?>('timeoutInMinutes');
   }
 }

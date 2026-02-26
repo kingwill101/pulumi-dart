@@ -48,17 +48,18 @@ class Execution4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.completionTime = Output.createUnknown<TimestampResponse>();
-    this.creationTime = Output.createUnknown<TimestampResponse>();
+    this.completionTime = registerOutput<TimestampResponse>('completionTime');
+    this.creationTime = registerOutput<TimestampResponse>('creationTime');
     this.dimensionDefinitions =
-        Output.createUnknown<List<Map<String, dynamic>>>();
-    this.executionId = Output.createUnknown<String>();
-    this.historyId = Output.createUnknown<String>();
-    this.outcome = Output.createUnknown<OutcomeResponse>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.specification = Output.createUnknown<SpecificationResponse>();
-    this.state = Output.createUnknown<String>();
-    this.testExecutionMatrixId = Output.createUnknown<String>();
+        registerOutput<List<Map<String, dynamic>>>('dimensionDefinitions');
+    this.executionId = registerOutput<String>('executionId');
+    this.historyId = registerOutput<String>('historyId');
+    this.outcome = registerOutput<OutcomeResponse>('outcome');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.specification = registerOutput<SpecificationResponse>('specification');
+    this.state = registerOutput<String>('state');
+    this.testExecutionMatrixId =
+        registerOutput<String>('testExecutionMatrixId');
   }
 }

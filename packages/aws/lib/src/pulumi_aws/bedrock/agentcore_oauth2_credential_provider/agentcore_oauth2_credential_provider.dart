@@ -557,13 +557,17 @@ class AgentcoreOauth2CredentialProvider extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clientSecretArns = Output.createUnknown<
-        List<AgentcoreOauth2CredentialProviderClientSecretArn>>();
-    this.credentialProviderArn = Output.createUnknown<String>();
-    this.credentialProviderVendor = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.oauth2ProviderConfig = Output.createUnknown<
-        AgentcoreOauth2CredentialProviderOauth2ProviderConfig?>();
-    this.region = Output.createUnknown<String>();
+    this.clientSecretArns =
+        registerOutput<List<AgentcoreOauth2CredentialProviderClientSecretArn>>(
+            'clientSecretArns');
+    this.credentialProviderArn =
+        registerOutput<String>('credentialProviderArn');
+    this.credentialProviderVendor =
+        registerOutput<String>('credentialProviderVendor');
+    this.name = registerOutput<String>('name');
+    this.oauth2ProviderConfig =
+        registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?>(
+            'oauth2ProviderConfig');
+    this.region = registerOutput<String>('region');
   }
 }

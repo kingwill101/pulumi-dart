@@ -47,18 +47,19 @@ class ManagementDnsZoneBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.managementDnsZoneBindingId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.privateCloudId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vmwareEngineNetwork = Output.createUnknown<String>();
-    this.vpcNetwork = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.location = registerOutput<String>('location');
+    this.managementDnsZoneBindingId =
+        registerOutput<String>('managementDnsZoneBindingId');
+    this.name = registerOutput<String>('name');
+    this.privateCloudId = registerOutput<String>('privateCloudId');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vmwareEngineNetwork = registerOutput<String>('vmwareEngineNetwork');
+    this.vpcNetwork = registerOutput<String>('vpcNetwork');
   }
 }

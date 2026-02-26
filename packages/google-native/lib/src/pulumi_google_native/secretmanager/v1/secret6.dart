@@ -54,18 +54,18 @@ class Secret6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.replication = Output.createUnknown<ReplicationResponse>();
-    this.rotation = Output.createUnknown<RotationResponse>();
-    this.secretId = Output.createUnknown<String>();
-    this.topics = Output.createUnknown<List<TopicResponse>>();
-    this.ttl = Output.createUnknown<String>();
-    this.versionAliases = Output.createUnknown<Map<String, String>>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.createTime = registerOutput<String>('createTime');
+    this.etag = registerOutput<String>('etag');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.replication = registerOutput<ReplicationResponse>('replication');
+    this.rotation = registerOutput<RotationResponse>('rotation');
+    this.secretId = registerOutput<String>('secretId');
+    this.topics = registerOutput<List<TopicResponse>>('topics');
+    this.ttl = registerOutput<String>('ttl');
+    this.versionAliases = registerOutput<Map<String, String>>('versionAliases');
   }
 }

@@ -235,10 +235,10 @@ class RandomInteger extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.keepers = Output.createUnknown<Map<String, String>?>();
-    this.max = Output.createUnknown<int>();
-    this.min = Output.createUnknown<int>();
-    this.result = Output.createUnknown<int>();
-    this.seed = Output.createUnknown<String?>();
+    this.keepers = registerOutput<Map<String, String>?>('keepers');
+    this.max = registerOutput<int>('max');
+    this.min = registerOutput<int>('min');
+    this.result = registerOutput<int>('result');
+    this.seed = registerOutput<String?>('seed');
   }
 }

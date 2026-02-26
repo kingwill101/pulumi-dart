@@ -120,9 +120,9 @@ class ContributorInsights extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.indexName = Output.createUnknown<String?>();
-    this.mode = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tableName = Output.createUnknown<String>();
+    this.indexName = registerOutput<String?>('indexName');
+    this.mode = registerOutput<String>('mode');
+    this.region = registerOutput<String>('region');
+    this.tableName = registerOutput<String>('tableName');
   }
 }

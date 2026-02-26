@@ -224,16 +224,17 @@ class OrganizationBucketConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucketId = Output.createUnknown<String>();
+    this.bucketId = registerOutput<String>('bucketId');
     this.cmekSettings =
-        Output.createUnknown<OrganizationBucketConfigCmekSettings?>();
-    this.description = Output.createUnknown<String>();
+        registerOutput<OrganizationBucketConfigCmekSettings?>('cmekSettings');
+    this.description = registerOutput<String>('description');
     this.indexConfigs =
-        Output.createUnknown<List<OrganizationBucketConfigIndexConfig>>();
-    this.lifecycleState = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organization = Output.createUnknown<String>();
-    this.retentionDays = Output.createUnknown<int?>();
+        registerOutput<List<OrganizationBucketConfigIndexConfig>>(
+            'indexConfigs');
+    this.lifecycleState = registerOutput<String>('lifecycleState');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.organization = registerOutput<String>('organization');
+    this.retentionDays = registerOutput<int?>('retentionDays');
   }
 }

@@ -536,23 +536,26 @@ class DataSource extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.dynamodbConfig = Output.createUnknown<DataSourceDynamodbConfig?>();
+    this.apiId = registerOutput<String>('apiId');
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.dynamodbConfig =
+        registerOutput<DataSourceDynamodbConfig?>('dynamodbConfig');
     this.elasticsearchConfig =
-        Output.createUnknown<DataSourceElasticsearchConfig?>();
+        registerOutput<DataSourceElasticsearchConfig?>('elasticsearchConfig');
     this.eventBridgeConfig =
-        Output.createUnknown<DataSourceEventBridgeConfig?>();
-    this.httpConfig = Output.createUnknown<DataSourceHttpConfig?>();
-    this.lambdaConfig = Output.createUnknown<DataSourceLambdaConfig?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<DataSourceEventBridgeConfig?>('eventBridgeConfig');
+    this.httpConfig = registerOutput<DataSourceHttpConfig?>('httpConfig');
+    this.lambdaConfig = registerOutput<DataSourceLambdaConfig?>('lambdaConfig');
+    this.name = registerOutput<String>('name');
     this.opensearchserviceConfig =
-        Output.createUnknown<DataSourceOpensearchserviceConfig?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<DataSourceOpensearchserviceConfig?>(
+            'opensearchserviceConfig');
+    this.region = registerOutput<String>('region');
     this.relationalDatabaseConfig =
-        Output.createUnknown<DataSourceRelationalDatabaseConfig?>();
-    this.serviceRoleArn = Output.createUnknown<String?>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<DataSourceRelationalDatabaseConfig?>(
+            'relationalDatabaseConfig');
+    this.serviceRoleArn = registerOutput<String?>('serviceRoleArn');
+    this.type = registerOutput<String>('type');
   }
 }

@@ -586,36 +586,41 @@ class BackupVault extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessRestriction = Output.createUnknown<String?>();
-    this.allowMissing = Output.createUnknown<bool?>();
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.backupCount = Output.createUnknown<String>();
+    this.accessRestriction = registerOutput<String?>('accessRestriction');
+    this.allowMissing = registerOutput<bool?>('allowMissing');
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.backupCount = registerOutput<String>('backupCount');
     this.backupMinimumEnforcedRetentionDuration =
-        Output.createUnknown<String>();
-    this.backupRetentionInheritance = Output.createUnknown<String?>();
-    this.backupVaultId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.deletable = Output.createUnknown<bool>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.effectiveTime = Output.createUnknown<String?>();
+        registerOutput<String>('backupMinimumEnforcedRetentionDuration');
+    this.backupRetentionInheritance =
+        registerOutput<String?>('backupRetentionInheritance');
+    this.backupVaultId = registerOutput<String>('backupVaultId');
+    this.createTime = registerOutput<String>('createTime');
+    this.deletable = registerOutput<bool>('deletable');
+    this.description = registerOutput<String?>('description');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveTime = registerOutput<String?>('effectiveTime');
     this.encryptionConfig =
-        Output.createUnknown<BackupVaultEncryptionConfig?>();
-    this.etag = Output.createUnknown<String>();
-    this.forceDelete = Output.createUnknown<bool?>();
-    this.forceUpdate = Output.createUnknown<bool?>();
-    this.ignoreBackupPlanReferences = Output.createUnknown<bool?>();
-    this.ignoreInactiveDatasources = Output.createUnknown<bool?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.totalStoredBytes = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<BackupVaultEncryptionConfig?>('encryptionConfig');
+    this.etag = registerOutput<String>('etag');
+    this.forceDelete = registerOutput<bool?>('forceDelete');
+    this.forceUpdate = registerOutput<bool?>('forceUpdate');
+    this.ignoreBackupPlanReferences =
+        registerOutput<bool?>('ignoreBackupPlanReferences');
+    this.ignoreInactiveDatasources =
+        registerOutput<bool?>('ignoreInactiveDatasources');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.state = registerOutput<String>('state');
+    this.totalStoredBytes = registerOutput<String>('totalStoredBytes');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

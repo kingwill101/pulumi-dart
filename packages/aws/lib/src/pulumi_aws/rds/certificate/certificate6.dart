@@ -116,7 +116,8 @@ class Certificate6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificateIdentifier = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.certificateIdentifier =
+        registerOutput<String>('certificateIdentifier');
+    this.region = registerOutput<String>('region');
   }
 }

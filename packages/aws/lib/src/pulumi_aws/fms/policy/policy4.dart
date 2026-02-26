@@ -355,25 +355,29 @@ class Policy4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.deleteAllPolicyResources = Output.createUnknown<bool?>();
-    this.deleteUnusedFmManagedResources = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String?>();
-    this.excludeMap = Output.createUnknown<PolicyExcludeMap?>();
-    this.excludeResourceTags = Output.createUnknown<bool>();
-    this.includeMap = Output.createUnknown<PolicyIncludeMap?>();
-    this.name = Output.createUnknown<String>();
-    this.policyUpdateToken = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.remediationEnabled = Output.createUnknown<bool?>();
-    this.resourceSetIds = Output.createUnknown<List<String>>();
-    this.resourceTagLogicalOperator = Output.createUnknown<String>();
-    this.resourceTags = Output.createUnknown<Map<String, String>?>();
-    this.resourceType = Output.createUnknown<String>();
-    this.resourceTypeLists = Output.createUnknown<List<String>>();
+    this.arn = registerOutput<String>('arn');
+    this.deleteAllPolicyResources =
+        registerOutput<bool?>('deleteAllPolicyResources');
+    this.deleteUnusedFmManagedResources =
+        registerOutput<bool?>('deleteUnusedFmManagedResources');
+    this.description = registerOutput<String?>('description');
+    this.excludeMap = registerOutput<PolicyExcludeMap?>('excludeMap');
+    this.excludeResourceTags = registerOutput<bool>('excludeResourceTags');
+    this.includeMap = registerOutput<PolicyIncludeMap?>('includeMap');
+    this.name = registerOutput<String>('name');
+    this.policyUpdateToken = registerOutput<String>('policyUpdateToken');
+    this.region = registerOutput<String>('region');
+    this.remediationEnabled = registerOutput<bool?>('remediationEnabled');
+    this.resourceSetIds = registerOutput<List<String>>('resourceSetIds');
+    this.resourceTagLogicalOperator =
+        registerOutput<String>('resourceTagLogicalOperator');
+    this.resourceTags = registerOutput<Map<String, String>?>('resourceTags');
+    this.resourceType = registerOutput<String>('resourceType');
+    this.resourceTypeLists = registerOutput<List<String>>('resourceTypeLists');
     this.securityServicePolicyData =
-        Output.createUnknown<PolicySecurityServicePolicyData>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<PolicySecurityServicePolicyData>(
+            'securityServicePolicyData');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

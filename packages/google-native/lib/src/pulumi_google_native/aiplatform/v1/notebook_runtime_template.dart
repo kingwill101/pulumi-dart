@@ -71,28 +71,34 @@ class NotebookRuntimeTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.dataPersistentDiskSpec = Output.createUnknown<
-        GoogleCloudAiplatformV1PersistentDiskSpecResponse>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.eucConfig = Output.createUnknown<
-        GoogleCloudAiplatformV1NotebookEucConfigResponse>();
-    this.idleShutdownConfig = Output.createUnknown<
-        GoogleCloudAiplatformV1NotebookIdleShutdownConfigResponse>();
-    this.isDefault = Output.createUnknown<bool>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.dataPersistentDiskSpec =
+        registerOutput<GoogleCloudAiplatformV1PersistentDiskSpecResponse>(
+            'dataPersistentDiskSpec');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.eucConfig =
+        registerOutput<GoogleCloudAiplatformV1NotebookEucConfigResponse>(
+            'eucConfig');
+    this.idleShutdownConfig = registerOutput<
+            GoogleCloudAiplatformV1NotebookIdleShutdownConfigResponse>(
+        'idleShutdownConfig');
+    this.isDefault = registerOutput<bool>('isDefault');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
     this.machineSpec =
-        Output.createUnknown<GoogleCloudAiplatformV1MachineSpecResponse>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<GoogleCloudAiplatformV1MachineSpecResponse>(
+            'machineSpec');
+    this.name = registerOutput<String>('name');
     this.networkSpec =
-        Output.createUnknown<GoogleCloudAiplatformV1NetworkSpecResponse>();
-    this.notebookRuntimeTemplateId = Output.createUnknown<String?>();
-    this.notebookRuntimeType = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudAiplatformV1NetworkSpecResponse>(
+            'networkSpec');
+    this.notebookRuntimeTemplateId =
+        registerOutput<String?>('notebookRuntimeTemplateId');
+    this.notebookRuntimeType = registerOutput<String>('notebookRuntimeType');
+    this.project = registerOutput<String>('project');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

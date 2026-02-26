@@ -157,15 +157,15 @@ class KeyPair extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.keyName = Output.createUnknown<String>();
-    this.keyNamePrefix = Output.createUnknown<String>();
-    this.keyPairId = Output.createUnknown<String>();
-    this.keyType = Output.createUnknown<String>();
-    this.publicKey = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.keyName = registerOutput<String>('keyName');
+    this.keyNamePrefix = registerOutput<String>('keyNamePrefix');
+    this.keyPairId = registerOutput<String>('keyPairId');
+    this.keyType = registerOutput<String>('keyType');
+    this.publicKey = registerOutput<String>('publicKey');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

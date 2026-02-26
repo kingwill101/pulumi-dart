@@ -34,11 +34,12 @@ class Template extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<TemplateMetadataResponse>();
-    this.project = Output.createUnknown<String>();
-    this.runtimeMetadata = Output.createUnknown<RuntimeMetadataResponse>();
-    this.status = Output.createUnknown<StatusResponse13>();
-    this.templateType = Output.createUnknown<String>();
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<TemplateMetadataResponse>('metadata');
+    this.project = registerOutput<String>('project');
+    this.runtimeMetadata =
+        registerOutput<RuntimeMetadataResponse>('runtimeMetadata');
+    this.status = registerOutput<StatusResponse13>('status');
+    this.templateType = registerOutput<String>('templateType');
   }
 }

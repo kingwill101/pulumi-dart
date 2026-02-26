@@ -163,17 +163,18 @@ class ProxyEndpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.dbProxyEndpointName = Output.createUnknown<String>();
-    this.dbProxyName = Output.createUnknown<String>();
-    this.endpoint = Output.createUnknown<String>();
-    this.isDefault = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetRole = Output.createUnknown<String?>();
-    this.vpcId = Output.createUnknown<String>();
-    this.vpcSecurityGroupIds = Output.createUnknown<List<String>>();
-    this.vpcSubnetIds = Output.createUnknown<List<String>>();
+    this.arn = registerOutput<String>('arn');
+    this.dbProxyEndpointName = registerOutput<String>('dbProxyEndpointName');
+    this.dbProxyName = registerOutput<String>('dbProxyName');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.isDefault = registerOutput<bool>('isDefault');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetRole = registerOutput<String?>('targetRole');
+    this.vpcId = registerOutput<String>('vpcId');
+    this.vpcSecurityGroupIds =
+        registerOutput<List<String>>('vpcSecurityGroupIds');
+    this.vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds');
   }
 }

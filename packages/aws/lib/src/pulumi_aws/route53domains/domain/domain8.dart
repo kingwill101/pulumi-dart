@@ -472,31 +472,33 @@ class Domain8 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.abuseContactEmail = Output.createUnknown<String>();
-    this.abuseContactPhone = Output.createUnknown<String>();
-    this.adminContact = Output.createUnknown<DomainAdminContact>();
-    this.adminPrivacy = Output.createUnknown<bool>();
-    this.autoRenew = Output.createUnknown<bool>();
-    this.billingContacts = Output.createUnknown<List<DomainBillingContact>>();
-    this.billingPrivacy = Output.createUnknown<bool>();
-    this.creationDate = Output.createUnknown<String>();
-    this.domainName = Output.createUnknown<String>();
-    this.durationInYears = Output.createUnknown<int>();
-    this.expirationDate = Output.createUnknown<String>();
-    this.hostedZoneId = Output.createUnknown<String>();
-    this.nameServers = Output.createUnknown<List<DomainNameServer>>();
-    this.registrantContact = Output.createUnknown<DomainRegistrantContact>();
-    this.registrantPrivacy = Output.createUnknown<bool>();
-    this.registrarName = Output.createUnknown<String>();
-    this.registrarUrl = Output.createUnknown<String>();
-    this.statusLists = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.techContact = Output.createUnknown<DomainTechContact>();
-    this.techPrivacy = Output.createUnknown<bool>();
-    this.timeouts = Output.createUnknown<DomainTimeouts2?>();
-    this.transferLock = Output.createUnknown<bool>();
-    this.updatedDate = Output.createUnknown<String>();
-    this.whoisServer = Output.createUnknown<String>();
+    this.abuseContactEmail = registerOutput<String>('abuseContactEmail');
+    this.abuseContactPhone = registerOutput<String>('abuseContactPhone');
+    this.adminContact = registerOutput<DomainAdminContact>('adminContact');
+    this.adminPrivacy = registerOutput<bool>('adminPrivacy');
+    this.autoRenew = registerOutput<bool>('autoRenew');
+    this.billingContacts =
+        registerOutput<List<DomainBillingContact>>('billingContacts');
+    this.billingPrivacy = registerOutput<bool>('billingPrivacy');
+    this.creationDate = registerOutput<String>('creationDate');
+    this.domainName = registerOutput<String>('domainName');
+    this.durationInYears = registerOutput<int>('durationInYears');
+    this.expirationDate = registerOutput<String>('expirationDate');
+    this.hostedZoneId = registerOutput<String>('hostedZoneId');
+    this.nameServers = registerOutput<List<DomainNameServer>>('nameServers');
+    this.registrantContact =
+        registerOutput<DomainRegistrantContact>('registrantContact');
+    this.registrantPrivacy = registerOutput<bool>('registrantPrivacy');
+    this.registrarName = registerOutput<String>('registrarName');
+    this.registrarUrl = registerOutput<String>('registrarUrl');
+    this.statusLists = registerOutput<List<String>>('statusLists');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.techContact = registerOutput<DomainTechContact>('techContact');
+    this.techPrivacy = registerOutput<bool>('techPrivacy');
+    this.timeouts = registerOutput<DomainTimeouts2?>('timeouts');
+    this.transferLock = registerOutput<bool>('transferLock');
+    this.updatedDate = registerOutput<String>('updatedDate');
+    this.whoisServer = registerOutput<String>('whoisServer');
   }
 }

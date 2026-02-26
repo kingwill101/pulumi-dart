@@ -410,16 +410,16 @@ class Note extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.attestationAuthority =
-        Output.createUnknown<NoteAttestationAuthority>();
-    this.createTime = Output.createUnknown<String>();
-    this.expirationTime = Output.createUnknown<String?>();
-    this.kind = Output.createUnknown<String>();
-    this.longDescription = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.relatedNoteNames = Output.createUnknown<List<String>?>();
-    this.relatedUrls = Output.createUnknown<List<NoteRelatedUrl>?>();
-    this.shortDescription = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<NoteAttestationAuthority>('attestationAuthority');
+    this.createTime = registerOutput<String>('createTime');
+    this.expirationTime = registerOutput<String?>('expirationTime');
+    this.kind = registerOutput<String>('kind');
+    this.longDescription = registerOutput<String?>('longDescription');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.relatedNoteNames = registerOutput<List<String>?>('relatedNoteNames');
+    this.relatedUrls = registerOutput<List<NoteRelatedUrl>?>('relatedUrls');
+    this.shortDescription = registerOutput<String?>('shortDescription');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

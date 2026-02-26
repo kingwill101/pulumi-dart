@@ -534,9 +534,9 @@ class V2QueuedResource extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.tpu = Output.createUnknown<V2QueuedResourceTpu?>();
-    this.zone = Output.createUnknown<String>();
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.tpu = registerOutput<V2QueuedResourceTpu?>('tpu');
+    this.zone = registerOutput<String>('zone');
   }
 }

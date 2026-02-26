@@ -33,13 +33,14 @@ class GatewaySecurityPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.gatewaySecurityPolicyId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.tlsInspectionPolicy = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.gatewaySecurityPolicyId =
+        registerOutput<String>('gatewaySecurityPolicyId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.tlsInspectionPolicy = registerOutput<String>('tlsInspectionPolicy');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

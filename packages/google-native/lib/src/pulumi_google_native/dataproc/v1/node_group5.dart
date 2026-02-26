@@ -42,15 +42,16 @@ class NodeGroup5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusterId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.nodeGroupConfig = Output.createUnknown<InstanceGroupConfigResponse>();
-    this.nodeGroupId = Output.createUnknown<String?>();
-    this.parentOperationId = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.regionId = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.roles = Output.createUnknown<List<String>>();
+    this.clusterId = registerOutput<String>('clusterId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.nodeGroupConfig =
+        registerOutput<InstanceGroupConfigResponse>('nodeGroupConfig');
+    this.nodeGroupId = registerOutput<String?>('nodeGroupId');
+    this.parentOperationId = registerOutput<String?>('parentOperationId');
+    this.project = registerOutput<String>('project');
+    this.regionId = registerOutput<String>('regionId');
+    this.requestId = registerOutput<String?>('requestId');
+    this.roles = registerOutput<List<String>>('roles');
   }
 }

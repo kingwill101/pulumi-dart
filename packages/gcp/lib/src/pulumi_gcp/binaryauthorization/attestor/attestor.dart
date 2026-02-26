@@ -681,9 +681,10 @@ class Attestor extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.attestationAuthorityNote =
-        Output.createUnknown<AttestorAttestationAuthorityNote>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<AttestorAttestationAuthorityNote>(
+            'attestationAuthorityNote');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

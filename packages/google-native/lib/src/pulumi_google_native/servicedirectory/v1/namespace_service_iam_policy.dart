@@ -29,12 +29,12 @@ class NamespaceServiceIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bindings = Output.createUnknown<List<BindingResponse96>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.namespaceId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.serviceId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.bindings = registerOutput<List<BindingResponse96>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.namespaceId = registerOutput<String>('namespaceId');
+    this.project = registerOutput<String>('project');
+    this.serviceId = registerOutput<String>('serviceId');
+    this.version = registerOutput<int>('version');
   }
 }

@@ -811,10 +811,10 @@ class ResourcePolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.policyDocument = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.revisionId = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<ResourcePolicyTimeouts?>();
-    this.workspaceId = Output.createUnknown<String>();
+    this.policyDocument = registerOutput<String>('policyDocument');
+    this.region = registerOutput<String>('region');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.timeouts = registerOutput<ResourcePolicyTimeouts?>('timeouts');
+    this.workspaceId = registerOutput<String>('workspaceId');
   }
 }

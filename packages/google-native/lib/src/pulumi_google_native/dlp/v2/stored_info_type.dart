@@ -29,11 +29,13 @@ class StoredInfoType extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.currentVersion =
-        Output.createUnknown<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.pendingVersions = Output.createUnknown<
-        List<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>(
+            'currentVersion');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.pendingVersions =
+        registerOutput<List<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>>(
+            'pendingVersions');
+    this.project = registerOutput<String>('project');
   }
 }

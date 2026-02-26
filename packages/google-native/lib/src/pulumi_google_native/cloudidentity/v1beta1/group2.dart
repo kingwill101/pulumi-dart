@@ -53,18 +53,19 @@ class Group2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.additionalGroupKeys = Output.createUnknown<List<EntityKeyResponse2>>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
+    this.additionalGroupKeys =
+        registerOutput<List<EntityKeyResponse2>>('additionalGroupKeys');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
     this.dynamicGroupMetadata =
-        Output.createUnknown<DynamicGroupMetadataResponse2>();
-    this.groupKey = Output.createUnknown<EntityKeyResponse2>();
-    this.initialGroupConfig = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.posixGroups = Output.createUnknown<List<PosixGroupResponse>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<DynamicGroupMetadataResponse2>('dynamicGroupMetadata');
+    this.groupKey = registerOutput<EntityKeyResponse2>('groupKey');
+    this.initialGroupConfig = registerOutput<String>('initialGroupConfig');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.posixGroups = registerOutput<List<PosixGroupResponse>>('posixGroups');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

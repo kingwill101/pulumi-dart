@@ -63,22 +63,25 @@ class Router extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bgp = Output.createUnknown<RouterBgpResponse>();
-    this.bgpPeers = Output.createUnknown<List<RouterBgpPeerResponse>>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.encryptedInterconnectRouter = Output.createUnknown<bool>();
-    this.interfaces = Output.createUnknown<List<RouterInterfaceResponse>>();
-    this.kind = Output.createUnknown<String>();
+    this.bgp = registerOutput<RouterBgpResponse>('bgp');
+    this.bgpPeers = registerOutput<List<RouterBgpPeerResponse>>('bgpPeers');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.encryptedInterconnectRouter =
+        registerOutput<bool>('encryptedInterconnectRouter');
+    this.interfaces =
+        registerOutput<List<RouterInterfaceResponse>>('interfaces');
+    this.kind = registerOutput<String>('kind');
     this.md5AuthenticationKeys =
-        Output.createUnknown<List<RouterMd5AuthenticationKeyResponse>>();
-    this.name = Output.createUnknown<String>();
-    this.nats = Output.createUnknown<List<RouterNatResponse>>();
-    this.network = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
+        registerOutput<List<RouterMd5AuthenticationKeyResponse>>(
+            'md5AuthenticationKeys');
+    this.name = registerOutput<String>('name');
+    this.nats = registerOutput<List<RouterNatResponse>>('nats');
+    this.network = registerOutput<String>('network');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
   }
 }

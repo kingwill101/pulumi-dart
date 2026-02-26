@@ -147,15 +147,15 @@ class BgpPeer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.addressFamily = Output.createUnknown<String>();
-    this.amazonAddress = Output.createUnknown<String>();
-    this.awsDevice = Output.createUnknown<String>();
-    this.bgpAsn = Output.createUnknown<int>();
-    this.bgpAuthKey = Output.createUnknown<String>();
-    this.bgpPeerId = Output.createUnknown<String>();
-    this.bgpStatus = Output.createUnknown<String>();
-    this.customerAddress = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.virtualInterfaceId = Output.createUnknown<String>();
+    this.addressFamily = registerOutput<String>('addressFamily');
+    this.amazonAddress = registerOutput<String>('amazonAddress');
+    this.awsDevice = registerOutput<String>('awsDevice');
+    this.bgpAsn = registerOutput<int>('bgpAsn');
+    this.bgpAuthKey = registerOutput<String>('bgpAuthKey');
+    this.bgpPeerId = registerOutput<String>('bgpPeerId');
+    this.bgpStatus = registerOutput<String>('bgpStatus');
+    this.customerAddress = registerOutput<String>('customerAddress');
+    this.region = registerOutput<String>('region');
+    this.virtualInterfaceId = registerOutput<String>('virtualInterfaceId');
   }
 }

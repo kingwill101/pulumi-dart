@@ -174,11 +174,11 @@ class SshKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.encoding = Output.createUnknown<String>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.publicKey = Output.createUnknown<String>();
-    this.sshPublicKeyId = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.username = Output.createUnknown<String>();
+    this.encoding = registerOutput<String>('encoding');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.publicKey = registerOutput<String>('publicKey');
+    this.sshPublicKeyId = registerOutput<String>('sshPublicKeyId');
+    this.status = registerOutput<String>('status');
+    this.username = registerOutput<String>('username');
   }
 }

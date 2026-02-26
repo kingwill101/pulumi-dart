@@ -63,23 +63,23 @@ class Instance19 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.creator = Output.createUnknown<String>();
-    this.disableProxyAccess = Output.createUnknown<bool>();
-    this.gceSetup = Output.createUnknown<GceSetupResponse>();
-    this.healthInfo = Output.createUnknown<Map<String, String>>();
-    this.healthState = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.instanceOwners = Output.createUnknown<List<String>>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.proxyUri = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.creator = registerOutput<String>('creator');
+    this.disableProxyAccess = registerOutput<bool>('disableProxyAccess');
+    this.gceSetup = registerOutput<GceSetupResponse>('gceSetup');
+    this.healthInfo = registerOutput<Map<String, String>>('healthInfo');
+    this.healthState = registerOutput<String>('healthState');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.instanceOwners = registerOutput<List<String>>('instanceOwners');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.proxyUri = registerOutput<String>('proxyUri');
+    this.requestId = registerOutput<String?>('requestId');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
     this.upgradeHistory =
-        Output.createUnknown<List<UpgradeHistoryEntryResponse2>>();
+        registerOutput<List<UpgradeHistoryEntryResponse2>>('upgradeHistory');
   }
 }

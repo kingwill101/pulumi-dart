@@ -875,10 +875,10 @@ class TagValueIamMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<TagValueIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.tagValue = Output.createUnknown<String>();
+    this.condition = registerOutput<TagValueIamMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.member = registerOutput<String>('member');
+    this.role = registerOutput<String>('role');
+    this.tagValue = registerOutput<String>('tagValue');
   }
 }

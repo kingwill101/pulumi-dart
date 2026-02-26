@@ -373,10 +373,10 @@ class RegistryScanningConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.registryId = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.registryId = registerOutput<String>('registryId');
     this.rules =
-        Output.createUnknown<List<RegistryScanningConfigurationRule>?>();
-    this.scanType = Output.createUnknown<String>();
+        registerOutput<List<RegistryScanningConfigurationRule>?>('rules');
+    this.scanType = registerOutput<String>('scanType');
   }
 }

@@ -95,34 +95,41 @@ class Conversation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentId = Output.createUnknown<String>();
-    this.callMetadata = Output.createUnknown<
-        GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse>();
-    this.conversationId = Output.createUnknown<String?>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataSource = Output.createUnknown<
-        GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse>();
-    this.dialogflowIntents = Output.createUnknown<Map<String, String>>();
-    this.duration = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.languageCode = Output.createUnknown<String>();
-    this.latestAnalysis = Output.createUnknown<
-        GoogleCloudContactcenterinsightsV1AnalysisResponse>();
-    this.latestSummary = Output.createUnknown<
-        GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse>();
-    this.location = Output.createUnknown<String>();
-    this.medium = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.obfuscatedUserId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.runtimeAnnotations = Output.createUnknown<
-        List<GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse>>();
-    this.startTime = Output.createUnknown<String>();
-    this.transcript = Output.createUnknown<
-        GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse>();
-    this.ttl = Output.createUnknown<String>();
-    this.turnCount = Output.createUnknown<int>();
-    this.updateTime = Output.createUnknown<String>();
+    this.agentId = registerOutput<String>('agentId');
+    this.callMetadata = registerOutput<
+            GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse>(
+        'callMetadata');
+    this.conversationId = registerOutput<String?>('conversationId');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataSource = registerOutput<
+            GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse>(
+        'dataSource');
+    this.dialogflowIntents =
+        registerOutput<Map<String, String>>('dialogflowIntents');
+    this.duration = registerOutput<String>('duration');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.languageCode = registerOutput<String>('languageCode');
+    this.latestAnalysis =
+        registerOutput<GoogleCloudContactcenterinsightsV1AnalysisResponse>(
+            'latestAnalysis');
+    this.latestSummary = registerOutput<
+            GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse>(
+        'latestSummary');
+    this.location = registerOutput<String>('location');
+    this.medium = registerOutput<String>('medium');
+    this.name = registerOutput<String>('name');
+    this.obfuscatedUserId = registerOutput<String>('obfuscatedUserId');
+    this.project = registerOutput<String>('project');
+    this.runtimeAnnotations = registerOutput<
+            List<GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse>>(
+        'runtimeAnnotations');
+    this.startTime = registerOutput<String>('startTime');
+    this.transcript = registerOutput<
+            GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse>(
+        'transcript');
+    this.ttl = registerOutput<String>('ttl');
+    this.turnCount = registerOutput<int>('turnCount');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -121,9 +121,9 @@ class LoggingOptions extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.defaultLogLevel = Output.createUnknown<String>();
-    this.disableAllLogs = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
+    this.defaultLogLevel = registerOutput<String>('defaultLogLevel');
+    this.disableAllLogs = registerOutput<bool?>('disableAllLogs');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
   }
 }

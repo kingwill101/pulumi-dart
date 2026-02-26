@@ -186,23 +186,26 @@ class Smsvoicev2PhoneNumber extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.deletionProtectionEnabled = Output.createUnknown<bool>();
-    this.isoCountryCode = Output.createUnknown<String>();
-    this.messageType = Output.createUnknown<String>();
-    this.monthlyLeasingPrice = Output.createUnknown<String>();
-    this.numberCapabilities = Output.createUnknown<List<String>>();
-    this.numberType = Output.createUnknown<String>();
-    this.optOutListName = Output.createUnknown<String>();
-    this.phoneNumber = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.registrationId = Output.createUnknown<String?>();
-    this.selfManagedOptOutsEnabled = Output.createUnknown<bool>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<Smsvoicev2PhoneNumberTimeouts?>();
-    this.twoWayChannelArn = Output.createUnknown<String?>();
-    this.twoWayChannelEnabled = Output.createUnknown<bool>();
-    this.twoWayChannelRole = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.deletionProtectionEnabled =
+        registerOutput<bool>('deletionProtectionEnabled');
+    this.isoCountryCode = registerOutput<String>('isoCountryCode');
+    this.messageType = registerOutput<String>('messageType');
+    this.monthlyLeasingPrice = registerOutput<String>('monthlyLeasingPrice');
+    this.numberCapabilities =
+        registerOutput<List<String>>('numberCapabilities');
+    this.numberType = registerOutput<String>('numberType');
+    this.optOutListName = registerOutput<String>('optOutListName');
+    this.phoneNumber = registerOutput<String>('phoneNumber');
+    this.region = registerOutput<String>('region');
+    this.registrationId = registerOutput<String?>('registrationId');
+    this.selfManagedOptOutsEnabled =
+        registerOutput<bool>('selfManagedOptOutsEnabled');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<Smsvoicev2PhoneNumberTimeouts?>('timeouts');
+    this.twoWayChannelArn = registerOutput<String?>('twoWayChannelArn');
+    this.twoWayChannelEnabled = registerOutput<bool>('twoWayChannelEnabled');
+    this.twoWayChannelRole = registerOutput<String?>('twoWayChannelRole');
   }
 }

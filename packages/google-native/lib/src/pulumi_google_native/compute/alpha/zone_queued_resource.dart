@@ -53,18 +53,19 @@ class ZoneQueuedResource extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.bulkInsertInstanceResource =
-        Output.createUnknown<BulkInsertInstanceResourceResponse>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.queuingPolicy = Output.createUnknown<QueuingPolicyResponse>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.status = Output.createUnknown<QueuedResourceStatusResponse>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<BulkInsertInstanceResourceResponse>(
+            'bulkInsertInstanceResource');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.queuingPolicy = registerOutput<QueuingPolicyResponse>('queuingPolicy');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    this.state = registerOutput<String>('state');
+    this.status = registerOutput<QueuedResourceStatusResponse>('status');
+    this.zone = registerOutput<String>('zone');
   }
 }

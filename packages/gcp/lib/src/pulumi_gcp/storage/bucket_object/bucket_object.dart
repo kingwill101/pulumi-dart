@@ -502,34 +502,34 @@ class BucketObject extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.cacheControl = Output.createUnknown<String?>();
-    this.content = Output.createUnknown<String>();
-    this.contentDisposition = Output.createUnknown<String?>();
-    this.contentEncoding = Output.createUnknown<String?>();
-    this.contentLanguage = Output.createUnknown<String?>();
-    this.contentType = Output.createUnknown<String>();
-    this.contexts = Output.createUnknown<BucketObjectContexts?>();
-    this.crc32c = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.cacheControl = registerOutput<String?>('cacheControl');
+    this.content = registerOutput<String>('content');
+    this.contentDisposition = registerOutput<String?>('contentDisposition');
+    this.contentEncoding = registerOutput<String?>('contentEncoding');
+    this.contentLanguage = registerOutput<String?>('contentLanguage');
+    this.contentType = registerOutput<String>('contentType');
+    this.contexts = registerOutput<BucketObjectContexts?>('contexts');
+    this.crc32c = registerOutput<String>('crc32c');
     this.customerEncryption =
-        Output.createUnknown<BucketObjectCustomerEncryption?>();
-    this.deletionPolicy = Output.createUnknown<String?>();
-    this.detectMd5hash = Output.createUnknown<String?>();
-    this.eventBasedHold = Output.createUnknown<bool?>();
-    this.forceEmptyContentType = Output.createUnknown<bool?>();
-    this.generation = Output.createUnknown<int>();
-    this.kmsKeyName = Output.createUnknown<String>();
-    this.md5hash = Output.createUnknown<String>();
-    this.md5hexhash = Output.createUnknown<String>();
-    this.mediaLink = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.outputName = Output.createUnknown<String>();
-    this.retention = Output.createUnknown<BucketObjectRetention?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.source = Output.createUnknown<dynamic>();
-    this.sourceMd5hash = Output.createUnknown<String?>();
-    this.storageClass = Output.createUnknown<String>();
-    this.temporaryHold = Output.createUnknown<bool?>();
+        registerOutput<BucketObjectCustomerEncryption?>('customerEncryption');
+    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
+    this.detectMd5hash = registerOutput<String?>('detectMd5hash');
+    this.eventBasedHold = registerOutput<bool?>('eventBasedHold');
+    this.forceEmptyContentType = registerOutput<bool?>('forceEmptyContentType');
+    this.generation = registerOutput<int>('generation');
+    this.kmsKeyName = registerOutput<String>('kmsKeyName');
+    this.md5hash = registerOutput<String>('md5hash');
+    this.md5hexhash = registerOutput<String>('md5hexhash');
+    this.mediaLink = registerOutput<String>('mediaLink');
+    this.metadata = registerOutput<Map<String, String>?>('metadata');
+    this.name = registerOutput<String>('name');
+    this.outputName = registerOutput<String>('outputName');
+    this.retention = registerOutput<BucketObjectRetention?>('retention');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.source = registerOutput<dynamic>('source');
+    this.sourceMd5hash = registerOutput<String?>('sourceMd5hash');
+    this.storageClass = registerOutput<String>('storageClass');
+    this.temporaryHold = registerOutput<bool?>('temporaryHold');
   }
 }

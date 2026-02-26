@@ -815,32 +815,39 @@ class Broker extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applyImmediately = Output.createUnknown<bool?>();
-    this.arn = Output.createUnknown<String>();
-    this.authenticationStrategy = Output.createUnknown<String>();
-    this.autoMinorVersionUpgrade = Output.createUnknown<bool?>();
-    this.brokerName = Output.createUnknown<String>();
-    this.configuration = Output.createUnknown<BrokerConfiguration>();
-    this.dataReplicationMode = Output.createUnknown<String>();
-    this.dataReplicationPrimaryBrokerArn = Output.createUnknown<String?>();
-    this.deploymentMode = Output.createUnknown<String?>();
-    this.encryptionOptions = Output.createUnknown<BrokerEncryptionOptions?>();
-    this.engineType = Output.createUnknown<String>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.hostInstanceType = Output.createUnknown<String>();
-    this.instances = Output.createUnknown<List<BrokerInstance>>();
-    this.ldapServerMetadata = Output.createUnknown<BrokerLdapServerMetadata?>();
-    this.logs = Output.createUnknown<BrokerLogs?>();
+    this.applyImmediately = registerOutput<bool?>('applyImmediately');
+    this.arn = registerOutput<String>('arn');
+    this.authenticationStrategy =
+        registerOutput<String>('authenticationStrategy');
+    this.autoMinorVersionUpgrade =
+        registerOutput<bool?>('autoMinorVersionUpgrade');
+    this.brokerName = registerOutput<String>('brokerName');
+    this.configuration = registerOutput<BrokerConfiguration>('configuration');
+    this.dataReplicationMode = registerOutput<String>('dataReplicationMode');
+    this.dataReplicationPrimaryBrokerArn =
+        registerOutput<String?>('dataReplicationPrimaryBrokerArn');
+    this.deploymentMode = registerOutput<String?>('deploymentMode');
+    this.encryptionOptions =
+        registerOutput<BrokerEncryptionOptions?>('encryptionOptions');
+    this.engineType = registerOutput<String>('engineType');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.hostInstanceType = registerOutput<String>('hostInstanceType');
+    this.instances = registerOutput<List<BrokerInstance>>('instances');
+    this.ldapServerMetadata =
+        registerOutput<BrokerLdapServerMetadata?>('ldapServerMetadata');
+    this.logs = registerOutput<BrokerLogs?>('logs');
     this.maintenanceWindowStartTime =
-        Output.createUnknown<BrokerMaintenanceWindowStartTime>();
-    this.pendingDataReplicationMode = Output.createUnknown<String>();
-    this.publiclyAccessible = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroups = Output.createUnknown<List<String>?>();
-    this.storageType = Output.createUnknown<String>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.users = Output.createUnknown<List<BrokerUser>>();
+        registerOutput<BrokerMaintenanceWindowStartTime>(
+            'maintenanceWindowStartTime');
+    this.pendingDataReplicationMode =
+        registerOutput<String>('pendingDataReplicationMode');
+    this.publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
+    this.region = registerOutput<String>('region');
+    this.securityGroups = registerOutput<List<String>?>('securityGroups');
+    this.storageType = registerOutput<String>('storageType');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.users = registerOutput<List<BrokerUser>>('users');
   }
 }

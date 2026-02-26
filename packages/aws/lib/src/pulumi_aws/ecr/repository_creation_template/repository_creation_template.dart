@@ -519,19 +519,21 @@ class RepositoryCreationTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appliedFors = Output.createUnknown<List<String>>();
-    this.customRoleArn = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.encryptionConfigurations = Output.createUnknown<
-        List<RepositoryCreationTemplateEncryptionConfiguration>?>();
-    this.imageTagMutability = Output.createUnknown<String?>();
-    this.imageTagMutabilityExclusionFilters = Output.createUnknown<
-        List<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>?>();
-    this.lifecyclePolicy = Output.createUnknown<String?>();
-    this.prefix = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.registryId = Output.createUnknown<String>();
-    this.repositoryPolicy = Output.createUnknown<String?>();
-    this.resourceTags = Output.createUnknown<Map<String, String>?>();
+    this.appliedFors = registerOutput<List<String>>('appliedFors');
+    this.customRoleArn = registerOutput<String?>('customRoleArn');
+    this.description = registerOutput<String?>('description');
+    this.encryptionConfigurations = registerOutput<
+            List<RepositoryCreationTemplateEncryptionConfiguration>?>(
+        'encryptionConfigurations');
+    this.imageTagMutability = registerOutput<String?>('imageTagMutability');
+    this.imageTagMutabilityExclusionFilters = registerOutput<
+            List<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>?>(
+        'imageTagMutabilityExclusionFilters');
+    this.lifecyclePolicy = registerOutput<String?>('lifecyclePolicy');
+    this.prefix = registerOutput<String>('prefix');
+    this.region = registerOutput<String>('region');
+    this.registryId = registerOutput<String>('registryId');
+    this.repositoryPolicy = registerOutput<String?>('repositoryPolicy');
+    this.resourceTags = registerOutput<Map<String, String>?>('resourceTags');
   }
 }

@@ -571,29 +571,32 @@ class Rule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowedRunFrequencies = Output.createUnknown<List<String>>();
-    this.author = Output.createUnknown<String>();
+    this.allowedRunFrequencies =
+        registerOutput<List<String>>('allowedRunFrequencies');
+    this.author = registerOutput<String>('author');
     this.compilationDiagnostics =
-        Output.createUnknown<List<RuleCompilationDiagnostic>>();
-    this.compilationState = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataTables = Output.createUnknown<List<String>>();
-    this.deletionPolicy = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.instance = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.nearRealTimeLiveRuleEligible = Output.createUnknown<bool>();
-    this.project = Output.createUnknown<String>();
-    this.referenceLists = Output.createUnknown<List<String>>();
-    this.revisionCreateTime = Output.createUnknown<String>();
-    this.revisionId = Output.createUnknown<String>();
-    this.ruleId = Output.createUnknown<String>();
-    this.scope = Output.createUnknown<String?>();
-    this.severities = Output.createUnknown<List<RuleSeverity>>();
-    this.text = Output.createUnknown<String?>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<List<RuleCompilationDiagnostic>>(
+            'compilationDiagnostics');
+    this.compilationState = registerOutput<String>('compilationState');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataTables = registerOutput<List<String>>('dataTables');
+    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.instance = registerOutput<String>('instance');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<Map<String, String>>('metadata');
+    this.name = registerOutput<String>('name');
+    this.nearRealTimeLiveRuleEligible =
+        registerOutput<bool>('nearRealTimeLiveRuleEligible');
+    this.project = registerOutput<String>('project');
+    this.referenceLists = registerOutput<List<String>>('referenceLists');
+    this.revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.ruleId = registerOutput<String>('ruleId');
+    this.scope = registerOutput<String?>('scope');
+    this.severities = registerOutput<List<RuleSeverity>>('severities');
+    this.text = registerOutput<String?>('text');
+    this.type = registerOutput<String>('type');
   }
 }

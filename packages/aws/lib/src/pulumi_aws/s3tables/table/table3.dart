@@ -594,27 +594,28 @@ class Table3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.createdBy = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.createdBy = registerOutput<String>('createdBy');
     this.encryptionConfiguration =
-        Output.createUnknown<TableEncryptionConfiguration>();
-    this.format = Output.createUnknown<String>();
+        registerOutput<TableEncryptionConfiguration>('encryptionConfiguration');
+    this.format = registerOutput<String>('format');
     this.maintenanceConfiguration =
-        Output.createUnknown<TableMaintenanceConfiguration>();
-    this.metadata = Output.createUnknown<TableMetadata?>();
-    this.metadataLocation = Output.createUnknown<String>();
-    this.modifiedAt = Output.createUnknown<String>();
-    this.modifiedBy = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namespace = Output.createUnknown<String>();
-    this.ownerAccountId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tableBucketArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
-    this.versionToken = Output.createUnknown<String>();
-    this.warehouseLocation = Output.createUnknown<String>();
+        registerOutput<TableMaintenanceConfiguration>(
+            'maintenanceConfiguration');
+    this.metadata = registerOutput<TableMetadata?>('metadata');
+    this.metadataLocation = registerOutput<String>('metadataLocation');
+    this.modifiedAt = registerOutput<String>('modifiedAt');
+    this.modifiedBy = registerOutput<String>('modifiedBy');
+    this.name = registerOutput<String>('name');
+    this.namespace = registerOutput<String>('namespace');
+    this.ownerAccountId = registerOutput<String>('ownerAccountId');
+    this.region = registerOutput<String>('region');
+    this.tableBucketArn = registerOutput<String>('tableBucketArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
+    this.versionToken = registerOutput<String>('versionToken');
+    this.warehouseLocation = registerOutput<String>('warehouseLocation');
   }
 }

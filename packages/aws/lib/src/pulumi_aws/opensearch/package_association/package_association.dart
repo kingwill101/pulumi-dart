@@ -231,9 +231,9 @@ class PackageAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.domainName = Output.createUnknown<String>();
-    this.packageId = Output.createUnknown<String>();
-    this.referencePath = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.domainName = registerOutput<String>('domainName');
+    this.packageId = registerOutput<String>('packageId');
+    this.referencePath = registerOutput<String>('referencePath');
+    this.region = registerOutput<String>('region');
   }
 }

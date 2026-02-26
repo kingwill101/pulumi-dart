@@ -262,9 +262,9 @@ class Client2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.brand = Output.createUnknown<String>();
-    this.clientId = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.secret = Output.createUnknown<String>();
+    this.brand = registerOutput<String>('brand');
+    this.clientId = registerOutput<String>('clientId');
+    this.displayName = registerOutput<String>('displayName');
+    this.secret = registerOutput<String>('secret');
   }
 }

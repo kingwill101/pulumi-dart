@@ -1794,13 +1794,13 @@ class CertificateTemplateIamBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificateTemplate = Output.createUnknown<String>();
+    this.certificateTemplate = registerOutput<String>('certificateTemplate');
     this.condition =
-        Output.createUnknown<CertificateTemplateIamBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+        registerOutput<CertificateTemplateIamBindingCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.members = registerOutput<List<String>>('members');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
   }
 }

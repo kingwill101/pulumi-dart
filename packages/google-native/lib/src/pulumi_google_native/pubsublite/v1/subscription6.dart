@@ -35,13 +35,14 @@ class Subscription6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.deliveryConfig = Output.createUnknown<DeliveryConfigResponse>();
-    this.exportConfig = Output.createUnknown<ExportConfigResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.skipBacklog = Output.createUnknown<bool?>();
-    this.subscriptionId = Output.createUnknown<String>();
-    this.topic = Output.createUnknown<String>();
+    this.deliveryConfig =
+        registerOutput<DeliveryConfigResponse>('deliveryConfig');
+    this.exportConfig = registerOutput<ExportConfigResponse>('exportConfig');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.skipBacklog = registerOutput<bool?>('skipBacklog');
+    this.subscriptionId = registerOutput<String>('subscriptionId');
+    this.topic = registerOutput<String>('topic');
   }
 }

@@ -98,18 +98,18 @@ class Hook extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.events = Output.createUnknown<List<String>>();
-    this.hookId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pushOption = Output.createUnknown<HookPushOption>();
-    this.repositoryId = Output.createUnknown<String>();
-    this.sensitiveQueryString = Output.createUnknown<String?>();
-    this.targetUri = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.events = registerOutput<List<String>>('events');
+    this.hookId = registerOutput<String>('hookId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pushOption = registerOutput<HookPushOption>('pushOption');
+    this.repositoryId = registerOutput<String>('repositoryId');
+    this.sensitiveQueryString = registerOutput<String?>('sensitiveQueryString');
+    this.targetUri = registerOutput<String>('targetUri');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -223,16 +223,18 @@ class StandardsControl extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.controlId = Output.createUnknown<String>();
-    this.controlStatus = Output.createUnknown<String>();
-    this.controlStatusUpdatedAt = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.disabledReason = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.relatedRequirements = Output.createUnknown<List<String>>();
-    this.remediationUrl = Output.createUnknown<String>();
-    this.severityRating = Output.createUnknown<String>();
-    this.standardsControlArn = Output.createUnknown<String>();
-    this.title = Output.createUnknown<String>();
+    this.controlId = registerOutput<String>('controlId');
+    this.controlStatus = registerOutput<String>('controlStatus');
+    this.controlStatusUpdatedAt =
+        registerOutput<String>('controlStatusUpdatedAt');
+    this.description = registerOutput<String>('description');
+    this.disabledReason = registerOutput<String>('disabledReason');
+    this.region = registerOutput<String>('region');
+    this.relatedRequirements =
+        registerOutput<List<String>>('relatedRequirements');
+    this.remediationUrl = registerOutput<String>('remediationUrl');
+    this.severityRating = registerOutput<String>('severityRating');
+    this.standardsControlArn = registerOutput<String>('standardsControlArn');
+    this.title = registerOutput<String>('title');
   }
 }

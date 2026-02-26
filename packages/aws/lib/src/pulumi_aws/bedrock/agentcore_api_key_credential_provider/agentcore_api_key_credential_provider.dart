@@ -253,13 +253,15 @@ class AgentcoreApiKeyCredentialProvider extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiKey = Output.createUnknown<String?>();
-    this.apiKeySecretArns = Output.createUnknown<
-        List<AgentcoreApiKeyCredentialProviderApiKeySecretArn>>();
-    this.apiKeyWo = Output.createUnknown<String?>();
-    this.apiKeyWoVersion = Output.createUnknown<int?>();
-    this.credentialProviderArn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.apiKey = registerOutput<String?>('apiKey');
+    this.apiKeySecretArns =
+        registerOutput<List<AgentcoreApiKeyCredentialProviderApiKeySecretArn>>(
+            'apiKeySecretArns');
+    this.apiKeyWo = registerOutput<String?>('apiKeyWo');
+    this.apiKeyWoVersion = registerOutput<int?>('apiKeyWoVersion');
+    this.credentialProviderArn =
+        registerOutput<String>('credentialProviderArn');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

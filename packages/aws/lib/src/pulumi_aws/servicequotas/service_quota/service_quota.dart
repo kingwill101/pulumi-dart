@@ -160,17 +160,18 @@ class ServiceQuota extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.adjustable = Output.createUnknown<bool>();
-    this.arn = Output.createUnknown<String>();
-    this.defaultValue = Output.createUnknown<double>();
-    this.quotaCode = Output.createUnknown<String>();
-    this.quotaName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String>();
-    this.requestStatus = Output.createUnknown<String>();
-    this.serviceCode = Output.createUnknown<String>();
-    this.serviceName = Output.createUnknown<String>();
-    this.usageMetrics = Output.createUnknown<List<ServiceQuotaUsageMetric>>();
-    this.value = Output.createUnknown<double>();
+    this.adjustable = registerOutput<bool>('adjustable');
+    this.arn = registerOutput<String>('arn');
+    this.defaultValue = registerOutput<double>('defaultValue');
+    this.quotaCode = registerOutput<String>('quotaCode');
+    this.quotaName = registerOutput<String>('quotaName');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String>('requestId');
+    this.requestStatus = registerOutput<String>('requestStatus');
+    this.serviceCode = registerOutput<String>('serviceCode');
+    this.serviceName = registerOutput<String>('serviceName');
+    this.usageMetrics =
+        registerOutput<List<ServiceQuotaUsageMetric>>('usageMetrics');
+    this.value = registerOutput<double>('value');
   }
 }

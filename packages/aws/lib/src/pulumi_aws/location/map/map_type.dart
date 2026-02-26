@@ -160,14 +160,14 @@ class MapType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.configuration = Output.createUnknown<MapConfiguration>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.mapArn = Output.createUnknown<String>();
-    this.mapName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.updateTime = Output.createUnknown<String>();
+    this.configuration = registerOutput<MapConfiguration>('configuration');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.mapArn = registerOutput<String>('mapArn');
+    this.mapName = registerOutput<String>('mapName');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

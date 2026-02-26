@@ -291,35 +291,45 @@ class Endpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificateArn = Output.createUnknown<String>();
-    this.databaseName = Output.createUnknown<String?>();
+    this.certificateArn = registerOutput<String>('certificateArn');
+    this.databaseName = registerOutput<String?>('databaseName');
     this.elasticsearchSettings =
-        Output.createUnknown<EndpointElasticsearchSettings?>();
-    this.endpointArn = Output.createUnknown<String>();
-    this.endpointId = Output.createUnknown<String>();
-    this.endpointType = Output.createUnknown<String>();
-    this.engineName = Output.createUnknown<String>();
-    this.extraConnectionAttributes = Output.createUnknown<String>();
-    this.kafkaSettings = Output.createUnknown<EndpointKafkaSettings?>();
-    this.kinesisSettings = Output.createUnknown<EndpointKinesisSettings?>();
-    this.kmsKeyArn = Output.createUnknown<String>();
-    this.mongodbSettings = Output.createUnknown<EndpointMongodbSettings?>();
-    this.mysqlSettings = Output.createUnknown<EndpointMysqlSettings?>();
-    this.oracleSettings = Output.createUnknown<EndpointOracleSettings?>();
-    this.password = Output.createUnknown<String?>();
-    this.pauseReplicationTasks = Output.createUnknown<bool?>();
-    this.port = Output.createUnknown<int?>();
-    this.postgresSettings = Output.createUnknown<EndpointPostgresSettings?>();
-    this.redisSettings = Output.createUnknown<EndpointRedisSettings?>();
-    this.redshiftSettings = Output.createUnknown<EndpointRedshiftSettings>();
-    this.region = Output.createUnknown<String>();
-    this.secretsManagerAccessRoleArn = Output.createUnknown<String?>();
-    this.secretsManagerArn = Output.createUnknown<String?>();
-    this.serverName = Output.createUnknown<String?>();
-    this.serviceAccessRole = Output.createUnknown<String?>();
-    this.sslMode = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.username = Output.createUnknown<String?>();
+        registerOutput<EndpointElasticsearchSettings?>('elasticsearchSettings');
+    this.endpointArn = registerOutput<String>('endpointArn');
+    this.endpointId = registerOutput<String>('endpointId');
+    this.endpointType = registerOutput<String>('endpointType');
+    this.engineName = registerOutput<String>('engineName');
+    this.extraConnectionAttributes =
+        registerOutput<String>('extraConnectionAttributes');
+    this.kafkaSettings =
+        registerOutput<EndpointKafkaSettings?>('kafkaSettings');
+    this.kinesisSettings =
+        registerOutput<EndpointKinesisSettings?>('kinesisSettings');
+    this.kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    this.mongodbSettings =
+        registerOutput<EndpointMongodbSettings?>('mongodbSettings');
+    this.mysqlSettings =
+        registerOutput<EndpointMysqlSettings?>('mysqlSettings');
+    this.oracleSettings =
+        registerOutput<EndpointOracleSettings?>('oracleSettings');
+    this.password = registerOutput<String?>('password');
+    this.pauseReplicationTasks = registerOutput<bool?>('pauseReplicationTasks');
+    this.port = registerOutput<int?>('port');
+    this.postgresSettings =
+        registerOutput<EndpointPostgresSettings?>('postgresSettings');
+    this.redisSettings =
+        registerOutput<EndpointRedisSettings?>('redisSettings');
+    this.redshiftSettings =
+        registerOutput<EndpointRedshiftSettings>('redshiftSettings');
+    this.region = registerOutput<String>('region');
+    this.secretsManagerAccessRoleArn =
+        registerOutput<String?>('secretsManagerAccessRoleArn');
+    this.secretsManagerArn = registerOutput<String?>('secretsManagerArn');
+    this.serverName = registerOutput<String?>('serverName');
+    this.serviceAccessRole = registerOutput<String?>('serviceAccessRole');
+    this.sslMode = registerOutput<String>('sslMode');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.username = registerOutput<String?>('username');
   }
 }

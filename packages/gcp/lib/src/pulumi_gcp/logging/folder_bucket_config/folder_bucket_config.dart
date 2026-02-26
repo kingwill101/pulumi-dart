@@ -229,15 +229,16 @@ class FolderBucketConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucketId = Output.createUnknown<String>();
-    this.cmekSettings = Output.createUnknown<FolderBucketConfigCmekSettings?>();
-    this.description = Output.createUnknown<String>();
-    this.folder = Output.createUnknown<String>();
+    this.bucketId = registerOutput<String>('bucketId');
+    this.cmekSettings =
+        registerOutput<FolderBucketConfigCmekSettings?>('cmekSettings');
+    this.description = registerOutput<String>('description');
+    this.folder = registerOutput<String>('folder');
     this.indexConfigs =
-        Output.createUnknown<List<FolderBucketConfigIndexConfig>>();
-    this.lifecycleState = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.retentionDays = Output.createUnknown<int?>();
+        registerOutput<List<FolderBucketConfigIndexConfig>>('indexConfigs');
+    this.lifecycleState = registerOutput<String>('lifecycleState');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.retentionDays = registerOutput<int?>('retentionDays');
   }
 }

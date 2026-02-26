@@ -1920,10 +1920,11 @@ class WebRegionForwardingRuleServiceIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.forwardingRuleRegionServiceName = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.forwardingRuleRegionServiceName =
+        registerOutput<String>('forwardingRuleRegionServiceName');
+    this.policyData = registerOutput<String>('policyData');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
   }
 }

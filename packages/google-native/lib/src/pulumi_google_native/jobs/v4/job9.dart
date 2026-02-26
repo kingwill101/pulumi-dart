@@ -109,37 +109,41 @@ class Job9 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.addresses = Output.createUnknown<List<String>>();
-    this.applicationInfo = Output.createUnknown<ApplicationInfoResponse2>();
-    this.company = Output.createUnknown<String>();
-    this.companyDisplayName = Output.createUnknown<String>();
-    this.compensationInfo = Output.createUnknown<CompensationInfoResponse2>();
-    this.customAttributes = Output.createUnknown<Map<String, String>>();
-    this.degreeTypes = Output.createUnknown<List<String>>();
-    this.department = Output.createUnknown<String>();
-    this.derivedInfo = Output.createUnknown<JobDerivedInfoResponse2>();
-    this.description = Output.createUnknown<String>();
-    this.employmentTypes = Output.createUnknown<List<String>>();
-    this.incentives = Output.createUnknown<String>();
-    this.jobBenefits = Output.createUnknown<List<String>>();
-    this.jobEndTime = Output.createUnknown<String>();
-    this.jobLevel = Output.createUnknown<String>();
-    this.jobStartTime = Output.createUnknown<String>();
-    this.languageCode = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.postingCreateTime = Output.createUnknown<String>();
-    this.postingExpireTime = Output.createUnknown<String>();
-    this.postingPublishTime = Output.createUnknown<String>();
-    this.postingRegion = Output.createUnknown<String>();
-    this.postingUpdateTime = Output.createUnknown<String>();
-    this.processingOptions = Output.createUnknown<ProcessingOptionsResponse2>();
-    this.project = Output.createUnknown<String>();
-    this.promotionValue = Output.createUnknown<int>();
-    this.qualifications = Output.createUnknown<String>();
-    this.requisitionId = Output.createUnknown<String>();
-    this.responsibilities = Output.createUnknown<String>();
-    this.tenantId = Output.createUnknown<String>();
-    this.title = Output.createUnknown<String>();
-    this.visibility = Output.createUnknown<String>();
+    this.addresses = registerOutput<List<String>>('addresses');
+    this.applicationInfo =
+        registerOutput<ApplicationInfoResponse2>('applicationInfo');
+    this.company = registerOutput<String>('company');
+    this.companyDisplayName = registerOutput<String>('companyDisplayName');
+    this.compensationInfo =
+        registerOutput<CompensationInfoResponse2>('compensationInfo');
+    this.customAttributes =
+        registerOutput<Map<String, String>>('customAttributes');
+    this.degreeTypes = registerOutput<List<String>>('degreeTypes');
+    this.department = registerOutput<String>('department');
+    this.derivedInfo = registerOutput<JobDerivedInfoResponse2>('derivedInfo');
+    this.description = registerOutput<String>('description');
+    this.employmentTypes = registerOutput<List<String>>('employmentTypes');
+    this.incentives = registerOutput<String>('incentives');
+    this.jobBenefits = registerOutput<List<String>>('jobBenefits');
+    this.jobEndTime = registerOutput<String>('jobEndTime');
+    this.jobLevel = registerOutput<String>('jobLevel');
+    this.jobStartTime = registerOutput<String>('jobStartTime');
+    this.languageCode = registerOutput<String>('languageCode');
+    this.name = registerOutput<String>('name');
+    this.postingCreateTime = registerOutput<String>('postingCreateTime');
+    this.postingExpireTime = registerOutput<String>('postingExpireTime');
+    this.postingPublishTime = registerOutput<String>('postingPublishTime');
+    this.postingRegion = registerOutput<String>('postingRegion');
+    this.postingUpdateTime = registerOutput<String>('postingUpdateTime');
+    this.processingOptions =
+        registerOutput<ProcessingOptionsResponse2>('processingOptions');
+    this.project = registerOutput<String>('project');
+    this.promotionValue = registerOutput<int>('promotionValue');
+    this.qualifications = registerOutput<String>('qualifications');
+    this.requisitionId = registerOutput<String>('requisitionId');
+    this.responsibilities = registerOutput<String>('responsibilities');
+    this.tenantId = registerOutput<String>('tenantId');
+    this.title = registerOutput<String>('title');
+    this.visibility = registerOutput<String>('visibility');
   }
 }

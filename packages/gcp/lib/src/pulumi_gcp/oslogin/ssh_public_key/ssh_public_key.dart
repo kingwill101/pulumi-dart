@@ -193,10 +193,10 @@ class SshPublicKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.expirationTimeUsec = Output.createUnknown<String?>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.key = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String?>();
-    this.user = Output.createUnknown<String>();
+    this.expirationTimeUsec = registerOutput<String?>('expirationTimeUsec');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.key = registerOutput<String>('key');
+    this.project = registerOutput<String?>('project');
+    this.user = registerOutput<String>('user');
   }
 }

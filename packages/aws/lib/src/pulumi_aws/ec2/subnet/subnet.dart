@@ -780,32 +780,39 @@ class Subnet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.assignIpv6AddressOnCreation = Output.createUnknown<bool?>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.availabilityZoneId = Output.createUnknown<String>();
-    this.cidrBlock = Output.createUnknown<String>();
-    this.customerOwnedIpv4Pool = Output.createUnknown<String?>();
-    this.enableDns64 = Output.createUnknown<bool?>();
-    this.enableLniAtDeviceIndex = Output.createUnknown<int?>();
-    this.enableResourceNameDnsARecordOnLaunch = Output.createUnknown<bool?>();
+    this.arn = registerOutput<String>('arn');
+    this.assignIpv6AddressOnCreation =
+        registerOutput<bool?>('assignIpv6AddressOnCreation');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.availabilityZoneId = registerOutput<String>('availabilityZoneId');
+    this.cidrBlock = registerOutput<String>('cidrBlock');
+    this.customerOwnedIpv4Pool =
+        registerOutput<String?>('customerOwnedIpv4Pool');
+    this.enableDns64 = registerOutput<bool?>('enableDns64');
+    this.enableLniAtDeviceIndex =
+        registerOutput<int?>('enableLniAtDeviceIndex');
+    this.enableResourceNameDnsARecordOnLaunch =
+        registerOutput<bool?>('enableResourceNameDnsARecordOnLaunch');
     this.enableResourceNameDnsAaaaRecordOnLaunch =
-        Output.createUnknown<bool?>();
-    this.ipv4IpamPoolId = Output.createUnknown<String?>();
-    this.ipv4NetmaskLength = Output.createUnknown<int?>();
-    this.ipv6CidrBlock = Output.createUnknown<String>();
-    this.ipv6CidrBlockAssociationId = Output.createUnknown<String>();
-    this.ipv6IpamPoolId = Output.createUnknown<String?>();
-    this.ipv6Native = Output.createUnknown<bool?>();
-    this.ipv6NetmaskLength = Output.createUnknown<int?>();
-    this.mapCustomerOwnedIpOnLaunch = Output.createUnknown<bool?>();
-    this.mapPublicIpOnLaunch = Output.createUnknown<bool?>();
-    this.outpostArn = Output.createUnknown<String?>();
-    this.ownerId = Output.createUnknown<String>();
-    this.privateDnsHostnameTypeOnLaunch = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcId = Output.createUnknown<String>();
+        registerOutput<bool?>('enableResourceNameDnsAaaaRecordOnLaunch');
+    this.ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
+    this.ipv4NetmaskLength = registerOutput<int?>('ipv4NetmaskLength');
+    this.ipv6CidrBlock = registerOutput<String>('ipv6CidrBlock');
+    this.ipv6CidrBlockAssociationId =
+        registerOutput<String>('ipv6CidrBlockAssociationId');
+    this.ipv6IpamPoolId = registerOutput<String?>('ipv6IpamPoolId');
+    this.ipv6Native = registerOutput<bool?>('ipv6Native');
+    this.ipv6NetmaskLength = registerOutput<int?>('ipv6NetmaskLength');
+    this.mapCustomerOwnedIpOnLaunch =
+        registerOutput<bool?>('mapCustomerOwnedIpOnLaunch');
+    this.mapPublicIpOnLaunch = registerOutput<bool?>('mapPublicIpOnLaunch');
+    this.outpostArn = registerOutput<String?>('outpostArn');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.privateDnsHostnameTypeOnLaunch =
+        registerOutput<String>('privateDnsHostnameTypeOnLaunch');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

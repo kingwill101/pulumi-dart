@@ -928,10 +928,10 @@ class CryptoKeyIAMBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<CryptoKeyIAMBindingCondition?>();
-    this.cryptoKeyId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.role = Output.createUnknown<String>();
+    this.condition = registerOutput<CryptoKeyIAMBindingCondition?>('condition');
+    this.cryptoKeyId = registerOutput<String>('cryptoKeyId');
+    this.etag = registerOutput<String>('etag');
+    this.members = registerOutput<List<String>>('members');
+    this.role = registerOutput<String>('role');
   }
 }

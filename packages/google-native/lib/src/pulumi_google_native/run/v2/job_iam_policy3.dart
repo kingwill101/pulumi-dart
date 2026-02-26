@@ -33,12 +33,13 @@ class JobIamPolicy3 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.auditConfigs =
-        Output.createUnknown<List<GoogleIamV1AuditConfigResponse12>>();
-    this.bindings = Output.createUnknown<List<GoogleIamV1BindingResponse14>>();
-    this.etag = Output.createUnknown<String>();
-    this.jobId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+        registerOutput<List<GoogleIamV1AuditConfigResponse12>>('auditConfigs');
+    this.bindings =
+        registerOutput<List<GoogleIamV1BindingResponse14>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.jobId = registerOutput<String>('jobId');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

@@ -742,19 +742,20 @@ class AgentFlow extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.customerEncryptionKeyArn = Output.createUnknown<String?>();
-    this.definition = Output.createUnknown<AgentFlowDefinition?>();
-    this.description = Output.createUnknown<String?>();
-    this.executionRoleArn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<AgentFlowTimeouts?>();
-    this.updatedAt = Output.createUnknown<String>();
-    this.version = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.customerEncryptionKeyArn =
+        registerOutput<String?>('customerEncryptionKeyArn');
+    this.definition = registerOutput<AgentFlowDefinition?>('definition');
+    this.description = registerOutput<String?>('description');
+    this.executionRoleArn = registerOutput<String>('executionRoleArn');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<AgentFlowTimeouts?>('timeouts');
+    this.updatedAt = registerOutput<String>('updatedAt');
+    this.version = registerOutput<String>('version');
   }
 }

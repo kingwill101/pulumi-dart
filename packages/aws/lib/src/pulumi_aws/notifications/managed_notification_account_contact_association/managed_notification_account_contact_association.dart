@@ -125,7 +125,8 @@ class ManagedNotificationAccountContactAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.contactIdentifier = Output.createUnknown<String>();
-    this.managedNotificationConfigurationArn = Output.createUnknown<String>();
+    this.contactIdentifier = registerOutput<String>('contactIdentifier');
+    this.managedNotificationConfigurationArn =
+        registerOutput<String>('managedNotificationConfigurationArn');
   }
 }

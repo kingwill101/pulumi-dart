@@ -435,12 +435,13 @@ class MaintenanceWindowTarget extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.ownerInformation = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String>();
-    this.targets = Output.createUnknown<List<MaintenanceWindowTargetTarget>>();
-    this.windowId = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.ownerInformation = registerOutput<String?>('ownerInformation');
+    this.region = registerOutput<String>('region');
+    this.resourceType = registerOutput<String>('resourceType');
+    this.targets =
+        registerOutput<List<MaintenanceWindowTargetTarget>>('targets');
+    this.windowId = registerOutput<String>('windowId');
   }
 }

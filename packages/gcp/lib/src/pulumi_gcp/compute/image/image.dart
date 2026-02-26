@@ -837,33 +837,40 @@ class Image extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.archiveSizeBytes = Output.createUnknown<int>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.diskSizeGb = Output.createUnknown<int>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.family = Output.createUnknown<String?>();
-    this.guestOsFeatures = Output.createUnknown<List<ImageGuestOsFeature>>();
-    this.imageEncryptionKey = Output.createUnknown<ImageImageEncryptionKey?>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.licenses = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.rawDisk = Output.createUnknown<ImageRawDisk?>();
-    this.selfLink = Output.createUnknown<String>();
+    this.archiveSizeBytes = registerOutput<int>('archiveSizeBytes');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.diskSizeGb = registerOutput<int>('diskSizeGb');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.family = registerOutput<String?>('family');
+    this.guestOsFeatures =
+        registerOutput<List<ImageGuestOsFeature>>('guestOsFeatures');
+    this.imageEncryptionKey =
+        registerOutput<ImageImageEncryptionKey?>('imageEncryptionKey');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.licenses = registerOutput<List<String>>('licenses');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.rawDisk = registerOutput<ImageRawDisk?>('rawDisk');
+    this.selfLink = registerOutput<String>('selfLink');
     this.shieldedInstanceInitialState =
-        Output.createUnknown<ImageShieldedInstanceInitialState>();
-    this.sourceDisk = Output.createUnknown<String?>();
+        registerOutput<ImageShieldedInstanceInitialState>(
+            'shieldedInstanceInitialState');
+    this.sourceDisk = registerOutput<String?>('sourceDisk');
     this.sourceDiskEncryptionKey =
-        Output.createUnknown<ImageSourceDiskEncryptionKey?>();
-    this.sourceImage = Output.createUnknown<String?>();
+        registerOutput<ImageSourceDiskEncryptionKey?>(
+            'sourceDiskEncryptionKey');
+    this.sourceImage = registerOutput<String?>('sourceImage');
     this.sourceImageEncryptionKey =
-        Output.createUnknown<ImageSourceImageEncryptionKey?>();
-    this.sourceSnapshot = Output.createUnknown<String?>();
+        registerOutput<ImageSourceImageEncryptionKey?>(
+            'sourceImageEncryptionKey');
+    this.sourceSnapshot = registerOutput<String?>('sourceSnapshot');
     this.sourceSnapshotEncryptionKey =
-        Output.createUnknown<ImageSourceSnapshotEncryptionKey?>();
-    this.storageLocations = Output.createUnknown<List<String>>();
+        registerOutput<ImageSourceSnapshotEncryptionKey?>(
+            'sourceSnapshotEncryptionKey');
+    this.storageLocations = registerOutput<List<String>>('storageLocations');
   }
 }

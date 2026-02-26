@@ -33,12 +33,14 @@ class ClientConnectorServiceIamPolicy2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.auditConfigs =
-        Output.createUnknown<List<GoogleIamV1AuditConfigResponse3>>();
-    this.bindings = Output.createUnknown<List<GoogleIamV1BindingResponse5>>();
-    this.clientConnectorServiceId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+        registerOutput<List<GoogleIamV1AuditConfigResponse3>>('auditConfigs');
+    this.bindings =
+        registerOutput<List<GoogleIamV1BindingResponse5>>('bindings');
+    this.clientConnectorServiceId =
+        registerOutput<String>('clientConnectorServiceId');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

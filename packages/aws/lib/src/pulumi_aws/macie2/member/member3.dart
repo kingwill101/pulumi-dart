@@ -209,20 +209,22 @@ class Member3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.administratorAccountId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.email = Output.createUnknown<String>();
-    this.invitationDisableEmailNotification = Output.createUnknown<bool?>();
-    this.invitationMessage = Output.createUnknown<String?>();
-    this.invite = Output.createUnknown<bool>();
-    this.invitedAt = Output.createUnknown<String>();
-    this.masterAccountId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.relationshipStatus = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.updatedAt = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.administratorAccountId =
+        registerOutput<String>('administratorAccountId');
+    this.arn = registerOutput<String>('arn');
+    this.email = registerOutput<String>('email');
+    this.invitationDisableEmailNotification =
+        registerOutput<bool?>('invitationDisableEmailNotification');
+    this.invitationMessage = registerOutput<String?>('invitationMessage');
+    this.invite = registerOutput<bool>('invite');
+    this.invitedAt = registerOutput<String>('invitedAt');
+    this.masterAccountId = registerOutput<String>('masterAccountId');
+    this.region = registerOutput<String>('region');
+    this.relationshipStatus = registerOutput<String>('relationshipStatus');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.updatedAt = registerOutput<String>('updatedAt');
   }
 }

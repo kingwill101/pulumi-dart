@@ -584,17 +584,18 @@ class RecommendationEngine extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.commonConfig =
-        Output.createUnknown<RecommendationEngineCommonConfig?>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataStoreIds = Output.createUnknown<List<String>>();
-    this.displayName = Output.createUnknown<String>();
-    this.engineId = Output.createUnknown<String>();
-    this.industryVertical = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.mediaRecommendationEngineConfig = Output.createUnknown<
-        RecommendationEngineMediaRecommendationEngineConfig?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<RecommendationEngineCommonConfig?>('commonConfig');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataStoreIds = registerOutput<List<String>>('dataStoreIds');
+    this.displayName = registerOutput<String>('displayName');
+    this.engineId = registerOutput<String>('engineId');
+    this.industryVertical = registerOutput<String?>('industryVertical');
+    this.location = registerOutput<String>('location');
+    this.mediaRecommendationEngineConfig =
+        registerOutput<RecommendationEngineMediaRecommendationEngineConfig?>(
+            'mediaRecommendationEngineConfig');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

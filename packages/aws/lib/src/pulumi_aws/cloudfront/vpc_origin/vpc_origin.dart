@@ -203,12 +203,13 @@ class VpcOrigin extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<VpcOriginTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.etag = registerOutput<String>('etag');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<VpcOriginTimeouts?>('timeouts');
     this.vpcOriginEndpointConfig =
-        Output.createUnknown<VpcOriginVpcOriginEndpointConfig>();
+        registerOutput<VpcOriginVpcOriginEndpointConfig>(
+            'vpcOriginEndpointConfig');
   }
 }

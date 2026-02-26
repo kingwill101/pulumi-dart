@@ -151,16 +151,17 @@ class Snapshot4 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.accountsWithProvisionedRestoreAccesses =
-        Output.createUnknown<List<String>>();
-    this.accountsWithRestoreAccesses = Output.createUnknown<List<String>>();
-    this.adminUsername = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.namespaceArn = Output.createUnknown<String>();
-    this.namespaceName = Output.createUnknown<String>();
-    this.ownerAccount = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.retentionPeriod = Output.createUnknown<int?>();
-    this.snapshotName = Output.createUnknown<String>();
+        registerOutput<List<String>>('accountsWithProvisionedRestoreAccesses');
+    this.accountsWithRestoreAccesses =
+        registerOutput<List<String>>('accountsWithRestoreAccesses');
+    this.adminUsername = registerOutput<String>('adminUsername');
+    this.arn = registerOutput<String>('arn');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.namespaceArn = registerOutput<String>('namespaceArn');
+    this.namespaceName = registerOutput<String>('namespaceName');
+    this.ownerAccount = registerOutput<String>('ownerAccount');
+    this.region = registerOutput<String>('region');
+    this.retentionPeriod = registerOutput<int?>('retentionPeriod');
+    this.snapshotName = registerOutput<String>('snapshotName');
   }
 }

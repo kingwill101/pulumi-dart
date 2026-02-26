@@ -617,9 +617,10 @@ class ReplicationConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.registryId = Output.createUnknown<String>();
-    this.replicationConfiguration = Output.createUnknown<
-        ReplicationConfigurationReplicationConfiguration?>();
+    this.region = registerOutput<String>('region');
+    this.registryId = registerOutput<String>('registryId');
+    this.replicationConfiguration =
+        registerOutput<ReplicationConfigurationReplicationConfiguration?>(
+            'replicationConfiguration');
   }
 }

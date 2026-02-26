@@ -237,30 +237,34 @@ class Fleet4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.buildArn = Output.createUnknown<String>();
-    this.buildId = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.buildArn = registerOutput<String>('buildArn');
+    this.buildId = registerOutput<String?>('buildId');
     this.certificateConfiguration =
-        Output.createUnknown<FleetCertificateConfiguration>();
-    this.description = Output.createUnknown<String?>();
+        registerOutput<FleetCertificateConfiguration>(
+            'certificateConfiguration');
+    this.description = registerOutput<String?>('description');
     this.ec2InboundPermissions =
-        Output.createUnknown<List<FleetEc2InboundPermission>>();
-    this.ec2InstanceType = Output.createUnknown<String>();
-    this.fleetType = Output.createUnknown<String?>();
-    this.instanceRoleArn = Output.createUnknown<String?>();
-    this.logPaths = Output.createUnknown<List<String>>();
-    this.metricGroups = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.newGameSessionProtectionPolicy = Output.createUnknown<String?>();
-    this.operatingSystem = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<FleetEc2InboundPermission>>(
+            'ec2InboundPermissions');
+    this.ec2InstanceType = registerOutput<String>('ec2InstanceType');
+    this.fleetType = registerOutput<String?>('fleetType');
+    this.instanceRoleArn = registerOutput<String?>('instanceRoleArn');
+    this.logPaths = registerOutput<List<String>>('logPaths');
+    this.metricGroups = registerOutput<List<String>>('metricGroups');
+    this.name = registerOutput<String>('name');
+    this.newGameSessionProtectionPolicy =
+        registerOutput<String?>('newGameSessionProtectionPolicy');
+    this.operatingSystem = registerOutput<String>('operatingSystem');
+    this.region = registerOutput<String>('region');
     this.resourceCreationLimitPolicy =
-        Output.createUnknown<FleetResourceCreationLimitPolicy?>();
+        registerOutput<FleetResourceCreationLimitPolicy?>(
+            'resourceCreationLimitPolicy');
     this.runtimeConfiguration =
-        Output.createUnknown<FleetRuntimeConfiguration?>();
-    this.scriptArn = Output.createUnknown<String>();
-    this.scriptId = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<FleetRuntimeConfiguration?>('runtimeConfiguration');
+    this.scriptArn = registerOutput<String>('scriptArn');
+    this.scriptId = registerOutput<String?>('scriptId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

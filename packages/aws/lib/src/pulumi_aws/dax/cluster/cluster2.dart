@@ -216,27 +216,29 @@ class Cluster2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZones = Output.createUnknown<List<String>?>();
-    this.clusterAddress = Output.createUnknown<String>();
-    this.clusterEndpointEncryptionType = Output.createUnknown<String?>();
-    this.clusterName = Output.createUnknown<String>();
-    this.configurationEndpoint = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.iamRoleArn = Output.createUnknown<String>();
-    this.maintenanceWindow = Output.createUnknown<String>();
-    this.nodeType = Output.createUnknown<String>();
-    this.nodes = Output.createUnknown<List<ClusterNode>>();
-    this.notificationTopicArn = Output.createUnknown<String?>();
-    this.parameterGroupName = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.replicationFactor = Output.createUnknown<int>();
-    this.securityGroupIds = Output.createUnknown<List<String>>();
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZones = registerOutput<List<String>?>('availabilityZones');
+    this.clusterAddress = registerOutput<String>('clusterAddress');
+    this.clusterEndpointEncryptionType =
+        registerOutput<String?>('clusterEndpointEncryptionType');
+    this.clusterName = registerOutput<String>('clusterName');
+    this.configurationEndpoint =
+        registerOutput<String>('configurationEndpoint');
+    this.description = registerOutput<String?>('description');
+    this.iamRoleArn = registerOutput<String>('iamRoleArn');
+    this.maintenanceWindow = registerOutput<String>('maintenanceWindow');
+    this.nodeType = registerOutput<String>('nodeType');
+    this.nodes = registerOutput<List<ClusterNode>>('nodes');
+    this.notificationTopicArn = registerOutput<String?>('notificationTopicArn');
+    this.parameterGroupName = registerOutput<String>('parameterGroupName');
+    this.port = registerOutput<int>('port');
+    this.region = registerOutput<String>('region');
+    this.replicationFactor = registerOutput<int>('replicationFactor');
+    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
     this.serverSideEncryption =
-        Output.createUnknown<ClusterServerSideEncryption?>();
-    this.subnetGroupName = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<ClusterServerSideEncryption?>('serverSideEncryption');
+    this.subnetGroupName = registerOutput<String>('subnetGroupName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

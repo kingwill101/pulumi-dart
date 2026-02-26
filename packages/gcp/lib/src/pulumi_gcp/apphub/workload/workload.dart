@@ -93,22 +93,22 @@ class Workload extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationId = Output.createUnknown<String>();
-    this.attributes = Output.createUnknown<WorkloadAttributes?>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.discoveredWorkload = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.workloadId = Output.createUnknown<String>();
+    this.applicationId = registerOutput<String>('applicationId');
+    this.attributes = registerOutput<WorkloadAttributes?>('attributes');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.discoveredWorkload = registerOutput<String>('discoveredWorkload');
+    this.displayName = registerOutput<String?>('displayName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.workloadId = registerOutput<String>('workloadId');
     this.workloadProperties =
-        Output.createUnknown<List<WorkloadWorkloadProperty>>();
+        registerOutput<List<WorkloadWorkloadProperty>>('workloadProperties');
     this.workloadReferences =
-        Output.createUnknown<List<WorkloadWorkloadReference>>();
+        registerOutput<List<WorkloadWorkloadReference>>('workloadReferences');
   }
 }

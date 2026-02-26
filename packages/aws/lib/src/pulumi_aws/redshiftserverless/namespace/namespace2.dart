@@ -168,23 +168,26 @@ class Namespace2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.adminPasswordSecretArn = Output.createUnknown<String>();
-    this.adminPasswordSecretKmsKeyId = Output.createUnknown<String>();
-    this.adminUserPassword = Output.createUnknown<String?>();
-    this.adminUserPasswordWo = Output.createUnknown<String?>();
-    this.adminUserPasswordWoVersion = Output.createUnknown<int?>();
-    this.adminUsername = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.dbName = Output.createUnknown<String>();
-    this.defaultIamRoleArn = Output.createUnknown<String?>();
-    this.iamRoles = Output.createUnknown<List<String>>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.logExports = Output.createUnknown<List<String>?>();
-    this.manageAdminPassword = Output.createUnknown<bool?>();
-    this.namespaceId = Output.createUnknown<String>();
-    this.namespaceName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.adminPasswordSecretArn =
+        registerOutput<String>('adminPasswordSecretArn');
+    this.adminPasswordSecretKmsKeyId =
+        registerOutput<String>('adminPasswordSecretKmsKeyId');
+    this.adminUserPassword = registerOutput<String?>('adminUserPassword');
+    this.adminUserPasswordWo = registerOutput<String?>('adminUserPasswordWo');
+    this.adminUserPasswordWoVersion =
+        registerOutput<int?>('adminUserPasswordWoVersion');
+    this.adminUsername = registerOutput<String>('adminUsername');
+    this.arn = registerOutput<String>('arn');
+    this.dbName = registerOutput<String>('dbName');
+    this.defaultIamRoleArn = registerOutput<String?>('defaultIamRoleArn');
+    this.iamRoles = registerOutput<List<String>>('iamRoles');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.logExports = registerOutput<List<String>?>('logExports');
+    this.manageAdminPassword = registerOutput<bool?>('manageAdminPassword');
+    this.namespaceId = registerOutput<String>('namespaceId');
+    this.namespaceName = registerOutput<String>('namespaceName');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

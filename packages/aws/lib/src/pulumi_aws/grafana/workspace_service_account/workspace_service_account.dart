@@ -143,10 +143,10 @@ class WorkspaceServiceAccount extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.grafanaRole = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.serviceAccountId = Output.createUnknown<String>();
-    this.workspaceId = Output.createUnknown<String>();
+    this.grafanaRole = registerOutput<String>('grafanaRole');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.serviceAccountId = registerOutput<String>('serviceAccountId');
+    this.workspaceId = registerOutput<String>('workspaceId');
   }
 }

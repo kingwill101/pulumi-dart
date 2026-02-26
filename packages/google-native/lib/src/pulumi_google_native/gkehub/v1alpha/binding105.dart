@@ -45,18 +45,18 @@ class Binding105 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.membershipBindingId = Output.createUnknown<String>();
-    this.membershipId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.scope = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.membershipBindingId = registerOutput<String>('membershipBindingId');
+    this.membershipId = registerOutput<String>('membershipId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.scope = registerOutput<String>('scope');
     this.state =
-        Output.createUnknown<MembershipBindingLifecycleStateResponse2>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<MembershipBindingLifecycleStateResponse2>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

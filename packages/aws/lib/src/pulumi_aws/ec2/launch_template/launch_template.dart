@@ -175,61 +175,76 @@ class LaunchTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.blockDeviceMappings =
-        Output.createUnknown<List<LaunchTemplateBlockDeviceMapping>?>();
+        registerOutput<List<LaunchTemplateBlockDeviceMapping>?>(
+            'blockDeviceMappings');
     this.capacityReservationSpecification =
-        Output.createUnknown<LaunchTemplateCapacityReservationSpecification?>();
-    this.cpuOptions = Output.createUnknown<LaunchTemplateCpuOptions?>();
+        registerOutput<LaunchTemplateCapacityReservationSpecification?>(
+            'capacityReservationSpecification');
+    this.cpuOptions = registerOutput<LaunchTemplateCpuOptions?>('cpuOptions');
     this.creditSpecification =
-        Output.createUnknown<LaunchTemplateCreditSpecification?>();
-    this.defaultVersion = Output.createUnknown<int>();
-    this.description = Output.createUnknown<String?>();
-    this.disableApiStop = Output.createUnknown<bool?>();
-    this.disableApiTermination = Output.createUnknown<bool?>();
-    this.ebsOptimized = Output.createUnknown<String?>();
-    this.enclaveOptions = Output.createUnknown<LaunchTemplateEnclaveOptions?>();
+        registerOutput<LaunchTemplateCreditSpecification?>(
+            'creditSpecification');
+    this.defaultVersion = registerOutput<int>('defaultVersion');
+    this.description = registerOutput<String?>('description');
+    this.disableApiStop = registerOutput<bool?>('disableApiStop');
+    this.disableApiTermination = registerOutput<bool?>('disableApiTermination');
+    this.ebsOptimized = registerOutput<String?>('ebsOptimized');
+    this.enclaveOptions =
+        registerOutput<LaunchTemplateEnclaveOptions?>('enclaveOptions');
     this.hibernationOptions =
-        Output.createUnknown<LaunchTemplateHibernationOptions?>();
+        registerOutput<LaunchTemplateHibernationOptions?>('hibernationOptions');
     this.iamInstanceProfile =
-        Output.createUnknown<LaunchTemplateIamInstanceProfile?>();
-    this.imageId = Output.createUnknown<String?>();
-    this.instanceInitiatedShutdownBehavior = Output.createUnknown<String?>();
+        registerOutput<LaunchTemplateIamInstanceProfile?>('iamInstanceProfile');
+    this.imageId = registerOutput<String?>('imageId');
+    this.instanceInitiatedShutdownBehavior =
+        registerOutput<String?>('instanceInitiatedShutdownBehavior');
     this.instanceMarketOptions =
-        Output.createUnknown<LaunchTemplateInstanceMarketOptions?>();
+        registerOutput<LaunchTemplateInstanceMarketOptions?>(
+            'instanceMarketOptions');
     this.instanceRequirements =
-        Output.createUnknown<LaunchTemplateInstanceRequirements?>();
-    this.instanceType = Output.createUnknown<String?>();
-    this.kernelId = Output.createUnknown<String?>();
-    this.keyName = Output.createUnknown<String?>();
-    this.latestVersion = Output.createUnknown<int>();
+        registerOutput<LaunchTemplateInstanceRequirements?>(
+            'instanceRequirements');
+    this.instanceType = registerOutput<String?>('instanceType');
+    this.kernelId = registerOutput<String?>('kernelId');
+    this.keyName = registerOutput<String?>('keyName');
+    this.latestVersion = registerOutput<int>('latestVersion');
     this.licenseSpecifications =
-        Output.createUnknown<List<LaunchTemplateLicenseSpecification>?>();
+        registerOutput<List<LaunchTemplateLicenseSpecification>?>(
+            'licenseSpecifications');
     this.maintenanceOptions =
-        Output.createUnknown<LaunchTemplateMaintenanceOptions?>();
+        registerOutput<LaunchTemplateMaintenanceOptions?>('maintenanceOptions');
     this.metadataOptions =
-        Output.createUnknown<LaunchTemplateMetadataOptions>();
-    this.monitoring = Output.createUnknown<LaunchTemplateMonitoring?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
+        registerOutput<LaunchTemplateMetadataOptions>('metadataOptions');
+    this.monitoring = registerOutput<LaunchTemplateMonitoring?>('monitoring');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
     this.networkInterfaces =
-        Output.createUnknown<List<LaunchTemplateNetworkInterface>?>();
+        registerOutput<List<LaunchTemplateNetworkInterface>?>(
+            'networkInterfaces');
     this.networkPerformanceOptions =
-        Output.createUnknown<LaunchTemplateNetworkPerformanceOptions?>();
-    this.placement = Output.createUnknown<LaunchTemplatePlacement?>();
+        registerOutput<LaunchTemplateNetworkPerformanceOptions?>(
+            'networkPerformanceOptions');
+    this.placement = registerOutput<LaunchTemplatePlacement?>('placement');
     this.privateDnsNameOptions =
-        Output.createUnknown<LaunchTemplatePrivateDnsNameOptions?>();
-    this.ramDiskId = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<LaunchTemplatePrivateDnsNameOptions?>(
+            'privateDnsNameOptions');
+    this.ramDiskId = registerOutput<String?>('ramDiskId');
+    this.region = registerOutput<String>('region');
     this.secondaryInterfaces =
-        Output.createUnknown<List<LaunchTemplateSecondaryInterface>?>();
-    this.securityGroupNames = Output.createUnknown<List<String>?>();
+        registerOutput<List<LaunchTemplateSecondaryInterface>?>(
+            'secondaryInterfaces');
+    this.securityGroupNames =
+        registerOutput<List<String>?>('securityGroupNames');
     this.tagSpecifications =
-        Output.createUnknown<List<LaunchTemplateTagSpecification>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.updateDefaultVersion = Output.createUnknown<bool?>();
-    this.userData = Output.createUnknown<String?>();
-    this.vpcSecurityGroupIds = Output.createUnknown<List<String>?>();
+        registerOutput<List<LaunchTemplateTagSpecification>?>(
+            'tagSpecifications');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.updateDefaultVersion = registerOutput<bool?>('updateDefaultVersion');
+    this.userData = registerOutput<String?>('userData');
+    this.vpcSecurityGroupIds =
+        registerOutput<List<String>?>('vpcSecurityGroupIds');
   }
 }

@@ -195,16 +195,19 @@ class ConnectPeer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.bgpAsn = Output.createUnknown<String>();
-    this.bgpPeerAddress = Output.createUnknown<String>();
-    this.bgpTransitGatewayAddresses = Output.createUnknown<List<String>>();
-    this.insideCidrBlocks = Output.createUnknown<List<String>>();
-    this.peerAddress = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.transitGatewayAddress = Output.createUnknown<String>();
-    this.transitGatewayAttachmentId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.bgpAsn = registerOutput<String>('bgpAsn');
+    this.bgpPeerAddress = registerOutput<String>('bgpPeerAddress');
+    this.bgpTransitGatewayAddresses =
+        registerOutput<List<String>>('bgpTransitGatewayAddresses');
+    this.insideCidrBlocks = registerOutput<List<String>>('insideCidrBlocks');
+    this.peerAddress = registerOutput<String>('peerAddress');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.transitGatewayAddress =
+        registerOutput<String>('transitGatewayAddress');
+    this.transitGatewayAttachmentId =
+        registerOutput<String>('transitGatewayAttachmentId');
   }
 }

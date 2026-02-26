@@ -40,15 +40,16 @@ class AuthorizationPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.authorizationPolicyId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rules = Output.createUnknown<List<RuleResponse6>>();
-    this.updateTime = Output.createUnknown<String>();
+    this.action = registerOutput<String>('action');
+    this.authorizationPolicyId =
+        registerOutput<String>('authorizationPolicyId');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.rules = registerOutput<List<RuleResponse6>>('rules');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

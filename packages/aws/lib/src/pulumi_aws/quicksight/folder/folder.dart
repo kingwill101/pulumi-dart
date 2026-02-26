@@ -472,18 +472,18 @@ class Folder extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.awsAccountId = Output.createUnknown<String>();
-    this.createdTime = Output.createUnknown<String>();
-    this.folderId = Output.createUnknown<String>();
-    this.folderPaths = Output.createUnknown<List<String>>();
-    this.folderType = Output.createUnknown<String?>();
-    this.lastUpdatedTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parentFolderArn = Output.createUnknown<String?>();
-    this.permissions = Output.createUnknown<List<FolderPermission>?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.createdTime = registerOutput<String>('createdTime');
+    this.folderId = registerOutput<String>('folderId');
+    this.folderPaths = registerOutput<List<String>>('folderPaths');
+    this.folderType = registerOutput<String?>('folderType');
+    this.lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    this.name = registerOutput<String>('name');
+    this.parentFolderArn = registerOutput<String?>('parentFolderArn');
+    this.permissions = registerOutput<List<FolderPermission>?>('permissions');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

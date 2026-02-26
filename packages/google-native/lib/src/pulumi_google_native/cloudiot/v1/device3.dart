@@ -69,24 +69,25 @@ class Device3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.blocked = Output.createUnknown<bool>();
-    this.config = Output.createUnknown<DeviceConfigResponse>();
-    this.credentials = Output.createUnknown<List<DeviceCredentialResponse>>();
-    this.gatewayConfig = Output.createUnknown<GatewayConfigResponse>();
-    this.lastConfigAckTime = Output.createUnknown<String>();
-    this.lastConfigSendTime = Output.createUnknown<String>();
-    this.lastErrorStatus = Output.createUnknown<StatusResponse4>();
-    this.lastErrorTime = Output.createUnknown<String>();
-    this.lastEventTime = Output.createUnknown<String>();
-    this.lastHeartbeatTime = Output.createUnknown<String>();
-    this.lastStateTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.logLevel = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.numId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.registryId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<DeviceStateResponse>();
+    this.blocked = registerOutput<bool>('blocked');
+    this.config = registerOutput<DeviceConfigResponse>('config');
+    this.credentials =
+        registerOutput<List<DeviceCredentialResponse>>('credentials');
+    this.gatewayConfig = registerOutput<GatewayConfigResponse>('gatewayConfig');
+    this.lastConfigAckTime = registerOutput<String>('lastConfigAckTime');
+    this.lastConfigSendTime = registerOutput<String>('lastConfigSendTime');
+    this.lastErrorStatus = registerOutput<StatusResponse4>('lastErrorStatus');
+    this.lastErrorTime = registerOutput<String>('lastErrorTime');
+    this.lastEventTime = registerOutput<String>('lastEventTime');
+    this.lastHeartbeatTime = registerOutput<String>('lastHeartbeatTime');
+    this.lastStateTime = registerOutput<String>('lastStateTime');
+    this.location = registerOutput<String>('location');
+    this.logLevel = registerOutput<String>('logLevel');
+    this.metadata = registerOutput<Map<String, String>>('metadata');
+    this.name = registerOutput<String>('name');
+    this.numId = registerOutput<String>('numId');
+    this.project = registerOutput<String>('project');
+    this.registryId = registerOutput<String>('registryId');
+    this.state = registerOutput<DeviceStateResponse>('state');
   }
 }

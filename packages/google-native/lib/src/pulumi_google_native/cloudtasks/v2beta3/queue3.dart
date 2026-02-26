@@ -58,20 +58,21 @@ class Queue3 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.appEngineHttpQueue =
-        Output.createUnknown<AppEngineHttpQueueResponse>();
-    this.httpTarget = Output.createUnknown<HttpTargetResponse5>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.purgeTime = Output.createUnknown<String>();
-    this.rateLimits = Output.createUnknown<RateLimitsResponse3>();
-    this.retryConfig = Output.createUnknown<RetryConfigResponse5>();
+        registerOutput<AppEngineHttpQueueResponse>('appEngineHttpQueue');
+    this.httpTarget = registerOutput<HttpTargetResponse5>('httpTarget');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.purgeTime = registerOutput<String>('purgeTime');
+    this.rateLimits = registerOutput<RateLimitsResponse3>('rateLimits');
+    this.retryConfig = registerOutput<RetryConfigResponse5>('retryConfig');
     this.stackdriverLoggingConfig =
-        Output.createUnknown<StackdriverLoggingConfigResponse2>();
-    this.state = Output.createUnknown<String>();
-    this.stats = Output.createUnknown<QueueStatsResponse2>();
-    this.taskTtl = Output.createUnknown<String>();
-    this.tombstoneTtl = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<StackdriverLoggingConfigResponse2>(
+            'stackdriverLoggingConfig');
+    this.state = registerOutput<String>('state');
+    this.stats = registerOutput<QueueStatsResponse2>('stats');
+    this.taskTtl = registerOutput<String>('taskTtl');
+    this.tombstoneTtl = registerOutput<String>('tombstoneTtl');
+    this.type = registerOutput<String>('type');
   }
 }

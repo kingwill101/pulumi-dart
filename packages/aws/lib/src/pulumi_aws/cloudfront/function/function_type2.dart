@@ -59,15 +59,16 @@ class FunctionType2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.code = Output.createUnknown<String>();
-    this.comment = Output.createUnknown<String?>();
-    this.etag = Output.createUnknown<String>();
-    this.keyValueStoreAssociations = Output.createUnknown<List<String>?>();
-    this.liveStageEtag = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.publish = Output.createUnknown<bool?>();
-    this.runtime = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.code = registerOutput<String>('code');
+    this.comment = registerOutput<String?>('comment');
+    this.etag = registerOutput<String>('etag');
+    this.keyValueStoreAssociations =
+        registerOutput<List<String>?>('keyValueStoreAssociations');
+    this.liveStageEtag = registerOutput<String>('liveStageEtag');
+    this.name = registerOutput<String>('name');
+    this.publish = registerOutput<bool?>('publish');
+    this.runtime = registerOutput<String>('runtime');
+    this.status = registerOutput<String>('status');
   }
 }

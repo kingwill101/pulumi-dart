@@ -113,40 +113,44 @@ class Subnetwork extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aggregationInterval = Output.createUnknown<String>();
-    this.allowSubnetCidrRoutesOverlap = Output.createUnknown<bool>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.enableFlowLogs = Output.createUnknown<bool>();
-    this.enableL2 = Output.createUnknown<bool>();
-    this.enablePrivateV6Access = Output.createUnknown<bool>();
-    this.externalIpv6Prefix = Output.createUnknown<String>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.flowSampling = Output.createUnknown<double>();
-    this.gatewayAddress = Output.createUnknown<String>();
-    this.internalIpv6Prefix = Output.createUnknown<String>();
-    this.ipCidrRange = Output.createUnknown<String>();
-    this.ipv6AccessType = Output.createUnknown<String>();
-    this.ipv6CidrRange = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.logConfig = Output.createUnknown<SubnetworkLogConfigResponse>();
-    this.metadata = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.privateIpGoogleAccess = Output.createUnknown<bool>();
-    this.privateIpv6GoogleAccess = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.purpose = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.reservedInternalRange = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.aggregationInterval = registerOutput<String>('aggregationInterval');
+    this.allowSubnetCidrRoutesOverlap =
+        registerOutput<bool>('allowSubnetCidrRoutesOverlap');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.enableFlowLogs = registerOutput<bool>('enableFlowLogs');
+    this.enableL2 = registerOutput<bool>('enableL2');
+    this.enablePrivateV6Access = registerOutput<bool>('enablePrivateV6Access');
+    this.externalIpv6Prefix = registerOutput<String>('externalIpv6Prefix');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.flowSampling = registerOutput<double>('flowSampling');
+    this.gatewayAddress = registerOutput<String>('gatewayAddress');
+    this.internalIpv6Prefix = registerOutput<String>('internalIpv6Prefix');
+    this.ipCidrRange = registerOutput<String>('ipCidrRange');
+    this.ipv6AccessType = registerOutput<String>('ipv6AccessType');
+    this.ipv6CidrRange = registerOutput<String>('ipv6CidrRange');
+    this.kind = registerOutput<String>('kind');
+    this.logConfig = registerOutput<SubnetworkLogConfigResponse>('logConfig');
+    this.metadata = registerOutput<String>('metadata');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.privateIpGoogleAccess = registerOutput<bool>('privateIpGoogleAccess');
+    this.privateIpv6GoogleAccess =
+        registerOutput<String>('privateIpv6GoogleAccess');
+    this.project = registerOutput<String>('project');
+    this.purpose = registerOutput<String>('purpose');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.reservedInternalRange =
+        registerOutput<String>('reservedInternalRange');
+    this.role = registerOutput<String>('role');
     this.secondaryIpRanges =
-        Output.createUnknown<List<SubnetworkSecondaryRangeResponse>>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
-    this.stackType = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.vlans = Output.createUnknown<List<int>>();
+        registerOutput<List<SubnetworkSecondaryRangeResponse>>(
+            'secondaryIpRanges');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    this.stackType = registerOutput<String>('stackType');
+    this.state = registerOutput<String>('state');
+    this.vlans = registerOutput<List<int>>('vlans');
   }
 }

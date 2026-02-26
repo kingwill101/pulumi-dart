@@ -238,16 +238,17 @@ class SecurityScanConfig extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.authentication =
-        Output.createUnknown<SecurityScanConfigAuthentication?>();
-    this.blacklistPatterns = Output.createUnknown<List<String>?>();
-    this.displayName = Output.createUnknown<String>();
-    this.exportToSecurityCommandCenter = Output.createUnknown<String?>();
-    this.maxQps = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.schedule = Output.createUnknown<SecurityScanConfigSchedule?>();
-    this.startingUrls = Output.createUnknown<List<String>>();
-    this.targetPlatforms = Output.createUnknown<List<String>?>();
-    this.userAgent = Output.createUnknown<String?>();
+        registerOutput<SecurityScanConfigAuthentication?>('authentication');
+    this.blacklistPatterns = registerOutput<List<String>?>('blacklistPatterns');
+    this.displayName = registerOutput<String>('displayName');
+    this.exportToSecurityCommandCenter =
+        registerOutput<String?>('exportToSecurityCommandCenter');
+    this.maxQps = registerOutput<int?>('maxQps');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.schedule = registerOutput<SecurityScanConfigSchedule?>('schedule');
+    this.startingUrls = registerOutput<List<String>>('startingUrls');
+    this.targetPlatforms = registerOutput<List<String>?>('targetPlatforms');
+    this.userAgent = registerOutput<String?>('userAgent');
   }
 }

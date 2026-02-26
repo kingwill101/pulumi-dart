@@ -1354,23 +1354,27 @@ class Organization extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.analyticsRegion = Output.createUnknown<String?>();
-    this.apiConsumerDataEncryptionKeyName = Output.createUnknown<String?>();
-    this.apiConsumerDataLocation = Output.createUnknown<String?>();
-    this.apigeeProjectId = Output.createUnknown<String>();
-    this.authorizedNetwork = Output.createUnknown<String?>();
-    this.billingType = Output.createUnknown<String>();
-    this.caCertificate = Output.createUnknown<String>();
-    this.controlPlaneEncryptionKeyName = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.disableVpcPeering = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.projectId = Output.createUnknown<String>();
-    this.properties = Output.createUnknown<OrganizationProperties>();
-    this.retention = Output.createUnknown<String?>();
-    this.runtimeDatabaseEncryptionKeyName = Output.createUnknown<String?>();
-    this.runtimeType_ = Output.createUnknown<String?>();
-    this.subscriptionType = Output.createUnknown<String>();
+    this.analyticsRegion = registerOutput<String?>('analyticsRegion');
+    this.apiConsumerDataEncryptionKeyName =
+        registerOutput<String?>('apiConsumerDataEncryptionKeyName');
+    this.apiConsumerDataLocation =
+        registerOutput<String?>('apiConsumerDataLocation');
+    this.apigeeProjectId = registerOutput<String>('apigeeProjectId');
+    this.authorizedNetwork = registerOutput<String?>('authorizedNetwork');
+    this.billingType = registerOutput<String>('billingType');
+    this.caCertificate = registerOutput<String>('caCertificate');
+    this.controlPlaneEncryptionKeyName =
+        registerOutput<String?>('controlPlaneEncryptionKeyName');
+    this.description = registerOutput<String?>('description');
+    this.disableVpcPeering = registerOutput<bool?>('disableVpcPeering');
+    this.displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    this.projectId = registerOutput<String>('projectId');
+    this.properties = registerOutput<OrganizationProperties>('properties');
+    this.retention = registerOutput<String?>('retention');
+    this.runtimeDatabaseEncryptionKeyName =
+        registerOutput<String?>('runtimeDatabaseEncryptionKeyName');
+    this.runtimeType_ = registerOutput<String?>('runtimeType');
+    this.subscriptionType = registerOutput<String>('subscriptionType');
   }
 }

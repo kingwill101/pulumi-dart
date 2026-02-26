@@ -130,12 +130,12 @@ class ConnectionAlias extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.connectionString = Output.createUnknown<String>();
-    this.ownerAccountId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ConnectionAliasTimeouts?>();
+    this.connectionString = registerOutput<String>('connectionString');
+    this.ownerAccountId = registerOutput<String>('ownerAccountId');
+    this.region = registerOutput<String>('region');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ConnectionAliasTimeouts?>('timeouts');
   }
 }

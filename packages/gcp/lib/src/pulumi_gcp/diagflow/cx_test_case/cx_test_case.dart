@@ -1042,16 +1042,17 @@ class CxTestCase extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
+    this.creationTime = registerOutput<String>('creationTime');
+    this.displayName = registerOutput<String>('displayName');
     this.lastTestResults =
-        Output.createUnknown<List<CxTestCaseLastTestResult>>();
-    this.name = Output.createUnknown<String>();
-    this.notes = Output.createUnknown<String?>();
-    this.parent = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<List<String>?>();
+        registerOutput<List<CxTestCaseLastTestResult>>('lastTestResults');
+    this.name = registerOutput<String>('name');
+    this.notes = registerOutput<String?>('notes');
+    this.parent = registerOutput<String?>('parent');
+    this.tags = registerOutput<List<String>?>('tags');
     this.testCaseConversationTurns =
-        Output.createUnknown<List<CxTestCaseTestCaseConversationTurn>?>();
-    this.testConfig = Output.createUnknown<CxTestCaseTestConfig?>();
+        registerOutput<List<CxTestCaseTestCaseConversationTurn>?>(
+            'testCaseConversationTurns');
+    this.testConfig = registerOutput<CxTestCaseTestConfig?>('testConfig');
   }
 }

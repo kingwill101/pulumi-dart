@@ -314,20 +314,23 @@ class BatchOperationsJob extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucketList = Output.createUnknown<BatchOperationsJobBucketList?>();
-    this.completeTime = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.deleteObject = Output.createUnknown<BatchOperationsJobDeleteObject?>();
-    this.deleteProtection = Output.createUnknown<bool?>();
-    this.jobId = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.putMetadata = Output.createUnknown<BatchOperationsJobPutMetadata?>();
+    this.bucketList =
+        registerOutput<BatchOperationsJobBucketList?>('bucketList');
+    this.completeTime = registerOutput<String>('completeTime');
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteObject =
+        registerOutput<BatchOperationsJobDeleteObject?>('deleteObject');
+    this.deleteProtection = registerOutput<bool?>('deleteProtection');
+    this.jobId = registerOutput<String?>('jobId');
+    this.project = registerOutput<String>('project');
+    this.putMetadata =
+        registerOutput<BatchOperationsJobPutMetadata?>('putMetadata');
     this.putObjectHold =
-        Output.createUnknown<BatchOperationsJobPutObjectHold?>();
+        registerOutput<BatchOperationsJobPutObjectHold?>('putObjectHold');
     this.rewriteObject =
-        Output.createUnknown<BatchOperationsJobRewriteObject?>();
-    this.scheduleTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<BatchOperationsJobRewriteObject?>('rewriteObject');
+    this.scheduleTime = registerOutput<String>('scheduleTime');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -103,31 +103,35 @@ class Note3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attestationAuthority = Output.createUnknown<AuthorityResponse>();
-    this.baseImage = Output.createUnknown<BasisResponse2>();
-    this.build = Output.createUnknown<BuildResponse3>();
-    this.createTime = Output.createUnknown<String>();
-    this.deployable = Output.createUnknown<DeployableResponse2>();
-    this.discovery = Output.createUnknown<DiscoveryResponse2>();
-    this.expirationTime = Output.createUnknown<String>();
-    this.intoto = Output.createUnknown<InTotoResponse>();
-    this.kind = Output.createUnknown<String>();
-    this.longDescription = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.noteId = Output.createUnknown<String>();
-    this.package = Output.createUnknown<PackageResponse2>();
-    this.project = Output.createUnknown<String>();
-    this.relatedNoteNames = Output.createUnknown<List<String>>();
-    this.relatedUrl = Output.createUnknown<List<RelatedUrlResponse3>>();
-    this.sbom = Output.createUnknown<DocumentNoteResponse2>();
-    this.sbomReference = Output.createUnknown<SBOMReferenceNoteResponse3>();
-    this.shortDescription = Output.createUnknown<String>();
-    this.spdxFile = Output.createUnknown<FileNoteResponse2>();
-    this.spdxPackage = Output.createUnknown<PackageInfoNoteResponse2>();
-    this.spdxRelationship = Output.createUnknown<RelationshipNoteResponse2>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vulnerability = Output.createUnknown<VulnerabilityResponse>();
+    this.attestationAuthority =
+        registerOutput<AuthorityResponse>('attestationAuthority');
+    this.baseImage = registerOutput<BasisResponse2>('baseImage');
+    this.build = registerOutput<BuildResponse3>('build');
+    this.createTime = registerOutput<String>('createTime');
+    this.deployable = registerOutput<DeployableResponse2>('deployable');
+    this.discovery = registerOutput<DiscoveryResponse2>('discovery');
+    this.expirationTime = registerOutput<String>('expirationTime');
+    this.intoto = registerOutput<InTotoResponse>('intoto');
+    this.kind = registerOutput<String>('kind');
+    this.longDescription = registerOutput<String>('longDescription');
+    this.name = registerOutput<String>('name');
+    this.noteId = registerOutput<String>('noteId');
+    this.package = registerOutput<PackageResponse2>('package');
+    this.project = registerOutput<String>('project');
+    this.relatedNoteNames = registerOutput<List<String>>('relatedNoteNames');
+    this.relatedUrl = registerOutput<List<RelatedUrlResponse3>>('relatedUrl');
+    this.sbom = registerOutput<DocumentNoteResponse2>('sbom');
+    this.sbomReference =
+        registerOutput<SBOMReferenceNoteResponse3>('sbomReference');
+    this.shortDescription = registerOutput<String>('shortDescription');
+    this.spdxFile = registerOutput<FileNoteResponse2>('spdxFile');
+    this.spdxPackage = registerOutput<PackageInfoNoteResponse2>('spdxPackage');
+    this.spdxRelationship =
+        registerOutput<RelationshipNoteResponse2>('spdxRelationship');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vulnerability = registerOutput<VulnerabilityResponse>('vulnerability');
     this.vulnerabilityAssessment =
-        Output.createUnknown<VulnerabilityAssessmentNoteResponse3>();
+        registerOutput<VulnerabilityAssessmentNoteResponse3>(
+            'vulnerabilityAssessment');
   }
 }

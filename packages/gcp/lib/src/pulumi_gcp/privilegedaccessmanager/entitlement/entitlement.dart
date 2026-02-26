@@ -453,21 +453,25 @@ class Entitlement extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.additionalNotificationTargets =
-        Output.createUnknown<EntitlementAdditionalNotificationTargets?>();
+        registerOutput<EntitlementAdditionalNotificationTargets?>(
+            'additionalNotificationTargets');
     this.approvalWorkflow =
-        Output.createUnknown<EntitlementApprovalWorkflow?>();
-    this.createTime = Output.createUnknown<String>();
-    this.eligibleUsers = Output.createUnknown<List<EntitlementEligibleUser>>();
-    this.entitlementId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.maxRequestDuration = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.privilegedAccess = Output.createUnknown<EntitlementPrivilegedAccess>();
+        registerOutput<EntitlementApprovalWorkflow?>('approvalWorkflow');
+    this.createTime = registerOutput<String>('createTime');
+    this.eligibleUsers =
+        registerOutput<List<EntitlementEligibleUser>>('eligibleUsers');
+    this.entitlementId = registerOutput<String>('entitlementId');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.maxRequestDuration = registerOutput<String>('maxRequestDuration');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.privilegedAccess =
+        registerOutput<EntitlementPrivilegedAccess>('privilegedAccess');
     this.requesterJustificationConfig =
-        Output.createUnknown<EntitlementRequesterJustificationConfig>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<EntitlementRequesterJustificationConfig>(
+            'requesterJustificationConfig');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

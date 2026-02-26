@@ -33,13 +33,13 @@ class Attestor2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attestorId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.attestorId = registerOutput<String>('attestorId');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
     this.userOwnedDrydockNote =
-        Output.createUnknown<UserOwnedDrydockNoteResponse>();
+        registerOutput<UserOwnedDrydockNoteResponse>('userOwnedDrydockNote');
   }
 }

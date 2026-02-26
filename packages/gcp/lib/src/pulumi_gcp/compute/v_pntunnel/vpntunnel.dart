@@ -1169,33 +1169,38 @@ class VPNTunnel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cipherSuite = Output.createUnknown<VPNTunnelCipherSuite?>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.detailedStatus = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.ikeVersion = Output.createUnknown<int?>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.localTrafficSelectors = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.peerExternalGateway = Output.createUnknown<String?>();
-    this.peerExternalGatewayInterface = Output.createUnknown<int?>();
-    this.peerGcpGateway = Output.createUnknown<String?>();
-    this.peerIp = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String>();
-    this.remoteTrafficSelectors = Output.createUnknown<List<String>>();
-    this.router = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.sharedSecret = Output.createUnknown<String?>();
-    this.sharedSecretHash = Output.createUnknown<String>();
-    this.sharedSecretWo = Output.createUnknown<String?>();
-    this.sharedSecretWoVersion = Output.createUnknown<String?>();
-    this.targetVpnGateway = Output.createUnknown<String?>();
-    this.tunnelId = Output.createUnknown<String>();
-    this.vpnGateway = Output.createUnknown<String?>();
-    this.vpnGatewayInterface = Output.createUnknown<int?>();
+    this.cipherSuite = registerOutput<VPNTunnelCipherSuite?>('cipherSuite');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.detailedStatus = registerOutput<String>('detailedStatus');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.ikeVersion = registerOutput<int?>('ikeVersion');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.localTrafficSelectors =
+        registerOutput<List<String>>('localTrafficSelectors');
+    this.name = registerOutput<String>('name');
+    this.peerExternalGateway = registerOutput<String?>('peerExternalGateway');
+    this.peerExternalGatewayInterface =
+        registerOutput<int?>('peerExternalGatewayInterface');
+    this.peerGcpGateway = registerOutput<String?>('peerGcpGateway');
+    this.peerIp = registerOutput<String>('peerIp');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String>('region');
+    this.remoteTrafficSelectors =
+        registerOutput<List<String>>('remoteTrafficSelectors');
+    this.router = registerOutput<String?>('router');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.sharedSecret = registerOutput<String?>('sharedSecret');
+    this.sharedSecretHash = registerOutput<String>('sharedSecretHash');
+    this.sharedSecretWo = registerOutput<String?>('sharedSecretWo');
+    this.sharedSecretWoVersion =
+        registerOutput<String?>('sharedSecretWoVersion');
+    this.targetVpnGateway = registerOutput<String?>('targetVpnGateway');
+    this.tunnelId = registerOutput<String>('tunnelId');
+    this.vpnGateway = registerOutput<String?>('vpnGateway');
+    this.vpnGatewayInterface = registerOutput<int?>('vpnGatewayInterface');
   }
 }

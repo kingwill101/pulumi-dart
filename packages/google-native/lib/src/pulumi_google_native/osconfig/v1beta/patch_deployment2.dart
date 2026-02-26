@@ -58,19 +58,22 @@ class PatchDeployment2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.duration = Output.createUnknown<String>();
-    this.instanceFilter = Output.createUnknown<PatchInstanceFilterResponse2>();
-    this.lastExecuteTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.oneTimeSchedule = Output.createUnknown<OneTimeScheduleResponse2>();
-    this.patchConfig = Output.createUnknown<PatchConfigResponse2>();
-    this.patchDeploymentId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.recurringSchedule = Output.createUnknown<RecurringScheduleResponse2>();
-    this.rollout = Output.createUnknown<PatchRolloutResponse2>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.duration = registerOutput<String>('duration');
+    this.instanceFilter =
+        registerOutput<PatchInstanceFilterResponse2>('instanceFilter');
+    this.lastExecuteTime = registerOutput<String>('lastExecuteTime');
+    this.name = registerOutput<String>('name');
+    this.oneTimeSchedule =
+        registerOutput<OneTimeScheduleResponse2>('oneTimeSchedule');
+    this.patchConfig = registerOutput<PatchConfigResponse2>('patchConfig');
+    this.patchDeploymentId = registerOutput<String>('patchDeploymentId');
+    this.project = registerOutput<String>('project');
+    this.recurringSchedule =
+        registerOutput<RecurringScheduleResponse2>('recurringSchedule');
+    this.rollout = registerOutput<PatchRolloutResponse2>('rollout');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

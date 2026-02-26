@@ -196,8 +196,8 @@ class ConnectionAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.connectionId = Output.createUnknown<String>();
-    this.lagId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.connectionId = registerOutput<String>('connectionId');
+    this.lagId = registerOutput<String>('lagId');
+    this.region = registerOutput<String>('region');
   }
 }

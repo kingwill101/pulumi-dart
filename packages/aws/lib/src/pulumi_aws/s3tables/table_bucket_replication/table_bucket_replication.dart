@@ -169,10 +169,10 @@ class TableBucketReplication extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.rule = Output.createUnknown<TableBucketReplicationRule?>();
-    this.tableBucketArn = Output.createUnknown<String>();
-    this.versionToken = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.role = registerOutput<String>('role');
+    this.rule = registerOutput<TableBucketReplicationRule?>('rule');
+    this.tableBucketArn = registerOutput<String>('tableBucketArn');
+    this.versionToken = registerOutput<String>('versionToken');
   }
 }

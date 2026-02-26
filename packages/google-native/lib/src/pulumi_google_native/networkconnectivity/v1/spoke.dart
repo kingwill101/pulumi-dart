@@ -73,26 +73,30 @@ class Spoke extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.group = Output.createUnknown<String>();
-    this.hub = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.group = registerOutput<String>('group');
+    this.hub = registerOutput<String>('hub');
+    this.labels = registerOutput<Map<String, String>>('labels');
     this.linkedInterconnectAttachments =
-        Output.createUnknown<LinkedInterconnectAttachmentsResponse>();
+        registerOutput<LinkedInterconnectAttachmentsResponse>(
+            'linkedInterconnectAttachments');
     this.linkedRouterApplianceInstances =
-        Output.createUnknown<LinkedRouterApplianceInstancesResponse>();
-    this.linkedVpcNetwork = Output.createUnknown<LinkedVpcNetworkResponse>();
-    this.linkedVpnTunnels = Output.createUnknown<LinkedVpnTunnelsResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reasons = Output.createUnknown<List<StateReasonResponse>>();
-    this.requestId = Output.createUnknown<String?>();
-    this.spokeId = Output.createUnknown<String>();
-    this.spokeType = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.uniqueId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<LinkedRouterApplianceInstancesResponse>(
+            'linkedRouterApplianceInstances');
+    this.linkedVpcNetwork =
+        registerOutput<LinkedVpcNetworkResponse>('linkedVpcNetwork');
+    this.linkedVpnTunnels =
+        registerOutput<LinkedVpnTunnelsResponse>('linkedVpnTunnels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.reasons = registerOutput<List<StateReasonResponse>>('reasons');
+    this.requestId = registerOutput<String?>('requestId');
+    this.spokeId = registerOutput<String>('spokeId');
+    this.spokeType = registerOutput<String>('spokeType');
+    this.state = registerOutput<String>('state');
+    this.uniqueId = registerOutput<String>('uniqueId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

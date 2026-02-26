@@ -262,28 +262,29 @@ class Snapshot3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allocatedStorage = Output.createUnknown<int>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.dbInstanceIdentifier = Output.createUnknown<String>();
-    this.dbSnapshotArn = Output.createUnknown<String>();
-    this.dbSnapshotIdentifier = Output.createUnknown<String>();
-    this.encrypted = Output.createUnknown<bool>();
-    this.engine = Output.createUnknown<String>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.iops = Output.createUnknown<int>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.licenseModel = Output.createUnknown<String>();
-    this.optionGroupName = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.sharedAccounts = Output.createUnknown<List<String>?>();
-    this.snapshotType = Output.createUnknown<String>();
-    this.sourceDbSnapshotIdentifier = Output.createUnknown<String>();
-    this.sourceRegion = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.storageType = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcId = Output.createUnknown<String>();
+    this.allocatedStorage = registerOutput<int>('allocatedStorage');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.dbInstanceIdentifier = registerOutput<String>('dbInstanceIdentifier');
+    this.dbSnapshotArn = registerOutput<String>('dbSnapshotArn');
+    this.dbSnapshotIdentifier = registerOutput<String>('dbSnapshotIdentifier');
+    this.encrypted = registerOutput<bool>('encrypted');
+    this.engine = registerOutput<String>('engine');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.iops = registerOutput<int>('iops');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.licenseModel = registerOutput<String>('licenseModel');
+    this.optionGroupName = registerOutput<String>('optionGroupName');
+    this.port = registerOutput<int>('port');
+    this.region = registerOutput<String>('region');
+    this.sharedAccounts = registerOutput<List<String>?>('sharedAccounts');
+    this.snapshotType = registerOutput<String>('snapshotType');
+    this.sourceDbSnapshotIdentifier =
+        registerOutput<String>('sourceDbSnapshotIdentifier');
+    this.sourceRegion = registerOutput<String>('sourceRegion');
+    this.status = registerOutput<String>('status');
+    this.storageType = registerOutput<String>('storageType');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

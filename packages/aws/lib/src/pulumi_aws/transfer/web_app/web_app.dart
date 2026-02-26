@@ -707,16 +707,18 @@ class WebApp extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessEndpoint = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.endpointDetails = Output.createUnknown<WebAppEndpointDetails?>();
+    this.accessEndpoint = registerOutput<String>('accessEndpoint');
+    this.arn = registerOutput<String>('arn');
+    this.endpointDetails =
+        registerOutput<WebAppEndpointDetails?>('endpointDetails');
     this.identityProviderDetails =
-        Output.createUnknown<WebAppIdentityProviderDetails>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.webAppEndpointPolicy = Output.createUnknown<String>();
-    this.webAppId = Output.createUnknown<String>();
-    this.webAppUnits = Output.createUnknown<List<WebAppWebAppUnit>>();
+        registerOutput<WebAppIdentityProviderDetails>(
+            'identityProviderDetails');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.webAppEndpointPolicy = registerOutput<String>('webAppEndpointPolicy');
+    this.webAppId = registerOutput<String>('webAppId');
+    this.webAppUnits = registerOutput<List<WebAppWebAppUnit>>('webAppUnits');
   }
 }

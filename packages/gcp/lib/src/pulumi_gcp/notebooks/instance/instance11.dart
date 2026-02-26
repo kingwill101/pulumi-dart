@@ -1131,44 +1131,49 @@ class Instance11 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceleratorConfig = Output.createUnknown<InstanceAcceleratorConfig?>();
-    this.bootDiskSizeGb = Output.createUnknown<int?>();
-    this.bootDiskType = Output.createUnknown<String?>();
-    this.containerImage = Output.createUnknown<InstanceContainerImage?>();
-    this.createTime = Output.createUnknown<String>();
-    this.customGpuDriverPath = Output.createUnknown<String?>();
-    this.dataDiskSizeGb = Output.createUnknown<int?>();
-    this.dataDiskType = Output.createUnknown<String?>();
-    this.desiredState = Output.createUnknown<String?>();
-    this.diskEncryption = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.installGpuDriver = Output.createUnknown<bool?>();
-    this.instanceOwners = Output.createUnknown<List<String>?>();
-    this.kmsKey = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.machineType = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.nicType = Output.createUnknown<String?>();
-    this.noProxyAccess = Output.createUnknown<bool?>();
-    this.noPublicIp = Output.createUnknown<bool?>();
-    this.noRemoveDataDisk = Output.createUnknown<bool?>();
-    this.postStartupScript = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.proxyUri = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+    this.acceleratorConfig =
+        registerOutput<InstanceAcceleratorConfig?>('acceleratorConfig');
+    this.bootDiskSizeGb = registerOutput<int?>('bootDiskSizeGb');
+    this.bootDiskType = registerOutput<String?>('bootDiskType');
+    this.containerImage =
+        registerOutput<InstanceContainerImage?>('containerImage');
+    this.createTime = registerOutput<String>('createTime');
+    this.customGpuDriverPath = registerOutput<String?>('customGpuDriverPath');
+    this.dataDiskSizeGb = registerOutput<int?>('dataDiskSizeGb');
+    this.dataDiskType = registerOutput<String?>('dataDiskType');
+    this.desiredState = registerOutput<String?>('desiredState');
+    this.diskEncryption = registerOutput<String>('diskEncryption');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.installGpuDriver = registerOutput<bool?>('installGpuDriver');
+    this.instanceOwners = registerOutput<List<String>?>('instanceOwners');
+    this.kmsKey = registerOutput<String?>('kmsKey');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.machineType = registerOutput<String>('machineType');
+    this.metadata = registerOutput<Map<String, String>?>('metadata');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.nicType = registerOutput<String?>('nicType');
+    this.noProxyAccess = registerOutput<bool?>('noProxyAccess');
+    this.noPublicIp = registerOutput<bool?>('noPublicIp');
+    this.noRemoveDataDisk = registerOutput<bool?>('noRemoveDataDisk');
+    this.postStartupScript = registerOutput<String?>('postStartupScript');
+    this.project = registerOutput<String>('project');
+    this.proxyUri = registerOutput<String>('proxyUri');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.reservationAffinity =
-        Output.createUnknown<InstanceReservationAffinity2?>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.serviceAccountScopes = Output.createUnknown<List<String>>();
+        registerOutput<InstanceReservationAffinity2?>('reservationAffinity');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.serviceAccountScopes =
+        registerOutput<List<String>>('serviceAccountScopes');
     this.shieldedInstanceConfig =
-        Output.createUnknown<InstanceShieldedInstanceConfig2>();
-    this.state = Output.createUnknown<String>();
-    this.subnet = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<List<String>>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vmImage = Output.createUnknown<InstanceVmImage?>();
+        registerOutput<InstanceShieldedInstanceConfig2>(
+            'shieldedInstanceConfig');
+    this.state = registerOutput<String>('state');
+    this.subnet = registerOutput<String>('subnet');
+    this.tags = registerOutput<List<String>>('tags');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vmImage = registerOutput<InstanceVmImage?>('vmImage');
   }
 }

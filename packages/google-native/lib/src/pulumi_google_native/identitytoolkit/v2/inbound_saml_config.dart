@@ -36,15 +36,17 @@ class InboundSamlConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool>();
-    this.idpConfig = Output.createUnknown<
-        GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse>();
-    this.inboundSamlConfigId = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.spConfig = Output.createUnknown<
-        GoogleCloudIdentitytoolkitAdminV2SpConfigResponse>();
-    this.tenantId = Output.createUnknown<String>();
+    this.displayName = registerOutput<String>('displayName');
+    this.enabled = registerOutput<bool>('enabled');
+    this.idpConfig =
+        registerOutput<GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse>(
+            'idpConfig');
+    this.inboundSamlConfigId = registerOutput<String?>('inboundSamlConfigId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.spConfig =
+        registerOutput<GoogleCloudIdentitytoolkitAdminV2SpConfigResponse>(
+            'spConfig');
+    this.tenantId = registerOutput<String>('tenantId');
   }
 }

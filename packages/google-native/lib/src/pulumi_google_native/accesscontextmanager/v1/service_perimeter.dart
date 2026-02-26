@@ -37,13 +37,13 @@ class ServicePerimeter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessPolicyId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.perimeterType = Output.createUnknown<String>();
-    this.spec = Output.createUnknown<ServicePerimeterConfigResponse>();
-    this.status = Output.createUnknown<ServicePerimeterConfigResponse>();
-    this.title = Output.createUnknown<String>();
-    this.useExplicitDryRunSpec = Output.createUnknown<bool>();
+    this.accessPolicyId = registerOutput<String>('accessPolicyId');
+    this.description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    this.perimeterType = registerOutput<String>('perimeterType');
+    this.spec = registerOutput<ServicePerimeterConfigResponse>('spec');
+    this.status = registerOutput<ServicePerimeterConfigResponse>('status');
+    this.title = registerOutput<String>('title');
+    this.useExplicitDryRunSpec = registerOutput<bool>('useExplicitDryRunSpec');
   }
 }

@@ -63,21 +63,22 @@ class ProvisioningConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cloudConsoleUri = Output.createUnknown<String>();
-    this.customId = Output.createUnknown<String>();
-    this.email = Output.createUnknown<String>();
-    this.handoverServiceAccount = Output.createUnknown<String>();
-    this.instances = Output.createUnknown<List<InstanceConfigResponse>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.networks = Output.createUnknown<List<NetworkConfigResponse5>>();
-    this.pod = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.statusMessage = Output.createUnknown<String>();
-    this.ticketId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.volumes = Output.createUnknown<List<VolumeConfigResponse>>();
-    this.vpcScEnabled = Output.createUnknown<bool>();
+    this.cloudConsoleUri = registerOutput<String>('cloudConsoleUri');
+    this.customId = registerOutput<String>('customId');
+    this.email = registerOutput<String>('email');
+    this.handoverServiceAccount =
+        registerOutput<String>('handoverServiceAccount');
+    this.instances = registerOutput<List<InstanceConfigResponse>>('instances');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.networks = registerOutput<List<NetworkConfigResponse5>>('networks');
+    this.pod = registerOutput<String>('pod');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.statusMessage = registerOutput<String>('statusMessage');
+    this.ticketId = registerOutput<String>('ticketId');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.volumes = registerOutput<List<VolumeConfigResponse>>('volumes');
+    this.vpcScEnabled = registerOutput<bool>('vpcScEnabled');
   }
 }

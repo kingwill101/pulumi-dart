@@ -442,55 +442,70 @@ class Cluster13 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowVersionUpgrade = Output.createUnknown<bool?>();
-    this.applyImmediately = Output.createUnknown<bool?>();
-    this.aquaConfigurationStatus = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.automatedSnapshotRetentionPeriod = Output.createUnknown<int?>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.availabilityZoneRelocationEnabled = Output.createUnknown<bool?>();
-    this.clusterIdentifier = Output.createUnknown<String>();
-    this.clusterNamespaceArn = Output.createUnknown<String>();
-    this.clusterNodes = Output.createUnknown<List<ClusterClusterNode>>();
-    this.clusterParameterGroupName = Output.createUnknown<String>();
-    this.clusterPublicKey = Output.createUnknown<String>();
-    this.clusterRevisionNumber = Output.createUnknown<String>();
-    this.clusterSubnetGroupName = Output.createUnknown<String>();
-    this.clusterType = Output.createUnknown<String>();
-    this.clusterVersion = Output.createUnknown<String?>();
-    this.databaseName = Output.createUnknown<String>();
-    this.defaultIamRoleArn = Output.createUnknown<String>();
-    this.dnsName = Output.createUnknown<String>();
-    this.elasticIp = Output.createUnknown<String?>();
-    this.encrypted = Output.createUnknown<String?>();
-    this.endpoint = Output.createUnknown<String>();
-    this.enhancedVpcRouting = Output.createUnknown<bool>();
-    this.finalSnapshotIdentifier = Output.createUnknown<String?>();
-    this.iamRoles = Output.createUnknown<List<String>>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.maintenanceTrackName = Output.createUnknown<String?>();
-    this.manageMasterPassword = Output.createUnknown<bool?>();
-    this.manualSnapshotRetentionPeriod = Output.createUnknown<int?>();
-    this.masterPassword = Output.createUnknown<String?>();
-    this.masterPasswordSecretArn = Output.createUnknown<String>();
-    this.masterPasswordSecretKmsKeyId = Output.createUnknown<String>();
-    this.masterPasswordWo = Output.createUnknown<String?>();
-    this.masterPasswordWoVersion = Output.createUnknown<int?>();
-    this.masterUsername = Output.createUnknown<String?>();
-    this.multiAz = Output.createUnknown<bool?>();
-    this.nodeType = Output.createUnknown<String>();
-    this.numberOfNodes = Output.createUnknown<int?>();
-    this.ownerAccount = Output.createUnknown<String?>();
-    this.port = Output.createUnknown<int?>();
-    this.preferredMaintenanceWindow = Output.createUnknown<String>();
-    this.publiclyAccessible = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.skipFinalSnapshot = Output.createUnknown<bool?>();
-    this.snapshotArn = Output.createUnknown<String?>();
-    this.snapshotClusterIdentifier = Output.createUnknown<String?>();
-    this.snapshotIdentifier = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcSecurityGroupIds = Output.createUnknown<List<String>>();
+    this.allowVersionUpgrade = registerOutput<bool?>('allowVersionUpgrade');
+    this.applyImmediately = registerOutput<bool?>('applyImmediately');
+    this.aquaConfigurationStatus =
+        registerOutput<String>('aquaConfigurationStatus');
+    this.arn = registerOutput<String>('arn');
+    this.automatedSnapshotRetentionPeriod =
+        registerOutput<int?>('automatedSnapshotRetentionPeriod');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.availabilityZoneRelocationEnabled =
+        registerOutput<bool?>('availabilityZoneRelocationEnabled');
+    this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    this.clusterNamespaceArn = registerOutput<String>('clusterNamespaceArn');
+    this.clusterNodes =
+        registerOutput<List<ClusterClusterNode>>('clusterNodes');
+    this.clusterParameterGroupName =
+        registerOutput<String>('clusterParameterGroupName');
+    this.clusterPublicKey = registerOutput<String>('clusterPublicKey');
+    this.clusterRevisionNumber =
+        registerOutput<String>('clusterRevisionNumber');
+    this.clusterSubnetGroupName =
+        registerOutput<String>('clusterSubnetGroupName');
+    this.clusterType = registerOutput<String>('clusterType');
+    this.clusterVersion = registerOutput<String?>('clusterVersion');
+    this.databaseName = registerOutput<String>('databaseName');
+    this.defaultIamRoleArn = registerOutput<String>('defaultIamRoleArn');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.elasticIp = registerOutput<String?>('elasticIp');
+    this.encrypted = registerOutput<String?>('encrypted');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.enhancedVpcRouting = registerOutput<bool>('enhancedVpcRouting');
+    this.finalSnapshotIdentifier =
+        registerOutput<String?>('finalSnapshotIdentifier');
+    this.iamRoles = registerOutput<List<String>>('iamRoles');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.maintenanceTrackName = registerOutput<String?>('maintenanceTrackName');
+    this.manageMasterPassword = registerOutput<bool?>('manageMasterPassword');
+    this.manualSnapshotRetentionPeriod =
+        registerOutput<int?>('manualSnapshotRetentionPeriod');
+    this.masterPassword = registerOutput<String?>('masterPassword');
+    this.masterPasswordSecretArn =
+        registerOutput<String>('masterPasswordSecretArn');
+    this.masterPasswordSecretKmsKeyId =
+        registerOutput<String>('masterPasswordSecretKmsKeyId');
+    this.masterPasswordWo = registerOutput<String?>('masterPasswordWo');
+    this.masterPasswordWoVersion =
+        registerOutput<int?>('masterPasswordWoVersion');
+    this.masterUsername = registerOutput<String?>('masterUsername');
+    this.multiAz = registerOutput<bool?>('multiAz');
+    this.nodeType = registerOutput<String>('nodeType');
+    this.numberOfNodes = registerOutput<int?>('numberOfNodes');
+    this.ownerAccount = registerOutput<String?>('ownerAccount');
+    this.port = registerOutput<int?>('port');
+    this.preferredMaintenanceWindow =
+        registerOutput<String>('preferredMaintenanceWindow');
+    this.publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
+    this.region = registerOutput<String>('region');
+    this.skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
+    this.snapshotArn = registerOutput<String?>('snapshotArn');
+    this.snapshotClusterIdentifier =
+        registerOutput<String?>('snapshotClusterIdentifier');
+    this.snapshotIdentifier = registerOutput<String?>('snapshotIdentifier');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcSecurityGroupIds =
+        registerOutput<List<String>>('vpcSecurityGroupIds');
   }
 }

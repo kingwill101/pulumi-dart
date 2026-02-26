@@ -283,9 +283,9 @@ class ClusterPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusterArn = Output.createUnknown<String>();
-    this.currentVersion = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.clusterArn = registerOutput<String>('clusterArn');
+    this.currentVersion = registerOutput<String>('currentVersion');
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
   }
 }

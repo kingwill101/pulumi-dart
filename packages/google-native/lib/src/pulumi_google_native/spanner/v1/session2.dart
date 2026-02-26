@@ -32,13 +32,14 @@ class Session2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.approximateLastUseTime = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.creatorRole = Output.createUnknown<String>();
-    this.databaseId = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.approximateLastUseTime =
+        registerOutput<String>('approximateLastUseTime');
+    this.createTime = registerOutput<String>('createTime');
+    this.creatorRole = registerOutput<String>('creatorRole');
+    this.databaseId = registerOutput<String>('databaseId');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

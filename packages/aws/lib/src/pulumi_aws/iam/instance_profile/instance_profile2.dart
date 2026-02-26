@@ -276,14 +276,14 @@ class InstanceProfile2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createDate = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.path = Output.createUnknown<String?>();
-    this.role = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.uniqueId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.createDate = registerOutput<String>('createDate');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.path = registerOutput<String?>('path');
+    this.role = registerOutput<String?>('role');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.uniqueId = registerOutput<String>('uniqueId');
   }
 }

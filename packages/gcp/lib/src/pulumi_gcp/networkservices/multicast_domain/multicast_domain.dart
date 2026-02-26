@@ -327,21 +327,22 @@ class MulticastDomain extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.adminNetwork = Output.createUnknown<String>();
+    this.adminNetwork = registerOutput<String>('adminNetwork');
     this.connectionConfig =
-        Output.createUnknown<MulticastDomainConnectionConfig>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.multicastDomainGroup = Output.createUnknown<String?>();
-    this.multicastDomainId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.states = Output.createUnknown<List<MulticastDomainState>>();
-    this.uniqueId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<MulticastDomainConnectionConfig>('connectionConfig');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.multicastDomainGroup = registerOutput<String?>('multicastDomainGroup');
+    this.multicastDomainId = registerOutput<String>('multicastDomainId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.states = registerOutput<List<MulticastDomainState>>('states');
+    this.uniqueId = registerOutput<String>('uniqueId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

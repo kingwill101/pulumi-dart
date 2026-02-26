@@ -158,21 +158,22 @@ class ExternalKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.bypassPolicyLockoutSafetyCheck = Output.createUnknown<bool?>();
-    this.deletionWindowInDays = Output.createUnknown<int?>();
-    this.description = Output.createUnknown<String?>();
-    this.enabled = Output.createUnknown<bool>();
-    this.expirationModel = Output.createUnknown<String>();
-    this.keyMaterialBase64 = Output.createUnknown<String?>();
-    this.keySpec = Output.createUnknown<String>();
-    this.keyState = Output.createUnknown<String>();
-    this.keyUsage = Output.createUnknown<String>();
-    this.multiRegion = Output.createUnknown<bool>();
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.validTo = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.bypassPolicyLockoutSafetyCheck =
+        registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
+    this.deletionWindowInDays = registerOutput<int?>('deletionWindowInDays');
+    this.description = registerOutput<String?>('description');
+    this.enabled = registerOutput<bool>('enabled');
+    this.expirationModel = registerOutput<String>('expirationModel');
+    this.keyMaterialBase64 = registerOutput<String?>('keyMaterialBase64');
+    this.keySpec = registerOutput<String>('keySpec');
+    this.keyState = registerOutput<String>('keyState');
+    this.keyUsage = registerOutput<String>('keyUsage');
+    this.multiRegion = registerOutput<bool>('multiRegion');
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.validTo = registerOutput<String?>('validTo');
   }
 }

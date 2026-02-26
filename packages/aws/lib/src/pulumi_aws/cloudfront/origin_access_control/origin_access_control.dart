@@ -160,12 +160,13 @@ class OriginAccessControl extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.etag = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.originAccessControlOriginType = Output.createUnknown<String>();
-    this.signingBehavior = Output.createUnknown<String>();
-    this.signingProtocol = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    this.originAccessControlOriginType =
+        registerOutput<String>('originAccessControlOriginType');
+    this.signingBehavior = registerOutput<String>('signingBehavior');
+    this.signingProtocol = registerOutput<String>('signingProtocol');
   }
 }

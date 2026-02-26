@@ -224,21 +224,22 @@ class Application extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appId = Output.createUnknown<String>();
-    this.authDomain = Output.createUnknown<String>();
-    this.codeBucket = Output.createUnknown<String>();
-    this.databaseType = Output.createUnknown<String>();
-    this.defaultBucket = Output.createUnknown<String>();
-    this.defaultHostname = Output.createUnknown<String>();
-    this.featureSettings = Output.createUnknown<ApplicationFeatureSettings>();
-    this.gcrDomain = Output.createUnknown<String>();
-    this.iap = Output.createUnknown<ApplicationIap>();
-    this.locationId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.servingStatus = Output.createUnknown<String>();
-    this.sslPolicy = Output.createUnknown<String>();
+    this.appId = registerOutput<String>('appId');
+    this.authDomain = registerOutput<String>('authDomain');
+    this.codeBucket = registerOutput<String>('codeBucket');
+    this.databaseType = registerOutput<String>('databaseType');
+    this.defaultBucket = registerOutput<String>('defaultBucket');
+    this.defaultHostname = registerOutput<String>('defaultHostname');
+    this.featureSettings =
+        registerOutput<ApplicationFeatureSettings>('featureSettings');
+    this.gcrDomain = registerOutput<String>('gcrDomain');
+    this.iap = registerOutput<ApplicationIap>('iap');
+    this.locationId = registerOutput<String>('locationId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.servingStatus = registerOutput<String>('servingStatus');
+    this.sslPolicy = registerOutput<String>('sslPolicy');
     this.urlDispatchRules =
-        Output.createUnknown<List<ApplicationUrlDispatchRule>>();
+        registerOutput<List<ApplicationUrlDispatchRule>>('urlDispatchRules');
   }
 }

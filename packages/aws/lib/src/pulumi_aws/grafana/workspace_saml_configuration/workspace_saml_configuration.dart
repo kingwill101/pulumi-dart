@@ -339,20 +339,21 @@ class WorkspaceSamlConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.adminRoleValues = Output.createUnknown<List<String>?>();
-    this.allowedOrganizations = Output.createUnknown<List<String>?>();
-    this.editorRoleValues = Output.createUnknown<List<String>>();
-    this.emailAssertion = Output.createUnknown<String>();
-    this.groupsAssertion = Output.createUnknown<String?>();
-    this.idpMetadataUrl = Output.createUnknown<String?>();
-    this.idpMetadataXml = Output.createUnknown<String?>();
-    this.loginAssertion = Output.createUnknown<String>();
-    this.loginValidityDuration = Output.createUnknown<int>();
-    this.nameAssertion = Output.createUnknown<String>();
-    this.orgAssertion = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.roleAssertion = Output.createUnknown<String?>();
-    this.status = Output.createUnknown<String>();
-    this.workspaceId = Output.createUnknown<String>();
+    this.adminRoleValues = registerOutput<List<String>?>('adminRoleValues');
+    this.allowedOrganizations =
+        registerOutput<List<String>?>('allowedOrganizations');
+    this.editorRoleValues = registerOutput<List<String>>('editorRoleValues');
+    this.emailAssertion = registerOutput<String>('emailAssertion');
+    this.groupsAssertion = registerOutput<String?>('groupsAssertion');
+    this.idpMetadataUrl = registerOutput<String?>('idpMetadataUrl');
+    this.idpMetadataXml = registerOutput<String?>('idpMetadataXml');
+    this.loginAssertion = registerOutput<String>('loginAssertion');
+    this.loginValidityDuration = registerOutput<int>('loginValidityDuration');
+    this.nameAssertion = registerOutput<String>('nameAssertion');
+    this.orgAssertion = registerOutput<String?>('orgAssertion');
+    this.region = registerOutput<String>('region');
+    this.roleAssertion = registerOutput<String?>('roleAssertion');
+    this.status = registerOutput<String>('status');
+    this.workspaceId = registerOutput<String>('workspaceId');
   }
 }

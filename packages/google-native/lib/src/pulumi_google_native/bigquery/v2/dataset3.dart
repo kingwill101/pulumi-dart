@@ -85,30 +85,35 @@ class Dataset3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.access = Output.createUnknown<List<DatasetAccessItemResponse>>();
-    this.creationTime = Output.createUnknown<String>();
-    this.datasetReference = Output.createUnknown<DatasetReferenceResponse>();
-    this.defaultCollation = Output.createUnknown<String>();
+    this.access = registerOutput<List<DatasetAccessItemResponse>>('access');
+    this.creationTime = registerOutput<String>('creationTime');
+    this.datasetReference =
+        registerOutput<DatasetReferenceResponse>('datasetReference');
+    this.defaultCollation = registerOutput<String>('defaultCollation');
     this.defaultEncryptionConfiguration =
-        Output.createUnknown<EncryptionConfigurationResponse>();
-    this.defaultPartitionExpirationMs = Output.createUnknown<String>();
-    this.defaultRoundingMode = Output.createUnknown<String>();
-    this.defaultTableExpirationMs = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
+        registerOutput<EncryptionConfigurationResponse>(
+            'defaultEncryptionConfiguration');
+    this.defaultPartitionExpirationMs =
+        registerOutput<String>('defaultPartitionExpirationMs');
+    this.defaultRoundingMode = registerOutput<String>('defaultRoundingMode');
+    this.defaultTableExpirationMs =
+        registerOutput<String>('defaultTableExpirationMs');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
     this.externalDatasetReference =
-        Output.createUnknown<ExternalDatasetReferenceResponse>();
-    this.friendlyName = Output.createUnknown<String>();
-    this.isCaseInsensitive = Output.createUnknown<bool>();
-    this.kind = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lastModifiedTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.maxTimeTravelHours = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.selfLink = Output.createUnknown<String>();
-    this.storageBillingModel = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<List<DatasetTagsItemResponse>>();
+        registerOutput<ExternalDatasetReferenceResponse>(
+            'externalDatasetReference');
+    this.friendlyName = registerOutput<String>('friendlyName');
+    this.isCaseInsensitive = registerOutput<bool>('isCaseInsensitive');
+    this.kind = registerOutput<String>('kind');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.location = registerOutput<String>('location');
+    this.maxTimeTravelHours = registerOutput<String>('maxTimeTravelHours');
+    this.project = registerOutput<String>('project');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.storageBillingModel = registerOutput<String>('storageBillingModel');
+    this.tags = registerOutput<List<DatasetTagsItemResponse>>('tags');
   }
 }

@@ -283,8 +283,8 @@ class Enabler extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountIds = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
-    this.resourceTypes = Output.createUnknown<List<String>>();
+    this.accountIds = registerOutput<List<String>>('accountIds');
+    this.region = registerOutput<String>('region');
+    this.resourceTypes = registerOutput<List<String>>('resourceTypes');
   }
 }

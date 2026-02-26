@@ -245,16 +245,16 @@ class Generator extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.generatorId = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.generatorId = registerOutput<String>('generatorId');
     this.inferenceParameter =
-        Output.createUnknown<GeneratorInferenceParameter?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.publishedModel = Output.createUnknown<String?>();
+        registerOutput<GeneratorInferenceParameter?>('inferenceParameter');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.publishedModel = registerOutput<String?>('publishedModel');
     this.summarizationContext =
-        Output.createUnknown<GeneratorSummarizationContext>();
-    this.triggerEvent = Output.createUnknown<String?>();
+        registerOutput<GeneratorSummarizationContext>('summarizationContext');
+    this.triggerEvent = registerOutput<String?>('triggerEvent');
   }
 }

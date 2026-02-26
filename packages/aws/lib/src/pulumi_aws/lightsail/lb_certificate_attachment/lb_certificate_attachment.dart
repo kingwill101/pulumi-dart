@@ -224,8 +224,8 @@ class LbCertificateAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificateName = Output.createUnknown<String>();
-    this.lbName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.certificateName = registerOutput<String>('certificateName');
+    this.lbName = registerOutput<String>('lbName');
+    this.region = registerOutput<String>('region');
   }
 }

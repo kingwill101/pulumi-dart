@@ -296,14 +296,14 @@ class IPSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activate = Output.createUnknown<bool>();
-    this.arn = Output.createUnknown<String>();
-    this.detectorId = Output.createUnknown<String>();
-    this.format = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.activate = registerOutput<bool>('activate');
+    this.arn = registerOutput<String>('arn');
+    this.detectorId = registerOutput<String>('detectorId');
+    this.format = registerOutput<String>('format');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

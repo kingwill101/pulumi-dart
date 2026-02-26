@@ -1183,15 +1183,19 @@ class CaPool extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.encryptionSpec = Output.createUnknown<CaPoolEncryptionSpec?>();
-    this.issuancePolicy = Output.createUnknown<CaPoolIssuancePolicy?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.publishingOptions = Output.createUnknown<CaPoolPublishingOptions?>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.tier = Output.createUnknown<String>();
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.encryptionSpec =
+        registerOutput<CaPoolEncryptionSpec?>('encryptionSpec');
+    this.issuancePolicy =
+        registerOutput<CaPoolIssuancePolicy?>('issuancePolicy');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.publishingOptions =
+        registerOutput<CaPoolPublishingOptions?>('publishingOptions');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.tier = registerOutput<String>('tier');
   }
 }

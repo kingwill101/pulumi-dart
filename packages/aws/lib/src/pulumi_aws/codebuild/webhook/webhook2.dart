@@ -569,18 +569,19 @@ class Webhook2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.branchFilter = Output.createUnknown<String?>();
-    this.buildType = Output.createUnknown<String?>();
-    this.filterGroups = Output.createUnknown<List<WebhookFilterGroup>?>();
-    this.manualCreation = Output.createUnknown<bool?>();
-    this.payloadUrl = Output.createUnknown<String>();
-    this.projectName = Output.createUnknown<String>();
+    this.branchFilter = registerOutput<String?>('branchFilter');
+    this.buildType = registerOutput<String?>('buildType');
+    this.filterGroups =
+        registerOutput<List<WebhookFilterGroup>?>('filterGroups');
+    this.manualCreation = registerOutput<bool?>('manualCreation');
+    this.payloadUrl = registerOutput<String>('payloadUrl');
+    this.projectName = registerOutput<String>('projectName');
     this.pullRequestBuildPolicy =
-        Output.createUnknown<WebhookPullRequestBuildPolicy>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<WebhookPullRequestBuildPolicy>('pullRequestBuildPolicy');
+    this.region = registerOutput<String>('region');
     this.scopeConfiguration =
-        Output.createUnknown<WebhookScopeConfiguration?>();
-    this.secret = Output.createUnknown<String>();
-    this.url = Output.createUnknown<String>();
+        registerOutput<WebhookScopeConfiguration?>('scopeConfiguration');
+    this.secret = registerOutput<String>('secret');
+    this.url = registerOutput<String>('url');
   }
 }

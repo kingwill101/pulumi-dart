@@ -1189,36 +1189,45 @@ class V2modelsIntent extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.botId = Output.createUnknown<String>();
-    this.botVersion = Output.createUnknown<String>();
-    this.closingSetting = Output.createUnknown<V2modelsIntentClosingSetting?>();
+    this.botId = registerOutput<String>('botId');
+    this.botVersion = registerOutput<String>('botVersion');
+    this.closingSetting =
+        registerOutput<V2modelsIntentClosingSetting?>('closingSetting');
     this.confirmationSetting =
-        Output.createUnknown<V2modelsIntentConfirmationSetting?>();
-    this.creationDateTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.dialogCodeHook = Output.createUnknown<V2modelsIntentDialogCodeHook?>();
+        registerOutput<V2modelsIntentConfirmationSetting?>(
+            'confirmationSetting');
+    this.creationDateTime = registerOutput<String>('creationDateTime');
+    this.description = registerOutput<String?>('description');
+    this.dialogCodeHook =
+        registerOutput<V2modelsIntentDialogCodeHook?>('dialogCodeHook');
     this.fulfillmentCodeHook =
-        Output.createUnknown<V2modelsIntentFulfillmentCodeHook?>();
+        registerOutput<V2modelsIntentFulfillmentCodeHook?>(
+            'fulfillmentCodeHook');
     this.initialResponseSetting =
-        Output.createUnknown<V2modelsIntentInitialResponseSetting?>();
+        registerOutput<V2modelsIntentInitialResponseSetting?>(
+            'initialResponseSetting');
     this.inputContexts =
-        Output.createUnknown<List<V2modelsIntentInputContext>?>();
-    this.intentId = Output.createUnknown<String>();
+        registerOutput<List<V2modelsIntentInputContext>?>('inputContexts');
+    this.intentId = registerOutput<String>('intentId');
     this.kendraConfiguration =
-        Output.createUnknown<V2modelsIntentKendraConfiguration?>();
-    this.lastUpdatedDateTime = Output.createUnknown<String>();
-    this.localeId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<V2modelsIntentKendraConfiguration?>(
+            'kendraConfiguration');
+    this.lastUpdatedDateTime = registerOutput<String>('lastUpdatedDateTime');
+    this.localeId = registerOutput<String>('localeId');
+    this.name = registerOutput<String>('name');
     this.outputContexts =
-        Output.createUnknown<List<V2modelsIntentOutputContext>?>();
-    this.parentIntentSignature = Output.createUnknown<String?>();
+        registerOutput<List<V2modelsIntentOutputContext>?>('outputContexts');
+    this.parentIntentSignature =
+        registerOutput<String?>('parentIntentSignature');
     this.qnaIntentConfiguration =
-        Output.createUnknown<V2modelsIntentQnaIntentConfiguration?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<V2modelsIntentQnaIntentConfiguration?>(
+            'qnaIntentConfiguration');
+    this.region = registerOutput<String>('region');
     this.sampleUtterances =
-        Output.createUnknown<List<V2modelsIntentSampleUtterance>?>();
+        registerOutput<List<V2modelsIntentSampleUtterance>?>(
+            'sampleUtterances');
     this.slotPriorities =
-        Output.createUnknown<List<V2modelsIntentSlotPriority>?>();
-    this.timeouts = Output.createUnknown<V2modelsIntentTimeouts?>();
+        registerOutput<List<V2modelsIntentSlotPriority>?>('slotPriorities');
+    this.timeouts = registerOutput<V2modelsIntentTimeouts?>('timeouts');
   }
 }

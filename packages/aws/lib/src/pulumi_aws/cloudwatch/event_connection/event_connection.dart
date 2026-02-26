@@ -1368,15 +1368,17 @@ class EventConnection extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.authParameters = Output.createUnknown<EventConnectionAuthParameters>();
-    this.authorizationType = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.invocationConnectivityParameters = Output.createUnknown<
-        EventConnectionInvocationConnectivityParameters?>();
-    this.kmsKeyIdentifier = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.secretArn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.authParameters =
+        registerOutput<EventConnectionAuthParameters>('authParameters');
+    this.authorizationType = registerOutput<String>('authorizationType');
+    this.description = registerOutput<String?>('description');
+    this.invocationConnectivityParameters =
+        registerOutput<EventConnectionInvocationConnectivityParameters?>(
+            'invocationConnectivityParameters');
+    this.kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.secretArn = registerOutput<String>('secretArn');
   }
 }

@@ -1087,17 +1087,19 @@ class ConnectivityTest extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bypassFirewallChecks = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String?>();
-    this.destination = Output.createUnknown<ConnectivityTestDestination>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.protocol = Output.createUnknown<String?>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.relatedProjects = Output.createUnknown<List<String>?>();
-    this.roundTrip = Output.createUnknown<bool?>();
-    this.source = Output.createUnknown<ConnectivityTestSource>();
+    this.bypassFirewallChecks = registerOutput<bool?>('bypassFirewallChecks');
+    this.description = registerOutput<String?>('description');
+    this.destination =
+        registerOutput<ConnectivityTestDestination>('destination');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.protocol = registerOutput<String?>('protocol');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.relatedProjects = registerOutput<List<String>?>('relatedProjects');
+    this.roundTrip = registerOutput<bool?>('roundTrip');
+    this.source = registerOutput<ConnectivityTestSource>('source');
   }
 }

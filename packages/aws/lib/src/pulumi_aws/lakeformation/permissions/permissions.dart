@@ -1109,18 +1109,21 @@ class Permissions extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.catalogId = Output.createUnknown<String?>();
-    this.catalogResource = Output.createUnknown<bool?>();
-    this.dataCellsFilter = Output.createUnknown<PermissionsDataCellsFilter?>();
-    this.dataLocation = Output.createUnknown<PermissionsDataLocation>();
-    this.database = Output.createUnknown<PermissionsDatabase>();
-    this.lfTag = Output.createUnknown<PermissionsLfTag>();
-    this.lfTagPolicy = Output.createUnknown<PermissionsLfTagPolicy>();
-    this.permissions = Output.createUnknown<List<String>>();
-    this.permissionsWithGrantOptions = Output.createUnknown<List<String>>();
-    this.principal = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.table = Output.createUnknown<PermissionsTable>();
-    this.tableWithColumns = Output.createUnknown<PermissionsTableWithColumns>();
+    this.catalogId = registerOutput<String?>('catalogId');
+    this.catalogResource = registerOutput<bool?>('catalogResource');
+    this.dataCellsFilter =
+        registerOutput<PermissionsDataCellsFilter?>('dataCellsFilter');
+    this.dataLocation = registerOutput<PermissionsDataLocation>('dataLocation');
+    this.database = registerOutput<PermissionsDatabase>('database');
+    this.lfTag = registerOutput<PermissionsLfTag>('lfTag');
+    this.lfTagPolicy = registerOutput<PermissionsLfTagPolicy>('lfTagPolicy');
+    this.permissions = registerOutput<List<String>>('permissions');
+    this.permissionsWithGrantOptions =
+        registerOutput<List<String>>('permissionsWithGrantOptions');
+    this.principal = registerOutput<String>('principal');
+    this.region = registerOutput<String>('region');
+    this.table = registerOutput<PermissionsTable>('table');
+    this.tableWithColumns =
+        registerOutput<PermissionsTableWithColumns>('tableWithColumns');
   }
 }

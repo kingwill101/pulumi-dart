@@ -197,16 +197,17 @@ class RouterInterface extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.interconnectAttachment = Output.createUnknown<String?>();
-    this.ipRange = Output.createUnknown<String>();
-    this.ipVersion = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.privateIpAddress = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.redundantInterface = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.router = Output.createUnknown<String>();
-    this.subnetwork = Output.createUnknown<String?>();
-    this.vpnTunnel = Output.createUnknown<String?>();
+    this.interconnectAttachment =
+        registerOutput<String?>('interconnectAttachment');
+    this.ipRange = registerOutput<String>('ipRange');
+    this.ipVersion = registerOutput<String>('ipVersion');
+    this.name = registerOutput<String>('name');
+    this.privateIpAddress = registerOutput<String?>('privateIpAddress');
+    this.project = registerOutput<String>('project');
+    this.redundantInterface = registerOutput<String>('redundantInterface');
+    this.region = registerOutput<String>('region');
+    this.router = registerOutput<String>('router');
+    this.subnetwork = registerOutput<String?>('subnetwork');
+    this.vpnTunnel = registerOutput<String?>('vpnTunnel');
   }
 }

@@ -1520,23 +1520,25 @@ class Application6 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.applicationConfiguration =
-        Output.createUnknown<ApplicationApplicationConfiguration>();
-    this.applicationMode = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
+        registerOutput<ApplicationApplicationConfiguration>(
+            'applicationConfiguration');
+    this.applicationMode = registerOutput<String>('applicationMode');
+    this.arn = registerOutput<String>('arn');
     this.cloudwatchLoggingOptions =
-        Output.createUnknown<ApplicationCloudwatchLoggingOptions?>();
-    this.createTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.forceStop = Output.createUnknown<bool?>();
-    this.lastUpdateTimestamp = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.runtimeEnvironment = Output.createUnknown<String>();
-    this.serviceExecutionRole = Output.createUnknown<String>();
-    this.startApplication = Output.createUnknown<bool?>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.versionId = Output.createUnknown<int>();
+        registerOutput<ApplicationCloudwatchLoggingOptions?>(
+            'cloudwatchLoggingOptions');
+    this.createTimestamp = registerOutput<String>('createTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.forceStop = registerOutput<bool?>('forceStop');
+    this.lastUpdateTimestamp = registerOutput<String>('lastUpdateTimestamp');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.runtimeEnvironment = registerOutput<String>('runtimeEnvironment');
+    this.serviceExecutionRole = registerOutput<String>('serviceExecutionRole');
+    this.startApplication = registerOutput<bool?>('startApplication');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.versionId = registerOutput<int>('versionId');
   }
 }

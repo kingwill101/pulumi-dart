@@ -285,25 +285,27 @@ class SigningJob extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.completedAt = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.destination = Output.createUnknown<SigningJobDestination>();
-    this.ignoreSigningJobFailure = Output.createUnknown<bool?>();
-    this.jobId = Output.createUnknown<String>();
-    this.jobInvoker = Output.createUnknown<String>();
-    this.jobOwner = Output.createUnknown<String>();
-    this.platformDisplayName = Output.createUnknown<String>();
-    this.platformId = Output.createUnknown<String>();
-    this.profileName = Output.createUnknown<String>();
-    this.profileVersion = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestedBy = Output.createUnknown<String>();
+    this.completedAt = registerOutput<String>('completedAt');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.destination = registerOutput<SigningJobDestination>('destination');
+    this.ignoreSigningJobFailure =
+        registerOutput<bool?>('ignoreSigningJobFailure');
+    this.jobId = registerOutput<String>('jobId');
+    this.jobInvoker = registerOutput<String>('jobInvoker');
+    this.jobOwner = registerOutput<String>('jobOwner');
+    this.platformDisplayName = registerOutput<String>('platformDisplayName');
+    this.platformId = registerOutput<String>('platformId');
+    this.profileName = registerOutput<String>('profileName');
+    this.profileVersion = registerOutput<String>('profileVersion');
+    this.region = registerOutput<String>('region');
+    this.requestedBy = registerOutput<String>('requestedBy');
     this.revocationRecords =
-        Output.createUnknown<List<SigningJobRevocationRecord>>();
-    this.signatureExpiresAt = Output.createUnknown<String>();
-    this.signedObjects = Output.createUnknown<List<SigningJobSignedObject>>();
-    this.source = Output.createUnknown<SigningJobSource>();
-    this.status = Output.createUnknown<String>();
-    this.statusReason = Output.createUnknown<String>();
+        registerOutput<List<SigningJobRevocationRecord>>('revocationRecords');
+    this.signatureExpiresAt = registerOutput<String>('signatureExpiresAt');
+    this.signedObjects =
+        registerOutput<List<SigningJobSignedObject>>('signedObjects');
+    this.source = registerOutput<SigningJobSource>('source');
+    this.status = registerOutput<String>('status');
+    this.statusReason = registerOutput<String>('statusReason');
   }
 }

@@ -572,19 +572,22 @@ class CertificateIssuanceConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificateAuthorityConfig = Output.createUnknown<
-        CertificateIssuanceConfigCertificateAuthorityConfig>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.keyAlgorithm = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.lifetime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.rotationWindowPercentage = Output.createUnknown<int>();
-    this.updateTime = Output.createUnknown<String>();
+    this.certificateAuthorityConfig =
+        registerOutput<CertificateIssuanceConfigCertificateAuthorityConfig>(
+            'certificateAuthorityConfig');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.keyAlgorithm = registerOutput<String>('keyAlgorithm');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.lifetime = registerOutput<String>('lifetime');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.rotationWindowPercentage =
+        registerOutput<int>('rotationWindowPercentage');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

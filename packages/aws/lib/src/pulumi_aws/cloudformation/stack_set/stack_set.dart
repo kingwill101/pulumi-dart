@@ -591,24 +591,27 @@ class StackSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.administrationRoleArn = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.autoDeployment = Output.createUnknown<StackSetAutoDeployment?>();
-    this.callAs = Output.createUnknown<String?>();
-    this.capabilities = Output.createUnknown<List<String>?>();
-    this.description = Output.createUnknown<String?>();
-    this.executionRoleName = Output.createUnknown<String>();
-    this.managedExecution = Output.createUnknown<StackSetManagedExecution?>();
-    this.name = Output.createUnknown<String>();
+    this.administrationRoleArn =
+        registerOutput<String?>('administrationRoleArn');
+    this.arn = registerOutput<String>('arn');
+    this.autoDeployment =
+        registerOutput<StackSetAutoDeployment?>('autoDeployment');
+    this.callAs = registerOutput<String?>('callAs');
+    this.capabilities = registerOutput<List<String>?>('capabilities');
+    this.description = registerOutput<String?>('description');
+    this.executionRoleName = registerOutput<String>('executionRoleName');
+    this.managedExecution =
+        registerOutput<StackSetManagedExecution?>('managedExecution');
+    this.name = registerOutput<String>('name');
     this.operationPreferences =
-        Output.createUnknown<StackSetOperationPreferences?>();
-    this.parameters = Output.createUnknown<Map<String, String>?>();
-    this.permissionModel = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.stackSetId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.templateBody = Output.createUnknown<String>();
-    this.templateUrl = Output.createUnknown<String?>();
+        registerOutput<StackSetOperationPreferences?>('operationPreferences');
+    this.parameters = registerOutput<Map<String, String>?>('parameters');
+    this.permissionModel = registerOutput<String?>('permissionModel');
+    this.region = registerOutput<String>('region');
+    this.stackSetId = registerOutput<String>('stackSetId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.templateBody = registerOutput<String>('templateBody');
+    this.templateUrl = registerOutput<String?>('templateUrl');
   }
 }

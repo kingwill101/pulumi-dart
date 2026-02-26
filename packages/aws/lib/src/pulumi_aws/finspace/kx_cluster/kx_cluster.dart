@@ -425,38 +425,47 @@ class KxCluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.autoScalingConfiguration =
-        Output.createUnknown<KxClusterAutoScalingConfiguration?>();
-    this.availabilityZoneId = Output.createUnknown<String?>();
-    this.azMode = Output.createUnknown<String>();
+        registerOutput<KxClusterAutoScalingConfiguration?>(
+            'autoScalingConfiguration');
+    this.availabilityZoneId = registerOutput<String?>('availabilityZoneId');
+    this.azMode = registerOutput<String>('azMode');
     this.cacheStorageConfigurations =
-        Output.createUnknown<List<KxClusterCacheStorageConfiguration>?>();
+        registerOutput<List<KxClusterCacheStorageConfiguration>?>(
+            'cacheStorageConfigurations');
     this.capacityConfiguration =
-        Output.createUnknown<KxClusterCapacityConfiguration?>();
-    this.code = Output.createUnknown<KxClusterCode?>();
-    this.commandLineArguments = Output.createUnknown<Map<String, String>?>();
-    this.createdTimestamp = Output.createUnknown<String>();
-    this.databases = Output.createUnknown<List<KxClusterDatabase>?>();
-    this.description = Output.createUnknown<String?>();
-    this.environmentId = Output.createUnknown<String>();
-    this.executionRole = Output.createUnknown<String?>();
-    this.initializationScript = Output.createUnknown<String?>();
-    this.lastModifiedTimestamp = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.releaseLabel = Output.createUnknown<String>();
+        registerOutput<KxClusterCapacityConfiguration?>(
+            'capacityConfiguration');
+    this.code = registerOutput<KxClusterCode?>('code');
+    this.commandLineArguments =
+        registerOutput<Map<String, String>?>('commandLineArguments');
+    this.createdTimestamp = registerOutput<String>('createdTimestamp');
+    this.databases = registerOutput<List<KxClusterDatabase>?>('databases');
+    this.description = registerOutput<String?>('description');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.executionRole = registerOutput<String?>('executionRole');
+    this.initializationScript = registerOutput<String?>('initializationScript');
+    this.lastModifiedTimestamp =
+        registerOutput<String>('lastModifiedTimestamp');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.releaseLabel = registerOutput<String>('releaseLabel');
     this.savedownStorageConfiguration =
-        Output.createUnknown<KxClusterSavedownStorageConfiguration?>();
+        registerOutput<KxClusterSavedownStorageConfiguration?>(
+            'savedownStorageConfiguration');
     this.scalingGroupConfiguration =
-        Output.createUnknown<KxClusterScalingGroupConfiguration?>();
-    this.status = Output.createUnknown<String>();
-    this.statusReason = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<KxClusterScalingGroupConfiguration?>(
+            'scalingGroupConfiguration');
+    this.status = registerOutput<String>('status');
+    this.statusReason = registerOutput<String>('statusReason');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.tickerplantLogConfigurations =
-        Output.createUnknown<List<KxClusterTickerplantLogConfiguration>?>();
-    this.type = Output.createUnknown<String>();
-    this.vpcConfiguration = Output.createUnknown<KxClusterVpcConfiguration>();
+        registerOutput<List<KxClusterTickerplantLogConfiguration>?>(
+            'tickerplantLogConfigurations');
+    this.type = registerOutput<String>('type');
+    this.vpcConfiguration =
+        registerOutput<KxClusterVpcConfiguration>('vpcConfiguration');
   }
 }

@@ -539,22 +539,26 @@ class V2modelsSlotType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.botId = Output.createUnknown<String>();
-    this.botVersion = Output.createUnknown<String>();
+    this.botId = registerOutput<String>('botId');
+    this.botVersion = registerOutput<String>('botVersion');
     this.compositeSlotTypeSettings =
-        Output.createUnknown<List<V2modelsSlotTypeCompositeSlotTypeSetting>?>();
-    this.description = Output.createUnknown<String?>();
+        registerOutput<List<V2modelsSlotTypeCompositeSlotTypeSetting>?>(
+            'compositeSlotTypeSettings');
+    this.description = registerOutput<String?>('description');
     this.externalSourceSettings =
-        Output.createUnknown<List<V2modelsSlotTypeExternalSourceSetting>?>();
-    this.localeId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parentSlotTypeSignature = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.slotTypeId = Output.createUnknown<String>();
+        registerOutput<List<V2modelsSlotTypeExternalSourceSetting>?>(
+            'externalSourceSettings');
+    this.localeId = registerOutput<String>('localeId');
+    this.name = registerOutput<String>('name');
+    this.parentSlotTypeSignature =
+        registerOutput<String?>('parentSlotTypeSignature');
+    this.region = registerOutput<String>('region');
+    this.slotTypeId = registerOutput<String>('slotTypeId');
     this.slotTypeValues =
-        Output.createUnknown<List<V2modelsSlotTypeSlotTypeValue>?>();
-    this.timeouts = Output.createUnknown<V2modelsSlotTypeTimeouts?>();
+        registerOutput<List<V2modelsSlotTypeSlotTypeValue>?>('slotTypeValues');
+    this.timeouts = registerOutput<V2modelsSlotTypeTimeouts?>('timeouts');
     this.valueSelectionSetting =
-        Output.createUnknown<V2modelsSlotTypeValueSelectionSetting?>();
+        registerOutput<V2modelsSlotTypeValueSelectionSetting?>(
+            'valueSelectionSetting');
   }
 }

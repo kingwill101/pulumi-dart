@@ -23,8 +23,8 @@ class AccessPolicy2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.title = Output.createUnknown<String>();
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.title = registerOutput<String>('title');
   }
 }

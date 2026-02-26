@@ -413,9 +413,9 @@ class EventStream extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationId = Output.createUnknown<String>();
-    this.destinationStreamArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
+    this.applicationId = registerOutput<String>('applicationId');
+    this.destinationStreamArn = registerOutput<String>('destinationStreamArn');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
   }
 }

@@ -153,11 +153,11 @@ class AuthorizationRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessGroupId = Output.createUnknown<String?>();
-    this.authorizeAllGroups = Output.createUnknown<bool?>();
-    this.clientVpnEndpointId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.targetNetworkCidr = Output.createUnknown<String>();
+    this.accessGroupId = registerOutput<String?>('accessGroupId');
+    this.authorizeAllGroups = registerOutput<bool?>('authorizeAllGroups');
+    this.clientVpnEndpointId = registerOutput<String>('clientVpnEndpointId');
+    this.description = registerOutput<String?>('description');
+    this.region = registerOutput<String>('region');
+    this.targetNetworkCidr = registerOutput<String>('targetNetworkCidr');
   }
 }

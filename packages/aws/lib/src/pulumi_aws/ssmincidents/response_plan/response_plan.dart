@@ -666,17 +666,17 @@ class ResponsePlan extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<ResponsePlanAction?>();
-    this.arn = Output.createUnknown<String>();
-    this.chatChannels = Output.createUnknown<List<String>?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.engagements = Output.createUnknown<List<String>?>();
+    this.action = registerOutput<ResponsePlanAction?>('action');
+    this.arn = registerOutput<String>('arn');
+    this.chatChannels = registerOutput<List<String>?>('chatChannels');
+    this.displayName = registerOutput<String?>('displayName');
+    this.engagements = registerOutput<List<String>?>('engagements');
     this.incidentTemplate =
-        Output.createUnknown<ResponsePlanIncidentTemplate>();
-    this.integration = Output.createUnknown<ResponsePlanIntegration?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<ResponsePlanIncidentTemplate>('incidentTemplate');
+    this.integration = registerOutput<ResponsePlanIntegration?>('integration');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

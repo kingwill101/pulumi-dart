@@ -699,19 +699,26 @@ class DataLakeSettings extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.admins = Output.createUnknown<List<String>>();
-    this.allowExternalDataFiltering = Output.createUnknown<bool?>();
-    this.allowFullTableExternalDataAccess = Output.createUnknown<bool?>();
-    this.authorizedSessionTagValueLists = Output.createUnknown<List<String>>();
-    this.catalogId = Output.createUnknown<String?>();
-    this.createDatabaseDefaultPermissions = Output.createUnknown<
-        List<DataLakeSettingsCreateDatabaseDefaultPermission>>();
-    this.createTableDefaultPermissions = Output.createUnknown<
-        List<DataLakeSettingsCreateTableDefaultPermission>>();
-    this.externalDataFilteringAllowLists = Output.createUnknown<List<String>>();
-    this.parameters = Output.createUnknown<Map<String, String>>();
-    this.readOnlyAdmins = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
-    this.trustedResourceOwners = Output.createUnknown<List<String>>();
+    this.admins = registerOutput<List<String>>('admins');
+    this.allowExternalDataFiltering =
+        registerOutput<bool?>('allowExternalDataFiltering');
+    this.allowFullTableExternalDataAccess =
+        registerOutput<bool?>('allowFullTableExternalDataAccess');
+    this.authorizedSessionTagValueLists =
+        registerOutput<List<String>>('authorizedSessionTagValueLists');
+    this.catalogId = registerOutput<String?>('catalogId');
+    this.createDatabaseDefaultPermissions =
+        registerOutput<List<DataLakeSettingsCreateDatabaseDefaultPermission>>(
+            'createDatabaseDefaultPermissions');
+    this.createTableDefaultPermissions =
+        registerOutput<List<DataLakeSettingsCreateTableDefaultPermission>>(
+            'createTableDefaultPermissions');
+    this.externalDataFilteringAllowLists =
+        registerOutput<List<String>>('externalDataFilteringAllowLists');
+    this.parameters = registerOutput<Map<String, String>>('parameters');
+    this.readOnlyAdmins = registerOutput<List<String>>('readOnlyAdmins');
+    this.region = registerOutput<String>('region');
+    this.trustedResourceOwners =
+        registerOutput<List<String>>('trustedResourceOwners');
   }
 }

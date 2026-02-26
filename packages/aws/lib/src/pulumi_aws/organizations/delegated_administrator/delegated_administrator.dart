@@ -156,14 +156,15 @@ class DelegatedAdministrator extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.delegationEnabledDate = Output.createUnknown<String>();
-    this.email = Output.createUnknown<String>();
-    this.joinedMethod = Output.createUnknown<String>();
-    this.joinedTimestamp = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.servicePrincipal = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.arn = registerOutput<String>('arn');
+    this.delegationEnabledDate =
+        registerOutput<String>('delegationEnabledDate');
+    this.email = registerOutput<String>('email');
+    this.joinedMethod = registerOutput<String>('joinedMethod');
+    this.joinedTimestamp = registerOutput<String>('joinedTimestamp');
+    this.name = registerOutput<String>('name');
+    this.servicePrincipal = registerOutput<String>('servicePrincipal');
+    this.status = registerOutput<String>('status');
   }
 }

@@ -180,16 +180,17 @@ class TransitGatewayPeering extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.coreNetworkArn = Output.createUnknown<String>();
-    this.coreNetworkId = Output.createUnknown<String>();
-    this.edgeLocation = Output.createUnknown<String>();
-    this.ownerAccountId = Output.createUnknown<String>();
-    this.peeringType = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.transitGatewayArn = Output.createUnknown<String>();
-    this.transitGatewayPeeringAttachmentId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.coreNetworkArn = registerOutput<String>('coreNetworkArn');
+    this.coreNetworkId = registerOutput<String>('coreNetworkId');
+    this.edgeLocation = registerOutput<String>('edgeLocation');
+    this.ownerAccountId = registerOutput<String>('ownerAccountId');
+    this.peeringType = registerOutput<String>('peeringType');
+    this.resourceArn = registerOutput<String>('resourceArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.transitGatewayArn = registerOutput<String>('transitGatewayArn');
+    this.transitGatewayPeeringAttachmentId =
+        registerOutput<String>('transitGatewayPeeringAttachmentId');
   }
 }

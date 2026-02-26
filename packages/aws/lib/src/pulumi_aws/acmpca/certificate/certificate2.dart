@@ -341,15 +341,17 @@ class Certificate2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiPassthrough = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.certificate = Output.createUnknown<String>();
-    this.certificateAuthorityArn = Output.createUnknown<String>();
-    this.certificateChain = Output.createUnknown<String>();
-    this.certificateSigningRequest = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.signingAlgorithm = Output.createUnknown<String>();
-    this.templateArn = Output.createUnknown<String?>();
-    this.validity = Output.createUnknown<CertificateValidity>();
+    this.apiPassthrough = registerOutput<String?>('apiPassthrough');
+    this.arn = registerOutput<String>('arn');
+    this.certificate = registerOutput<String>('certificate');
+    this.certificateAuthorityArn =
+        registerOutput<String>('certificateAuthorityArn');
+    this.certificateChain = registerOutput<String>('certificateChain');
+    this.certificateSigningRequest =
+        registerOutput<String>('certificateSigningRequest');
+    this.region = registerOutput<String>('region');
+    this.signingAlgorithm = registerOutput<String>('signingAlgorithm');
+    this.templateArn = registerOutput<String?>('templateArn');
+    this.validity = registerOutput<CertificateValidity>('validity');
   }
 }

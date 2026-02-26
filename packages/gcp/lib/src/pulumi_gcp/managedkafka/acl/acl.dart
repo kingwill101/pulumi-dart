@@ -383,15 +383,15 @@ class Acl extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aclEntries = Output.createUnknown<List<AclAclEntry>>();
-    this.aclId = Output.createUnknown<String>();
-    this.cluster = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.patternType = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.resourceName = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String>();
+    this.aclEntries = registerOutput<List<AclAclEntry>>('aclEntries');
+    this.aclId = registerOutput<String>('aclId');
+    this.cluster = registerOutput<String>('cluster');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.patternType = registerOutput<String>('patternType');
+    this.project = registerOutput<String>('project');
+    this.resourceName = registerOutput<String>('resourceName');
+    this.resourceType = registerOutput<String>('resourceType');
   }
 }

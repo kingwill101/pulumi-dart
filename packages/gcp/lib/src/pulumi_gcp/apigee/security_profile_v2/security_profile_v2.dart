@@ -521,13 +521,14 @@ class SecurityProfileV2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.orgId = registerOutput<String>('orgId');
     this.profileAssessmentConfigs =
-        Output.createUnknown<List<SecurityProfileV2ProfileAssessmentConfig>>();
-    this.profileId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<SecurityProfileV2ProfileAssessmentConfig>>(
+            'profileAssessmentConfigs');
+    this.profileId = registerOutput<String>('profileId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -53,17 +53,19 @@ class TypeProvider extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.collectionOverrides =
-        Output.createUnknown<List<CollectionOverrideResponse>>();
-    this.credential = Output.createUnknown<CredentialResponse>();
-    this.customCertificateAuthorityRoots = Output.createUnknown<List<String>>();
-    this.description = Output.createUnknown<String>();
-    this.descriptorUrl = Output.createUnknown<String>();
-    this.insertTime = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<List<TypeProviderLabelEntryResponse>>();
-    this.name = Output.createUnknown<String>();
-    this.operation = Output.createUnknown<OperationResponse2>();
-    this.options = Output.createUnknown<OptionsResponse2>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<List<CollectionOverrideResponse>>('collectionOverrides');
+    this.credential = registerOutput<CredentialResponse>('credential');
+    this.customCertificateAuthorityRoots =
+        registerOutput<List<String>>('customCertificateAuthorityRoots');
+    this.description = registerOutput<String>('description');
+    this.descriptorUrl = registerOutput<String>('descriptorUrl');
+    this.insertTime = registerOutput<String>('insertTime');
+    this.labels =
+        registerOutput<List<TypeProviderLabelEntryResponse>>('labels');
+    this.name = registerOutput<String>('name');
+    this.operation = registerOutput<OperationResponse2>('operation');
+    this.options = registerOutput<OptionsResponse2>('options');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
   }
 }

@@ -169,21 +169,22 @@ class NetworkInsightsPath extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.destination = Output.createUnknown<String?>();
-    this.destinationArn = Output.createUnknown<String>();
-    this.destinationIp = Output.createUnknown<String?>();
-    this.destinationPort = Output.createUnknown<int?>();
+    this.arn = registerOutput<String>('arn');
+    this.destination = registerOutput<String?>('destination');
+    this.destinationArn = registerOutput<String>('destinationArn');
+    this.destinationIp = registerOutput<String?>('destinationIp');
+    this.destinationPort = registerOutput<int?>('destinationPort');
     this.filterAtDestination =
-        Output.createUnknown<NetworkInsightsPathFilterAtDestination>();
+        registerOutput<NetworkInsightsPathFilterAtDestination>(
+            'filterAtDestination');
     this.filterAtSource =
-        Output.createUnknown<NetworkInsightsPathFilterAtSource>();
-    this.protocol = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.source = Output.createUnknown<String>();
-    this.sourceArn = Output.createUnknown<String>();
-    this.sourceIp = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<NetworkInsightsPathFilterAtSource>('filterAtSource');
+    this.protocol = registerOutput<String>('protocol');
+    this.region = registerOutput<String>('region');
+    this.source = registerOutput<String>('source');
+    this.sourceArn = registerOutput<String>('sourceArn');
+    this.sourceIp = registerOutput<String?>('sourceIp');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

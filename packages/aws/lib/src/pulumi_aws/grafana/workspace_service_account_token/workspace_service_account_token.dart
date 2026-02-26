@@ -192,14 +192,15 @@ class WorkspaceServiceAccountToken extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createdAt = Output.createUnknown<String>();
-    this.expiresAt = Output.createUnknown<String>();
-    this.key = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.secondsToLive = Output.createUnknown<int>();
-    this.serviceAccountId = Output.createUnknown<String>();
-    this.serviceAccountTokenId = Output.createUnknown<String>();
-    this.workspaceId = Output.createUnknown<String>();
+    this.createdAt = registerOutput<String>('createdAt');
+    this.expiresAt = registerOutput<String>('expiresAt');
+    this.key = registerOutput<String>('key');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.secondsToLive = registerOutput<int>('secondsToLive');
+    this.serviceAccountId = registerOutput<String>('serviceAccountId');
+    this.serviceAccountTokenId =
+        registerOutput<String>('serviceAccountTokenId');
+    this.workspaceId = registerOutput<String>('workspaceId');
   }
 }

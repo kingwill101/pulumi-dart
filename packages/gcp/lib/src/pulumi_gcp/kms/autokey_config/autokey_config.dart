@@ -647,8 +647,8 @@ class AutokeyConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.folder = Output.createUnknown<String>();
-    this.keyProject = Output.createUnknown<String?>();
+    this.etag = registerOutput<String>('etag');
+    this.folder = registerOutput<String>('folder');
+    this.keyProject = registerOutput<String?>('keyProject');
   }
 }

@@ -122,8 +122,8 @@ class VpnGatewayRoutePropagation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.routeTableId = Output.createUnknown<String>();
-    this.vpnGatewayId = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.routeTableId = registerOutput<String>('routeTableId');
+    this.vpnGatewayId = registerOutput<String>('vpnGatewayId');
   }
 }

@@ -1097,10 +1097,10 @@ class NatAddress extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activate = Output.createUnknown<bool?>();
-    this.instanceId = Output.createUnknown<String>();
-    this.ipAddress = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.activate = registerOutput<bool?>('activate');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.ipAddress = registerOutput<String>('ipAddress');
+    this.name = registerOutput<String>('name');
+    this.state = registerOutput<String>('state');
   }
 }

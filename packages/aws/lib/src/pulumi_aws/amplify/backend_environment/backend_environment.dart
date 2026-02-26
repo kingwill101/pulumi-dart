@@ -171,11 +171,11 @@ class BackendEnvironment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.deploymentArtifacts = Output.createUnknown<String>();
-    this.environmentName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.stackName = Output.createUnknown<String>();
+    this.appId = registerOutput<String>('appId');
+    this.arn = registerOutput<String>('arn');
+    this.deploymentArtifacts = registerOutput<String>('deploymentArtifacts');
+    this.environmentName = registerOutput<String>('environmentName');
+    this.region = registerOutput<String>('region');
+    this.stackName = registerOutput<String>('stackName');
   }
 }

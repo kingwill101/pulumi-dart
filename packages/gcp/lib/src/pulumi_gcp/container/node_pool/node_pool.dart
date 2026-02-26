@@ -651,28 +651,31 @@ class NodePool extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoscaling = Output.createUnknown<NodePoolAutoscaling?>();
-    this.cluster = Output.createUnknown<String>();
-    this.initialNodeCount = Output.createUnknown<int>();
-    this.instanceGroupUrls = Output.createUnknown<List<String>>();
-    this.location = Output.createUnknown<String>();
-    this.managedInstanceGroupUrls = Output.createUnknown<List<String>>();
-    this.management = Output.createUnknown<NodePoolManagement>();
-    this.maxPodsPerNode = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.networkConfig = Output.createUnknown<NodePoolNetworkConfig>();
-    this.nodeConfig = Output.createUnknown<NodePoolNodeConfig>();
-    this.nodeCount = Output.createUnknown<int>();
+    this.autoscaling = registerOutput<NodePoolAutoscaling?>('autoscaling');
+    this.cluster = registerOutput<String>('cluster');
+    this.initialNodeCount = registerOutput<int>('initialNodeCount');
+    this.instanceGroupUrls = registerOutput<List<String>>('instanceGroupUrls');
+    this.location = registerOutput<String>('location');
+    this.managedInstanceGroupUrls =
+        registerOutput<List<String>>('managedInstanceGroupUrls');
+    this.management = registerOutput<NodePoolManagement>('management');
+    this.maxPodsPerNode = registerOutput<int>('maxPodsPerNode');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.networkConfig = registerOutput<NodePoolNetworkConfig>('networkConfig');
+    this.nodeConfig = registerOutput<NodePoolNodeConfig>('nodeConfig');
+    this.nodeCount = registerOutput<int>('nodeCount');
     this.nodeDrainConfigs =
-        Output.createUnknown<List<NodePoolNodeDrainConfig>>();
-    this.nodeLocations = Output.createUnknown<List<String>>();
-    this.operation = Output.createUnknown<String>();
-    this.placementPolicy = Output.createUnknown<NodePoolPlacementPolicy?>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<List<NodePoolNodeDrainConfig>>('nodeDrainConfigs');
+    this.nodeLocations = registerOutput<List<String>>('nodeLocations');
+    this.operation = registerOutput<String>('operation');
+    this.placementPolicy =
+        registerOutput<NodePoolPlacementPolicy?>('placementPolicy');
+    this.project = registerOutput<String>('project');
     this.queuedProvisioning =
-        Output.createUnknown<NodePoolQueuedProvisioning?>();
-    this.upgradeSettings = Output.createUnknown<NodePoolUpgradeSettings>();
-    this.version = Output.createUnknown<String>();
+        registerOutput<NodePoolQueuedProvisioning?>('queuedProvisioning');
+    this.upgradeSettings =
+        registerOutput<NodePoolUpgradeSettings>('upgradeSettings');
+    this.version = registerOutput<String>('version');
   }
 }

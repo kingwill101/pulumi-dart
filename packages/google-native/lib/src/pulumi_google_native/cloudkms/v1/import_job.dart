@@ -53,19 +53,20 @@ class ImportJob extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attestation = Output.createUnknown<KeyOperationAttestationResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.expireEventTime = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.generateTime = Output.createUnknown<String>();
-    this.importJobId = Output.createUnknown<String>();
-    this.importMethod = Output.createUnknown<String>();
-    this.keyRingId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.protectionLevel = Output.createUnknown<String>();
-    this.publicKey = Output.createUnknown<WrappingPublicKeyResponse>();
-    this.state = Output.createUnknown<String>();
+    this.attestation =
+        registerOutput<KeyOperationAttestationResponse>('attestation');
+    this.createTime = registerOutput<String>('createTime');
+    this.expireEventTime = registerOutput<String>('expireEventTime');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.generateTime = registerOutput<String>('generateTime');
+    this.importJobId = registerOutput<String>('importJobId');
+    this.importMethod = registerOutput<String>('importMethod');
+    this.keyRingId = registerOutput<String>('keyRingId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.protectionLevel = registerOutput<String>('protectionLevel');
+    this.publicKey = registerOutput<WrappingPublicKeyResponse>('publicKey');
+    this.state = registerOutput<String>('state');
   }
 }

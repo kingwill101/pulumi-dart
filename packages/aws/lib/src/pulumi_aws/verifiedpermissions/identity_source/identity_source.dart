@@ -517,9 +517,10 @@ class IdentitySource extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.configuration = Output.createUnknown<IdentitySourceConfiguration>();
-    this.policyStoreId = Output.createUnknown<String>();
-    this.principalEntityType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.configuration =
+        registerOutput<IdentitySourceConfiguration>('configuration');
+    this.policyStoreId = registerOutput<String>('policyStoreId');
+    this.principalEntityType = registerOutput<String>('principalEntityType');
+    this.region = registerOutput<String>('region');
   }
 }

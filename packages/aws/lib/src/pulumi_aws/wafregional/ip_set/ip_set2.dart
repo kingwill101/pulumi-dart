@@ -182,10 +182,10 @@ class IpSet2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.ipSetDescriptors =
-        Output.createUnknown<List<IpSetIpSetDescriptor2>?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<IpSetIpSetDescriptor2>?>('ipSetDescriptors');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

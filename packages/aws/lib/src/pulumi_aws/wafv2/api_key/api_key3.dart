@@ -135,9 +135,9 @@ class ApiKey3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiKey = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.scope = Output.createUnknown<String>();
-    this.tokenDomains = Output.createUnknown<List<String>>();
+    this.apiKey = registerOutput<String>('apiKey');
+    this.region = registerOutput<String>('region');
+    this.scope = registerOutput<String>('scope');
+    this.tokenDomains = registerOutput<List<String>>('tokenDomains');
   }
 }

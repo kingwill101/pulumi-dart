@@ -20,7 +20,7 @@ class Service9 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.producerProjectId = Output.createUnknown<String>();
-    this.serviceName = Output.createUnknown<String>();
+    this.producerProjectId = registerOutput<String>('producerProjectId');
+    this.serviceName = registerOutput<String>('serviceName');
   }
 }

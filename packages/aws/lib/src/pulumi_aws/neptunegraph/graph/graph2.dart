@@ -238,20 +238,21 @@ class Graph2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<bool>();
-    this.endpoint = Output.createUnknown<String>();
-    this.graphName = Output.createUnknown<String>();
-    this.graphNamePrefix = Output.createUnknown<String?>();
-    this.kmsKeyIdentifier = Output.createUnknown<String>();
-    this.provisionedMemory = Output.createUnknown<int>();
-    this.publicConnectivity = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.replicaCount = Output.createUnknown<int>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<GraphTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.deletionProtection = registerOutput<bool>('deletionProtection');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.graphName = registerOutput<String>('graphName');
+    this.graphNamePrefix = registerOutput<String?>('graphNamePrefix');
+    this.kmsKeyIdentifier = registerOutput<String>('kmsKeyIdentifier');
+    this.provisionedMemory = registerOutput<int>('provisionedMemory');
+    this.publicConnectivity = registerOutput<bool>('publicConnectivity');
+    this.region = registerOutput<String>('region');
+    this.replicaCount = registerOutput<int>('replicaCount');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<GraphTimeouts?>('timeouts');
     this.vectorSearchConfiguration =
-        Output.createUnknown<GraphVectorSearchConfiguration?>();
+        registerOutput<GraphVectorSearchConfiguration?>(
+            'vectorSearchConfiguration');
   }
 }

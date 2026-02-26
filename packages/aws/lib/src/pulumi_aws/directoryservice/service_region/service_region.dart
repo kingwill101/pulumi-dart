@@ -595,12 +595,13 @@ class ServiceRegion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.desiredNumberOfDomainControllers = Output.createUnknown<int>();
-    this.directoryId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.regionName = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcSettings = Output.createUnknown<ServiceRegionVpcSettings>();
+    this.desiredNumberOfDomainControllers =
+        registerOutput<int>('desiredNumberOfDomainControllers');
+    this.directoryId = registerOutput<String>('directoryId');
+    this.region = registerOutput<String>('region');
+    this.regionName = registerOutput<String>('regionName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcSettings = registerOutput<ServiceRegionVpcSettings>('vpcSettings');
   }
 }

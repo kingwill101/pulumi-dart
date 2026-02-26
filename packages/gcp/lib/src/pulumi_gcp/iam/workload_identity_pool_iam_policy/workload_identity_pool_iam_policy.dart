@@ -1839,9 +1839,10 @@ class WorkloadIdentityPoolIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.workloadIdentityPoolId = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.policyData = registerOutput<String>('policyData');
+    this.project = registerOutput<String>('project');
+    this.workloadIdentityPoolId =
+        registerOutput<String>('workloadIdentityPoolId');
   }
 }

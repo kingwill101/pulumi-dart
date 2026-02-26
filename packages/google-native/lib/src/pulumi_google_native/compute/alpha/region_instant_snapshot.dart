@@ -70,26 +70,26 @@ class RegionInstantSnapshot extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.architecture = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.diskSizeGb = Output.createUnknown<String>();
-    this.guestFlush = Output.createUnknown<bool>();
-    this.kind = Output.createUnknown<String>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
+    this.architecture = registerOutput<String>('architecture');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.diskSizeGb = registerOutput<String>('diskSizeGb');
+    this.guestFlush = registerOutput<bool>('guestFlush');
+    this.kind = registerOutput<String>('kind');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
     this.resourceStatus =
-        Output.createUnknown<InstantSnapshotResourceStatusResponse>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
-    this.sourceDisk = Output.createUnknown<String>();
-    this.sourceDiskId = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<InstantSnapshotResourceStatusResponse>('resourceStatus');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    this.sourceDisk = registerOutput<String>('sourceDisk');
+    this.sourceDiskId = registerOutput<String>('sourceDiskId');
+    this.status = registerOutput<String>('status');
+    this.zone = registerOutput<String>('zone');
   }
 }

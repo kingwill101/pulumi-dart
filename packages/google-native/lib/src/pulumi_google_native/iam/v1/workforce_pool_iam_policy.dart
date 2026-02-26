@@ -31,11 +31,12 @@ class WorkforcePoolIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse48>>();
-    this.bindings = Output.createUnknown<List<BindingResponse67>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
-    this.workforcePoolId = Output.createUnknown<String>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse48>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse67>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.version = registerOutput<int>('version');
+    this.workforcePoolId = registerOutput<String>('workforcePoolId');
   }
 }

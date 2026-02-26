@@ -200,10 +200,11 @@ class LfTagExpression extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.catalogId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.expressions = Output.createUnknown<List<LfTagExpressionExpression>>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.catalogId = registerOutput<String>('catalogId');
+    this.description = registerOutput<String?>('description');
+    this.expressions =
+        registerOutput<List<LfTagExpressionExpression>>('expressions');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

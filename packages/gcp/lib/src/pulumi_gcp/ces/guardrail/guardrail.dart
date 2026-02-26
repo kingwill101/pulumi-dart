@@ -1931,23 +1931,24 @@ class Guardrail extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<GuardrailAction?>();
-    this.app = Output.createUnknown<String>();
-    this.codeCallback = Output.createUnknown<GuardrailCodeCallback?>();
-    this.contentFilter = Output.createUnknown<GuardrailContentFilter?>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.etag = Output.createUnknown<String>();
-    this.guardrailId = Output.createUnknown<String>();
-    this.llmPolicy = Output.createUnknown<GuardrailLlmPolicy?>();
+    this.action = registerOutput<GuardrailAction?>('action');
+    this.app = registerOutput<String>('app');
+    this.codeCallback = registerOutput<GuardrailCodeCallback?>('codeCallback');
+    this.contentFilter =
+        registerOutput<GuardrailContentFilter?>('contentFilter');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.etag = registerOutput<String>('etag');
+    this.guardrailId = registerOutput<String>('guardrailId');
+    this.llmPolicy = registerOutput<GuardrailLlmPolicy?>('llmPolicy');
     this.llmPromptSecurity =
-        Output.createUnknown<GuardrailLlmPromptSecurity?>();
-    this.location = Output.createUnknown<String>();
-    this.modelSafety = Output.createUnknown<GuardrailModelSafety?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GuardrailLlmPromptSecurity?>('llmPromptSecurity');
+    this.location = registerOutput<String>('location');
+    this.modelSafety = registerOutput<GuardrailModelSafety?>('modelSafety');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -1419,18 +1419,18 @@ class Permission2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.eventSourceToken = Output.createUnknown<String?>();
-    this.function = Output.createUnknown<String>();
-    this.functionUrlAuthType = Output.createUnknown<String?>();
-    this.invokedViaFunctionUrl = Output.createUnknown<bool?>();
-    this.principal = Output.createUnknown<String>();
-    this.principalOrgId = Output.createUnknown<String?>();
-    this.qualifier = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.sourceAccount = Output.createUnknown<String?>();
-    this.sourceArn = Output.createUnknown<String?>();
-    this.statementId = Output.createUnknown<String>();
-    this.statementIdPrefix = Output.createUnknown<String>();
+    this.action = registerOutput<String>('action');
+    this.eventSourceToken = registerOutput<String?>('eventSourceToken');
+    this.function = registerOutput<String>('function');
+    this.functionUrlAuthType = registerOutput<String?>('functionUrlAuthType');
+    this.invokedViaFunctionUrl = registerOutput<bool?>('invokedViaFunctionUrl');
+    this.principal = registerOutput<String>('principal');
+    this.principalOrgId = registerOutput<String?>('principalOrgId');
+    this.qualifier = registerOutput<String?>('qualifier');
+    this.region = registerOutput<String>('region');
+    this.sourceAccount = registerOutput<String?>('sourceAccount');
+    this.sourceArn = registerOutput<String?>('sourceArn');
+    this.statementId = registerOutput<String>('statementId');
+    this.statementIdPrefix = registerOutput<String>('statementIdPrefix');
   }
 }

@@ -778,11 +778,11 @@ class InstanceStorageConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.associationId = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String>();
+    this.associationId = registerOutput<String>('associationId');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.region = registerOutput<String>('region');
+    this.resourceType = registerOutput<String>('resourceType');
     this.storageConfig =
-        Output.createUnknown<InstanceStorageConfigStorageConfig>();
+        registerOutput<InstanceStorageConfigStorageConfig>('storageConfig');
   }
 }

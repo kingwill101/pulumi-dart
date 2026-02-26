@@ -126,8 +126,9 @@ class ApprovalRuleTemplateAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.approvalRuleTemplateName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.repositoryName = Output.createUnknown<String>();
+    this.approvalRuleTemplateName =
+        registerOutput<String>('approvalRuleTemplateName');
+    this.region = registerOutput<String>('region');
+    this.repositoryName = registerOutput<String>('repositoryName');
   }
 }

@@ -74,25 +74,28 @@ class Step2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.completionTime = Output.createUnknown<TimestampResponse>();
-    this.creationTime = Output.createUnknown<TimestampResponse>();
-    this.description = Output.createUnknown<String>();
-    this.deviceUsageDuration = Output.createUnknown<DurationResponse4>();
+    this.completionTime = registerOutput<TimestampResponse>('completionTime');
+    this.creationTime = registerOutput<TimestampResponse>('creationTime');
+    this.description = registerOutput<String>('description');
+    this.deviceUsageDuration =
+        registerOutput<DurationResponse4>('deviceUsageDuration');
     this.dimensionValue =
-        Output.createUnknown<List<StepDimensionValueEntryResponse>>();
-    this.executionId = Output.createUnknown<String>();
-    this.hasImages = Output.createUnknown<bool>();
-    this.historyId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<List<StepLabelsEntryResponse>>();
-    this.multiStep = Output.createUnknown<MultiStepResponse>();
-    this.name = Output.createUnknown<String>();
-    this.outcome = Output.createUnknown<OutcomeResponse>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.runDuration = Output.createUnknown<DurationResponse4>();
-    this.state = Output.createUnknown<String>();
-    this.stepId = Output.createUnknown<String>();
-    this.testExecutionStep = Output.createUnknown<TestExecutionStepResponse>();
-    this.toolExecutionStep = Output.createUnknown<ToolExecutionStepResponse>();
+        registerOutput<List<StepDimensionValueEntryResponse>>('dimensionValue');
+    this.executionId = registerOutput<String>('executionId');
+    this.hasImages = registerOutput<bool>('hasImages');
+    this.historyId = registerOutput<String>('historyId');
+    this.labels = registerOutput<List<StepLabelsEntryResponse>>('labels');
+    this.multiStep = registerOutput<MultiStepResponse>('multiStep');
+    this.name = registerOutput<String>('name');
+    this.outcome = registerOutput<OutcomeResponse>('outcome');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.runDuration = registerOutput<DurationResponse4>('runDuration');
+    this.state = registerOutput<String>('state');
+    this.stepId = registerOutput<String>('stepId');
+    this.testExecutionStep =
+        registerOutput<TestExecutionStepResponse>('testExecutionStep');
+    this.toolExecutionStep =
+        registerOutput<ToolExecutionStepResponse>('toolExecutionStep');
   }
 }

@@ -429,17 +429,18 @@ class ScheduledAction extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceId = Output.createUnknown<String>();
-    this.scalableDimension = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.endTime = registerOutput<String?>('endTime');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.resourceId = registerOutput<String>('resourceId');
+    this.scalableDimension = registerOutput<String>('scalableDimension');
     this.scalableTargetAction =
-        Output.createUnknown<ScheduledActionScalableTargetAction>();
-    this.schedule = Output.createUnknown<String>();
-    this.serviceNamespace = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String?>();
-    this.timezone = Output.createUnknown<String?>();
+        registerOutput<ScheduledActionScalableTargetAction>(
+            'scalableTargetAction');
+    this.schedule = registerOutput<String>('schedule');
+    this.serviceNamespace = registerOutput<String>('serviceNamespace');
+    this.startTime = registerOutput<String?>('startTime');
+    this.timezone = registerOutput<String?>('timezone');
   }
 }

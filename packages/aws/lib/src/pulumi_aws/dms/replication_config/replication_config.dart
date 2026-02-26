@@ -252,19 +252,21 @@ class ReplicationConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.computeConfig = Output.createUnknown<ReplicationConfigComputeConfig>();
-    this.region = Output.createUnknown<String>();
-    this.replicationConfigIdentifier = Output.createUnknown<String>();
-    this.replicationSettings = Output.createUnknown<String>();
-    this.replicationType = Output.createUnknown<String>();
-    this.resourceIdentifier = Output.createUnknown<String>();
-    this.sourceEndpointArn = Output.createUnknown<String>();
-    this.startReplication = Output.createUnknown<bool?>();
-    this.supplementalSettings = Output.createUnknown<String?>();
-    this.tableMappings = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetEndpointArn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.computeConfig =
+        registerOutput<ReplicationConfigComputeConfig>('computeConfig');
+    this.region = registerOutput<String>('region');
+    this.replicationConfigIdentifier =
+        registerOutput<String>('replicationConfigIdentifier');
+    this.replicationSettings = registerOutput<String>('replicationSettings');
+    this.replicationType = registerOutput<String>('replicationType');
+    this.resourceIdentifier = registerOutput<String>('resourceIdentifier');
+    this.sourceEndpointArn = registerOutput<String>('sourceEndpointArn');
+    this.startReplication = registerOutput<bool?>('startReplication');
+    this.supplementalSettings = registerOutput<String?>('supplementalSettings');
+    this.tableMappings = registerOutput<String>('tableMappings');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetEndpointArn = registerOutput<String>('targetEndpointArn');
   }
 }

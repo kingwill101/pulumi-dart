@@ -144,10 +144,10 @@ class OrganizationDelegatedAdminAccount extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.email = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.servicePrincipal = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.arn = registerOutput<String>('arn');
+    this.email = registerOutput<String>('email');
+    this.name = registerOutput<String>('name');
+    this.servicePrincipal = registerOutput<String>('servicePrincipal');
   }
 }

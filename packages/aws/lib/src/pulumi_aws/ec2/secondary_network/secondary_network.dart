@@ -180,17 +180,18 @@ class SecondaryNetwork extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.ipv4CidrBlock = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.ipv4CidrBlock = registerOutput<String>('ipv4CidrBlock');
     this.ipv4CidrBlockAssociations =
-        Output.createUnknown<List<SecondaryNetworkIpv4CidrBlockAssociation>>();
-    this.networkType = Output.createUnknown<String>();
-    this.ownerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.secondaryNetworkId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<SecondaryNetworkTimeouts?>();
+        registerOutput<List<SecondaryNetworkIpv4CidrBlockAssociation>>(
+            'ipv4CidrBlockAssociations');
+    this.networkType = registerOutput<String>('networkType');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.region = registerOutput<String>('region');
+    this.secondaryNetworkId = registerOutput<String>('secondaryNetworkId');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<SecondaryNetworkTimeouts?>('timeouts');
   }
 }

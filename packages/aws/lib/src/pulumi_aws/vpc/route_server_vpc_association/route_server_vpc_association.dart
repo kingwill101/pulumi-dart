@@ -132,9 +132,10 @@ class RouteServerVpcAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.routeServerId = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<RouteServerVpcAssociationTimeouts?>();
-    this.vpcId = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.routeServerId = registerOutput<String>('routeServerId');
+    this.timeouts =
+        registerOutput<RouteServerVpcAssociationTimeouts?>('timeouts');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

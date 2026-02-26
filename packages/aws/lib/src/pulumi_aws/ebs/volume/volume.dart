@@ -188,22 +188,23 @@ class Volume extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.encrypted = Output.createUnknown<bool>();
-    this.finalSnapshot = Output.createUnknown<bool?>();
-    this.iops = Output.createUnknown<int>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.multiAttachEnabled = Output.createUnknown<bool?>();
-    this.outpostArn = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.size = Output.createUnknown<int>();
-    this.snapshotId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.throughput = Output.createUnknown<int>();
-    this.type = Output.createUnknown<String>();
-    this.volumeInitializationRate = Output.createUnknown<int?>();
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.createTime = registerOutput<String>('createTime');
+    this.encrypted = registerOutput<bool>('encrypted');
+    this.finalSnapshot = registerOutput<bool?>('finalSnapshot');
+    this.iops = registerOutput<int>('iops');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.multiAttachEnabled = registerOutput<bool?>('multiAttachEnabled');
+    this.outpostArn = registerOutput<String?>('outpostArn');
+    this.region = registerOutput<String>('region');
+    this.size = registerOutput<int>('size');
+    this.snapshotId = registerOutput<String>('snapshotId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.throughput = registerOutput<int>('throughput');
+    this.type = registerOutput<String>('type');
+    this.volumeInitializationRate =
+        registerOutput<int?>('volumeInitializationRate');
   }
 }

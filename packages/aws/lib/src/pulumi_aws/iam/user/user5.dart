@@ -292,13 +292,13 @@ class User5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.path = Output.createUnknown<String?>();
-    this.permissionsBoundary = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.uniqueId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.name = registerOutput<String>('name');
+    this.path = registerOutput<String?>('path');
+    this.permissionsBoundary = registerOutput<String?>('permissionsBoundary');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.uniqueId = registerOutput<String>('uniqueId');
   }
 }

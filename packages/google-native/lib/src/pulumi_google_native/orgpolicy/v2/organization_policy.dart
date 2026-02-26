@@ -30,13 +30,14 @@ class OrganizationPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alternate = Output.createUnknown<
-        GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>();
+    this.alternate =
+        registerOutput<GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>(
+            'alternate');
     this.dryRunSpec =
-        Output.createUnknown<GoogleCloudOrgpolicyV2PolicySpecResponse>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
+        registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>('dryRunSpec');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
     this.spec =
-        Output.createUnknown<GoogleCloudOrgpolicyV2PolicySpecResponse>();
+        registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>('spec');
   }
 }

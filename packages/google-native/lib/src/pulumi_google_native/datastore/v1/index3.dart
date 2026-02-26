@@ -32,12 +32,13 @@ class Index3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.ancestor = Output.createUnknown<String>();
-    this.indexId = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.properties = Output.createUnknown<
-        List<GoogleDatastoreAdminV1IndexedPropertyResponse>>();
-    this.state = Output.createUnknown<String>();
+    this.ancestor = registerOutput<String>('ancestor');
+    this.indexId = registerOutput<String>('indexId');
+    this.kind = registerOutput<String>('kind');
+    this.project = registerOutput<String>('project');
+    this.properties =
+        registerOutput<List<GoogleDatastoreAdminV1IndexedPropertyResponse>>(
+            'properties');
+    this.state = registerOutput<String>('state');
   }
 }

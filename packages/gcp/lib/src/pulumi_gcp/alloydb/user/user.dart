@@ -896,13 +896,13 @@ class User extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cluster = Output.createUnknown<String>();
-    this.databaseRoles = Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
-    this.password = Output.createUnknown<String?>();
-    this.passwordWo = Output.createUnknown<String?>();
-    this.passwordWoVersion = Output.createUnknown<String?>();
-    this.userId = Output.createUnknown<String>();
-    this.userType = Output.createUnknown<String>();
+    this.cluster = registerOutput<String>('cluster');
+    this.databaseRoles = registerOutput<List<String>?>('databaseRoles');
+    this.name = registerOutput<String>('name');
+    this.password = registerOutput<String?>('password');
+    this.passwordWo = registerOutput<String?>('passwordWo');
+    this.passwordWoVersion = registerOutput<String?>('passwordWoVersion');
+    this.userId = registerOutput<String>('userId');
+    this.userType = registerOutput<String>('userType');
   }
 }

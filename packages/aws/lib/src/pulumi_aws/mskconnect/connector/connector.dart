@@ -466,25 +466,29 @@ class Connector extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.capacity = Output.createUnknown<ConnectorCapacity>();
-    this.connectorConfiguration = Output.createUnknown<Map<String, String>>();
-    this.description = Output.createUnknown<String?>();
-    this.kafkaCluster = Output.createUnknown<ConnectorKafkaCluster>();
+    this.arn = registerOutput<String>('arn');
+    this.capacity = registerOutput<ConnectorCapacity>('capacity');
+    this.connectorConfiguration =
+        registerOutput<Map<String, String>>('connectorConfiguration');
+    this.description = registerOutput<String?>('description');
+    this.kafkaCluster = registerOutput<ConnectorKafkaCluster>('kafkaCluster');
     this.kafkaClusterClientAuthentication =
-        Output.createUnknown<ConnectorKafkaClusterClientAuthentication>();
+        registerOutput<ConnectorKafkaClusterClientAuthentication>(
+            'kafkaClusterClientAuthentication');
     this.kafkaClusterEncryptionInTransit =
-        Output.createUnknown<ConnectorKafkaClusterEncryptionInTransit>();
-    this.kafkaconnectVersion = Output.createUnknown<String>();
-    this.logDelivery = Output.createUnknown<ConnectorLogDelivery?>();
-    this.name = Output.createUnknown<String>();
-    this.plugins = Output.createUnknown<List<ConnectorPlugin>>();
-    this.region = Output.createUnknown<String>();
-    this.serviceExecutionRoleArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.version = Output.createUnknown<String>();
+        registerOutput<ConnectorKafkaClusterEncryptionInTransit>(
+            'kafkaClusterEncryptionInTransit');
+    this.kafkaconnectVersion = registerOutput<String>('kafkaconnectVersion');
+    this.logDelivery = registerOutput<ConnectorLogDelivery?>('logDelivery');
+    this.name = registerOutput<String>('name');
+    this.plugins = registerOutput<List<ConnectorPlugin>>('plugins');
+    this.region = registerOutput<String>('region');
+    this.serviceExecutionRoleArn =
+        registerOutput<String>('serviceExecutionRoleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.version = registerOutput<String>('version');
     this.workerConfiguration =
-        Output.createUnknown<ConnectorWorkerConfiguration?>();
+        registerOutput<ConnectorWorkerConfiguration?>('workerConfiguration');
   }
 }

@@ -45,16 +45,18 @@ class NotificationChannel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationRecord = Output.createUnknown<MutationRecordResponse>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.mutationRecords = Output.createUnknown<List<MutationRecordResponse>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.userLabels = Output.createUnknown<Map<String, String>>();
-    this.verificationStatus = Output.createUnknown<String>();
+    this.creationRecord =
+        registerOutput<MutationRecordResponse>('creationRecord');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.enabled = registerOutput<bool>('enabled');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.mutationRecords =
+        registerOutput<List<MutationRecordResponse>>('mutationRecords');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.type = registerOutput<String>('type');
+    this.userLabels = registerOutput<Map<String, String>>('userLabels');
+    this.verificationStatus = registerOutput<String>('verificationStatus');
   }
 }

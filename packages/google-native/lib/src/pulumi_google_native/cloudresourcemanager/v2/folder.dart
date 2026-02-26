@@ -29,10 +29,10 @@ class Folder extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.lifecycleState = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.lifecycleState = registerOutput<String>('lifecycleState');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
   }
 }

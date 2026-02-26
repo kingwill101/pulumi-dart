@@ -834,10 +834,10 @@ class AccountIamMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.billingAccountId = Output.createUnknown<String>();
-    this.condition = Output.createUnknown<AccountIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.billingAccountId = registerOutput<String>('billingAccountId');
+    this.condition = registerOutput<AccountIamMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.member = registerOutput<String>('member');
+    this.role = registerOutput<String>('role');
   }
 }

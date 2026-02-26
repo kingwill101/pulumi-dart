@@ -60,21 +60,23 @@ class HostSecurityReport extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.created = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.envgroupHostname = Output.createUnknown<String>();
-    this.error = Output.createUnknown<String>();
-    this.executionTime = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.queryParams = Output.createUnknown<
-        GoogleCloudApigeeV1SecurityReportMetadataResponse>();
-    this.reportDefinitionId = Output.createUnknown<String>();
-    this.result = Output.createUnknown<
-        GoogleCloudApigeeV1SecurityReportResultMetadataResponse>();
-    this.resultFileSize = Output.createUnknown<String>();
-    this.resultRows = Output.createUnknown<String>();
-    this.self = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updated = Output.createUnknown<String>();
+    this.created = registerOutput<String>('created');
+    this.displayName = registerOutput<String>('displayName');
+    this.envgroupHostname = registerOutput<String>('envgroupHostname');
+    this.error = registerOutput<String>('error');
+    this.executionTime = registerOutput<String>('executionTime');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.queryParams =
+        registerOutput<GoogleCloudApigeeV1SecurityReportMetadataResponse>(
+            'queryParams');
+    this.reportDefinitionId = registerOutput<String>('reportDefinitionId');
+    this.result =
+        registerOutput<GoogleCloudApigeeV1SecurityReportResultMetadataResponse>(
+            'result');
+    this.resultFileSize = registerOutput<String>('resultFileSize');
+    this.resultRows = registerOutput<String>('resultRows');
+    this.self = registerOutput<String>('self');
+    this.state = registerOutput<String>('state');
+    this.updated = registerOutput<String>('updated');
   }
 }

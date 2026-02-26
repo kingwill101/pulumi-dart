@@ -420,9 +420,9 @@ class MailFrom extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.behaviorOnMxFailure = Output.createUnknown<String?>();
-    this.domain = Output.createUnknown<String>();
-    this.mailFromDomain = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.behaviorOnMxFailure = registerOutput<String?>('behaviorOnMxFailure');
+    this.domain = registerOutput<String>('domain');
+    this.mailFromDomain = registerOutput<String>('mailFromDomain');
+    this.region = registerOutput<String>('region');
   }
 }

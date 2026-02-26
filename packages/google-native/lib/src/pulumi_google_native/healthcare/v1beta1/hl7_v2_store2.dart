@@ -41,17 +41,19 @@ class Hl7V2Store2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.datasetId = Output.createUnknown<String>();
-    this.hl7V2StoreId = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.datasetId = registerOutput<String>('datasetId');
+    this.hl7V2StoreId = registerOutput<String?>('hl7V2StoreId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.notificationConfig =
-        Output.createUnknown<NotificationConfigResponse4>();
+        registerOutput<NotificationConfigResponse4>('notificationConfig');
     this.notificationConfigs =
-        Output.createUnknown<List<Hl7V2NotificationConfigResponse2>>();
-    this.parserConfig = Output.createUnknown<ParserConfigResponse2>();
-    this.project = Output.createUnknown<String>();
-    this.rejectDuplicateMessage = Output.createUnknown<bool>();
+        registerOutput<List<Hl7V2NotificationConfigResponse2>>(
+            'notificationConfigs');
+    this.parserConfig = registerOutput<ParserConfigResponse2>('parserConfig');
+    this.project = registerOutput<String>('project');
+    this.rejectDuplicateMessage =
+        registerOutput<bool>('rejectDuplicateMessage');
   }
 }

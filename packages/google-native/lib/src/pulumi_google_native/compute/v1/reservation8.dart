@@ -61,23 +61,27 @@ class Reservation8 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.commitment = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.resourcePolicies = Output.createUnknown<Map<String, String>>();
+    this.commitment = registerOutput<String>('commitment');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.resourcePolicies =
+        registerOutput<Map<String, String>>('resourcePolicies');
     this.resourceStatus =
-        Output.createUnknown<AllocationResourceStatusResponse3>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.selfLink = Output.createUnknown<String>();
-    this.shareSettings = Output.createUnknown<ShareSettingsResponse3>();
+        registerOutput<AllocationResourceStatusResponse3>('resourceStatus');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.shareSettings =
+        registerOutput<ShareSettingsResponse3>('shareSettings');
     this.specificReservation =
-        Output.createUnknown<AllocationSpecificSKUReservationResponse3>();
-    this.specificReservationRequired = Output.createUnknown<bool>();
-    this.status = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<AllocationSpecificSKUReservationResponse3>(
+            'specificReservation');
+    this.specificReservationRequired =
+        registerOutput<bool>('specificReservationRequired');
+    this.status = registerOutput<String>('status');
+    this.zone = registerOutput<String>('zone');
   }
 }

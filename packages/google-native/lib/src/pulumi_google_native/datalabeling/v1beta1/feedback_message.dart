@@ -32,17 +32,17 @@ class FeedbackMessage extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotatedDatasetId = Output.createUnknown<String>();
-    this.body = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.datasetId = Output.createUnknown<String>();
-    this.feedbackThreadId = Output.createUnknown<String>();
-    this.image = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.annotatedDatasetId = registerOutput<String>('annotatedDatasetId');
+    this.body = registerOutput<String>('body');
+    this.createTime = registerOutput<String>('createTime');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.feedbackThreadId = registerOutput<String>('feedbackThreadId');
+    this.image = registerOutput<String>('image');
+    this.name = registerOutput<String>('name');
     this.operatorFeedbackMetadata =
-        Output.createUnknown<Map<String, dynamic>>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<Map<String, dynamic>>('operatorFeedbackMetadata');
+    this.project = registerOutput<String>('project');
     this.requesterFeedbackMetadata =
-        Output.createUnknown<Map<String, dynamic>>();
+        registerOutput<Map<String, dynamic>>('requesterFeedbackMetadata');
   }
 }

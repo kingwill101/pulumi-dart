@@ -64,23 +64,24 @@ class Listing extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.bigqueryDataset =
-        Output.createUnknown<BigQueryDatasetSourceResponse>();
-    this.categories = Output.createUnknown<List<String>>();
-    this.dataExchangeId = Output.createUnknown<String>();
-    this.dataProvider = Output.createUnknown<DataProviderResponse>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.documentation = Output.createUnknown<String>();
-    this.icon = Output.createUnknown<String>();
-    this.listingId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.primaryContact = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.publisher = Output.createUnknown<PublisherResponse>();
-    this.requestAccess = Output.createUnknown<String>();
+        registerOutput<BigQueryDatasetSourceResponse>('bigqueryDataset');
+    this.categories = registerOutput<List<String>>('categories');
+    this.dataExchangeId = registerOutput<String>('dataExchangeId');
+    this.dataProvider = registerOutput<DataProviderResponse>('dataProvider');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.documentation = registerOutput<String>('documentation');
+    this.icon = registerOutput<String>('icon');
+    this.listingId = registerOutput<String>('listingId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.primaryContact = registerOutput<String>('primaryContact');
+    this.project = registerOutput<String>('project');
+    this.publisher = registerOutput<PublisherResponse>('publisher');
+    this.requestAccess = registerOutput<String>('requestAccess');
     this.restrictedExportConfig =
-        Output.createUnknown<RestrictedExportConfigResponse>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<RestrictedExportConfigResponse>(
+            'restrictedExportConfig');
+    this.state = registerOutput<String>('state');
   }
 }

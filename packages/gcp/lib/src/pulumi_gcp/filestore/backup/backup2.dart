@@ -356,22 +356,23 @@ class Backup2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.capacityGb = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.downloadBytes = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.kmsKeyName = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.sourceFileShare = Output.createUnknown<String>();
-    this.sourceInstance = Output.createUnknown<String>();
-    this.sourceInstanceTier = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.storageBytes = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
+    this.capacityGb = registerOutput<String>('capacityGb');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.downloadBytes = registerOutput<String>('downloadBytes');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.kmsKeyName = registerOutput<String>('kmsKeyName');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.sourceFileShare = registerOutput<String>('sourceFileShare');
+    this.sourceInstance = registerOutput<String>('sourceInstance');
+    this.sourceInstanceTier = registerOutput<String>('sourceInstanceTier');
+    this.state = registerOutput<String>('state');
+    this.storageBytes = registerOutput<String>('storageBytes');
+    this.tags = registerOutput<Map<String, String>?>('tags');
   }
 }

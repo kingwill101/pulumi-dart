@@ -918,10 +918,10 @@ class Insight extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.filters = Output.createUnknown<InsightFilters>();
-    this.groupByAttribute = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.filters = registerOutput<InsightFilters>('filters');
+    this.groupByAttribute = registerOutput<String>('groupByAttribute');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

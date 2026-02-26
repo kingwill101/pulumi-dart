@@ -204,8 +204,8 @@ class DefaultPatchBaseline extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.baselineId = Output.createUnknown<String>();
-    this.operatingSystem = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.baselineId = registerOutput<String>('baselineId');
+    this.operatingSystem = registerOutput<String>('operatingSystem');
+    this.region = registerOutput<String>('region');
   }
 }

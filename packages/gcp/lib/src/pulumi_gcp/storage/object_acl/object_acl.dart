@@ -235,9 +235,9 @@ class ObjectACL extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.object = Output.createUnknown<String>();
-    this.predefinedAcl = Output.createUnknown<String?>();
-    this.roleEntities = Output.createUnknown<List<String>>();
+    this.bucket = registerOutput<String>('bucket');
+    this.object = registerOutput<String>('object');
+    this.predefinedAcl = registerOutput<String?>('predefinedAcl');
+    this.roleEntities = registerOutput<List<String>>('roleEntities');
   }
 }

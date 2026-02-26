@@ -563,12 +563,14 @@ class ConsentStore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dataset = Output.createUnknown<String>();
-    this.defaultConsentTtl = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enableConsentCreateOnUpdate = Output.createUnknown<bool?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+    this.dataset = registerOutput<String>('dataset');
+    this.defaultConsentTtl = registerOutput<String?>('defaultConsentTtl');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableConsentCreateOnUpdate =
+        registerOutput<bool?>('enableConsentCreateOnUpdate');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
   }
 }

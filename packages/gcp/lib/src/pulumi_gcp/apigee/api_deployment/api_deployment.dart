@@ -64,9 +64,9 @@ class ApiDeployment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.environment = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.proxyId = Output.createUnknown<String>();
-    this.revision = Output.createUnknown<String>();
+    this.environment = registerOutput<String>('environment');
+    this.orgId = registerOutput<String>('orgId');
+    this.proxyId = registerOutput<String>('proxyId');
+    this.revision = registerOutput<String>('revision');
   }
 }

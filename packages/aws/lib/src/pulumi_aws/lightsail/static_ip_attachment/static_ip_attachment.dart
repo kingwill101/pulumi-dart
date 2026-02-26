@@ -204,9 +204,9 @@ class StaticIpAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.instanceName = Output.createUnknown<String>();
-    this.ipAddress = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.staticIpName = Output.createUnknown<String>();
+    this.instanceName = registerOutput<String>('instanceName');
+    this.ipAddress = registerOutput<String>('ipAddress');
+    this.region = registerOutput<String>('region');
+    this.staticIpName = registerOutput<String>('staticIpName');
   }
 }

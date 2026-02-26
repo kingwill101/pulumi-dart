@@ -177,15 +177,17 @@ class LogDelivery extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.deliveryDestinationArn = Output.createUnknown<String>();
-    this.deliverySourceName = Output.createUnknown<String>();
-    this.fieldDelimiter = Output.createUnknown<String>();
-    this.recordFields = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.deliveryDestinationArn =
+        registerOutput<String>('deliveryDestinationArn');
+    this.deliverySourceName = registerOutput<String>('deliverySourceName');
+    this.fieldDelimiter = registerOutput<String>('fieldDelimiter');
+    this.recordFields = registerOutput<List<String>>('recordFields');
+    this.region = registerOutput<String>('region');
     this.s3DeliveryConfigurations =
-        Output.createUnknown<List<LogDeliveryS3DeliveryConfiguration>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<LogDeliveryS3DeliveryConfiguration>>(
+            's3DeliveryConfigurations');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

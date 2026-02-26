@@ -46,18 +46,20 @@ class AppProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appProfileId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.ignoreWarnings = Output.createUnknown<bool?>();
-    this.instanceId = Output.createUnknown<String>();
+    this.appProfileId = registerOutput<String>('appProfileId');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
+    this.instanceId = registerOutput<String>('instanceId');
     this.multiClusterRoutingUseAny =
-        Output.createUnknown<MultiClusterRoutingUseAnyResponse>();
-    this.name = Output.createUnknown<String>();
-    this.priority = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<MultiClusterRoutingUseAnyResponse>(
+            'multiClusterRoutingUseAny');
+    this.name = registerOutput<String>('name');
+    this.priority = registerOutput<String>('priority');
+    this.project = registerOutput<String>('project');
     this.singleClusterRouting =
-        Output.createUnknown<SingleClusterRoutingResponse>();
-    this.standardIsolation = Output.createUnknown<StandardIsolationResponse>();
+        registerOutput<SingleClusterRoutingResponse>('singleClusterRouting');
+    this.standardIsolation =
+        registerOutput<StandardIsolationResponse>('standardIsolation');
   }
 }

@@ -130,50 +130,55 @@ class Product4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attributes = Output.createUnknown<Map<String, String>>();
-    this.audience = Output.createUnknown<GoogleCloudRetailV2AudienceResponse>();
-    this.availability = Output.createUnknown<String>();
-    this.availableQuantity = Output.createUnknown<int>();
-    this.availableTime = Output.createUnknown<String>();
-    this.branchId = Output.createUnknown<String>();
-    this.brands = Output.createUnknown<List<String>>();
-    this.catalogId = Output.createUnknown<String>();
-    this.categories = Output.createUnknown<List<String>>();
-    this.collectionMemberIds = Output.createUnknown<List<String>>();
+    this.attributes = registerOutput<Map<String, String>>('attributes');
+    this.audience =
+        registerOutput<GoogleCloudRetailV2AudienceResponse>('audience');
+    this.availability = registerOutput<String>('availability');
+    this.availableQuantity = registerOutput<int>('availableQuantity');
+    this.availableTime = registerOutput<String>('availableTime');
+    this.branchId = registerOutput<String>('branchId');
+    this.brands = registerOutput<List<String>>('brands');
+    this.catalogId = registerOutput<String>('catalogId');
+    this.categories = registerOutput<List<String>>('categories');
+    this.collectionMemberIds =
+        registerOutput<List<String>>('collectionMemberIds');
     this.colorInfo =
-        Output.createUnknown<GoogleCloudRetailV2ColorInfoResponse>();
-    this.conditions = Output.createUnknown<List<String>>();
-    this.description = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.fulfillmentInfo = Output.createUnknown<
-        List<GoogleCloudRetailV2FulfillmentInfoResponse>>();
-    this.gtin = Output.createUnknown<String>();
+        registerOutput<GoogleCloudRetailV2ColorInfoResponse>('colorInfo');
+    this.conditions = registerOutput<List<String>>('conditions');
+    this.description = registerOutput<String>('description');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.fulfillmentInfo =
+        registerOutput<List<GoogleCloudRetailV2FulfillmentInfoResponse>>(
+            'fulfillmentInfo');
+    this.gtin = registerOutput<String>('gtin');
     this.images =
-        Output.createUnknown<List<GoogleCloudRetailV2ImageResponse>>();
-    this.languageCode = Output.createUnknown<String>();
+        registerOutput<List<GoogleCloudRetailV2ImageResponse>>('images');
+    this.languageCode = registerOutput<String>('languageCode');
     this.localInventories =
-        Output.createUnknown<List<GoogleCloudRetailV2LocalInventoryResponse>>();
-    this.location = Output.createUnknown<String>();
-    this.materials = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.patterns = Output.createUnknown<List<String>>();
+        registerOutput<List<GoogleCloudRetailV2LocalInventoryResponse>>(
+            'localInventories');
+    this.location = registerOutput<String>('location');
+    this.materials = registerOutput<List<String>>('materials');
+    this.name = registerOutput<String>('name');
+    this.patterns = registerOutput<List<String>>('patterns');
     this.priceInfo =
-        Output.createUnknown<GoogleCloudRetailV2PriceInfoResponse>();
-    this.primaryProductId = Output.createUnknown<String>();
-    this.productId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<GoogleCloudRetailV2PriceInfoResponse>('priceInfo');
+    this.primaryProductId = registerOutput<String>('primaryProductId');
+    this.productId = registerOutput<String>('productId');
+    this.project = registerOutput<String>('project');
     this.promotions =
-        Output.createUnknown<List<GoogleCloudRetailV2PromotionResponse>>();
-    this.publishTime = Output.createUnknown<String>();
-    this.rating = Output.createUnknown<GoogleCloudRetailV2RatingResponse>();
-    this.retrievableFields = Output.createUnknown<String>();
-    this.sizes = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<List<String>>();
-    this.title = Output.createUnknown<String>();
-    this.ttl = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.uri = Output.createUnknown<String>();
+        registerOutput<List<GoogleCloudRetailV2PromotionResponse>>(
+            'promotions');
+    this.publishTime = registerOutput<String>('publishTime');
+    this.rating = registerOutput<GoogleCloudRetailV2RatingResponse>('rating');
+    this.retrievableFields = registerOutput<String>('retrievableFields');
+    this.sizes = registerOutput<List<String>>('sizes');
+    this.tags = registerOutput<List<String>>('tags');
+    this.title = registerOutput<String>('title');
+    this.ttl = registerOutput<String>('ttl');
+    this.type = registerOutput<String>('type');
+    this.uri = registerOutput<String>('uri');
     this.variants =
-        Output.createUnknown<List<GoogleCloudRetailV2ProductResponse>>();
+        registerOutput<List<GoogleCloudRetailV2ProductResponse>>('variants');
   }
 }

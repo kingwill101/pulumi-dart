@@ -224,16 +224,18 @@ class Authorizer3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.authorizerFunctionArn = Output.createUnknown<String>();
-    this.enableCachingForHttp = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.signingDisabled = Output.createUnknown<bool?>();
-    this.status = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tokenKeyName = Output.createUnknown<String?>();
-    this.tokenSigningPublicKeys = Output.createUnknown<Map<String, String>?>();
+    this.arn = registerOutput<String>('arn');
+    this.authorizerFunctionArn =
+        registerOutput<String>('authorizerFunctionArn');
+    this.enableCachingForHttp = registerOutput<bool?>('enableCachingForHttp');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.signingDisabled = registerOutput<bool?>('signingDisabled');
+    this.status = registerOutput<String?>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tokenKeyName = registerOutput<String?>('tokenKeyName');
+    this.tokenSigningPublicKeys =
+        registerOutput<Map<String, String>?>('tokenSigningPublicKeys');
   }
 }

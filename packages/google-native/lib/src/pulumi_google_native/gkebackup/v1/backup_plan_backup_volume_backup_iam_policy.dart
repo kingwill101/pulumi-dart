@@ -34,14 +34,15 @@ class BackupPlanBackupVolumeBackupIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse40>>();
-    this.backupId = Output.createUnknown<String>();
-    this.backupPlanId = Output.createUnknown<String>();
-    this.bindings = Output.createUnknown<List<BindingResponse58>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
-    this.volumeBackupId = Output.createUnknown<String>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse40>>('auditConfigs');
+    this.backupId = registerOutput<String>('backupId');
+    this.backupPlanId = registerOutput<String>('backupPlanId');
+    this.bindings = registerOutput<List<BindingResponse58>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
+    this.volumeBackupId = registerOutput<String>('volumeBackupId');
   }
 }

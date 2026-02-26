@@ -154,16 +154,17 @@ class SourceApiAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.associationId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.mergedApiArn = Output.createUnknown<String>();
-    this.mergedApiId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.sourceApiArn = Output.createUnknown<String>();
-    this.sourceApiAssociationConfigs = Output.createUnknown<
-        List<SourceApiAssociationSourceApiAssociationConfig>>();
-    this.sourceApiId = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<SourceApiAssociationTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.associationId = registerOutput<String>('associationId');
+    this.description = registerOutput<String?>('description');
+    this.mergedApiArn = registerOutput<String>('mergedApiArn');
+    this.mergedApiId = registerOutput<String>('mergedApiId');
+    this.region = registerOutput<String>('region');
+    this.sourceApiArn = registerOutput<String>('sourceApiArn');
+    this.sourceApiAssociationConfigs =
+        registerOutput<List<SourceApiAssociationSourceApiAssociationConfig>>(
+            'sourceApiAssociationConfigs');
+    this.sourceApiId = registerOutput<String>('sourceApiId');
+    this.timeouts = registerOutput<SourceApiAssociationTimeouts?>('timeouts');
   }
 }

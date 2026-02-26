@@ -1020,12 +1020,12 @@ class WorkstationIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.workstationClusterId = Output.createUnknown<String>();
-    this.workstationConfigId = Output.createUnknown<String>();
-    this.workstationId = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.policyData = registerOutput<String>('policyData');
+    this.project = registerOutput<String>('project');
+    this.workstationClusterId = registerOutput<String>('workstationClusterId');
+    this.workstationConfigId = registerOutput<String>('workstationConfigId');
+    this.workstationId = registerOutput<String>('workstationId');
   }
 }

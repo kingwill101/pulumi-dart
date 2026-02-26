@@ -127,11 +127,11 @@ class VpcNetworkPerformanceMetricSubscription extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.destination = Output.createUnknown<String>();
-    this.metric = Output.createUnknown<String?>();
-    this.period = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.source = Output.createUnknown<String>();
-    this.statistic = Output.createUnknown<String?>();
+    this.destination = registerOutput<String>('destination');
+    this.metric = registerOutput<String?>('metric');
+    this.period = registerOutput<String>('period');
+    this.region = registerOutput<String>('region');
+    this.source = registerOutput<String>('source');
+    this.statistic = registerOutput<String?>('statistic');
   }
 }

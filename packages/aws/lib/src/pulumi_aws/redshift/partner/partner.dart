@@ -150,12 +150,12 @@ class Partner extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.clusterIdentifier = Output.createUnknown<String>();
-    this.databaseName = Output.createUnknown<String>();
-    this.partnerName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.statusMessage = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    this.databaseName = registerOutput<String>('databaseName');
+    this.partnerName = registerOutput<String>('partnerName');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.statusMessage = registerOutput<String>('statusMessage');
   }
 }

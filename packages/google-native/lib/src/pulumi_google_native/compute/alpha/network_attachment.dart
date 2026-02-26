@@ -57,22 +57,25 @@ class NetworkAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.connectionEndpoints = Output.createUnknown<
-        List<NetworkAttachmentConnectedEndpointResponse>>();
-    this.connectionPreference = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.producerAcceptLists = Output.createUnknown<List<String>>();
-    this.producerRejectLists = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
-    this.subnetworks = Output.createUnknown<List<String>>();
+    this.connectionEndpoints =
+        registerOutput<List<NetworkAttachmentConnectedEndpointResponse>>(
+            'connectionEndpoints');
+    this.connectionPreference = registerOutput<String>('connectionPreference');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.producerAcceptLists =
+        registerOutput<List<String>>('producerAcceptLists');
+    this.producerRejectLists =
+        registerOutput<List<String>>('producerRejectLists');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    this.subnetworks = registerOutput<List<String>>('subnetworks');
   }
 }

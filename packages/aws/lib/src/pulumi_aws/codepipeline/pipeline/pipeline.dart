@@ -1064,18 +1064,19 @@ class Pipeline extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.artifactStores = Output.createUnknown<List<PipelineArtifactStore>>();
-    this.executionMode = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.pipelineType = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.stages = Output.createUnknown<List<PipelineStage>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.triggerAlls = Output.createUnknown<List<PipelineTriggerAll>>();
-    this.triggers = Output.createUnknown<List<PipelineTrigger>?>();
-    this.variables = Output.createUnknown<List<PipelineVariable>?>();
+    this.arn = registerOutput<String>('arn');
+    this.artifactStores =
+        registerOutput<List<PipelineArtifactStore>>('artifactStores');
+    this.executionMode = registerOutput<String?>('executionMode');
+    this.name = registerOutput<String>('name');
+    this.pipelineType = registerOutput<String?>('pipelineType');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.stages = registerOutput<List<PipelineStage>>('stages');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.triggerAlls = registerOutput<List<PipelineTriggerAll>>('triggerAlls');
+    this.triggers = registerOutput<List<PipelineTrigger>?>('triggers');
+    this.variables = registerOutput<List<PipelineVariable>?>('variables');
   }
 }

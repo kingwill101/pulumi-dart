@@ -127,45 +127,62 @@ class Workload2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.billingAccount = Output.createUnknown<String>();
-    this.cjisSettings = Output.createUnknown<
-        GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse>();
-    this.complianceRegime = Output.createUnknown<String>();
-    this.complianceStatus = Output.createUnknown<
-        GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse>();
-    this.compliantButDisallowedServices = Output.createUnknown<List<String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.ekmProvisioningResponse = Output.createUnknown<
-        GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse>();
-    this.enableSovereignControls = Output.createUnknown<bool>();
-    this.etag = Output.createUnknown<String>();
-    this.externalId = Output.createUnknown<String?>();
-    this.fedrampHighSettings = Output.createUnknown<
-        GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse>();
-    this.fedrampModerateSettings = Output.createUnknown<
-        GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponse>();
-    this.il4Settings = Output.createUnknown<
-        GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponse>();
-    this.kajEnrollmentState = Output.createUnknown<String>();
-    this.kmsSettings = Output.createUnknown<
-        GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.partner = Output.createUnknown<String>();
-    this.partnerPermissions = Output.createUnknown<
-        GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse>();
-    this.provisionedResourcesParent = Output.createUnknown<String>();
-    this.resourceMonitoringEnabled = Output.createUnknown<bool>();
-    this.resourceSettings = Output.createUnknown<
-        List<
-            GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse>>();
-    this.resources = Output.createUnknown<
-        List<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse>>();
-    this.saaEnrollmentResponse = Output.createUnknown<
-        GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse>();
-    this.violationNotificationsEnabled = Output.createUnknown<bool>();
+    this.billingAccount = registerOutput<String>('billingAccount');
+    this.cjisSettings = registerOutput<
+            GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse>(
+        'cjisSettings');
+    this.complianceRegime = registerOutput<String>('complianceRegime');
+    this.complianceStatus = registerOutput<
+            GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse>(
+        'complianceStatus');
+    this.compliantButDisallowedServices =
+        registerOutput<List<String>>('compliantButDisallowedServices');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.ekmProvisioningResponse = registerOutput<
+            GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse>(
+        'ekmProvisioningResponse');
+    this.enableSovereignControls =
+        registerOutput<bool>('enableSovereignControls');
+    this.etag = registerOutput<String>('etag');
+    this.externalId = registerOutput<String?>('externalId');
+    this.fedrampHighSettings = registerOutput<
+            GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse>(
+        'fedrampHighSettings');
+    this.fedrampModerateSettings = registerOutput<
+            GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponse>(
+        'fedrampModerateSettings');
+    this.il4Settings = registerOutput<
+            GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponse>(
+        'il4Settings');
+    this.kajEnrollmentState = registerOutput<String>('kajEnrollmentState');
+    this.kmsSettings = registerOutput<
+            GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse>(
+        'kmsSettings');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.partner = registerOutput<String>('partner');
+    this.partnerPermissions = registerOutput<
+            GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse>(
+        'partnerPermissions');
+    this.provisionedResourcesParent =
+        registerOutput<String>('provisionedResourcesParent');
+    this.resourceMonitoringEnabled =
+        registerOutput<bool>('resourceMonitoringEnabled');
+    this.resourceSettings = registerOutput<
+            List<
+                GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse>>(
+        'resourceSettings');
+    this.resources = registerOutput<
+            List<
+                GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse>>(
+        'resources');
+    this.saaEnrollmentResponse = registerOutput<
+            GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse>(
+        'saaEnrollmentResponse');
+    this.violationNotificationsEnabled =
+        registerOutput<bool>('violationNotificationsEnabled');
   }
 }

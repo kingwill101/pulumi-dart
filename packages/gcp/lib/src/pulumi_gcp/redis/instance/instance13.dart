@@ -1660,45 +1660,53 @@ class Instance13 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alternativeLocationId = Output.createUnknown<String>();
-    this.authEnabled = Output.createUnknown<bool?>();
-    this.authString = Output.createUnknown<String>();
-    this.authorizedNetwork = Output.createUnknown<String>();
-    this.connectMode = Output.createUnknown<String?>();
-    this.createTime = Output.createUnknown<String>();
-    this.currentLocationId = Output.createUnknown<String>();
-    this.customerManagedKey = Output.createUnknown<String?>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.effectiveReservedIpRange = Output.createUnknown<String>();
-    this.host = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.locationId = Output.createUnknown<String>();
+    this.alternativeLocationId =
+        registerOutput<String>('alternativeLocationId');
+    this.authEnabled = registerOutput<bool?>('authEnabled');
+    this.authString = registerOutput<String>('authString');
+    this.authorizedNetwork = registerOutput<String>('authorizedNetwork');
+    this.connectMode = registerOutput<String?>('connectMode');
+    this.createTime = registerOutput<String>('createTime');
+    this.currentLocationId = registerOutput<String>('currentLocationId');
+    this.customerManagedKey = registerOutput<String?>('customerManagedKey');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.displayName = registerOutput<String?>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveReservedIpRange =
+        registerOutput<String>('effectiveReservedIpRange');
+    this.host = registerOutput<String>('host');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.locationId = registerOutput<String>('locationId');
     this.maintenancePolicy =
-        Output.createUnknown<InstanceMaintenancePolicy3?>();
+        registerOutput<InstanceMaintenancePolicy3?>('maintenancePolicy');
     this.maintenanceSchedules =
-        Output.createUnknown<List<InstanceMaintenanceSchedule3>>();
-    this.maintenanceVersion = Output.createUnknown<String>();
-    this.memorySizeGb = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.nodes = Output.createUnknown<List<InstanceNode>>();
-    this.persistenceConfig = Output.createUnknown<InstancePersistenceConfig2>();
-    this.persistenceIamIdentity = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.readEndpoint = Output.createUnknown<String>();
-    this.readEndpointPort = Output.createUnknown<int>();
-    this.readReplicasMode = Output.createUnknown<String>();
-    this.redisConfigs = Output.createUnknown<Map<String, String>?>();
-    this.redisVersion = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.replicaCount = Output.createUnknown<int>();
-    this.reservedIpRange = Output.createUnknown<String>();
-    this.secondaryIpRange = Output.createUnknown<String>();
-    this.serverCaCerts = Output.createUnknown<List<InstanceServerCaCert>>();
-    this.tier = Output.createUnknown<String?>();
-    this.transitEncryptionMode = Output.createUnknown<String?>();
+        registerOutput<List<InstanceMaintenanceSchedule3>>(
+            'maintenanceSchedules');
+    this.maintenanceVersion = registerOutput<String>('maintenanceVersion');
+    this.memorySizeGb = registerOutput<int>('memorySizeGb');
+    this.name = registerOutput<String>('name');
+    this.nodes = registerOutput<List<InstanceNode>>('nodes');
+    this.persistenceConfig =
+        registerOutput<InstancePersistenceConfig2>('persistenceConfig');
+    this.persistenceIamIdentity =
+        registerOutput<String>('persistenceIamIdentity');
+    this.port = registerOutput<int>('port');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.readEndpoint = registerOutput<String>('readEndpoint');
+    this.readEndpointPort = registerOutput<int>('readEndpointPort');
+    this.readReplicasMode = registerOutput<String>('readReplicasMode');
+    this.redisConfigs = registerOutput<Map<String, String>?>('redisConfigs');
+    this.redisVersion = registerOutput<String>('redisVersion');
+    this.region = registerOutput<String>('region');
+    this.replicaCount = registerOutput<int>('replicaCount');
+    this.reservedIpRange = registerOutput<String>('reservedIpRange');
+    this.secondaryIpRange = registerOutput<String>('secondaryIpRange');
+    this.serverCaCerts =
+        registerOutput<List<InstanceServerCaCert>>('serverCaCerts');
+    this.tier = registerOutput<String?>('tier');
+    this.transitEncryptionMode =
+        registerOutput<String?>('transitEncryptionMode');
   }
 }

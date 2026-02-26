@@ -231,23 +231,24 @@ class KxVolume extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.attachedClusters =
-        Output.createUnknown<List<KxVolumeAttachedCluster>>();
-    this.availabilityZones = Output.createUnknown<List<String>>();
-    this.azMode = Output.createUnknown<String>();
-    this.createdTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.environmentId = Output.createUnknown<String>();
-    this.lastModifiedTimestamp = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<List<KxVolumeAttachedCluster>>('attachedClusters');
+    this.availabilityZones = registerOutput<List<String>>('availabilityZones');
+    this.azMode = registerOutput<String>('azMode');
+    this.createdTimestamp = registerOutput<String>('createdTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.lastModifiedTimestamp =
+        registerOutput<String>('lastModifiedTimestamp');
+    this.name = registerOutput<String>('name');
     this.nas1Configurations =
-        Output.createUnknown<List<KxVolumeNas1Configuration>?>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.statusReason = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<List<KxVolumeNas1Configuration>?>('nas1Configurations');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.statusReason = registerOutput<String>('statusReason');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
   }
 }

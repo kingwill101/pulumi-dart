@@ -58,19 +58,22 @@ class PatchDeployment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.duration = Output.createUnknown<String>();
-    this.instanceFilter = Output.createUnknown<PatchInstanceFilterResponse>();
-    this.lastExecuteTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.oneTimeSchedule = Output.createUnknown<OneTimeScheduleResponse>();
-    this.patchConfig = Output.createUnknown<PatchConfigResponse>();
-    this.patchDeploymentId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.recurringSchedule = Output.createUnknown<RecurringScheduleResponse>();
-    this.rollout = Output.createUnknown<PatchRolloutResponse>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.duration = registerOutput<String>('duration');
+    this.instanceFilter =
+        registerOutput<PatchInstanceFilterResponse>('instanceFilter');
+    this.lastExecuteTime = registerOutput<String>('lastExecuteTime');
+    this.name = registerOutput<String>('name');
+    this.oneTimeSchedule =
+        registerOutput<OneTimeScheduleResponse>('oneTimeSchedule');
+    this.patchConfig = registerOutput<PatchConfigResponse>('patchConfig');
+    this.patchDeploymentId = registerOutput<String>('patchDeploymentId');
+    this.project = registerOutput<String>('project');
+    this.recurringSchedule =
+        registerOutput<RecurringScheduleResponse>('recurringSchedule');
+    this.rollout = registerOutput<PatchRolloutResponse>('rollout');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

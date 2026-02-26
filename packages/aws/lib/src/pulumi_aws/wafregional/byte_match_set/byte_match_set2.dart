@@ -184,8 +184,8 @@ class ByteMatchSet2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.byteMatchTuples =
-        Output.createUnknown<List<ByteMatchSetByteMatchTuple2>?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<ByteMatchSetByteMatchTuple2>?>('byteMatchTuples');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

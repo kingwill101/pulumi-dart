@@ -167,11 +167,11 @@ class PublicKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.callerReference = Output.createUnknown<String>();
-    this.comment = Output.createUnknown<String?>();
-    this.encodedKey = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
+    this.callerReference = registerOutput<String>('callerReference');
+    this.comment = registerOutput<String?>('comment');
+    this.encodedKey = registerOutput<String>('encodedKey');
+    this.etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
   }
 }

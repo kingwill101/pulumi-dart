@@ -114,43 +114,53 @@ class Version12 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cloudLoggingDetails = Output.createUnknown<
-        GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse>();
-    this.createSampleIntegrations = Output.createUnknown<bool?>();
-    this.createTime = Output.createUnknown<String>();
-    this.databasePersistencePolicy = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.errorCatcherConfigs = Output.createUnknown<
-        List<GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse>>();
-    this.integrationId = Output.createUnknown<String>();
-    this.integrationParameters = Output.createUnknown<
-        List<GoogleCloudIntegrationsV1alphaIntegrationParameterResponse>>();
-    this.integrationParametersInternal = Output.createUnknown<
-        EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse>();
-    this.lastModifierEmail = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.lockHolder = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.newIntegration = Output.createUnknown<bool?>();
-    this.origin = Output.createUnknown<String>();
-    this.parentTemplateId = Output.createUnknown<String>();
-    this.productId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.runAsServiceAccount = Output.createUnknown<String>();
-    this.snapshotNumber = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.taskConfigs = Output.createUnknown<
-        List<GoogleCloudIntegrationsV1alphaTaskConfigResponse>>();
-    this.taskConfigsInternal = Output.createUnknown<
-        List<EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse>>();
+    this.cloudLoggingDetails = registerOutput<
+            GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse>(
+        'cloudLoggingDetails');
+    this.createSampleIntegrations =
+        registerOutput<bool?>('createSampleIntegrations');
+    this.createTime = registerOutput<String>('createTime');
+    this.databasePersistencePolicy =
+        registerOutput<String>('databasePersistencePolicy');
+    this.description = registerOutput<String>('description');
+    this.errorCatcherConfigs = registerOutput<
+            List<GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse>>(
+        'errorCatcherConfigs');
+    this.integrationId = registerOutput<String>('integrationId');
+    this.integrationParameters = registerOutput<
+            List<GoogleCloudIntegrationsV1alphaIntegrationParameterResponse>>(
+        'integrationParameters');
+    this.integrationParametersInternal = registerOutput<
+            EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse>(
+        'integrationParametersInternal');
+    this.lastModifierEmail = registerOutput<String>('lastModifierEmail');
+    this.location = registerOutput<String>('location');
+    this.lockHolder = registerOutput<String>('lockHolder');
+    this.name = registerOutput<String>('name');
+    this.newIntegration = registerOutput<bool?>('newIntegration');
+    this.origin = registerOutput<String>('origin');
+    this.parentTemplateId = registerOutput<String>('parentTemplateId');
+    this.productId = registerOutput<String>('productId');
+    this.project = registerOutput<String>('project');
+    this.runAsServiceAccount = registerOutput<String>('runAsServiceAccount');
+    this.snapshotNumber = registerOutput<String>('snapshotNumber');
+    this.state = registerOutput<String>('state');
+    this.status = registerOutput<String>('status');
+    this.taskConfigs =
+        registerOutput<List<GoogleCloudIntegrationsV1alphaTaskConfigResponse>>(
+            'taskConfigs');
+    this.taskConfigsInternal = registerOutput<
+            List<EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse>>(
+        'taskConfigsInternal');
     this.teardown =
-        Output.createUnknown<EnterpriseCrmEventbusProtoTeardownResponse>();
-    this.triggerConfigs = Output.createUnknown<
-        List<GoogleCloudIntegrationsV1alphaTriggerConfigResponse>>();
-    this.triggerConfigsInternal = Output.createUnknown<
-        List<EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse>>();
-    this.updateTime = Output.createUnknown<String>();
-    this.userLabel = Output.createUnknown<String>();
+        registerOutput<EnterpriseCrmEventbusProtoTeardownResponse>('teardown');
+    this.triggerConfigs = registerOutput<
+            List<GoogleCloudIntegrationsV1alphaTriggerConfigResponse>>(
+        'triggerConfigs');
+    this.triggerConfigsInternal = registerOutput<
+            List<EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse>>(
+        'triggerConfigsInternal');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.userLabel = registerOutput<String>('userLabel');
   }
 }

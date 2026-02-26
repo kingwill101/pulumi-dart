@@ -70,28 +70,33 @@ class Asset extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.assetId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
+    this.assetId = registerOutput<String>('assetId');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
     this.discoverySpec =
-        Output.createUnknown<GoogleCloudDataplexV1AssetDiscoverySpecResponse>();
-    this.discoveryStatus = Output.createUnknown<
-        GoogleCloudDataplexV1AssetDiscoveryStatusResponse>();
-    this.displayName = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lakeId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDataplexV1AssetDiscoverySpecResponse>(
+            'discoverySpec');
+    this.discoveryStatus =
+        registerOutput<GoogleCloudDataplexV1AssetDiscoveryStatusResponse>(
+            'discoveryStatus');
+    this.displayName = registerOutput<String>('displayName');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lakeId = registerOutput<String>('lakeId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.resourceSpec =
-        Output.createUnknown<GoogleCloudDataplexV1AssetResourceSpecResponse>();
-    this.resourceStatus = Output.createUnknown<
-        GoogleCloudDataplexV1AssetResourceStatusResponse>();
-    this.securityStatus = Output.createUnknown<
-        GoogleCloudDataplexV1AssetSecurityStatusResponse>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDataplexV1AssetResourceSpecResponse>(
+            'resourceSpec');
+    this.resourceStatus =
+        registerOutput<GoogleCloudDataplexV1AssetResourceStatusResponse>(
+            'resourceStatus');
+    this.securityStatus =
+        registerOutput<GoogleCloudDataplexV1AssetSecurityStatusResponse>(
+            'securityStatus');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.zone = registerOutput<String>('zone');
   }
 }

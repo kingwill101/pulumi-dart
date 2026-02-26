@@ -52,18 +52,20 @@ class Metric2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucketName = Output.createUnknown<String>();
-    this.bucketOptions = Output.createUnknown<BucketOptionsResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool>();
-    this.filter = Output.createUnknown<String>();
-    this.labelExtractors = Output.createUnknown<Map<String, String>>();
-    this.metricDescriptor = Output.createUnknown<MetricDescriptorResponse>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.valueExtractor = Output.createUnknown<String>();
-    this.version = Output.createUnknown<String>();
+    this.bucketName = registerOutput<String>('bucketName');
+    this.bucketOptions = registerOutput<BucketOptionsResponse>('bucketOptions');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.disabled = registerOutput<bool>('disabled');
+    this.filter = registerOutput<String>('filter');
+    this.labelExtractors =
+        registerOutput<Map<String, String>>('labelExtractors');
+    this.metricDescriptor =
+        registerOutput<MetricDescriptorResponse>('metricDescriptor');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.valueExtractor = registerOutput<String>('valueExtractor');
+    this.version = registerOutput<String>('version');
   }
 }

@@ -74,28 +74,32 @@ class ApiProduct extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiResources = Output.createUnknown<List<String>>();
-    this.approvalType = Output.createUnknown<String>();
+    this.apiResources = registerOutput<List<String>>('apiResources');
+    this.approvalType = registerOutput<String>('approvalType');
     this.attributes =
-        Output.createUnknown<List<GoogleCloudApigeeV1AttributeResponse>>();
-    this.createdAt = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.environments = Output.createUnknown<List<String>>();
-    this.graphqlOperationGroup = Output.createUnknown<
-        GoogleCloudApigeeV1GraphQLOperationGroupResponse>();
+        registerOutput<List<GoogleCloudApigeeV1AttributeResponse>>(
+            'attributes');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.environments = registerOutput<List<String>>('environments');
+    this.graphqlOperationGroup =
+        registerOutput<GoogleCloudApigeeV1GraphQLOperationGroupResponse>(
+            'graphqlOperationGroup');
     this.grpcOperationGroup =
-        Output.createUnknown<GoogleCloudApigeeV1GrpcOperationGroupResponse>();
-    this.lastModifiedAt = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<GoogleCloudApigeeV1GrpcOperationGroupResponse>(
+            'grpcOperationGroup');
+    this.lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
     this.operationGroup =
-        Output.createUnknown<GoogleCloudApigeeV1OperationGroupResponse>();
-    this.organizationId = Output.createUnknown<String>();
-    this.proxies = Output.createUnknown<List<String>>();
-    this.quota = Output.createUnknown<String>();
-    this.quotaCounterScope = Output.createUnknown<String>();
-    this.quotaInterval = Output.createUnknown<String>();
-    this.quotaTimeUnit = Output.createUnknown<String>();
-    this.scopes = Output.createUnknown<List<String>>();
+        registerOutput<GoogleCloudApigeeV1OperationGroupResponse>(
+            'operationGroup');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.proxies = registerOutput<List<String>>('proxies');
+    this.quota = registerOutput<String>('quota');
+    this.quotaCounterScope = registerOutput<String>('quotaCounterScope');
+    this.quotaInterval = registerOutput<String>('quotaInterval');
+    this.quotaTimeUnit = registerOutput<String>('quotaTimeUnit');
+    this.scopes = registerOutput<List<String>>('scopes');
   }
 }

@@ -289,16 +289,16 @@ class DeploymentType2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createPolicy = Output.createUnknown<String?>();
-    this.deletePolicy = Output.createUnknown<String?>();
-    this.deploymentId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<List<DeploymentLabel>?>();
-    this.manifest = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.preview = Output.createUnknown<bool?>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.target = Output.createUnknown<DeploymentTarget>();
+    this.createPolicy = registerOutput<String?>('createPolicy');
+    this.deletePolicy = registerOutput<String?>('deletePolicy');
+    this.deploymentId = registerOutput<String>('deploymentId');
+    this.description = registerOutput<String?>('description');
+    this.labels = registerOutput<List<DeploymentLabel>?>('labels');
+    this.manifest = registerOutput<String>('manifest');
+    this.name = registerOutput<String>('name');
+    this.preview = registerOutput<bool?>('preview');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.target = registerOutput<DeploymentTarget>('target');
   }
 }

@@ -39,14 +39,15 @@ class Feed extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.assetNames = Output.createUnknown<List<String>>();
-    this.assetTypes = Output.createUnknown<List<String>>();
-    this.condition = Output.createUnknown<ExprResponse16>();
-    this.contentType = Output.createUnknown<String>();
-    this.feedOutputConfig = Output.createUnknown<FeedOutputConfigResponse>();
-    this.name = Output.createUnknown<String>();
-    this.relationshipTypes = Output.createUnknown<List<String>>();
-    this.v1Id = Output.createUnknown<String>();
-    this.v1Id1 = Output.createUnknown<String>();
+    this.assetNames = registerOutput<List<String>>('assetNames');
+    this.assetTypes = registerOutput<List<String>>('assetTypes');
+    this.condition = registerOutput<ExprResponse16>('condition');
+    this.contentType = registerOutput<String>('contentType');
+    this.feedOutputConfig =
+        registerOutput<FeedOutputConfigResponse>('feedOutputConfig');
+    this.name = registerOutput<String>('name');
+    this.relationshipTypes = registerOutput<List<String>>('relationshipTypes');
+    this.v1Id = registerOutput<String>('v1Id');
+    this.v1Id1 = registerOutput<String>('v1Id1');
   }
 }

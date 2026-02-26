@@ -148,11 +148,11 @@ class SubAccount extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.billingAccountId = Output.createUnknown<String>();
-    this.deletionPolicy = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.masterBillingAccount = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.open = Output.createUnknown<bool>();
+    this.billingAccountId = registerOutput<String>('billingAccountId');
+    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
+    this.displayName = registerOutput<String>('displayName');
+    this.masterBillingAccount = registerOutput<String>('masterBillingAccount');
+    this.name = registerOutput<String>('name');
+    this.open = registerOutput<bool>('open');
   }
 }

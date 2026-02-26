@@ -1526,22 +1526,28 @@ class Policy3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.adjustmentType = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.autoscalingGroupName = Output.createUnknown<String>();
-    this.cooldown = Output.createUnknown<int?>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.estimatedInstanceWarmup = Output.createUnknown<int?>();
-    this.metricAggregationType = Output.createUnknown<String>();
-    this.minAdjustmentMagnitude = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.policyType = Output.createUnknown<String?>();
+    this.adjustmentType = registerOutput<String?>('adjustmentType');
+    this.arn = registerOutput<String>('arn');
+    this.autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
+    this.cooldown = registerOutput<int?>('cooldown');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.estimatedInstanceWarmup =
+        registerOutput<int?>('estimatedInstanceWarmup');
+    this.metricAggregationType =
+        registerOutput<String>('metricAggregationType');
+    this.minAdjustmentMagnitude =
+        registerOutput<int?>('minAdjustmentMagnitude');
+    this.name = registerOutput<String>('name');
+    this.policyType = registerOutput<String?>('policyType');
     this.predictiveScalingConfiguration =
-        Output.createUnknown<PolicyPredictiveScalingConfiguration?>();
-    this.region = Output.createUnknown<String>();
-    this.scalingAdjustment = Output.createUnknown<int?>();
-    this.stepAdjustments = Output.createUnknown<List<PolicyStepAdjustment>?>();
+        registerOutput<PolicyPredictiveScalingConfiguration?>(
+            'predictiveScalingConfiguration');
+    this.region = registerOutput<String>('region');
+    this.scalingAdjustment = registerOutput<int?>('scalingAdjustment');
+    this.stepAdjustments =
+        registerOutput<List<PolicyStepAdjustment>?>('stepAdjustments');
     this.targetTrackingConfiguration =
-        Output.createUnknown<PolicyTargetTrackingConfiguration?>();
+        registerOutput<PolicyTargetTrackingConfiguration?>(
+            'targetTrackingConfiguration');
   }
 }

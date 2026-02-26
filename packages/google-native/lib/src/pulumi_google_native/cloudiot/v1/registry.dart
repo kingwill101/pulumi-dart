@@ -42,16 +42,19 @@ class Registry extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.credentials = Output.createUnknown<List<RegistryCredentialResponse>>();
+    this.credentials =
+        registerOutput<List<RegistryCredentialResponse>>('credentials');
     this.eventNotificationConfigs =
-        Output.createUnknown<List<EventNotificationConfigResponse>>();
-    this.httpConfig = Output.createUnknown<HttpConfigResponse>();
-    this.location = Output.createUnknown<String>();
-    this.logLevel = Output.createUnknown<String>();
-    this.mqttConfig = Output.createUnknown<MqttConfigResponse>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<List<EventNotificationConfigResponse>>(
+            'eventNotificationConfigs');
+    this.httpConfig = registerOutput<HttpConfigResponse>('httpConfig');
+    this.location = registerOutput<String>('location');
+    this.logLevel = registerOutput<String>('logLevel');
+    this.mqttConfig = registerOutput<MqttConfigResponse>('mqttConfig');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.stateNotificationConfig =
-        Output.createUnknown<StateNotificationConfigResponse>();
+        registerOutput<StateNotificationConfigResponse>(
+            'stateNotificationConfig');
   }
 }

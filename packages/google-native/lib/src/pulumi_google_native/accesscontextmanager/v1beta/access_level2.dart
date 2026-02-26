@@ -32,11 +32,11 @@ class AccessLevel2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessPolicyId = Output.createUnknown<String>();
-    this.basic = Output.createUnknown<BasicLevelResponse2>();
-    this.custom = Output.createUnknown<CustomLevelResponse2>();
-    this.description = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.title = Output.createUnknown<String>();
+    this.accessPolicyId = registerOutput<String>('accessPolicyId');
+    this.basic = registerOutput<BasicLevelResponse2>('basic');
+    this.custom = registerOutput<CustomLevelResponse2>('custom');
+    this.description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    this.title = registerOutput<String>('title');
   }
 }

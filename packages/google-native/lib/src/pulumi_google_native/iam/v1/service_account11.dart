@@ -39,14 +39,14 @@ class ServiceAccount11 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool>();
-    this.displayName = Output.createUnknown<String>();
-    this.email = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.oauth2ClientId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.uniqueId = Output.createUnknown<String>();
+    this.description = registerOutput<String>('description');
+    this.disabled = registerOutput<bool>('disabled');
+    this.displayName = registerOutput<String>('displayName');
+    this.email = registerOutput<String>('email');
+    this.etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    this.oauth2ClientId = registerOutput<String>('oauth2ClientId');
+    this.project = registerOutput<String>('project');
+    this.uniqueId = registerOutput<String>('uniqueId');
   }
 }

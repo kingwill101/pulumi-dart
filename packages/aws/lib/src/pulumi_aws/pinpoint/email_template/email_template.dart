@@ -185,12 +185,12 @@ class EmailTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.emailTemplates =
-        Output.createUnknown<List<EmailTemplateEmailTemplate>?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.templateName = Output.createUnknown<String>();
+        registerOutput<List<EmailTemplateEmailTemplate>?>('emailTemplates');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.templateName = registerOutput<String>('templateName');
   }
 }

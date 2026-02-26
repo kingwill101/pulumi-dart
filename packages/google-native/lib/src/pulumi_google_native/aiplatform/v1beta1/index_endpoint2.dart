@@ -65,24 +65,29 @@ class IndexEndpoint2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.deployedIndexes = Output.createUnknown<
-        List<GoogleCloudAiplatformV1beta1DeployedIndexResponse>>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.enablePrivateServiceConnect = Output.createUnknown<bool>();
-    this.encryptionSpec = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1EncryptionSpecResponse>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.privateServiceConnectConfig = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse>();
-    this.project = Output.createUnknown<String>();
-    this.publicEndpointDomainName = Output.createUnknown<String>();
-    this.publicEndpointEnabled = Output.createUnknown<bool>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.deployedIndexes =
+        registerOutput<List<GoogleCloudAiplatformV1beta1DeployedIndexResponse>>(
+            'deployedIndexes');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.enablePrivateServiceConnect =
+        registerOutput<bool>('enablePrivateServiceConnect');
+    this.encryptionSpec =
+        registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>(
+            'encryptionSpec');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.privateServiceConnectConfig = registerOutput<
+            GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse>(
+        'privateServiceConnectConfig');
+    this.project = registerOutput<String>('project');
+    this.publicEndpointDomainName =
+        registerOutput<String>('publicEndpointDomainName');
+    this.publicEndpointEnabled = registerOutput<bool>('publicEndpointEnabled');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -338,24 +338,24 @@ class Fleet2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.baseCapacity = Output.createUnknown<int>();
+    this.arn = registerOutput<String>('arn');
+    this.baseCapacity = registerOutput<int>('baseCapacity');
     this.computeConfiguration =
-        Output.createUnknown<FleetComputeConfiguration?>();
-    this.computeType = Output.createUnknown<String>();
-    this.created = Output.createUnknown<String>();
-    this.environmentType = Output.createUnknown<String>();
-    this.fleetServiceRole = Output.createUnknown<String?>();
-    this.imageId = Output.createUnknown<String?>();
-    this.lastModified = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.overflowBehavior = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<FleetComputeConfiguration?>('computeConfiguration');
+    this.computeType = registerOutput<String>('computeType');
+    this.created = registerOutput<String>('created');
+    this.environmentType = registerOutput<String>('environmentType');
+    this.fleetServiceRole = registerOutput<String?>('fleetServiceRole');
+    this.imageId = registerOutput<String?>('imageId');
+    this.lastModified = registerOutput<String>('lastModified');
+    this.name = registerOutput<String>('name');
+    this.overflowBehavior = registerOutput<String>('overflowBehavior');
+    this.region = registerOutput<String>('region');
     this.scalingConfiguration =
-        Output.createUnknown<FleetScalingConfiguration?>();
-    this.statuses = Output.createUnknown<List<FleetStatus>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcConfigs = Output.createUnknown<List<FleetVpcConfig2>?>();
+        registerOutput<FleetScalingConfiguration?>('scalingConfiguration');
+    this.statuses = registerOutput<List<FleetStatus>>('statuses');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcConfigs = registerOutput<List<FleetVpcConfig2>?>('vpcConfigs');
   }
 }

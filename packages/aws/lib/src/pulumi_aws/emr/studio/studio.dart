@@ -219,23 +219,26 @@ class Studio extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.authMode = Output.createUnknown<String>();
-    this.defaultS3Location = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.encryptionKeyArn = Output.createUnknown<String?>();
-    this.engineSecurityGroupId = Output.createUnknown<String>();
-    this.idpAuthUrl = Output.createUnknown<String?>();
-    this.idpRelayStateParameterName = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.serviceRole = Output.createUnknown<String>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.url = Output.createUnknown<String>();
-    this.userRole = Output.createUnknown<String?>();
-    this.vpcId = Output.createUnknown<String>();
-    this.workspaceSecurityGroupId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.authMode = registerOutput<String>('authMode');
+    this.defaultS3Location = registerOutput<String>('defaultS3Location');
+    this.description = registerOutput<String?>('description');
+    this.encryptionKeyArn = registerOutput<String?>('encryptionKeyArn');
+    this.engineSecurityGroupId =
+        registerOutput<String>('engineSecurityGroupId');
+    this.idpAuthUrl = registerOutput<String?>('idpAuthUrl');
+    this.idpRelayStateParameterName =
+        registerOutput<String?>('idpRelayStateParameterName');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.serviceRole = registerOutput<String>('serviceRole');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.url = registerOutput<String>('url');
+    this.userRole = registerOutput<String?>('userRole');
+    this.vpcId = registerOutput<String>('vpcId');
+    this.workspaceSecurityGroupId =
+        registerOutput<String>('workspaceSecurityGroupId');
   }
 }

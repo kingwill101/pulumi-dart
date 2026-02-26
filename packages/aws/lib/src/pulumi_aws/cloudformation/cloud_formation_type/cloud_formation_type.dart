@@ -78,24 +78,24 @@ class CloudFormationType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.defaultVersionId = Output.createUnknown<String>();
-    this.deprecatedStatus = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.documentationUrl = Output.createUnknown<String>();
-    this.executionRoleArn = Output.createUnknown<String?>();
-    this.isDefaultVersion = Output.createUnknown<bool>();
+    this.arn = registerOutput<String>('arn');
+    this.defaultVersionId = registerOutput<String>('defaultVersionId');
+    this.deprecatedStatus = registerOutput<String>('deprecatedStatus');
+    this.description = registerOutput<String>('description');
+    this.documentationUrl = registerOutput<String>('documentationUrl');
+    this.executionRoleArn = registerOutput<String?>('executionRoleArn');
+    this.isDefaultVersion = registerOutput<bool>('isDefaultVersion');
     this.loggingConfig =
-        Output.createUnknown<CloudFormationTypeLoggingConfig?>();
-    this.provisioningType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.schema = Output.createUnknown<String>();
-    this.schemaHandlerPackage = Output.createUnknown<String>();
-    this.sourceUrl = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.typeArn = Output.createUnknown<String>();
-    this.typeName = Output.createUnknown<String>();
-    this.versionId = Output.createUnknown<String>();
-    this.visibility = Output.createUnknown<String>();
+        registerOutput<CloudFormationTypeLoggingConfig?>('loggingConfig');
+    this.provisioningType = registerOutput<String>('provisioningType');
+    this.region = registerOutput<String>('region');
+    this.schema = registerOutput<String>('schema');
+    this.schemaHandlerPackage = registerOutput<String>('schemaHandlerPackage');
+    this.sourceUrl = registerOutput<String>('sourceUrl');
+    this.type = registerOutput<String>('type');
+    this.typeArn = registerOutput<String>('typeArn');
+    this.typeName = registerOutput<String>('typeName');
+    this.versionId = registerOutput<String>('versionId');
+    this.visibility = registerOutput<String>('visibility');
   }
 }

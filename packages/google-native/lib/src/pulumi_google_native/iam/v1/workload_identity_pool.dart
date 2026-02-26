@@ -37,14 +37,15 @@ class WorkloadIdentityPool extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool>();
-    this.displayName = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.workloadIdentityPoolId = Output.createUnknown<String>();
+    this.description = registerOutput<String>('description');
+    this.disabled = registerOutput<bool>('disabled');
+    this.displayName = registerOutput<String>('displayName');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.workloadIdentityPoolId =
+        registerOutput<String>('workloadIdentityPoolId');
   }
 }

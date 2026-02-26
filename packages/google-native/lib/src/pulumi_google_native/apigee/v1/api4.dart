@@ -42,16 +42,16 @@ class Api4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String?>();
-    this.apiProxyType = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.latestRevisionId = Output.createUnknown<String>();
+    this.action = registerOutput<String?>('action');
+    this.apiProxyType = registerOutput<String>('apiProxyType');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.latestRevisionId = registerOutput<String>('latestRevisionId');
     this.metaData =
-        Output.createUnknown<GoogleCloudApigeeV1EntityMetadataResponse>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.readOnly = Output.createUnknown<bool>();
-    this.revision = Output.createUnknown<List<String>>();
-    this.validate = Output.createUnknown<bool?>();
+        registerOutput<GoogleCloudApigeeV1EntityMetadataResponse>('metaData');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.readOnly = registerOutput<bool>('readOnly');
+    this.revision = registerOutput<List<String>>('revision');
+    this.validate = registerOutput<bool?>('validate');
   }
 }

@@ -52,19 +52,19 @@ class Rbacrolebinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.group = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rbacrolebindingId = Output.createUnknown<String>();
-    this.role = Output.createUnknown<RoleResponse>();
-    this.scopeId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<RBACRoleBindingLifecycleStateResponse>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.user = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.group = registerOutput<String>('group');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.rbacrolebindingId = registerOutput<String>('rbacrolebindingId');
+    this.role = registerOutput<RoleResponse>('role');
+    this.scopeId = registerOutput<String>('scopeId');
+    this.state = registerOutput<RBACRoleBindingLifecycleStateResponse>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.user = registerOutput<String>('user');
   }
 }

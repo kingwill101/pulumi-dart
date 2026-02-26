@@ -598,15 +598,18 @@ class PerInstanceConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.instanceGroupManager = Output.createUnknown<String>();
-    this.minimalAction = Output.createUnknown<String?>();
-    this.mostDisruptiveAllowedAction = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
+    this.instanceGroupManager = registerOutput<String>('instanceGroupManager');
+    this.minimalAction = registerOutput<String?>('minimalAction');
+    this.mostDisruptiveAllowedAction =
+        registerOutput<String?>('mostDisruptiveAllowedAction');
+    this.name = registerOutput<String>('name');
     this.preservedState =
-        Output.createUnknown<PerInstanceConfigPreservedState?>();
-    this.project = Output.createUnknown<String>();
-    this.removeInstanceOnDestroy = Output.createUnknown<bool?>();
-    this.removeInstanceStateOnDestroy = Output.createUnknown<bool?>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<PerInstanceConfigPreservedState?>('preservedState');
+    this.project = registerOutput<String>('project');
+    this.removeInstanceOnDestroy =
+        registerOutput<bool?>('removeInstanceOnDestroy');
+    this.removeInstanceStateOnDestroy =
+        registerOutput<bool?>('removeInstanceStateOnDestroy');
+    this.zone = registerOutput<String>('zone');
   }
 }

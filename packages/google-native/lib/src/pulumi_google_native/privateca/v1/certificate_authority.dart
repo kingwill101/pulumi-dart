@@ -80,28 +80,31 @@ class CertificateAuthority extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessUrls = Output.createUnknown<AccessUrlsResponse>();
+    this.accessUrls = registerOutput<AccessUrlsResponse>('accessUrls');
     this.caCertificateDescriptions =
-        Output.createUnknown<List<CertificateDescriptionResponse>>();
-    this.caPoolId = Output.createUnknown<String>();
-    this.certificateAuthorityId = Output.createUnknown<String>();
-    this.config = Output.createUnknown<CertificateConfigResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.gcsBucket = Output.createUnknown<String>();
-    this.keySpec = Output.createUnknown<KeyVersionSpecResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lifetime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.pemCaCertificates = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.subordinateConfig = Output.createUnknown<SubordinateConfigResponse>();
-    this.tier = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<CertificateDescriptionResponse>>(
+            'caCertificateDescriptions');
+    this.caPoolId = registerOutput<String>('caPoolId');
+    this.certificateAuthorityId =
+        registerOutput<String>('certificateAuthorityId');
+    this.config = registerOutput<CertificateConfigResponse>('config');
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.gcsBucket = registerOutput<String>('gcsBucket');
+    this.keySpec = registerOutput<KeyVersionSpecResponse>('keySpec');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lifetime = registerOutput<String>('lifetime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.pemCaCertificates = registerOutput<List<String>>('pemCaCertificates');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.state = registerOutput<String>('state');
+    this.subordinateConfig =
+        registerOutput<SubordinateConfigResponse>('subordinateConfig');
+    this.tier = registerOutput<String>('tier');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

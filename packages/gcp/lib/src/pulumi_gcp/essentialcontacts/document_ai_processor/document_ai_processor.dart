@@ -168,11 +168,11 @@ class DocumentAiProcessor extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String>();
-    this.kmsKeyName = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+    this.displayName = registerOutput<String>('displayName');
+    this.kmsKeyName = registerOutput<String?>('kmsKeyName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.type = registerOutput<String>('type');
   }
 }

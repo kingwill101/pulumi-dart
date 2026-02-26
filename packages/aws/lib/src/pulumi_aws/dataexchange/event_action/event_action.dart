@@ -235,11 +235,11 @@ class EventAction extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<EventActionAction>();
-    this.arn = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.event = Output.createUnknown<EventActionEvent>();
-    this.region = Output.createUnknown<String>();
-    this.updatedAt = Output.createUnknown<String>();
+    this.action = registerOutput<EventActionAction>('action');
+    this.arn = registerOutput<String>('arn');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.event = registerOutput<EventActionEvent>('event');
+    this.region = registerOutput<String>('region');
+    this.updatedAt = registerOutput<String>('updatedAt');
   }
 }

@@ -321,10 +321,10 @@ class AppCheckRecaptchaEnterpriseConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.siteKey = Output.createUnknown<String>();
-    this.tokenTtl = Output.createUnknown<String>();
+    this.appId = registerOutput<String>('appId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.siteKey = registerOutput<String>('siteKey');
+    this.tokenTtl = registerOutput<String>('tokenTtl');
   }
 }

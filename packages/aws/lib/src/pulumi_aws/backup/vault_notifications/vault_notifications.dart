@@ -329,10 +329,10 @@ class VaultNotifications extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupVaultArn = Output.createUnknown<String>();
-    this.backupVaultEvents = Output.createUnknown<List<String>>();
-    this.backupVaultName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.snsTopicArn = Output.createUnknown<String>();
+    this.backupVaultArn = registerOutput<String>('backupVaultArn');
+    this.backupVaultEvents = registerOutput<List<String>>('backupVaultEvents');
+    this.backupVaultName = registerOutput<String>('backupVaultName');
+    this.region = registerOutput<String>('region');
+    this.snsTopicArn = registerOutput<String>('snsTopicArn');
   }
 }

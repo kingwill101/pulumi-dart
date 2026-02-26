@@ -108,38 +108,40 @@ class Interconnect3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.adminEnabled = Output.createUnknown<bool>();
-    this.availableFeatures = Output.createUnknown<List<String>>();
+    this.adminEnabled = registerOutput<bool>('adminEnabled');
+    this.availableFeatures = registerOutput<List<String>>('availableFeatures');
     this.circuitInfos =
-        Output.createUnknown<List<InterconnectCircuitInfoResponse3>>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.customerName = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
+        registerOutput<List<InterconnectCircuitInfoResponse3>>('circuitInfos');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.customerName = registerOutput<String>('customerName');
+    this.description = registerOutput<String>('description');
     this.expectedOutages =
-        Output.createUnknown<List<InterconnectOutageNotificationResponse3>>();
-    this.googleIpAddress = Output.createUnknown<String>();
-    this.googleReferenceId = Output.createUnknown<String>();
-    this.interconnectAttachments = Output.createUnknown<List<String>>();
-    this.interconnectType = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.linkType = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.macsec = Output.createUnknown<InterconnectMacsecResponse3>();
-    this.macsecEnabled = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.nocContactEmail = Output.createUnknown<String>();
-    this.operationalStatus = Output.createUnknown<String>();
-    this.peerIpAddress = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.provisionedLinkCount = Output.createUnknown<int>();
-    this.remoteLocation = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.requestedFeatures = Output.createUnknown<List<String>>();
-    this.requestedLinkCount = Output.createUnknown<int>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.selfLink = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<List<InterconnectOutageNotificationResponse3>>(
+            'expectedOutages');
+    this.googleIpAddress = registerOutput<String>('googleIpAddress');
+    this.googleReferenceId = registerOutput<String>('googleReferenceId');
+    this.interconnectAttachments =
+        registerOutput<List<String>>('interconnectAttachments');
+    this.interconnectType = registerOutput<String>('interconnectType');
+    this.kind = registerOutput<String>('kind');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.linkType = registerOutput<String>('linkType');
+    this.location = registerOutput<String>('location');
+    this.macsec = registerOutput<InterconnectMacsecResponse3>('macsec');
+    this.macsecEnabled = registerOutput<bool>('macsecEnabled');
+    this.name = registerOutput<String>('name');
+    this.nocContactEmail = registerOutput<String>('nocContactEmail');
+    this.operationalStatus = registerOutput<String>('operationalStatus');
+    this.peerIpAddress = registerOutput<String>('peerIpAddress');
+    this.project = registerOutput<String>('project');
+    this.provisionedLinkCount = registerOutput<int>('provisionedLinkCount');
+    this.remoteLocation = registerOutput<String>('remoteLocation');
+    this.requestId = registerOutput<String?>('requestId');
+    this.requestedFeatures = registerOutput<List<String>>('requestedFeatures');
+    this.requestedLinkCount = registerOutput<int>('requestedLinkCount');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.state = registerOutput<String>('state');
   }
 }

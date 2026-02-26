@@ -586,7 +586,7 @@ class PullTimeUpdateExclusion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.principalArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.principalArn = registerOutput<String>('principalArn');
+    this.region = registerOutput<String>('region');
   }
 }

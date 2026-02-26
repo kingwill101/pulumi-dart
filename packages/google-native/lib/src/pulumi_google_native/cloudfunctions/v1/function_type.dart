@@ -119,42 +119,47 @@ class FunctionType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.availableMemoryMb = Output.createUnknown<int>();
+    this.availableMemoryMb = registerOutput<int>('availableMemoryMb');
     this.buildEnvironmentVariables =
-        Output.createUnknown<Map<String, String>>();
-    this.buildId = Output.createUnknown<String>();
-    this.buildName = Output.createUnknown<String>();
-    this.buildWorkerPool = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.dockerRegistry = Output.createUnknown<String>();
-    this.dockerRepository = Output.createUnknown<String>();
-    this.entryPoint = Output.createUnknown<String>();
-    this.environmentVariables = Output.createUnknown<Map<String, String>>();
-    this.eventTrigger = Output.createUnknown<EventTriggerResponse>();
-    this.httpsTrigger = Output.createUnknown<HttpsTriggerResponse>();
-    this.ingressSettings = Output.createUnknown<String>();
-    this.kmsKeyName = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.maxInstances = Output.createUnknown<int>();
-    this.minInstances = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.runtime = Output.createUnknown<String>();
+        registerOutput<Map<String, String>>('buildEnvironmentVariables');
+    this.buildId = registerOutput<String>('buildId');
+    this.buildName = registerOutput<String>('buildName');
+    this.buildWorkerPool = registerOutput<String>('buildWorkerPool');
+    this.description = registerOutput<String>('description');
+    this.dockerRegistry = registerOutput<String>('dockerRegistry');
+    this.dockerRepository = registerOutput<String>('dockerRepository');
+    this.entryPoint = registerOutput<String>('entryPoint');
+    this.environmentVariables =
+        registerOutput<Map<String, String>>('environmentVariables');
+    this.eventTrigger = registerOutput<EventTriggerResponse>('eventTrigger');
+    this.httpsTrigger = registerOutput<HttpsTriggerResponse>('httpsTrigger');
+    this.ingressSettings = registerOutput<String>('ingressSettings');
+    this.kmsKeyName = registerOutput<String>('kmsKeyName');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.maxInstances = registerOutput<int>('maxInstances');
+    this.minInstances = registerOutput<int>('minInstances');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.project = registerOutput<String>('project');
+    this.runtime = registerOutput<String>('runtime');
     this.secretEnvironmentVariables =
-        Output.createUnknown<List<SecretEnvVarResponse>>();
-    this.secretVolumes = Output.createUnknown<List<SecretVolumeResponse>>();
-    this.serviceAccountEmail = Output.createUnknown<String>();
-    this.sourceArchiveUrl = Output.createUnknown<String>();
-    this.sourceRepository = Output.createUnknown<SourceRepositoryResponse>();
-    this.sourceToken = Output.createUnknown<String>();
-    this.sourceUploadUrl = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.timeout = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.versionId = Output.createUnknown<String>();
-    this.vpcConnector = Output.createUnknown<String>();
-    this.vpcConnectorEgressSettings = Output.createUnknown<String>();
+        registerOutput<List<SecretEnvVarResponse>>(
+            'secretEnvironmentVariables');
+    this.secretVolumes =
+        registerOutput<List<SecretVolumeResponse>>('secretVolumes');
+    this.serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
+    this.sourceArchiveUrl = registerOutput<String>('sourceArchiveUrl');
+    this.sourceRepository =
+        registerOutput<SourceRepositoryResponse>('sourceRepository');
+    this.sourceToken = registerOutput<String>('sourceToken');
+    this.sourceUploadUrl = registerOutput<String>('sourceUploadUrl');
+    this.status = registerOutput<String>('status');
+    this.timeout = registerOutput<String>('timeout');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.versionId = registerOutput<String>('versionId');
+    this.vpcConnector = registerOutput<String>('vpcConnector');
+    this.vpcConnectorEgressSettings =
+        registerOutput<String>('vpcConnectorEgressSettings');
   }
 }

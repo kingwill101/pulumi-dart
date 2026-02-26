@@ -301,16 +301,19 @@ class ServiceSpecificCredential extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createDate = Output.createUnknown<String>();
-    this.credentialAgeDays = Output.createUnknown<int?>();
-    this.expirationDate = Output.createUnknown<String>();
-    this.serviceCredentialAlias = Output.createUnknown<String>();
-    this.serviceCredentialSecret = Output.createUnknown<String>();
-    this.serviceName = Output.createUnknown<String>();
-    this.servicePassword = Output.createUnknown<String>();
-    this.serviceSpecificCredentialId = Output.createUnknown<String>();
-    this.serviceUserName = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String?>();
-    this.userName = Output.createUnknown<String>();
+    this.createDate = registerOutput<String>('createDate');
+    this.credentialAgeDays = registerOutput<int?>('credentialAgeDays');
+    this.expirationDate = registerOutput<String>('expirationDate');
+    this.serviceCredentialAlias =
+        registerOutput<String>('serviceCredentialAlias');
+    this.serviceCredentialSecret =
+        registerOutput<String>('serviceCredentialSecret');
+    this.serviceName = registerOutput<String>('serviceName');
+    this.servicePassword = registerOutput<String>('servicePassword');
+    this.serviceSpecificCredentialId =
+        registerOutput<String>('serviceSpecificCredentialId');
+    this.serviceUserName = registerOutput<String>('serviceUserName');
+    this.status = registerOutput<String?>('status');
+    this.userName = registerOutput<String>('userName');
   }
 }

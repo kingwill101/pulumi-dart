@@ -32,12 +32,13 @@ class FeatureIamPolicy3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse45>>();
-    this.bindings = Output.createUnknown<List<BindingResponse63>>();
-    this.etag = Output.createUnknown<String>();
-    this.featureId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse45>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse63>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.featureId = registerOutput<String>('featureId');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

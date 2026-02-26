@@ -429,34 +429,37 @@ class Cluster4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authorization = Output.createUnknown<ClusterAuthorization>();
-    this.clusterCaCertificate = Output.createUnknown<String>();
-    this.controlPlane = Output.createUnknown<ClusterControlPlane?>();
+    this.authorization = registerOutput<ClusterAuthorization>('authorization');
+    this.clusterCaCertificate = registerOutput<String>('clusterCaCertificate');
+    this.controlPlane = registerOutput<ClusterControlPlane?>('controlPlane');
     this.controlPlaneEncryption =
-        Output.createUnknown<ClusterControlPlaneEncryption>();
-    this.controlPlaneVersion = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.defaultMaxPodsPerNode = Output.createUnknown<int>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.endpoint = Output.createUnknown<String>();
+        registerOutput<ClusterControlPlaneEncryption>('controlPlaneEncryption');
+    this.controlPlaneVersion = registerOutput<String>('controlPlaneVersion');
+    this.createTime = registerOutput<String>('createTime');
+    this.defaultMaxPodsPerNode = registerOutput<int>('defaultMaxPodsPerNode');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.endpoint = registerOutput<String>('endpoint');
     this.externalLoadBalancerIpv4AddressPools =
-        Output.createUnknown<List<String>>();
-    this.fleet = Output.createUnknown<ClusterFleet2>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
+        registerOutput<List<String>>('externalLoadBalancerIpv4AddressPools');
+    this.fleet = registerOutput<ClusterFleet2>('fleet');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
     this.maintenanceEvents =
-        Output.createUnknown<List<ClusterMaintenanceEvent>>();
-    this.maintenancePolicy = Output.createUnknown<ClusterMaintenancePolicy2>();
-    this.name = Output.createUnknown<String>();
-    this.networking = Output.createUnknown<ClusterNetworking>();
-    this.nodeVersion = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.releaseChannel = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.systemAddonsConfig = Output.createUnknown<ClusterSystemAddonsConfig>();
-    this.targetVersion = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<ClusterMaintenanceEvent>>('maintenanceEvents');
+    this.maintenancePolicy =
+        registerOutput<ClusterMaintenancePolicy2>('maintenancePolicy');
+    this.name = registerOutput<String>('name');
+    this.networking = registerOutput<ClusterNetworking>('networking');
+    this.nodeVersion = registerOutput<String>('nodeVersion');
+    this.port = registerOutput<int>('port');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.releaseChannel = registerOutput<String>('releaseChannel');
+    this.status = registerOutput<String>('status');
+    this.systemAddonsConfig =
+        registerOutput<ClusterSystemAddonsConfig>('systemAddonsConfig');
+    this.targetVersion = registerOutput<String>('targetVersion');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

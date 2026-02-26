@@ -169,10 +169,10 @@ class ActionTarget extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.identifier = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String>('description');
+    this.identifier = registerOutput<String>('identifier');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -304,11 +304,11 @@ class Group3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String>();
-    this.filter = Output.createUnknown<String>();
-    this.isCluster = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.parentName = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
+    this.displayName = registerOutput<String>('displayName');
+    this.filter = registerOutput<String>('filter');
+    this.isCluster = registerOutput<bool?>('isCluster');
+    this.name = registerOutput<String>('name');
+    this.parentName = registerOutput<String?>('parentName');
+    this.project = registerOutput<String>('project');
   }
 }

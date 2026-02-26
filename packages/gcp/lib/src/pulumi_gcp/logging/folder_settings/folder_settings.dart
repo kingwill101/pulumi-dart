@@ -294,12 +294,13 @@ class FolderSettings extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.disableDefaultSink = Output.createUnknown<bool>();
-    this.folder = Output.createUnknown<String>();
-    this.kmsKeyName = Output.createUnknown<String>();
-    this.kmsServiceAccountId = Output.createUnknown<String>();
-    this.loggingServiceAccountId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.storageLocation = Output.createUnknown<String>();
+    this.disableDefaultSink = registerOutput<bool>('disableDefaultSink');
+    this.folder = registerOutput<String>('folder');
+    this.kmsKeyName = registerOutput<String>('kmsKeyName');
+    this.kmsServiceAccountId = registerOutput<String>('kmsServiceAccountId');
+    this.loggingServiceAccountId =
+        registerOutput<String>('loggingServiceAccountId');
+    this.name = registerOutput<String>('name');
+    this.storageLocation = registerOutput<String>('storageLocation');
   }
 }

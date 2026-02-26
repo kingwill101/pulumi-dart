@@ -173,15 +173,16 @@ class Account extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.createIgnoreAlreadyExists = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String?>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.email = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.uniqueId = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.createIgnoreAlreadyExists =
+        registerOutput<bool?>('createIgnoreAlreadyExists');
+    this.description = registerOutput<String?>('description');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.displayName = registerOutput<String?>('displayName');
+    this.email = registerOutput<String>('email');
+    this.member = registerOutput<String>('member');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.uniqueId = registerOutput<String>('uniqueId');
   }
 }

@@ -1453,23 +1453,24 @@ class InternalRange extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.allocationOptions =
-        Output.createUnknown<InternalRangeAllocationOptions?>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.excludeCidrRanges = Output.createUnknown<List<String>?>();
-    this.immutable = Output.createUnknown<bool?>();
-    this.ipCidrRange = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.migration = Output.createUnknown<InternalRangeMigration?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.overlaps = Output.createUnknown<List<String>?>();
-    this.peering = Output.createUnknown<String>();
-    this.prefixLength = Output.createUnknown<int?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.targetCidrRanges = Output.createUnknown<List<String>?>();
-    this.usage = Output.createUnknown<String>();
-    this.users = Output.createUnknown<List<String>>();
+        registerOutput<InternalRangeAllocationOptions?>('allocationOptions');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.excludeCidrRanges = registerOutput<List<String>?>('excludeCidrRanges');
+    this.immutable = registerOutput<bool?>('immutable');
+    this.ipCidrRange = registerOutput<String>('ipCidrRange');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.migration = registerOutput<InternalRangeMigration?>('migration');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.overlaps = registerOutput<List<String>?>('overlaps');
+    this.peering = registerOutput<String>('peering');
+    this.prefixLength = registerOutput<int?>('prefixLength');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.targetCidrRanges = registerOutput<List<String>?>('targetCidrRanges');
+    this.usage = registerOutput<String>('usage');
+    this.users = registerOutput<List<String>>('users');
   }
 }

@@ -40,15 +40,15 @@ class Pipeline2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String>();
-    this.docker = Output.createUnknown<DockerExecutorResponse>();
+    this.description = registerOutput<String>('description');
+    this.docker = registerOutput<DockerExecutorResponse>('docker');
     this.inputParameters =
-        Output.createUnknown<List<PipelineParameterResponse>>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<List<PipelineParameterResponse>>('inputParameters');
+    this.name = registerOutput<String>('name');
     this.outputParameters =
-        Output.createUnknown<List<PipelineParameterResponse>>();
-    this.pipelineId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.resources = Output.createUnknown<PipelineResourcesResponse>();
+        registerOutput<List<PipelineParameterResponse>>('outputParameters');
+    this.pipelineId = registerOutput<String>('pipelineId');
+    this.project = registerOutput<String>('project');
+    this.resources = registerOutput<PipelineResourcesResponse>('resources');
   }
 }

@@ -283,15 +283,19 @@ class Domain extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.documentServiceEndpoint = Output.createUnknown<String>();
-    this.domainId = Output.createUnknown<String>();
-    this.endpointOptions = Output.createUnknown<DomainEndpointOptions>();
-    this.indexFields = Output.createUnknown<List<DomainIndexField>?>();
-    this.multiAz = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.scalingParameters = Output.createUnknown<DomainScalingParameters>();
-    this.searchServiceEndpoint = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.documentServiceEndpoint =
+        registerOutput<String>('documentServiceEndpoint');
+    this.domainId = registerOutput<String>('domainId');
+    this.endpointOptions =
+        registerOutput<DomainEndpointOptions>('endpointOptions');
+    this.indexFields = registerOutput<List<DomainIndexField>?>('indexFields');
+    this.multiAz = registerOutput<bool>('multiAz');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.scalingParameters =
+        registerOutput<DomainScalingParameters>('scalingParameters');
+    this.searchServiceEndpoint =
+        registerOutput<String>('searchServiceEndpoint');
   }
 }

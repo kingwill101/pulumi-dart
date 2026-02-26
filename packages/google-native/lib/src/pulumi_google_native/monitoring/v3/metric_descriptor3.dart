@@ -49,17 +49,19 @@ class MetricDescriptor3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<List<LabelDescriptorResponse2>>();
-    this.launchStage = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<MetricDescriptorMetadataResponse2>();
-    this.metricKind = Output.createUnknown<String>();
-    this.monitoredResourceTypes = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.unit = Output.createUnknown<String>();
-    this.valueType = Output.createUnknown<String>();
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.labels = registerOutput<List<LabelDescriptorResponse2>>('labels');
+    this.launchStage = registerOutput<String>('launchStage');
+    this.metadata =
+        registerOutput<MetricDescriptorMetadataResponse2>('metadata');
+    this.metricKind = registerOutput<String>('metricKind');
+    this.monitoredResourceTypes =
+        registerOutput<List<String>>('monitoredResourceTypes');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.type = registerOutput<String>('type');
+    this.unit = registerOutput<String>('unit');
+    this.valueType = registerOutput<String>('valueType');
   }
 }

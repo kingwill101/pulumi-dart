@@ -48,17 +48,17 @@ class DeviceSession extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activeStartTime = Output.createUnknown<String>();
-    this.androidDevice = Output.createUnknown<AndroidDeviceResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.inactivityTimeout = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.activeStartTime = registerOutput<String>('activeStartTime');
+    this.androidDevice = registerOutput<AndroidDeviceResponse>('androidDevice');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.inactivityTimeout = registerOutput<String>('inactivityTimeout');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
     this.stateHistories =
-        Output.createUnknown<List<SessionStateEventResponse>>();
-    this.ttl = Output.createUnknown<String>();
+        registerOutput<List<SessionStateEventResponse>>('stateHistories');
+    this.ttl = registerOutput<String>('ttl');
   }
 }

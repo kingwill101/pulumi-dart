@@ -642,16 +642,17 @@ class AppConnection extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.applicationEndpoint =
-        Output.createUnknown<AppConnectionApplicationEndpoint>();
-    this.connectors = Output.createUnknown<List<String>?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.gateway = Output.createUnknown<AppConnectionGateway>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String?>();
-    this.type = Output.createUnknown<String?>();
+        registerOutput<AppConnectionApplicationEndpoint>('applicationEndpoint');
+    this.connectors = registerOutput<List<String>?>('connectors');
+    this.displayName = registerOutput<String?>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.gateway = registerOutput<AppConnectionGateway>('gateway');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String?>('region');
+    this.type = registerOutput<String?>('type');
   }
 }

@@ -47,17 +47,18 @@ class Execution3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.executionId = Output.createUnknown<String>();
-    this.executionTemplate = Output.createUnknown<ExecutionTemplateResponse>();
-    this.jobUri = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.outputNotebookFile = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.executionId = registerOutput<String>('executionId');
+    this.executionTemplate =
+        registerOutput<ExecutionTemplateResponse>('executionTemplate');
+    this.jobUri = registerOutput<String>('jobUri');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.outputNotebookFile = registerOutput<String>('outputNotebookFile');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

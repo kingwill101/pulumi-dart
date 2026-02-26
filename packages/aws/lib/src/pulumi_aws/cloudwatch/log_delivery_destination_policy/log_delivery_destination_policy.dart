@@ -128,8 +128,10 @@ class LogDeliveryDestinationPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.deliveryDestinationName = Output.createUnknown<String>();
-    this.deliveryDestinationPolicy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.deliveryDestinationName =
+        registerOutput<String>('deliveryDestinationName');
+    this.deliveryDestinationPolicy =
+        registerOutput<String>('deliveryDestinationPolicy');
+    this.region = registerOutput<String>('region');
   }
 }

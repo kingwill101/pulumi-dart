@@ -655,12 +655,12 @@ class RouterRoutePolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.fingerprint = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.router = Output.createUnknown<String>();
-    this.terms = Output.createUnknown<List<RouterRoutePolicyTerm>>();
-    this.type = Output.createUnknown<String?>();
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.router = registerOutput<String>('router');
+    this.terms = registerOutput<List<RouterRoutePolicyTerm>>('terms');
+    this.type = registerOutput<String?>('type');
   }
 }

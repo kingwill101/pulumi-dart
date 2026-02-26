@@ -346,16 +346,17 @@ class Configuration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.authenticationStrategy = Output.createUnknown<String>();
-    this.data = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.engineType = Output.createUnknown<String>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.latestRevision = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.authenticationStrategy =
+        registerOutput<String>('authenticationStrategy');
+    this.data = registerOutput<String>('data');
+    this.description = registerOutput<String?>('description');
+    this.engineType = registerOutput<String>('engineType');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.latestRevision = registerOutput<int>('latestRevision');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

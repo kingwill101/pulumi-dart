@@ -33,12 +33,13 @@ class Instance22 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.featurePolicy = Output.createUnknown<
-        GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse>();
-    this.location = Output.createUnknown<String>();
-    this.loggingEnabled = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.featurePolicy = registerOutput<
+            GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse>(
+        'featurePolicy');
+    this.location = registerOutput<String>('location');
+    this.loggingEnabled = registerOutput<bool>('loggingEnabled');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
   }
 }

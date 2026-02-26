@@ -291,10 +291,10 @@ class AppCheckDebugToken extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appId = Output.createUnknown<String>();
-    this.debugTokenId = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.token = Output.createUnknown<String>();
+    this.appId = registerOutput<String>('appId');
+    this.debugTokenId = registerOutput<String>('debugTokenId');
+    this.displayName = registerOutput<String>('displayName');
+    this.project = registerOutput<String>('project');
+    this.token = registerOutput<String>('token');
   }
 }

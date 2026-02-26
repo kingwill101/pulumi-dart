@@ -111,11 +111,12 @@ class OptIn extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.conditions = Output.createUnknown<List<OptInCondition>?>();
-    this.lastModified = Output.createUnknown<String>();
-    this.lastUpdatedBy = Output.createUnknown<String>();
-    this.principals = Output.createUnknown<List<OptInPrincipal>?>();
-    this.region = Output.createUnknown<String>();
-    this.resourceDatas = Output.createUnknown<List<OptInResourceData>?>();
+    this.conditions = registerOutput<List<OptInCondition>?>('conditions');
+    this.lastModified = registerOutput<String>('lastModified');
+    this.lastUpdatedBy = registerOutput<String>('lastUpdatedBy');
+    this.principals = registerOutput<List<OptInPrincipal>?>('principals');
+    this.region = registerOutput<String>('region');
+    this.resourceDatas =
+        registerOutput<List<OptInResourceData>?>('resourceDatas');
   }
 }

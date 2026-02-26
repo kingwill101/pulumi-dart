@@ -268,9 +268,9 @@ class IdentityPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.identity = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.identity = registerOutput<String>('identity');
+    this.name = registerOutput<String>('name');
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -1941,12 +1941,12 @@ class InstantSnapshotIamBinding extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.condition =
-        Output.createUnknown<InstantSnapshotIamBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<InstantSnapshotIamBindingCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.members = registerOutput<List<String>>('members');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
+    this.zone = registerOutput<String>('zone');
   }
 }

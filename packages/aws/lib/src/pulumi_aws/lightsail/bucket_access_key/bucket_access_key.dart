@@ -159,11 +159,11 @@ class BucketAccessKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessKeyId = Output.createUnknown<String>();
-    this.bucketName = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.secretAccessKey = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.accessKeyId = registerOutput<String>('accessKeyId');
+    this.bucketName = registerOutput<String>('bucketName');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.region = registerOutput<String>('region');
+    this.secretAccessKey = registerOutput<String>('secretAccessKey');
+    this.status = registerOutput<String>('status');
   }
 }

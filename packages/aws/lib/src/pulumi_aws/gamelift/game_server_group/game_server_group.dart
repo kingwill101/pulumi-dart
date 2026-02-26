@@ -808,22 +808,25 @@ class GameServerGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.autoScalingGroupArn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.autoScalingGroupArn = registerOutput<String>('autoScalingGroupArn');
     this.autoScalingPolicy =
-        Output.createUnknown<GameServerGroupAutoScalingPolicy?>();
-    this.balancingStrategy = Output.createUnknown<String>();
-    this.gameServerGroupName = Output.createUnknown<String>();
-    this.gameServerProtectionPolicy = Output.createUnknown<String>();
+        registerOutput<GameServerGroupAutoScalingPolicy?>('autoScalingPolicy');
+    this.balancingStrategy = registerOutput<String>('balancingStrategy');
+    this.gameServerGroupName = registerOutput<String>('gameServerGroupName');
+    this.gameServerProtectionPolicy =
+        registerOutput<String>('gameServerProtectionPolicy');
     this.instanceDefinitions =
-        Output.createUnknown<List<GameServerGroupInstanceDefinition>>();
-    this.launchTemplate = Output.createUnknown<GameServerGroupLaunchTemplate>();
-    this.maxSize = Output.createUnknown<int>();
-    this.minSize = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcSubnets = Output.createUnknown<List<String>?>();
+        registerOutput<List<GameServerGroupInstanceDefinition>>(
+            'instanceDefinitions');
+    this.launchTemplate =
+        registerOutput<GameServerGroupLaunchTemplate>('launchTemplate');
+    this.maxSize = registerOutput<int>('maxSize');
+    this.minSize = registerOutput<int>('minSize');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcSubnets = registerOutput<List<String>?>('vpcSubnets');
   }
 }

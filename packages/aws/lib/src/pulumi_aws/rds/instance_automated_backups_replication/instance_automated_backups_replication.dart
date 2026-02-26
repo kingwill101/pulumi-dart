@@ -440,10 +440,10 @@ class InstanceAutomatedBackupsReplication extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.preSignedUrl = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.retentionPeriod = Output.createUnknown<int?>();
-    this.sourceDbInstanceArn = Output.createUnknown<String>();
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.preSignedUrl = registerOutput<String?>('preSignedUrl');
+    this.region = registerOutput<String>('region');
+    this.retentionPeriod = registerOutput<int?>('retentionPeriod');
+    this.sourceDbInstanceArn = registerOutput<String>('sourceDbInstanceArn');
   }
 }

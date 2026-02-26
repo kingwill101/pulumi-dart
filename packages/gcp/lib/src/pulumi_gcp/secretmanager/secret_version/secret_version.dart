@@ -1175,17 +1175,17 @@ class SecretVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.deletionPolicy = Output.createUnknown<String?>();
-    this.destroyTime = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.isSecretDataBase64 = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.secret = Output.createUnknown<String>();
-    this.secretData = Output.createUnknown<String?>();
-    this.secretDataWo = Output.createUnknown<String?>();
-    this.secretDataWoVersion = Output.createUnknown<int?>();
-    this.version = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
+    this.destroyTime = registerOutput<String>('destroyTime');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.isSecretDataBase64 = registerOutput<bool?>('isSecretDataBase64');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.secret = registerOutput<String>('secret');
+    this.secretData = registerOutput<String?>('secretData');
+    this.secretDataWo = registerOutput<String?>('secretDataWo');
+    this.secretDataWoVersion = registerOutput<int?>('secretDataWoVersion');
+    this.version = registerOutput<String>('version');
   }
 }

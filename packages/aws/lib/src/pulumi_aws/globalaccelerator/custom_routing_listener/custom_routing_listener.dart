@@ -226,9 +226,9 @@ class CustomRoutingListener extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceleratorArn = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
+    this.acceleratorArn = registerOutput<String>('acceleratorArn');
+    this.arn = registerOutput<String>('arn');
     this.portRanges =
-        Output.createUnknown<List<CustomRoutingListenerPortRange>>();
+        registerOutput<List<CustomRoutingListenerPortRange>>('portRanges');
   }
 }

@@ -472,18 +472,20 @@ class Pipeline extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String?>();
-    this.jobCount = Output.createUnknown<int>();
-    this.lastUpdateTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.pipelineSources = Output.createUnknown<Map<String, String>?>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String?>();
-    this.scheduleInfo = Output.createUnknown<PipelineScheduleInfo?>();
-    this.schedulerServiceAccountEmail = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.workload = Output.createUnknown<PipelineWorkload?>();
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String?>('displayName');
+    this.jobCount = registerOutput<int>('jobCount');
+    this.lastUpdateTime = registerOutput<String>('lastUpdateTime');
+    this.name = registerOutput<String>('name');
+    this.pipelineSources =
+        registerOutput<Map<String, String>?>('pipelineSources');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String?>('region');
+    this.scheduleInfo = registerOutput<PipelineScheduleInfo?>('scheduleInfo');
+    this.schedulerServiceAccountEmail =
+        registerOutput<String>('schedulerServiceAccountEmail');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String>('type');
+    this.workload = registerOutput<PipelineWorkload?>('workload');
   }
 }

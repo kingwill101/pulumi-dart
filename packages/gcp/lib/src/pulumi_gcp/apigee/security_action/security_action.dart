@@ -614,20 +614,20 @@ class SecurityAction extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allow = Output.createUnknown<Map<String, dynamic>?>();
-    this.apiProxies = Output.createUnknown<List<String>?>();
+    this.allow = registerOutput<Map<String, dynamic>?>('allow');
+    this.apiProxies = registerOutput<List<String>?>('apiProxies');
     this.conditionConfig =
-        Output.createUnknown<SecurityActionConditionConfig>();
-    this.createTime = Output.createUnknown<String>();
-    this.deny = Output.createUnknown<SecurityActionDeny?>();
-    this.description = Output.createUnknown<String?>();
-    this.envId = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String?>();
-    this.flag = Output.createUnknown<SecurityActionFlag?>();
-    this.orgId = Output.createUnknown<String>();
-    this.securityActionId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.ttl = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<SecurityActionConditionConfig>('conditionConfig');
+    this.createTime = registerOutput<String>('createTime');
+    this.deny = registerOutput<SecurityActionDeny?>('deny');
+    this.description = registerOutput<String?>('description');
+    this.envId = registerOutput<String>('envId');
+    this.expireTime = registerOutput<String?>('expireTime');
+    this.flag = registerOutput<SecurityActionFlag?>('flag');
+    this.orgId = registerOutput<String>('orgId');
+    this.securityActionId = registerOutput<String>('securityActionId');
+    this.state = registerOutput<String>('state');
+    this.ttl = registerOutput<String?>('ttl');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -409,20 +409,25 @@ class CryptoKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cryptoKeyBackend = Output.createUnknown<String>();
-    this.destroyScheduledDuration = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.importOnly = Output.createUnknown<bool>();
+    this.cryptoKeyBackend = registerOutput<String>('cryptoKeyBackend');
+    this.destroyScheduledDuration =
+        registerOutput<String>('destroyScheduledDuration');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.importOnly = registerOutput<bool>('importOnly');
     this.keyAccessJustificationsPolicy =
-        Output.createUnknown<CryptoKeyKeyAccessJustificationsPolicy>();
-    this.keyRing = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.primaries = Output.createUnknown<List<CryptoKeyPrimary>>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.purpose = Output.createUnknown<String?>();
-    this.rotationPeriod = Output.createUnknown<String?>();
-    this.skipInitialVersionCreation = Output.createUnknown<bool?>();
-    this.versionTemplate = Output.createUnknown<CryptoKeyVersionTemplate>();
+        registerOutput<CryptoKeyKeyAccessJustificationsPolicy>(
+            'keyAccessJustificationsPolicy');
+    this.keyRing = registerOutput<String>('keyRing');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.primaries = registerOutput<List<CryptoKeyPrimary>>('primaries');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.purpose = registerOutput<String?>('purpose');
+    this.rotationPeriod = registerOutput<String?>('rotationPeriod');
+    this.skipInitialVersionCreation =
+        registerOutput<bool?>('skipInitialVersionCreation');
+    this.versionTemplate =
+        registerOutput<CryptoKeyVersionTemplate>('versionTemplate');
   }
 }

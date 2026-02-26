@@ -45,17 +45,17 @@ class TargetInstance2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.instance = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.natPolicy = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.securityPolicy = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.instance = registerOutput<String>('instance');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.natPolicy = registerOutput<String>('natPolicy');
+    this.network = registerOutput<String>('network');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.securityPolicy = registerOutput<String>('securityPolicy');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.zone = registerOutput<String>('zone');
   }
 }

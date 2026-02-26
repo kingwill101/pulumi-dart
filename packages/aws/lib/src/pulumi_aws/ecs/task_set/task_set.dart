@@ -334,28 +334,32 @@ class TaskSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.capacityProviderStrategies =
-        Output.createUnknown<List<TaskSetCapacityProviderStrategy>?>();
-    this.cluster = Output.createUnknown<String>();
-    this.externalId = Output.createUnknown<String>();
-    this.forceDelete = Output.createUnknown<bool?>();
-    this.launchType = Output.createUnknown<String>();
-    this.loadBalancers = Output.createUnknown<List<TaskSetLoadBalancer>?>();
+        registerOutput<List<TaskSetCapacityProviderStrategy>?>(
+            'capacityProviderStrategies');
+    this.cluster = registerOutput<String>('cluster');
+    this.externalId = registerOutput<String>('externalId');
+    this.forceDelete = registerOutput<bool?>('forceDelete');
+    this.launchType = registerOutput<String>('launchType');
+    this.loadBalancers =
+        registerOutput<List<TaskSetLoadBalancer>?>('loadBalancers');
     this.networkConfiguration =
-        Output.createUnknown<TaskSetNetworkConfiguration?>();
-    this.platformVersion = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.scale = Output.createUnknown<TaskSetScale>();
-    this.service = Output.createUnknown<String>();
-    this.serviceRegistries = Output.createUnknown<TaskSetServiceRegistries?>();
-    this.stabilityStatus = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.taskDefinition = Output.createUnknown<String>();
-    this.taskSetId = Output.createUnknown<String>();
-    this.waitUntilStable = Output.createUnknown<bool?>();
-    this.waitUntilStableTimeout = Output.createUnknown<String?>();
+        registerOutput<TaskSetNetworkConfiguration?>('networkConfiguration');
+    this.platformVersion = registerOutput<String>('platformVersion');
+    this.region = registerOutput<String>('region');
+    this.scale = registerOutput<TaskSetScale>('scale');
+    this.service = registerOutput<String>('service');
+    this.serviceRegistries =
+        registerOutput<TaskSetServiceRegistries?>('serviceRegistries');
+    this.stabilityStatus = registerOutput<String>('stabilityStatus');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.taskDefinition = registerOutput<String>('taskDefinition');
+    this.taskSetId = registerOutput<String>('taskSetId');
+    this.waitUntilStable = registerOutput<bool?>('waitUntilStable');
+    this.waitUntilStableTimeout =
+        registerOutput<String?>('waitUntilStableTimeout');
   }
 }

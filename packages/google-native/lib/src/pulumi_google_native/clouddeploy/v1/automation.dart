@@ -61,22 +61,23 @@ class Automation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.automationId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.deliveryPipelineId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.rules = Output.createUnknown<List<AutomationRuleResponse>>();
-    this.selector = Output.createUnknown<AutomationResourceSelectorResponse>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.suspended = Output.createUnknown<bool>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.automationId = registerOutput<String>('automationId');
+    this.createTime = registerOutput<String>('createTime');
+    this.deliveryPipelineId = registerOutput<String>('deliveryPipelineId');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.rules = registerOutput<List<AutomationRuleResponse>>('rules');
+    this.selector =
+        registerOutput<AutomationResourceSelectorResponse>('selector');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.suspended = registerOutput<bool>('suspended');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

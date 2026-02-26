@@ -162,19 +162,23 @@ class TrustProvider extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.deviceOptions = Output.createUnknown<TrustProviderDeviceOptions?>();
-    this.deviceTrustProviderType = Output.createUnknown<String?>();
+    this.description = registerOutput<String?>('description');
+    this.deviceOptions =
+        registerOutput<TrustProviderDeviceOptions?>('deviceOptions');
+    this.deviceTrustProviderType =
+        registerOutput<String?>('deviceTrustProviderType');
     this.nativeApplicationOidcOptions =
-        Output.createUnknown<TrustProviderNativeApplicationOidcOptions?>();
-    this.oidcOptions = Output.createUnknown<TrustProviderOidcOptions?>();
-    this.policyReferenceName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<TrustProviderNativeApplicationOidcOptions?>(
+            'nativeApplicationOidcOptions');
+    this.oidcOptions = registerOutput<TrustProviderOidcOptions?>('oidcOptions');
+    this.policyReferenceName = registerOutput<String>('policyReferenceName');
+    this.region = registerOutput<String>('region');
     this.sseSpecification =
-        Output.createUnknown<TrustProviderSseSpecification>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.trustProviderType = Output.createUnknown<String>();
-    this.userTrustProviderType = Output.createUnknown<String?>();
+        registerOutput<TrustProviderSseSpecification>('sseSpecification');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.trustProviderType = registerOutput<String>('trustProviderType');
+    this.userTrustProviderType =
+        registerOutput<String?>('userTrustProviderType');
   }
 }

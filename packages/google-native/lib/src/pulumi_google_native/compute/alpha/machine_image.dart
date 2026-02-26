@@ -74,28 +74,31 @@ class MachineImage extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.guestFlush = Output.createUnknown<bool>();
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.guestFlush = registerOutput<bool>('guestFlush');
     this.instanceProperties =
-        Output.createUnknown<InstancePropertiesResponse>();
-    this.kind = Output.createUnknown<String>();
+        registerOutput<InstancePropertiesResponse>('instanceProperties');
+    this.kind = registerOutput<String>('kind');
     this.machineImageEncryptionKey =
-        Output.createUnknown<CustomerEncryptionKeyResponse>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.savedDisks = Output.createUnknown<List<SavedDiskResponse>>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
+        registerOutput<CustomerEncryptionKeyResponse>(
+            'machineImageEncryptionKey');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.savedDisks = registerOutput<List<SavedDiskResponse>>('savedDisks');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
     this.sourceDiskEncryptionKeys =
-        Output.createUnknown<List<SourceDiskEncryptionKeyResponse>>();
-    this.sourceInstance = Output.createUnknown<String>();
+        registerOutput<List<SourceDiskEncryptionKeyResponse>>(
+            'sourceDiskEncryptionKeys');
+    this.sourceInstance = registerOutput<String>('sourceInstance');
     this.sourceInstanceProperties =
-        Output.createUnknown<SourceInstancePropertiesResponse>();
-    this.status = Output.createUnknown<String>();
-    this.storageLocations = Output.createUnknown<List<String>>();
-    this.totalStorageBytes = Output.createUnknown<String>();
+        registerOutput<SourceInstancePropertiesResponse>(
+            'sourceInstanceProperties');
+    this.status = registerOutput<String>('status');
+    this.storageLocations = registerOutput<List<String>>('storageLocations');
+    this.totalStorageBytes = registerOutput<String>('totalStorageBytes');
   }
 }

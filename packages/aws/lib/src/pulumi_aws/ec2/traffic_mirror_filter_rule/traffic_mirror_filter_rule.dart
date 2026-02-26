@@ -345,19 +345,22 @@ class TrafficMirrorFilterRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.destinationCidrBlock = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
     this.destinationPortRange =
-        Output.createUnknown<TrafficMirrorFilterRuleDestinationPortRange?>();
-    this.protocol = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
-    this.ruleAction = Output.createUnknown<String>();
-    this.ruleNumber = Output.createUnknown<int>();
-    this.sourceCidrBlock = Output.createUnknown<String>();
+        registerOutput<TrafficMirrorFilterRuleDestinationPortRange?>(
+            'destinationPortRange');
+    this.protocol = registerOutput<int?>('protocol');
+    this.region = registerOutput<String>('region');
+    this.ruleAction = registerOutput<String>('ruleAction');
+    this.ruleNumber = registerOutput<int>('ruleNumber');
+    this.sourceCidrBlock = registerOutput<String>('sourceCidrBlock');
     this.sourcePortRange =
-        Output.createUnknown<TrafficMirrorFilterRuleSourcePortRange?>();
-    this.trafficDirection = Output.createUnknown<String>();
-    this.trafficMirrorFilterId = Output.createUnknown<String>();
+        registerOutput<TrafficMirrorFilterRuleSourcePortRange?>(
+            'sourcePortRange');
+    this.trafficDirection = registerOutput<String>('trafficDirection');
+    this.trafficMirrorFilterId =
+        registerOutput<String>('trafficMirrorFilterId');
   }
 }

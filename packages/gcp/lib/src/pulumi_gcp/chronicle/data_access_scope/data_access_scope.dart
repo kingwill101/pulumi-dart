@@ -994,21 +994,23 @@ class DataAccessScope extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowAll = Output.createUnknown<bool?>();
+    this.allowAll = registerOutput<bool?>('allowAll');
     this.allowedDataAccessLabels =
-        Output.createUnknown<List<DataAccessScopeAllowedDataAccessLabel>?>();
-    this.author = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataAccessScopeId = Output.createUnknown<String>();
+        registerOutput<List<DataAccessScopeAllowedDataAccessLabel>?>(
+            'allowedDataAccessLabels');
+    this.author = registerOutput<String>('author');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataAccessScopeId = registerOutput<String>('dataAccessScopeId');
     this.deniedDataAccessLabels =
-        Output.createUnknown<List<DataAccessScopeDeniedDataAccessLabel>?>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.instance = Output.createUnknown<String>();
-    this.lastEditor = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<DataAccessScopeDeniedDataAccessLabel>?>(
+            'deniedDataAccessLabels');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.instance = registerOutput<String>('instance');
+    this.lastEditor = registerOutput<String>('lastEditor');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

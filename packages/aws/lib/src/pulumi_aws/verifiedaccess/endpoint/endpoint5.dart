@@ -419,27 +419,32 @@ class Endpoint5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationDomain = Output.createUnknown<String?>();
-    this.attachmentType = Output.createUnknown<String>();
-    this.cidrOptions = Output.createUnknown<EndpointCidrOptions?>();
-    this.description = Output.createUnknown<String?>();
-    this.deviceValidationDomain = Output.createUnknown<String>();
-    this.domainCertificateArn = Output.createUnknown<String?>();
-    this.endpointDomain = Output.createUnknown<String>();
-    this.endpointDomainPrefix = Output.createUnknown<String?>();
-    this.endpointType = Output.createUnknown<String>();
+    this.applicationDomain = registerOutput<String?>('applicationDomain');
+    this.attachmentType = registerOutput<String>('attachmentType');
+    this.cidrOptions = registerOutput<EndpointCidrOptions?>('cidrOptions');
+    this.description = registerOutput<String?>('description');
+    this.deviceValidationDomain =
+        registerOutput<String>('deviceValidationDomain');
+    this.domainCertificateArn = registerOutput<String?>('domainCertificateArn');
+    this.endpointDomain = registerOutput<String>('endpointDomain');
+    this.endpointDomainPrefix = registerOutput<String?>('endpointDomainPrefix');
+    this.endpointType = registerOutput<String>('endpointType');
     this.loadBalancerOptions =
-        Output.createUnknown<EndpointLoadBalancerOptions?>();
+        registerOutput<EndpointLoadBalancerOptions?>('loadBalancerOptions');
     this.networkInterfaceOptions =
-        Output.createUnknown<EndpointNetworkInterfaceOptions?>();
-    this.policyDocument = Output.createUnknown<String?>();
-    this.rdsOptions = Output.createUnknown<EndpointRdsOptions?>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupIds = Output.createUnknown<List<String>?>();
-    this.sseSpecification = Output.createUnknown<EndpointSseSpecification>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.verifiedAccessGroupId = Output.createUnknown<String>();
-    this.verifiedAccessInstanceId = Output.createUnknown<String>();
+        registerOutput<EndpointNetworkInterfaceOptions?>(
+            'networkInterfaceOptions');
+    this.policyDocument = registerOutput<String?>('policyDocument');
+    this.rdsOptions = registerOutput<EndpointRdsOptions?>('rdsOptions');
+    this.region = registerOutput<String>('region');
+    this.securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    this.sseSpecification =
+        registerOutput<EndpointSseSpecification>('sseSpecification');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.verifiedAccessGroupId =
+        registerOutput<String>('verifiedAccessGroupId');
+    this.verifiedAccessInstanceId =
+        registerOutput<String>('verifiedAccessInstanceId');
   }
 }

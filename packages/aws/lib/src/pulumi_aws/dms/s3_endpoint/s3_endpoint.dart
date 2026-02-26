@@ -713,59 +713,68 @@ class S3Endpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.addColumnName = Output.createUnknown<bool?>();
-    this.addTrailingPaddingCharacter = Output.createUnknown<bool?>();
-    this.bucketFolder = Output.createUnknown<String?>();
-    this.bucketName = Output.createUnknown<String>();
-    this.cannedAclForObjects = Output.createUnknown<String?>();
-    this.cdcInsertsAndUpdates = Output.createUnknown<bool?>();
-    this.cdcInsertsOnly = Output.createUnknown<bool?>();
-    this.cdcMaxBatchInterval = Output.createUnknown<int?>();
-    this.cdcMinFileSize = Output.createUnknown<int?>();
-    this.cdcPath = Output.createUnknown<String?>();
-    this.certificateArn = Output.createUnknown<String>();
-    this.compressionType = Output.createUnknown<String?>();
-    this.csvDelimiter = Output.createUnknown<String?>();
-    this.csvNoSupValue = Output.createUnknown<String?>();
-    this.csvNullValue = Output.createUnknown<String?>();
-    this.csvRowDelimiter = Output.createUnknown<String?>();
-    this.dataFormat = Output.createUnknown<String?>();
-    this.dataPageSize = Output.createUnknown<int?>();
-    this.datePartitionDelimiter = Output.createUnknown<String?>();
-    this.datePartitionEnabled = Output.createUnknown<bool?>();
-    this.datePartitionSequence = Output.createUnknown<String?>();
-    this.datePartitionTimezone = Output.createUnknown<String?>();
-    this.detachTargetOnLobLookupFailureParquet = Output.createUnknown<bool?>();
-    this.dictPageSizeLimit = Output.createUnknown<int?>();
-    this.enableStatistics = Output.createUnknown<bool?>();
-    this.encodingType = Output.createUnknown<String?>();
-    this.encryptionMode = Output.createUnknown<String?>();
-    this.endpointArn = Output.createUnknown<String>();
-    this.endpointId = Output.createUnknown<String>();
-    this.endpointType = Output.createUnknown<String>();
-    this.engineDisplayName = Output.createUnknown<String>();
-    this.expectedBucketOwner = Output.createUnknown<String?>();
-    this.externalId = Output.createUnknown<String>();
-    this.externalTableDefinition = Output.createUnknown<String?>();
-    this.glueCatalogGeneration = Output.createUnknown<bool?>();
-    this.ignoreHeaderRows = Output.createUnknown<int?>();
-    this.includeOpForFullLoad = Output.createUnknown<bool?>();
-    this.kmsKeyArn = Output.createUnknown<String>();
-    this.maxFileSize = Output.createUnknown<int?>();
-    this.parquetTimestampInMillisecond = Output.createUnknown<bool?>();
-    this.parquetVersion = Output.createUnknown<String?>();
-    this.preserveTransactions = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.rfc4180 = Output.createUnknown<bool?>();
-    this.rowGroupLength = Output.createUnknown<int?>();
-    this.serverSideEncryptionKmsKeyId = Output.createUnknown<String?>();
-    this.serviceAccessRoleArn = Output.createUnknown<String>();
-    this.sslMode = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timestampColumnName = Output.createUnknown<String?>();
-    this.useCsvNoSupValue = Output.createUnknown<bool?>();
-    this.useTaskStartTimeForFullLoadTimestamp = Output.createUnknown<bool?>();
+    this.addColumnName = registerOutput<bool?>('addColumnName');
+    this.addTrailingPaddingCharacter =
+        registerOutput<bool?>('addTrailingPaddingCharacter');
+    this.bucketFolder = registerOutput<String?>('bucketFolder');
+    this.bucketName = registerOutput<String>('bucketName');
+    this.cannedAclForObjects = registerOutput<String?>('cannedAclForObjects');
+    this.cdcInsertsAndUpdates = registerOutput<bool?>('cdcInsertsAndUpdates');
+    this.cdcInsertsOnly = registerOutput<bool?>('cdcInsertsOnly');
+    this.cdcMaxBatchInterval = registerOutput<int?>('cdcMaxBatchInterval');
+    this.cdcMinFileSize = registerOutput<int?>('cdcMinFileSize');
+    this.cdcPath = registerOutput<String?>('cdcPath');
+    this.certificateArn = registerOutput<String>('certificateArn');
+    this.compressionType = registerOutput<String?>('compressionType');
+    this.csvDelimiter = registerOutput<String?>('csvDelimiter');
+    this.csvNoSupValue = registerOutput<String?>('csvNoSupValue');
+    this.csvNullValue = registerOutput<String?>('csvNullValue');
+    this.csvRowDelimiter = registerOutput<String?>('csvRowDelimiter');
+    this.dataFormat = registerOutput<String?>('dataFormat');
+    this.dataPageSize = registerOutput<int?>('dataPageSize');
+    this.datePartitionDelimiter =
+        registerOutput<String?>('datePartitionDelimiter');
+    this.datePartitionEnabled = registerOutput<bool?>('datePartitionEnabled');
+    this.datePartitionSequence =
+        registerOutput<String?>('datePartitionSequence');
+    this.datePartitionTimezone =
+        registerOutput<String?>('datePartitionTimezone');
+    this.detachTargetOnLobLookupFailureParquet =
+        registerOutput<bool?>('detachTargetOnLobLookupFailureParquet');
+    this.dictPageSizeLimit = registerOutput<int?>('dictPageSizeLimit');
+    this.enableStatistics = registerOutput<bool?>('enableStatistics');
+    this.encodingType = registerOutput<String?>('encodingType');
+    this.encryptionMode = registerOutput<String?>('encryptionMode');
+    this.endpointArn = registerOutput<String>('endpointArn');
+    this.endpointId = registerOutput<String>('endpointId');
+    this.endpointType = registerOutput<String>('endpointType');
+    this.engineDisplayName = registerOutput<String>('engineDisplayName');
+    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    this.externalId = registerOutput<String>('externalId');
+    this.externalTableDefinition =
+        registerOutput<String?>('externalTableDefinition');
+    this.glueCatalogGeneration = registerOutput<bool?>('glueCatalogGeneration');
+    this.ignoreHeaderRows = registerOutput<int?>('ignoreHeaderRows');
+    this.includeOpForFullLoad = registerOutput<bool?>('includeOpForFullLoad');
+    this.kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    this.maxFileSize = registerOutput<int?>('maxFileSize');
+    this.parquetTimestampInMillisecond =
+        registerOutput<bool?>('parquetTimestampInMillisecond');
+    this.parquetVersion = registerOutput<String?>('parquetVersion');
+    this.preserveTransactions = registerOutput<bool?>('preserveTransactions');
+    this.region = registerOutput<String>('region');
+    this.rfc4180 = registerOutput<bool?>('rfc4180');
+    this.rowGroupLength = registerOutput<int?>('rowGroupLength');
+    this.serverSideEncryptionKmsKeyId =
+        registerOutput<String?>('serverSideEncryptionKmsKeyId');
+    this.serviceAccessRoleArn = registerOutput<String>('serviceAccessRoleArn');
+    this.sslMode = registerOutput<String>('sslMode');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timestampColumnName = registerOutput<String?>('timestampColumnName');
+    this.useCsvNoSupValue = registerOutput<bool?>('useCsvNoSupValue');
+    this.useTaskStartTimeForFullLoadTimestamp =
+        registerOutput<bool?>('useTaskStartTimeForFullLoadTimestamp');
   }
 }

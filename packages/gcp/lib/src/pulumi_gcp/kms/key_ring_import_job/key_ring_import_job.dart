@@ -81,14 +81,15 @@ class KeyRingImportJob extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.attestations =
-        Output.createUnknown<List<KeyRingImportJobAttestation>>();
-    this.expireTime = Output.createUnknown<String>();
-    this.importJobId = Output.createUnknown<String>();
-    this.importMethod = Output.createUnknown<String>();
-    this.keyRing = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.protectionLevel = Output.createUnknown<String>();
-    this.publicKeys = Output.createUnknown<List<KeyRingImportJobPublicKey>>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<List<KeyRingImportJobAttestation>>('attestations');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.importJobId = registerOutput<String>('importJobId');
+    this.importMethod = registerOutput<String>('importMethod');
+    this.keyRing = registerOutput<String>('keyRing');
+    this.name = registerOutput<String>('name');
+    this.protectionLevel = registerOutput<String>('protectionLevel');
+    this.publicKeys =
+        registerOutput<List<KeyRingImportJobPublicKey>>('publicKeys');
+    this.state = registerOutput<String>('state');
   }
 }

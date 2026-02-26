@@ -235,23 +235,24 @@ class Table2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.capacitySpecification =
-        Output.createUnknown<TableCapacitySpecification>();
+        registerOutput<TableCapacitySpecification>('capacitySpecification');
     this.clientSideTimestamps =
-        Output.createUnknown<TableClientSideTimestamps?>();
-    this.comment = Output.createUnknown<TableComment>();
-    this.defaultTimeToLive = Output.createUnknown<int?>();
+        registerOutput<TableClientSideTimestamps?>('clientSideTimestamps');
+    this.comment = registerOutput<TableComment>('comment');
+    this.defaultTimeToLive = registerOutput<int?>('defaultTimeToLive');
     this.encryptionSpecification =
-        Output.createUnknown<TableEncryptionSpecification>();
-    this.keyspaceName = Output.createUnknown<String>();
+        registerOutput<TableEncryptionSpecification>('encryptionSpecification');
+    this.keyspaceName = registerOutput<String>('keyspaceName');
     this.pointInTimeRecovery =
-        Output.createUnknown<TablePointInTimeRecovery2>();
-    this.region = Output.createUnknown<String>();
-    this.schemaDefinition = Output.createUnknown<TableSchemaDefinition>();
-    this.tableName = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.ttl = Output.createUnknown<TableTtl2?>();
+        registerOutput<TablePointInTimeRecovery2>('pointInTimeRecovery');
+    this.region = registerOutput<String>('region');
+    this.schemaDefinition =
+        registerOutput<TableSchemaDefinition>('schemaDefinition');
+    this.tableName = registerOutput<String>('tableName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.ttl = registerOutput<TableTtl2?>('ttl');
   }
 }

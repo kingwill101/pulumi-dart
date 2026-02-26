@@ -162,7 +162,7 @@ class TransitGatewayRegistration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.globalNetworkId = Output.createUnknown<String>();
-    this.transitGatewayArn = Output.createUnknown<String>();
+    this.globalNetworkId = registerOutput<String>('globalNetworkId');
+    this.transitGatewayArn = registerOutput<String>('transitGatewayArn');
   }
 }

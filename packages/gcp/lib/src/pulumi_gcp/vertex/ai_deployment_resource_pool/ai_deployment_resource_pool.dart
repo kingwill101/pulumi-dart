@@ -253,11 +253,12 @@ class AiDeploymentResourcePool extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
     this.dedicatedResources =
-        Output.createUnknown<AiDeploymentResourcePoolDedicatedResources?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String?>();
+        registerOutput<AiDeploymentResourcePoolDedicatedResources?>(
+            'dedicatedResources');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String?>('region');
   }
 }

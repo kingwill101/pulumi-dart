@@ -152,10 +152,11 @@ class AuthorizeVpcEndpointAccess extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.account = Output.createUnknown<String>();
-    this.authorizedPrincipals = Output.createUnknown<
-        List<AuthorizeVpcEndpointAccessAuthorizedPrincipal>>();
-    this.domainName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.account = registerOutput<String>('account');
+    this.authorizedPrincipals =
+        registerOutput<List<AuthorizeVpcEndpointAccessAuthorizedPrincipal>>(
+            'authorizedPrincipals');
+    this.domainName = registerOutput<String>('domainName');
+    this.region = registerOutput<String>('region');
   }
 }

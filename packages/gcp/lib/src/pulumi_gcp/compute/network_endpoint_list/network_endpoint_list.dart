@@ -602,10 +602,11 @@ class NetworkEndpointList extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.networkEndpointGroup = Output.createUnknown<String>();
+    this.networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
     this.networkEndpoints =
-        Output.createUnknown<List<NetworkEndpointListNetworkEndpoint>?>();
-    this.project = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<List<NetworkEndpointListNetworkEndpoint>?>(
+            'networkEndpoints');
+    this.project = registerOutput<String>('project');
+    this.zone = registerOutput<String>('zone');
   }
 }

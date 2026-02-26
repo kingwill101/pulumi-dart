@@ -286,16 +286,16 @@ class Repository2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.cloneUrlHttp = Output.createUnknown<String>();
-    this.cloneUrlSsh = Output.createUnknown<String>();
-    this.defaultBranch = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.repositoryId = Output.createUnknown<String>();
-    this.repositoryName = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.cloneUrlHttp = registerOutput<String>('cloneUrlHttp');
+    this.cloneUrlSsh = registerOutput<String>('cloneUrlSsh');
+    this.defaultBranch = registerOutput<String?>('defaultBranch');
+    this.description = registerOutput<String?>('description');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.region = registerOutput<String>('region');
+    this.repositoryId = registerOutput<String>('repositoryId');
+    this.repositoryName = registerOutput<String>('repositoryName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

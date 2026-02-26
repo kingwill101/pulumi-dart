@@ -918,11 +918,12 @@ class WorkforcePoolIamBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<WorkforcePoolIamBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.role = Output.createUnknown<String>();
-    this.workforcePoolId = Output.createUnknown<String>();
+    this.condition =
+        registerOutput<WorkforcePoolIamBindingCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.members = registerOutput<List<String>>('members');
+    this.role = registerOutput<String>('role');
+    this.workforcePoolId = registerOutput<String>('workforcePoolId');
   }
 }

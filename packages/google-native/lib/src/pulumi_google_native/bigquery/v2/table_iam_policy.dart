@@ -32,12 +32,13 @@ class TableIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse5>>();
-    this.bindings = Output.createUnknown<List<BindingResponse9>>();
-    this.datasetId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.tableId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse5>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse9>>('bindings');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.etag = registerOutput<String>('etag');
+    this.project = registerOutput<String>('project');
+    this.tableId = registerOutput<String>('tableId');
+    this.version = registerOutput<int>('version');
   }
 }

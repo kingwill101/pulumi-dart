@@ -1229,31 +1229,32 @@ class Route extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.asPaths = Output.createUnknown<List<RouteAsPath>>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.destRange = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.nextHopGateway = Output.createUnknown<String?>();
-    this.nextHopHub = Output.createUnknown<String>();
-    this.nextHopIlb = Output.createUnknown<String?>();
-    this.nextHopInstance = Output.createUnknown<String?>();
-    this.nextHopInstanceZone = Output.createUnknown<String>();
-    this.nextHopInterRegionCost = Output.createUnknown<String>();
-    this.nextHopIp = Output.createUnknown<String>();
-    this.nextHopMed = Output.createUnknown<String>();
-    this.nextHopNetwork = Output.createUnknown<String>();
-    this.nextHopOrigin = Output.createUnknown<String>();
-    this.nextHopPeering = Output.createUnknown<String>();
-    this.nextHopVpnTunnel = Output.createUnknown<String?>();
-    this.params = Output.createUnknown<RouteParams?>();
-    this.priority = Output.createUnknown<int?>();
-    this.project = Output.createUnknown<String>();
-    this.routeStatus = Output.createUnknown<String>();
-    this.routeType = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<List<String>?>();
-    this.warnings = Output.createUnknown<List<RouteWarning>>();
+    this.asPaths = registerOutput<List<RouteAsPath>>('asPaths');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.destRange = registerOutput<String>('destRange');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.nextHopGateway = registerOutput<String?>('nextHopGateway');
+    this.nextHopHub = registerOutput<String>('nextHopHub');
+    this.nextHopIlb = registerOutput<String?>('nextHopIlb');
+    this.nextHopInstance = registerOutput<String?>('nextHopInstance');
+    this.nextHopInstanceZone = registerOutput<String>('nextHopInstanceZone');
+    this.nextHopInterRegionCost =
+        registerOutput<String>('nextHopInterRegionCost');
+    this.nextHopIp = registerOutput<String>('nextHopIp');
+    this.nextHopMed = registerOutput<String>('nextHopMed');
+    this.nextHopNetwork = registerOutput<String>('nextHopNetwork');
+    this.nextHopOrigin = registerOutput<String>('nextHopOrigin');
+    this.nextHopPeering = registerOutput<String>('nextHopPeering');
+    this.nextHopVpnTunnel = registerOutput<String?>('nextHopVpnTunnel');
+    this.params = registerOutput<RouteParams?>('params');
+    this.priority = registerOutput<int?>('priority');
+    this.project = registerOutput<String>('project');
+    this.routeStatus = registerOutput<String>('routeStatus');
+    this.routeType = registerOutput<String>('routeType');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.tags = registerOutput<List<String>?>('tags');
+    this.warnings = registerOutput<List<RouteWarning>>('warnings');
   }
 }

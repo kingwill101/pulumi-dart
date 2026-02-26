@@ -672,25 +672,30 @@ class Intent extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.checksum = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.checksum = registerOutput<String>('checksum');
     this.conclusionStatement =
-        Output.createUnknown<IntentConclusionStatement?>();
-    this.confirmationPrompt = Output.createUnknown<IntentConfirmationPrompt?>();
-    this.createVersion = Output.createUnknown<bool?>();
-    this.createdDate = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.dialogCodeHook = Output.createUnknown<IntentDialogCodeHook?>();
-    this.followUpPrompt = Output.createUnknown<IntentFollowUpPrompt?>();
+        registerOutput<IntentConclusionStatement?>('conclusionStatement');
+    this.confirmationPrompt =
+        registerOutput<IntentConfirmationPrompt?>('confirmationPrompt');
+    this.createVersion = registerOutput<bool?>('createVersion');
+    this.createdDate = registerOutput<String>('createdDate');
+    this.description = registerOutput<String?>('description');
+    this.dialogCodeHook =
+        registerOutput<IntentDialogCodeHook?>('dialogCodeHook');
+    this.followUpPrompt =
+        registerOutput<IntentFollowUpPrompt?>('followUpPrompt');
     this.fulfillmentActivity =
-        Output.createUnknown<IntentFulfillmentActivity>();
-    this.lastUpdatedDate = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parentIntentSignature = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.rejectionStatement = Output.createUnknown<IntentRejectionStatement?>();
-    this.sampleUtterances = Output.createUnknown<List<String>?>();
-    this.slots = Output.createUnknown<List<IntentSlot>?>();
-    this.version = Output.createUnknown<String>();
+        registerOutput<IntentFulfillmentActivity>('fulfillmentActivity');
+    this.lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+    this.name = registerOutput<String>('name');
+    this.parentIntentSignature =
+        registerOutput<String?>('parentIntentSignature');
+    this.region = registerOutput<String>('region');
+    this.rejectionStatement =
+        registerOutput<IntentRejectionStatement?>('rejectionStatement');
+    this.sampleUtterances = registerOutput<List<String>?>('sampleUtterances');
+    this.slots = registerOutput<List<IntentSlot>?>('slots');
+    this.version = registerOutput<String>('version');
   }
 }

@@ -301,16 +301,17 @@ class Retrohunt extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.retrohuntId = Output.createUnknown<String>();
+    this.retrohuntId = registerOutput<String>('RetrohuntId');
     this.executionIntervals =
-        Output.createUnknown<List<RetrohuntExecutionInterval>>();
-    this.instance = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.processInterval = Output.createUnknown<RetrohuntProcessInterval>();
-    this.progressPercentage = Output.createUnknown<double>();
-    this.project = Output.createUnknown<String>();
-    this.rule = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<List<RetrohuntExecutionInterval>>('executionIntervals');
+    this.instance = registerOutput<String>('instance');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.processInterval =
+        registerOutput<RetrohuntProcessInterval>('processInterval');
+    this.progressPercentage = registerOutput<double>('progressPercentage');
+    this.project = registerOutput<String>('project');
+    this.rule = registerOutput<String>('rule');
+    this.state = registerOutput<String>('state');
   }
 }

@@ -616,16 +616,19 @@ class Authorizer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.authorizerCredentials = Output.createUnknown<String?>();
-    this.authorizerResultTtlInSeconds = Output.createUnknown<int?>();
-    this.authorizerUri = Output.createUnknown<String?>();
-    this.identitySource = Output.createUnknown<String?>();
-    this.identityValidationExpression = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.providerArns = Output.createUnknown<List<String>?>();
-    this.region = Output.createUnknown<String>();
-    this.restApi = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.authorizerCredentials =
+        registerOutput<String?>('authorizerCredentials');
+    this.authorizerResultTtlInSeconds =
+        registerOutput<int?>('authorizerResultTtlInSeconds');
+    this.authorizerUri = registerOutput<String?>('authorizerUri');
+    this.identitySource = registerOutput<String?>('identitySource');
+    this.identityValidationExpression =
+        registerOutput<String?>('identityValidationExpression');
+    this.name = registerOutput<String>('name');
+    this.providerArns = registerOutput<List<String>?>('providerArns');
+    this.region = registerOutput<String>('region');
+    this.restApi = registerOutput<String>('restApi');
+    this.type = registerOutput<String?>('type');
   }
 }

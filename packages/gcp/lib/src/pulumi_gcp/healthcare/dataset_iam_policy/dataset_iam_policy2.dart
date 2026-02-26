@@ -663,8 +663,8 @@ class DatasetIamPolicy2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.datasetId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
+    this.datasetId = registerOutput<String>('datasetId');
+    this.etag = registerOutput<String>('etag');
+    this.policyData = registerOutput<String>('policyData');
   }
 }

@@ -122,10 +122,11 @@ class EnrollmentStatus extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.includeMemberAccounts = Output.createUnknown<bool>();
-    this.numberOfMemberAccountsOptedIn = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<EnrollmentStatusTimeouts?>();
+    this.includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
+    this.numberOfMemberAccountsOptedIn =
+        registerOutput<int>('numberOfMemberAccountsOptedIn');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.timeouts = registerOutput<EnrollmentStatusTimeouts?>('timeouts');
   }
 }

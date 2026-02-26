@@ -723,28 +723,32 @@ class Environment4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applyChangesDuringMaintenanceWindow = Output.createUnknown<bool?>();
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.engineType = Output.createUnknown<String>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.environmentId = Output.createUnknown<String>();
-    this.forceUpdate = Output.createUnknown<bool?>();
+    this.applyChangesDuringMaintenanceWindow =
+        registerOutput<bool?>('applyChangesDuringMaintenanceWindow');
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.engineType = registerOutput<String>('engineType');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.forceUpdate = registerOutput<bool?>('forceUpdate');
     this.highAvailabilityConfig =
-        Output.createUnknown<EnvironmentHighAvailabilityConfig?>();
-    this.instanceType = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String?>();
-    this.loadBalancerArn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.preferredMaintenanceWindow = Output.createUnknown<String>();
-    this.publiclyAccessible = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupIds = Output.createUnknown<List<String>>();
+        registerOutput<EnvironmentHighAvailabilityConfig?>(
+            'highAvailabilityConfig');
+    this.instanceType = registerOutput<String>('instanceType');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.loadBalancerArn = registerOutput<String>('loadBalancerArn');
+    this.name = registerOutput<String>('name');
+    this.preferredMaintenanceWindow =
+        registerOutput<String>('preferredMaintenanceWindow');
+    this.publiclyAccessible = registerOutput<bool>('publiclyAccessible');
+    this.region = registerOutput<String>('region');
+    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
     this.storageConfiguration =
-        Output.createUnknown<EnvironmentStorageConfiguration?>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<EnvironmentTimeouts2?>();
+        registerOutput<EnvironmentStorageConfiguration?>(
+            'storageConfiguration');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<EnvironmentTimeouts2?>('timeouts');
   }
 }

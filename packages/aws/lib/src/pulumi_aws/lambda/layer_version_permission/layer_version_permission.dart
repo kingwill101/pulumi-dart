@@ -702,15 +702,15 @@ class LayerVersionPermission extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.layerName = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String?>();
-    this.policy = Output.createUnknown<String>();
-    this.principal = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.revisionId = Output.createUnknown<String>();
-    this.skipDestroy = Output.createUnknown<bool?>();
-    this.statementId = Output.createUnknown<String>();
-    this.versionNumber = Output.createUnknown<int>();
+    this.action = registerOutput<String>('action');
+    this.layerName = registerOutput<String>('layerName');
+    this.organizationId = registerOutput<String?>('organizationId');
+    this.policy = registerOutput<String>('policy');
+    this.principal = registerOutput<String>('principal');
+    this.region = registerOutput<String>('region');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.skipDestroy = registerOutput<bool?>('skipDestroy');
+    this.statementId = registerOutput<String>('statementId');
+    this.versionNumber = registerOutput<int>('versionNumber');
   }
 }

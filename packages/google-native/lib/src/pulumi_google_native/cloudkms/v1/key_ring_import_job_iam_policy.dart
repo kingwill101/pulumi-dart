@@ -33,13 +33,14 @@ class KeyRingImportJobIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse16>>();
-    this.bindings = Output.createUnknown<List<BindingResponse23>>();
-    this.etag = Output.createUnknown<String>();
-    this.importJobId = Output.createUnknown<String>();
-    this.keyRingId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse16>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse23>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.importJobId = registerOutput<String>('importJobId');
+    this.keyRingId = registerOutput<String>('keyRingId');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

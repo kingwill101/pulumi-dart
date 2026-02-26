@@ -1737,23 +1737,29 @@ class TlsInspectionConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.certificateAuthorities = Output.createUnknown<
-        List<TlsInspectionConfigurationCertificateAuthority>>();
+    this.arn = registerOutput<String>('arn');
+    this.certificateAuthorities =
+        registerOutput<List<TlsInspectionConfigurationCertificateAuthority>>(
+            'certificateAuthorities');
     this.certificates =
-        Output.createUnknown<List<TlsInspectionConfigurationCertificate>>();
-    this.description = Output.createUnknown<String?>();
-    this.encryptionConfigurations = Output.createUnknown<
-        List<TlsInspectionConfigurationEncryptionConfiguration>>();
-    this.name = Output.createUnknown<String>();
-    this.numberOfAssociations = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<TlsInspectionConfigurationTimeouts?>();
-    this.tlsInspectionConfiguration = Output.createUnknown<
-        TlsInspectionConfigurationTlsInspectionConfiguration>();
-    this.tlsInspectionConfigurationId = Output.createUnknown<String>();
-    this.updateToken = Output.createUnknown<String>();
+        registerOutput<List<TlsInspectionConfigurationCertificate>>(
+            'certificates');
+    this.description = registerOutput<String?>('description');
+    this.encryptionConfigurations =
+        registerOutput<List<TlsInspectionConfigurationEncryptionConfiguration>>(
+            'encryptionConfigurations');
+    this.name = registerOutput<String>('name');
+    this.numberOfAssociations = registerOutput<int>('numberOfAssociations');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts =
+        registerOutput<TlsInspectionConfigurationTimeouts?>('timeouts');
+    this.tlsInspectionConfiguration =
+        registerOutput<TlsInspectionConfigurationTlsInspectionConfiguration>(
+            'tlsInspectionConfiguration');
+    this.tlsInspectionConfigurationId =
+        registerOutput<String>('tlsInspectionConfigurationId');
+    this.updateToken = registerOutput<String>('updateToken');
   }
 }

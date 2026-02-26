@@ -93,34 +93,36 @@ class Occurrence3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attestation = Output.createUnknown<DetailsResponse>();
-    this.build = Output.createUnknown<GrafeasV1beta1BuildDetailsResponse>();
-    this.createTime = Output.createUnknown<String>();
+    this.attestation = registerOutput<DetailsResponse>('attestation');
+    this.build = registerOutput<GrafeasV1beta1BuildDetailsResponse>('build');
+    this.createTime = registerOutput<String>('createTime');
     this.deployment =
-        Output.createUnknown<GrafeasV1beta1DeploymentDetailsResponse>();
+        registerOutput<GrafeasV1beta1DeploymentDetailsResponse>('deployment');
     this.derivedImage =
-        Output.createUnknown<GrafeasV1beta1ImageDetailsResponse>();
+        registerOutput<GrafeasV1beta1ImageDetailsResponse>('derivedImage');
     this.discovered =
-        Output.createUnknown<GrafeasV1beta1DiscoveryDetailsResponse>();
-    this.envelope = Output.createUnknown<EnvelopeResponse3>();
+        registerOutput<GrafeasV1beta1DiscoveryDetailsResponse>('discovered');
+    this.envelope = registerOutput<EnvelopeResponse3>('envelope');
     this.installation =
-        Output.createUnknown<GrafeasV1beta1PackageDetailsResponse>();
-    this.intoto = Output.createUnknown<GrafeasV1beta1IntotoDetailsResponse>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.noteName = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.remediation = Output.createUnknown<String>();
-    this.resource = Output.createUnknown<ResourceResponse2>();
-    this.sbom = Output.createUnknown<DocumentOccurrenceResponse2>();
+        registerOutput<GrafeasV1beta1PackageDetailsResponse>('installation');
+    this.intoto = registerOutput<GrafeasV1beta1IntotoDetailsResponse>('intoto');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.noteName = registerOutput<String>('noteName');
+    this.project = registerOutput<String>('project');
+    this.remediation = registerOutput<String>('remediation');
+    this.resource = registerOutput<ResourceResponse2>('resource');
+    this.sbom = registerOutput<DocumentOccurrenceResponse2>('sbom');
     this.sbomReference =
-        Output.createUnknown<SBOMReferenceOccurrenceResponse3>();
-    this.spdxFile = Output.createUnknown<FileOccurrenceResponse2>();
-    this.spdxPackage = Output.createUnknown<PackageInfoOccurrenceResponse2>();
+        registerOutput<SBOMReferenceOccurrenceResponse3>('sbomReference');
+    this.spdxFile = registerOutput<FileOccurrenceResponse2>('spdxFile');
+    this.spdxPackage =
+        registerOutput<PackageInfoOccurrenceResponse2>('spdxPackage');
     this.spdxRelationship =
-        Output.createUnknown<RelationshipOccurrenceResponse2>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<RelationshipOccurrenceResponse2>('spdxRelationship');
+    this.updateTime = registerOutput<String>('updateTime');
     this.vulnerability =
-        Output.createUnknown<GrafeasV1beta1VulnerabilityDetailsResponse>();
+        registerOutput<GrafeasV1beta1VulnerabilityDetailsResponse>(
+            'vulnerability');
   }
 }

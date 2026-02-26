@@ -404,23 +404,23 @@ class Parameter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowedPattern = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.dataType = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.hasValueWo = Output.createUnknown<bool>();
-    this.insecureValue = Output.createUnknown<String>();
-    this.keyId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.overwrite = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tier = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.value = Output.createUnknown<String>();
-    this.valueWo = Output.createUnknown<String?>();
-    this.valueWoVersion = Output.createUnknown<int?>();
-    this.version = Output.createUnknown<int>();
+    this.allowedPattern = registerOutput<String?>('allowedPattern');
+    this.arn = registerOutput<String>('arn');
+    this.dataType = registerOutput<String>('dataType');
+    this.description = registerOutput<String?>('description');
+    this.hasValueWo = registerOutput<bool>('hasValueWo');
+    this.insecureValue = registerOutput<String>('insecureValue');
+    this.keyId = registerOutput<String>('keyId');
+    this.name = registerOutput<String>('name');
+    this.overwrite = registerOutput<bool?>('overwrite');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tier = registerOutput<String>('tier');
+    this.type = registerOutput<String>('type');
+    this.value = registerOutput<String>('value');
+    this.valueWo = registerOutput<String?>('valueWo');
+    this.valueWoVersion = registerOutput<int?>('valueWoVersion');
+    this.version = registerOutput<int>('version');
   }
 }

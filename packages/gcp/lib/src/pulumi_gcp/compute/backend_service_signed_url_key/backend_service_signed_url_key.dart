@@ -472,9 +472,9 @@ class BackendServiceSignedUrlKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backendService = Output.createUnknown<String>();
-    this.keyValue = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.backendService = registerOutput<String>('backendService');
+    this.keyValue = registerOutput<String>('keyValue');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

@@ -201,9 +201,9 @@ class ResourceType4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.groupArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String>();
+    this.groupArn = registerOutput<String>('groupArn');
+    this.region = registerOutput<String>('region');
+    this.resourceArn = registerOutput<String>('resourceArn');
+    this.resourceType = registerOutput<String>('resourceType');
   }
 }

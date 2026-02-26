@@ -134,10 +134,10 @@ class ReadinessCheck extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.readinessCheckName = Output.createUnknown<String>();
-    this.resourceSetName = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.readinessCheckName = registerOutput<String>('readinessCheckName');
+    this.resourceSetName = registerOutput<String>('resourceSetName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

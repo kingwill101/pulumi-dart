@@ -78,29 +78,36 @@ class Engine extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.chatEngineConfig = Output.createUnknown<
-        GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse>();
-    this.chatEngineMetadata = Output.createUnknown<
-        GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse>();
-    this.collectionId = Output.createUnknown<String>();
-    this.commonConfig = Output.createUnknown<
-        GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataStoreIds = Output.createUnknown<List<String>>();
-    this.displayName = Output.createUnknown<String>();
-    this.engineId = Output.createUnknown<String>();
-    this.industryVertical = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.mediaRecommendationEngineConfig = Output.createUnknown<
-        GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigResponse>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.recommendationMetadata = Output.createUnknown<
-        GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponse>();
-    this.searchEngineConfig = Output.createUnknown<
-        GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse>();
-    this.similarDocumentsConfig = Output.createUnknown<Map<String, dynamic>>();
-    this.solutionType = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.chatEngineConfig = registerOutput<
+            GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse>(
+        'chatEngineConfig');
+    this.chatEngineMetadata = registerOutput<
+            GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse>(
+        'chatEngineMetadata');
+    this.collectionId = registerOutput<String>('collectionId');
+    this.commonConfig = registerOutput<
+            GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse>(
+        'commonConfig');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataStoreIds = registerOutput<List<String>>('dataStoreIds');
+    this.displayName = registerOutput<String>('displayName');
+    this.engineId = registerOutput<String>('engineId');
+    this.industryVertical = registerOutput<String>('industryVertical');
+    this.location = registerOutput<String>('location');
+    this.mediaRecommendationEngineConfig = registerOutput<
+            GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigResponse>(
+        'mediaRecommendationEngineConfig');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.recommendationMetadata = registerOutput<
+            GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponse>(
+        'recommendationMetadata');
+    this.searchEngineConfig = registerOutput<
+            GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse>(
+        'searchEngineConfig');
+    this.similarDocumentsConfig =
+        registerOutput<Map<String, dynamic>>('similarDocumentsConfig');
+    this.solutionType = registerOutput<String>('solutionType');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

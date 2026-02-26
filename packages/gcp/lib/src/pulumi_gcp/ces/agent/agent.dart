@@ -1619,36 +1619,36 @@ class Agent extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.afterAgentCallbacks =
-        Output.createUnknown<List<AgentAfterAgentCallback>?>();
+        registerOutput<List<AgentAfterAgentCallback>?>('afterAgentCallbacks');
     this.afterModelCallbacks =
-        Output.createUnknown<List<AgentAfterModelCallback>?>();
+        registerOutput<List<AgentAfterModelCallback>?>('afterModelCallbacks');
     this.afterToolCallbacks =
-        Output.createUnknown<List<AgentAfterToolCallback>?>();
-    this.agentId = Output.createUnknown<String?>();
-    this.app = Output.createUnknown<String>();
+        registerOutput<List<AgentAfterToolCallback>?>('afterToolCallbacks');
+    this.agentId = registerOutput<String?>('agentId');
+    this.app = registerOutput<String>('app');
     this.beforeAgentCallbacks =
-        Output.createUnknown<List<AgentBeforeAgentCallback>?>();
+        registerOutput<List<AgentBeforeAgentCallback>?>('beforeAgentCallbacks');
     this.beforeModelCallbacks =
-        Output.createUnknown<List<AgentBeforeModelCallback>?>();
+        registerOutput<List<AgentBeforeModelCallback>?>('beforeModelCallbacks');
     this.beforeToolCallbacks =
-        Output.createUnknown<List<AgentBeforeToolCallback>?>();
-    this.childAgents = Output.createUnknown<List<String>?>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.generatedSummary = Output.createUnknown<String>();
-    this.guardrails = Output.createUnknown<List<String>?>();
-    this.instruction = Output.createUnknown<String?>();
-    this.llmAgent = Output.createUnknown<Map<String, dynamic>?>();
-    this.location = Output.createUnknown<String>();
-    this.modelSettings = Output.createUnknown<AgentModelSettings?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<List<AgentBeforeToolCallback>?>('beforeToolCallbacks');
+    this.childAgents = registerOutput<List<String>?>('childAgents');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.generatedSummary = registerOutput<String>('generatedSummary');
+    this.guardrails = registerOutput<List<String>?>('guardrails');
+    this.instruction = registerOutput<String?>('instruction');
+    this.llmAgent = registerOutput<Map<String, dynamic>?>('llmAgent');
+    this.location = registerOutput<String>('location');
+    this.modelSettings = registerOutput<AgentModelSettings?>('modelSettings');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.remoteDialogflowAgent =
-        Output.createUnknown<AgentRemoteDialogflowAgent?>();
-    this.tools = Output.createUnknown<List<String>?>();
-    this.toolsets = Output.createUnknown<List<AgentToolset>?>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<AgentRemoteDialogflowAgent?>('remoteDialogflowAgent');
+    this.tools = registerOutput<List<String>?>('tools');
+    this.toolsets = registerOutput<List<AgentToolset>?>('toolsets');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

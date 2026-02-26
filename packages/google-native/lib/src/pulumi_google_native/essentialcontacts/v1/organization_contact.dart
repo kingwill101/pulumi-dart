@@ -33,13 +33,13 @@ class OrganizationContact extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.email = Output.createUnknown<String>();
-    this.languageTag = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.email = registerOutput<String>('email');
+    this.languageTag = registerOutput<String>('languageTag');
+    this.name = registerOutput<String>('name');
     this.notificationCategorySubscriptions =
-        Output.createUnknown<List<String>>();
-    this.organizationId = Output.createUnknown<String>();
-    this.validateTime = Output.createUnknown<String>();
-    this.validationState = Output.createUnknown<String>();
+        registerOutput<List<String>>('notificationCategorySubscriptions');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.validateTime = registerOutput<String>('validateTime');
+    this.validationState = registerOutput<String>('validationState');
   }
 }

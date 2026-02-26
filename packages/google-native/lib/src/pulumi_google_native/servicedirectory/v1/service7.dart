@@ -32,13 +32,13 @@ class Service7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.endpoints = Output.createUnknown<List<EndpointResponse3>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namespaceId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.serviceId = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.endpoints = registerOutput<List<EndpointResponse3>>('endpoints');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.namespaceId = registerOutput<String>('namespaceId');
+    this.project = registerOutput<String>('project');
+    this.serviceId = registerOutput<String>('serviceId');
+    this.uid = registerOutput<String>('uid');
   }
 }

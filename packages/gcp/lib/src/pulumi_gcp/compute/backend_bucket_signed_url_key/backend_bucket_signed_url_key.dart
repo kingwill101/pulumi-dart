@@ -253,9 +253,9 @@ class BackendBucketSignedUrlKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backendBucket = Output.createUnknown<String>();
-    this.keyValue = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.backendBucket = registerOutput<String>('backendBucket');
+    this.keyValue = registerOutput<String>('keyValue');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

@@ -55,22 +55,25 @@ class Trial extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clientId = Output.createUnknown<String>();
-    this.customJob = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
+    this.clientId = registerOutput<String>('clientId');
+    this.customJob = registerOutput<String>('customJob');
+    this.endTime = registerOutput<String>('endTime');
     this.finalMeasurement =
-        Output.createUnknown<GoogleCloudAiplatformV1MeasurementResponse>();
-    this.infeasibleReason = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.measurements = Output.createUnknown<
-        List<GoogleCloudAiplatformV1MeasurementResponse>>();
-    this.name = Output.createUnknown<String>();
-    this.parameters = Output.createUnknown<
-        List<GoogleCloudAiplatformV1TrialParameterResponse>>();
-    this.project = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.studyId = Output.createUnknown<String>();
-    this.webAccessUris = Output.createUnknown<Map<String, String>>();
+        registerOutput<GoogleCloudAiplatformV1MeasurementResponse>(
+            'finalMeasurement');
+    this.infeasibleReason = registerOutput<String>('infeasibleReason');
+    this.location = registerOutput<String>('location');
+    this.measurements =
+        registerOutput<List<GoogleCloudAiplatformV1MeasurementResponse>>(
+            'measurements');
+    this.name = registerOutput<String>('name');
+    this.parameters =
+        registerOutput<List<GoogleCloudAiplatformV1TrialParameterResponse>>(
+            'parameters');
+    this.project = registerOutput<String>('project');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
+    this.studyId = registerOutput<String>('studyId');
+    this.webAccessUris = registerOutput<Map<String, String>>('webAccessUris');
   }
 }

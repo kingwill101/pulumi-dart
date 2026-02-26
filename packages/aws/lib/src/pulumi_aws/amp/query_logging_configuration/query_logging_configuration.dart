@@ -227,9 +227,11 @@ class QueryLoggingConfiguration extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.destinations =
-        Output.createUnknown<List<QueryLoggingConfigurationDestination>>();
-    this.region = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<QueryLoggingConfigurationTimeouts?>();
-    this.workspaceId = Output.createUnknown<String>();
+        registerOutput<List<QueryLoggingConfigurationDestination>>(
+            'destinations');
+    this.region = registerOutput<String>('region');
+    this.timeouts =
+        registerOutput<QueryLoggingConfigurationTimeouts?>('timeouts');
+    this.workspaceId = registerOutput<String>('workspaceId');
   }
 }

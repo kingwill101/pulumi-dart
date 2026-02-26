@@ -137,9 +137,9 @@ class ClusterIamRoles extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusterIdentifier = Output.createUnknown<String>();
-    this.defaultIamRoleArn = Output.createUnknown<String>();
-    this.iamRoleArns = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
+    this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    this.defaultIamRoleArn = registerOutput<String>('defaultIamRoleArn');
+    this.iamRoleArns = registerOutput<List<String>>('iamRoleArns');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -184,16 +184,17 @@ class LogGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.deletionProtectionEnabled = Output.createUnknown<bool>();
-    this.kmsKeyId = Output.createUnknown<String?>();
-    this.logGroupClass = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.retentionInDays = Output.createUnknown<int?>();
-    this.skipDestroy = Output.createUnknown<bool?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.deletionProtectionEnabled =
+        registerOutput<bool>('deletionProtectionEnabled');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.logGroupClass = registerOutput<String>('logGroupClass');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.region = registerOutput<String>('region');
+    this.retentionInDays = registerOutput<int?>('retentionInDays');
+    this.skipDestroy = registerOutput<bool?>('skipDestroy');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

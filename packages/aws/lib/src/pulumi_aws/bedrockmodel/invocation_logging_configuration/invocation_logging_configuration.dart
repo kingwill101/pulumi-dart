@@ -440,7 +440,8 @@ class InvocationLoggingConfiguration extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.loggingConfig =
-        Output.createUnknown<InvocationLoggingConfigurationLoggingConfig>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<InvocationLoggingConfigurationLoggingConfig>(
+            'loggingConfig');
+    this.region = registerOutput<String>('region');
   }
 }

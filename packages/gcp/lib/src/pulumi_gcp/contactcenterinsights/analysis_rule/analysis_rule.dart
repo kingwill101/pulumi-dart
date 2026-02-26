@@ -715,16 +715,16 @@ class AnalysisRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.active = Output.createUnknown<bool?>();
-    this.analysisPercentage = Output.createUnknown<double?>();
+    this.active = registerOutput<bool?>('active');
+    this.analysisPercentage = registerOutput<double?>('analysisPercentage');
     this.annotatorSelector =
-        Output.createUnknown<AnalysisRuleAnnotatorSelector?>();
-    this.conversationFilter = Output.createUnknown<String?>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<AnalysisRuleAnnotatorSelector?>('annotatorSelector');
+    this.conversationFilter = registerOutput<String?>('conversationFilter');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String?>('displayName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

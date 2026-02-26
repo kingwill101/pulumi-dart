@@ -310,25 +310,30 @@ class DataQualityJobDefinition extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.dataQualityAppSpecification = Output.createUnknown<
-        DataQualityJobDefinitionDataQualityAppSpecification>();
-    this.dataQualityBaselineConfig = Output.createUnknown<
-        DataQualityJobDefinitionDataQualityBaselineConfig?>();
+    this.arn = registerOutput<String>('arn');
+    this.dataQualityAppSpecification =
+        registerOutput<DataQualityJobDefinitionDataQualityAppSpecification>(
+            'dataQualityAppSpecification');
+    this.dataQualityBaselineConfig =
+        registerOutput<DataQualityJobDefinitionDataQualityBaselineConfig?>(
+            'dataQualityBaselineConfig');
     this.dataQualityJobInput =
-        Output.createUnknown<DataQualityJobDefinitionDataQualityJobInput>();
-    this.dataQualityJobOutputConfig = Output.createUnknown<
-        DataQualityJobDefinitionDataQualityJobOutputConfig>();
+        registerOutput<DataQualityJobDefinitionDataQualityJobInput>(
+            'dataQualityJobInput');
+    this.dataQualityJobOutputConfig =
+        registerOutput<DataQualityJobDefinitionDataQualityJobOutputConfig>(
+            'dataQualityJobOutputConfig');
     this.jobResources =
-        Output.createUnknown<DataQualityJobDefinitionJobResources>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<DataQualityJobDefinitionJobResources>('jobResources');
+    this.name = registerOutput<String>('name');
     this.networkConfig =
-        Output.createUnknown<DataQualityJobDefinitionNetworkConfig?>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
+        registerOutput<DataQualityJobDefinitionNetworkConfig?>('networkConfig');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
     this.stoppingCondition =
-        Output.createUnknown<DataQualityJobDefinitionStoppingCondition>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<DataQualityJobDefinitionStoppingCondition>(
+            'stoppingCondition');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -143,8 +143,8 @@ class UsageExportBucket extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucketName = Output.createUnknown<String>();
-    this.prefix = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
+    this.bucketName = registerOutput<String>('bucketName');
+    this.prefix = registerOutput<String?>('prefix');
+    this.project = registerOutput<String>('project');
   }
 }

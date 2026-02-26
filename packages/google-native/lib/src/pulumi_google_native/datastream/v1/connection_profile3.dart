@@ -71,26 +71,29 @@ class ConnectionProfile3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bigqueryProfile = Output.createUnknown<Map<String, dynamic>>();
-    this.connectionProfileId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.force = Output.createUnknown<bool?>();
+    this.bigqueryProfile =
+        registerOutput<Map<String, dynamic>>('bigqueryProfile');
+    this.connectionProfileId = registerOutput<String>('connectionProfileId');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.force = registerOutput<bool?>('force');
     this.forwardSshConnectivity =
-        Output.createUnknown<ForwardSshTunnelConnectivityResponse2>();
-    this.gcsProfile = Output.createUnknown<GcsProfileResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.mysqlProfile = Output.createUnknown<MysqlProfileResponse>();
-    this.name = Output.createUnknown<String>();
-    this.oracleProfile = Output.createUnknown<OracleProfileResponse>();
-    this.postgresqlProfile = Output.createUnknown<PostgresqlProfileResponse>();
+        registerOutput<ForwardSshTunnelConnectivityResponse2>(
+            'forwardSshConnectivity');
+    this.gcsProfile = registerOutput<GcsProfileResponse>('gcsProfile');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.mysqlProfile = registerOutput<MysqlProfileResponse>('mysqlProfile');
+    this.name = registerOutput<String>('name');
+    this.oracleProfile = registerOutput<OracleProfileResponse>('oracleProfile');
+    this.postgresqlProfile =
+        registerOutput<PostgresqlProfileResponse>('postgresqlProfile');
     this.privateConnectivity =
-        Output.createUnknown<PrivateConnectivityResponse2>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
+        registerOutput<PrivateConnectivityResponse2>('privateConnectivity');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
     this.staticServiceIpConnectivity =
-        Output.createUnknown<Map<String, dynamic>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<Map<String, dynamic>>('staticServiceIpConnectivity');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

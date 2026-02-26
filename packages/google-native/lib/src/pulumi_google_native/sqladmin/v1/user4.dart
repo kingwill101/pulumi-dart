@@ -42,18 +42,18 @@ class User4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dualPasswordType = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.host = Output.createUnknown<String>();
-    this.instance = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.password = Output.createUnknown<String>();
+    this.dualPasswordType = registerOutput<String>('dualPasswordType');
+    this.etag = registerOutput<String>('etag');
+    this.host = registerOutput<String>('host');
+    this.instance = registerOutput<String>('instance');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.password = registerOutput<String>('password');
     this.passwordPolicy =
-        Output.createUnknown<UserPasswordValidationPolicyResponse>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<UserPasswordValidationPolicyResponse>('passwordPolicy');
+    this.project = registerOutput<String>('project');
     this.sqlserverUserDetails =
-        Output.createUnknown<SqlServerUserDetailsResponse>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<SqlServerUserDetailsResponse>('sqlserverUserDetails');
+    this.type = registerOutput<String>('type');
   }
 }

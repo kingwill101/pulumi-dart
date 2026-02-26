@@ -283,16 +283,17 @@ class RegionNetworkFirewallPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.policyType = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.regionNetworkFirewallPolicyId = Output.createUnknown<String>();
-    this.ruleTupleCount = Output.createUnknown<int>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.name = registerOutput<String>('name');
+    this.policyType = registerOutput<String>('policyType');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.regionNetworkFirewallPolicyId =
+        registerOutput<String>('regionNetworkFirewallPolicyId');
+    this.ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
   }
 }

@@ -361,12 +361,14 @@ class NetworkPeeringRoutesConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.exportCustomRoutes = Output.createUnknown<bool>();
-    this.exportSubnetRoutesWithPublicIp = Output.createUnknown<bool>();
-    this.importCustomRoutes = Output.createUnknown<bool>();
-    this.importSubnetRoutesWithPublicIp = Output.createUnknown<bool>();
-    this.network = Output.createUnknown<String>();
-    this.peering = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.exportCustomRoutes = registerOutput<bool>('exportCustomRoutes');
+    this.exportSubnetRoutesWithPublicIp =
+        registerOutput<bool>('exportSubnetRoutesWithPublicIp');
+    this.importCustomRoutes = registerOutput<bool>('importCustomRoutes');
+    this.importSubnetRoutesWithPublicIp =
+        registerOutput<bool>('importSubnetRoutesWithPublicIp');
+    this.network = registerOutput<String>('network');
+    this.peering = registerOutput<String>('peering');
+    this.project = registerOutput<String>('project');
   }
 }

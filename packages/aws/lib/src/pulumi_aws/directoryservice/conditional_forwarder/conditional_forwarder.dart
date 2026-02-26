@@ -152,9 +152,9 @@ class ConditionalForwarder extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.directoryId = Output.createUnknown<String>();
-    this.dnsIps = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
-    this.remoteDomainName = Output.createUnknown<String>();
+    this.directoryId = registerOutput<String>('directoryId');
+    this.dnsIps = registerOutput<List<String>>('dnsIps');
+    this.region = registerOutput<String>('region');
+    this.remoteDomainName = registerOutput<String>('remoteDomainName');
   }
 }

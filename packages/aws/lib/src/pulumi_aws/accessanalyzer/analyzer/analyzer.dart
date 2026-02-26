@@ -873,12 +873,13 @@ class Analyzer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.analyzerName = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.configuration = Output.createUnknown<AnalyzerConfiguration?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String?>();
+    this.analyzerName = registerOutput<String>('analyzerName');
+    this.arn = registerOutput<String>('arn');
+    this.configuration =
+        registerOutput<AnalyzerConfiguration?>('configuration');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String?>('type');
   }
 }

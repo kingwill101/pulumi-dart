@@ -322,15 +322,15 @@ class DomainVerification extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.domainName = Output.createUnknown<String>();
-    this.lastVerifiedTime = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.txtRecordName = Output.createUnknown<String>();
-    this.txtRecordValue = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.domainName = registerOutput<String>('domainName');
+    this.lastVerifiedTime = registerOutput<String>('lastVerifiedTime');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.txtRecordName = registerOutput<String>('txtRecordName');
+    this.txtRecordValue = registerOutput<String>('txtRecordValue');
   }
 }

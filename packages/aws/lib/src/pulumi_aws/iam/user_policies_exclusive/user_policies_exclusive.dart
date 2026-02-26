@@ -235,7 +235,7 @@ class UserPoliciesExclusive extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.policyNames = Output.createUnknown<List<String>>();
-    this.userName = Output.createUnknown<String>();
+    this.policyNames = registerOutput<List<String>>('policyNames');
+    this.userName = registerOutput<String>('userName');
   }
 }

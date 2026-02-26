@@ -41,15 +41,16 @@ class Cluster4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.clusterConfig = Output.createUnknown<ClusterConfigResponse>();
-    this.clusterId = Output.createUnknown<String>();
-    this.defaultStorageType = Output.createUnknown<String>();
-    this.encryptionConfig = Output.createUnknown<EncryptionConfigResponse4>();
-    this.instanceId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.serveNodes = Output.createUnknown<int>();
-    this.state = Output.createUnknown<String>();
+    this.clusterConfig = registerOutput<ClusterConfigResponse>('clusterConfig');
+    this.clusterId = registerOutput<String>('clusterId');
+    this.defaultStorageType = registerOutput<String>('defaultStorageType');
+    this.encryptionConfig =
+        registerOutput<EncryptionConfigResponse4>('encryptionConfig');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.serveNodes = registerOutput<int>('serveNodes');
+    this.state = registerOutput<String>('state');
   }
 }

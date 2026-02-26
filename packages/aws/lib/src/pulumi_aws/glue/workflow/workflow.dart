@@ -297,13 +297,14 @@ class Workflow extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.defaultRunProperties = Output.createUnknown<Map<String, String>?>();
-    this.description = Output.createUnknown<String?>();
-    this.maxConcurrentRuns = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.defaultRunProperties =
+        registerOutput<Map<String, String>?>('defaultRunProperties');
+    this.description = registerOutput<String?>('description');
+    this.maxConcurrentRuns = registerOutput<int?>('maxConcurrentRuns');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

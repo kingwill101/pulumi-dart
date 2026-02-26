@@ -69,23 +69,25 @@ class PrivateCloud extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.hcx = Output.createUnknown<HcxResponse>();
-    this.location = Output.createUnknown<String>();
-    this.managementCluster = Output.createUnknown<ManagementClusterResponse>();
-    this.name = Output.createUnknown<String>();
-    this.networkConfig = Output.createUnknown<NetworkConfigResponse21>();
-    this.nsx = Output.createUnknown<NsxResponse>();
-    this.privateCloudId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vcenter = Output.createUnknown<VcenterResponse>();
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.description = registerOutput<String>('description');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.hcx = registerOutput<HcxResponse>('hcx');
+    this.location = registerOutput<String>('location');
+    this.managementCluster =
+        registerOutput<ManagementClusterResponse>('managementCluster');
+    this.name = registerOutput<String>('name');
+    this.networkConfig =
+        registerOutput<NetworkConfigResponse21>('networkConfig');
+    this.nsx = registerOutput<NsxResponse>('nsx');
+    this.privateCloudId = registerOutput<String>('privateCloudId');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String>('type');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vcenter = registerOutput<VcenterResponse>('vcenter');
   }
 }

@@ -860,18 +860,18 @@ class ProjectBucketConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucketId = Output.createUnknown<String>();
+    this.bucketId = registerOutput<String>('bucketId');
     this.cmekSettings =
-        Output.createUnknown<ProjectBucketConfigCmekSettings?>();
-    this.description = Output.createUnknown<String>();
-    this.enableAnalytics = Output.createUnknown<bool?>();
+        registerOutput<ProjectBucketConfigCmekSettings?>('cmekSettings');
+    this.description = registerOutput<String>('description');
+    this.enableAnalytics = registerOutput<bool?>('enableAnalytics');
     this.indexConfigs =
-        Output.createUnknown<List<ProjectBucketConfigIndexConfig>?>();
-    this.lifecycleState = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.locked = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.retentionDays = Output.createUnknown<int?>();
+        registerOutput<List<ProjectBucketConfigIndexConfig>?>('indexConfigs');
+    this.lifecycleState = registerOutput<String>('lifecycleState');
+    this.location = registerOutput<String>('location');
+    this.locked = registerOutput<bool?>('locked');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.retentionDays = registerOutput<int?>('retentionDays');
   }
 }

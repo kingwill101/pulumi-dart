@@ -197,12 +197,14 @@ class LogMetricFilter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applyOnTransformedLogs = Output.createUnknown<bool>();
-    this.logGroupName = Output.createUnknown<String>();
+    this.applyOnTransformedLogs =
+        registerOutput<bool>('applyOnTransformedLogs');
+    this.logGroupName = registerOutput<String>('logGroupName');
     this.metricTransformation =
-        Output.createUnknown<LogMetricFilterMetricTransformation>();
-    this.name = Output.createUnknown<String>();
-    this.pattern = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<LogMetricFilterMetricTransformation>(
+            'metricTransformation');
+    this.name = registerOutput<String>('name');
+    this.pattern = registerOutput<String>('pattern');
+    this.region = registerOutput<String>('region');
   }
 }

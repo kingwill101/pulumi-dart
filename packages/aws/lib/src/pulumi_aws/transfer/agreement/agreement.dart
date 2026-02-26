@@ -175,17 +175,17 @@ class Agreement extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessRole = Output.createUnknown<String>();
-    this.agreementId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.baseDirectory = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.localProfileId = Output.createUnknown<String>();
-    this.partnerProfileId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.serverId = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.accessRole = registerOutput<String>('accessRole');
+    this.agreementId = registerOutput<String>('agreementId');
+    this.arn = registerOutput<String>('arn');
+    this.baseDirectory = registerOutput<String>('baseDirectory');
+    this.description = registerOutput<String?>('description');
+    this.localProfileId = registerOutput<String>('localProfileId');
+    this.partnerProfileId = registerOutput<String>('partnerProfileId');
+    this.region = registerOutput<String>('region');
+    this.serverId = registerOutput<String>('serverId');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

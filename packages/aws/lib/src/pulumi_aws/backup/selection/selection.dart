@@ -946,13 +946,14 @@ class Selection extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.conditions = Output.createUnknown<List<SelectionCondition>>();
-    this.iamRoleArn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.notResources = Output.createUnknown<List<String>>();
-    this.planId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resources = Output.createUnknown<List<String>?>();
-    this.selectionTags = Output.createUnknown<List<SelectionSelectionTag>?>();
+    this.conditions = registerOutput<List<SelectionCondition>>('conditions');
+    this.iamRoleArn = registerOutput<String>('iamRoleArn');
+    this.name = registerOutput<String>('name');
+    this.notResources = registerOutput<List<String>>('notResources');
+    this.planId = registerOutput<String>('planId');
+    this.region = registerOutput<String>('region');
+    this.resources = registerOutput<List<String>?>('resources');
+    this.selectionTags =
+        registerOutput<List<SelectionSelectionTag>?>('selectionTags');
   }
 }

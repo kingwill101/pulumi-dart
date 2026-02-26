@@ -647,13 +647,13 @@ class TargetServer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.envId = Output.createUnknown<String>();
-    this.host = Output.createUnknown<String>();
-    this.isEnabled = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
-    this.protocol = Output.createUnknown<String>();
-    this.sSlInfo = Output.createUnknown<TargetServerSSlInfo?>();
+    this.description = registerOutput<String?>('description');
+    this.envId = registerOutput<String>('envId');
+    this.host = registerOutput<String>('host');
+    this.isEnabled = registerOutput<bool?>('isEnabled');
+    this.name = registerOutput<String>('name');
+    this.port = registerOutput<int>('port');
+    this.protocol = registerOutput<String>('protocol');
+    this.sSlInfo = registerOutput<TargetServerSSlInfo?>('sSlInfo');
   }
 }

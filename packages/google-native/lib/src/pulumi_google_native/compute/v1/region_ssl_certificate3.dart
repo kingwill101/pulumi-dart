@@ -57,22 +57,24 @@ class RegionSslCertificate3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificate = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
+    this.certificate = registerOutput<String>('certificate');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.kind = registerOutput<String>('kind');
     this.managed =
-        Output.createUnknown<SslCertificateManagedSslCertificateResponse3>();
-    this.name = Output.createUnknown<String>();
-    this.privateKey = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfManaged = Output.createUnknown<
-        SslCertificateSelfManagedSslCertificateResponse3>();
-    this.subjectAlternativeNames = Output.createUnknown<List<String>>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<SslCertificateManagedSslCertificateResponse3>('managed');
+    this.name = registerOutput<String>('name');
+    this.privateKey = registerOutput<String>('privateKey');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfManaged =
+        registerOutput<SslCertificateSelfManagedSslCertificateResponse3>(
+            'selfManaged');
+    this.subjectAlternativeNames =
+        registerOutput<List<String>>('subjectAlternativeNames');
+    this.type = registerOutput<String>('type');
   }
 }

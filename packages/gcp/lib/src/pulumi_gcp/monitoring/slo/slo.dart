@@ -1512,17 +1512,19 @@ class Slo extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.basicSli = Output.createUnknown<SloBasicSli?>();
-    this.calendarPeriod = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.goal = Output.createUnknown<double>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestBasedSli = Output.createUnknown<SloRequestBasedSli?>();
-    this.rollingPeriodDays = Output.createUnknown<int?>();
-    this.service = Output.createUnknown<String>();
-    this.sloId = Output.createUnknown<String>();
-    this.userLabels = Output.createUnknown<Map<String, String>?>();
-    this.windowsBasedSli = Output.createUnknown<SloWindowsBasedSli?>();
+    this.basicSli = registerOutput<SloBasicSli?>('basicSli');
+    this.calendarPeriod = registerOutput<String?>('calendarPeriod');
+    this.displayName = registerOutput<String?>('displayName');
+    this.goal = registerOutput<double>('goal');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestBasedSli =
+        registerOutput<SloRequestBasedSli?>('requestBasedSli');
+    this.rollingPeriodDays = registerOutput<int?>('rollingPeriodDays');
+    this.service = registerOutput<String>('service');
+    this.sloId = registerOutput<String>('sloId');
+    this.userLabels = registerOutput<Map<String, String>?>('userLabels');
+    this.windowsBasedSli =
+        registerOutput<SloWindowsBasedSli?>('windowsBasedSli');
   }
 }

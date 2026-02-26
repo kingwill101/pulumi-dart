@@ -118,8 +118,8 @@ class RetentionConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.retentionPeriodInDays = Output.createUnknown<int>();
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');
   }
 }

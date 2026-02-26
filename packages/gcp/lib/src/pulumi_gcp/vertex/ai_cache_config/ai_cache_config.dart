@@ -148,8 +148,8 @@ class AiCacheConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.disableCache = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.disableCache = registerOutput<bool>('disableCache');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

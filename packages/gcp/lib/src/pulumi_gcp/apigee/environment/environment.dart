@@ -436,17 +436,18 @@ class Environment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiProxyType = Output.createUnknown<String>();
+    this.apiProxyType = registerOutput<String>('apiProxyType');
     this.clientIpResolutionConfig =
-        Output.createUnknown<EnvironmentClientIpResolutionConfig?>();
-    this.deploymentType = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.forwardProxyUri = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.nodeConfig = Output.createUnknown<EnvironmentNodeConfig>();
-    this.orgId = Output.createUnknown<String>();
-    this.properties = Output.createUnknown<EnvironmentProperties?>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<EnvironmentClientIpResolutionConfig?>(
+            'clientIpResolutionConfig');
+    this.deploymentType = registerOutput<String>('deploymentType');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.forwardProxyUri = registerOutput<String?>('forwardProxyUri');
+    this.name = registerOutput<String>('name');
+    this.nodeConfig = registerOutput<EnvironmentNodeConfig>('nodeConfig');
+    this.orgId = registerOutput<String>('orgId');
+    this.properties = registerOutput<EnvironmentProperties?>('properties');
+    this.type = registerOutput<String>('type');
   }
 }

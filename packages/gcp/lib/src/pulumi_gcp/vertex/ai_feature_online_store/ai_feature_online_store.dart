@@ -657,24 +657,27 @@ class AiFeatureOnlineStore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bigtable = Output.createUnknown<AiFeatureOnlineStoreBigtable?>();
-    this.createTime = Output.createUnknown<String>();
+    this.bigtable = registerOutput<AiFeatureOnlineStoreBigtable?>('bigtable');
+    this.createTime = registerOutput<String>('createTime');
     this.dedicatedServingEndpoint =
-        Output.createUnknown<AiFeatureOnlineStoreDedicatedServingEndpoint>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<AiFeatureOnlineStoreDedicatedServingEndpoint>(
+            'dedicatedServingEndpoint');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.embeddingManagement =
-        Output.createUnknown<AiFeatureOnlineStoreEmbeddingManagement>();
+        registerOutput<AiFeatureOnlineStoreEmbeddingManagement>(
+            'embeddingManagement');
     this.encryptionSpec =
-        Output.createUnknown<AiFeatureOnlineStoreEncryptionSpec?>();
-    this.etag = Output.createUnknown<String>();
-    this.forceDestroy = Output.createUnknown<bool?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.optimized = Output.createUnknown<Map<String, dynamic>?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<AiFeatureOnlineStoreEncryptionSpec?>('encryptionSpec');
+    this.etag = registerOutput<String>('etag');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.optimized = registerOutput<Map<String, dynamic>?>('optimized');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String>('region');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

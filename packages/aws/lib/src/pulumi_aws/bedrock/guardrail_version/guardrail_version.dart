@@ -144,11 +144,11 @@ class GuardrailVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.guardrailArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.skipDestroy = Output.createUnknown<bool?>();
-    this.timeouts = Output.createUnknown<GuardrailVersionTimeouts?>();
-    this.version = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.guardrailArn = registerOutput<String>('guardrailArn');
+    this.region = registerOutput<String>('region');
+    this.skipDestroy = registerOutput<bool?>('skipDestroy');
+    this.timeouts = registerOutput<GuardrailVersionTimeouts?>('timeouts');
+    this.version = registerOutput<String>('version');
   }
 }

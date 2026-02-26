@@ -189,15 +189,16 @@ class RadiusSettings extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authenticationProtocol = Output.createUnknown<String>();
-    this.directoryId = Output.createUnknown<String>();
-    this.displayLabel = Output.createUnknown<String>();
-    this.radiusPort = Output.createUnknown<int>();
-    this.radiusRetries = Output.createUnknown<int>();
-    this.radiusServers = Output.createUnknown<List<String>>();
-    this.radiusTimeout = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.sharedSecret = Output.createUnknown<String>();
-    this.useSameUsername = Output.createUnknown<bool?>();
+    this.authenticationProtocol =
+        registerOutput<String>('authenticationProtocol');
+    this.directoryId = registerOutput<String>('directoryId');
+    this.displayLabel = registerOutput<String>('displayLabel');
+    this.radiusPort = registerOutput<int>('radiusPort');
+    this.radiusRetries = registerOutput<int>('radiusRetries');
+    this.radiusServers = registerOutput<List<String>>('radiusServers');
+    this.radiusTimeout = registerOutput<int>('radiusTimeout');
+    this.region = registerOutput<String>('region');
+    this.sharedSecret = registerOutput<String>('sharedSecret');
+    this.useSameUsername = registerOutput<bool?>('useSameUsername');
   }
 }

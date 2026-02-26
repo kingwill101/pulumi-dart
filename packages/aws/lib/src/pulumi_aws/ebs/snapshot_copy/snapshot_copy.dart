@@ -270,24 +270,25 @@ class SnapshotCopy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.completionDurationMinutes = Output.createUnknown<int?>();
-    this.dataEncryptionKeyId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.encrypted = Output.createUnknown<bool?>();
-    this.kmsKeyId = Output.createUnknown<String?>();
-    this.outpostArn = Output.createUnknown<String>();
-    this.ownerAlias = Output.createUnknown<String>();
-    this.ownerId = Output.createUnknown<String>();
-    this.permanentRestore = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.sourceRegion = Output.createUnknown<String>();
-    this.sourceSnapshotId = Output.createUnknown<String>();
-    this.storageTier = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.temporaryRestoreDays = Output.createUnknown<int?>();
-    this.volumeId = Output.createUnknown<String>();
-    this.volumeSize = Output.createUnknown<int>();
+    this.arn = registerOutput<String>('arn');
+    this.completionDurationMinutes =
+        registerOutput<int?>('completionDurationMinutes');
+    this.dataEncryptionKeyId = registerOutput<String>('dataEncryptionKeyId');
+    this.description = registerOutput<String?>('description');
+    this.encrypted = registerOutput<bool?>('encrypted');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.outpostArn = registerOutput<String>('outpostArn');
+    this.ownerAlias = registerOutput<String>('ownerAlias');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.permanentRestore = registerOutput<bool?>('permanentRestore');
+    this.region = registerOutput<String>('region');
+    this.sourceRegion = registerOutput<String>('sourceRegion');
+    this.sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
+    this.storageTier = registerOutput<String>('storageTier');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.temporaryRestoreDays = registerOutput<int?>('temporaryRestoreDays');
+    this.volumeId = registerOutput<String>('volumeId');
+    this.volumeSize = registerOutput<int>('volumeSize');
   }
 }

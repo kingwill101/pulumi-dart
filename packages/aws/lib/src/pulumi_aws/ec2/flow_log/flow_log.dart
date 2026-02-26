@@ -1676,24 +1676,27 @@ class FlowLog extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.deliverCrossAccountRole = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.deliverCrossAccountRole =
+        registerOutput<String?>('deliverCrossAccountRole');
     this.destinationOptions =
-        Output.createUnknown<FlowLogDestinationOptions?>();
-    this.eniId = Output.createUnknown<String?>();
-    this.iamRoleArn = Output.createUnknown<String?>();
-    this.logDestination = Output.createUnknown<String>();
-    this.logDestinationType = Output.createUnknown<String?>();
-    this.logFormat = Output.createUnknown<String>();
-    this.maxAggregationInterval = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
-    this.regionalNatGatewayId = Output.createUnknown<String?>();
-    this.subnetId = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.trafficType = Output.createUnknown<String?>();
-    this.transitGatewayAttachmentId = Output.createUnknown<String?>();
-    this.transitGatewayId = Output.createUnknown<String?>();
-    this.vpcId = Output.createUnknown<String?>();
+        registerOutput<FlowLogDestinationOptions?>('destinationOptions');
+    this.eniId = registerOutput<String?>('eniId');
+    this.iamRoleArn = registerOutput<String?>('iamRoleArn');
+    this.logDestination = registerOutput<String>('logDestination');
+    this.logDestinationType = registerOutput<String?>('logDestinationType');
+    this.logFormat = registerOutput<String>('logFormat');
+    this.maxAggregationInterval =
+        registerOutput<int?>('maxAggregationInterval');
+    this.region = registerOutput<String>('region');
+    this.regionalNatGatewayId = registerOutput<String?>('regionalNatGatewayId');
+    this.subnetId = registerOutput<String?>('subnetId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.trafficType = registerOutput<String?>('trafficType');
+    this.transitGatewayAttachmentId =
+        registerOutput<String?>('transitGatewayAttachmentId');
+    this.transitGatewayId = registerOutput<String?>('transitGatewayId');
+    this.vpcId = registerOutput<String?>('vpcId');
   }
 }

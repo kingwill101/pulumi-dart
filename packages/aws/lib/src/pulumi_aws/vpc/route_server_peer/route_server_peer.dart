@@ -527,19 +527,20 @@ class RouteServerPeer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.bgpOptions = Output.createUnknown<RouteServerPeerBgpOptions>();
-    this.endpointEniAddress = Output.createUnknown<String>();
-    this.endpointEniId = Output.createUnknown<String>();
-    this.peerAddress = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.routeServerEndpointId = Output.createUnknown<String>();
-    this.routeServerId = Output.createUnknown<String>();
-    this.routeServerPeerId = Output.createUnknown<String>();
-    this.subnetId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<RouteServerPeerTimeouts?>();
-    this.vpcId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.bgpOptions = registerOutput<RouteServerPeerBgpOptions>('bgpOptions');
+    this.endpointEniAddress = registerOutput<String>('endpointEniAddress');
+    this.endpointEniId = registerOutput<String>('endpointEniId');
+    this.peerAddress = registerOutput<String>('peerAddress');
+    this.region = registerOutput<String>('region');
+    this.routeServerEndpointId =
+        registerOutput<String>('routeServerEndpointId');
+    this.routeServerId = registerOutput<String>('routeServerId');
+    this.routeServerPeerId = registerOutput<String>('routeServerPeerId');
+    this.subnetId = registerOutput<String>('subnetId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<RouteServerPeerTimeouts?>('timeouts');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

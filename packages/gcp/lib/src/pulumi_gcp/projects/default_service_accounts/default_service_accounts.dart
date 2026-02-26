@@ -245,9 +245,10 @@ class DefaultServiceAccounts extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.restorePolicy = Output.createUnknown<String?>();
-    this.serviceAccounts = Output.createUnknown<Map<String, String>>();
+    this.action = registerOutput<String>('action');
+    this.project = registerOutput<String>('project');
+    this.restorePolicy = registerOutput<String?>('restorePolicy');
+    this.serviceAccounts =
+        registerOutput<Map<String, String>>('serviceAccounts');
   }
 }

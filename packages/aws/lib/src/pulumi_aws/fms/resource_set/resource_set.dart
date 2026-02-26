@@ -154,11 +154,12 @@ class ResourceSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceSets = Output.createUnknown<List<ResourceSetResourceSet>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ResourceSetTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.region = registerOutput<String>('region');
+    this.resourceSets =
+        registerOutput<List<ResourceSetResourceSet>?>('resourceSets');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ResourceSetTimeouts?>('timeouts');
   }
 }

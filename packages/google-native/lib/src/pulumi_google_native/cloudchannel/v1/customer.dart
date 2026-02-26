@@ -60,23 +60,25 @@ class Customer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.alternateEmail = Output.createUnknown<String>();
-    this.channelPartnerId = Output.createUnknown<String>();
-    this.channelPartnerLinkId = Output.createUnknown<String>();
-    this.cloudIdentityId = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.alternateEmail = registerOutput<String>('alternateEmail');
+    this.channelPartnerId = registerOutput<String>('channelPartnerId');
+    this.channelPartnerLinkId = registerOutput<String>('channelPartnerLinkId');
+    this.cloudIdentityId = registerOutput<String>('cloudIdentityId');
     this.cloudIdentityInfo =
-        Output.createUnknown<GoogleCloudChannelV1CloudIdentityInfoResponse>();
-    this.correlationId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.domain = Output.createUnknown<String>();
-    this.languageCode = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.orgDisplayName = Output.createUnknown<String>();
+        registerOutput<GoogleCloudChannelV1CloudIdentityInfoResponse>(
+            'cloudIdentityInfo');
+    this.correlationId = registerOutput<String>('correlationId');
+    this.createTime = registerOutput<String>('createTime');
+    this.domain = registerOutput<String>('domain');
+    this.languageCode = registerOutput<String>('languageCode');
+    this.name = registerOutput<String>('name');
+    this.orgDisplayName = registerOutput<String>('orgDisplayName');
     this.orgPostalAddress =
-        Output.createUnknown<GoogleTypePostalAddressResponse>();
+        registerOutput<GoogleTypePostalAddressResponse>('orgPostalAddress');
     this.primaryContactInfo =
-        Output.createUnknown<GoogleCloudChannelV1ContactInfoResponse>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudChannelV1ContactInfoResponse>(
+            'primaryContactInfo');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

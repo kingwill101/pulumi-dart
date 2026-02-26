@@ -223,23 +223,28 @@ class EncryptionControl extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.egressOnlyInternetGatewayExclusion = Output.createUnknown<String>();
-    this.elasticFileSystemExclusion = Output.createUnknown<String>();
-    this.internetGatewayExclusion = Output.createUnknown<String>();
-    this.lambdaExclusion = Output.createUnknown<String>();
-    this.mode = Output.createUnknown<String>();
-    this.natGatewayExclusion = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.egressOnlyInternetGatewayExclusion =
+        registerOutput<String>('egressOnlyInternetGatewayExclusion');
+    this.elasticFileSystemExclusion =
+        registerOutput<String>('elasticFileSystemExclusion');
+    this.internetGatewayExclusion =
+        registerOutput<String>('internetGatewayExclusion');
+    this.lambdaExclusion = registerOutput<String>('lambdaExclusion');
+    this.mode = registerOutput<String>('mode');
+    this.natGatewayExclusion = registerOutput<String>('natGatewayExclusion');
+    this.region = registerOutput<String>('region');
     this.resourceExclusions =
-        Output.createUnknown<EncryptionControlResourceExclusions>();
-    this.state = Output.createUnknown<String>();
-    this.stateMessage = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<EncryptionControlTimeouts?>();
-    this.virtualPrivateGatewayExclusion = Output.createUnknown<String>();
-    this.vpcId = Output.createUnknown<String>();
-    this.vpcLatticeExclusion = Output.createUnknown<String>();
-    this.vpcPeeringExclusion = Output.createUnknown<String>();
+        registerOutput<EncryptionControlResourceExclusions>(
+            'resourceExclusions');
+    this.state = registerOutput<String>('state');
+    this.stateMessage = registerOutput<String>('stateMessage');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<EncryptionControlTimeouts?>('timeouts');
+    this.virtualPrivateGatewayExclusion =
+        registerOutput<String>('virtualPrivateGatewayExclusion');
+    this.vpcId = registerOutput<String>('vpcId');
+    this.vpcLatticeExclusion = registerOutput<String>('vpcLatticeExclusion');
+    this.vpcPeeringExclusion = registerOutput<String>('vpcPeeringExclusion');
   }
 }

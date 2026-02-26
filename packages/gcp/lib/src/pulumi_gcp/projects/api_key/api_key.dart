@@ -1041,12 +1041,12 @@ class ApiKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String?>();
-    this.keyString = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.restrictions = Output.createUnknown<ApiKeyRestrictions?>();
-    this.serviceAccountEmail = Output.createUnknown<String?>();
-    this.uid = Output.createUnknown<String>();
+    this.displayName = registerOutput<String?>('displayName');
+    this.keyString = registerOutput<String>('keyString');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.restrictions = registerOutput<ApiKeyRestrictions?>('restrictions');
+    this.serviceAccountEmail = registerOutput<String?>('serviceAccountEmail');
+    this.uid = registerOutput<String>('uid');
   }
 }

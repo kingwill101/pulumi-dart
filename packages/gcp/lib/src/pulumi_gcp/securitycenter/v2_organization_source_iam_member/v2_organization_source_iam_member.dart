@@ -879,11 +879,11 @@ class V2OrganizationSourceIamMember extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.condition =
-        Output.createUnknown<V2OrganizationSourceIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.organization = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.source = Output.createUnknown<String>();
+        registerOutput<V2OrganizationSourceIamMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.member = registerOutput<String>('member');
+    this.organization = registerOutput<String>('organization');
+    this.role = registerOutput<String>('role');
+    this.source = registerOutput<String>('source');
   }
 }

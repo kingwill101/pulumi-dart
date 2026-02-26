@@ -292,9 +292,9 @@ class EmailIdentityPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.emailIdentity = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
-    this.policyName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.emailIdentity = registerOutput<String>('emailIdentity');
+    this.policy = registerOutput<String>('policy');
+    this.policyName = registerOutput<String>('policyName');
+    this.region = registerOutput<String>('region');
   }
 }

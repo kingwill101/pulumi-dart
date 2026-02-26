@@ -218,11 +218,12 @@ class RuleGroup2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activatedRules = Output.createUnknown<List<RuleGroupActivatedRule>?>();
-    this.arn = Output.createUnknown<String>();
-    this.metricName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.activatedRules =
+        registerOutput<List<RuleGroupActivatedRule>?>('activatedRules');
+    this.arn = registerOutput<String>('arn');
+    this.metricName = registerOutput<String>('metricName');
+    this.name = registerOutput<String>('name');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

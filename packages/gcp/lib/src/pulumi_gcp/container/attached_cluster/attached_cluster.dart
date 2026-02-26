@@ -1054,35 +1054,42 @@ class AttachedCluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.authorization = Output.createUnknown<AttachedClusterAuthorization?>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.authorization =
+        registerOutput<AttachedClusterAuthorization?>('authorization');
     this.binaryAuthorization =
-        Output.createUnknown<AttachedClusterBinaryAuthorization>();
-    this.clusterRegion = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.deletionPolicy = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.distribution = Output.createUnknown<String>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.errors = Output.createUnknown<List<AttachedClusterError>>();
-    this.fleet = Output.createUnknown<AttachedClusterFleet>();
-    this.kubernetesVersion = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.loggingConfig = Output.createUnknown<AttachedClusterLoggingConfig?>();
+        registerOutput<AttachedClusterBinaryAuthorization>(
+            'binaryAuthorization');
+    this.clusterRegion = registerOutput<String>('clusterRegion');
+    this.createTime = registerOutput<String>('createTime');
+    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
+    this.description = registerOutput<String?>('description');
+    this.distribution = registerOutput<String>('distribution');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.errors = registerOutput<List<AttachedClusterError>>('errors');
+    this.fleet = registerOutput<AttachedClusterFleet>('fleet');
+    this.kubernetesVersion = registerOutput<String>('kubernetesVersion');
+    this.location = registerOutput<String>('location');
+    this.loggingConfig =
+        registerOutput<AttachedClusterLoggingConfig?>('loggingConfig');
     this.monitoringConfig =
-        Output.createUnknown<AttachedClusterMonitoringConfig>();
-    this.name = Output.createUnknown<String>();
-    this.oidcConfig = Output.createUnknown<AttachedClusterOidcConfig>();
-    this.platformVersion = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.proxyConfig = Output.createUnknown<AttachedClusterProxyConfig?>();
-    this.reconciling = Output.createUnknown<bool>();
+        registerOutput<AttachedClusterMonitoringConfig>('monitoringConfig');
+    this.name = registerOutput<String>('name');
+    this.oidcConfig = registerOutput<AttachedClusterOidcConfig>('oidcConfig');
+    this.platformVersion = registerOutput<String>('platformVersion');
+    this.project = registerOutput<String>('project');
+    this.proxyConfig =
+        registerOutput<AttachedClusterProxyConfig?>('proxyConfig');
+    this.reconciling = registerOutput<bool>('reconciling');
     this.securityPostureConfig =
-        Output.createUnknown<AttachedClusterSecurityPostureConfig>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<AttachedClusterSecurityPostureConfig>(
+            'securityPostureConfig');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
     this.workloadIdentityConfigs =
-        Output.createUnknown<List<AttachedClusterWorkloadIdentityConfig>>();
+        registerOutput<List<AttachedClusterWorkloadIdentityConfig>>(
+            'workloadIdentityConfigs');
   }
 }

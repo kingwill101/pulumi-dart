@@ -33,13 +33,14 @@ class ApiIamPolicy2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiId = Output.createUnknown<String>();
+    this.apiId = registerOutput<String>('apiId');
     this.auditConfigs =
-        Output.createUnknown<List<ApigatewayAuditConfigResponse2>>();
-    this.bindings = Output.createUnknown<List<ApigatewayBindingResponse2>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+        registerOutput<List<ApigatewayAuditConfigResponse2>>('auditConfigs');
+    this.bindings =
+        registerOutput<List<ApigatewayBindingResponse2>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

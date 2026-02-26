@@ -2499,19 +2499,22 @@ class Feature extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.fleetDefaultMemberConfig =
-        Output.createUnknown<FeatureFleetDefaultMemberConfig?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.resourceStates = Output.createUnknown<List<FeatureResourceState>>();
-    this.spec = Output.createUnknown<FeatureSpec?>();
-    this.states = Output.createUnknown<List<FeatureState>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<FeatureFleetDefaultMemberConfig?>(
+            'fleetDefaultMemberConfig');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.resourceStates =
+        registerOutput<List<FeatureResourceState>>('resourceStates');
+    this.spec = registerOutput<FeatureSpec?>('spec');
+    this.states = registerOutput<List<FeatureState>>('states');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

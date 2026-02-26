@@ -70,24 +70,28 @@ class UrlMap4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTimestamp = Output.createUnknown<String>();
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.defaultCustomErrorResponsePolicy =
-        Output.createUnknown<CustomErrorResponsePolicyResponse2>();
-    this.defaultRouteAction = Output.createUnknown<HttpRouteActionResponse2>();
-    this.defaultService = Output.createUnknown<String>();
+        registerOutput<CustomErrorResponsePolicyResponse2>(
+            'defaultCustomErrorResponsePolicy');
+    this.defaultRouteAction =
+        registerOutput<HttpRouteActionResponse2>('defaultRouteAction');
+    this.defaultService = registerOutput<String>('defaultService');
     this.defaultUrlRedirect =
-        Output.createUnknown<HttpRedirectActionResponse2>();
-    this.description = Output.createUnknown<String>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.headerAction = Output.createUnknown<HttpHeaderActionResponse2>();
-    this.hostRules = Output.createUnknown<List<HostRuleResponse2>>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.pathMatchers = Output.createUnknown<List<PathMatcherResponse2>>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.tests = Output.createUnknown<List<UrlMapTestResponse2>>();
+        registerOutput<HttpRedirectActionResponse2>('defaultUrlRedirect');
+    this.description = registerOutput<String>('description');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.headerAction =
+        registerOutput<HttpHeaderActionResponse2>('headerAction');
+    this.hostRules = registerOutput<List<HostRuleResponse2>>('hostRules');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.pathMatchers =
+        registerOutput<List<PathMatcherResponse2>>('pathMatchers');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.tests = registerOutput<List<UrlMapTestResponse2>>('tests');
   }
 }

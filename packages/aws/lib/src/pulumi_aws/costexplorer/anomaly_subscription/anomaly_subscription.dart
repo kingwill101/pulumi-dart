@@ -1315,16 +1315,17 @@ class AnomalySubscription extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.frequency = Output.createUnknown<String>();
-    this.monitorArnLists = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.arn = registerOutput<String>('arn');
+    this.frequency = registerOutput<String>('frequency');
+    this.monitorArnLists = registerOutput<List<String>>('monitorArnLists');
+    this.name = registerOutput<String>('name');
     this.subscribers =
-        Output.createUnknown<List<AnomalySubscriptionSubscriber>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<AnomalySubscriptionSubscriber>>('subscribers');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.thresholdExpression =
-        Output.createUnknown<AnomalySubscriptionThresholdExpression>();
+        registerOutput<AnomalySubscriptionThresholdExpression>(
+            'thresholdExpression');
   }
 }

@@ -797,18 +797,19 @@ class Listener4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.defaultAction = Output.createUnknown<ListenerDefaultAction3>();
-    this.lastUpdatedAt = Output.createUnknown<String>();
-    this.listenerId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
-    this.protocol = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.serviceArn = Output.createUnknown<String>();
-    this.serviceIdentifier = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.defaultAction =
+        registerOutput<ListenerDefaultAction3>('defaultAction');
+    this.lastUpdatedAt = registerOutput<String>('lastUpdatedAt');
+    this.listenerId = registerOutput<String>('listenerId');
+    this.name = registerOutput<String>('name');
+    this.port = registerOutput<int>('port');
+    this.protocol = registerOutput<String>('protocol');
+    this.region = registerOutput<String>('region');
+    this.serviceArn = registerOutput<String>('serviceArn');
+    this.serviceIdentifier = registerOutput<String>('serviceIdentifier');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

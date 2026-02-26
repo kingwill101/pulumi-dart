@@ -362,18 +362,20 @@ class Application10 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationAccount = Output.createUnknown<String>();
-    this.applicationArn = Output.createUnknown<String>();
-    this.applicationProviderArn = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.clientToken = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.instanceArn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.portalOptions = Output.createUnknown<ApplicationPortalOptions?>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.applicationAccount = registerOutput<String>('applicationAccount');
+    this.applicationArn = registerOutput<String>('applicationArn');
+    this.applicationProviderArn =
+        registerOutput<String>('applicationProviderArn');
+    this.arn = registerOutput<String>('arn');
+    this.clientToken = registerOutput<String?>('clientToken');
+    this.description = registerOutput<String?>('description');
+    this.instanceArn = registerOutput<String>('instanceArn');
+    this.name = registerOutput<String>('name');
+    this.portalOptions =
+        registerOutput<ApplicationPortalOptions?>('portalOptions');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

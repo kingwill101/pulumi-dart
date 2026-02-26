@@ -166,9 +166,10 @@ class SqlInjectionMatchSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.sqlInjectionMatchTuples = Output.createUnknown<
-        List<SqlInjectionMatchSetSqlInjectionMatchTuple>?>();
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    this.sqlInjectionMatchTuples =
+        registerOutput<List<SqlInjectionMatchSetSqlInjectionMatchTuple>?>(
+            'sqlInjectionMatchTuples');
   }
 }

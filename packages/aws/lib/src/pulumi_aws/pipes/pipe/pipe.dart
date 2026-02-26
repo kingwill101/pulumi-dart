@@ -1384,23 +1384,26 @@ class Pipe extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.desiredState = Output.createUnknown<String?>();
-    this.enrichment = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.desiredState = registerOutput<String?>('desiredState');
+    this.enrichment = registerOutput<String?>('enrichment');
     this.enrichmentParameters =
-        Output.createUnknown<PipeEnrichmentParameters?>();
-    this.kmsKeyIdentifier = Output.createUnknown<String?>();
-    this.logConfiguration = Output.createUnknown<PipeLogConfiguration?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.source = Output.createUnknown<String>();
-    this.sourceParameters = Output.createUnknown<PipeSourceParameters>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.target = Output.createUnknown<String>();
-    this.targetParameters = Output.createUnknown<PipeTargetParameters?>();
+        registerOutput<PipeEnrichmentParameters?>('enrichmentParameters');
+    this.kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
+    this.logConfiguration =
+        registerOutput<PipeLogConfiguration?>('logConfiguration');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.source = registerOutput<String>('source');
+    this.sourceParameters =
+        registerOutput<PipeSourceParameters>('sourceParameters');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.target = registerOutput<String>('target');
+    this.targetParameters =
+        registerOutput<PipeTargetParameters?>('targetParameters');
   }
 }

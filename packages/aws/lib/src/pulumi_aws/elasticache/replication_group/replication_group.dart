@@ -1531,56 +1531,72 @@ class ReplicationGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applyImmediately = Output.createUnknown<bool>();
-    this.arn = Output.createUnknown<String>();
-    this.atRestEncryptionEnabled = Output.createUnknown<bool>();
-    this.authToken = Output.createUnknown<String?>();
-    this.authTokenUpdateStrategy = Output.createUnknown<String?>();
-    this.autoMinorVersionUpgrade = Output.createUnknown<bool>();
-    this.automaticFailoverEnabled = Output.createUnknown<bool?>();
-    this.clusterEnabled = Output.createUnknown<bool>();
-    this.clusterMode = Output.createUnknown<String>();
-    this.configurationEndpointAddress = Output.createUnknown<String>();
-    this.dataTieringEnabled = Output.createUnknown<bool>();
-    this.description = Output.createUnknown<String>();
-    this.engine = Output.createUnknown<String>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.engineVersionActual = Output.createUnknown<String>();
-    this.finalSnapshotIdentifier = Output.createUnknown<String?>();
-    this.globalReplicationGroupId = Output.createUnknown<String>();
-    this.ipDiscovery = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String?>();
+    this.applyImmediately = registerOutput<bool>('applyImmediately');
+    this.arn = registerOutput<String>('arn');
+    this.atRestEncryptionEnabled =
+        registerOutput<bool>('atRestEncryptionEnabled');
+    this.authToken = registerOutput<String?>('authToken');
+    this.authTokenUpdateStrategy =
+        registerOutput<String?>('authTokenUpdateStrategy');
+    this.autoMinorVersionUpgrade =
+        registerOutput<bool>('autoMinorVersionUpgrade');
+    this.automaticFailoverEnabled =
+        registerOutput<bool?>('automaticFailoverEnabled');
+    this.clusterEnabled = registerOutput<bool>('clusterEnabled');
+    this.clusterMode = registerOutput<String>('clusterMode');
+    this.configurationEndpointAddress =
+        registerOutput<String>('configurationEndpointAddress');
+    this.dataTieringEnabled = registerOutput<bool>('dataTieringEnabled');
+    this.description = registerOutput<String>('description');
+    this.engine = registerOutput<String>('engine');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.engineVersionActual = registerOutput<String>('engineVersionActual');
+    this.finalSnapshotIdentifier =
+        registerOutput<String?>('finalSnapshotIdentifier');
+    this.globalReplicationGroupId =
+        registerOutput<String>('globalReplicationGroupId');
+    this.ipDiscovery = registerOutput<String>('ipDiscovery');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
     this.logDeliveryConfigurations =
-        Output.createUnknown<List<ReplicationGroupLogDeliveryConfiguration>?>();
-    this.maintenanceWindow = Output.createUnknown<String>();
-    this.memberClusters = Output.createUnknown<List<String>>();
-    this.multiAzEnabled = Output.createUnknown<bool?>();
-    this.networkType = Output.createUnknown<String>();
+        registerOutput<List<ReplicationGroupLogDeliveryConfiguration>?>(
+            'logDeliveryConfigurations');
+    this.maintenanceWindow = registerOutput<String>('maintenanceWindow');
+    this.memberClusters = registerOutput<List<String>>('memberClusters');
+    this.multiAzEnabled = registerOutput<bool?>('multiAzEnabled');
+    this.networkType = registerOutput<String>('networkType');
     this.nodeGroupConfigurations =
-        Output.createUnknown<List<ReplicationGroupNodeGroupConfiguration>>();
-    this.nodeType = Output.createUnknown<String>();
-    this.notificationTopicArn = Output.createUnknown<String?>();
-    this.numCacheClusters = Output.createUnknown<int>();
-    this.numNodeGroups = Output.createUnknown<int>();
-    this.parameterGroupName = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int?>();
-    this.preferredCacheClusterAzs = Output.createUnknown<List<String>?>();
-    this.primaryEndpointAddress = Output.createUnknown<String>();
-    this.readerEndpointAddress = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.replicasPerNodeGroup = Output.createUnknown<int>();
-    this.replicationGroupId = Output.createUnknown<String>();
-    this.securityGroupIds = Output.createUnknown<List<String>>();
-    this.securityGroupNames = Output.createUnknown<List<String>>();
-    this.snapshotArns = Output.createUnknown<List<String>?>();
-    this.snapshotName = Output.createUnknown<String?>();
-    this.snapshotRetentionLimit = Output.createUnknown<int?>();
-    this.snapshotWindow = Output.createUnknown<String>();
-    this.subnetGroupName = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.transitEncryptionEnabled = Output.createUnknown<bool>();
-    this.transitEncryptionMode = Output.createUnknown<String>();
-    this.userGroupIds = Output.createUnknown<List<String>?>();
+        registerOutput<List<ReplicationGroupNodeGroupConfiguration>>(
+            'nodeGroupConfigurations');
+    this.nodeType = registerOutput<String>('nodeType');
+    this.notificationTopicArn = registerOutput<String?>('notificationTopicArn');
+    this.numCacheClusters = registerOutput<int>('numCacheClusters');
+    this.numNodeGroups = registerOutput<int>('numNodeGroups');
+    this.parameterGroupName = registerOutput<String>('parameterGroupName');
+    this.port = registerOutput<int?>('port');
+    this.preferredCacheClusterAzs =
+        registerOutput<List<String>?>('preferredCacheClusterAzs');
+    this.primaryEndpointAddress =
+        registerOutput<String>('primaryEndpointAddress');
+    this.readerEndpointAddress =
+        registerOutput<String>('readerEndpointAddress');
+    this.region = registerOutput<String>('region');
+    this.replicasPerNodeGroup = registerOutput<int>('replicasPerNodeGroup');
+    this.replicationGroupId = registerOutput<String>('replicationGroupId');
+    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    this.securityGroupNames =
+        registerOutput<List<String>>('securityGroupNames');
+    this.snapshotArns = registerOutput<List<String>?>('snapshotArns');
+    this.snapshotName = registerOutput<String?>('snapshotName');
+    this.snapshotRetentionLimit =
+        registerOutput<int?>('snapshotRetentionLimit');
+    this.snapshotWindow = registerOutput<String>('snapshotWindow');
+    this.subnetGroupName = registerOutput<String>('subnetGroupName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.transitEncryptionEnabled =
+        registerOutput<bool>('transitEncryptionEnabled');
+    this.transitEncryptionMode =
+        registerOutput<String>('transitEncryptionMode');
+    this.userGroupIds = registerOutput<List<String>?>('userGroupIds');
   }
 }

@@ -73,25 +73,27 @@ class Network4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoCreateSubnetworks = Output.createUnknown<bool>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.enableUlaInternalIpv6 = Output.createUnknown<bool>();
-    this.firewallPolicy = Output.createUnknown<String>();
-    this.gatewayIPv4 = Output.createUnknown<String>();
-    this.internalIpv6Range = Output.createUnknown<String>();
-    this.ipv4Range = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.mtu = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.networkFirewallPolicyEnforcementOrder = Output.createUnknown<String>();
-    this.peerings = Output.createUnknown<List<NetworkPeeringResponse>>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.routingConfig = Output.createUnknown<NetworkRoutingConfigResponse>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
-    this.subnetworks = Output.createUnknown<List<String>>();
+    this.autoCreateSubnetworks = registerOutput<bool>('autoCreateSubnetworks');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.enableUlaInternalIpv6 = registerOutput<bool>('enableUlaInternalIpv6');
+    this.firewallPolicy = registerOutput<String>('firewallPolicy');
+    this.gatewayIPv4 = registerOutput<String>('gatewayIPv4');
+    this.internalIpv6Range = registerOutput<String>('internalIpv6Range');
+    this.ipv4Range = registerOutput<String>('ipv4Range');
+    this.kind = registerOutput<String>('kind');
+    this.mtu = registerOutput<int>('mtu');
+    this.name = registerOutput<String>('name');
+    this.networkFirewallPolicyEnforcementOrder =
+        registerOutput<String>('networkFirewallPolicyEnforcementOrder');
+    this.peerings = registerOutput<List<NetworkPeeringResponse>>('peerings');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.routingConfig =
+        registerOutput<NetworkRoutingConfigResponse>('routingConfig');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    this.subnetworks = registerOutput<List<String>>('subnetworks');
   }
 }

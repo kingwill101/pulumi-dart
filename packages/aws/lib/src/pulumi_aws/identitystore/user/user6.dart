@@ -234,22 +234,22 @@ class User6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.addresses = Output.createUnknown<UserAddresses?>();
-    this.displayName = Output.createUnknown<String>();
-    this.emails = Output.createUnknown<UserEmails?>();
-    this.externalIds = Output.createUnknown<List<UserExternalId>>();
-    this.identityStoreId = Output.createUnknown<String>();
-    this.locale = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<UserName>();
-    this.nickname = Output.createUnknown<String?>();
-    this.phoneNumbers = Output.createUnknown<UserPhoneNumbers?>();
-    this.preferredLanguage = Output.createUnknown<String?>();
-    this.profileUrl = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.timezone = Output.createUnknown<String?>();
-    this.title = Output.createUnknown<String?>();
-    this.userId = Output.createUnknown<String>();
-    this.userName = Output.createUnknown<String>();
-    this.userType = Output.createUnknown<String?>();
+    this.addresses = registerOutput<UserAddresses?>('addresses');
+    this.displayName = registerOutput<String>('displayName');
+    this.emails = registerOutput<UserEmails?>('emails');
+    this.externalIds = registerOutput<List<UserExternalId>>('externalIds');
+    this.identityStoreId = registerOutput<String>('identityStoreId');
+    this.locale = registerOutput<String?>('locale');
+    this.name = registerOutput<UserName>('name');
+    this.nickname = registerOutput<String?>('nickname');
+    this.phoneNumbers = registerOutput<UserPhoneNumbers?>('phoneNumbers');
+    this.preferredLanguage = registerOutput<String?>('preferredLanguage');
+    this.profileUrl = registerOutput<String?>('profileUrl');
+    this.region = registerOutput<String>('region');
+    this.timezone = registerOutput<String?>('timezone');
+    this.title = registerOutput<String?>('title');
+    this.userId = registerOutput<String>('userId');
+    this.userName = registerOutput<String>('userName');
+    this.userType = registerOutput<String?>('userType');
   }
 }

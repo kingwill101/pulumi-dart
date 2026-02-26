@@ -377,14 +377,14 @@ class Certificate4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.active = Output.createUnknown<bool>();
-    this.arn = Output.createUnknown<String>();
-    this.caCertificateId = Output.createUnknown<String>();
-    this.caPem = Output.createUnknown<String?>();
-    this.certificatePem = Output.createUnknown<String>();
-    this.csr = Output.createUnknown<String?>();
-    this.privateKey = Output.createUnknown<String>();
-    this.publicKey = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.active = registerOutput<bool>('active');
+    this.arn = registerOutput<String>('arn');
+    this.caCertificateId = registerOutput<String>('caCertificateId');
+    this.caPem = registerOutput<String?>('caPem');
+    this.certificatePem = registerOutput<String>('certificatePem');
+    this.csr = registerOutput<String?>('csr');
+    this.privateKey = registerOutput<String>('privateKey');
+    this.publicKey = registerOutput<String>('publicKey');
+    this.region = registerOutput<String>('region');
   }
 }

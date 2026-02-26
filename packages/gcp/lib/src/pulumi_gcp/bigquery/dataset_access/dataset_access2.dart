@@ -1010,19 +1010,19 @@ class DatasetAccess2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiUpdatedMember = Output.createUnknown<bool>();
+    this.apiUpdatedMember = registerOutput<bool>('apiUpdatedMember');
     this.authorizedDataset =
-        Output.createUnknown<DatasetAccessAuthorizedDataset?>();
-    this.condition = Output.createUnknown<DatasetAccessCondition?>();
-    this.datasetId = Output.createUnknown<String>();
-    this.domain = Output.createUnknown<String?>();
-    this.groupByEmail = Output.createUnknown<String?>();
-    this.iamMember = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String?>();
-    this.routine = Output.createUnknown<DatasetAccessRoutine?>();
-    this.specialGroup = Output.createUnknown<String?>();
-    this.userByEmail = Output.createUnknown<String?>();
-    this.view = Output.createUnknown<DatasetAccessView?>();
+        registerOutput<DatasetAccessAuthorizedDataset?>('authorizedDataset');
+    this.condition = registerOutput<DatasetAccessCondition?>('condition');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.domain = registerOutput<String?>('domain');
+    this.groupByEmail = registerOutput<String?>('groupByEmail');
+    this.iamMember = registerOutput<String?>('iamMember');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String?>('role');
+    this.routine = registerOutput<DatasetAccessRoutine?>('routine');
+    this.specialGroup = registerOutput<String?>('specialGroup');
+    this.userByEmail = registerOutput<String?>('userByEmail');
+    this.view = registerOutput<DatasetAccessView?>('view');
   }
 }

@@ -162,14 +162,14 @@ class PortfolioShare extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceptLanguage = Output.createUnknown<String?>();
-    this.accepted = Output.createUnknown<bool>();
-    this.portfolioId = Output.createUnknown<String>();
-    this.principalId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.sharePrincipals = Output.createUnknown<bool?>();
-    this.shareTagOptions = Output.createUnknown<bool?>();
-    this.type = Output.createUnknown<String>();
-    this.waitForAcceptance = Output.createUnknown<bool?>();
+    this.acceptLanguage = registerOutput<String?>('acceptLanguage');
+    this.accepted = registerOutput<bool>('accepted');
+    this.portfolioId = registerOutput<String>('portfolioId');
+    this.principalId = registerOutput<String>('principalId');
+    this.region = registerOutput<String>('region');
+    this.sharePrincipals = registerOutput<bool?>('sharePrincipals');
+    this.shareTagOptions = registerOutput<bool?>('shareTagOptions');
+    this.type = registerOutput<String>('type');
+    this.waitForAcceptance = registerOutput<bool?>('waitForAcceptance');
   }
 }

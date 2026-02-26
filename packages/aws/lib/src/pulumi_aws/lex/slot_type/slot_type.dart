@@ -262,16 +262,17 @@ class SlotType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.checksum = Output.createUnknown<String>();
-    this.createVersion = Output.createUnknown<bool?>();
-    this.createdDate = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
+    this.checksum = registerOutput<String>('checksum');
+    this.createVersion = registerOutput<bool?>('createVersion');
+    this.createdDate = registerOutput<String>('createdDate');
+    this.description = registerOutput<String?>('description');
     this.enumerationValues =
-        Output.createUnknown<List<SlotTypeEnumerationValue>>();
-    this.lastUpdatedDate = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.valueSelectionStrategy = Output.createUnknown<String?>();
-    this.version = Output.createUnknown<String>();
+        registerOutput<List<SlotTypeEnumerationValue>>('enumerationValues');
+    this.lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.valueSelectionStrategy =
+        registerOutput<String?>('valueSelectionStrategy');
+    this.version = registerOutput<String>('version');
   }
 }

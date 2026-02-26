@@ -247,15 +247,16 @@ class IcebergCatalog extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.biglakeServiceAccount = Output.createUnknown<String>();
-    this.catalogType = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.credentialMode = Output.createUnknown<String>();
-    this.defaultLocation = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.replicas = Output.createUnknown<List<IcebergCatalogReplica>>();
-    this.storageRegions = Output.createUnknown<List<String>>();
-    this.updateTime = Output.createUnknown<String>();
+    this.biglakeServiceAccount =
+        registerOutput<String>('biglakeServiceAccount');
+    this.catalogType = registerOutput<String>('catalogType');
+    this.createTime = registerOutput<String>('createTime');
+    this.credentialMode = registerOutput<String>('credentialMode');
+    this.defaultLocation = registerOutput<String>('defaultLocation');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.replicas = registerOutput<List<IcebergCatalogReplica>>('replicas');
+    this.storageRegions = registerOutput<List<String>>('storageRegions');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

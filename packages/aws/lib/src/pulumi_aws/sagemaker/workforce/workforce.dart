@@ -414,14 +414,16 @@ class Workforce extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.cognitoConfig = Output.createUnknown<WorkforceCognitoConfig?>();
-    this.oidcConfig = Output.createUnknown<WorkforceOidcConfig?>();
-    this.region = Output.createUnknown<String>();
-    this.sourceIpConfig = Output.createUnknown<WorkforceSourceIpConfig>();
-    this.subdomain = Output.createUnknown<String>();
-    this.workforceName = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.cognitoConfig =
+        registerOutput<WorkforceCognitoConfig?>('cognitoConfig');
+    this.oidcConfig = registerOutput<WorkforceOidcConfig?>('oidcConfig');
+    this.region = registerOutput<String>('region');
+    this.sourceIpConfig =
+        registerOutput<WorkforceSourceIpConfig>('sourceIpConfig');
+    this.subdomain = registerOutput<String>('subdomain');
+    this.workforceName = registerOutput<String>('workforceName');
     this.workforceVpcConfig =
-        Output.createUnknown<WorkforceWorkforceVpcConfig?>();
+        registerOutput<WorkforceWorkforceVpcConfig?>('workforceVpcConfig');
   }
 }

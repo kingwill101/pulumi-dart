@@ -191,7 +191,8 @@ class ChannelAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.notificationConfigurationArn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.notificationConfigurationArn =
+        registerOutput<String>('notificationConfigurationArn');
   }
 }

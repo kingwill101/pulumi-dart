@@ -335,12 +335,12 @@ class RestApiPut extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.body = Output.createUnknown<String>();
-    this.failOnWarnings = Output.createUnknown<bool>();
-    this.parameters = Output.createUnknown<Map<String, String>?>();
-    this.region = Output.createUnknown<String>();
-    this.restApiId = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<RestApiPutTimeouts?>();
-    this.triggers = Output.createUnknown<Map<String, String>?>();
+    this.body = registerOutput<String>('body');
+    this.failOnWarnings = registerOutput<bool>('failOnWarnings');
+    this.parameters = registerOutput<Map<String, String>?>('parameters');
+    this.region = registerOutput<String>('region');
+    this.restApiId = registerOutput<String>('restApiId');
+    this.timeouts = registerOutput<RestApiPutTimeouts?>('timeouts');
+    this.triggers = registerOutput<Map<String, String>?>('triggers');
   }
 }

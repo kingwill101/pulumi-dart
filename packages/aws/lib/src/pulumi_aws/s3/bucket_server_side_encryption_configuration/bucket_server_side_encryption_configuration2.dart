@@ -457,10 +457,11 @@ class BucketServerSideEncryptionConfiguration2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.expectedBucketOwner = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.rules = Output.createUnknown<
-        List<BucketServerSideEncryptionConfigurationRule>>();
+    this.bucket = registerOutput<String>('bucket');
+    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    this.region = registerOutput<String>('region');
+    this.rules =
+        registerOutput<List<BucketServerSideEncryptionConfigurationRule>>(
+            'rules');
   }
 }

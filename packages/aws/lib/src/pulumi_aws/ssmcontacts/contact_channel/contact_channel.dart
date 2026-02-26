@@ -329,13 +329,13 @@ class ContactChannel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activationStatus = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.contactId = Output.createUnknown<String>();
+    this.activationStatus = registerOutput<String>('activationStatus');
+    this.arn = registerOutput<String>('arn');
+    this.contactId = registerOutput<String>('contactId');
     this.deliveryAddress =
-        Output.createUnknown<ContactChannelDeliveryAddress>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<ContactChannelDeliveryAddress>('deliveryAddress');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.type = registerOutput<String>('type');
   }
 }

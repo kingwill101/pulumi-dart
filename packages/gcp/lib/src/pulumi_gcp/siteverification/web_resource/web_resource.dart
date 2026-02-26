@@ -295,9 +295,9 @@ class WebResource extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.owners = Output.createUnknown<List<String>>();
-    this.site = Output.createUnknown<WebResourceSite>();
-    this.verificationMethod = Output.createUnknown<String>();
-    this.webResourceId = Output.createUnknown<String>();
+    this.owners = registerOutput<List<String>>('owners');
+    this.site = registerOutput<WebResourceSite>('site');
+    this.verificationMethod = registerOutput<String>('verificationMethod');
+    this.webResourceId = registerOutput<String>('webResourceId');
   }
 }

@@ -1645,42 +1645,49 @@ class BareMetalAdminCluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.bareMetalVersion = Output.createUnknown<String?>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.bareMetalVersion = registerOutput<String?>('bareMetalVersion');
     this.clusterOperations =
-        Output.createUnknown<BareMetalAdminClusterClusterOperations?>();
+        registerOutput<BareMetalAdminClusterClusterOperations?>(
+            'clusterOperations');
     this.controlPlane =
-        Output.createUnknown<BareMetalAdminClusterControlPlane?>();
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.endpoint = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.fleets = Output.createUnknown<List<BareMetalAdminClusterFleet>>();
+        registerOutput<BareMetalAdminClusterControlPlane?>('controlPlane');
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.etag = registerOutput<String>('etag');
+    this.fleets = registerOutput<List<BareMetalAdminClusterFleet>>('fleets');
     this.loadBalancer =
-        Output.createUnknown<BareMetalAdminClusterLoadBalancer?>();
-    this.localName = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
+        registerOutput<BareMetalAdminClusterLoadBalancer?>('loadBalancer');
+    this.localName = registerOutput<String>('localName');
+    this.location = registerOutput<String>('location');
     this.maintenanceConfig =
-        Output.createUnknown<BareMetalAdminClusterMaintenanceConfig?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<BareMetalAdminClusterMaintenanceConfig?>(
+            'maintenanceConfig');
+    this.name = registerOutput<String>('name');
     this.networkConfig =
-        Output.createUnknown<BareMetalAdminClusterNetworkConfig?>();
+        registerOutput<BareMetalAdminClusterNetworkConfig?>('networkConfig');
     this.nodeAccessConfig =
-        Output.createUnknown<BareMetalAdminClusterNodeAccessConfig?>();
-    this.nodeConfig = Output.createUnknown<BareMetalAdminClusterNodeConfig?>();
-    this.project = Output.createUnknown<String>();
-    this.proxy = Output.createUnknown<BareMetalAdminClusterProxy?>();
-    this.reconciling = Output.createUnknown<bool>();
+        registerOutput<BareMetalAdminClusterNodeAccessConfig?>(
+            'nodeAccessConfig');
+    this.nodeConfig =
+        registerOutput<BareMetalAdminClusterNodeConfig?>('nodeConfig');
+    this.project = registerOutput<String>('project');
+    this.proxy = registerOutput<BareMetalAdminClusterProxy?>('proxy');
+    this.reconciling = registerOutput<bool>('reconciling');
     this.securityConfig =
-        Output.createUnknown<BareMetalAdminClusterSecurityConfig?>();
-    this.state = Output.createUnknown<String>();
-    this.statuses = Output.createUnknown<List<BareMetalAdminClusterStatus>>();
-    this.storage = Output.createUnknown<BareMetalAdminClusterStorage?>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<BareMetalAdminClusterSecurityConfig?>('securityConfig');
+    this.state = registerOutput<String>('state');
+    this.statuses =
+        registerOutput<List<BareMetalAdminClusterStatus>>('statuses');
+    this.storage = registerOutput<BareMetalAdminClusterStorage?>('storage');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
     this.validationChecks =
-        Output.createUnknown<List<BareMetalAdminClusterValidationCheck>>();
+        registerOutput<List<BareMetalAdminClusterValidationCheck>>(
+            'validationChecks');
   }
 }

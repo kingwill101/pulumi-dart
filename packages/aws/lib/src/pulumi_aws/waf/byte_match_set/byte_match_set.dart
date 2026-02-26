@@ -185,9 +185,9 @@ class ByteMatchSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.byteMatchTuples =
-        Output.createUnknown<List<ByteMatchSetByteMatchTuple>?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<List<ByteMatchSetByteMatchTuple>?>('byteMatchTuples');
+    this.name = registerOutput<String>('name');
   }
 }

@@ -58,20 +58,21 @@ class Sink extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bigqueryOptions = Output.createUnknown<BigQueryOptionsResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.customWriterIdentity = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String>();
-    this.destination = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool>();
-    this.exclusions = Output.createUnknown<List<LogExclusionResponse>>();
-    this.filter = Output.createUnknown<String>();
-    this.includeChildren = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.outputVersionFormat = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.uniqueWriterIdentity = Output.createUnknown<bool?>();
-    this.updateTime = Output.createUnknown<String>();
-    this.writerIdentity = Output.createUnknown<String>();
+    this.bigqueryOptions =
+        registerOutput<BigQueryOptionsResponse>('bigqueryOptions');
+    this.createTime = registerOutput<String>('createTime');
+    this.customWriterIdentity = registerOutput<String?>('customWriterIdentity');
+    this.description = registerOutput<String>('description');
+    this.destination = registerOutput<String>('destination');
+    this.disabled = registerOutput<bool>('disabled');
+    this.exclusions = registerOutput<List<LogExclusionResponse>>('exclusions');
+    this.filter = registerOutput<String>('filter');
+    this.includeChildren = registerOutput<bool>('includeChildren');
+    this.name = registerOutput<String>('name');
+    this.outputVersionFormat = registerOutput<String>('outputVersionFormat');
+    this.project = registerOutput<String>('project');
+    this.uniqueWriterIdentity = registerOutput<bool?>('uniqueWriterIdentity');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.writerIdentity = registerOutput<String>('writerIdentity');
   }
 }

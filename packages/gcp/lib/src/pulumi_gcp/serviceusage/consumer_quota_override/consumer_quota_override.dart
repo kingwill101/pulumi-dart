@@ -731,13 +731,13 @@ class ConsumerQuotaOverride extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dimensions = Output.createUnknown<Map<String, String>?>();
-    this.force = Output.createUnknown<bool?>();
-    this.limit = Output.createUnknown<String>();
-    this.metric = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.overrideValue = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.service = Output.createUnknown<String>();
+    this.dimensions = registerOutput<Map<String, String>?>('dimensions');
+    this.force = registerOutput<bool?>('force');
+    this.limit = registerOutput<String>('limit');
+    this.metric = registerOutput<String>('metric');
+    this.name = registerOutput<String>('name');
+    this.overrideValue = registerOutput<String>('overrideValue');
+    this.project = registerOutput<String>('project');
+    this.service = registerOutput<String>('service');
   }
 }

@@ -103,6 +103,7 @@ class SecurityTokenServicePreferences extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.globalEndpointTokenVersion = Output.createUnknown<String>();
+    this.globalEndpointTokenVersion =
+        registerOutput<String>('globalEndpointTokenVersion');
   }
 }

@@ -630,25 +630,27 @@ class Dashboard2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.awsAccountId = Output.createUnknown<String>();
-    this.createdTime = Output.createUnknown<String>();
-    this.dashboardId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.createdTime = registerOutput<String>('createdTime');
+    this.dashboardId = registerOutput<String>('dashboardId');
     this.dashboardPublishOptions =
-        Output.createUnknown<DashboardDashboardPublishOptions>();
-    this.lastPublishedTime = Output.createUnknown<String>();
-    this.lastUpdatedTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parameters = Output.createUnknown<DashboardParameters>();
-    this.permissions = Output.createUnknown<List<DashboardPermission>?>();
-    this.region = Output.createUnknown<String>();
-    this.sourceEntity = Output.createUnknown<DashboardSourceEntity?>();
-    this.sourceEntityArn = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.themeArn = Output.createUnknown<String?>();
-    this.versionDescription = Output.createUnknown<String>();
-    this.versionNumber = Output.createUnknown<int>();
+        registerOutput<DashboardDashboardPublishOptions>(
+            'dashboardPublishOptions');
+    this.lastPublishedTime = registerOutput<String>('lastPublishedTime');
+    this.lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    this.name = registerOutput<String>('name');
+    this.parameters = registerOutput<DashboardParameters>('parameters');
+    this.permissions =
+        registerOutput<List<DashboardPermission>?>('permissions');
+    this.region = registerOutput<String>('region');
+    this.sourceEntity = registerOutput<DashboardSourceEntity?>('sourceEntity');
+    this.sourceEntityArn = registerOutput<String>('sourceEntityArn');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.themeArn = registerOutput<String?>('themeArn');
+    this.versionDescription = registerOutput<String>('versionDescription');
+    this.versionNumber = registerOutput<int>('versionNumber');
   }
 }

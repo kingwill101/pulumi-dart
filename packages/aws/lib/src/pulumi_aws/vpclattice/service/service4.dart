@@ -158,15 +158,15 @@ class Service4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.authType = Output.createUnknown<String>();
-    this.certificateArn = Output.createUnknown<String?>();
-    this.customDomainName = Output.createUnknown<String?>();
-    this.dnsEntries = Output.createUnknown<List<ServiceDnsEntry>>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.authType = registerOutput<String>('authType');
+    this.certificateArn = registerOutput<String?>('certificateArn');
+    this.customDomainName = registerOutput<String?>('customDomainName');
+    this.dnsEntries = registerOutput<List<ServiceDnsEntry>>('dnsEntries');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

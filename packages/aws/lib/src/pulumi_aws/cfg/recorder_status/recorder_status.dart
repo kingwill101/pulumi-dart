@@ -509,8 +509,8 @@ class RecorderStatus extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.isEnabled = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.isEnabled = registerOutput<bool>('isEnabled');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

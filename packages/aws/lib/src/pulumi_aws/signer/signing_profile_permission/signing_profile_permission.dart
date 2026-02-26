@@ -319,12 +319,12 @@ class SigningProfilePermission extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.principal = Output.createUnknown<String>();
-    this.profileName = Output.createUnknown<String>();
-    this.profileVersion = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.statementId = Output.createUnknown<String>();
-    this.statementIdPrefix = Output.createUnknown<String>();
+    this.action = registerOutput<String>('action');
+    this.principal = registerOutput<String>('principal');
+    this.profileName = registerOutput<String>('profileName');
+    this.profileVersion = registerOutput<String>('profileVersion');
+    this.region = registerOutput<String>('region');
+    this.statementId = registerOutput<String>('statementId');
+    this.statementIdPrefix = registerOutput<String>('statementIdPrefix');
   }
 }

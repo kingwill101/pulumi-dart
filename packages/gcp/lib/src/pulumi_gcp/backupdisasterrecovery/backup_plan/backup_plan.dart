@@ -810,19 +810,23 @@ class BackupPlan extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupPlanId = Output.createUnknown<String>();
-    this.backupRules = Output.createUnknown<List<BackupPlanBackupRule>>();
-    this.backupVault = Output.createUnknown<String>();
-    this.backupVaultServiceAccount = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.logRetentionDays = Output.createUnknown<int?>();
-    this.maxCustomOnDemandRetentionDays = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String>();
-    this.supportedResourceTypes = Output.createUnknown<List<String>>();
-    this.updateTime = Output.createUnknown<String>();
+    this.backupPlanId = registerOutput<String>('backupPlanId');
+    this.backupRules =
+        registerOutput<List<BackupPlanBackupRule>>('backupRules');
+    this.backupVault = registerOutput<String>('backupVault');
+    this.backupVaultServiceAccount =
+        registerOutput<String>('backupVaultServiceAccount');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.location = registerOutput<String>('location');
+    this.logRetentionDays = registerOutput<int?>('logRetentionDays');
+    this.maxCustomOnDemandRetentionDays =
+        registerOutput<int?>('maxCustomOnDemandRetentionDays');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.resourceType = registerOutput<String>('resourceType');
+    this.supportedResourceTypes =
+        registerOutput<List<String>>('supportedResourceTypes');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

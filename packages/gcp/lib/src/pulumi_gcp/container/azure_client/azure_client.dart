@@ -183,13 +183,13 @@ class AzureClient extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationId = Output.createUnknown<String>();
-    this.certificate = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.tenantId = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
+    this.applicationId = registerOutput<String>('applicationId');
+    this.certificate = registerOutput<String>('certificate');
+    this.createTime = registerOutput<String>('createTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.tenantId = registerOutput<String>('tenantId');
+    this.uid = registerOutput<String>('uid');
   }
 }

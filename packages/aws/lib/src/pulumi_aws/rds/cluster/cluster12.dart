@@ -1560,84 +1560,111 @@ class Cluster12 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allocatedStorage = Output.createUnknown<int>();
-    this.allowMajorVersionUpgrade = Output.createUnknown<bool?>();
-    this.applyImmediately = Output.createUnknown<bool>();
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZones = Output.createUnknown<List<String>>();
-    this.backtrackWindow = Output.createUnknown<int?>();
-    this.backupRetentionPeriod = Output.createUnknown<int>();
-    this.caCertificateIdentifier = Output.createUnknown<String>();
-    this.caCertificateValidTill = Output.createUnknown<String>();
-    this.clusterIdentifier = Output.createUnknown<String>();
-    this.clusterIdentifierPrefix = Output.createUnknown<String>();
-    this.clusterMembers = Output.createUnknown<List<String>>();
-    this.clusterResourceId = Output.createUnknown<String>();
-    this.clusterScalabilityType = Output.createUnknown<String>();
-    this.copyTagsToSnapshot = Output.createUnknown<bool?>();
-    this.databaseInsightsMode = Output.createUnknown<String>();
-    this.databaseName = Output.createUnknown<String>();
-    this.dbClusterInstanceClass = Output.createUnknown<String?>();
-    this.dbClusterParameterGroupName = Output.createUnknown<String>();
-    this.dbInstanceParameterGroupName = Output.createUnknown<String?>();
-    this.dbSubnetGroupName = Output.createUnknown<String>();
-    this.dbSystemId = Output.createUnknown<String>();
-    this.deleteAutomatedBackups = Output.createUnknown<bool?>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.domain = Output.createUnknown<String?>();
-    this.domainIamRoleName = Output.createUnknown<String?>();
-    this.enableGlobalWriteForwarding = Output.createUnknown<bool?>();
-    this.enableHttpEndpoint = Output.createUnknown<bool?>();
-    this.enableLocalWriteForwarding = Output.createUnknown<bool?>();
-    this.enabledCloudwatchLogsExports = Output.createUnknown<List<String>?>();
-    this.endpoint = Output.createUnknown<String>();
-    this.engine = Output.createUnknown<String>();
-    this.engineLifecycleSupport = Output.createUnknown<String>();
-    this.engineMode = Output.createUnknown<String?>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.engineVersionActual = Output.createUnknown<String>();
-    this.finalSnapshotIdentifier = Output.createUnknown<String?>();
-    this.globalClusterIdentifier = Output.createUnknown<String?>();
-    this.hostedZoneId = Output.createUnknown<String>();
-    this.iamDatabaseAuthenticationEnabled = Output.createUnknown<bool?>();
-    this.iamRoles = Output.createUnknown<List<String>>();
-    this.iops = Output.createUnknown<int?>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.manageMasterUserPassword = Output.createUnknown<bool?>();
-    this.masterPassword = Output.createUnknown<String?>();
-    this.masterPasswordWo = Output.createUnknown<String?>();
-    this.masterPasswordWoVersion = Output.createUnknown<int?>();
-    this.masterUserSecretKmsKeyId = Output.createUnknown<String>();
+    this.allocatedStorage = registerOutput<int>('allocatedStorage');
+    this.allowMajorVersionUpgrade =
+        registerOutput<bool?>('allowMajorVersionUpgrade');
+    this.applyImmediately = registerOutput<bool>('applyImmediately');
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZones = registerOutput<List<String>>('availabilityZones');
+    this.backtrackWindow = registerOutput<int?>('backtrackWindow');
+    this.backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
+    this.caCertificateIdentifier =
+        registerOutput<String>('caCertificateIdentifier');
+    this.caCertificateValidTill =
+        registerOutput<String>('caCertificateValidTill');
+    this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    this.clusterIdentifierPrefix =
+        registerOutput<String>('clusterIdentifierPrefix');
+    this.clusterMembers = registerOutput<List<String>>('clusterMembers');
+    this.clusterResourceId = registerOutput<String>('clusterResourceId');
+    this.clusterScalabilityType =
+        registerOutput<String>('clusterScalabilityType');
+    this.copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
+    this.databaseInsightsMode = registerOutput<String>('databaseInsightsMode');
+    this.databaseName = registerOutput<String>('databaseName');
+    this.dbClusterInstanceClass =
+        registerOutput<String?>('dbClusterInstanceClass');
+    this.dbClusterParameterGroupName =
+        registerOutput<String>('dbClusterParameterGroupName');
+    this.dbInstanceParameterGroupName =
+        registerOutput<String?>('dbInstanceParameterGroupName');
+    this.dbSubnetGroupName = registerOutput<String>('dbSubnetGroupName');
+    this.dbSystemId = registerOutput<String>('dbSystemId');
+    this.deleteAutomatedBackups =
+        registerOutput<bool?>('deleteAutomatedBackups');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.domain = registerOutput<String?>('domain');
+    this.domainIamRoleName = registerOutput<String?>('domainIamRoleName');
+    this.enableGlobalWriteForwarding =
+        registerOutput<bool?>('enableGlobalWriteForwarding');
+    this.enableHttpEndpoint = registerOutput<bool?>('enableHttpEndpoint');
+    this.enableLocalWriteForwarding =
+        registerOutput<bool?>('enableLocalWriteForwarding');
+    this.enabledCloudwatchLogsExports =
+        registerOutput<List<String>?>('enabledCloudwatchLogsExports');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.engine = registerOutput<String>('engine');
+    this.engineLifecycleSupport =
+        registerOutput<String>('engineLifecycleSupport');
+    this.engineMode = registerOutput<String?>('engineMode');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.engineVersionActual = registerOutput<String>('engineVersionActual');
+    this.finalSnapshotIdentifier =
+        registerOutput<String?>('finalSnapshotIdentifier');
+    this.globalClusterIdentifier =
+        registerOutput<String?>('globalClusterIdentifier');
+    this.hostedZoneId = registerOutput<String>('hostedZoneId');
+    this.iamDatabaseAuthenticationEnabled =
+        registerOutput<bool?>('iamDatabaseAuthenticationEnabled');
+    this.iamRoles = registerOutput<List<String>>('iamRoles');
+    this.iops = registerOutput<int?>('iops');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.manageMasterUserPassword =
+        registerOutput<bool?>('manageMasterUserPassword');
+    this.masterPassword = registerOutput<String?>('masterPassword');
+    this.masterPasswordWo = registerOutput<String?>('masterPasswordWo');
+    this.masterPasswordWoVersion =
+        registerOutput<int?>('masterPasswordWoVersion');
+    this.masterUserSecretKmsKeyId =
+        registerOutput<String>('masterUserSecretKmsKeyId');
     this.masterUserSecrets =
-        Output.createUnknown<List<ClusterMasterUserSecret2>>();
-    this.masterUsername = Output.createUnknown<String>();
-    this.monitoringInterval = Output.createUnknown<int>();
-    this.monitoringRoleArn = Output.createUnknown<String>();
-    this.networkType = Output.createUnknown<String>();
-    this.performanceInsightsEnabled = Output.createUnknown<bool?>();
-    this.performanceInsightsKmsKeyId = Output.createUnknown<String>();
-    this.performanceInsightsRetentionPeriod = Output.createUnknown<int>();
-    this.port = Output.createUnknown<int>();
-    this.preferredBackupWindow = Output.createUnknown<String>();
-    this.preferredMaintenanceWindow = Output.createUnknown<String>();
-    this.readerEndpoint = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.replicationSourceIdentifier = Output.createUnknown<String?>();
+        registerOutput<List<ClusterMasterUserSecret2>>('masterUserSecrets');
+    this.masterUsername = registerOutput<String>('masterUsername');
+    this.monitoringInterval = registerOutput<int>('monitoringInterval');
+    this.monitoringRoleArn = registerOutput<String>('monitoringRoleArn');
+    this.networkType = registerOutput<String>('networkType');
+    this.performanceInsightsEnabled =
+        registerOutput<bool?>('performanceInsightsEnabled');
+    this.performanceInsightsKmsKeyId =
+        registerOutput<String>('performanceInsightsKmsKeyId');
+    this.performanceInsightsRetentionPeriod =
+        registerOutput<int>('performanceInsightsRetentionPeriod');
+    this.port = registerOutput<int>('port');
+    this.preferredBackupWindow =
+        registerOutput<String>('preferredBackupWindow');
+    this.preferredMaintenanceWindow =
+        registerOutput<String>('preferredMaintenanceWindow');
+    this.readerEndpoint = registerOutput<String>('readerEndpoint');
+    this.region = registerOutput<String>('region');
+    this.replicationSourceIdentifier =
+        registerOutput<String?>('replicationSourceIdentifier');
     this.restoreToPointInTime =
-        Output.createUnknown<ClusterRestoreToPointInTime2?>();
-    this.s3Import = Output.createUnknown<ClusterS3Import?>();
+        registerOutput<ClusterRestoreToPointInTime2?>('restoreToPointInTime');
+    this.s3Import = registerOutput<ClusterS3Import?>('s3Import');
     this.scalingConfiguration =
-        Output.createUnknown<ClusterScalingConfiguration?>();
+        registerOutput<ClusterScalingConfiguration?>('scalingConfiguration');
     this.serverlessv2ScalingConfiguration =
-        Output.createUnknown<ClusterServerlessv2ScalingConfiguration?>();
-    this.skipFinalSnapshot = Output.createUnknown<bool?>();
-    this.snapshotIdentifier = Output.createUnknown<String?>();
-    this.sourceRegion = Output.createUnknown<String?>();
-    this.storageEncrypted = Output.createUnknown<bool>();
-    this.storageType = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.upgradeRolloutOrder = Output.createUnknown<String>();
-    this.vpcSecurityGroupIds = Output.createUnknown<List<String>>();
+        registerOutput<ClusterServerlessv2ScalingConfiguration?>(
+            'serverlessv2ScalingConfiguration');
+    this.skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
+    this.snapshotIdentifier = registerOutput<String?>('snapshotIdentifier');
+    this.sourceRegion = registerOutput<String?>('sourceRegion');
+    this.storageEncrypted = registerOutput<bool>('storageEncrypted');
+    this.storageType = registerOutput<String>('storageType');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.upgradeRolloutOrder = registerOutput<String>('upgradeRolloutOrder');
+    this.vpcSecurityGroupIds =
+        registerOutput<List<String>>('vpcSecurityGroupIds');
   }
 }

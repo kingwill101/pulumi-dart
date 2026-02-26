@@ -36,13 +36,14 @@ class InstanceIamPolicy5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse24>>();
-    this.bindings = Output.createUnknown<List<BindingResponse34>>();
-    this.etag = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.resource = Output.createUnknown<String>();
-    this.rules = Output.createUnknown<List<RuleResponse3>>();
-    this.version = Output.createUnknown<int>();
-    this.zone = Output.createUnknown<String>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse24>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse34>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.project = registerOutput<String>('project');
+    this.resource = registerOutput<String>('resource');
+    this.rules = registerOutput<List<RuleResponse3>>('rules');
+    this.version = registerOutput<int>('version');
+    this.zone = registerOutput<String>('zone');
   }
 }

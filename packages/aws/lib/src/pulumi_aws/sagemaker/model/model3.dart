@@ -311,17 +311,20 @@ class Model3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.containers = Output.createUnknown<List<ModelContainer>?>();
-    this.enableNetworkIsolation = Output.createUnknown<bool?>();
-    this.executionRoleArn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.containers = registerOutput<List<ModelContainer>?>('containers');
+    this.enableNetworkIsolation =
+        registerOutput<bool?>('enableNetworkIsolation');
+    this.executionRoleArn = registerOutput<String>('executionRoleArn');
     this.inferenceExecutionConfig =
-        Output.createUnknown<ModelInferenceExecutionConfig>();
-    this.name = Output.createUnknown<String>();
-    this.primaryContainer = Output.createUnknown<ModelPrimaryContainer?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcConfig = Output.createUnknown<ModelVpcConfig?>();
+        registerOutput<ModelInferenceExecutionConfig>(
+            'inferenceExecutionConfig');
+    this.name = registerOutput<String>('name');
+    this.primaryContainer =
+        registerOutput<ModelPrimaryContainer?>('primaryContainer');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcConfig = registerOutput<ModelVpcConfig?>('vpcConfig');
   }
 }

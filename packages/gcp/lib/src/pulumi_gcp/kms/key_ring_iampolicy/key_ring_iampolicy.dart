@@ -1464,8 +1464,8 @@ class KeyRingIAMPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.keyRingId = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.keyRingId = registerOutput<String>('keyRingId');
+    this.policyData = registerOutput<String>('policyData');
   }
 }

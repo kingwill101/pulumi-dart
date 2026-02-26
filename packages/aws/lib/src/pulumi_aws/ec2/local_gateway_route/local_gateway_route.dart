@@ -135,9 +135,11 @@ class LocalGatewayRoute extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.destinationCidrBlock = Output.createUnknown<String>();
-    this.localGatewayRouteTableId = Output.createUnknown<String>();
-    this.localGatewayVirtualInterfaceGroupId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
+    this.localGatewayRouteTableId =
+        registerOutput<String>('localGatewayRouteTableId');
+    this.localGatewayVirtualInterfaceGroupId =
+        registerOutput<String>('localGatewayVirtualInterfaceGroupId');
+    this.region = registerOutput<String>('region');
   }
 }

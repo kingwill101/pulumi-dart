@@ -243,23 +243,26 @@ class ImageBuilder extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.accessEndpoints =
-        Output.createUnknown<List<ImageBuilderAccessEndpoint>?>();
-    this.appstreamAgentVersion = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.createdTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.domainJoinInfo = Output.createUnknown<ImageBuilderDomainJoinInfo>();
-    this.enableDefaultInternetAccess = Output.createUnknown<bool>();
-    this.iamRoleArn = Output.createUnknown<String>();
-    this.imageArn = Output.createUnknown<String>();
-    this.imageName = Output.createUnknown<String>();
-    this.instanceType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcConfig = Output.createUnknown<ImageBuilderVpcConfig>();
+        registerOutput<List<ImageBuilderAccessEndpoint>?>('accessEndpoints');
+    this.appstreamAgentVersion =
+        registerOutput<String>('appstreamAgentVersion');
+    this.arn = registerOutput<String>('arn');
+    this.createdTime = registerOutput<String>('createdTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.domainJoinInfo =
+        registerOutput<ImageBuilderDomainJoinInfo>('domainJoinInfo');
+    this.enableDefaultInternetAccess =
+        registerOutput<bool>('enableDefaultInternetAccess');
+    this.iamRoleArn = registerOutput<String>('iamRoleArn');
+    this.imageArn = registerOutput<String>('imageArn');
+    this.imageName = registerOutput<String>('imageName');
+    this.instanceType = registerOutput<String>('instanceType');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcConfig = registerOutput<ImageBuilderVpcConfig>('vpcConfig');
   }
 }

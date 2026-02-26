@@ -395,13 +395,14 @@ class BrowserSettings extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.additionalEncryptionContext =
-        Output.createUnknown<Map<String, String>?>();
-    this.associatedPortalArns = Output.createUnknown<List<String>>();
-    this.browserPolicy = Output.createUnknown<String>();
-    this.browserSettingsArn = Output.createUnknown<String>();
-    this.customerManagedKey = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<Map<String, String>?>('additionalEncryptionContext');
+    this.associatedPortalArns =
+        registerOutput<List<String>>('associatedPortalArns');
+    this.browserPolicy = registerOutput<String>('browserPolicy');
+    this.browserSettingsArn = registerOutput<String>('browserSettingsArn');
+    this.customerManagedKey = registerOutput<String?>('customerManagedKey');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

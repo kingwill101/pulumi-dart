@@ -1154,24 +1154,26 @@ class VMwareNodePool extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.config = Output.createUnknown<VMwareNodePoolConfig>();
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.config = registerOutput<VMwareNodePoolConfig>('config');
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.displayName = registerOutput<String?>('displayName');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.nodePoolAutoscaling =
-        Output.createUnknown<VMwareNodePoolNodePoolAutoscaling?>();
-    this.onPremVersion = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.statuses = Output.createUnknown<List<VMwareNodePoolStatus>>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vmwareCluster = Output.createUnknown<String>();
+        registerOutput<VMwareNodePoolNodePoolAutoscaling?>(
+            'nodePoolAutoscaling');
+    this.onPremVersion = registerOutput<String?>('onPremVersion');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.state = registerOutput<String>('state');
+    this.statuses = registerOutput<List<VMwareNodePoolStatus>>('statuses');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vmwareCluster = registerOutput<String>('vmwareCluster');
   }
 }

@@ -604,15 +604,16 @@ class Domain3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.deadLetterQueueUrl = Output.createUnknown<String?>();
-    this.defaultEncryptionKey = Output.createUnknown<String?>();
-    this.defaultExpirationDays = Output.createUnknown<int>();
-    this.domainName = Output.createUnknown<String>();
-    this.matching = Output.createUnknown<DomainMatching?>();
-    this.region = Output.createUnknown<String>();
-    this.ruleBasedMatching = Output.createUnknown<DomainRuleBasedMatching?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.deadLetterQueueUrl = registerOutput<String?>('deadLetterQueueUrl');
+    this.defaultEncryptionKey = registerOutput<String?>('defaultEncryptionKey');
+    this.defaultExpirationDays = registerOutput<int>('defaultExpirationDays');
+    this.domainName = registerOutput<String>('domainName');
+    this.matching = registerOutput<DomainMatching?>('matching');
+    this.region = registerOutput<String>('region');
+    this.ruleBasedMatching =
+        registerOutput<DomainRuleBasedMatching?>('ruleBasedMatching');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

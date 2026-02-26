@@ -183,19 +183,21 @@ class Vpc extends ComponentResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? ComponentResourceOptions(),
         ) {
-    this.eips = Output.createUnknown<List<dynamic>>();
-    this.internetGateway = Output.createUnknown<dynamic>();
-    this.isolatedSubnetIds = Output.createUnknown<List<String>>();
-    this.natGateways = Output.createUnknown<List<dynamic>>();
-    this.privateSubnetIds = Output.createUnknown<List<String>>();
-    this.publicSubnetIds = Output.createUnknown<List<String>>();
-    this.routeTableAssociations = Output.createUnknown<List<dynamic>>();
-    this.routeTables = Output.createUnknown<List<dynamic>>();
-    this.routes = Output.createUnknown<List<dynamic>>();
-    this.subnetLayout = Output.createUnknown<List<ResolvedSubnetSpec>>();
-    this.subnets = Output.createUnknown<List<dynamic>>();
-    this.vpc = Output.createUnknown<dynamic>();
-    this.vpcEndpoints = Output.createUnknown<List<dynamic>>();
-    this.vpcId = Output.createUnknown<String>();
+    this.eips = registerOutput<List<dynamic>>('eips');
+    this.internetGateway = registerOutput<dynamic>('internetGateway');
+    this.isolatedSubnetIds = registerOutput<List<String>>('isolatedSubnetIds');
+    this.natGateways = registerOutput<List<dynamic>>('natGateways');
+    this.privateSubnetIds = registerOutput<List<String>>('privateSubnetIds');
+    this.publicSubnetIds = registerOutput<List<String>>('publicSubnetIds');
+    this.routeTableAssociations =
+        registerOutput<List<dynamic>>('routeTableAssociations');
+    this.routeTables = registerOutput<List<dynamic>>('routeTables');
+    this.routes = registerOutput<List<dynamic>>('routes');
+    this.subnetLayout =
+        registerOutput<List<ResolvedSubnetSpec>>('subnetLayout');
+    this.subnets = registerOutput<List<dynamic>>('subnets');
+    this.vpc = registerOutput<dynamic>('vpc');
+    this.vpcEndpoints = registerOutput<List<dynamic>>('vpcEndpoints');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

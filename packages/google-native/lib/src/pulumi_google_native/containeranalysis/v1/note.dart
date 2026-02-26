@@ -95,29 +95,33 @@ class Note extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attestation = Output.createUnknown<AttestationNoteResponse>();
-    this.build = Output.createUnknown<BuildNoteResponse>();
-    this.compliance = Output.createUnknown<ComplianceNoteResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.deployment = Output.createUnknown<DeploymentNoteResponse>();
-    this.discovery = Output.createUnknown<DiscoveryNoteResponse>();
-    this.dsseAttestation = Output.createUnknown<DSSEAttestationNoteResponse>();
-    this.expirationTime = Output.createUnknown<String>();
-    this.image = Output.createUnknown<ImageNoteResponse>();
-    this.kind = Output.createUnknown<String>();
-    this.longDescription = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.noteId = Output.createUnknown<String>();
-    this.package = Output.createUnknown<PackageNoteResponse>();
-    this.project = Output.createUnknown<String>();
-    this.relatedNoteNames = Output.createUnknown<List<String>>();
-    this.relatedUrl = Output.createUnknown<List<RelatedUrlResponse>>();
-    this.sbomReference = Output.createUnknown<SBOMReferenceNoteResponse>();
-    this.shortDescription = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.upgrade = Output.createUnknown<UpgradeNoteResponse>();
-    this.vulnerability = Output.createUnknown<VulnerabilityNoteResponse>();
+    this.attestation = registerOutput<AttestationNoteResponse>('attestation');
+    this.build = registerOutput<BuildNoteResponse>('build');
+    this.compliance = registerOutput<ComplianceNoteResponse>('compliance');
+    this.createTime = registerOutput<String>('createTime');
+    this.deployment = registerOutput<DeploymentNoteResponse>('deployment');
+    this.discovery = registerOutput<DiscoveryNoteResponse>('discovery');
+    this.dsseAttestation =
+        registerOutput<DSSEAttestationNoteResponse>('dsseAttestation');
+    this.expirationTime = registerOutput<String>('expirationTime');
+    this.image = registerOutput<ImageNoteResponse>('image');
+    this.kind = registerOutput<String>('kind');
+    this.longDescription = registerOutput<String>('longDescription');
+    this.name = registerOutput<String>('name');
+    this.noteId = registerOutput<String>('noteId');
+    this.package = registerOutput<PackageNoteResponse>('package');
+    this.project = registerOutput<String>('project');
+    this.relatedNoteNames = registerOutput<List<String>>('relatedNoteNames');
+    this.relatedUrl = registerOutput<List<RelatedUrlResponse>>('relatedUrl');
+    this.sbomReference =
+        registerOutput<SBOMReferenceNoteResponse>('sbomReference');
+    this.shortDescription = registerOutput<String>('shortDescription');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.upgrade = registerOutput<UpgradeNoteResponse>('upgrade');
+    this.vulnerability =
+        registerOutput<VulnerabilityNoteResponse>('vulnerability');
     this.vulnerabilityAssessment =
-        Output.createUnknown<VulnerabilityAssessmentNoteResponse>();
+        registerOutput<VulnerabilityAssessmentNoteResponse>(
+            'vulnerabilityAssessment');
   }
 }

@@ -39,15 +39,15 @@ class EkmConnection extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.cryptoSpacePath = Output.createUnknown<String>();
-    this.ekmConnectionId = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.keyManagementMode = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.cryptoSpacePath = registerOutput<String>('cryptoSpacePath');
+    this.ekmConnectionId = registerOutput<String>('ekmConnectionId');
+    this.etag = registerOutput<String>('etag');
+    this.keyManagementMode = registerOutput<String>('keyManagementMode');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.serviceResolvers =
-        Output.createUnknown<List<ServiceResolverResponse>>();
+        registerOutput<List<ServiceResolverResponse>>('serviceResolvers');
   }
 }

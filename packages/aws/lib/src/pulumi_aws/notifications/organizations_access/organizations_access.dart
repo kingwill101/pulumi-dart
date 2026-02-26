@@ -119,7 +119,7 @@ class OrganizationsAccess extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.enabled = Output.createUnknown<bool>();
-    this.timeouts = Output.createUnknown<OrganizationsAccessTimeouts?>();
+    this.enabled = registerOutput<bool>('enabled');
+    this.timeouts = registerOutput<OrganizationsAccessTimeouts?>('timeouts');
   }
 }

@@ -111,8 +111,8 @@ class TemplateAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.skipDestroy = Output.createUnknown<bool?>();
-    this.status = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.skipDestroy = registerOutput<bool?>('skipDestroy');
+    this.status = registerOutput<String>('status');
   }
 }

@@ -291,8 +291,8 @@ class LbAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.instanceName = Output.createUnknown<String>();
-    this.lbName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.instanceName = registerOutput<String>('instanceName');
+    this.lbName = registerOutput<String>('lbName');
+    this.region = registerOutput<String>('region');
   }
 }

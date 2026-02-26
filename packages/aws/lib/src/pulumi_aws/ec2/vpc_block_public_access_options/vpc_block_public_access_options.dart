@@ -124,11 +124,12 @@ class VpcBlockPublicAccessOptions extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.awsAccountId = Output.createUnknown<String>();
-    this.awsRegion = Output.createUnknown<String>();
-    this.internetGatewayBlockMode = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.awsRegion = registerOutput<String>('awsRegion');
+    this.internetGatewayBlockMode =
+        registerOutput<String>('internetGatewayBlockMode');
+    this.region = registerOutput<String>('region');
     this.timeouts =
-        Output.createUnknown<VpcBlockPublicAccessOptionsTimeouts?>();
+        registerOutput<VpcBlockPublicAccessOptionsTimeouts?>('timeouts');
   }
 }

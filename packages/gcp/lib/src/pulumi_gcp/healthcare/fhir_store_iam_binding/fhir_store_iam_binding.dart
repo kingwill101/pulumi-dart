@@ -682,10 +682,10 @@ class FhirStoreIamBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<FhirStoreIamBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.fhirStoreId = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.role = Output.createUnknown<String>();
+    this.condition = registerOutput<FhirStoreIamBindingCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.fhirStoreId = registerOutput<String>('fhirStoreId');
+    this.members = registerOutput<List<String>>('members');
+    this.role = registerOutput<String>('role');
   }
 }

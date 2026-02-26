@@ -50,18 +50,20 @@ class Cluster7 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.actionOnFailedPrimaryWorkers = Output.createUnknown<String?>();
-    this.clusterName = Output.createUnknown<String>();
-    this.clusterUuid = Output.createUnknown<String>();
-    this.config = Output.createUnknown<ClusterConfigResponse2>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.metrics = Output.createUnknown<ClusterMetricsResponse>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.status = Output.createUnknown<ClusterStatusResponse>();
-    this.statusHistory = Output.createUnknown<List<ClusterStatusResponse>>();
+    this.actionOnFailedPrimaryWorkers =
+        registerOutput<String?>('actionOnFailedPrimaryWorkers');
+    this.clusterName = registerOutput<String>('clusterName');
+    this.clusterUuid = registerOutput<String>('clusterUuid');
+    this.config = registerOutput<ClusterConfigResponse2>('config');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.metrics = registerOutput<ClusterMetricsResponse>('metrics');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.status = registerOutput<ClusterStatusResponse>('status');
+    this.statusHistory =
+        registerOutput<List<ClusterStatusResponse>>('statusHistory');
     this.virtualClusterConfig =
-        Output.createUnknown<VirtualClusterConfigResponse>();
+        registerOutput<VirtualClusterConfigResponse>('virtualClusterConfig');
   }
 }

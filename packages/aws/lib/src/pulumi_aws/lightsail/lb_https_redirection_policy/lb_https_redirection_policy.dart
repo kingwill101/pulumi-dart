@@ -257,8 +257,8 @@ class LbHttpsRedirectionPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.enabled = Output.createUnknown<bool>();
-    this.lbName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.enabled = registerOutput<bool>('enabled');
+    this.lbName = registerOutput<String>('lbName');
+    this.region = registerOutput<String>('region');
   }
 }

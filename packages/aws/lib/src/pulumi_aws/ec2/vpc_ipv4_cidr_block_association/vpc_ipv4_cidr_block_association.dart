@@ -177,10 +177,10 @@ class VpcIpv4CidrBlockAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cidrBlock = Output.createUnknown<String>();
-    this.ipv4IpamPoolId = Output.createUnknown<String?>();
-    this.ipv4NetmaskLength = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
-    this.vpcId = Output.createUnknown<String>();
+    this.cidrBlock = registerOutput<String>('cidrBlock');
+    this.ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
+    this.ipv4NetmaskLength = registerOutput<int?>('ipv4NetmaskLength');
+    this.region = registerOutput<String>('region');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

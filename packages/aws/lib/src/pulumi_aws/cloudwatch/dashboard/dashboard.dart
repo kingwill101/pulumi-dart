@@ -336,9 +336,9 @@ class Dashboard extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dashboardArn = Output.createUnknown<String>();
-    this.dashboardBody = Output.createUnknown<String>();
-    this.dashboardName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.dashboardArn = registerOutput<String>('dashboardArn');
+    this.dashboardBody = registerOutput<String>('dashboardBody');
+    this.dashboardName = registerOutput<String>('dashboardName');
+    this.region = registerOutput<String>('region');
   }
 }

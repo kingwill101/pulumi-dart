@@ -521,17 +521,19 @@ class Method extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiKeyRequired = Output.createUnknown<bool?>();
-    this.authorization = Output.createUnknown<String>();
-    this.authorizationScopes = Output.createUnknown<List<String>?>();
-    this.authorizerId = Output.createUnknown<String?>();
-    this.httpMethod = Output.createUnknown<String>();
-    this.operationName = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.requestModels = Output.createUnknown<Map<String, String>?>();
-    this.requestParameters = Output.createUnknown<Map<String, bool>?>();
-    this.requestValidatorId = Output.createUnknown<String?>();
-    this.resourceId = Output.createUnknown<String>();
-    this.restApi = Output.createUnknown<String>();
+    this.apiKeyRequired = registerOutput<bool?>('apiKeyRequired');
+    this.authorization = registerOutput<String>('authorization');
+    this.authorizationScopes =
+        registerOutput<List<String>?>('authorizationScopes');
+    this.authorizerId = registerOutput<String?>('authorizerId');
+    this.httpMethod = registerOutput<String>('httpMethod');
+    this.operationName = registerOutput<String?>('operationName');
+    this.region = registerOutput<String>('region');
+    this.requestModels = registerOutput<Map<String, String>?>('requestModels');
+    this.requestParameters =
+        registerOutput<Map<String, bool>?>('requestParameters');
+    this.requestValidatorId = registerOutput<String?>('requestValidatorId');
+    this.resourceId = registerOutput<String>('resourceId');
+    this.restApi = registerOutput<String>('restApi');
   }
 }

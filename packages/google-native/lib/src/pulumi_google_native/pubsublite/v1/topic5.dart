@@ -34,12 +34,15 @@ class Topic5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.partitionConfig = Output.createUnknown<PartitionConfigResponse>();
-    this.project = Output.createUnknown<String>();
-    this.reservationConfig = Output.createUnknown<ReservationConfigResponse>();
-    this.retentionConfig = Output.createUnknown<RetentionConfigResponse>();
-    this.topicId = Output.createUnknown<String>();
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.partitionConfig =
+        registerOutput<PartitionConfigResponse>('partitionConfig');
+    this.project = registerOutput<String>('project');
+    this.reservationConfig =
+        registerOutput<ReservationConfigResponse>('reservationConfig');
+    this.retentionConfig =
+        registerOutput<RetentionConfigResponse>('retentionConfig');
+    this.topicId = registerOutput<String>('topicId');
   }
 }

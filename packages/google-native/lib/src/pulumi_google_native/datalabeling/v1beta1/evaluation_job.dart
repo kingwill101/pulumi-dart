@@ -49,18 +49,21 @@ class EvaluationJob extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotationSpecSet = Output.createUnknown<String>();
-    this.attempts = Output.createUnknown<
-        List<GoogleCloudDatalabelingV1beta1AttemptResponse>>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.evaluationJobConfig = Output.createUnknown<
-        GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse>();
-    this.labelMissingGroundTruth = Output.createUnknown<bool>();
-    this.modelVersion = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.schedule = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.annotationSpecSet = registerOutput<String>('annotationSpecSet');
+    this.attempts =
+        registerOutput<List<GoogleCloudDatalabelingV1beta1AttemptResponse>>(
+            'attempts');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.evaluationJobConfig = registerOutput<
+            GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse>(
+        'evaluationJobConfig');
+    this.labelMissingGroundTruth =
+        registerOutput<bool>('labelMissingGroundTruth');
+    this.modelVersion = registerOutput<String>('modelVersion');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.schedule = registerOutput<String>('schedule');
+    this.state = registerOutput<String>('state');
   }
 }

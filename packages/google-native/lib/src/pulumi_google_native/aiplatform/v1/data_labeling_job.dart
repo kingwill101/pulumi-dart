@@ -76,27 +76,30 @@ class DataLabelingJob extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activeLearningConfig = Output.createUnknown<
-        GoogleCloudAiplatformV1ActiveLearningConfigResponse>();
-    this.annotationLabels = Output.createUnknown<Map<String, String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.currentSpend = Output.createUnknown<GoogleTypeMoneyResponse>();
-    this.datasets = Output.createUnknown<List<String>>();
-    this.displayName = Output.createUnknown<String>();
+    this.activeLearningConfig =
+        registerOutput<GoogleCloudAiplatformV1ActiveLearningConfigResponse>(
+            'activeLearningConfig');
+    this.annotationLabels =
+        registerOutput<Map<String, String>>('annotationLabels');
+    this.createTime = registerOutput<String>('createTime');
+    this.currentSpend = registerOutput<GoogleTypeMoneyResponse>('currentSpend');
+    this.datasets = registerOutput<List<String>>('datasets');
+    this.displayName = registerOutput<String>('displayName');
     this.encryptionSpec =
-        Output.createUnknown<GoogleCloudAiplatformV1EncryptionSpecResponse>();
-    this.error = Output.createUnknown<GoogleRpcStatusResponse>();
-    this.inputs = Output.createUnknown<dynamic>();
-    this.inputsSchemaUri = Output.createUnknown<String>();
-    this.instructionUri = Output.createUnknown<String>();
-    this.labelerCount = Output.createUnknown<int>();
-    this.labelingProgress = Output.createUnknown<int>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.specialistPools = Output.createUnknown<List<String>>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>(
+            'encryptionSpec');
+    this.error = registerOutput<GoogleRpcStatusResponse>('error');
+    this.inputs = registerOutput<dynamic>('inputs');
+    this.inputsSchemaUri = registerOutput<String>('inputsSchemaUri');
+    this.instructionUri = registerOutput<String>('instructionUri');
+    this.labelerCount = registerOutput<int>('labelerCount');
+    this.labelingProgress = registerOutput<int>('labelingProgress');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.specialistPools = registerOutput<List<String>>('specialistPools');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

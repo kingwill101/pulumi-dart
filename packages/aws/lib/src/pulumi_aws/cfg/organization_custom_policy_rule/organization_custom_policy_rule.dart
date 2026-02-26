@@ -265,20 +265,23 @@ class OrganizationCustomPolicyRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.debugLogDeliveryAccounts = Output.createUnknown<List<String>?>();
-    this.description = Output.createUnknown<String?>();
-    this.excludedAccounts = Output.createUnknown<List<String>?>();
-    this.inputParameters = Output.createUnknown<String?>();
-    this.maximumExecutionFrequency = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.policyRuntime = Output.createUnknown<String>();
-    this.policyText = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceIdScope = Output.createUnknown<String?>();
-    this.resourceTypesScopes = Output.createUnknown<List<String>?>();
-    this.tagKeyScope = Output.createUnknown<String?>();
-    this.tagValueScope = Output.createUnknown<String?>();
-    this.triggerTypes = Output.createUnknown<List<String>>();
+    this.arn = registerOutput<String>('arn');
+    this.debugLogDeliveryAccounts =
+        registerOutput<List<String>?>('debugLogDeliveryAccounts');
+    this.description = registerOutput<String?>('description');
+    this.excludedAccounts = registerOutput<List<String>?>('excludedAccounts');
+    this.inputParameters = registerOutput<String?>('inputParameters');
+    this.maximumExecutionFrequency =
+        registerOutput<String?>('maximumExecutionFrequency');
+    this.name = registerOutput<String>('name');
+    this.policyRuntime = registerOutput<String>('policyRuntime');
+    this.policyText = registerOutput<String>('policyText');
+    this.region = registerOutput<String>('region');
+    this.resourceIdScope = registerOutput<String?>('resourceIdScope');
+    this.resourceTypesScopes =
+        registerOutput<List<String>?>('resourceTypesScopes');
+    this.tagKeyScope = registerOutput<String?>('tagKeyScope');
+    this.tagValueScope = registerOutput<String?>('tagValueScope');
+    this.triggerTypes = registerOutput<List<String>>('triggerTypes');
   }
 }

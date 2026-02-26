@@ -231,14 +231,14 @@ class CloudFormationStack extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationId = Output.createUnknown<String>();
-    this.capabilities = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.outputs = Output.createUnknown<Map<String, String>>();
-    this.parameters = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String>();
-    this.semanticVersion = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.applicationId = registerOutput<String>('applicationId');
+    this.capabilities = registerOutput<List<String>>('capabilities');
+    this.name = registerOutput<String>('name');
+    this.outputs = registerOutput<Map<String, String>>('outputs');
+    this.parameters = registerOutput<Map<String, String>>('parameters');
+    this.region = registerOutput<String>('region');
+    this.semanticVersion = registerOutput<String>('semanticVersion');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

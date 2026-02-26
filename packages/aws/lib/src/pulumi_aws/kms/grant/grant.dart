@@ -57,16 +57,17 @@ class Grant extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.constraints = Output.createUnknown<List<GrantConstraint>?>();
-    this.grantCreationTokens = Output.createUnknown<List<String>?>();
-    this.grantId = Output.createUnknown<String>();
-    this.grantToken = Output.createUnknown<String>();
-    this.granteePrincipal = Output.createUnknown<String>();
-    this.keyId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.operations = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
-    this.retireOnDelete = Output.createUnknown<bool?>();
-    this.retiringPrincipal = Output.createUnknown<String?>();
+    this.constraints = registerOutput<List<GrantConstraint>?>('constraints');
+    this.grantCreationTokens =
+        registerOutput<List<String>?>('grantCreationTokens');
+    this.grantId = registerOutput<String>('grantId');
+    this.grantToken = registerOutput<String>('grantToken');
+    this.granteePrincipal = registerOutput<String>('granteePrincipal');
+    this.keyId = registerOutput<String>('keyId');
+    this.name = registerOutput<String>('name');
+    this.operations = registerOutput<List<String>>('operations');
+    this.region = registerOutput<String>('region');
+    this.retireOnDelete = registerOutput<bool?>('retireOnDelete');
+    this.retiringPrincipal = registerOutput<String?>('retiringPrincipal');
   }
 }

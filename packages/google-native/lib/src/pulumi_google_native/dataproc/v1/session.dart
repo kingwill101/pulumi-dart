@@ -71,25 +71,28 @@ class Session extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.creator = Output.createUnknown<String>();
-    this.environmentConfig = Output.createUnknown<EnvironmentConfigResponse3>();
-    this.jupyterSession = Output.createUnknown<JupyterConfigResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.runtimeConfig = Output.createUnknown<RuntimeConfigResponse2>();
-    this.runtimeInfo = Output.createUnknown<RuntimeInfoResponse>();
-    this.sessionId = Output.createUnknown<String>();
-    this.sessionTemplate = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.creator = registerOutput<String>('creator');
+    this.environmentConfig =
+        registerOutput<EnvironmentConfigResponse3>('environmentConfig');
+    this.jupyterSession =
+        registerOutput<JupyterConfigResponse>('jupyterSession');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.runtimeConfig =
+        registerOutput<RuntimeConfigResponse2>('runtimeConfig');
+    this.runtimeInfo = registerOutput<RuntimeInfoResponse>('runtimeInfo');
+    this.sessionId = registerOutput<String>('sessionId');
+    this.sessionTemplate = registerOutput<String>('sessionTemplate');
+    this.state = registerOutput<String>('state');
     this.stateHistory =
-        Output.createUnknown<List<SessionStateHistoryResponse>>();
-    this.stateMessage = Output.createUnknown<String>();
-    this.stateTime = Output.createUnknown<String>();
-    this.user = Output.createUnknown<String>();
-    this.uuid = Output.createUnknown<String>();
+        registerOutput<List<SessionStateHistoryResponse>>('stateHistory');
+    this.stateMessage = registerOutput<String>('stateMessage');
+    this.stateTime = registerOutput<String>('stateTime');
+    this.user = registerOutput<String>('user');
+    this.uuid = registerOutput<String>('uuid');
   }
 }

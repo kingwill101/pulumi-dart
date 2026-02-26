@@ -44,16 +44,17 @@ class Environment6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.config = Output.createUnknown<EnvironmentConfigResponse2>();
-    this.createTime = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.storageConfig = Output.createUnknown<StorageConfigResponse2>();
-    this.updateTime = Output.createUnknown<String>();
-    this.uuid = Output.createUnknown<String>();
+    this.config = registerOutput<EnvironmentConfigResponse2>('config');
+    this.createTime = registerOutput<String>('createTime');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.state = registerOutput<String>('state');
+    this.storageConfig =
+        registerOutput<StorageConfigResponse2>('storageConfig');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.uuid = registerOutput<String>('uuid');
   }
 }

@@ -37,13 +37,13 @@ class DomainMapping4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiVersion = Output.createUnknown<String>();
-    this.dryRun = Output.createUnknown<String?>();
-    this.kind = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<ObjectMetaResponse>();
-    this.project = Output.createUnknown<String>();
-    this.spec = Output.createUnknown<DomainMappingSpecResponse>();
-    this.status = Output.createUnknown<DomainMappingStatusResponse>();
+    this.apiVersion = registerOutput<String>('apiVersion');
+    this.dryRun = registerOutput<String?>('dryRun');
+    this.kind = registerOutput<String>('kind');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<ObjectMetaResponse>('metadata');
+    this.project = registerOutput<String>('project');
+    this.spec = registerOutput<DomainMappingSpecResponse>('spec');
+    this.status = registerOutput<DomainMappingStatusResponse>('status');
   }
 }

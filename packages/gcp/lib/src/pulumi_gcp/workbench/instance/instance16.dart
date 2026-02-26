@@ -2050,27 +2050,30 @@ class Instance16 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.creator = Output.createUnknown<String>();
-    this.desiredState = Output.createUnknown<String?>();
-    this.disableProxyAccess = Output.createUnknown<bool?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enableManagedEuc = Output.createUnknown<bool?>();
-    this.enableThirdPartyIdentity = Output.createUnknown<bool?>();
-    this.gceSetup = Output.createUnknown<InstanceGceSetup>();
-    this.healthInfos = Output.createUnknown<List<Map<String, dynamic>>>();
-    this.healthState = Output.createUnknown<String>();
-    this.instanceId = Output.createUnknown<String?>();
-    this.instanceOwners = Output.createUnknown<List<String>?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.proxyUri = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.creator = registerOutput<String>('creator');
+    this.desiredState = registerOutput<String?>('desiredState');
+    this.disableProxyAccess = registerOutput<bool?>('disableProxyAccess');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableManagedEuc = registerOutput<bool?>('enableManagedEuc');
+    this.enableThirdPartyIdentity =
+        registerOutput<bool?>('enableThirdPartyIdentity');
+    this.gceSetup = registerOutput<InstanceGceSetup>('gceSetup');
+    this.healthInfos =
+        registerOutput<List<Map<String, dynamic>>>('healthInfos');
+    this.healthState = registerOutput<String>('healthState');
+    this.instanceId = registerOutput<String?>('instanceId');
+    this.instanceOwners = registerOutput<List<String>?>('instanceOwners');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.proxyUri = registerOutput<String>('proxyUri');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
     this.upgradeHistories =
-        Output.createUnknown<List<InstanceUpgradeHistory>>();
+        registerOutput<List<InstanceUpgradeHistory>>('upgradeHistories');
   }
 }

@@ -31,11 +31,12 @@ class OrganizationSourceIamPolicy2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse66>>();
-    this.bindings = Output.createUnknown<List<BindingResponse95>>();
-    this.etag = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.sourceId = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse66>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse95>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.sourceId = registerOutput<String>('sourceId');
+    this.version = registerOutput<int>('version');
   }
 }

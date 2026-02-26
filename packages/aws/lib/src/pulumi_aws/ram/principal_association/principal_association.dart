@@ -258,8 +258,8 @@ class PrincipalAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.principal = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceShareArn = Output.createUnknown<String>();
+    this.principal = registerOutput<String>('principal');
+    this.region = registerOutput<String>('region');
+    this.resourceShareArn = registerOutput<String>('resourceShareArn');
   }
 }

@@ -697,23 +697,26 @@ class AiIndexEndpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.encryptionSpec =
-        Output.createUnknown<AiIndexEndpointEncryptionSpec?>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String?>();
+        registerOutput<AiIndexEndpointEncryptionSpec?>('encryptionSpec');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String?>('network');
     this.privateServiceConnectConfig =
-        Output.createUnknown<AiIndexEndpointPrivateServiceConnectConfig>();
-    this.project = Output.createUnknown<String>();
-    this.publicEndpointDomainName = Output.createUnknown<String>();
-    this.publicEndpointEnabled = Output.createUnknown<bool?>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<AiIndexEndpointPrivateServiceConnectConfig>(
+            'privateServiceConnectConfig');
+    this.project = registerOutput<String>('project');
+    this.publicEndpointDomainName =
+        registerOutput<String>('publicEndpointDomainName');
+    this.publicEndpointEnabled = registerOutput<bool?>('publicEndpointEnabled');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String?>('region');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

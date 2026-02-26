@@ -373,14 +373,15 @@ class InstanceGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.instances = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.namedPorts = Output.createUnknown<List<InstanceGroupNamedPort>?>();
-    this.network = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.size = Output.createUnknown<int>();
-    this.zone = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.instances = registerOutput<List<String>>('instances');
+    this.name = registerOutput<String>('name');
+    this.namedPorts =
+        registerOutput<List<InstanceGroupNamedPort>?>('namedPorts');
+    this.network = registerOutput<String>('network');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.size = registerOutput<int>('size');
+    this.zone = registerOutput<String>('zone');
   }
 }

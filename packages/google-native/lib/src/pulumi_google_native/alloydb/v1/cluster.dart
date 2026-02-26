@@ -110,38 +110,43 @@ class Cluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
     this.automatedBackupPolicy =
-        Output.createUnknown<AutomatedBackupPolicyResponse>();
-    this.backupSource = Output.createUnknown<BackupSourceResponse>();
-    this.clusterId = Output.createUnknown<String>();
-    this.clusterType = Output.createUnknown<String>();
+        registerOutput<AutomatedBackupPolicyResponse>('automatedBackupPolicy');
+    this.backupSource = registerOutput<BackupSourceResponse>('backupSource');
+    this.clusterId = registerOutput<String>('clusterId');
+    this.clusterType = registerOutput<String>('clusterType');
     this.continuousBackupConfig =
-        Output.createUnknown<ContinuousBackupConfigResponse>();
+        registerOutput<ContinuousBackupConfigResponse>(
+            'continuousBackupConfig');
     this.continuousBackupInfo =
-        Output.createUnknown<ContinuousBackupInfoResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.databaseVersion = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.encryptionConfig = Output.createUnknown<EncryptionConfigResponse>();
-    this.encryptionInfo = Output.createUnknown<EncryptionInfoResponse>();
-    this.etag = Output.createUnknown<String>();
-    this.initialUser = Output.createUnknown<UserPasswordResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.migrationSource = Output.createUnknown<MigrationSourceResponse>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.networkConfig = Output.createUnknown<NetworkConfigResponse>();
-    this.primaryConfig = Output.createUnknown<PrimaryConfigResponse>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.requestId = Output.createUnknown<String?>();
-    this.secondaryConfig = Output.createUnknown<SecondaryConfigResponse>();
-    this.sslConfig = Output.createUnknown<SslConfigResponse>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<ContinuousBackupInfoResponse>('continuousBackupInfo');
+    this.createTime = registerOutput<String>('createTime');
+    this.databaseVersion = registerOutput<String>('databaseVersion');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.encryptionConfig =
+        registerOutput<EncryptionConfigResponse>('encryptionConfig');
+    this.encryptionInfo =
+        registerOutput<EncryptionInfoResponse>('encryptionInfo');
+    this.etag = registerOutput<String>('etag');
+    this.initialUser = registerOutput<UserPasswordResponse>('initialUser');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.migrationSource =
+        registerOutput<MigrationSourceResponse>('migrationSource');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.networkConfig = registerOutput<NetworkConfigResponse>('networkConfig');
+    this.primaryConfig = registerOutput<PrimaryConfigResponse>('primaryConfig');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.requestId = registerOutput<String?>('requestId');
+    this.secondaryConfig =
+        registerOutput<SecondaryConfigResponse>('secondaryConfig');
+    this.sslConfig = registerOutput<SslConfigResponse>('sslConfig');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

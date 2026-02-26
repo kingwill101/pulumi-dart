@@ -434,26 +434,31 @@ class Release2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.blueprint = Output.createUnknown<ReleaseBlueprint?>();
-    this.createTime = Output.createUnknown<String>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.blueprint = registerOutput<ReleaseBlueprint?>('blueprint');
+    this.createTime = registerOutput<String>('createTime');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.etag = registerOutput<String>('etag');
     this.inputVariableDefaults =
-        Output.createUnknown<List<ReleaseInputVariableDefault>?>();
-    this.inputVariables = Output.createUnknown<List<ReleaseInputVariable>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.outputVariables = Output.createUnknown<List<ReleaseOutputVariable>>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.releaseId = Output.createUnknown<String>();
+        registerOutput<List<ReleaseInputVariableDefault>?>(
+            'inputVariableDefaults');
+    this.inputVariables =
+        registerOutput<List<ReleaseInputVariable>>('inputVariables');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.outputVariables =
+        registerOutput<List<ReleaseOutputVariable>>('outputVariables');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.releaseId = registerOutput<String>('releaseId');
     this.releaseRequirements =
-        Output.createUnknown<ReleaseReleaseRequirements?>();
-    this.uid = Output.createUnknown<String>();
-    this.unitKind = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<ReleaseReleaseRequirements?>('releaseRequirements');
+    this.uid = registerOutput<String>('uid');
+    this.unitKind = registerOutput<String>('unitKind');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

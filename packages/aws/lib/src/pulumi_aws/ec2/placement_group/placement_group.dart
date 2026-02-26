@@ -148,14 +148,14 @@ class PlacementGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.partitionCount = Output.createUnknown<int>();
-    this.placementGroupId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.spreadLevel = Output.createUnknown<String>();
-    this.strategy = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    this.partitionCount = registerOutput<int>('partitionCount');
+    this.placementGroupId = registerOutput<String>('placementGroupId');
+    this.region = registerOutput<String>('region');
+    this.spreadLevel = registerOutput<String>('spreadLevel');
+    this.strategy = registerOutput<String>('strategy');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

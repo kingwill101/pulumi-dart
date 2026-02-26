@@ -44,12 +44,12 @@ class ServerlessSecurityConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.configVersion = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.configVersion = registerOutput<String>('configVersion');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
     this.samlOptions =
-        Output.createUnknown<ServerlessSecurityConfigSamlOptions?>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<ServerlessSecurityConfigSamlOptions?>('samlOptions');
+    this.type = registerOutput<String>('type');
   }
 }

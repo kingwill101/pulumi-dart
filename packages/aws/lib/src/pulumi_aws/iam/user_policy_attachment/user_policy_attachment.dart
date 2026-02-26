@@ -186,7 +186,7 @@ class UserPolicyAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.policyArn = Output.createUnknown<String>();
-    this.user = Output.createUnknown<String>();
+    this.policyArn = registerOutput<String>('policyArn');
+    this.user = registerOutput<String>('user');
   }
 }

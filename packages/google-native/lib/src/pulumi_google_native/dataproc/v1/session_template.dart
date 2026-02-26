@@ -48,17 +48,20 @@ class SessionTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.creator = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.environmentConfig = Output.createUnknown<EnvironmentConfigResponse3>();
-    this.jupyterSession = Output.createUnknown<JupyterConfigResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.runtimeConfig = Output.createUnknown<RuntimeConfigResponse2>();
-    this.updateTime = Output.createUnknown<String>();
-    this.uuid = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.creator = registerOutput<String>('creator');
+    this.description = registerOutput<String>('description');
+    this.environmentConfig =
+        registerOutput<EnvironmentConfigResponse3>('environmentConfig');
+    this.jupyterSession =
+        registerOutput<JupyterConfigResponse>('jupyterSession');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.runtimeConfig =
+        registerOutput<RuntimeConfigResponse2>('runtimeConfig');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.uuid = registerOutput<String>('uuid');
   }
 }

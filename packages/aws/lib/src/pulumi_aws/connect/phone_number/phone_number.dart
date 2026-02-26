@@ -404,16 +404,16 @@ class PhoneNumber extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.countryCode = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.phoneNumber = Output.createUnknown<String>();
-    this.prefix = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.statuses = Output.createUnknown<List<PhoneNumberStatus>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetArn = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.countryCode = registerOutput<String>('countryCode');
+    this.description = registerOutput<String?>('description');
+    this.phoneNumber = registerOutput<String>('phoneNumber');
+    this.prefix = registerOutput<String?>('prefix');
+    this.region = registerOutput<String>('region');
+    this.statuses = registerOutput<List<PhoneNumberStatus>>('statuses');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetArn = registerOutput<String>('targetArn');
+    this.type = registerOutput<String>('type');
   }
 }

@@ -48,19 +48,22 @@ class TestCase extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentId = Output.createUnknown<String>();
-    this.creationTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
+    this.agentId = registerOutput<String>('agentId');
+    this.creationTime = registerOutput<String>('creationTime');
+    this.displayName = registerOutput<String>('displayName');
     this.lastTestResult =
-        Output.createUnknown<GoogleCloudDialogflowCxV3TestCaseResultResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.notes = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<List<String>>();
-    this.testCaseConversationTurns = Output.createUnknown<
-        List<GoogleCloudDialogflowCxV3ConversationTurnResponse>>();
+        registerOutput<GoogleCloudDialogflowCxV3TestCaseResultResponse>(
+            'lastTestResult');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.notes = registerOutput<String>('notes');
+    this.project = registerOutput<String>('project');
+    this.tags = registerOutput<List<String>>('tags');
+    this.testCaseConversationTurns =
+        registerOutput<List<GoogleCloudDialogflowCxV3ConversationTurnResponse>>(
+            'testCaseConversationTurns');
     this.testConfig =
-        Output.createUnknown<GoogleCloudDialogflowCxV3TestConfigResponse>();
+        registerOutput<GoogleCloudDialogflowCxV3TestConfigResponse>(
+            'testConfig');
   }
 }

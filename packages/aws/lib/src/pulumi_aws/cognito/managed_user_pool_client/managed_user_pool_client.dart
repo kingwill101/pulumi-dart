@@ -211,35 +211,42 @@ class ManagedUserPoolClient extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessTokenValidity = Output.createUnknown<int>();
-    this.allowedOauthFlows = Output.createUnknown<List<String>>();
-    this.allowedOauthFlowsUserPoolClient = Output.createUnknown<bool>();
-    this.allowedOauthScopes = Output.createUnknown<List<String>>();
+    this.accessTokenValidity = registerOutput<int>('accessTokenValidity');
+    this.allowedOauthFlows = registerOutput<List<String>>('allowedOauthFlows');
+    this.allowedOauthFlowsUserPoolClient =
+        registerOutput<bool>('allowedOauthFlowsUserPoolClient');
+    this.allowedOauthScopes =
+        registerOutput<List<String>>('allowedOauthScopes');
     this.analyticsConfiguration =
-        Output.createUnknown<ManagedUserPoolClientAnalyticsConfiguration?>();
-    this.authSessionValidity = Output.createUnknown<int>();
-    this.callbackUrls = Output.createUnknown<List<String>>();
-    this.clientSecret = Output.createUnknown<String>();
-    this.defaultRedirectUri = Output.createUnknown<String>();
+        registerOutput<ManagedUserPoolClientAnalyticsConfiguration?>(
+            'analyticsConfiguration');
+    this.authSessionValidity = registerOutput<int>('authSessionValidity');
+    this.callbackUrls = registerOutput<List<String>>('callbackUrls');
+    this.clientSecret = registerOutput<String>('clientSecret');
+    this.defaultRedirectUri = registerOutput<String>('defaultRedirectUri');
     this.enablePropagateAdditionalUserContextData =
-        Output.createUnknown<bool>();
-    this.enableTokenRevocation = Output.createUnknown<bool>();
-    this.explicitAuthFlows = Output.createUnknown<List<String>>();
-    this.idTokenValidity = Output.createUnknown<int>();
-    this.logoutUrls = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.namePattern = Output.createUnknown<String?>();
-    this.namePrefix = Output.createUnknown<String?>();
-    this.preventUserExistenceErrors = Output.createUnknown<String>();
-    this.readAttributes = Output.createUnknown<List<String>>();
+        registerOutput<bool>('enablePropagateAdditionalUserContextData');
+    this.enableTokenRevocation = registerOutput<bool>('enableTokenRevocation');
+    this.explicitAuthFlows = registerOutput<List<String>>('explicitAuthFlows');
+    this.idTokenValidity = registerOutput<int>('idTokenValidity');
+    this.logoutUrls = registerOutput<List<String>>('logoutUrls');
+    this.name = registerOutput<String>('name');
+    this.namePattern = registerOutput<String?>('namePattern');
+    this.namePrefix = registerOutput<String?>('namePrefix');
+    this.preventUserExistenceErrors =
+        registerOutput<String>('preventUserExistenceErrors');
+    this.readAttributes = registerOutput<List<String>>('readAttributes');
     this.refreshTokenRotation =
-        Output.createUnknown<ManagedUserPoolClientRefreshTokenRotation?>();
-    this.refreshTokenValidity = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.supportedIdentityProviders = Output.createUnknown<List<String>>();
+        registerOutput<ManagedUserPoolClientRefreshTokenRotation?>(
+            'refreshTokenRotation');
+    this.refreshTokenValidity = registerOutput<int>('refreshTokenValidity');
+    this.region = registerOutput<String>('region');
+    this.supportedIdentityProviders =
+        registerOutput<List<String>>('supportedIdentityProviders');
     this.tokenValidityUnits =
-        Output.createUnknown<ManagedUserPoolClientTokenValidityUnits?>();
-    this.userPoolId = Output.createUnknown<String>();
-    this.writeAttributes = Output.createUnknown<List<String>>();
+        registerOutput<ManagedUserPoolClientTokenValidityUnits?>(
+            'tokenValidityUnits');
+    this.userPoolId = registerOutput<String>('userPoolId');
+    this.writeAttributes = registerOutput<List<String>>('writeAttributes');
   }
 }

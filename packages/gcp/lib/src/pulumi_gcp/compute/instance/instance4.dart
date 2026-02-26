@@ -877,55 +877,67 @@ class Instance4 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.advancedMachineFeatures =
-        Output.createUnknown<InstanceAdvancedMachineFeatures?>();
-    this.allowStoppingForUpdate = Output.createUnknown<bool?>();
-    this.attachedDisks = Output.createUnknown<List<InstanceAttachedDisk>?>();
-    this.bootDisk = Output.createUnknown<InstanceBootDisk>();
-    this.canIpForward = Output.createUnknown<bool?>();
+        registerOutput<InstanceAdvancedMachineFeatures?>(
+            'advancedMachineFeatures');
+    this.allowStoppingForUpdate =
+        registerOutput<bool?>('allowStoppingForUpdate');
+    this.attachedDisks =
+        registerOutput<List<InstanceAttachedDisk>?>('attachedDisks');
+    this.bootDisk = registerOutput<InstanceBootDisk>('bootDisk');
+    this.canIpForward = registerOutput<bool?>('canIpForward');
     this.confidentialInstanceConfig =
-        Output.createUnknown<InstanceConfidentialInstanceConfig>();
-    this.cpuPlatform = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.currentStatus = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String?>();
-    this.desiredStatus = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enableDisplay = Output.createUnknown<bool?>();
+        registerOutput<InstanceConfidentialInstanceConfig>(
+            'confidentialInstanceConfig');
+    this.cpuPlatform = registerOutput<String>('cpuPlatform');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.currentStatus = registerOutput<String>('currentStatus');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.description = registerOutput<String?>('description');
+    this.desiredStatus = registerOutput<String?>('desiredStatus');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableDisplay = registerOutput<bool?>('enableDisplay');
     this.guestAccelerators =
-        Output.createUnknown<List<InstanceGuestAccelerator>>();
-    this.hostname = Output.createUnknown<String?>();
+        registerOutput<List<InstanceGuestAccelerator>>('guestAccelerators');
+    this.hostname = registerOutput<String?>('hostname');
     this.instanceEncryptionKey =
-        Output.createUnknown<InstanceInstanceEncryptionKey?>();
-    this.instanceId = Output.createUnknown<String>();
-    this.keyRevocationActionType = Output.createUnknown<String?>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.machineType = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>?>();
-    this.metadataFingerprint = Output.createUnknown<String>();
-    this.metadataStartupScript = Output.createUnknown<String?>();
-    this.minCpuPlatform = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<InstanceInstanceEncryptionKey?>('instanceEncryptionKey');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.keyRevocationActionType =
+        registerOutput<String?>('keyRevocationActionType');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.machineType = registerOutput<String>('machineType');
+    this.metadata = registerOutput<Map<String, String>?>('metadata');
+    this.metadataFingerprint = registerOutput<String>('metadataFingerprint');
+    this.metadataStartupScript =
+        registerOutput<String?>('metadataStartupScript');
+    this.minCpuPlatform = registerOutput<String>('minCpuPlatform');
+    this.name = registerOutput<String>('name');
     this.networkInterfaces =
-        Output.createUnknown<List<InstanceNetworkInterface>>();
+        registerOutput<List<InstanceNetworkInterface>>('networkInterfaces');
     this.networkPerformanceConfig =
-        Output.createUnknown<InstanceNetworkPerformanceConfig?>();
-    this.params = Output.createUnknown<InstanceParams?>();
-    this.partnerMetadata = Output.createUnknown<Map<String, String>?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<InstanceNetworkPerformanceConfig?>(
+            'networkPerformanceConfig');
+    this.params = registerOutput<InstanceParams?>('params');
+    this.partnerMetadata =
+        registerOutput<Map<String, String>?>('partnerMetadata');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.reservationAffinity =
-        Output.createUnknown<InstanceReservationAffinity>();
-    this.resourcePolicies = Output.createUnknown<String?>();
-    this.scheduling = Output.createUnknown<InstanceScheduling>();
-    this.scratchDisks = Output.createUnknown<List<InstanceScratchDisk>?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<InstanceServiceAccount?>();
+        registerOutput<InstanceReservationAffinity>('reservationAffinity');
+    this.resourcePolicies = registerOutput<String?>('resourcePolicies');
+    this.scheduling = registerOutput<InstanceScheduling>('scheduling');
+    this.scratchDisks =
+        registerOutput<List<InstanceScratchDisk>?>('scratchDisks');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.serviceAccount =
+        registerOutput<InstanceServiceAccount?>('serviceAccount');
     this.shieldedInstanceConfig =
-        Output.createUnknown<InstanceShieldedInstanceConfig>();
-    this.tags = Output.createUnknown<List<String>?>();
-    this.tagsFingerprint = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<InstanceShieldedInstanceConfig>(
+            'shieldedInstanceConfig');
+    this.tags = registerOutput<List<String>?>('tags');
+    this.tagsFingerprint = registerOutput<String>('tagsFingerprint');
+    this.zone = registerOutput<String>('zone');
   }
 }

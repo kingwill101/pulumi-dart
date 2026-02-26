@@ -513,17 +513,17 @@ class Repository extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.administratorAccount = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.domain = Output.createUnknown<String>();
-    this.domainOwner = Output.createUnknown<String>();
+    this.administratorAccount = registerOutput<String>('administratorAccount');
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.domain = registerOutput<String>('domain');
+    this.domainOwner = registerOutput<String>('domainOwner');
     this.externalConnections =
-        Output.createUnknown<RepositoryExternalConnections?>();
-    this.region = Output.createUnknown<String>();
-    this.repository = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.upstreams = Output.createUnknown<List<RepositoryUpstream>?>();
+        registerOutput<RepositoryExternalConnections?>('externalConnections');
+    this.region = registerOutput<String>('region');
+    this.repository = registerOutput<String>('repository');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.upstreams = registerOutput<List<RepositoryUpstream>?>('upstreams');
   }
 }

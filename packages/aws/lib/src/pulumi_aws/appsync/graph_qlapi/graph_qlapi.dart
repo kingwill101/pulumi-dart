@@ -1679,30 +1679,35 @@ class GraphQLApi extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.additionalAuthenticationProviders = Output.createUnknown<
-        List<GraphQLApiAdditionalAuthenticationProvider>?>();
-    this.apiType = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.authenticationType = Output.createUnknown<String>();
+    this.additionalAuthenticationProviders =
+        registerOutput<List<GraphQLApiAdditionalAuthenticationProvider>?>(
+            'additionalAuthenticationProviders');
+    this.apiType = registerOutput<String?>('apiType');
+    this.arn = registerOutput<String>('arn');
+    this.authenticationType = registerOutput<String>('authenticationType');
     this.enhancedMetricsConfig =
-        Output.createUnknown<GraphQLApiEnhancedMetricsConfig?>();
-    this.introspectionConfig = Output.createUnknown<String?>();
+        registerOutput<GraphQLApiEnhancedMetricsConfig?>(
+            'enhancedMetricsConfig');
+    this.introspectionConfig = registerOutput<String?>('introspectionConfig');
     this.lambdaAuthorizerConfig =
-        Output.createUnknown<GraphQLApiLambdaAuthorizerConfig?>();
-    this.logConfig = Output.createUnknown<GraphQLApiLogConfig?>();
-    this.mergedApiExecutionRoleArn = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<GraphQLApiLambdaAuthorizerConfig?>(
+            'lambdaAuthorizerConfig');
+    this.logConfig = registerOutput<GraphQLApiLogConfig?>('logConfig');
+    this.mergedApiExecutionRoleArn =
+        registerOutput<String?>('mergedApiExecutionRoleArn');
+    this.name = registerOutput<String>('name');
     this.openidConnectConfig =
-        Output.createUnknown<GraphQLApiOpenidConnectConfig?>();
-    this.queryDepthLimit = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
-    this.resolverCountLimit = Output.createUnknown<int?>();
-    this.schema = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.uris = Output.createUnknown<Map<String, String>>();
-    this.userPoolConfig = Output.createUnknown<GraphQLApiUserPoolConfig?>();
-    this.visibility = Output.createUnknown<String?>();
-    this.xrayEnabled = Output.createUnknown<bool?>();
+        registerOutput<GraphQLApiOpenidConnectConfig?>('openidConnectConfig');
+    this.queryDepthLimit = registerOutput<int?>('queryDepthLimit');
+    this.region = registerOutput<String>('region');
+    this.resolverCountLimit = registerOutput<int?>('resolverCountLimit');
+    this.schema = registerOutput<String?>('schema');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.uris = registerOutput<Map<String, String>>('uris');
+    this.userPoolConfig =
+        registerOutput<GraphQLApiUserPoolConfig?>('userPoolConfig');
+    this.visibility = registerOutput<String?>('visibility');
+    this.xrayEnabled = registerOutput<bool?>('xrayEnabled');
   }
 }

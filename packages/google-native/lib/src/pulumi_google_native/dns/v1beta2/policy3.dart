@@ -40,14 +40,16 @@ class Policy3 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.alternativeNameServerConfig =
-        Output.createUnknown<PolicyAlternativeNameServerConfigResponse2>();
-    this.clientOperationId = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String>();
-    this.enableInboundForwarding = Output.createUnknown<bool>();
-    this.enableLogging = Output.createUnknown<bool>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.networks = Output.createUnknown<List<PolicyNetworkResponse2>>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<PolicyAlternativeNameServerConfigResponse2>(
+            'alternativeNameServerConfig');
+    this.clientOperationId = registerOutput<String?>('clientOperationId');
+    this.description = registerOutput<String>('description');
+    this.enableInboundForwarding =
+        registerOutput<bool>('enableInboundForwarding');
+    this.enableLogging = registerOutput<bool>('enableLogging');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.networks = registerOutput<List<PolicyNetworkResponse2>>('networks');
+    this.project = registerOutput<String>('project');
   }
 }

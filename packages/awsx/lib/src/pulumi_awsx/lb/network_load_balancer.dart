@@ -25,9 +25,9 @@ class NetworkLoadBalancer extends ComponentResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? ComponentResourceOptions(),
         ) {
-    this.defaultTargetGroup = Output.createUnknown<dynamic>();
-    this.listeners = Output.createUnknown<List<dynamic>?>();
-    this.loadBalancer = Output.createUnknown<dynamic>();
-    this.vpcId = Output.createUnknown<String?>();
+    this.defaultTargetGroup = registerOutput<dynamic>('defaultTargetGroup');
+    this.listeners = registerOutput<List<dynamic>?>('listeners');
+    this.loadBalancer = registerOutput<dynamic>('loadBalancer');
+    this.vpcId = registerOutput<String?>('vpcId');
   }
 }

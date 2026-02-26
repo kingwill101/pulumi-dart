@@ -142,9 +142,9 @@ class TrafficSourceAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoscalingGroupName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
+    this.region = registerOutput<String>('region');
     this.trafficSource =
-        Output.createUnknown<TrafficSourceAttachmentTrafficSource?>();
+        registerOutput<TrafficSourceAttachmentTrafficSource?>('trafficSource');
   }
 }

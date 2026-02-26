@@ -71,17 +71,18 @@ class KeystoresAliasesKeyCertFile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alias = Output.createUnknown<String>();
-    this.cert = Output.createUnknown<String>();
+    this.alias = registerOutput<String>('alias');
+    this.cert = registerOutput<String>('cert');
     this.certsInfos =
-        Output.createUnknown<List<KeystoresAliasesKeyCertFileCertsInfo>>();
-    this.environment = Output.createUnknown<String>();
-    this.key = Output.createUnknown<String?>();
-    this.keystore = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
-    this.password = Output.createUnknown<String?>();
+        registerOutput<List<KeystoresAliasesKeyCertFileCertsInfo>>(
+            'certsInfos');
+    this.environment = registerOutput<String>('environment');
+    this.key = registerOutput<String?>('key');
+    this.keystore = registerOutput<String>('keystore');
+    this.orgId = registerOutput<String>('orgId');
+    this.password = registerOutput<String?>('password');
     this.timeouts =
-        Output.createUnknown<KeystoresAliasesKeyCertFileTimeouts?>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<KeystoresAliasesKeyCertFileTimeouts?>('timeouts');
+    this.type = registerOutput<String>('type');
   }
 }

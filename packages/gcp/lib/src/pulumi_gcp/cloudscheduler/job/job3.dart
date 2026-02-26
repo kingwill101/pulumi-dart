@@ -1269,18 +1269,19 @@ class Job3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appEngineHttpTarget = Output.createUnknown<JobAppEngineHttpTarget?>();
-    this.attemptDeadline = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.httpTarget = Output.createUnknown<JobHttpTarget?>();
-    this.name = Output.createUnknown<String>();
-    this.paused = Output.createUnknown<bool>();
-    this.project = Output.createUnknown<String>();
-    this.pubsubTarget = Output.createUnknown<JobPubsubTarget?>();
-    this.region = Output.createUnknown<String>();
-    this.retryConfig = Output.createUnknown<JobRetryConfig?>();
-    this.schedule = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.timeZone = Output.createUnknown<String?>();
+    this.appEngineHttpTarget =
+        registerOutput<JobAppEngineHttpTarget?>('appEngineHttpTarget');
+    this.attemptDeadline = registerOutput<String?>('attemptDeadline');
+    this.description = registerOutput<String?>('description');
+    this.httpTarget = registerOutput<JobHttpTarget?>('httpTarget');
+    this.name = registerOutput<String>('name');
+    this.paused = registerOutput<bool>('paused');
+    this.project = registerOutput<String>('project');
+    this.pubsubTarget = registerOutput<JobPubsubTarget?>('pubsubTarget');
+    this.region = registerOutput<String>('region');
+    this.retryConfig = registerOutput<JobRetryConfig?>('retryConfig');
+    this.schedule = registerOutput<String?>('schedule');
+    this.state = registerOutput<String>('state');
+    this.timeZone = registerOutput<String?>('timeZone');
   }
 }

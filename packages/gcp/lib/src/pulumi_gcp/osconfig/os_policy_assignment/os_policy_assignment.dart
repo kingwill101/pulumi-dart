@@ -708,22 +708,23 @@ class OsPolicyAssignment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.baseline = Output.createUnknown<bool>();
-    this.deleted = Output.createUnknown<bool>();
-    this.description = Output.createUnknown<String?>();
-    this.etag = Output.createUnknown<String>();
+    this.baseline = registerOutput<bool>('baseline');
+    this.deleted = registerOutput<bool>('deleted');
+    this.description = registerOutput<String?>('description');
+    this.etag = registerOutput<String>('etag');
     this.instanceFilter =
-        Output.createUnknown<OsPolicyAssignmentInstanceFilter>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.osPolicies = Output.createUnknown<List<OsPolicyAssignmentOsPolicy>>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.revisionCreateTime = Output.createUnknown<String>();
-    this.revisionId = Output.createUnknown<String>();
-    this.rollout = Output.createUnknown<OsPolicyAssignmentRollout>();
-    this.rolloutState = Output.createUnknown<String>();
-    this.skipAwaitRollout = Output.createUnknown<bool?>();
-    this.uid = Output.createUnknown<String>();
+        registerOutput<OsPolicyAssignmentInstanceFilter>('instanceFilter');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.osPolicies =
+        registerOutput<List<OsPolicyAssignmentOsPolicy>>('osPolicies');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.rollout = registerOutput<OsPolicyAssignmentRollout>('rollout');
+    this.rolloutState = registerOutput<String>('rolloutState');
+    this.skipAwaitRollout = registerOutput<bool?>('skipAwaitRollout');
+    this.uid = registerOutput<String>('uid');
   }
 }

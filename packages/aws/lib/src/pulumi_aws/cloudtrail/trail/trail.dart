@@ -2113,26 +2113,33 @@ class Trail extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.advancedEventSelectors =
-        Output.createUnknown<List<TrailAdvancedEventSelector>?>();
-    this.arn = Output.createUnknown<String>();
-    this.cloudWatchLogsGroupArn = Output.createUnknown<String?>();
-    this.cloudWatchLogsRoleArn = Output.createUnknown<String?>();
-    this.enableLogFileValidation = Output.createUnknown<bool?>();
-    this.enableLogging = Output.createUnknown<bool?>();
-    this.eventSelectors = Output.createUnknown<List<TrailEventSelector>?>();
-    this.homeRegion = Output.createUnknown<String>();
-    this.includeGlobalServiceEvents = Output.createUnknown<bool?>();
-    this.insightSelectors = Output.createUnknown<List<TrailInsightSelector>?>();
-    this.isMultiRegionTrail = Output.createUnknown<bool?>();
-    this.isOrganizationTrail = Output.createUnknown<bool?>();
-    this.kmsKeyId = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.s3BucketName = Output.createUnknown<String>();
-    this.s3KeyPrefix = Output.createUnknown<String?>();
-    this.snsTopicArn = Output.createUnknown<String>();
-    this.snsTopicName = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<TrailAdvancedEventSelector>?>(
+            'advancedEventSelectors');
+    this.arn = registerOutput<String>('arn');
+    this.cloudWatchLogsGroupArn =
+        registerOutput<String?>('cloudWatchLogsGroupArn');
+    this.cloudWatchLogsRoleArn =
+        registerOutput<String?>('cloudWatchLogsRoleArn');
+    this.enableLogFileValidation =
+        registerOutput<bool?>('enableLogFileValidation');
+    this.enableLogging = registerOutput<bool?>('enableLogging');
+    this.eventSelectors =
+        registerOutput<List<TrailEventSelector>?>('eventSelectors');
+    this.homeRegion = registerOutput<String>('homeRegion');
+    this.includeGlobalServiceEvents =
+        registerOutput<bool?>('includeGlobalServiceEvents');
+    this.insightSelectors =
+        registerOutput<List<TrailInsightSelector>?>('insightSelectors');
+    this.isMultiRegionTrail = registerOutput<bool?>('isMultiRegionTrail');
+    this.isOrganizationTrail = registerOutput<bool?>('isOrganizationTrail');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.s3BucketName = registerOutput<String>('s3BucketName');
+    this.s3KeyPrefix = registerOutput<String?>('s3KeyPrefix');
+    this.snsTopicArn = registerOutput<String>('snsTopicArn');
+    this.snsTopicName = registerOutput<String?>('snsTopicName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

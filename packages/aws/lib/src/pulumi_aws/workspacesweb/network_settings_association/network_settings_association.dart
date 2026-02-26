@@ -442,8 +442,8 @@ class NetworkSettingsAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.networkSettingsArn = Output.createUnknown<String>();
-    this.portalArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.networkSettingsArn = registerOutput<String>('networkSettingsArn');
+    this.portalArn = registerOutput<String>('portalArn');
+    this.region = registerOutput<String>('region');
   }
 }

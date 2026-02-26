@@ -140,8 +140,8 @@ class ApplicationAssignmentConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationArn = Output.createUnknown<String>();
-    this.assignmentRequired = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
+    this.applicationArn = registerOutput<String>('applicationArn');
+    this.assignmentRequired = registerOutput<bool>('assignmentRequired');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -2612,29 +2612,34 @@ class Listing extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowOnlyMetadataSharing = Output.createUnknown<bool?>();
-    this.bigqueryDataset = Output.createUnknown<ListingBigqueryDataset?>();
-    this.categories = Output.createUnknown<List<String>?>();
-    this.commercialInfos = Output.createUnknown<List<ListingCommercialInfo>>();
-    this.dataExchangeId = Output.createUnknown<String>();
-    this.dataProvider = Output.createUnknown<ListingDataProvider?>();
-    this.deleteCommercial = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String?>();
-    this.discoveryType = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.documentation = Output.createUnknown<String?>();
-    this.icon = Output.createUnknown<String?>();
-    this.listingId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.logLinkedDatasetQueryUserEmail = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.primaryContact = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.publisher = Output.createUnknown<ListingPublisher?>();
-    this.pubsubTopic = Output.createUnknown<ListingPubsubTopic?>();
-    this.requestAccess = Output.createUnknown<String?>();
+    this.allowOnlyMetadataSharing =
+        registerOutput<bool?>('allowOnlyMetadataSharing');
+    this.bigqueryDataset =
+        registerOutput<ListingBigqueryDataset?>('bigqueryDataset');
+    this.categories = registerOutput<List<String>?>('categories');
+    this.commercialInfos =
+        registerOutput<List<ListingCommercialInfo>>('commercialInfos');
+    this.dataExchangeId = registerOutput<String>('dataExchangeId');
+    this.dataProvider = registerOutput<ListingDataProvider?>('dataProvider');
+    this.deleteCommercial = registerOutput<bool?>('deleteCommercial');
+    this.description = registerOutput<String?>('description');
+    this.discoveryType = registerOutput<String>('discoveryType');
+    this.displayName = registerOutput<String>('displayName');
+    this.documentation = registerOutput<String?>('documentation');
+    this.icon = registerOutput<String?>('icon');
+    this.listingId = registerOutput<String>('listingId');
+    this.location = registerOutput<String>('location');
+    this.logLinkedDatasetQueryUserEmail =
+        registerOutput<bool?>('logLinkedDatasetQueryUserEmail');
+    this.name = registerOutput<String>('name');
+    this.primaryContact = registerOutput<String?>('primaryContact');
+    this.project = registerOutput<String>('project');
+    this.publisher = registerOutput<ListingPublisher?>('publisher');
+    this.pubsubTopic = registerOutput<ListingPubsubTopic?>('pubsubTopic');
+    this.requestAccess = registerOutput<String?>('requestAccess');
     this.restrictedExportConfig =
-        Output.createUnknown<ListingRestrictedExportConfig?>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<ListingRestrictedExportConfig?>(
+            'restrictedExportConfig');
+    this.state = registerOutput<String>('state');
   }
 }

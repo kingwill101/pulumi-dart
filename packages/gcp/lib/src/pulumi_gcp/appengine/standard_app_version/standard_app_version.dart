@@ -764,30 +764,36 @@ class StandardAppVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appEngineApis = Output.createUnknown<bool?>();
+    this.appEngineApis = registerOutput<bool?>('appEngineApis');
     this.automaticScaling =
-        Output.createUnknown<StandardAppVersionAutomaticScaling?>();
-    this.basicScaling = Output.createUnknown<StandardAppVersionBasicScaling?>();
-    this.deleteServiceOnDestroy = Output.createUnknown<bool?>();
-    this.deployment = Output.createUnknown<StandardAppVersionDeployment>();
-    this.entrypoint = Output.createUnknown<StandardAppVersionEntrypoint>();
-    this.envVariables = Output.createUnknown<Map<String, String>?>();
-    this.handlers = Output.createUnknown<List<StandardAppVersionHandler>>();
-    this.inboundServices = Output.createUnknown<List<String>?>();
-    this.instanceClass = Output.createUnknown<String>();
-    this.libraries = Output.createUnknown<List<StandardAppVersionLibrary>?>();
+        registerOutput<StandardAppVersionAutomaticScaling?>('automaticScaling');
+    this.basicScaling =
+        registerOutput<StandardAppVersionBasicScaling?>('basicScaling');
+    this.deleteServiceOnDestroy =
+        registerOutput<bool?>('deleteServiceOnDestroy');
+    this.deployment =
+        registerOutput<StandardAppVersionDeployment>('deployment');
+    this.entrypoint =
+        registerOutput<StandardAppVersionEntrypoint>('entrypoint');
+    this.envVariables = registerOutput<Map<String, String>?>('envVariables');
+    this.handlers = registerOutput<List<StandardAppVersionHandler>>('handlers');
+    this.inboundServices = registerOutput<List<String>?>('inboundServices');
+    this.instanceClass = registerOutput<String>('instanceClass');
+    this.libraries =
+        registerOutput<List<StandardAppVersionLibrary>?>('libraries');
     this.manualScaling =
-        Output.createUnknown<StandardAppVersionManualScaling?>();
-    this.name = Output.createUnknown<String>();
-    this.noopOnDestroy = Output.createUnknown<bool?>();
-    this.project = Output.createUnknown<String>();
-    this.runtime = Output.createUnknown<String>();
-    this.runtimeApiVersion = Output.createUnknown<String?>();
-    this.service = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.threadsafe = Output.createUnknown<bool?>();
-    this.versionId = Output.createUnknown<String?>();
+        registerOutput<StandardAppVersionManualScaling?>('manualScaling');
+    this.name = registerOutput<String>('name');
+    this.noopOnDestroy = registerOutput<bool?>('noopOnDestroy');
+    this.project = registerOutput<String>('project');
+    this.runtime = registerOutput<String>('runtime');
+    this.runtimeApiVersion = registerOutput<String?>('runtimeApiVersion');
+    this.service = registerOutput<String>('service');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.threadsafe = registerOutput<bool?>('threadsafe');
+    this.versionId = registerOutput<String?>('versionId');
     this.vpcAccessConnector =
-        Output.createUnknown<StandardAppVersionVpcAccessConnector?>();
+        registerOutput<StandardAppVersionVpcAccessConnector?>(
+            'vpcAccessConnector');
   }
 }

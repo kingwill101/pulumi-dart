@@ -431,18 +431,20 @@ class EventDataStore extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.advancedEventSelectors =
-        Output.createUnknown<List<EventDataStoreAdvancedEventSelector>>();
-    this.arn = Output.createUnknown<String>();
-    this.billingMode = Output.createUnknown<String?>();
-    this.kmsKeyId = Output.createUnknown<String?>();
-    this.multiRegionEnabled = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.organizationEnabled = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.retentionPeriod = Output.createUnknown<int?>();
-    this.suspend = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.terminationProtectionEnabled = Output.createUnknown<bool?>();
+        registerOutput<List<EventDataStoreAdvancedEventSelector>>(
+            'advancedEventSelectors');
+    this.arn = registerOutput<String>('arn');
+    this.billingMode = registerOutput<String?>('billingMode');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.multiRegionEnabled = registerOutput<bool?>('multiRegionEnabled');
+    this.name = registerOutput<String>('name');
+    this.organizationEnabled = registerOutput<bool?>('organizationEnabled');
+    this.region = registerOutput<String>('region');
+    this.retentionPeriod = registerOutput<int?>('retentionPeriod');
+    this.suspend = registerOutput<String?>('suspend');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.terminationProtectionEnabled =
+        registerOutput<bool?>('terminationProtectionEnabled');
   }
 }

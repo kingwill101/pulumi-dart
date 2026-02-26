@@ -102,11 +102,11 @@ class ConsumersIamMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<ConsumersIamMemberCondition?>();
-    this.consumerProject = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.serviceName = Output.createUnknown<String>();
+    this.condition = registerOutput<ConsumersIamMemberCondition?>('condition');
+    this.consumerProject = registerOutput<String>('consumerProject');
+    this.etag = registerOutput<String>('etag');
+    this.member = registerOutput<String>('member');
+    this.role = registerOutput<String>('role');
+    this.serviceName = registerOutput<String>('serviceName');
   }
 }

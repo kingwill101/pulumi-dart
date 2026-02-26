@@ -1067,27 +1067,29 @@ class ApiProduct extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiResources = Output.createUnknown<List<String>?>();
-    this.approvalType = Output.createUnknown<String?>();
-    this.attributes = Output.createUnknown<List<ApiProductAttribute>?>();
-    this.createdAt = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.environments = Output.createUnknown<List<String>?>();
+    this.apiResources = registerOutput<List<String>?>('apiResources');
+    this.approvalType = registerOutput<String?>('approvalType');
+    this.attributes = registerOutput<List<ApiProductAttribute>?>('attributes');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.environments = registerOutput<List<String>?>('environments');
     this.graphqlOperationGroup =
-        Output.createUnknown<ApiProductGraphqlOperationGroup?>();
+        registerOutput<ApiProductGraphqlOperationGroup?>(
+            'graphqlOperationGroup');
     this.grpcOperationGroup =
-        Output.createUnknown<ApiProductGrpcOperationGroup?>();
-    this.lastModifiedAt = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.operationGroup = Output.createUnknown<ApiProductOperationGroup?>();
-    this.orgId = Output.createUnknown<String>();
-    this.proxies = Output.createUnknown<List<String>?>();
-    this.quota = Output.createUnknown<String?>();
-    this.quotaCounterScope = Output.createUnknown<String?>();
-    this.quotaInterval = Output.createUnknown<String?>();
-    this.quotaTimeUnit = Output.createUnknown<String?>();
-    this.scopes = Output.createUnknown<List<String>?>();
-    this.space = Output.createUnknown<String?>();
+        registerOutput<ApiProductGrpcOperationGroup?>('grpcOperationGroup');
+    this.lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    this.operationGroup =
+        registerOutput<ApiProductOperationGroup?>('operationGroup');
+    this.orgId = registerOutput<String>('orgId');
+    this.proxies = registerOutput<List<String>?>('proxies');
+    this.quota = registerOutput<String?>('quota');
+    this.quotaCounterScope = registerOutput<String?>('quotaCounterScope');
+    this.quotaInterval = registerOutput<String?>('quotaInterval');
+    this.quotaTimeUnit = registerOutput<String?>('quotaTimeUnit');
+    this.scopes = registerOutput<List<String>?>('scopes');
+    this.space = registerOutput<String?>('space');
   }
 }

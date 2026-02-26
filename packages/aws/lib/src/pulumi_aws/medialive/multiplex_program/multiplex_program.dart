@@ -318,11 +318,12 @@ class MultiplexProgram extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.multiplexId = Output.createUnknown<String>();
+    this.multiplexId = registerOutput<String>('multiplexId');
     this.multiplexProgramSettings =
-        Output.createUnknown<MultiplexProgramMultiplexProgramSettings?>();
-    this.programName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<MultiplexProgramTimeouts?>();
+        registerOutput<MultiplexProgramMultiplexProgramSettings?>(
+            'multiplexProgramSettings');
+    this.programName = registerOutput<String>('programName');
+    this.region = registerOutput<String>('region');
+    this.timeouts = registerOutput<MultiplexProgramTimeouts?>('timeouts');
   }
 }

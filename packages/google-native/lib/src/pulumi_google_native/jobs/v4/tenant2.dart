@@ -20,8 +20,8 @@ class Tenant2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.externalId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.externalId = registerOutput<String>('externalId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

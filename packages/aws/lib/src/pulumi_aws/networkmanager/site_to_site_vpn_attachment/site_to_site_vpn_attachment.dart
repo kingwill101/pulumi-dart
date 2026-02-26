@@ -754,19 +754,20 @@ class SiteToSiteVpnAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.attachmentPolicyRuleNumber = Output.createUnknown<int>();
-    this.attachmentType = Output.createUnknown<String>();
-    this.coreNetworkArn = Output.createUnknown<String>();
-    this.coreNetworkId = Output.createUnknown<String>();
-    this.edgeLocation = Output.createUnknown<String>();
-    this.ownerAccountId = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
-    this.routingPolicyLabel = Output.createUnknown<String?>();
-    this.segmentName = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpnConnectionArn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.attachmentPolicyRuleNumber =
+        registerOutput<int>('attachmentPolicyRuleNumber');
+    this.attachmentType = registerOutput<String>('attachmentType');
+    this.coreNetworkArn = registerOutput<String>('coreNetworkArn');
+    this.coreNetworkId = registerOutput<String>('coreNetworkId');
+    this.edgeLocation = registerOutput<String>('edgeLocation');
+    this.ownerAccountId = registerOutput<String>('ownerAccountId');
+    this.resourceArn = registerOutput<String>('resourceArn');
+    this.routingPolicyLabel = registerOutput<String?>('routingPolicyLabel');
+    this.segmentName = registerOutput<String>('segmentName');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpnConnectionArn = registerOutput<String>('vpnConnectionArn');
   }
 }

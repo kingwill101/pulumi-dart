@@ -133,10 +133,10 @@ class ServiceSetting extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.settingId = Output.createUnknown<String>();
-    this.settingValue = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.region = registerOutput<String>('region');
+    this.settingId = registerOutput<String>('settingId');
+    this.settingValue = registerOutput<String>('settingValue');
+    this.status = registerOutput<String>('status');
   }
 }

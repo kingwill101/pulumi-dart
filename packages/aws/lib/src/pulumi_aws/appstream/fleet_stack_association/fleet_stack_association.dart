@@ -208,8 +208,8 @@ class FleetStackAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.fleetName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.stackName = Output.createUnknown<String>();
+    this.fleetName = registerOutput<String>('fleetName');
+    this.region = registerOutput<String>('region');
+    this.stackName = registerOutput<String>('stackName');
   }
 }

@@ -588,18 +588,24 @@ class Floorsetting extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.aiPlatformFloorSetting =
-        Output.createUnknown<FloorsettingAiPlatformFloorSetting?>();
-    this.createTime = Output.createUnknown<String>();
-    this.enableFloorSettingEnforcement = Output.createUnknown<bool?>();
-    this.filterConfig = Output.createUnknown<FloorsettingFilterConfig>();
+        registerOutput<FloorsettingAiPlatformFloorSetting?>(
+            'aiPlatformFloorSetting');
+    this.createTime = registerOutput<String>('createTime');
+    this.enableFloorSettingEnforcement =
+        registerOutput<bool?>('enableFloorSettingEnforcement');
+    this.filterConfig =
+        registerOutput<FloorsettingFilterConfig>('filterConfig');
     this.floorSettingMetadata =
-        Output.createUnknown<FloorsettingFloorSettingMetadata?>();
+        registerOutput<FloorsettingFloorSettingMetadata?>(
+            'floorSettingMetadata');
     this.googleMcpServerFloorSetting =
-        Output.createUnknown<FloorsettingGoogleMcpServerFloorSetting?>();
-    this.integratedServices = Output.createUnknown<List<String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<FloorsettingGoogleMcpServerFloorSetting?>(
+            'googleMcpServerFloorSetting');
+    this.integratedServices =
+        registerOutput<List<String>?>('integratedServices');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -95,36 +95,42 @@ class RegionInstanceGroupManager3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoHealingPolicies = Output.createUnknown<
-        List<InstanceGroupManagerAutoHealingPolicyResponse3>>();
-    this.baseInstanceName = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
+    this.autoHealingPolicies =
+        registerOutput<List<InstanceGroupManagerAutoHealingPolicyResponse3>>(
+            'autoHealingPolicies');
+    this.baseInstanceName = registerOutput<String>('baseInstanceName');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.currentActions =
-        Output.createUnknown<InstanceGroupManagerActionsSummaryResponse3>();
-    this.description = Output.createUnknown<String>();
+        registerOutput<InstanceGroupManagerActionsSummaryResponse3>(
+            'currentActions');
+    this.description = registerOutput<String>('description');
     this.distributionPolicy =
-        Output.createUnknown<DistributionPolicyResponse3>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.instanceGroup = Output.createUnknown<String>();
-    this.instanceLifecyclePolicy = Output.createUnknown<
-        InstanceGroupManagerInstanceLifecyclePolicyResponse3>();
-    this.instanceTemplate = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.listManagedInstancesResults = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namedPorts = Output.createUnknown<List<NamedPortResponse3>>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.statefulPolicy = Output.createUnknown<StatefulPolicyResponse3>();
-    this.status = Output.createUnknown<InstanceGroupManagerStatusResponse3>();
-    this.targetPools = Output.createUnknown<List<String>>();
-    this.targetSize = Output.createUnknown<int>();
+        registerOutput<DistributionPolicyResponse3>('distributionPolicy');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.instanceGroup = registerOutput<String>('instanceGroup');
+    this.instanceLifecyclePolicy =
+        registerOutput<InstanceGroupManagerInstanceLifecyclePolicyResponse3>(
+            'instanceLifecyclePolicy');
+    this.instanceTemplate = registerOutput<String>('instanceTemplate');
+    this.kind = registerOutput<String>('kind');
+    this.listManagedInstancesResults =
+        registerOutput<String>('listManagedInstancesResults');
+    this.name = registerOutput<String>('name');
+    this.namedPorts = registerOutput<List<NamedPortResponse3>>('namedPorts');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.statefulPolicy =
+        registerOutput<StatefulPolicyResponse3>('statefulPolicy');
+    this.status = registerOutput<InstanceGroupManagerStatusResponse3>('status');
+    this.targetPools = registerOutput<List<String>>('targetPools');
+    this.targetSize = registerOutput<int>('targetSize');
     this.updatePolicy =
-        Output.createUnknown<InstanceGroupManagerUpdatePolicyResponse3>();
+        registerOutput<InstanceGroupManagerUpdatePolicyResponse3>(
+            'updatePolicy');
     this.versions =
-        Output.createUnknown<List<InstanceGroupManagerVersionResponse3>>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<List<InstanceGroupManagerVersionResponse3>>('versions');
+    this.zone = registerOutput<String>('zone');
   }
 }

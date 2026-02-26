@@ -64,21 +64,22 @@ class FirewallPolicy3 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.associations =
-        Output.createUnknown<List<FirewallPolicyAssociationResponse3>>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.parentId = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.ruleTupleCount = Output.createUnknown<int>();
-    this.rules = Output.createUnknown<List<FirewallPolicyRuleResponse3>>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithId = Output.createUnknown<String>();
-    this.shortName = Output.createUnknown<String>();
+        registerOutput<List<FirewallPolicyAssociationResponse3>>(
+            'associations');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.parentId = registerOutput<String?>('parentId');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    this.rules = registerOutput<List<FirewallPolicyRuleResponse3>>('rules');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    this.shortName = registerOutput<String>('shortName');
   }
 }

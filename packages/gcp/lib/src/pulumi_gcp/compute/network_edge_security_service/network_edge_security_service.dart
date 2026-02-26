@@ -186,15 +186,16 @@ class NetworkEdgeSecurityService extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String?>();
-    this.securityPolicy = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.selfLinkWithServiceId = Output.createUnknown<String>();
-    this.serviceId = Output.createUnknown<String>();
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String?>('description');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String?>('region');
+    this.securityPolicy = registerOutput<String?>('securityPolicy');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.selfLinkWithServiceId =
+        registerOutput<String>('selfLinkWithServiceId');
+    this.serviceId = registerOutput<String>('serviceId');
   }
 }

@@ -201,14 +201,14 @@ class Fleet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
     this.defaultClusterConfig =
-        Output.createUnknown<FleetDefaultClusterConfig?>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.states = Output.createUnknown<List<FleetState>>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<FleetDefaultClusterConfig?>('defaultClusterConfig');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.displayName = registerOutput<String?>('displayName');
+    this.project = registerOutput<String>('project');
+    this.states = registerOutput<List<FleetState>>('states');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

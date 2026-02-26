@@ -232,15 +232,17 @@ class DevEnvironment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alias = Output.createUnknown<String?>();
-    this.ides = Output.createUnknown<DevEnvironmentIdes>();
-    this.inactivityTimeoutMinutes = Output.createUnknown<int?>();
-    this.instanceType = Output.createUnknown<String>();
+    this.alias = registerOutput<String?>('alias');
+    this.ides = registerOutput<DevEnvironmentIdes>('ides');
+    this.inactivityTimeoutMinutes =
+        registerOutput<int?>('inactivityTimeoutMinutes');
+    this.instanceType = registerOutput<String>('instanceType');
     this.persistentStorage =
-        Output.createUnknown<DevEnvironmentPersistentStorage>();
-    this.projectName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.repositories = Output.createUnknown<List<DevEnvironmentRepository>?>();
-    this.spaceName = Output.createUnknown<String>();
+        registerOutput<DevEnvironmentPersistentStorage>('persistentStorage');
+    this.projectName = registerOutput<String>('projectName');
+    this.region = registerOutput<String>('region');
+    this.repositories =
+        registerOutput<List<DevEnvironmentRepository>?>('repositories');
+    this.spaceName = registerOutput<String>('spaceName');
   }
 }

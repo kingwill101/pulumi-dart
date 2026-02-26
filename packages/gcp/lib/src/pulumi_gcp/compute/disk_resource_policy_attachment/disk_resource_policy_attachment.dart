@@ -332,9 +332,9 @@ class DiskResourcePolicyAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.disk = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+    this.disk = registerOutput<String>('disk');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.zone = registerOutput<String>('zone');
   }
 }

@@ -872,22 +872,22 @@ class ExportTask extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.exportOnlies = Output.createUnknown<List<String>?>();
-    this.exportTaskIdentifier = Output.createUnknown<String>();
-    this.failureCause = Output.createUnknown<String>();
-    this.iamRoleArn = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.percentProgress = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.s3BucketName = Output.createUnknown<String>();
-    this.s3Prefix = Output.createUnknown<String>();
-    this.snapshotTime = Output.createUnknown<String>();
-    this.sourceArn = Output.createUnknown<String>();
-    this.sourceType = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.taskEndTime = Output.createUnknown<String>();
-    this.taskStartTime = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<ExportTaskTimeouts?>();
-    this.warningMessage = Output.createUnknown<String>();
+    this.exportOnlies = registerOutput<List<String>?>('exportOnlies');
+    this.exportTaskIdentifier = registerOutput<String>('exportTaskIdentifier');
+    this.failureCause = registerOutput<String>('failureCause');
+    this.iamRoleArn = registerOutput<String>('iamRoleArn');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.percentProgress = registerOutput<int>('percentProgress');
+    this.region = registerOutput<String>('region');
+    this.s3BucketName = registerOutput<String>('s3BucketName');
+    this.s3Prefix = registerOutput<String>('s3Prefix');
+    this.snapshotTime = registerOutput<String>('snapshotTime');
+    this.sourceArn = registerOutput<String>('sourceArn');
+    this.sourceType = registerOutput<String>('sourceType');
+    this.status = registerOutput<String>('status');
+    this.taskEndTime = registerOutput<String>('taskEndTime');
+    this.taskStartTime = registerOutput<String>('taskStartTime');
+    this.timeouts = registerOutput<ExportTaskTimeouts?>('timeouts');
+    this.warningMessage = registerOutput<String>('warningMessage');
   }
 }

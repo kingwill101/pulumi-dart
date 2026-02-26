@@ -75,26 +75,32 @@ class Subscription3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.ackDeadlineSeconds = Output.createUnknown<int>();
-    this.bigqueryConfig = Output.createUnknown<BigQueryConfigResponse>();
+    this.ackDeadlineSeconds = registerOutput<int>('ackDeadlineSeconds');
+    this.bigqueryConfig =
+        registerOutput<BigQueryConfigResponse>('bigqueryConfig');
     this.cloudStorageConfig =
-        Output.createUnknown<CloudStorageConfigResponse>();
-    this.deadLetterPolicy = Output.createUnknown<DeadLetterPolicyResponse>();
-    this.detached = Output.createUnknown<bool>();
-    this.enableExactlyOnceDelivery = Output.createUnknown<bool>();
-    this.enableMessageOrdering = Output.createUnknown<bool>();
-    this.expirationPolicy = Output.createUnknown<ExpirationPolicyResponse>();
-    this.filter = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.messageRetentionDuration = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pushConfig = Output.createUnknown<PushConfigResponse>();
-    this.retainAckedMessages = Output.createUnknown<bool>();
-    this.retryPolicy = Output.createUnknown<RetryPolicyResponse>();
-    this.state = Output.createUnknown<String>();
-    this.subscriptionId = Output.createUnknown<String>();
-    this.topic = Output.createUnknown<String>();
-    this.topicMessageRetentionDuration = Output.createUnknown<String>();
+        registerOutput<CloudStorageConfigResponse>('cloudStorageConfig');
+    this.deadLetterPolicy =
+        registerOutput<DeadLetterPolicyResponse>('deadLetterPolicy');
+    this.detached = registerOutput<bool>('detached');
+    this.enableExactlyOnceDelivery =
+        registerOutput<bool>('enableExactlyOnceDelivery');
+    this.enableMessageOrdering = registerOutput<bool>('enableMessageOrdering');
+    this.expirationPolicy =
+        registerOutput<ExpirationPolicyResponse>('expirationPolicy');
+    this.filter = registerOutput<String>('filter');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.messageRetentionDuration =
+        registerOutput<String>('messageRetentionDuration');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pushConfig = registerOutput<PushConfigResponse>('pushConfig');
+    this.retainAckedMessages = registerOutput<bool>('retainAckedMessages');
+    this.retryPolicy = registerOutput<RetryPolicyResponse>('retryPolicy');
+    this.state = registerOutput<String>('state');
+    this.subscriptionId = registerOutput<String>('subscriptionId');
+    this.topic = registerOutput<String>('topic');
+    this.topicMessageRetentionDuration =
+        registerOutput<String>('topicMessageRetentionDuration');
   }
 }

@@ -48,8 +48,8 @@ class EnvKeystore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aliases = Output.createUnknown<List<String>>();
-    this.envId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.aliases = registerOutput<List<String>>('aliases');
+    this.envId = registerOutput<String>('envId');
+    this.name = registerOutput<String>('name');
   }
 }

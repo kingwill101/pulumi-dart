@@ -28,12 +28,13 @@ class RuleSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.description = registerOutput<String>('description');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.rules =
-        Output.createUnknown<List<GoogleCloudContentwarehouseV1RuleResponse>>();
-    this.source = Output.createUnknown<String>();
+        registerOutput<List<GoogleCloudContentwarehouseV1RuleResponse>>(
+            'rules');
+    this.source = registerOutput<String>('source');
   }
 }

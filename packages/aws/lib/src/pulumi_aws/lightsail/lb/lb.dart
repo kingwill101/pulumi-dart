@@ -182,18 +182,18 @@ class Lb extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.dnsName = Output.createUnknown<String>();
-    this.healthCheckPath = Output.createUnknown<String?>();
-    this.instancePort = Output.createUnknown<int>();
-    this.ipAddressType = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.protocol = Output.createUnknown<String>();
-    this.publicPorts = Output.createUnknown<List<int>>();
-    this.region = Output.createUnknown<String>();
-    this.supportCode = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.healthCheckPath = registerOutput<String?>('healthCheckPath');
+    this.instancePort = registerOutput<int>('instancePort');
+    this.ipAddressType = registerOutput<String?>('ipAddressType');
+    this.name = registerOutput<String>('name');
+    this.protocol = registerOutput<String>('protocol');
+    this.publicPorts = registerOutput<List<int>>('publicPorts');
+    this.region = registerOutput<String>('region');
+    this.supportCode = registerOutput<String>('supportCode');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

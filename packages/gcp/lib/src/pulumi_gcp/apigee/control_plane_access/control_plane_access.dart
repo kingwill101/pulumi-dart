@@ -390,8 +390,10 @@ class ControlPlaneAccess extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.analyticsPublisherIdentities = Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
-    this.synchronizerIdentities = Output.createUnknown<List<String>?>();
+    this.analyticsPublisherIdentities =
+        registerOutput<List<String>?>('analyticsPublisherIdentities');
+    this.name = registerOutput<String>('name');
+    this.synchronizerIdentities =
+        registerOutput<List<String>?>('synchronizerIdentities');
   }
 }

@@ -265,38 +265,40 @@ class Cluster9 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aclName = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.autoMinorVersionUpgrade = Output.createUnknown<bool?>();
+    this.aclName = registerOutput<String>('aclName');
+    this.arn = registerOutput<String>('arn');
+    this.autoMinorVersionUpgrade =
+        registerOutput<bool?>('autoMinorVersionUpgrade');
     this.clusterEndpoints =
-        Output.createUnknown<List<ClusterClusterEndpoint>>();
-    this.dataTiering = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String?>();
-    this.engine = Output.createUnknown<String>();
-    this.enginePatchVersion = Output.createUnknown<String>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.finalSnapshotName = Output.createUnknown<String?>();
-    this.kmsKeyArn = Output.createUnknown<String?>();
-    this.maintenanceWindow = Output.createUnknown<String>();
-    this.multiRegionClusterName = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.nodeType = Output.createUnknown<String>();
-    this.numReplicasPerShard = Output.createUnknown<int?>();
-    this.numShards = Output.createUnknown<int?>();
-    this.parameterGroupName = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupIds = Output.createUnknown<List<String>?>();
-    this.shards = Output.createUnknown<List<ClusterShard>>();
-    this.snapshotArns = Output.createUnknown<List<String>?>();
-    this.snapshotName = Output.createUnknown<String?>();
-    this.snapshotRetentionLimit = Output.createUnknown<int>();
-    this.snapshotWindow = Output.createUnknown<String>();
-    this.snsTopicArn = Output.createUnknown<String?>();
-    this.subnetGroupName = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tlsEnabled = Output.createUnknown<bool?>();
+        registerOutput<List<ClusterClusterEndpoint>>('clusterEndpoints');
+    this.dataTiering = registerOutput<bool?>('dataTiering');
+    this.description = registerOutput<String?>('description');
+    this.engine = registerOutput<String>('engine');
+    this.enginePatchVersion = registerOutput<String>('enginePatchVersion');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.finalSnapshotName = registerOutput<String?>('finalSnapshotName');
+    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.maintenanceWindow = registerOutput<String>('maintenanceWindow');
+    this.multiRegionClusterName =
+        registerOutput<String?>('multiRegionClusterName');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.nodeType = registerOutput<String>('nodeType');
+    this.numReplicasPerShard = registerOutput<int?>('numReplicasPerShard');
+    this.numShards = registerOutput<int?>('numShards');
+    this.parameterGroupName = registerOutput<String>('parameterGroupName');
+    this.port = registerOutput<int>('port');
+    this.region = registerOutput<String>('region');
+    this.securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    this.shards = registerOutput<List<ClusterShard>>('shards');
+    this.snapshotArns = registerOutput<List<String>?>('snapshotArns');
+    this.snapshotName = registerOutput<String?>('snapshotName');
+    this.snapshotRetentionLimit = registerOutput<int>('snapshotRetentionLimit');
+    this.snapshotWindow = registerOutput<String>('snapshotWindow');
+    this.snsTopicArn = registerOutput<String?>('snsTopicArn');
+    this.subnetGroupName = registerOutput<String>('subnetGroupName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tlsEnabled = registerOutput<bool?>('tlsEnabled');
   }
 }

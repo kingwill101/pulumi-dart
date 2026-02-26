@@ -239,28 +239,35 @@ class Fleet3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.context = Output.createUnknown<String?>();
-    this.excessCapacityTerminationPolicy = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.context = registerOutput<String?>('context');
+    this.excessCapacityTerminationPolicy =
+        registerOutput<String?>('excessCapacityTerminationPolicy');
     this.fleetInstanceSets =
-        Output.createUnknown<List<FleetFleetInstanceSet>>();
-    this.fleetState = Output.createUnknown<String>();
-    this.fulfilledCapacity = Output.createUnknown<double>();
-    this.fulfilledOnDemandCapacity = Output.createUnknown<double>();
+        registerOutput<List<FleetFleetInstanceSet>>('fleetInstanceSets');
+    this.fleetState = registerOutput<String>('fleetState');
+    this.fulfilledCapacity = registerOutput<double>('fulfilledCapacity');
+    this.fulfilledOnDemandCapacity =
+        registerOutput<double>('fulfilledOnDemandCapacity');
     this.launchTemplateConfigs =
-        Output.createUnknown<List<FleetLaunchTemplateConfig>>();
-    this.onDemandOptions = Output.createUnknown<FleetOnDemandOptions?>();
-    this.region = Output.createUnknown<String>();
-    this.replaceUnhealthyInstances = Output.createUnknown<bool?>();
-    this.spotOptions = Output.createUnknown<FleetSpotOptions?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<FleetLaunchTemplateConfig>>(
+            'launchTemplateConfigs');
+    this.onDemandOptions =
+        registerOutput<FleetOnDemandOptions?>('onDemandOptions');
+    this.region = registerOutput<String>('region');
+    this.replaceUnhealthyInstances =
+        registerOutput<bool?>('replaceUnhealthyInstances');
+    this.spotOptions = registerOutput<FleetSpotOptions?>('spotOptions');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.targetCapacitySpecification =
-        Output.createUnknown<FleetTargetCapacitySpecification>();
-    this.terminateInstances = Output.createUnknown<bool?>();
-    this.terminateInstancesWithExpiration = Output.createUnknown<bool?>();
-    this.type = Output.createUnknown<String?>();
-    this.validFrom = Output.createUnknown<String?>();
-    this.validUntil = Output.createUnknown<String?>();
+        registerOutput<FleetTargetCapacitySpecification>(
+            'targetCapacitySpecification');
+    this.terminateInstances = registerOutput<bool?>('terminateInstances');
+    this.terminateInstancesWithExpiration =
+        registerOutput<bool?>('terminateInstancesWithExpiration');
+    this.type = registerOutput<String?>('type');
+    this.validFrom = registerOutput<String?>('validFrom');
+    this.validUntil = registerOutput<String?>('validUntil');
   }
 }

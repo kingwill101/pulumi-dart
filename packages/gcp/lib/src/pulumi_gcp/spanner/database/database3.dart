@@ -275,16 +275,18 @@ class Database3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.databaseDialect = Output.createUnknown<String>();
-    this.ddls = Output.createUnknown<List<String>?>();
-    this.defaultTimeZone = Output.createUnknown<String?>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.enableDropProtection = Output.createUnknown<bool?>();
-    this.encryptionConfig = Output.createUnknown<DatabaseEncryptionConfig?>();
-    this.instance = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.versionRetentionPeriod = Output.createUnknown<String>();
+    this.databaseDialect = registerOutput<String>('databaseDialect');
+    this.ddls = registerOutput<List<String>?>('ddls');
+    this.defaultTimeZone = registerOutput<String?>('defaultTimeZone');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.enableDropProtection = registerOutput<bool?>('enableDropProtection');
+    this.encryptionConfig =
+        registerOutput<DatabaseEncryptionConfig?>('encryptionConfig');
+    this.instance = registerOutput<String>('instance');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.versionRetentionPeriod =
+        registerOutput<String>('versionRetentionPeriod');
   }
 }

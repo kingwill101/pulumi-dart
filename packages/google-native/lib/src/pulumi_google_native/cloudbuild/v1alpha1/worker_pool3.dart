@@ -42,15 +42,15 @@ class WorkerPool3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.regions = Output.createUnknown<List<String>>();
-    this.serviceAccountEmail = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.workerConfig = Output.createUnknown<WorkerConfigResponse2>();
-    this.workerCount = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.regions = registerOutput<List<String>>('regions');
+    this.serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
+    this.status = registerOutput<String>('status');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.workerConfig = registerOutput<WorkerConfigResponse2>('workerConfig');
+    this.workerCount = registerOutput<String>('workerCount');
   }
 }

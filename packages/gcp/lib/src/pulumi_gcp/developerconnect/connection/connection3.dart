@@ -2565,34 +2565,44 @@ class Connection3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.bitbucketCloudConfig =
-        Output.createUnknown<ConnectionBitbucketCloudConfig2?>();
+        registerOutput<ConnectionBitbucketCloudConfig2?>(
+            'bitbucketCloudConfig');
     this.bitbucketDataCenterConfig =
-        Output.createUnknown<ConnectionBitbucketDataCenterConfig2?>();
-    this.connectionId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.cryptoKeyConfig = Output.createUnknown<ConnectionCryptoKeyConfig?>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.etag = Output.createUnknown<String?>();
-    this.githubConfig = Output.createUnknown<ConnectionGithubConfig2?>();
+        registerOutput<ConnectionBitbucketDataCenterConfig2?>(
+            'bitbucketDataCenterConfig');
+    this.connectionId = registerOutput<String>('connectionId');
+    this.createTime = registerOutput<String>('createTime');
+    this.cryptoKeyConfig =
+        registerOutput<ConnectionCryptoKeyConfig?>('cryptoKeyConfig');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.etag = registerOutput<String?>('etag');
+    this.githubConfig =
+        registerOutput<ConnectionGithubConfig2?>('githubConfig');
     this.githubEnterpriseConfig =
-        Output.createUnknown<ConnectionGithubEnterpriseConfig2?>();
-    this.gitlabConfig = Output.createUnknown<ConnectionGitlabConfig2?>();
+        registerOutput<ConnectionGithubEnterpriseConfig2?>(
+            'githubEnterpriseConfig');
+    this.gitlabConfig =
+        registerOutput<ConnectionGitlabConfig2?>('gitlabConfig');
     this.gitlabEnterpriseConfig =
-        Output.createUnknown<ConnectionGitlabEnterpriseConfig?>();
+        registerOutput<ConnectionGitlabEnterpriseConfig?>(
+            'gitlabEnterpriseConfig');
     this.installationStates =
-        Output.createUnknown<List<ConnectionInstallationState2>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<ConnectionInstallationState2>>(
+            'installationStates');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

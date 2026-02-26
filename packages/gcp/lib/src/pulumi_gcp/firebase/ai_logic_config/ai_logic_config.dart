@@ -825,11 +825,12 @@ class AiLogicConfig extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.generativeLanguageConfig =
-        Output.createUnknown<AiLogicConfigGenerativeLanguageConfig?>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<AiLogicConfigGenerativeLanguageConfig?>(
+            'generativeLanguageConfig');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.telemetryConfig =
-        Output.createUnknown<AiLogicConfigTelemetryConfig?>();
+        registerOutput<AiLogicConfigTelemetryConfig?>('telemetryConfig');
   }
 }

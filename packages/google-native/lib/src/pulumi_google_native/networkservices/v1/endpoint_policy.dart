@@ -53,20 +53,21 @@ class EndpointPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authorizationPolicy = Output.createUnknown<String>();
-    this.clientTlsPolicy = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.endpointMatcher = Output.createUnknown<EndpointMatcherResponse>();
-    this.endpointPolicyId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.serverTlsPolicy = Output.createUnknown<String>();
+    this.authorizationPolicy = registerOutput<String>('authorizationPolicy');
+    this.clientTlsPolicy = registerOutput<String>('clientTlsPolicy');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.endpointMatcher =
+        registerOutput<EndpointMatcherResponse>('endpointMatcher');
+    this.endpointPolicyId = registerOutput<String>('endpointPolicyId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.serverTlsPolicy = registerOutput<String>('serverTlsPolicy');
     this.trafficPortSelector =
-        Output.createUnknown<TrafficPortSelectorResponse>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<TrafficPortSelectorResponse>('trafficPortSelector');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

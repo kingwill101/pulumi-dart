@@ -206,23 +206,26 @@ class ElasticCluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.adminUserName = Output.createUnknown<String>();
-    this.adminUserPassword = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.authType = Output.createUnknown<String>();
-    this.backupRetentionPeriod = Output.createUnknown<int>();
-    this.endpoint = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.preferredBackupWindow = Output.createUnknown<String>();
-    this.preferredMaintenanceWindow = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.shardCapacity = Output.createUnknown<int>();
-    this.shardCount = Output.createUnknown<int>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ElasticClusterTimeouts?>();
-    this.vpcSecurityGroupIds = Output.createUnknown<List<String>>();
+    this.adminUserName = registerOutput<String>('adminUserName');
+    this.adminUserPassword = registerOutput<String>('adminUserPassword');
+    this.arn = registerOutput<String>('arn');
+    this.authType = registerOutput<String>('authType');
+    this.backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    this.preferredBackupWindow =
+        registerOutput<String>('preferredBackupWindow');
+    this.preferredMaintenanceWindow =
+        registerOutput<String>('preferredMaintenanceWindow');
+    this.region = registerOutput<String>('region');
+    this.shardCapacity = registerOutput<int>('shardCapacity');
+    this.shardCount = registerOutput<int>('shardCount');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ElasticClusterTimeouts?>('timeouts');
+    this.vpcSecurityGroupIds =
+        registerOutput<List<String>>('vpcSecurityGroupIds');
   }
 }

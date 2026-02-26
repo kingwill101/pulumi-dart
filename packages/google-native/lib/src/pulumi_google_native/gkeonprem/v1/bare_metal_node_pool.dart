@@ -61,24 +61,24 @@ class BareMetalNodePool extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.bareMetalClusterId = Output.createUnknown<String>();
-    this.bareMetalNodePoolId = Output.createUnknown<String?>();
-    this.createTime = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.bareMetalClusterId = registerOutput<String>('bareMetalClusterId');
+    this.bareMetalNodePoolId = registerOutput<String?>('bareMetalNodePoolId');
+    this.createTime = registerOutput<String>('createTime');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.nodePoolConfig =
-        Output.createUnknown<BareMetalNodePoolConfigResponse>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.status = Output.createUnknown<ResourceStatusResponse4>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<BareMetalNodePoolConfigResponse>('nodePoolConfig');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.state = registerOutput<String>('state');
+    this.status = registerOutput<ResourceStatusResponse4>('status');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
     this.upgradePolicy =
-        Output.createUnknown<BareMetalNodePoolUpgradePolicyResponse>();
+        registerOutput<BareMetalNodePoolUpgradePolicyResponse>('upgradePolicy');
   }
 }

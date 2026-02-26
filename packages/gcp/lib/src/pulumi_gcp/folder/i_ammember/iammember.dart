@@ -1734,10 +1734,10 @@ class IAMMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<IAMMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.folder = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.condition = registerOutput<IAMMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.folder = registerOutput<String>('folder');
+    this.member = registerOutput<String>('member');
+    this.role = registerOutput<String>('role');
   }
 }

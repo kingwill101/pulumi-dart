@@ -452,10 +452,10 @@ class DenyPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String?>();
-    this.etag = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.rules = Output.createUnknown<List<DenyPolicyRule>>();
+    this.displayName = registerOutput<String?>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.rules = registerOutput<List<DenyPolicyRule>>('rules');
   }
 }

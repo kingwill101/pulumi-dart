@@ -2482,22 +2482,25 @@ class WorkforcePoolProvider extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attributeCondition = Output.createUnknown<String?>();
-    this.attributeMapping = Output.createUnknown<Map<String, String>?>();
-    this.description = Output.createUnknown<String?>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.extendedAttributesOauth2Client = Output.createUnknown<
-        WorkforcePoolProviderExtendedAttributesOauth2Client?>();
-    this.extraAttributesOauth2Client = Output.createUnknown<
-        WorkforcePoolProviderExtraAttributesOauth2Client?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.oidc = Output.createUnknown<WorkforcePoolProviderOidc?>();
-    this.providerId = Output.createUnknown<String>();
-    this.saml = Output.createUnknown<WorkforcePoolProviderSaml?>();
-    this.scimUsage = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.workforcePoolId = Output.createUnknown<String>();
+    this.attributeCondition = registerOutput<String?>('attributeCondition');
+    this.attributeMapping =
+        registerOutput<Map<String, String>?>('attributeMapping');
+    this.description = registerOutput<String?>('description');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.displayName = registerOutput<String?>('displayName');
+    this.extendedAttributesOauth2Client =
+        registerOutput<WorkforcePoolProviderExtendedAttributesOauth2Client?>(
+            'extendedAttributesOauth2Client');
+    this.extraAttributesOauth2Client =
+        registerOutput<WorkforcePoolProviderExtraAttributesOauth2Client?>(
+            'extraAttributesOauth2Client');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.oidc = registerOutput<WorkforcePoolProviderOidc?>('oidc');
+    this.providerId = registerOutput<String>('providerId');
+    this.saml = registerOutput<WorkforcePoolProviderSaml?>('saml');
+    this.scimUsage = registerOutput<String?>('scimUsage');
+    this.state = registerOutput<String>('state');
+    this.workforcePoolId = registerOutput<String>('workforcePoolId');
   }
 }

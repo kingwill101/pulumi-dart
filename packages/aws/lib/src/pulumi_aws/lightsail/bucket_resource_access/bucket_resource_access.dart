@@ -204,8 +204,8 @@ class BucketResourceAccess extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucketName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceName = Output.createUnknown<String>();
+    this.bucketName = registerOutput<String>('bucketName');
+    this.region = registerOutput<String>('region');
+    this.resourceName = registerOutput<String>('resourceName');
   }
 }

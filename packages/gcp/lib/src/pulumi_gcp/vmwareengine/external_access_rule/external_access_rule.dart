@@ -792,21 +792,22 @@ class ExternalAccessRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
+    this.action = registerOutput<String>('action');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
     this.destinationIpRanges =
-        Output.createUnknown<List<ExternalAccessRuleDestinationIpRange>>();
-    this.destinationPorts = Output.createUnknown<List<String>>();
-    this.ipProtocol = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.priority = Output.createUnknown<int>();
+        registerOutput<List<ExternalAccessRuleDestinationIpRange>>(
+            'destinationIpRanges');
+    this.destinationPorts = registerOutput<List<String>>('destinationPorts');
+    this.ipProtocol = registerOutput<String>('ipProtocol');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.priority = registerOutput<int>('priority');
     this.sourceIpRanges =
-        Output.createUnknown<List<ExternalAccessRuleSourceIpRange>>();
-    this.sourcePorts = Output.createUnknown<List<String>>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<ExternalAccessRuleSourceIpRange>>('sourceIpRanges');
+    this.sourcePorts = registerOutput<List<String>>('sourcePorts');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

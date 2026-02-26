@@ -36,14 +36,15 @@ class ManagedFolderIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bindings = Output.createUnknown<
-        List<ManagedFolderIamPolicyBindingsItemResponse>>();
-    this.bucket = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.managedFolder = Output.createUnknown<String>();
-    this.resourceId = Output.createUnknown<String>();
-    this.userProject = Output.createUnknown<String?>();
-    this.version = Output.createUnknown<int>();
+    this.bindings =
+        registerOutput<List<ManagedFolderIamPolicyBindingsItemResponse>>(
+            'bindings');
+    this.bucket = registerOutput<String>('bucket');
+    this.etag = registerOutput<String>('etag');
+    this.kind = registerOutput<String>('kind');
+    this.managedFolder = registerOutput<String>('managedFolder');
+    this.resourceId = registerOutput<String>('resourceId');
+    this.userProject = registerOutput<String?>('userProject');
+    this.version = registerOutput<int>('version');
   }
 }

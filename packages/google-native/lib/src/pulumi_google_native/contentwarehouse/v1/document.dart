@@ -82,29 +82,32 @@ class Document extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.cloudAiDocument =
-        Output.createUnknown<GoogleCloudDocumentaiV1DocumentResponse>();
-    this.contentCategory = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.creator = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.displayUri = Output.createUnknown<String>();
-    this.dispositionTime = Output.createUnknown<String>();
-    this.documentSchemaName = Output.createUnknown<String>();
-    this.inlineRawDocument = Output.createUnknown<String>();
-    this.legalHold = Output.createUnknown<bool>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.plainText = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.properties = Output.createUnknown<
-        List<GoogleCloudContentwarehouseV1PropertyResponse>>();
-    this.rawDocumentFileType = Output.createUnknown<String>();
-    this.rawDocumentPath = Output.createUnknown<String>();
-    this.referenceId = Output.createUnknown<String>();
-    this.textExtractionDisabled = Output.createUnknown<bool>();
-    this.textExtractionEnabled = Output.createUnknown<bool>();
-    this.title = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.updater = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDocumentaiV1DocumentResponse>(
+            'cloudAiDocument');
+    this.contentCategory = registerOutput<String>('contentCategory');
+    this.createTime = registerOutput<String>('createTime');
+    this.creator = registerOutput<String>('creator');
+    this.displayName = registerOutput<String>('displayName');
+    this.displayUri = registerOutput<String>('displayUri');
+    this.dispositionTime = registerOutput<String>('dispositionTime');
+    this.documentSchemaName = registerOutput<String>('documentSchemaName');
+    this.inlineRawDocument = registerOutput<String>('inlineRawDocument');
+    this.legalHold = registerOutput<bool>('legalHold');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.plainText = registerOutput<String>('plainText');
+    this.project = registerOutput<String>('project');
+    this.properties =
+        registerOutput<List<GoogleCloudContentwarehouseV1PropertyResponse>>(
+            'properties');
+    this.rawDocumentFileType = registerOutput<String>('rawDocumentFileType');
+    this.rawDocumentPath = registerOutput<String>('rawDocumentPath');
+    this.referenceId = registerOutput<String>('referenceId');
+    this.textExtractionDisabled =
+        registerOutput<bool>('textExtractionDisabled');
+    this.textExtractionEnabled = registerOutput<bool>('textExtractionEnabled');
+    this.title = registerOutput<String>('title');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.updater = registerOutput<String>('updater');
   }
 }

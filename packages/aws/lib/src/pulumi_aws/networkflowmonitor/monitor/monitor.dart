@@ -269,14 +269,16 @@ class Monitor extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.localResources = Output.createUnknown<List<MonitorLocalResource>>();
-    this.monitorArn = Output.createUnknown<String>();
-    this.monitorName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.remoteResources = Output.createUnknown<List<MonitorRemoteResource>?>();
-    this.scopeArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<MonitorTimeouts?>();
+    this.localResources =
+        registerOutput<List<MonitorLocalResource>>('localResources');
+    this.monitorArn = registerOutput<String>('monitorArn');
+    this.monitorName = registerOutput<String>('monitorName');
+    this.region = registerOutput<String>('region');
+    this.remoteResources =
+        registerOutput<List<MonitorRemoteResource>?>('remoteResources');
+    this.scopeArn = registerOutput<String>('scopeArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<MonitorTimeouts?>('timeouts');
   }
 }

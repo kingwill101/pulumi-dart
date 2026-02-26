@@ -54,18 +54,23 @@ class SearchApplication extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.dataSourceRestrictions =
-        Output.createUnknown<List<DataSourceRestrictionResponse>>();
+        registerOutput<List<DataSourceRestrictionResponse>>(
+            'dataSourceRestrictions');
     this.defaultFacetOptions =
-        Output.createUnknown<List<FacetOptionsResponse>>();
-    this.defaultSortOptions = Output.createUnknown<SortOptionsResponse>();
-    this.displayName = Output.createUnknown<String>();
-    this.enableAuditLog = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.operationIds = Output.createUnknown<List<String>>();
+        registerOutput<List<FacetOptionsResponse>>('defaultFacetOptions');
+    this.defaultSortOptions =
+        registerOutput<SortOptionsResponse>('defaultSortOptions');
+    this.displayName = registerOutput<String>('displayName');
+    this.enableAuditLog = registerOutput<bool>('enableAuditLog');
+    this.name = registerOutput<String>('name');
+    this.operationIds = registerOutput<List<String>>('operationIds');
     this.queryInterpretationConfig =
-        Output.createUnknown<QueryInterpretationConfigResponse>();
-    this.returnResultThumbnailUrls = Output.createUnknown<bool>();
-    this.scoringConfig = Output.createUnknown<ScoringConfigResponse>();
-    this.sourceConfig = Output.createUnknown<List<SourceConfigResponse>>();
+        registerOutput<QueryInterpretationConfigResponse>(
+            'queryInterpretationConfig');
+    this.returnResultThumbnailUrls =
+        registerOutput<bool>('returnResultThumbnailUrls');
+    this.scoringConfig = registerOutput<ScoringConfigResponse>('scoringConfig');
+    this.sourceConfig =
+        registerOutput<List<SourceConfigResponse>>('sourceConfig');
   }
 }

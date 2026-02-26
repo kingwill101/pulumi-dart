@@ -307,15 +307,15 @@ class S3Location extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentArns = Output.createUnknown<List<String>?>();
-    this.arn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.s3BucketArn = Output.createUnknown<String>();
-    this.s3Config = Output.createUnknown<S3LocationS3Config>();
-    this.s3StorageClass = Output.createUnknown<String>();
-    this.subdirectory = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.uri = Output.createUnknown<String>();
+    this.agentArns = registerOutput<List<String>?>('agentArns');
+    this.arn = registerOutput<String>('arn');
+    this.region = registerOutput<String>('region');
+    this.s3BucketArn = registerOutput<String>('s3BucketArn');
+    this.s3Config = registerOutput<S3LocationS3Config>('s3Config');
+    this.s3StorageClass = registerOutput<String>('s3StorageClass');
+    this.subdirectory = registerOutput<String>('subdirectory');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.uri = registerOutput<String>('uri');
   }
 }

@@ -1305,10 +1305,10 @@ class Policy4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dryRunSpec = Output.createUnknown<PolicyDryRunSpec?>();
-    this.etag = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.spec = Output.createUnknown<PolicySpec?>();
+    this.dryRunSpec = registerOutput<PolicyDryRunSpec?>('dryRunSpec');
+    this.etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.spec = registerOutput<PolicySpec?>('spec');
   }
 }

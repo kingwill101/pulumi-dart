@@ -209,8 +209,8 @@ class DomainDkim extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dkimTokens = Output.createUnknown<List<String>>();
-    this.domain = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.dkimTokens = registerOutput<List<String>>('dkimTokens');
+    this.domain = registerOutput<String>('domain');
+    this.region = registerOutput<String>('region');
   }
 }

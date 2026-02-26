@@ -1141,11 +1141,13 @@ class FunctionEventInvokeConfig extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.destinationConfig =
-        Output.createUnknown<FunctionEventInvokeConfigDestinationConfig?>();
-    this.functionName = Output.createUnknown<String>();
-    this.maximumEventAgeInSeconds = Output.createUnknown<int?>();
-    this.maximumRetryAttempts = Output.createUnknown<int?>();
-    this.qualifier = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<FunctionEventInvokeConfigDestinationConfig?>(
+            'destinationConfig');
+    this.functionName = registerOutput<String>('functionName');
+    this.maximumEventAgeInSeconds =
+        registerOutput<int?>('maximumEventAgeInSeconds');
+    this.maximumRetryAttempts = registerOutput<int?>('maximumRetryAttempts');
+    this.qualifier = registerOutput<String?>('qualifier');
+    this.region = registerOutput<String>('region');
   }
 }

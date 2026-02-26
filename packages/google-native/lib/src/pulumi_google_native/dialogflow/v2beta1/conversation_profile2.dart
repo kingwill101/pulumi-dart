@@ -76,30 +76,38 @@ class ConversationProfile2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.automatedAgentConfig = Output.createUnknown<
-        GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.humanAgentAssistantConfig = Output.createUnknown<
-        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse>();
-    this.humanAgentHandoffConfig = Output.createUnknown<
-        GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigResponse>();
-    this.languageCode = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.loggingConfig = Output.createUnknown<
-        GoogleCloudDialogflowV2beta1LoggingConfigResponse>();
-    this.name = Output.createUnknown<String>();
-    this.newMessageEventNotificationConfig = Output.createUnknown<
-        GoogleCloudDialogflowV2beta1NotificationConfigResponse>();
-    this.notificationConfig = Output.createUnknown<
-        GoogleCloudDialogflowV2beta1NotificationConfigResponse>();
-    this.project = Output.createUnknown<String>();
-    this.securitySettings = Output.createUnknown<String>();
-    this.sttConfig = Output.createUnknown<
-        GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse>();
-    this.timeZone = Output.createUnknown<String>();
-    this.ttsConfig = Output.createUnknown<
-        GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse>();
-    this.updateTime = Output.createUnknown<String>();
+    this.automatedAgentConfig = registerOutput<
+            GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponse>(
+        'automatedAgentConfig');
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.humanAgentAssistantConfig = registerOutput<
+            GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse>(
+        'humanAgentAssistantConfig');
+    this.humanAgentHandoffConfig = registerOutput<
+            GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigResponse>(
+        'humanAgentHandoffConfig');
+    this.languageCode = registerOutput<String>('languageCode');
+    this.location = registerOutput<String>('location');
+    this.loggingConfig =
+        registerOutput<GoogleCloudDialogflowV2beta1LoggingConfigResponse>(
+            'loggingConfig');
+    this.name = registerOutput<String>('name');
+    this.newMessageEventNotificationConfig =
+        registerOutput<GoogleCloudDialogflowV2beta1NotificationConfigResponse>(
+            'newMessageEventNotificationConfig');
+    this.notificationConfig =
+        registerOutput<GoogleCloudDialogflowV2beta1NotificationConfigResponse>(
+            'notificationConfig');
+    this.project = registerOutput<String>('project');
+    this.securitySettings = registerOutput<String>('securitySettings');
+    this.sttConfig =
+        registerOutput<GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse>(
+            'sttConfig');
+    this.timeZone = registerOutput<String>('timeZone');
+    this.ttsConfig = registerOutput<
+            GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse>(
+        'ttsConfig');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

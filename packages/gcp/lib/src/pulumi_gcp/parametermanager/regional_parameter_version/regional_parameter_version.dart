@@ -856,14 +856,14 @@ class RegionalParameterVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.kmsKeyVersion = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parameter = Output.createUnknown<String>();
-    this.parameterData = Output.createUnknown<String>();
-    this.parameterVersionId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.parameter = registerOutput<String>('parameter');
+    this.parameterData = registerOutput<String>('parameterData');
+    this.parameterVersionId = registerOutput<String>('parameterVersionId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

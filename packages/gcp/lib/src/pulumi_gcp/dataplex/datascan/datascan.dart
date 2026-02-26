@@ -4129,27 +4129,32 @@ class Datascan extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.data = Output.createUnknown<DatascanData>();
-    this.dataDiscoverySpec = Output.createUnknown<DatascanDataDiscoverySpec?>();
-    this.dataDocumentationSpec = Output.createUnknown<Map<String, dynamic>?>();
-    this.dataProfileSpec = Output.createUnknown<DatascanDataProfileSpec?>();
-    this.dataQualitySpec = Output.createUnknown<DatascanDataQualitySpec?>();
-    this.dataScanId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.executionSpec = Output.createUnknown<DatascanExecutionSpec>();
+    this.createTime = registerOutput<String>('createTime');
+    this.data = registerOutput<DatascanData>('data');
+    this.dataDiscoverySpec =
+        registerOutput<DatascanDataDiscoverySpec?>('dataDiscoverySpec');
+    this.dataDocumentationSpec =
+        registerOutput<Map<String, dynamic>?>('dataDocumentationSpec');
+    this.dataProfileSpec =
+        registerOutput<DatascanDataProfileSpec?>('dataProfileSpec');
+    this.dataQualitySpec =
+        registerOutput<DatascanDataQualitySpec?>('dataQualitySpec');
+    this.dataScanId = registerOutput<String>('dataScanId');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.executionSpec = registerOutput<DatascanExecutionSpec>('executionSpec');
     this.executionStatuses =
-        Output.createUnknown<List<DatascanExecutionStatus>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<DatascanExecutionStatus>>('executionStatuses');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String>('type');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

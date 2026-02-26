@@ -47,16 +47,16 @@ class WorkforcePool extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.accessRestrictions =
-        Output.createUnknown<AccessRestrictionsResponse>();
-    this.description = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool>();
-    this.displayName = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.sessionDuration = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.workforcePoolId = Output.createUnknown<String?>();
+        registerOutput<AccessRestrictionsResponse>('accessRestrictions');
+    this.description = registerOutput<String>('description');
+    this.disabled = registerOutput<bool>('disabled');
+    this.displayName = registerOutput<String>('displayName');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<String>('parent');
+    this.sessionDuration = registerOutput<String>('sessionDuration');
+    this.state = registerOutput<String>('state');
+    this.workforcePoolId = registerOutput<String?>('workforcePoolId');
   }
 }

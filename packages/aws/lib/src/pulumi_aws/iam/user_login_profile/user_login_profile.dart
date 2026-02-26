@@ -266,12 +266,12 @@ class UserLoginProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.encryptedPassword = Output.createUnknown<String>();
-    this.keyFingerprint = Output.createUnknown<String>();
-    this.password = Output.createUnknown<String>();
-    this.passwordLength = Output.createUnknown<int?>();
-    this.passwordResetRequired = Output.createUnknown<bool>();
-    this.pgpKey = Output.createUnknown<String?>();
-    this.user = Output.createUnknown<String>();
+    this.encryptedPassword = registerOutput<String>('encryptedPassword');
+    this.keyFingerprint = registerOutput<String>('keyFingerprint');
+    this.password = registerOutput<String>('password');
+    this.passwordLength = registerOutput<int?>('passwordLength');
+    this.passwordResetRequired = registerOutput<bool>('passwordResetRequired');
+    this.pgpKey = registerOutput<String?>('pgpKey');
+    this.user = registerOutput<String>('user');
   }
 }

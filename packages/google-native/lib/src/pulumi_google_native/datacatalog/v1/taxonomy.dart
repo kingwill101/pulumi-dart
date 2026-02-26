@@ -40,16 +40,19 @@ class Taxonomy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activatedPolicyTypes = Output.createUnknown<List<String>>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.policyTagCount = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
+    this.activatedPolicyTypes =
+        registerOutput<List<String>>('activatedPolicyTypes');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.policyTagCount = registerOutput<int>('policyTagCount');
+    this.project = registerOutput<String>('project');
     this.service =
-        Output.createUnknown<GoogleCloudDatacatalogV1TaxonomyServiceResponse>();
-    this.taxonomyTimestamps = Output.createUnknown<
-        GoogleCloudDatacatalogV1SystemTimestampsResponse>();
+        registerOutput<GoogleCloudDatacatalogV1TaxonomyServiceResponse>(
+            'service');
+    this.taxonomyTimestamps =
+        registerOutput<GoogleCloudDatacatalogV1SystemTimestampsResponse>(
+            'taxonomyTimestamps');
   }
 }

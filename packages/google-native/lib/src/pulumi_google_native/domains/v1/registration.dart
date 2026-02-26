@@ -61,23 +61,26 @@ class Registration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.contactSettings = Output.createUnknown<ContactSettingsResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.dnsSettings = Output.createUnknown<DnsSettingsResponse>();
-    this.domainName = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.issues = Output.createUnknown<List<String>>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
+    this.contactSettings =
+        registerOutput<ContactSettingsResponse>('contactSettings');
+    this.createTime = registerOutput<String>('createTime');
+    this.dnsSettings = registerOutput<DnsSettingsResponse>('dnsSettings');
+    this.domainName = registerOutput<String>('domainName');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.issues = registerOutput<List<String>>('issues');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
     this.managementSettings =
-        Output.createUnknown<ManagementSettingsResponse>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<ManagementSettingsResponse>('managementSettings');
+    this.name = registerOutput<String>('name');
     this.pendingContactSettings =
-        Output.createUnknown<ContactSettingsResponse>();
-    this.project = Output.createUnknown<String>();
-    this.registerFailureReason = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.supportedPrivacy = Output.createUnknown<List<String>>();
-    this.transferFailureReason = Output.createUnknown<String>();
+        registerOutput<ContactSettingsResponse>('pendingContactSettings');
+    this.project = registerOutput<String>('project');
+    this.registerFailureReason =
+        registerOutput<String>('registerFailureReason');
+    this.state = registerOutput<String>('state');
+    this.supportedPrivacy = registerOutput<List<String>>('supportedPrivacy');
+    this.transferFailureReason =
+        registerOutput<String>('transferFailureReason');
   }
 }

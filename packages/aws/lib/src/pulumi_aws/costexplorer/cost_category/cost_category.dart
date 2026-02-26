@@ -385,16 +385,16 @@ class CostCategory extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.defaultValue = Output.createUnknown<String?>();
-    this.effectiveEnd = Output.createUnknown<String>();
-    this.effectiveStart = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.ruleVersion = Output.createUnknown<String>();
-    this.rules = Output.createUnknown<List<CostCategoryRule>>();
+    this.arn = registerOutput<String>('arn');
+    this.defaultValue = registerOutput<String?>('defaultValue');
+    this.effectiveEnd = registerOutput<String>('effectiveEnd');
+    this.effectiveStart = registerOutput<String>('effectiveStart');
+    this.name = registerOutput<String>('name');
+    this.ruleVersion = registerOutput<String>('ruleVersion');
+    this.rules = registerOutput<List<CostCategoryRule>>('rules');
     this.splitChargeRules =
-        Output.createUnknown<List<CostCategorySplitChargeRule>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<CostCategorySplitChargeRule>?>('splitChargeRules');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

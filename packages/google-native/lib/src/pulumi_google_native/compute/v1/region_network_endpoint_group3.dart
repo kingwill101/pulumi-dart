@@ -71,28 +71,30 @@ class RegionNetworkEndpointGroup3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
     this.appEngine =
-        Output.createUnknown<NetworkEndpointGroupAppEngineResponse3>();
+        registerOutput<NetworkEndpointGroupAppEngineResponse3>('appEngine');
     this.cloudFunction =
-        Output.createUnknown<NetworkEndpointGroupCloudFunctionResponse3>();
+        registerOutput<NetworkEndpointGroupCloudFunctionResponse3>(
+            'cloudFunction');
     this.cloudRun =
-        Output.createUnknown<NetworkEndpointGroupCloudRunResponse3>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.defaultPort = Output.createUnknown<int>();
-    this.description = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.networkEndpointType = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pscData = Output.createUnknown<NetworkEndpointGroupPscDataResponse3>();
-    this.pscTargetService = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.size = Output.createUnknown<int>();
-    this.subnetwork = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<NetworkEndpointGroupCloudRunResponse3>('cloudRun');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.defaultPort = registerOutput<int>('defaultPort');
+    this.description = registerOutput<String>('description');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.networkEndpointType = registerOutput<String>('networkEndpointType');
+    this.project = registerOutput<String>('project');
+    this.pscData =
+        registerOutput<NetworkEndpointGroupPscDataResponse3>('pscData');
+    this.pscTargetService = registerOutput<String>('pscTargetService');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.size = registerOutput<int>('size');
+    this.subnetwork = registerOutput<String>('subnetwork');
+    this.zone = registerOutput<String>('zone');
   }
 }

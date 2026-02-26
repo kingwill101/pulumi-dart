@@ -349,31 +349,34 @@ class DevEndpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arguments = Output.createUnknown<Map<String, String>?>();
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZone = Output.createUnknown<String>();
-    this.extraJarsS3Path = Output.createUnknown<String?>();
-    this.extraPythonLibsS3Path = Output.createUnknown<String?>();
-    this.failureReason = Output.createUnknown<String>();
-    this.glueVersion = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.numberOfNodes = Output.createUnknown<int?>();
-    this.numberOfWorkers = Output.createUnknown<int?>();
-    this.privateAddress = Output.createUnknown<String>();
-    this.publicAddress = Output.createUnknown<String>();
-    this.publicKey = Output.createUnknown<String?>();
-    this.publicKeys = Output.createUnknown<List<String>?>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.securityConfiguration = Output.createUnknown<String?>();
-    this.securityGroupIds = Output.createUnknown<List<String>?>();
-    this.status = Output.createUnknown<String>();
-    this.subnetId = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcId = Output.createUnknown<String>();
-    this.workerType = Output.createUnknown<String?>();
-    this.yarnEndpointAddress = Output.createUnknown<String>();
-    this.zeppelinRemoteSparkInterpreterPort = Output.createUnknown<int>();
+    this.arguments = registerOutput<Map<String, String>?>('arguments');
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZone = registerOutput<String>('availabilityZone');
+    this.extraJarsS3Path = registerOutput<String?>('extraJarsS3Path');
+    this.extraPythonLibsS3Path =
+        registerOutput<String?>('extraPythonLibsS3Path');
+    this.failureReason = registerOutput<String>('failureReason');
+    this.glueVersion = registerOutput<String?>('glueVersion');
+    this.name = registerOutput<String>('name');
+    this.numberOfNodes = registerOutput<int?>('numberOfNodes');
+    this.numberOfWorkers = registerOutput<int?>('numberOfWorkers');
+    this.privateAddress = registerOutput<String>('privateAddress');
+    this.publicAddress = registerOutput<String>('publicAddress');
+    this.publicKey = registerOutput<String?>('publicKey');
+    this.publicKeys = registerOutput<List<String>?>('publicKeys');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.securityConfiguration =
+        registerOutput<String?>('securityConfiguration');
+    this.securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    this.status = registerOutput<String>('status');
+    this.subnetId = registerOutput<String?>('subnetId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcId = registerOutput<String>('vpcId');
+    this.workerType = registerOutput<String?>('workerType');
+    this.yarnEndpointAddress = registerOutput<String>('yarnEndpointAddress');
+    this.zeppelinRemoteSparkInterpreterPort =
+        registerOutput<int>('zeppelinRemoteSparkInterpreterPort');
   }
 }

@@ -162,54 +162,69 @@ class Table2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.biglakeConfiguration =
-        Output.createUnknown<BigLakeConfigurationResponse>();
-    this.cloneDefinition = Output.createUnknown<CloneDefinitionResponse>();
-    this.clustering = Output.createUnknown<ClusteringResponse>();
-    this.creationTime = Output.createUnknown<String>();
-    this.datasetId = Output.createUnknown<String>();
-    this.defaultCollation = Output.createUnknown<String>();
-    this.defaultRoundingMode = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
+        registerOutput<BigLakeConfigurationResponse>('biglakeConfiguration');
+    this.cloneDefinition =
+        registerOutput<CloneDefinitionResponse>('cloneDefinition');
+    this.clustering = registerOutput<ClusteringResponse>('clustering');
+    this.creationTime = registerOutput<String>('creationTime');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.defaultCollation = registerOutput<String>('defaultCollation');
+    this.defaultRoundingMode = registerOutput<String>('defaultRoundingMode');
+    this.description = registerOutput<String>('description');
     this.encryptionConfiguration =
-        Output.createUnknown<EncryptionConfigurationResponse>();
-    this.etag = Output.createUnknown<String>();
-    this.expirationTime = Output.createUnknown<String>();
+        registerOutput<EncryptionConfigurationResponse>(
+            'encryptionConfiguration');
+    this.etag = registerOutput<String>('etag');
+    this.expirationTime = registerOutput<String>('expirationTime');
     this.externalDataConfiguration =
-        Output.createUnknown<ExternalDataConfigurationResponse>();
-    this.friendlyName = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lastModifiedTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
+        registerOutput<ExternalDataConfigurationResponse>(
+            'externalDataConfiguration');
+    this.friendlyName = registerOutput<String>('friendlyName');
+    this.kind = registerOutput<String>('kind');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.location = registerOutput<String>('location');
     this.materializedView =
-        Output.createUnknown<MaterializedViewDefinitionResponse>();
-    this.maxStaleness = Output.createUnknown<String>();
-    this.model = Output.createUnknown<ModelDefinitionResponse>();
-    this.numActiveLogicalBytes = Output.createUnknown<String>();
-    this.numActivePhysicalBytes = Output.createUnknown<String>();
-    this.numBytes = Output.createUnknown<String>();
-    this.numLongTermBytes = Output.createUnknown<String>();
-    this.numLongTermLogicalBytes = Output.createUnknown<String>();
-    this.numLongTermPhysicalBytes = Output.createUnknown<String>();
-    this.numPartitions = Output.createUnknown<String>();
-    this.numPhysicalBytes = Output.createUnknown<String>();
-    this.numRows = Output.createUnknown<String>();
-    this.numTimeTravelPhysicalBytes = Output.createUnknown<String>();
-    this.numTotalLogicalBytes = Output.createUnknown<String>();
-    this.numTotalPhysicalBytes = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rangePartitioning = Output.createUnknown<RangePartitioningResponse>();
-    this.requirePartitionFilter = Output.createUnknown<bool>();
-    this.resourceTags = Output.createUnknown<Map<String, String>>();
-    this.schema = Output.createUnknown<TableSchemaResponse>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<MaterializedViewDefinitionResponse>('materializedView');
+    this.maxStaleness = registerOutput<String>('maxStaleness');
+    this.model = registerOutput<ModelDefinitionResponse>('model');
+    this.numActiveLogicalBytes =
+        registerOutput<String>('numActiveLogicalBytes');
+    this.numActivePhysicalBytes =
+        registerOutput<String>('numActivePhysicalBytes');
+    this.numBytes = registerOutput<String>('numBytes');
+    this.numLongTermBytes = registerOutput<String>('numLongTermBytes');
+    this.numLongTermLogicalBytes =
+        registerOutput<String>('numLongTermLogicalBytes');
+    this.numLongTermPhysicalBytes =
+        registerOutput<String>('numLongTermPhysicalBytes');
+    this.numPartitions = registerOutput<String>('numPartitions');
+    this.numPhysicalBytes = registerOutput<String>('numPhysicalBytes');
+    this.numRows = registerOutput<String>('numRows');
+    this.numTimeTravelPhysicalBytes =
+        registerOutput<String>('numTimeTravelPhysicalBytes');
+    this.numTotalLogicalBytes = registerOutput<String>('numTotalLogicalBytes');
+    this.numTotalPhysicalBytes =
+        registerOutput<String>('numTotalPhysicalBytes');
+    this.project = registerOutput<String>('project');
+    this.rangePartitioning =
+        registerOutput<RangePartitioningResponse>('rangePartitioning');
+    this.requirePartitionFilter =
+        registerOutput<bool>('requirePartitionFilter');
+    this.resourceTags = registerOutput<Map<String, String>>('resourceTags');
+    this.schema = registerOutput<TableSchemaResponse>('schema');
+    this.selfLink = registerOutput<String>('selfLink');
     this.snapshotDefinition =
-        Output.createUnknown<SnapshotDefinitionResponse>();
-    this.streamingBuffer = Output.createUnknown<StreamingbufferResponse>();
-    this.tableConstraints = Output.createUnknown<TableConstraintsResponse>();
-    this.tableReference = Output.createUnknown<TableReferenceResponse>();
-    this.timePartitioning = Output.createUnknown<TimePartitioningResponse>();
-    this.type = Output.createUnknown<String>();
-    this.view = Output.createUnknown<ViewDefinitionResponse>();
+        registerOutput<SnapshotDefinitionResponse>('snapshotDefinition');
+    this.streamingBuffer =
+        registerOutput<StreamingbufferResponse>('streamingBuffer');
+    this.tableConstraints =
+        registerOutput<TableConstraintsResponse>('tableConstraints');
+    this.tableReference =
+        registerOutput<TableReferenceResponse>('tableReference');
+    this.timePartitioning =
+        registerOutput<TimePartitioningResponse>('timePartitioning');
+    this.type = registerOutput<String>('type');
+    this.view = registerOutput<ViewDefinitionResponse>('view');
   }
 }

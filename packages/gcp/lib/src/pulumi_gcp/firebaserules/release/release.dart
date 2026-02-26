@@ -394,11 +394,11 @@ class Release extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.rulesetName = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.disabled = registerOutput<bool>('disabled');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.rulesetName = registerOutput<String>('rulesetName');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

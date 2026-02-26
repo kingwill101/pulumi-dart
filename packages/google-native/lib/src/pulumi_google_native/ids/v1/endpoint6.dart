@@ -58,21 +58,22 @@ class Endpoint6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.endpointForwardingRule = Output.createUnknown<String>();
-    this.endpointId = Output.createUnknown<String>();
-    this.endpointIp = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.severity = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.threatExceptions = Output.createUnknown<List<String>>();
-    this.trafficLogs = Output.createUnknown<bool>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.endpointForwardingRule =
+        registerOutput<String>('endpointForwardingRule');
+    this.endpointId = registerOutput<String>('endpointId');
+    this.endpointIp = registerOutput<String>('endpointIp');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.severity = registerOutput<String>('severity');
+    this.state = registerOutput<String>('state');
+    this.threatExceptions = registerOutput<List<String>>('threatExceptions');
+    this.trafficLogs = registerOutput<bool>('trafficLogs');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

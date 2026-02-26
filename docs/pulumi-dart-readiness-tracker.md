@@ -1,12 +1,12 @@
 # Pulumi Dart Readiness Tracker
 
-Last updated: 2026-02-25
+Last updated: 2026-02-26
 
 ## Executive Status
 
 - Can we deploy infrastructure with Pulumi Dart today? **Yes, for core flows.**
 - Is Pulumi Dart at parity with Pulumi Node/Python/Go? **No.**
-- Primary blocker: **generator/codegen flow is not complete**.
+- Primary blocker: **long-tail generator/schema parity edge cases** (core generation flow is now operational).
 
 ## What Works Today
 
@@ -60,6 +60,13 @@ Covered capabilities:
 ## 1) Generator Flow (Critical)
 
 Status: **In Progress**
+
+Current validation snapshot (2026-02-26):
+
+- `task generate:all`: **PASS** (gcp, gcp-global-cloudrun, google-native, aws, awsx, random).
+- `task analyze:random`, `task analyze:aws`, `task analyze:gcp`: **0 issues** each.
+- `task smoke:preview PACKAGE=random|aws|gcp`: **PASS**.
+- Known warning class during generation for some schemas (`gcp`, `aws`, `random`): upstream schema emits deprecated provider-reference warnings (`/resources/pulumi:providers:<pkg>` vs `#/provider`); generation succeeds and this does not currently block SDK output.
 
 Current behavior in Dart language host:
 

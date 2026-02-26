@@ -448,18 +448,21 @@ class AiTensorboard extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.blobStoragePathPrefix = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.encryptionSpec = Output.createUnknown<AiTensorboardEncryptionSpec?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String>();
-    this.runCount = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.blobStoragePathPrefix =
+        registerOutput<String>('blobStoragePathPrefix');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.encryptionSpec =
+        registerOutput<AiTensorboardEncryptionSpec?>('encryptionSpec');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String>('region');
+    this.runCount = registerOutput<String>('runCount');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

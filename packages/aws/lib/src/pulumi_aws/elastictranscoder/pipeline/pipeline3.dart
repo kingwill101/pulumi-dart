@@ -227,19 +227,23 @@ class Pipeline3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.awsKmsKeyArn = Output.createUnknown<String?>();
-    this.contentConfig = Output.createUnknown<PipelineContentConfig>();
+    this.arn = registerOutput<String>('arn');
+    this.awsKmsKeyArn = registerOutput<String?>('awsKmsKeyArn');
+    this.contentConfig = registerOutput<PipelineContentConfig>('contentConfig');
     this.contentConfigPermissions =
-        Output.createUnknown<List<PipelineContentConfigPermission>?>();
-    this.inputBucket = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.notifications = Output.createUnknown<PipelineNotifications?>();
-    this.outputBucket = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.thumbnailConfig = Output.createUnknown<PipelineThumbnailConfig>();
+        registerOutput<List<PipelineContentConfigPermission>?>(
+            'contentConfigPermissions');
+    this.inputBucket = registerOutput<String>('inputBucket');
+    this.name = registerOutput<String>('name');
+    this.notifications =
+        registerOutput<PipelineNotifications?>('notifications');
+    this.outputBucket = registerOutput<String>('outputBucket');
+    this.region = registerOutput<String>('region');
+    this.role = registerOutput<String>('role');
+    this.thumbnailConfig =
+        registerOutput<PipelineThumbnailConfig>('thumbnailConfig');
     this.thumbnailConfigPermissions =
-        Output.createUnknown<List<PipelineThumbnailConfigPermission>?>();
+        registerOutput<List<PipelineThumbnailConfigPermission>?>(
+            'thumbnailConfigPermissions');
   }
 }

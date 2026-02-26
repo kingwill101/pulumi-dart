@@ -24,10 +24,10 @@ class Dataset5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.datasetId = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.timeZone = Output.createUnknown<String>();
+    this.datasetId = registerOutput<String?>('datasetId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.timeZone = registerOutput<String>('timeZone');
   }
 }

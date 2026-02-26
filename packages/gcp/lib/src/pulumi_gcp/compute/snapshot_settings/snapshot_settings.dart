@@ -180,8 +180,8 @@ class SnapshotSettings extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.project = Output.createUnknown<String>();
+    this.project = registerOutput<String>('project');
     this.storageLocation =
-        Output.createUnknown<SnapshotSettingsStorageLocation>();
+        registerOutput<SnapshotSettingsStorageLocation>('storageLocation');
   }
 }

@@ -405,17 +405,18 @@ class AgentPrompt extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.customerEncryptionKeyArn = Output.createUnknown<String?>();
-    this.defaultVariant = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.updatedAt = Output.createUnknown<String>();
-    this.variants = Output.createUnknown<List<AgentPromptVariant>?>();
-    this.version = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.customerEncryptionKeyArn =
+        registerOutput<String?>('customerEncryptionKeyArn');
+    this.defaultVariant = registerOutput<String?>('defaultVariant');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.updatedAt = registerOutput<String>('updatedAt');
+    this.variants = registerOutput<List<AgentPromptVariant>?>('variants');
+    this.version = registerOutput<String>('version');
   }
 }

@@ -275,17 +275,18 @@ class Project3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createdAt = Output.createUnknown<String>();
-    this.createdBy = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.domainIdentifier = Output.createUnknown<String>();
-    this.failureReasons = Output.createUnknown<List<ProjectFailureReason>>();
-    this.glossaryTerms = Output.createUnknown<List<String>?>();
-    this.lastUpdatedAt = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.projectStatus = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.skipDeletionCheck = Output.createUnknown<bool?>();
-    this.timeouts = Output.createUnknown<ProjectTimeouts?>();
+    this.createdAt = registerOutput<String>('createdAt');
+    this.createdBy = registerOutput<String>('createdBy');
+    this.description = registerOutput<String?>('description');
+    this.domainIdentifier = registerOutput<String>('domainIdentifier');
+    this.failureReasons =
+        registerOutput<List<ProjectFailureReason>>('failureReasons');
+    this.glossaryTerms = registerOutput<List<String>?>('glossaryTerms');
+    this.lastUpdatedAt = registerOutput<String>('lastUpdatedAt');
+    this.name = registerOutput<String>('name');
+    this.projectStatus = registerOutput<String>('projectStatus');
+    this.region = registerOutput<String>('region');
+    this.skipDeletionCheck = registerOutput<bool?>('skipDeletionCheck');
+    this.timeouts = registerOutput<ProjectTimeouts?>('timeouts');
   }
 }

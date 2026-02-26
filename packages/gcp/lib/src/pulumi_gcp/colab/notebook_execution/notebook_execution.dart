@@ -2391,21 +2391,27 @@ class NotebookExecution extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.customEnvironmentSpec =
-        Output.createUnknown<NotebookExecutionCustomEnvironmentSpec?>();
+        registerOutput<NotebookExecutionCustomEnvironmentSpec?>(
+            'customEnvironmentSpec');
     this.dataformRepositorySource =
-        Output.createUnknown<NotebookExecutionDataformRepositorySource?>();
+        registerOutput<NotebookExecutionDataformRepositorySource?>(
+            'dataformRepositorySource');
     this.directNotebookSource =
-        Output.createUnknown<NotebookExecutionDirectNotebookSource?>();
-    this.displayName = Output.createUnknown<String>();
-    this.executionTimeout = Output.createUnknown<String?>();
-    this.executionUser = Output.createUnknown<String?>();
+        registerOutput<NotebookExecutionDirectNotebookSource?>(
+            'directNotebookSource');
+    this.displayName = registerOutput<String>('displayName');
+    this.executionTimeout = registerOutput<String?>('executionTimeout');
+    this.executionUser = registerOutput<String?>('executionUser');
     this.gcsNotebookSource =
-        Output.createUnknown<NotebookExecutionGcsNotebookSource?>();
-    this.gcsOutputUri = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.notebookExecutionJobId = Output.createUnknown<String>();
-    this.notebookRuntimeTemplateResourceName = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String?>();
+        registerOutput<NotebookExecutionGcsNotebookSource?>(
+            'gcsNotebookSource');
+    this.gcsOutputUri = registerOutput<String>('gcsOutputUri');
+    this.location = registerOutput<String>('location');
+    this.notebookExecutionJobId =
+        registerOutput<String>('notebookExecutionJobId');
+    this.notebookRuntimeTemplateResourceName =
+        registerOutput<String?>('notebookRuntimeTemplateResourceName');
+    this.project = registerOutput<String>('project');
+    this.serviceAccount = registerOutput<String?>('serviceAccount');
   }
 }

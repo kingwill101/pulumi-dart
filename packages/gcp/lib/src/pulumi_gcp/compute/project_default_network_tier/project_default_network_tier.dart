@@ -127,7 +127,7 @@ class ProjectDefaultNetworkTier extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.networkTier = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.networkTier = registerOutput<String>('networkTier');
+    this.project = registerOutput<String>('project');
   }
 }

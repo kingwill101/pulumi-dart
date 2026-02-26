@@ -205,12 +205,12 @@ class TagValue extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.namespacedName = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.shortName = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.namespacedName = registerOutput<String>('namespacedName');
+    this.parent = registerOutput<String>('parent');
+    this.shortName = registerOutput<String>('shortName');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

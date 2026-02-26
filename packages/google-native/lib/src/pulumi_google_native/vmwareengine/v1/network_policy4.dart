@@ -53,19 +53,21 @@ class NetworkPolicy4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.edgeServicesCidr = Output.createUnknown<String>();
-    this.externalIp = Output.createUnknown<NetworkServiceResponse>();
-    this.internetAccess = Output.createUnknown<NetworkServiceResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.networkPolicyId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vmwareEngineNetwork = Output.createUnknown<String>();
-    this.vmwareEngineNetworkCanonical = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.edgeServicesCidr = registerOutput<String>('edgeServicesCidr');
+    this.externalIp = registerOutput<NetworkServiceResponse>('externalIp');
+    this.internetAccess =
+        registerOutput<NetworkServiceResponse>('internetAccess');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.networkPolicyId = registerOutput<String>('networkPolicyId');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vmwareEngineNetwork = registerOutput<String>('vmwareEngineNetwork');
+    this.vmwareEngineNetworkCanonical =
+        registerOutput<String>('vmwareEngineNetworkCanonical');
   }
 }

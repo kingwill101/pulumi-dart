@@ -42,16 +42,17 @@ class ReportConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.groupPreferencesetAssignments = Output.createUnknown<
-        List<ReportConfigGroupPreferenceSetAssignmentResponse>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reportConfigId = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.groupPreferencesetAssignments =
+        registerOutput<List<ReportConfigGroupPreferenceSetAssignmentResponse>>(
+            'groupPreferencesetAssignments');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.reportConfigId = registerOutput<String>('reportConfigId');
+    this.requestId = registerOutput<String?>('requestId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

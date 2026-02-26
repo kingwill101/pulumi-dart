@@ -272,11 +272,11 @@ class EventPermission extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.action = Output.createUnknown<String?>();
-    this.condition = Output.createUnknown<EventPermissionCondition?>();
-    this.eventBusName = Output.createUnknown<String?>();
-    this.principal = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.statementId = Output.createUnknown<String>();
+    this.action = registerOutput<String?>('action');
+    this.condition = registerOutput<EventPermissionCondition?>('condition');
+    this.eventBusName = registerOutput<String?>('eventBusName');
+    this.principal = registerOutput<String>('principal');
+    this.region = registerOutput<String>('region');
+    this.statementId = registerOutput<String>('statementId');
   }
 }

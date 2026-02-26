@@ -48,18 +48,19 @@ class Api5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.apiId = Output.createUnknown<String>();
-    this.availability = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.recommendedDeployment = Output.createUnknown<String>();
-    this.recommendedVersion = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.apiId = registerOutput<String>('apiId');
+    this.availability = registerOutput<String>('availability');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.recommendedDeployment =
+        registerOutput<String>('recommendedDeployment');
+    this.recommendedVersion = registerOutput<String>('recommendedVersion');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -175,21 +175,21 @@ class HostedConnection extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.awsDevice = Output.createUnknown<String>();
-    this.bandwidth = Output.createUnknown<String>();
-    this.connectionId = Output.createUnknown<String>();
-    this.connectionRegion = Output.createUnknown<String>();
-    this.hasLogicalRedundancy = Output.createUnknown<String>();
-    this.jumboFrameCapable = Output.createUnknown<bool>();
-    this.lagId = Output.createUnknown<String>();
-    this.loaIssueTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.ownerAccountId = Output.createUnknown<String>();
-    this.partnerName = Output.createUnknown<String>();
-    this.providerName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.vlan = Output.createUnknown<int>();
+    this.awsDevice = registerOutput<String>('awsDevice');
+    this.bandwidth = registerOutput<String>('bandwidth');
+    this.connectionId = registerOutput<String>('connectionId');
+    this.connectionRegion = registerOutput<String>('connectionRegion');
+    this.hasLogicalRedundancy = registerOutput<String>('hasLogicalRedundancy');
+    this.jumboFrameCapable = registerOutput<bool>('jumboFrameCapable');
+    this.lagId = registerOutput<String>('lagId');
+    this.loaIssueTime = registerOutput<String>('loaIssueTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.ownerAccountId = registerOutput<String>('ownerAccountId');
+    this.partnerName = registerOutput<String>('partnerName');
+    this.providerName = registerOutput<String>('providerName');
+    this.region = registerOutput<String>('region');
+    this.state = registerOutput<String>('state');
+    this.vlan = registerOutput<int>('vlan');
   }
 }

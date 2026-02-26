@@ -615,10 +615,11 @@ class PartitionIndex extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.catalogId = Output.createUnknown<String>();
-    this.databaseName = Output.createUnknown<String>();
-    this.partitionIndex = Output.createUnknown<PartitionIndexPartitionIndex>();
-    this.region = Output.createUnknown<String>();
-    this.tableName = Output.createUnknown<String>();
+    this.catalogId = registerOutput<String>('catalogId');
+    this.databaseName = registerOutput<String>('databaseName');
+    this.partitionIndex =
+        registerOutput<PartitionIndexPartitionIndex>('partitionIndex');
+    this.region = registerOutput<String>('region');
+    this.tableName = registerOutput<String>('tableName');
   }
 }

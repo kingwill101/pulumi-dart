@@ -715,16 +715,19 @@ class DataProtectionSettings extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.additionalEncryptionContext =
-        Output.createUnknown<Map<String, String>?>();
-    this.associatedPortalArns = Output.createUnknown<List<String>>();
-    this.customerManagedKey = Output.createUnknown<String?>();
-    this.dataProtectionSettingsArn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.inlineRedactionConfiguration = Output.createUnknown<
-        DataProtectionSettingsInlineRedactionConfiguration?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<Map<String, String>?>('additionalEncryptionContext');
+    this.associatedPortalArns =
+        registerOutput<List<String>>('associatedPortalArns');
+    this.customerManagedKey = registerOutput<String?>('customerManagedKey');
+    this.dataProtectionSettingsArn =
+        registerOutput<String>('dataProtectionSettingsArn');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.inlineRedactionConfiguration =
+        registerOutput<DataProtectionSettingsInlineRedactionConfiguration?>(
+            'inlineRedactionConfiguration');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

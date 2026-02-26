@@ -1181,25 +1181,29 @@ class RegionalSecret extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.createTime = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.createTime = registerOutput<String>('createTime');
     this.customerManagedEncryption =
-        Output.createUnknown<RegionalSecretCustomerManagedEncryption?>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.expireTime = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.rotation = Output.createUnknown<RegionalSecretRotation?>();
-    this.secretId = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.topics = Output.createUnknown<List<RegionalSecretTopic>?>();
-    this.ttl = Output.createUnknown<String?>();
-    this.versionAliases = Output.createUnknown<Map<String, String>?>();
-    this.versionDestroyTtl = Output.createUnknown<String?>();
+        registerOutput<RegionalSecretCustomerManagedEncryption?>(
+            'customerManagedEncryption');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.rotation = registerOutput<RegionalSecretRotation?>('rotation');
+    this.secretId = registerOutput<String>('secretId');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.topics = registerOutput<List<RegionalSecretTopic>?>('topics');
+    this.ttl = registerOutput<String?>('ttl');
+    this.versionAliases =
+        registerOutput<Map<String, String>?>('versionAliases');
+    this.versionDestroyTtl = registerOutput<String?>('versionDestroyTtl');
   }
 }

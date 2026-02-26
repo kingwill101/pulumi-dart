@@ -158,12 +158,15 @@ class GatewayAssociationProposal extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowedPrefixes = Output.createUnknown<List<String>>();
-    this.associatedGatewayId = Output.createUnknown<String>();
-    this.associatedGatewayOwnerAccountId = Output.createUnknown<String>();
-    this.associatedGatewayType = Output.createUnknown<String>();
-    this.dxGatewayId = Output.createUnknown<String>();
-    this.dxGatewayOwnerAccountId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.allowedPrefixes = registerOutput<List<String>>('allowedPrefixes');
+    this.associatedGatewayId = registerOutput<String>('associatedGatewayId');
+    this.associatedGatewayOwnerAccountId =
+        registerOutput<String>('associatedGatewayOwnerAccountId');
+    this.associatedGatewayType =
+        registerOutput<String>('associatedGatewayType');
+    this.dxGatewayId = registerOutput<String>('dxGatewayId');
+    this.dxGatewayOwnerAccountId =
+        registerOutput<String>('dxGatewayOwnerAccountId');
+    this.region = registerOutput<String>('region');
   }
 }

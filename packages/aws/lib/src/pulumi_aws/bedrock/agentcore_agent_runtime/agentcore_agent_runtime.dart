@@ -989,30 +989,38 @@ class AgentcoreAgentRuntime extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentRuntimeArn = Output.createUnknown<String>();
+    this.agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
     this.agentRuntimeArtifact =
-        Output.createUnknown<AgentcoreAgentRuntimeAgentRuntimeArtifact>();
-    this.agentRuntimeId = Output.createUnknown<String>();
-    this.agentRuntimeName = Output.createUnknown<String>();
-    this.agentRuntimeVersion = Output.createUnknown<String>();
+        registerOutput<AgentcoreAgentRuntimeAgentRuntimeArtifact>(
+            'agentRuntimeArtifact');
+    this.agentRuntimeId = registerOutput<String>('agentRuntimeId');
+    this.agentRuntimeName = registerOutput<String>('agentRuntimeName');
+    this.agentRuntimeVersion = registerOutput<String>('agentRuntimeVersion');
     this.authorizerConfiguration =
-        Output.createUnknown<AgentcoreAgentRuntimeAuthorizerConfiguration?>();
-    this.description = Output.createUnknown<String?>();
-    this.environmentVariables = Output.createUnknown<Map<String, String>?>();
-    this.lifecycleConfigurations = Output.createUnknown<
-        List<AgentcoreAgentRuntimeLifecycleConfiguration>>();
+        registerOutput<AgentcoreAgentRuntimeAuthorizerConfiguration?>(
+            'authorizerConfiguration');
+    this.description = registerOutput<String?>('description');
+    this.environmentVariables =
+        registerOutput<Map<String, String>?>('environmentVariables');
+    this.lifecycleConfigurations =
+        registerOutput<List<AgentcoreAgentRuntimeLifecycleConfiguration>>(
+            'lifecycleConfigurations');
     this.networkConfiguration =
-        Output.createUnknown<AgentcoreAgentRuntimeNetworkConfiguration>();
+        registerOutput<AgentcoreAgentRuntimeNetworkConfiguration>(
+            'networkConfiguration');
     this.protocolConfiguration =
-        Output.createUnknown<AgentcoreAgentRuntimeProtocolConfiguration?>();
-    this.region = Output.createUnknown<String>();
-    this.requestHeaderConfiguration = Output.createUnknown<
-        AgentcoreAgentRuntimeRequestHeaderConfiguration?>();
-    this.roleArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<AgentcoreAgentRuntimeTimeouts?>();
-    this.workloadIdentityDetails = Output.createUnknown<
-        List<AgentcoreAgentRuntimeWorkloadIdentityDetail>>();
+        registerOutput<AgentcoreAgentRuntimeProtocolConfiguration?>(
+            'protocolConfiguration');
+    this.region = registerOutput<String>('region');
+    this.requestHeaderConfiguration =
+        registerOutput<AgentcoreAgentRuntimeRequestHeaderConfiguration?>(
+            'requestHeaderConfiguration');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<AgentcoreAgentRuntimeTimeouts?>('timeouts');
+    this.workloadIdentityDetails =
+        registerOutput<List<AgentcoreAgentRuntimeWorkloadIdentityDetail>>(
+            'workloadIdentityDetails');
   }
 }

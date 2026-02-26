@@ -368,11 +368,11 @@ class SourceCredential extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.authType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.serverType = Output.createUnknown<String>();
-    this.token = Output.createUnknown<String>();
-    this.userName = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.authType = registerOutput<String>('authType');
+    this.region = registerOutput<String>('region');
+    this.serverType = registerOutput<String>('serverType');
+    this.token = registerOutput<String>('token');
+    this.userName = registerOutput<String?>('userName');
   }
 }

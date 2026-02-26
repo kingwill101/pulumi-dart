@@ -76,26 +76,28 @@ class Routine extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arguments = Output.createUnknown<List<ArgumentResponse>>();
-    this.creationTime = Output.createUnknown<String>();
-    this.dataGovernanceType = Output.createUnknown<String>();
-    this.datasetId = Output.createUnknown<String>();
-    this.definitionBody = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.determinismLevel = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.importedLibraries = Output.createUnknown<List<String>>();
-    this.language = Output.createUnknown<String>();
-    this.lastModifiedTime = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.arguments = registerOutput<List<ArgumentResponse>>('arguments');
+    this.creationTime = registerOutput<String>('creationTime');
+    this.dataGovernanceType = registerOutput<String>('dataGovernanceType');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.definitionBody = registerOutput<String>('definitionBody');
+    this.description = registerOutput<String>('description');
+    this.determinismLevel = registerOutput<String>('determinismLevel');
+    this.etag = registerOutput<String>('etag');
+    this.importedLibraries = registerOutput<List<String>>('importedLibraries');
+    this.language = registerOutput<String>('language');
+    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.project = registerOutput<String>('project');
     this.remoteFunctionOptions =
-        Output.createUnknown<RemoteFunctionOptionsResponse>();
-    this.returnTableType = Output.createUnknown<StandardSqlTableTypeResponse>();
-    this.returnType = Output.createUnknown<StandardSqlDataTypeResponse>();
-    this.routineReference = Output.createUnknown<RoutineReferenceResponse>();
-    this.routineType = Output.createUnknown<String>();
-    this.securityMode = Output.createUnknown<String>();
-    this.sparkOptions = Output.createUnknown<SparkOptionsResponse>();
-    this.strictMode = Output.createUnknown<bool>();
+        registerOutput<RemoteFunctionOptionsResponse>('remoteFunctionOptions');
+    this.returnTableType =
+        registerOutput<StandardSqlTableTypeResponse>('returnTableType');
+    this.returnType = registerOutput<StandardSqlDataTypeResponse>('returnType');
+    this.routineReference =
+        registerOutput<RoutineReferenceResponse>('routineReference');
+    this.routineType = registerOutput<String>('routineType');
+    this.securityMode = registerOutput<String>('securityMode');
+    this.sparkOptions = registerOutput<SparkOptionsResponse>('sparkOptions');
+    this.strictMode = registerOutput<bool>('strictMode');
   }
 }

@@ -256,8 +256,8 @@ class VoiceConnectorGroup extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.connectors =
-        Output.createUnknown<List<VoiceConnectorGroupConnector>?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<VoiceConnectorGroupConnector>?>('connectors');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

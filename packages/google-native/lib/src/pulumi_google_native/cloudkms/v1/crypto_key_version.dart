@@ -70,26 +70,30 @@ class CryptoKeyVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.algorithm = Output.createUnknown<String>();
-    this.attestation = Output.createUnknown<KeyOperationAttestationResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.cryptoKeyId = Output.createUnknown<String>();
-    this.destroyEventTime = Output.createUnknown<String>();
-    this.destroyTime = Output.createUnknown<String>();
-    this.externalDestructionFailureReason = Output.createUnknown<String>();
+    this.algorithm = registerOutput<String>('algorithm');
+    this.attestation =
+        registerOutput<KeyOperationAttestationResponse>('attestation');
+    this.createTime = registerOutput<String>('createTime');
+    this.cryptoKeyId = registerOutput<String>('cryptoKeyId');
+    this.destroyEventTime = registerOutput<String>('destroyEventTime');
+    this.destroyTime = registerOutput<String>('destroyTime');
+    this.externalDestructionFailureReason =
+        registerOutput<String>('externalDestructionFailureReason');
     this.externalProtectionLevelOptions =
-        Output.createUnknown<ExternalProtectionLevelOptionsResponse>();
-    this.generateTime = Output.createUnknown<String>();
-    this.generationFailureReason = Output.createUnknown<String>();
-    this.importFailureReason = Output.createUnknown<String>();
-    this.importJob = Output.createUnknown<String>();
-    this.importTime = Output.createUnknown<String>();
-    this.keyRingId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.protectionLevel = Output.createUnknown<String>();
-    this.reimportEligible = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<ExternalProtectionLevelOptionsResponse>(
+            'externalProtectionLevelOptions');
+    this.generateTime = registerOutput<String>('generateTime');
+    this.generationFailureReason =
+        registerOutput<String>('generationFailureReason');
+    this.importFailureReason = registerOutput<String>('importFailureReason');
+    this.importJob = registerOutput<String>('importJob');
+    this.importTime = registerOutput<String>('importTime');
+    this.keyRingId = registerOutput<String>('keyRingId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.protectionLevel = registerOutput<String>('protectionLevel');
+    this.reimportEligible = registerOutput<bool>('reimportEligible');
+    this.state = registerOutput<String>('state');
   }
 }

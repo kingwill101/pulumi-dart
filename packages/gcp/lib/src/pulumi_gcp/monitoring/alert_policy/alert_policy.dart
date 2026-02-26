@@ -1105,18 +1105,21 @@ class AlertPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alertStrategy = Output.createUnknown<AlertPolicyAlertStrategy?>();
-    this.combiner = Output.createUnknown<String>();
-    this.conditions = Output.createUnknown<List<AlertPolicyCondition>>();
+    this.alertStrategy =
+        registerOutput<AlertPolicyAlertStrategy?>('alertStrategy');
+    this.combiner = registerOutput<String>('combiner');
+    this.conditions = registerOutput<List<AlertPolicyCondition>>('conditions');
     this.creationRecords =
-        Output.createUnknown<List<AlertPolicyCreationRecord>>();
-    this.displayName = Output.createUnknown<String>();
-    this.documentation = Output.createUnknown<AlertPolicyDocumentation?>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.name = Output.createUnknown<String>();
-    this.notificationChannels = Output.createUnknown<List<String>?>();
-    this.project = Output.createUnknown<String>();
-    this.severity = Output.createUnknown<String?>();
-    this.userLabels = Output.createUnknown<Map<String, String>?>();
+        registerOutput<List<AlertPolicyCreationRecord>>('creationRecords');
+    this.displayName = registerOutput<String>('displayName');
+    this.documentation =
+        registerOutput<AlertPolicyDocumentation?>('documentation');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.name = registerOutput<String>('name');
+    this.notificationChannels =
+        registerOutput<List<String>?>('notificationChannels');
+    this.project = registerOutput<String>('project');
+    this.severity = registerOutput<String?>('severity');
+    this.userLabels = registerOutput<Map<String, String>?>('userLabels');
   }
 }

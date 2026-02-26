@@ -212,13 +212,16 @@ class AccessGrantsInstance extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessGrantsInstanceArn = Output.createUnknown<String>();
-    this.accessGrantsInstanceId = Output.createUnknown<String>();
-    this.accountId = Output.createUnknown<String>();
-    this.identityCenterApplicationArn = Output.createUnknown<String>();
-    this.identityCenterArn = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.accessGrantsInstanceArn =
+        registerOutput<String>('accessGrantsInstanceArn');
+    this.accessGrantsInstanceId =
+        registerOutput<String>('accessGrantsInstanceId');
+    this.accountId = registerOutput<String>('accountId');
+    this.identityCenterApplicationArn =
+        registerOutput<String>('identityCenterApplicationArn');
+    this.identityCenterArn = registerOutput<String?>('identityCenterArn');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

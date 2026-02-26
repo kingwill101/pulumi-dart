@@ -98,31 +98,35 @@ class Job6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.done = Output.createUnknown<bool>();
-    this.driverControlFilesUri = Output.createUnknown<String>();
-    this.driverOutputResourceUri = Output.createUnknown<String>();
+    this.done = registerOutput<bool>('done');
+    this.driverControlFilesUri =
+        registerOutput<String>('driverControlFilesUri');
+    this.driverOutputResourceUri =
+        registerOutput<String>('driverOutputResourceUri');
     this.driverSchedulingConfig =
-        Output.createUnknown<DriverSchedulingConfigResponse>();
-    this.flinkJob = Output.createUnknown<FlinkJobResponse>();
-    this.hadoopJob = Output.createUnknown<HadoopJobResponse>();
-    this.hiveJob = Output.createUnknown<HiveJobResponse>();
-    this.jobUuid = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.pigJob = Output.createUnknown<PigJobResponse>();
-    this.placement = Output.createUnknown<JobPlacementResponse>();
-    this.prestoJob = Output.createUnknown<PrestoJobResponse>();
-    this.project = Output.createUnknown<String>();
-    this.pysparkJob = Output.createUnknown<PySparkJobResponse>();
-    this.reference = Output.createUnknown<JobReferenceResponse2>();
-    this.region = Output.createUnknown<String>();
-    this.scheduling = Output.createUnknown<JobSchedulingResponse>();
-    this.sparkJob = Output.createUnknown<SparkJobResponse>();
-    this.sparkRJob = Output.createUnknown<SparkRJobResponse>();
-    this.sparkSqlJob = Output.createUnknown<SparkSqlJobResponse>();
-    this.status = Output.createUnknown<JobStatusResponse3>();
-    this.statusHistory = Output.createUnknown<List<JobStatusResponse3>>();
-    this.trinoJob = Output.createUnknown<TrinoJobResponse>();
+        registerOutput<DriverSchedulingConfigResponse>(
+            'driverSchedulingConfig');
+    this.flinkJob = registerOutput<FlinkJobResponse>('flinkJob');
+    this.hadoopJob = registerOutput<HadoopJobResponse>('hadoopJob');
+    this.hiveJob = registerOutput<HiveJobResponse>('hiveJob');
+    this.jobUuid = registerOutput<String>('jobUuid');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.pigJob = registerOutput<PigJobResponse>('pigJob');
+    this.placement = registerOutput<JobPlacementResponse>('placement');
+    this.prestoJob = registerOutput<PrestoJobResponse>('prestoJob');
+    this.project = registerOutput<String>('project');
+    this.pysparkJob = registerOutput<PySparkJobResponse>('pysparkJob');
+    this.reference = registerOutput<JobReferenceResponse2>('reference');
+    this.region = registerOutput<String>('region');
+    this.scheduling = registerOutput<JobSchedulingResponse>('scheduling');
+    this.sparkJob = registerOutput<SparkJobResponse>('sparkJob');
+    this.sparkRJob = registerOutput<SparkRJobResponse>('sparkRJob');
+    this.sparkSqlJob = registerOutput<SparkSqlJobResponse>('sparkSqlJob');
+    this.status = registerOutput<JobStatusResponse3>('status');
+    this.statusHistory =
+        registerOutput<List<JobStatusResponse3>>('statusHistory');
+    this.trinoJob = registerOutput<TrinoJobResponse>('trinoJob');
     this.yarnApplications =
-        Output.createUnknown<List<YarnApplicationResponse>>();
+        registerOutput<List<YarnApplicationResponse>>('yarnApplications');
   }
 }

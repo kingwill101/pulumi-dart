@@ -156,52 +156,60 @@ class Version6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiConfig = Output.createUnknown<ApiConfigHandlerResponse2>();
-    this.appEngineApis = Output.createUnknown<bool>();
-    this.appId = Output.createUnknown<String>();
-    this.automaticScaling = Output.createUnknown<AutomaticScalingResponse2>();
-    this.basicScaling = Output.createUnknown<BasicScalingResponse2>();
-    this.betaSettings = Output.createUnknown<Map<String, String>>();
-    this.buildEnvVariables = Output.createUnknown<Map<String, String>>();
-    this.createTime = Output.createUnknown<String>();
-    this.createdBy = Output.createUnknown<String>();
-    this.defaultExpiration = Output.createUnknown<String>();
-    this.deployment = Output.createUnknown<DeploymentResponse2>();
-    this.diskUsageBytes = Output.createUnknown<String>();
+    this.apiConfig = registerOutput<ApiConfigHandlerResponse2>('apiConfig');
+    this.appEngineApis = registerOutput<bool>('appEngineApis');
+    this.appId = registerOutput<String>('appId');
+    this.automaticScaling =
+        registerOutput<AutomaticScalingResponse2>('automaticScaling');
+    this.basicScaling = registerOutput<BasicScalingResponse2>('basicScaling');
+    this.betaSettings = registerOutput<Map<String, String>>('betaSettings');
+    this.buildEnvVariables =
+        registerOutput<Map<String, String>>('buildEnvVariables');
+    this.createTime = registerOutput<String>('createTime');
+    this.createdBy = registerOutput<String>('createdBy');
+    this.defaultExpiration = registerOutput<String>('defaultExpiration');
+    this.deployment = registerOutput<DeploymentResponse2>('deployment');
+    this.diskUsageBytes = registerOutput<String>('diskUsageBytes');
     this.endpointsApiService =
-        Output.createUnknown<EndpointsApiServiceResponse2>();
-    this.entrypoint = Output.createUnknown<EntrypointResponse2>();
-    this.env = Output.createUnknown<String>();
-    this.envVariables = Output.createUnknown<Map<String, String>>();
-    this.errorHandlers = Output.createUnknown<List<ErrorHandlerResponse2>>();
+        registerOutput<EndpointsApiServiceResponse2>('endpointsApiService');
+    this.entrypoint = registerOutput<EntrypointResponse2>('entrypoint');
+    this.env = registerOutput<String>('env');
+    this.envVariables = registerOutput<Map<String, String>>('envVariables');
+    this.errorHandlers =
+        registerOutput<List<ErrorHandlerResponse2>>('errorHandlers');
     this.flexibleRuntimeSettings =
-        Output.createUnknown<FlexibleRuntimeSettingsResponse2>();
+        registerOutput<FlexibleRuntimeSettingsResponse2>(
+            'flexibleRuntimeSettings');
     this.generatedCustomerMetadata =
-        Output.createUnknown<Map<String, String>>();
-    this.handlers = Output.createUnknown<List<UrlMapResponse2>>();
-    this.healthCheck = Output.createUnknown<HealthCheckResponse2>();
-    this.inboundServices = Output.createUnknown<List<String>>();
-    this.instanceClass = Output.createUnknown<String>();
-    this.libraries = Output.createUnknown<List<LibraryResponse2>>();
-    this.livenessCheck = Output.createUnknown<LivenessCheckResponse2>();
-    this.manualScaling = Output.createUnknown<ManualScalingResponse2>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<NetworkResponse2>();
-    this.nobuildFilesRegex = Output.createUnknown<String>();
-    this.readinessCheck = Output.createUnknown<ReadinessCheckResponse2>();
-    this.resources = Output.createUnknown<ResourcesResponse2>();
-    this.runtime = Output.createUnknown<String>();
-    this.runtimeApiVersion = Output.createUnknown<String>();
-    this.runtimeChannel = Output.createUnknown<String>();
-    this.runtimeMainExecutablePath = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.serviceId = Output.createUnknown<String>();
-    this.servingStatus = Output.createUnknown<String>();
-    this.threadsafe = Output.createUnknown<bool>();
-    this.versionUrl = Output.createUnknown<String>();
-    this.vm = Output.createUnknown<bool>();
+        registerOutput<Map<String, String>>('generatedCustomerMetadata');
+    this.handlers = registerOutput<List<UrlMapResponse2>>('handlers');
+    this.healthCheck = registerOutput<HealthCheckResponse2>('healthCheck');
+    this.inboundServices = registerOutput<List<String>>('inboundServices');
+    this.instanceClass = registerOutput<String>('instanceClass');
+    this.libraries = registerOutput<List<LibraryResponse2>>('libraries');
+    this.livenessCheck =
+        registerOutput<LivenessCheckResponse2>('livenessCheck');
+    this.manualScaling =
+        registerOutput<ManualScalingResponse2>('manualScaling');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<NetworkResponse2>('network');
+    this.nobuildFilesRegex = registerOutput<String>('nobuildFilesRegex');
+    this.readinessCheck =
+        registerOutput<ReadinessCheckResponse2>('readinessCheck');
+    this.resources = registerOutput<ResourcesResponse2>('resources');
+    this.runtime = registerOutput<String>('runtime');
+    this.runtimeApiVersion = registerOutput<String>('runtimeApiVersion');
+    this.runtimeChannel = registerOutput<String>('runtimeChannel');
+    this.runtimeMainExecutablePath =
+        registerOutput<String>('runtimeMainExecutablePath');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.serviceId = registerOutput<String>('serviceId');
+    this.servingStatus = registerOutput<String>('servingStatus');
+    this.threadsafe = registerOutput<bool>('threadsafe');
+    this.versionUrl = registerOutput<String>('versionUrl');
+    this.vm = registerOutput<bool>('vm');
     this.vpcAccessConnector =
-        Output.createUnknown<VpcAccessConnectorResponse2>();
-    this.zones = Output.createUnknown<List<String>>();
+        registerOutput<VpcAccessConnectorResponse2>('vpcAccessConnector');
+    this.zones = registerOutput<List<String>>('zones');
   }
 }

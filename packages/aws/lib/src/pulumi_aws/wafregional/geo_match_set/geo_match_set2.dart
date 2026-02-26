@@ -181,8 +181,9 @@ class GeoMatchSet2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.geoMatchConstraints =
-        Output.createUnknown<List<GeoMatchSetGeoMatchConstraint2>?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<GeoMatchSetGeoMatchConstraint2>?>(
+            'geoMatchConstraints');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

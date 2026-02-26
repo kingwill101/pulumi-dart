@@ -172,11 +172,11 @@ class Member4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.email = Output.createUnknown<String?>();
-    this.invite = Output.createUnknown<bool?>();
-    this.masterId = Output.createUnknown<String>();
-    this.memberStatus = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.email = registerOutput<String?>('email');
+    this.invite = registerOutput<bool?>('invite');
+    this.masterId = registerOutput<String>('masterId');
+    this.memberStatus = registerOutput<String>('memberStatus');
+    this.region = registerOutput<String>('region');
   }
 }

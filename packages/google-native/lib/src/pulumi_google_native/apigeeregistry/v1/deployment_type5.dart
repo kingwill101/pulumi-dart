@@ -61,23 +61,23 @@ class DeploymentType5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessGuidance = Output.createUnknown<String>();
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.apiDeploymentId = Output.createUnknown<String>();
-    this.apiId = Output.createUnknown<String>();
-    this.apiSpecRevision = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.endpointUri = Output.createUnknown<String>();
-    this.externalChannelUri = Output.createUnknown<String>();
-    this.intendedAudience = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.revisionCreateTime = Output.createUnknown<String>();
-    this.revisionId = Output.createUnknown<String>();
-    this.revisionUpdateTime = Output.createUnknown<String>();
+    this.accessGuidance = registerOutput<String>('accessGuidance');
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.apiDeploymentId = registerOutput<String>('apiDeploymentId');
+    this.apiId = registerOutput<String>('apiId');
+    this.apiSpecRevision = registerOutput<String>('apiSpecRevision');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.endpointUri = registerOutput<String>('endpointUri');
+    this.externalChannelUri = registerOutput<String>('externalChannelUri');
+    this.intendedAudience = registerOutput<String>('intendedAudience');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.revisionUpdateTime = registerOutput<String>('revisionUpdateTime');
   }
 }

@@ -476,17 +476,20 @@ class Preset extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.audio = Output.createUnknown<PresetAudio?>();
-    this.audioCodecOptions = Output.createUnknown<PresetAudioCodecOptions>();
-    this.container = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.thumbnails = Output.createUnknown<PresetThumbnails?>();
-    this.type = Output.createUnknown<String>();
-    this.video = Output.createUnknown<PresetVideo?>();
-    this.videoCodecOptions = Output.createUnknown<Map<String, String>?>();
-    this.videoWatermarks = Output.createUnknown<List<PresetVideoWatermark>?>();
+    this.arn = registerOutput<String>('arn');
+    this.audio = registerOutput<PresetAudio?>('audio');
+    this.audioCodecOptions =
+        registerOutput<PresetAudioCodecOptions>('audioCodecOptions');
+    this.container = registerOutput<String>('container');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.thumbnails = registerOutput<PresetThumbnails?>('thumbnails');
+    this.type = registerOutput<String>('type');
+    this.video = registerOutput<PresetVideo?>('video');
+    this.videoCodecOptions =
+        registerOutput<Map<String, String>?>('videoCodecOptions');
+    this.videoWatermarks =
+        registerOutput<List<PresetVideoWatermark>?>('videoWatermarks');
   }
 }

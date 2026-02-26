@@ -341,9 +341,10 @@ class SecretCiphertext extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.additionalAuthenticatedData = Output.createUnknown<String?>();
-    this.ciphertext = Output.createUnknown<String>();
-    this.cryptoKey = Output.createUnknown<String>();
-    this.plaintext = Output.createUnknown<String>();
+    this.additionalAuthenticatedData =
+        registerOutput<String?>('additionalAuthenticatedData');
+    this.ciphertext = registerOutput<String>('ciphertext');
+    this.cryptoKey = registerOutput<String>('cryptoKey');
+    this.plaintext = registerOutput<String>('plaintext');
   }
 }

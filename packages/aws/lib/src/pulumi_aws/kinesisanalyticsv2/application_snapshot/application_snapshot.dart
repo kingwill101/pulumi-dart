@@ -133,10 +133,11 @@ class ApplicationSnapshot extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationName = Output.createUnknown<String>();
-    this.applicationVersionId = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.snapshotCreationTimestamp = Output.createUnknown<String>();
-    this.snapshotName = Output.createUnknown<String>();
+    this.applicationName = registerOutput<String>('applicationName');
+    this.applicationVersionId = registerOutput<int>('applicationVersionId');
+    this.region = registerOutput<String>('region');
+    this.snapshotCreationTimestamp =
+        registerOutput<String>('snapshotCreationTimestamp');
+    this.snapshotName = registerOutput<String>('snapshotName');
   }
 }

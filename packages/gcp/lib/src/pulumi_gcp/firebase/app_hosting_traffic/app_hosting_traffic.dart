@@ -1154,18 +1154,18 @@ class AppHostingTraffic extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backend = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.currents = Output.createUnknown<List<AppHostingTrafficCurrent>>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.backend = registerOutput<String>('backend');
+    this.createTime = registerOutput<String>('createTime');
+    this.currents = registerOutput<List<AppHostingTrafficCurrent>>('currents');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.etag = registerOutput<String>('etag');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.rolloutPolicy =
-        Output.createUnknown<AppHostingTrafficRolloutPolicy?>();
-    this.target = Output.createUnknown<AppHostingTrafficTarget?>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<AppHostingTrafficRolloutPolicy?>('rolloutPolicy');
+    this.target = registerOutput<AppHostingTrafficTarget?>('target');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

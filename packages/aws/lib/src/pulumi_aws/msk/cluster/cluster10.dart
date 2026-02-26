@@ -1249,39 +1249,50 @@ class Cluster10 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.bootstrapBrokers = Output.createUnknown<String>();
-    this.bootstrapBrokersPublicSaslIam = Output.createUnknown<String>();
-    this.bootstrapBrokersPublicSaslScram = Output.createUnknown<String>();
-    this.bootstrapBrokersPublicTls = Output.createUnknown<String>();
-    this.bootstrapBrokersSaslIam = Output.createUnknown<String>();
-    this.bootstrapBrokersSaslScram = Output.createUnknown<String>();
-    this.bootstrapBrokersTls = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.bootstrapBrokers = registerOutput<String>('bootstrapBrokers');
+    this.bootstrapBrokersPublicSaslIam =
+        registerOutput<String>('bootstrapBrokersPublicSaslIam');
+    this.bootstrapBrokersPublicSaslScram =
+        registerOutput<String>('bootstrapBrokersPublicSaslScram');
+    this.bootstrapBrokersPublicTls =
+        registerOutput<String>('bootstrapBrokersPublicTls');
+    this.bootstrapBrokersSaslIam =
+        registerOutput<String>('bootstrapBrokersSaslIam');
+    this.bootstrapBrokersSaslScram =
+        registerOutput<String>('bootstrapBrokersSaslScram');
+    this.bootstrapBrokersTls = registerOutput<String>('bootstrapBrokersTls');
     this.bootstrapBrokersVpcConnectivitySaslIam =
-        Output.createUnknown<String>();
+        registerOutput<String>('bootstrapBrokersVpcConnectivitySaslIam');
     this.bootstrapBrokersVpcConnectivitySaslScram =
-        Output.createUnknown<String>();
-    this.bootstrapBrokersVpcConnectivityTls = Output.createUnknown<String>();
+        registerOutput<String>('bootstrapBrokersVpcConnectivitySaslScram');
+    this.bootstrapBrokersVpcConnectivityTls =
+        registerOutput<String>('bootstrapBrokersVpcConnectivityTls');
     this.brokerNodeGroupInfo =
-        Output.createUnknown<ClusterBrokerNodeGroupInfo>();
+        registerOutput<ClusterBrokerNodeGroupInfo>('brokerNodeGroupInfo');
     this.clientAuthentication =
-        Output.createUnknown<ClusterClientAuthentication?>();
-    this.clusterName = Output.createUnknown<String>();
-    this.clusterUuid = Output.createUnknown<String>();
-    this.configurationInfo = Output.createUnknown<ClusterConfigurationInfo?>();
-    this.currentVersion = Output.createUnknown<String>();
-    this.encryptionInfo = Output.createUnknown<ClusterEncryptionInfo?>();
-    this.enhancedMonitoring = Output.createUnknown<String?>();
-    this.kafkaVersion = Output.createUnknown<String>();
-    this.loggingInfo = Output.createUnknown<ClusterLoggingInfo?>();
-    this.numberOfBrokerNodes = Output.createUnknown<int>();
-    this.openMonitoring = Output.createUnknown<ClusterOpenMonitoring?>();
-    this.rebalancing = Output.createUnknown<ClusterRebalancing>();
-    this.region = Output.createUnknown<String>();
-    this.storageMode = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.zookeeperConnectString = Output.createUnknown<String>();
-    this.zookeeperConnectStringTls = Output.createUnknown<String>();
+        registerOutput<ClusterClientAuthentication?>('clientAuthentication');
+    this.clusterName = registerOutput<String>('clusterName');
+    this.clusterUuid = registerOutput<String>('clusterUuid');
+    this.configurationInfo =
+        registerOutput<ClusterConfigurationInfo?>('configurationInfo');
+    this.currentVersion = registerOutput<String>('currentVersion');
+    this.encryptionInfo =
+        registerOutput<ClusterEncryptionInfo?>('encryptionInfo');
+    this.enhancedMonitoring = registerOutput<String?>('enhancedMonitoring');
+    this.kafkaVersion = registerOutput<String>('kafkaVersion');
+    this.loggingInfo = registerOutput<ClusterLoggingInfo?>('loggingInfo');
+    this.numberOfBrokerNodes = registerOutput<int>('numberOfBrokerNodes');
+    this.openMonitoring =
+        registerOutput<ClusterOpenMonitoring?>('openMonitoring');
+    this.rebalancing = registerOutput<ClusterRebalancing>('rebalancing');
+    this.region = registerOutput<String>('region');
+    this.storageMode = registerOutput<String>('storageMode');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.zookeeperConnectString =
+        registerOutput<String>('zookeeperConnectString');
+    this.zookeeperConnectStringTls =
+        registerOutput<String>('zookeeperConnectStringTls');
   }
 }

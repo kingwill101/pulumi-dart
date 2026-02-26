@@ -44,16 +44,16 @@ class SavedQuery extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.content = Output.createUnknown<QueryContentResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.creator = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lastUpdateTime = Output.createUnknown<String>();
-    this.lastUpdater = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.savedQueryId = Output.createUnknown<String>();
-    this.v1Id = Output.createUnknown<String>();
-    this.v1Id1 = Output.createUnknown<String>();
+    this.content = registerOutput<QueryContentResponse>('content');
+    this.createTime = registerOutput<String>('createTime');
+    this.creator = registerOutput<String>('creator');
+    this.description = registerOutput<String>('description');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lastUpdateTime = registerOutput<String>('lastUpdateTime');
+    this.lastUpdater = registerOutput<String>('lastUpdater');
+    this.name = registerOutput<String>('name');
+    this.savedQueryId = registerOutput<String>('savedQueryId');
+    this.v1Id = registerOutput<String>('v1Id');
+    this.v1Id1 = registerOutput<String>('v1Id1');
   }
 }

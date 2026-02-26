@@ -322,12 +322,12 @@ class MacsecKeyAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cak = Output.createUnknown<String?>();
-    this.ckn = Output.createUnknown<String>();
-    this.connectionId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.secretArn = Output.createUnknown<String>();
-    this.startOn = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.cak = registerOutput<String?>('cak');
+    this.ckn = registerOutput<String>('ckn');
+    this.connectionId = registerOutput<String>('connectionId');
+    this.region = registerOutput<String>('region');
+    this.secretArn = registerOutput<String>('secretArn');
+    this.startOn = registerOutput<String>('startOn');
+    this.state = registerOutput<String>('state');
   }
 }

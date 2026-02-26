@@ -77,26 +77,29 @@ class Firewall2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowed = Output.createUnknown<List<FirewallAllowedItemResponse2>>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.denied = Output.createUnknown<List<FirewallDeniedItemResponse2>>();
-    this.description = Output.createUnknown<String>();
-    this.destinationRanges = Output.createUnknown<List<String>>();
-    this.direction = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool>();
-    this.enableLogging = Output.createUnknown<bool>();
-    this.kind = Output.createUnknown<String>();
-    this.logConfig = Output.createUnknown<FirewallLogConfigResponse2>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.priority = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.sourceRanges = Output.createUnknown<List<String>>();
-    this.sourceServiceAccounts = Output.createUnknown<List<String>>();
-    this.sourceTags = Output.createUnknown<List<String>>();
-    this.targetServiceAccounts = Output.createUnknown<List<String>>();
-    this.targetTags = Output.createUnknown<List<String>>();
+    this.allowed =
+        registerOutput<List<FirewallAllowedItemResponse2>>('allowed');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.denied = registerOutput<List<FirewallDeniedItemResponse2>>('denied');
+    this.description = registerOutput<String>('description');
+    this.destinationRanges = registerOutput<List<String>>('destinationRanges');
+    this.direction = registerOutput<String>('direction');
+    this.disabled = registerOutput<bool>('disabled');
+    this.enableLogging = registerOutput<bool>('enableLogging');
+    this.kind = registerOutput<String>('kind');
+    this.logConfig = registerOutput<FirewallLogConfigResponse2>('logConfig');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.priority = registerOutput<int>('priority');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.sourceRanges = registerOutput<List<String>>('sourceRanges');
+    this.sourceServiceAccounts =
+        registerOutput<List<String>>('sourceServiceAccounts');
+    this.sourceTags = registerOutput<List<String>>('sourceTags');
+    this.targetServiceAccounts =
+        registerOutput<List<String>>('targetServiceAccounts');
+    this.targetTags = registerOutput<List<String>>('targetTags');
   }
 }

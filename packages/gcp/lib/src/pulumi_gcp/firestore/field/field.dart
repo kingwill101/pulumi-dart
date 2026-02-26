@@ -948,12 +948,12 @@ class Field extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.collection = Output.createUnknown<String>();
-    this.database = Output.createUnknown<String?>();
-    this.field = Output.createUnknown<String>();
-    this.indexConfig = Output.createUnknown<FieldIndexConfig?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.ttlConfig = Output.createUnknown<FieldTtlConfig?>();
+    this.collection = registerOutput<String>('collection');
+    this.database = registerOutput<String?>('database');
+    this.field = registerOutput<String>('field');
+    this.indexConfig = registerOutput<FieldIndexConfig?>('indexConfig');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.ttlConfig = registerOutput<FieldTtlConfig?>('ttlConfig');
   }
 }

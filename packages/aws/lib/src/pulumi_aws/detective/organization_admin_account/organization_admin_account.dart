@@ -171,7 +171,7 @@ class OrganizationAdminAccount extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.region = registerOutput<String>('region');
   }
 }

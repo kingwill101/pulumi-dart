@@ -83,30 +83,32 @@ class Report extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.chartType = Output.createUnknown<String>();
-    this.comments = Output.createUnknown<List<String>>();
-    this.createdAt = Output.createUnknown<String>();
-    this.dimensions = Output.createUnknown<List<String>>();
-    this.displayName = Output.createUnknown<String>();
-    this.environment = Output.createUnknown<String>();
-    this.filter = Output.createUnknown<String>();
-    this.fromTime = Output.createUnknown<String>();
-    this.lastModifiedAt = Output.createUnknown<String>();
-    this.lastViewedAt = Output.createUnknown<String>();
-    this.limit = Output.createUnknown<String>();
-    this.metrics = Output.createUnknown<
-        List<GoogleCloudApigeeV1CustomReportMetricResponse>>();
-    this.name = Output.createUnknown<String>();
-    this.offset = Output.createUnknown<String>();
-    this.organization = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
+    this.chartType = registerOutput<String>('chartType');
+    this.comments = registerOutput<List<String>>('comments');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.dimensions = registerOutput<List<String>>('dimensions');
+    this.displayName = registerOutput<String>('displayName');
+    this.environment = registerOutput<String>('environment');
+    this.filter = registerOutput<String>('filter');
+    this.fromTime = registerOutput<String>('fromTime');
+    this.lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.lastViewedAt = registerOutput<String>('lastViewedAt');
+    this.limit = registerOutput<String>('limit');
+    this.metrics =
+        registerOutput<List<GoogleCloudApigeeV1CustomReportMetricResponse>>(
+            'metrics');
+    this.name = registerOutput<String>('name');
+    this.offset = registerOutput<String>('offset');
+    this.organization = registerOutput<String>('organization');
+    this.organizationId = registerOutput<String>('organizationId');
     this.properties =
-        Output.createUnknown<List<GoogleCloudApigeeV1ReportPropertyResponse>>();
-    this.sortByCols = Output.createUnknown<List<String>>();
-    this.sortOrder = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<List<String>>();
-    this.timeUnit = Output.createUnknown<String>();
-    this.toTime = Output.createUnknown<String>();
-    this.topk = Output.createUnknown<String>();
+        registerOutput<List<GoogleCloudApigeeV1ReportPropertyResponse>>(
+            'properties');
+    this.sortByCols = registerOutput<List<String>>('sortByCols');
+    this.sortOrder = registerOutput<String>('sortOrder');
+    this.tags = registerOutput<List<String>>('tags');
+    this.timeUnit = registerOutput<String>('timeUnit');
+    this.toTime = registerOutput<String>('toTime');
+    this.topk = registerOutput<String>('topk');
   }
 }

@@ -158,11 +158,11 @@ class SourceIamMember extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.condition = Output.createUnknown<SourceIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.organization = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
-    this.source = Output.createUnknown<String>();
+    this.condition = registerOutput<SourceIamMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.member = registerOutput<String>('member');
+    this.organization = registerOutput<String>('organization');
+    this.role = registerOutput<String>('role');
+    this.source = registerOutput<String>('source');
   }
 }

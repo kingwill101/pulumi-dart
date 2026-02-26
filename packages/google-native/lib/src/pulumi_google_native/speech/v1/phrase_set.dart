@@ -55,20 +55,20 @@ class PhraseSet extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.boost = Output.createUnknown<double>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.kmsKeyName = Output.createUnknown<String>();
-    this.kmsKeyVersionName = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.phrases = Output.createUnknown<List<PhraseResponse>>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.boost = registerOutput<double>('boost');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.kmsKeyName = registerOutput<String>('kmsKeyName');
+    this.kmsKeyVersionName = registerOutput<String>('kmsKeyVersionName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.phrases = registerOutput<List<PhraseResponse>>('phrases');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
   }
 }

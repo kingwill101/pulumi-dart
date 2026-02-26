@@ -219,14 +219,15 @@ class ModelCard extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.content = Output.createUnknown<String>();
-    this.modelCardArn = Output.createUnknown<String>();
-    this.modelCardName = Output.createUnknown<String>();
-    this.modelCardStatus = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityConfig = Output.createUnknown<ModelCardSecurityConfig?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ModelCardTimeouts?>();
+    this.content = registerOutput<String>('content');
+    this.modelCardArn = registerOutput<String>('modelCardArn');
+    this.modelCardName = registerOutput<String>('modelCardName');
+    this.modelCardStatus = registerOutput<String>('modelCardStatus');
+    this.region = registerOutput<String>('region');
+    this.securityConfig =
+        registerOutput<ModelCardSecurityConfig?>('securityConfig');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ModelCardTimeouts?>('timeouts');
   }
 }

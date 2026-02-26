@@ -53,20 +53,24 @@ class CertificateTemplate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificateTemplateId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
+    this.certificateTemplateId =
+        registerOutput<String>('certificateTemplateId');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
     this.identityConstraints =
-        Output.createUnknown<CertificateIdentityConstraintsResponse>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.maximumLifetime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<CertificateIdentityConstraintsResponse>(
+            'identityConstraints');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.maximumLifetime = registerOutput<String>('maximumLifetime');
+    this.name = registerOutput<String>('name');
     this.passthroughExtensions =
-        Output.createUnknown<CertificateExtensionConstraintsResponse>();
-    this.predefinedValues = Output.createUnknown<X509ParametersResponse>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<CertificateExtensionConstraintsResponse>(
+            'passthroughExtensions');
+    this.predefinedValues =
+        registerOutput<X509ParametersResponse>('predefinedValues');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

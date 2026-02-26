@@ -46,17 +46,17 @@ class CompilationResult extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.codeCompilationConfig =
-        Output.createUnknown<CodeCompilationConfigResponse>();
+        registerOutput<CodeCompilationConfigResponse>('codeCompilationConfig');
     this.compilationErrors =
-        Output.createUnknown<List<CompilationErrorResponse>>();
-    this.dataformCoreVersion = Output.createUnknown<String>();
-    this.gitCommitish = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.releaseConfig = Output.createUnknown<String>();
-    this.repositoryId = Output.createUnknown<String>();
-    this.resolvedGitCommitSha = Output.createUnknown<String>();
-    this.workspace = Output.createUnknown<String>();
+        registerOutput<List<CompilationErrorResponse>>('compilationErrors');
+    this.dataformCoreVersion = registerOutput<String>('dataformCoreVersion');
+    this.gitCommitish = registerOutput<String>('gitCommitish');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.releaseConfig = registerOutput<String>('releaseConfig');
+    this.repositoryId = registerOutput<String>('repositoryId');
+    this.resolvedGitCommitSha = registerOutput<String>('resolvedGitCommitSha');
+    this.workspace = registerOutput<String>('workspace');
   }
 }

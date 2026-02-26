@@ -317,63 +317,80 @@ class InstanceFromMachineImage extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.advancedMachineFeatures =
-        Output.createUnknown<InstanceFromMachineImageAdvancedMachineFeatures>();
-    this.allowStoppingForUpdate = Output.createUnknown<bool>();
+        registerOutput<InstanceFromMachineImageAdvancedMachineFeatures>(
+            'advancedMachineFeatures');
+    this.allowStoppingForUpdate =
+        registerOutput<bool>('allowStoppingForUpdate');
     this.attachedDisks =
-        Output.createUnknown<List<InstanceFromMachineImageAttachedDisk>>();
+        registerOutput<List<InstanceFromMachineImageAttachedDisk>>(
+            'attachedDisks');
     this.bootDisks =
-        Output.createUnknown<List<InstanceFromMachineImageBootDisk>>();
-    this.canIpForward = Output.createUnknown<bool>();
-    this.confidentialInstanceConfig = Output.createUnknown<
-        InstanceFromMachineImageConfidentialInstanceConfig>();
-    this.cpuPlatform = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.currentStatus = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<bool>();
-    this.description = Output.createUnknown<String>();
-    this.desiredStatus = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enableDisplay = Output.createUnknown<bool>();
+        registerOutput<List<InstanceFromMachineImageBootDisk>>('bootDisks');
+    this.canIpForward = registerOutput<bool>('canIpForward');
+    this.confidentialInstanceConfig =
+        registerOutput<InstanceFromMachineImageConfidentialInstanceConfig>(
+            'confidentialInstanceConfig');
+    this.cpuPlatform = registerOutput<String>('cpuPlatform');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.currentStatus = registerOutput<String>('currentStatus');
+    this.deletionProtection = registerOutput<bool>('deletionProtection');
+    this.description = registerOutput<String>('description');
+    this.desiredStatus = registerOutput<String>('desiredStatus');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableDisplay = registerOutput<bool>('enableDisplay');
     this.guestAccelerators =
-        Output.createUnknown<List<InstanceFromMachineImageGuestAccelerator>>();
-    this.hostname = Output.createUnknown<String>();
+        registerOutput<List<InstanceFromMachineImageGuestAccelerator>>(
+            'guestAccelerators');
+    this.hostname = registerOutput<String>('hostname');
     this.instanceEncryptionKey =
-        Output.createUnknown<InstanceFromMachineImageInstanceEncryptionKey>();
-    this.instanceId = Output.createUnknown<String>();
-    this.keyRevocationActionType = Output.createUnknown<String>();
-    this.labelFingerprint = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.machineType = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<Map<String, String>>();
-    this.metadataFingerprint = Output.createUnknown<String>();
-    this.metadataStartupScript = Output.createUnknown<String>();
-    this.minCpuPlatform = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<InstanceFromMachineImageInstanceEncryptionKey>(
+            'instanceEncryptionKey');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.keyRevocationActionType =
+        registerOutput<String>('keyRevocationActionType');
+    this.labelFingerprint = registerOutput<String>('labelFingerprint');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.machineType = registerOutput<String>('machineType');
+    this.metadata = registerOutput<Map<String, String>>('metadata');
+    this.metadataFingerprint = registerOutput<String>('metadataFingerprint');
+    this.metadataStartupScript =
+        registerOutput<String>('metadataStartupScript');
+    this.minCpuPlatform = registerOutput<String>('minCpuPlatform');
+    this.name = registerOutput<String>('name');
     this.networkInterfaces =
-        Output.createUnknown<List<InstanceFromMachineImageNetworkInterface>>();
-    this.networkPerformanceConfig = Output.createUnknown<
-        InstanceFromMachineImageNetworkPerformanceConfig>();
-    this.params = Output.createUnknown<InstanceFromMachineImageParams>();
-    this.partnerMetadata = Output.createUnknown<Map<String, String>>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<InstanceFromMachineImageNetworkInterface>>(
+            'networkInterfaces');
+    this.networkPerformanceConfig =
+        registerOutput<InstanceFromMachineImageNetworkPerformanceConfig>(
+            'networkPerformanceConfig');
+    this.params = registerOutput<InstanceFromMachineImageParams>('params');
+    this.partnerMetadata =
+        registerOutput<Map<String, String>>('partnerMetadata');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.reservationAffinity =
-        Output.createUnknown<InstanceFromMachineImageReservationAffinity>();
-    this.resourcePolicies = Output.createUnknown<String>();
+        registerOutput<InstanceFromMachineImageReservationAffinity>(
+            'reservationAffinity');
+    this.resourcePolicies = registerOutput<String>('resourcePolicies');
     this.scheduling =
-        Output.createUnknown<InstanceFromMachineImageScheduling>();
+        registerOutput<InstanceFromMachineImageScheduling>('scheduling');
     this.scratchDisks =
-        Output.createUnknown<List<InstanceFromMachineImageScratchDisk>>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<List<InstanceFromMachineImageScratchDisk>>(
+            'scratchDisks');
+    this.selfLink = registerOutput<String>('selfLink');
     this.serviceAccount =
-        Output.createUnknown<InstanceFromMachineImageServiceAccount>();
+        registerOutput<InstanceFromMachineImageServiceAccount>(
+            'serviceAccount');
     this.shieldedInstanceConfig =
-        Output.createUnknown<InstanceFromMachineImageShieldedInstanceConfig>();
-    this.sourceMachineImage = Output.createUnknown<String>();
-    this.sourceMachineImageEncryptionKey = Output.createUnknown<
-        InstanceFromMachineImageSourceMachineImageEncryptionKey?>();
-    this.tags = Output.createUnknown<List<String>>();
-    this.tagsFingerprint = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<InstanceFromMachineImageShieldedInstanceConfig>(
+            'shieldedInstanceConfig');
+    this.sourceMachineImage = registerOutput<String>('sourceMachineImage');
+    this.sourceMachineImageEncryptionKey = registerOutput<
+            InstanceFromMachineImageSourceMachineImageEncryptionKey?>(
+        'sourceMachineImageEncryptionKey');
+    this.tags = registerOutput<List<String>>('tags');
+    this.tagsFingerprint = registerOutput<String>('tagsFingerprint');
+    this.zone = registerOutput<String>('zone');
   }
 }

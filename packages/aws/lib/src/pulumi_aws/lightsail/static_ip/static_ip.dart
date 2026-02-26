@@ -129,10 +129,10 @@ class StaticIp extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.ipAddress = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.supportCode = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.ipAddress = registerOutput<String>('ipAddress');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.supportCode = registerOutput<String>('supportCode');
   }
 }

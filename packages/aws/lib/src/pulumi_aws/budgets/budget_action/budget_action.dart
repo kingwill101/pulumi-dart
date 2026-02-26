@@ -610,19 +610,21 @@ class BudgetAction extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.actionId = Output.createUnknown<String>();
-    this.actionThreshold = Output.createUnknown<BudgetActionActionThreshold>();
-    this.actionType = Output.createUnknown<String>();
-    this.approvalModel = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.budgetName = Output.createUnknown<String>();
-    this.definition = Output.createUnknown<BudgetActionDefinition>();
-    this.executionRoleArn = Output.createUnknown<String>();
-    this.notificationType = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.subscribers = Output.createUnknown<List<BudgetActionSubscriber>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.accountId = registerOutput<String>('accountId');
+    this.actionId = registerOutput<String>('actionId');
+    this.actionThreshold =
+        registerOutput<BudgetActionActionThreshold>('actionThreshold');
+    this.actionType = registerOutput<String>('actionType');
+    this.approvalModel = registerOutput<String>('approvalModel');
+    this.arn = registerOutput<String>('arn');
+    this.budgetName = registerOutput<String>('budgetName');
+    this.definition = registerOutput<BudgetActionDefinition>('definition');
+    this.executionRoleArn = registerOutput<String>('executionRoleArn');
+    this.notificationType = registerOutput<String>('notificationType');
+    this.status = registerOutput<String>('status');
+    this.subscribers =
+        registerOutput<List<BudgetActionSubscriber>>('subscribers');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

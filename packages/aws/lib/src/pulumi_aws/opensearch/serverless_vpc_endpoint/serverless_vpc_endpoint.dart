@@ -150,11 +150,11 @@ class ServerlessVpcEndpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupIds = Output.createUnknown<List<String>>();
-    this.subnetIds = Output.createUnknown<List<String>>();
-    this.timeouts = Output.createUnknown<ServerlessVpcEndpointTimeouts?>();
-    this.vpcId = Output.createUnknown<String>();
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    this.subnetIds = registerOutput<List<String>>('subnetIds');
+    this.timeouts = registerOutput<ServerlessVpcEndpointTimeouts?>('timeouts');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

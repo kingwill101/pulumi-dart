@@ -33,13 +33,17 @@ class SpecialistPool2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.pendingDataLabelingJobs = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.specialistManagerEmails = Output.createUnknown<List<String>>();
-    this.specialistManagersCount = Output.createUnknown<int>();
-    this.specialistWorkerEmails = Output.createUnknown<List<String>>();
+    this.displayName = registerOutput<String>('displayName');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.pendingDataLabelingJobs =
+        registerOutput<List<String>>('pendingDataLabelingJobs');
+    this.project = registerOutput<String>('project');
+    this.specialistManagerEmails =
+        registerOutput<List<String>>('specialistManagerEmails');
+    this.specialistManagersCount =
+        registerOutput<int>('specialistManagersCount');
+    this.specialistWorkerEmails =
+        registerOutput<List<String>>('specialistWorkerEmails');
   }
 }

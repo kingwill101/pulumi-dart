@@ -864,13 +864,13 @@ class CentralizationRuleForOrganization extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.rule = Output.createUnknown<CentralizationRuleForOrganizationRule>();
-    this.ruleArn = Output.createUnknown<String>();
-    this.ruleName = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.region = registerOutput<String>('region');
+    this.rule = registerOutput<CentralizationRuleForOrganizationRule>('rule');
+    this.ruleArn = registerOutput<String>('ruleArn');
+    this.ruleName = registerOutput<String>('ruleName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.timeouts =
-        Output.createUnknown<CentralizationRuleForOrganizationTimeouts?>();
+        registerOutput<CentralizationRuleForOrganizationTimeouts?>('timeouts');
   }
 }

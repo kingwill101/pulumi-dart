@@ -288,12 +288,12 @@ class CxVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.nluSettings = Output.createUnknown<List<CxVersionNluSetting>>();
-    this.parent = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    this.nluSettings = registerOutput<List<CxVersionNluSetting>>('nluSettings');
+    this.parent = registerOutput<String?>('parent');
+    this.state = registerOutput<String>('state');
   }
 }

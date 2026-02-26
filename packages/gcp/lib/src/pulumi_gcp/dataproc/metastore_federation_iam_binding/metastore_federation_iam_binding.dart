@@ -961,12 +961,12 @@ class MetastoreFederationIamBinding extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.condition =
-        Output.createUnknown<MetastoreFederationIamBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.federationId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+        registerOutput<MetastoreFederationIamBindingCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.federationId = registerOutput<String>('federationId');
+    this.location = registerOutput<String>('location');
+    this.members = registerOutput<List<String>>('members');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
   }
 }

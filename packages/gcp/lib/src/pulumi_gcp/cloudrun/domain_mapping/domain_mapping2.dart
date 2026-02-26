@@ -307,11 +307,11 @@ class DomainMapping2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<DomainMappingMetadata>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.spec = Output.createUnknown<DomainMappingSpec>();
-    this.statuses = Output.createUnknown<List<DomainMappingStatus>>();
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<DomainMappingMetadata>('metadata');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.spec = registerOutput<DomainMappingSpec>('spec');
+    this.statuses = registerOutput<List<DomainMappingStatus>>('statuses');
   }
 }

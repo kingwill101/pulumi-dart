@@ -520,19 +520,20 @@ class BlockchainNodes extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.blockchainNodeId = Output.createUnknown<String>();
-    this.blockchainType = Output.createUnknown<String?>();
+    this.blockchainNodeId = registerOutput<String>('blockchainNodeId');
+    this.blockchainType = registerOutput<String?>('blockchainType');
     this.connectionInfos =
-        Output.createUnknown<List<BlockchainNodesConnectionInfo>>();
-    this.createTime = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<BlockchainNodesConnectionInfo>>('connectionInfos');
+    this.createTime = registerOutput<String>('createTime');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.ethereumDetails =
-        Output.createUnknown<BlockchainNodesEthereumDetails?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<BlockchainNodesEthereumDetails?>('ethereumDetails');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -211,15 +211,17 @@ class LbCertificate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.domainName = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.domainName = registerOutput<String>('domainName');
     this.domainValidationRecords =
-        Output.createUnknown<List<LbCertificateDomainValidationRecord>>();
-    this.lbName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.subjectAlternativeNames = Output.createUnknown<List<String>>();
-    this.supportCode = Output.createUnknown<String>();
+        registerOutput<List<LbCertificateDomainValidationRecord>>(
+            'domainValidationRecords');
+    this.lbName = registerOutput<String>('lbName');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.subjectAlternativeNames =
+        registerOutput<List<String>>('subjectAlternativeNames');
+    this.supportCode = registerOutput<String>('supportCode');
   }
 }

@@ -60,20 +60,22 @@ class Job extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allocationPolicy = Output.createUnknown<AllocationPolicyResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.jobId = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.logsPolicy = Output.createUnknown<LogsPolicyResponse>();
-    this.name = Output.createUnknown<String>();
-    this.notifications = Output.createUnknown<List<JobNotificationResponse>>();
-    this.priority = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.status = Output.createUnknown<JobStatusResponse>();
-    this.taskGroups = Output.createUnknown<List<TaskGroupResponse>>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.allocationPolicy =
+        registerOutput<AllocationPolicyResponse>('allocationPolicy');
+    this.createTime = registerOutput<String>('createTime');
+    this.jobId = registerOutput<String?>('jobId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.logsPolicy = registerOutput<LogsPolicyResponse>('logsPolicy');
+    this.name = registerOutput<String>('name');
+    this.notifications =
+        registerOutput<List<JobNotificationResponse>>('notifications');
+    this.priority = registerOutput<String>('priority');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.status = registerOutput<JobStatusResponse>('status');
+    this.taskGroups = registerOutput<List<TaskGroupResponse>>('taskGroups');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

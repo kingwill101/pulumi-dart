@@ -2259,17 +2259,17 @@ class Entry2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aspects = Output.createUnknown<List<EntryAspect>?>();
-    this.createTime = Output.createUnknown<String>();
-    this.entryGroupId = Output.createUnknown<String?>();
-    this.entryId = Output.createUnknown<String?>();
-    this.entrySource = Output.createUnknown<EntryEntrySource>();
-    this.entryType = Output.createUnknown<String>();
-    this.fullyQualifiedName = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.parentEntry = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.aspects = registerOutput<List<EntryAspect>?>('aspects');
+    this.createTime = registerOutput<String>('createTime');
+    this.entryGroupId = registerOutput<String?>('entryGroupId');
+    this.entryId = registerOutput<String?>('entryId');
+    this.entrySource = registerOutput<EntryEntrySource>('entrySource');
+    this.entryType = registerOutput<String>('entryType');
+    this.fullyQualifiedName = registerOutput<String?>('fullyQualifiedName');
+    this.location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.parentEntry = registerOutput<String?>('parentEntry');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

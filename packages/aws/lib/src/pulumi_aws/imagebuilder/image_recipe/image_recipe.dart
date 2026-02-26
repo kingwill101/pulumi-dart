@@ -322,24 +322,25 @@ class ImageRecipe extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.amiTags = Output.createUnknown<Map<String, String>?>();
-    this.arn = Output.createUnknown<String>();
+    this.amiTags = registerOutput<Map<String, String>?>('amiTags');
+    this.arn = registerOutput<String>('arn');
     this.blockDeviceMappings =
-        Output.createUnknown<List<ImageRecipeBlockDeviceMapping>?>();
-    this.components = Output.createUnknown<List<ImageRecipeComponent>>();
-    this.dateCreated = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.owner = Output.createUnknown<String>();
-    this.parentImage = Output.createUnknown<String>();
-    this.platform = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<ImageRecipeBlockDeviceMapping>?>(
+            'blockDeviceMappings');
+    this.components = registerOutput<List<ImageRecipeComponent>>('components');
+    this.dateCreated = registerOutput<String>('dateCreated');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.owner = registerOutput<String>('owner');
+    this.parentImage = registerOutput<String>('parentImage');
+    this.platform = registerOutput<String>('platform');
+    this.region = registerOutput<String>('region');
     this.systemsManagerAgent =
-        Output.createUnknown<ImageRecipeSystemsManagerAgent>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.userDataBase64 = Output.createUnknown<String>();
-    this.version = Output.createUnknown<String>();
-    this.workingDirectory = Output.createUnknown<String?>();
+        registerOutput<ImageRecipeSystemsManagerAgent>('systemsManagerAgent');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.userDataBase64 = registerOutput<String>('userDataBase64');
+    this.version = registerOutput<String>('version');
+    this.workingDirectory = registerOutput<String?>('workingDirectory');
   }
 }

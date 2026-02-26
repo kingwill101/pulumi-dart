@@ -690,63 +690,80 @@ class CloudAutonomousVmCluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.autonomousDataStoragePercentage = Output.createUnknown<double>();
-    this.autonomousDataStorageSizeInTbs = Output.createUnknown<double>();
+    this.arn = registerOutput<String>('arn');
+    this.autonomousDataStoragePercentage =
+        registerOutput<double>('autonomousDataStoragePercentage');
+    this.autonomousDataStorageSizeInTbs =
+        registerOutput<double>('autonomousDataStorageSizeInTbs');
     this.availableAutonomousDataStorageSizeInTbs =
-        Output.createUnknown<double>();
-    this.availableContainerDatabases = Output.createUnknown<int>();
-    this.availableCpus = Output.createUnknown<double>();
-    this.cloudExadataInfrastructureArn = Output.createUnknown<String>();
-    this.cloudExadataInfrastructureId = Output.createUnknown<String>();
-    this.computeModel = Output.createUnknown<String>();
-    this.cpuCoreCount = Output.createUnknown<int>();
-    this.cpuCoreCountPerNode = Output.createUnknown<int>();
-    this.cpuPercentage = Output.createUnknown<double>();
-    this.createdAt = Output.createUnknown<String>();
-    this.dataStorageSizeInGbs = Output.createUnknown<double>();
-    this.dataStorageSizeInTbs = Output.createUnknown<double>();
-    this.dbServers = Output.createUnknown<List<String>>();
-    this.description = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.domain = Output.createUnknown<String>();
-    this.exadataStorageInTbsLowestScaledValue = Output.createUnknown<double>();
-    this.hostname = Output.createUnknown<String>();
-    this.isMtlsEnabledVmCluster = Output.createUnknown<bool>();
-    this.licenseModel = Output.createUnknown<String>();
+        registerOutput<double>('availableAutonomousDataStorageSizeInTbs');
+    this.availableContainerDatabases =
+        registerOutput<int>('availableContainerDatabases');
+    this.availableCpus = registerOutput<double>('availableCpus');
+    this.cloudExadataInfrastructureArn =
+        registerOutput<String>('cloudExadataInfrastructureArn');
+    this.cloudExadataInfrastructureId =
+        registerOutput<String>('cloudExadataInfrastructureId');
+    this.computeModel = registerOutput<String>('computeModel');
+    this.cpuCoreCount = registerOutput<int>('cpuCoreCount');
+    this.cpuCoreCountPerNode = registerOutput<int>('cpuCoreCountPerNode');
+    this.cpuPercentage = registerOutput<double>('cpuPercentage');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.dataStorageSizeInGbs = registerOutput<double>('dataStorageSizeInGbs');
+    this.dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
+    this.dbServers = registerOutput<List<String>>('dbServers');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.domain = registerOutput<String>('domain');
+    this.exadataStorageInTbsLowestScaledValue =
+        registerOutput<double>('exadataStorageInTbsLowestScaledValue');
+    this.hostname = registerOutput<String>('hostname');
+    this.isMtlsEnabledVmCluster =
+        registerOutput<bool>('isMtlsEnabledVmCluster');
+    this.licenseModel = registerOutput<String>('licenseModel');
     this.maintenanceWindow =
-        Output.createUnknown<CloudAutonomousVmClusterMaintenanceWindow>();
-    this.maxAcdsLowestScaledValue = Output.createUnknown<int>();
-    this.memoryPerOracleComputeUnitInGbs = Output.createUnknown<int>();
-    this.memorySizeInGbs = Output.createUnknown<int>();
-    this.nodeCount = Output.createUnknown<int>();
+        registerOutput<CloudAutonomousVmClusterMaintenanceWindow>(
+            'maintenanceWindow');
+    this.maxAcdsLowestScaledValue =
+        registerOutput<int>('maxAcdsLowestScaledValue');
+    this.memoryPerOracleComputeUnitInGbs =
+        registerOutput<int>('memoryPerOracleComputeUnitInGbs');
+    this.memorySizeInGbs = registerOutput<int>('memorySizeInGbs');
+    this.nodeCount = registerOutput<int>('nodeCount');
     this.nonProvisionableAutonomousContainerDatabases =
-        Output.createUnknown<int>();
-    this.ociResourceAnchorName = Output.createUnknown<String>();
-    this.ociUrl = Output.createUnknown<String>();
-    this.ocid = Output.createUnknown<String>();
-    this.odbNetworkArn = Output.createUnknown<String>();
-    this.odbNetworkId = Output.createUnknown<String>();
-    this.odbNodeStorageSizeInGbs = Output.createUnknown<int>();
-    this.percentProgress = Output.createUnknown<double>();
+        registerOutput<int>('nonProvisionableAutonomousContainerDatabases');
+    this.ociResourceAnchorName =
+        registerOutput<String>('ociResourceAnchorName');
+    this.ociUrl = registerOutput<String>('ociUrl');
+    this.ocid = registerOutput<String>('ocid');
+    this.odbNetworkArn = registerOutput<String>('odbNetworkArn');
+    this.odbNetworkId = registerOutput<String>('odbNetworkId');
+    this.odbNodeStorageSizeInGbs =
+        registerOutput<int>('odbNodeStorageSizeInGbs');
+    this.percentProgress = registerOutput<double>('percentProgress');
     this.provisionableAutonomousContainerDatabases =
-        Output.createUnknown<int>();
-    this.provisionedAutonomousContainerDatabases = Output.createUnknown<int>();
-    this.provisionedCpus = Output.createUnknown<double>();
-    this.reclaimableCpus = Output.createUnknown<double>();
-    this.region = Output.createUnknown<String>();
-    this.reservedCpus = Output.createUnknown<double>();
-    this.scanListenerPortNonTls = Output.createUnknown<int>();
-    this.scanListenerPortTls = Output.createUnknown<int>();
-    this.shape = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.statusReason = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeDatabaseSslCertificateExpires = Output.createUnknown<String>();
-    this.timeOrdsCertificateExpires = Output.createUnknown<String>();
-    this.timeZone = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<CloudAutonomousVmClusterTimeouts?>();
-    this.totalContainerDatabases = Output.createUnknown<int>();
+        registerOutput<int>('provisionableAutonomousContainerDatabases');
+    this.provisionedAutonomousContainerDatabases =
+        registerOutput<int>('provisionedAutonomousContainerDatabases');
+    this.provisionedCpus = registerOutput<double>('provisionedCpus');
+    this.reclaimableCpus = registerOutput<double>('reclaimableCpus');
+    this.region = registerOutput<String>('region');
+    this.reservedCpus = registerOutput<double>('reservedCpus');
+    this.scanListenerPortNonTls = registerOutput<int>('scanListenerPortNonTls');
+    this.scanListenerPortTls = registerOutput<int>('scanListenerPortTls');
+    this.shape = registerOutput<String>('shape');
+    this.status = registerOutput<String>('status');
+    this.statusReason = registerOutput<String>('statusReason');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeDatabaseSslCertificateExpires =
+        registerOutput<String>('timeDatabaseSslCertificateExpires');
+    this.timeOrdsCertificateExpires =
+        registerOutput<String>('timeOrdsCertificateExpires');
+    this.timeZone = registerOutput<String>('timeZone');
+    this.timeouts =
+        registerOutput<CloudAutonomousVmClusterTimeouts?>('timeouts');
+    this.totalContainerDatabases =
+        registerOutput<int>('totalContainerDatabases');
   }
 }

@@ -42,11 +42,12 @@ class ProxyDefaultTargetGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
     this.connectionPoolConfig =
-        Output.createUnknown<ProxyDefaultTargetGroupConnectionPoolConfig>();
-    this.dbProxyName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<ProxyDefaultTargetGroupConnectionPoolConfig>(
+            'connectionPoolConfig');
+    this.dbProxyName = registerOutput<String>('dbProxyName');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

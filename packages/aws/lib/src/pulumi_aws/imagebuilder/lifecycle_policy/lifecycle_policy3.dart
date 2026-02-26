@@ -475,18 +475,18 @@ class LifecyclePolicy3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.executionRole = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.executionRole = registerOutput<String>('executionRole');
+    this.name = registerOutput<String>('name');
     this.policyDetails =
-        Output.createUnknown<List<LifecyclePolicyPolicyDetail>>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<LifecyclePolicyPolicyDetail>>('policyDetails');
+    this.region = registerOutput<String>('region');
     this.resourceSelection =
-        Output.createUnknown<LifecyclePolicyResourceSelection>();
-    this.resourceType = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<LifecyclePolicyResourceSelection>('resourceSelection');
+    this.resourceType = registerOutput<String>('resourceType');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

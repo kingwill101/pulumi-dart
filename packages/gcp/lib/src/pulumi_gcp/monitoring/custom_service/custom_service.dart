@@ -219,11 +219,11 @@ class CustomService extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.serviceId = Output.createUnknown<String>();
-    this.telemetry = Output.createUnknown<CustomServiceTelemetry?>();
-    this.userLabels = Output.createUnknown<Map<String, String>?>();
+    this.displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.serviceId = registerOutput<String>('serviceId');
+    this.telemetry = registerOutput<CustomServiceTelemetry?>('telemetry');
+    this.userLabels = registerOutput<Map<String, String>?>('userLabels');
   }
 }

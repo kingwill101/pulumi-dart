@@ -913,11 +913,12 @@ class AiFeatureStoreEntityTypeIamBinding extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.condition =
-        Output.createUnknown<AiFeatureStoreEntityTypeIamBindingCondition?>();
-    this.entitytype = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.featurestore = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.role = Output.createUnknown<String>();
+        registerOutput<AiFeatureStoreEntityTypeIamBindingCondition?>(
+            'condition');
+    this.entitytype = registerOutput<String>('entitytype');
+    this.etag = registerOutput<String>('etag');
+    this.featurestore = registerOutput<String>('featurestore');
+    this.members = registerOutput<List<String>>('members');
+    this.role = registerOutput<String>('role');
   }
 }

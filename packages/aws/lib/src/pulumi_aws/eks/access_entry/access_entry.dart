@@ -181,16 +181,16 @@ class AccessEntry extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessEntryArn = Output.createUnknown<String>();
-    this.clusterName = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.kubernetesGroups = Output.createUnknown<List<String>>();
-    this.modifiedAt = Output.createUnknown<String>();
-    this.principalArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String?>();
-    this.userName = Output.createUnknown<String>();
+    this.accessEntryArn = registerOutput<String>('accessEntryArn');
+    this.clusterName = registerOutput<String>('clusterName');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.kubernetesGroups = registerOutput<List<String>>('kubernetesGroups');
+    this.modifiedAt = registerOutput<String>('modifiedAt');
+    this.principalArn = registerOutput<String>('principalArn');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String?>('type');
+    this.userName = registerOutput<String>('userName');
   }
 }

@@ -623,16 +623,19 @@ class ConnectionFunction extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.connectionFunctionArn = Output.createUnknown<String>();
-    this.connectionFunctionCode = Output.createUnknown<String>();
+    this.connectionFunctionArn =
+        registerOutput<String>('connectionFunctionArn');
+    this.connectionFunctionCode =
+        registerOutput<String>('connectionFunctionCode');
     this.connectionFunctionConfig =
-        Output.createUnknown<ConnectionFunctionConnectionFunctionConfig>();
-    this.etag = Output.createUnknown<String>();
-    this.liveStageEtag = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.publish = Output.createUnknown<bool>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<ConnectionFunctionConnectionFunctionConfig>(
+            'connectionFunctionConfig');
+    this.etag = registerOutput<String>('etag');
+    this.liveStageEtag = registerOutput<String>('liveStageEtag');
+    this.name = registerOutput<String>('name');
+    this.publish = registerOutput<bool>('publish');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

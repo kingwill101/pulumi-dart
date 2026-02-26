@@ -31,11 +31,11 @@ class Lien2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.origin = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.reason = Output.createUnknown<String>();
-    this.restrictions = Output.createUnknown<List<String>>();
+    this.createTime = registerOutput<String>('createTime');
+    this.name = registerOutput<String>('name');
+    this.origin = registerOutput<String>('origin');
+    this.parent = registerOutput<String>('parent');
+    this.reason = registerOutput<String>('reason');
+    this.restrictions = registerOutput<List<String>>('restrictions');
   }
 }

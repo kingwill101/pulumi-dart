@@ -154,12 +154,13 @@ class ResourceShare extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowExternalPrincipals = Output.createUnknown<bool?>();
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.permissionArns = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.allowExternalPrincipals =
+        registerOutput<bool?>('allowExternalPrincipals');
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    this.permissionArns = registerOutput<List<String>>('permissionArns');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

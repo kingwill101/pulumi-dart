@@ -188,10 +188,10 @@ class DocumentationPart extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.documentationPartId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<DocumentationPartLocation>();
-    this.properties = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.restApiId = Output.createUnknown<String>();
+    this.documentationPartId = registerOutput<String>('documentationPartId');
+    this.location = registerOutput<DocumentationPartLocation>('location');
+    this.properties = registerOutput<String>('properties');
+    this.region = registerOutput<String>('region');
+    this.restApiId = registerOutput<String>('restApiId');
   }
 }

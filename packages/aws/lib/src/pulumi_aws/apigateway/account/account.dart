@@ -394,11 +394,11 @@ class Account extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiKeyVersion = Output.createUnknown<String>();
-    this.cloudwatchRoleArn = Output.createUnknown<String>();
-    this.features = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
+    this.apiKeyVersion = registerOutput<String>('apiKeyVersion');
+    this.cloudwatchRoleArn = registerOutput<String>('cloudwatchRoleArn');
+    this.features = registerOutput<List<String>>('features');
+    this.region = registerOutput<String>('region');
     this.throttleSettings =
-        Output.createUnknown<List<AccountThrottleSetting>>();
+        registerOutput<List<AccountThrottleSetting>>('throttleSettings');
   }
 }

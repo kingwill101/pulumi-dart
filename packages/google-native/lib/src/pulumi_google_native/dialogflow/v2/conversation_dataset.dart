@@ -40,16 +40,18 @@ class ConversationDataset extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.conversationCount = Output.createUnknown<String>();
+    this.conversationCount = registerOutput<String>('conversationCount');
     this.conversationInfo =
-        Output.createUnknown<GoogleCloudDialogflowV2ConversationInfoResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDialogflowV2ConversationInfoResponse>(
+            'conversationInfo');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
     this.inputConfig =
-        Output.createUnknown<GoogleCloudDialogflowV2InputConfigResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDialogflowV2InputConfigResponse>(
+            'inputConfig');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

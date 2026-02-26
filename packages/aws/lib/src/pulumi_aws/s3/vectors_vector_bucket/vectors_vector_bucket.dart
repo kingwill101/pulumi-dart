@@ -258,14 +258,15 @@ class VectorsVectorBucket extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTime = Output.createUnknown<String>();
-    this.encryptionConfigurations = Output.createUnknown<
-        List<VectorsVectorBucketEncryptionConfiguration>>();
-    this.forceDestroy = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vectorBucketArn = Output.createUnknown<String>();
-    this.vectorBucketName = Output.createUnknown<String>();
+    this.creationTime = registerOutput<String>('creationTime');
+    this.encryptionConfigurations =
+        registerOutput<List<VectorsVectorBucketEncryptionConfiguration>>(
+            'encryptionConfigurations');
+    this.forceDestroy = registerOutput<bool>('forceDestroy');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vectorBucketArn = registerOutput<String>('vectorBucketArn');
+    this.vectorBucketName = registerOutput<String>('vectorBucketName');
   }
 }

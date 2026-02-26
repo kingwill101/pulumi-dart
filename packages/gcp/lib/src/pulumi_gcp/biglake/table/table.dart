@@ -555,14 +555,14 @@ class Table extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.database = Output.createUnknown<String?>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.hiveOptions = Output.createUnknown<TableHiveOptions?>();
-    this.name = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.database = registerOutput<String?>('database');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.etag = registerOutput<String>('etag');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.hiveOptions = registerOutput<TableHiveOptions?>('hiveOptions');
+    this.name = registerOutput<String>('name');
+    this.type = registerOutput<String?>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

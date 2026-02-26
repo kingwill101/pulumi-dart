@@ -31,13 +31,14 @@ class ConsentStore2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.consentStoreId = Output.createUnknown<String>();
-    this.datasetId = Output.createUnknown<String>();
-    this.defaultConsentTtl = Output.createUnknown<String>();
-    this.enableConsentCreateOnUpdate = Output.createUnknown<bool>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.consentStoreId = registerOutput<String>('consentStoreId');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.defaultConsentTtl = registerOutput<String>('defaultConsentTtl');
+    this.enableConsentCreateOnUpdate =
+        registerOutput<bool>('enableConsentCreateOnUpdate');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

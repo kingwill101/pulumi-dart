@@ -271,9 +271,9 @@ class PermissionSetInlinePolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.inlinePolicy = Output.createUnknown<String>();
-    this.instanceArn = Output.createUnknown<String>();
-    this.permissionSetArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.inlinePolicy = registerOutput<String>('inlinePolicy');
+    this.instanceArn = registerOutput<String>('instanceArn');
+    this.permissionSetArn = registerOutput<String>('permissionSetArn');
+    this.region = registerOutput<String>('region');
   }
 }

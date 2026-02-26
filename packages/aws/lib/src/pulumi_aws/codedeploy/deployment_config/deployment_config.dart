@@ -597,15 +597,18 @@ class DeploymentConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.computePlatform = Output.createUnknown<String?>();
-    this.deploymentConfigId = Output.createUnknown<String>();
-    this.deploymentConfigName = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.computePlatform = registerOutput<String?>('computePlatform');
+    this.deploymentConfigId = registerOutput<String>('deploymentConfigId');
+    this.deploymentConfigName = registerOutput<String>('deploymentConfigName');
     this.minimumHealthyHosts =
-        Output.createUnknown<DeploymentConfigMinimumHealthyHosts?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<DeploymentConfigMinimumHealthyHosts?>(
+            'minimumHealthyHosts');
+    this.region = registerOutput<String>('region');
     this.trafficRoutingConfig =
-        Output.createUnknown<DeploymentConfigTrafficRoutingConfig?>();
-    this.zonalConfig = Output.createUnknown<DeploymentConfigZonalConfig?>();
+        registerOutput<DeploymentConfigTrafficRoutingConfig?>(
+            'trafficRoutingConfig');
+    this.zonalConfig =
+        registerOutput<DeploymentConfigZonalConfig?>('zonalConfig');
   }
 }

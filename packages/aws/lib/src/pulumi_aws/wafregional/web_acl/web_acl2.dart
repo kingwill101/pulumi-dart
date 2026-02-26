@@ -683,15 +683,15 @@ class WebAcl2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.defaultAction = Output.createUnknown<WebAclDefaultAction2>();
+    this.arn = registerOutput<String>('arn');
+    this.defaultAction = registerOutput<WebAclDefaultAction2>('defaultAction');
     this.loggingConfiguration =
-        Output.createUnknown<WebAclLoggingConfiguration2?>();
-    this.metricName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.rules = Output.createUnknown<List<WebAclRule2>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<WebAclLoggingConfiguration2?>('loggingConfiguration');
+    this.metricName = registerOutput<String>('metricName');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.rules = registerOutput<List<WebAclRule2>?>('rules');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

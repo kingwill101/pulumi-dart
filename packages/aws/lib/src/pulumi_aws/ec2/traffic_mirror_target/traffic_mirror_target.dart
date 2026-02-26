@@ -209,14 +209,16 @@ class TrafficMirrorTarget extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.gatewayLoadBalancerEndpointId = Output.createUnknown<String?>();
-    this.networkInterfaceId = Output.createUnknown<String?>();
-    this.networkLoadBalancerArn = Output.createUnknown<String?>();
-    this.ownerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.gatewayLoadBalancerEndpointId =
+        registerOutput<String?>('gatewayLoadBalancerEndpointId');
+    this.networkInterfaceId = registerOutput<String?>('networkInterfaceId');
+    this.networkLoadBalancerArn =
+        registerOutput<String?>('networkLoadBalancerArn');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

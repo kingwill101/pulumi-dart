@@ -51,18 +51,18 @@ class Execution6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.argument = Output.createUnknown<String>();
-    this.callLogLevel = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
-    this.error = Output.createUnknown<ErrorResponse4>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.result = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.status = Output.createUnknown<StatusResponse33>();
-    this.workflowId = Output.createUnknown<String>();
-    this.workflowRevisionId = Output.createUnknown<String>();
+    this.argument = registerOutput<String>('argument');
+    this.callLogLevel = registerOutput<String>('callLogLevel');
+    this.endTime = registerOutput<String>('endTime');
+    this.error = registerOutput<ErrorResponse4>('error');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.result = registerOutput<String>('result');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
+    this.status = registerOutput<StatusResponse33>('status');
+    this.workflowId = registerOutput<String>('workflowId');
+    this.workflowRevisionId = registerOutput<String>('workflowRevisionId');
   }
 }

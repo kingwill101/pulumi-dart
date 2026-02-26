@@ -39,16 +39,18 @@ class Alias extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.alias = Output.createUnknown<String>();
+    this.alias = registerOutput<String>('alias');
     this.certsInfo =
-        Output.createUnknown<GoogleCloudApigeeV1CertificateResponse>();
-    this.environmentId = Output.createUnknown<String>();
-    this.format = Output.createUnknown<String>();
-    this.ignoreExpiryValidation = Output.createUnknown<bool?>();
-    this.ignoreNewlineValidation = Output.createUnknown<bool?>();
-    this.keystoreId = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.password = Output.createUnknown<String?>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<GoogleCloudApigeeV1CertificateResponse>('certsInfo');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.format = registerOutput<String>('format');
+    this.ignoreExpiryValidation =
+        registerOutput<bool?>('ignoreExpiryValidation');
+    this.ignoreNewlineValidation =
+        registerOutput<bool?>('ignoreNewlineValidation');
+    this.keystoreId = registerOutput<String>('keystoreId');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.password = registerOutput<String?>('password');
+    this.type = registerOutput<String>('type');
   }
 }

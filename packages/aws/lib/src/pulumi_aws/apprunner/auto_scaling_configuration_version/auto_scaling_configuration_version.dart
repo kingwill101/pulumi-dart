@@ -187,18 +187,20 @@ class AutoScalingConfigurationVersion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.autoScalingConfigurationName = Output.createUnknown<String>();
-    this.autoScalingConfigurationRevision = Output.createUnknown<int>();
-    this.hasAssociatedService = Output.createUnknown<bool>();
-    this.isDefault = Output.createUnknown<bool>();
-    this.latest = Output.createUnknown<bool>();
-    this.maxConcurrency = Output.createUnknown<int?>();
-    this.maxSize = Output.createUnknown<int?>();
-    this.minSize = Output.createUnknown<int?>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.autoScalingConfigurationName =
+        registerOutput<String>('autoScalingConfigurationName');
+    this.autoScalingConfigurationRevision =
+        registerOutput<int>('autoScalingConfigurationRevision');
+    this.hasAssociatedService = registerOutput<bool>('hasAssociatedService');
+    this.isDefault = registerOutput<bool>('isDefault');
+    this.latest = registerOutput<bool>('latest');
+    this.maxConcurrency = registerOutput<int?>('maxConcurrency');
+    this.maxSize = registerOutput<int?>('maxSize');
+    this.minSize = registerOutput<int?>('minSize');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

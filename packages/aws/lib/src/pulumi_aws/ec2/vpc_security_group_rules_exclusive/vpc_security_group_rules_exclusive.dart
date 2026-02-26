@@ -411,9 +411,9 @@ class VpcSecurityGroupRulesExclusive extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.egressRuleIds = Output.createUnknown<List<String>>();
-    this.ingressRuleIds = Output.createUnknown<List<String>>();
-    this.region = Output.createUnknown<String>();
-    this.securityGroupId = Output.createUnknown<String>();
+    this.egressRuleIds = registerOutput<List<String>>('egressRuleIds');
+    this.ingressRuleIds = registerOutput<List<String>>('ingressRuleIds');
+    this.region = registerOutput<String>('region');
+    this.securityGroupId = registerOutput<String>('securityGroupId');
   }
 }

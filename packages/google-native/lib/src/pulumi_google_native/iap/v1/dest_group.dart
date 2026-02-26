@@ -27,11 +27,11 @@ class DestGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cidrs = Output.createUnknown<List<String>>();
-    this.fqdns = Output.createUnknown<List<String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.tunnelDestGroupId = Output.createUnknown<String>();
+    this.cidrs = registerOutput<List<String>>('cidrs');
+    this.fqdns = registerOutput<List<String>>('fqdns');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.tunnelDestGroupId = registerOutput<String>('tunnelDestGroupId');
   }
 }

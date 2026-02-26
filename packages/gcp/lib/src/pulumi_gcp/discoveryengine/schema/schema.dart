@@ -253,11 +253,11 @@ class Schema extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.dataStoreId = Output.createUnknown<String>();
-    this.jsonSchema = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.schemaId = Output.createUnknown<String>();
+    this.dataStoreId = registerOutput<String>('dataStoreId');
+    this.jsonSchema = registerOutput<String?>('jsonSchema');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.schemaId = registerOutput<String>('schemaId');
   }
 }

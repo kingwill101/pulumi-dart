@@ -467,14 +467,16 @@ class ConfigurationAggregator extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountAggregationSource = Output.createUnknown<
-        ConfigurationAggregatorAccountAggregationSource?>();
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationAggregationSource = Output.createUnknown<
-        ConfigurationAggregatorOrganizationAggregationSource?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.accountAggregationSource =
+        registerOutput<ConfigurationAggregatorAccountAggregationSource?>(
+            'accountAggregationSource');
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    this.organizationAggregationSource =
+        registerOutput<ConfigurationAggregatorOrganizationAggregationSource?>(
+            'organizationAggregationSource');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

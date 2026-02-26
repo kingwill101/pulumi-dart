@@ -845,14 +845,14 @@ class ContactsRotation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.contactIds = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.recurrence = Output.createUnknown<ContactsRotationRecurrence>();
-    this.region = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeZoneId = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.contactIds = registerOutput<List<String>>('contactIds');
+    this.name = registerOutput<String>('name');
+    this.recurrence = registerOutput<ContactsRotationRecurrence>('recurrence');
+    this.region = registerOutput<String>('region');
+    this.startTime = registerOutput<String?>('startTime');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeZoneId = registerOutput<String>('timeZoneId');
   }
 }

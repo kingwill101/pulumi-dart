@@ -168,9 +168,9 @@ class VoiceConnectorLogging extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.enableMediaMetricLogs = Output.createUnknown<bool?>();
-    this.enableSipLogs = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.voiceConnectorId = Output.createUnknown<String>();
+    this.enableMediaMetricLogs = registerOutput<bool?>('enableMediaMetricLogs');
+    this.enableSipLogs = registerOutput<bool?>('enableSipLogs');
+    this.region = registerOutput<String>('region');
+    this.voiceConnectorId = registerOutput<String>('voiceConnectorId');
   }
 }

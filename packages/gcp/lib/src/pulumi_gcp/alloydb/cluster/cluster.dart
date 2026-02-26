@@ -2201,47 +2201,58 @@ class Cluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.automatedBackupPolicy =
-        Output.createUnknown<ClusterAutomatedBackupPolicy>();
-    this.backupSources = Output.createUnknown<List<ClusterBackupSource>>();
-    this.clusterId = Output.createUnknown<String>();
-    this.clusterType = Output.createUnknown<String?>();
+        registerOutput<ClusterAutomatedBackupPolicy>('automatedBackupPolicy');
+    this.backupSources =
+        registerOutput<List<ClusterBackupSource>>('backupSources');
+    this.clusterId = registerOutput<String>('clusterId');
+    this.clusterType = registerOutput<String?>('clusterType');
     this.continuousBackupConfig =
-        Output.createUnknown<ClusterContinuousBackupConfig>();
+        registerOutput<ClusterContinuousBackupConfig>('continuousBackupConfig');
     this.continuousBackupInfos =
-        Output.createUnknown<List<ClusterContinuousBackupInfo>>();
-    this.databaseVersion = Output.createUnknown<String>();
-    this.deletionPolicy = Output.createUnknown<String?>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.encryptionConfig = Output.createUnknown<ClusterEncryptionConfig?>();
-    this.encryptionInfos = Output.createUnknown<List<ClusterEncryptionInfo>>();
-    this.etag = Output.createUnknown<String?>();
-    this.initialUser = Output.createUnknown<ClusterInitialUser?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
+        registerOutput<List<ClusterContinuousBackupInfo>>(
+            'continuousBackupInfos');
+    this.databaseVersion = registerOutput<String>('databaseVersion');
+    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.displayName = registerOutput<String?>('displayName');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.encryptionConfig =
+        registerOutput<ClusterEncryptionConfig?>('encryptionConfig');
+    this.encryptionInfos =
+        registerOutput<List<ClusterEncryptionInfo>>('encryptionInfos');
+    this.etag = registerOutput<String?>('etag');
+    this.initialUser = registerOutput<ClusterInitialUser?>('initialUser');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
     this.maintenanceUpdatePolicy =
-        Output.createUnknown<ClusterMaintenanceUpdatePolicy?>();
+        registerOutput<ClusterMaintenanceUpdatePolicy?>(
+            'maintenanceUpdatePolicy');
     this.migrationSources =
-        Output.createUnknown<List<ClusterMigrationSource>>();
-    this.name = Output.createUnknown<String>();
-    this.networkConfig = Output.createUnknown<ClusterNetworkConfig>();
-    this.project = Output.createUnknown<String>();
-    this.pscConfig = Output.createUnknown<ClusterPscConfig?>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.reconciling = Output.createUnknown<bool>();
+        registerOutput<List<ClusterMigrationSource>>('migrationSources');
+    this.name = registerOutput<String>('name');
+    this.networkConfig = registerOutput<ClusterNetworkConfig>('networkConfig');
+    this.project = registerOutput<String>('project');
+    this.pscConfig = registerOutput<ClusterPscConfig?>('pscConfig');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.reconciling = registerOutput<bool>('reconciling');
     this.restoreBackupSource =
-        Output.createUnknown<ClusterRestoreBackupSource?>();
+        registerOutput<ClusterRestoreBackupSource?>('restoreBackupSource');
     this.restoreContinuousBackupSource =
-        Output.createUnknown<ClusterRestoreContinuousBackupSource?>();
-    this.secondaryConfig = Output.createUnknown<ClusterSecondaryConfig?>();
-    this.skipAwaitMajorVersionUpgrade = Output.createUnknown<bool?>();
-    this.state = Output.createUnknown<String>();
-    this.subscriptionType = Output.createUnknown<String>();
-    this.trialMetadatas = Output.createUnknown<List<ClusterTrialMetadata>>();
-    this.uid = Output.createUnknown<String>();
+        registerOutput<ClusterRestoreContinuousBackupSource?>(
+            'restoreContinuousBackupSource');
+    this.secondaryConfig =
+        registerOutput<ClusterSecondaryConfig?>('secondaryConfig');
+    this.skipAwaitMajorVersionUpgrade =
+        registerOutput<bool?>('skipAwaitMajorVersionUpgrade');
+    this.state = registerOutput<String>('state');
+    this.subscriptionType = registerOutput<String>('subscriptionType');
+    this.trialMetadatas =
+        registerOutput<List<ClusterTrialMetadata>>('trialMetadatas');
+    this.uid = registerOutput<String>('uid');
   }
 }

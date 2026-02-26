@@ -66,25 +66,28 @@ class FeatureGroupFeature2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.disableMonitoring = Output.createUnknown<bool>();
-    this.etag = Output.createUnknown<String>();
-    this.featureGroupId = Output.createUnknown<String>();
-    this.featureId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.monitoringConfig = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponse>();
-    this.monitoringStats = Output.createUnknown<
-        List<GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponse>>();
-    this.monitoringStatsAnomalies = Output.createUnknown<
-        List<
-            GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponse>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.valueType = Output.createUnknown<String>();
-    this.versionColumnName = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.disableMonitoring = registerOutput<bool>('disableMonitoring');
+    this.etag = registerOutput<String>('etag');
+    this.featureGroupId = registerOutput<String>('featureGroupId');
+    this.featureId = registerOutput<String>('featureId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.monitoringConfig = registerOutput<
+            GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponse>(
+        'monitoringConfig');
+    this.monitoringStats = registerOutput<
+            List<GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponse>>(
+        'monitoringStats');
+    this.monitoringStatsAnomalies = registerOutput<
+            List<
+                GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponse>>(
+        'monitoringStatsAnomalies');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.valueType = registerOutput<String>('valueType');
+    this.versionColumnName = registerOutput<String>('versionColumnName');
   }
 }

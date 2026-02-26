@@ -915,26 +915,29 @@ class Network extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoCreateSubnetworks = Output.createUnknown<bool?>();
-    this.bgpAlwaysCompareMed = Output.createUnknown<bool>();
-    this.bgpBestPathSelectionMode = Output.createUnknown<String>();
-    this.bgpInterRegionCost = Output.createUnknown<String>();
-    this.deleteBgpAlwaysCompareMed = Output.createUnknown<bool?>();
-    this.deleteDefaultRoutesOnCreate = Output.createUnknown<bool?>();
-    this.description = Output.createUnknown<String?>();
-    this.enableUlaInternalIpv6 = Output.createUnknown<bool?>();
-    this.gatewayIpv4 = Output.createUnknown<String>();
-    this.internalIpv6Range = Output.createUnknown<String>();
-    this.mtu = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
+    this.autoCreateSubnetworks = registerOutput<bool?>('autoCreateSubnetworks');
+    this.bgpAlwaysCompareMed = registerOutput<bool>('bgpAlwaysCompareMed');
+    this.bgpBestPathSelectionMode =
+        registerOutput<String>('bgpBestPathSelectionMode');
+    this.bgpInterRegionCost = registerOutput<String>('bgpInterRegionCost');
+    this.deleteBgpAlwaysCompareMed =
+        registerOutput<bool?>('deleteBgpAlwaysCompareMed');
+    this.deleteDefaultRoutesOnCreate =
+        registerOutput<bool?>('deleteDefaultRoutesOnCreate');
+    this.description = registerOutput<String?>('description');
+    this.enableUlaInternalIpv6 = registerOutput<bool?>('enableUlaInternalIpv6');
+    this.gatewayIpv4 = registerOutput<String>('gatewayIpv4');
+    this.internalIpv6Range = registerOutput<String>('internalIpv6Range');
+    this.mtu = registerOutput<int>('mtu');
+    this.name = registerOutput<String>('name');
     this.networkFirewallPolicyEnforcementOrder =
-        Output.createUnknown<String?>();
-    this.networkId = Output.createUnknown<String>();
-    this.networkProfile = Output.createUnknown<String?>();
-    this.numericId = Output.createUnknown<String>();
-    this.params = Output.createUnknown<NetworkParams?>();
-    this.project = Output.createUnknown<String>();
-    this.routingMode = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
+        registerOutput<String?>('networkFirewallPolicyEnforcementOrder');
+    this.networkId = registerOutput<String>('networkId');
+    this.networkProfile = registerOutput<String?>('networkProfile');
+    this.numericId = registerOutput<String>('numericId');
+    this.params = registerOutput<NetworkParams?>('params');
+    this.project = registerOutput<String>('project');
+    this.routingMode = registerOutput<String>('routingMode');
+    this.selfLink = registerOutput<String>('selfLink');
   }
 }

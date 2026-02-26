@@ -207,15 +207,18 @@ class ServerlessCluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.bootstrapBrokersSaslIam = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.bootstrapBrokersSaslIam =
+        registerOutput<String>('bootstrapBrokersSaslIam');
     this.clientAuthentication =
-        Output.createUnknown<ServerlessClusterClientAuthentication>();
-    this.clusterName = Output.createUnknown<String>();
-    this.clusterUuid = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vpcConfigs = Output.createUnknown<List<ServerlessClusterVpcConfig>>();
+        registerOutput<ServerlessClusterClientAuthentication>(
+            'clientAuthentication');
+    this.clusterName = registerOutput<String>('clusterName');
+    this.clusterUuid = registerOutput<String>('clusterUuid');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vpcConfigs =
+        registerOutput<List<ServerlessClusterVpcConfig>>('vpcConfigs');
   }
 }

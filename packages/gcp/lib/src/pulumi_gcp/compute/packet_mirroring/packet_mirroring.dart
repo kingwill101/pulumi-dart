@@ -699,15 +699,16 @@ class PacketMirroring extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.collectorIlb = Output.createUnknown<PacketMirroringCollectorIlb>();
-    this.description = Output.createUnknown<String?>();
-    this.filter = Output.createUnknown<PacketMirroringFilter?>();
+    this.collectorIlb =
+        registerOutput<PacketMirroringCollectorIlb>('collectorIlb');
+    this.description = registerOutput<String?>('description');
+    this.filter = registerOutput<PacketMirroringFilter?>('filter');
     this.mirroredResources =
-        Output.createUnknown<PacketMirroringMirroredResources>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<PacketMirroringNetwork>();
-    this.priority = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<PacketMirroringMirroredResources>('mirroredResources');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<PacketMirroringNetwork>('network');
+    this.priority = registerOutput<int>('priority');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
   }
 }

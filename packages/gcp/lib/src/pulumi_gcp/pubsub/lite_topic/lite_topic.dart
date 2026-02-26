@@ -319,13 +319,15 @@ class LiteTopic extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
-    this.partitionConfig = Output.createUnknown<LiteTopicPartitionConfig?>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String?>();
+    this.name = registerOutput<String>('name');
+    this.partitionConfig =
+        registerOutput<LiteTopicPartitionConfig?>('partitionConfig');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String?>('region');
     this.reservationConfig =
-        Output.createUnknown<LiteTopicReservationConfig?>();
-    this.retentionConfig = Output.createUnknown<LiteTopicRetentionConfig?>();
-    this.zone = Output.createUnknown<String?>();
+        registerOutput<LiteTopicReservationConfig?>('reservationConfig');
+    this.retentionConfig =
+        registerOutput<LiteTopicRetentionConfig?>('retentionConfig');
+    this.zone = registerOutput<String?>('zone');
   }
 }

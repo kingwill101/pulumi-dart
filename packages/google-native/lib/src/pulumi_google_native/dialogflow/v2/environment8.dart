@@ -43,17 +43,19 @@ class Environment8 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentVersion = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.environmentId = Output.createUnknown<String>();
+    this.agentVersion = registerOutput<String>('agentVersion');
+    this.description = registerOutput<String>('description');
+    this.environmentId = registerOutput<String>('environmentId');
     this.fulfillment =
-        Output.createUnknown<GoogleCloudDialogflowV2FulfillmentResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.textToSpeechSettings = Output.createUnknown<
-        GoogleCloudDialogflowV2TextToSpeechSettingsResponse>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDialogflowV2FulfillmentResponse>(
+            'fulfillment');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.textToSpeechSettings =
+        registerOutput<GoogleCloudDialogflowV2TextToSpeechSettingsResponse>(
+            'textToSpeechSettings');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

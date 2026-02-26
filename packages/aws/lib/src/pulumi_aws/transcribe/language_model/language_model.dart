@@ -508,13 +508,14 @@ class LanguageModel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.baseModelName = Output.createUnknown<String>();
-    this.inputDataConfig = Output.createUnknown<LanguageModelInputDataConfig>();
-    this.languageCode = Output.createUnknown<String>();
-    this.modelName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.baseModelName = registerOutput<String>('baseModelName');
+    this.inputDataConfig =
+        registerOutput<LanguageModelInputDataConfig>('inputDataConfig');
+    this.languageCode = registerOutput<String>('languageCode');
+    this.modelName = registerOutput<String>('modelName');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

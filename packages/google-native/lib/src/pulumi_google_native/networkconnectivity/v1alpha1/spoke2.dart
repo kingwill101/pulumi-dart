@@ -56,21 +56,23 @@ class Spoke2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.hub = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.linkedInterconnectAttachments = Output.createUnknown<List<String>>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.hub = registerOutput<String>('hub');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.linkedInterconnectAttachments =
+        registerOutput<List<String>>('linkedInterconnectAttachments');
     this.linkedRouterApplianceInstances =
-        Output.createUnknown<List<RouterApplianceInstanceResponse2>>();
-    this.linkedVpnTunnels = Output.createUnknown<List<String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.spokeId = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.uniqueId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<RouterApplianceInstanceResponse2>>(
+            'linkedRouterApplianceInstances');
+    this.linkedVpnTunnels = registerOutput<List<String>>('linkedVpnTunnels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.spokeId = registerOutput<String?>('spokeId');
+    this.state = registerOutput<String>('state');
+    this.uniqueId = registerOutput<String>('uniqueId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

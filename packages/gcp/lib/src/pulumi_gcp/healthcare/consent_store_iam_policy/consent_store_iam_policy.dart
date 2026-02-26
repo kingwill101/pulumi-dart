@@ -898,9 +898,9 @@ class ConsentStoreIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.consentStoreId = Output.createUnknown<String>();
-    this.dataset = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
+    this.consentStoreId = registerOutput<String>('consentStoreId');
+    this.dataset = registerOutput<String>('dataset');
+    this.etag = registerOutput<String>('etag');
+    this.policyData = registerOutput<String>('policyData');
   }
 }

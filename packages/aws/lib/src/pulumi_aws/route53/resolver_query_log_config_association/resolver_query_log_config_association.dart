@@ -126,8 +126,9 @@ class ResolverQueryLogConfigAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.resolverQueryLogConfigId = Output.createUnknown<String>();
-    this.resourceId = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.resolverQueryLogConfigId =
+        registerOutput<String>('resolverQueryLogConfigId');
+    this.resourceId = registerOutput<String>('resourceId');
   }
 }

@@ -505,24 +505,32 @@ class GlobalReplicationGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.atRestEncryptionEnabled = Output.createUnknown<bool>();
-    this.authTokenEnabled = Output.createUnknown<bool>();
-    this.automaticFailoverEnabled = Output.createUnknown<bool>();
-    this.cacheNodeType = Output.createUnknown<String>();
-    this.clusterEnabled = Output.createUnknown<bool>();
-    this.engine = Output.createUnknown<String>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.engineVersionActual = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.atRestEncryptionEnabled =
+        registerOutput<bool>('atRestEncryptionEnabled');
+    this.authTokenEnabled = registerOutput<bool>('authTokenEnabled');
+    this.automaticFailoverEnabled =
+        registerOutput<bool>('automaticFailoverEnabled');
+    this.cacheNodeType = registerOutput<String>('cacheNodeType');
+    this.clusterEnabled = registerOutput<bool>('clusterEnabled');
+    this.engine = registerOutput<String>('engine');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.engineVersionActual = registerOutput<String>('engineVersionActual');
     this.globalNodeGroups =
-        Output.createUnknown<List<GlobalReplicationGroupGlobalNodeGroup>>();
-    this.globalReplicationGroupDescription = Output.createUnknown<String?>();
-    this.globalReplicationGroupId = Output.createUnknown<String>();
-    this.globalReplicationGroupIdSuffix = Output.createUnknown<String>();
-    this.numNodeGroups = Output.createUnknown<int>();
-    this.parameterGroupName = Output.createUnknown<String?>();
-    this.primaryReplicationGroupId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.transitEncryptionEnabled = Output.createUnknown<bool>();
+        registerOutput<List<GlobalReplicationGroupGlobalNodeGroup>>(
+            'globalNodeGroups');
+    this.globalReplicationGroupDescription =
+        registerOutput<String?>('globalReplicationGroupDescription');
+    this.globalReplicationGroupId =
+        registerOutput<String>('globalReplicationGroupId');
+    this.globalReplicationGroupIdSuffix =
+        registerOutput<String>('globalReplicationGroupIdSuffix');
+    this.numNodeGroups = registerOutput<int>('numNodeGroups');
+    this.parameterGroupName = registerOutput<String?>('parameterGroupName');
+    this.primaryReplicationGroupId =
+        registerOutput<String>('primaryReplicationGroupId');
+    this.region = registerOutput<String>('region');
+    this.transitEncryptionEnabled =
+        registerOutput<bool>('transitEncryptionEnabled');
   }
 }

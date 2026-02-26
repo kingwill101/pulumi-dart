@@ -618,34 +618,40 @@ class InsightsDatasetConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.activityDataRetentionPeriodDays = Output.createUnknown<int>();
-    this.createTime = Output.createUnknown<String>();
-    this.datasetConfigId = Output.createUnknown<String>();
-    this.datasetConfigState = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.excludeCloudStorageBuckets = Output.createUnknown<
-        InsightsDatasetConfigExcludeCloudStorageBuckets?>();
-    this.excludeCloudStorageLocations = Output.createUnknown<
-        InsightsDatasetConfigExcludeCloudStorageLocations?>();
-    this.identity = Output.createUnknown<InsightsDatasetConfigIdentity>();
-    this.includeCloudStorageBuckets = Output.createUnknown<
-        InsightsDatasetConfigIncludeCloudStorageBuckets?>();
-    this.includeCloudStorageLocations = Output.createUnknown<
-        InsightsDatasetConfigIncludeCloudStorageLocations?>();
-    this.includeNewlyCreatedBuckets = Output.createUnknown<bool?>();
-    this.linkDataset = Output.createUnknown<bool?>();
-    this.links = Output.createUnknown<List<InsightsDatasetConfigLink>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationNumber = Output.createUnknown<String>();
-    this.organizationScope = Output.createUnknown<bool?>();
-    this.project = Output.createUnknown<String>();
-    this.retentionPeriodDays = Output.createUnknown<int>();
+    this.activityDataRetentionPeriodDays =
+        registerOutput<int>('activityDataRetentionPeriodDays');
+    this.createTime = registerOutput<String>('createTime');
+    this.datasetConfigId = registerOutput<String>('datasetConfigId');
+    this.datasetConfigState = registerOutput<String>('datasetConfigState');
+    this.description = registerOutput<String?>('description');
+    this.excludeCloudStorageBuckets =
+        registerOutput<InsightsDatasetConfigExcludeCloudStorageBuckets?>(
+            'excludeCloudStorageBuckets');
+    this.excludeCloudStorageLocations =
+        registerOutput<InsightsDatasetConfigExcludeCloudStorageLocations?>(
+            'excludeCloudStorageLocations');
+    this.identity = registerOutput<InsightsDatasetConfigIdentity>('identity');
+    this.includeCloudStorageBuckets =
+        registerOutput<InsightsDatasetConfigIncludeCloudStorageBuckets?>(
+            'includeCloudStorageBuckets');
+    this.includeCloudStorageLocations =
+        registerOutput<InsightsDatasetConfigIncludeCloudStorageLocations?>(
+            'includeCloudStorageLocations');
+    this.includeNewlyCreatedBuckets =
+        registerOutput<bool?>('includeNewlyCreatedBuckets');
+    this.linkDataset = registerOutput<bool?>('linkDataset');
+    this.links = registerOutput<List<InsightsDatasetConfigLink>>('links');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.organizationNumber = registerOutput<String>('organizationNumber');
+    this.organizationScope = registerOutput<bool?>('organizationScope');
+    this.project = registerOutput<String>('project');
+    this.retentionPeriodDays = registerOutput<int>('retentionPeriodDays');
     this.sourceFolders =
-        Output.createUnknown<InsightsDatasetConfigSourceFolders?>();
+        registerOutput<InsightsDatasetConfigSourceFolders?>('sourceFolders');
     this.sourceProjects =
-        Output.createUnknown<InsightsDatasetConfigSourceProjects?>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<InsightsDatasetConfigSourceProjects?>('sourceProjects');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

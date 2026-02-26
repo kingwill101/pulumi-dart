@@ -489,10 +489,12 @@ class LoggingConfiguration2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.enableMonitoringDashboard = Output.createUnknown<bool>();
-    this.firewallArn = Output.createUnknown<String>();
+    this.enableMonitoringDashboard =
+        registerOutput<bool>('enableMonitoringDashboard');
+    this.firewallArn = registerOutput<String>('firewallArn');
     this.loggingConfiguration =
-        Output.createUnknown<LoggingConfigurationLoggingConfiguration>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<LoggingConfigurationLoggingConfiguration>(
+            'loggingConfiguration');
+    this.region = registerOutput<String>('region');
   }
 }

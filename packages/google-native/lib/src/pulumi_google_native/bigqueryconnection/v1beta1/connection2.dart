@@ -40,15 +40,15 @@ class Connection2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cloudSql = Output.createUnknown<CloudSqlPropertiesResponse>();
-    this.connectionId = Output.createUnknown<String?>();
-    this.creationTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.friendlyName = Output.createUnknown<String>();
-    this.hasCredential = Output.createUnknown<bool>();
-    this.lastModifiedTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.cloudSql = registerOutput<CloudSqlPropertiesResponse>('cloudSql');
+    this.connectionId = registerOutput<String?>('connectionId');
+    this.creationTime = registerOutput<String>('creationTime');
+    this.description = registerOutput<String>('description');
+    this.friendlyName = registerOutput<String>('friendlyName');
+    this.hasCredential = registerOutput<bool>('hasCredential');
+    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

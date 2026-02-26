@@ -293,12 +293,13 @@ class DocumentAiWarehouseDocumentSchema extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String>();
-    this.documentIsFolder = Output.createUnknown<bool?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.projectNumber = Output.createUnknown<String>();
-    this.propertyDefinitions = Output.createUnknown<
-        List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>>();
+    this.displayName = registerOutput<String>('displayName');
+    this.documentIsFolder = registerOutput<bool?>('documentIsFolder');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.projectNumber = registerOutput<String>('projectNumber');
+    this.propertyDefinitions = registerOutput<
+            List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>>(
+        'propertyDefinitions');
   }
 }

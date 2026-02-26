@@ -922,12 +922,12 @@ class AiFeatureOnlineStoreIamMember extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.condition =
-        Output.createUnknown<AiFeatureOnlineStoreIamMemberCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.featureOnlineStore = Output.createUnknown<String>();
-    this.member = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+        registerOutput<AiFeatureOnlineStoreIamMemberCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.featureOnlineStore = registerOutput<String>('featureOnlineStore');
+    this.member = registerOutput<String>('member');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.role = registerOutput<String>('role');
   }
 }

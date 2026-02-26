@@ -457,11 +457,11 @@ class NetworkEndpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.instance = Output.createUnknown<String?>();
-    this.ipAddress = Output.createUnknown<String>();
-    this.networkEndpointGroup = Output.createUnknown<String>();
-    this.port = Output.createUnknown<int?>();
-    this.project = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+    this.instance = registerOutput<String?>('instance');
+    this.ipAddress = registerOutput<String>('ipAddress');
+    this.networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
+    this.port = registerOutput<int?>('port');
+    this.project = registerOutput<String>('project');
+    this.zone = registerOutput<String>('zone');
   }
 }

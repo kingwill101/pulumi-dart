@@ -548,13 +548,13 @@ class Alias3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.functionName = Output.createUnknown<String>();
-    this.functionVersion = Output.createUnknown<String>();
-    this.invokeArn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.routingConfig = Output.createUnknown<AliasRoutingConfig?>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.functionName = registerOutput<String>('functionName');
+    this.functionVersion = registerOutput<String>('functionVersion');
+    this.invokeArn = registerOutput<String>('invokeArn');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.routingConfig = registerOutput<AliasRoutingConfig?>('routingConfig');
   }
 }

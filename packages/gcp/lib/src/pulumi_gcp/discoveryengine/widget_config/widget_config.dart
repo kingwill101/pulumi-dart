@@ -405,15 +405,17 @@ class WidgetConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessSettings = Output.createUnknown<WidgetConfigAccessSettings>();
-    this.collectionId = Output.createUnknown<String?>();
-    this.engineId = Output.createUnknown<String>();
-    this.homepageSetting = Output.createUnknown<WidgetConfigHomepageSetting?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.uiBranding = Output.createUnknown<WidgetConfigUiBranding?>();
-    this.uiSettings = Output.createUnknown<WidgetConfigUiSettings>();
-    this.widgetConfigId = Output.createUnknown<String?>();
+    this.accessSettings =
+        registerOutput<WidgetConfigAccessSettings>('accessSettings');
+    this.collectionId = registerOutput<String?>('collectionId');
+    this.engineId = registerOutput<String>('engineId');
+    this.homepageSetting =
+        registerOutput<WidgetConfigHomepageSetting?>('homepageSetting');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.uiBranding = registerOutput<WidgetConfigUiBranding?>('uiBranding');
+    this.uiSettings = registerOutput<WidgetConfigUiSettings>('uiSettings');
+    this.widgetConfigId = registerOutput<String?>('widgetConfigId');
   }
 }

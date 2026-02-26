@@ -343,18 +343,21 @@ class V2modelsBot extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.dataPrivacies = Output.createUnknown<List<V2modelsBotDataPrivacy>>();
-    this.description = Output.createUnknown<String?>();
-    this.idleSessionTtlInSeconds = Output.createUnknown<int>();
-    this.members = Output.createUnknown<List<V2modelsBotMember>?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.testBotAliasTags = Output.createUnknown<Map<String, String>?>();
-    this.timeouts = Output.createUnknown<V2modelsBotTimeouts?>();
-    this.type = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.dataPrivacies =
+        registerOutput<List<V2modelsBotDataPrivacy>>('dataPrivacies');
+    this.description = registerOutput<String?>('description');
+    this.idleSessionTtlInSeconds =
+        registerOutput<int>('idleSessionTtlInSeconds');
+    this.members = registerOutput<List<V2modelsBotMember>?>('members');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.testBotAliasTags =
+        registerOutput<Map<String, String>?>('testBotAliasTags');
+    this.timeouts = registerOutput<V2modelsBotTimeouts?>('timeouts');
+    this.type = registerOutput<String>('type');
   }
 }

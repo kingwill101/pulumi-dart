@@ -143,10 +143,11 @@ class ResourcePolicy3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.confirmRemoveSelfResourceAccess = Output.createUnknown<bool>();
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
-    this.revisionId = Output.createUnknown<String>();
+    this.confirmRemoveSelfResourceAccess =
+        registerOutput<bool>('confirmRemoveSelfResourceAccess');
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
+    this.resourceArn = registerOutput<String>('resourceArn');
+    this.revisionId = registerOutput<String>('revisionId');
   }
 }

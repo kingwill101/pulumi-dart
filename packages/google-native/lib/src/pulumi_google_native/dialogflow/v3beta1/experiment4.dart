@@ -73,29 +73,34 @@ class Experiment4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.agentId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.definition = Output.createUnknown<
-        GoogleCloudDialogflowCxV3beta1ExperimentDefinitionResponse>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String>();
-    this.environmentId = Output.createUnknown<String>();
-    this.experimentLength = Output.createUnknown<String>();
-    this.lastUpdateTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.result = Output.createUnknown<
-        GoogleCloudDialogflowCxV3beta1ExperimentResultResponse>();
-    this.rolloutConfig = Output.createUnknown<
-        GoogleCloudDialogflowCxV3beta1RolloutConfigResponse>();
-    this.rolloutFailureReason = Output.createUnknown<String>();
-    this.rolloutState = Output.createUnknown<
-        GoogleCloudDialogflowCxV3beta1RolloutStateResponse>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.variantsHistory = Output.createUnknown<
-        List<GoogleCloudDialogflowCxV3beta1VariantsHistoryResponse>>();
+    this.agentId = registerOutput<String>('agentId');
+    this.createTime = registerOutput<String>('createTime');
+    this.definition = registerOutput<
+            GoogleCloudDialogflowCxV3beta1ExperimentDefinitionResponse>(
+        'definition');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.endTime = registerOutput<String>('endTime');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.experimentLength = registerOutput<String>('experimentLength');
+    this.lastUpdateTime = registerOutput<String>('lastUpdateTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.result =
+        registerOutput<GoogleCloudDialogflowCxV3beta1ExperimentResultResponse>(
+            'result');
+    this.rolloutConfig =
+        registerOutput<GoogleCloudDialogflowCxV3beta1RolloutConfigResponse>(
+            'rolloutConfig');
+    this.rolloutFailureReason = registerOutput<String>('rolloutFailureReason');
+    this.rolloutState =
+        registerOutput<GoogleCloudDialogflowCxV3beta1RolloutStateResponse>(
+            'rolloutState');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
+    this.variantsHistory = registerOutput<
+            List<GoogleCloudDialogflowCxV3beta1VariantsHistoryResponse>>(
+        'variantsHistory');
   }
 }

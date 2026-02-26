@@ -616,12 +616,12 @@ class DataPolicy extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.dataMaskingPolicy =
-        Output.createUnknown<DataPolicyDataMaskingPolicy?>();
-    this.dataPolicyId = Output.createUnknown<String>();
-    this.dataPolicyType = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.policyTag = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<DataPolicyDataMaskingPolicy?>('dataMaskingPolicy');
+    this.dataPolicyId = registerOutput<String>('dataPolicyId');
+    this.dataPolicyType = registerOutput<String>('dataPolicyType');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.policyTag = registerOutput<String>('policyTag');
+    this.project = registerOutput<String>('project');
   }
 }

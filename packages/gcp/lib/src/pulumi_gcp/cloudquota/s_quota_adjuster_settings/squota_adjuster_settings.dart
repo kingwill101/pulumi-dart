@@ -156,11 +156,11 @@ class SQuotaAdjusterSettings extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.effectiveContainer = Output.createUnknown<String>();
-    this.effectiveEnablement = Output.createUnknown<String>();
-    this.enablement = Output.createUnknown<String>();
-    this.inherited = Output.createUnknown<bool>();
-    this.inheritedFrom = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
+    this.effectiveContainer = registerOutput<String>('effectiveContainer');
+    this.effectiveEnablement = registerOutput<String>('effectiveEnablement');
+    this.enablement = registerOutput<String>('enablement');
+    this.inherited = registerOutput<bool>('inherited');
+    this.inheritedFrom = registerOutput<String>('inheritedFrom');
+    this.parent = registerOutput<String>('parent');
   }
 }

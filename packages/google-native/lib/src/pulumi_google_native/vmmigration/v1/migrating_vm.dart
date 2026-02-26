@@ -107,38 +107,44 @@ class MigratingVm extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.awsSourceVmDetails =
-        Output.createUnknown<AwsSourceVmDetailsResponse>();
+        registerOutput<AwsSourceVmDetailsResponse>('awsSourceVmDetails');
     this.azureSourceVmDetails =
-        Output.createUnknown<AzureSourceVmDetailsResponse>();
+        registerOutput<AzureSourceVmDetailsResponse>('azureSourceVmDetails');
     this.computeEngineDisksTargetDefaults =
-        Output.createUnknown<ComputeEngineDisksTargetDefaultsResponse>();
+        registerOutput<ComputeEngineDisksTargetDefaultsResponse>(
+            'computeEngineDisksTargetDefaults');
     this.computeEngineTargetDefaults =
-        Output.createUnknown<ComputeEngineTargetDefaultsResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.currentSyncInfo = Output.createUnknown<ReplicationCycleResponse>();
-    this.cutoverForecast = Output.createUnknown<CutoverForecastResponse>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.error = Output.createUnknown<StatusResponse30>();
-    this.group = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
+        registerOutput<ComputeEngineTargetDefaultsResponse>(
+            'computeEngineTargetDefaults');
+    this.createTime = registerOutput<String>('createTime');
+    this.currentSyncInfo =
+        registerOutput<ReplicationCycleResponse>('currentSyncInfo');
+    this.cutoverForecast =
+        registerOutput<CutoverForecastResponse>('cutoverForecast');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.error = registerOutput<StatusResponse30>('error');
+    this.group = registerOutput<String>('group');
+    this.labels = registerOutput<Map<String, String>>('labels');
     this.lastReplicationCycle =
-        Output.createUnknown<ReplicationCycleResponse>();
-    this.lastSync = Output.createUnknown<ReplicationSyncResponse>();
-    this.location = Output.createUnknown<String>();
-    this.migratingVmId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<SchedulePolicyResponse>();
-    this.project = Output.createUnknown<String>();
-    this.recentCloneJobs = Output.createUnknown<List<CloneJobResponse>>();
-    this.recentCutoverJobs = Output.createUnknown<List<CutoverJobResponse>>();
-    this.requestId = Output.createUnknown<String?>();
-    this.sourceId = Output.createUnknown<String>();
-    this.sourceVmId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.stateTime = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<ReplicationCycleResponse>('lastReplicationCycle');
+    this.lastSync = registerOutput<ReplicationSyncResponse>('lastSync');
+    this.location = registerOutput<String>('location');
+    this.migratingVmId = registerOutput<String>('migratingVmId');
+    this.name = registerOutput<String>('name');
+    this.policy = registerOutput<SchedulePolicyResponse>('policy');
+    this.project = registerOutput<String>('project');
+    this.recentCloneJobs =
+        registerOutput<List<CloneJobResponse>>('recentCloneJobs');
+    this.recentCutoverJobs =
+        registerOutput<List<CutoverJobResponse>>('recentCutoverJobs');
+    this.requestId = registerOutput<String?>('requestId');
+    this.sourceId = registerOutput<String>('sourceId');
+    this.sourceVmId = registerOutput<String>('sourceVmId');
+    this.state = registerOutput<String>('state');
+    this.stateTime = registerOutput<String>('stateTime');
+    this.updateTime = registerOutput<String>('updateTime');
     this.vmwareSourceVmDetails =
-        Output.createUnknown<VmwareSourceVmDetailsResponse>();
+        registerOutput<VmwareSourceVmDetailsResponse>('vmwareSourceVmDetails');
   }
 }

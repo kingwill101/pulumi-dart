@@ -81,26 +81,29 @@ class Batch extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.batchId = Output.createUnknown<String?>();
-    this.createTime = Output.createUnknown<String>();
-    this.creator = Output.createUnknown<String>();
-    this.environmentConfig = Output.createUnknown<EnvironmentConfigResponse3>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.operation = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pysparkBatch = Output.createUnknown<PySparkBatchResponse>();
-    this.requestId = Output.createUnknown<String?>();
-    this.runtimeConfig = Output.createUnknown<RuntimeConfigResponse2>();
-    this.runtimeInfo = Output.createUnknown<RuntimeInfoResponse>();
-    this.sparkBatch = Output.createUnknown<SparkBatchResponse>();
-    this.sparkRBatch = Output.createUnknown<SparkRBatchResponse>();
-    this.sparkSqlBatch = Output.createUnknown<SparkSqlBatchResponse>();
-    this.state = Output.createUnknown<String>();
-    this.stateHistory = Output.createUnknown<List<StateHistoryResponse>>();
-    this.stateMessage = Output.createUnknown<String>();
-    this.stateTime = Output.createUnknown<String>();
-    this.uuid = Output.createUnknown<String>();
+    this.batchId = registerOutput<String?>('batchId');
+    this.createTime = registerOutput<String>('createTime');
+    this.creator = registerOutput<String>('creator');
+    this.environmentConfig =
+        registerOutput<EnvironmentConfigResponse3>('environmentConfig');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.operation = registerOutput<String>('operation');
+    this.project = registerOutput<String>('project');
+    this.pysparkBatch = registerOutput<PySparkBatchResponse>('pysparkBatch');
+    this.requestId = registerOutput<String?>('requestId');
+    this.runtimeConfig =
+        registerOutput<RuntimeConfigResponse2>('runtimeConfig');
+    this.runtimeInfo = registerOutput<RuntimeInfoResponse>('runtimeInfo');
+    this.sparkBatch = registerOutput<SparkBatchResponse>('sparkBatch');
+    this.sparkRBatch = registerOutput<SparkRBatchResponse>('sparkRBatch');
+    this.sparkSqlBatch = registerOutput<SparkSqlBatchResponse>('sparkSqlBatch');
+    this.state = registerOutput<String>('state');
+    this.stateHistory =
+        registerOutput<List<StateHistoryResponse>>('stateHistory');
+    this.stateMessage = registerOutput<String>('stateMessage');
+    this.stateTime = registerOutput<String>('stateTime');
+    this.uuid = registerOutput<String>('uuid');
   }
 }

@@ -31,11 +31,12 @@ class HubIamPolicy2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.auditConfigs = Output.createUnknown<List<AuditConfigResponse55>>();
-    this.bindings = Output.createUnknown<List<BindingResponse79>>();
-    this.etag = Output.createUnknown<String>();
-    this.hubId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.auditConfigs =
+        registerOutput<List<AuditConfigResponse55>>('auditConfigs');
+    this.bindings = registerOutput<List<BindingResponse79>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.hubId = registerOutput<String>('hubId');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

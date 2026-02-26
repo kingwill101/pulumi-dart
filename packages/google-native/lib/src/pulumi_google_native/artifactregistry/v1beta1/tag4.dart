@@ -27,12 +27,12 @@ class Tag4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.packageId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.repositoryId = Output.createUnknown<String>();
-    this.tagId = Output.createUnknown<String?>();
-    this.version = Output.createUnknown<String>();
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.packageId = registerOutput<String>('packageId');
+    this.project = registerOutput<String>('project');
+    this.repositoryId = registerOutput<String>('repositoryId');
+    this.tagId = registerOutput<String?>('tagId');
+    this.version = registerOutput<String>('version');
   }
 }

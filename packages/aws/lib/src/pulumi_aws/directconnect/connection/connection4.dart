@@ -408,24 +408,24 @@ class Connection4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.awsDevice = Output.createUnknown<String>();
-    this.bandwidth = Output.createUnknown<String>();
-    this.encryptionMode = Output.createUnknown<String>();
-    this.hasLogicalRedundancy = Output.createUnknown<String>();
-    this.jumboFrameCapable = Output.createUnknown<bool>();
-    this.location = Output.createUnknown<String>();
-    this.macsecCapable = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.ownerAccountId = Output.createUnknown<String>();
-    this.partnerName = Output.createUnknown<String>();
-    this.portEncryptionStatus = Output.createUnknown<String>();
-    this.providerName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestMacsec = Output.createUnknown<bool?>();
-    this.skipDestroy = Output.createUnknown<bool?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.vlanId = Output.createUnknown<int>();
+    this.arn = registerOutput<String>('arn');
+    this.awsDevice = registerOutput<String>('awsDevice');
+    this.bandwidth = registerOutput<String>('bandwidth');
+    this.encryptionMode = registerOutput<String>('encryptionMode');
+    this.hasLogicalRedundancy = registerOutput<String>('hasLogicalRedundancy');
+    this.jumboFrameCapable = registerOutput<bool>('jumboFrameCapable');
+    this.location = registerOutput<String>('location');
+    this.macsecCapable = registerOutput<bool>('macsecCapable');
+    this.name = registerOutput<String>('name');
+    this.ownerAccountId = registerOutput<String>('ownerAccountId');
+    this.partnerName = registerOutput<String>('partnerName');
+    this.portEncryptionStatus = registerOutput<String>('portEncryptionStatus');
+    this.providerName = registerOutput<String>('providerName');
+    this.region = registerOutput<String>('region');
+    this.requestMacsec = registerOutput<bool?>('requestMacsec');
+    this.skipDestroy = registerOutput<bool?>('skipDestroy');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.vlanId = registerOutput<int>('vlanId');
   }
 }

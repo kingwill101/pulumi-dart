@@ -58,24 +58,30 @@ class Page2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.advancedSettings = Output.createUnknown<
-        GoogleCloudDialogflowCxV3AdvancedSettingsResponse>();
-    this.agentId = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
+    this.advancedSettings =
+        registerOutput<GoogleCloudDialogflowCxV3AdvancedSettingsResponse>(
+            'advancedSettings');
+    this.agentId = registerOutput<String>('agentId');
+    this.displayName = registerOutput<String>('displayName');
     this.entryFulfillment =
-        Output.createUnknown<GoogleCloudDialogflowCxV3FulfillmentResponse>();
-    this.eventHandlers = Output.createUnknown<
-        List<GoogleCloudDialogflowCxV3EventHandlerResponse>>();
-    this.flowId = Output.createUnknown<String>();
-    this.form = Output.createUnknown<GoogleCloudDialogflowCxV3FormResponse>();
-    this.knowledgeConnectorSettings = Output.createUnknown<
-        GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse>();
-    this.languageCode = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.transitionRouteGroups = Output.createUnknown<List<String>>();
-    this.transitionRoutes = Output.createUnknown<
-        List<GoogleCloudDialogflowCxV3TransitionRouteResponse>>();
+        registerOutput<GoogleCloudDialogflowCxV3FulfillmentResponse>(
+            'entryFulfillment');
+    this.eventHandlers =
+        registerOutput<List<GoogleCloudDialogflowCxV3EventHandlerResponse>>(
+            'eventHandlers');
+    this.flowId = registerOutput<String>('flowId');
+    this.form = registerOutput<GoogleCloudDialogflowCxV3FormResponse>('form');
+    this.knowledgeConnectorSettings = registerOutput<
+            GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse>(
+        'knowledgeConnectorSettings');
+    this.languageCode = registerOutput<String?>('languageCode');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.transitionRouteGroups =
+        registerOutput<List<String>>('transitionRouteGroups');
+    this.transitionRoutes =
+        registerOutput<List<GoogleCloudDialogflowCxV3TransitionRouteResponse>>(
+            'transitionRoutes');
   }
 }

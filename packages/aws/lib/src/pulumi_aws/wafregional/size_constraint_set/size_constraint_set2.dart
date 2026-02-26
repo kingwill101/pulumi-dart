@@ -179,10 +179,11 @@ class SizeConstraintSet2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
     this.sizeConstraints =
-        Output.createUnknown<List<SizeConstraintSetSizeConstraint2>?>();
+        registerOutput<List<SizeConstraintSetSizeConstraint2>?>(
+            'sizeConstraints');
   }
 }

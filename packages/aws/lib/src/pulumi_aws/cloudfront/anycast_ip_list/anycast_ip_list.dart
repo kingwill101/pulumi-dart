@@ -144,13 +144,13 @@ class AnycastIpList extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.anycastIps = Output.createUnknown<List<String>>();
-    this.arn = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.ipCount = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<AnycastIpListTimeouts?>();
+    this.anycastIps = registerOutput<List<String>>('anycastIps');
+    this.arn = registerOutput<String>('arn');
+    this.etag = registerOutput<String>('etag');
+    this.ipCount = registerOutput<int>('ipCount');
+    this.name = registerOutput<String>('name');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<AnycastIpListTimeouts?>('timeouts');
   }
 }

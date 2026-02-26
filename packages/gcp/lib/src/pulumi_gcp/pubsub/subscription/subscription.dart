@@ -3669,29 +3669,34 @@ class Subscription extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.ackDeadlineSeconds = Output.createUnknown<int>();
-    this.bigqueryConfig = Output.createUnknown<SubscriptionBigqueryConfig?>();
+    this.ackDeadlineSeconds = registerOutput<int>('ackDeadlineSeconds');
+    this.bigqueryConfig =
+        registerOutput<SubscriptionBigqueryConfig?>('bigqueryConfig');
     this.cloudStorageConfig =
-        Output.createUnknown<SubscriptionCloudStorageConfig?>();
+        registerOutput<SubscriptionCloudStorageConfig?>('cloudStorageConfig');
     this.deadLetterPolicy =
-        Output.createUnknown<SubscriptionDeadLetterPolicy?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enableExactlyOnceDelivery = Output.createUnknown<bool?>();
-    this.enableMessageOrdering = Output.createUnknown<bool?>();
+        registerOutput<SubscriptionDeadLetterPolicy?>('deadLetterPolicy');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableExactlyOnceDelivery =
+        registerOutput<bool?>('enableExactlyOnceDelivery');
+    this.enableMessageOrdering = registerOutput<bool?>('enableMessageOrdering');
     this.expirationPolicy =
-        Output.createUnknown<SubscriptionExpirationPolicy>();
-    this.filter = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.messageRetentionDuration = Output.createUnknown<String?>();
+        registerOutput<SubscriptionExpirationPolicy>('expirationPolicy');
+    this.filter = registerOutput<String?>('filter');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.messageRetentionDuration =
+        registerOutput<String?>('messageRetentionDuration');
     this.messageTransforms =
-        Output.createUnknown<List<SubscriptionMessageTransform>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.pushConfig = Output.createUnknown<SubscriptionPushConfig?>();
-    this.retainAckedMessages = Output.createUnknown<bool?>();
-    this.retryPolicy = Output.createUnknown<SubscriptionRetryPolicy?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.topic = Output.createUnknown<String>();
+        registerOutput<List<SubscriptionMessageTransform>?>(
+            'messageTransforms');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.pushConfig = registerOutput<SubscriptionPushConfig?>('pushConfig');
+    this.retainAckedMessages = registerOutput<bool?>('retainAckedMessages');
+    this.retryPolicy = registerOutput<SubscriptionRetryPolicy?>('retryPolicy');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.topic = registerOutput<String>('topic');
   }
 }

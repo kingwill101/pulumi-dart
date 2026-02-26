@@ -43,17 +43,18 @@ class License5 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.chargesUseFee = Output.createUnknown<bool>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.licenseCode = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
+    this.chargesUseFee = registerOutput<bool>('chargesUseFee');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.kind = registerOutput<String>('kind');
+    this.licenseCode = registerOutput<String>('licenseCode');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
     this.resourceRequirements =
-        Output.createUnknown<LicenseResourceRequirementsResponse2>();
-    this.selfLink = Output.createUnknown<String>();
-    this.transferable = Output.createUnknown<bool>();
+        registerOutput<LicenseResourceRequirementsResponse2>(
+            'resourceRequirements');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.transferable = registerOutput<bool>('transferable');
   }
 }

@@ -991,29 +991,35 @@ class Instance6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.deletionProtectionEnabled = Output.createUnknown<bool?>();
-    this.deletionProtectionReason = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.directoryServices = Output.createUnknown<InstanceDirectoryServices?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
+    this.createTime = registerOutput<String>('createTime');
+    this.deletionProtectionEnabled =
+        registerOutput<bool?>('deletionProtectionEnabled');
+    this.deletionProtectionReason =
+        registerOutput<String?>('deletionProtectionReason');
+    this.description = registerOutput<String?>('description');
+    this.directoryServices =
+        registerOutput<InstanceDirectoryServices?>('directoryServices');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
     this.effectiveReplications =
-        Output.createUnknown<List<InstanceEffectiveReplication>>();
-    this.etag = Output.createUnknown<String>();
-    this.fileShares = Output.createUnknown<InstanceFileShares>();
+        registerOutput<List<InstanceEffectiveReplication>>(
+            'effectiveReplications');
+    this.etag = registerOutput<String>('etag');
+    this.fileShares = registerOutput<InstanceFileShares>('fileShares');
     this.initialReplication =
-        Output.createUnknown<InstanceInitialReplication?>();
-    this.kmsKeyName = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.networks = Output.createUnknown<List<InstanceNetwork>>();
-    this.performanceConfig = Output.createUnknown<InstancePerformanceConfig?>();
-    this.project = Output.createUnknown<String>();
-    this.protocol = Output.createUnknown<String?>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tier = Output.createUnknown<String>();
-    this.zone = Output.createUnknown<String>();
+        registerOutput<InstanceInitialReplication?>('initialReplication');
+    this.kmsKeyName = registerOutput<String?>('kmsKeyName');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.networks = registerOutput<List<InstanceNetwork>>('networks');
+    this.performanceConfig =
+        registerOutput<InstancePerformanceConfig?>('performanceConfig');
+    this.project = registerOutput<String>('project');
+    this.protocol = registerOutput<String?>('protocol');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tier = registerOutput<String>('tier');
+    this.zone = registerOutput<String>('zone');
   }
 }

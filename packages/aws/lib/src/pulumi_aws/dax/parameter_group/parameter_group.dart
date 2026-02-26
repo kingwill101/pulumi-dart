@@ -182,9 +182,10 @@ class ParameterGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.parameters = Output.createUnknown<List<ParameterGroupParameter>>();
-    this.region = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.parameters =
+        registerOutput<List<ParameterGroupParameter>>('parameters');
+    this.region = registerOutput<String>('region');
   }
 }

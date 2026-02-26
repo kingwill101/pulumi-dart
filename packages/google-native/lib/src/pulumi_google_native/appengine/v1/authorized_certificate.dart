@@ -42,16 +42,17 @@ class AuthorizedCertificate extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appId = Output.createUnknown<String>();
+    this.appId = registerOutput<String>('appId');
     this.certificateRawData =
-        Output.createUnknown<CertificateRawDataResponse>();
-    this.displayName = Output.createUnknown<String>();
-    this.domainMappingsCount = Output.createUnknown<int>();
-    this.domainNames = Output.createUnknown<List<String>>();
-    this.expireTime = Output.createUnknown<String>();
+        registerOutput<CertificateRawDataResponse>('certificateRawData');
+    this.displayName = registerOutput<String>('displayName');
+    this.domainMappingsCount = registerOutput<int>('domainMappingsCount');
+    this.domainNames = registerOutput<List<String>>('domainNames');
+    this.expireTime = registerOutput<String>('expireTime');
     this.managedCertificate =
-        Output.createUnknown<ManagedCertificateResponse>();
-    this.name = Output.createUnknown<String>();
-    this.visibleDomainMappings = Output.createUnknown<List<String>>();
+        registerOutput<ManagedCertificateResponse>('managedCertificate');
+    this.name = registerOutput<String>('name');
+    this.visibleDomainMappings =
+        registerOutput<List<String>>('visibleDomainMappings');
   }
 }

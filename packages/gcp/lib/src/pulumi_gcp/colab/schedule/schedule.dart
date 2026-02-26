@@ -1948,19 +1948,21 @@ class Schedule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowQueueing = Output.createUnknown<bool?>();
+    this.allowQueueing = registerOutput<bool?>('allowQueueing');
     this.createNotebookExecutionJobRequest =
-        Output.createUnknown<ScheduleCreateNotebookExecutionJobRequest>();
-    this.cron = Output.createUnknown<String>();
-    this.desiredState = Output.createUnknown<String?>();
-    this.displayName = Output.createUnknown<String>();
-    this.endTime = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.maxConcurrentRunCount = Output.createUnknown<String>();
-    this.maxRunCount = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+        registerOutput<ScheduleCreateNotebookExecutionJobRequest>(
+            'createNotebookExecutionJobRequest');
+    this.cron = registerOutput<String>('cron');
+    this.desiredState = registerOutput<String?>('desiredState');
+    this.displayName = registerOutput<String>('displayName');
+    this.endTime = registerOutput<String?>('endTime');
+    this.location = registerOutput<String>('location');
+    this.maxConcurrentRunCount =
+        registerOutput<String>('maxConcurrentRunCount');
+    this.maxRunCount = registerOutput<String?>('maxRunCount');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.startTime = registerOutput<String>('startTime');
+    this.state = registerOutput<String>('state');
   }
 }

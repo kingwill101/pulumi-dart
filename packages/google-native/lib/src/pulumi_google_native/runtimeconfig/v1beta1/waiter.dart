@@ -42,15 +42,15 @@ class Waiter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.configId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.done = Output.createUnknown<bool>();
-    this.error = Output.createUnknown<StatusResponse25>();
-    this.failure = Output.createUnknown<EndConditionResponse>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.success = Output.createUnknown<EndConditionResponse>();
-    this.timeout = Output.createUnknown<String>();
+    this.configId = registerOutput<String>('configId');
+    this.createTime = registerOutput<String>('createTime');
+    this.done = registerOutput<bool>('done');
+    this.error = registerOutput<StatusResponse25>('error');
+    this.failure = registerOutput<EndConditionResponse>('failure');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.success = registerOutput<EndConditionResponse>('success');
+    this.timeout = registerOutput<String>('timeout');
   }
 }

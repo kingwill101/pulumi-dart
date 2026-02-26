@@ -31,13 +31,14 @@ class Index6 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.collectionGroupId = Output.createUnknown<String>();
-    this.databaseId = Output.createUnknown<String>();
-    this.fields = Output.createUnknown<
-        List<GoogleFirestoreAdminV1beta2IndexFieldResponse>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.queryScope = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.collectionGroupId = registerOutput<String>('collectionGroupId');
+    this.databaseId = registerOutput<String>('databaseId');
+    this.fields =
+        registerOutput<List<GoogleFirestoreAdminV1beta2IndexFieldResponse>>(
+            'fields');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.queryScope = registerOutput<String>('queryScope');
+    this.state = registerOutput<String>('state');
   }
 }

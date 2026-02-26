@@ -1891,30 +1891,36 @@ class ScheduledQuery extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.creationTime = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.creationTime = registerOutput<String>('creationTime');
     this.errorReportConfiguration =
-        Output.createUnknown<ScheduledQueryErrorReportConfiguration>();
-    this.executionRoleArn = Output.createUnknown<String>();
-    this.kmsKeyId = Output.createUnknown<String?>();
+        registerOutput<ScheduledQueryErrorReportConfiguration>(
+            'errorReportConfiguration');
+    this.executionRoleArn = registerOutput<String>('executionRoleArn');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
     this.lastRunSummaries =
-        Output.createUnknown<List<ScheduledQueryLastRunSummary>?>();
-    this.name = Output.createUnknown<String>();
-    this.nextInvocationTime = Output.createUnknown<String>();
+        registerOutput<List<ScheduledQueryLastRunSummary>?>('lastRunSummaries');
+    this.name = registerOutput<String>('name');
+    this.nextInvocationTime = registerOutput<String>('nextInvocationTime');
     this.notificationConfiguration =
-        Output.createUnknown<ScheduledQueryNotificationConfiguration>();
-    this.previousInvocationTime = Output.createUnknown<String>();
-    this.queryString = Output.createUnknown<String>();
+        registerOutput<ScheduledQueryNotificationConfiguration>(
+            'notificationConfiguration');
+    this.previousInvocationTime =
+        registerOutput<String>('previousInvocationTime');
+    this.queryString = registerOutput<String>('queryString');
     this.recentlyFailedRuns =
-        Output.createUnknown<List<ScheduledQueryRecentlyFailedRun>?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<List<ScheduledQueryRecentlyFailedRun>?>(
+            'recentlyFailedRuns');
+    this.region = registerOutput<String>('region');
     this.scheduleConfiguration =
-        Output.createUnknown<ScheduledQueryScheduleConfiguration>();
-    this.state = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<ScheduledQueryScheduleConfiguration>(
+            'scheduleConfiguration');
+    this.state = registerOutput<String>('state');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.targetConfiguration =
-        Output.createUnknown<ScheduledQueryTargetConfiguration>();
-    this.timeouts = Output.createUnknown<ScheduledQueryTimeouts?>();
+        registerOutput<ScheduledQueryTargetConfiguration>(
+            'targetConfiguration');
+    this.timeouts = registerOutput<ScheduledQueryTimeouts?>('timeouts');
   }
 }

@@ -269,22 +269,25 @@ class ReceiptRule extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.addHeaderActions =
-        Output.createUnknown<List<ReceiptRuleAddHeaderAction>?>();
-    this.after = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.bounceActions = Output.createUnknown<List<ReceiptRuleBounceAction>?>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.lambdaActions = Output.createUnknown<List<ReceiptRuleLambdaAction>?>();
-    this.name = Output.createUnknown<String>();
-    this.recipients = Output.createUnknown<List<String>?>();
-    this.region = Output.createUnknown<String>();
-    this.ruleSetName = Output.createUnknown<String>();
-    this.s3Actions = Output.createUnknown<List<ReceiptRuleS3Action>?>();
-    this.scanEnabled = Output.createUnknown<bool?>();
-    this.snsActions = Output.createUnknown<List<ReceiptRuleSnsAction>?>();
-    this.stopActions = Output.createUnknown<List<ReceiptRuleStopAction>?>();
-    this.tlsPolicy = Output.createUnknown<String>();
+        registerOutput<List<ReceiptRuleAddHeaderAction>?>('addHeaderActions');
+    this.after = registerOutput<String?>('after');
+    this.arn = registerOutput<String>('arn');
+    this.bounceActions =
+        registerOutput<List<ReceiptRuleBounceAction>?>('bounceActions');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.lambdaActions =
+        registerOutput<List<ReceiptRuleLambdaAction>?>('lambdaActions');
+    this.name = registerOutput<String>('name');
+    this.recipients = registerOutput<List<String>?>('recipients');
+    this.region = registerOutput<String>('region');
+    this.ruleSetName = registerOutput<String>('ruleSetName');
+    this.s3Actions = registerOutput<List<ReceiptRuleS3Action>?>('s3Actions');
+    this.scanEnabled = registerOutput<bool?>('scanEnabled');
+    this.snsActions = registerOutput<List<ReceiptRuleSnsAction>?>('snsActions');
+    this.stopActions =
+        registerOutput<List<ReceiptRuleStopAction>?>('stopActions');
+    this.tlsPolicy = registerOutput<String>('tlsPolicy');
     this.workmailActions =
-        Output.createUnknown<List<ReceiptRuleWorkmailAction>?>();
+        registerOutput<List<ReceiptRuleWorkmailAction>?>('workmailActions');
   }
 }

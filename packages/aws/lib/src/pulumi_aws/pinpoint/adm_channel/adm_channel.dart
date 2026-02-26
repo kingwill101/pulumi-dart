@@ -158,10 +158,10 @@ class AdmChannel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationId = Output.createUnknown<String>();
-    this.clientId = Output.createUnknown<String>();
-    this.clientSecret = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
+    this.applicationId = registerOutput<String>('applicationId');
+    this.clientId = registerOutput<String>('clientId');
+    this.clientSecret = registerOutput<String>('clientSecret');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.region = registerOutput<String>('region');
   }
 }

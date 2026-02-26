@@ -41,16 +41,18 @@ class WorkflowConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.cronSchedule = Output.createUnknown<String>();
-    this.invocationConfig = Output.createUnknown<InvocationConfigResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.cronSchedule = registerOutput<String>('cronSchedule');
+    this.invocationConfig =
+        registerOutput<InvocationConfigResponse>('invocationConfig');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
     this.recentScheduledExecutionRecords =
-        Output.createUnknown<List<ScheduledExecutionRecordResponse>>();
-    this.releaseConfig = Output.createUnknown<String>();
-    this.repositoryId = Output.createUnknown<String>();
-    this.timeZone = Output.createUnknown<String>();
-    this.workflowConfigId = Output.createUnknown<String>();
+        registerOutput<List<ScheduledExecutionRecordResponse>>(
+            'recentScheduledExecutionRecords');
+    this.releaseConfig = registerOutput<String>('releaseConfig');
+    this.repositoryId = registerOutput<String>('repositoryId');
+    this.timeZone = registerOutput<String>('timeZone');
+    this.workflowConfigId = registerOutput<String>('workflowConfigId');
   }
 }

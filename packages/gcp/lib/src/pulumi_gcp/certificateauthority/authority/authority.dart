@@ -2121,32 +2121,36 @@ class Authority extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessUrls = Output.createUnknown<List<AuthorityAccessUrl>>();
-    this.certificateAuthorityId = Output.createUnknown<String>();
-    this.config = Output.createUnknown<AuthorityConfig>();
-    this.createTime = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.desiredState = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.gcsBucket = Output.createUnknown<String?>();
-    this.ignoreActiveCertificatesOnDeletion = Output.createUnknown<bool?>();
-    this.keySpec = Output.createUnknown<AuthorityKeySpec>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.lifetime = Output.createUnknown<String?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.pemCaCertificate = Output.createUnknown<String?>();
-    this.pemCaCertificates = Output.createUnknown<List<String>>();
-    this.pool = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.skipGracePeriod = Output.createUnknown<bool?>();
-    this.state = Output.createUnknown<String>();
+    this.accessUrls = registerOutput<List<AuthorityAccessUrl>>('accessUrls');
+    this.certificateAuthorityId =
+        registerOutput<String>('certificateAuthorityId');
+    this.config = registerOutput<AuthorityConfig>('config');
+    this.createTime = registerOutput<String>('createTime');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.desiredState = registerOutput<String?>('desiredState');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.gcsBucket = registerOutput<String?>('gcsBucket');
+    this.ignoreActiveCertificatesOnDeletion =
+        registerOutput<bool?>('ignoreActiveCertificatesOnDeletion');
+    this.keySpec = registerOutput<AuthorityKeySpec>('keySpec');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.lifetime = registerOutput<String?>('lifetime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.pemCaCertificate = registerOutput<String?>('pemCaCertificate');
+    this.pemCaCertificates = registerOutput<List<String>>('pemCaCertificates');
+    this.pool = registerOutput<String>('pool');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.skipGracePeriod = registerOutput<bool?>('skipGracePeriod');
+    this.state = registerOutput<String>('state');
     this.subordinateConfig =
-        Output.createUnknown<AuthoritySubordinateConfig?>();
-    this.type = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<AuthoritySubordinateConfig?>('subordinateConfig');
+    this.type = registerOutput<String?>('type');
+    this.updateTime = registerOutput<String>('updateTime');
     this.userDefinedAccessUrls =
-        Output.createUnknown<AuthorityUserDefinedAccessUrls?>();
+        registerOutput<AuthorityUserDefinedAccessUrls?>(
+            'userDefinedAccessUrls');
   }
 }

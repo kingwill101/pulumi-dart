@@ -235,7 +235,7 @@ class GroupPolicyAttachmentsExclusive extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.groupName = Output.createUnknown<String>();
-    this.policyArns = Output.createUnknown<List<String>>();
+    this.groupName = registerOutput<String>('groupName');
+    this.policyArns = registerOutput<List<String>>('policyArns');
   }
 }

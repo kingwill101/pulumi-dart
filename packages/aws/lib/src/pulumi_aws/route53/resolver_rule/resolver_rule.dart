@@ -464,16 +464,16 @@ class ResolverRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.domainName = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.ownerId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resolverEndpointId = Output.createUnknown<String?>();
-    this.ruleType = Output.createUnknown<String>();
-    this.shareStatus = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetIps = Output.createUnknown<List<ResolverRuleTargetIp>?>();
+    this.arn = registerOutput<String>('arn');
+    this.domainName = registerOutput<String>('domainName');
+    this.name = registerOutput<String>('name');
+    this.ownerId = registerOutput<String>('ownerId');
+    this.region = registerOutput<String>('region');
+    this.resolverEndpointId = registerOutput<String?>('resolverEndpointId');
+    this.ruleType = registerOutput<String>('ruleType');
+    this.shareStatus = registerOutput<String>('shareStatus');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetIps = registerOutput<List<ResolverRuleTargetIp>?>('targetIps');
   }
 }

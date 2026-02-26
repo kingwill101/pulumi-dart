@@ -746,23 +746,28 @@ class ResourceConfiguration extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.allowAssociationToShareableServiceNetwork =
-        Output.createUnknown<bool>();
-    this.arn = Output.createUnknown<String>();
-    this.customDomainName = Output.createUnknown<String?>();
-    this.domainVerificationArn = Output.createUnknown<String>();
-    this.domainVerificationId = Output.createUnknown<String>();
-    this.domainVerificationStatus = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.portRanges = Output.createUnknown<List<String>>();
-    this.protocol = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourceConfigurationDefinition = Output.createUnknown<
-        ResourceConfigurationResourceConfigurationDefinition?>();
-    this.resourceConfigurationGroupId = Output.createUnknown<String?>();
-    this.resourceGatewayIdentifier = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<ResourceConfigurationTimeouts?>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<bool>('allowAssociationToShareableServiceNetwork');
+    this.arn = registerOutput<String>('arn');
+    this.customDomainName = registerOutput<String?>('customDomainName');
+    this.domainVerificationArn =
+        registerOutput<String>('domainVerificationArn');
+    this.domainVerificationId = registerOutput<String>('domainVerificationId');
+    this.domainVerificationStatus =
+        registerOutput<String>('domainVerificationStatus');
+    this.name = registerOutput<String>('name');
+    this.portRanges = registerOutput<List<String>>('portRanges');
+    this.protocol = registerOutput<String>('protocol');
+    this.region = registerOutput<String>('region');
+    this.resourceConfigurationDefinition =
+        registerOutput<ResourceConfigurationResourceConfigurationDefinition?>(
+            'resourceConfigurationDefinition');
+    this.resourceConfigurationGroupId =
+        registerOutput<String?>('resourceConfigurationGroupId');
+    this.resourceGatewayIdentifier =
+        registerOutput<String>('resourceGatewayIdentifier');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<ResourceConfigurationTimeouts?>('timeouts');
+    this.type = registerOutput<String>('type');
   }
 }

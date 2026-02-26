@@ -33,12 +33,12 @@ class DomainMapping2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.noManagedCertificate = Output.createUnknown<bool?>();
-    this.overrideStrategy = Output.createUnknown<String?>();
+    this.appId = registerOutput<String>('appId');
+    this.name = registerOutput<String>('name');
+    this.noManagedCertificate = registerOutput<bool?>('noManagedCertificate');
+    this.overrideStrategy = registerOutput<String?>('overrideStrategy');
     this.resourceRecords =
-        Output.createUnknown<List<ResourceRecordResponse2>>();
-    this.sslSettings = Output.createUnknown<SslSettingsResponse2>();
+        registerOutput<List<ResourceRecordResponse2>>('resourceRecords');
+    this.sslSettings = registerOutput<SslSettingsResponse2>('sslSettings');
   }
 }

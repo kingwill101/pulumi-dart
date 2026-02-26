@@ -488,10 +488,12 @@ class BlockPublicAccessConfiguration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.blockPublicSecurityGroupRules = Output.createUnknown<bool>();
-    this.permittedPublicSecurityGroupRuleRanges = Output.createUnknown<
-        List<
-            BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>?>();
-    this.region = Output.createUnknown<String>();
+    this.blockPublicSecurityGroupRules =
+        registerOutput<bool>('blockPublicSecurityGroupRules');
+    this.permittedPublicSecurityGroupRuleRanges = registerOutput<
+            List<
+                BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>?>(
+        'permittedPublicSecurityGroupRuleRanges');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -336,35 +336,37 @@ class SmbFileShare extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessBasedEnumeration = Output.createUnknown<bool?>();
-    this.adminUserLists = Output.createUnknown<List<String>?>();
-    this.arn = Output.createUnknown<String>();
-    this.auditDestinationArn = Output.createUnknown<String?>();
-    this.authentication = Output.createUnknown<String?>();
-    this.bucketRegion = Output.createUnknown<String?>();
-    this.cacheAttributes = Output.createUnknown<SmbFileShareCacheAttributes?>();
-    this.caseSensitivity = Output.createUnknown<String?>();
-    this.defaultStorageClass = Output.createUnknown<String?>();
-    this.fileShareName = Output.createUnknown<String>();
-    this.fileshareId = Output.createUnknown<String>();
-    this.gatewayArn = Output.createUnknown<String>();
-    this.guessMimeTypeEnabled = Output.createUnknown<bool?>();
-    this.invalidUserLists = Output.createUnknown<List<String>?>();
-    this.kmsEncrypted = Output.createUnknown<bool?>();
-    this.kmsKeyArn = Output.createUnknown<String?>();
-    this.locationArn = Output.createUnknown<String>();
-    this.notificationPolicy = Output.createUnknown<String?>();
-    this.objectAcl = Output.createUnknown<String?>();
-    this.oplocksEnabled = Output.createUnknown<bool>();
-    this.path = Output.createUnknown<String>();
-    this.readOnly = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.requesterPays = Output.createUnknown<bool?>();
-    this.roleArn = Output.createUnknown<String>();
-    this.smbAclEnabled = Output.createUnknown<bool?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.validUserLists = Output.createUnknown<List<String>?>();
-    this.vpcEndpointDnsName = Output.createUnknown<String?>();
+    this.accessBasedEnumeration =
+        registerOutput<bool?>('accessBasedEnumeration');
+    this.adminUserLists = registerOutput<List<String>?>('adminUserLists');
+    this.arn = registerOutput<String>('arn');
+    this.auditDestinationArn = registerOutput<String?>('auditDestinationArn');
+    this.authentication = registerOutput<String?>('authentication');
+    this.bucketRegion = registerOutput<String?>('bucketRegion');
+    this.cacheAttributes =
+        registerOutput<SmbFileShareCacheAttributes?>('cacheAttributes');
+    this.caseSensitivity = registerOutput<String?>('caseSensitivity');
+    this.defaultStorageClass = registerOutput<String?>('defaultStorageClass');
+    this.fileShareName = registerOutput<String>('fileShareName');
+    this.fileshareId = registerOutput<String>('fileshareId');
+    this.gatewayArn = registerOutput<String>('gatewayArn');
+    this.guessMimeTypeEnabled = registerOutput<bool?>('guessMimeTypeEnabled');
+    this.invalidUserLists = registerOutput<List<String>?>('invalidUserLists');
+    this.kmsEncrypted = registerOutput<bool?>('kmsEncrypted');
+    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.locationArn = registerOutput<String>('locationArn');
+    this.notificationPolicy = registerOutput<String?>('notificationPolicy');
+    this.objectAcl = registerOutput<String?>('objectAcl');
+    this.oplocksEnabled = registerOutput<bool>('oplocksEnabled');
+    this.path = registerOutput<String>('path');
+    this.readOnly = registerOutput<bool?>('readOnly');
+    this.region = registerOutput<String>('region');
+    this.requesterPays = registerOutput<bool?>('requesterPays');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.smbAclEnabled = registerOutput<bool?>('smbAclEnabled');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.validUserLists = registerOutput<List<String>?>('validUserLists');
+    this.vpcEndpointDnsName = registerOutput<String?>('vpcEndpointDnsName');
   }
 }

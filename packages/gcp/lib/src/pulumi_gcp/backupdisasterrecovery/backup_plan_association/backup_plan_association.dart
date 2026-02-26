@@ -591,18 +591,21 @@ class BackupPlanAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupPlan = Output.createUnknown<String>();
-    this.backupPlanAssociationId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.dataSource = Output.createUnknown<String>();
-    this.lastSuccessfulBackupConsistencyTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.resource = Output.createUnknown<String>();
-    this.resourceType = Output.createUnknown<String>();
+    this.backupPlan = registerOutput<String>('backupPlan');
+    this.backupPlanAssociationId =
+        registerOutput<String>('backupPlanAssociationId');
+    this.createTime = registerOutput<String>('createTime');
+    this.dataSource = registerOutput<String>('dataSource');
+    this.lastSuccessfulBackupConsistencyTime =
+        registerOutput<String>('lastSuccessfulBackupConsistencyTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.resource = registerOutput<String>('resource');
+    this.resourceType = registerOutput<String>('resourceType');
     this.rulesConfigInfos =
-        Output.createUnknown<List<BackupPlanAssociationRulesConfigInfo>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<BackupPlanAssociationRulesConfigInfo>>(
+            'rulesConfigInfos');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

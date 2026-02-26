@@ -25,10 +25,10 @@ class NatAddress extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.instanceId = Output.createUnknown<String>();
-    this.ipAddress = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
+    this.instanceId = registerOutput<String>('instanceId');
+    this.ipAddress = registerOutput<String>('ipAddress');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.state = registerOutput<String>('state');
   }
 }

@@ -192,18 +192,18 @@ class LocationAzureBlob extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessTier = Output.createUnknown<String?>();
-    this.agentArns = Output.createUnknown<List<String>>();
-    this.arn = Output.createUnknown<String>();
-    this.authenticationType = Output.createUnknown<String>();
-    this.blobType = Output.createUnknown<String?>();
-    this.containerUrl = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.accessTier = registerOutput<String?>('accessTier');
+    this.agentArns = registerOutput<List<String>>('agentArns');
+    this.arn = registerOutput<String>('arn');
+    this.authenticationType = registerOutput<String>('authenticationType');
+    this.blobType = registerOutput<String?>('blobType');
+    this.containerUrl = registerOutput<String>('containerUrl');
+    this.region = registerOutput<String>('region');
     this.sasConfiguration =
-        Output.createUnknown<LocationAzureBlobSasConfiguration?>();
-    this.subdirectory = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.uri = Output.createUnknown<String>();
+        registerOutput<LocationAzureBlobSasConfiguration?>('sasConfiguration');
+    this.subdirectory = registerOutput<String>('subdirectory');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.uri = registerOutput<String>('uri');
   }
 }

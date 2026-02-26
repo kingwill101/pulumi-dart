@@ -3641,38 +3641,44 @@ class WorkstationConfig extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.allowedPorts =
-        Output.createUnknown<List<WorkstationConfigAllowedPort>>();
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.conditions = Output.createUnknown<List<WorkstationConfigCondition>>();
-    this.container = Output.createUnknown<WorkstationConfigContainer>();
-    this.createTime = Output.createUnknown<String>();
-    this.degraded = Output.createUnknown<bool>();
-    this.disableTcpConnections = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String?>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.enableAuditAgent = Output.createUnknown<bool?>();
+        registerOutput<List<WorkstationConfigAllowedPort>>('allowedPorts');
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.conditions =
+        registerOutput<List<WorkstationConfigCondition>>('conditions');
+    this.container = registerOutput<WorkstationConfigContainer>('container');
+    this.createTime = registerOutput<String>('createTime');
+    this.degraded = registerOutput<bool>('degraded');
+    this.disableTcpConnections = registerOutput<bool?>('disableTcpConnections');
+    this.displayName = registerOutput<String?>('displayName');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableAuditAgent = registerOutput<bool?>('enableAuditAgent');
     this.encryptionKey =
-        Output.createUnknown<WorkstationConfigEncryptionKey?>();
+        registerOutput<WorkstationConfigEncryptionKey?>('encryptionKey');
     this.ephemeralDirectories =
-        Output.createUnknown<List<WorkstationConfigEphemeralDirectory>>();
-    this.etag = Output.createUnknown<String>();
-    this.host = Output.createUnknown<WorkstationConfigHost>();
-    this.idleTimeout = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.maxUsableWorkstations = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<List<WorkstationConfigEphemeralDirectory>>(
+            'ephemeralDirectories');
+    this.etag = registerOutput<String>('etag');
+    this.host = registerOutput<WorkstationConfigHost>('host');
+    this.idleTimeout = registerOutput<String?>('idleTimeout');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.maxUsableWorkstations = registerOutput<int>('maxUsableWorkstations');
+    this.name = registerOutput<String>('name');
     this.persistentDirectories =
-        Output.createUnknown<List<WorkstationConfigPersistentDirectory>>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<WorkstationConfigPersistentDirectory>>(
+            'persistentDirectories');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.readinessChecks =
-        Output.createUnknown<List<WorkstationConfigReadinessCheck>?>();
-    this.replicaZones = Output.createUnknown<List<String>>();
-    this.runningTimeout = Output.createUnknown<String?>();
-    this.uid = Output.createUnknown<String>();
-    this.workstationClusterId = Output.createUnknown<String>();
-    this.workstationConfigId = Output.createUnknown<String>();
+        registerOutput<List<WorkstationConfigReadinessCheck>?>(
+            'readinessChecks');
+    this.replicaZones = registerOutput<List<String>>('replicaZones');
+    this.runningTimeout = registerOutput<String?>('runningTimeout');
+    this.uid = registerOutput<String>('uid');
+    this.workstationClusterId = registerOutput<String>('workstationClusterId');
+    this.workstationConfigId = registerOutput<String>('workstationConfigId');
   }
 }

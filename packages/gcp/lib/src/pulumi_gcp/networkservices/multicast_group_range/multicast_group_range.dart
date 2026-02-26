@@ -430,24 +430,28 @@ class MulticastGroupRange extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.consumerAcceptLists = Output.createUnknown<List<String>?>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.distributionScope = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.ipCidrRange = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.logConfig = Output.createUnknown<MulticastGroupRangeLogConfig?>();
-    this.multicastDomain = Output.createUnknown<String>();
-    this.multicastGroupRangeId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.requireExplicitAccept = Output.createUnknown<bool?>();
-    this.reservedInternalRange = Output.createUnknown<String>();
-    this.states = Output.createUnknown<List<MulticastGroupRangeState>>();
-    this.uniqueId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.consumerAcceptLists =
+        registerOutput<List<String>?>('consumerAcceptLists');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.distributionScope = registerOutput<String?>('distributionScope');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.ipCidrRange = registerOutput<String>('ipCidrRange');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.logConfig = registerOutput<MulticastGroupRangeLogConfig?>('logConfig');
+    this.multicastDomain = registerOutput<String>('multicastDomain');
+    this.multicastGroupRangeId =
+        registerOutput<String>('multicastGroupRangeId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.requireExplicitAccept = registerOutput<bool?>('requireExplicitAccept');
+    this.reservedInternalRange =
+        registerOutput<String>('reservedInternalRange');
+    this.states = registerOutput<List<MulticastGroupRangeState>>('states');
+    this.uniqueId = registerOutput<String>('uniqueId');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

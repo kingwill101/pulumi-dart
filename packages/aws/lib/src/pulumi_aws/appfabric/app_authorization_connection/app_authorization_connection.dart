@@ -133,14 +133,15 @@ class AppAuthorizationConnection extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.app = Output.createUnknown<String>();
-    this.appAuthorizationArn = Output.createUnknown<String>();
-    this.appBundleArn = Output.createUnknown<String>();
+    this.app = registerOutput<String>('app');
+    this.appAuthorizationArn = registerOutput<String>('appAuthorizationArn');
+    this.appBundleArn = registerOutput<String>('appBundleArn');
     this.authRequest =
-        Output.createUnknown<AppAuthorizationConnectionAuthRequest?>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<AppAuthorizationConnectionAuthRequest?>('authRequest');
+    this.region = registerOutput<String>('region');
     this.tenants =
-        Output.createUnknown<List<AppAuthorizationConnectionTenant>>();
-    this.timeouts = Output.createUnknown<AppAuthorizationConnectionTimeouts?>();
+        registerOutput<List<AppAuthorizationConnectionTenant>>('tenants');
+    this.timeouts =
+        registerOutput<AppAuthorizationConnectionTimeouts?>('timeouts');
   }
 }

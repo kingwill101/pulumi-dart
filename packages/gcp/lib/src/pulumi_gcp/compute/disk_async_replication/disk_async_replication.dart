@@ -238,8 +238,8 @@ class DiskAsyncReplication extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.primaryDisk = Output.createUnknown<String>();
+    this.primaryDisk = registerOutput<String>('primaryDisk');
     this.secondaryDisk =
-        Output.createUnknown<DiskAsyncReplicationSecondaryDisk>();
+        registerOutput<DiskAsyncReplicationSecondaryDisk>('secondaryDisk');
   }
 }

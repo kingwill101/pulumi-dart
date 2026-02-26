@@ -62,22 +62,23 @@ class FunctionType2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.buildConfig = Output.createUnknown<BuildConfigResponse>();
-    this.description = Output.createUnknown<String>();
-    this.environment = Output.createUnknown<String>();
-    this.eventTrigger = Output.createUnknown<EventTriggerResponse2>();
-    this.functionId = Output.createUnknown<String?>();
-    this.kmsKeyName = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
-    this.serviceConfig = Output.createUnknown<ServiceConfigResponse>();
-    this.state = Output.createUnknown<String>();
-    this.stateMessages = Output.createUnknown<
-        List<GoogleCloudFunctionsV2StateMessageResponse>>();
-    this.updateTime = Output.createUnknown<String>();
-    this.url = Output.createUnknown<String>();
+    this.buildConfig = registerOutput<BuildConfigResponse>('buildConfig');
+    this.description = registerOutput<String>('description');
+    this.environment = registerOutput<String>('environment');
+    this.eventTrigger = registerOutput<EventTriggerResponse2>('eventTrigger');
+    this.functionId = registerOutput<String?>('functionId');
+    this.kmsKeyName = registerOutput<String>('kmsKeyName');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    this.serviceConfig = registerOutput<ServiceConfigResponse>('serviceConfig');
+    this.state = registerOutput<String>('state');
+    this.stateMessages =
+        registerOutput<List<GoogleCloudFunctionsV2StateMessageResponse>>(
+            'stateMessages');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.url = registerOutput<String>('url');
   }
 }

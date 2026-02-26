@@ -2661,14 +2661,14 @@ class FeatureMembership extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.configmanagement =
-        Output.createUnknown<FeatureMembershipConfigmanagement?>();
-    this.feature = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.membership = Output.createUnknown<String>();
-    this.membershipLocation = Output.createUnknown<String?>();
-    this.mesh = Output.createUnknown<FeatureMembershipMesh?>();
+        registerOutput<FeatureMembershipConfigmanagement?>('configmanagement');
+    this.feature = registerOutput<String>('feature');
+    this.location = registerOutput<String>('location');
+    this.membership = registerOutput<String>('membership');
+    this.membershipLocation = registerOutput<String?>('membershipLocation');
+    this.mesh = registerOutput<FeatureMembershipMesh?>('mesh');
     this.policycontroller =
-        Output.createUnknown<FeatureMembershipPolicycontroller?>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<FeatureMembershipPolicycontroller?>('policycontroller');
+    this.project = registerOutput<String>('project');
   }
 }

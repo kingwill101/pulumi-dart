@@ -255,16 +255,16 @@ class Application2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.autoConfigEnabled = Output.createUnknown<bool?>();
-    this.autoCreate = Output.createUnknown<bool?>();
-    this.cweMonitorEnabled = Output.createUnknown<bool?>();
-    this.groupingType = Output.createUnknown<String?>();
-    this.opsCenterEnabled = Output.createUnknown<bool?>();
-    this.opsItemSnsTopicArn = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.resourceGroupName = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.autoConfigEnabled = registerOutput<bool?>('autoConfigEnabled');
+    this.autoCreate = registerOutput<bool?>('autoCreate');
+    this.cweMonitorEnabled = registerOutput<bool?>('cweMonitorEnabled');
+    this.groupingType = registerOutput<String?>('groupingType');
+    this.opsCenterEnabled = registerOutput<bool?>('opsCenterEnabled');
+    this.opsItemSnsTopicArn = registerOutput<String?>('opsItemSnsTopicArn');
+    this.region = registerOutput<String>('region');
+    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

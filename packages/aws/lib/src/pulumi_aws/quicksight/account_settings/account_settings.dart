@@ -185,10 +185,11 @@ class AccountSettings extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.awsAccountId = Output.createUnknown<String>();
-    this.defaultNamespace = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.terminationProtectionEnabled = Output.createUnknown<bool>();
-    this.timeouts = Output.createUnknown<AccountSettingsTimeouts?>();
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.defaultNamespace = registerOutput<String>('defaultNamespace');
+    this.region = registerOutput<String>('region');
+    this.terminationProtectionEnabled =
+        registerOutput<bool>('terminationProtectionEnabled');
+    this.timeouts = registerOutput<AccountSettingsTimeouts?>('timeouts');
   }
 }

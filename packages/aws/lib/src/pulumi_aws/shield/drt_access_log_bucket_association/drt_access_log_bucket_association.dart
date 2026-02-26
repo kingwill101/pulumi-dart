@@ -152,9 +152,9 @@ class DrtAccessLogBucketAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.logBucket = Output.createUnknown<String>();
-    this.roleArnAssociationId = Output.createUnknown<String>();
+    this.logBucket = registerOutput<String>('logBucket');
+    this.roleArnAssociationId = registerOutput<String>('roleArnAssociationId');
     this.timeouts =
-        Output.createUnknown<DrtAccessLogBucketAssociationTimeouts?>();
+        registerOutput<DrtAccessLogBucketAssociationTimeouts?>('timeouts');
   }
 }

@@ -188,15 +188,15 @@ class App2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.campaignHook = Output.createUnknown<AppCampaignHook?>();
-    this.limits = Output.createUnknown<AppLimits?>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.quietTime = Output.createUnknown<AppQuietTime?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.applicationId = registerOutput<String>('applicationId');
+    this.arn = registerOutput<String>('arn');
+    this.campaignHook = registerOutput<AppCampaignHook?>('campaignHook');
+    this.limits = registerOutput<AppLimits?>('limits');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.quietTime = registerOutput<AppQuietTime?>('quietTime');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

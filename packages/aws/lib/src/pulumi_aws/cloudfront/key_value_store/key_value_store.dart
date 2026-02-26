@@ -147,11 +147,11 @@ class KeyValueStore extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.comment = Output.createUnknown<String?>();
-    this.etag = Output.createUnknown<String>();
-    this.lastModifiedTime = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<KeyValueStoreTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.comment = registerOutput<String?>('comment');
+    this.etag = registerOutput<String>('etag');
+    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.name = registerOutput<String>('name');
+    this.timeouts = registerOutput<KeyValueStoreTimeouts?>('timeouts');
   }
 }

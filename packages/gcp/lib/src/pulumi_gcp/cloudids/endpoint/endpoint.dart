@@ -326,16 +326,17 @@ class Endpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.endpointForwardingRule = Output.createUnknown<String>();
-    this.endpointIp = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.severity = Output.createUnknown<String>();
-    this.threatExceptions = Output.createUnknown<List<String>?>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.endpointForwardingRule =
+        registerOutput<String>('endpointForwardingRule');
+    this.endpointIp = registerOutput<String>('endpointIp');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.project = registerOutput<String>('project');
+    this.severity = registerOutput<String>('severity');
+    this.threatExceptions = registerOutput<List<String>?>('threatExceptions');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

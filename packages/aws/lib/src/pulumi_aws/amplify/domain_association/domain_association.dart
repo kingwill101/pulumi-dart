@@ -299,15 +299,18 @@ class DomainAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.appId = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
+    this.appId = registerOutput<String>('appId');
+    this.arn = registerOutput<String>('arn');
     this.certificateSettings =
-        Output.createUnknown<DomainAssociationCertificateSettings>();
-    this.certificateVerificationDnsRecord = Output.createUnknown<String>();
-    this.domainName = Output.createUnknown<String>();
-    this.enableAutoSubDomain = Output.createUnknown<bool?>();
-    this.region = Output.createUnknown<String>();
-    this.subDomains = Output.createUnknown<List<DomainAssociationSubDomain>>();
-    this.waitForVerification = Output.createUnknown<bool?>();
+        registerOutput<DomainAssociationCertificateSettings>(
+            'certificateSettings');
+    this.certificateVerificationDnsRecord =
+        registerOutput<String>('certificateVerificationDnsRecord');
+    this.domainName = registerOutput<String>('domainName');
+    this.enableAutoSubDomain = registerOutput<bool?>('enableAutoSubDomain');
+    this.region = registerOutput<String>('region');
+    this.subDomains =
+        registerOutput<List<DomainAssociationSubDomain>>('subDomains');
+    this.waitForVerification = registerOutput<bool?>('waitForVerification');
   }
 }

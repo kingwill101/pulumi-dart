@@ -516,9 +516,9 @@ class ResourceCollection extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.cloudformation =
-        Output.createUnknown<ResourceCollectionCloudformation?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<ResourceCollectionTags?>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<ResourceCollectionCloudformation?>('cloudformation');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<ResourceCollectionTags?>('tags');
+    this.type = registerOutput<String>('type');
   }
 }

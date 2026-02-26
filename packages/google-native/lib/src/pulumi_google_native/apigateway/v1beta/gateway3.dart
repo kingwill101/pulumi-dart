@@ -43,16 +43,16 @@ class Gateway3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiConfig = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.defaultHostname = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.gatewayId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.apiConfig = registerOutput<String>('apiConfig');
+    this.createTime = registerOutput<String>('createTime');
+    this.defaultHostname = registerOutput<String>('defaultHostname');
+    this.displayName = registerOutput<String>('displayName');
+    this.gatewayId = registerOutput<String>('gatewayId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

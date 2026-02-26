@@ -379,33 +379,38 @@ class Unit extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>?>();
-    this.conditions = Output.createUnknown<List<UnitCondition>>();
-    this.createTime = Output.createUnknown<String>();
-    this.dependencies = Output.createUnknown<List<UnitDependency>>();
-    this.dependents = Output.createUnknown<List<UnitDependent>>();
-    this.effectiveAnnotations = Output.createUnknown<Map<String, String>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.inputVariables = Output.createUnknown<List<UnitInputVariable>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.maintenance = Output.createUnknown<UnitMaintenance?>();
-    this.managementMode = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.ongoingOperations = Output.createUnknown<List<String>>();
-    this.outputVariables = Output.createUnknown<List<UnitOutputVariable>>();
-    this.pendingOperations = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.release = Output.createUnknown<String>();
-    this.scheduledOperations = Output.createUnknown<List<String>>();
-    this.state = Output.createUnknown<String>();
-    this.systemCleanupAt = Output.createUnknown<String>();
-    this.systemManagedState = Output.createUnknown<String>();
-    this.tenant = Output.createUnknown<String?>();
-    this.uid = Output.createUnknown<String>();
-    this.unitId = Output.createUnknown<String>();
-    this.unitKind = Output.createUnknown<String?>();
-    this.updateTime = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>?>('annotations');
+    this.conditions = registerOutput<List<UnitCondition>>('conditions');
+    this.createTime = registerOutput<String>('createTime');
+    this.dependencies = registerOutput<List<UnitDependency>>('dependencies');
+    this.dependents = registerOutput<List<UnitDependent>>('dependents');
+    this.effectiveAnnotations =
+        registerOutput<Map<String, String>>('effectiveAnnotations');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.inputVariables =
+        registerOutput<List<UnitInputVariable>>('inputVariables');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.maintenance = registerOutput<UnitMaintenance?>('maintenance');
+    this.managementMode = registerOutput<String?>('managementMode');
+    this.name = registerOutput<String>('name');
+    this.ongoingOperations = registerOutput<List<String>>('ongoingOperations');
+    this.outputVariables =
+        registerOutput<List<UnitOutputVariable>>('outputVariables');
+    this.pendingOperations = registerOutput<List<String>>('pendingOperations');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.release = registerOutput<String>('release');
+    this.scheduledOperations =
+        registerOutput<List<String>>('scheduledOperations');
+    this.state = registerOutput<String>('state');
+    this.systemCleanupAt = registerOutput<String>('systemCleanupAt');
+    this.systemManagedState = registerOutput<String>('systemManagedState');
+    this.tenant = registerOutput<String?>('tenant');
+    this.uid = registerOutput<String>('uid');
+    this.unitId = registerOutput<String>('unitId');
+    this.unitKind = registerOutput<String?>('unitKind');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

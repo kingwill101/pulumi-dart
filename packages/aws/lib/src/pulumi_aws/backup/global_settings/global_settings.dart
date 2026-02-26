@@ -137,6 +137,6 @@ class GlobalSettings extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.globalSettings = Output.createUnknown<Map<String, String>>();
+    this.globalSettings = registerOutput<Map<String, String>>('globalSettings');
   }
 }

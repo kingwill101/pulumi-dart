@@ -103,34 +103,36 @@ class Occurrence2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attestation = Output.createUnknown<AttestationResponse>();
-    this.buildDetails = Output.createUnknown<BuildDetailsResponse>();
-    this.compliance = Output.createUnknown<ComplianceOccurrenceResponse2>();
-    this.createTime = Output.createUnknown<String>();
-    this.deployment = Output.createUnknown<DeploymentResponse3>();
-    this.derivedImage = Output.createUnknown<DerivedResponse>();
-    this.discovered = Output.createUnknown<DiscoveredResponse>();
+    this.attestation = registerOutput<AttestationResponse>('attestation');
+    this.buildDetails = registerOutput<BuildDetailsResponse>('buildDetails');
+    this.compliance =
+        registerOutput<ComplianceOccurrenceResponse2>('compliance');
+    this.createTime = registerOutput<String>('createTime');
+    this.deployment = registerOutput<DeploymentResponse3>('deployment');
+    this.derivedImage = registerOutput<DerivedResponse>('derivedImage');
+    this.discovered = registerOutput<DiscoveredResponse>('discovered');
     this.dsseAttestation =
-        Output.createUnknown<DSSEAttestationOccurrenceResponse2>();
-    this.envelope = Output.createUnknown<EnvelopeResponse2>();
-    this.installation = Output.createUnknown<InstallationResponse>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.noteName = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.remediation = Output.createUnknown<String>();
-    this.resource = Output.createUnknown<ResourceResponse>();
-    this.resourceUrl = Output.createUnknown<String>();
-    this.sbom = Output.createUnknown<DocumentOccurrenceResponse>();
+        registerOutput<DSSEAttestationOccurrenceResponse2>('dsseAttestation');
+    this.envelope = registerOutput<EnvelopeResponse2>('envelope');
+    this.installation = registerOutput<InstallationResponse>('installation');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.noteName = registerOutput<String>('noteName');
+    this.project = registerOutput<String>('project');
+    this.remediation = registerOutput<String>('remediation');
+    this.resource = registerOutput<ResourceResponse>('resource');
+    this.resourceUrl = registerOutput<String>('resourceUrl');
+    this.sbom = registerOutput<DocumentOccurrenceResponse>('sbom');
     this.sbomReference =
-        Output.createUnknown<SBOMReferenceOccurrenceResponse2>();
-    this.spdxFile = Output.createUnknown<FileOccurrenceResponse>();
-    this.spdxPackage = Output.createUnknown<PackageInfoOccurrenceResponse>();
+        registerOutput<SBOMReferenceOccurrenceResponse2>('sbomReference');
+    this.spdxFile = registerOutput<FileOccurrenceResponse>('spdxFile');
+    this.spdxPackage =
+        registerOutput<PackageInfoOccurrenceResponse>('spdxPackage');
     this.spdxRelationship =
-        Output.createUnknown<RelationshipOccurrenceResponse>();
-    this.updateTime = Output.createUnknown<String>();
-    this.upgrade = Output.createUnknown<UpgradeOccurrenceResponse2>();
+        registerOutput<RelationshipOccurrenceResponse>('spdxRelationship');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.upgrade = registerOutput<UpgradeOccurrenceResponse2>('upgrade');
     this.vulnerabilityDetails =
-        Output.createUnknown<VulnerabilityDetailsResponse>();
+        registerOutput<VulnerabilityDetailsResponse>('vulnerabilityDetails');
   }
 }

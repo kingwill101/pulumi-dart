@@ -241,13 +241,14 @@ class DataShareConsumerAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allowWrites = Output.createUnknown<bool?>();
-    this.associateEntireAccount = Output.createUnknown<bool?>();
-    this.consumerArn = Output.createUnknown<String?>();
-    this.consumerRegion = Output.createUnknown<String?>();
-    this.dataShareArn = Output.createUnknown<String>();
-    this.managedBy = Output.createUnknown<String>();
-    this.producerArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.allowWrites = registerOutput<bool?>('allowWrites');
+    this.associateEntireAccount =
+        registerOutput<bool?>('associateEntireAccount');
+    this.consumerArn = registerOutput<String?>('consumerArn');
+    this.consumerRegion = registerOutput<String?>('consumerRegion');
+    this.dataShareArn = registerOutput<String>('dataShareArn');
+    this.managedBy = registerOutput<String>('managedBy');
+    this.producerArn = registerOutput<String>('producerArn');
+    this.region = registerOutput<String>('region');
   }
 }

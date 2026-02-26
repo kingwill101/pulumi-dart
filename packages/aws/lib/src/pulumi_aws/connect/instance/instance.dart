@@ -436,22 +436,26 @@ class Instance extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.autoResolveBestVoicesEnabled = Output.createUnknown<bool?>();
-    this.contactFlowLogsEnabled = Output.createUnknown<bool?>();
-    this.contactLensEnabled = Output.createUnknown<bool?>();
-    this.createdTime = Output.createUnknown<String>();
-    this.directoryId = Output.createUnknown<String?>();
-    this.earlyMediaEnabled = Output.createUnknown<bool?>();
-    this.identityManagementType = Output.createUnknown<String>();
-    this.inboundCallsEnabled = Output.createUnknown<bool>();
-    this.instanceAlias = Output.createUnknown<String?>();
-    this.multiPartyConferenceEnabled = Output.createUnknown<bool?>();
-    this.outboundCallsEnabled = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.serviceRole = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.autoResolveBestVoicesEnabled =
+        registerOutput<bool?>('autoResolveBestVoicesEnabled');
+    this.contactFlowLogsEnabled =
+        registerOutput<bool?>('contactFlowLogsEnabled');
+    this.contactLensEnabled = registerOutput<bool?>('contactLensEnabled');
+    this.createdTime = registerOutput<String>('createdTime');
+    this.directoryId = registerOutput<String?>('directoryId');
+    this.earlyMediaEnabled = registerOutput<bool?>('earlyMediaEnabled');
+    this.identityManagementType =
+        registerOutput<String>('identityManagementType');
+    this.inboundCallsEnabled = registerOutput<bool>('inboundCallsEnabled');
+    this.instanceAlias = registerOutput<String?>('instanceAlias');
+    this.multiPartyConferenceEnabled =
+        registerOutput<bool?>('multiPartyConferenceEnabled');
+    this.outboundCallsEnabled = registerOutput<bool>('outboundCallsEnabled');
+    this.region = registerOutput<String>('region');
+    this.serviceRole = registerOutput<String>('serviceRole');
+    this.status = registerOutput<String>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

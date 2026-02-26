@@ -303,8 +303,8 @@ class DomainServiceAccessPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessPolicy = Output.createUnknown<String>();
-    this.domainName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.accessPolicy = registerOutput<String>('accessPolicy');
+    this.domainName = registerOutput<String>('domainName');
+    this.region = registerOutput<String>('region');
   }
 }

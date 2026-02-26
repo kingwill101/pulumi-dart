@@ -734,16 +734,16 @@ class Api2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiArn = Output.createUnknown<String>();
-    this.apiId = Output.createUnknown<String>();
-    this.dns = Output.createUnknown<Map<String, String>>();
-    this.eventConfig = Output.createUnknown<ApiEventConfig>();
-    this.name = Output.createUnknown<String>();
-    this.ownerContact = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.wafWebAclArn = Output.createUnknown<String>();
-    this.xrayEnabled = Output.createUnknown<bool>();
+    this.apiArn = registerOutput<String>('apiArn');
+    this.apiId = registerOutput<String>('apiId');
+    this.dns = registerOutput<Map<String, String>>('dns');
+    this.eventConfig = registerOutput<ApiEventConfig>('eventConfig');
+    this.name = registerOutput<String>('name');
+    this.ownerContact = registerOutput<String?>('ownerContact');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.wafWebAclArn = registerOutput<String>('wafWebAclArn');
+    this.xrayEnabled = registerOutput<bool>('xrayEnabled');
   }
 }

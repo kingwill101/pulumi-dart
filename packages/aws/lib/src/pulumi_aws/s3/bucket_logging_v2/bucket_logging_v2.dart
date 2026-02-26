@@ -662,14 +662,15 @@ class BucketLoggingV2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bucket = Output.createUnknown<String>();
-    this.expectedBucketOwner = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.targetBucket = Output.createUnknown<String>();
+    this.bucket = registerOutput<String>('bucket');
+    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    this.region = registerOutput<String>('region');
+    this.targetBucket = registerOutput<String>('targetBucket');
     this.targetGrants =
-        Output.createUnknown<List<BucketLoggingV2TargetGrant>?>();
+        registerOutput<List<BucketLoggingV2TargetGrant>?>('targetGrants');
     this.targetObjectKeyFormat =
-        Output.createUnknown<BucketLoggingV2TargetObjectKeyFormat?>();
-    this.targetPrefix = Output.createUnknown<String>();
+        registerOutput<BucketLoggingV2TargetObjectKeyFormat?>(
+            'targetObjectKeyFormat');
+    this.targetPrefix = registerOutput<String>('targetPrefix');
   }
 }

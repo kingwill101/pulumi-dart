@@ -400,7 +400,8 @@ class ApplicationUrlDispatchRules extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.dispatchRules =
-        Output.createUnknown<List<ApplicationUrlDispatchRulesDispatchRule>>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<List<ApplicationUrlDispatchRulesDispatchRule>>(
+            'dispatchRules');
+    this.project = registerOutput<String>('project');
   }
 }

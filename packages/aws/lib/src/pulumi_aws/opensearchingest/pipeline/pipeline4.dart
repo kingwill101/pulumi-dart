@@ -531,22 +531,26 @@ class Pipeline4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bufferOptions = Output.createUnknown<PipelineBufferOptions?>();
+    this.bufferOptions =
+        registerOutput<PipelineBufferOptions?>('bufferOptions');
     this.encryptionAtRestOptions =
-        Output.createUnknown<PipelineEncryptionAtRestOptions?>();
-    this.ingestEndpointUrls = Output.createUnknown<List<String>>();
+        registerOutput<PipelineEncryptionAtRestOptions?>(
+            'encryptionAtRestOptions');
+    this.ingestEndpointUrls =
+        registerOutput<List<String>>('ingestEndpointUrls');
     this.logPublishingOptions =
-        Output.createUnknown<PipelineLogPublishingOptions?>();
-    this.maxUnits = Output.createUnknown<int>();
-    this.minUnits = Output.createUnknown<int>();
-    this.pipelineArn = Output.createUnknown<String>();
-    this.pipelineConfigurationBody = Output.createUnknown<String>();
-    this.pipelineName = Output.createUnknown<String>();
-    this.pipelineRoleArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<PipelineTimeouts?>();
-    this.vpcOptions = Output.createUnknown<PipelineVpcOptions?>();
+        registerOutput<PipelineLogPublishingOptions?>('logPublishingOptions');
+    this.maxUnits = registerOutput<int>('maxUnits');
+    this.minUnits = registerOutput<int>('minUnits');
+    this.pipelineArn = registerOutput<String>('pipelineArn');
+    this.pipelineConfigurationBody =
+        registerOutput<String>('pipelineConfigurationBody');
+    this.pipelineName = registerOutput<String>('pipelineName');
+    this.pipelineRoleArn = registerOutput<String>('pipelineRoleArn');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<PipelineTimeouts?>('timeouts');
+    this.vpcOptions = registerOutput<PipelineVpcOptions?>('vpcOptions');
   }
 }

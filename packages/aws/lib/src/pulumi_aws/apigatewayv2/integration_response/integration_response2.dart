@@ -147,12 +147,16 @@ class IntegrationResponse2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.apiId = Output.createUnknown<String>();
-    this.contentHandlingStrategy = Output.createUnknown<String?>();
-    this.integrationId = Output.createUnknown<String>();
-    this.integrationResponseKey = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.responseTemplates = Output.createUnknown<Map<String, String>?>();
-    this.templateSelectionExpression = Output.createUnknown<String?>();
+    this.apiId = registerOutput<String>('apiId');
+    this.contentHandlingStrategy =
+        registerOutput<String?>('contentHandlingStrategy');
+    this.integrationId = registerOutput<String>('integrationId');
+    this.integrationResponseKey =
+        registerOutput<String>('integrationResponseKey');
+    this.region = registerOutput<String>('region');
+    this.responseTemplates =
+        registerOutput<Map<String, String>?>('responseTemplates');
+    this.templateSelectionExpression =
+        registerOutput<String?>('templateSelectionExpression');
   }
 }

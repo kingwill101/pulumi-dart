@@ -317,29 +317,32 @@ class CustomModel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.baseModelIdentifier = Output.createUnknown<String>();
-    this.customModelArn = Output.createUnknown<String>();
-    this.customModelKmsKeyId = Output.createUnknown<String?>();
-    this.customModelName = Output.createUnknown<String>();
-    this.customizationType = Output.createUnknown<String>();
-    this.hyperparameters = Output.createUnknown<Map<String, String>>();
-    this.jobArn = Output.createUnknown<String>();
-    this.jobName = Output.createUnknown<String>();
-    this.jobStatus = Output.createUnknown<String>();
-    this.outputDataConfig = Output.createUnknown<CustomModelOutputDataConfig>();
-    this.region = Output.createUnknown<String>();
-    this.roleArn = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<CustomModelTimeouts?>();
+    this.baseModelIdentifier = registerOutput<String>('baseModelIdentifier');
+    this.customModelArn = registerOutput<String>('customModelArn');
+    this.customModelKmsKeyId = registerOutput<String?>('customModelKmsKeyId');
+    this.customModelName = registerOutput<String>('customModelName');
+    this.customizationType = registerOutput<String>('customizationType');
+    this.hyperparameters =
+        registerOutput<Map<String, String>>('hyperparameters');
+    this.jobArn = registerOutput<String>('jobArn');
+    this.jobName = registerOutput<String>('jobName');
+    this.jobStatus = registerOutput<String>('jobStatus');
+    this.outputDataConfig =
+        registerOutput<CustomModelOutputDataConfig>('outputDataConfig');
+    this.region = registerOutput<String>('region');
+    this.roleArn = registerOutput<String>('roleArn');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<CustomModelTimeouts?>('timeouts');
     this.trainingDataConfig =
-        Output.createUnknown<CustomModelTrainingDataConfig>();
+        registerOutput<CustomModelTrainingDataConfig>('trainingDataConfig');
     this.trainingMetrics =
-        Output.createUnknown<List<CustomModelTrainingMetric>>();
+        registerOutput<List<CustomModelTrainingMetric>>('trainingMetrics');
     this.validationDataConfig =
-        Output.createUnknown<CustomModelValidationDataConfig?>();
+        registerOutput<CustomModelValidationDataConfig?>(
+            'validationDataConfig');
     this.validationMetrics =
-        Output.createUnknown<List<CustomModelValidationMetric>>();
-    this.vpcConfig = Output.createUnknown<CustomModelVpcConfig?>();
+        registerOutput<List<CustomModelValidationMetric>>('validationMetrics');
+    this.vpcConfig = registerOutput<CustomModelVpcConfig?>('vpcConfig');
   }
 }

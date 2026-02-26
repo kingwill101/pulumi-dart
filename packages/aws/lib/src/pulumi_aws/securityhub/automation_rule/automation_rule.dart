@@ -320,16 +320,16 @@ class AutomationRule extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.actions = Output.createUnknown<List<AutomationRuleAction>>();
-    this.arn = Output.createUnknown<String>();
-    this.criteria = Output.createUnknown<AutomationRuleCriteria>();
-    this.description = Output.createUnknown<String>();
-    this.isTerminal = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.ruleName = Output.createUnknown<String>();
-    this.ruleOrder = Output.createUnknown<int>();
-    this.ruleStatus = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.actions = registerOutput<List<AutomationRuleAction>>('actions');
+    this.arn = registerOutput<String>('arn');
+    this.criteria = registerOutput<AutomationRuleCriteria>('criteria');
+    this.description = registerOutput<String>('description');
+    this.isTerminal = registerOutput<bool>('isTerminal');
+    this.region = registerOutput<String>('region');
+    this.ruleName = registerOutput<String>('ruleName');
+    this.ruleOrder = registerOutput<int>('ruleOrder');
+    this.ruleStatus = registerOutput<String>('ruleStatus');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

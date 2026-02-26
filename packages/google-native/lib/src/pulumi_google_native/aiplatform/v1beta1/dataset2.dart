@@ -59,22 +59,24 @@ class Dataset2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.dataItemCount = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.encryptionSpec = Output.createUnknown<
-        GoogleCloudAiplatformV1beta1EncryptionSpecResponse>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<dynamic>();
-    this.metadataArtifact = Output.createUnknown<String>();
-    this.metadataSchemaUri = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.savedQueries = Output.createUnknown<
-        List<GoogleCloudAiplatformV1beta1SavedQueryResponse>>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.dataItemCount = registerOutput<String>('dataItemCount');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.encryptionSpec =
+        registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>(
+            'encryptionSpec');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<dynamic>('metadata');
+    this.metadataArtifact = registerOutput<String>('metadataArtifact');
+    this.metadataSchemaUri = registerOutput<String>('metadataSchemaUri');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.savedQueries =
+        registerOutput<List<GoogleCloudAiplatformV1beta1SavedQueryResponse>>(
+            'savedQueries');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

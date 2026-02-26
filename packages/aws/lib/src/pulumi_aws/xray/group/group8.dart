@@ -171,13 +171,13 @@ class Group8 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.filterExpression = Output.createUnknown<String>();
-    this.groupName = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.filterExpression = registerOutput<String>('filterExpression');
+    this.groupName = registerOutput<String>('groupName');
     this.insightsConfiguration =
-        Output.createUnknown<GroupInsightsConfiguration>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<GroupInsightsConfiguration>('insightsConfiguration');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

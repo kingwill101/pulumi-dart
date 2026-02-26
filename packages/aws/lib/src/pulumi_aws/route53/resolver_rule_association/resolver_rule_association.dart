@@ -141,9 +141,9 @@ class ResolverRuleAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resolverRuleId = Output.createUnknown<String>();
-    this.vpcId = Output.createUnknown<String>();
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.resolverRuleId = registerOutput<String>('resolverRuleId');
+    this.vpcId = registerOutput<String>('vpcId');
   }
 }

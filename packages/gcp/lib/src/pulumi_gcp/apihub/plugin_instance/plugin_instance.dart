@@ -245,18 +245,18 @@ class PluginInstance extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.actions = Output.createUnknown<List<PluginInstanceAction>>();
-    this.authConfig = Output.createUnknown<PluginInstanceAuthConfig?>();
-    this.createTime = Output.createUnknown<String>();
-    this.disable = Output.createUnknown<bool?>();
-    this.displayName = Output.createUnknown<String>();
-    this.errorMessage = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.plugin = Output.createUnknown<String>();
-    this.pluginInstanceId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.actions = registerOutput<List<PluginInstanceAction>>('actions');
+    this.authConfig = registerOutput<PluginInstanceAuthConfig?>('authConfig');
+    this.createTime = registerOutput<String>('createTime');
+    this.disable = registerOutput<bool?>('disable');
+    this.displayName = registerOutput<String>('displayName');
+    this.errorMessage = registerOutput<String>('errorMessage');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.plugin = registerOutput<String>('plugin');
+    this.pluginInstanceId = registerOutput<String>('pluginInstanceId');
+    this.project = registerOutput<String>('project');
+    this.state = registerOutput<String>('state');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

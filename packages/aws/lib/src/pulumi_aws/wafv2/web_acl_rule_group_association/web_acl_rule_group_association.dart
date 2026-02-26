@@ -1202,14 +1202,17 @@ class WebAclRuleGroupAssociation extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.managedRuleGroup =
-        Output.createUnknown<WebAclRuleGroupAssociationManagedRuleGroup?>();
-    this.overrideAction = Output.createUnknown<String>();
-    this.priority = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<WebAclRuleGroupAssociationManagedRuleGroup?>(
+            'managedRuleGroup');
+    this.overrideAction = registerOutput<String>('overrideAction');
+    this.priority = registerOutput<int>('priority');
+    this.region = registerOutput<String>('region');
     this.ruleGroupReference =
-        Output.createUnknown<WebAclRuleGroupAssociationRuleGroupReference?>();
-    this.ruleName = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<WebAclRuleGroupAssociationTimeouts?>();
-    this.webAclArn = Output.createUnknown<String>();
+        registerOutput<WebAclRuleGroupAssociationRuleGroupReference?>(
+            'ruleGroupReference');
+    this.ruleName = registerOutput<String>('ruleName');
+    this.timeouts =
+        registerOutput<WebAclRuleGroupAssociationTimeouts?>('timeouts');
+    this.webAclArn = registerOutput<String>('webAclArn');
   }
 }

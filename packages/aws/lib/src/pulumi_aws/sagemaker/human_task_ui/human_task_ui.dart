@@ -173,11 +173,11 @@ class HumanTaskUI extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.humanTaskUiName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.uiTemplate = Output.createUnknown<HumanTaskUIUiTemplate>();
+    this.arn = registerOutput<String>('arn');
+    this.humanTaskUiName = registerOutput<String>('humanTaskUiName');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.uiTemplate = registerOutput<HumanTaskUIUiTemplate>('uiTemplate');
   }
 }

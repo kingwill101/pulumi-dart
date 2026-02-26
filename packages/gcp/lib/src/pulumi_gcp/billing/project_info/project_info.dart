@@ -191,7 +191,7 @@ class ProjectInfo extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.billingAccount = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.billingAccount = registerOutput<String>('billingAccount');
+    this.project = registerOutput<String>('project');
   }
 }

@@ -191,8 +191,8 @@ class MonitoredProject extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.metricsScope = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.metricsScope = registerOutput<String>('metricsScope');
+    this.name = registerOutput<String>('name');
   }
 }

@@ -54,19 +54,20 @@ class FolderBucket extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.analyticsEnabled = Output.createUnknown<bool>();
-    this.bucketId = Output.createUnknown<String>();
-    this.cmekSettings = Output.createUnknown<CmekSettingsResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.folderId = Output.createUnknown<String>();
-    this.indexConfigs = Output.createUnknown<List<IndexConfigResponse>>();
-    this.lifecycleState = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.locked = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.restrictedFields = Output.createUnknown<List<String>>();
-    this.retentionDays = Output.createUnknown<int>();
-    this.updateTime = Output.createUnknown<String>();
+    this.analyticsEnabled = registerOutput<bool>('analyticsEnabled');
+    this.bucketId = registerOutput<String>('bucketId');
+    this.cmekSettings = registerOutput<CmekSettingsResponse>('cmekSettings');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.folderId = registerOutput<String>('folderId');
+    this.indexConfigs =
+        registerOutput<List<IndexConfigResponse>>('indexConfigs');
+    this.lifecycleState = registerOutput<String>('lifecycleState');
+    this.location = registerOutput<String>('location');
+    this.locked = registerOutput<bool>('locked');
+    this.name = registerOutput<String>('name');
+    this.restrictedFields = registerOutput<List<String>>('restrictedFields');
+    this.retentionDays = registerOutput<int>('retentionDays');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

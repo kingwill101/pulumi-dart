@@ -199,8 +199,9 @@ class SecurityConfiguration2 extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.encryptionConfiguration =
-        Output.createUnknown<SecurityConfigurationEncryptionConfiguration>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+        registerOutput<SecurityConfigurationEncryptionConfiguration>(
+            'encryptionConfiguration');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

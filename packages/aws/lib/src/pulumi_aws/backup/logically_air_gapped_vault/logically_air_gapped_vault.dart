@@ -151,14 +151,15 @@ class LogicallyAirGappedVault extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.encryptionKeyArn = Output.createUnknown<String>();
-    this.maxRetentionDays = Output.createUnknown<int>();
-    this.minRetentionDays = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<LogicallyAirGappedVaultTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.encryptionKeyArn = registerOutput<String>('encryptionKeyArn');
+    this.maxRetentionDays = registerOutput<int>('maxRetentionDays');
+    this.minRetentionDays = registerOutput<int>('minRetentionDays');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts =
+        registerOutput<LogicallyAirGappedVaultTimeouts?>('timeouts');
   }
 }

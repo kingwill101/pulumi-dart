@@ -1097,20 +1097,20 @@ class Domain4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.domainExecutionRole = Output.createUnknown<String>();
-    this.domainVersion = Output.createUnknown<String>();
-    this.kmsKeyIdentifier = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.portalUrl = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.rootDomainUnitId = Output.createUnknown<String>();
-    this.serviceRole = Output.createUnknown<String?>();
-    this.singleSignOn = Output.createUnknown<DomainSingleSignOn?>();
-    this.skipDeletionCheck = Output.createUnknown<bool?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<DomainTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.domainExecutionRole = registerOutput<String>('domainExecutionRole');
+    this.domainVersion = registerOutput<String>('domainVersion');
+    this.kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
+    this.name = registerOutput<String>('name');
+    this.portalUrl = registerOutput<String>('portalUrl');
+    this.region = registerOutput<String>('region');
+    this.rootDomainUnitId = registerOutput<String>('rootDomainUnitId');
+    this.serviceRole = registerOutput<String?>('serviceRole');
+    this.singleSignOn = registerOutput<DomainSingleSignOn?>('singleSignOn');
+    this.skipDeletionCheck = registerOutput<bool?>('skipDeletionCheck');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<DomainTimeouts?>('timeouts');
   }
 }

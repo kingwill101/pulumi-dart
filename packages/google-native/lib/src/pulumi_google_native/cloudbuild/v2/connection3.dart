@@ -57,21 +57,24 @@ class Connection3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.connectionId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.disabled = Output.createUnknown<bool>();
-    this.etag = Output.createUnknown<String>();
-    this.githubConfig = Output.createUnknown<GitHubConfigResponse>();
-    this.githubEnterpriseConfig = Output.createUnknown<
-        GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.connectionId = registerOutput<String>('connectionId');
+    this.createTime = registerOutput<String>('createTime');
+    this.disabled = registerOutput<bool>('disabled');
+    this.etag = registerOutput<String>('etag');
+    this.githubConfig = registerOutput<GitHubConfigResponse>('githubConfig');
+    this.githubEnterpriseConfig = registerOutput<
+            GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse>(
+        'githubEnterpriseConfig');
     this.gitlabConfig =
-        Output.createUnknown<GoogleDevtoolsCloudbuildV2GitLabConfigResponse>();
-    this.installationState = Output.createUnknown<InstallationStateResponse>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleDevtoolsCloudbuildV2GitLabConfigResponse>(
+            'gitlabConfig');
+    this.installationState =
+        registerOutput<InstallationStateResponse>('installationState');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

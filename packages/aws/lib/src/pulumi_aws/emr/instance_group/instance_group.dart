@@ -341,17 +341,18 @@ class InstanceGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.autoscalingPolicy = Output.createUnknown<String?>();
-    this.bidPrice = Output.createUnknown<String?>();
-    this.clusterId = Output.createUnknown<String>();
-    this.configurationsJson = Output.createUnknown<String?>();
-    this.ebsConfigs = Output.createUnknown<List<InstanceGroupEbsConfig>>();
-    this.ebsOptimized = Output.createUnknown<bool?>();
-    this.instanceCount = Output.createUnknown<int>();
-    this.instanceType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.runningInstanceCount = Output.createUnknown<int>();
-    this.status = Output.createUnknown<String>();
+    this.autoscalingPolicy = registerOutput<String?>('autoscalingPolicy');
+    this.bidPrice = registerOutput<String?>('bidPrice');
+    this.clusterId = registerOutput<String>('clusterId');
+    this.configurationsJson = registerOutput<String?>('configurationsJson');
+    this.ebsConfigs =
+        registerOutput<List<InstanceGroupEbsConfig>>('ebsConfigs');
+    this.ebsOptimized = registerOutput<bool?>('ebsOptimized');
+    this.instanceCount = registerOutput<int>('instanceCount');
+    this.instanceType = registerOutput<String>('instanceType');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.runningInstanceCount = registerOutput<int>('runningInstanceCount');
+    this.status = registerOutput<String>('status');
   }
 }

@@ -2621,39 +2621,50 @@ class RouterPeer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.advertiseMode = Output.createUnknown<String?>();
-    this.advertisedGroups = Output.createUnknown<List<String>?>();
+    this.advertiseMode = registerOutput<String?>('advertiseMode');
+    this.advertisedGroups = registerOutput<List<String>?>('advertisedGroups');
     this.advertisedIpRanges =
-        Output.createUnknown<List<RouterPeerAdvertisedIpRange>?>();
-    this.advertisedRoutePriority = Output.createUnknown<int?>();
-    this.bfd = Output.createUnknown<RouterPeerBfd>();
+        registerOutput<List<RouterPeerAdvertisedIpRange>?>(
+            'advertisedIpRanges');
+    this.advertisedRoutePriority =
+        registerOutput<int?>('advertisedRoutePriority');
+    this.bfd = registerOutput<RouterPeerBfd>('bfd');
     this.customLearnedIpRanges =
-        Output.createUnknown<List<RouterPeerCustomLearnedIpRange>?>();
-    this.customLearnedRoutePriority = Output.createUnknown<int?>();
-    this.enable = Output.createUnknown<bool?>();
-    this.enableIpv4 = Output.createUnknown<bool>();
-    this.enableIpv6 = Output.createUnknown<bool?>();
-    this.exportPolicies = Output.createUnknown<List<String>?>();
-    this.importPolicies = Output.createUnknown<List<String>?>();
-    this.interface = Output.createUnknown<String>();
-    this.ipAddress = Output.createUnknown<String>();
-    this.ipv4NexthopAddress = Output.createUnknown<String>();
-    this.ipv6NexthopAddress = Output.createUnknown<String>();
-    this.isAdvertisedRoutePrioritySet = Output.createUnknown<bool>();
-    this.isCustomLearnedPrioritySet = Output.createUnknown<bool>();
-    this.managementType = Output.createUnknown<String>();
+        registerOutput<List<RouterPeerCustomLearnedIpRange>?>(
+            'customLearnedIpRanges');
+    this.customLearnedRoutePriority =
+        registerOutput<int?>('customLearnedRoutePriority');
+    this.enable = registerOutput<bool?>('enable');
+    this.enableIpv4 = registerOutput<bool>('enableIpv4');
+    this.enableIpv6 = registerOutput<bool?>('enableIpv6');
+    this.exportPolicies = registerOutput<List<String>?>('exportPolicies');
+    this.importPolicies = registerOutput<List<String>?>('importPolicies');
+    this.interface = registerOutput<String>('interface');
+    this.ipAddress = registerOutput<String>('ipAddress');
+    this.ipv4NexthopAddress = registerOutput<String>('ipv4NexthopAddress');
+    this.ipv6NexthopAddress = registerOutput<String>('ipv6NexthopAddress');
+    this.isAdvertisedRoutePrioritySet =
+        registerOutput<bool>('isAdvertisedRoutePrioritySet');
+    this.isCustomLearnedPrioritySet =
+        registerOutput<bool>('isCustomLearnedPrioritySet');
+    this.managementType = registerOutput<String>('managementType');
     this.md5AuthenticationKey =
-        Output.createUnknown<RouterPeerMd5AuthenticationKey?>();
-    this.name = Output.createUnknown<String>();
-    this.peerAsn = Output.createUnknown<int>();
-    this.peerIpAddress = Output.createUnknown<String>();
-    this.peerIpv4NexthopAddress = Output.createUnknown<String>();
-    this.peerIpv6NexthopAddress = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.router = Output.createUnknown<String>();
-    this.routerApplianceInstance = Output.createUnknown<String?>();
-    this.zeroAdvertisedRoutePriority = Output.createUnknown<bool?>();
-    this.zeroCustomLearnedRoutePriority = Output.createUnknown<bool?>();
+        registerOutput<RouterPeerMd5AuthenticationKey?>('md5AuthenticationKey');
+    this.name = registerOutput<String>('name');
+    this.peerAsn = registerOutput<int>('peerAsn');
+    this.peerIpAddress = registerOutput<String>('peerIpAddress');
+    this.peerIpv4NexthopAddress =
+        registerOutput<String>('peerIpv4NexthopAddress');
+    this.peerIpv6NexthopAddress =
+        registerOutput<String>('peerIpv6NexthopAddress');
+    this.project = registerOutput<String>('project');
+    this.region = registerOutput<String>('region');
+    this.router = registerOutput<String>('router');
+    this.routerApplianceInstance =
+        registerOutput<String?>('routerApplianceInstance');
+    this.zeroAdvertisedRoutePriority =
+        registerOutput<bool?>('zeroAdvertisedRoutePriority');
+    this.zeroCustomLearnedRoutePriority =
+        registerOutput<bool?>('zeroCustomLearnedRoutePriority');
   }
 }

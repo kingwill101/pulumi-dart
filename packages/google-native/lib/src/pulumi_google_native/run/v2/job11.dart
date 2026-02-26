@@ -96,37 +96,39 @@ class Job11 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
     this.binaryAuthorization =
-        Output.createUnknown<GoogleCloudRunV2BinaryAuthorizationResponse>();
-    this.client = Output.createUnknown<String>();
-    this.clientVersion = Output.createUnknown<String>();
+        registerOutput<GoogleCloudRunV2BinaryAuthorizationResponse>(
+            'binaryAuthorization');
+    this.client = registerOutput<String>('client');
+    this.clientVersion = registerOutput<String>('clientVersion');
     this.conditions =
-        Output.createUnknown<List<GoogleCloudRunV2ConditionResponse>>();
-    this.createTime = Output.createUnknown<String>();
-    this.creator = Output.createUnknown<String>();
-    this.deleteTime = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.executionCount = Output.createUnknown<int>();
-    this.expireTime = Output.createUnknown<String>();
-    this.generation = Output.createUnknown<String>();
-    this.jobId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lastModifier = Output.createUnknown<String>();
+        registerOutput<List<GoogleCloudRunV2ConditionResponse>>('conditions');
+    this.createTime = registerOutput<String>('createTime');
+    this.creator = registerOutput<String>('creator');
+    this.deleteTime = registerOutput<String>('deleteTime');
+    this.etag = registerOutput<String>('etag');
+    this.executionCount = registerOutput<int>('executionCount');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.generation = registerOutput<String>('generation');
+    this.jobId = registerOutput<String>('jobId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lastModifier = registerOutput<String>('lastModifier');
     this.latestCreatedExecution =
-        Output.createUnknown<GoogleCloudRunV2ExecutionReferenceResponse>();
-    this.launchStage = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.observedGeneration = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.satisfiesPzs = Output.createUnknown<bool>();
+        registerOutput<GoogleCloudRunV2ExecutionReferenceResponse>(
+            'latestCreatedExecution');
+    this.launchStage = registerOutput<String>('launchStage');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.observedGeneration = registerOutput<String>('observedGeneration');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     this.template =
-        Output.createUnknown<GoogleCloudRunV2ExecutionTemplateResponse>();
+        registerOutput<GoogleCloudRunV2ExecutionTemplateResponse>('template');
     this.terminalCondition =
-        Output.createUnknown<GoogleCloudRunV2ConditionResponse>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudRunV2ConditionResponse>('terminalCondition');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

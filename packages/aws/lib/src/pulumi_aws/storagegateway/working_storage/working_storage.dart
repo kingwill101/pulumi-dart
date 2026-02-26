@@ -128,8 +128,8 @@ class WorkingStorage extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.diskId = Output.createUnknown<String>();
-    this.gatewayArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.diskId = registerOutput<String>('diskId');
+    this.gatewayArn = registerOutput<String>('gatewayArn');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -323,8 +323,9 @@ class ModelPackageGroupPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.modelPackageGroupName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.resourcePolicy = Output.createUnknown<String>();
+    this.modelPackageGroupName =
+        registerOutput<String>('modelPackageGroupName');
+    this.region = registerOutput<String>('region');
+    this.resourcePolicy = registerOutput<String>('resourcePolicy');
   }
 }

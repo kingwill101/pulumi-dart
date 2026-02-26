@@ -150,16 +150,17 @@ class Channel extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.authorized = Output.createUnknown<bool>();
-    this.ingestEndpoint = Output.createUnknown<String>();
-    this.latencyMode = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.playbackUrl = Output.createUnknown<String>();
-    this.recordingConfigurationArn = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.authorized = registerOutput<bool>('authorized');
+    this.ingestEndpoint = registerOutput<String>('ingestEndpoint');
+    this.latencyMode = registerOutput<String>('latencyMode');
+    this.name = registerOutput<String>('name');
+    this.playbackUrl = registerOutput<String>('playbackUrl');
+    this.recordingConfigurationArn =
+        registerOutput<String>('recordingConfigurationArn');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
   }
 }

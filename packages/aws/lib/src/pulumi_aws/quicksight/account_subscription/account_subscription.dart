@@ -196,26 +196,28 @@ class AccountSubscription extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountName = Output.createUnknown<String>();
-    this.accountSubscriptionStatus = Output.createUnknown<String>();
-    this.activeDirectoryName = Output.createUnknown<String?>();
-    this.adminGroups = Output.createUnknown<List<String>?>();
-    this.adminProGroups = Output.createUnknown<List<String>?>();
-    this.authenticationMethod = Output.createUnknown<String>();
-    this.authorGroups = Output.createUnknown<List<String>?>();
-    this.authorProGroups = Output.createUnknown<List<String>?>();
-    this.awsAccountId = Output.createUnknown<String>();
-    this.contactNumber = Output.createUnknown<String?>();
-    this.directoryId = Output.createUnknown<String?>();
-    this.edition = Output.createUnknown<String>();
-    this.emailAddress = Output.createUnknown<String?>();
-    this.firstName = Output.createUnknown<String?>();
-    this.iamIdentityCenterInstanceArn = Output.createUnknown<String?>();
-    this.lastName = Output.createUnknown<String?>();
-    this.notificationEmail = Output.createUnknown<String>();
-    this.readerGroups = Output.createUnknown<List<String>?>();
-    this.readerProGroups = Output.createUnknown<List<String>?>();
-    this.realm = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.accountName = registerOutput<String>('accountName');
+    this.accountSubscriptionStatus =
+        registerOutput<String>('accountSubscriptionStatus');
+    this.activeDirectoryName = registerOutput<String?>('activeDirectoryName');
+    this.adminGroups = registerOutput<List<String>?>('adminGroups');
+    this.adminProGroups = registerOutput<List<String>?>('adminProGroups');
+    this.authenticationMethod = registerOutput<String>('authenticationMethod');
+    this.authorGroups = registerOutput<List<String>?>('authorGroups');
+    this.authorProGroups = registerOutput<List<String>?>('authorProGroups');
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.contactNumber = registerOutput<String?>('contactNumber');
+    this.directoryId = registerOutput<String?>('directoryId');
+    this.edition = registerOutput<String>('edition');
+    this.emailAddress = registerOutput<String?>('emailAddress');
+    this.firstName = registerOutput<String?>('firstName');
+    this.iamIdentityCenterInstanceArn =
+        registerOutput<String?>('iamIdentityCenterInstanceArn');
+    this.lastName = registerOutput<String?>('lastName');
+    this.notificationEmail = registerOutput<String>('notificationEmail');
+    this.readerGroups = registerOutput<List<String>?>('readerGroups');
+    this.readerProGroups = registerOutput<List<String>?>('readerProGroups');
+    this.realm = registerOutput<String?>('realm');
+    this.region = registerOutput<String>('region');
   }
 }

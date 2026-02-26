@@ -738,45 +738,53 @@ class FunctionType extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.automaticUpdatePolicy = Output.createUnknown<Map<String, dynamic>>();
-    this.availableMemoryMb = Output.createUnknown<int?>();
+    this.automaticUpdatePolicy =
+        registerOutput<Map<String, dynamic>>('automaticUpdatePolicy');
+    this.availableMemoryMb = registerOutput<int?>('availableMemoryMb');
     this.buildEnvironmentVariables =
-        Output.createUnknown<Map<String, String>?>();
-    this.buildServiceAccount = Output.createUnknown<String>();
-    this.buildWorkerPool = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String?>();
-    this.dockerRegistry = Output.createUnknown<String>();
-    this.dockerRepository = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.entryPoint = Output.createUnknown<String?>();
-    this.environmentVariables = Output.createUnknown<Map<String, String>?>();
-    this.eventTrigger = Output.createUnknown<FunctionEventTrigger>();
-    this.httpsTriggerSecurityLevel = Output.createUnknown<String>();
-    this.httpsTriggerUrl = Output.createUnknown<String>();
-    this.ingressSettings = Output.createUnknown<String?>();
-    this.kmsKeyName = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.maxInstances = Output.createUnknown<int>();
-    this.minInstances = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<Map<String, String>?>('buildEnvironmentVariables');
+    this.buildServiceAccount = registerOutput<String>('buildServiceAccount');
+    this.buildWorkerPool = registerOutput<String?>('buildWorkerPool');
+    this.description = registerOutput<String?>('description');
+    this.dockerRegistry = registerOutput<String>('dockerRegistry');
+    this.dockerRepository = registerOutput<String?>('dockerRepository');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.entryPoint = registerOutput<String?>('entryPoint');
+    this.environmentVariables =
+        registerOutput<Map<String, String>?>('environmentVariables');
+    this.eventTrigger = registerOutput<FunctionEventTrigger>('eventTrigger');
+    this.httpsTriggerSecurityLevel =
+        registerOutput<String>('httpsTriggerSecurityLevel');
+    this.httpsTriggerUrl = registerOutput<String>('httpsTriggerUrl');
+    this.ingressSettings = registerOutput<String?>('ingressSettings');
+    this.kmsKeyName = registerOutput<String?>('kmsKeyName');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.maxInstances = registerOutput<int>('maxInstances');
+    this.minInstances = registerOutput<int?>('minInstances');
+    this.name = registerOutput<String>('name');
     this.onDeployUpdatePolicy =
-        Output.createUnknown<FunctionOnDeployUpdatePolicy?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String>();
-    this.runtime = Output.createUnknown<String>();
+        registerOutput<FunctionOnDeployUpdatePolicy?>('onDeployUpdatePolicy');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String>('region');
+    this.runtime = registerOutput<String>('runtime');
     this.secretEnvironmentVariables =
-        Output.createUnknown<List<FunctionSecretEnvironmentVariable>?>();
-    this.secretVolumes = Output.createUnknown<List<FunctionSecretVolume>?>();
-    this.serviceAccountEmail = Output.createUnknown<String>();
-    this.sourceArchiveBucket = Output.createUnknown<String?>();
-    this.sourceArchiveObject = Output.createUnknown<String?>();
-    this.sourceRepository = Output.createUnknown<FunctionSourceRepository?>();
-    this.status = Output.createUnknown<String>();
-    this.timeout = Output.createUnknown<int?>();
-    this.triggerHttp = Output.createUnknown<bool?>();
-    this.versionId = Output.createUnknown<String>();
-    this.vpcConnector = Output.createUnknown<String?>();
-    this.vpcConnectorEgressSettings = Output.createUnknown<String>();
+        registerOutput<List<FunctionSecretEnvironmentVariable>?>(
+            'secretEnvironmentVariables');
+    this.secretVolumes =
+        registerOutput<List<FunctionSecretVolume>?>('secretVolumes');
+    this.serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
+    this.sourceArchiveBucket = registerOutput<String?>('sourceArchiveBucket');
+    this.sourceArchiveObject = registerOutput<String?>('sourceArchiveObject');
+    this.sourceRepository =
+        registerOutput<FunctionSourceRepository?>('sourceRepository');
+    this.status = registerOutput<String>('status');
+    this.timeout = registerOutput<int?>('timeout');
+    this.triggerHttp = registerOutput<bool?>('triggerHttp');
+    this.versionId = registerOutput<String>('versionId');
+    this.vpcConnector = registerOutput<String?>('vpcConnector');
+    this.vpcConnectorEgressSettings =
+        registerOutput<String>('vpcConnectorEgressSettings');
   }
 }

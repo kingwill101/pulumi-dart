@@ -170,6 +170,6 @@ class OrganizationsFeatures extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.enabledFeatures = Output.createUnknown<List<String>>();
+    this.enabledFeatures = registerOutput<List<String>>('enabledFeatures');
   }
 }

@@ -152,8 +152,9 @@ class EmailIdentityFeedbackAttributes extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.emailForwardingEnabled = Output.createUnknown<bool?>();
-    this.emailIdentity = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.emailForwardingEnabled =
+        registerOutput<bool?>('emailForwardingEnabled');
+    this.emailIdentity = registerOutput<String>('emailIdentity');
+    this.region = registerOutput<String>('region');
   }
 }

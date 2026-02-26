@@ -153,11 +153,11 @@ class TrafficPolicyInstance extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.hostedZoneId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.trafficPolicyId = Output.createUnknown<String>();
-    this.trafficPolicyVersion = Output.createUnknown<int>();
-    this.ttl = Output.createUnknown<int>();
+    this.arn = registerOutput<String>('arn');
+    this.hostedZoneId = registerOutput<String>('hostedZoneId');
+    this.name = registerOutput<String>('name');
+    this.trafficPolicyId = registerOutput<String>('trafficPolicyId');
+    this.trafficPolicyVersion = registerOutput<int>('trafficPolicyVersion');
+    this.ttl = registerOutput<int>('ttl');
   }
 }

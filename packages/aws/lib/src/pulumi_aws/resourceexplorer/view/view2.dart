@@ -231,15 +231,15 @@ class View2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.defaultView = Output.createUnknown<bool>();
-    this.filters = Output.createUnknown<ViewFilters?>();
+    this.arn = registerOutput<String>('arn');
+    this.defaultView = registerOutput<bool>('defaultView');
+    this.filters = registerOutput<ViewFilters?>('filters');
     this.includedProperties =
-        Output.createUnknown<List<ViewIncludedProperty>?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.scope = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<ViewIncludedProperty>?>('includedProperties');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.scope = registerOutput<String>('scope');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

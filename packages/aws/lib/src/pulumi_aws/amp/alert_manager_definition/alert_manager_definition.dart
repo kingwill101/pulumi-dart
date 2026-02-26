@@ -171,8 +171,8 @@ class AlertManagerDefinition extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.definition = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.workspaceId = Output.createUnknown<String>();
+    this.definition = registerOutput<String>('definition');
+    this.region = registerOutput<String>('region');
+    this.workspaceId = registerOutput<String>('workspaceId');
   }
 }

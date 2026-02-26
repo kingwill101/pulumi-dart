@@ -652,32 +652,39 @@ class DomainName extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.certificateArn = Output.createUnknown<String?>();
-    this.certificateBody = Output.createUnknown<String?>();
-    this.certificateChain = Output.createUnknown<String?>();
-    this.certificateName = Output.createUnknown<String?>();
-    this.certificatePrivateKey = Output.createUnknown<String?>();
-    this.certificateUploadDate = Output.createUnknown<String>();
-    this.cloudfrontDomainName = Output.createUnknown<String>();
-    this.cloudfrontZoneId = Output.createUnknown<String>();
-    this.domainName = Output.createUnknown<String>();
-    this.domainNameId = Output.createUnknown<String>();
-    this.endpointAccessMode = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.certificateArn = registerOutput<String?>('certificateArn');
+    this.certificateBody = registerOutput<String?>('certificateBody');
+    this.certificateChain = registerOutput<String?>('certificateChain');
+    this.certificateName = registerOutput<String?>('certificateName');
+    this.certificatePrivateKey =
+        registerOutput<String?>('certificatePrivateKey');
+    this.certificateUploadDate =
+        registerOutput<String>('certificateUploadDate');
+    this.cloudfrontDomainName = registerOutput<String>('cloudfrontDomainName');
+    this.cloudfrontZoneId = registerOutput<String>('cloudfrontZoneId');
+    this.domainName = registerOutput<String>('domainName');
+    this.domainNameId = registerOutput<String>('domainNameId');
+    this.endpointAccessMode = registerOutput<String?>('endpointAccessMode');
     this.endpointConfiguration =
-        Output.createUnknown<DomainNameEndpointConfiguration>();
+        registerOutput<DomainNameEndpointConfiguration>(
+            'endpointConfiguration');
     this.mutualTlsAuthentication =
-        Output.createUnknown<DomainNameMutualTlsAuthentication?>();
-    this.ownershipVerificationCertificateArn = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.regionalCertificateArn = Output.createUnknown<String?>();
-    this.regionalCertificateName = Output.createUnknown<String?>();
-    this.regionalDomainName = Output.createUnknown<String>();
-    this.regionalZoneId = Output.createUnknown<String>();
-    this.routingMode = Output.createUnknown<String>();
-    this.securityPolicy = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<DomainNameMutualTlsAuthentication?>(
+            'mutualTlsAuthentication');
+    this.ownershipVerificationCertificateArn =
+        registerOutput<String>('ownershipVerificationCertificateArn');
+    this.policy = registerOutput<String?>('policy');
+    this.region = registerOutput<String>('region');
+    this.regionalCertificateArn =
+        registerOutput<String?>('regionalCertificateArn');
+    this.regionalCertificateName =
+        registerOutput<String?>('regionalCertificateName');
+    this.regionalDomainName = registerOutput<String>('regionalDomainName');
+    this.regionalZoneId = registerOutput<String>('regionalZoneId');
+    this.routingMode = registerOutput<String>('routingMode');
+    this.securityPolicy = registerOutput<String>('securityPolicy');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

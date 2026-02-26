@@ -341,12 +341,13 @@ class VpcEndpointConnectionNotification extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.connectionEvents = Output.createUnknown<List<String>>();
-    this.connectionNotificationArn = Output.createUnknown<String>();
-    this.notificationType = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.vpcEndpointId = Output.createUnknown<String?>();
-    this.vpcEndpointServiceId = Output.createUnknown<String?>();
+    this.connectionEvents = registerOutput<List<String>>('connectionEvents');
+    this.connectionNotificationArn =
+        registerOutput<String>('connectionNotificationArn');
+    this.notificationType = registerOutput<String>('notificationType');
+    this.region = registerOutput<String>('region');
+    this.state = registerOutput<String>('state');
+    this.vpcEndpointId = registerOutput<String?>('vpcEndpointId');
+    this.vpcEndpointServiceId = registerOutput<String?>('vpcEndpointServiceId');
   }
 }

@@ -28,11 +28,12 @@ class ChannelPartnerRepricingConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accountId = Output.createUnknown<String>();
-    this.channelPartnerLinkId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.accountId = registerOutput<String>('accountId');
+    this.channelPartnerLinkId = registerOutput<String>('channelPartnerLinkId');
+    this.name = registerOutput<String>('name');
     this.repricingConfig =
-        Output.createUnknown<GoogleCloudChannelV1RepricingConfigResponse>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudChannelV1RepricingConfigResponse>(
+            'repricingConfig');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

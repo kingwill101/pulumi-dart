@@ -149,10 +149,10 @@ class BillingAccountExclusion extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.billingAccount = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.disabled = Output.createUnknown<bool?>();
-    this.filter = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.billingAccount = registerOutput<String>('billingAccount');
+    this.description = registerOutput<String?>('description');
+    this.disabled = registerOutput<bool?>('disabled');
+    this.filter = registerOutput<String>('filter');
+    this.name = registerOutput<String>('name');
   }
 }

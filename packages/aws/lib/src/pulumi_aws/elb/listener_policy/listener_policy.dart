@@ -618,10 +618,10 @@ class ListenerPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.loadBalancerName = Output.createUnknown<String>();
-    this.loadBalancerPort = Output.createUnknown<int>();
-    this.policyNames = Output.createUnknown<List<String>?>();
-    this.region = Output.createUnknown<String>();
-    this.triggers = Output.createUnknown<Map<String, String>?>();
+    this.loadBalancerName = registerOutput<String>('loadBalancerName');
+    this.loadBalancerPort = registerOutput<int>('loadBalancerPort');
+    this.policyNames = registerOutput<List<String>?>('policyNames');
+    this.region = registerOutput<String>('region');
+    this.triggers = registerOutput<Map<String, String>?>('triggers');
   }
 }

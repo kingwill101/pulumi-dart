@@ -139,12 +139,12 @@ class Channel3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.channelId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.hlsIngests = Output.createUnknown<List<ChannelHlsIngest>>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.channelId = registerOutput<String>('channelId');
+    this.description = registerOutput<String>('description');
+    this.hlsIngests = registerOutput<List<ChannelHlsIngest>>('hlsIngests');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -384,15 +384,15 @@ class OrganizationFeed extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.assetNames = Output.createUnknown<List<String>?>();
-    this.assetTypes = Output.createUnknown<List<String>?>();
-    this.billingProject = Output.createUnknown<String>();
-    this.condition = Output.createUnknown<OrganizationFeedCondition?>();
-    this.contentType = Output.createUnknown<String?>();
-    this.feedId = Output.createUnknown<String>();
+    this.assetNames = registerOutput<List<String>?>('assetNames');
+    this.assetTypes = registerOutput<List<String>?>('assetTypes');
+    this.billingProject = registerOutput<String>('billingProject');
+    this.condition = registerOutput<OrganizationFeedCondition?>('condition');
+    this.contentType = registerOutput<String?>('contentType');
+    this.feedId = registerOutput<String>('feedId');
     this.feedOutputConfig =
-        Output.createUnknown<OrganizationFeedFeedOutputConfig>();
-    this.name = Output.createUnknown<String>();
-    this.orgId = Output.createUnknown<String>();
+        registerOutput<OrganizationFeedFeedOutputConfig>('feedOutputConfig');
+    this.name = registerOutput<String>('name');
+    this.orgId = registerOutput<String>('orgId');
   }
 }

@@ -609,14 +609,15 @@ class ScheduledAction2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.enable = Output.createUnknown<bool?>();
-    this.endTime = Output.createUnknown<String?>();
-    this.iamRole = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.schedule = Output.createUnknown<String>();
-    this.startTime = Output.createUnknown<String?>();
-    this.targetAction = Output.createUnknown<ScheduledActionTargetAction>();
+    this.description = registerOutput<String?>('description');
+    this.enable = registerOutput<bool?>('enable');
+    this.endTime = registerOutput<String?>('endTime');
+    this.iamRole = registerOutput<String>('iamRole');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.schedule = registerOutput<String>('schedule');
+    this.startTime = registerOutput<String?>('startTime');
+    this.targetAction =
+        registerOutput<ScheduledActionTargetAction>('targetAction');
   }
 }

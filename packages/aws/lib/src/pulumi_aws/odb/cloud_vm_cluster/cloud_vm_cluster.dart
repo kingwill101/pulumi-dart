@@ -586,55 +586,62 @@ class CloudVmCluster extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.cloudExadataInfrastructureArn = Output.createUnknown<String>();
-    this.cloudExadataInfrastructureId = Output.createUnknown<String>();
-    this.clusterName = Output.createUnknown<String>();
-    this.computeModel = Output.createUnknown<String>();
-    this.cpuCoreCount = Output.createUnknown<int>();
-    this.createdAt = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.cloudExadataInfrastructureArn =
+        registerOutput<String>('cloudExadataInfrastructureArn');
+    this.cloudExadataInfrastructureId =
+        registerOutput<String>('cloudExadataInfrastructureId');
+    this.clusterName = registerOutput<String>('clusterName');
+    this.computeModel = registerOutput<String>('computeModel');
+    this.cpuCoreCount = registerOutput<int>('cpuCoreCount');
+    this.createdAt = registerOutput<String>('createdAt');
     this.dataCollectionOptions =
-        Output.createUnknown<CloudVmClusterDataCollectionOptions>();
-    this.dataStorageSizeInTbs = Output.createUnknown<double>();
-    this.dbNodeStorageSizeInGbs = Output.createUnknown<int>();
-    this.dbServers = Output.createUnknown<List<String>>();
-    this.diskRedundancy = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.domain = Output.createUnknown<String>();
-    this.giVersion = Output.createUnknown<String>();
-    this.giVersionComputed = Output.createUnknown<String>();
-    this.hostnamePrefix = Output.createUnknown<String>();
-    this.hostnamePrefixComputed = Output.createUnknown<String>();
+        registerOutput<CloudVmClusterDataCollectionOptions>(
+            'dataCollectionOptions');
+    this.dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
+    this.dbNodeStorageSizeInGbs = registerOutput<int>('dbNodeStorageSizeInGbs');
+    this.dbServers = registerOutput<List<String>>('dbServers');
+    this.diskRedundancy = registerOutput<String>('diskRedundancy');
+    this.displayName = registerOutput<String>('displayName');
+    this.domain = registerOutput<String>('domain');
+    this.giVersion = registerOutput<String>('giVersion');
+    this.giVersionComputed = registerOutput<String>('giVersionComputed');
+    this.hostnamePrefix = registerOutput<String>('hostnamePrefix');
+    this.hostnamePrefixComputed =
+        registerOutput<String>('hostnamePrefixComputed');
     this.iormConfigCaches =
-        Output.createUnknown<List<CloudVmClusterIormConfigCache>>();
-    this.isLocalBackupEnabled = Output.createUnknown<bool>();
-    this.isSparseDiskgroupEnabled = Output.createUnknown<bool>();
-    this.lastUpdateHistoryEntryId = Output.createUnknown<String>();
-    this.licenseModel = Output.createUnknown<String>();
-    this.listenerPort = Output.createUnknown<int>();
-    this.memorySizeInGbs = Output.createUnknown<int>();
-    this.nodeCount = Output.createUnknown<int>();
-    this.ociResourceAnchorName = Output.createUnknown<String>();
-    this.ociUrl = Output.createUnknown<String>();
-    this.ocid = Output.createUnknown<String>();
-    this.odbNetworkArn = Output.createUnknown<String>();
-    this.odbNetworkId = Output.createUnknown<String>();
-    this.percentProgress = Output.createUnknown<double>();
-    this.region = Output.createUnknown<String>();
-    this.scanDnsName = Output.createUnknown<String>();
-    this.scanDnsRecordId = Output.createUnknown<String>();
-    this.scanIpIds = Output.createUnknown<List<String>>();
-    this.scanListenerPortTcp = Output.createUnknown<int>();
-    this.shape = Output.createUnknown<String>();
-    this.sshPublicKeys = Output.createUnknown<List<String>>();
-    this.status = Output.createUnknown<String>();
-    this.statusReason = Output.createUnknown<String>();
-    this.storageSizeInGbs = Output.createUnknown<int>();
-    this.systemVersion = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<CloudVmClusterTimeouts?>();
-    this.timezone = Output.createUnknown<String>();
-    this.vipIds = Output.createUnknown<List<String>>();
+        registerOutput<List<CloudVmClusterIormConfigCache>>('iormConfigCaches');
+    this.isLocalBackupEnabled = registerOutput<bool>('isLocalBackupEnabled');
+    this.isSparseDiskgroupEnabled =
+        registerOutput<bool>('isSparseDiskgroupEnabled');
+    this.lastUpdateHistoryEntryId =
+        registerOutput<String>('lastUpdateHistoryEntryId');
+    this.licenseModel = registerOutput<String>('licenseModel');
+    this.listenerPort = registerOutput<int>('listenerPort');
+    this.memorySizeInGbs = registerOutput<int>('memorySizeInGbs');
+    this.nodeCount = registerOutput<int>('nodeCount');
+    this.ociResourceAnchorName =
+        registerOutput<String>('ociResourceAnchorName');
+    this.ociUrl = registerOutput<String>('ociUrl');
+    this.ocid = registerOutput<String>('ocid');
+    this.odbNetworkArn = registerOutput<String>('odbNetworkArn');
+    this.odbNetworkId = registerOutput<String>('odbNetworkId');
+    this.percentProgress = registerOutput<double>('percentProgress');
+    this.region = registerOutput<String>('region');
+    this.scanDnsName = registerOutput<String>('scanDnsName');
+    this.scanDnsRecordId = registerOutput<String>('scanDnsRecordId');
+    this.scanIpIds = registerOutput<List<String>>('scanIpIds');
+    this.scanListenerPortTcp = registerOutput<int>('scanListenerPortTcp');
+    this.shape = registerOutput<String>('shape');
+    this.sshPublicKeys = registerOutput<List<String>>('sshPublicKeys');
+    this.status = registerOutput<String>('status');
+    this.statusReason = registerOutput<String>('statusReason');
+    this.storageSizeInGbs = registerOutput<int>('storageSizeInGbs');
+    this.systemVersion = registerOutput<String>('systemVersion');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts = registerOutput<CloudVmClusterTimeouts?>('timeouts');
+    this.timezone = registerOutput<String>('timezone');
+    this.vipIds = registerOutput<List<String>>('vipIds');
   }
 }

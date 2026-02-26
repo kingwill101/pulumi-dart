@@ -618,8 +618,8 @@ class Plan3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.contactId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.stages = Output.createUnknown<List<PlanStage>>();
+    this.contactId = registerOutput<String>('contactId');
+    this.region = registerOutput<String>('region');
+    this.stages = registerOutput<List<PlanStage>>('stages');
   }
 }

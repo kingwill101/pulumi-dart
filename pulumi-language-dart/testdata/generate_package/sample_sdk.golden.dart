@@ -214,8 +214,8 @@ class Widget extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.mode = Output.createUnknown<WidgetMode>();
+    this.arn = registerOutput<String>('arn');
+    this.mode = registerOutput<WidgetMode>('mode');
   }
 }
 

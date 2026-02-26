@@ -919,12 +919,12 @@ class ApiConfigIamBinding extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.api = Output.createUnknown<String>();
-    this.apiConfig = Output.createUnknown<String>();
-    this.condition = Output.createUnknown<ApiConfigIamBindingCondition?>();
-    this.etag = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<String>>();
-    this.project = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String>();
+    this.api = registerOutput<String>('api');
+    this.apiConfig = registerOutput<String>('apiConfig');
+    this.condition = registerOutput<ApiConfigIamBindingCondition?>('condition');
+    this.etag = registerOutput<String>('etag');
+    this.members = registerOutput<List<String>>('members');
+    this.project = registerOutput<String>('project');
+    this.role = registerOutput<String>('role');
   }
 }

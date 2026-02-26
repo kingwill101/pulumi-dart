@@ -128,8 +128,8 @@ class ResourceAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.region = Output.createUnknown<String>();
-    this.resourceArn = Output.createUnknown<String>();
-    this.resourceShareArn = Output.createUnknown<String>();
+    this.region = registerOutput<String>('region');
+    this.resourceArn = registerOutput<String>('resourceArn');
+    this.resourceShareArn = registerOutput<String>('resourceShareArn');
   }
 }

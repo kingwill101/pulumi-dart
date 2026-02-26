@@ -191,23 +191,24 @@ class Component extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.changeDescription = Output.createUnknown<String?>();
-    this.data = Output.createUnknown<String>();
-    this.dateCreated = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.encrypted = Output.createUnknown<bool>();
-    this.kmsKeyId = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.owner = Output.createUnknown<String>();
-    this.platform = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.skipDestroy = Output.createUnknown<bool?>();
-    this.supportedOsVersions = Output.createUnknown<List<String>?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.type = Output.createUnknown<String>();
-    this.uri = Output.createUnknown<String?>();
-    this.version = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.changeDescription = registerOutput<String?>('changeDescription');
+    this.data = registerOutput<String>('data');
+    this.dateCreated = registerOutput<String>('dateCreated');
+    this.description = registerOutput<String?>('description');
+    this.encrypted = registerOutput<bool>('encrypted');
+    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    this.owner = registerOutput<String>('owner');
+    this.platform = registerOutput<String>('platform');
+    this.region = registerOutput<String>('region');
+    this.skipDestroy = registerOutput<bool?>('skipDestroy');
+    this.supportedOsVersions =
+        registerOutput<List<String>?>('supportedOsVersions');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.type = registerOutput<String>('type');
+    this.uri = registerOutput<String?>('uri');
+    this.version = registerOutput<String>('version');
   }
 }

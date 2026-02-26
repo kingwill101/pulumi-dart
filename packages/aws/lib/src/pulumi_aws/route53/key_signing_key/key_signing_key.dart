@@ -595,19 +595,22 @@ class KeySigningKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.digestAlgorithmMnemonic = Output.createUnknown<String>();
-    this.digestAlgorithmType = Output.createUnknown<int>();
-    this.digestValue = Output.createUnknown<String>();
-    this.dnskeyRecord = Output.createUnknown<String>();
-    this.dsRecord = Output.createUnknown<String>();
-    this.flag = Output.createUnknown<int>();
-    this.hostedZoneId = Output.createUnknown<String>();
-    this.keyManagementServiceArn = Output.createUnknown<String>();
-    this.keyTag = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.publicKey = Output.createUnknown<String>();
-    this.signingAlgorithmMnemonic = Output.createUnknown<String>();
-    this.signingAlgorithmType = Output.createUnknown<int>();
-    this.status = Output.createUnknown<String?>();
+    this.digestAlgorithmMnemonic =
+        registerOutput<String>('digestAlgorithmMnemonic');
+    this.digestAlgorithmType = registerOutput<int>('digestAlgorithmType');
+    this.digestValue = registerOutput<String>('digestValue');
+    this.dnskeyRecord = registerOutput<String>('dnskeyRecord');
+    this.dsRecord = registerOutput<String>('dsRecord');
+    this.flag = registerOutput<int>('flag');
+    this.hostedZoneId = registerOutput<String>('hostedZoneId');
+    this.keyManagementServiceArn =
+        registerOutput<String>('keyManagementServiceArn');
+    this.keyTag = registerOutput<int>('keyTag');
+    this.name = registerOutput<String>('name');
+    this.publicKey = registerOutput<String>('publicKey');
+    this.signingAlgorithmMnemonic =
+        registerOutput<String>('signingAlgorithmMnemonic');
+    this.signingAlgorithmType = registerOutput<int>('signingAlgorithmType');
+    this.status = registerOutput<String?>('status');
   }
 }

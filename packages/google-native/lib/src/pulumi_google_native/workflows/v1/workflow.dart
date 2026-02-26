@@ -61,22 +61,22 @@ class Workflow extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.callLogLevel = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.cryptoKeyName = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.revisionCreateTime = Output.createUnknown<String>();
-    this.revisionId = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.sourceContents = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.stateError = Output.createUnknown<StateErrorResponse2>();
-    this.updateTime = Output.createUnknown<String>();
-    this.userEnvVars = Output.createUnknown<Map<String, String>>();
-    this.workflowId = Output.createUnknown<String>();
+    this.callLogLevel = registerOutput<String>('callLogLevel');
+    this.createTime = registerOutput<String>('createTime');
+    this.cryptoKeyName = registerOutput<String>('cryptoKeyName');
+    this.description = registerOutput<String>('description');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.sourceContents = registerOutput<String>('sourceContents');
+    this.state = registerOutput<String>('state');
+    this.stateError = registerOutput<StateErrorResponse2>('stateError');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.userEnvVars = registerOutput<Map<String, String>>('userEnvVars');
+    this.workflowId = registerOutput<String>('workflowId');
   }
 }

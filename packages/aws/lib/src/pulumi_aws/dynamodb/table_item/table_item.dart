@@ -257,10 +257,10 @@ class TableItem extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.hashKey = Output.createUnknown<String>();
-    this.item = Output.createUnknown<String>();
-    this.rangeKey = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.tableName = Output.createUnknown<String>();
+    this.hashKey = registerOutput<String>('hashKey');
+    this.item = registerOutput<String>('item');
+    this.rangeKey = registerOutput<String?>('rangeKey');
+    this.region = registerOutput<String>('region');
+    this.tableName = registerOutput<String>('tableName');
   }
 }

@@ -188,20 +188,22 @@ class NetworkPeeringConnection extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdAt = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.odbNetworkArn = Output.createUnknown<String>();
-    this.odbNetworkId = Output.createUnknown<String>();
-    this.odbPeeringConnectionType = Output.createUnknown<String>();
-    this.peerNetworkArn = Output.createUnknown<String>();
-    this.peerNetworkId = Output.createUnknown<String>();
-    this.percentProgress = Output.createUnknown<double>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.statusReason = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.timeouts = Output.createUnknown<NetworkPeeringConnectionTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.createdAt = registerOutput<String>('createdAt');
+    this.displayName = registerOutput<String>('displayName');
+    this.odbNetworkArn = registerOutput<String>('odbNetworkArn');
+    this.odbNetworkId = registerOutput<String>('odbNetworkId');
+    this.odbPeeringConnectionType =
+        registerOutput<String>('odbPeeringConnectionType');
+    this.peerNetworkArn = registerOutput<String>('peerNetworkArn');
+    this.peerNetworkId = registerOutput<String>('peerNetworkId');
+    this.percentProgress = registerOutput<double>('percentProgress');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.statusReason = registerOutput<String>('statusReason');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.timeouts =
+        registerOutput<NetworkPeeringConnectionTimeouts?>('timeouts');
   }
 }

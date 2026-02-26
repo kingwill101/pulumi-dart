@@ -2418,59 +2418,71 @@ class Instance10 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authorizationMode = Output.createUnknown<String>();
+    this.authorizationMode = registerOutput<String>('authorizationMode');
     this.automatedBackupConfig =
-        Output.createUnknown<InstanceAutomatedBackupConfig?>();
-    this.availableMaintenanceVersions = Output.createUnknown<List<String>>();
-    this.backupCollection = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
+        registerOutput<InstanceAutomatedBackupConfig?>('automatedBackupConfig');
+    this.availableMaintenanceVersions =
+        registerOutput<List<String>>('availableMaintenanceVersions');
+    this.backupCollection = registerOutput<String>('backupCollection');
+    this.createTime = registerOutput<String>('createTime');
     this.crossInstanceReplicationConfig =
-        Output.createUnknown<InstanceCrossInstanceReplicationConfig>();
-    this.deletionProtectionEnabled = Output.createUnknown<bool?>();
+        registerOutput<InstanceCrossInstanceReplicationConfig>(
+            'crossInstanceReplicationConfig');
+    this.deletionProtectionEnabled =
+        registerOutput<bool?>('deletionProtectionEnabled');
     this.desiredAutoCreatedEndpoints =
-        Output.createUnknown<List<InstanceDesiredAutoCreatedEndpoint>?>();
+        registerOutput<List<InstanceDesiredAutoCreatedEndpoint>?>(
+            'desiredAutoCreatedEndpoints');
     this.desiredPscAutoConnections =
-        Output.createUnknown<List<InstanceDesiredPscAutoConnection>?>();
+        registerOutput<List<InstanceDesiredPscAutoConnection>?>(
+            'desiredPscAutoConnections');
     this.discoveryEndpoints =
-        Output.createUnknown<List<InstanceDiscoveryEndpoint>>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.effectiveMaintenanceVersion = Output.createUnknown<String>();
-    this.endpoints = Output.createUnknown<List<InstanceEndpoint>>();
-    this.engineConfigs = Output.createUnknown<Map<String, String>?>();
-    this.engineVersion = Output.createUnknown<String>();
-    this.gcsSource = Output.createUnknown<InstanceGcsSource?>();
-    this.instanceId = Output.createUnknown<String>();
-    this.kmsKey = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
+        registerOutput<List<InstanceDiscoveryEndpoint>>('discoveryEndpoints');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveMaintenanceVersion =
+        registerOutput<String>('effectiveMaintenanceVersion');
+    this.endpoints = registerOutput<List<InstanceEndpoint>>('endpoints');
+    this.engineConfigs = registerOutput<Map<String, String>?>('engineConfigs');
+    this.engineVersion = registerOutput<String>('engineVersion');
+    this.gcsSource = registerOutput<InstanceGcsSource?>('gcsSource');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.kmsKey = registerOutput<String?>('kmsKey');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
     this.maintenancePolicy =
-        Output.createUnknown<InstanceMaintenancePolicy2?>();
+        registerOutput<InstanceMaintenancePolicy2?>('maintenancePolicy');
     this.maintenanceSchedules =
-        Output.createUnknown<List<InstanceMaintenanceSchedule2>>();
-    this.maintenanceVersion = Output.createUnknown<String?>();
+        registerOutput<List<InstanceMaintenanceSchedule2>>(
+            'maintenanceSchedules');
+    this.maintenanceVersion = registerOutput<String?>('maintenanceVersion');
     this.managedBackupSource =
-        Output.createUnknown<InstanceManagedBackupSource?>();
+        registerOutput<InstanceManagedBackupSource?>('managedBackupSource');
     this.managedServerCas =
-        Output.createUnknown<List<InstanceManagedServerCa>>();
-    this.mode = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.nodeConfigs = Output.createUnknown<List<InstanceNodeConfig2>>();
-    this.nodeType = Output.createUnknown<String>();
-    this.persistenceConfig = Output.createUnknown<InstancePersistenceConfig>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<List<InstanceManagedServerCa>>('managedServerCas');
+    this.mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    this.nodeConfigs = registerOutput<List<InstanceNodeConfig2>>('nodeConfigs');
+    this.nodeType = registerOutput<String>('nodeType');
+    this.persistenceConfig =
+        registerOutput<InstancePersistenceConfig>('persistenceConfig');
+    this.project = registerOutput<String>('project');
     this.pscAttachmentDetails =
-        Output.createUnknown<List<InstancePscAttachmentDetail>>();
+        registerOutput<List<InstancePscAttachmentDetail>>(
+            'pscAttachmentDetails');
     this.pscAutoConnections =
-        Output.createUnknown<List<InstancePscAutoConnection>>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.replicaCount = Output.createUnknown<int>();
-    this.shardCount = Output.createUnknown<int>();
-    this.state = Output.createUnknown<String>();
-    this.stateInfos = Output.createUnknown<List<InstanceStateInfo>>();
-    this.transitEncryptionMode = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<List<InstancePscAutoConnection>>('pscAutoConnections');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.replicaCount = registerOutput<int>('replicaCount');
+    this.shardCount = registerOutput<int>('shardCount');
+    this.state = registerOutput<String>('state');
+    this.stateInfos = registerOutput<List<InstanceStateInfo>>('stateInfos');
+    this.transitEncryptionMode =
+        registerOutput<String>('transitEncryptionMode');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
     this.zoneDistributionConfig =
-        Output.createUnknown<InstanceZoneDistributionConfig>();
+        registerOutput<InstanceZoneDistributionConfig>(
+            'zoneDistributionConfig');
   }
 }

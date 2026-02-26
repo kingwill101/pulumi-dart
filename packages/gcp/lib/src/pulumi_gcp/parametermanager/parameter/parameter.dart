@@ -526,16 +526,18 @@ class Parameter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.format = Output.createUnknown<String?>();
-    this.kmsKey = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.parameterId = Output.createUnknown<String>();
-    this.policyMembers = Output.createUnknown<List<ParameterPolicyMember>>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.format = registerOutput<String?>('format');
+    this.kmsKey = registerOutput<String?>('kmsKey');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.parameterId = registerOutput<String>('parameterId');
+    this.policyMembers =
+        registerOutput<List<ParameterPolicyMember>>('policyMembers');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -2069,27 +2069,31 @@ class ManagedZone extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.cloudLoggingConfig =
-        Output.createUnknown<ManagedZoneCloudLoggingConfig>();
-    this.creationTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.dnsName = Output.createUnknown<String>();
-    this.dnssecConfig = Output.createUnknown<ManagedZoneDnssecConfig>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.forceDestroy = Output.createUnknown<bool?>();
+        registerOutput<ManagedZoneCloudLoggingConfig>('cloudLoggingConfig');
+    this.creationTime = registerOutput<String>('creationTime');
+    this.description = registerOutput<String>('description');
+    this.dnsName = registerOutput<String>('dnsName');
+    this.dnssecConfig = registerOutput<ManagedZoneDnssecConfig>('dnssecConfig');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.forceDestroy = registerOutput<bool?>('forceDestroy');
     this.forwardingConfig =
-        Output.createUnknown<ManagedZoneForwardingConfig?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.managedZoneId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.nameServers = Output.createUnknown<List<String>>();
-    this.peeringConfig = Output.createUnknown<ManagedZonePeeringConfig?>();
+        registerOutput<ManagedZoneForwardingConfig?>('forwardingConfig');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.managedZoneId = registerOutput<String>('managedZoneId');
+    this.name = registerOutput<String>('name');
+    this.nameServers = registerOutput<List<String>>('nameServers');
+    this.peeringConfig =
+        registerOutput<ManagedZonePeeringConfig?>('peeringConfig');
     this.privateVisibilityConfig =
-        Output.createUnknown<ManagedZonePrivateVisibilityConfig?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.reverseLookup = Output.createUnknown<bool?>();
+        registerOutput<ManagedZonePrivateVisibilityConfig?>(
+            'privateVisibilityConfig');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.reverseLookup = registerOutput<bool?>('reverseLookup');
     this.serviceDirectoryConfig =
-        Output.createUnknown<ManagedZoneServiceDirectoryConfig?>();
-    this.visibility = Output.createUnknown<String?>();
+        registerOutput<ManagedZoneServiceDirectoryConfig?>(
+            'serviceDirectoryConfig');
+    this.visibility = registerOutput<String?>('visibility');
   }
 }

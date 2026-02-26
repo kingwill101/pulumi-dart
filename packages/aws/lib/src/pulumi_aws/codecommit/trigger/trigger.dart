@@ -184,9 +184,9 @@ class Trigger extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.configurationId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.repositoryName = Output.createUnknown<String>();
-    this.triggers = Output.createUnknown<List<TriggerTrigger>>();
+    this.configurationId = registerOutput<String>('configurationId');
+    this.region = registerOutput<String>('region');
+    this.repositoryName = registerOutput<String>('repositoryName');
+    this.triggers = registerOutput<List<TriggerTrigger>>('triggers');
   }
 }

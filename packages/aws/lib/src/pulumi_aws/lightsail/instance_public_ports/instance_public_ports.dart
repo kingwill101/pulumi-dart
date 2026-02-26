@@ -309,8 +309,9 @@ class InstancePublicPorts extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.instanceName = Output.createUnknown<String>();
-    this.portInfos = Output.createUnknown<List<InstancePublicPortsPortInfo>>();
-    this.region = Output.createUnknown<String>();
+    this.instanceName = registerOutput<String>('instanceName');
+    this.portInfos =
+        registerOutput<List<InstancePublicPortsPortInfo>>('portInfos');
+    this.region = registerOutput<String>('region');
   }
 }

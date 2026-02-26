@@ -53,19 +53,20 @@ class Certificate2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.certificateId = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.expireTime = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.managed = Output.createUnknown<ManagedCertificateResponse4>();
-    this.name = Output.createUnknown<String>();
-    this.pemCertificate = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.sanDnsnames = Output.createUnknown<List<String>>();
-    this.scope = Output.createUnknown<String>();
-    this.selfManaged = Output.createUnknown<SelfManagedCertificateResponse>();
-    this.updateTime = Output.createUnknown<String>();
+    this.certificateId = registerOutput<String>('certificateId');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.expireTime = registerOutput<String>('expireTime');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.managed = registerOutput<ManagedCertificateResponse4>('managed');
+    this.name = registerOutput<String>('name');
+    this.pemCertificate = registerOutput<String>('pemCertificate');
+    this.project = registerOutput<String>('project');
+    this.sanDnsnames = registerOutput<List<String>>('sanDnsnames');
+    this.scope = registerOutput<String>('scope');
+    this.selfManaged =
+        registerOutput<SelfManagedCertificateResponse>('selfManaged');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

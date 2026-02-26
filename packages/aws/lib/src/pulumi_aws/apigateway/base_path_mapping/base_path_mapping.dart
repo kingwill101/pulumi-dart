@@ -61,11 +61,11 @@ class BasePathMapping extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.basePath = Output.createUnknown<String?>();
-    this.domainName = Output.createUnknown<String>();
-    this.domainNameId = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.restApi = Output.createUnknown<String>();
-    this.stageName = Output.createUnknown<String?>();
+    this.basePath = registerOutput<String?>('basePath');
+    this.domainName = registerOutput<String>('domainName');
+    this.domainNameId = registerOutput<String?>('domainNameId');
+    this.region = registerOutput<String>('region');
+    this.restApi = registerOutput<String>('restApi');
+    this.stageName = registerOutput<String?>('stageName');
   }
 }

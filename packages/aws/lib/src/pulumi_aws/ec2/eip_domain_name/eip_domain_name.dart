@@ -199,10 +199,10 @@ class EipDomainName extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.allocationId = Output.createUnknown<String>();
-    this.domainName = Output.createUnknown<String>();
-    this.ptrRecord = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<EipDomainNameTimeouts?>();
+    this.allocationId = registerOutput<String>('allocationId');
+    this.domainName = registerOutput<String>('domainName');
+    this.ptrRecord = registerOutput<String>('ptrRecord');
+    this.region = registerOutput<String>('region');
+    this.timeouts = registerOutput<EipDomainNameTimeouts?>('timeouts');
   }
 }

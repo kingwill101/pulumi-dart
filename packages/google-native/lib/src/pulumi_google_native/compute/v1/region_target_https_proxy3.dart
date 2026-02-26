@@ -63,23 +63,24 @@ class RegionTargetHttpsProxy3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authorizationPolicy = Output.createUnknown<String>();
-    this.certificateMap = Output.createUnknown<String>();
-    this.creationTimestamp = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.fingerprint = Output.createUnknown<String>();
-    this.httpKeepAliveTimeoutSec = Output.createUnknown<int>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.proxyBind = Output.createUnknown<bool>();
-    this.quicOverride = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.selfLink = Output.createUnknown<String>();
-    this.serverTlsPolicy = Output.createUnknown<String>();
-    this.sslCertificates = Output.createUnknown<List<String>>();
-    this.sslPolicy = Output.createUnknown<String>();
-    this.urlMap = Output.createUnknown<String>();
+    this.authorizationPolicy = registerOutput<String>('authorizationPolicy');
+    this.certificateMap = registerOutput<String>('certificateMap');
+    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+    this.description = registerOutput<String>('description');
+    this.fingerprint = registerOutput<String>('fingerprint');
+    this.httpKeepAliveTimeoutSec =
+        registerOutput<int>('httpKeepAliveTimeoutSec');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.proxyBind = registerOutput<bool>('proxyBind');
+    this.quicOverride = registerOutput<String>('quicOverride');
+    this.region = registerOutput<String>('region');
+    this.requestId = registerOutput<String?>('requestId');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.serverTlsPolicy = registerOutput<String>('serverTlsPolicy');
+    this.sslCertificates = registerOutput<List<String>>('sslCertificates');
+    this.sslPolicy = registerOutput<String>('sslPolicy');
+    this.urlMap = registerOutput<String>('urlMap');
   }
 }

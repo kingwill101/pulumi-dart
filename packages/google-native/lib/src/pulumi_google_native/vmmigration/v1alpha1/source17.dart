@@ -57,19 +57,19 @@ class Source17 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aws = Output.createUnknown<AwsSourceDetailsResponse2>();
-    this.azure = Output.createUnknown<AzureSourceDetailsResponse2>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.encryption = Output.createUnknown<EncryptionResponse3>();
-    this.error = Output.createUnknown<StatusResponse31>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.sourceId = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vmware = Output.createUnknown<VmwareSourceDetailsResponse2>();
+    this.aws = registerOutput<AwsSourceDetailsResponse2>('aws');
+    this.azure = registerOutput<AzureSourceDetailsResponse2>('azure');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.encryption = registerOutput<EncryptionResponse3>('encryption');
+    this.error = registerOutput<StatusResponse31>('error');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.sourceId = registerOutput<String>('sourceId');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vmware = registerOutput<VmwareSourceDetailsResponse2>('vmware');
   }
 }

@@ -877,10 +877,10 @@ class TableIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.instanceName = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.table = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.instanceName = registerOutput<String>('instanceName');
+    this.policyData = registerOutput<String>('policyData');
+    this.project = registerOutput<String>('project');
+    this.table = registerOutput<String>('table');
   }
 }

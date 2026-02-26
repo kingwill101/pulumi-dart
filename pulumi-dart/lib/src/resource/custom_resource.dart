@@ -6,7 +6,6 @@ import 'package:pulumi/src/output.dart';
 import '../input.dart';
 import 'provider_resource.dart';
 import 'resource.dart';
-import 'resource_hooks.dart';
 import 'resource_options.dart';
 import 'resource_transformation.dart';
 
@@ -19,7 +18,7 @@ class CustomResourceOptions extends ResourceOptions {
     List<ProviderResource>? providers,
     List<ResourceTransformation>? transformations,
     List<ResourceTransform>? resourceTransforms,
-    ResourceHookBinding? hooks,
+    super.hooks,
     super.aliases,
     super.version,
     super.pluginDownloadURL,
@@ -32,9 +31,9 @@ class CustomResourceOptions extends ResourceOptions {
     super.additionalSecretOutputs,
     super.ignoreChanges,
   }) : super(
+         providers: providers,
          resourceTransformations: transformations ?? [],
          resourceTransforms: resourceTransforms ?? [],
-         hooks: hooks,
        );
 }
 

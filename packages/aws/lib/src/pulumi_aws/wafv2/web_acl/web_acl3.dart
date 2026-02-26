@@ -94,28 +94,32 @@ class WebAcl3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.applicationIntegrationUrl = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.associationConfig = Output.createUnknown<WebAclAssociationConfig?>();
-    this.capacity = Output.createUnknown<int>();
-    this.captchaConfig = Output.createUnknown<WebAclCaptchaConfig?>();
-    this.challengeConfig = Output.createUnknown<WebAclChallengeConfig?>();
+    this.applicationIntegrationUrl =
+        registerOutput<String>('applicationIntegrationUrl');
+    this.arn = registerOutput<String>('arn');
+    this.associationConfig =
+        registerOutput<WebAclAssociationConfig?>('associationConfig');
+    this.capacity = registerOutput<int>('capacity');
+    this.captchaConfig = registerOutput<WebAclCaptchaConfig?>('captchaConfig');
+    this.challengeConfig =
+        registerOutput<WebAclChallengeConfig?>('challengeConfig');
     this.customResponseBodies =
-        Output.createUnknown<List<WebAclCustomResponseBody>?>();
+        registerOutput<List<WebAclCustomResponseBody>?>('customResponseBodies');
     this.dataProtectionConfig =
-        Output.createUnknown<WebAclDataProtectionConfig?>();
-    this.defaultAction = Output.createUnknown<WebAclDefaultAction3>();
-    this.description = Output.createUnknown<String?>();
-    this.lockToken = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namePrefix = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.ruleJson = Output.createUnknown<String?>();
-    this.rules = Output.createUnknown<List<WebAclRule3>?>();
-    this.scope = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.tokenDomains = Output.createUnknown<List<String>?>();
-    this.visibilityConfig = Output.createUnknown<WebAclVisibilityConfig>();
+        registerOutput<WebAclDataProtectionConfig?>('dataProtectionConfig');
+    this.defaultAction = registerOutput<WebAclDefaultAction3>('defaultAction');
+    this.description = registerOutput<String?>('description');
+    this.lockToken = registerOutput<String>('lockToken');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.region = registerOutput<String>('region');
+    this.ruleJson = registerOutput<String?>('ruleJson');
+    this.rules = registerOutput<List<WebAclRule3>?>('rules');
+    this.scope = registerOutput<String>('scope');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.tokenDomains = registerOutput<List<String>?>('tokenDomains');
+    this.visibilityConfig =
+        registerOutput<WebAclVisibilityConfig>('visibilityConfig');
   }
 }

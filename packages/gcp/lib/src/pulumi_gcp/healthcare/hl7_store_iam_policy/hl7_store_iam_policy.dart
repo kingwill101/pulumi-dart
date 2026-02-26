@@ -668,8 +668,8 @@ class Hl7StoreIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.etag = Output.createUnknown<String>();
-    this.hl7V2StoreId = Output.createUnknown<String>();
-    this.policyData = Output.createUnknown<String>();
+    this.etag = registerOutput<String>('etag');
+    this.hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
+    this.policyData = registerOutput<String>('policyData');
   }
 }

@@ -31,10 +31,10 @@ class BillingAccount extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.displayName = Output.createUnknown<String>();
-    this.masterBillingAccount = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.open = Output.createUnknown<bool>();
-    this.parent = Output.createUnknown<String>();
+    this.displayName = registerOutput<String>('displayName');
+    this.masterBillingAccount = registerOutput<String>('masterBillingAccount');
+    this.name = registerOutput<String>('name');
+    this.open = registerOutput<bool>('open');
+    this.parent = registerOutput<String>('parent');
   }
 }

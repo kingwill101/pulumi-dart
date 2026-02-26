@@ -523,12 +523,12 @@ class CatalogTableOptimizer extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.catalogId = Output.createUnknown<String>();
+    this.catalogId = registerOutput<String>('catalogId');
     this.configuration =
-        Output.createUnknown<CatalogTableOptimizerConfiguration>();
-    this.databaseName = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tableName = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String>();
+        registerOutput<CatalogTableOptimizerConfiguration>('configuration');
+    this.databaseName = registerOutput<String>('databaseName');
+    this.region = registerOutput<String>('region');
+    this.tableName = registerOutput<String>('tableName');
+    this.type = registerOutput<String>('type');
   }
 }

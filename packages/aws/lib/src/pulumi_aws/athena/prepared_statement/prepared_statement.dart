@@ -233,10 +233,10 @@ class PreparedStatement extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.queryStatement = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.workgroup = Output.createUnknown<String>();
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.queryStatement = registerOutput<String>('queryStatement');
+    this.region = registerOutput<String>('region');
+    this.workgroup = registerOutput<String>('workgroup');
   }
 }

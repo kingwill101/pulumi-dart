@@ -28,10 +28,10 @@ class ApplicationLoadBalancer extends ComponentResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? ComponentResourceOptions(),
         ) {
-    this.defaultSecurityGroup = Output.createUnknown<dynamic>();
-    this.defaultTargetGroup = Output.createUnknown<dynamic>();
-    this.listeners = Output.createUnknown<List<dynamic>?>();
-    this.loadBalancer = Output.createUnknown<dynamic>();
-    this.vpcId = Output.createUnknown<String?>();
+    this.defaultSecurityGroup = registerOutput<dynamic>('defaultSecurityGroup');
+    this.defaultTargetGroup = registerOutput<dynamic>('defaultTargetGroup');
+    this.listeners = registerOutput<List<dynamic>?>('listeners');
+    this.loadBalancer = registerOutput<dynamic>('loadBalancer');
+    this.vpcId = registerOutput<String?>('vpcId');
   }
 }

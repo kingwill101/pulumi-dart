@@ -50,19 +50,20 @@ class Message2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.data = Output.createUnknown<String>();
-    this.datasetId = Output.createUnknown<String>();
-    this.hl7V2StoreId = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.messageType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parsedData = Output.createUnknown<ParsedDataResponse>();
-    this.patientIds = Output.createUnknown<List<PatientIdResponse>>();
-    this.project = Output.createUnknown<String>();
-    this.schematizedData = Output.createUnknown<SchematizedDataResponse>();
-    this.sendFacility = Output.createUnknown<String>();
-    this.sendTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.data = registerOutput<String>('data');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.messageType = registerOutput<String>('messageType');
+    this.name = registerOutput<String>('name');
+    this.parsedData = registerOutput<ParsedDataResponse>('parsedData');
+    this.patientIds = registerOutput<List<PatientIdResponse>>('patientIds');
+    this.project = registerOutput<String>('project');
+    this.schematizedData =
+        registerOutput<SchematizedDataResponse>('schematizedData');
+    this.sendFacility = registerOutput<String>('sendFacility');
+    this.sendTime = registerOutput<String>('sendTime');
   }
 }

@@ -180,15 +180,15 @@ class Baseline extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.baselineIdentifier = Output.createUnknown<String>();
-    this.baselineVersion = Output.createUnknown<String>();
-    this.operationIdentifier = Output.createUnknown<String>();
-    this.parameters = Output.createUnknown<BaselineParameters?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetIdentifier = Output.createUnknown<String>();
-    this.timeouts = Output.createUnknown<BaselineTimeouts?>();
+    this.arn = registerOutput<String>('arn');
+    this.baselineIdentifier = registerOutput<String>('baselineIdentifier');
+    this.baselineVersion = registerOutput<String>('baselineVersion');
+    this.operationIdentifier = registerOutput<String>('operationIdentifier');
+    this.parameters = registerOutput<BaselineParameters?>('parameters');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetIdentifier = registerOutput<String>('targetIdentifier');
+    this.timeouts = registerOutput<BaselineTimeouts?>('timeouts');
   }
 }

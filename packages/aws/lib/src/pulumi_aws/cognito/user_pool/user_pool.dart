@@ -547,51 +547,64 @@ class UserPool extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.accountRecoverySetting =
-        Output.createUnknown<UserPoolAccountRecoverySetting?>();
+        registerOutput<UserPoolAccountRecoverySetting?>(
+            'accountRecoverySetting');
     this.adminCreateUserConfig =
-        Output.createUnknown<UserPoolAdminCreateUserConfig>();
-    this.aliasAttributes = Output.createUnknown<List<String>?>();
-    this.arn = Output.createUnknown<String>();
-    this.autoVerifiedAttributes = Output.createUnknown<List<String>?>();
-    this.creationDate = Output.createUnknown<String>();
-    this.customDomain = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<String?>();
+        registerOutput<UserPoolAdminCreateUserConfig>('adminCreateUserConfig');
+    this.aliasAttributes = registerOutput<List<String>?>('aliasAttributes');
+    this.arn = registerOutput<String>('arn');
+    this.autoVerifiedAttributes =
+        registerOutput<List<String>?>('autoVerifiedAttributes');
+    this.creationDate = registerOutput<String>('creationDate');
+    this.customDomain = registerOutput<String>('customDomain');
+    this.deletionProtection = registerOutput<String?>('deletionProtection');
     this.deviceConfiguration =
-        Output.createUnknown<UserPoolDeviceConfiguration?>();
-    this.domain = Output.createUnknown<String>();
+        registerOutput<UserPoolDeviceConfiguration?>('deviceConfiguration');
+    this.domain = registerOutput<String>('domain');
     this.emailConfiguration =
-        Output.createUnknown<UserPoolEmailConfiguration?>();
+        registerOutput<UserPoolEmailConfiguration?>('emailConfiguration');
     this.emailMfaConfiguration =
-        Output.createUnknown<UserPoolEmailMfaConfiguration?>();
-    this.emailVerificationMessage = Output.createUnknown<String>();
-    this.emailVerificationSubject = Output.createUnknown<String>();
-    this.endpoint = Output.createUnknown<String>();
-    this.estimatedNumberOfUsers = Output.createUnknown<int>();
-    this.lambdaConfig = Output.createUnknown<UserPoolLambdaConfig?>();
-    this.lastModifiedDate = Output.createUnknown<String>();
-    this.mfaConfiguration = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.passwordPolicy = Output.createUnknown<UserPoolPasswordPolicy>();
-    this.region = Output.createUnknown<String>();
-    this.schemas = Output.createUnknown<List<UserPoolSchema>?>();
-    this.signInPolicy = Output.createUnknown<UserPoolSignInPolicy>();
-    this.smsAuthenticationMessage = Output.createUnknown<String?>();
-    this.smsConfiguration = Output.createUnknown<UserPoolSmsConfiguration>();
-    this.smsVerificationMessage = Output.createUnknown<String>();
+        registerOutput<UserPoolEmailMfaConfiguration?>('emailMfaConfiguration');
+    this.emailVerificationMessage =
+        registerOutput<String>('emailVerificationMessage');
+    this.emailVerificationSubject =
+        registerOutput<String>('emailVerificationSubject');
+    this.endpoint = registerOutput<String>('endpoint');
+    this.estimatedNumberOfUsers = registerOutput<int>('estimatedNumberOfUsers');
+    this.lambdaConfig = registerOutput<UserPoolLambdaConfig?>('lambdaConfig');
+    this.lastModifiedDate = registerOutput<String>('lastModifiedDate');
+    this.mfaConfiguration = registerOutput<String?>('mfaConfiguration');
+    this.name = registerOutput<String>('name');
+    this.passwordPolicy =
+        registerOutput<UserPoolPasswordPolicy>('passwordPolicy');
+    this.region = registerOutput<String>('region');
+    this.schemas = registerOutput<List<UserPoolSchema>?>('schemas');
+    this.signInPolicy = registerOutput<UserPoolSignInPolicy>('signInPolicy');
+    this.smsAuthenticationMessage =
+        registerOutput<String?>('smsAuthenticationMessage');
+    this.smsConfiguration =
+        registerOutput<UserPoolSmsConfiguration>('smsConfiguration');
+    this.smsVerificationMessage =
+        registerOutput<String>('smsVerificationMessage');
     this.softwareTokenMfaConfiguration =
-        Output.createUnknown<UserPoolSoftwareTokenMfaConfiguration?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+        registerOutput<UserPoolSoftwareTokenMfaConfiguration?>(
+            'softwareTokenMfaConfiguration');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.userAttributeUpdateSettings =
-        Output.createUnknown<UserPoolUserAttributeUpdateSettings?>();
-    this.userPoolAddOns = Output.createUnknown<UserPoolUserPoolAddOns?>();
-    this.userPoolTier = Output.createUnknown<String>();
-    this.usernameAttributes = Output.createUnknown<List<String>?>();
+        registerOutput<UserPoolUserAttributeUpdateSettings?>(
+            'userAttributeUpdateSettings');
+    this.userPoolAddOns =
+        registerOutput<UserPoolUserPoolAddOns?>('userPoolAddOns');
+    this.userPoolTier = registerOutput<String>('userPoolTier');
+    this.usernameAttributes =
+        registerOutput<List<String>?>('usernameAttributes');
     this.usernameConfiguration =
-        Output.createUnknown<UserPoolUsernameConfiguration>();
+        registerOutput<UserPoolUsernameConfiguration>('usernameConfiguration');
     this.verificationMessageTemplate =
-        Output.createUnknown<UserPoolVerificationMessageTemplate>();
+        registerOutput<UserPoolVerificationMessageTemplate>(
+            'verificationMessageTemplate');
     this.webAuthnConfiguration =
-        Output.createUnknown<UserPoolWebAuthnConfiguration?>();
+        registerOutput<UserPoolWebAuthnConfiguration?>('webAuthnConfiguration');
   }
 }

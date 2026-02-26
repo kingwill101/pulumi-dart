@@ -161,10 +161,10 @@ class Policy8 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createdDate = Output.createUnknown<String>();
-    this.definition = Output.createUnknown<PolicyDefinition>();
-    this.policyId = Output.createUnknown<String>();
-    this.policyStoreId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.createdDate = registerOutput<String>('createdDate');
+    this.definition = registerOutput<PolicyDefinition>('definition');
+    this.policyId = registerOutput<String>('policyId');
+    this.policyStoreId = registerOutput<String>('policyStoreId');
+    this.region = registerOutput<String>('region');
   }
 }

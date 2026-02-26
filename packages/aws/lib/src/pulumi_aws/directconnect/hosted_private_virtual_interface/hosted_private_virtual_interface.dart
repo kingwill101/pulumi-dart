@@ -179,20 +179,20 @@ class HostedPrivateVirtualInterface extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.addressFamily = Output.createUnknown<String>();
-    this.amazonAddress = Output.createUnknown<String>();
-    this.amazonSideAsn = Output.createUnknown<String>();
-    this.arn = Output.createUnknown<String>();
-    this.awsDevice = Output.createUnknown<String>();
-    this.bgpAsn = Output.createUnknown<int>();
-    this.bgpAuthKey = Output.createUnknown<String>();
-    this.connectionId = Output.createUnknown<String>();
-    this.customerAddress = Output.createUnknown<String>();
-    this.jumboFrameCapable = Output.createUnknown<bool>();
-    this.mtu = Output.createUnknown<int?>();
-    this.name = Output.createUnknown<String>();
-    this.ownerAccountId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.vlan = Output.createUnknown<int>();
+    this.addressFamily = registerOutput<String>('addressFamily');
+    this.amazonAddress = registerOutput<String>('amazonAddress');
+    this.amazonSideAsn = registerOutput<String>('amazonSideAsn');
+    this.arn = registerOutput<String>('arn');
+    this.awsDevice = registerOutput<String>('awsDevice');
+    this.bgpAsn = registerOutput<int>('bgpAsn');
+    this.bgpAuthKey = registerOutput<String>('bgpAuthKey');
+    this.connectionId = registerOutput<String>('connectionId');
+    this.customerAddress = registerOutput<String>('customerAddress');
+    this.jumboFrameCapable = registerOutput<bool>('jumboFrameCapable');
+    this.mtu = registerOutput<int?>('mtu');
+    this.name = registerOutput<String>('name');
+    this.ownerAccountId = registerOutput<String>('ownerAccountId');
+    this.region = registerOutput<String>('region');
+    this.vlan = registerOutput<int>('vlan');
   }
 }

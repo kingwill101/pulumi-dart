@@ -216,10 +216,10 @@ class AiLogicPromptTemplateLock extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.location = Output.createUnknown<String>();
-    this.locked = Output.createUnknown<bool>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.templateId = Output.createUnknown<String>();
+    this.location = registerOutput<String>('location');
+    this.locked = registerOutput<bool>('locked');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.templateId = registerOutput<String>('templateId');
   }
 }

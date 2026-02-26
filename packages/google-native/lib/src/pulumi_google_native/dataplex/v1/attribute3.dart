@@ -59,23 +59,25 @@ class Attribute3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attributeCount = Output.createUnknown<int>();
-    this.createTime = Output.createUnknown<String>();
+    this.attributeCount = registerOutput<int>('attributeCount');
+    this.createTime = registerOutput<String>('createTime');
     this.dataAccessSpec =
-        Output.createUnknown<GoogleCloudDataplexV1DataAccessSpecResponse>();
-    this.dataAttributeId = Output.createUnknown<String>();
-    this.dataTaxonomyId = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parentId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDataplexV1DataAccessSpecResponse>(
+            'dataAccessSpec');
+    this.dataAttributeId = registerOutput<String>('dataAttributeId');
+    this.dataTaxonomyId = registerOutput<String>('dataTaxonomyId');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.etag = registerOutput<String>('etag');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.parentId = registerOutput<String>('parentId');
+    this.project = registerOutput<String>('project');
     this.resourceAccessSpec =
-        Output.createUnknown<GoogleCloudDataplexV1ResourceAccessSpecResponse>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDataplexV1ResourceAccessSpecResponse>(
+            'resourceAccessSpec');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

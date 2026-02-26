@@ -1225,26 +1225,28 @@ class VpcFlowLogsConfig extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.aggregationInterval = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.filterExpr = Output.createUnknown<String?>();
-    this.flowSampling = Output.createUnknown<double>();
-    this.interconnectAttachment = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.metadata = Output.createUnknown<String>();
-    this.metadataFields = Output.createUnknown<List<String>?>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.state = Output.createUnknown<String>();
-    this.subnet = Output.createUnknown<String?>();
-    this.targetResourceState = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
-    this.vpcFlowLogsConfigId = Output.createUnknown<String>();
-    this.vpnTunnel = Output.createUnknown<String?>();
+    this.aggregationInterval = registerOutput<String>('aggregationInterval');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.filterExpr = registerOutput<String?>('filterExpr');
+    this.flowSampling = registerOutput<double>('flowSampling');
+    this.interconnectAttachment =
+        registerOutput<String?>('interconnectAttachment');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.metadata = registerOutput<String>('metadata');
+    this.metadataFields = registerOutput<List<String>?>('metadataFields');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String?>('network');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.state = registerOutput<String>('state');
+    this.subnet = registerOutput<String?>('subnet');
+    this.targetResourceState = registerOutput<String>('targetResourceState');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.vpcFlowLogsConfigId = registerOutput<String>('vpcFlowLogsConfigId');
+    this.vpnTunnel = registerOutput<String?>('vpnTunnel');
   }
 }

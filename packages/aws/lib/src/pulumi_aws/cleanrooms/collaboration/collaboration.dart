@@ -306,20 +306,22 @@ class Collaboration extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.analyticsEngine = Output.createUnknown<String?>();
-    this.arn = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.creatorDisplayName = Output.createUnknown<String>();
-    this.creatorMemberAbilities = Output.createUnknown<List<String>>();
+    this.analyticsEngine = registerOutput<String?>('analyticsEngine');
+    this.arn = registerOutput<String>('arn');
+    this.createTime = registerOutput<String>('createTime');
+    this.creatorDisplayName = registerOutput<String>('creatorDisplayName');
+    this.creatorMemberAbilities =
+        registerOutput<List<String>>('creatorMemberAbilities');
     this.dataEncryptionMetadata =
-        Output.createUnknown<CollaborationDataEncryptionMetadata?>();
-    this.description = Output.createUnknown<String>();
-    this.members = Output.createUnknown<List<CollaborationMember>?>();
-    this.name = Output.createUnknown<String>();
-    this.queryLogStatus = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<CollaborationDataEncryptionMetadata?>(
+            'dataEncryptionMetadata');
+    this.description = registerOutput<String>('description');
+    this.members = registerOutput<List<CollaborationMember>?>('members');
+    this.name = registerOutput<String>('name');
+    this.queryLogStatus = registerOutput<String>('queryLogStatus');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

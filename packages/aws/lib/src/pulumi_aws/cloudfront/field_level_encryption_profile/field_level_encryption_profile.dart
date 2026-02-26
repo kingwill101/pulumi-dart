@@ -265,12 +265,13 @@ class FieldLevelEncryptionProfile extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.callerReference = Output.createUnknown<String>();
-    this.comment = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.callerReference = registerOutput<String>('callerReference');
+    this.comment = registerOutput<String?>('comment');
     this.encryptionEntities =
-        Output.createUnknown<FieldLevelEncryptionProfileEncryptionEntities>();
-    this.etag = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<FieldLevelEncryptionProfileEncryptionEntities>(
+            'encryptionEntities');
+    this.etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
   }
 }

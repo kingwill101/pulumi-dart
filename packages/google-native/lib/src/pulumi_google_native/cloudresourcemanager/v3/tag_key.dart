@@ -43,15 +43,15 @@ class TagKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.namespacedName = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<String>();
-    this.purpose = Output.createUnknown<String>();
-    this.purposeData = Output.createUnknown<Map<String, String>>();
-    this.shortName = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    this.namespacedName = registerOutput<String>('namespacedName');
+    this.parent = registerOutput<String>('parent');
+    this.purpose = registerOutput<String>('purpose');
+    this.purposeData = registerOutput<Map<String, String>>('purposeData');
+    this.shortName = registerOutput<String>('shortName');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

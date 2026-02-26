@@ -484,16 +484,16 @@ class NetworkEndpointGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.defaultPort = Output.createUnknown<int?>();
-    this.description = Output.createUnknown<String?>();
-    this.generatedId = Output.createUnknown<int>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.networkEndpointType = Output.createUnknown<String?>();
-    this.project = Output.createUnknown<String>();
-    this.selfLink = Output.createUnknown<String>();
-    this.size = Output.createUnknown<int>();
-    this.subnetwork = Output.createUnknown<String?>();
-    this.zone = Output.createUnknown<String>();
+    this.defaultPort = registerOutput<int?>('defaultPort');
+    this.description = registerOutput<String?>('description');
+    this.generatedId = registerOutput<int>('generatedId');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.networkEndpointType = registerOutput<String?>('networkEndpointType');
+    this.project = registerOutput<String>('project');
+    this.selfLink = registerOutput<String>('selfLink');
+    this.size = registerOutput<int>('size');
+    this.subnetwork = registerOutput<String?>('subnetwork');
+    this.zone = registerOutput<String>('zone');
   }
 }

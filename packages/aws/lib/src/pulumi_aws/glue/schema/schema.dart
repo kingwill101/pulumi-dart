@@ -184,19 +184,19 @@ class Schema extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.compatibility = Output.createUnknown<String>();
-    this.dataFormat = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.latestSchemaVersion = Output.createUnknown<int>();
-    this.nextSchemaVersion = Output.createUnknown<int>();
-    this.region = Output.createUnknown<String>();
-    this.registryArn = Output.createUnknown<String>();
-    this.registryName = Output.createUnknown<String>();
-    this.schemaCheckpoint = Output.createUnknown<int>();
-    this.schemaDefinition = Output.createUnknown<String>();
-    this.schemaName = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.compatibility = registerOutput<String>('compatibility');
+    this.dataFormat = registerOutput<String>('dataFormat');
+    this.description = registerOutput<String?>('description');
+    this.latestSchemaVersion = registerOutput<int>('latestSchemaVersion');
+    this.nextSchemaVersion = registerOutput<int>('nextSchemaVersion');
+    this.region = registerOutput<String>('region');
+    this.registryArn = registerOutput<String>('registryArn');
+    this.registryName = registerOutput<String>('registryName');
+    this.schemaCheckpoint = registerOutput<int>('schemaCheckpoint');
+    this.schemaDefinition = registerOutput<String>('schemaDefinition');
+    this.schemaName = registerOutput<String>('schemaName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

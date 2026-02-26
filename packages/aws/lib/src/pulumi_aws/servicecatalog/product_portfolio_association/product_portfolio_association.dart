@@ -136,10 +136,10 @@ class ProductPortfolioAssociation extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceptLanguage = Output.createUnknown<String?>();
-    this.portfolioId = Output.createUnknown<String>();
-    this.productId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.sourcePortfolioId = Output.createUnknown<String?>();
+    this.acceptLanguage = registerOutput<String?>('acceptLanguage');
+    this.portfolioId = registerOutput<String>('portfolioId');
+    this.productId = registerOutput<String>('productId');
+    this.region = registerOutput<String>('region');
+    this.sourcePortfolioId = registerOutput<String?>('sourcePortfolioId');
   }
 }

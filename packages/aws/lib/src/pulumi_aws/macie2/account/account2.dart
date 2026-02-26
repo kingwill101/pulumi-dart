@@ -135,11 +135,12 @@ class Account2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createdAt = Output.createUnknown<String>();
-    this.findingPublishingFrequency = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.serviceRole = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.updatedAt = Output.createUnknown<String>();
+    this.createdAt = registerOutput<String>('createdAt');
+    this.findingPublishingFrequency =
+        registerOutput<String>('findingPublishingFrequency');
+    this.region = registerOutput<String>('region');
+    this.serviceRole = registerOutput<String>('serviceRole');
+    this.status = registerOutput<String>('status');
+    this.updatedAt = registerOutput<String>('updatedAt');
   }
 }

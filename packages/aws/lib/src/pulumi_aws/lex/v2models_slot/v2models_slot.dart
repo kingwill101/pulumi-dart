@@ -705,23 +705,26 @@ class V2modelsSlot extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.botId = Output.createUnknown<String>();
-    this.botVersion = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.intentId = Output.createUnknown<String>();
-    this.localeId = Output.createUnknown<String>();
+    this.botId = registerOutput<String>('botId');
+    this.botVersion = registerOutput<String>('botVersion');
+    this.description = registerOutput<String?>('description');
+    this.intentId = registerOutput<String>('intentId');
+    this.localeId = registerOutput<String>('localeId');
     this.multipleValuesSettings =
-        Output.createUnknown<List<V2modelsSlotMultipleValuesSetting>?>();
-    this.name = Output.createUnknown<String>();
+        registerOutput<List<V2modelsSlotMultipleValuesSetting>?>(
+            'multipleValuesSettings');
+    this.name = registerOutput<String>('name');
     this.obfuscationSettings =
-        Output.createUnknown<List<V2modelsSlotObfuscationSetting>?>();
-    this.region = Output.createUnknown<String>();
-    this.slotId = Output.createUnknown<String>();
-    this.slotTypeId = Output.createUnknown<String>();
+        registerOutput<List<V2modelsSlotObfuscationSetting>?>(
+            'obfuscationSettings');
+    this.region = registerOutput<String>('region');
+    this.slotId = registerOutput<String>('slotId');
+    this.slotTypeId = registerOutput<String>('slotTypeId');
     this.subSlotSettings =
-        Output.createUnknown<List<V2modelsSlotSubSlotSetting>?>();
-    this.timeouts = Output.createUnknown<V2modelsSlotTimeouts?>();
+        registerOutput<List<V2modelsSlotSubSlotSetting>?>('subSlotSettings');
+    this.timeouts = registerOutput<V2modelsSlotTimeouts?>('timeouts');
     this.valueElicitationSetting =
-        Output.createUnknown<V2modelsSlotValueElicitationSetting>();
+        registerOutput<V2modelsSlotValueElicitationSetting>(
+            'valueElicitationSetting');
   }
 }

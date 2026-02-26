@@ -351,17 +351,19 @@ class AppGateway extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.allocatedConnections =
-        Output.createUnknown<List<AppGatewayAllocatedConnection>>();
-    this.displayName = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.hostType = Output.createUnknown<String?>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String?>();
-    this.state = Output.createUnknown<String>();
-    this.type = Output.createUnknown<String?>();
-    this.uri = Output.createUnknown<String>();
+        registerOutput<List<AppGatewayAllocatedConnection>>(
+            'allocatedConnections');
+    this.displayName = registerOutput<String?>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.hostType = registerOutput<String?>('hostType');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String?>('region');
+    this.state = registerOutput<String>('state');
+    this.type = registerOutput<String?>('type');
+    this.uri = registerOutput<String>('uri');
   }
 }

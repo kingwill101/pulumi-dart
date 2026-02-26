@@ -49,13 +49,13 @@ mixin InvokeMixin {
     models.InvokeOptions? options,
     models.RegisterPackageRequest? registerPackageRequest,
   }) async {
-    final result = await invoke<Map<String, T>>(
+    final result = await invoke<Map<String, dynamic>>(
       token,
       args,
       options: options,
       registerPackageRequest: registerPackageRequest,
     );
-    return result.values.first;
+    return result.values.first as T;
   }
 
   Future<String?> _resolvePackageRef(

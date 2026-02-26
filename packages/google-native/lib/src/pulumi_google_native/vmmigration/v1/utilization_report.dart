@@ -55,20 +55,20 @@ class UtilizationReport extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.error = Output.createUnknown<StatusResponse30>();
-    this.frameEndTime = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.requestId = Output.createUnknown<String?>();
-    this.sourceId = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.stateTime = Output.createUnknown<String>();
-    this.timeFrame = Output.createUnknown<String>();
-    this.utilizationReportId = Output.createUnknown<String>();
-    this.vmCount = Output.createUnknown<int>();
-    this.vms = Output.createUnknown<List<VmUtilizationInfoResponse>>();
+    this.createTime = registerOutput<String>('createTime');
+    this.displayName = registerOutput<String>('displayName');
+    this.error = registerOutput<StatusResponse30>('error');
+    this.frameEndTime = registerOutput<String>('frameEndTime');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+    this.sourceId = registerOutput<String>('sourceId');
+    this.state = registerOutput<String>('state');
+    this.stateTime = registerOutput<String>('stateTime');
+    this.timeFrame = registerOutput<String>('timeFrame');
+    this.utilizationReportId = registerOutput<String>('utilizationReportId');
+    this.vmCount = registerOutput<int>('vmCount');
+    this.vms = registerOutput<List<VmUtilizationInfoResponse>>('vms');
   }
 }

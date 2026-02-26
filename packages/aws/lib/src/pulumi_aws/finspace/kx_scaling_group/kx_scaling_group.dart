@@ -180,18 +180,19 @@ class KxScalingGroup extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.availabilityZoneId = Output.createUnknown<String>();
-    this.clusters = Output.createUnknown<List<String>>();
-    this.createdTimestamp = Output.createUnknown<String>();
-    this.environmentId = Output.createUnknown<String>();
-    this.hostType = Output.createUnknown<String>();
-    this.lastModifiedTimestamp = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.statusReason = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
+    this.arn = registerOutput<String>('arn');
+    this.availabilityZoneId = registerOutput<String>('availabilityZoneId');
+    this.clusters = registerOutput<List<String>>('clusters');
+    this.createdTimestamp = registerOutput<String>('createdTimestamp');
+    this.environmentId = registerOutput<String>('environmentId');
+    this.hostType = registerOutput<String>('hostType');
+    this.lastModifiedTimestamp =
+        registerOutput<String>('lastModifiedTimestamp');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.statusReason = registerOutput<String>('statusReason');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

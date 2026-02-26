@@ -55,21 +55,22 @@ class Company2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.careerSiteUri = Output.createUnknown<String>();
-    this.derivedInfo = Output.createUnknown<CompanyDerivedInfoResponse2>();
-    this.displayName = Output.createUnknown<String>();
-    this.eeoText = Output.createUnknown<String>();
-    this.externalId = Output.createUnknown<String>();
-    this.headquartersAddress = Output.createUnknown<String>();
-    this.hiringAgency = Output.createUnknown<bool>();
-    this.imageUri = Output.createUnknown<String>();
+    this.careerSiteUri = registerOutput<String>('careerSiteUri');
+    this.derivedInfo =
+        registerOutput<CompanyDerivedInfoResponse2>('derivedInfo');
+    this.displayName = registerOutput<String>('displayName');
+    this.eeoText = registerOutput<String>('eeoText');
+    this.externalId = registerOutput<String>('externalId');
+    this.headquartersAddress = registerOutput<String>('headquartersAddress');
+    this.hiringAgency = registerOutput<bool>('hiringAgency');
+    this.imageUri = registerOutput<String>('imageUri');
     this.keywordSearchableJobCustomAttributes =
-        Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.size = Output.createUnknown<String>();
-    this.suspended = Output.createUnknown<bool>();
-    this.tenantId = Output.createUnknown<String>();
-    this.websiteUri = Output.createUnknown<String>();
+        registerOutput<List<String>>('keywordSearchableJobCustomAttributes');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.size = registerOutput<String>('size');
+    this.suspended = registerOutput<bool>('suspended');
+    this.tenantId = registerOutput<String>('tenantId');
+    this.websiteUri = registerOutput<String>('websiteUri');
   }
 }

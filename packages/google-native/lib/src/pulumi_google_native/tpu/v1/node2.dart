@@ -79,28 +79,29 @@ class Node2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.acceleratorType = Output.createUnknown<String>();
-    this.apiVersion = Output.createUnknown<String>();
-    this.cidrBlock = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.health = Output.createUnknown<String>();
-    this.healthDescription = Output.createUnknown<String>();
-    this.ipAddress = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
+    this.acceleratorType = registerOutput<String>('acceleratorType');
+    this.apiVersion = registerOutput<String>('apiVersion');
+    this.cidrBlock = registerOutput<String>('cidrBlock');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.health = registerOutput<String>('health');
+    this.healthDescription = registerOutput<String>('healthDescription');
+    this.ipAddress = registerOutput<String>('ipAddress');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
     this.networkEndpoints =
-        Output.createUnknown<List<NetworkEndpointResponse>>();
-    this.nodeId = Output.createUnknown<String?>();
-    this.port = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.schedulingConfig = Output.createUnknown<SchedulingConfigResponse>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.symptoms = Output.createUnknown<List<SymptomResponse>>();
-    this.tensorflowVersion = Output.createUnknown<String>();
-    this.useServiceNetworking = Output.createUnknown<bool>();
+        registerOutput<List<NetworkEndpointResponse>>('networkEndpoints');
+    this.nodeId = registerOutput<String?>('nodeId');
+    this.port = registerOutput<String>('port');
+    this.project = registerOutput<String>('project');
+    this.schedulingConfig =
+        registerOutput<SchedulingConfigResponse>('schedulingConfig');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.state = registerOutput<String>('state');
+    this.symptoms = registerOutput<List<SymptomResponse>>('symptoms');
+    this.tensorflowVersion = registerOutput<String>('tensorflowVersion');
+    this.useServiceNetworking = registerOutput<bool>('useServiceNetworking');
   }
 }

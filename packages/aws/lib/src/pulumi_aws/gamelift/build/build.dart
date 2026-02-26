@@ -173,13 +173,14 @@ class Build extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.operatingSystem = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.storageLocation = Output.createUnknown<BuildStorageLocation>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.version = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    this.operatingSystem = registerOutput<String>('operatingSystem');
+    this.region = registerOutput<String>('region');
+    this.storageLocation =
+        registerOutput<BuildStorageLocation>('storageLocation');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.version = registerOutput<String?>('version');
   }
 }

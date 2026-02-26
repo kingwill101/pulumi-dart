@@ -309,13 +309,13 @@ class RowAccessPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.creationTime = Output.createUnknown<String>();
-    this.datasetId = Output.createUnknown<String>();
-    this.filterPredicate = Output.createUnknown<String>();
-    this.grantees = Output.createUnknown<List<String>?>();
-    this.lastModifiedTime = Output.createUnknown<String>();
-    this.policyId = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.tableId = Output.createUnknown<String>();
+    this.creationTime = registerOutput<String>('creationTime');
+    this.datasetId = registerOutput<String>('datasetId');
+    this.filterPredicate = registerOutput<String>('filterPredicate');
+    this.grantees = registerOutput<List<String>?>('grantees');
+    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.policyId = registerOutput<String>('policyId');
+    this.project = registerOutput<String>('project');
+    this.tableId = registerOutput<String>('tableId');
   }
 }

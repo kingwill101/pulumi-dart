@@ -49,20 +49,22 @@ class Contentitem extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.dataText = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lakeId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.dataText = registerOutput<String>('dataText');
+    this.description = registerOutput<String>('description');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lakeId = registerOutput<String>('lakeId');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
     this.notebook =
-        Output.createUnknown<GoogleCloudDataplexV1ContentNotebookResponse>();
-    this.path = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDataplexV1ContentNotebookResponse>(
+            'notebook');
+    this.path = registerOutput<String>('path');
+    this.project = registerOutput<String>('project');
     this.sqlScript =
-        Output.createUnknown<GoogleCloudDataplexV1ContentSqlScriptResponse>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDataplexV1ContentSqlScriptResponse>(
+            'sqlScript');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

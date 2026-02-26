@@ -28,11 +28,12 @@ class FeaturestoreIamPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.bindings = Output.createUnknown<List<GoogleIamV1BindingResponse>>();
-    this.etag = Output.createUnknown<String>();
-    this.featurestoreId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.version = Output.createUnknown<int>();
+    this.bindings =
+        registerOutput<List<GoogleIamV1BindingResponse>>('bindings');
+    this.etag = registerOutput<String>('etag');
+    this.featurestoreId = registerOutput<String>('featurestoreId');
+    this.location = registerOutput<String>('location');
+    this.project = registerOutput<String>('project');
+    this.version = registerOutput<int>('version');
   }
 }

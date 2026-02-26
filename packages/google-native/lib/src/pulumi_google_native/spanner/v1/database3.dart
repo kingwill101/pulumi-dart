@@ -55,19 +55,22 @@ class Database3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.databaseDialect = Output.createUnknown<String>();
-    this.defaultLeader = Output.createUnknown<String>();
-    this.earliestVersionTime = Output.createUnknown<String>();
-    this.enableDropProtection = Output.createUnknown<bool>();
-    this.encryptionConfig = Output.createUnknown<EncryptionConfigResponse15>();
-    this.encryptionInfo = Output.createUnknown<List<EncryptionInfoResponse5>>();
-    this.instanceId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.reconciling = Output.createUnknown<bool>();
-    this.restoreInfo = Output.createUnknown<RestoreInfoResponse2>();
-    this.state = Output.createUnknown<String>();
-    this.versionRetentionPeriod = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.databaseDialect = registerOutput<String>('databaseDialect');
+    this.defaultLeader = registerOutput<String>('defaultLeader');
+    this.earliestVersionTime = registerOutput<String>('earliestVersionTime');
+    this.enableDropProtection = registerOutput<bool>('enableDropProtection');
+    this.encryptionConfig =
+        registerOutput<EncryptionConfigResponse15>('encryptionConfig');
+    this.encryptionInfo =
+        registerOutput<List<EncryptionInfoResponse5>>('encryptionInfo');
+    this.instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.reconciling = registerOutput<bool>('reconciling');
+    this.restoreInfo = registerOutput<RestoreInfoResponse2>('restoreInfo');
+    this.state = registerOutput<String>('state');
+    this.versionRetentionPeriod =
+        registerOutput<String>('versionRetentionPeriod');
   }
 }

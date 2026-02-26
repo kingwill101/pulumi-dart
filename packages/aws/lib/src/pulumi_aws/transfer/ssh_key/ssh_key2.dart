@@ -529,10 +529,10 @@ class SshKey2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.body = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.serverId = Output.createUnknown<String>();
-    this.sshKeyId = Output.createUnknown<String>();
-    this.userName = Output.createUnknown<String>();
+    this.body = registerOutput<String>('body');
+    this.region = registerOutput<String>('region');
+    this.serverId = registerOutput<String>('serverId');
+    this.sshKeyId = registerOutput<String>('sshKeyId');
+    this.userName = registerOutput<String>('userName');
   }
 }

@@ -104,31 +104,37 @@ class ImagePipeline extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.containerRecipeArn = Output.createUnknown<String?>();
-    this.dateCreated = Output.createUnknown<String>();
-    this.dateLastRun = Output.createUnknown<String>();
-    this.dateNextRun = Output.createUnknown<String>();
-    this.dateUpdated = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.distributionConfigurationArn = Output.createUnknown<String?>();
-    this.enhancedImageMetadataEnabled = Output.createUnknown<bool?>();
-    this.executionRole = Output.createUnknown<String?>();
-    this.imageRecipeArn = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.containerRecipeArn = registerOutput<String?>('containerRecipeArn');
+    this.dateCreated = registerOutput<String>('dateCreated');
+    this.dateLastRun = registerOutput<String>('dateLastRun');
+    this.dateNextRun = registerOutput<String>('dateNextRun');
+    this.dateUpdated = registerOutput<String>('dateUpdated');
+    this.description = registerOutput<String?>('description');
+    this.distributionConfigurationArn =
+        registerOutput<String?>('distributionConfigurationArn');
+    this.enhancedImageMetadataEnabled =
+        registerOutput<bool?>('enhancedImageMetadataEnabled');
+    this.executionRole = registerOutput<String?>('executionRole');
+    this.imageRecipeArn = registerOutput<String?>('imageRecipeArn');
     this.imageScanningConfiguration =
-        Output.createUnknown<ImagePipelineImageScanningConfiguration>();
+        registerOutput<ImagePipelineImageScanningConfiguration>(
+            'imageScanningConfiguration');
     this.imageTestsConfiguration =
-        Output.createUnknown<ImagePipelineImageTestsConfiguration>();
-    this.infrastructureConfigurationArn = Output.createUnknown<String>();
+        registerOutput<ImagePipelineImageTestsConfiguration>(
+            'imageTestsConfiguration');
+    this.infrastructureConfigurationArn =
+        registerOutput<String>('infrastructureConfigurationArn');
     this.loggingConfiguration =
-        Output.createUnknown<ImagePipelineLoggingConfiguration?>();
-    this.name = Output.createUnknown<String>();
-    this.platform = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.schedule = Output.createUnknown<ImagePipelineSchedule?>();
-    this.status = Output.createUnknown<String?>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.workflows = Output.createUnknown<List<ImagePipelineWorkflow>>();
+        registerOutput<ImagePipelineLoggingConfiguration?>(
+            'loggingConfiguration');
+    this.name = registerOutput<String>('name');
+    this.platform = registerOutput<String>('platform');
+    this.region = registerOutput<String>('region');
+    this.schedule = registerOutput<ImagePipelineSchedule?>('schedule');
+    this.status = registerOutput<String?>('status');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.workflows = registerOutput<List<ImagePipelineWorkflow>>('workflows');
   }
 }

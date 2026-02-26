@@ -245,12 +245,13 @@ class Alias4 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.creationDate = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.creationDate = registerOutput<String>('creationDate');
+    this.description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
     this.routingConfigurations =
-        Output.createUnknown<List<AliasRoutingConfiguration>>();
+        registerOutput<List<AliasRoutingConfiguration>>(
+            'routingConfigurations');
   }
 }

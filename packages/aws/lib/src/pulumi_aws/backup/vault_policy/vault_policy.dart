@@ -324,9 +324,9 @@ class VaultPolicy extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.backupVaultArn = Output.createUnknown<String>();
-    this.backupVaultName = Output.createUnknown<String>();
-    this.policy = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.backupVaultArn = registerOutput<String>('backupVaultArn');
+    this.backupVaultName = registerOutput<String>('backupVaultName');
+    this.policy = registerOutput<String>('policy');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -540,28 +540,33 @@ class Instance9 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.authorizedNetwork = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.deletionProtection = Output.createUnknown<bool?>();
-    this.discoveryEndpoint = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.maintenancePolicy = Output.createUnknown<InstanceMaintenancePolicy?>();
+    this.authorizedNetwork = registerOutput<String>('authorizedNetwork');
+    this.createTime = registerOutput<String>('createTime');
+    this.deletionProtection = registerOutput<bool?>('deletionProtection');
+    this.discoveryEndpoint = registerOutput<String>('discoveryEndpoint');
+    this.displayName = registerOutput<String>('displayName');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.maintenancePolicy =
+        registerOutput<InstanceMaintenancePolicy?>('maintenancePolicy');
     this.maintenanceSchedules =
-        Output.createUnknown<List<InstanceMaintenanceSchedule>>();
-    this.memcacheFullVersion = Output.createUnknown<String>();
-    this.memcacheNodes = Output.createUnknown<List<InstanceMemcacheNode>>();
+        registerOutput<List<InstanceMaintenanceSchedule>>(
+            'maintenanceSchedules');
+    this.memcacheFullVersion = registerOutput<String>('memcacheFullVersion');
+    this.memcacheNodes =
+        registerOutput<List<InstanceMemcacheNode>>('memcacheNodes');
     this.memcacheParameters =
-        Output.createUnknown<InstanceMemcacheParameters?>();
-    this.memcacheVersion = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.nodeConfig = Output.createUnknown<InstanceNodeConfig>();
-    this.nodeCount = Output.createUnknown<int>();
-    this.project = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.region = Output.createUnknown<String>();
-    this.reservedIpRangeIds = Output.createUnknown<List<String>?>();
-    this.zones = Output.createUnknown<List<String>>();
+        registerOutput<InstanceMemcacheParameters?>('memcacheParameters');
+    this.memcacheVersion = registerOutput<String?>('memcacheVersion');
+    this.name = registerOutput<String>('name');
+    this.nodeConfig = registerOutput<InstanceNodeConfig>('nodeConfig');
+    this.nodeCount = registerOutput<int>('nodeCount');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String>('region');
+    this.reservedIpRangeIds =
+        registerOutput<List<String>?>('reservedIpRangeIds');
+    this.zones = registerOutput<List<String>>('zones');
   }
 }

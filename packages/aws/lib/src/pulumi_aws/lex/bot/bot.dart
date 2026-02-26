@@ -352,27 +352,31 @@ class Bot extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.abortStatement = Output.createUnknown<BotAbortStatement>();
-    this.arn = Output.createUnknown<String>();
-    this.checksum = Output.createUnknown<String>();
-    this.childDirected = Output.createUnknown<bool>();
-    this.clarificationPrompt = Output.createUnknown<BotClarificationPrompt?>();
-    this.createVersion = Output.createUnknown<bool?>();
-    this.createdDate = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.detectSentiment = Output.createUnknown<bool?>();
-    this.enableModelImprovements = Output.createUnknown<bool?>();
-    this.failureReason = Output.createUnknown<String>();
-    this.idleSessionTtlInSeconds = Output.createUnknown<int?>();
-    this.intents = Output.createUnknown<List<BotIntent>>();
-    this.lastUpdatedDate = Output.createUnknown<String>();
-    this.locale = Output.createUnknown<String?>();
-    this.name = Output.createUnknown<String>();
-    this.nluIntentConfidenceThreshold = Output.createUnknown<double?>();
-    this.processBehavior = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.status = Output.createUnknown<String>();
-    this.version = Output.createUnknown<String>();
-    this.voiceId = Output.createUnknown<String>();
+    this.abortStatement = registerOutput<BotAbortStatement>('abortStatement');
+    this.arn = registerOutput<String>('arn');
+    this.checksum = registerOutput<String>('checksum');
+    this.childDirected = registerOutput<bool>('childDirected');
+    this.clarificationPrompt =
+        registerOutput<BotClarificationPrompt?>('clarificationPrompt');
+    this.createVersion = registerOutput<bool?>('createVersion');
+    this.createdDate = registerOutput<String>('createdDate');
+    this.description = registerOutput<String?>('description');
+    this.detectSentiment = registerOutput<bool?>('detectSentiment');
+    this.enableModelImprovements =
+        registerOutput<bool?>('enableModelImprovements');
+    this.failureReason = registerOutput<String>('failureReason');
+    this.idleSessionTtlInSeconds =
+        registerOutput<int?>('idleSessionTtlInSeconds');
+    this.intents = registerOutput<List<BotIntent>>('intents');
+    this.lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+    this.locale = registerOutput<String?>('locale');
+    this.name = registerOutput<String>('name');
+    this.nluIntentConfidenceThreshold =
+        registerOutput<double?>('nluIntentConfidenceThreshold');
+    this.processBehavior = registerOutput<String?>('processBehavior');
+    this.region = registerOutput<String>('region');
+    this.status = registerOutput<String>('status');
+    this.version = registerOutput<String>('version');
+    this.voiceId = registerOutput<String>('voiceId');
   }
 }

@@ -518,14 +518,14 @@ class Occurence extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.attestation = Output.createUnknown<OccurenceAttestation>();
-    this.createTime = Output.createUnknown<String>();
-    this.kind = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.noteName = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.remediation = Output.createUnknown<String?>();
-    this.resourceUri = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.attestation = registerOutput<OccurenceAttestation>('attestation');
+    this.createTime = registerOutput<String>('createTime');
+    this.kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    this.noteName = registerOutput<String>('noteName');
+    this.project = registerOutput<String>('project');
+    this.remediation = registerOutput<String?>('remediation');
+    this.resourceUri = registerOutput<String>('resourceUri');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

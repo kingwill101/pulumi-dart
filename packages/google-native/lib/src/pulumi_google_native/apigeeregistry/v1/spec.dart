@@ -62,24 +62,24 @@ class Spec extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.annotations = Output.createUnknown<Map<String, String>>();
-    this.apiId = Output.createUnknown<String>();
-    this.apiSpecId = Output.createUnknown<String>();
-    this.contents = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.filename = Output.createUnknown<String>();
-    this.hash = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.location = Output.createUnknown<String>();
-    this.mimeType = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.revisionCreateTime = Output.createUnknown<String>();
-    this.revisionId = Output.createUnknown<String>();
-    this.revisionUpdateTime = Output.createUnknown<String>();
-    this.sizeBytes = Output.createUnknown<int>();
-    this.sourceUri = Output.createUnknown<String>();
-    this.versionId = Output.createUnknown<String>();
+    this.annotations = registerOutput<Map<String, String>>('annotations');
+    this.apiId = registerOutput<String>('apiId');
+    this.apiSpecId = registerOutput<String>('apiSpecId');
+    this.contents = registerOutput<String>('contents');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.filename = registerOutput<String>('filename');
+    this.hash = registerOutput<String>('hash');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.location = registerOutput<String>('location');
+    this.mimeType = registerOutput<String>('mimeType');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    this.revisionId = registerOutput<String>('revisionId');
+    this.revisionUpdateTime = registerOutput<String>('revisionUpdateTime');
+    this.sizeBytes = registerOutput<int>('sizeBytes');
+    this.sourceUri = registerOutput<String>('sourceUri');
+    this.versionId = registerOutput<String>('versionId');
   }
 }

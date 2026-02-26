@@ -35,13 +35,14 @@ class OrganizationRole extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.deleted = Output.createUnknown<bool>();
-    this.description = Output.createUnknown<String>();
-    this.etag = Output.createUnknown<String>();
-    this.includedPermissions = Output.createUnknown<List<String>>();
-    this.name = Output.createUnknown<String>();
-    this.organizationId = Output.createUnknown<String>();
-    this.stage = Output.createUnknown<String>();
-    this.title = Output.createUnknown<String>();
+    this.deleted = registerOutput<bool>('deleted');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.includedPermissions =
+        registerOutput<List<String>>('includedPermissions');
+    this.name = registerOutput<String>('name');
+    this.organizationId = registerOutput<String>('organizationId');
+    this.stage = registerOutput<String>('stage');
+    this.title = registerOutput<String>('title');
   }
 }

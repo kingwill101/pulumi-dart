@@ -34,10 +34,11 @@ class IdentityPoolRoleAttachment extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.identityPoolId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.identityPoolId = registerOutput<String>('identityPoolId');
+    this.region = registerOutput<String>('region');
     this.roleMappings =
-        Output.createUnknown<List<IdentityPoolRoleAttachmentRoleMapping>?>();
-    this.roles = Output.createUnknown<Map<String, String>>();
+        registerOutput<List<IdentityPoolRoleAttachmentRoleMapping>?>(
+            'roleMappings');
+    this.roles = registerOutput<Map<String, String>>('roles');
   }
 }

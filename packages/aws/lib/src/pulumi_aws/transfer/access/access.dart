@@ -295,15 +295,16 @@ class Access extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.externalId = Output.createUnknown<String>();
-    this.homeDirectory = Output.createUnknown<String?>();
+    this.externalId = registerOutput<String>('externalId');
+    this.homeDirectory = registerOutput<String?>('homeDirectory');
     this.homeDirectoryMappings =
-        Output.createUnknown<List<AccessHomeDirectoryMapping>?>();
-    this.homeDirectoryType = Output.createUnknown<String?>();
-    this.policy = Output.createUnknown<String?>();
-    this.posixProfile = Output.createUnknown<AccessPosixProfile?>();
-    this.region = Output.createUnknown<String>();
-    this.role = Output.createUnknown<String?>();
-    this.serverId = Output.createUnknown<String>();
+        registerOutput<List<AccessHomeDirectoryMapping>?>(
+            'homeDirectoryMappings');
+    this.homeDirectoryType = registerOutput<String?>('homeDirectoryType');
+    this.policy = registerOutput<String?>('policy');
+    this.posixProfile = registerOutput<AccessPosixProfile?>('posixProfile');
+    this.region = registerOutput<String>('region');
+    this.role = registerOutput<String?>('role');
+    this.serverId = registerOutput<String>('serverId');
   }
 }

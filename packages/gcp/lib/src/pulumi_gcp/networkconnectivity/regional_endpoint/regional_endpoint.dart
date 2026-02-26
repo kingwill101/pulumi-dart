@@ -531,20 +531,21 @@ class RegionalEndpoint extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accessType = Output.createUnknown<String>();
-    this.address = Output.createUnknown<String>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.effectiveLabels = Output.createUnknown<Map<String, String>>();
-    this.labels = Output.createUnknown<Map<String, String>?>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.network = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.pscForwardingRule = Output.createUnknown<String>();
-    this.pulumiLabels = Output.createUnknown<Map<String, String>>();
-    this.subnetwork = Output.createUnknown<String>();
-    this.targetGoogleApi = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.accessType = registerOutput<String>('accessType');
+    this.address = registerOutput<String>('address');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels =
+        registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.project = registerOutput<String>('project');
+    this.pscForwardingRule = registerOutput<String>('pscForwardingRule');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.subnetwork = registerOutput<String>('subnetwork');
+    this.targetGoogleApi = registerOutput<String>('targetGoogleApi');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

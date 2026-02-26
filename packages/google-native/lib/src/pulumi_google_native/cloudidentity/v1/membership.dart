@@ -38,13 +38,14 @@ class Membership extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.deliverySetting = Output.createUnknown<String>();
-    this.groupId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.preferredMemberKey = Output.createUnknown<EntityKeyResponse>();
-    this.roles = Output.createUnknown<List<MembershipRoleResponse>>();
-    this.type = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+    this.createTime = registerOutput<String>('createTime');
+    this.deliverySetting = registerOutput<String>('deliverySetting');
+    this.groupId = registerOutput<String>('groupId');
+    this.name = registerOutput<String>('name');
+    this.preferredMemberKey =
+        registerOutput<EntityKeyResponse>('preferredMemberKey');
+    this.roles = registerOutput<List<MembershipRoleResponse>>('roles');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

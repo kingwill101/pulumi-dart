@@ -380,14 +380,15 @@ class ProjectFeed extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.assetNames = Output.createUnknown<List<String>?>();
-    this.assetTypes = Output.createUnknown<List<String>?>();
-    this.billingProject = Output.createUnknown<String?>();
-    this.condition = Output.createUnknown<ProjectFeedCondition?>();
-    this.contentType = Output.createUnknown<String?>();
-    this.feedId = Output.createUnknown<String>();
-    this.feedOutputConfig = Output.createUnknown<ProjectFeedFeedOutputConfig>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
+    this.assetNames = registerOutput<List<String>?>('assetNames');
+    this.assetTypes = registerOutput<List<String>?>('assetTypes');
+    this.billingProject = registerOutput<String?>('billingProject');
+    this.condition = registerOutput<ProjectFeedCondition?>('condition');
+    this.contentType = registerOutput<String?>('contentType');
+    this.feedId = registerOutput<String>('feedId');
+    this.feedOutputConfig =
+        registerOutput<ProjectFeedFeedOutputConfig>('feedOutputConfig');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
   }
 }

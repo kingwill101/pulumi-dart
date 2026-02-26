@@ -134,11 +134,11 @@ class GroupMembership3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.awsAccountId = Output.createUnknown<String>();
-    this.groupName = Output.createUnknown<String>();
-    this.memberName = Output.createUnknown<String>();
-    this.namespace = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.groupName = registerOutput<String>('groupName');
+    this.memberName = registerOutput<String>('memberName');
+    this.namespace = registerOutput<String?>('namespace');
+    this.region = registerOutput<String>('region');
   }
 }

@@ -188,18 +188,21 @@ class Organization extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.accounts = Output.createUnknown<List<OrganizationAccount>>();
-    this.arn = Output.createUnknown<String>();
-    this.awsServiceAccessPrincipals = Output.createUnknown<List<String>?>();
-    this.enabledPolicyTypes = Output.createUnknown<List<String>?>();
-    this.featureSet = Output.createUnknown<String?>();
-    this.masterAccountArn = Output.createUnknown<String>();
-    this.masterAccountEmail = Output.createUnknown<String>();
-    this.masterAccountId = Output.createUnknown<String>();
-    this.masterAccountName = Output.createUnknown<String>();
+    this.accounts = registerOutput<List<OrganizationAccount>>('accounts');
+    this.arn = registerOutput<String>('arn');
+    this.awsServiceAccessPrincipals =
+        registerOutput<List<String>?>('awsServiceAccessPrincipals');
+    this.enabledPolicyTypes =
+        registerOutput<List<String>?>('enabledPolicyTypes');
+    this.featureSet = registerOutput<String?>('featureSet');
+    this.masterAccountArn = registerOutput<String>('masterAccountArn');
+    this.masterAccountEmail = registerOutput<String>('masterAccountEmail');
+    this.masterAccountId = registerOutput<String>('masterAccountId');
+    this.masterAccountName = registerOutput<String>('masterAccountName');
     this.nonMasterAccounts =
-        Output.createUnknown<List<OrganizationNonMasterAccount>>();
-    this.returnOrganizationOnly = Output.createUnknown<bool?>();
-    this.roots = Output.createUnknown<List<OrganizationRoot>>();
+        registerOutput<List<OrganizationNonMasterAccount>>('nonMasterAccounts');
+    this.returnOrganizationOnly =
+        registerOutput<bool?>('returnOrganizationOnly');
+    this.roots = registerOutput<List<OrganizationRoot>>('roots');
   }
 }

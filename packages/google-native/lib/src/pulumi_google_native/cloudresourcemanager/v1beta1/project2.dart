@@ -38,13 +38,13 @@ class Project2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.createTime = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lifecycleState = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.parent = Output.createUnknown<ResourceIdResponse2>();
-    this.projectId = Output.createUnknown<String>();
-    this.projectNumber = Output.createUnknown<String>();
-    this.useLegacyStack = Output.createUnknown<bool?>();
+    this.createTime = registerOutput<String>('createTime');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lifecycleState = registerOutput<String>('lifecycleState');
+    this.name = registerOutput<String>('name');
+    this.parent = registerOutput<ResourceIdResponse2>('parent');
+    this.projectId = registerOutput<String>('projectId');
+    this.projectNumber = registerOutput<String>('projectNumber');
+    this.useLegacyStack = registerOutput<bool?>('useLegacyStack');
   }
 }

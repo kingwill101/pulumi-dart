@@ -39,14 +39,17 @@ class Glossary2 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.endTime = Output.createUnknown<String>();
-    this.entryCount = Output.createUnknown<int>();
-    this.inputConfig = Output.createUnknown<GlossaryInputConfigResponse2>();
-    this.languageCodesSet = Output.createUnknown<LanguageCodesSetResponse2>();
-    this.languagePair = Output.createUnknown<LanguageCodePairResponse2>();
-    this.location = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.submitTime = Output.createUnknown<String>();
+    this.endTime = registerOutput<String>('endTime');
+    this.entryCount = registerOutput<int>('entryCount');
+    this.inputConfig =
+        registerOutput<GlossaryInputConfigResponse2>('inputConfig');
+    this.languageCodesSet =
+        registerOutput<LanguageCodesSetResponse2>('languageCodesSet');
+    this.languagePair =
+        registerOutput<LanguageCodePairResponse2>('languagePair');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.submitTime = registerOutput<String>('submitTime');
   }
 }

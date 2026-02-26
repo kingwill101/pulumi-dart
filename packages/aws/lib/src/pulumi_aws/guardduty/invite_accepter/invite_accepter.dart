@@ -214,8 +214,8 @@ class InviteAccepter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.detectorId = Output.createUnknown<String>();
-    this.masterAccountId = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.detectorId = registerOutput<String>('detectorId');
+    this.masterAccountId = registerOutput<String>('masterAccountId');
+    this.region = registerOutput<String>('region');
   }
 }

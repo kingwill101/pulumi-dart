@@ -276,12 +276,12 @@ class HostedPrivateVirtualInterfaceAccepter extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.dxGatewayId = Output.createUnknown<String?>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.virtualInterfaceId = Output.createUnknown<String>();
-    this.vpnGatewayId = Output.createUnknown<String?>();
+    this.arn = registerOutput<String>('arn');
+    this.dxGatewayId = registerOutput<String?>('dxGatewayId');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.virtualInterfaceId = registerOutput<String>('virtualInterfaceId');
+    this.vpnGatewayId = registerOutput<String?>('vpnGatewayId');
   }
 }

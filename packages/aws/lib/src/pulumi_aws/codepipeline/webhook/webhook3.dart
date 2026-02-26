@@ -624,17 +624,18 @@ class Webhook3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.authentication = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.authentication = registerOutput<String>('authentication');
     this.authenticationConfiguration =
-        Output.createUnknown<WebhookAuthenticationConfiguration?>();
-    this.filters = Output.createUnknown<List<WebhookFilter>>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.targetAction = Output.createUnknown<String>();
-    this.targetPipeline = Output.createUnknown<String>();
-    this.url = Output.createUnknown<String>();
+        registerOutput<WebhookAuthenticationConfiguration?>(
+            'authenticationConfiguration');
+    this.filters = registerOutput<List<WebhookFilter>>('filters');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.targetAction = registerOutput<String>('targetAction');
+    this.targetPipeline = registerOutput<String>('targetPipeline');
+    this.url = registerOutput<String>('url');
   }
 }

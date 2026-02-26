@@ -134,10 +134,11 @@ class UserCustomPermission extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.awsAccountId = Output.createUnknown<String>();
-    this.customPermissionsName = Output.createUnknown<String>();
-    this.namespace = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.userName = Output.createUnknown<String>();
+    this.awsAccountId = registerOutput<String>('awsAccountId');
+    this.customPermissionsName =
+        registerOutput<String>('customPermissionsName');
+    this.namespace = registerOutput<String>('namespace');
+    this.region = registerOutput<String>('region');
+    this.userName = registerOutput<String>('userName');
   }
 }

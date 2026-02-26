@@ -162,15 +162,16 @@ class BotAlias extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.botName = Output.createUnknown<String>();
-    this.botVersion = Output.createUnknown<String>();
-    this.checksum = Output.createUnknown<String>();
-    this.conversationLogs = Output.createUnknown<BotAliasConversationLogs?>();
-    this.createdDate = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String?>();
-    this.lastUpdatedDate = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.botName = registerOutput<String>('botName');
+    this.botVersion = registerOutput<String>('botVersion');
+    this.checksum = registerOutput<String>('checksum');
+    this.conversationLogs =
+        registerOutput<BotAliasConversationLogs?>('conversationLogs');
+    this.createdDate = registerOutput<String>('createdDate');
+    this.description = registerOutput<String?>('description');
+    this.lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
   }
 }

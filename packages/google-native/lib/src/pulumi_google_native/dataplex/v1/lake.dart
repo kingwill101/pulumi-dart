@@ -60,22 +60,23 @@ class Lake extends CustomResource {
           options ?? CustomResourceOptions(),
         ) {
     this.assetStatus =
-        Output.createUnknown<GoogleCloudDataplexV1AssetStatusResponse>();
-    this.createTime = Output.createUnknown<String>();
-    this.description = Output.createUnknown<String>();
-    this.displayName = Output.createUnknown<String>();
-    this.labels = Output.createUnknown<Map<String, String>>();
-    this.lakeId = Output.createUnknown<String>();
-    this.location = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDataplexV1AssetStatusResponse>('assetStatus');
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String>('description');
+    this.displayName = registerOutput<String>('displayName');
+    this.labels = registerOutput<Map<String, String>>('labels');
+    this.lakeId = registerOutput<String>('lakeId');
+    this.location = registerOutput<String>('location');
     this.metastore =
-        Output.createUnknown<GoogleCloudDataplexV1LakeMetastoreResponse>();
-    this.metastoreStatus = Output.createUnknown<
-        GoogleCloudDataplexV1LakeMetastoreStatusResponse>();
-    this.name = Output.createUnknown<String>();
-    this.project = Output.createUnknown<String>();
-    this.serviceAccount = Output.createUnknown<String>();
-    this.state = Output.createUnknown<String>();
-    this.uid = Output.createUnknown<String>();
-    this.updateTime = Output.createUnknown<String>();
+        registerOutput<GoogleCloudDataplexV1LakeMetastoreResponse>('metastore');
+    this.metastoreStatus =
+        registerOutput<GoogleCloudDataplexV1LakeMetastoreStatusResponse>(
+            'metastoreStatus');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.state = registerOutput<String>('state');
+    this.uid = registerOutput<String>('uid');
+    this.updateTime = registerOutput<String>('updateTime');
   }
 }

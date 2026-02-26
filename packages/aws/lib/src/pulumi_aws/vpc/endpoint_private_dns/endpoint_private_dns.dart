@@ -131,8 +131,8 @@ class EndpointPrivateDns extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.privateDnsEnabled = Output.createUnknown<bool>();
-    this.region = Output.createUnknown<String>();
-    this.vpcEndpointId = Output.createUnknown<String>();
+    this.privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
+    this.region = registerOutput<String>('region');
+    this.vpcEndpointId = registerOutput<String>('vpcEndpointId');
   }
 }

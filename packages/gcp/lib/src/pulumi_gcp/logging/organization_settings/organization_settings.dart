@@ -255,12 +255,13 @@ class OrganizationSettings extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.disableDefaultSink = Output.createUnknown<bool>();
-    this.kmsKeyName = Output.createUnknown<String>();
-    this.kmsServiceAccountId = Output.createUnknown<String>();
-    this.loggingServiceAccountId = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.organization = Output.createUnknown<String>();
-    this.storageLocation = Output.createUnknown<String>();
+    this.disableDefaultSink = registerOutput<bool>('disableDefaultSink');
+    this.kmsKeyName = registerOutput<String>('kmsKeyName');
+    this.kmsServiceAccountId = registerOutput<String>('kmsServiceAccountId');
+    this.loggingServiceAccountId =
+        registerOutput<String>('loggingServiceAccountId');
+    this.name = registerOutput<String>('name');
+    this.organization = registerOutput<String>('organization');
+    this.storageLocation = registerOutput<String>('storageLocation');
   }
 }

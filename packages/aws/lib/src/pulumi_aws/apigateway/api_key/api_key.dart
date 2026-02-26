@@ -143,16 +143,16 @@ class ApiKey extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.arn = Output.createUnknown<String>();
-    this.createdDate = Output.createUnknown<String>();
-    this.customerId = Output.createUnknown<String?>();
-    this.description = Output.createUnknown<String>();
-    this.enabled = Output.createUnknown<bool?>();
-    this.lastUpdatedDate = Output.createUnknown<String>();
-    this.name = Output.createUnknown<String>();
-    this.region = Output.createUnknown<String>();
-    this.tags = Output.createUnknown<Map<String, String>?>();
-    this.tagsAll = Output.createUnknown<Map<String, String>>();
-    this.value = Output.createUnknown<String>();
+    this.arn = registerOutput<String>('arn');
+    this.createdDate = registerOutput<String>('createdDate');
+    this.customerId = registerOutput<String?>('customerId');
+    this.description = registerOutput<String>('description');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+    this.name = registerOutput<String>('name');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    this.value = registerOutput<String>('value');
   }
 }

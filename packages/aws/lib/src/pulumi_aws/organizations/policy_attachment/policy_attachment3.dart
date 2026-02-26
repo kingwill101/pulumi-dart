@@ -334,8 +334,8 @@ class PolicyAttachment3 extends CustomResource {
           Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? CustomResourceOptions(),
         ) {
-    this.policyId = Output.createUnknown<String>();
-    this.skipDestroy = Output.createUnknown<bool?>();
-    this.targetId = Output.createUnknown<String>();
+    this.policyId = registerOutput<String>('policyId');
+    this.skipDestroy = registerOutput<bool?>('skipDestroy');
+    this.targetId = registerOutput<String>('targetId');
   }
 }
