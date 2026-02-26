@@ -103,3 +103,13 @@ task test:mutation:coverage
 The mutation config is at `pulumi-dart/mutation-test.xml` and focuses on the
 runtime surface (`lib/src/deployment`, `lib/src/resource`, serialization,
 monitor/callback paths).
+
+Coverage ratchet baseline:
+
+- current baseline: `29.27%` line coverage
+- enforcement command: `task test:coverage:ratchet`
+- canonical artifact path (local + CI upload target): `pulumi-dart/coverage/lcov.info`
+
+Parity backlog inventory and resolved marker classification:
+
+- [`docs/pulumi-dart-parity-backlog.md`](docs/pulumi-dart-parity-backlog.md)

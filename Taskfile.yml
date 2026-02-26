@@ -15,6 +15,7 @@ vars:
   FORMAT_GENERATED: "true"
   STRICT_FORMAT: "false"
   COVERAGE_LCOV: ""
+  DART_COVERAGE_BASELINE: "29.27"
   DAY1_PROVIDERS: "gcp gcp-global-cloudrun google-native"
   ALL_PROVIDERS: "gcp gcp-global-cloudrun google-native aws awsx random"
 
@@ -59,6 +60,19 @@ tasks:
         mkdir -p coverage
         dart test --coverage-path=coverage/lcov.info --coverage-package='^pulumi$'
         echo "Coverage report: {{.PULUMI_DART_PATH}}/coverage/lcov.info"
+
+  test:coverage:ratchet:
+    desc: Enforce non-regression against the Dart coverage baseline
+    cmds:
+      - task: test:coverage
+      - |
+        set -eu
+        LCOV_PATH="{{.PULUMI_DART_PATH}}/coverage/lcov.info"
+        BASELINE="{{.DART_COVERAGE_BASELINE}}"
+        ACTUAL="$(awk -F: '/^LF:/{lf+=$2}/^LH:/{lh+=$2} END{if (lf==0) {print "0.00"} else {printf "%.2f", (100*lh/lf)}}' "${LCOV_PATH}")"
+        echo "Coverage baseline: ${BASELINE}%"
+        echo "Coverage actual:   ${ACTUAL}%"
+        awk -v actual="${ACTUAL}" -v baseline="${BASELINE}" 'BEGIN { exit(actual + 0 < baseline + 0) }'
 
   test:mutation:
     desc: Run mutation testing for pulumi-dart core runtime surface

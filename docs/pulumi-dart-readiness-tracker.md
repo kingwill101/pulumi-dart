@@ -237,6 +237,37 @@ Impact:
 
 - regressions/parity drift can hide in less-covered behavior
 
+## 7) Coverage and Mutation Baseline (Current)
+
+Status: **In Progress**
+
+Latest local baseline snapshot (2026-02-26):
+
+- `task test:coverage`: **PASS**
+  - artifact: `pulumi-dart/coverage/lcov.info`
+  - aggregate line coverage: `29.27%` (`LH=2470`, `LF=8438`)
+- `task test:mutation:dry:coverage`: **PASS (expected dry-run non-zero behavior handled by task)**
+  - mutants found: `896`
+  - not covered by tests: `256`
+  - report: `pulumi-dart/mutation-test-report/mutation-test-report.html`
+
+Current ratchet policy:
+
+- baseline enforcement command: `task test:coverage:ratchet`
+- baseline value: `29.27%` (non-regression floor)
+
+Priority mutation hotspots:
+
+1. `lib/src/deployment/deployment.dart` (173)
+2. `lib/src/callback_server.dart` (152)
+3. `lib/src/resource/resource.dart` (134)
+4. `lib/src/serializer.dart` (123)
+5. `lib/src/deserializer.dart` (89)
+
+Backlog/reference document:
+
+- `docs/pulumi-dart-parity-backlog.md`
+
 ## Reference Parity Targets (Upstream)
 
 Methods implemented upstream (Node/Python/Go) that Dart should match:

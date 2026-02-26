@@ -26,7 +26,9 @@ Coverage artifact policy:
 
 - canonical local/CI lcov path: `pulumi-dart/coverage/lcov.info`
 - regenerate with `task test:coverage` from repo root
+- enforce non-regression with `task test:coverage:ratchet`
 - use `task test:mutation:dry:coverage` to prioritize weakly tested runtime surface
+- current line coverage baseline: `29.27%`
 
 Run static analysis:
 
@@ -69,3 +71,11 @@ Optional coverage-guided run (faster mutation pass):
 ```bash
 task test:mutation COVERAGE_LCOV=/abs/path/to/lcov.info
 ```
+
+Current mutation dry-run hotspots (prioritized for test hardening):
+
+1. `lib/src/deployment/deployment.dart`
+2. `lib/src/callback_server.dart`
+3. `lib/src/resource/resource.dart`
+4. `lib/src/serializer.dart`
+5. `lib/src/deserializer.dart`
