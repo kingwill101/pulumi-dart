@@ -4,6 +4,7 @@
 library;
 
 export 'src/output.dart';
+export 'src/output_helpers.dart';
 export 'src/input.dart';
 export 'src/input_collections.dart';
 export 'src/input_union.dart';
