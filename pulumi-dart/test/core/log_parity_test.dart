@@ -5,6 +5,7 @@ import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
 import 'package:pulumi/src/log.dart' as runtime_log;
 import 'package:pulumi/src/pulumirpc/pulumi/engine.pb.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/engine.pbgrpc.dart';
+import 'package:pulumi/src/resource/dependency_resource.dart';
 import 'package:pulumi/src/settings.dart';
 import 'package:pulumi/src/store/store.dart' as runtime_store;
 import 'package:test/test.dart';
@@ -135,14 +136,32 @@ void main() {
         monitorAddr: null,
       );
 
-      await runtime_log.info('hello', streamId: 42, ephemeral: true);
+      final resource = DependencyResource(
+        'urn:pulumi:stack::project::pkg:index:Thing::example',
+      );
+      final resourceUrn = await resource.urn.getValue();
 
-      expect(service.requests, hasLength(1));
-      final request = service.requests.single;
-      expect(request.message, equals('hello'));
-      expect(request.severity, equals(LogSeverity.INFO));
-      expect(request.streamId, equals(42));
-      expect(request.ephemeral, isTrue);
+      await runtime_log.info('hello', streamId: 42, ephemeral: true);
+      await runtime_log.warn('warn', resource: resource);
+      await runtime_log.error('error', resource: resource);
+
+      expect(service.requests, hasLength(3));
+
+      final infoRequest = service.requests[0];
+      expect(infoRequest.message, equals('hello'));
+      expect(infoRequest.severity, equals(LogSeverity.INFO));
+      expect(infoRequest.streamId, equals(42));
+      expect(infoRequest.ephemeral, isTrue);
+
+      final warnRequest = service.requests[1];
+      expect(warnRequest.message, equals('warn'));
+      expect(warnRequest.severity, equals(LogSeverity.WARNING));
+      expect(warnRequest.urn, equals(resourceUrn));
+
+      final errorRequest = service.requests[2];
+      expect(errorRequest.message, equals('error'));
+      expect(errorRequest.severity, equals(LogSeverity.ERROR));
+      expect(errorRequest.urn, equals(resourceUrn));
     });
 
     test('log swallows engine RPC failures and preserves call ordering', () async {
