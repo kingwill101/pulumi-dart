@@ -143,5 +143,11 @@ void main() {
       expect(grpc.ephemeral, isTrue);
       expect(grpc.severity, isNotNull);
     });
+
+    test('LogException.toString includes wrapped error', () {
+      final exception = LogException(StateError('boom'));
+      expect(exception.toString(), contains('LogException:'));
+      expect(exception.toString(), contains('boom'));
+    });
   });
 }
