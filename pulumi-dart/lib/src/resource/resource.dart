@@ -476,7 +476,6 @@ ResourceOptions _copyResourceOptionsWithProvider(
     version: options.version,
     pluginDownloadURL: options.pluginDownloadURL,
     replacementTrigger: options.replacementTrigger,
-    replacementOptions: options.replacementOptions,
     resourceTransformations: options.resourceTransformations,
     resourceTransforms: options.resourceTransforms,
     hooks: options.hooks,

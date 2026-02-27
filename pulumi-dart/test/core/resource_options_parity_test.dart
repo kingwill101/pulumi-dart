@@ -73,40 +73,22 @@ void main() {
       expect(merged.protect, isTrue);
     });
 
-    test('replacement trigger precedence mirrors merge order', () {
+    test('replacementTrigger follows merge order', () {
       final merged = const ResourceOptions(
-        replacementOptions: ['legacy'],
         replacementTrigger: ['old'],
-      ).merge(const ResourceOptions(replacementOptions: ['new-legacy']));
+      ).merge(const ResourceOptions(replacementTrigger: ['new']));
 
-      expect(merged.effectiveReplacementTrigger, equals(['new-legacy']));
+      expect(merged.replacementTrigger, equals(['new']));
+      expect(merged.effectiveReplacementTrigger, equals(['new']));
     });
 
-    test(
-      'replacementTrigger beats replacementOptions when both are on right',
-      () {
-        final merged =
-            const ResourceOptions(replacementOptions: ['left-legacy']).merge(
-              const ResourceOptions(
-                replacementTrigger: ['right-trigger'],
-                replacementOptions: ['right-legacy'],
-              ),
-            );
+    test('later replacementTrigger overrides earlier replacementTrigger', () {
+      final merged = const ResourceOptions(replacementTrigger: ['base'])
+          .merge(const ResourceOptions(replacementTrigger: ['middle']))
+          .merge(const ResourceOptions(replacementTrigger: ['final']));
 
-        expect(merged.replacementTrigger, equals(['right-trigger']));
-        expect(merged.replacementOptions, equals(['right-legacy']));
-        expect(merged.effectiveReplacementTrigger, equals(['right-trigger']));
-      },
-    );
-
-    test('later replacementOptions override earlier replacementTrigger', () {
-      final merged = const ResourceOptions(replacementOptions: ['base-legacy'])
-          .merge(const ResourceOptions(replacementTrigger: ['middle-trigger']))
-          .merge(const ResourceOptions(replacementOptions: ['final-legacy']));
-
-      expect(merged.replacementTrigger, equals(['final-legacy']));
-      expect(merged.replacementOptions, equals(['final-legacy']));
-      expect(merged.effectiveReplacementTrigger, equals(['final-legacy']));
+      expect(merged.replacementTrigger, equals(['final']));
+      expect(merged.effectiveReplacementTrigger, equals(['final']));
     });
 
     test('provider and providers merge with later provider preferred', () {

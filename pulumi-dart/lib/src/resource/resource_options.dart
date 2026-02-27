@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use_from_same_package
-
 import 'package:pulumi/src/alias.dart';
 
 import 'provider_resource.dart';
@@ -31,8 +29,6 @@ class ResourceOptions {
   final String? version;
   final String? pluginDownloadURL;
   final dynamic replacementTrigger;
-  @Deprecated('Use replacementTrigger instead.')
-  final dynamic replacementOptions;
   final List<ResourceTransformation> resourceTransformations;
   final List<ResourceTransform> resourceTransforms;
   final ResourceHookBinding? hooks;
@@ -53,14 +49,12 @@ class ResourceOptions {
     this.version,
     this.pluginDownloadURL,
     this.replacementTrigger,
-    this.replacementOptions,
     this.resourceTransformations = const [],
     this.resourceTransforms = const [],
     this.hooks,
   }) : providers = providers ?? const [];
 
-  dynamic get effectiveReplacementTrigger =>
-      replacementTrigger ?? replacementOptions;
+  dynamic get effectiveReplacementTrigger => replacementTrigger;
 
   ResourceOptions merge(ResourceOptions? options) {
     if (options == null) return this;
@@ -94,12 +88,7 @@ class ResourceOptions {
       ignoreChanges: [...?ignoreChanges, ...?options.ignoreChanges],
       version: options.version ?? version,
       pluginDownloadURL: options.pluginDownloadURL ?? pluginDownloadURL,
-      replacementTrigger:
-          options.replacementTrigger ??
-          options.replacementOptions ??
-          replacementTrigger ??
-          replacementOptions,
-      replacementOptions: options.replacementOptions ?? replacementOptions,
+      replacementTrigger: options.replacementTrigger ?? replacementTrigger,
       hooks: mergeHooks(hooks, options.hooks),
     );
   }
@@ -161,7 +150,6 @@ ResourceOptions createComponentResourceOptionsCopy(ResourceOptions options) {
         : null,
     ignoreChanges: options.ignoreChanges,
     replacementTrigger: options.replacementTrigger,
-    replacementOptions: options.replacementOptions,
     hooks: options.hooks == null
         ? null
         : ResourceHookBinding(

@@ -59,7 +59,6 @@ class ComponentResourceOptions extends ResourceOptions {
     super.version,
     super.pluginDownloadURL,
     super.replacementTrigger,
-    super.replacementOptions,
     super.customTimeouts,
     super.deleteBeforeReplace,
     super.retainOnDelete,

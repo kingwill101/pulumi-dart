@@ -588,7 +588,6 @@ void main() {
         version: merged.version,
         pluginDownloadURL: merged.pluginDownloadURL,
         replacementTrigger: merged.replacementTrigger,
-        replacementOptions: merged.replacementOptions,
         transformations: merged.resourceTransformations,
         resourceTransforms: merged.resourceTransforms,
         hooks: merged.hooks,

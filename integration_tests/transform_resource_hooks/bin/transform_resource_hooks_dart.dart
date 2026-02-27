@@ -30,7 +30,7 @@ ResourceOptions appendAfterCreateHook(
     ignoreChanges: options.ignoreChanges,
     version: options.version,
     pluginDownloadURL: options.pluginDownloadURL,
-    replacementOptions: options.replacementOptions,
+    replacementTrigger: options.replacementTrigger,
     resourceTransformations: options.resourceTransformations,
     resourceTransforms: options.resourceTransforms,
     hooks: hooks.copyWith(afterCreate: [...hooks.afterCreate, hook]),
