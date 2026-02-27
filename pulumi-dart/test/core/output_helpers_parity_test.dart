@@ -32,6 +32,22 @@ void main() {
       expect(data.value, isNull);
     });
 
+    test('output resolves futures recursively', () async {
+      final value = output(Future.value(Output.create('future-value')));
+      final data = await value.getData();
+
+      expect(data.isKnown, isTrue);
+      expect(data.value, equals('future-value'));
+    });
+
+    test('output iterable becomes unknown when any item is unknown', () async {
+      final value = output([1, Output.createUnknown<int>(), 3]);
+      final data = await value.getData();
+
+      expect(data.isKnown, isFalse);
+      expect(data.value, isNull);
+    });
+
     test('secret and unsecret preserve value and knownness', () async {
       final wrapped = secret({'a': 1});
       final wrappedData = await wrapped.getData();
@@ -87,6 +103,17 @@ void main() {
       expect(data.isKnown, isTrue);
       expect(data.isSecret, isTrue);
       expect(data.resources, equals({dep}));
+    });
+
+    test('deferredOutput propagates source errors', () async {
+      final source = Output<String>(
+        Future<OutputData<String>>.error(StateError('boom')),
+      );
+
+      final (result, resolve) = deferredOutput<String>();
+      resolve(source);
+
+      await expectLater(result.getData(), throwsStateError);
     });
   });
 }
