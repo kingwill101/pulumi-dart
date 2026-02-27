@@ -10,7 +10,7 @@ class RandomShuffleArgs {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   final Input<Map<String, String>>? keepers;
 
-  /// The number of results to return. Defaults to the number of items in the <span pulumi-lang-nodejs="`input`" pulumi-lang-dotnet="`Input`" pulumi-lang-go="`input`" pulumi-lang-python="`input`" pulumi-lang-yaml="`input`" pulumi-lang-java="`input`">`input`</span> list. If fewer items are requested, some elements will be excluded from the result. If more items are requested, items will be repeated in the result but not more frequently than the number of items in the input list.
+  /// The number of results to return. Defaults to the number of items in the `input` list. If fewer items are requested, some elements will be excluded from the result. If more items are requested, items will be repeated in the result but not more frequently than the number of items in the input list.
   final Input<int>? resultCount;
 
   /// Arbitrary string with which to seed the random number generator, in order to produce less-volatile permutations of the list.

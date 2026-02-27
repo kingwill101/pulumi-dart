@@ -1,9 +1,9 @@
 import 'package:pulumi/pulumi.dart';
 import 'random_id_args.dart';
 
-/// The resource <span pulumi-lang-nodejs="`random.RandomId`" pulumi-lang-dotnet="`random.RandomId`" pulumi-lang-go="`RandomId`" pulumi-lang-python="`RandomId`" pulumi-lang-yaml="`random.RandomId`" pulumi-lang-java="`random.RandomId`">`random.RandomId`</span> generates random numbers that are intended to be
+/// The resource `random.RandomId` generates random numbers that are intended to be
 /// used as unique identifiers for other resources. If the output is considered
-/// sensitive, and should not be displayed in the CLI, use <span pulumi-lang-nodejs="`random.RandomBytes`" pulumi-lang-dotnet="`random.RandomBytes`" pulumi-lang-go="`RandomBytes`" pulumi-lang-python="`RandomBytes`" pulumi-lang-yaml="`random.RandomBytes`" pulumi-lang-java="`random.RandomBytes`">`random.RandomBytes`</span>
+/// sensitive, and should not be displayed in the CLI, use `random.RandomBytes`
 /// instead.
 ///
 /// This resource *does* use a cryptographic random number generator in order
@@ -12,176 +12,13 @@ import 'random_id_args.dart';
 /// type-4 UUID.
 ///
 /// This resource can be used in conjunction with resources that have
-/// the <span pulumi-lang-nodejs="`createBeforeDestroy`" pulumi-lang-dotnet="`CreateBeforeDestroy`" pulumi-lang-go="`createBeforeDestroy`" pulumi-lang-python="`create_before_destroy`" pulumi-lang-yaml="`createBeforeDestroy`" pulumi-lang-java="`createBeforeDestroy`">`create_before_destroy`</span> lifecycle flag set to avoid conflicts with
+/// the `create_before_destroy` lifecycle flag set to avoid conflicts with
 /// unique names during the brief period where both the old and new resources
 /// exist concurrently.
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
-/// import * as random from "@pulumi/random";
 ///
-/// // The following example shows how to generate a unique name for an AWS EC2
-/// // instance that changes each time a new AMI id is selected.
-/// const server = new random.RandomId("server", {
-/// keepers: {
-/// ami_id: amiId,
-/// },
-/// byteLength: 8,
-/// });
-/// const serverInstance = new aws.index.Instance("server", {
-/// tags: {
-/// name: `web-server ${server.hex}`,
-/// },
-/// ami: server.keepers?.amiId,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-/// import pulumi_random as random
-///
-/// # The following example shows how to generate a unique name for an AWS EC2
-/// # instance that changes each time a new AMI id is selected.
-/// server = random.RandomId("server",
-/// keepers={
-/// "ami_id": ami_id,
-/// },
-/// byte_length=8)
-/// server_instance = aws.index.Instance("server",
-/// tags={
-/// name: fweb-server {server.hex},
-/// },
-/// ami=server.keepers.ami_id)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-/// using Random = Pulumi.Random;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// // The following example shows how to generate a unique name for an AWS EC2
-/// // instance that changes each time a new AMI id is selected.
-/// var server = new Random.RandomId("server", new()
-/// {
-/// Keepers =
-/// {
-/// { "ami_id", amiId },
-/// },
-/// ByteLength = 8,
-/// });
-///
-/// var serverInstance = new Aws.Index.Instance("server", new()
-/// {
-/// Tags =
-/// {
-/// { "name", $"web-server {server.Hex}" },
-/// },
-/// Ami = server.Keepers?.AmiId,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "fmt"
-///
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
-/// "github.com/pulumi/pulumi-random/sdk/v4/go/random"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// // The following example shows how to generate a unique name for an AWS EC2
-/// // instance that changes each time a new AMI id is selected.
-/// server, err := random.NewRandomId(ctx, "server", &random.RandomIdArgs{
-/// Keepers: pulumi.StringMap{
-/// "ami_id": pulumi.Any(amiId),
-/// },
-/// ByteLength: pulumi.Int(8),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = aws.NewInstance(ctx, "server", &aws.InstanceArgs{
-/// Tags: map[string]interface{}{
-/// "name": pulumi.Sprintf("web-server %v", server.Hex),
-/// },
-/// Ami: server.Keepers.AmiId,
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.random.RandomId;
-/// import com.pulumi.random.RandomIdArgs;
-/// import com.pulumi.aws.Instance;
-/// import com.pulumi.aws.InstanceArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// // The following example shows how to generate a unique name for an AWS EC2
-/// // instance that changes each time a new AMI id is selected.
-/// var server = new RandomId("server", RandomIdArgs.builder()
-/// .keepers(Map.of("ami_id", amiId))
-/// .byteLength(8)
-/// .build());
-///
-/// var serverInstance = new Instance("serverInstance", InstanceArgs.builder()
-/// .tags(Map.of("name", String.format("web-server %s", server.hex())))
-/// .ami(server.keepers().amiId())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// # The following example shows how to generate a unique name for an AWS EC2
-/// # instance that changes each time a new AMI id is selected.
-/// server:
-/// type: random:RandomId
-/// properties:
-/// keepers:
-/// ami_id: ${amiId}
-/// byteLength: 8
-/// serverInstance:
-/// type: aws:Instance
-/// name: server
-/// properties:
-/// tags:
-/// name: web-server ${server.hex}
-/// ami: ${server.keepers.amiId}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
