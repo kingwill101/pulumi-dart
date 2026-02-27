@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Deployment.
 class DeploymentArgs {
   /// The name of the image to deploy to cloudrun
-  final Input<String> imageName;
+  final pulumi.Input<String> imageName;
 
   /// The project in which to create the cloudrun resources
-  final Input<String> projectId;
+  final pulumi.Input<String> projectId;
 
   /// The name of the cloudrun service
-  final Input<String> serviceName;
+  final pulumi.Input<String> serviceName;
 
   DeploymentArgs({
     required this.imageName,
@@ -29,9 +29,9 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      imageName: Input.asInput<String>(map['imageName']),
-      projectId: Input.asInput<String>(map['projectId']),
-      serviceName: Input.asInput<String>(map['serviceName']),
+      imageName: pulumi.Input.asInput<String>(map['imageName']),
+      projectId: pulumi.Input.asInput<String>(map['projectId']),
+      serviceName: pulumi.Input.asInput<String>(map['serviceName']),
     );
   }
 }
