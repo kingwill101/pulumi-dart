@@ -327,7 +327,7 @@ void main() {
     });
   });
 
-  group('create URN parity', () {
+  group('create URN', () {
     const stack = 'mystack';
     const project = 'myproject';
 

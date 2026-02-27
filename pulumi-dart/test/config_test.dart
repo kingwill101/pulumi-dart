@@ -92,7 +92,7 @@ void main() {
     });
   });
 
-  group('config api parity', () {
+  group('config api', () {
     late runtime_store.Store store;
     late Map<String, String> originalConfig;
 
@@ -153,73 +153,67 @@ void main() {
       );
     });
 
-    test(
-      'object and string validation constraints follow parity semantics',
-      () {
-        runtime_store.setAllConfig({
-          'pkg:array': '[0, false, 2, "foo"]',
-          'pkg:struct': '{"foo":"bar","mim":[]}',
-          'pkg:color': 'orange',
-          'pkg:strlen': 'abcdefgh',
-          'pkg:pattern': 'aBcDeFgH',
-          'pkg:invalidJson': '{bad',
-        });
+    test('object and string validation constraints follow semantics', () {
+      runtime_store.setAllConfig({
+        'pkg:array': '[0, false, 2, "foo"]',
+        'pkg:struct': '{"foo":"bar","mim":[]}',
+        'pkg:color': 'orange',
+        'pkg:strlen': 'abcdefgh',
+        'pkg:pattern': 'aBcDeFgH',
+        'pkg:invalidJson': '{bad',
+      });
 
-        final config = Config('pkg');
+      final config = Config('pkg');
 
-        expect(
-          config.getObject<List<dynamic>>('array'),
-          equals([0, false, 2, 'foo']),
-        );
-        expect(
-          config.requireObject<Map<String, dynamic>>('struct'),
-          equals({'foo': 'bar', 'mim': []}),
-        );
-        expect(config.getObject<Object?>('missing'), isNull);
-        expect(
-          () => config.getObject<Object?>('invalidJson'),
-          throwsA(isA<ConfigException>()),
-        );
+      expect(
+        config.getObject<List<dynamic>>('array'),
+        equals([0, false, 2, 'foo']),
+      );
+      expect(
+        config.requireObject<Map<String, dynamic>>('struct'),
+        equals({'foo': 'bar', 'mim': []}),
+      );
+      expect(config.getObject<Object?>('missing'), isNull);
+      expect(
+        () => config.getObject<Object?>('invalidJson'),
+        throwsA(isA<ConfigException>()),
+      );
 
-        expect(
-          config.get(
-            'color',
-            allowedValues: const ['purple', 'orange', 'blue'],
-          ),
-          equals('orange'),
-        );
-        expect(
-          () => config.get('color', allowedValues: const ['purple', 'black']),
-          throwsA(isA<ConfigException>()),
-        );
+      expect(
+        config.get('color', allowedValues: const ['purple', 'orange', 'blue']),
+        equals('orange'),
+      );
+      expect(
+        () => config.get('color', allowedValues: const ['purple', 'black']),
+        throwsA(isA<ConfigException>()),
+      );
 
-        expect(
-          config.get('strlen', minLength: 8, maxLength: 8),
-          equals('abcdefgh'),
-        );
-        expect(
-          () => config.get('strlen', minLength: 9),
-          throwsA(isA<ConfigException>()),
-        );
-        expect(
-          () => config.get('strlen', maxLength: 7),
-          throwsA(isA<ConfigException>()),
-        );
+      expect(
+        config.get('strlen', minLength: 8, maxLength: 8),
+        equals('abcdefgh'),
+      );
+      expect(
+        () => config.get('strlen', minLength: 9),
+        throwsA(isA<ConfigException>()),
+      );
+      expect(
+        () => config.get('strlen', maxLength: 7),
+        throwsA(isA<ConfigException>()),
+      );
 
-        expect(
-          config.get('pattern', pattern: RegExp(r'^[a-zA-Z]*$')),
-          equals('aBcDeFgH'),
-        );
-        expect(
-          config.get('pattern', pattern: r'^[a-zA-Z]*$'),
-          equals('aBcDeFgH'),
-        );
-        expect(
-          () => config.get('pattern', pattern: RegExp(r'^[a-z]*$')),
-          throwsA(isA<ConfigException>()),
-        );
-      },
-    );
+      expect(
+        config.get('pattern', pattern: RegExp(r'^[a-zA-Z]*$')),
+        equals('aBcDeFgH'),
+      );
+      expect(
+        config.get('pattern', pattern: r'^[a-zA-Z]*$'),
+        equals('aBcDeFgH'),
+      );
+      expect(
+        () => config.get('pattern', pattern: RegExp(r'^[a-z]*$')),
+        throwsA(isA<ConfigException>()),
+      );
+    });
 
     test('default config name resolution and required typed getters', () {
       final store = runtime_store.getStore();

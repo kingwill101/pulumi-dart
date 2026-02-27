@@ -159,7 +159,7 @@ void main() {
       },
     );
 
-    test('Serialize unknown asset/archive type throws parity error', () async {
+    test('Serialize unknown asset/archive type throws error', () async {
       await expectLater(
         serializer.serializeAsync('test', _UnknownAssetOrArchive(), false),
         throwsA(
