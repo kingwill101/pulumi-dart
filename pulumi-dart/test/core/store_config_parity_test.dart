@@ -6,9 +6,20 @@ import 'package:test/test.dart';
 void main() {
   group('store config behavior', () {
     late Map<String, String> originalConfig;
+    late Map<String, List<ResourcePackage>> originalResourcePackages;
+    late Map<String, List<ResourceModule>> originalResourceModules;
+    late dynamic originalStackResource;
 
     setUp(() {
-      originalConfig = Map<String, String>.from(getGlobalStore().config);
+      final store = getGlobalStore();
+      originalConfig = Map<String, String>.from(store.config);
+      originalResourcePackages = Map<String, List<ResourcePackage>>.from(
+        store.resourcePackages,
+      );
+      originalResourceModules = Map<String, List<ResourceModule>>.from(
+        store.resourceModules,
+      );
+      originalStackResource = store.stackResource;
       setAllConfig({});
     });
 
@@ -17,6 +28,13 @@ void main() {
       store.config
         ..clear()
         ..addAll(originalConfig);
+      store.resourcePackages
+        ..clear()
+        ..addAll(originalResourcePackages);
+      store.resourceModules
+        ..clear()
+        ..addAll(originalResourceModules);
+      setStackResource(originalStackResource);
     });
 
     test('setAllConfig cleans namespaced config keys', () {
@@ -72,6 +90,46 @@ void main() {
       expect(decoded, isA<Map<String, dynamic>>());
       expect((decoded as Map<String, dynamic>)['pkg:a'], equals('1'));
       expect(decoded['pkg:b'], equals('2'));
+    });
+
+    test('store accessors use global maps and stack pointer consistently', () {
+      final store = getGlobalStore();
+      store.resourcePackages.clear();
+      store.resourceModules.clear();
+
+      final packages = getResourcePackages();
+      final modules = getResourceModules();
+
+      expect(identical(packages, store.resourcePackages), isTrue);
+      expect(identical(modules, store.resourceModules), isTrue);
+      expect(getStackResource(), isNull);
+
+      setStackResource(null);
+      expect(getStackResource(), isNull);
+    });
+
+    test('getStore resolves async-local store inside async context', () async {
+      final localStore = Store(
+        settings: Settings.fromEnvironment(),
+        config: {},
+        leakCandidates: {},
+        logErrorCount: 0,
+        supportsSecrets: false,
+        supportsResourceReferences: false,
+        supportsOutputValues: false,
+        supportsDeletedWith: false,
+        supportsAliasSpecs: false,
+        supportsTransforms: false,
+        supportsInvokeTransforms: false,
+        resourcePackages: {},
+        resourceModules: {},
+      );
+
+      expect(identical(getStore(), getGlobalStore()), isTrue);
+
+      await asyncLocalStorage.run(localStore, () async {
+        expect(identical(getStore(), localStore), isTrue);
+      });
     });
   });
 }
