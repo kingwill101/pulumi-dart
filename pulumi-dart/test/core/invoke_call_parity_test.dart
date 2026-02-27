@@ -160,6 +160,24 @@ void main() {
       expect(result, equals('alpha'));
     });
 
+    test('invoke returns null for Null return type', () async {
+      final result = await harness.invoke<Null>('test:index:get', {});
+      expect(result, isNull);
+    });
+
+    test(
+      'invoke defaults provider/version/plugin fields when options are unset',
+      () async {
+        await harness.invoke<Map<String, dynamic>>('test:index:getThing', {});
+
+        final request = monitor.capturedInvokeRequest;
+        expect(request, isNotNull);
+        expect(request!.provider, isEmpty);
+        expect(request.version, isEmpty);
+        expect(request.pluginDownloadURL, isEmpty);
+      },
+    );
+
     test('invokeSingle throws when monitor returns empty map', () async {
       monitor.invokePayload = const {};
 
@@ -333,6 +351,45 @@ void main() {
       expect(request, isNotNull);
       expect(request!.packageRef, equals('pkg-ref-xyz'));
     });
+
+    test('call returns null for Null return type', () async {
+      final result = await harness.callWithResult<Null>(
+        'test:index:Resource/method',
+        {},
+      );
+      expect(result, isNull);
+    });
+
+    test(
+      'call defaults provider/version/plugin fields when self and options are unset',
+      () async {
+        await harness.callWithResult<Map<String, dynamic>>(
+          'test:index:Resource/method',
+          {'arg': 'value'},
+        );
+
+        final request = monitor.capturedCallRequest;
+        expect(request, isNotNull);
+        expect(request!.provider, isEmpty);
+        expect(request.version, isEmpty);
+        expect(request.pluginDownloadURL, isEmpty);
+      },
+    );
+
+    test(
+      'call delegates to callWithResult for void/side-effect-only usage',
+      () async {
+        await harness.call('test:index:Resource/method', {'arg': 'value'});
+
+        final request = monitor.capturedCallRequest;
+        expect(request, isNotNull);
+        expect(request!.tok, equals('test:index:Resource/method'));
+        expect(
+          StructConverter.fromStruct(request.args),
+          containsPair('arg', 'value'),
+        );
+      },
+    );
 
     test('call surfaces registerPackage failure', () async {
       monitor.registerPackageError = StateError('register package failed');
