@@ -51,6 +51,29 @@ abstract class Deployment {
     );
   }
 
+  static Future<void> runOrThrow(
+    Function() func, {
+    String? organizationName,
+    String? projectName,
+    String? stackName,
+    bool? isDryRun,
+    monitorpkg.Monitor? monitor,
+    Engine? engine,
+  }) async {
+    final exitCode = await run(
+      func,
+      organizationName: organizationName,
+      projectName: projectName,
+      stackName: stackName,
+      isDryRun: isDryRun,
+      monitor: monitor,
+      engine: engine,
+    );
+    if (exitCode != 0) {
+      throw StateError('Pulumi program failed with exit code $exitCode');
+    }
+  }
+
   String get organizationName;
 
   String get projectName;

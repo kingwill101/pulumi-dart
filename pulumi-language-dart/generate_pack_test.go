@@ -763,7 +763,7 @@ func TestGeneratePackageWritesExampleMain(t *testing.T) {
 
 	assert.Contains(t, example, "import 'package:pulumi/pulumi.dart';")
 	assert.Contains(t, example, "import 'package:pulumi_sample/pulumi_sample.dart' as provider;")
-	assert.Contains(t, example, "await Deployment.run(() => ExampleStack());")
+	assert.Contains(t, example, "await Deployment.runOrThrow(() => ExampleStack());")
 	assert.Contains(t, example, "class ExampleStack extends Stack")
 }
 

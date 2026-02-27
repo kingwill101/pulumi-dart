@@ -4636,7 +4636,7 @@ class GeneratedStack extends Stack {
 }
 
 Future<void> main() async {
-  await Deployment.run(() => GeneratedStack());
+  await Deployment.runOrThrow(() => GeneratedStack());
 }
 `, sourceList))
 }
@@ -4655,7 +4655,7 @@ class ExampleStack extends Stack {
 }
 
 Future<void> main() async {
-  await Deployment.run(() => ExampleStack());
+  await Deployment.runOrThrow(() => ExampleStack());
 }
 `, packageName, packageName, packageName))
 }

@@ -150,10 +150,8 @@ func TestConfigMissingDart(t *testing.T) {
 	require.NoError(t, err)
 
 	stdout, stderr, err := e.GetCommandResults("pulumi", "up", "--skip-preview", "--yes")
+	require.Error(t, err)
 	assert.Contains(t, stdout+stderr, "Missing required configuration variable")
-	if err == nil {
-		t.Log("pulumi up returned success status; validated missing-config diagnostic output")
-	}
 }
 
 // Tests that accessing config secrets using non-secret APIs results in warnings being logged.

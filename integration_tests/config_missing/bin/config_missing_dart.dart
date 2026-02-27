@@ -1,7 +1,7 @@
 import 'package:pulumi/pulumi.dart';
 
 Future<void> main() async {
-  await DeploymentImpl.run(() {
+  await Deployment.runOrThrow(() {
     Config('config_missing_dart').require('notFound');
   });
 }
