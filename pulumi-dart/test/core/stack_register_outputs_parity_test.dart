@@ -1,5 +1,6 @@
 import 'package:mockito/mockito.dart';
 import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/src/constants.dart';
 import 'package:test/test.dart';
 
 import '../mocks/mocks.mocks.dart';
@@ -81,6 +82,46 @@ void main() {
 
         expect(capturedResource, same(stack));
         expect(outputsMap, contains('result'));
+      },
+    );
+
+    test(
+      'serializeOutputValue returns unknown sentinel for unknown outputs',
+      () async {
+        final stack = _EmptyStack();
+        final serialized = await stack.serializeOutputValue(
+          const OutputData<Object?>(
+            value: null,
+            isKnown: false,
+            isSecret: false,
+            resources: {},
+          ),
+        );
+
+        expect(serialized.stringValue, Constants.unknownValue);
+      },
+    );
+
+    test(
+      'serializeOutputValue wraps secret values in secret envelope',
+      () async {
+        final stack = _EmptyStack();
+        final serialized = await stack.serializeOutputValue(
+          const OutputData<Object?>(
+            value: 'secret-value',
+            isKnown: true,
+            isSecret: true,
+            resources: {},
+          ),
+        );
+
+        expect(serialized.hasStructValue(), isTrue);
+        final fields = serialized.structValue.fields;
+        expect(
+          fields[Constants.specialSigKey]!.stringValue,
+          Constants.specialSecretSig,
+        );
+        expect(fields[Constants.valueName]!.stringValue, 'secret-value');
       },
     );
   });

@@ -22,7 +22,9 @@ void main() {
         name: 'pulumi-aws',
         version: '6.0.0',
         downloadUrl: 'https://example.test/plugins/aws.tgz',
-        checksums: {'sha256': [1, 2, 3]},
+        checksums: {
+          'sha256': [1, 2, 3],
+        },
       );
 
       final proto = request.toProto();
