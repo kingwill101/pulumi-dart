@@ -6,8 +6,8 @@ class AsyncLocalStorage<T> {
   final String _key;
 
   AsyncLocalStorage()
-      : _zone = Zone.current,
-        _key = '_asyncLocalStorage_${DateTime.now().microsecondsSinceEpoch}';
+    : _zone = Zone.current,
+      _key = '_asyncLocalStorage_${DateTime.now().microsecondsSinceEpoch}';
 
   T? getStore() => Zone.current[_key] as T?;
 

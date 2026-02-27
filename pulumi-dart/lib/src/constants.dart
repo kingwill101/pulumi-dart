@@ -16,7 +16,8 @@ class Constants {
   static const String specialArchiveSig = '0def7320c3a5731c473e5ecbe6d01bc7';
   static const String specialSecretSig = '1b47061264138c4ac30d75fd1eb44270';
   static const String specialResourceSig = '5cf8f73096256a8f31e491e813e4eb8e';
-  static const String specialOutputValueSig = 'd0e6a833031e9bbcd3f4e8bde6ca49a4';
+  static const String specialOutputValueSig =
+      'd0e6a833031e9bbcd3f4e8bde6ca49a4';
 
   static const String secretName = 'secret';
   static const String valueName = 'value';

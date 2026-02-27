@@ -4,7 +4,6 @@ import 'package:grpc/grpc.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/engine.pbgrpc.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart';
 import 'package:pulumi/src/resource/component_resource.dart';
-import 'package:pulumi/src/store/store.dart';
 import 'package:path/path.dart' as path;
 
 import 'callback_server.dart';

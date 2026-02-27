@@ -4,8 +4,8 @@ import '../input.dart';
 import 'resource.dart';
 import 'resource_options.dart';
 
-typedef ResourceTransformation = ResourceTransformationResult? Function(
-    ResourceTransformationArgs args);
+typedef ResourceTransformation =
+    ResourceTransformationResult? Function(ResourceTransformationArgs args);
 
 class ResourceTransformationArgs {
   final Resource resource;
@@ -26,9 +26,11 @@ class ResourceTransformationResult {
 /// Resource constructor and can optionally return modified values. The new values will be used in place
 /// of the original arguments and options when creating the resource. If the transform returns null,
 /// it indicates that the resource will not be transformed.
-typedef ResourceTransform = Future<ResourceTransformResult?> Function(
-    ResourceTransformArgs args,
-    [CancellationToken? cancellationToken]);
+typedef ResourceTransform =
+    Future<ResourceTransformResult?> Function(
+      ResourceTransformArgs args, [
+      CancellationToken? cancellationToken,
+    ]);
 
 class ResourceTransformArgs {
   /// The name of the resource being transformed.
@@ -47,7 +49,12 @@ class ResourceTransformArgs {
   final ResourceOptions options;
 
   ResourceTransformArgs(
-      this.name, this.type, this.custom, this.args, this.options);
+    this.name,
+    this.type,
+    this.custom,
+    this.args,
+    this.options,
+  );
 }
 
 class ResourceTransformResult {

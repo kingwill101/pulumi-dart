@@ -37,8 +37,8 @@ class StackReference extends CustomResource {
          options ?? CustomResourceOptions(),
        ) {
     this.name = registerOutput<String>('name');
-    this.outputs = registerOutput<Map<String, dynamic>>('outputs');
-    this.secretOutputNames = registerOutput<List<String>?>('secretOutputNames');
+    outputs = registerOutput<Map<String, dynamic>>('outputs');
+    secretOutputNames = registerOutput<List<String>?>('secretOutputNames');
   }
 
   Output<dynamic> getOutput(Input<String> outputName) {

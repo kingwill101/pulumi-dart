@@ -23,7 +23,8 @@ class Base64Asset extends Asset {
 
 abstract class Archive implements AssetOrArchive {
   static Archive fromPath(String path) => FileArchive(path);
-  static Archive fromAssets(Map<String, AssetOrArchive> assets) => AssetArchive(assets);
+  static Archive fromAssets(Map<String, AssetOrArchive> assets) =>
+      AssetArchive(assets);
 }
 
 class FileArchive extends Archive {

@@ -53,16 +53,20 @@ abstract class InputArgs {
         var data = await value.getData();
         return serialize(data.value);
       } else {
-        throw ArgumentError('Unsupported type for JSON serialization: ${value.runtimeType}');
+        throw ArgumentError(
+          'Unsupported type for JSON serialization: ${value.runtimeType}',
+        );
       }
     }
 
     if (input is Input) {
       var output = input.toOutput();
-      return Input.fromOutput(output.apply((value) async {
-        var serialized = await serialize(value);
-        return jsonEncode(serialized);
-      }));
+      return Input.fromOutput(
+        output.apply((value) async {
+          var serialized = await serialize(value);
+          return jsonEncode(serialized);
+        }),
+      );
     } else {
       var serialized = await serialize(input);
       return Input.fromValue(jsonEncode(serialized));
@@ -84,6 +88,9 @@ class InputInfoArg {
   final bool isRequired;
   final bool json;
 
-  const InputInfoArg(
-      {required this.name, this.isRequired = false, this.json = false});
+  const InputInfoArg({
+    required this.name,
+    this.isRequired = false,
+    this.json = false,
+  });
 }
