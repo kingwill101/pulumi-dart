@@ -28,6 +28,15 @@ void main() {
       await expectLater(resolved.getData(), throwsA(isA<StateError>()));
     });
 
+    test('apply resolves future callback values', () async {
+      final outer = createOutputData(value: 1, isKnown: true);
+      final resolved = outer.apply((_) => Future<String>.value('later'));
+      final data = await resolved.getData();
+
+      expect(data.isKnown, isTrue);
+      expect(data.value, equals('later'));
+    });
+
     test('Output.all unions resources and secret bit', () async {
       final res1 = DependencyResource('urn:pulumi:dev::proj::pkg:type::r1');
       final res2 = DependencyResource('urn:pulumi:dev::proj::pkg:type::r2');
@@ -58,6 +67,11 @@ void main() {
       final data = await all.getData();
       expect(data.isKnown, isFalse);
       expect(data.value, isNull);
+    });
+
+    test('getValue returns provided whenUnknown fallback', () async {
+      final unknown = createOutputData<String?>(value: null, isKnown: false);
+      expect(await unknown.getValue(whenUnknown: 'fallback'), equals('fallback'));
     });
 
     test('apply keeps inner value when inner output is unknown', () async {
@@ -179,6 +193,24 @@ void main() {
       expect(data.isKnown, isFalse);
       expect(data.isSecret, isFalse);
       expect(data.value, isNull);
+      expect(data.resources, equals({dep}));
+    });
+
+    test('isSecretAsync reflects current secret bit', () async {
+      final plain = createOutputData(value: 'v', isKnown: true, isSecret: false);
+      final secret = Output.createSecret(plain);
+
+      expect(await Output.isSecretAsync(plain), isFalse);
+      expect(await Output.isSecretAsync(secret), isTrue);
+    });
+
+    test('OutputData.create preserves all constructor fields', () {
+      final dep = DependencyResource('urn:pulumi:dev::proj::pkg:type::dep');
+      final data = OutputData.create<String>({dep}, 'value', true, true);
+
+      expect(data.value, equals('value'));
+      expect(data.isKnown, isTrue);
+      expect(data.isSecret, isTrue);
       expect(data.resources, equals({dep}));
     });
   });
