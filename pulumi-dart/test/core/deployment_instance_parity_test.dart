@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:grpc/grpc.dart';
+import 'package:mockito/mockito.dart';
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
+import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 import 'package:pulumi/pulumi.dart';
 import 'package:pulumi/src/deployment/deployment.dart' as deployment_src;
 import 'package:pulumi/src/monitor.dart' as monitorpkg;
@@ -28,6 +30,8 @@ import '../mocks/mocks.mocks.dart';
 
 class _CountingMonitor implements monitorpkg.Monitor {
   int registerResourceOutputsCalls = 0;
+  RegisterResourceOutputsRequest? lastRegisterResourceOutputsRequest;
+  Object? registerResourceOutputsError;
 
   @override
   ResourceMonitorClient get client =>
@@ -78,6 +82,10 @@ class _CountingMonitor implements monitorpkg.Monitor {
     RegisterResourceOutputsRequest request,
   ) async {
     registerResourceOutputsCalls++;
+    lastRegisterResourceOutputsRequest = request;
+    if (registerResourceOutputsError != null) {
+      throw registerResourceOutputsError!;
+    }
     return Empty();
   }
 }
@@ -216,6 +224,89 @@ void main() {
       await deployment.registerOutputs();
       expect(monitor.registerResourceOutputsCalls, 0);
     });
+
+    test(
+      'registerResourceOutputs serializes known values and skips unknown non-stack outputs',
+      () async {
+        final stack = MockStack();
+        when(stack.serializeOutputValue(any)).thenAnswer((invocation) async {
+          final data = invocation.positionalArguments[0] as OutputData<dynamic>;
+          return Value()..stringValue = data.value?.toString() ?? '';
+        });
+        deployment.setStack(stack);
+
+        final resource = DependencyResource(
+          'urn:pulumi:stack::project::pkg:index:Thing::thing',
+        );
+        final outputs = Output.create(<String, dynamic>{
+          'known': Output.create('value'),
+          'unknown': Output.createUnknown<String>(),
+        });
+
+        await deployment.registerResourceOutputs(resource, outputs);
+
+        expect(monitor.registerResourceOutputsCalls, 1);
+        final request = monitor.lastRegisterResourceOutputsRequest;
+        expect(request, isNotNull);
+        expect(request!.urn, await resource.urn.getValue());
+        expect(request.outputs.fields.containsKey('known'), isTrue);
+        expect(request.outputs.fields['known']!.stringValue, 'value');
+        expect(request.outputs.fields.containsKey('unknown'), isFalse);
+      },
+    );
+
+    test(
+      'registerResourceOutputs logs unknown stack outputs and still registers request',
+      () async {
+        final stack = MockStack();
+        when(stack.serializeOutputValue(any)).thenAnswer((invocation) async {
+          final data = invocation.positionalArguments[0] as OutputData<dynamic>;
+          return Value()..stringValue = data.value?.toString() ?? '';
+        });
+        deployment.setStack(stack);
+
+        final stackResource = DependencyResource(
+          'urn:pulumi:stack::project::pulumi:pulumi:Stack::project-stack',
+        );
+        final outputs = Output.create(<String, dynamic>{
+          'pending': Output.createUnknown<String>(),
+        });
+
+        await deployment.registerResourceOutputs(stackResource, outputs);
+
+        expect(monitor.registerResourceOutputsCalls, 1);
+        final request = monitor.lastRegisterResourceOutputsRequest!;
+        expect(request.urn, await stackResource.urn.getValue());
+        expect(request.outputs.fields, isEmpty);
+      },
+    );
+
+    test(
+      'registerResourceOutputs rethrows monitor registration failures',
+      () async {
+        final stack = MockStack();
+        when(stack.serializeOutputValue(any)).thenAnswer((invocation) async {
+          final data = invocation.positionalArguments[0] as OutputData<dynamic>;
+          return Value()..stringValue = data.value?.toString() ?? '';
+        });
+        deployment.setStack(stack);
+        monitor.registerResourceOutputsError = StateError(
+          'register outputs failed',
+        );
+
+        final resource = DependencyResource(
+          'urn:pulumi:stack::project::pkg:index:Thing::thing',
+        );
+        final outputs = Output.create(<String, dynamic>{
+          'known': Output.create('value'),
+        });
+
+        await expectLater(
+          deployment.registerResourceOutputs(resource, outputs),
+          throwsStateError,
+        );
+      },
+    );
 
     test('collapseAliasToUrn rejects non-Alias values', () {
       expect(
