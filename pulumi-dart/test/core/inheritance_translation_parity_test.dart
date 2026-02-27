@@ -46,7 +46,7 @@ class _BaseResource extends CustomResource {
 class _SubclassResource extends _BaseResource {
   late final Output<String> combinedValues;
 
-  _SubclassResource(String name) : super(name) {
+  _SubclassResource(super.name) {
     combinedValues = Output.tuple(
       someValue,
       anotherValue,
@@ -57,7 +57,7 @@ class _SubclassResource extends _BaseResource {
 class _SubclassSubclassResource extends _SubclassResource {
   late final Output<String> newValue;
 
-  _SubclassSubclassResource(String name) : super(name) {
+  _SubclassSubclassResource(super.name) {
     newValue = combinedValues.apply((value) => '$value!');
   }
 }
@@ -76,7 +76,7 @@ class _LegacyBaseResource extends CustomResource {
 class _LegacySubclassResource extends _LegacyBaseResource {
   late final Output<String> combinedValues;
 
-  _LegacySubclassResource(String name) : super(name) {
+  _LegacySubclassResource(super.name) {
     combinedValues = Output.tuple(
       someValue,
       anotherValue,
@@ -87,7 +87,7 @@ class _LegacySubclassResource extends _LegacyBaseResource {
 class _LegacySubclassSubclassResource extends _LegacySubclassResource {
   late final Output<String> newValue;
 
-  _LegacySubclassSubclassResource(String name) : super(name) {
+  _LegacySubclassSubclassResource(super.name) {
     newValue = combinedValues.apply((value) => '$value!');
   }
 }

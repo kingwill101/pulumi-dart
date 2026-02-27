@@ -56,8 +56,7 @@ class _FakeCallbackServer implements ICallbackServer {
   @override
   Future<Callback> registerStackInvokeTransformAsync(
     InvokeTransform callback,
-  ) async =>
-      throw UnimplementedError();
+  ) async => throw UnimplementedError();
 
   @override
   void registerStackTransform(ResourceTransform callback) =>
@@ -264,7 +263,9 @@ void main() {
       final channel = ClientChannel(
         '127.0.0.1',
         port: 1,
-        options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
+        options: const ChannelOptions(
+          credentials: ChannelCredentials.insecure(),
+        ),
       );
       addTearDown(() async {
         await channel.shutdown();
@@ -286,36 +287,44 @@ void main() {
       expect(runtime.organization, equals('org'));
     });
 
-    test('setMockOptions defaults preview to existing runtime dry-run value', () {
-      final channel = ClientChannel(
-        '127.0.0.1',
-        port: 1,
-        options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
-      );
-      addTearDown(() async {
-        await channel.shutdown();
-      });
-      final monitor = ResourceMonitorClient(channel);
+    test(
+      'setMockOptions defaults preview to existing runtime dry-run value',
+      () {
+        final channel = ClientChannel(
+          '127.0.0.1',
+          port: 1,
+          options: const ChannelOptions(
+            credentials: ChannelCredentials.insecure(),
+          ),
+        );
+        addTearDown(() async {
+          await channel.shutdown();
+        });
+        final monitor = ResourceMonitorClient(channel);
 
-      runtime.resetOptions(
-        project: 'proj',
-        stack: 'dev',
-        preview: true,
-        organization: 'org',
-      );
-      runtime.setMockOptions(monitor);
+        runtime.resetOptions(
+          project: 'proj',
+          stack: 'dev',
+          preview: true,
+          organization: 'org',
+        );
+        runtime.setMockOptions(monitor);
 
-      expect(runtime.isDryRun, isTrue);
-    });
+        expect(runtime.isDryRun, isTrue);
+      },
+    );
 
-    test('awaitStackRegistrations delegates to callbacks when present', () async {
-      final callbacks = _FakeCallbackServer();
-      runtime.callbacks = callbacks;
+    test(
+      'awaitStackRegistrations delegates to callbacks when present',
+      () async {
+        final callbacks = _FakeCallbackServer();
+        runtime.callbacks = callbacks;
 
-      await runtime.awaitStackRegistrations();
+        await runtime.awaitStackRegistrations();
 
-      expect(callbacks.awaitCalled, isTrue);
-    });
+        expect(callbacks.awaitCalled, isTrue);
+      },
+    );
 
     test('terminateRpcs clears keep-alive and callbacks state', () async {
       final callbacks = _FakeCallbackServer();

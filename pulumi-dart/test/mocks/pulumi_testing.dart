@@ -38,7 +38,9 @@ class TestDeployment {
   }
 
   static Future<void> _simulateDeployment(
-      Stack stack, MockMonitor monitor) async {
+    Stack stack,
+    MockMonitor monitor,
+  ) async {
     // Simulate the deployment process
     // This is a simplified version and may need to be expanded based on your exact requirements
     // await stack.initialize();

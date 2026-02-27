@@ -180,11 +180,10 @@ void main() {
     test(
       'registerResourceTransform registers callback and caches feature check',
       () async {
-        final transform =
-            (
-              ResourceTransformArgs args, [
-              CancellationToken? cancellationToken,
-            ]) async => null;
+        Future<Null> transform(
+          ResourceTransformArgs args, [
+          CancellationToken? cancellationToken,
+        ]) async => null;
 
         await deployment.registerResourceTransform(transform);
         await deployment.registerResourceTransform(transform);
@@ -204,7 +203,7 @@ void main() {
     test(
       'registerInvokeTransform registers callback and caches feature check',
       () async {
-        final transform = (InvokeTransformArgs args) async => null;
+        Future<Null> transform(InvokeTransformArgs args) async => null;
 
         await deployment.registerInvokeTransform(transform);
         await deployment.registerInvokeTransform(transform);

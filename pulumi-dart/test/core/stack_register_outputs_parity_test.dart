@@ -78,12 +78,11 @@ void main() {
     });
 
     test('stack options propagate legacy and modern transform callbacks', () {
-      final legacy = (ResourceTransformationArgs args) => null;
-      final modern =
-          (
-            ResourceTransformArgs args, [
-            CancellationToken? cancellationToken,
-          ]) async => null;
+      Null legacy(ResourceTransformationArgs args) => null;
+      Future<Null> modern(
+        ResourceTransformArgs args, [
+        CancellationToken? cancellationToken,
+      ]) async => null;
 
       final stack = _StackWithTransforms(legacy, modern);
 

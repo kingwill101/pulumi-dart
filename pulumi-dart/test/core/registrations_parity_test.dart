@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart';
-import 'package:pulumi/src/input.dart';
 import 'package:pulumi/src/resource/registry.dart';
 import 'package:test/test.dart';
 

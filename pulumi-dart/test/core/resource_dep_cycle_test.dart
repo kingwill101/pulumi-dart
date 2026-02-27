@@ -102,32 +102,35 @@ void main() {
       );
     });
 
-    test('parent resource may also appear in dependsOn without hanging', () async {
-      final parent = ComponentResource(
-        'pkg:index:first',
-        'first',
-        {},
-        ComponentResourceOptions(),
-      );
-      final child = ComponentResource(
-        'pkg:index:second',
-        'second',
-        {},
-        ComponentResourceOptions(parent: parent, dependsOn: [parent]),
-      );
-      final resource = _CycleCustomResource(
-        name: 'myresource',
-        input1: Input.fromValue('ok'),
-        opts: CustomResourceOptions(parent: child),
-      );
+    test(
+      'parent resource may also appear in dependsOn without hanging',
+      () async {
+        final parent = ComponentResource(
+          'pkg:index:first',
+          'first',
+          {},
+          ComponentResourceOptions(),
+        );
+        final child = ComponentResource(
+          'pkg:index:second',
+          'second',
+          {},
+          ComponentResourceOptions(parent: parent, dependsOn: [parent]),
+        );
+        final resource = _CycleCustomResource(
+          name: 'myresource',
+          input1: Input.fromValue('ok'),
+          opts: CustomResourceOptions(parent: child),
+        );
 
-      await Future.wait(operations).timeout(const Duration(seconds: 2));
-      expect(
-        await resource.urn.getValue(),
-        equals(
-          'urn:pulumi:stack::project::python:test_resource_dep_cycle:MockResource::myresource',
-        ),
-      );
-    });
+        await Future.wait(operations).timeout(const Duration(seconds: 2));
+        expect(
+          await resource.urn.getValue(),
+          equals(
+            'urn:pulumi:stack::project::python:test_resource_dep_cycle:MockResource::myresource',
+          ),
+        );
+      },
+    );
   });
 }

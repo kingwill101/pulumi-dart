@@ -1,4 +1,3 @@
-import 'package:mockito/mockito.dart';
 import 'package:pulumi/src/input.dart';
 import 'package:pulumi/src/invoke.dart';
 import 'package:pulumi/src/resource/provider_resource.dart';

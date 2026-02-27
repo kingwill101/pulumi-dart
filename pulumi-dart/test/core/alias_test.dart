@@ -265,7 +265,9 @@ void main() {
         parentName: 'parent',
         project: defaultProject,
         stack: defaultStack,
-        parentAliases: [Input.fromValue('urn:pulumi:stack::project::pkg:type::parent')],
+        parentAliases: [
+          Input.fromValue('urn:pulumi:stack::project::pkg:type::parent'),
+        ],
       );
 
       await expectLater(
@@ -274,22 +276,25 @@ void main() {
       );
     });
 
-    test('collapseAliasToUrn rejects malformed parent URN separators', () async {
-      final alias = Alias(type: Input.fromValue(defaultType));
-      final malformedParent = DependencyResource('malformed-parent');
+    test(
+      'collapseAliasToUrn rejects malformed parent URN separators',
+      () async {
+        final alias = Alias(type: Input.fromValue(defaultType));
+        final malformedParent = DependencyResource('malformed-parent');
 
-      await expectLater(
-        collapseAliasToUrn(
-          alias,
-          name: defaultName,
-          type: 'defType',
-          parent: malformedParent,
-          project: defaultProject,
-          stack: defaultStack,
-        ).toOutput().getValue(),
-        throwsArgumentError,
-      );
-    });
+        await expectLater(
+          collapseAliasToUrn(
+            alias,
+            name: defaultName,
+            type: 'defType',
+            parent: malformedParent,
+            project: defaultProject,
+            stack: defaultStack,
+          ).toOutput().getValue(),
+          throwsArgumentError,
+        );
+      },
+    );
 
     test(
       'inheritedChildAlias keeps child name when no parent-name prefix',

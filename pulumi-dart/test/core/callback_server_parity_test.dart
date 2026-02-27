@@ -10,7 +10,6 @@ import 'package:pulumi/src/resource/custom_resource.dart';
 import 'package:pulumi/src/resource/dependency_resource.dart';
 import 'package:pulumi/src/resource/provider_resource.dart';
 import 'package:pulumi/src/resource/resource_options.dart';
-import 'package:pulumi/src/pulumirpc/pulumi/callback.pb.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/callback.pbgrpc.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/provider.pb.dart' as providerpb;
 import 'package:pulumi/src/pulumirpc/pulumi/alias.pb.dart' as aliaspb;

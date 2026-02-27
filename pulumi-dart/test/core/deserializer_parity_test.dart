@@ -15,7 +15,8 @@ void main() {
   group('deserializer parity', () {
     test('deserializes remote and string assets', () {
       final remoteAsset = _specialValue(Constants.specialAssetSig, {
-        Constants.assetOrArchiveUriName: Value()..stringValue = 'https://example.com/asset',
+        Constants.assetOrArchiveUriName: Value()
+          ..stringValue = 'https://example.com/asset',
       });
       final textAsset = _specialValue(Constants.specialAssetSig, {
         Constants.assetTextName: Value()..stringValue = 'hello',
@@ -25,21 +26,26 @@ void main() {
       final textData = Deserializer.deserialize<Asset>(textAsset);
 
       expect(remoteData.value, isA<RemoteAsset>());
-      expect((remoteData.value as RemoteAsset).url, equals('https://example.com/asset'));
+      expect(
+        (remoteData.value as RemoteAsset).url,
+        equals('https://example.com/asset'),
+      );
       expect(textData.value, isA<StringAsset>());
       expect((textData.value as StringAsset).content, equals('hello'));
     });
 
     test('deserializes remote archive and nested asset archive', () {
       final remoteArchive = _specialValue(Constants.specialArchiveSig, {
-        Constants.assetOrArchiveUriName: Value()..stringValue = 'https://example.com/archive.tgz',
+        Constants.assetOrArchiveUriName: Value()
+          ..stringValue = 'https://example.com/archive.tgz',
       });
 
       final nestedAssetArchive = _specialValue(Constants.specialArchiveSig, {
         Constants.archiveAssetsName: Value()
           ..structValue = (Struct()
             ..fields['inner'] = _specialValue(Constants.specialAssetSig, {
-              Constants.assetOrArchivePathName: Value()..stringValue = '/tmp/inner.txt',
+              Constants.assetOrArchivePathName: Value()
+                ..stringValue = '/tmp/inner.txt',
             })),
       });
 
@@ -47,7 +53,10 @@ void main() {
       final nestedData = Deserializer.deserialize<Archive>(nestedAssetArchive);
 
       expect(remoteData.value, isA<RemoteArchive>());
-      expect((remoteData.value as RemoteArchive).url, equals('https://example.com/archive.tgz'));
+      expect(
+        (remoteData.value as RemoteArchive).url,
+        equals('https://example.com/archive.tgz'),
+      );
 
       expect(nestedData.value, isA<AssetArchive>());
       final assets = (nestedData.value as AssetArchive).assets;
@@ -58,7 +67,8 @@ void main() {
     test('rejects invalid AssetArchive entries', () {
       final invalidArchive = _specialValue(Constants.specialArchiveSig, {
         Constants.archiveAssetsName: Value()
-          ..structValue = (Struct()..fields['bad'] = (Value()..stringValue = 'not-an-asset')),
+          ..structValue = (Struct()
+            ..fields['bad'] = (Value()..stringValue = 'not-an-asset')),
       });
 
       expect(

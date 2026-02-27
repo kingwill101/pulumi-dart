@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart';
-import 'package:pulumi/src/resource/dependency_resource.dart';
 import 'package:test/test.dart';
 
 void main() {

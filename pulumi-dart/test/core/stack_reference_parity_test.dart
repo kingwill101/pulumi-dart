@@ -128,13 +128,16 @@ void main() {
       },
     );
 
-    test('getOutputDetails returns plain value for non-secret outputs', () async {
-      final reference = StackReference('ref');
-      final details = await reference.getOutputDetails('normal');
+    test(
+      'getOutputDetails returns plain value for non-secret outputs',
+      () async {
+        final reference = StackReference('ref');
+        final details = await reference.getOutputDetails('normal');
 
-      expect(details.value, equals('plain'));
-      expect(details.secretValue, isNull);
-    });
+        expect(details.value, equals('plain'));
+        expect(details.secretValue, isNull);
+      },
+    );
 
     test('getValue and requireValue reject secret outputs', () async {
       final reference = StackReference('ref');
@@ -152,7 +155,10 @@ void main() {
     test('getValue and requireValue return non-secret outputs', () async {
       final reference = StackReference('ref');
 
-      expect(await reference.getValue(Input.fromValue('normal')), equals('plain'));
+      expect(
+        await reference.getValue(Input.fromValue('normal')),
+        equals('plain'),
+      );
       expect(
         await reference.requireValue(Input.fromValue('normal')),
         equals('plain'),
@@ -213,16 +219,22 @@ void main() {
       },
     );
 
-    test('StackReferenceArgs.name overrides constructor name mapping', () async {
-      final reference = StackReference(
-        'ref',
-        args: StackReferenceArgs(name: Input.fromValue('custom/stack/name')),
-      );
-      await reference.name.getValue();
+    test(
+      'StackReferenceArgs.name overrides constructor name mapping',
+      () async {
+        final reference = StackReference(
+          'ref',
+          args: StackReferenceArgs(name: Input.fromValue('custom/stack/name')),
+        );
+        await reference.name.getValue();
 
-      expect(capturedArgs, isNotNull);
-      final mappedName = capturedArgs!['name'] as Input<String>;
-      expect(await mappedName.toOutput().getValue(), equals('custom/stack/name'));
-    });
+        expect(capturedArgs, isNotNull);
+        final mappedName = capturedArgs!['name'] as Input<String>;
+        expect(
+          await mappedName.toOutput().getValue(),
+          equals('custom/stack/name'),
+        );
+      },
+    );
   });
 }

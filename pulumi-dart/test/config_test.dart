@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:pulumi/pulumi.dart';
-import 'package:pulumi/src/config.dart' show ConfigMixin;
 import 'package:pulumi/src/store/store.dart' as runtime_store;
 import 'package:test/test.dart';
 
@@ -158,8 +157,8 @@ void main() {
       'object and string validation constraints follow parity semantics',
       () {
         runtime_store.setAllConfig({
-          'pkg:array': '[0, false, 2, \"foo\"]',
-          'pkg:struct': '{\"foo\":\"bar\",\"mim\":[]}',
+          'pkg:array': '[0, false, 2, "foo"]',
+          'pkg:struct': '{"foo":"bar","mim":[]}',
           'pkg:color': 'orange',
           'pkg:strlen': 'abcdefgh',
           'pkg:pattern': 'aBcDeFgH',

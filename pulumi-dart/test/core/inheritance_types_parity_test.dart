@@ -44,7 +44,7 @@ class _TypedBaseResource extends CustomResource {
 class _TypedSubclassResource extends _TypedBaseResource {
   late final Output<String> combinedValues;
 
-  _TypedSubclassResource(String name) : super(name) {
+  _TypedSubclassResource(super.name) {
     combinedValues = foo.apply((value) => '${value['bar']} ${value['baz']}');
   }
 }

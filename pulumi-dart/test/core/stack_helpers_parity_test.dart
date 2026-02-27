@@ -1,12 +1,5 @@
 import 'package:pulumi/pulumi.dart';
 import 'package:pulumi/src/deployment/models.dart' as deployment_models;
-import 'package:pulumi/src/engine_logger.dart';
-import 'package:pulumi/src/input.dart';
-import 'package:pulumi/src/invoke.dart';
-import 'package:pulumi/src/output.dart';
-import 'package:pulumi/src/resource/resource.dart';
-import 'package:pulumi/src/resource/resource_options.dart';
-import 'package:pulumi/src/resource/resource_transformation.dart';
 import 'package:test/test.dart';
 
 class _RecordingDeployment extends Deployment {
@@ -132,11 +125,10 @@ void main() {
     });
 
     test('registerResourceTransform delegates to current deployment', () async {
-      final transform =
-          (
-            ResourceTransformArgs args, [
-            CancellationToken? cancellationToken,
-          ]) async => null;
+      Future<Null> transform(
+        ResourceTransformArgs args, [
+        CancellationToken? cancellationToken,
+      ]) async => null;
 
       await registerResourceTransform(transform);
 
@@ -145,7 +137,7 @@ void main() {
     });
 
     test('registerInvokeTransform delegates to current deployment', () async {
-      final transform = (InvokeTransformArgs args) async => null;
+      Future<Null> transform(InvokeTransformArgs args) async => null;
 
       await registerInvokeTransform(transform);
 

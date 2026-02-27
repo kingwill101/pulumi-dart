@@ -71,7 +71,10 @@ void main() {
 
     test('getValue returns provided whenUnknown fallback', () async {
       final unknown = createOutputData<String?>(value: null, isKnown: false);
-      expect(await unknown.getValue(whenUnknown: 'fallback'), equals('fallback'));
+      expect(
+        await unknown.getValue(whenUnknown: 'fallback'),
+        equals('fallback'),
+      );
     });
 
     test('apply keeps inner value when inner output is unknown', () async {
@@ -197,7 +200,11 @@ void main() {
     });
 
     test('isSecretAsync reflects current secret bit', () async {
-      final plain = createOutputData(value: 'v', isKnown: true, isSecret: false);
+      final plain = createOutputData(
+        value: 'v',
+        isKnown: true,
+        isSecret: false,
+      );
       final secret = Output.createSecret(plain);
 
       expect(await Output.isSecretAsync(plain), isFalse);
