@@ -225,8 +225,10 @@ tasks:
 
         echo "Generating Dart SDK for ${PACKAGE}..."
         PACKAGE_ADD_OUTPUT="$(cd "${PROJECT_DIR}" && pulumi package add "${SCHEMA_PATH}" 2>&1)"
-        printf '%s\n' "${PACKAGE_ADD_OUTPUT}"
-        if printf '%s\n' "${PACKAGE_ADD_OUTPUT}" | grep -q "reference to provider resource '/resources/pulumi:providers:"; then
+        PROVIDER_REF_WARNING_RE="reference to provider resource '/resources/pulumi:providers:.*' is deprecated, use '#/provider' instead;"
+        FILTERED_PACKAGE_ADD_OUTPUT="$(printf '%s\n' "${PACKAGE_ADD_OUTPUT}" | grep -Ev "${PROVIDER_REF_WARNING_RE}" || true)"
+        printf '%s\n' "${FILTERED_PACKAGE_ADD_OUTPUT}"
+        if printf '%s\n' "${PACKAGE_ADD_OUTPUT}" | grep -Eq "${PROVIDER_REF_WARNING_RE}"; then
           echo "Note: provider-resource deprecation warnings are currently emitted by upstream package-add schema processing and are non-blocking for Dart SDK generation." >&2
         fi
 
