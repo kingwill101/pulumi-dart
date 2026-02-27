@@ -123,24 +123,32 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
     }
     if (value is List && targetType.startsWith('List<')) {
       if (targetType.startsWith('List<String')) {
-        return value.map((entry) => entry.toString()).toList() as T;
+        return value
+                .map<String>((entry) => entry.toString())
+                .toList(growable: false)
+            as T;
       }
       if (targetType.startsWith('List<int')) {
         return value
-                .map((entry) => entry is num ? entry.toInt() : entry)
-                .toList()
+                .map<int>(
+                  (entry) => entry is num ? entry.toInt() : entry as int,
+                )
+                .toList(growable: false)
             as T;
       }
       if (targetType.startsWith('List<double')) {
         return value
-                .map((entry) => entry is num ? entry.toDouble() : entry)
-                .toList()
+                .map<double>(
+                  (entry) => entry is num ? entry.toDouble() : entry as double,
+                )
+                .toList(growable: false)
             as T;
       }
       if (targetType.startsWith('List<bool')) {
-        return value.map((entry) => entry as bool).toList() as T;
+        return value.map<bool>((entry) => entry as bool).toList(growable: false)
+            as T;
       }
-      return List<dynamic>.from(value) as T;
+      return List<Object?>.from(value) as T;
     }
 
     return value as T;

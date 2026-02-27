@@ -10,6 +10,12 @@ class _CompletionResource extends CustomResource {
   late final Output<String> arn;
   late final Output<int?> size;
   late final Output<String?> label;
+  late final Output<double?> ratio;
+  late final Output<bool?> enabled;
+  late final Output<List<String>?> tags;
+  late final Output<List<int>?> ports;
+  late final Output<List<double>?> weights;
+  late final Output<Map<String, dynamic>?> metadata;
 
   _CompletionResource(String name)
     : super(
@@ -21,6 +27,12 @@ class _CompletionResource extends CustomResource {
     arn = registerOutput<String>('arn');
     size = registerOutput<int?>('size');
     label = registerOutput<String?>('label');
+    ratio = registerOutput<double?>('ratio');
+    enabled = registerOutput<bool?>('enabled');
+    tags = registerOutput<List<String>?>('tags');
+    ports = registerOutput<List<int>?>('ports');
+    weights = registerOutput<List<double>?>('weights');
+    metadata = registerOutput<Map<String, dynamic>?>('metadata');
   }
 }
 
@@ -56,7 +68,30 @@ void main() {
         final responseObject = Struct()
           ..fields['arn'] = (Value()..stringValue = 'arn:sample:123')
           ..fields['size'] = (Value()..numberValue = 7)
-          ..fields['label'] = (Value()..structValue = secretLabel);
+          ..fields['label'] = (Value()..structValue = secretLabel)
+          ..fields['ratio'] = (Value()..numberValue = 3.5)
+          ..fields['enabled'] = (Value()..boolValue = true)
+          ..fields['tags'] = (Value()
+            ..listValue = (ListValue()
+              ..values.addAll([
+                Value()..stringValue = 'alpha',
+                Value()..numberValue = 2,
+              ])))
+          ..fields['ports'] = (Value()
+            ..listValue = (ListValue()
+              ..values.addAll([
+                Value()..numberValue = 80,
+                Value()..numberValue = 443.2,
+              ])))
+          ..fields['weights'] = (Value()
+            ..listValue = (ListValue()
+              ..values.addAll([
+                Value()..numberValue = 1,
+                Value()..numberValue = 2.5,
+              ])))
+          ..fields['metadata'] = (Value()
+            ..structValue = (Struct()
+              ..fields['k'] = (Value()..stringValue = 'v')));
         resource.resolveOutputs(responseObject);
       });
 
@@ -90,6 +125,20 @@ void main() {
 
       expect(labelData.isSecret, isTrue);
       expect(labelData.value, equals('sensitive'));
+    });
+
+    test('coerces additional primitive, list, and map output types', () async {
+      final resource = _CompletionResource('example');
+
+      expect(await resource.ratio.getValue(), equals(3.5));
+      expect(await resource.enabled.getValue(), isTrue);
+      expect(await resource.tags.getValue(), equals(<String>['alpha', '2.0']));
+      expect(await resource.ports.getValue(), equals(<int>[80, 443]));
+      expect(await resource.weights.getValue(), equals(<double>[1.0, 2.5]));
+      expect(
+        await resource.metadata.getValue(),
+        equals(<String, dynamic>{'k': 'v'}),
+      );
     });
   });
 }

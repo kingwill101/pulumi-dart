@@ -135,5 +135,44 @@ void main() {
       expect(data.isKnown, isFalse);
       expect(data.value, isNull);
     });
+
+    test('InputList exposes list mutation semantics', () async {
+      final list = InputList<int>();
+      expect(list.isEmpty, isTrue);
+
+      list.addValue(1);
+      list.addAll([Input.fromValue(2)]);
+      list.addAllValues([3, 4]);
+      expect(list.isNotEmpty, isTrue);
+      expect(list.length, 4);
+      expect(await list[2].toOutput().getValue(), 3);
+
+      list[1] = Input.fromValue(22);
+      list.length = 3;
+      expect(list.length, 3);
+
+      final data = await list.toOutput().getData();
+      expect(data.value, equals(<int>[1, 22, 3]));
+    });
+
+    test('InputMap helper methods preserve map semantics', () async {
+      final map = InputMap<int>();
+      map.setValue('a', 1);
+      map['b'] = Input.fromValue(2);
+      map.addAll({'c': Input.fromValue(3)});
+      map.addAllValues({'d': 4, 'e': 5});
+
+      expect(map.keys.toSet(), equals({'a', 'b', 'c', 'd', 'e'}));
+      expect(await map['a']!.toOutput().getValue(), 1);
+
+      final removed = map.remove('c');
+      expect(await removed!.toOutput().getValue(), 3);
+      expect(map.keys.toSet(), equals({'a', 'b', 'd', 'e'}));
+
+      map.clear();
+      expect(map.keys, isEmpty);
+      final data = await map.toOutput().getData();
+      expect(data.value, equals(<String, int>{}));
+    });
   });
 }
