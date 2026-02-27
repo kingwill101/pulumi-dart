@@ -4683,6 +4683,37 @@ func buildGeneratedPubspec(packageName string, localDependencies map[string]stri
 	return pubspec
 }
 
+func inferLocalPulumiDependencyFromProject(startDir string) string {
+	pubspecPath, err := findPubspecYaml(startDir)
+	if err != nil {
+		return ""
+	}
+
+	pubspec, err := ReadAndParsePubspec(pubspecPath)
+	if err != nil || pubspec == nil || pubspec.Dependencies == nil {
+		return ""
+	}
+
+	pulumiDependency, ok := pubspec.Dependencies["pulumi"]
+	if !ok {
+		return ""
+	}
+
+	version := getDependencyVersion(pulumiDependency)
+	if !strings.HasPrefix(version, "path:") {
+		return ""
+	}
+
+	pulumiPath := strings.TrimSpace(strings.TrimPrefix(version, "path:"))
+	if pulumiPath == "" {
+		return ""
+	}
+	if !filepath.IsAbs(pulumiPath) {
+		pulumiPath = filepath.Join(filepath.Dir(pubspecPath), pulumiPath)
+	}
+	return filepath.Clean(pulumiPath)
+}
+
 func toPubspecTopics(keywords []string) []string {
 	topics := make([]string, 0, len(keywords))
 	seen := map[string]struct{}{}
@@ -4949,7 +4980,17 @@ func (host *dartLanguageHost) GeneratePackage(
 	}
 
 	packageName := toDartPackageName(spec.Namespace, spec.Name)
-	pubspec := buildGeneratedPubspec(packageName, req.GetLocalDependencies())
+	localDependencies := map[string]string{}
+	for name, path := range req.GetLocalDependencies() {
+		localDependencies[name] = path
+	}
+	if strings.TrimSpace(localDependencies["pulumi"]) == "" {
+		if inferredPulumiPath := inferLocalPulumiDependencyFromProject(req.GetDirectory()); inferredPulumiPath != "" {
+			localDependencies["pulumi"] = inferredPulumiPath
+		}
+	}
+
+	pubspec := buildGeneratedPubspec(packageName, localDependencies)
 	applyPackageMetadataToPubspec(&pubspec, spec)
 	if strings.TrimSpace(pubspec.Description) == "" {
 		pubspec.Description = fmt.Sprintf("A Pulumi SDK package for %s.", spec.Name)

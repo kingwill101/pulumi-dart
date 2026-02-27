@@ -569,6 +569,41 @@ func TestGeneratePackageWritesLocalPulumiDependency(t *testing.T) {
 	assert.Contains(t, pubspec, "path: "+filepath.ToSlash(localPulumi))
 }
 
+func TestGeneratePackageInfersLocalPulumiDependencyFromAncestorPubspec(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	workspaceDir := t.TempDir()
+	targetDir := filepath.Join(workspaceDir, "sdks", "sample")
+	localPulumi := filepath.Clean(filepath.Join(workspaceDir, "..", "pulumi-local"))
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3"
+	}`
+
+	projectPubspec := strings.TrimSpace(`
+name: package_add_project
+version: 0.0.1
+dependencies:
+  pulumi:
+    path: ../pulumi-local
+`)
+	require.NoError(t, os.WriteFile(filepath.Join(workspaceDir, "pubspec.yaml"), []byte(projectPubspec), 0o600))
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	pubspecData, err := os.ReadFile(filepath.Join(targetDir, "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "dependencies:")
+	assert.Contains(t, pubspec, "pulumi:")
+	assert.Contains(t, pubspec, "path: "+filepath.ToSlash(localPulumi))
+}
+
 func TestGeneratePackageWritesSchemaMetadataToPubspec(t *testing.T) {
 	t.Parallel()
 
